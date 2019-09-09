@@ -152,8 +152,6 @@ var Edit = function (_Component) {
             var setAttributes = this.props.setAttributes;
 
 
-            console.log('wp->', wp);
-
             return React.createElement(
                 Fragment,
                 null,
@@ -308,9 +306,6 @@ registerBlockType('qubely/test', {
 __webpack_require__(/*! ./blocks/tests/index.js */ "./src/blocks/tests/index.js");
 
 var __ = wp.i18n.__;
-
-
-console.log('Just Testing Purpose.');
 
 /***/ }),
 

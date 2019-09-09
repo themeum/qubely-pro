@@ -1,9 +1,7 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, TextControl } = wp.components
-
 const { Alignment } = wp.qubelyComponents
-
 const { InspectorControls } = wp.editor
 
 
@@ -22,8 +20,6 @@ class Edit extends Component {
     render() {
         const { uniqueId, text, alignment } = this.props.attributes
         const { setAttributes } = this.props
-
-        console.log('wp->', wp )
 
         return (
             <Fragment>
