@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, TextControl } = wp.components
 
-const { Alignment } = wp.qubelyComponents
+const { Alignment, Color } = wp.qubelyComponents
 
 const { InspectorControls } = wp.editor
 
@@ -20,16 +20,13 @@ class Edit extends Component {
     }
 
     render() {
-        const { uniqueId, text, alignment } = this.props.attributes
+        const { uniqueId, text, alignment, testColor, testBg } = this.props.attributes
         const { setAttributes } = this.props
-
-        console.log('wp->', wp )
 
         return (
             <Fragment>
                 <InspectorControls key="inspector">
                     <PanelBody initialOpen={true}>
-
                         <TextControl
                             label={__('Text')}
                             value={text}
@@ -42,15 +39,16 @@ class Edit extends Component {
                             value={alignment} 
                             onChange={val => setAttributes({ alignment: val })} 
                             disableJustify 
-                            disableToggle />
-
+                            disableToggle 
+                        />
+                        <Color label={__('Color')} value={testColor} onChange={(value) => setAttributes({ testColor: value })} />
+                        <Color label={__('Background')} value={testBg} onChange={(value) => setAttributes({ testBg: value })} />
                     </PanelBody>
                 </InspectorControls>
 
                 <div className={`qubely-block-${uniqueId}`}>
-                    {text}
+                    <div className="test-block">{text}</div>
                 </div>
-
             </Fragment>
         )
     }

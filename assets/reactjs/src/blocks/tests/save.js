@@ -7,7 +7,7 @@ class Save extends Component {
         const { uniqueId, text } = this.props.attributes
         return (
             <div className={`qubely-block-${uniqueId}`}>
-                {text}
+               <div className="test-block">{text}</div>
             </div>
         )
     }
