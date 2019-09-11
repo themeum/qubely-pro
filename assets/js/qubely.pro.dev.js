@@ -86,6 +86,21 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/formbuilder/style.scss":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/formbuilder/style.scss ***!
+  \************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".qubely-block-contact-form .qubely-form {\n  display: flex;\n  flex-wrap: wrap; }\n  .qubely-block-contact-form .qubely-form .qubely-form-group {\n    position: relative; }\n    .qubely-block-contact-form .qubely-form .qubely-form-group .qubely-form-label {\n      margin: 0;\n      line-height: 1; }\n    .qubely-block-contact-form .qubely-form .qubely-form-group .qubely-form-control {\n      display: block;\n      width: 100%;\n      background-clip: padding-box;\n      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n      .qubely-block-contact-form .qubely-form .qubely-form-group .qubely-form-control.is-small {\n        padding: 6px 8px; }\n      .qubely-block-contact-form .qubely-form .qubely-form-group .qubely-form-control.is-medium {\n        padding: 8.5px 12px; }\n      .qubely-block-contact-form .qubely-form .qubely-form-group .qubely-form-control.is-large {\n        padding: 14.5px 16px; }\n    .qubely-block-contact-form .qubely-form .qubely-form-group textarea.qubely-form-control {\n      resize: none; }\n    .qubely-block-contact-form .qubely-form .qubely-form-group .qubely-form-control:focus {\n      outline: 0; }\n    .qubely-block-contact-form .qubely-form .qubely-form-group p.qubely-form-required-field {\n      font-size: 14px;\n      color: red;\n      margin: 0; }\n    .qubely-block-contact-form .qubely-form .qubely-form-group .qubely-block-btn-anchor:hover {\n      background-color: transparent; }\n\n.qubely-block-contact-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-group-inner {\n  position: relative; }\n\n.qubely-block-contact-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-label {\n  position: absolute;\n  pointer-events: none;\n  top: 0px;\n  transition: 0.2s ease all; }\n\n.qubely-block-contact-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control {\n  border-radius: 0;\n  box-shadow: none;\n  padding-left: 0;\n  padding-right: 0; }\n  .qubely-block-contact-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus, .qubely-block-contact-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid {\n    outline: none;\n    color: #333; }\n  .qubely-block-contact-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control::placeholder {\n    opacity: 0;\n    transition: 400ms; }\n  .qubely-block-contact-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus::placeholder {\n    opacity: 1; }\n\n.qubely-block-contact-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus ~ .qubely-form-label,\n.qubely-block-contact-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid ~ .qubely-form-label {\n  top: -20px; }\n", ""]);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/tests/style.scss":
 /*!******************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/tests/style.scss ***!
@@ -706,6 +721,1076 @@ module.exports = function (css) {
 
 /***/ }),
 
+/***/ "./src/blocks/formbuilder/Edit.js":
+/*!****************************************!*\
+  !*** ./src/blocks/formbuilder/Edit.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    BlockControls = _wp$editor.BlockControls;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
+    Toolbar = _wp$components.Toolbar;
+var _wp$qubelyComponents = wp.qubelyComponents,
+    Styles = _wp$qubelyComponents.Styles,
+    Range = _wp$qubelyComponents.Range,
+    Toggle = _wp$qubelyComponents.Toggle,
+    Typography = _wp$qubelyComponents.Typography,
+    Color = _wp$qubelyComponents.Color,
+    Tabs = _wp$qubelyComponents.Tabs,
+    Tab = _wp$qubelyComponents.Tab,
+    Border = _wp$qubelyComponents.Border,
+    RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
+    QubelyButtonEdit = _wp$qubelyComponents.QubelyButtonEdit,
+    BorderRadius = _wp$qubelyComponents.BorderRadius,
+    Separator = _wp$qubelyComponents.Separator;
+//import { CssGenerator } from '../../components/CssGenerator'
+//import InlineToolbar from '../../components/fields/inline/InlineToolbar'
+//import icons from '../../helpers/icons'
+//import '../../components/ButtonComponent'
+//import '../../components/GlobalSettings'
+//import '../../components/ContextMenu'
+
+
+var Edit = function (_Component) {
+    _inherits(Edit, _Component);
+
+    function Edit(props) {
+        _classCallCheck(this, Edit);
+
+        var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
+
+        _this.state = {
+            device: 'md',
+            spacer: true,
+            selectedItem: -1
+        };
+        return _this;
+    }
+
+    _createClass(Edit, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _props = this.props,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId,
+                uniqueId = _props.attributes.uniqueId;
+
+            var _client = clientId.substr(0, 6);
+            if (!uniqueId) {
+                setAttributes({ uniqueId: _client });
+            } else if (uniqueId && uniqueId != _client) {
+                setAttributes({ uniqueId: _client });
+            }
+        }
+    }, {
+        key: 'setSettings',
+        value: function setSettings(type, val) {
+            var index = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
+
+            var selectedItem = index !== -1 ? index : this.state.selectedItem;
+            var _props2 = this.props,
+                attributes = _props2.attributes,
+                setAttributes = _props2.setAttributes;
+
+            var formItems = [].concat(_toConsumableArray(attributes.formItems));
+            formItems[selectedItem][type] = val;
+            setAttributes({ formItems: formItems });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var _state = this.state,
+                selectedItem = _state.selectedItem,
+                device = _state.device;
+            var _props3 = this.props,
+                attributes = _props3.attributes,
+                setAttributes = _props3.setAttributes;
+            var uniqueId = attributes.uniqueId,
+                formItems = attributes.formItems,
+                labelTypography = attributes.labelTypography,
+                labelColor = attributes.labelColor,
+                labelColorFocus = attributes.labelColorFocus,
+                inputTypography = attributes.inputTypography,
+                inputColor = attributes.inputColor,
+                inputColorFocus = attributes.inputColorFocus,
+                inputColorHover = attributes.inputColorHover,
+                inputBg = attributes.inputBg,
+                inputBgFocus = attributes.inputBgFocus,
+                inputBgHover = attributes.inputBgHover,
+                inputBorder = attributes.inputBorder,
+                inputBorderMaterial = attributes.inputBorderMaterial,
+                inputBorderColorFocus = attributes.inputBorderColorFocus,
+                inputBorderColorHover = attributes.inputBorderColorHover,
+                inputBorderRadius = attributes.inputBorderRadius,
+                inputSize = attributes.inputSize,
+                inputPaddingX = attributes.inputPaddingX,
+                inputPaddingY = attributes.inputPaddingY,
+                textareaHeight = attributes.textareaHeight,
+                placeholderColor = attributes.placeholderColor,
+                placeholderColorFocus = attributes.placeholderColorFocus,
+                placeholderColorHover = attributes.placeholderColorHover,
+                enableButton = attributes.enableButton,
+                buttonTag = attributes.buttonTag,
+                buttonSize = attributes.buttonSize,
+                buttonFillType = attributes.buttonFillType,
+                buttonText = attributes.buttonText,
+                buttonIconName = attributes.buttonIconName,
+                buttonIconPosition = attributes.buttonIconPosition,
+                spacing = attributes.spacing,
+                gutter = attributes.gutter,
+                fieldErrorMessage = attributes.fieldErrorMessage,
+                formSuccessMessage = attributes.formSuccessMessage,
+                formErrorMessage = attributes.formErrorMessage,
+                reCaptcha = attributes.reCaptcha,
+                reCaptchaSiteKey = attributes.reCaptchaSiteKey,
+                reCaptchaSecretKey = attributes.reCaptchaSecretKey,
+                emailReceiver = attributes.emailReceiver,
+                emailHeaders = attributes.emailHeaders,
+                emailFrom = attributes.emailFrom,
+                emailSubject = attributes.emailSubject,
+                emailBody = attributes.emailBody,
+                layout = attributes.layout;
+            //if (uniqueId) { CssGenerator(this.props.attributes, 'contactform', uniqueId); }
+
+            return React.createElement(
+                Fragment,
+                null,
+                React.createElement(
+                    InspectorControls,
+                    { key: 'inspector' },
+                    React.createElement(
+                        PanelBody,
+                        { title: __(''), initialOpen: true },
+                        React.createElement(Styles, {
+                            value: layout,
+                            onChange: function onChange(val) {
+                                return setAttributes({ layout: val });
+                            },
+                            options: [{ value: 'classic', label: __('Classic') }, { value: 'material', label: __('Material') }]
+                        })
+                    ),
+                    selectedItem >= 0 && React.createElement(
+                        PanelBody,
+                        { title: formItems[selectedItem].label ? formItems[selectedItem].label : __('Input Settings') },
+                        React.createElement(TextControl, {
+                            label: __('Label'),
+                            value: formItems[selectedItem].label,
+                            onChange: function onChange(val) {
+                                return _this2.setSettings('label', val);
+                            },
+                            placeholder: __('Enter Label')
+                        }),
+                        React.createElement(TextControl, {
+                            label: __('Name'),
+                            value: formItems[selectedItem].name,
+                            onChange: function onChange(val) {
+                                return _this2.setSettings('name', val);
+                            },
+                            placeholder: __('Enter Name'),
+                            help: __('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')
+                        }),
+                        React.createElement(TextControl, {
+                            label: __('Placeholder'),
+                            value: formItems[selectedItem].placeholder,
+                            onChange: function onChange(val) {
+                                return _this2.setSettings('placeholder', val);
+                            },
+                            placeholder: __('Enter Placeholder')
+                        }),
+                        React.createElement(Range, {
+                            label: __('Width'),
+                            value: formItems[selectedItem].width,
+                            onChange: function onChange(val) {
+                                return _this2.setSettings('width', val);
+                            },
+                            max: 100,
+                            min: 33,
+                            responsive: true,
+                            device: device,
+                            onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            }
+                        }),
+                        React.createElement(Toggle, {
+                            label: __('Required'),
+                            value: formItems[selectedItem].required,
+                            onChange: function onChange(val) {
+                                return _this2.setSettings('required', val);
+                            }
+                        }),
+                        layout == 'classic' && React.createElement(Toggle, {
+                            label: __('Hide Label'),
+                            value: formItems[selectedItem].hideLabel,
+                            onChange: function onChange(val) {
+                                return _this2.setSettings('hideLabel', val);
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        PanelBody,
+                        { title: __('Label'), initialOpen: false },
+                        React.createElement(Typography, {
+                            label: __('Typography'),
+                            value: labelTypography,
+                            onChange: function onChange(val) {
+                                return setAttributes({ labelTypography: val });
+                            },
+                            device: device,
+                            onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            }
+                        }),
+                        React.createElement(Color, {
+                            label: __('Color'),
+                            value: labelColor,
+                            onChange: function onChange(val) {
+                                return setAttributes({ labelColor: val });
+                            }
+                        }),
+                        layout == 'material' && React.createElement(Color, {
+                            label: __('Focus Color'),
+                            value: labelColorFocus,
+                            onChange: function onChange(val) {
+                                return setAttributes({ labelColorFocus: val });
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        PanelBody,
+                        { title: __('Input'), initialOpen: false },
+                        React.createElement(RadioAdvanced, {
+                            label: __('Input Size'),
+                            options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                            value: inputSize,
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputSize: value });
+                            }
+                        }),
+                        inputSize == 'custom' && React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(Range, {
+                                label: React.createElement('span', { className: 'dashicons dashicons-sort', title: 'Padding Y' }),
+                                value: inputPaddingY,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ inputPaddingY: value });
+                                },
+                                unit: ['px', 'em', '%'],
+                                min: 0,
+                                max: 50,
+                                responsive: true,
+                                device: device,
+                                onDeviceChange: function onDeviceChange(value) {
+                                    return _this2.setState({ device: value });
+                                }
+                            }),
+                            layout == 'classic' && React.createElement(Range, {
+                                label: React.createElement('span', { className: 'dashicons dashicons-leftright', title: 'X Padding' }),
+                                value: inputPaddingX,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ inputPaddingX: value });
+                                },
+                                unit: ['px', 'em', '%'],
+                                min: 0,
+                                max: 50,
+                                responsive: true,
+                                device: device,
+                                onDeviceChange: function onDeviceChange(value) {
+                                    return _this2.setState({ device: value });
+                                }
+                            }),
+                            React.createElement(Separator, null)
+                        ),
+                        React.createElement(Range, {
+                            label: __('Textarea Height'),
+                            value: textareaHeight,
+                            onChange: function onChange(value) {
+                                return setAttributes({ textareaHeight: value });
+                            },
+                            unit: ['px', 'em', '%'],
+                            min: 100,
+                            max: 500,
+                            responsive: true,
+                            device: device,
+                            onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            }
+                        }),
+                        React.createElement(Range, {
+                            label: __('Spacing'),
+                            value: spacing,
+                            onChange: function onChange(value) {
+                                return setAttributes({ spacing: value });
+                            },
+                            unit: ['px', 'em', '%'],
+                            min: 0,
+                            max: 60,
+                            responsive: true,
+                            device: device,
+                            onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            }
+                        }),
+                        React.createElement(Range, {
+                            label: __('Gutter'),
+                            value: gutter,
+                            onChange: function onChange(value) {
+                                return setAttributes({ gutter: value });
+                            },
+                            unit: ['px', 'em', '%'],
+                            min: 0,
+                            max: 60,
+                            responsive: true,
+                            device: device,
+                            onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            }
+                        }),
+                        React.createElement(
+                            Tabs,
+                            null,
+                            React.createElement(
+                                Tab,
+                                { tabTitle: __('Normal') },
+                                React.createElement(Color, { label: __('Color'), value: inputColor, onChange: function onChange(val) {
+                                        return setAttributes({ inputColor: val });
+                                    } }),
+                                React.createElement(Color, { label: __('Background Color'), value: inputBg, onChange: function onChange(val) {
+                                        return setAttributes({ inputBg: val });
+                                    } }),
+                                React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColor, onChange: function onChange(val) {
+                                        return setAttributes({ placeholderColor: val });
+                                    } }),
+                                React.createElement(Separator, null),
+                                layout == 'classic' && React.createElement(Border, { label: __('Border'), value: inputBorder, onChange: function onChange(val) {
+                                        return setAttributes({ inputBorder: val });
+                                    }, min: 0, max: 10, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                                        return _this2.setState({ device: value });
+                                    } }),
+                                layout == 'material' && React.createElement(Border, { label: __('Border'), value: inputBorderMaterial, onChange: function onChange(val) {
+                                        return setAttributes({ inputBorderMaterial: val });
+                                    }, min: 0, max: 10, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                                        return _this2.setState({ device: value });
+                                    } })
+                            ),
+                            React.createElement(
+                                Tab,
+                                { tabTitle: __('Focus') },
+                                React.createElement(Color, { label: __('Color'), value: inputColorFocus, onChange: function onChange(val) {
+                                        return setAttributes({ inputColorFocus: val });
+                                    } }),
+                                React.createElement(Color, { label: __('Background Color'), value: inputBgFocus, onChange: function onChange(val) {
+                                        return setAttributes({ inputBgFocus: val });
+                                    } }),
+                                React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColorFocus, onChange: function onChange(val) {
+                                        return setAttributes({ placeholderColorFocus: val });
+                                    } }),
+                                React.createElement(Color, { label: __('Border Color'), value: inputBorderColorFocus, onChange: function onChange(value) {
+                                        return setAttributes({ inputBorderColorFocus: value });
+                                    } })
+                            ),
+                            React.createElement(
+                                Tab,
+                                { tabTitle: __('Hover') },
+                                React.createElement(Color, { label: __('Color'), value: inputColorHover, onChange: function onChange(val) {
+                                        return setAttributes({ inputColorHover: val });
+                                    } }),
+                                React.createElement(Color, { label: __('Background Color'), value: inputBgHover, onChange: function onChange(val) {
+                                        return setAttributes({ inputBgHover: val });
+                                    } }),
+                                React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColorHover, onChange: function onChange(val) {
+                                        return setAttributes({ placeholderColorHover: val });
+                                    } }),
+                                React.createElement(Color, { label: __('Border Color'), value: inputBorderColorHover, onChange: function onChange(value) {
+                                        return setAttributes({ inputBorderColorHover: value });
+                                    } })
+                            )
+                        ),
+                        React.createElement(BorderRadius, {
+                            label: __('Radius'),
+                            value: inputBorderRadius,
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputBorderRadius: value });
+                            },
+                            min: 0,
+                            max: 100, unit: ['px', 'em', '%'],
+                            responsive: true,
+                            device: device,
+                            onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            }
+                        }),
+                        React.createElement(Typography, { label: __('Typography'), value: inputTypography, onChange: function onChange(val) {
+                                return setAttributes({ inputTypography: val });
+                            }, device: device, onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            } })
+                    ),
+                    React.createElement(
+                        PanelBody,
+                        { title: __('Settings'), initialOpen: false },
+                        React.createElement(
+                            Tabs,
+                            null,
+                            React.createElement(
+                                Tab,
+                                { tabTitle: __('Form') },
+                                React.createElement(TextControl, {
+                                    label: __('Required Field Error Message'),
+                                    value: fieldErrorMessage,
+                                    onChange: function onChange(val) {
+                                        return setAttributes({ fieldErrorMessage: val });
+                                    },
+                                    help: __('Set required field error message here. Leave blank for default message.')
+                                }),
+                                React.createElement(TextareaControl, {
+                                    label: __('Form Submit Success Message'),
+                                    value: formSuccessMessage,
+                                    onChange: function onChange(val) {
+                                        return setAttributes({ formSuccessMessage: val });
+                                    },
+                                    help: __('Set your desired message after successful form submission. Leave blank for default.')
+                                }),
+                                React.createElement(TextareaControl, {
+                                    label: __('Form Submit Failed Message'),
+                                    value: formErrorMessage,
+                                    onChange: function onChange(val) {
+                                        return setAttributes({ formErrorMessage: val });
+                                    },
+                                    help: __('Set your desired message for form submission error. Leave blank for default.')
+                                }),
+                                React.createElement(Toggle, { label: __('Enable Captcha'), value: reCaptcha, onChange: function onChange(val) {
+                                        return setAttributes({ reCaptcha: val });
+                                    } }),
+                                reCaptcha && React.createElement(
+                                    'div',
+                                    null,
+                                    React.createElement(TextControl, {
+                                        label: __('Site Key '),
+                                        value: reCaptchaSiteKey,
+                                        onChange: function onChange(val) {
+                                            return setAttributes({ reCaptchaSiteKey: val });
+                                        },
+                                        placeholder: __('Enter Google Site Key')
+                                    }),
+                                    React.createElement(TextControl, {
+                                        label: __('Secret Key '),
+                                        value: reCaptchaSecretKey,
+                                        onChange: function onChange(val) {
+                                            return setAttributes({ reCaptchaSecretKey: val });
+                                        },
+                                        placeholder: __('Enter Google Secret Key')
+                                    })
+                                )
+                            ),
+                            React.createElement(
+                                Tab,
+                                { tabTitle: __('Email') },
+                                React.createElement(TextControl, {
+                                    label: __('Recipient Email'),
+                                    value: emailReceiver,
+                                    onChange: function onChange(val) {
+                                        return setAttributes({ emailReceiver: val });
+                                    },
+                                    placeholder: __('Enter Recipient Email'),
+                                    help: __('Enter the recipient email address. This field is mandatory. Without a recipient email, contact form will not work.')
+                                }),
+                                React.createElement(TextareaControl, {
+                                    label: __('Email Headers'),
+                                    value: emailHeaders,
+                                    onChange: function onChange(val) {
+                                        return setAttributes({ emailHeaders: val });
+                                    }
+                                }),
+                                React.createElement(TextControl, {
+                                    label: __('From Email'),
+                                    value: emailFrom,
+                                    onChange: function onChange(val) {
+                                        return setAttributes({ emailFrom: val });
+                                    },
+                                    placeholder: __('Your Name: admin@example.com')
+                                }),
+                                React.createElement(TextControl, {
+                                    label: __('Subject'),
+                                    value: emailSubject,
+                                    onChange: function onChange(val) {
+                                        return setAttributes({ emailSubject: val });
+                                    },
+                                    placeholder: __('Enter Subject')
+                                }),
+                                React.createElement(TextareaControl, {
+                                    label: __('Email Body'),
+                                    value: emailBody,
+                                    onChange: function onChange(val) {
+                                        return setAttributes({ emailBody: val });
+                                    },
+                                    help: __("Set your form email body here. In editor don't add any CSS style or others option just add your form field name between double curly braces {{field-name}} as you set in 'Field Name'.")
+                                })
+                            )
+                        )
+                    )
+                ),
+                React.createElement(BlockControls, null),
+                React.createElement(
+                    'div',
+                    { className: 'qubely-block-' + uniqueId },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-block-contact-form qubely-layout-' + layout },
+                        React.createElement(
+                            'form',
+                            { className: 'qubely-form' },
+                            formItems.map(function (item, index) {
+                                return React.createElement(
+                                    'div',
+                                    { key: index, className: 'qubely-form-group qubely-form-group-index-' + index, style: { width: item.width.md + '%' } },
+                                    React.createElement(
+                                        'div',
+                                        { className: 'qubely-form-group-inner' },
+                                        !item.hideLabel && layout == 'classic' && React.createElement(
+                                            'label',
+                                            { className: 'qubely-form-label' },
+                                            React.createElement(
+                                                'span',
+                                                { contenteditable: 'true', onBlur: function onBlur(e) {
+                                                        return _this2.setSettings('label', e.target.innerText, index);
+                                                    } },
+                                                __(item.label),
+                                                ' '
+                                            ),
+                                            ' ',
+                                            item.required && '*'
+                                        ),
+                                        (item.type == 'text' || item.type == 'email') && React.createElement('input', { className: 'qubely-form-control is-' + inputSize, type: item.type, placeholder: __(item.placeholder), required: item.required, onClick: function onClick() {
+                                                return _this2.setState({ selectedItem: index });
+                                            } }),
+                                        item.type == 'textarea' && React.createElement('textarea', { className: 'qubely-form-control', placeholder: __(item.placeholder), required: item.required, onClick: function onClick() {
+                                                return _this2.setState({ selectedItem: index });
+                                            } }),
+                                        layout == 'material' && React.createElement(
+                                            'label',
+                                            { className: 'qubely-form-label' },
+                                            React.createElement(
+                                                'span',
+                                                { contenteditable: 'true', onBlur: function onBlur(e) {
+                                                        return _this2.setSettings('label', e.target.innerText, index);
+                                                    } },
+                                                __(item.label),
+                                                ' '
+                                            ),
+                                            ' ',
+                                            item.required && '*'
+                                        )
+                                    )
+                                );
+                            }),
+                            React.createElement(
+                                'div',
+                                { className: 'qubely-form-group', style: { width: '100%' } },
+                                React.createElement(QubelyButtonEdit, {
+                                    enableButton: enableButton,
+                                    buttonFillType: buttonFillType,
+                                    buttonSize: buttonSize,
+                                    buttonText: buttonText,
+                                    buttonIconName: buttonIconName,
+                                    buttonIconPosition: buttonIconPosition,
+                                    buttonTag: buttonTag,
+                                    onTextChange: function onTextChange(value) {
+                                        return setAttributes({ buttonText: value });
+                                    }
+                                })
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Edit;
+}(Component);
+
+exports.default = Edit;
+
+/***/ }),
+
+/***/ "./src/blocks/formbuilder/Save.js":
+/*!****************************************!*\
+  !*** ./src/blocks/formbuilder/Save.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+var Component = wp.element.Component;
+var QubelyButtonSave = wp.qubelyComponents.QubelyButtonSave;
+//import { animationAttr } from '../../components/HelperFunction';
+
+var Save = function (_Component) {
+    _inherits(Save, _Component);
+
+    function Save() {
+        _classCallCheck(this, Save);
+
+        return _possibleConstructorReturn(this, (Save.__proto__ || Object.getPrototypeOf(Save)).apply(this, arguments));
+    }
+
+    _createClass(Save, [{
+        key: '_encrypt',
+        value: function _encrypt(str) {
+            return window.btoa(str);
+        }
+    }, {
+        key: '_renderField',
+        value: function _renderField(item, index, inputSize) {
+            var fieldID = 'qubely-form-input-' + index;
+            var fieldName = 'qubely-form-input[' + item.name + (item.required ? '*' : '') + ']';
+            var fieldClass = 'qubely-form-control is-' + inputSize;
+            switch (item.type) {
+                case 'text':
+                case 'email':
+                    return React.createElement('input', { id: fieldID, name: fieldName, className: fieldClass, type: item.type, placeholder: __(item.placeholder), required: item.required });
+                case 'textarea':
+                    return React.createElement('textarea', { id: fieldID, name: fieldName, className: fieldClass, placeholder: __(item.placeholder), required: item.required });
+                default:
+                    return '';
+            }
+        }
+    }, {
+        key: '_renderFormGroupCss',
+        value: function _renderFormGroupCss() {
+            var formItems = this.props.attributes.formItems;
+
+            var formGroupCss = '';
+            formItems.forEach(function (item, index) {
+                formGroupCss += (item.width.md ? '.qubely-form-group.qubely-form-group-index-' + index + ' { width: ' + item.width.md + '% }' : '') + '\n                ' + (item.width.sm ? '@media (max-width: 991px) { .qubely-form-group.qubely-form-group-index-' + index + ' { width: ' + item.width.sm + '% } }' : '') + '\n                ' + (item.width.xs ? '@media (max-width: 767px) { .qubely-form-group.qubely-form-group-index-' + index + ' { width: ' + item.width.xs + '% } }' : '');
+            });
+            return formGroupCss;
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _encrypt = this._encrypt,
+                _renderField = this._renderField;
+            var _props$attributes = this.props.attributes,
+                uniqueId = _props$attributes.uniqueId,
+                formItems = _props$attributes.formItems,
+                inputSize = _props$attributes.inputSize,
+                fieldErrorMessage = _props$attributes.fieldErrorMessage,
+                formSuccessMessage = _props$attributes.formSuccessMessage,
+                formErrorMessage = _props$attributes.formErrorMessage,
+                reCaptcha = _props$attributes.reCaptcha,
+                reCaptchaSiteKey = _props$attributes.reCaptchaSiteKey,
+                reCaptchaSecretKey = _props$attributes.reCaptchaSecretKey,
+                emailReceiver = _props$attributes.emailReceiver,
+                emailHeaders = _props$attributes.emailHeaders,
+                emailFrom = _props$attributes.emailFrom,
+                emailSubject = _props$attributes.emailSubject,
+                emailBody = _props$attributes.emailBody,
+                layout = _props$attributes.layout,
+                buttonFillType = _props$attributes.buttonFillType,
+                buttonSize = _props$attributes.buttonSize,
+                buttonText = _props$attributes.buttonText,
+                buttonIconName = _props$attributes.buttonIconName,
+                buttonIconPosition = _props$attributes.buttonIconPosition,
+                buttonTag = _props$attributes.buttonTag,
+                animation = _props$attributes.animation;
+
+            return (
+                //<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
+                React.createElement(
+                    'div',
+                    { className: 'qubely-block-' + uniqueId },
+                    React.createElement(
+                        'style',
+                        null,
+                        this._renderFormGroupCss()
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-block-contact-form qubely-layout-' + layout },
+                        React.createElement(
+                            'form',
+                            { className: 'qubely-form' },
+                            formItems.map(function (item, index) {
+                                return React.createElement(
+                                    'div',
+                                    { key: index, className: 'qubely-form-group qubely-form-group-index-' + index },
+                                    React.createElement(
+                                        'div',
+                                        { className: 'qubely-form-group-inner' },
+                                        !item.hideLabel && layout == 'classic' && React.createElement(
+                                            'label',
+                                            { 'for': 'qubely-form-input-' + index, className: 'qubely-form-label' },
+                                            ' ',
+                                            __(item.label),
+                                            ' ',
+                                            item.required && '*'
+                                        ),
+                                        _renderField(item, index, inputSize),
+                                        layout == 'material' && React.createElement(
+                                            'label',
+                                            { className: 'qubely-form-label' },
+                                            ' ',
+                                            __(item.label),
+                                            ' ',
+                                            item.required && '*'
+                                        )
+                                    )
+                                );
+                            }),
+                            reCaptcha && React.createElement(
+                                'div',
+                                { className: 'qubely-form-group' },
+                                React.createElement('div', { className: 'qubely-google-recaptcha' })
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'qubely-form-group', style: { width: '100%' } },
+                                React.createElement(QubelyButtonSave, {
+                                    buttonFillType: buttonFillType,
+                                    buttonSize: buttonSize,
+                                    buttonText: buttonText,
+                                    buttonIconName: buttonIconName,
+                                    buttonIconPosition: buttonIconPosition,
+                                    buttonTag: buttonTag
+                                }),
+                                React.createElement('input', { type: 'hidden', name: 'field-error-message', value: _encrypt(fieldErrorMessage) }),
+                                React.createElement('input', { type: 'hidden', name: 'form-success-message', value: _encrypt(formSuccessMessage) }),
+                                React.createElement('input', { type: 'hidden', name: 'form-error-message', value: _encrypt(formErrorMessage) }),
+                                React.createElement('input', { type: 'hidden', name: 'recaptcha', value: reCaptcha ? 'true' : 'false' }),
+                                React.createElement('input', { type: 'hidden', name: 'recaptcha-site-key', value: reCaptchaSiteKey }),
+                                React.createElement('input', { type: 'hidden', name: 'recaptcha-secret-key', value: reCaptchaSecretKey }),
+                                React.createElement('input', { type: 'hidden', name: 'email-receiver', value: _encrypt(emailReceiver) }),
+                                React.createElement('input', { type: 'hidden', name: 'email-headers', value: _encrypt(emailHeaders) }),
+                                React.createElement('input', { type: 'hidden', name: 'email-from', value: _encrypt(emailFrom) }),
+                                React.createElement('input', { type: 'hidden', name: 'email-subject', value: _encrypt(emailSubject) }),
+                                React.createElement('input', { type: 'hidden', name: 'email-body', value: _encrypt(emailBody) })
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'qubely-form-group' },
+                                React.createElement(
+                                    'div',
+                                    { className: 'qubely-form-group-inner' },
+                                    React.createElement('div', { className: 'qubely-form-message' })
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Save;
+}(Component);
+
+exports.default = Save;
+
+/***/ }),
+
+/***/ "./src/blocks/formbuilder/index.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/formbuilder/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _attributes;
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/formbuilder/style.scss");
+
+var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/formbuilder/Edit.js");
+
+var _Edit2 = _interopRequireDefault(_Edit);
+
+var _Save = __webpack_require__(/*! ./Save */ "./src/blocks/formbuilder/Save.js");
+
+var _Save2 = _interopRequireDefault(_Save);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+var formItems = [{ type: 'text', label: 'Full Name', name: 'full-name ', placeholder: 'Full Name', width: { md: 50 }, required: true, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: { md: 50 }, required: true, hideLabel: false }, { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: { md: 100 }, required: true, hideLabel: false }, { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: { md: 100 }, required: true, hideLabel: false }];
+
+registerBlockType('qubely/formbuilder', {
+    title: __('Form Builder'),
+    description: __('Encourage site visitor interactions with Qubely Form builder'),
+    category: 'qubely',
+    icon: 'universal-access-alt',
+    //icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-contact-form.svg'} alt={__('Form Builder')} />,
+    keywords: [__('Contact'), __('Form')],
+    attributes: (_attributes = {
+        uniqueId: { type: 'string', default: '' },
+        layout: { type: 'string', default: 'classic' },
+        useDefaultStyle: { type: 'boolean', default: true },
+        spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
+        buttonComponent: { type: 'boolean', default: true },
+        enableButtonAlignment: { type: 'boolean', default: true },
+        enableButton: { type: 'boolean', default: true },
+        buttonTag: { type: 'string', default: 'button' },
+        buttonText: { type: 'string', default: 'Submit' },
+        formItems: { type: 'array', default: formItems },
+
+        spacing: {
+            type: 'object', default: { md: 30, unit: 'px' },
+            style: [{
+                selector: '{{QUBELY}} .qubely-form .qubely-form-group:not(:last-child) {margin-bottom: {{spacing}};}'
+            }]
+        },
+
+        gutter: {
+            type: 'object', default: { md: 30, unit: 'px' },
+            style: [{
+                selector: '{{QUBELY}} .qubely-form {margin: 0 calc(-{{gutter}}/2);} {{QUBELY}} .qubely-form .qubely-form-group {padding: 0 calc({{gutter}}/2);}'
+            }]
+        },
+
+        labelTypography: {
+            type: 'obejct', default: { openTypography: 1, size: { md: 16, unit: 'px' } },
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-label'
+            }, {
+                condition: [{ key: 'layout', relation: '==', value: 'material' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-label'
+            }]
+        },
+
+        labelColor: {
+            type: 'string', default: "",
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-label {color: {{labelColor}};}'
+            }, {
+                condition: [{ key: 'layout', relation: '==', value: 'material' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-label {color: {{labelColor}};}'
+            }]
+        },
+
+        labelColorFocus: {
+            type: 'string', default: "",
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'material' }],
+                selector: '{{QUBELY}} .qubely-form-control:focus ~ .qubely-form-label, {{QUBELY}} .qubely-form-control:valid ~ .qubely-form-label {color: {{labelColorFocus}};}'
+            }]
+        },
+
+        inputTypography: {
+            type: 'obejct', default: { openTypography: 1, size: { md: 14, unit: 'px' } },
+            style: [{
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control, {{QUBELY}} .qubely-form .qubely-form-control::placeholder'
+            }]
+        },
+
+        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control {color: {{inputColor}};}' }] },
+        inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:Hover {color: {{inputColorHover}};}' }] },
+        inputColorFocus: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {color: {{inputColorFocus}};}' }] },
+
+        placeholderColor: { type: 'string', default: "#818181", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder {color: {{placeholderColor}};}' }] },
+        placeholderColorHover: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:Hover {color: {{placeholderColorHover}};}' }] },
+        placeholderColorFocus: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:focus {color: {{placeholderColorFocus}};}' }] },
+
+        inputBg: {
+            type: 'string', default: "#fff",
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control {background-color: {{inputBg}};}'
+            }]
+        },
+
+        inputBgHover: {
+            type: 'string', default: '',
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {background-color: {{inputBgHover}};}'
+            }]
+        },
+
+        inputBgFocus: {
+            type: 'string', default: "#fff",
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {background-color: {{inputBgFocus}};}'
+            }]
+        },
+
+        inputBorder: {
+            type: 'object',
+            default: {
+                openBorder: 1,
+                type: 'solid',
+                widthType: 'global',
+                global: { md: 1 },
+                custom: { md: '1 1 1 1' },
+                color: '#ced4da'
+            },
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control'
+            }]
+        },
+
+        inputBorderMaterial: {
+            type: 'object',
+            default: { openBorder: 1, type: 'solid', widthType: 'custom', custom: { md: '0 0 2 0' }, color: '#ced4da' },
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'material' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control'
+            }]
+        },
+
+        inputBorderColorHover: {
+            type: 'string', default: '',
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {border-color: {{inputBorderColorHover}};}'
+            }, {
+                condition: [{ key: 'layout', relation: '==', value: 'material' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {border-bottom-color: {{inputBorderColorHover}};}'
+            }]
+        },
+
+        inputBorderColorFocus: {
+            type: 'string', default: '',
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {border-color: {{inputBorderColorFocus}}; box-shadow: 0 0 0 2px {{inputBorderColorFocus}};}'
+            }, {
+                condition: [{ key: 'layout', relation: '==', value: 'material' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {border-bottom-color: {{inputBorderColorFocus}};}'
+            }]
+        }
+
+    }, _defineProperty(_attributes, 'inputColorHover', {
+        type: 'string', default: '',
+        style: [{
+            selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {color: {{inputColorHover}};}'
+        }]
+    }), _defineProperty(_attributes, 'inputBorderRadius', {
+        type: 'object',
+        default: {
+            openBorderRadius: 1,
+            radiusType: 'global',
+            global: {
+                md: 5
+            },
+            unit: 'px'
+        },
+        style: [{
+            condition: [{ key: 'layout', relation: '==', value: 'classic' }],
+            selector: '{{QUBELY}} .qubely-form .qubely-form-control'
+        }]
+    }), _defineProperty(_attributes, 'inputSize', { type: 'string', default: 'medium' }), _defineProperty(_attributes, 'inputPaddingY', {
+        type: 'object', default: { md: 10, unit: 'px' },
+        style: [{
+            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
+            selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        }, {
+            condition: [{ key: 'layout', relation: '==', value: 'material' }, { key: 'inputSize', relation: '==', value: 'custom' }],
+            selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        }]
+    }), _defineProperty(_attributes, 'inputPaddingX', {
+        type: 'object', default: { md: 15, unit: 'px' },
+        style: [{
+            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
+            selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
+        }]
+    }), _defineProperty(_attributes, 'textareaHeight', {
+        type: 'object', default: { md: 200, unit: 'px' },
+        style: [{
+            selector: '{{QUBELY}} .qubely-form .qubely-form-group textarea.qubely-form-control {height: {{textareaHeight}};}'
+        }]
+    }), _defineProperty(_attributes, 'fieldErrorMessage', { type: 'string', default: 'Please fill the required field.' }), _defineProperty(_attributes, 'formSuccessMessage', { type: 'string', default: 'Email successfully sent!' }), _defineProperty(_attributes, 'formErrorMessage', { type: 'string', default: 'Email sent failed, fill required field and try again!' }), _defineProperty(_attributes, 'reCaptcha', { type: 'boolean', default: false }), _defineProperty(_attributes, 'reCaptchaSiteKey', { type: 'string', default: '' }), _defineProperty(_attributes, 'reCaptchaSecretKey', { type: 'string', default: '' }), _defineProperty(_attributes, 'emailReceiver', { type: 'string', default: '' }), _defineProperty(_attributes, 'emailHeaders', { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{full-name }} \nCc: {{email}}\nBcc: admin@yourcompany.com' }), _defineProperty(_attributes, 'emailFrom', { type: 'string', default: 'Your Name: admin@example.com' }), _defineProperty(_attributes, 'emailSubject', { type: 'string', default: '{{subject}} | {{email}} | {{site-name}}' }), _defineProperty(_attributes, 'emailBody', { type: 'string', default: '<p><strong>From:</strong> {{full-name }}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>' }), _defineProperty(_attributes, 'showGlobalSettings', { type: 'boolean', default: true }), _defineProperty(_attributes, 'showContextMenu', { type: 'boolean', default: true }), _attributes),
+    edit: _Edit2.default,
+    save: _Save2.default
+});
+
+/***/ }),
+
+/***/ "./src/blocks/formbuilder/style.scss":
+/*!*******************************************!*\
+  !*** ./src/blocks/formbuilder/style.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/formbuilder/style.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./src/blocks/tests/Edit.js":
 /*!**********************************!*\
   !*** ./src/blocks/tests/Edit.js ***!
@@ -987,6 +2072,8 @@ if(false) {}
 
 
 __webpack_require__(/*! ./blocks/tests/index.js */ "./src/blocks/tests/index.js");
+
+__webpack_require__(/*! ./blocks/formbuilder/index.js */ "./src/blocks/formbuilder/index.js");
 
 var __ = wp.i18n.__;
 
