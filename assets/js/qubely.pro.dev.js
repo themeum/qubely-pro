@@ -4565,8 +4565,8 @@ __webpack_require__(/*! ./blocks/testimonialcarousel */ "./src/blocks/testimonia
 
 __webpack_require__(/*! ./blocks/teamcarousel */ "./src/blocks/teamcarousel/index.js");
 
-// testimonialcarousel
-var __ = wp.i18n.__; // testimonialcarousel
+// Team Carousel
+var __ = wp.i18n.__; // Testimonial Carousel
 
 /***/ }),
 
