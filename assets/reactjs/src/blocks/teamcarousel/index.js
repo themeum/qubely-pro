@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 import './style.scss'
 import Edit from './Edit'
-import Save from './Save'
+import Save from './as-Save'
 
 registerBlockType('qubely/teamcarousel', {
 	title: __('Team Carousel'),

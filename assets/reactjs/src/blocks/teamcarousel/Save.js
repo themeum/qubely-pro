@@ -1,4 +1,4 @@
-const { Component, Fragment } = wp.element
+const { Component } = wp.element
 const { RichText } = wp.editor
 const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
@@ -13,7 +13,7 @@ class Save extends Component {
       </div>
     )
   }
-
+  // social share
   renderSocialShare = () => {
 		const { attributes: { 
 			showSociallinks,
@@ -82,7 +82,7 @@ class Save extends Component {
               <div className="qubely-team-author-info">
                   <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
                   <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
-                  {this.renderSocialShare()}
+                  { this.renderSocialShare()  /* Social share callback function */ }
               </div>
             </div>
           }
@@ -94,7 +94,7 @@ class Save extends Component {
 						<div className="qubely-team-author-info">
                 <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
                 <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
-							  {this.renderSocialShare()}
+							  { this.renderSocialShare()  /* Social share callback function */}
 						</div>
 					</div>
 				}
@@ -106,7 +106,7 @@ class Save extends Component {
 						<div className="qubely-team-author-info">
                 <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
                 <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
-							  {this.renderSocialShare()}
+							  { this.renderSocialShare()  /* Social share callback function */}
 						</div>
 					</div>
 				}

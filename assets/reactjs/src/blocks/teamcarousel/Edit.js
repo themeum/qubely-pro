@@ -143,7 +143,7 @@ class Edit extends Component {
 			</div>
 		)
 	}
-	
+
 	renderAuthorInfo = (item, index) => {
 		const { attributes: { layout } } = this.props
 		const { author, designation, avatar } = item
@@ -157,7 +157,7 @@ class Edit extends Component {
 						<div className="qubely-team-author-info">
 							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
 							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-							{this.renderSocialShare()}
+							{ this.renderSocialShare()  /* Social share callback function */}
 						</div>
 					</div>
 				}
@@ -169,7 +169,7 @@ class Edit extends Component {
 						<div className="qubely-team-author-info">
 							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
 							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-							{this.renderSocialShare()}
+							{ this.renderSocialShare()  /* Social share callback function */}
 						</div>
 					</div>
 				}
@@ -181,7 +181,7 @@ class Edit extends Component {
 						<div className="qubely-team-author-info">
 							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
 							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-							{this.renderSocialShare()}
+							{ this.renderSocialShare() /* Social share callback function */ } 
 						</div>
 					</div>
 				}
