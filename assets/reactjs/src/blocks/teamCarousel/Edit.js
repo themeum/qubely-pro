@@ -145,37 +145,52 @@ class Edit extends Component {
 		)
 	}
 	renderAuthorInfo = (item, index) => {
-		const { attributes: { layout, showAvatar, avatarLayout } } = this.props
+		const { attributes: { layout } } = this.props
 		const { author, designation, avatar } = item
+
+
+		// console.log('URL',this.renderAvatar(avatar, index));
+
 		return (
 			<div className={`qubely-team-author`}>
-				{(layout === 3 && showAvatar) && this.renderAvatar(avatar, index)}
-
-				<div className={showAvatar ? `qubely-team-avatar-layout-${avatarLayout}` : ``}>
-					{(layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top')) && this.renderAvatar(avatar, index)}
-
-					<div className="qubely-team-author-info">
-						<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
-						<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
+				{ (layout == 1) &&
+					<div className={`qubely-team-${layout}`}>
+						{this.renderAvatar(avatar, index)}
+						<div className="qubely-team-author-info">
+							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
+							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
+							{this.renderSocialShare()}
+						</div>
 					</div>
+				}
 
-					{(layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom')) && this.renderAvatar(avatar, index)}
-				</div>
+
+				{ (layout == 3) &&
+					<div className={`qubely-team-${layout}`}>
+						{this.renderAvatar(avatar, index)}
+						<div className="qubely-team-author-info">
+							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
+							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
+							{this.renderSocialShare()}
+						</div>
+					</div>
+				}
+
+				
+
+				
 			</div>
 		)
 	} 
 
 	renderTeams = () => {
-		const { attributes: { 
-			layout, items, carouselItems
-		} } = this.props
+		const { attributes: { items, carouselItems } } = this.props
 		return (
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
-						<div className={`qubely-tesitmonial-item layout-${layout}`}>
-							{layout == 1 && this.renderAuthorInfo(item, index)}
-							{this.renderSocialShare()}
+						<div className={`qubely-team-carousel-item`}>
+							{this.renderAuthorInfo(item, index)}
 						</div>
 					</div>
 				)

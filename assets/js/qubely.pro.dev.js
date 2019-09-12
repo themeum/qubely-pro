@@ -958,22 +958,20 @@ var Edit = function (_Component) {
 		};
 
 		_this.renderAuthorInfo = function (item, index) {
-			var _this$props$attribute2 = _this.props.attributes,
-			    layout = _this$props$attribute2.layout,
-			    showAvatar = _this$props$attribute2.showAvatar,
-			    avatarLayout = _this$props$attribute2.avatarLayout;
+			var layout = _this.props.attributes.layout;
 			var author = item.author,
 			    designation = item.designation,
 			    avatar = item.avatar;
 
+			// console.log('URL',this.renderAvatar(avatar, index));
+
 			return React.createElement(
 				'div',
 				{ className: 'qubely-team-author' },
-				layout === 3 && showAvatar && _this.renderAvatar(avatar, index),
-				React.createElement(
+				layout == 1 && React.createElement(
 					'div',
-					{ className: showAvatar ? 'qubely-team-avatar-layout-' + avatarLayout : '' },
-					layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top') && _this.renderAvatar(avatar, index),
+					{ className: 'qubely-team-' + layout },
+					_this.renderAvatar(avatar, index),
 					React.createElement(
 						'div',
 						{ className: 'qubely-team-author-info' },
@@ -986,18 +984,37 @@ var Edit = function (_Component) {
 							'div',
 							{ className: 'qubely-team-author-designation' },
 							_this.renderDesignation(designation, index)
-						)
-					),
-					layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom') && _this.renderAvatar(avatar, index)
+						),
+						_this.renderSocialShare()
+					)
+				),
+				layout == 3 && React.createElement(
+					'div',
+					{ className: 'qubely-team-' + layout },
+					_this.renderAvatar(avatar, index),
+					React.createElement(
+						'div',
+						{ className: 'qubely-team-author-info' },
+						React.createElement(
+							'div',
+							{ className: 'qubely-team-author-name' },
+							_this.renderName(author, index)
+						),
+						React.createElement(
+							'div',
+							{ className: 'qubely-team-author-designation' },
+							_this.renderDesignation(designation, index)
+						),
+						_this.renderSocialShare()
+					)
 				)
 			);
 		};
 
 		_this.renderTeams = function () {
-			var _this$props$attribute3 = _this.props.attributes,
-			    layout = _this$props$attribute3.layout,
-			    items = _this$props$attribute3.items,
-			    carouselItems = _this$props$attribute3.carouselItems;
+			var _this$props$attribute2 = _this.props.attributes,
+			    items = _this$props$attribute2.items,
+			    carouselItems = _this$props$attribute2.carouselItems;
 
 			return carouselItems.map(function (item, index) {
 				return React.createElement(
@@ -1005,9 +1022,8 @@ var Edit = function (_Component) {
 					{ key: index, className: 'qubely-carousel-item ' + (index < items[_this.parseResponsiveViewPort()] ? 'active' : '') },
 					React.createElement(
 						'div',
-						{ className: 'qubely-tesitmonial-item layout-' + layout },
-						layout == 1 && _this.renderAuthorInfo(item, index),
-						_this.renderSocialShare()
+						{ className: 'qubely-team-carousel-item' },
+						_this.renderAuthorInfo(item, index)
 					)
 				);
 			});
@@ -2084,7 +2100,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 registerBlockType('qubely/teamcarousel', {
 	title: __('Team Carousel'),
-	description: __('Design and showcase customer reviews, remarks as teams with Qubely Team Carousel block'),
+	description: __('Design and showcase Qubely Team Carousel block'),
 	icon: 'groups',
 	category: 'qubely',
 	keywords: [__('Team'), __('Carousel')],

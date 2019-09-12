@@ -6,7 +6,7 @@ import Save from './Save'
 
 registerBlockType('qubely/teamcarousel', {
 	title: __('Team Carousel'),
-	description: __('Design and showcase customer reviews, remarks as teams with Qubely Team Carousel block'),
+	description: __('Design and showcase Qubely Team Carousel block'),
 	icon: 'groups',
 	category: 'qubely',
 	keywords: [
