@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 import './style.scss'
 import Edit from './Edit'
-import Save from './as-Save'
+import Save from './Save'
 
 registerBlockType('qubely/teamcarousel', {
 	title: __('Team Carousel'),
@@ -113,14 +113,13 @@ registerBlockType('qubely/teamcarousel', {
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} }  ' }
 			]
 		},
-		// arrowPosition: {type: 'string', default: 'center' },
 		arrowPosition: {
 			type: 'object',
 			default: { md: 49, unit: '%' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { bottom: {{arrowPosition}}; } ' }
 			]
-		},
+		}, 
 		cornerRadius: {
 			type: 'object',
 			default: { md: 10, unit: 'px' },
@@ -364,7 +363,7 @@ registerBlockType('qubely/teamcarousel', {
 
 		/**
 		 *  Social Share */
-        showSociallinks: { type: 'boolean', default: false },
+        showSociallinks: { type: 'boolean', default: true },
         facebook: { type: 'string', default: 'https://facebook.com/themeum' },
         twitter: { type: 'string', default: 'https://twitter.com/themeum' },
         instagram: { type: 'string', default: '' },

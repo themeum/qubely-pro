@@ -151,7 +151,7 @@ class Edit extends Component {
 		return (
 			<div className={`qubely-team-author`}>
 				{ /* Layout 1 */
-					(layout == 1) &&
+					(layout == 1) && 
 					<div className={`qubely-team-${layout}`}>
 						{this.renderAvatar(avatar, index)}
 						<div className="qubely-team-author-info">
@@ -167,9 +167,11 @@ class Edit extends Component {
 					<div className={`qubely-team-${layout}`}>
 						{this.renderAvatar(avatar, index)}
 						<div className="qubely-team-author-info">
-							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
-							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-							{ this.renderSocialShare()  /* Social share callback function */}
+							<div className="layout-position">
+								<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
+								<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
+								{ this.renderSocialShare()  /* Social share callback function */}
+							</div>
 						</div>
 					</div>
 				}
@@ -203,7 +205,6 @@ class Edit extends Component {
 				)
 			})
 		)
-
 	}
 
 	setCarouselLength = (newLength) => {

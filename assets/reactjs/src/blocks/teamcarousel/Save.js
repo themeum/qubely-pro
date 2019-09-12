@@ -92,9 +92,11 @@ class Save extends Component {
 					<div className={`qubely-team-${layout}`}>
 						{this.renderAvatar(avatar, index)}
 						<div className="qubely-team-author-info">
-                <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
-                <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
-							  { this.renderSocialShare()  /* Social share callback function */}
+                <div className="layout-position">
+                  <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
+                  <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
+                  { this.renderSocialShare()  /* Social share callback function */}
+                </div>
 						</div>
 					</div>
 				}
