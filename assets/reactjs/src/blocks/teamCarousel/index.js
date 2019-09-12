@@ -76,7 +76,13 @@ registerBlockType('qubely/teamcarousel', {
 		* 	Team Layouts:  common/style attributes
 		* --------------------------------------------------- */
 		layout: { type: 'number', default: 1 },
-		alignment: { type: 'object', default: { md: 'center' }, style: [{ selector: '{{QUBELY}} .qubely-tesitmonial-item {text-align: {{alignment}};}' }] },
+		alignment: { 
+			type: 'object', 
+			default: { md: 'left' }, 
+			style: [
+				{ selector: '{{QUBELY}} .qubely-team-author-info {text-align: {{alignment}};}' }
+			] 
+		},
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
 
 		// Number of slider.
@@ -359,7 +365,7 @@ registerBlockType('qubely/teamcarousel', {
 
 		/**
 		 *  Social Share */
-        showSociallinks: { type: 'boolean', default: true },
+        showSociallinks: { type: 'boolean', default: false },
         facebook: { type: 'string', default: 'https://facebook.com/themeum' },
         twitter: { type: 'string', default: 'https://twitter.com/themeum' },
         instagram: { type: 'string', default: '' },
@@ -433,8 +439,7 @@ registerBlockType('qubely/teamcarousel', {
             type: 'string', default: '',
             style: [
                 {
-                    condition:
-                        [
+                    condition: [
                             { key: 'iconUseDefaultStyle', relation: '==', value: false }
                         ],
                     selector: '{{QUBELY}} .qubely-team-social-links>a {color: {{iconColor}};}'
@@ -445,8 +450,7 @@ registerBlockType('qubely/teamcarousel', {
             type: 'string', default: '',
             style: [
                 {
-                    condition:
-                        [
+                    condition: [
                             { key: 'iconUseDefaultStyle', relation: '==', value: false }
                         ],
                     selector: '{{QUBELY}} .qubely-team-social-links>a:hover {color: {{iconColorHover}};}'
@@ -457,8 +461,7 @@ registerBlockType('qubely/teamcarousel', {
             type: 'string', default: '',
             style: [
                 {
-                    condition:
-                        [
+                    condition: [
                             { key: 'iconUseDefaultStyle', relation: '==', value: false },
                             { key: 'iconStyle', relation: '==', value: 'fill' }
                         ],
@@ -470,8 +473,7 @@ registerBlockType('qubely/teamcarousel', {
             type: 'string', default: '',
             style: [
                 {
-                    condition:
-                        [
+                    condition: [
                             { key: 'iconUseDefaultStyle', relation: '==', value: false },
                             { key: 'iconStyle', relation: '==', value: 'fill' }
                         ],
@@ -483,8 +485,7 @@ registerBlockType('qubely/teamcarousel', {
             type: 'object', default: {},
             style: [
                 {
-                    condition:
-                        [
+                    condition: [
                             { key: 'iconUseDefaultStyle', relation: '==', value: false },
                             { key: 'iconStyle', relation: '==', value: 'fill' }
                         ],
@@ -496,8 +497,7 @@ registerBlockType('qubely/teamcarousel', {
             type: 'string', default: '',
             style: [
                 {
-                    condition:
-                        [
+                    condition: [
                             { key: 'iconUseDefaultStyle', relation: '==', value: false },
                             { key: 'iconStyle', relation: '==', value: 'fill' }
                         ],

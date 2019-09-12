@@ -79,18 +79,14 @@ class Edit extends Component {
 				value={avatar}
 				render={({ open }) => (
 					<div className="qubely-single-img qubely-backend">
-						{
-							(avatar && avatar.url) ?
-								<img onClick={open} className="qubely-team-avatar" src={avatar.url} alt={avatarAlt} />
-								:
-								<div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image"></i></div>
-						}
+						{ (avatar && avatar.url) ? <img onClick={open} className="qubely-team-avatar" src={avatar.url} alt={avatarAlt} /> : <div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image"></i></div> }
 					</div>
 				)}
 			/>
 
 		)
 	}
+	// Social Share callback function.
 	renderSocialShare = () => {
 		const { attributes: { 
 			showSociallinks,
@@ -148,12 +144,10 @@ class Edit extends Component {
 		const { attributes: { layout } } = this.props
 		const { author, designation, avatar } = item
 
-
-		// console.log('URL',this.renderAvatar(avatar, index));
-
 		return (
 			<div className={`qubely-team-author`}>
-				{ (layout == 1) &&
+				{ /* Layout 1 */
+					(layout == 1) &&
 					<div className={`qubely-team-${layout}`}>
 						{this.renderAvatar(avatar, index)}
 						<div className="qubely-team-author-info">
@@ -164,8 +158,8 @@ class Edit extends Component {
 					</div>
 				}
 
-
-				{ (layout == 3) &&
+				{ /* Layout 2 */ 
+					(layout == 2) &&
 					<div className={`qubely-team-${layout}`}>
 						{this.renderAvatar(avatar, index)}
 						<div className="qubely-team-author-info">
@@ -176,9 +170,18 @@ class Edit extends Component {
 					</div>
 				}
 
-				
+				{ /* Layout 3 */
+					(layout == 3) &&
+					<div className={`qubely-team-${layout}`}>
+						{this.renderAvatar(avatar, index)}
+						<div className="qubely-team-author-info">
+							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
+							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
+							{this.renderSocialShare()}
+						</div>
+					</div>
+				}
 
-				
 			</div>
 		)
 	} 
@@ -314,7 +317,7 @@ class Edit extends Component {
 			<Fragment>
 				<InspectorControls key="inspector">
 
-					<PanelBody title="" opened={true}>
+					<PanelBody title="Team Carousel" initialOpen={false}>
 						<Styles value={layout} onChange={val => setAttributes({ layout: val })}
 							options={[
 								{ value: 1, svg: icons.teamcarousel_1, label: __('Layout 1') },
@@ -501,40 +504,7 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-
 					
-					<PanelBody title={__('Name')} initialOpen={false}>
-						<Range
-							label={__('Spacing')}
-							value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
-							unit={['px', 'em', '%']} max={300}
-							min={0}
-							responsive
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })} />
-						<Color
-							label={__('Color')}
-							value={nameColor} onChange={(value) => setAttributes({ nameColor: value })}
-						/>
-						<Typography
-							label={__('Typography')}
-							value={nameTypo}
-							onChange={(value) => setAttributes({ nameTypo: value })}
-							device={device} onDeviceChange={value => this.setState({ device: value })} />
-					</PanelBody>
-
-					<PanelBody title={__('Designation')} initialOpen={false}>
-						<Color
-							label={__('Color')}
-							value={designationColor} onChange={(value) => setAttributes({ designationColor: value })}
-						/>
-						<Typography
-							label={__('Typography')}
-							value={designationTypo}
-							onChange={(value) => setAttributes({ designationTypo: value })}
-							device={device} onDeviceChange={value => this.setState({ device: value })} />
-					</PanelBody>
-
 					<PanelBody title={__('Avatar')} initialOpen={false}>
 						<Toggle label={__('Show Avatar')} value={showAvatar} onChange={val => setAttributes({ showAvatar: val })} />
 						{showAvatar &&
@@ -625,57 +595,39 @@ class Edit extends Component {
 						}
 					</PanelBody>
 					
-					
-					<PanelBody title={__('Design')} initialOpen={false}>
-						<Color
-							label={__('Text Color')}
-							value={textColor}
-							onChange={val => setAttributes({ textColor: val })} />
-						<Color
-							label={__('Background')}
-							value={bgColor}
-							onChange={val => setAttributes({ bgColor: val })} />
-						<Separator />
-						<Border
-							label={__('Border')}
-							value={border}
-							onChange={val => setAttributes({ border: val })} />
-						<Padding
-							label={__('Padding')}
-							value={bgPadding} onChange={(value) => setAttributes({ bgPadding: value })}
-							unit={['px', 'em', '%']}
+					<PanelBody title={__('Name')} initialOpen={false}>
+						<Range
+							label={__('Spacing')}
+							value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
+							unit={['px', 'em', '%']} max={300}
 							min={0}
-							max={100}
 							responsive
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })} />
-						<BorderRadius
-							label={__('Border Radius')}
-							value={bgBorderRadius}
-							onChange={val => setAttributes({ bgBorderRadius: val })}
-							min={0}
-							max={100}
-							unit={['px', 'em', '%']}
-							responsive
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })} />
-						<Tabs>
-							<Tab tabTitle={__('Normal')}>
-								<BoxShadow
-									label={__('Box Shadow')}
-									value={boxShadow} onChange={val => setAttributes({ boxShadow: val })}
-								/>
-							</Tab>
-							<Tab tabTitle={__('Hover')}>
-								<BoxShadow
-									label={__('Box Shadow')}
-									value={boxShadowHover} onChange={val => setAttributes({ boxShadowHover: val })}
-								/>
-							</Tab>
-						</Tabs>
+						<Color
+							label={__('Color')}
+							value={nameColor} onChange={(value) => setAttributes({ nameColor: value })}
+						/>
+						<Typography
+							label={__('Typography')}
+							value={nameTypo}
+							onChange={(value) => setAttributes({ nameTypo: value })}
+							device={device} onDeviceChange={value => this.setState({ device: value })} />
 					</PanelBody>
-				
-					<PanelBody title={__('Social')} >
+
+					<PanelBody title={__('Designation')} initialOpen={false}>
+						<Color
+							label={__('Color')}
+							value={designationColor} onChange={(value) => setAttributes({ designationColor: value })}
+						/>
+						<Typography
+							label={__('Typography')}
+							value={designationTypo}
+							onChange={(value) => setAttributes({ designationTypo: value })}
+							device={device} onDeviceChange={value => this.setState({ device: value })} />
+					</PanelBody>
+
+					<PanelBody title={__('Social')} initialOpen={false}>
                         <Toggle label={__('Show Social-links')} value={showSociallinks} onChange={val => setAttributes({ showSociallinks: val })} />
                         {
                             showSociallinks &&
@@ -752,11 +704,61 @@ class Edit extends Component {
                         }
                     </PanelBody>
 
+
+					<PanelBody title={__('Design')} initialOpen={false}>
+						<Color
+							label={__('Text Color')}
+							value={textColor}
+							onChange={val => setAttributes({ textColor: val })} />
+						<Color
+							label={__('Background')}
+							value={bgColor}
+							onChange={val => setAttributes({ bgColor: val })} />
+						<Separator />
+						<Border
+							label={__('Border')}
+							value={border}
+							onChange={val => setAttributes({ border: val })} />
+						<Padding
+							label={__('Padding')}
+							value={bgPadding} onChange={(value) => setAttributes({ bgPadding: value })}
+							unit={['px', 'em', '%']}
+							min={0}
+							max={100}
+							responsive
+							device={device}
+							onDeviceChange={value => this.setState({ device: value })} />
+						<BorderRadius
+							label={__('Border Radius')}
+							value={bgBorderRadius}
+							onChange={val => setAttributes({ bgBorderRadius: val })}
+							min={0}
+							max={100}
+							unit={['px', 'em', '%']}
+							responsive
+							device={device}
+							onDeviceChange={value => this.setState({ device: value })} />
+						<Tabs>
+							<Tab tabTitle={__('Normal')}>
+								<BoxShadow
+									label={__('Box Shadow')}
+									value={boxShadow} onChange={val => setAttributes({ boxShadow: val })}
+								/>
+							</Tab>
+							<Tab tabTitle={__('Hover')}>
+								<BoxShadow
+									label={__('Box Shadow')}
+									value={boxShadowHover} onChange={val => setAttributes({ boxShadowHover: val })}
+								/>
+							</Tab>
+						</Tabs>
+					</PanelBody>
 				
+					
 				</InspectorControls>
 
 				<div className={`qubely-block-${uniqueId}`}>
-					<div className={`qubely-block-team-carousel qubely-layout-${layout}`}>
+					<div className={`qubely-block-team-carousel qubely-layout-style`}>
 						<Carousel options={carouselSettings}>
 							{this.renderTeams()}
 						</Carousel>
