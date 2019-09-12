@@ -13,59 +13,113 @@ class Save extends Component {
       </div>
     )
   }
-  renderAuthorInfo = (item) => {
-    const { attributes: { layout, showAvatar, avatarAlt, avatarLayout } } = this.props
+
+  renderSocialShare = () => {
+		const { attributes: { 
+			showSociallinks,
+            facebook,
+            twitter,
+            instagram,
+            linkedin,
+            youtube,
+            github,
+            flickr,
+            pinterest,
+            dribbble,
+            behance,
+		} } = this.props
+		return (
+			<div className="social-share">
+				{showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
+					<div className={`qubely-team-social-links`} onClick={() => this.handlePanelOpenings('Social')}>
+						{facebook &&
+							<a className="qubely-team-social-facebook"><i className="fab fa-facebook" /></a>
+						}
+						{twitter &&
+							<a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a>
+						}
+						{instagram &&
+							<a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a>
+						}
+						{linkedin &&
+							<a className="qubely-team-social-linkedin"><i className="fab fa-linkedin" /></a>
+						}
+						{youtube &&
+							<a className="qubely-team-social-youtube"><i className="fab fa-youtube" /></a>
+						}
+						{github &&
+							<a className="qubely-team-social-github"><i className="fab fa-github" /></a>
+						}
+						{flickr &&
+							<a className="qubely-team-social-flickr"><i className="fab fa-flickr" /></a>
+						}
+						{pinterest &&
+							<a className="qubely-team-social-pinterest"><i className="fab fa-pinterest" /></a>
+						}
+						{dribbble &&
+							<a className="qubely-team-social-dribbble"><i className="fab fa-dribbble" /></a>
+						}
+						{behance &&
+							<a className="qubely-team-social-behance"><i className="fab fa-behance" /></a>
+						}
+					</div>
+				}
+			</div>
+		)
+	}
+
+  renderAuthorInfo = (item, index) => {
+    const { attributes: { layout } } = this.props
     const { author, designation, avatar } = item
+    console.log('layout', layout)
 
     return (
       <div className={`qubely-team-author`}>
+          { /* Layout 1 */
+            (layout == 1) &&
+            <div className={`qubely-team-${layout}`}>
+              {this.renderAvatar(avatar, index)}
+              <div className="qubely-team-author-info">
+                  <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
+                  <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
+                  {this.renderSocialShare()}
+              </div>
+            </div>
+          }
 
-        {(layout === 3 && showAvatar) && this.renderAvatar(avatar, avatarAlt)}
+          { /* Layout 2 */ 
+					(layout == 2) &&
+					<div className={`qubely-team-${layout}`}>
+						{this.renderAvatar(avatar, index)}
+						<div className="qubely-team-author-info">
+                <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
+                <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
+							  {this.renderSocialShare()}
+						</div>
+					</div>
+				}
 
-        <div className={showAvatar ? `qubely-team-avatar-layout-${avatarLayout}` : ``}>
-
-          {(layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top')) && this.renderAvatar(avatar, avatarAlt)}
-
-          <div className="qubely-team-author-info">
-            <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
-            <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
-          </div>
-
-          {(layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom')) && this.renderAvatar(avatar, avatarAlt)}
-        </div>
+				{ /* Layout 3 */
+					(layout == 3) &&
+					<div className={`qubely-team-${layout}`}>
+						{this.renderAvatar(avatar, index)}
+						<div className="qubely-team-author-info">
+                <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
+                <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
+							  {this.renderSocialShare()}
+						</div>
+					</div>
+				}
       </div>
     )
   }
   renderTeam() {
-    const { attributes: { carouselItems, showRatings, layout, ratings, quoteIcon } } = this.props
-
+    const { attributes: { carouselItems } } = this.props
     return (carouselItems.map((item, index) => {
-      const { message } = item
       return (
         <div key={index} className={`qubely-carousel-extended-item${index === 0 ? ' active' : ''}`} >
-          <div className={`qubely-tesitmonial-item layout-${layout}`}>
-
-            {layout == 2 && this.renderAuthorInfo(item)}
-            {(quoteIcon && layout == 1) && <div className="qubely-team-quote">
-              <span className={`qubely-quote-icon ${quoteIcon}`}></span>
-            </div>
-            }
-
-            <div className={`qubely-team-carousel-content-wrapper`}>
-              {(showRatings && ratings > 0 && layout !== 1) &&
-                <div className="qubely-team-ratings" data-qubelyrating={ratings}></div>
-              }
-              <div className="qubely-team-content"> <RichText.Content value={message} /></div>
-              {(showRatings && ratings > 0 && layout == 1) && <div className="qubely-team-ratings" data-qubelyrating={ratings} />}
-            </div>
-
-            {layout !== 2 && this.renderAuthorInfo(item)}
-
-            {(quoteIcon && layout == 2) && <div className="qubely-team-quote qubely-position-bottom">
-              <span className={`qubely-quote-icon ${quoteIcon}`}></span>
-            </div>
-            }
-
+          <div className={`qubely-team-carousel-item`}>
+            { this.renderAuthorInfo(item)}
           </div>
         </div>
       )
@@ -73,7 +127,7 @@ class Save extends Component {
   }
 
   render() {
-    const { attributes: { uniqueId, layout, items, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
+    const { attributes: { uniqueId, items, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
     let options = JSON.stringify({
       autoplay: autoPlay,
       items: items,
@@ -106,7 +160,7 @@ class Save extends Component {
     )
     return (
       <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-        <div className={`qubely-block-team-carousel qubely-layout-${layout}`}>
+        <div className={`qubely-block-team-carousel qubely-layout-style`}>
           <div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ''}`} data-options={options} id="qubelyCarousel1" >
             {this.renderTeam()}
           </div>

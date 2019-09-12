@@ -70,7 +70,6 @@ class Edit extends Component {
 		)
 	}
 	renderAvatar = (avatar, index) => {
-		const { attributes: { avatarAlt } } = this.props
 		return (
 			<MediaUpload
 				onSelect={val => this.updateAtrributes('avatar', val, index)}
@@ -79,7 +78,11 @@ class Edit extends Component {
 				value={avatar}
 				render={({ open }) => (
 					<div className="qubely-single-img qubely-backend">
-						{ (avatar && avatar.url) ? <img onClick={open} className="qubely-team-avatar" src={avatar.url} alt={avatarAlt} /> : <div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image"></i></div> }
+						{ (avatar && avatar.url) ? 
+							<img onClick={open} className="qubely-team-avatar" src={avatar.url} /> 
+							: 
+							<div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image"></i></div> 
+						}
 					</div>
 				)}
 			/>
@@ -140,6 +143,7 @@ class Edit extends Component {
 			</div>
 		)
 	}
+	
 	renderAuthorInfo = (item, index) => {
 		const { attributes: { layout } } = this.props
 		const { author, designation, avatar } = item
@@ -246,7 +250,7 @@ class Edit extends Component {
 		const { setAttributes, attributes: {
 			uniqueId, items, autoPlay, interval, speed, nav, carouselItems, dragable,
 			layout, nameColor, alignment, designationColor, showAvatar, avatarBorderRadius, avatarSize, avatarWidth, avatarHeight,
-			avatarBorder, avatarSpacing, avatarLayout, nameTypo, nameSpacing, designationTypo, bgPadding, textColor, bgColor, 
+			avatarBorder, avatarSpacing, nameTypo, nameSpacing, designationTypo, bgPadding, textColor, bgColor, 
 			bgBorderRadius, border, boxShadow, boxShadowHover, sliderItemsSpace, isCentered, activeFade,
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth, arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
@@ -376,14 +380,6 @@ class Edit extends Component {
 						}
 						<Toggle label={__('Draggable')} value={dragable} onChange={value => setAttributes({ dragable: value })} />
 
-						{/* <Range
-							label={__('Items per Slide')}
-							value={itemPerSlides} onChange={(value) => setAttributes({ itemPerSlides: value })}
-							min={1}
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/> */}
-						{/* <Toggle label={__('Infinite Loop')} value={infiniteLoop} onChange={value => setAttributes({ infiniteLoop: value })} /> */}
 						<Toggle label={__('Centered Slides')} value={isCentered} onChange={value => setAttributes({ isCentered: value })} />
 						{
 							isCentered &&
@@ -510,20 +506,6 @@ class Edit extends Component {
 						{showAvatar &&
 							<Fragment>
 
-								{layout != 3 &&
-									<Fragment>
-										<Styles label={__('Avatar Layout')} value={avatarLayout} onChange={val => setAttributes({ avatarLayout: val })}
-											options={[
-												{ value: 'left', svg: icons.avatar_left, label: __('Left') },
-												{ value: 'right', svg: icons.avatar_right, label: __('Right') },
-												{ value: 'top', svg: icons.avatar_top, label: __('Top') },
-												{ value: 'bottom', svg: icons.avatar_bottom, label: __('Bottom') },
-											]}
-										/>
-										<Separator />
-									</Fragment>
-								}
-
 								<RadioAdvanced
 									label={__('Avatar Size')}
 									options={[
@@ -538,18 +520,16 @@ class Edit extends Component {
 								{avatarSize == 'custom' &&
 									<Fragment>
 										<Range
-											label={<span className="dashicons dashicons-leftright" title="Width" />}
+											label={__('Avatar Width')}
 											value={avatarWidth}
 											onChange={(value) => setAttributes({ avatarWidth: value })}
 											unit={['px', 'em', '%']}
-											max={300}
-											min={0}
-											responsive
+											max={300} min={0} responsive
 											device={device}
 											onDeviceChange={value => this.setState({ device: value })}
 										/>
 										<Range
-											label={<span className="dashicons dashicons-sort" title="Height" />}
+											label={__('Avatar Height')}
 											value={avatarHeight}
 											onChange={(value) => setAttributes({ avatarHeight: value })}
 											unit={['px', 'em', '%']}

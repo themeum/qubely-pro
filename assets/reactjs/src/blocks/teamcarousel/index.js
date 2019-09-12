@@ -80,7 +80,7 @@ registerBlockType('qubely/teamcarousel', {
 			type: 'object', 
 			default: { md: 'left' }, 
 			style: [
-				{ selector: '{{QUBELY}} .qubely-team-author-info {text-align: {{alignment}};}' }
+				{ selector: '{{QUBELY}} .qubely-team-author-info {text-align: {{alignment}};} {{QUBELY}} .qubely-single-img {text-align: {{alignment}};}' }
 			] 
 		},
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
@@ -228,7 +228,6 @@ registerBlockType('qubely/teamcarousel', {
 		* 			Avatar 
 		* ------------------------------------ */
 		showAvatar: { type: 'boolean', default: true },
-		avatarLayout: { type: 'string', default: 'top' },
 		avatarAlt: { type: 'string', default: '' },
 		avatarSize: {
 			type: 'string',
