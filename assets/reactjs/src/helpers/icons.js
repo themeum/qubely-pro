@@ -12,6 +12,10 @@ const icons = {
     teamcarousel_2: <img src={`${img_path}/teamcarousel/2.svg`} alt={__('Team Carousel 2')} />,
     teamcarousel_3: <img src={`${img_path}/teamcarousel/3.svg`} alt={__('Team Carousel 3')} />,
 
+    // Social Share Icons Style.
+    social_normal: <img src={`${img_path}/socialicon/normal.svg`} alt={__('Normal')} />,
+    social_fill: <img src={`${img_path}/socialicon/fill.svg`} alt={__('Fill')} />,
+
     // PostGrid Icon
     postgrid_1 : <img src={`${img_path}/postgrid/1.svg`} alt={__('Layout 1')} />,
     postgrid_2 : <img src={`${img_path}/postgrid/2.svg`} alt={__('Layout 2')} />,

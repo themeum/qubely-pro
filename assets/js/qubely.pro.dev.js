@@ -5382,9 +5382,9 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./src/blocks/tests/Edit.js":
+/***/ "./src/blocks/tests/edit.js":
 /*!**********************************!*\
-  !*** ./src/blocks/tests/Edit.js ***!
+  !*** ./src/blocks/tests/edit.js ***!
   \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -5506,9 +5506,65 @@ exports.default = Edit;
 
 /***/ }),
 
-/***/ "./src/blocks/tests/Save.js":
+/***/ "./src/blocks/tests/index.js":
+/*!***********************************!*\
+  !*** ./src/blocks/tests/index.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/tests/style.scss");
+
+var _edit = __webpack_require__(/*! ./edit */ "./src/blocks/tests/edit.js");
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(/*! ./save */ "./src/blocks/tests/save.js");
+
+var _save2 = _interopRequireDefault(_save);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+registerBlockType('qubely/test', {
+    title: __('TEST'),
+    description: 'Apply texts and tweak designs with Qubely Advanced Text.',
+    category: 'qubely',
+    icon: 'universal-access-alt',
+    supports: { align: false },
+    keywords: [__('text'), __('paragraph'), __('heading')],
+    attributes: {
+        uniqueId: { type: 'string', default: '' },
+        text: { type: 'string', default: 'This is Text' },
+        alignment: { type: 'string', default: 'left', style: [{ selector: '{{QUBELY}} {text-align: {{alignment}};}' }] },
+        testColor: {
+            type: 'string', default: '',
+            style: [{
+                selector: '{{QUBELY}} {color: {{testColor}};}'
+            }]
+        },
+        testBg: {
+            type: 'string', default: '',
+            style: [{
+                selector: '{{QUBELY}} {background: {{testBg}};}'
+            }]
+        }
+    },
+    edit: _edit2.default,
+    save: _save2.default
+});
+
+/***/ }),
+
+/***/ "./src/blocks/tests/save.js":
 /*!**********************************!*\
-  !*** ./src/blocks/tests/Save.js ***!
+  !*** ./src/blocks/tests/save.js ***!
   \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -5563,62 +5619,6 @@ var Save = function (_Component) {
 }(Component);
 
 exports.default = Save;
-
-/***/ }),
-
-/***/ "./src/blocks/tests/index.js":
-/*!***********************************!*\
-  !*** ./src/blocks/tests/index.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(/*! ./style.scss */ "./src/blocks/tests/style.scss");
-
-var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/tests/Edit.js");
-
-var _Edit2 = _interopRequireDefault(_Edit);
-
-var _Save = __webpack_require__(/*! ./Save */ "./src/blocks/tests/Save.js");
-
-var _Save2 = _interopRequireDefault(_Save);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-
-registerBlockType('qubely/test', {
-    title: __('TEST'),
-    description: 'Apply texts and tweak designs with Qubely Advanced Text.',
-    category: 'qubely',
-    icon: 'universal-access-alt',
-    supports: { align: false },
-    keywords: [__('text'), __('paragraph'), __('heading')],
-    attributes: {
-        uniqueId: { type: 'string', default: '' },
-        text: { type: 'string', default: 'This is Text' },
-        alignment: { type: 'string', default: 'left', style: [{ selector: '{{QUBELY}} {text-align: {{alignment}};}' }] },
-        testColor: {
-            type: 'string', default: '',
-            style: [{
-                selector: '{{QUBELY}} {color: {{testColor}};}'
-            }]
-        },
-        testBg: {
-            type: 'string', default: '',
-            style: [{
-                selector: '{{QUBELY}} {background: {{testBg}};}'
-            }]
-        }
-    },
-    edit: _Edit2.default,
-    save: _Save2.default
-});
 
 /***/ }),
 
@@ -5679,6 +5679,10 @@ var icons = {
     teamcarousel_1: React.createElement('img', { src: img_path + '/teamcarousel/1.svg', alt: __('Team Carousel 1') }),
     teamcarousel_2: React.createElement('img', { src: img_path + '/teamcarousel/2.svg', alt: __('Team Carousel 2') }),
     teamcarousel_3: React.createElement('img', { src: img_path + '/teamcarousel/3.svg', alt: __('Team Carousel 3') }),
+
+    // Social Share Icons Style.
+    social_normal: React.createElement('img', { src: img_path + '/socialicon/normal.svg', alt: __('Normal') }),
+    social_fill: React.createElement('img', { src: img_path + '/socialicon/fill.svg', alt: __('Fill') }),
 
     // PostGrid Icon
     postgrid_1: React.createElement('img', { src: img_path + '/postgrid/1.svg', alt: __('Layout 1') }),

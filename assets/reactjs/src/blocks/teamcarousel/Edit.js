@@ -69,6 +69,8 @@ class Edit extends Component {
 			/>
 		)
 	}
+	/** 
+	 *  Author Avatar*/  
 	renderAvatar = (avatar, index) => {
 		return (
 			<MediaUpload
@@ -89,117 +91,76 @@ class Edit extends Component {
 
 		)
 	}
-	// Social Share callback function.
+
+	/** 
+	 *  Social Share callback function. */  
 	renderSocialShare = () => {
 		const { attributes: { 
-			showSociallinks,
-            facebook,
-            twitter,
-            instagram,
-            linkedin,
-            youtube,
-            github,
-            flickr,
-            pinterest,
-            dribbble,
-            behance,
+			showSociallinks, iconStyle, iconUseDefaultStyle, facebook, twitter, instagram, linkedin, youtube, github, flickr, pinterest, dribbble, behance,
 		} } = this.props
 		return (
 			<div className="social-share">
-				{showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
-					<div className={`qubely-team-social-links`} onClick={() => this.handlePanelOpenings('Social')}>
-						{facebook &&
-							<a className="qubely-team-social-facebook"><i className="fab fa-facebook" /></a>
+
+				
+
+				{ showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
+					
+					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`} 
+					onClick={() => this.handlePanelOpenings('Social')}>
+                                        
+						{ facebook && 
+							<a className="qubely-team-social-facebook">
+								<i class="fab fa-facebook-f"></i>
+							</a> 
 						}
-						{twitter &&
-							<a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a>
-						}
-						{instagram &&
-							<a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a>
-						}
-						{linkedin &&
-							<a className="qubely-team-social-linkedin"><i className="fab fa-linkedin" /></a>
-						}
-						{youtube &&
-							<a className="qubely-team-social-youtube"><i className="fab fa-youtube" /></a>
-						}
-						{github &&
-							<a className="qubely-team-social-github"><i className="fab fa-github" /></a>
-						}
-						{flickr &&
-							<a className="qubely-team-social-flickr"><i className="fab fa-flickr" /></a>
-						}
-						{pinterest &&
-							<a className="qubely-team-social-pinterest"><i className="fab fa-pinterest" /></a>
-						}
-						{dribbble &&
-							<a className="qubely-team-social-dribbble"><i className="fab fa-dribbble" /></a>
-						}
-						{behance &&
-							<a className="qubely-team-social-behance"><i className="fab fa-behance" /></a>
-						}
+
+						{ twitter && <a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a> }
+						{ instagram && <a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a> }
+						{ linkedin && <a className="qubely-team-social-linkedin"><i className="fab fa-linkedin" /></a> }
+						{ youtube && <a className="qubely-team-social-youtube"><i className="fab fa-youtube" /></a> }
+						{ github && <a className="qubely-team-social-github"><i className="fab fa-github" /></a> }
+						{ flickr && <a className="qubely-team-social-flickr"><i className="fab fa-flickr" /></a> }
+						{ pinterest && <a className="qubely-team-social-pinterest"><i className="fab fa-pinterest" /></a> }
+						{ dribbble && <a className="qubely-team-social-dribbble"><i className="fab fa-dribbble" /></a> }
+						{ behance && <a className="qubely-team-social-behance"><i className="fab fa-behance" /></a> }
 					</div>
 				}
 			</div>
 		)
 	}
 
+	/** 
+	 *  Author information. */
 	renderAuthorInfo = (item, index) => {
-		const { attributes: { layout } } = this.props
+		const { attributes: { layout, showAvatar } } = this.props
 		const { author, designation, avatar } = item
 
 		return (
 			<div className={`qubely-team-author`}>
-				{ /* Layout 1 */
-					(layout == 1) && 
-					<div className={`qubely-team-${layout}`}>
-						{this.renderAvatar(avatar, index)}
-						<div className="qubely-team-author-info">
-							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
-							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-							{ this.renderSocialShare()  /* Social share callback function */}
-						</div>
-					</div>
-				}
-
-				{ /* Layout 2 */ 
-					(layout == 2) &&
-					<div className={`qubely-team-${layout}`}>
-						{this.renderAvatar(avatar, index)}
-						<div className="qubely-team-author-info">
-							<div className="layout-position">
-								<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
-								<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-								{ this.renderSocialShare()  /* Social share callback function */}
-							</div>
-						</div>
-					</div>
-				}
-
-				{ /* Layout 3 */
-					(layout == 3) &&
-					<div className={`qubely-team-${layout}`}>
-						{this.renderAvatar(avatar, index)}
-						<div className="qubely-team-author-info">
-							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
-							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-							{ this.renderSocialShare() /* Social share callback function */ } 
-						</div>
-					</div>
-				}
-
+				{ showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */}
+				<div className="qubely-team-author-info">
+					<div className={`layout-${layout}`}>
+						<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
+						<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
+						{ this.renderSocialShare()  /* Social share callback function */}
+					</div> 
+				</div>
 			</div>
 		)
 	} 
 
+	/** 
+	 *  Render author informations. */
 	renderTeams = () => {
-		const { attributes: { items, carouselItems } } = this.props
+		const { attributes: { items, layout, carouselItems } } = this.props
 		return (
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
 						<div className={`qubely-team-carousel-item`}>
-							{this.renderAuthorInfo(item, index)}
+							<div className={`qubely-team-${layout}`}>
+								{this.renderAuthorInfo(item, index)}
+							</div>
 						</div>
 					</div>
 				)
@@ -641,7 +602,6 @@ class Edit extends Component {
                                 {iconSize == 'custom' &&
                                     <Range label={__('Custom Size')} value={iconSizeCustom} onChange={val => setAttributes({ iconSizeCustom: val })} min={12} max={300} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 }
-
                                 {iconStyle == 'fill' &&
                                     <BorderRadius
                                         label={__('Corner Radius')}
@@ -656,7 +616,6 @@ class Edit extends Component {
 
                                 <Range label={__('Gutter')} value={iconGutter} onChange={val => setAttributes({ iconGutter: val })} min={0} max={40} unit={['px', 'em']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <Range label={__('Spacing')} value={iconSpacing} onChange={val => setAttributes({ iconSpacing: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-
                                 <Toggle label={__('Default Styles')} value={iconUseDefaultStyle} onChange={val => setAttributes({ iconUseDefaultStyle: val })} />
 
                                 {!iconUseDefaultStyle &&
