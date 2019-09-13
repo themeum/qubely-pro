@@ -16,6 +16,17 @@ class QUBELY_PRO
 
 		// Add Styles and Scripts
 		add_action('wp_enqueue_scripts', array($this, 'qubely_pro_enqueue_style'));
+        
+        // dynamic blocks
+		add_action('init', array($this, 'init_dynamic_postgrid_blocks'));
+	}
+
+		/**
+	 * Init dynamic blocks frontend
+	 */
+	public function init_dynamic_postgrid_blocks()
+	{
+		require_once QUBELY_PRO_DIR_PATH . 'core/blocks/postgrid.php';
 	}
 
 
