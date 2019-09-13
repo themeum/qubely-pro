@@ -433,7 +433,7 @@
   position: relative;
 }
 .qubely-team-2 .qubely-team-author-info {
-  background: rgba(244, 244, 244, 0.85);
+  background: rgba(0, 0, 0, 0.65);
   position: absolute;
   line-height: 30px;
   transition: .3s;
@@ -442,6 +442,7 @@
   opacity: 0;
   z-index: 1;
   top: 0;
+  color: #fff;
 }
 .qubely-team-2:hover .qubely-team-author-info {
   opacity: 1;
