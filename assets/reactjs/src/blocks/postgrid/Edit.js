@@ -220,6 +220,7 @@ class Edit extends Component {
 				columnGap,
 				contentPadding,
 				titleSpace,
+				imageSpace,
 				categorySpace,
 				metaSpace,
 				excerptSpace
@@ -255,7 +256,7 @@ class Edit extends Component {
 								{ value: 4, svg: icons.postgrid_design_6 },
 							]}
 						/>
-						{ ((layout === 2) || (layout === 3)) && 
+						{ ( (layout === 2) || (layout === 3) || (layout === 4) ) && 
 							<Range label={__('Select Column')} value={column} onChange={(value) => setAttributes({ column: value })} min={1} step={1} max={6} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						}
 
@@ -272,7 +273,7 @@ class Edit extends Component {
 								onChange={value => setAttributes(((layout === 2) && (style === 3)) ? { contentPosition: value } : { girdContentPosition: value })}
 							/>
 						}
-						{(((layout === 1) && (style != 3)) || ((layout === 2) && (style != 3))) &&
+						{(((layout === 1) && (style != 3)) || ((layout === 2) && (style != 3)) || ((layout === 4) && (style != 3))) &&
 							<Padding label={__('Content Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						}
 						<Separator />
@@ -581,6 +582,7 @@ class Edit extends Component {
 						{(showCategory == 'default') &&
 							<Range label={__('Category')} value={categorySpace} onChange={value => setAttributes({ categorySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						}
+						<Range label={__('Image')} value={imageSpace} onChange={value => setAttributes({ imageSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Range label={__('Title')} value={titleSpace} onChange={value => setAttributes({ titleSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Range label={__('Meta')} value={metaSpace} onChange={value => setAttributes({ metaSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Range label={__('Excerpt')} value={excerptSpace} onChange={value => setAttributes({ excerptSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -616,27 +618,27 @@ class Edit extends Component {
 				<div className={`qubely-block-${uniqueId}`}>
 					{
 						(posts && posts.length) ?
-							<div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${( (layout === 2) || (layout === 3) ) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`}>
-								{
-									posts && posts.map(post => {
-										return (
-											<div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style}`}>
-												<div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
-													{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
-													{this.renderCardContent(post)}
-												</div>
-											</div>
-										)
-									})
-								}
-							</div>
-							:
-							<div className="qubely-postgrid-is-loading">
-								<Spinner />
-							</div>
+                        <div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${( (layout === 2) || (layout === 3) || (layout === 4) ) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`}>
+                            {
+                                posts && posts.map(post => {
+                                    return (
+                                        <div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style}`}>
+                                            <div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
+                                                {showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
+                                                {this.renderCardContent(post)}
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        :
+                        <div className="qubely-postgrid-is-loading">
+                            <Spinner />
+                        </div>
 					}
 				</div>
-			</Fragment >
+			</Fragment>
 		);
 	}
 }
