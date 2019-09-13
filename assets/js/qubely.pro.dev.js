@@ -2271,8 +2271,6 @@ var Edit = function (_Component) {
 				CssGenerator(this.props.attributes, 'teamcarousel', uniqueId);
 			}
 
-			console.log('ID', _icons2.default.teamcarousel_1);
-
 			return React.createElement(
 				Fragment,
 				null,

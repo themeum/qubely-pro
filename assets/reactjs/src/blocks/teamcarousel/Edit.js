@@ -100,20 +100,10 @@ class Edit extends Component {
 		} } = this.props
 		return (
 			<div className="social-share">
-
-				
-
 				{ showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
-					
 					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`} 
 					onClick={() => this.handlePanelOpenings('Social')}>
-                                        
-						{ facebook && 
-							<a className="qubely-team-social-facebook">
-								<i class="fab fa-facebook-f"></i>
-							</a> 
-						}
-
+						{ facebook && <a className="qubely-team-social-facebook"><i class="fab fa-facebook-f"></i></a> }
 						{ twitter && <a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a> }
 						{ instagram && <a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a> }
 						{ linkedin && <a className="qubely-team-social-linkedin"><i className="fab fa-linkedin" /></a> }
@@ -276,8 +266,6 @@ class Edit extends Component {
 		};
 
 		if (uniqueId) { CssGenerator(this.props.attributes, 'teamcarousel', uniqueId) }
-
-		console.log('ID', icons.teamcarousel_1);
 
 		return (
 			<Fragment>
