@@ -1,5 +1,5 @@
 const { __ } = wp.i18n;
 import './blocks/tests/index.js'
-import './blocks/postgrid'      // testimonialcarousel
-import './blocks/testimonialcarousel'      // testimonialcarousel
-import './blocks/teamCarousel'      // testimonialcarousel
+import './blocks/postgrid'      // Post grid
+import './blocks/testimonialcarousel'      // Testimonial Carousel
+import './blocks/teamcarousel'      // Team Carousel

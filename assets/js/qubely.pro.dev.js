@@ -101,16 +101,16 @@ exports.push([module.i, ".qubely-postgrid-is-loading {\n  display: flex;\n  just
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamCarousel/style.scss":
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamcarousel/style.scss":
 /*!*************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamCarousel/style.scss ***!
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamcarousel/style.scss ***!
   \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-team-carousel {\n  transition: all 400ms; }\n  .qubely-block-team-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-team-carousel .qubely-team-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-team-carousel .qubely-team-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-team-carousel .qubely-single-img.qubely-backend .qubely-team-avatar {\n    cursor: pointer; }\n  .qubely-block-team-carousel .qubely-team-avatar.qubely-image-placeholder i {\n    font-size: 80px; }\n  .qubely-block-team-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 230px; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-left,\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-team-carousel .qubely-team-avatar-layout-left .qubely-team-author-info,\n    .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n      text-align: left; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n    text-align: right; }\n  .qubely-block-team-carousel .qubely-team-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-team-carousel .qubely-team-ratings:before, .qubely-block-team-carousel .qubely-team-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-team-carousel .qubely-team-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-team-carousel .qubely-team-ratings:after {\n      z-index: 0; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-team-carousel .qubely-team-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-team-carousel-content-wrapper {\n  position: relative; }\n\n.layout-3 .qubely-team-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n\n.layout-3 .qubely-team-carousel-content-wrapper:before {\n  content: \" \";\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-style: solid;\n  transform: translate(-50%, 50%);\n  border-width: 15px;\n  z-index: 1;\n  border-color: #f4f4f4 transparent transparent transparent;\n  left: 50%;\n  bottom: -15px; }\n\n.layout-3 .qubely-team-author {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-team-avatar {\n  margin-right: 0px; }\n\n.layout-3 .qubely-team-avatar-layout-left .qubely-team-author-info {\n  text-align: center; }\n\n.layout-1 .qubely-team-avatar,\n.layout-2 .qubely-team-avatar {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list,\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s; }\n\n.qubely-carousel.qubely-carousel-wrapper .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n  position: relative;\n  float: left;\n  overflow: hidden; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 50px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n  position: absolute;\n  bottom: 0px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid #e2e2e2;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 49%;\n  background: rgba(255, 255, 255, 0.4);\n  transition: .3s; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n  width: 100%;\n  height: 100%; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n  bottom: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n  margin: 15px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: #f4f4f4;\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n  width: 55px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n  background: #2084f9;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-tesitmonial-item.layout-3 .qubely-team-avatar {\n  margin-right: 0; }\n\n.qubely-team-carousel-content-wrapper {\n  position: relative; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.qubely-carousel .qubely-carousel-extended-list {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel .qubely-carousel-extended-item {\n  position: relative;\n  float: left;\n  /* overflow: hidden; */ }\n\n.qubely-carousel .qubely-carousel-extended-item.active,\n.qubely-carousel .qubely-carousel-extended-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel .qubely-carousel-extended-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control,\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: relative;\n  height: 20px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n  display: inline-block;\n  height: 40px;\n  width: 40px;\n  padding: 10px;\n  border: 1px solid #ababab;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 100px;\n  background: rgba(255, 255, 255, 0.4); }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: absolute;\n  bottom: 50px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel .qubely-carousel-extended-dots ul {\n  margin: -4px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: rgba(218, 92, 92, 0.4);\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li.active {\n  width: 80px; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n  background: #ffffff;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-extended-item:not(.active) {\n  opacity: 0.1; }\n", ""]);
+exports.push([module.i, ".qubely-block-team-carousel {\n  transition: all 400ms; }\n  .qubely-block-team-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-team-carousel .qubely-team-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-team-carousel .qubely-team-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-team-carousel .qubely-single-img.qubely-backend .qubely-team-avatar {\n    cursor: pointer; }\n  .qubely-block-team-carousel .qubely-team-avatar.qubely-image-placeholder i {\n    font-size: 80px; }\n  .qubely-block-team-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 230px; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-left,\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-team-carousel .qubely-team-avatar-layout-left .qubely-team-author-info,\n    .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n      text-align: left; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n    text-align: right; }\n  .qubely-block-team-carousel .qubely-team-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-team-carousel .qubely-team-ratings:before, .qubely-block-team-carousel .qubely-team-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-team-carousel .qubely-team-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-team-carousel .qubely-team-ratings:after {\n      z-index: 0; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-team-carousel .qubely-team-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-team-carousel-content-wrapper {\n  position: relative; }\n\n.layout-3 .qubely-team-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n\n.layout-3 .qubely-team-carousel-content-wrapper:before {\n  content: \" \";\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-style: solid;\n  transform: translate(-50%, 50%);\n  border-width: 15px;\n  z-index: 1;\n  border-color: #f4f4f4 transparent transparent transparent;\n  left: 50%;\n  bottom: -15px; }\n\n.layout-3 .qubely-team-author {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-team-avatar {\n  margin-right: 0px; }\n\n.layout-3 .qubely-team-avatar-layout-left .qubely-team-author-info {\n  text-align: center; }\n\n.layout-1 .qubely-team-avatar,\n.layout-2 .qubely-team-avatar {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list,\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s; }\n\n.qubely-carousel.qubely-carousel-wrapper .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n  position: relative;\n  float: left;\n  overflow: hidden; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 50px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n  position: absolute;\n  bottom: 0px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid #e2e2e2;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 49%;\n  background: rgba(255, 255, 255, 0.4);\n  transition: .3s; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n  width: 100%;\n  height: 100%; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n  bottom: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n  margin: 15px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: #f4f4f4;\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n  width: 55px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n  background: #2084f9;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-tesitmonial-item.layout-3 .qubely-team-avatar {\n  margin-right: 0; }\n\n.qubely-team-carousel-content-wrapper {\n  position: relative; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.qubely-carousel .qubely-carousel-extended-list {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel .qubely-carousel-extended-item {\n  position: relative;\n  float: left;\n  /* overflow: hidden; */ }\n\n.qubely-carousel .qubely-carousel-extended-item.active,\n.qubely-carousel .qubely-carousel-extended-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel .qubely-carousel-extended-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control,\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: relative;\n  height: 20px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n  display: inline-block;\n  height: 40px;\n  width: 40px;\n  padding: 10px;\n  border: 1px solid #ababab;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 100px;\n  background: rgba(255, 255, 255, 0.4); }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: absolute;\n  bottom: 50px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel .qubely-carousel-extended-dots ul {\n  margin: -4px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: rgba(218, 92, 92, 0.4);\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li.active {\n  width: 80px; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n  background: #ffffff;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-extended-item:not(.active) {\n  opacity: 0.1; }\n\n.qubely-team-2 {\n  position: relative; }\n\n.qubely-team-2 .qubely-team-author-info {\n  background: rgba(244, 244, 244, 0.85);\n  position: absolute;\n  line-height: 30px;\n  transition: .3s;\n  height: 100%;\n  width: 100%;\n  opacity: 0;\n  z-index: 1;\n  top: 0; }\n\n.qubely-team-2:hover .qubely-team-author-info {\n  opacity: 1; }\n\n.layout-position {\n  transform: translate(0%, 86%);\n  width: 100%;\n  height: auto; }\n\n.qubely-team-3 .qubely-single-img {\n  width: 50%;\n  float: left; }\n\n.editor-styles-wrapper .qubely-team-2 {\n  line-height: 0; }\n", ""]);
 
 
 
@@ -1794,9 +1794,9 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./src/blocks/teamCarousel/Edit.js":
+/***/ "./src/blocks/teamcarousel/Edit.js":
 /*!*****************************************!*\
-  !*** ./src/blocks/teamCarousel/Edit.js ***!
+  !*** ./src/blocks/teamcarousel/Edit.js ***!
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1915,8 +1915,6 @@ var Edit = function (_Component) {
 		};
 
 		_this.renderAvatar = function (avatar, index) {
-			var avatarAlt = _this.props.attributes.avatarAlt;
-
 			return React.createElement(MediaUpload, {
 				onSelect: function onSelect(val) {
 					return _this.updateAtrributes('avatar', val, index);
@@ -1929,7 +1927,7 @@ var Edit = function (_Component) {
 					return React.createElement(
 						'div',
 						{ className: 'qubely-single-img qubely-backend' },
-						avatar && avatar.url ? React.createElement('img', { onClick: open, className: 'qubely-team-avatar', src: avatar.url, alt: avatarAlt }) : React.createElement(
+						avatar && avatar.url ? React.createElement('img', { onClick: open, className: 'qubely-team-avatar', src: avatar.url }) : React.createElement(
 							'div',
 							{ onClick: open, className: 'qubely-image-placeholder qubely-team-avatar' },
 							React.createElement('i', { className: 'far fa-image' })
@@ -2021,11 +2019,11 @@ var Edit = function (_Component) {
 			    designation = item.designation,
 			    avatar = item.avatar;
 
-			// console.log('URL',this.renderAvatar(avatar, index));
 
 			return React.createElement(
 				'div',
 				{ className: 'qubely-team-author' },
+				/* Layout 1 */
 				layout == 1 && React.createElement(
 					'div',
 					{ className: 'qubely-team-' + layout },
@@ -2043,9 +2041,35 @@ var Edit = function (_Component) {
 							{ className: 'qubely-team-author-designation' },
 							_this.renderDesignation(designation, index)
 						),
-						_this.renderSocialShare()
+						_this.renderSocialShare() /* Social share callback function */
 					)
 				),
+				/* Layout 2 */
+				layout == 2 && React.createElement(
+					'div',
+					{ className: 'qubely-team-' + layout },
+					_this.renderAvatar(avatar, index),
+					React.createElement(
+						'div',
+						{ className: 'qubely-team-author-info' },
+						React.createElement(
+							'div',
+							{ className: 'layout-position' },
+							React.createElement(
+								'div',
+								{ className: 'qubely-team-author-name' },
+								_this.renderName(author, index)
+							),
+							React.createElement(
+								'div',
+								{ className: 'qubely-team-author-designation' },
+								_this.renderDesignation(designation, index)
+							),
+							_this.renderSocialShare() /* Social share callback function */
+						)
+					)
+				),
+				/* Layout 3 */
 				layout == 3 && React.createElement(
 					'div',
 					{ className: 'qubely-team-' + layout },
@@ -2063,7 +2087,7 @@ var Edit = function (_Component) {
 							{ className: 'qubely-team-author-designation' },
 							_this.renderDesignation(designation, index)
 						),
-						_this.renderSocialShare()
+						_this.renderSocialShare() /* Social share callback function */
 					)
 				)
 			);
@@ -2152,6 +2176,8 @@ var Edit = function (_Component) {
 				setAttributes({ uniqueId: _client });
 			}
 		}
+		// Social Share callback function.
+
 	}, {
 		key: 'render',
 		value: function render() {
@@ -2181,7 +2207,6 @@ var Edit = function (_Component) {
 			    avatarHeight = _props2$attributes.avatarHeight,
 			    avatarBorder = _props2$attributes.avatarBorder,
 			    avatarSpacing = _props2$attributes.avatarSpacing,
-			    avatarLayout = _props2$attributes.avatarLayout,
 			    nameTypo = _props2$attributes.nameTypo,
 			    nameSpacing = _props2$attributes.nameSpacing,
 			    designationTypo = _props2$attributes.designationTypo,
@@ -2280,7 +2305,7 @@ var Edit = function (_Component) {
 					{ key: 'inspector' },
 					React.createElement(
 						PanelBody,
-						{ title: '', opened: true },
+						{ title: 'Team Carousel', initialOpen: false },
 						React.createElement(Styles, { value: layout, onChange: function onChange(val) {
 								return setAttributes({ layout: val });
 							},
@@ -2544,56 +2569,6 @@ var Edit = function (_Component) {
 					),
 					React.createElement(
 						PanelBody,
-						{ title: __('Name'), initialOpen: false },
-						React.createElement(Range, {
-							label: __('Spacing'),
-							value: nameSpacing, onChange: function onChange(value) {
-								return setAttributes({ nameSpacing: value });
-							},
-							unit: ['px', 'em', '%'], max: 300,
-							min: 0,
-							responsive: true,
-							device: device,
-							onDeviceChange: function onDeviceChange(value) {
-								return _this2.setState({ device: value });
-							} }),
-						React.createElement(Color, {
-							label: __('Color'),
-							value: nameColor, onChange: function onChange(value) {
-								return setAttributes({ nameColor: value });
-							}
-						}),
-						React.createElement(Typography, {
-							label: __('Typography'),
-							value: nameTypo,
-							onChange: function onChange(value) {
-								return setAttributes({ nameTypo: value });
-							},
-							device: device, onDeviceChange: function onDeviceChange(value) {
-								return _this2.setState({ device: value });
-							} })
-					),
-					React.createElement(
-						PanelBody,
-						{ title: __('Designation'), initialOpen: false },
-						React.createElement(Color, {
-							label: __('Color'),
-							value: designationColor, onChange: function onChange(value) {
-								return setAttributes({ designationColor: value });
-							}
-						}),
-						React.createElement(Typography, {
-							label: __('Typography'),
-							value: designationTypo,
-							onChange: function onChange(value) {
-								return setAttributes({ designationTypo: value });
-							},
-							device: device, onDeviceChange: function onDeviceChange(value) {
-								return _this2.setState({ device: value });
-							} })
-					),
-					React.createElement(
-						PanelBody,
 						{ title: __('Avatar'), initialOpen: false },
 						React.createElement(Toggle, { label: __('Show Avatar'), value: showAvatar, onChange: function onChange(val) {
 								return setAttributes({ showAvatar: val });
@@ -2601,16 +2576,6 @@ var Edit = function (_Component) {
 						showAvatar && React.createElement(
 							Fragment,
 							null,
-							layout != 3 && React.createElement(
-								Fragment,
-								null,
-								React.createElement(Styles, { label: __('Avatar Layout'), value: avatarLayout, onChange: function onChange(val) {
-										return setAttributes({ avatarLayout: val });
-									},
-									options: [{ value: 'left', svg: _icons2.default.avatar_left, label: __('Left') }, { value: 'right', svg: _icons2.default.avatar_right, label: __('Right') }, { value: 'top', svg: _icons2.default.avatar_top, label: __('Top') }, { value: 'bottom', svg: _icons2.default.avatar_bottom, label: __('Bottom') }]
-								}),
-								React.createElement(Separator, null)
-							),
 							React.createElement(RadioAdvanced, {
 								label: __('Avatar Size'),
 								options: [{ label: 'S', value: '48px', title: 'Small' }, { label: 'M', value: '64px', title: 'Medium' }, { label: 'L', value: '96px', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
@@ -2623,22 +2588,20 @@ var Edit = function (_Component) {
 								Fragment,
 								null,
 								React.createElement(Range, {
-									label: React.createElement('span', { className: 'dashicons dashicons-leftright', title: 'Width' }),
+									label: __('Avatar Width'),
 									value: avatarWidth,
 									onChange: function onChange(value) {
 										return setAttributes({ avatarWidth: value });
 									},
 									unit: ['px', 'em', '%'],
-									max: 300,
-									min: 0,
-									responsive: true,
+									max: 300, min: 0, responsive: true,
 									device: device,
 									onDeviceChange: function onDeviceChange(value) {
 										return _this2.setState({ device: value });
 									}
 								}),
 								React.createElement(Range, {
-									label: React.createElement('span', { className: 'dashicons dashicons-sort', title: 'Height' }),
+									label: __('Avatar Height'),
 									value: avatarHeight,
 									onChange: function onChange(value) {
 										return setAttributes({ avatarHeight: value });
@@ -2701,81 +2664,57 @@ var Edit = function (_Component) {
 					),
 					React.createElement(
 						PanelBody,
-						{ title: __('Design'), initialOpen: false },
-						React.createElement(Color, {
-							label: __('Text Color'),
-							value: textColor,
-							onChange: function onChange(val) {
-								return setAttributes({ textColor: val });
-							} }),
-						React.createElement(Color, {
-							label: __('Background'),
-							value: bgColor,
-							onChange: function onChange(val) {
-								return setAttributes({ bgColor: val });
-							} }),
-						React.createElement(Separator, null),
-						React.createElement(Border, {
-							label: __('Border'),
-							value: border,
-							onChange: function onChange(val) {
-								return setAttributes({ border: val });
-							} }),
-						React.createElement(Padding, {
-							label: __('Padding'),
-							value: bgPadding, onChange: function onChange(value) {
-								return setAttributes({ bgPadding: value });
+						{ title: __('Name'), initialOpen: false },
+						React.createElement(Range, {
+							label: __('Spacing'),
+							value: nameSpacing, onChange: function onChange(value) {
+								return setAttributes({ nameSpacing: value });
 							},
-							unit: ['px', 'em', '%'],
+							unit: ['px', 'em', '%'], max: 300,
 							min: 0,
-							max: 100,
 							responsive: true,
 							device: device,
 							onDeviceChange: function onDeviceChange(value) {
 								return _this2.setState({ device: value });
 							} }),
-						React.createElement(BorderRadius, {
-							label: __('Border Radius'),
-							value: bgBorderRadius,
-							onChange: function onChange(val) {
-								return setAttributes({ bgBorderRadius: val });
+						React.createElement(Color, {
+							label: __('Color'),
+							value: nameColor, onChange: function onChange(value) {
+								return setAttributes({ nameColor: value });
+							}
+						}),
+						React.createElement(Typography, {
+							label: __('Typography'),
+							value: nameTypo,
+							onChange: function onChange(value) {
+								return setAttributes({ nameTypo: value });
 							},
-							min: 0,
-							max: 100,
-							unit: ['px', 'em', '%'],
-							responsive: true,
-							device: device,
-							onDeviceChange: function onDeviceChange(value) {
+							device: device, onDeviceChange: function onDeviceChange(value) {
 								return _this2.setState({ device: value });
-							} }),
-						React.createElement(
-							Tabs,
-							null,
-							React.createElement(
-								Tab,
-								{ tabTitle: __('Normal') },
-								React.createElement(BoxShadow, {
-									label: __('Box Shadow'),
-									value: boxShadow, onChange: function onChange(val) {
-										return setAttributes({ boxShadow: val });
-									}
-								})
-							),
-							React.createElement(
-								Tab,
-								{ tabTitle: __('Hover') },
-								React.createElement(BoxShadow, {
-									label: __('Box Shadow'),
-									value: boxShadowHover, onChange: function onChange(val) {
-										return setAttributes({ boxShadowHover: val });
-									}
-								})
-							)
-						)
+							} })
 					),
 					React.createElement(
 						PanelBody,
-						{ title: __('Social') },
+						{ title: __('Designation'), initialOpen: false },
+						React.createElement(Color, {
+							label: __('Color'),
+							value: designationColor, onChange: function onChange(value) {
+								return setAttributes({ designationColor: value });
+							}
+						}),
+						React.createElement(Typography, {
+							label: __('Typography'),
+							value: designationTypo,
+							onChange: function onChange(value) {
+								return setAttributes({ designationTypo: value });
+							},
+							device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							} })
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Social'), initialOpen: false },
 						React.createElement(Toggle, { label: __('Show Social-links'), value: showSociallinks, onChange: function onChange(val) {
 								return setAttributes({ showSociallinks: val });
 							} }),
@@ -2893,6 +2832,80 @@ var Edit = function (_Component) {
 								)
 							)
 						)
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Design'), initialOpen: false },
+						React.createElement(Color, {
+							label: __('Text Color'),
+							value: textColor,
+							onChange: function onChange(val) {
+								return setAttributes({ textColor: val });
+							} }),
+						React.createElement(Color, {
+							label: __('Background'),
+							value: bgColor,
+							onChange: function onChange(val) {
+								return setAttributes({ bgColor: val });
+							} }),
+						React.createElement(Separator, null),
+						React.createElement(Border, {
+							label: __('Border'),
+							value: border,
+							onChange: function onChange(val) {
+								return setAttributes({ border: val });
+							} }),
+						React.createElement(Padding, {
+							label: __('Padding'),
+							value: bgPadding, onChange: function onChange(value) {
+								return setAttributes({ bgPadding: value });
+							},
+							unit: ['px', 'em', '%'],
+							min: 0,
+							max: 100,
+							responsive: true,
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							} }),
+						React.createElement(BorderRadius, {
+							label: __('Border Radius'),
+							value: bgBorderRadius,
+							onChange: function onChange(val) {
+								return setAttributes({ bgBorderRadius: val });
+							},
+							min: 0,
+							max: 100,
+							unit: ['px', 'em', '%'],
+							responsive: true,
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							} }),
+						React.createElement(
+							Tabs,
+							null,
+							React.createElement(
+								Tab,
+								{ tabTitle: __('Normal') },
+								React.createElement(BoxShadow, {
+									label: __('Box Shadow'),
+									value: boxShadow, onChange: function onChange(val) {
+										return setAttributes({ boxShadow: val });
+									}
+								})
+							),
+							React.createElement(
+								Tab,
+								{ tabTitle: __('Hover') },
+								React.createElement(BoxShadow, {
+									label: __('Box Shadow'),
+									value: boxShadowHover, onChange: function onChange(val) {
+										return setAttributes({ boxShadowHover: val });
+									}
+								})
+							)
+						)
 					)
 				),
 				React.createElement(
@@ -2900,7 +2913,7 @@ var Edit = function (_Component) {
 					{ className: 'qubely-block-' + uniqueId },
 					React.createElement(
 						'div',
-						{ className: 'qubely-block-team-carousel qubely-layout-' + layout },
+						{ className: 'qubely-block-team-carousel qubely-layout-style' },
 						React.createElement(
 							Carousel,
 							{ options: carouselSettings },
@@ -2919,9 +2932,9 @@ exports.default = Edit;
 
 /***/ }),
 
-/***/ "./src/blocks/teamCarousel/Save.js":
+/***/ "./src/blocks/teamcarousel/Save.js":
 /*!*****************************************!*\
-  !*** ./src/blocks/teamCarousel/Save.js ***!
+  !*** ./src/blocks/teamcarousel/Save.js ***!
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -2943,9 +2956,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
+var Component = wp.element.Component;
 var RichText = wp.editor.RichText;
 var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
 
@@ -2973,25 +2984,96 @@ var Save = function (_Component) {
           React.createElement("i", { className: "far fa-user" })
         )
       );
-    }, _this.renderAuthorInfo = function (item) {
+    }, _this.renderSocialShare = function () {
       var _this$props$attribute = _this.props.attributes,
-          layout = _this$props$attribute.layout,
-          showAvatar = _this$props$attribute.showAvatar,
-          avatarAlt = _this$props$attribute.avatarAlt,
-          avatarLayout = _this$props$attribute.avatarLayout;
+          showSociallinks = _this$props$attribute.showSociallinks,
+          facebook = _this$props$attribute.facebook,
+          twitter = _this$props$attribute.twitter,
+          instagram = _this$props$attribute.instagram,
+          linkedin = _this$props$attribute.linkedin,
+          youtube = _this$props$attribute.youtube,
+          github = _this$props$attribute.github,
+          flickr = _this$props$attribute.flickr,
+          pinterest = _this$props$attribute.pinterest,
+          dribbble = _this$props$attribute.dribbble,
+          behance = _this$props$attribute.behance;
+
+      return React.createElement(
+        "div",
+        { className: "social-share" },
+        showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) && React.createElement(
+          "div",
+          { className: "qubely-team-social-links", onClick: function onClick() {
+              return _this.handlePanelOpenings('Social');
+            } },
+          facebook && React.createElement(
+            "a",
+            { className: "qubely-team-social-facebook" },
+            React.createElement("i", { className: "fab fa-facebook" })
+          ),
+          twitter && React.createElement(
+            "a",
+            { className: "qubely-team-social-twitter" },
+            React.createElement("i", { className: "fab fa-twitter" })
+          ),
+          instagram && React.createElement(
+            "a",
+            { className: "qubely-team-social-instagram" },
+            React.createElement("i", { className: "fab fa-instagram" })
+          ),
+          linkedin && React.createElement(
+            "a",
+            { className: "qubely-team-social-linkedin" },
+            React.createElement("i", { className: "fab fa-linkedin" })
+          ),
+          youtube && React.createElement(
+            "a",
+            { className: "qubely-team-social-youtube" },
+            React.createElement("i", { className: "fab fa-youtube" })
+          ),
+          github && React.createElement(
+            "a",
+            { className: "qubely-team-social-github" },
+            React.createElement("i", { className: "fab fa-github" })
+          ),
+          flickr && React.createElement(
+            "a",
+            { className: "qubely-team-social-flickr" },
+            React.createElement("i", { className: "fab fa-flickr" })
+          ),
+          pinterest && React.createElement(
+            "a",
+            { className: "qubely-team-social-pinterest" },
+            React.createElement("i", { className: "fab fa-pinterest" })
+          ),
+          dribbble && React.createElement(
+            "a",
+            { className: "qubely-team-social-dribbble" },
+            React.createElement("i", { className: "fab fa-dribbble" })
+          ),
+          behance && React.createElement(
+            "a",
+            { className: "qubely-team-social-behance" },
+            React.createElement("i", { className: "fab fa-behance" })
+          )
+        )
+      );
+    }, _this.renderAuthorInfo = function (item, index) {
+      var layout = _this.props.attributes.layout;
       var author = item.author,
           designation = item.designation,
           avatar = item.avatar;
 
+      console.log('layout', layout);
 
       return React.createElement(
         "div",
         { className: "qubely-team-author" },
-        layout === 3 && showAvatar && _this.renderAvatar(avatar, avatarAlt),
-        React.createElement(
+        /* Layout 1 */
+        layout == 1 && React.createElement(
           "div",
-          { className: showAvatar ? "qubely-team-avatar-layout-" + avatarLayout : "" },
-          layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top') && _this.renderAvatar(avatar, avatarAlt),
+          { className: "qubely-team-" + layout },
+          _this.renderAvatar(avatar, index),
           React.createElement(
             "div",
             { className: "qubely-team-author-info" },
@@ -3004,60 +3086,77 @@ var Save = function (_Component) {
               "div",
               { className: "qubely-team-author-designation" },
               React.createElement(RichText.Content, { value: designation })
+            ),
+            _this.renderSocialShare() /* Social share callback function */
+          )
+        ),
+        /* Layout 2 */
+        layout == 2 && React.createElement(
+          "div",
+          { className: "qubely-team-" + layout },
+          _this.renderAvatar(avatar, index),
+          React.createElement(
+            "div",
+            { className: "qubely-team-author-info" },
+            React.createElement(
+              "div",
+              { className: "layout-position" },
+              React.createElement(
+                "div",
+                { className: "qubely-team-author-name" },
+                React.createElement(RichText.Content, { value: author })
+              ),
+              React.createElement(
+                "div",
+                { className: "qubely-team-author-designation" },
+                React.createElement(RichText.Content, { value: designation })
+              ),
+              _this.renderSocialShare() /* Social share callback function */
             )
-          ),
-          layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom') && _this.renderAvatar(avatar, avatarAlt)
+          )
+        ),
+        /* Layout 3 */
+        layout == 3 && React.createElement(
+          "div",
+          { className: "qubely-team-" + layout },
+          _this.renderAvatar(avatar, index),
+          React.createElement(
+            "div",
+            { className: "qubely-team-author-info" },
+            React.createElement(
+              "div",
+              { className: "qubely-team-author-name" },
+              React.createElement(RichText.Content, { value: author })
+            ),
+            React.createElement(
+              "div",
+              { className: "qubely-team-author-designation" },
+              React.createElement(RichText.Content, { value: designation })
+            ),
+            _this.renderSocialShare() /* Social share callback function */
+          )
         )
       );
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
+  // social share
+
 
   _createClass(Save, [{
     key: "renderTeam",
     value: function renderTeam() {
       var _this2 = this;
 
-      var _props$attributes = this.props.attributes,
-          carouselItems = _props$attributes.carouselItems,
-          showRatings = _props$attributes.showRatings,
-          layout = _props$attributes.layout,
-          ratings = _props$attributes.ratings,
-          quoteIcon = _props$attributes.quoteIcon;
-
+      var carouselItems = this.props.attributes.carouselItems;
 
       return carouselItems.map(function (item, index) {
-        var message = item.message;
-
         return React.createElement(
           "div",
           { key: index, className: "qubely-carousel-extended-item" + (index === 0 ? ' active' : '') },
           React.createElement(
             "div",
-            { className: "qubely-tesitmonial-item layout-" + layout },
-            layout == 2 && _this2.renderAuthorInfo(item),
-            quoteIcon && layout == 1 && React.createElement(
-              "div",
-              { className: "qubely-team-quote" },
-              React.createElement("span", { className: "qubely-quote-icon " + quoteIcon })
-            ),
-            React.createElement(
-              "div",
-              { className: "qubely-team-carousel-content-wrapper" },
-              showRatings && ratings > 0 && layout !== 1 && React.createElement("div", { className: "qubely-team-ratings", "data-qubelyrating": ratings }),
-              React.createElement(
-                "div",
-                { className: "qubely-team-content" },
-                " ",
-                React.createElement(RichText.Content, { value: message })
-              ),
-              showRatings && ratings > 0 && layout == 1 && React.createElement("div", { className: "qubely-team-ratings", "data-qubelyrating": ratings })
-            ),
-            layout !== 2 && _this2.renderAuthorInfo(item),
-            quoteIcon && layout == 2 && React.createElement(
-              "div",
-              { className: "qubely-team-quote qubely-position-bottom" },
-              React.createElement("span", { className: "qubely-quote-icon " + quoteIcon })
-            )
+            { className: "qubely-team-carousel-item" },
+            _this2.renderAuthorInfo(item)
           )
         );
       });
@@ -3065,22 +3164,21 @@ var Save = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _props$attributes2 = this.props.attributes,
-          uniqueId = _props$attributes2.uniqueId,
-          layout = _props$attributes2.layout,
-          items = _props$attributes2.items,
-          autoPlay = _props$attributes2.autoPlay,
-          arrowStyle = _props$attributes2.arrowStyle,
-          infiniteLoop = _props$attributes2.infiniteLoop,
-          activeFade = _props$attributes2.activeFade,
-          isCentered = _props$attributes2.isCentered,
-          dragable = _props$attributes2.dragable,
-          nav = _props$attributes2.nav,
-          dots = _props$attributes2.dots,
-          dotIndicator = _props$attributes2.dotIndicator,
-          interval = _props$attributes2.interval,
-          speed = _props$attributes2.speed,
-          animation = _props$attributes2.animation;
+      var _props$attributes = this.props.attributes,
+          uniqueId = _props$attributes.uniqueId,
+          items = _props$attributes.items,
+          autoPlay = _props$attributes.autoPlay,
+          arrowStyle = _props$attributes.arrowStyle,
+          infiniteLoop = _props$attributes.infiniteLoop,
+          activeFade = _props$attributes.activeFade,
+          isCentered = _props$attributes.isCentered,
+          dragable = _props$attributes.dragable,
+          nav = _props$attributes.nav,
+          dots = _props$attributes.dots,
+          dotIndicator = _props$attributes.dotIndicator,
+          interval = _props$attributes.interval,
+          speed = _props$attributes.speed,
+          animation = _props$attributes.animation;
 
       var options = JSON.stringify({
         autoplay: autoPlay,
@@ -3112,7 +3210,7 @@ var Save = function (_Component) {
         _extends({ className: "qubely-block-" + uniqueId }, animationAttr(animation)),
         React.createElement(
           "div",
-          { className: "qubely-block-team-carousel qubely-layout-" + layout },
+          { className: "qubely-block-team-carousel qubely-layout-style" },
           React.createElement(
             "div",
             { className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? ' is-faded' : ''), "data-options": options, id: "qubelyCarousel1" },
@@ -3130,9 +3228,9 @@ exports.default = Save;
 
 /***/ }),
 
-/***/ "./src/blocks/teamCarousel/index.js":
+/***/ "./src/blocks/teamcarousel/index.js":
 /*!******************************************!*\
-  !*** ./src/blocks/teamCarousel/index.js ***!
+  !*** ./src/blocks/teamcarousel/index.js ***!
   \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -3140,13 +3238,13 @@ exports.default = Save;
 "use strict";
 
 
-__webpack_require__(/*! ./style.scss */ "./src/blocks/teamCarousel/style.scss");
+__webpack_require__(/*! ./style.scss */ "./src/blocks/teamcarousel/style.scss");
 
-var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/teamCarousel/Edit.js");
+var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/teamcarousel/Edit.js");
 
 var _Edit2 = _interopRequireDefault(_Edit);
 
-var _Save = __webpack_require__(/*! ./Save */ "./src/blocks/teamCarousel/Save.js");
+var _Save = __webpack_require__(/*! ./Save */ "./src/blocks/teamcarousel/Save.js");
 
 var _Save2 = _interopRequireDefault(_Save);
 
@@ -3218,7 +3316,11 @@ registerBlockType('qubely/teamcarousel', {
   * 	Team Layouts:  common/style attributes
   * --------------------------------------------------- */
 		layout: { type: 'number', default: 1 },
-		alignment: { type: 'object', default: { md: 'center' }, style: [{ selector: '{{QUBELY}} .qubely-tesitmonial-item {text-align: {{alignment}};}' }] },
+		alignment: {
+			type: 'object',
+			default: { md: 'left' },
+			style: [{ selector: '{{QUBELY}} .qubely-team-author-info {text-align: {{alignment}};} {{QUBELY}} .qubely-single-img {text-align: {{alignment}};}' }]
+		},
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
 
 		// Number of slider.
@@ -3247,7 +3349,6 @@ registerBlockType('qubely/teamcarousel', {
 			default: { md: 0, unit: '%' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} }  ' }]
 		},
-		// arrowPosition: {type: 'string', default: 'center' },
 		arrowPosition: {
 			type: 'object',
 			default: { md: 49, unit: '%' },
@@ -3345,7 +3446,6 @@ registerBlockType('qubely/teamcarousel', {
   * 			Avatar 
   * ------------------------------------ */
 		showAvatar: { type: 'boolean', default: true },
-		avatarLayout: { type: 'string', default: 'top' },
 		avatarAlt: { type: 'string', default: '' },
 		avatarSize: {
 			type: 'string',
@@ -3547,15 +3647,15 @@ registerBlockType('qubely/teamcarousel', {
 
 /***/ }),
 
-/***/ "./src/blocks/teamCarousel/style.scss":
+/***/ "./src/blocks/teamcarousel/style.scss":
 /*!********************************************!*\
-  !*** ./src/blocks/teamCarousel/style.scss ***!
+  !*** ./src/blocks/teamcarousel/style.scss ***!
   \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamCarousel/style.scss");
+var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamcarousel/style.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5608,11 +5708,11 @@ __webpack_require__(/*! ./blocks/postgrid */ "./src/blocks/postgrid/index.js");
 
 __webpack_require__(/*! ./blocks/testimonialcarousel */ "./src/blocks/testimonialcarousel/index.js");
 
-__webpack_require__(/*! ./blocks/teamCarousel */ "./src/blocks/teamCarousel/index.js");
+__webpack_require__(/*! ./blocks/teamcarousel */ "./src/blocks/teamcarousel/index.js");
 
-// testimonialcarousel
-var __ = wp.i18n.__; // testimonialcarousel
-// testimonialcarousel
+// Team Carousel
+var __ = wp.i18n.__; // Post grid
+// Testimonial Carousel
 
 /***/ }),
 

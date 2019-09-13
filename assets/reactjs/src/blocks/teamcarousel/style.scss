@@ -420,3 +420,38 @@
   }
 }
 
+
+// Layout Two.
+.qubely-team-2 {
+  position: relative;
+}
+.qubely-team-2 .qubely-team-author-info {
+  background: rgba(244, 244, 244, 0.85);
+  position: absolute;
+  line-height: 30px;
+  transition: .3s;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: 1;
+  top: 0;
+}
+.qubely-team-2:hover .qubely-team-author-info {
+  opacity: 1;
+}
+.layout-position {
+  transform: translate(0%, 86%);
+  width: 100%;
+  height: auto;
+}
+// Layout Three.
+.qubely-team-3 .qubely-single-img {
+  width: 50%;
+  float: left;
+}
+
+
+
+.editor-styles-wrapper .qubely-team-2 {
+  line-height: 0;
+}
