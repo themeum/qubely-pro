@@ -86,6 +86,21 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/postgrid/style.scss":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/postgrid/style.scss ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".qubely-postgrid-is-loading {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 200px; }\n\n.qubely-post-list-wrapper {\n  display: block;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap; }\n  .qubely-post-list-wrapper .qubely-post-list-img {\n    -ms-flex: 0 0 100%;\n    flex: 0 0 100%;\n    max-width: 100%;\n    position: relative;\n    width: 100%;\n    min-height: 1px;\n    overflow: hidden; }\n  .qubely-post-list-wrapper .qubely-post-list-content {\n    -ms-flex: 0 0 100%;\n    flex: 0 0 100%;\n    max-width: 100%;\n    position: relative;\n    width: 100%;\n    min-height: 1px;\n    padding-left: 20px; }\n\n@media screen and (min-width: 767px) {\n  .qubely-post-list-wrapper {\n    display: -ms-flexbox;\n    display: flex; }\n    .qubely-post-list-wrapper .qubely-post-list-img {\n      -ms-flex: 0 0 40%;\n      flex: 0 0 40%;\n      max-width: 40%; }\n    .qubely-post-list-wrapper .qubely-post-list-img + .qubely-post-list-content {\n      -ms-flex: 0 0 60%;\n      flex: 0 0 60%;\n      max-width: 60%; } }\n\n.qubely-postgrid {\n  position: relative; }\n  .qubely-postgrid img {\n    display: block; }\n  .qubely-postgrid .qubely-postgrid-title {\n    margin: 0;\n    line-height: 1; }\n    .qubely-postgrid .qubely-postgrid-title a {\n      text-decoration: none !important; }\n      .qubely-postgrid .qubely-postgrid-title a:hover {\n        text-decoration: none; }\n  .qubely-postgrid .qubely-postgrid-intro,\n  .qubely-postgrid .qubely-postgrid-intro p {\n    font-size: 15px;\n    line-height: 24px;\n    margin: 0; }\n  .qubely-postgrid .qubely-postgrid-meta {\n    font-size: 14px;\n    line-height: 22px; }\n  .qubely-postgrid .qubely-postgrid-btn {\n    display: inline-block;\n    text-decoration: none !important; }\n    .qubely-postgrid .qubely-postgrid-btn:hover {\n      text-decoration: none !important; }\n  .qubely-postgrid .qubely-button-fill.is-small {\n    padding: 5px 10px;\n    font-size: 14px; }\n  .qubely-postgrid .qubely-button-fill.is-medium {\n    padding: 8px 15px;\n    font-size: 16px; }\n  .qubely-postgrid .qubely-button-fill.is-large {\n    padding: 13px 20px;\n    font-size: 18px; }\n\n.qubely-post-img {\n  position: relative;\n  overflow: hidden; }\n  .qubely-post-img .qubely-postgrid-cat-position {\n    position: absolute; }\n    .qubely-post-img .qubely-postgrid-cat-position.qubely-postgrid-cat-position-leftTop {\n      top: 20px;\n      left: 20px; }\n    .qubely-post-img .qubely-postgrid-cat-position.qubely-postgrid-cat-position-rightTop {\n      top: 20px;\n      right: 20px; }\n    .qubely-post-img .qubely-postgrid-cat-position.qubely-postgrid-cat-position-leftBottom {\n      bottom: 20px;\n      left: 20px; }\n    .qubely-post-img .qubely-postgrid-cat-position.qubely-postgrid-cat-position-rightBottom {\n      bottom: 20px;\n      right: 20px; }\n\n.qubely-postgrid-category a {\n  transition: 400ms !important;\n  text-decoration: none !important; }\n  .qubely-postgrid-category a:hover {\n    text-decoration: none !important; }\n\n.qubely-postgrid-meta span {\n  padding-left: 12px;\n  position: relative;\n  padding-right: 12px; }\n  .qubely-postgrid-meta span i {\n    margin-right: 3px; }\n  .qubely-postgrid-meta span:before {\n    position: absolute;\n    content: \"\";\n    background: #d8d8d8;\n    left: -1px;\n    top: 50%;\n    width: 2px;\n    height: 2px;\n    border-radius: 20px;\n    margin-top: -1px; }\n  .qubely-postgrid-meta span:first-child {\n    padding-left: 0; }\n    .qubely-postgrid-meta span:first-child:before {\n      display: none; }\n\n.qubely-postgrid-meta a {\n  text-decoration: none !important; }\n  .qubely-postgrid-meta a:hover {\n    text-decoration: none !important; }\n\n.qubely-postgrid-style-4 {\n  position: relative;\n  overflow: hidden; }\n  .qubely-postgrid-style-4 .qubely-post-grid-img,\n  .qubely-postgrid-style-4 .qubely-post-list-img {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n    -webkit-background-size: cover;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    overflow: hidden; }\n    .qubely-postgrid-style-4 .qubely-post-grid-img img,\n    .qubely-postgrid-style-4 .qubely-post-list-img img {\n      position: absolute;\n      width: auto;\n      height: auto;\n      min-width: 100%;\n      max-width: none;\n      left: 50%;\n      top: 50%;\n      -webkit-transform: translate(-50%, -50%);\n      -ms-transform: translate(-50%, -50%);\n      transform: translate(-50%, -50%);\n      min-height: 100%; }\n  .qubely-postgrid-style-4 .qubely-post-grid-content,\n  .qubely-postgrid-style-4 .qubely-post-list-content {\n    opacity: 1;\n    position: relative;\n    z-index: 10;\n    overflow: hidden;\n    width: 100%;\n    max-width: 100%;\n    padding: 20px; }\n  .qubely-postgrid-style-4 > div .qubely-post-grid-img,\n  .qubely-postgrid-style-4 > div .qubely-post-list-img {\n    width: 100%;\n    max-width: 100%; }\n  .qubely-postgrid-style-4:before {\n    position: absolute;\n    content: \"\";\n    left: 0;\n    top: 0;\n    bottom: 0;\n    right: 0;\n    z-index: 3;\n    opacity: 0.8;\n    transition: 400ms; }\n  .qubely-postgrid-style-4 .qubely-post-list-top .qubely-post-list-content,\n  .qubely-postgrid-style-4 .qubely-post-list-top .qubely-post-grid-content,\n  .qubely-postgrid-style-4 .qubely-post-grid-top .qubely-post-list-content,\n  .qubely-postgrid-style-4 .qubely-post-grid-top .qubely-post-grid-content {\n    top: 0;\n    height: 100%;\n    position: absolute;\n    display: grid;\n    align-content: flex-start; }\n  .qubely-postgrid-style-4 .qubely-post-list-center .qubely-post-list-content,\n  .qubely-postgrid-style-4 .qubely-post-list-center .qubely-post-grid-content,\n  .qubely-postgrid-style-4 .qubely-post-grid-center .qubely-post-list-content,\n  .qubely-postgrid-style-4 .qubely-post-grid-center .qubely-post-grid-content {\n    top: 0;\n    height: 100%;\n    position: absolute;\n    display: grid;\n    align-content: center; }\n  .qubely-postgrid-style-4 .qubely-post-list-bottom .qubely-post-list-content,\n  .qubely-postgrid-style-4 .qubely-post-list-bottom .qubely-post-grid-content,\n  .qubely-postgrid-style-4 .qubely-post-grid-bottom .qubely-post-list-content,\n  .qubely-postgrid-style-4 .qubely-post-grid-bottom .qubely-post-grid-content {\n    top: 0;\n    height: 100%;\n    position: absolute;\n    display: grid;\n    align-content: flex-end; }\n\n.qubely-postgrid:not(.qubely-postgrid-style-4) .qubely-post-img.qubely-post-img-zoom-out .qubely-post-image {\n  transition: transform 0.35s;\n  transform: scale(1.2); }\n\n.qubely-postgrid:not(.qubely-postgrid-style-4) .qubely-post-img.qubely-post-img-zoom-in .qubely-post-image {\n  transition: transform 0.35s;\n  transform: scale(1); }\n\n.qubely-postgrid:not(.qubely-postgrid-style-4) .qubely-post-img.qubely-post-img-slide-bottom .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(0, 20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postgrid:not(.qubely-postgrid-style-4) .qubely-post-img.qubely-post-img-slide-top .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(0, -20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postgrid:not(.qubely-postgrid-style-4) .qubely-post-img.qubely-post-img-slide-right .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postgrid:not(.qubely-postgrid-style-4) .qubely-post-img.qubely-post-img-slide-left .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(-20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postgrid:hover:not(.qubely-postgrid-style-4) .qubely-post-img-zoom-out .qubely-post-image {\n  transform: scale(1); }\n\n.qubely-postgrid:hover:not(.qubely-postgrid-style-4) .qubely-post-img-zoom-in .qubely-post-image {\n  transform: scale(1.2); }\n\n.qubely-postgrid:hover:not(.qubely-postgrid-style-4) .qubely-post-img-slide-bottom .qubely-post-image {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postgrid:hover:not(.qubely-postgrid-style-4) .qubely-post-img-slide-top .qubely-post-image {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postgrid:hover:not(.qubely-postgrid-style-4) .qubely-post-img-slide-right .qubely-post-image {\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postgrid:hover:not(.qubely-postgrid-style-4) .qubely-post-img-slide-left .qubely-post-image {\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-post-list-center.qubely-post-list-wrapper {\n  align-items: center; }\n\n.qubely-post-list-top.qubely-post-list-wrapper {\n  align-items: flex-start; }\n\n.qubely-post-list-bottom.qubely-post-list-wrapper {\n  align-items: flex-end; }\n\n.qubely-post-list-view.qubely-postgrid-style-3 .qubely-post-list-wrapper .qubely-post-list-content {\n  background: #fff;\n  padding: 20px;\n  position: relative;\n  z-index: 1; }\n\n.qubely-post-list-view.qubely-postgrid-style-3 .qubely-post-list-wrapper .qubely-post-list-img + .qubely-post-list-content {\n  margin-left: -40px; }\n\n.qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content {\n  background: #fff;\n  position: relative;\n  z-index: 1;\n  padding: 20px; }\n\n.qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-img + .qubely-post-grid-content {\n  margin: -80px auto 0;\n  width: 90%; }\n\n.qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-left .qubely-post-grid-content {\n  float: left; }\n\n.qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-right .qubely-post-grid-content {\n  float: right; }\n\n.qubely-postgrid-layout-3 .qubely-postgrid:nth-child(1) {\n  grid-column-start: 1; }\n\n.qubely-postgrid-layout-3.qubely-postgrid-column-md2 .qubely-postgrid:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postgrid-layout-3.qubely-postgrid-column-md3 .qubely-postgrid:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postgrid-layout-3.qubely-postgrid-column-md4 .qubely-postgrid:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postgrid-layout-3.qubely-postgrid-column-md5 .qubely-postgrid:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postgrid-layout-3.qubely-postgrid-column-md6 .qubely-postgrid:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postgrid-layout-4 {\n  display: grid;\n  grid-column-gap: 30px;\n  grid-row-gap: 30px;\n  grid-template-columns: 1fr; }\n  .qubely-postgrid-layout-4 .qubely-post-4-wrap {\n    display: grid;\n    grid-column-gap: 30px;\n    grid-row-gap: 30px;\n    grid-template-columns: 0.5fr 1fr; }\n  .qubely-postgrid-layout-4 .qubely-postgrid:nth-child(1) {\n    grid-column-start: 1;\n    grid-row-start: 1;\n    grid-row-end: 6; }\n    .qubely-postgrid-layout-4 .qubely-postgrid:nth-child(1) .qubely-post-4-wrap {\n      grid-template-columns: 1fr; }\n\n.qubely-postgrid-column {\n  display: grid;\n  grid-column-gap: 30px;\n  grid-row-gap: 30px; }\n  .qubely-postgrid-column.qubely-postgrid-layout-5 {\n    display: block;\n    column-fill: initial; }\n    .qubely-postgrid-column.qubely-postgrid-layout-5 > div {\n      margin-bottom: 30px; }\n\n.qubely-postgrid-column-xs1 {\n  grid-template-columns: 1fr; }\n  .qubely-postgrid-column-xs1.qubely-postgrid-layout-5 {\n    column-count: 1; }\n\n.qubely-postgrid-column-xs2 {\n  grid-template-columns: 1fr 1fr; }\n  .qubely-postgrid-column-xs2.qubely-postgrid-layout-5 {\n    column-count: 2; }\n\n.qubely-postgrid-column-xs3 {\n  grid-template-columns: 1fr 1fr 1fr; }\n  .qubely-postgrid-column-xs3.qubely-postgrid-layout-5 {\n    column-count: 3; }\n\n@media screen and (max-width: 992px) {\n  .qubely-post-list-center.qubely-post-list-wrapper {\n    align-items: flex-start; }\n  .qubely-post-list-view.qubely-postgrid-style-3\n.qubely-post-list-wrapper\n.qubely-post-list-img\n+ .qubely-post-list-content {\n    margin-left: 0; }\n  .qubely-postgrid-layout-3.qubely-postgrid-column-md4 .qubely-postgrid:nth-child(1) {\n    grid-column-end: 2; } }\n\n@media (min-width: 767px) {\n  .qubely-postgrid-layout-4 {\n    grid-template-columns: 1fr 1fr; }\n  .qubely-postgrid-column-sm1 {\n    grid-template-columns: 1fr; }\n    .qubely-postgrid-column-sm1.qubely-postgrid-layout-5 {\n      column-count: 1; }\n  .qubely-postgrid-column-sm2 {\n    grid-template-columns: 1fr 1fr; }\n    .qubely-postgrid-column-sm2.qubely-postgrid-layout-5 {\n      column-count: 2; }\n  .qubely-postgrid-column-sm3 {\n    grid-template-columns: 1fr 1fr 1fr; }\n    .qubely-postgrid-column-sm3.qubely-postgrid-layout-5 {\n      column-count: 3; } }\n\n@media (min-width: 992px) {\n  .qubely-postgrid-column-md1 {\n    grid-template-columns: 1fr; }\n    .qubely-postgrid-column-md1.qubely-postgrid-layout-5 {\n      column-count: 1; }\n  .qubely-postgrid-column-md2 {\n    grid-template-columns: 1fr 1fr; }\n    .qubely-postgrid-column-md2.qubely-postgrid-layout-5 {\n      column-count: 2; }\n  .qubely-postgrid-column-md3 {\n    grid-template-columns: 1fr 1fr 1fr; }\n    .qubely-postgrid-column-md3.qubely-postgrid-layout-5 {\n      column-count: 3; }\n  .qubely-postgrid-column-md4 {\n    grid-template-columns: 1fr 1fr 1fr; }\n    .qubely-postgrid-column-md4.qubely-postgrid-layout-5 {\n      column-count: 3; }\n  .qubely-postgrid-column-md5 {\n    grid-template-columns: 1fr 1fr 1fr; }\n    .qubely-postgrid-column-md5.qubely-postgrid-layout-5 {\n      column-count: 3; }\n  .qubely-postgrid-column-md6 {\n    grid-template-columns: 1fr 1fr 1fr; }\n    .qubely-postgrid-column-md6.qubely-postgrid-layout-5 {\n      column-count: 3; }\n  .qubely-postgrid-layout-3 .qubely-postgrid:nth-child(1) {\n    grid-column-start: 1; }\n  .qubely-postgrid-layout-3.qubely-postgrid-column-md2 .qubely-postgrid:nth-child(1) {\n    grid-column-end: 2; }\n  .qubely-postgrid-layout-3.qubely-postgrid-column-md3 .qubely-postgrid:nth-child(1) {\n    grid-column-end: 4; }\n  .qubely-postgrid-layout-3.qubely-postgrid-column-md4 .qubely-postgrid:nth-child(1) {\n    grid-column-end: 5; }\n  .qubely-postgrid-layout-3.qubely-postgrid-column-md5 .qubely-postgrid:nth-child(1) {\n    grid-column-end: 6; }\n  .qubely-postgrid-layout-3.qubely-postgrid-column-md6 .qubely-postgrid:nth-child(1) {\n    grid-column-end: 7; } }\n\n@media (min-width: 1299px) {\n  .qubely-postgrid-column-md4 {\n    grid-template-columns: 1fr 1fr 1fr 1fr; }\n    .qubely-postgrid-column-md4.qubely-postgrid-layout-5 {\n      column-count: 4; }\n  .qubely-postgrid-column-md5 {\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }\n    .qubely-postgrid-column-md5.qubely-postgrid-layout-5 {\n      column-count: 5; }\n  .qubely-postgrid-column-md6 {\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; }\n    .qubely-postgrid-column-md6.qubely-postgrid-layout-5 {\n      column-count: 6; } }\n", ""]);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamcarousel/style.scss":
 /*!*************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamcarousel/style.scss ***!
@@ -733,6 +748,1049 @@ module.exports = function (css) {
 	return fixedCss;
 };
 
+
+/***/ }),
+
+/***/ "./src/blocks/postgrid/Edit.js":
+/*!*************************************!*\
+  !*** ./src/blocks/postgrid/Edit.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _icons = __webpack_require__(/*! ../../helpers/icons */ "./src/helpers/icons.js");
+
+var _icons2 = _interopRequireDefault(_icons);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var withSelect = wp.data.withSelect;
+var _wp$date = wp.date,
+    dateI18n = _wp$date.dateI18n,
+    __experimentalGetSettings = _wp$date.__experimentalGetSettings;
+var addQueryArgs = wp.url.addQueryArgs;
+var _wp$components = wp.components,
+    RangeControl = _wp$components.RangeControl,
+    PanelBody = _wp$components.PanelBody,
+    Toolbar = _wp$components.Toolbar,
+    Spinner = _wp$components.Spinner,
+    TextControl = _wp$components.TextControl,
+    SelectControl = _wp$components.SelectControl;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    BlockControls = _wp$editor.BlockControls;
+var _wp$qubelyComponents = wp.qubelyComponents,
+    Range = _wp$qubelyComponents.Range,
+    ButtonGroup = _wp$qubelyComponents.ButtonGroup,
+    Toggle = _wp$qubelyComponents.Toggle,
+    Dropdown = _wp$qubelyComponents.Dropdown,
+    Select = _wp$qubelyComponents.Select,
+    Separator = _wp$qubelyComponents.Separator,
+    ColorAdvanced = _wp$qubelyComponents.ColorAdvanced,
+    Typography = _wp$qubelyComponents.Typography,
+    Color = _wp$qubelyComponents.Color,
+    Border = _wp$qubelyComponents.Border,
+    BorderRadius = _wp$qubelyComponents.BorderRadius,
+    Padding = _wp$qubelyComponents.Padding,
+    BoxShadow = _wp$qubelyComponents.BoxShadow,
+    Styles = _wp$qubelyComponents.Styles,
+    Tabs = _wp$qubelyComponents.Tabs,
+    Tab = _wp$qubelyComponents.Tab,
+    RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+//import InlineToolbar from '../../components/fields/inline/InlineToolbar'
+// import '../../components/GlobalSettings'
+// import '../../components/ContextMenu'
+
+var CATEGORIES_LIST_QUERY = { per_page: -1 };
+
+var Edit = function (_Component) {
+	_inherits(Edit, _Component);
+
+	function Edit() {
+		_classCallCheck(this, Edit);
+
+		var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).apply(this, arguments));
+
+		_this.renderFeaturedImage = function (post) {
+			var _this$props$attribute = _this.props.attributes,
+			    layout = _this$props$attribute.layout,
+			    style = _this$props$attribute.style,
+			    imgSize = _this$props$attribute.imgSize,
+			    imageAnimation = _this$props$attribute.imageAnimation,
+			    showCategory = _this$props$attribute.showCategory,
+			    categoryPosition = _this$props$attribute.categoryPosition;
+
+			return React.createElement(
+				'div',
+				{ className: (layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img') + ' qubely-post-img qubely-post-img-' + imageAnimation },
+				React.createElement('img', { className: 'qubely-post-image', src: post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0] }),
+				showCategory == 'badge' && style !== 4 && React.createElement(
+					'div',
+					{ className: 'qubely-postgrid-cat-position qubely-postgrid-cat-position-' + categoryPosition },
+					React.createElement('span', { className: 'qubely-postgrid-category', dangerouslySetInnerHTML: { __html: post.qubely_category } })
+				)
+			);
+		};
+
+		_this.renderCardContent = function (post) {
+			var _this$props$attribute2 = _this.props.attributes,
+			    layout = _this$props$attribute2.layout,
+			    style = _this$props$attribute2.style,
+			    readmoreStyle = _this$props$attribute2.readmoreStyle,
+			    showCategory = _this$props$attribute2.showCategory,
+			    categoryPosition = _this$props$attribute2.categoryPosition,
+			    showTitle = _this$props$attribute2.showTitle,
+			    titlePosition = _this$props$attribute2.titlePosition,
+			    showAuthor = _this$props$attribute2.showAuthor,
+			    showDates = _this$props$attribute2.showDates,
+			    showComment = _this$props$attribute2.showComment,
+			    showExcerpt = _this$props$attribute2.showExcerpt,
+			    excerptLimit = _this$props$attribute2.excerptLimit,
+			    showReadMore = _this$props$attribute2.showReadMore,
+			    buttonText = _this$props$attribute2.buttonText,
+			    readmoreSize = _this$props$attribute2.readmoreSize;
+
+			var title = React.createElement(
+				'h3',
+				{ className: 'qubely-postgrid-title' },
+				React.createElement(
+					'a',
+					null,
+					post.title.rendered
+				)
+			);
+			return React.createElement(
+				'div',
+				{ className: '' + (layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content') },
+				showCategory === 'default' && React.createElement('span', { className: 'qubely-postgrid-category', dangerouslySetInnerHTML: { __html: post.qubely_category } }),
+				showCategory == 'badge' && style === 4 && React.createElement(
+					'div',
+					{ className: 'qubely-postgrid-cat-position qubely-postgrid-cat-position-' + categoryPosition },
+					React.createElement('span', { className: 'qubely-postgrid-category', dangerouslySetInnerHTML: { __html: post.qubely_category } })
+				),
+				showTitle && titlePosition == true && title,
+				(showAuthor || showDates || showComment) && React.createElement(
+					'div',
+					{ className: 'qubely-postgrid-meta' },
+					showAuthor && React.createElement(
+						'span',
+						null,
+						React.createElement('i', { className: 'fas fa-user' }),
+						' ',
+						__('By'),
+						' ',
+						React.createElement(
+							'a',
+							null,
+							post.qubely_author.display_name
+						)
+					),
+					showDates && React.createElement(
+						'span',
+						null,
+						React.createElement('i', { className: 'far fa-calendar-alt' }),
+						' ',
+						dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)
+					),
+					showComment && React.createElement(
+						'span',
+						null,
+						React.createElement('i', { className: 'fas fa-comment' }),
+						' ',
+						post.qubely_comment ? post.qubely_comment : '0'
+					)
+				),
+				showTitle && titlePosition == false && title,
+				showExcerpt && React.createElement('div', { className: 'qubely-postgrid-intro', dangerouslySetInnerHTML: { __html: _this.truncate(post.excerpt.rendered, excerptLimit) } }),
+				showReadMore && React.createElement(
+					'div',
+					{ className: 'qubely-postgrid-btn-wrapper' },
+					React.createElement(
+						'a',
+						{ className: 'qubely-postgrid-btn qubely-button-' + readmoreStyle + ' is-' + readmoreSize },
+						buttonText
+					)
+				)
+			);
+		};
+
+		_this.state = {
+			device: 'md',
+			spacer: true,
+			categoriesList: []
+		};
+		return _this;
+	}
+
+	_createClass(Edit, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			var _props = this.props,
+			    setAttributes = _props.setAttributes,
+			    clientId = _props.clientId,
+			    uniqueId = _props.attributes.uniqueId;
+
+			this.isStillMounted = true;
+			this.fetchRequest = wp.apiFetch({
+				path: addQueryArgs('/wp/v2/categories', CATEGORIES_LIST_QUERY)
+			}).then(function (categoriesList) {
+				if (_this2.isStillMounted) {
+					_this2.setState({ categoriesList: categoriesList });
+				}
+			}).catch(function () {
+				if (_this2.isStillMounted) {
+					_this2.setState({ categoriesList: [] });
+				}
+			});
+			var _client = clientId.substr(0, 6);
+			if (!uniqueId) {
+				setAttributes({ uniqueId: _client });
+			} else if (uniqueId && uniqueId != _client) {
+				setAttributes({ uniqueId: _client });
+			}
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			this.isStillMounted = false;
+		}
+	}, {
+		key: 'truncate',
+		value: function truncate(value, limit) {
+			return value.split(' ').splice(0, limit).join(' ');
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			var _props2 = this.props,
+			    setAttributes = _props2.setAttributes,
+			    posts = _props2.posts,
+			    taxonomyList = _props2.taxonomyList,
+			    _props2$attributes = _props2.attributes,
+			    uniqueId = _props2$attributes.uniqueId,
+			    taxonomy = _props2$attributes.taxonomy,
+			    categories = _props2$attributes.categories,
+			    tags = _props2$attributes.tags,
+			    order = _props2$attributes.order,
+			    orderBy = _props2$attributes.orderBy,
+			    postsToShow = _props2$attributes.postsToShow,
+			    showImages = _props2$attributes.showImages,
+			    imgSize = _props2$attributes.imgSize,
+			    enableFixedHeight = _props2$attributes.enableFixedHeight,
+			    fixedHeight = _props2$attributes.fixedHeight,
+			    imageRadius = _props2$attributes.imageRadius,
+			    imageAnimation = _props2$attributes.imageAnimation,
+			    cardBackground = _props2$attributes.cardBackground,
+			    cardBorder = _props2$attributes.cardBorder,
+			    cardBorderRadius = _props2$attributes.cardBorderRadius,
+			    cardPadding = _props2$attributes.cardPadding,
+			    cardBoxShadow = _props2$attributes.cardBoxShadow,
+			    cardSpace = _props2$attributes.cardSpace,
+			    stackBg = _props2$attributes.stackBg,
+			    stackWidth = _props2$attributes.stackWidth,
+			    stackSpace = _props2$attributes.stackSpace,
+			    stackBorderRadius = _props2$attributes.stackBorderRadius,
+			    stackPadding = _props2$attributes.stackPadding,
+			    stackBoxShadow = _props2$attributes.stackBoxShadow,
+			    readmoreStyle = _props2$attributes.readmoreStyle,
+			    buttonText = _props2$attributes.buttonText,
+			    readmoreSize = _props2$attributes.readmoreSize,
+			    readmoreCustomSize = _props2$attributes.readmoreCustomSize,
+			    readmoreTypography = _props2$attributes.readmoreTypography,
+			    readmoreBg = _props2$attributes.readmoreBg,
+			    readmoreHoverBg = _props2$attributes.readmoreHoverBg,
+			    readmoreBorder = _props2$attributes.readmoreBorder,
+			    readmoreBorderRadius = _props2$attributes.readmoreBorderRadius,
+			    readmoreBoxShadow = _props2$attributes.readmoreBoxShadow,
+			    readmoreColor = _props2$attributes.readmoreColor,
+			    readmoreColor2 = _props2$attributes.readmoreColor2,
+			    readmoreHoverColor = _props2$attributes.readmoreHoverColor,
+			    layout = _props2$attributes.layout,
+			    style = _props2$attributes.style,
+			    column = _props2$attributes.column,
+			    showDates = _props2$attributes.showDates,
+			    showComment = _props2$attributes.showComment,
+			    showAuthor = _props2$attributes.showAuthor,
+			    showCategory = _props2$attributes.showCategory,
+			    categoryPosition = _props2$attributes.categoryPosition,
+			    showExcerpt = _props2$attributes.showExcerpt,
+			    excerptLimit = _props2$attributes.excerptLimit,
+			    showReadMore = _props2$attributes.showReadMore,
+			    showTitle = _props2$attributes.showTitle,
+			    titlePosition = _props2$attributes.titlePosition,
+			    showSeparator = _props2$attributes.showSeparator,
+			    separatorColor = _props2$attributes.separatorColor,
+			    separatorHeight = _props2$attributes.separatorHeight,
+			    separatorSpace = _props2$attributes.separatorSpace,
+			    titleTypography = _props2$attributes.titleTypography,
+			    metaTypography = _props2$attributes.metaTypography,
+			    excerptTypography = _props2$attributes.excerptTypography,
+			    categoryTypography = _props2$attributes.categoryTypography,
+			    titleColor = _props2$attributes.titleColor,
+			    titleOverlayColor = _props2$attributes.titleOverlayColor,
+			    metaColor = _props2$attributes.metaColor,
+			    metaOverlayColor = _props2$attributes.metaOverlayColor,
+			    titleHoverColor = _props2$attributes.titleHoverColor,
+			    excerptColor = _props2$attributes.excerptColor,
+			    excerptColor2 = _props2$attributes.excerptColor2,
+			    categoryColor = _props2$attributes.categoryColor,
+			    categoryColor2 = _props2$attributes.categoryColor2,
+			    categoryHoverColor = _props2$attributes.categoryHoverColor,
+			    categoryHoverColor2 = _props2$attributes.categoryHoverColor2,
+			    categoryBackground = _props2$attributes.categoryBackground,
+			    categoryHoverBackground = _props2$attributes.categoryHoverBackground,
+			    categoryRadius = _props2$attributes.categoryRadius,
+			    categoryPadding = _props2$attributes.categoryPadding,
+			    badgePosition = _props2$attributes.badgePosition,
+			    badgePadding = _props2$attributes.badgePadding,
+			    bgColor = _props2$attributes.bgColor,
+			    border = _props2$attributes.border,
+			    borderRadius = _props2$attributes.borderRadius,
+			    padding = _props2$attributes.padding,
+			    boxShadow = _props2$attributes.boxShadow,
+			    contentPosition = _props2$attributes.contentPosition,
+			    girdContentPosition = _props2$attributes.girdContentPosition,
+			    overlayBg = _props2$attributes.overlayBg,
+			    overlayHoverBg = _props2$attributes.overlayHoverBg,
+			    overlayBlend = _props2$attributes.overlayBlend,
+			    overlayHeight = _props2$attributes.overlayHeight,
+			    overlaySpace = _props2$attributes.overlaySpace,
+			    overlayBorderRadius = _props2$attributes.overlayBorderRadius,
+			    columnGap = _props2$attributes.columnGap,
+			    contentPadding = _props2$attributes.contentPadding,
+			    titleSpace = _props2$attributes.titleSpace,
+			    categorySpace = _props2$attributes.categorySpace,
+			    metaSpace = _props2$attributes.metaSpace,
+			    excerptSpace = _props2$attributes.excerptSpace;
+			var device = this.state.device;
+
+
+			if (uniqueId) {
+				CssGenerator(this.props.attributes, 'postgrid', uniqueId);
+			}
+
+			return React.createElement(
+				Fragment,
+				null,
+				React.createElement(
+					InspectorControls,
+					{ key: 'inspector' },
+					React.createElement(
+						PanelBody,
+						{ title: '', initialOpen: true },
+						React.createElement(Styles, {
+							options: [{ value: 1, svg: _icons2.default.postgrid_1, label: __('') }, { value: 2, svg: _icons2.default.postgrid_2, label: __('') }, { value: 3, svg: _icons2.default.postgrid_3, label: __('') }, { value: 4, svg: _icons2.default.postgrid_4, label: __('') }],
+							value: layout,
+							onChange: function onChange(val) {
+								return setAttributes({ layout: val });
+							}
+						})
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Post Design'), initialOpen: true },
+						React.createElement(Styles, { columns: 4, value: style, onChange: function onChange(val) {
+								return setAttributes({ style: val });
+							},
+							options: [{ value: 1, svg: _icons2.default.postgrid_design_1 }, { value: 2, svg: layout === 1 ? _icons2.default.postgrid_design_3 : _icons2.default.postgrid_design_2 }, { value: 3, svg: layout === 1 ? _icons2.default.postgrid_design_5 : _icons2.default.postgrid_design_4 }, { value: 4, svg: _icons2.default.postgrid_design_6 }]
+						}),
+						(layout === 2 || layout === 3) && React.createElement(Range, { label: __('Select Column'), value: column, onChange: function onChange(value) {
+								return setAttributes({ column: value });
+							}, min: 1, step: 1, max: 6, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						(layout === 1 || layout === 2 && (style === 3 || style === 4)) && React.createElement(ButtonGroup, {
+							label: __('Content Align'),
+							options: layout === 2 && style === 3 ? [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']] : [[__('Top'), 'top'], [__('Middle'), 'center'], [__('Bottom'), 'bottom']],
+							value: layout === 2 && style === 3 ? contentPosition : girdContentPosition,
+							onChange: function onChange(value) {
+								return setAttributes(layout === 2 && style === 3 ? { contentPosition: value } : { girdContentPosition: value });
+							}
+						}),
+						(layout === 1 && style != 3 || layout === 2 && style != 3) && React.createElement(Padding, { label: __('Content Padding'), value: contentPadding, onChange: function onChange(val) {
+								return setAttributes({ contentPadding: val });
+							}, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(Separator, null),
+						(layout === 1 && style === 1 || layout === 2 && style === 1) && React.createElement(
+							Fragment,
+							null,
+							React.createElement(ColorAdvanced, { label: __('Background'), value: bgColor, onChange: function onChange(value) {
+									return setAttributes({ bgColor: value });
+								} }),
+							React.createElement(Border, { label: __('Border'), value: border, onChange: function onChange(val) {
+									return setAttributes({ border: val });
+								}, min: 0, max: 10, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Corner'), value: borderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
+									return setAttributes({ borderRadius: value });
+								}, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(Padding, { label: __('Padding'), value: padding, onChange: function onChange(val) {
+									return setAttributes({ padding: val });
+								}, min: 0, max: 60, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(BoxShadow, { label: __('Box-Shadow'), value: boxShadow, onChange: function onChange(value) {
+									return setAttributes({ boxShadow: value });
+								} })
+						),
+						style === 2 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(ColorAdvanced, { label: __('Card Background'), value: cardBackground, onChange: function onChange(value) {
+									return setAttributes({ cardBackground: value });
+								} }),
+							React.createElement(Border, { label: __('Card Border'), value: cardBorder, onChange: function onChange(val) {
+									return setAttributes({ cardBorder: val });
+								}, min: 0, max: 10, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Card Corner'), value: cardBorderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
+									return setAttributes({ cardBorderRadius: value });
+								}, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							layout === 1 && React.createElement(Range, { label: __('Card Space'), value: cardSpace, onChange: function onChange(value) {
+									return setAttributes({ cardSpace: value });
+								}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(Padding, { label: __('Card Padding'), value: cardPadding, onChange: function onChange(val) {
+									return setAttributes({ cardPadding: val });
+								}, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(BoxShadow, { label: __('Card Box Shadow'), value: cardBoxShadow, onChange: function onChange(value) {
+									return setAttributes({ cardBoxShadow: value });
+								} })
+						),
+						style === 4 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Range, { label: __('Overlay Height'), value: overlayHeight, onChange: function onChange(value) {
+									return setAttributes({ overlayHeight: value });
+								}, unit: ['px', 'em', '%'], min: 50, max: 700, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							layout === 1 && React.createElement(Range, { label: __('Overlay Space'), value: overlaySpace, onChange: function onChange(value) {
+									return setAttributes({ overlaySpace: value });
+								}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Overlay Corner'), value: overlayBorderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
+									return setAttributes({ overlayBorderRadius: value });
+								}, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(
+								Tabs,
+								null,
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Normal') },
+									React.createElement(ColorAdvanced, { label: __('Overlay'), value: overlayBg, onChange: function onChange(value) {
+											return setAttributes({ overlayBg: value });
+										} })
+								),
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Hover') },
+									React.createElement(ColorAdvanced, { label: __('Hover Overlay'), value: overlayHoverBg, onChange: function onChange(value) {
+											return setAttributes({ overlayHoverBg: value });
+										} })
+								)
+							),
+							React.createElement(Select, { label: __('Blend Mode'), options: [['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]], value: overlayBlend, onChange: function onChange(val) {
+									return setAttributes({ overlayBlend: val });
+								} })
+						),
+						style === 3 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(ColorAdvanced, { label: __('Stack Background'), value: stackBg, onChange: function onChange(value) {
+									return setAttributes({ stackBg: value });
+								} }),
+							layout === 2 && React.createElement(Range, { label: __('Stack Size'), value: stackWidth, onChange: function onChange(value) {
+									return setAttributes({ stackWidth: value });
+								}, unit: ['px', 'em', '%'], min: 50, max: 600, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							layout === 1 && React.createElement(Range, { label: __('Stack Space'), value: stackSpace, onChange: function onChange(value) {
+									return setAttributes({ stackSpace: value });
+								}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Stack Corner'), value: stackBorderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
+									return setAttributes({ stackBorderRadius: value });
+								}, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(Padding, { label: __('Stack Padding'), value: stackPadding, onChange: function onChange(val) {
+									return setAttributes({ stackPadding: val });
+								}, min: 0, max: 60, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(BoxShadow, { label: __('Stack Box Shadow'), value: stackBoxShadow, onChange: function onChange(value) {
+									return setAttributes({ stackBoxShadow: value });
+								} })
+						),
+						layout === 1 && style === 1 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Separator, null),
+							React.createElement(Toggle, { label: __('Enable Separator'), value: showSeparator, onChange: function onChange(value) {
+									return setAttributes({ showSeparator: value });
+								} })
+						),
+						layout === 1 && style === 1 && showSeparator === true && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Color, { label: __('Separator Color'), value: separatorColor, onChange: function onChange(value) {
+									return setAttributes({ separatorColor: value });
+								} }),
+							React.createElement(Range, { label: __('Separator Height'), value: separatorHeight, onChange: function onChange(value) {
+									return setAttributes({ separatorHeight: value });
+								}, unit: ['px', 'em', '%'], min: 0, max: 30, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(Range, { label: __('Separator Spacing'), value: separatorSpace, onChange: function onChange(value) {
+									return setAttributes({ separatorSpace: value });
+								}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} })
+						)
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Query'), initialOpen: false },
+						React.createElement(ButtonGroup, {
+							label: __('Taxonomy'),
+							options: [[__('Categories'), 'categories'], [__('Tags'), 'tags']],
+							value: taxonomy,
+							onChange: function onChange(value) {
+								return setAttributes({ taxonomy: value });
+							}
+						}),
+						React.createElement(Dropdown, {
+							label: taxonomy === 'categories' ? __('Categories') : __('Tags'),
+							enableSearch: true,
+							defaultOptionsLabel: 'All',
+							options: [{ value: 'all', label: __('All') }].concat(_toConsumableArray(taxonomyList)),
+							value: taxonomy === 'categories' ? categories : tags,
+							onChange: function onChange(value) {
+								return setAttributes(taxonomy === 'categories' ? { categories: value.length && value[value.length - 1].label === 'All' ? [] : value } : { tags: value.length && value[value.length - 1].label === 'All' ? [] : value });
+							}
+						}),
+						React.createElement(Range, { label: __('Number of Items'), value: postsToShow, onChange: function onChange(value) {
+								return setAttributes({ postsToShow: parseInt(value) });
+							}, min: 0, max: 15 }),
+						React.createElement(SelectControl, {
+							label: __("Order By"),
+							value: orderBy,
+							options: [{ label: __('Date'), value: 'date' }, { label: __('Title'), value: 'title' }, { label: __('Random'), value: 'rand' }, { label: __('Menu Order'), value: 'menu_order' }],
+							onChange: function onChange(value) {
+								return setAttributes({ orderBy: value });
+							}
+						}),
+						React.createElement(ButtonGroup, {
+							label: __('Order'),
+							options: [[__('Ascending'), 'asc'], [__('Descending'), 'desc']],
+							value: order,
+							onChange: function onChange(value) {
+								return setAttributes({ order: value });
+							}
+						})
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Image Settings'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Show Featured Image'), value: showImages, onChange: function onChange(value) {
+								return setAttributes({ showImages: value });
+							} }),
+						React.createElement(Toggle, { label: __('Fixed Image Height'), value: enableFixedHeight, onChange: function onChange(value) {
+								return setAttributes({ enableFixedHeight: value });
+							} }),
+						enableFixedHeight && React.createElement(Range, { label: __(''), value: fixedHeight, onChange: function onChange(value) {
+								return setAttributes({ fixedHeight: value });
+							}, unit: ['px', 'em', '%'], min: 10, max: 600, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(SelectControl, {
+							label: __("Image Sizes"),
+							value: imgSize,
+							onChange: function onChange(value) {
+								return setAttributes({ imgSize: value });
+							},
+							options: qubely_admin.image_sizes
+						}),
+						React.createElement(BorderRadius, {
+							min: 0,
+							max: 100,
+							responsive: true,
+							device: device,
+							label: __('Image Corner'),
+							value: imageRadius,
+							unit: ['px', 'em', '%'],
+							onChange: function onChange(value) {
+								return setAttributes({ imageRadius: value });
+							},
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(Select, { label: __('Hover Effect'), options: [['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')]], value: imageAnimation, onChange: function onChange(val) {
+								return setAttributes({ imageAnimation: val });
+							} })
+					),
+					React.createElement(
+						PanelBody,
+						{ title: 'Content', initialOpen: false },
+						React.createElement(Toggle, { label: __('Show Title'), value: showTitle, onChange: function onChange(value) {
+								return setAttributes({ showTitle: value });
+							} }),
+						React.createElement(Toggle, { label: __('Show Excerpt'), value: showExcerpt, onChange: function onChange(value) {
+								return setAttributes({ showExcerpt: value });
+							} }),
+						React.createElement(RangeControl, { label: __('Excerpt Limit'), min: 1, max: 100, step: 1, value: excerptLimit, onChange: function onChange(val) {
+								return setAttributes({ excerptLimit: val });
+							} }),
+						React.createElement(Separator, null),
+						React.createElement(Toggle, { label: __('Title Below Meta'), value: titlePosition, onChange: function onChange(value) {
+								return setAttributes({ titlePosition: value });
+							} }),
+						React.createElement(Toggle, { label: __('Show date'), value: showDates, onChange: function onChange(value) {
+								return setAttributes({ showDates: value });
+							} }),
+						React.createElement(Toggle, { label: __('Show Comment'), value: showComment, onChange: function onChange(value) {
+								return setAttributes({ showComment: value });
+							} }),
+						React.createElement(Toggle, { label: __('Show Author'), value: showAuthor, onChange: function onChange(value) {
+								return setAttributes({ showAuthor: value });
+							} })
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Category'), initialOpen: false },
+						React.createElement(RadioAdvanced, {
+							label: __('Category'),
+							options: [{ icon: 'fas fa-ban', value: 'none', label: __('None') }, { value: 'default', label: __('Default') }, { value: 'badge', label: __('Badge') }],
+							value: showCategory,
+							onChange: function onChange(val) {
+								return setAttributes({ showCategory: val });
+							}
+						}),
+						showCategory !== 'none' && React.createElement(
+							Fragment,
+							null,
+							layout !== 2 && showCategory == 'badge' && style != 4 && React.createElement(Select, {
+								label: __("Badge Position"),
+								options: [['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]],
+								value: categoryPosition,
+								onChange: function onChange(value) {
+									return setAttributes({ categoryPosition: value });
+								}
+							}),
+							layout === 2 && showCategory == 'badge' && style != 4 && React.createElement(
+								Fragment,
+								null,
+								React.createElement(RadioAdvanced, {
+									label: __('Badge Position'),
+									options: [{ value: 'default', label: __('default'), title: __('Pre-defined') }, { icon: 'fas fa-cog', value: 'none', title: __('Advanced') }],
+									value: badgePosition,
+									onChange: function onChange(val) {
+										return setAttributes({ badgePosition: val });
+									}
+								}),
+								badgePosition === 'default' ? React.createElement(Select, {
+									label: __(""),
+									options: [['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]],
+									value: categoryPosition,
+									onChange: function onChange(value) {
+										return setAttributes({ categoryPosition: value });
+									}
+								}) : React.createElement(Padding, { label: __('Advanced'), value: badgePadding, onChange: function onChange(val) {
+										return setAttributes({ badgePadding: val });
+									}, min: 0, max: 60, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+										return _this3.setState({ device: value });
+									} }),
+								React.createElement(Separator, null)
+							),
+							React.createElement(Typography, { label: __('Typography'), value: categoryTypography, onChange: function onChange(value) {
+									return setAttributes({ categoryTypography: value });
+								}, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							React.createElement(
+								Tabs,
+								null,
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Normal') },
+									React.createElement(Color, { label: __('Category Color'), value: showCategory == 'badge' ? categoryColor2 : categoryColor, onChange: function onChange(value) {
+											return setAttributes(showCategory == 'badge' ? { categoryColor2: value } : { categoryColor: value });
+										} }),
+									showCategory == 'badge' && React.createElement(Color, { label: __('Category Background'), value: categoryBackground, onChange: function onChange(value) {
+											return setAttributes({ categoryBackground: value });
+										} })
+								),
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Hover') },
+									React.createElement(Color, { label: __('Category Hover Color'), value: showCategory == 'badge' ? categoryHoverColor2 : categoryHoverColor, onChange: function onChange(value) {
+											return setAttributes(showCategory == 'badge' ? { categoryHoverColor2: value } : { categoryHoverColor: value });
+										} }),
+									showCategory == 'badge' && React.createElement(Color, { label: __('Category Background'), value: categoryHoverBackground, onChange: function onChange(value) {
+											return setAttributes({ categoryHoverBackground: value });
+										} })
+								)
+							),
+							React.createElement(BorderRadius, {
+								min: 0,
+								max: 100,
+								responsive: true,
+								device: device,
+								label: __('Corner'),
+								value: categoryRadius,
+								unit: ['px', 'em', '%'],
+								onChange: function onChange(value) {
+									return setAttributes({ categoryRadius: value });
+								},
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							showCategory == 'badge' && React.createElement(Padding, { label: __('Padding'), value: categoryPadding, onChange: function onChange(val) {
+									return setAttributes({ categoryPadding: val });
+								}, min: 0, max: 60, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} })
+						)
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Read More Link'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Show Read More Link'), value: showReadMore, onChange: function onChange(value) {
+								return setAttributes({ showReadMore: value });
+							} }),
+						showReadMore && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Styles, {
+								options: [{ value: 'fill', svg: _icons2.default.btn_fill, label: __('Fill') }, { value: 'outline', svg: _icons2.default.btn_outline, label: __('Outline') }],
+								value: readmoreStyle,
+								onChange: function onChange(val) {
+									return setAttributes({ readmoreStyle: val });
+								}
+							}),
+							React.createElement(TextControl, { label: __('Button Text'), value: buttonText, onChange: function onChange(val) {
+									return setAttributes({ buttonText: val });
+								} }),
+							React.createElement(Typography, { label: __('Typography'), value: readmoreTypography, onChange: function onChange(value) {
+									return setAttributes({ readmoreTypography: value });
+								}, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							readmoreStyle === 'fill' && React.createElement(
+								Fragment,
+								null,
+								React.createElement(RadioAdvanced, {
+									label: __('Button Size'),
+									options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+									value: readmoreSize,
+									onChange: function onChange(value) {
+										return setAttributes({ readmoreSize: value });
+									} }),
+								readmoreSize == 'custom' && React.createElement(Padding, {
+									label: __('Custom Size'),
+									value: readmoreCustomSize,
+									onChange: function onChange(value) {
+										return setAttributes({ readmoreCustomSize: value });
+									},
+									unit: ['px', 'em', '%'],
+									max: 150,
+									min: 0,
+									responsive: true,
+									device: device,
+									onDeviceChange: function onDeviceChange(value) {
+										return _this3.setState({ device: value });
+									} }),
+								React.createElement(Border, { label: __('Border'), value: readmoreBorder, onChange: function onChange(val) {
+										return setAttributes({ readmoreBorder: val });
+									}, min: 0, max: 10, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+										return _this3.setState({ device: value });
+									} }),
+								(readmoreBorder.openBorder || readmoreStyle === 'fill') && React.createElement(BorderRadius, {
+									min: 0,
+									max: 100,
+									responsive: true,
+									device: device,
+									label: __('Corner'),
+									value: readmoreBorderRadius,
+									unit: ['px', 'em', '%'],
+									onChange: function onChange(value) {
+										return setAttributes({ readmoreBorderRadius: value });
+									},
+									onDeviceChange: function onDeviceChange(value) {
+										return _this3.setState({ device: value });
+									}
+								}),
+								React.createElement(BoxShadow, { label: __('Box-Shadow'), value: readmoreBoxShadow, onChange: function onChange(value) {
+										return setAttributes({ readmoreBoxShadow: value });
+									} })
+							),
+							React.createElement(
+								Tabs,
+								null,
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Normal') },
+									React.createElement(Color, { label: __('Text Color'), value: readmoreStyle === 'fill' ? readmoreColor : readmoreColor2, onChange: function onChange(value) {
+											return setAttributes(readmoreStyle === 'fill' ? { readmoreColor: value } : { readmoreColor2: value });
+										} }),
+									readmoreStyle === 'fill' && React.createElement(ColorAdvanced, { label: __('Background'), value: readmoreBg, onChange: function onChange(value) {
+											return setAttributes({ readmoreBg: value });
+										} })
+								),
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Hover') },
+									React.createElement(Color, { label: __('Text Color'), value: readmoreHoverColor, onChange: function onChange(value) {
+											return setAttributes({ readmoreHoverColor: value });
+										} }),
+									readmoreStyle === 'fill' && React.createElement(ColorAdvanced, { label: __('Background'), value: readmoreHoverBg, onChange: function onChange(value) {
+											return setAttributes({ readmoreHoverBg: value });
+										} })
+								)
+							)
+						)
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Spacing'), initialOpen: false },
+						layout === 2 && React.createElement(Range, { label: __('Column Gap'), value: columnGap, onChange: function onChange(value) {
+								return setAttributes({ columnGap: value });
+							}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						showCategory == 'default' && React.createElement(Range, { label: __('Category'), value: categorySpace, onChange: function onChange(value) {
+								return setAttributes({ categorySpace: value });
+							}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(Range, { label: __('Title'), value: titleSpace, onChange: function onChange(value) {
+								return setAttributes({ titleSpace: value });
+							}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(Range, { label: __('Meta'), value: metaSpace, onChange: function onChange(value) {
+								return setAttributes({ metaSpace: value });
+							}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(Range, { label: __('Excerpt'), value: excerptSpace, onChange: function onChange(value) {
+								return setAttributes({ excerptSpace: value });
+							}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} })
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Typography'), initialOpen: false },
+						React.createElement(Typography, { label: __('Title'), value: titleTypography, onChange: function onChange(value) {
+								return setAttributes({ titleTypography: value });
+							}, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(Separator, null),
+						React.createElement(Typography, { label: __('Meta'), value: metaTypography, onChange: function onChange(value) {
+								return setAttributes({ metaTypography: value });
+							}, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(Separator, null),
+						React.createElement(Typography, { label: __('Excerpt'), value: excerptTypography, onChange: function onChange(value) {
+								return setAttributes({ excerptTypography: value });
+							}, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} })
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Colors'), initialOpen: false },
+						React.createElement(Color, { label: __('Title'), value: style !== 4 ? titleColor : titleOverlayColor, onChange: function onChange(value) {
+								return setAttributes(style !== 4 ? { titleColor: value } : { titleOverlayColor: value });
+							} }),
+						React.createElement(Color, { label: __('Title Hover'), value: titleHoverColor, onChange: function onChange(value) {
+								return setAttributes({ titleHoverColor: value });
+							} }),
+						React.createElement(Color, { label: __('Meta'), value: style !== 4 ? metaColor : metaOverlayColor, onChange: function onChange(value) {
+								return setAttributes(style !== 4 ? { metaColor: value } : { metaOverlayColor: value });
+							} }),
+						React.createElement(Color, { label: __('Excerpt'), value: style !== 4 ? excerptColor : excerptColor2, onChange: function onChange(value) {
+								return setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value });
+							} })
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'qubely-block-' + uniqueId },
+					posts && posts.length ? React.createElement(
+						'div',
+						{ className: 'qubely-postgrid-wrapper qubely-postgrid-layout-' + layout + ' ' + (layout === 2 || layout === 3 ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : '') },
+						posts && posts.map(function (post) {
+							return React.createElement(
+								'div',
+								{ className: 'qubely-postgrid ' + (layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view') + ' qubely-postgrid-style-' + style },
+								React.createElement(
+									'div',
+									{ className: '' + (layout === 1 ? 'qubely-post-list-wrapper qubely-post-list-' + (layout === 2 && style === 3 ? contentPosition : girdContentPosition) : 'qubely-post-grid-wrapper qubely-post-grid-' + (layout === 2 && style === 3 ? contentPosition : girdContentPosition)) },
+									showImages && post.qubely_featured_image_url && _this3.renderFeaturedImage(post),
+									_this3.renderCardContent(post)
+								)
+							);
+						})
+					) : React.createElement(
+						'div',
+						{ className: 'qubely-postgrid-is-loading' },
+						React.createElement(Spinner, null)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Edit;
+}(Component);
+
+exports.default = withSelect(function (select, props) {
+	var _select = select('core'),
+	    getEntityRecords = _select.getEntityRecords;
+
+	var _props$attributes = props.attributes,
+	    taxonomy = _props$attributes.taxonomy,
+	    order = _props$attributes.order,
+	    orderBy = _props$attributes.orderBy,
+	    categories = _props$attributes.categories,
+	    tags = _props$attributes.tags,
+	    postsToShow = _props$attributes.postsToShow;
+
+
+	var allTaxonomy = qubely_admin.all_taxonomy;
+
+	var seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags';
+	var activeTaxes = taxonomy === 'categories' ? categories : tags;
+
+	var query = _defineProperty({
+		order: order,
+		orderby: orderBy,
+		per_page: postsToShow
+	}, seletedTaxonomy, activeTaxes.map(function (_ref) {
+		var value = _ref.value,
+		    label = _ref.label;
+		return value;
+	}));
+	return {
+		posts: getEntityRecords('postType', 'post', query),
+		taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : []
+	};
+})(Edit);
+
+/***/ }),
+
+/***/ "./src/blocks/postgrid/index.js":
+/*!**************************************!*\
+  !*** ./src/blocks/postgrid/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/postgrid/style.scss");
+
+var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/postgrid/Edit.js");
+
+var _Edit2 = _interopRequireDefault(_Edit);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+registerBlockType('qubely/postgrid', {
+	title: __('Post Grid'),
+	description: 'Fetch blog posts and display them beautifully in grid or list views with Qubely Postgrid Block.',
+	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Post Grid Block') }),
+	category: 'qubely',
+	keywords: [__('Post'), __('Post Grid')],
+	edit: _Edit2.default,
+	save: function save(props) {
+		return null;
+	}
+});
+
+/***/ }),
+
+/***/ "./src/blocks/postgrid/style.scss":
+/*!****************************************!*\
+  !*** ./src/blocks/postgrid/style.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/postgrid/style.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -4281,9 +5339,9 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./src/blocks/tests/Edit.js":
+/***/ "./src/blocks/tests/edit.js":
 /*!**********************************!*\
-  !*** ./src/blocks/tests/Edit.js ***!
+  !*** ./src/blocks/tests/edit.js ***!
   \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -4405,9 +5463,65 @@ exports.default = Edit;
 
 /***/ }),
 
-/***/ "./src/blocks/tests/Save.js":
+/***/ "./src/blocks/tests/index.js":
+/*!***********************************!*\
+  !*** ./src/blocks/tests/index.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/tests/style.scss");
+
+var _edit = __webpack_require__(/*! ./edit */ "./src/blocks/tests/edit.js");
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(/*! ./save */ "./src/blocks/tests/save.js");
+
+var _save2 = _interopRequireDefault(_save);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+registerBlockType('qubely/test', {
+    title: __('TEST'),
+    description: 'Apply texts and tweak designs with Qubely Advanced Text.',
+    category: 'qubely',
+    icon: 'universal-access-alt',
+    supports: { align: false },
+    keywords: [__('text'), __('paragraph'), __('heading')],
+    attributes: {
+        uniqueId: { type: 'string', default: '' },
+        text: { type: 'string', default: 'This is Text' },
+        alignment: { type: 'string', default: 'left', style: [{ selector: '{{QUBELY}} {text-align: {{alignment}};}' }] },
+        testColor: {
+            type: 'string', default: '',
+            style: [{
+                selector: '{{QUBELY}} {color: {{testColor}};}'
+            }]
+        },
+        testBg: {
+            type: 'string', default: '',
+            style: [{
+                selector: '{{QUBELY}} {background: {{testBg}};}'
+            }]
+        }
+    },
+    edit: _edit2.default,
+    save: _save2.default
+});
+
+/***/ }),
+
+/***/ "./src/blocks/tests/save.js":
 /*!**********************************!*\
-  !*** ./src/blocks/tests/Save.js ***!
+  !*** ./src/blocks/tests/save.js ***!
   \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -4462,62 +5576,6 @@ var Save = function (_Component) {
 }(Component);
 
 exports.default = Save;
-
-/***/ }),
-
-/***/ "./src/blocks/tests/index.js":
-/*!***********************************!*\
-  !*** ./src/blocks/tests/index.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(/*! ./style.scss */ "./src/blocks/tests/style.scss");
-
-var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/tests/Edit.js");
-
-var _Edit2 = _interopRequireDefault(_Edit);
-
-var _Save = __webpack_require__(/*! ./Save */ "./src/blocks/tests/Save.js");
-
-var _Save2 = _interopRequireDefault(_Save);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-
-registerBlockType('qubely/test', {
-    title: __('TEST'),
-    description: 'Apply texts and tweak designs with Qubely Advanced Text.',
-    category: 'qubely',
-    icon: 'universal-access-alt',
-    supports: { align: false },
-    keywords: [__('text'), __('paragraph'), __('heading')],
-    attributes: {
-        uniqueId: { type: 'string', default: '' },
-        text: { type: 'string', default: 'This is Text' },
-        alignment: { type: 'string', default: 'left', style: [{ selector: '{{QUBELY}} {text-align: {{alignment}};}' }] },
-        testColor: {
-            type: 'string', default: '',
-            style: [{
-                selector: '{{QUBELY}} {color: {{testColor}};}'
-            }]
-        },
-        testBg: {
-            type: 'string', default: '',
-            style: [{
-                selector: '{{QUBELY}} {background: {{testBg}};}'
-            }]
-        }
-    },
-    edit: _Edit2.default,
-    save: _Save2.default
-});
 
 /***/ }),
 
@@ -4581,8 +5639,20 @@ var icons = {
 
     // Social Share Icons Style.
     social_normal: React.createElement('img', { src: img_path + '/socialicon/normal.svg', alt: __('Normal') }),
-    social_fill: React.createElement('img', { src: img_path + '/socialicon/fill.svg', alt: __('Fill') })
+    social_fill: React.createElement('img', { src: img_path + '/socialicon/fill.svg', alt: __('Fill') }),
 
+    // PostGrid Icon
+    postgrid_1: React.createElement('img', { src: img_path + '/postgrid/1.svg', alt: __('Layout 1') }),
+    postgrid_2: React.createElement('img', { src: img_path + '/postgrid/2.svg', alt: __('Layout 2') }),
+    postgrid_3: React.createElement('img', { src: img_path + '/postgrid/pro1.svg', alt: __('Layout 3') }),
+    postgrid_4: React.createElement('img', { src: img_path + '/postgrid/pro2.svg', alt: __('Layout 4') }),
+    postgrid_5: React.createElement('img', { src: img_path + '/postgrid/pro3.svg', alt: __('Layout 4') }),
+    postgrid_design_1: React.createElement('img', { src: img_path + '/postgrid/11.svg', alt: __('Design 1') }),
+    postgrid_design_2: React.createElement('img', { src: img_path + '/postgrid/12.svg', alt: __('Design 2') }),
+    postgrid_design_3: React.createElement('img', { src: img_path + '/postgrid/13.svg', alt: __('Design 3') }),
+    postgrid_design_4: React.createElement('img', { src: img_path + '/postgrid/14.svg', alt: __('Design 4') }),
+    postgrid_design_5: React.createElement('img', { src: img_path + '/postgrid/15.svg', alt: __('Design 5') }),
+    postgrid_design_6: React.createElement('img', { src: img_path + '/postgrid/16.svg', alt: __('Design 6') })
 };
 
 exports.default = icons;
@@ -4601,12 +5671,15 @@ exports.default = icons;
 
 __webpack_require__(/*! ./blocks/tests/index.js */ "./src/blocks/tests/index.js");
 
+__webpack_require__(/*! ./blocks/postgrid */ "./src/blocks/postgrid/index.js");
+
 __webpack_require__(/*! ./blocks/testimonialcarousel */ "./src/blocks/testimonialcarousel/index.js");
 
 __webpack_require__(/*! ./blocks/teamcarousel */ "./src/blocks/teamcarousel/index.js");
 
 // Team Carousel
-var __ = wp.i18n.__; // Testimonial Carousel
+var __ = wp.i18n.__; // Post grid
+// Testimonial Carousel
 
 /***/ }),
 
