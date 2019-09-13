@@ -235,8 +235,28 @@ registerBlockType('qubely/teamcarousel', {
 				{ selector: '{{QUBELY}} .qubely-team-avatar { width: {{avatarSize}}; height: {{avatarSize}}; font-size: {{avatarSize}}; }' }
 			]
 		},
-		avatarWidth: { type: 'object', default: { md: 120, unit: 'px' }, style: [{ condition: [{ key: 'avatarSize', relation: '==', value: 'custom' }], selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}}; font-size: {{avatarWidth}};}' }] },
-		avatarHeight: { type: 'object', default: { md: 120, unit: 'px' }, style: [{ condition: [{ key: 'avatarSize', relation: '==', value: 'custom' }], selector: '{{QUBELY}} .qubely-team-avatar {height: {{avatarHeight}};}' }] },
+		avatarWidth: { 
+			type: 'object', 
+			default: { md: 100, unit: '%' }, 
+			style: [
+				{ condition: [
+					{ key: 'avatarSize', relation: '==', value: 'custom' }
+				], 
+				selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}}; font-size: {{avatarWidth}};}' }
+			] 
+		},
+		avatarHeight: { 
+			type: 'object', 
+			default: { md: 100, unit: '%' }, 
+			style: [
+				{ 
+					condition: [
+						{ key: 'avatarSize', relation: '==', value: 'custom' }
+					], 
+					selector: '{{QUBELY}} .qubely-team-avatar {height: {{avatarHeight}};}' 
+				}
+			] 
+		},
 		avatarSpacing: {
 			type: 'object',
 			default: {

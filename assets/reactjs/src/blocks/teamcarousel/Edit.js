@@ -121,11 +121,12 @@ class Edit extends Component {
 	/** 
 	 *  Author information. */
 	renderAuthorInfo = (item, index) => {
-		const { attributes: { layout } } = this.props
+		const { attributes: { layout, showAvatar } } = this.props
 		const { author, designation, avatar } = item
+
 		return (
 			<div className={`qubely-team-author`}>
-				{this.renderAvatar(avatar, index) /* Author avater callback function */}
+				{ showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */}
 				<div className="qubely-team-author-info">
 					<div className={`layout-${layout}`}>
 						<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
@@ -137,6 +138,8 @@ class Edit extends Component {
 		)
 	} 
 
+	/** 
+	 *  Render author informations. */
 	renderTeams = () => {
 		const { attributes: { items, layout, carouselItems } } = this.props
 		return (

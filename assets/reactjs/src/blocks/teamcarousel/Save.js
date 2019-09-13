@@ -2,6 +2,8 @@ const { Component } = wp.element
 const { RichText } = wp.editor
 const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
+  /** 
+	 *  Author Avatar*/  
   renderAvatar = (avatar, avatarAlt) => {
     return (
       <div className="qubely-single-img">
@@ -13,7 +15,9 @@ class Save extends Component {
       </div>
     )
   }
-  // social share
+  
+  /** 
+	 *  Team Social Share. */
   renderSocialShare = () => {
 		const { attributes: { 
 			showSociallinks, facebook, twitter, instagram, linkedin, youtube, github, flickr, pinterest, dribbble, behance,
@@ -38,12 +42,14 @@ class Save extends Component {
 		)
 	}
 
+  /** 
+	 *  Author information. */
   renderAuthorInfo = (item, index) => {
-    const { attributes: { layout } } = this.props
+    const { attributes: { layout, showAvatar } } = this.props
     const { author, designation, avatar } = item
     return (
       <div className={`qubely-team-author`}>
-        {this.renderAvatar(avatar, index)}
+        { showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */ }
 				<div className="qubely-team-author-info">
 					<div className={`layout-${layout}`}>
             <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
@@ -54,6 +60,8 @@ class Save extends Component {
       </div>
     )
   }
+  /** 
+	 *  Render Team informations. */
   renderTeam() {
     const { attributes: { carouselItems, layout } } = this.props
     return (carouselItems.map((item, index) => {
