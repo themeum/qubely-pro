@@ -96,13 +96,24 @@ class Edit extends Component {
 	 *  Social Share callback function. */  
 	renderSocialShare = () => {
 		const { attributes: { 
-			showSociallinks, facebook, twitter, instagram, linkedin, youtube, github, flickr, pinterest, dribbble, behance,
+			showSociallinks, iconStyle, iconUseDefaultStyle, facebook, twitter, instagram, linkedin, youtube, github, flickr, pinterest, dribbble, behance,
 		} } = this.props
 		return (
 			<div className="social-share">
+
+				
+
 				{ showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
-					<div className={`qubely-team-social-links`} onClick={() => this.handlePanelOpenings('Social')}>
-						{ facebook && <a className="qubely-team-social-facebook"><i className="fab fa-facebook" /></a> }
+					
+					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`} 
+					onClick={() => this.handlePanelOpenings('Social')}>
+                                        
+						{ facebook && 
+							<a className="qubely-team-social-facebook">
+								<i class="fab fa-facebook-f"></i>
+							</a> 
+						}
+
 						{ twitter && <a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a> }
 						{ instagram && <a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a> }
 						{ linkedin && <a className="qubely-team-social-linkedin"><i className="fab fa-linkedin" /></a> }
@@ -591,7 +602,6 @@ class Edit extends Component {
                                 {iconSize == 'custom' &&
                                     <Range label={__('Custom Size')} value={iconSizeCustom} onChange={val => setAttributes({ iconSizeCustom: val })} min={12} max={300} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 }
-
                                 {iconStyle == 'fill' &&
                                     <BorderRadius
                                         label={__('Corner Radius')}
@@ -606,7 +616,6 @@ class Edit extends Component {
 
                                 <Range label={__('Gutter')} value={iconGutter} onChange={val => setAttributes({ iconGutter: val })} min={0} max={40} unit={['px', 'em']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <Range label={__('Spacing')} value={iconSpacing} onChange={val => setAttributes({ iconSpacing: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-
                                 <Toggle label={__('Default Styles')} value={iconUseDefaultStyle} onChange={val => setAttributes({ iconUseDefaultStyle: val })} />
 
                                 {!iconUseDefaultStyle &&

@@ -182,7 +182,7 @@ registerBlockType('qubely/teamcarousel', {
 		// Arroe Border Hover Color.
 		arrowBorderHoverColor: {
 			type: 'object',
-			default: { openTy: 0, color: '#3373dc', width: { bottom: '1', left: '1', right: '1', top: '1', unit: 'px' } },
+			default: '#3373dc',
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover' }]
 		},
 		// Dot Navigation.
