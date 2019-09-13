@@ -287,38 +287,14 @@ registerBlockType('qubely/teamcarousel', {
 		/* ------------------------------------
 		* 			Design 
 		* ------------------------------------- */
-		textColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-team-carousel-content-wrapper { color:{{textColor}}; }' }] },
-		bgPadding: {
-			type: 'object',
-			default: {},
-			style: [
-				{
-					condition: [
-						{ key: 'layout', relation: '==', value: '1' }
-					],
-					selector: '{{QUBELY}} .qubely-layout-1 .qubely-tesitmonial-item'
-				},
-				{
-					condition: [
-						{ key: 'layout', relation: '==', value: '2' }
-					],
-					selector: '{{QUBELY}} .qubely-layout-2 .qubely-tesitmonial-item'
-				},
-				{
-					condition: [
-						{ key: 'layout', relation: '==', value: '3' }
-					],
-					selector: '{{QUBELY}} .qubely-layout-3 .qubely-team-carousel-content-wrapper'
-				}
-			]
-		},
+		textColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-team-author-info { color:{{textColor}}; }' }] },
 		// Background Color
 		bgColor: {
 			type: 'string',
 			default: '',
 			style: [
 				{
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1 {background-color: {{bgColor}};} {{QUBELY}} .qubely-tesitmonial-item.layout-2 {background-color: {{bgColor}};}'
+					selector: '{{QUBELY}} .qubely-team-author-info {background-color: {{bgColor}};} {{QUBELY}} .qubely-tesitmonial-item.layout-2 {background-color: {{bgColor}};}'
 				},
 				{
 					condition: [
@@ -328,35 +304,60 @@ registerBlockType('qubely/teamcarousel', {
 				}
 			]
 		},
+		// Content padding.
+		bgPadding: {
+			type: 'object',
+			default: {},
+			style: [
+				{
+					condition: [
+						{ key: 'layout', relation: '==', value: '1' }
+					],
+					selector: '{{QUBELY}} .layout-1'
+				},
+				{
+					condition: [
+						{ key: 'layout', relation: '==', value: '2' }
+					],
+					selector: '{{QUBELY}} .qubely-layout-2 .qubely-tesitmonial-item, {{QUBELY}} .qubely-team-2 .qubely-team-author-info'
+				},
+				{
+					condition: [
+						{ key: 'layout', relation: '==', value: '3' }
+					],
+					selector: '{{QUBELY}} .qubely-team-3 .qubely-team-author-info'
+				}
+			]
+		},
 		// Border radius
 		bgBorderRadius: {
 			type: 'object',
 			default: {
 				openBorderRadius: 1,
 				radiusType: 'global',
-				global: { md: 20 },
+				global: { md: 5 },
 				unit: 'px'
 			},
 			style: [
-				{ selector: '{{QUBELY}} .qubely-layout-1 .qubely-tesitmonial-item, {{QUBELY}} .qubely-layout-2 .qubely-tesitmonial-item, {{QUBELY}} .qubely-layout-3 .qubely-team-carousel-content-wrapper' }
+				{ selector: '{{QUBELY}} .qubely-team-carousel-item' }
 			]
 		},
 		border: {
 			type: 'object',
 			default: { openTy: 0, color: '#3373dc', width: { bottom: '1', left: '1', right: '1', top: '1', unit: 'px' } },
 			style: [
-				{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1, {{QUBELY}} .qubely-tesitmonial-item.layout-2, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-team-carousel-content-wrapper' }]
+				{ selector: '{{QUBELY}} .qubely-team-carousel-item' }]
 		},
 		boxShadow: {
 			type: 'object', default: {},
 			style: [
-				{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1, {{QUBELY}} .qubely-tesitmonial-item.layout-2, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-team-carousel-content-wrapper' }
+				{ selector: '{{QUBELY}} .qubely-team-carousel-itemAA' }
 			]
 		},
 		boxShadowHover: {
 			type: 'object', default: {},
 			style: [
-				{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1:hover, {{QUBELY}} .qubely-tesitmonial-item.layout-2:hover, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-team-carousel-content-wrapper:hover' }
+				{ selector: '{{QUBELY}} .qubely-team-carousel-itemAA:hover' }
 			]
 		},
 		showGlobalSettings: { type: 'boolean', default: true }, 
