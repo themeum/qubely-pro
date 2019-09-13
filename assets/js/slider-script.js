@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
-
-    if ($('.qubely-carousel-wrapper').length > 0) {
+    console.log('test')
+    if ($('.qubely-carousel.qubely-carousel-wrapper').length > 0) {
         const counterElement = $('.qubely-carousel-wrapper')
         let indexOfCounterElement = 0
         while (indexOfCounterElement < counterElement.length) {

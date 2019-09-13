@@ -13,7 +13,11 @@ class QUBELY_PRO
 	{
 		// Editor Load
 		add_action('enqueue_block_editor_assets', array($this, 'qubely_pro_editor_assets'), 1000);
+
+		// Add Styles and Scripts
+		add_action('wp_enqueue_scripts', array($this, 'qubely_pro_enqueue_style'));
 	}
+
 
 	/**
 	 * Load Editor Styles and Scripts
@@ -21,12 +25,22 @@ class QUBELY_PRO
 	 */
 	public function qubely_pro_editor_assets()
 	{
-
 		wp_enqueue_script('qubely-pro-blocks-js', QUBELY_PRO_DIR_URL . 'assets/js/qubely.pro.dev.js', array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), QUBELY_PRO_VERSION, true);
 
 		wp_localize_script('qubely-pro-blocks-js', 'qubely_pro_admin', array(
 			'plugin' => QUBELY_PRO_DIR_URL
 		));
+	}
+
+	/**
+	 * Frontend Style & Script
+	 * @since 1.0.0
+	 */
+	public function qubely_pro_enqueue_style()
+	{
+		wp_enqueue_script('qubely-carousel', QUBELY_PRO_DIR_URL . 'assets/js/qubely-carousel.js', array('jquery'), QUBELY_PRO_VERSION);
+		wp_enqueue_script('qubely-slider-script', QUBELY_PRO_DIR_URL . 'assets/js/slider-script.js', array('jquery'), QUBELY_PRO_VERSION);
+
 	}
 }
 new QUBELY_PRO();
