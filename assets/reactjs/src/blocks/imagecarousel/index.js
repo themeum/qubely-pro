@@ -15,15 +15,14 @@ registerBlockType('qubely/imagecarousel', {
 	], 
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
-		items: { type: 'object', default: { md: '2', sm: '2', xs: '1' } },
-		columns: { type: 'number', default: 2 },
-		autoPlay: { type: 'boolean', default: false },
-		dots: { type: 'boolean', default: true },
-		dragable: { type: 'boolean', default: true },
-		dotIndicator: { type: 'boolean', default: true },
-		nav: { type: 'boolean', default: true },
-		interval: { type: 'number', default: 3000 },
+		items: { type: 'object', default: { md: '1', sm: '1', xs: '1' } },
 		speed: { type: 'number', default: 800 },
+		nav: { type: 'boolean', default: true },
+		dots: { type: 'boolean', default: true },
+		interval: { type: 'number', default: 3000 },
+		dragable: { type: 'boolean', default: true },
+		autoPlay: { type: 'boolean', default: false },
+		dotIndicator: { type: 'boolean', default: true },
 		carouselItems: {
 			type: 'array',
 			default: [

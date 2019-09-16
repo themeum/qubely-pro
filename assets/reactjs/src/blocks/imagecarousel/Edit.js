@@ -91,6 +91,7 @@ class Edit extends Component {
 
 		)
 	}
+
 	/** 
 	 *  Author information. */
 	renderAuthorInfo = (item, index) => {
@@ -176,14 +177,15 @@ class Edit extends Component {
 			uniqueId, items, autoPlay, interval, speed, nav, carouselItems, dragable,
 			layout, nameColor, alignment, designationColor, showImageSlider, avatarBorderRadius, avatarSize, avatarWidth, avatarHeight,
 			avatarBorder, avatarSpacing, nameTypo, nameSpacing, designationTypo, bgPadding, textColor, bgColor, 
-			bgBorderRadius, border, boxShadow, boxShadowHover, sliderItemsSpace, isCentered, activeFade,
+			bgBorderRadius, border, boxShadow, boxShadowHover, sliderItemsSpace, activeFade,
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth, arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
 
 		} } = this.props
 
-		const { device } = this.state
+		let isCentered = (layout == 3) ? 'isCentered' : '';
 
+		const { device } = this.state
 		const carouselSettings = {
 			autoplay: autoPlay,
 			items: items,
@@ -279,11 +281,11 @@ class Edit extends Component {
 						}
 						<Toggle label={__('Draggable')} value={dragable} onChange={value => setAttributes({ dragable: value })} />
 
-						<Toggle label={__('Centered Slides')} value={isCentered} onChange={value => setAttributes({ isCentered: value })} />
+						{/* <Toggle label={__('Centered Slides')} value={isCentered} onChange={value => setAttributes({ isCentered: value })} />
 						{
 							isCentered &&
-							<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
-						}
+						} */}
+						<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
 					</PanelBody>
 
 					<PanelBody title={__('Slider Settings')} initialOpen={false}>

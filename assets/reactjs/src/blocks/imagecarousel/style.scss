@@ -457,32 +457,6 @@
 }
 
 // Layout Three.
-.qubely-team-3 .qubely-single-img {
-  width: 50%;
-  float: left;
-  display: inline-block;
-}
-.qubely-team-3 .qubely-team-author-info {
-  padding: 70px 20px 70px 20px;
-}
-.qubely-team-author-info {
-  width: 50%;
-  display: inline-block;
-}
-.editor-styles-wrapper .qubely-team-2 {
-  line-height: 0;
-}
-.qubely-team-3 .qubely-team-author-info {
-  height: 230px;
-  background: #fafafa;
-}
-.qubely-team-carousel-item {
-  overflow: hidden;
-}
-.qubely-team-3 {
-  height: 230px;
-  overflow: hidden;
-}
 .qubely-block-team-carousel .qubely-image-placeholder {
   width: 100%;
   height: 230px;
@@ -666,6 +640,10 @@
 .qubely-team-2:hover .qubely-team-author-info .layout-2 {
   transform: translate(0%, 0%);
 }
-.qubely-team-3 .qubely-single-img img {
-  min-height: 230px;
+
+// Layout Three.
+.qubely-team-3 .qubely-single-img {
+  width: 100%;
+  float: left;
+  display: inline-block;
 }
