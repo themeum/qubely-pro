@@ -307,6 +307,7 @@ class Edit extends Component {
 							device={this.state.device}
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
+
 						<Range
 							label={__('Padding')}
 							min={1}
@@ -453,6 +454,7 @@ class Edit extends Component {
 					
 					<PanelBody title={__('Avatar')} initialOpen={false}>
 						<Toggle label={__('Show Avatar')} value={showAvatar} onChange={val => setAttributes({ showAvatar: val })} />
+						
 						{showAvatar &&
 							<Fragment>
 
