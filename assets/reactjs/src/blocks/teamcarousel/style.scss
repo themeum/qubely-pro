@@ -483,8 +483,22 @@
   height: 230px;
   overflow: hidden;
 }
-
-
+.qubely-block-team-carousel .qubely-image-placeholder {
+  width: 100%;
+  height: 230px;
+  transform: scale(1);
+  transition: .3s;
+}
+.qubely-team-1 .qubely-single-img img.qubely-team-avatar {
+  transition: .3s;
+}
+.qubely-team-1:hover .qubely-image-placeholder,
+.qubely-team-1:hover .qubely-single-img img.qubely-team-avatar {
+  transform: scale(1.1);
+}
+.qubely-single-img {
+  overflow: hidden;
+}
 // Social Icons List.
 .qubely-team-social-links {
   font-size: 0;
@@ -651,4 +665,7 @@
 }
 .qubely-team-2:hover .qubely-team-author-info .layout-2 {
   transform: translate(0%, 0%);
+}
+.qubely-team-3 .qubely-single-img img {
+  min-height: 230px;
 }
