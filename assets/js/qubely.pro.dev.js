@@ -1946,8 +1946,6 @@ var Edit = function (_Component) {
 		_this.renderSocialShare = function () {
 			var _this$props$attribute = _this.props.attributes,
 			    showSociallinks = _this$props$attribute.showSociallinks,
-			    iconStyle = _this$props$attribute.iconStyle,
-			    iconUseDefaultStyle = _this$props$attribute.iconUseDefaultStyle,
 			    facebook = _this$props$attribute.facebook,
 			    twitter = _this$props$attribute.twitter,
 			    instagram = _this$props$attribute.instagram,
@@ -1964,14 +1962,13 @@ var Edit = function (_Component) {
 				{ className: 'social-share' },
 				showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) && React.createElement(
 					'div',
-					{ className: 'qubely-team-social-links qubely-team-icon-layout-' + iconStyle + ' qubely-team-icon-style-' + (iconUseDefaultStyle == 1 ? 'default' : 'custom'),
-						onClick: function onClick() {
+					{ className: 'qubely-team-social-links', onClick: function onClick() {
 							return _this.handlePanelOpenings('Social');
 						} },
 					facebook && React.createElement(
 						'a',
 						{ className: 'qubely-team-social-facebook' },
-						React.createElement('i', { 'class': 'fab fa-facebook-f' })
+						React.createElement('i', { className: 'fab fa-facebook' })
 					),
 					twitter && React.createElement(
 						'a',
@@ -2023,9 +2020,7 @@ var Edit = function (_Component) {
 		};
 
 		_this.renderAuthorInfo = function (item, index) {
-			var _this$props$attribute2 = _this.props.attributes,
-			    layout = _this$props$attribute2.layout,
-			    showAvatar = _this$props$attribute2.showAvatar;
+			var layout = _this.props.attributes.layout;
 			var author = item.author,
 			    designation = item.designation,
 			    avatar = item.avatar;
@@ -2034,13 +2029,60 @@ var Edit = function (_Component) {
 			return React.createElement(
 				'div',
 				{ className: 'qubely-team-author' },
-				showAvatar && _this.renderAvatar(avatar, index) /* Author avater callback function */,
-				React.createElement(
+				/* Layout 1 */
+				layout == 1 && React.createElement(
 					'div',
-					{ className: 'qubely-team-author-info' },
+					{ className: 'qubely-team-' + layout },
+					_this.renderAvatar(avatar, index),
 					React.createElement(
 						'div',
-						{ className: 'layout-' + layout },
+						{ className: 'qubely-team-author-info' },
+						React.createElement(
+							'div',
+							{ className: 'qubely-team-author-name' },
+							_this.renderName(author, index)
+						),
+						React.createElement(
+							'div',
+							{ className: 'qubely-team-author-designation' },
+							_this.renderDesignation(designation, index)
+						),
+						_this.renderSocialShare() /* Social share callback function */
+					)
+				),
+				/* Layout 2 */
+				layout == 2 && React.createElement(
+					'div',
+					{ className: 'qubely-team-' + layout },
+					_this.renderAvatar(avatar, index),
+					React.createElement(
+						'div',
+						{ className: 'qubely-team-author-info' },
+						React.createElement(
+							'div',
+							{ className: 'layout-position' },
+							React.createElement(
+								'div',
+								{ className: 'qubely-team-author-name' },
+								_this.renderName(author, index)
+							),
+							React.createElement(
+								'div',
+								{ className: 'qubely-team-author-designation' },
+								_this.renderDesignation(designation, index)
+							),
+							_this.renderSocialShare() /* Social share callback function */
+						)
+					)
+				),
+				/* Layout 3 */
+				layout == 3 && React.createElement(
+					'div',
+					{ className: 'qubely-team-' + layout },
+					_this.renderAvatar(avatar, index),
+					React.createElement(
+						'div',
+						{ className: 'qubely-team-author-info' },
 						React.createElement(
 							'div',
 							{ className: 'qubely-team-author-name' },
@@ -2058,10 +2100,9 @@ var Edit = function (_Component) {
 		};
 
 		_this.renderTeams = function () {
-			var _this$props$attribute3 = _this.props.attributes,
-			    items = _this$props$attribute3.items,
-			    layout = _this$props$attribute3.layout,
-			    carouselItems = _this$props$attribute3.carouselItems;
+			var _this$props$attribute2 = _this.props.attributes,
+			    items = _this$props$attribute2.items,
+			    carouselItems = _this$props$attribute2.carouselItems;
 
 			return carouselItems.map(function (item, index) {
 				return React.createElement(
@@ -2070,11 +2111,7 @@ var Edit = function (_Component) {
 					React.createElement(
 						'div',
 						{ className: 'qubely-team-carousel-item' },
-						React.createElement(
-							'div',
-							{ className: 'qubely-team-' + layout },
-							_this.renderAuthorInfo(item, index)
-						)
+						_this.renderAuthorInfo(item, index)
 					)
 				);
 			});
@@ -2145,20 +2182,7 @@ var Edit = function (_Component) {
 				setAttributes({ uniqueId: _client });
 			}
 		}
-		/** 
-   *  Author Avatar*/
-
-
-		/** 
-   *  Social Share callback function. */
-
-
-		/** 
-   *  Author information. */
-
-
-		/** 
-   *  Render author informations. */
+		// Social Share callback function.
 
 	}, {
 		key: 'render',
@@ -2276,6 +2300,8 @@ var Edit = function (_Component) {
 			if (uniqueId) {
 				CssGenerator(this.props.attributes, 'teamcarousel', uniqueId);
 			}
+
+			console.log('ID', _icons2.default.teamcarousel_1);
 
 			return React.createElement(
 				Fragment,
@@ -2967,8 +2993,6 @@ var Save = function (_Component) {
     }, _this.renderSocialShare = function () {
       var _this$props$attribute = _this.props.attributes,
           showSociallinks = _this$props$attribute.showSociallinks,
-          iconStyle = _this$props$attribute.iconStyle,
-          iconUseDefaultStyle = _this$props$attribute.iconUseDefaultStyle,
           facebook = _this$props$attribute.facebook,
           twitter = _this$props$attribute.twitter,
           instagram = _this$props$attribute.instagram,
@@ -2985,8 +3009,7 @@ var Save = function (_Component) {
         { className: "social-share" },
         showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) && React.createElement(
           "div",
-          { className: "qubely-team-social-links qubely-team-icon-layout-" + iconStyle + " qubely-team-icon-style-" + (iconUseDefaultStyle == 1 ? 'default' : 'custom'),
-            onClick: function onClick() {
+          { className: "qubely-team-social-links", onClick: function onClick() {
               return _this.handlePanelOpenings('Social');
             } },
           facebook && React.createElement(
@@ -3042,23 +3065,70 @@ var Save = function (_Component) {
         )
       );
     }, _this.renderAuthorInfo = function (item, index) {
-      var _this$props$attribute2 = _this.props.attributes,
-          layout = _this$props$attribute2.layout,
-          showAvatar = _this$props$attribute2.showAvatar;
+      var layout = _this.props.attributes.layout;
       var author = item.author,
           designation = item.designation,
           avatar = item.avatar;
 
+      console.log('layout', layout);
+
       return React.createElement(
         "div",
         { className: "qubely-team-author" },
-        showAvatar && _this.renderAvatar(avatar, index) /* Author avater callback function */,
-        React.createElement(
+        /* Layout 1 */
+        layout == 1 && React.createElement(
           "div",
-          { className: "qubely-team-author-info" },
+          { className: "qubely-team-" + layout },
+          _this.renderAvatar(avatar, index),
           React.createElement(
             "div",
-            { className: "layout-" + layout },
+            { className: "qubely-team-author-info" },
+            React.createElement(
+              "div",
+              { className: "qubely-team-author-name" },
+              React.createElement(RichText.Content, { value: author })
+            ),
+            React.createElement(
+              "div",
+              { className: "qubely-team-author-designation" },
+              React.createElement(RichText.Content, { value: designation })
+            ),
+            _this.renderSocialShare() /* Social share callback function */
+          )
+        ),
+        /* Layout 2 */
+        layout == 2 && React.createElement(
+          "div",
+          { className: "qubely-team-" + layout },
+          _this.renderAvatar(avatar, index),
+          React.createElement(
+            "div",
+            { className: "qubely-team-author-info" },
+            React.createElement(
+              "div",
+              { className: "layout-position" },
+              React.createElement(
+                "div",
+                { className: "qubely-team-author-name" },
+                React.createElement(RichText.Content, { value: author })
+              ),
+              React.createElement(
+                "div",
+                { className: "qubely-team-author-designation" },
+                React.createElement(RichText.Content, { value: designation })
+              ),
+              _this.renderSocialShare() /* Social share callback function */
+            )
+          )
+        ),
+        /* Layout 3 */
+        layout == 3 && React.createElement(
+          "div",
+          { className: "qubely-team-" + layout },
+          _this.renderAvatar(avatar, index),
+          React.createElement(
+            "div",
+            { className: "qubely-team-author-info" },
             React.createElement(
               "div",
               { className: "qubely-team-author-name" },
@@ -3075,29 +3145,15 @@ var Save = function (_Component) {
       );
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
-  /** 
-  *  Author Avatar*/
-
-
-  /** 
-  *  Team Social Share. */
-
-
-  /** 
-  *  Author information. */
+  // social share
 
 
   _createClass(Save, [{
     key: "renderTeam",
-
-    /** 
-    *  Render Team informations. */
     value: function renderTeam() {
       var _this2 = this;
 
-      var _props$attributes = this.props.attributes,
-          carouselItems = _props$attributes.carouselItems,
-          layout = _props$attributes.layout;
+      var carouselItems = this.props.attributes.carouselItems;
 
       return carouselItems.map(function (item, index) {
         return React.createElement(
@@ -3106,11 +3162,7 @@ var Save = function (_Component) {
           React.createElement(
             "div",
             { className: "qubely-team-carousel-item" },
-            React.createElement(
-              "div",
-              { className: "qubely-team-" + layout },
-              _this2.renderAuthorInfo(item)
-            )
+            _this2.renderAuthorInfo(item)
           )
         );
       });
@@ -3118,21 +3170,21 @@ var Save = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _props$attributes2 = this.props.attributes,
-          uniqueId = _props$attributes2.uniqueId,
-          items = _props$attributes2.items,
-          autoPlay = _props$attributes2.autoPlay,
-          arrowStyle = _props$attributes2.arrowStyle,
-          infiniteLoop = _props$attributes2.infiniteLoop,
-          activeFade = _props$attributes2.activeFade,
-          isCentered = _props$attributes2.isCentered,
-          dragable = _props$attributes2.dragable,
-          nav = _props$attributes2.nav,
-          dots = _props$attributes2.dots,
-          dotIndicator = _props$attributes2.dotIndicator,
-          interval = _props$attributes2.interval,
-          speed = _props$attributes2.speed,
-          animation = _props$attributes2.animation;
+      var _props$attributes = this.props.attributes,
+          uniqueId = _props$attributes.uniqueId,
+          items = _props$attributes.items,
+          autoPlay = _props$attributes.autoPlay,
+          arrowStyle = _props$attributes.arrowStyle,
+          infiniteLoop = _props$attributes.infiniteLoop,
+          activeFade = _props$attributes.activeFade,
+          isCentered = _props$attributes.isCentered,
+          dragable = _props$attributes.dragable,
+          nav = _props$attributes.nav,
+          dots = _props$attributes.dots,
+          dotIndicator = _props$attributes.dotIndicator,
+          interval = _props$attributes.interval,
+          speed = _props$attributes.speed,
+          animation = _props$attributes.animation;
 
       var options = JSON.stringify({
         autoplay: autoPlay,
@@ -3358,7 +3410,7 @@ registerBlockType('qubely/teamcarousel', {
 		// Arroe Border Hover Color.
 		arrowBorderHoverColor: {
 			type: 'object',
-			default: '#3373dc',
+			default: { openTy: 0, color: '#3373dc', width: { bottom: '1', left: '1', right: '1', top: '1', unit: 'px' } },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover' }]
 		},
 		// Dot Navigation.
@@ -3406,20 +3458,8 @@ registerBlockType('qubely/teamcarousel', {
 			default: '',
 			style: [{ selector: '{{QUBELY}} .qubely-team-avatar { width: {{avatarSize}}; height: {{avatarSize}}; font-size: {{avatarSize}}; }' }]
 		},
-		avatarWidth: {
-			type: 'object',
-			default: { md: 100, unit: '%' },
-			style: [{ condition: [{ key: 'avatarSize', relation: '==', value: 'custom' }],
-				selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}}; font-size: {{avatarWidth}};}' }]
-		},
-		avatarHeight: {
-			type: 'object',
-			default: { md: 100, unit: '%' },
-			style: [{
-				condition: [{ key: 'avatarSize', relation: '==', value: 'custom' }],
-				selector: '{{QUBELY}} .qubely-team-avatar {height: {{avatarHeight}};}'
-			}]
-		},
+		avatarWidth: { type: 'object', default: { md: 120, unit: 'px' }, style: [{ condition: [{ key: 'avatarSize', relation: '==', value: 'custom' }], selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}}; font-size: {{avatarWidth}};}' }] },
+		avatarHeight: { type: 'object', default: { md: 120, unit: 'px' }, style: [{ condition: [{ key: 'avatarSize', relation: '==', value: 'custom' }], selector: '{{QUBELY}} .qubely-team-avatar {height: {{avatarHeight}};}' }] },
 		avatarSpacing: {
 			type: 'object',
 			default: {
@@ -3455,31 +3495,30 @@ registerBlockType('qubely/teamcarousel', {
 		/* ------------------------------------
   * 			Design 
   * ------------------------------------- */
-		textColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-team-author-info { color:{{textColor}}; }' }] },
-		// Background Color
-		bgColor: {
-			type: 'string',
-			default: '',
-			style: [{
-				selector: '{{QUBELY}} .qubely-team-author-info {background-color: {{bgColor}};} {{QUBELY}} .qubely-tesitmonial-item.layout-2 {background-color: {{bgColor}};}'
-			}, {
-				condition: [{ key: 'layout', relation: '==', value: '3' }],
-				selector: '{{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper {background-color: {{bgColor}};} {{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
-			}]
-		},
-		// Content padding.
+		textColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-team-carousel-content-wrapper { color:{{textColor}}; }' }] },
 		bgPadding: {
 			type: 'object',
 			default: {},
 			style: [{
 				condition: [{ key: 'layout', relation: '==', value: '1' }],
-				selector: '{{QUBELY}} .layout-1'
+				selector: '{{QUBELY}} .qubely-layout-1 .qubely-tesitmonial-item'
 			}, {
 				condition: [{ key: 'layout', relation: '==', value: '2' }],
-				selector: '{{QUBELY}} .qubely-layout-2 .qubely-tesitmonial-item, {{QUBELY}} .qubely-team-2 .qubely-team-author-info'
+				selector: '{{QUBELY}} .qubely-layout-2 .qubely-tesitmonial-item'
 			}, {
 				condition: [{ key: 'layout', relation: '==', value: '3' }],
-				selector: '{{QUBELY}} .qubely-team-3 .qubely-team-author-info'
+				selector: '{{QUBELY}} .qubely-layout-3 .qubely-team-carousel-content-wrapper'
+			}]
+		},
+		// Background Color
+		bgColor: {
+			type: 'string',
+			default: '',
+			style: [{
+				selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1 {background-color: {{bgColor}};} {{QUBELY}} .qubely-tesitmonial-item.layout-2 {background-color: {{bgColor}};}'
+			}, {
+				condition: [{ key: 'layout', relation: '==', value: '3' }],
+				selector: '{{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper {background-color: {{bgColor}};} {{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
 			}]
 		},
 		// Border radius
@@ -3488,23 +3527,23 @@ registerBlockType('qubely/teamcarousel', {
 			default: {
 				openBorderRadius: 1,
 				radiusType: 'global',
-				global: { md: 5 },
+				global: { md: 20 },
 				unit: 'px'
 			},
-			style: [{ selector: '{{QUBELY}} .qubely-team-carousel-item' }]
+			style: [{ selector: '{{QUBELY}} .qubely-layout-1 .qubely-tesitmonial-item, {{QUBELY}} .qubely-layout-2 .qubely-tesitmonial-item, {{QUBELY}} .qubely-layout-3 .qubely-team-carousel-content-wrapper' }]
 		},
 		border: {
 			type: 'object',
 			default: { openTy: 0, color: '#3373dc', width: { bottom: '1', left: '1', right: '1', top: '1', unit: 'px' } },
-			style: [{ selector: '{{QUBELY}} .qubely-team-carousel-item' }]
+			style: [{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1, {{QUBELY}} .qubely-tesitmonial-item.layout-2, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-team-carousel-content-wrapper' }]
 		},
 		boxShadow: {
 			type: 'object', default: {},
-			style: [{ selector: '{{QUBELY}} .qubely-team-carousel-itemAA' }]
+			style: [{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1, {{QUBELY}} .qubely-tesitmonial-item.layout-2, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-team-carousel-content-wrapper' }]
 		},
 		boxShadowHover: {
 			type: 'object', default: {},
-			style: [{ selector: '{{QUBELY}} .qubely-team-carousel-itemAA:hover' }]
+			style: [{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1:hover, {{QUBELY}} .qubely-tesitmonial-item.layout-2:hover, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-team-carousel-content-wrapper:hover' }]
 		},
 		showGlobalSettings: { type: 'boolean', default: true },
 
@@ -5694,7 +5733,7 @@ var __ = wp.i18n.__; // Post grid
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/plugin/qubely/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/plugins/quebly/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
 
 
 /***/ })
