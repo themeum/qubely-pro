@@ -953,7 +953,7 @@ function register_block_qubely_postgrid_pro()
 							'condition' => [
 								(object) ['key' => 'style', 'relation' => '==', 'value' => 4]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-style-4 {height: {{overlayHeight}};}'
+							'selector' => '{{QUBELY}} .qubely-postgrid-style-4 {height: {{overlayHeight}};} {{QUBELY}} .qubely-postgrid-layout-4.qubely-postgrid-column .qubely-postgrid {height: {{overlayHeight}};}'
 						]
 					]
 				),
