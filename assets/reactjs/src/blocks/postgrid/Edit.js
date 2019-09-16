@@ -6,9 +6,7 @@ const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
 const { InspectorControls, BlockControls } = wp.editor
 const { Range, ButtonGroup, Toggle, Dropdown, Select, Separator, ColorAdvanced, Typography, Color, Border, BorderRadius, Padding, BoxShadow, Styles, Tabs, Tab, RadioAdvanced, CssGenerator: { CssGenerator } } = wp.qubelyComponents
-//import InlineToolbar from '../../components/fields/inline/InlineToolbar'
-// import '../../components/GlobalSettings'
-// import '../../components/ContextMenu'
+
 import icons from '../../helpers/icons'
 
 const CATEGORIES_LIST_QUERY = { per_page: -1 };

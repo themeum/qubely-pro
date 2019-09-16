@@ -28,6 +28,7 @@ const icons = {
     postgrid_design_4 : <img src={`${img_path}/postgrid/14.svg`} alt={__('Design 4')} />,
     postgrid_design_5 : <img src={`${img_path}/postgrid/15.svg`} alt={__('Design 5')} />,
     postgrid_design_6 : <img src={`${img_path}/postgrid/16.svg`} alt={__('Design 6')} />,
+
 }
 
 
