@@ -645,3 +645,10 @@
   margin-bottom: 8px;
   display: inline-block;
 }
+.qubely-team-2 .qubely-team-author-info .layout-2 {
+  transform: translate(0%, 20%);
+  transition: .3s;
+}
+.qubely-team-2:hover .qubely-team-author-info .layout-2 {
+  transform: translate(0%, 0%);
+}
