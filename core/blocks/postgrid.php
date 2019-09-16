@@ -816,7 +816,7 @@ function register_block_qubely_postgrid_pro()
 				),
 				'contentPosition' =>  array(
 					'type' => 'string',
-					'default' => 'center',
+					'default' => 'top',
 				),
 				'girdContentPosition' =>  array(
 					'type' => 'string',
@@ -953,7 +953,7 @@ function register_block_qubely_postgrid_pro()
 							'condition' => [
 								(object) ['key' => 'style', 'relation' => '==', 'value' => 4]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-style-4 {height: {{overlayHeight}};}'
+							'selector' => '{{QUBELY}} .qubely-postgrid-style-4 {height: {{overlayHeight}};} {{QUBELY}} .qubely-postgrid-layout-4.qubely-postgrid-column .qubely-postgrid {height: {{overlayHeight}};}'
 						]
 					]
 				),
@@ -976,6 +976,14 @@ function register_block_qubely_postgrid_pro()
 						'condition' => [(object) ['key' => 'layout', 'relation' => '==', 'value' => 2]],
 						'selector' => '{{QUBELY}} .qubely-postgrid-column {grid-column-gap: {{columnGap}};}, {{QUBELY}} .qubely-postgrid-column {grid-row-gap: {{columnGap}};}'
 					]]
+				),
+				'imageSpace' => array(
+					'type' => 'object',
+					'default' => (object) array(
+						'md' => 10,
+						'unit' => 'px'
+					),
+					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-post-img {padding-bottom: {{imageSpace}};}']]
 				),
 				'titleSpace' => array(
 					'type' => 'object',
@@ -1099,7 +1107,7 @@ function render_block_qubely_postgrid_pro($att)
 	endif;
 
 	//column
-	if ( ($layout == 2) || ($layout == 3) ) {
+	if ( ($layout == 2) || ($layout == 3) || ($layout == 4) ) {
 		$col = (' qubely-postgrid-column qubely-postgrid-column-md' . $column['md'] . ' qubely-postgrid-column-sm' . $column['sm'] . ' qubely-postgrid-column-xs' . $column['xs']);
 	} else {
 		$col = "";
@@ -1165,7 +1173,7 @@ function render_block_qubely_postgrid_pro($att)
 				$html .= '</div>'; //qubely-post-list-wrap
 				$html .= '</div>'; //qubely-postgrid
 			}
-			if ( ($layout === 2) || ($layout === 3) ) {
+			if ( ($layout === 2) || ($layout === 3) || ($layout === 4) ) {
 				$html .= '<div class="qubely-postgrid qubely-post-grid-view qubely-postgrid-style-' . esc_attr($style) . '">';
 				$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-' . esc_attr(($layout == 2 && $style === 3) ? $contentPosition : $girdContentPosition)  . '">';
 				if (($showImages == 1) && has_post_thumbnail()) {
