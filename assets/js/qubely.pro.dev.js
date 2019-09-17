@@ -8584,6 +8584,10 @@ var __ = wp.i18n.__;
 var img_path = qubely_pro_admin.plugin + 'assets/img/blocks';
 
 var icons = {
+
+    //form 
+    form_classic: React.createElement('img', { src: img_path + '/form/classic.svg', alt: __('Classic') }),
+    form_material: React.createElement('img', { src: img_path + '/form/material.svg', alt: __('Material') }),
     // Testimonial Carousel icon.
     testimonial_1: React.createElement('img', { src: img_path + '/testimonial/1.svg', alt: __('Testimonial 1') }),
     testimonial_2: React.createElement('img', { src: img_path + '/testimonial/2.svg', alt: __('Testimonial 2') }),
