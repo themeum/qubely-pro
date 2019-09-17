@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-team-carousel {\n  transition: all 400ms; }\n  .qubely-block-team-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-team-carousel .qubely-team-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-team-carousel .qubely-team-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-team-carousel .qubely-single-img.qubely-backend .qubely-team-avatar {\n    cursor: pointer; }\n  .qubely-block-team-carousel .qubely-team-avatar.qubely-image-placeholder i {\n    font-size: 80px; }\n  .qubely-block-team-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 230px; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-left,\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-team-carousel .qubely-team-avatar-layout-left .qubely-team-author-info,\n    .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n      text-align: left; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n    text-align: right; }\n  .qubely-block-team-carousel .qubely-team-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-team-carousel .qubely-team-ratings:before, .qubely-block-team-carousel .qubely-team-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-team-carousel .qubely-team-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-team-carousel .qubely-team-ratings:after {\n      z-index: 0; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-team-carousel .qubely-team-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-team-carousel-content-wrapper {\n  position: relative; }\n\n.layout-3 .qubely-team-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n\n.layout-3 .qubely-team-carousel-content-wrapper:before {\n  content: \" \";\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-style: solid;\n  transform: translate(-50%, 50%);\n  border-width: 15px;\n  z-index: 1;\n  border-color: #f4f4f4 transparent transparent transparent;\n  left: 50%;\n  bottom: -15px; }\n\n.layout-3 .qubely-team-author {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-team-avatar {\n  margin-right: 0px; }\n\n.layout-3 .qubely-team-avatar-layout-left .qubely-team-author-info {\n  text-align: center; }\n\n.layout-1 .qubely-team-avatar,\n.layout-2 .qubely-team-avatar {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list,\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s; }\n\n.qubely-carousel.qubely-carousel-wrapper .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n  position: relative;\n  float: left;\n  overflow: hidden; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 50px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n  position: absolute;\n  bottom: 0px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid #e2e2e2;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 49%;\n  background: rgba(255, 255, 255, 0.4);\n  transition: .3s; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n  width: 100%;\n  height: 100%; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n  bottom: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n  margin: 15px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: #f4f4f4;\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n  width: 55px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n  background: #2084f9;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-tesitmonial-item.layout-3 .qubely-team-avatar {\n  margin-right: 0; }\n\n.qubely-team-carousel-content-wrapper {\n  position: relative; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.qubely-carousel .qubely-carousel-extended-list {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel .qubely-carousel-extended-item {\n  position: relative;\n  float: left;\n  /* overflow: hidden; */ }\n\n.qubely-carousel .qubely-carousel-extended-item.active,\n.qubely-carousel .qubely-carousel-extended-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel .qubely-carousel-extended-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control,\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: relative;\n  height: 20px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n  display: inline-block;\n  height: 40px;\n  width: 40px;\n  padding: 10px;\n  border: 1px solid #ababab;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 100px;\n  background: rgba(255, 255, 255, 0.4); }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: absolute;\n  bottom: 50px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel .qubely-carousel-extended-dots ul {\n  margin: -4px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: rgba(218, 92, 92, 0.4);\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li.active {\n  width: 80px; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover {\n  border: 1px solid #1066cc; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n  background: #ffffff;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-extended-item:not(.active) {\n  opacity: 0.1; }\n\n.qubely-team-1 .qubely-team-author-info {\n  width: 100%;\n  padding: 30px;\n  background: #fafafa; }\n\n.qubely-team-2 {\n  position: relative; }\n\n.qubely-team-2 .qubely-team-author-info {\n  background: rgba(0, 0, 0, 0.65);\n  position: absolute;\n  line-height: 30px;\n  transition: .3s;\n  height: 100%;\n  width: 100%;\n  opacity: 0;\n  z-index: 1;\n  top: 0;\n  color: #fff; }\n\n.qubely-team-2:hover .qubely-team-author-info {\n  opacity: 1; }\n\n.qubely-team-2 .qubely-team-author-info {\n  transform: translate(0%, 0%);\n  width: 100%;\n  padding: 70px; }\n\n.qubely-team-carousel-item .qubely-single-img {\n  line-height: 0; }\n\n.qubely-block-team-carousel .qubely-image-placeholder {\n  width: 100%;\n  height: 230px;\n  transform: scale(1);\n  transition: .3s; }\n\n.qubely-team-1 .qubely-single-img img.qubely-team-avatar {\n  transition: .3s; }\n\n.qubely-team-1:hover .qubely-image-placeholder,\n.qubely-team-1:hover .qubely-single-img img.qubely-team-avatar {\n  transform: scale(1.1); }\n\n.qubely-single-img {\n  overflow: hidden; }\n\n.qubely-team-social-links {\n  font-size: 0; }\n  .qubely-team-social-links a {\n    display: inline-block;\n    text-decoration: none !important;\n    transition: color 300ms, background-color 300ms; }\n  .qubely-team-social-links.qubely-team-icon-layout-fill a {\n    padding: 10px; }\n    .qubely-team-social-links.qubely-team-icon-layout-fill a i {\n      width: 1em;\n      height: 1em;\n      display: block;\n      text-align: center; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-facebook {\n    color: #3b5998; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-facebook:hover {\n      color: #2f477c; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-twitter {\n    color: #1da1f2; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-twitter:hover {\n      color: #1a93df; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-instagram {\n    color: #e1306c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-instagram:hover {\n      color: #c0275a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-linkedin {\n    color: #0077b5; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-linkedin:hover {\n      color: #005f92; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-youtube {\n    color: #ff0000; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-youtube:hover {\n      color: #e40000; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-github {\n    color: #333; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-github:hover {\n      color: #181818; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-flickr {\n    color: #ff0084; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-flickr:hover {\n      color: #e60077; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-pinterest {\n    color: #bd081c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-pinterest:hover {\n      color: #9c0718; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-dribbble {\n    color: #ea4c89; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-dribbble:hover {\n      color: #d3437a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-behance {\n    color: #1769ff; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-behance:hover {\n      color: #135add; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill a {\n    color: #fff; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill a:hover {\n      color: #fff; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-facebook {\n    background-color: #3b5998; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-facebook:hover {\n      background-color: #2f477c; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-twitter {\n    background-color: #1da1f2; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-twitter:hover {\n      background-color: #1a93df; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-instagram {\n    background-color: #e1306c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-instagram:hover {\n      background-color: #c0275a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-linkedin {\n    background-color: #0077b5; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-linkedin:hover {\n      background-color: #005f92; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-youtube {\n    background-color: #ff0000; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-youtube:hover {\n      background-color: #e40000; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-github {\n    background-color: #333; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-github:hover {\n      background-color: #181818; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-flickr {\n    background-color: #ff0084; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-flickr:hover {\n      background-color: #e60077; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-pinterest {\n    background-color: #bd081c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-pinterest:hover {\n      background-color: #9c0718; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-dribbble {\n    background-color: #ea4c89; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-dribbble:hover {\n      background-color: #d3437a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-behance {\n    background-color: #1769ff; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-behance:hover {\n      background-color: #135add; }\n\n.social-share .qubely-team-social-links a {\n  margin-bottom: 8px;\n  display: inline-block; }\n\n.qubely-team-2 .qubely-team-author-info .layout-2 {\n  transform: translate(0%, 20%);\n  transition: .3s; }\n\n.qubely-team-2:hover .qubely-team-author-info .layout-2 {\n  transform: translate(0%, 0%); }\n\n.qubely-team-3 .qubely-single-img {\n  width: 100%;\n  float: left;\n  display: inline-block; }\n", ""]);
+exports.push([module.i, ".qubely-block-image-carousel {\n  transition: all 400ms; }\n  .qubely-block-image-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-image-carousel .qubely-image-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-image-carousel .qubely-image-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-image-carousel .qubely-single-img.qubely-backend .qubely-image-avatar {\n    cursor: pointer; }\n  .qubely-block-image-carousel .qubely-image-placeholder.qubely-image-avatar i {\n    padding: 120px; }\n  .qubely-block-image-carousel .qubely-image-avatar.qubely-image-placeholder i {\n    font-size: 52px; }\n  .qubely-block-image-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 100%; }\n  .qubely-block-image-carousel .qubely-image-avatar-layout-left,\n  .qubely-block-image-carousel .qubely-image-avatar-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-image-carousel .qubely-image-avatar-layout-left .qubely-image-author-info,\n    .qubely-block-image-carousel .qubely-image-avatar-layout-right .qubely-image-author-info {\n      text-align: left; }\n  .qubely-block-image-carousel .qubely-image-avatar-layout-right .qubely-image-author-info {\n    text-align: right; }\n  .qubely-block-image-carousel .qubely-image-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-image-carousel .qubely-image-ratings:before, .qubely-block-image-carousel .qubely-image-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-image-carousel .qubely-image-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-image-carousel .qubely-image-ratings:after {\n      z-index: 0; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-image-carousel .qubely-image-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.layout-3 .qubely-image-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n\n.layout-3 .qubely-image-carousel-content-wrapper:before {\n  content: \" \";\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-style: solid;\n  transform: translate(-50%, 50%);\n  border-width: 15px;\n  z-index: 1;\n  border-color: #f4f4f4 transparent transparent transparent;\n  left: 50%;\n  bottom: -15px; }\n\n.layout-3 .qubely-image-author {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-image-avatar {\n  margin-right: 0px; }\n\n.layout-3 .qubely-image-avatar-layout-left .qubely-image-author-info {\n  text-align: center; }\n\n.layout-1 .qubely-image-avatar,\n.layout-2 .qubely-image-avatar {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list,\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s; }\n\n.qubely-carousel.qubely-carousel-wrapper .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n  position: relative;\n  float: left;\n  overflow: hidden; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 50px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n  position: absolute;\n  bottom: 0px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid #e2e2e2;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 49%;\n  background: rgba(255, 255, 255, 0.4);\n  transition: .3s; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n  width: 100%;\n  height: 100%; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n  bottom: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n  margin: 15px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: #f4f4f4;\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n  width: 55px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n  background: #2084f9;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-image-item.layout-3 .qubely-image-avatar {\n  margin-right: 0; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.qubely-carousel .qubely-carousel-extended-list {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel .qubely-carousel-extended-item {\n  position: relative;\n  float: left;\n  /* overflow: hidden; */ }\n\n.qubely-carousel .qubely-carousel-extended-item.active,\n.qubely-carousel .qubely-carousel-extended-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel .qubely-carousel-extended-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control,\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: relative;\n  height: 20px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n  display: inline-block;\n  height: 40px;\n  width: 40px;\n  padding: 10px;\n  border: 1px solid #ababab;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 100px;\n  background: rgba(255, 255, 255, 0.4); }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: absolute;\n  bottom: 50px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel .qubely-carousel-extended-dots ul {\n  margin: -4px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: rgba(218, 92, 92, 0.4);\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li.active {\n  width: 80px; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n  background: #ffffff;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-extended-item:not(.active) {\n  opacity: 0.1; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {\n  opacity: .35; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {\n  opacity: 1; }\n\n.layout-6 .qubely-image-slider-text {\n  position: absolute;\n  padding: 30px;\n  width: 100%;\n  bottom: 0; }\n", ""]);
 
 
 
@@ -802,9 +802,7 @@ var __ = wp.i18n.__;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    TextControl = _wp$components.TextControl;
+var PanelBody = wp.components.PanelBody;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
@@ -886,7 +884,9 @@ var Edit = function (_Component) {
 			});
 		};
 
-		_this.renderImageSlider = function (avatar, index) {
+		_this.renderAvatar = function (avatar, index) {
+			var avatarAlt = _this.props.attributes.avatarAlt;
+
 			return React.createElement(MediaUpload, {
 				onSelect: function onSelect(val) {
 					return _this.updateAtrributes('avatar', val, index);
@@ -899,55 +899,80 @@ var Edit = function (_Component) {
 					return React.createElement(
 						'div',
 						{ className: 'qubely-single-img qubely-backend' },
-						avatar && avatar.url ? React.createElement('img', { onClick: open, className: 'qubely-team-avatar', src: avatar.url }) : React.createElement(
+						avatar && avatar.url ? React.createElement('img', { onClick: open, className: 'qubely-image-avatar', src: avatar.url, alt: avatarAlt }) : React.createElement(
 							'div',
-							{ onClick: open, className: 'qubely-image-placeholder qubely-team-avatar' },
-							React.createElement('i', { className: 'far fa-image' })
+							{ onClick: open, className: 'qubely-image-placeholder qubely-image-avatar' },
+							React.createElement('i', { className: 'far fa-user' })
 						)
 					);
 				}
 			});
 		};
 
+		_this.renderMessage = function (message, index) {
+			return React.createElement(RichText, {
+				key: 'editable',
+				placeholder: __('Add Message...'),
+				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
+				keepPlaceholderOnFocus: true,
+				onChange: function onChange(value) {
+					return _this.updateAtrributes('message', value, index);
+				},
+				value: message
+			});
+		};
+
 		_this.renderAuthorInfo = function (item, index) {
 			var _this$props$attribute = _this.props.attributes,
 			    layout = _this$props$attribute.layout,
-			    showImageSlider = _this$props$attribute.showImageSlider;
+			    showAvatar = _this$props$attribute.showAvatar,
+			    avatarLayout = _this$props$attribute.avatarLayout;
 			var author = item.author,
 			    designation = item.designation,
-			    avatar = item.avatar;
+			    avatar = item.avatar,
+			    message = item.message;
 
+			// console.log('DD', designation)
 
 			return React.createElement(
 				'div',
-				{ className: 'qubely-team-author' },
-				showImageSlider && _this.renderImageSlider(avatar, index) /* Author avater callback function */,
+				{ className: 'qubely-image-slider' },
+				_this.renderAvatar(avatar, index),
 				layout == 6 && React.createElement(
 					'div',
-					{ className: 'qubely-team-author-info' },
+					{ className: 'qubely-image-slider-text' },
 					React.createElement(
 						'div',
-						{ className: 'layout-' + layout },
+						{ className: 'qubely-image-content' },
 						React.createElement(
 							'div',
-							{ className: 'qubely-team-author-name' },
+							{ className: 'qubely-image-title' },
 							_this.renderName(author, index)
 						),
 						React.createElement(
 							'div',
-							{ className: 'qubely-team-author-designation' },
+							{ className: 'qubely-image-subtitle' },
 							_this.renderDesignation(designation, index)
+						),
+						React.createElement(
+							'span',
+							{ className: 'qubely-image-content' },
+							_this.renderMessage(message, index),
+							' '
 						)
 					)
 				)
 			);
 		};
 
-		_this.renderImagecarousels = function () {
+		_this.renderImages = function () {
 			var _this$props$attribute2 = _this.props.attributes,
-			    items = _this$props$attribute2.items,
 			    layout = _this$props$attribute2.layout,
-			    carouselItems = _this$props$attribute2.carouselItems;
+			    items = _this$props$attribute2.items,
+			    showRatings = _this$props$attribute2.showRatings,
+			    carouselItems = _this$props$attribute2.carouselItems,
+			    quoteIcon = _this$props$attribute2.quoteIcon,
+			    ratings = _this$props$attribute2.ratings;
 
 			return carouselItems.map(function (item, index) {
 				return React.createElement(
@@ -955,12 +980,8 @@ var Edit = function (_Component) {
 					{ key: index, className: 'qubely-carousel-item ' + (index < items[_this.parseResponsiveViewPort()] ? 'active' : '') },
 					React.createElement(
 						'div',
-						{ className: 'qubely-team-carousel-item' },
-						React.createElement(
-							'div',
-							{ className: 'qubely-team-' + layout },
-							_this.renderAuthorInfo(item, index)
-						)
+						{ className: 'qubely-image-item layout-' + layout },
+						_this.renderAuthorInfo(item, index)
 					)
 				);
 			});
@@ -1031,17 +1052,6 @@ var Edit = function (_Component) {
 				setAttributes({ uniqueId: _client });
 			}
 		}
-		/** 
-   *  Author ImageSlider */
-
-
-		/** 
-   *  Author information. */
-
-
-		/** 
-   *  Render author informations. */
-
 	}, {
 		key: 'render',
 		value: function render() {
@@ -1054,6 +1064,7 @@ var Edit = function (_Component) {
 			    _props2$attributes = _props2.attributes,
 			    uniqueId = _props2$attributes.uniqueId,
 			    items = _props2$attributes.items,
+			    itemthree = _props2$attributes.itemthree,
 			    autoPlay = _props2$attributes.autoPlay,
 			    interval = _props2$attributes.interval,
 			    speed = _props2$attributes.speed,
@@ -1061,18 +1072,14 @@ var Edit = function (_Component) {
 			    carouselItems = _props2$attributes.carouselItems,
 			    dragable = _props2$attributes.dragable,
 			    layout = _props2$attributes.layout,
+			    messageSpacingTop = _props2$attributes.messageSpacingTop,
+			    messageSpacingBottom = _props2$attributes.messageSpacingBottom,
 			    nameColor = _props2$attributes.nameColor,
 			    alignment = _props2$attributes.alignment,
 			    designationColor = _props2$attributes.designationColor,
-			    showImageSlider = _props2$attributes.showImageSlider,
-			    avatarBorderRadius = _props2$attributes.avatarBorderRadius,
-			    avatarSize = _props2$attributes.avatarSize,
-			    avatarWidth = _props2$attributes.avatarWidth,
-			    avatarHeight = _props2$attributes.avatarHeight,
-			    avatarBorder = _props2$attributes.avatarBorder,
-			    avatarSpacing = _props2$attributes.avatarSpacing,
 			    nameTypo = _props2$attributes.nameTypo,
 			    nameSpacing = _props2$attributes.nameSpacing,
+			    messageTypo = _props2$attributes.messageTypo,
 			    designationTypo = _props2$attributes.designationTypo,
 			    bgPadding = _props2$attributes.bgPadding,
 			    textColor = _props2$attributes.textColor,
@@ -1081,7 +1088,12 @@ var Edit = function (_Component) {
 			    border = _props2$attributes.border,
 			    boxShadow = _props2$attributes.boxShadow,
 			    boxShadowHover = _props2$attributes.boxShadowHover,
+			    sliderNumber = _props2$attributes.sliderNumber,
+			    itemPerSlides = _props2$attributes.itemPerSlides,
 			    sliderItemsSpace = _props2$attributes.sliderItemsSpace,
+			    infiniteLoop = _props2$attributes.infiniteLoop,
+			    isCentered = _props2$attributes.isCentered,
+			    notCentered = _props2$attributes.notCentered,
 			    activeFade = _props2$attributes.activeFade,
 			    arrowStyle = _props2$attributes.arrowStyle,
 			    arrowPosition = _props2$attributes.arrowPosition,
@@ -1103,17 +1115,14 @@ var Edit = function (_Component) {
 			    dotColor = _props2$attributes.dotColor,
 			    dotActiveColor = _props2$attributes.dotActiveColor,
 			    horizontalScroll = _props2$attributes.horizontalScroll;
-
-
-			var isCentered = layout == 3 ? 'isCentered' : '';
-
 			var device = this.state.device;
+
 
 			var carouselSettings = {
 				autoplay: autoPlay,
-				items: items,
+				items: layout != 2 ? items : itemthree,
 				margin: 10,
-				center: isCentered,
+				center: layout == 3 || layout == 4 ? isCentered : notCentered,
 				dots: dots,
 				dot_indicator: dotIndicator,
 				nav: nav,
@@ -1123,13 +1132,13 @@ var Edit = function (_Component) {
 				interval: interval,
 				responsive: [{
 					viewport: 1170,
-					items: items.md
+					items: layout != 2 ? items.md : itemthree.md
 				}, {
 					viewport: 980,
-					items: items.sm
+					items: layout != 2 ? items.sm : itemthree.sm
 				}, {
 					viewport: 580,
-					items: items.xs
+					items: layout != 2 ? items.xs : itemthree.xs
 				}]
 			};
 
@@ -1145,11 +1154,12 @@ var Edit = function (_Component) {
 					{ key: 'inspector' },
 					React.createElement(
 						PanelBody,
-						{ title: 'Image Carousel Layouts', initialOpen: false },
-						React.createElement(Styles, { value: layout, onChange: function onChange(val) {
+						{ title: 'Image Carousel', initialOpen: false },
+						React.createElement(Styles, {
+							options: [{ value: 1, svg: _icons2.default.imagecarousel_1, label: __('Layout 1') }, { value: 2, svg: _icons2.default.imagecarousel_2, label: __('Layout 2') }, { value: 3, svg: _icons2.default.imagecarousel_3, label: __('Layout 3') }, { value: 4, svg: _icons2.default.imagecarousel_4, label: __('Layout 4') }, { value: 5, svg: _icons2.default.imagecarousel_5, label: __('Layout 5') }, { value: 6, svg: _icons2.default.imagecarousel_6, label: __('Layout 6') }],
+							value: layout, onChange: function onChange(val) {
 								return setAttributes({ layout: val });
-							},
-							options: [{ value: 1, svg: _icons2.default.imagecarousel_1, label: __('Layout 1') }, { value: 2, svg: _icons2.default.imagecarousel_2, label: __('Layout 2') }, { value: 3, svg: _icons2.default.imagecarousel_3, label: __('Layout 3') }, { value: 4, svg: _icons2.default.imagecarousel_4, label: __('Layout 4') }, { value: 5, svg: _icons2.default.imagecarousel_5, label: __('Layout 5') }, { value: 6, svg: _icons2.default.imagecarousel_6, label: __('Layout 6') }]
+							}
 						}),
 						React.createElement(Alignment, (_React$createElement = {
 							label: __('Alignment'),
@@ -1170,17 +1180,12 @@ var Edit = function (_Component) {
 								return _this2.setCarouselLength(val);
 							}
 						}),
-						React.createElement(Range, (_React$createElement2 = {
+						layout == 2 && React.createElement(Range, (_React$createElement2 = {
 							label: __('Number of Columns'),
-							min: 1,
-							max: 20,
-							device: device,
-							responsive: true,
-							value: items,
-							onChange: function onChange(val) {
-								return setAttributes({ items: val });
-							}
-						}, _defineProperty(_React$createElement2, 'device', this.state.device), _defineProperty(_React$createElement2, 'onDeviceChange', function onDeviceChange(value) {
+							min: 1, max: 20, responsive: true, device: device
+						}, _defineProperty(_React$createElement2, 'device', this.state.device), _defineProperty(_React$createElement2, 'value', layout != 2 ? items : itemthree), _defineProperty(_React$createElement2, 'onChange', function onChange(value) {
+							return setAttributes(layout != 2 ? { items: value } : { itemthree: value });
+						}), _defineProperty(_React$createElement2, 'onDeviceChange', function onDeviceChange(value) {
 							return _this2.setState({ device: value });
 						}), _React$createElement2)),
 						React.createElement(Range, {
@@ -1218,7 +1223,14 @@ var Edit = function (_Component) {
 						React.createElement(Toggle, { label: __('Draggable'), value: dragable, onChange: function onChange(value) {
 								return setAttributes({ dragable: value });
 							} }),
-						React.createElement(Toggle, { label: __('Fade Deactivated Items'), value: activeFade, onChange: function onChange(value) {
+						React.createElement(Toggle, {
+							label: __('Centered Slides'),
+							value: layout == 3 || layout == 4 ? isCentered : notCentered,
+							onChange: function onChange(value) {
+								return setAttributes(layout == 3 || layout == 4 ? { isCentered: value } : { notCentered: value });
+							}
+						}),
+						isCentered && React.createElement(Toggle, { label: __('Fade Deactivated Items'), value: activeFade, onChange: function onChange(value) {
 								return setAttributes({ activeFade: value });
 							} })
 					),
@@ -1404,107 +1416,49 @@ var Edit = function (_Component) {
 							)
 						)
 					),
-					React.createElement(
-						PanelBody,
-						{ title: __('Image Slider'), initialOpen: false },
-						React.createElement(Toggle, { label: __('Show ImageSlider'), value: showImageSlider, onChange: function onChange(val) {
-								return setAttributes({ showImageSlider: val });
-							} }),
-						showImageSlider && React.createElement(
-							Fragment,
-							null,
-							React.createElement(RadioAdvanced, {
-								label: __('ImageSlider Size'),
-								options: [{ label: 'S', value: '48px', title: 'Small' }, { label: 'M', value: '64px', title: 'Medium' }, { label: 'L', value: '96px', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
-								value: avatarSize,
-								onChange: function onChange(value) {
-									return setAttributes({ avatarSize: value });
-								}
-							}),
-							avatarSize == 'custom' && React.createElement(
-								Fragment,
-								null,
-								React.createElement(Range, {
-									label: __('ImageSlider Width'),
-									value: avatarWidth,
-									onChange: function onChange(value) {
-										return setAttributes({ avatarWidth: value });
-									},
-									unit: ['px', 'em', '%'],
-									max: 300, min: 0, responsive: true,
-									device: device,
-									onDeviceChange: function onDeviceChange(value) {
-										return _this2.setState({ device: value });
-									}
-								}),
-								React.createElement(Range, {
-									label: __('ImageSlider Height'),
-									value: avatarHeight,
-									onChange: function onChange(value) {
-										return setAttributes({ avatarHeight: value });
-									},
-									unit: ['px', 'em', '%'],
-									max: 300,
-									min: 0,
-									responsive: true,
-									device: device,
-									onDeviceChange: function onDeviceChange(value) {
-										return _this2.setState({ device: value });
-									}
-								})
-							),
-							React.createElement(
-								Fragment,
-								null,
-								React.createElement(BorderRadius, {
-									label: __('Radius'),
-									value: avatarBorderRadius, onChange: function onChange(value) {
-										return setAttributes({ avatarBorderRadius: value });
-									},
-									min: 0,
-									max: 100,
-									unit: ['px', 'em', '%'],
-									responsive: true,
-									device: device,
-									onDeviceChange: function onDeviceChange(value) {
-										return _this2.setState({ device: value });
-									} }),
-								React.createElement(Border, {
-									label: __('Border'),
-									value: avatarBorder,
-									onChange: function onChange(value) {
-										return setAttributes({ avatarBorder: value });
-									},
-									unit: ['px', 'em', '%'],
-									responsive: true,
-									device: device,
-									onDeviceChange: function onDeviceChange(value) {
-										return _this2.setState({ device: value });
-									}
-								}),
-								React.createElement(Range, {
-									label: __('Spacing'),
-									value: avatarSpacing,
-									onChange: function onChange(value) {
-										return setAttributes({ avatarSpacing: value });
-									},
-									min: 0,
-									max: 200,
-									unit: ['px', 'em', '%'],
-									responsive: true,
-									device: device,
-									onDeviceChange: function onDeviceChange(value) {
-										return _this2.setState({ device: value });
-									} })
-							)
-						)
-					),
 					layout == 6 && React.createElement(
 						Fragment,
 						null,
 						React.createElement(
 							PanelBody,
-							{ title: __('Name'), initialOpen: false },
+							{ title: __('Subtitle'), initialOpen: false },
+							React.createElement(Range, {
+								label: __('Top Spacing'),
+								value: messageSpacingTop, onChange: function onChange(value) {
+									return setAttributes({ messageSpacingTop: value });
+								},
+								unit: ['px', 'em', '%'], max: 300,
+								min: 0,
+								responsive: true,
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(Range, {
+								label: __('Bottom Spacing'),
+								value: messageSpacingBottom, onChange: function onChange(value) {
+									return setAttributes({ messageSpacingBottom: value });
+								},
+								unit: ['px', 'em', '%'], max: 300,
+								min: 0,
+								responsive: true,
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(Typography, {
+								label: __('Typography'),
+								value: messageTypo,
+								onChange: function onChange(value) {
+									return setAttributes({ messageTypo: value });
+								},
+								device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} })
+						),
+						React.createElement(
+							PanelBody,
+							{ title: __('Title'), initialOpen: false },
 							React.createElement(Range, {
 								label: __('Spacing'),
 								value: nameSpacing, onChange: function onChange(value) {
@@ -1535,7 +1489,7 @@ var Edit = function (_Component) {
 						),
 						React.createElement(
 							PanelBody,
-							{ title: __('Designation'), initialOpen: false },
+							{ title: __('Content Text'), initialOpen: false },
 							React.createElement(Color, {
 								label: __('Color'),
 								value: designationColor, onChange: function onChange(value) {
@@ -1633,11 +1587,11 @@ var Edit = function (_Component) {
 					{ className: 'qubely-block-' + uniqueId },
 					React.createElement(
 						'div',
-						{ className: 'qubely-block-team-carousel qubely-layout-style' },
+						{ className: 'qubely-block-image-carousel qubely-layout-' + layout },
 						React.createElement(
 							Carousel,
 							{ options: carouselSettings },
-							this.renderImagecarousels()
+							this.renderImages()
 						)
 					)
 				)
@@ -1676,7 +1630,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Component = wp.element.Component;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
 var RichText = wp.editor.RichText;
 var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
 
@@ -1694,80 +1650,100 @@ var Save = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderImageSlider = function (avatar, avatarAlt) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderAvatar = function (avatar, avatarAlt) {
       return React.createElement(
         "div",
         { className: "qubely-single-img" },
-        avatar.url != undefined ? React.createElement("img", { className: "qubely-team-avatar", src: avatar.url, alt: avatarAlt }) : React.createElement(
+        avatar.url != undefined ? React.createElement("img", { className: "qubely-image-avatar", src: avatar.url, alt: avatarAlt }) : React.createElement(
           "div",
-          { className: "qubely-image-placeholder qubely-team-avatar" },
+          { className: "qubely-image-placeholder qubely-image-avatar" },
           React.createElement("i", { className: "far fa-user" })
         )
       );
-    }, _this.renderAuthorInfo = function (item, index) {
+    }, _this.renderAuthorInfo = function (item) {
       var _this$props$attribute = _this.props.attributes,
           layout = _this$props$attribute.layout,
-          showImageSlider = _this$props$attribute.showImageSlider;
+          showAvatar = _this$props$attribute.showAvatar,
+          avatarAlt = _this$props$attribute.avatarAlt,
+          avatarLayout = _this$props$attribute.avatarLayout;
       var author = item.author,
           designation = item.designation,
           avatar = item.avatar;
 
+
       return React.createElement(
         "div",
-        { className: "qubely-team-author" },
-        showImageSlider && _this.renderImageSlider(avatar, index) /* Author avater callback function */,
+        { className: "qubely-image-author" },
+        layout === 3 && showAvatar && _this.renderAvatar(avatar, avatarAlt),
         React.createElement(
           "div",
-          { className: "qubely-team-author-info" },
+          { className: showAvatar ? "qubely-image-avatar-layout-" + avatarLayout : "" },
+          layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top') && _this.renderAvatar(avatar, avatarAlt),
           React.createElement(
             "div",
-            { className: "layout-" + layout },
+            { className: "qubely-image-author-info" },
             React.createElement(
               "div",
-              { className: "qubely-team-author-name" },
+              { className: "qubely-image-author-name" },
               React.createElement(RichText.Content, { value: author })
             ),
             React.createElement(
               "div",
-              { className: "qubely-team-author-designation" },
+              { className: "qubely-image-author-designation" },
               React.createElement(RichText.Content, { value: designation })
             )
-          )
+          ),
+          layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom') && _this.renderAvatar(avatar, avatarAlt)
         )
       );
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
-  /** 
-  *  Author ImageSlider*/
-
-
-  /** 
-  *  Author information. */
-
 
   _createClass(Save, [{
-    key: "renderImagecarousel",
-
-    /** 
-    *  Render Imagecarousel informations. */
-    value: function renderImagecarousel() {
+    key: "renderImage",
+    value: function renderImage() {
       var _this2 = this;
 
       var _props$attributes = this.props.attributes,
           carouselItems = _props$attributes.carouselItems,
-          layout = _props$attributes.layout;
+          showRatings = _props$attributes.showRatings,
+          layout = _props$attributes.layout,
+          ratings = _props$attributes.ratings,
+          quoteIcon = _props$attributes.quoteIcon;
+
 
       return carouselItems.map(function (item, index) {
+        var message = item.message;
+
         return React.createElement(
           "div",
           { key: index, className: "qubely-carousel-extended-item" + (index === 0 ? ' active' : '') },
           React.createElement(
             "div",
-            { className: "qubely-team-carousel-item" },
+            { className: "qubely-image-item layout-" + layout },
+            layout == 2 && _this2.renderAuthorInfo(item),
+            quoteIcon && layout == 1 && React.createElement(
+              "div",
+              { className: "qubely-image-quote" },
+              React.createElement("span", { className: "qubely-quote-icon " + quoteIcon })
+            ),
             React.createElement(
               "div",
-              { className: "qubely-team-" + layout },
-              _this2.renderAuthorInfo(item)
+              { className: "qubely-image-carousel-content-wrapper" },
+              showRatings && ratings > 0 && layout !== 1 && React.createElement("div", { className: "qubely-image-ratings", "data-qubelyrating": ratings }),
+              React.createElement(
+                "div",
+                { className: "qubely-image-content" },
+                " ",
+                React.createElement(RichText.Content, { value: message })
+              ),
+              showRatings && ratings > 0 && layout == 1 && React.createElement("div", { className: "qubely-image-ratings", "data-qubelyrating": ratings })
+            ),
+            layout !== 2 && _this2.renderAuthorInfo(item),
+            quoteIcon && layout == 2 && React.createElement(
+              "div",
+              { className: "qubely-image-quote qubely-position-bottom" },
+              React.createElement("span", { className: "qubely-quote-icon " + quoteIcon })
             )
           )
         );
@@ -1778,6 +1754,7 @@ var Save = function (_Component) {
     value: function render() {
       var _props$attributes2 = this.props.attributes,
           uniqueId = _props$attributes2.uniqueId,
+          layout = _props$attributes2.layout,
           items = _props$attributes2.items,
           autoPlay = _props$attributes2.autoPlay,
           arrowStyle = _props$attributes2.arrowStyle,
@@ -1822,11 +1799,11 @@ var Save = function (_Component) {
         _extends({ className: "qubely-block-" + uniqueId }, animationAttr(animation)),
         React.createElement(
           "div",
-          { className: "qubely-block-team-carousel qubely-layout-style" },
+          { className: "qubely-block-image-carousel qubely-layout-" + layout },
           React.createElement(
             "div",
             { className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? ' is-faded' : ''), "data-options": options, id: "qubelyCarousel1" },
-            this.renderImagecarousel()
+            this.renderImage()
           )
         )
       );
@@ -1874,18 +1851,26 @@ registerBlockType('qubely/imagecarousel', {
 	keywords: [__('Image'), __('Carousel')],
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
-		items: { type: 'object', default: { md: '1', sm: '1', xs: '1' } },
-		speed: { type: 'number', default: 800 },
-		nav: { type: 'boolean', default: true },
-		dots: { type: 'boolean', default: true },
-		interval: { type: 'number', default: 3000 },
-		dragable: { type: 'boolean', default: true },
+		layout: { type: 'number', default: 1 },
+		items: {
+			type: 'object',
+			default: { md: '1', sm: '1', xs: '1' }
+		},
+		itemthree: {
+			type: 'object',
+			default: { md: '3', sm: '3', xs: '1' }
+		},
 		autoPlay: { type: 'boolean', default: false },
+		dots: { type: 'boolean', default: true },
+		dragable: { type: 'boolean', default: true },
 		dotIndicator: { type: 'boolean', default: true },
+		nav: { type: 'boolean', default: true },
+		interval: { type: 'number', default: 3000 },
+		speed: { type: 'number', default: 800 },
 		carouselItems: {
 			type: 'array',
 			default: [{
-				author: 'James Moriarty',
+				author: 'Word Camp 2019',
 				designation: 'Web WordPress Developer',
 				message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.”',
 				ratings: '5',
@@ -1926,12 +1911,7 @@ registerBlockType('qubely/imagecarousel', {
 		/*---------------------------------------------------
   * 	Image Layouts:  common/style attributes
   * --------------------------------------------------- */
-		layout: { type: 'number', default: 1 },
-		alignment: {
-			type: 'object',
-			default: { md: 'left' },
-			style: [{ selector: '{{QUBELY}} .qubely-team-author-info {text-align: {{alignment}};} {{QUBELY}} .qubely-single-img {text-align: {{alignment}};}' }]
-		},
+		alignment: { type: 'object', default: { md: 'center' }, style: [{ selector: '{{QUBELY}} .qubely-image-item {text-align: {{alignment}};}' }] },
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
 
 		// Number of slider.
@@ -1948,7 +1928,8 @@ registerBlockType('qubely/imagecarousel', {
 		},
 		// Infinite Loop
 		infiniteLoop: { type: 'boolean', default: true },
-		isCentered: { type: 'boolean', default: false },
+		isCentered: { type: 'boolean', default: true },
+		notCentered: { type: 'boolean', default: false },
 		activeFade: { type: 'boolean', default: false },
 
 		/*------------------------------------
@@ -1960,6 +1941,7 @@ registerBlockType('qubely/imagecarousel', {
 			default: { md: 0, unit: '%' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} }  ' }]
 		},
+		// arrowPosition: {type: 'string', default: 'center' },
 		arrowPosition: {
 			type: 'object',
 			default: { md: 49, unit: '%' },
@@ -1989,7 +1971,7 @@ registerBlockType('qubely/imagecarousel', {
 		arrowColor: {
 			type: 'string',
 			default: '#1066CC',
-			style: [{ selector: '{{QUBELY}} .qubely-block-team-carousel .nav-control .dashicons { color:{{arrowColor}}; }' }]
+			style: [{ selector: '{{QUBELY}} .qubely-block-image-carousel .nav-control .dashicons { color:{{arrowColor}}; }' }]
 		},
 		// Arrow background color
 		arrowShapeColor: {
@@ -2015,7 +1997,7 @@ registerBlockType('qubely/imagecarousel', {
 		// Arroe Border Hover Color.
 		arrowBorderHoverColor: {
 			type: 'object',
-			default: '#3373dc',
+			default: { openTy: 0, color: '#3373dc', width: { bottom: '1', left: '1', right: '1', top: '1', unit: 'px' } },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover' }]
 		},
 		// Dot Navigation.
@@ -2045,98 +2027,56 @@ registerBlockType('qubely/imagecarousel', {
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator' }]
 		},
 		//Name
-		nameColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-team-author-name { color:{{nameColor}}; }' }] },
-		nameTypo: { type: 'object', default: { openTypography: 1, weight: 700, size: { md: 16, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-team-author-name' }] },
-		nameSpacing: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-team-author-name {margin-bottom: {{nameSpacing}};}' }] },
+		nameColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-title { color:{{nameColor}}; }' }] },
+		nameTypo: { type: 'object', default: { openTypography: 1, weight: 700, size: { md: 16, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-image-title' }] },
+		nameSpacing: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-image-title {margin-bottom: {{nameSpacing}};}' }] },
 
 		//Designation
-		designationColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-team-author-designation { color:{{designationColor}}; }' }] },
-		designationTypo: { type: 'object', default: { openTypography: 1, size: { md: 14, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-team-author-designation' }] },
+		designationColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-subtitle { color:{{designationColor}}; }' }] },
+		designationTypo: { type: 'object', default: { openTypography: 1, size: { md: 14, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-image-subtitle' }] },
 
 		/*------------------------------------
-  * 			ImageSlider 
+  * 			Messsage 
   * ------------------------------------ */
-		showImageSlider: { type: 'boolean', default: true },
-		avatarAlt: { type: 'string', default: '' },
-		avatarSize: {
-			type: 'string',
-			default: '',
-			style: [{ selector: '{{QUBELY}} .qubely-team-avatar { width: {{avatarSize}}; height: {{avatarSize}}; font-size: {{avatarSize}}; }' }]
-		},
-		avatarWidth: {
-			type: 'object',
-			default: { md: 100, unit: '%' },
-			style: [{ condition: [{ key: 'avatarSize', relation: '==', value: 'custom' }],
-				selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}}; font-size: {{avatarWidth}};}' }]
-		},
-		avatarHeight: {
-			type: 'object',
-			default: { md: 100, unit: '%' },
-			style: [{
-				condition: [{ key: 'avatarSize', relation: '==', value: 'custom' }],
-				selector: '{{QUBELY}} .qubely-team-avatar {height: {{avatarHeight}};}'
-			}]
-		},
-		avatarSpacing: {
+		messagePosition: { type: 'string', default: 'top' },
+		messageTypo: {
 			type: 'object',
 			default: {
-				md: 20,
-				unit: 'px'
+				openTypography: 1,
+				size: { md: 16, unit: 'px' }
 			},
-			style: [{
-				condition: [{ key: 'avatarLayout', relation: '==', value: 'left' }],
-				selector: '{{QUBELY}} .qubely-team-avatar {margin-right: {{avatarSpacing}}; }'
-			}, {
-				condition: [{ key: 'avatarLayout', relation: '==', value: 'right' }],
-				selector: '{{QUBELY}} .qubely-team-avatar {margin: 0px 0px 0px {{avatarSpacing}};}'
-			}, {
-				condition: [{ key: 'avatarLayout', relation: '==', value: 'top' }],
-				selector: '{{QUBELY}} .qubely-team-avatar {margin: 0px 0px {{avatarSpacing}};}'
-			}, {
-				condition: [{ key: 'avatarLayout', relation: '==', value: 'bottom' }],
-				selector: '{{QUBELY}} .qubely-team-avatar{margin: {{avatarSpacing}} 0px 0px;}'
-			}]
+			style: [{ selector: '{{QUBELY}} .qubely-image-content' }]
 		},
-		avatarBorderRadius: {
-			type: 'object',
-			default: {
-				openBorderRadius: 1,
-				radiusType: 'global',
-				global: { md: '' },
-				unit: '%'
-			},
-			style: [{ selector: '{{QUBELY}} .qubely-team-avatar' }]
-		},
-		avatarBorder: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-team-avatar' }] },
+		messageSpacingTop: { type: 'object', default: { md: 0, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-image-content {margin-top: {{messageSpacingTop}};}' }] },
+		messageSpacingBottom: { type: 'object', default: { md: 5, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-image-content {margin-bottom: {{messageSpacingBottom}};}' }] },
 
 		/* ------------------------------------
   * 			Design 
   * ------------------------------------- */
-		textColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-team-author-info { color:{{textColor}}; }' }] },
-		// Background Color
-		bgColor: {
-			type: 'string',
-			default: '',
-			style: [{
-				selector: '{{QUBELY}} .qubely-team-author-info {background-color: {{bgColor}};} {{QUBELY}} .qubely-tesitmonial-item.layout-2 {background-color: {{bgColor}};}'
-			}, {
-				condition: [{ key: 'layout', relation: '==', value: '3' }],
-				selector: '{{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper {background-color: {{bgColor}};} {{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
-			}]
-		},
-		// Content padding.
+		textColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-carousel-content-wrapper { color:{{textColor}}; }' }] },
 		bgPadding: {
 			type: 'object',
 			default: {},
 			style: [{
 				condition: [{ key: 'layout', relation: '==', value: '1' }],
-				selector: '{{QUBELY}} .layout-1'
+				selector: '{{QUBELY}} .qubely-layout-1 .qubely-image-item'
 			}, {
 				condition: [{ key: 'layout', relation: '==', value: '2' }],
-				selector: '{{QUBELY}} .qubely-layout-2 .qubely-tesitmonial-item, {{QUBELY}} .qubely-team-2 .qubely-team-author-info'
+				selector: '{{QUBELY}} .qubely-layout-2 .qubely-image-item'
 			}, {
 				condition: [{ key: 'layout', relation: '==', value: '3' }],
-				selector: '{{QUBELY}} .qubely-team-3 .qubely-team-author-info'
+				selector: '{{QUBELY}} .qubely-layout-3 .qubely-image-carousel-content-wrapper'
+			}]
+		},
+		// Background Color
+		bgColor: {
+			type: 'string',
+			default: '',
+			style: [{
+				selector: '{{QUBELY}} .qubely-image-item.layout-1 {background-color: {{bgColor}};} {{QUBELY}} .qubely-image-item.layout-2 {background-color: {{bgColor}};}'
+			}, {
+				condition: [{ key: 'layout', relation: '==', value: '3' }],
+				selector: '{{QUBELY}} .layout-3 .qubely-image-carousel-content-wrapper {background-color: {{bgColor}};} {{QUBELY}} .layout-3 .qubely-image-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
 			}]
 		},
 		// Border radius
@@ -2145,125 +2085,26 @@ registerBlockType('qubely/imagecarousel', {
 			default: {
 				openBorderRadius: 1,
 				radiusType: 'global',
-				global: { md: 5 },
+				global: { md: 20 },
 				unit: 'px'
 			},
-			style: [{ selector: '{{QUBELY}} .qubely-team-carousel-item' }]
+			style: [{ selector: '{{QUBELY}} .qubely-layout-1 .qubely-image-item, {{QUBELY}} .qubely-layout-2 .qubely-image-item, {{QUBELY}} .qubely-layout-3 .qubely-image-carousel-content-wrapper' }]
 		},
 		border: {
 			type: 'object',
 			default: { openTy: 0, color: '#3373dc', width: { bottom: '1', left: '1', right: '1', top: '1', unit: 'px' } },
-			style: [{ selector: '{{QUBELY}} .qubely-team-carousel-item' }]
+			style: [{ selector: '{{QUBELY}} .qubely-image-item.layout-1, {{QUBELY}} .qubely-image-item.layout-2, {{QUBELY}} .qubely-image-item.layout-3 .qubely-image-carousel-content-wrapper' }]
 		},
 		boxShadow: {
 			type: 'object', default: {},
-			style: [{ selector: '{{QUBELY}} .qubely-team-carousel-itemAA' }]
+			style: [{ selector: '{{QUBELY}} .qubely-image-item.layout-1, {{QUBELY}} .qubely-image-item.layout-2, {{QUBELY}} .qubely-image-item.layout-3 .qubely-image-carousel-content-wrapper' }]
 		},
 		boxShadowHover: {
 			type: 'object', default: {},
-			style: [{ selector: '{{QUBELY}} .qubely-team-carousel-itemAA:hover' }]
+			style: [{ selector: '{{QUBELY}} .qubely-image-item.layout-1:hover, {{QUBELY}} .qubely-image-item.layout-2:hover, {{QUBELY}} .qubely-image-item.layout-3 .qubely-image-carousel-content-wrapper:hover' }]
 		},
-		showGlobalSettings: { type: 'boolean', default: true },
-
-		/**
-   *  Social Share */
-		showSociallinks: { type: 'boolean', default: true },
-		facebook: { type: 'string', default: 'https://facebook.com/themeum' },
-		twitter: { type: 'string', default: 'https://twitter.com/themeum' },
-		instagram: { type: 'string', default: '' },
-		linkedin: { type: 'string', default: '' },
-		youtube: { type: 'string', default: 'https://youtube.com/user/themeumwp' },
-		github: { type: 'string', default: '' },
-		flickr: { type: 'string', default: '' },
-		pinterest: { type: 'string', default: '' },
-		dribbble: { type: 'string', default: '' },
-		behance: { type: 'string', default: '' },
-		iconStyle: { type: 'string', default: 'normal' },
-		iconUseDefaultStyle: { type: 'boolean', default: true },
-		iconSize: {
-			type: 'string', default: '14px',
-			style: [{
-				condition: [{ key: 'iconSize', relation: '!=', value: 'custom' }],
-				selector: '{{QUBELY}} .qubely-team-social-links>a {font-size: {{iconSize}};}'
-			}]
-		},
-		iconSizeCustom: {
-			type: 'object', default: { md: 18, unit: 'px' },
-			style: [{
-				condition: [{ key: 'iconSize', relation: '==', value: 'custom' }],
-				selector: '{{QUBELY}} .qubely-team-social-links>a {font-size: {{iconSizeCustom}};}'
-			}]
-		},
-		iconGutter: {
-			type: 'object', default: { md: 10, unit: 'px' },
-			style: [{
-				selector: '{{QUBELY}} .qubely-team-social-links > a {margin: 0 calc({{iconGutter}}/2);}'
-			}]
-		},
-		iconSpacing: {
-			type: 'object', default: {},
-			style: [{
-				selector: '{{QUBELY}} .qubely-team-social-links {margin-top: {{iconSpacing}};}'
-			}]
-		},
-
-		iconBorderRadius: {
-			type: 'object',
-			default: {
-				openBorderRadius: 1,
-				radiusType: 'global',
-				global: { md: 4 },
-				unit: 'px'
-			},
-			style: [{
-				condition: [{ key: 'iconStyle', relation: '==', value: 'fill' }],
-				selector: '{{QUBELY}} .qubely-team-social-links>a'
-			}]
-		},
-
-		iconColor: {
-			type: 'string', default: '',
-			style: [{
-				condition: [{ key: 'iconUseDefaultStyle', relation: '==', value: false }],
-				selector: '{{QUBELY}} .qubely-team-social-links>a {color: {{iconColor}};}'
-			}]
-		},
-		iconColorHover: {
-			type: 'string', default: '',
-			style: [{
-				condition: [{ key: 'iconUseDefaultStyle', relation: '==', value: false }],
-				selector: '{{QUBELY}} .qubely-team-social-links>a:hover {color: {{iconColorHover}};}'
-			}]
-		},
-		iconBackground: {
-			type: 'string', default: '',
-			style: [{
-				condition: [{ key: 'iconUseDefaultStyle', relation: '==', value: false }, { key: 'iconStyle', relation: '==', value: 'fill' }],
-				selector: '{{QUBELY}} .qubely-team-social-links>a {background-color: {{iconBackground}};}'
-			}]
-		},
-		iconBackgroundHover: {
-			type: 'string', default: '',
-			style: [{
-				condition: [{ key: 'iconUseDefaultStyle', relation: '==', value: false }, { key: 'iconStyle', relation: '==', value: 'fill' }],
-				selector: '{{QUBELY}} .qubely-team-social-links>a:hover {background-color: {{iconBackgroundHover}};}'
-			}]
-		},
-		iconBorder: {
-			type: 'object', default: {},
-			style: [{
-				condition: [{ key: 'iconUseDefaultStyle', relation: '==', value: false }, { key: 'iconStyle', relation: '==', value: 'fill' }],
-				selector: '{{QUBELY}} .qubely-team-social-links>a'
-			}]
-		},
-		iconBorderColorHover: {
-			type: 'string', default: '',
-			style: [{
-				condition: [{ key: 'iconUseDefaultStyle', relation: '==', value: false }, { key: 'iconStyle', relation: '==', value: 'fill' }],
-				selector: '{{QUBELY}} .qubely-team-social-links>a:hover {border-color: {{iconBorderColorHover}};}'
-			}]
-		}
-
+		showGlobalSettings: { type: 'boolean', default: true } // Global Settings
+		//showContextMenu: { type: 'boolean', default: true }, 
 	},
 	edit: _Edit2.default,
 	save: _Save2.default

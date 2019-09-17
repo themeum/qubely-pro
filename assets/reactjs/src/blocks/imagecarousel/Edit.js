@@ -1,9 +1,10 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody, TextControl } = wp.components
+const { PanelBody } = wp.components
 const { InspectorControls, RichText, MediaUpload } = wp.editor
 import icons from '../../helpers/icons'
 const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+
 
 class Edit extends Component {
 	constructor(props) {
@@ -69,9 +70,8 @@ class Edit extends Component {
 			/>
 		)
 	}
-	/** 
-	 *  Author ImageSlider */  
-	renderImageSlider = (avatar, index) => {
+	renderAvatar = (avatar, index) => {
+		const { attributes: { avatarAlt } } = this.props
 		return (
 			<MediaUpload
 				onSelect={val => this.updateAtrributes('avatar', val, index)}
@@ -80,10 +80,11 @@ class Edit extends Component {
 				value={avatar}
 				render={({ open }) => (
 					<div className="qubely-single-img qubely-backend">
-						{ (avatar && avatar.url) ? 
-							<img onClick={open} className="qubely-team-avatar" src={avatar.url} /> 
-							: 
-							<div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image"></i></div> 
+						{
+							(avatar && avatar.url) ?
+								<img onClick={open} className="qubely-image-avatar" src={avatar.url} alt={avatarAlt} />
+								:
+								<div onClick={open} className="qubely-image-placeholder qubely-image-avatar" ><i className="far fa-user"></i></div>
 						}
 					</div>
 				)}
@@ -91,45 +92,54 @@ class Edit extends Component {
 
 		)
 	}
-
-	/** 
-	 *  Author information. */
-	renderAuthorInfo = (item, index) => {
-		const { attributes: { layout, showImageSlider } } = this.props
-		const { author, designation, avatar } = item
-
+	renderMessage = (message, index) => {
 		return (
-			<div className={`qubely-team-author`}>
-				{ showImageSlider && this.renderImageSlider(avatar, index) /* Author avater callback function */}
-				{layout == 6 && 
-					<div className="qubely-team-author-info">
-						<div className={`layout-${layout}`}>
-							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
-							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-						</div> 
+			<RichText
+				key="editable"
+				placeholder={__('Add Message...')}
+				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
+				keepPlaceholderOnFocus
+				onChange={value => this.updateAtrributes('message', value, index)}
+				value={message}
+			/>
+		)
+	}
+	renderAuthorInfo = (item, index) => {
+		const { attributes: { layout, showAvatar, avatarLayout } } = this.props
+		const { author, designation, avatar, message } = item
+
+		// console.log('DD', designation)
+		return (
+			<div className={`qubely-image-slider`}>
+				{this.renderAvatar(avatar, index)}
+
+				{ (layout == 6) && 
+					<div className={`qubely-image-slider-text`}>
+						<div className="qubely-image-content">
+							<div className="qubely-image-title" >{this.renderName(author, index)}</div>
+							<div className="qubely-image-subtitle" >{this.renderDesignation(designation, index)}</div>
+							<span className="qubely-image-content" >{this.renderMessage(message, index)} </span>
+						</div>
 					</div>
 				}
 			</div>
 		)
-	} 
+	}
 
-	/** 
-	 *  Render author informations. */
-	renderImagecarousels = () => {
-		const { attributes: { items, layout, carouselItems } } = this.props
+	renderImages = () => {
+		const { attributes: { layout, items, showRatings, carouselItems, quoteIcon, ratings } } = this.props
 		return (
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
-						<div className={`qubely-team-carousel-item`}>
-							<div className={`qubely-team-${layout}`}>
-								{this.renderAuthorInfo(item, index)}
-							</div>
+						<div className={`qubely-image-item layout-${layout}`}>
+							{this.renderAuthorInfo(item, index)}
 						</div>
 					</div>
 				)
 			})
 		)
+
 	}
 
 	setCarouselLength = (newLength) => {
@@ -174,23 +184,22 @@ class Edit extends Component {
 	}
 	render() {
 		const { setAttributes, attributes: {
-			uniqueId, items, autoPlay, interval, speed, nav, carouselItems, dragable,
-			layout, nameColor, alignment, designationColor, showImageSlider, avatarBorderRadius, avatarSize, avatarWidth, avatarHeight,
-			avatarBorder, avatarSpacing, nameTypo, nameSpacing, designationTypo, bgPadding, textColor, bgColor, 
-			bgBorderRadius, border, boxShadow, boxShadowHover, sliderItemsSpace, activeFade,
-			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth, arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
+			uniqueId, items, itemthree, autoPlay, interval, speed, nav, carouselItems, dragable,
+			layout, messageSpacingTop, messageSpacingBottom, nameColor, alignment, designationColor,
+			nameTypo, nameSpacing, messageTypo, designationTypo, bgPadding, textColor, bgColor, bgBorderRadius, border, boxShadow,
+			boxShadowHover, sliderNumber, itemPerSlides, sliderItemsSpace, infiniteLoop, isCentered, notCentered, activeFade,
+			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
+			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
-
 		} } = this.props
 
-		let isCentered = (layout == 3) ? 'isCentered' : '';
-
 		const { device } = this.state
+
 		const carouselSettings = {
 			autoplay: autoPlay,
-			items: items,
+			items: layout != 2 ? items : itemthree,
 			margin: 10,
-			center: isCentered,
+			center: (layout == 3 || layout == 4) ? isCentered : notCentered,
 			dots: dots,
 			dot_indicator: dotIndicator,
 			nav: nav,
@@ -201,15 +210,15 @@ class Edit extends Component {
 			responsive: [
 				{
 					viewport: 1170,
-					items: items.md
+					items: layout != 2 ? items.md : itemthree.md
 				},
 				{
 					viewport: 980,
-					items: items.sm
+					items: layout != 2 ? items.sm : itemthree.sm
 				},
 				{
 					viewport: 580,
-					items: items.xs
+					items: layout != 2 ? items.xs : itemthree.xs
 				}
 			],
 		};
@@ -220,8 +229,8 @@ class Edit extends Component {
 			<Fragment>
 				<InspectorControls key="inspector">
 
-					<PanelBody title="Image Carousel Layouts" initialOpen={false}>
-						<Styles value={layout} onChange={val => setAttributes({ layout: val })}
+					<PanelBody title="Image Carousel" initialOpen={false}>
+						<Styles 
 							options={[
 								{ value: 1, svg: icons.imagecarousel_1, label: __('Layout 1') },
 								{ value: 2, svg: icons.imagecarousel_2, label: __('Layout 2') },
@@ -230,7 +239,9 @@ class Edit extends Component {
 								{ value: 5, svg: icons.imagecarousel_5, label: __('Layout 5') },
 								{ value: 6, svg: icons.imagecarousel_6, label: __('Layout 6') }
 							]}
+							value={layout} onChange={val => setAttributes({ layout: val })}
 						/>
+
 						<Alignment
 							label={__('Alignment')}
 							value={alignment}
@@ -239,6 +250,7 @@ class Edit extends Component {
 							alignmentType="content" disableJustify responsive device={device}
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
+
 						<Range
 							label={__('Number of Carousels')}
 							min={1}
@@ -246,18 +258,18 @@ class Edit extends Component {
 							value={carouselItems.length}
 							onChange={val => this.setCarouselLength(val)}
 						/>
-						<Range
-							label={__('Number of Columns')}
-							min={1}
-							max={20}
-							device={device}
-							responsive
-							value={items}
-							onChange={val => setAttributes({ items: val })}
-							device={this.state.device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/>
 
+						{ layout == 2 && 
+							<Range
+								label={__('Number of Columns')}
+								min={1} max={20} responsive device={device}
+								device={this.state.device}
+								value={ (layout != 2) ? items : itemthree }
+								onChange={value => setAttributes( (layout != 2 ) ? { items: value } : { itemthree: value })}
+								onDeviceChange={value => this.setState({ device: value })}
+							/>
+						}
+						
 						<Range
 							label={__('Padding')}
 							min={1}
@@ -280,12 +292,16 @@ class Edit extends Component {
 							</Fragment>
 						}
 						<Toggle label={__('Draggable')} value={dragable} onChange={value => setAttributes({ dragable: value })} />
+						<Toggle 
+							label={__('Centered Slides')} 
+							value={(layout == 3 || layout == 4) ? isCentered : notCentered } 
+							onChange={value => setAttributes((layout == 3 || layout == 4) ? { isCentered: value } : { notCentered: value })}
+						/>
 
-						{/* <Toggle label={__('Centered Slides')} value={isCentered} onChange={value => setAttributes({ isCentered: value })} />
 						{
 							isCentered &&
-						} */}
-						<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
+							<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
+						}
 					</PanelBody>
 
 					<PanelBody title={__('Slider Settings')} initialOpen={false}>
@@ -402,84 +418,32 @@ class Edit extends Component {
 						}
 					</PanelBody>
 					
-					<PanelBody title={__('Image Slider')} initialOpen={false}>
-						<Toggle label={__('Show ImageSlider')} value={showImageSlider} onChange={val => setAttributes({ showImageSlider: val })} />
-						
-						{showImageSlider &&
-							<Fragment>
-
-								<RadioAdvanced
-									label={__('ImageSlider Size')}
-									options={[
-										{ label: 'S', value: '48px', title: 'Small' },
-										{ label: 'M', value: '64px', title: 'Medium' },
-										{ label: 'L', value: '96px', title: 'Large' },
-										{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-									]}
-									value={avatarSize}
-									onChange={(value) => setAttributes({ avatarSize: value })}
-								/>
-								{avatarSize == 'custom' &&
-									<Fragment>
-										<Range
-											label={__('ImageSlider Width')}
-											value={avatarWidth}
-											onChange={(value) => setAttributes({ avatarWidth: value })}
-											unit={['px', 'em', '%']}
-											max={300} min={0} responsive
-											device={device}
-											onDeviceChange={value => this.setState({ device: value })}
-										/>
-										<Range
-											label={__('ImageSlider Height')}
-											value={avatarHeight}
-											onChange={(value) => setAttributes({ avatarHeight: value })}
-											unit={['px', 'em', '%']}
-											max={300}
-											min={0}
-											responsive
-											device={device}
-											onDeviceChange={value => this.setState({ device: value })}
-										/>
-									</Fragment>
-								}
-								<Fragment>
-									<BorderRadius
-										label={__('Radius')}
-										value={avatarBorderRadius} onChange={(value) => setAttributes({ avatarBorderRadius: value })}
-										min={0}
-										max={100}
-										unit={['px', 'em', '%']}
-										responsive
-										device={device}
-										onDeviceChange={value => this.setState({ device: value })} />
-									<Border
-										label={__('Border')}
-										value={avatarBorder}
-										onChange={(value) => setAttributes({ avatarBorder: value })}
-										unit={['px', 'em', '%']}
-										responsive
-										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
-									/>
-									<Range
-										label={__('Spacing')}
-										value={avatarSpacing}
-										onChange={(value) => setAttributes({ avatarSpacing: value })}
-										min={0}
-										max={200}
-										unit={['px', 'em', '%']}
-										responsive
-										device={device}
-										onDeviceChange={value => this.setState({ device: value })} />
-								</Fragment>
-							</Fragment>
-						}
-					</PanelBody>
-					
-					{ layout == 6 && 
+					{ (layout == 6) && 
 						<Fragment>
-							<PanelBody title={__('Name')} initialOpen={false}>
+							<PanelBody title={__('Subtitle')} initialOpen={false}>
+								<Range
+									label={__('Top Spacing')}
+									value={messageSpacingTop} onChange={(value) => setAttributes({ messageSpacingTop: value })}
+									unit={['px', 'em', '%']} max={300}
+									min={0}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })} />
+								<Range
+									label={__('Bottom Spacing')}
+									value={messageSpacingBottom} onChange={(value) => setAttributes({ messageSpacingBottom: value })}
+									unit={['px', 'em', '%']} max={300}
+									min={0}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })} />
+								<Typography
+									label={__('Typography')}
+									value={messageTypo}
+									onChange={(value) => setAttributes({ messageTypo: value })}
+									device={device} onDeviceChange={value => this.setState({ device: value })} />
+							</PanelBody>
+							<PanelBody title={__('Title')} initialOpen={false}>
 								<Range
 									label={__('Spacing')}
 									value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
@@ -498,8 +462,7 @@ class Edit extends Component {
 									onChange={(value) => setAttributes({ nameTypo: value })}
 									device={device} onDeviceChange={value => this.setState({ device: value })} />
 							</PanelBody>
-
-							<PanelBody title={__('Designation')} initialOpen={false}>
+							<PanelBody title={__('Content Text')} initialOpen={false}>
 								<Color
 									label={__('Color')}
 									value={designationColor} onChange={(value) => setAttributes({ designationColor: value })}
@@ -561,13 +524,12 @@ class Edit extends Component {
 							</Tab>
 						</Tabs>
 					</PanelBody>
-			
 				</InspectorControls>
 
 				<div className={`qubely-block-${uniqueId}`}>
-					<div className={`qubely-block-team-carousel qubely-layout-style`}>
+					<div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
 						<Carousel options={carouselSettings}>
-							{this.renderImagecarousels()}
+							{this.renderImages()}
 						</Carousel>
 					</div>
 				</div>
