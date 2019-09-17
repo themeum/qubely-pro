@@ -53,38 +53,38 @@ class Edit extends Component {
 				keepPlaceholderOnFocus
 				placeholder={__('Add Name...')}
 				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-				onChange={value => this.updateAtrributes('author', value, index)}
+				onChange={value => this.updateAtrributes('slidertitle', value, index)}
 				value={name}
 			/>
 		)
 	}
-	renderDesignation = (designation, index) => {
+	renderDesignation = (subtitle, index) => {
 		return (
 			<RichText
 				key="editable"
-				placeholder={__('Add designation...')}
+				placeholder={__('Add subtitle...')}
 				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
 				keepPlaceholderOnFocus
-				onChange={value => this.updateAtrributes('designation', value, index)}
-				value={designation}
+				onChange={value => this.updateAtrributes('subtitle', value, index)}
+				value={subtitle}
 			/>
 		)
 	}
-	renderAvatar = (avatar, index) => {
-		const { attributes: { avatarAlt } } = this.props
+	renderAvatar = (sliderimage, index) => {
+		const { attributes: { sliderimageAlt } } = this.props
 		return (
 			<MediaUpload
-				onSelect={val => this.updateAtrributes('avatar', val, index)}
+				onSelect={val => this.updateAtrributes('sliderimage', val, index)}
 				allowedTypes={['image']}
 				multiple={false}
-				value={avatar}
+				value={sliderimage}
 				render={({ open }) => (
 					<div className="qubely-single-img qubely-backend">
 						{
-							(avatar && avatar.url) ?
-								<img onClick={open} className="qubely-image-avatar" src={avatar.url} alt={avatarAlt} />
+							(sliderimage && sliderimage.url) ?
+								<img onClick={open} className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
 								:
-								<div onClick={open} className="qubely-image-placeholder qubely-image-avatar" ><i className="far fa-user"></i></div>
+								<div onClick={open} className="qubely-image-placeholder qubely-image-sliderimage" ><i className="fas fa-upload"></i></div>
 						}
 					</div>
 				)}
@@ -92,6 +92,8 @@ class Edit extends Component {
 
 		)
 	}
+
+
 	renderMessage = (message, index) => {
 		return (
 			<RichText
@@ -105,19 +107,18 @@ class Edit extends Component {
 		)
 	}
 	renderAuthorInfo = (item, index) => {
-		const { attributes: { layout, showAvatar, avatarLayout } } = this.props
-		const { author, designation, avatar, message } = item
+		const { attributes: { layout, showAvatar, sliderimageLayout } } = this.props
+		const { slidertitle, subtitle, sliderimage, message } = item
 
-		// console.log('DD', designation)
 		return (
 			<div className={`qubely-image-slider`}>
-				{this.renderAvatar(avatar, index)}
+				{this.renderAvatar(sliderimage, index)}
 
 				{ (layout == 6) && 
 					<div className={`qubely-image-slider-text`}>
 						<div className="qubely-image-content">
-							<div className="qubely-image-title" >{this.renderName(author, index)}</div>
-							<div className="qubely-image-subtitle" >{this.renderDesignation(designation, index)}</div>
+							<div className="qubely-image-title" >{this.renderName(slidertitle, index)}</div>
+							<div className="qubely-image-subtitle" >{this.renderDesignation(subtitle, index)}</div>
 							<span className="qubely-image-content" >{this.renderMessage(message, index)} </span>
 						</div>
 					</div>
@@ -146,11 +147,11 @@ class Edit extends Component {
 		const { setAttributes, attributes: { carouselItems, items } } = this.props
 		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
 		let defaultItem = {
-			author: 'James Moriarty',
-			designation: 'Web WordPress Developer',
+			slidertitle: 'James Moriarty',
+			subtitle: 'Web WordPress Developer',
 			message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.”',
 			ratings: '5',
-			avatar: {}
+			sliderimage: {}
 		}
 		if (newLength > carouselItems.length) {
 			newCarouselItems.push(defaultItem)
@@ -185,9 +186,9 @@ class Edit extends Component {
 	render() {
 		const { setAttributes, attributes: {
 			uniqueId, items, itemthree, autoPlay, interval, speed, nav, carouselItems, dragable,
-			layout, messageSpacingTop, messageSpacingBottom, nameColor, alignment, designationColor,
-			nameTypo, nameSpacing, messageTypo, designationTypo, bgPadding, textColor, bgColor, bgBorderRadius, border, boxShadow,
-			boxShadowHover, sliderNumber, itemPerSlides, sliderItemsSpace, infiniteLoop, isCentered, notCentered, activeFade,
+			layout, messageSpacingTop, messageSpacingBottom, nameColor, alignment, subtitleColor,
+			nameTypo, nameSpacing, messageTypo, subtitleTypo, bgPadding, textColor, bgColor, bgBorderRadius, border, boxShadow,
+			boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, isCentered, notCentered, activeFade,
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
 			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
@@ -269,18 +270,6 @@ class Edit extends Component {
 								onDeviceChange={value => this.setState({ device: value })}
 							/>
 						}
-						
-						<Range
-							label={__('Padding')}
-							min={1}
-							max={80}
-							responsive
-							unit={['px', 'em', '%']}
-							value={sliderItemsSpace}
-							onChange={(value) => setAttributes({ sliderItemsSpace: value })}
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/>
 					</PanelBody>
 
 					<PanelBody title={__('Carousel Settings')} initialOpen={false}>
@@ -465,12 +454,12 @@ class Edit extends Component {
 							<PanelBody title={__('Content Text')} initialOpen={false}>
 								<Color
 									label={__('Color')}
-									value={designationColor} onChange={(value) => setAttributes({ designationColor: value })}
+									value={subtitleColor} onChange={(value) => setAttributes({ subtitleColor: value })}
 								/>
 								<Typography
 									label={__('Typography')}
-									value={designationTypo}
-									onChange={(value) => setAttributes({ designationTypo: value })}
+									value={subtitleTypo}
+									onChange={(value) => setAttributes({ subtitleTypo: value })}
 									device={device} onDeviceChange={value => this.setState({ device: value })} />
 							</PanelBody>
 						</Fragment>

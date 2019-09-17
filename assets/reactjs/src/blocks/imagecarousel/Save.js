@@ -2,36 +2,36 @@ const { Component, Fragment } = wp.element
 const { RichText } = wp.editor
 const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
-  renderAvatar = (avatar, avatarAlt) => {
+  renderAvatar = (sliderimage, sliderimageAlt) => {
     return (
       <div className="qubely-single-img">
-        {avatar.url != undefined ?
-          <img className="qubely-image-avatar" src={avatar.url} alt={avatarAlt} />
+        {sliderimage.url != undefined ?
+          <img className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
           :
-          <div className="qubely-image-placeholder qubely-image-avatar"><i className="far fa-user"></i></div>
+          <div className="qubely-image-placeholder qubely-image-sliderimage"><i className="far fa-user"></i></div>
         }
       </div>
     )
   }
   renderAuthorInfo = (item) => {
-    const { attributes: { layout, showAvatar, avatarAlt, avatarLayout } } = this.props
-    const { author, designation, avatar } = item
+    const { attributes: { layout, showAvatar, sliderimageAlt, sliderimageLayout } } = this.props
+    const { slidertitle, subtitle, sliderimage } = item
 
     return (
-      <div className={`qubely-image-author`}>
+      <div className={`qubely-image-slidertitle`}>
 
-        {(layout === 3 && showAvatar) && this.renderAvatar(avatar, avatarAlt)}
+        {(layout === 3 && showAvatar) && this.renderAvatar(sliderimage, sliderimageAlt)}
 
-        <div className={showAvatar ? `qubely-image-avatar-layout-${avatarLayout}` : ``}>
+        <div className={showAvatar ? `qubely-image-sliderimage-layout-${sliderimageLayout}` : ``}>
 
-          {(layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top')) && this.renderAvatar(avatar, avatarAlt)}
+          {(layout !== 3 && showAvatar && (sliderimageLayout == 'left' || sliderimageLayout == 'top')) && this.renderAvatar(sliderimage, sliderimageAlt)}
 
-          <div className="qubely-image-author-info">
-            <div className="qubely-image-author-name"><RichText.Content value={author} /></div>
-            <div className="qubely-image-author-designation"><RichText.Content value={designation} /></div>
+          <div className="qubely-image-slidertitle-info">
+            <div className="qubely-image-slidertitle-name"><RichText.Content value={slidertitle} /></div>
+            <div className="qubely-image-slidertitle-subtitle"><RichText.Content value={subtitle} /></div>
           </div>
 
-          {(layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom')) && this.renderAvatar(avatar, avatarAlt)}
+          {(layout !== 3 && showAvatar && (sliderimageLayout == 'right' || sliderimageLayout == 'bottom')) && this.renderAvatar(sliderimage, sliderimageAlt)}
         </div>
       </div>
     )

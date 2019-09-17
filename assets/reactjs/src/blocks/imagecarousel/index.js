@@ -35,47 +35,41 @@ registerBlockType('qubely/imagecarousel', {
 			type: 'array',
 			default: [
 				{
-					author: 'Word Camp 2019',
-					designation: 'Web WordPress Developer',
-					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.”',
+					slidertitle: 'Word Camp 2019',
+					subtitle: 'Phasellus suscipit urna id ultricies molestie',
+					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
 					ratings: '5',
-					avatar: {}
+					sliderimage: {}
 				},
 				{
-					author: 'Julia Toufis',
-					designation: 'WordPress Developer',
-					message: '“Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.”',
+					slidertitle: 'Image carousel',
+					subtitle: 'WordPress Developer',
+					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
 					ratings: '4.5',
-					avatar: {}
+					sliderimage: {}
 				},
 				{
-					author: 'Mila Kunis',
-					designation: 'WordPress Developer',
-					message: '“Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.”',
+					slidertitle: 'Mila Kunis',
+					subtitle: 'WordPress Developer',
+					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
 					ratings: '4.5',
-					avatar: {}
+					sliderimage: {}
 				},
 				{
-					author: 'Arthur Conan Doyle',
-					designation: 'Writer',
-					message: '“Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.”',
+					slidertitle: 'Arthur Conan Doyle',
+					subtitle: 'Writer',
+					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
 					ratings: '5',
-					avatar: {}
+					sliderimage: {}
 				},
 				{
-					author: 'John Deo',
-					designation: 'WordPress Developer',
-					message: '“Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.”',
+					slidertitle: 'John Deo',
+					subtitle: 'WordPress Developer',
+					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
 					ratings: '5',
-					avatar: {}
+					sliderimage: {}
 				},
-				{
-					author: 'Alex Fera',
-					designation: 'WordPress Developer',
-					message: '“Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.”',
-					ratings: '5',
-					avatar: {}
-				},
+				
 			]
 		},
 
@@ -89,14 +83,6 @@ registerBlockType('qubely/imagecarousel', {
 		sliderNumber: { type: 'number', default: 5 },
 		// Item per Slider  
 		itemPerSlides: { type: 'string', default: '2' },
-		// Space Between Two item.
-		sliderItemsSpace: {
-			type: 'objext',
-			default: {},
-			style: [{
-				selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
-			}]
-		},
 		// Infinite Loop
 		infiniteLoop: { type: 'boolean', default: true },
 		isCentered: { type: 'boolean', default: true },
@@ -221,8 +207,8 @@ registerBlockType('qubely/imagecarousel', {
 		nameSpacing: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-image-title {margin-bottom: {{nameSpacing}};}' }] },
 
 		//Designation
-		designationColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-subtitle { color:{{designationColor}}; }' }] },
-		designationTypo: { type: 'object', default: { openTypography: 1, size: { md: 14, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-image-subtitle' }] },
+		subtitleColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-subtitle { color:{{subtitleColor}}; }' }] },
+		subtitleTypo: { type: 'object', default: { openTypography: 1, size: { md: 14, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-image-subtitle' }] },
 
 		/*------------------------------------
 		* 			Messsage 
