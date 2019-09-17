@@ -1,5 +1,4 @@
 jQuery(document).ready(function ($) {
-    console.log('test')
     if ($('.qubely-carousel.qubely-carousel-wrapper').length > 0) {
         const counterElement = $('.qubely-carousel-wrapper')
         let indexOfCounterElement = 0
