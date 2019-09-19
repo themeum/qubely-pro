@@ -1,49 +1,44 @@
-const { Component } = wp.element
+const { Component, Fragment } = wp.element
 const { RichText } = wp.editor
 const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
-  /** 
-	 *  Author ImageSlider*/  
-  renderImageSlider = (avatar, avatarAlt) => {
+  renderSlider = (sliderimage, sliderimageAlt) => {
     return (
       <div className="qubely-single-img">
-        {avatar.url != undefined ?
-          <img className="qubely-team-avatar" src={avatar.url} alt={avatarAlt} />
+        {sliderimage.url != undefined ?
+          <img className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
           :
-          <div className="qubely-image-placeholder qubely-team-avatar"><i className="far fa-user"></i></div>
+          <div className="qubely-image-placeholder qubely-image-sliderimage"><i className="dashicons dashicons-format-image"></i></div>
         }
       </div>
     )
   }
+  renderSliderInfo = (item, index) => {
+    const { attributes: { layout, activeDescription } } = this.props
+    const { slidertitle, subtitle, sliderimage, message } = item
 
-  /** 
-	 *  Author information. */
-  renderAuthorInfo = (item, index) => {
-    const { attributes: { layout, showImageSlider } } = this.props
-    const { author, designation, avatar } = item
     return (
-      <div className={`qubely-team-author`}>
-        { showImageSlider && this.renderImageSlider(avatar, index) /* Author avater callback function */ }
-				<div className="qubely-team-author-info">
-					<div className={`layout-${layout}`}>
-            <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
-            <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
-					</div> 
-				</div>
+      <div className={`qubely-image-slider`}>
+        {this.renderSlider(sliderimage, index)}
+        { (layout == 6) && 
+					<div className={`qubely-image-slider-text`}>
+						<div className="qubely-image-content">
+							<div className="qubely-image-title" ><RichText.Content value={slidertitle} /></div>
+							<div className="qubely-image-subtitle" ><RichText.Content value={subtitle} /></div>
+              { activeDescription && <span className="qubely-image-content" ><RichText.Content value={message} /></span> }
+						</div>
+					</div>
+				}
       </div>
     )
   }
-  /** 
-	 *  Render Imagecarousel informations. */
-  renderImagecarousel() {
+  renderImage() {
     const { attributes: { carouselItems, layout } } = this.props
     return (carouselItems.map((item, index) => {
       return (
-        <div key={index} className={`qubely-carousel-extended-item${index === 0 ? ' active' : ''}`} >
-          <div className={`qubely-team-carousel-item`}>
-            <div className={`qubely-team-${layout}`}>
-              { this.renderAuthorInfo(item)}
-            </div>
+        <div key={index} className={`qubely-carousel-item qubely-carousel-extended-item${index === 0 ? ' active' : ''}`} >
+          <div className={`qubely-image-item layout-${layout}`}>
+            { this.renderSliderInfo(item) }
           </div>
         </div>
       )
@@ -51,12 +46,13 @@ class Save extends Component {
   }
 
   render() {
-    const { attributes: { uniqueId, items, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
+    const { 
+      attributes: { uniqueId, layout, items, itemthree, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, notCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
     let options = JSON.stringify({
       autoplay: autoPlay,
-      items: items,
+      items: layout != 2 ? items : itemthree,
       margin: 10,
-      center: isCentered,
+      center: (layout == 3 || layout == 4) ? isCentered : notCentered,
       dots: dots,
       dot_indicator: dotIndicator,
       nav: nav,
@@ -68,25 +64,25 @@ class Save extends Component {
       arrowStyle: arrowStyle,
       responsive: [
         {
-          viewport: 1170,
-          items: items.md
-        },
-        {
-          viewport: 980,
-          items: items.sm
-        },
-        {
-          viewport: 580,
-          items: items.xs
-        }
+					viewport: 1170,
+					items: layout != 2 ? items.md : itemthree.md
+				},
+				{
+					viewport: 980,
+					items: layout != 2 ? items.sm : itemthree.sm
+				},
+				{
+					viewport: 580,
+					items: layout != 2 ? items.xs : itemthree.xs
+				}
       ],
     }
     )
     return (
       <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-        <div className={`qubely-block-team-carousel qubely-layout-style`}>
+        <div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
           <div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ''}`} data-options={options} id="qubelyCarousel1" >
-            {this.renderImagecarousel()}
+            {this.renderImage()}
           </div>
         </div>
       </div>
