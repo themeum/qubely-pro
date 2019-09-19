@@ -42,9 +42,9 @@ class Save extends Component {
     return (carouselItems.map((item, index) => {
       const { message } = item
       return (
-        <div key={index} className={`qubely-carousel-extended-item${index === 0 ? ' active' : ''}`} >
-          <div className={`qubely-tesitmonial-item layout-${layout}`}>
+        <div key={index} className={`qubely-carousel-extended-item`} >
 
+          <div className={`qubely-tesitmonial-item layout-${layout}`}>
             {layout == 2 && this.renderAuthorInfo(item)}
             {(quoteIcon && layout == 1) && <div className="qubely-testimonial-quote">
               <span className={`qubely-quote-icon ${quoteIcon}`}></span>

@@ -1,6 +1,6 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody } = wp.components
+const { PanelBody, Tooltip } = wp.components
 const { InspectorControls, RichText, MediaUpload } = wp.editor
 import icons from '../../helpers/icons'
 const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
@@ -124,15 +124,24 @@ class Edit extends Component {
 			</div>
 		)
 	}
+	removeCrouselItem = (index) => {
+		const { setAttributes, attributes: { carouselItems } } = this.props
+		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
+		newCarouselItems.splice(index, 1)
+		setAttributes({ carouselItems: newCarouselItems })
+	}
 
 	renderTestimonials = () => {
-		const { attributes: { layout, items, showRatings, carouselItems, quoteIcon, ratings } } = this.props
+		const { attributes: { layout, showRatings, carouselItems, quoteIcon, ratings } } = this.props
+
 		return (
 			carouselItems.map((item, index) => {
 				const { message } = item
-
 				return (
-					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
+					<div key={index} className={`qubely-carousel-item`} >
+						<Tooltip text={__('Delete this item')}>
+							<span className="qubely-action-carousel-remove" role="button" onClick={() => this.removeCrouselItem(index)}><i class="fas fa-times"></i></span>
+						</Tooltip>
 						<div className={`qubely-tesitmonial-item layout-${layout}`}>
 
 							{layout === 2 && this.renderAuthorInfo(item, index)}
@@ -188,28 +197,7 @@ class Edit extends Component {
 		setAttributes({ carouselItems: newCarouselItems })
 
 	}
-	parseResponsiveViewPort = () => {
-		const { attributes: { items } } = this.props
-		let responsive = [
-			{ viewport: 1170, items: items.md },
-			{ viewport: 980, items: items.sm },
-			{ viewport: 580, items: items.xs }
-		]
-		if (typeof responsive === 'undefined')
-			return
-		let activeView = null
 
-		for (let i = 0; i < responsive.length; i++) {
-			if (window.innerWidth > responsive[i].viewport) {
-				activeView = responsive[i]
-				break;
-			}
-		}
-		if (activeView === null) {
-			activeView = responsive[responsive.length - 1]
-		}
-		return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md'
-	}
 	render() {
 		const { setAttributes, attributes: {
 			uniqueId, items, autoPlay, interval, speed, nav, carouselItems, dragable,
@@ -225,7 +213,6 @@ class Edit extends Component {
 		} } = this.props
 
 		const { device } = this.state
-
 		const carouselSettings = {
 			autoplay: autoPlay,
 			items: items,
