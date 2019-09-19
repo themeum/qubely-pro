@@ -78,12 +78,8 @@ registerBlockType('qubely/imagecarousel', {
 		* --------------------------------------------------- */
 		alignment: { type: 'object', default: { md: 'center' }, style: [{ selector: '{{QUBELY}} .qubely-image-item {text-align: {{alignment}};}' }] },
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
-
-		// Number of slider.
 		sliderNumber: { type: 'number', default: 5 },
-		// Item per Slider  
 		itemPerSlides: { type: 'string', default: '2' },
-		// Infinite Loop
 		infiniteLoop: { type: 'boolean', default: true },
 		isCentered: { type: 'boolean', default: true },
 		notCentered: { type: 'boolean', default: false },
@@ -202,74 +198,130 @@ registerBlockType('qubely/imagecarousel', {
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator' }
 			]
 		},
-		//Name
-		nameColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-title { color:{{nameColor}}; }' }] },
-		nameTypo: { type: 'object', default: { openTypography: 1, weight: 700, size: { md: 16, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-image-title' }] },
-		nameSpacing: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-image-title {margin-bottom: {{nameSpacing}};}' }] },
-
-		//Designation
-		subtitleColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-subtitle { color:{{subtitleColor}}; }' }] },
-		subtitleTypo: { type: 'object', default: { openTypography: 1, size: { md: 14, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-image-subtitle' }] },
 
 		/*------------------------------------
-		* 			Messsage 
+		* 			Title 
 		* ------------------------------------ */
+		nameColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-title { color:{{nameColor}}; }' }] },
+		nameTypo: { type: 'object', default: { openTypography: 1, weight: 700, size: { md: 34, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-image-title' }] },
+		nameSpacing: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-image-title {margin-bottom: {{nameSpacing}};}' }] },
+
+		/*------------------------------------
+		* 			Subtitle 
+		* ------------------------------------ */
+		subtitleColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-subtitle { color:{{subtitleColor}}; }' }] },
+		subtitleTypo: { type: 'object', default: { openTypography: 1, size: { md: 22, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-image-subtitle, {{QUBELY}} .qubely-image-subtitle div' }] },
+
+		/*------------------------------------
+		* 			Descriptions 
+		* ------------------------------------ */
+		descriptionColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-slider-description { color:{{descriptionColor}}; }' }] },
 		messagePosition: { type: 'string', default: 'top' },
 		messageTypo: {
 			type: 'object',
 			default: {
 				openTypography: 1,
-				size: { md: 16, unit: 'px' }
+				size: { md: 18, unit: 'px' }
 			},
-			style: [{ selector: '{{QUBELY}} .qubely-image-content' }]
+			style: [{ selector: '{{QUBELY}} .qubely-slider-description' }]
 		},
-		messageSpacingTop: { type: 'object', default: { md: 0, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-image-content {margin-top: {{messageSpacingTop}};}' }] },
-		messageSpacingBottom: { type: 'object', default: { md: 5, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-image-content {margin-bottom: {{messageSpacingBottom}};}' }] },
+		messageSpacingTop: { type: 'object', default: { md: 0, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-slider-description {margin-top: {{messageSpacingTop}};}' }] },
+		messageSpacingBottom: { type: 'object', default: { md: 5, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-slider-description {margin-bottom: {{messageSpacingBottom}};}' }] },
 
 		/* ------------------------------------
-		* 			Design 
+		* 				Design 
 		* ------------------------------------- */
-		textColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-image-carousel-content-wrapper { color:{{textColor}}; }' }] },
-		bgPadding: {
-			type: 'object',
-			default: {},
-			style: [
-				{
-					condition: [
-						{ key: 'layout', relation: '==', value: '1' }
-					],
-					selector: '{{QUBELY}} .qubely-layout-1 .qubely-image-item'
-				},
-				{
-					condition: [
-						{ key: 'layout', relation: '==', value: '2' }
-					],
-					selector: '{{QUBELY}} .qubely-layout-2 .qubely-image-item'
-				},
-				{
-					condition: [
-						{ key: 'layout', relation: '==', value: '3' }
-					],
-					selector: '{{QUBELY}} .qubely-layout-3 .qubely-image-carousel-content-wrapper'
-				}
-			]
+		// Overlay
+        enableOverlay: {
+            type: 'boolean',
+            default: true,
+        },
+
+        overlayBg: {
+            type: 'object',
+            default: {
+                openColor: 1,
+                type: 'gradient',
+                color: 'rgba(6, 80, 183, 0.7)',
+                gradient: {
+                    color1: 'rgba(6, 80, 183, 0.7)',
+                    color2: 'rgba(96, 10, 255, 0.7)',
+                    direction: 45,
+                    start: 0,
+                    stop: 100,
+                    type: 'linear'
+                },
+            },
+            style: [
+                {
+                    condition: [
+                        { key: 'layout', relation: '==', value: '6' },
+                        { key: 'enableOverlay', relation: '==', value: true }
+                    ],
+                    selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text:before'
+                }
+            ]
+        },
+
+        overlayHoverBg: {
+            type: 'object',
+            default: {
+                type: 'gradient',
+                openColor: 1,
+                color: 'rgba(6, 80, 183, 0.85)',
+                gradient: {
+                    color1: 'rgba(6, 80, 183, 0.85)',
+                    color2: 'rgba(96, 10, 255, 0.85)',
+                    direction: 45,
+                    start: 0,
+                    stop: 100,
+                    type: 'linear'
+                }
+            },
+            style: [
+                {
+                    condition: [
+                        { key: 'layout', relation: '==', value: '6' },
+                        { key: 'enableOverlay', relation: '==', value: true },
+                        { key: 'animateOnHover', relation: '==', value: true },
+                    ],
+                    selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text:hover:before'
+                }
+            ]
+        },
+
+        overlayBlend: {
+            type: 'string',
+            default: '',
+            style: [
+                {
+                    condition: [
+                        { key: 'layout', relation: '==', value: '6' },
+                        { key: 'enableOverlay', relation: '==', value: true },
+                        { key: 'overlayBlend', relation: '!=', value: 'normal' }
+                    ],
+                    selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};}'
+                }
+            ]
+        },
+		animateOnHover: {
+            type: 'boolean',
+            default: true
 		},
-		// Background Color
-		bgColor: {
-			type: 'string',
-			default: '',
-			style: [
-				{
-					selector: '{{QUBELY}} .qubely-image-item.layout-1 {background-color: {{bgColor}};} {{QUBELY}} .qubely-image-item.layout-2 {background-color: {{bgColor}};}'
-				},
-				{
-					condition: [
-						{ key: 'layout', relation: '==', value: '3' }
-					],
-					selector: '{{QUBELY}} .layout-3 .qubely-image-carousel-content-wrapper {background-color: {{bgColor}};} {{QUBELY}} .layout-3 .qubely-image-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
-				}
-			]
+		contentSpacing: { 
+			type: 'object', 
+			default: { md: 60, unit: 'px' }, 
+			style: [{ selector: '{{QUBELY}} .qubely-image-content {bottom: {{contentSpacing}};}' }] 
 		},
+
+
+
+
+
+
+
+
+		
 		// Border radius
 		bgBorderRadius: {
 			type: 'object',
@@ -302,8 +354,8 @@ registerBlockType('qubely/imagecarousel', {
 			]
 		},
 		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
-		//showContextMenu: { type: 'boolean', default: true }, 
 	},
+
 	edit: Edit,
 	save: Save
 });

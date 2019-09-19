@@ -25,7 +25,7 @@ class Save extends Component {
 						<div className="qubely-image-content">
 							<div className="qubely-image-title" ><RichText.Content value={slidertitle} /></div>
 							<div className="qubely-image-subtitle" ><RichText.Content value={subtitle} /></div>
-              { activeDescription && <span className="qubely-image-content" ><RichText.Content value={message} /></span> }
+              { activeDescription && <span className="qubely-slider-description" ><RichText.Content value={message} /></span> }
 						</div>
 					</div>
 				}
