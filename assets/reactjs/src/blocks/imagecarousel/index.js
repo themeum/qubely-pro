@@ -35,37 +35,37 @@ registerBlockType('qubely/imagecarousel', {
 			type: 'array',
 			default: [
 				{
-					slidertitle: 'Word Camp 2019',
-					subtitle: 'Phasellus suscipit urna id ultricies molestie',
+					slidertitle: 'Wordcamp Dhaka',
+					subtitle: '28 September 2019',
+					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
+					ratings: '5',
+					sliderimage: {}
+				},
+				{
+					slidertitle: 'Welcome to Wordcamp Dhaka',
+					subtitle: 'Everything related to WordPress',
+					message: '“WordCamp Dhaka is officially on the calendar!”',
+					ratings: '4.5',
+					sliderimage: {}
+				},
+				{
+					slidertitle: 'Accommodation to Dhaka',
+					subtitle: 'Dhaka being a crowded city',
+					message: '“Dhaka Regency Hotel & Resort Limited”',
+					ratings: '4.5',
+					sliderimage: {}
+				},
+				{
+					slidertitle: 'International Convention City, Bashundhara',
+					subtitle: 'Including speaker submissions',
 					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
 					ratings: '5',
 					sliderimage: {}
 				},
 				{
-					slidertitle: 'Image carousel',
-					subtitle: 'WordPress Developer',
-					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
-					ratings: '4.5',
-					sliderimage: {}
-				},
-				{
-					slidertitle: 'Mila Kunis',
-					subtitle: 'WordPress Developer',
-					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
-					ratings: '4.5',
-					sliderimage: {}
-				},
-				{
-					slidertitle: 'Arthur Conan Doyle',
-					subtitle: 'Writer',
-					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
-					ratings: '5',
-					sliderimage: {}
-				},
-				{
-					slidertitle: 'John Deo',
-					subtitle: 'WordPress Developer',
-					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
+					slidertitle: 'Mark Your Calendar',
+					subtitle: 'WordCamp Dhaka will be happening on 28th September',
+					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
 					ratings: '5',
 					sliderimage: {}
 				},
@@ -88,6 +88,7 @@ registerBlockType('qubely/imagecarousel', {
 		isCentered: { type: 'boolean', default: true },
 		notCentered: { type: 'boolean', default: false },
 		activeFade: { type: 'boolean', default: false },
+		activeDescription: { type: 'boolean', default: false },
 
 		/*------------------------------------
 		* 			Slider Settings 			

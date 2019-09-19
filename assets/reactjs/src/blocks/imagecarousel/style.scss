@@ -24,11 +24,19 @@
     cursor: pointer;
   }
 
-.qubely-image-placeholder.qubely-image-sliderimage i {
-    padding: 120px;
-    width: inherit;
-    height: inherit;
-}
+  .qubely-image-placeholder.qubely-image-sliderimage i {
+      padding: 120px;
+      width: inherit;
+      height: inherit;
+  }
+  .qubely-image-subtitle div {
+      font-size: 24px;
+  }
+
+  .qubely-carousel-item.qubely-carousel-extended-item {
+      transition: .4s;
+  }
+
   .qubely-image-sliderimage {
     &.qubely-image-placeholder i {
       font-size: 52px;

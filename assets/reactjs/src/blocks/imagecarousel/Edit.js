@@ -106,7 +106,7 @@ class Edit extends Component {
 	}
 
 	renderSliderInfo = (item, index) => {
-		const { attributes: { layout } } = this.props
+		const { attributes: { layout, activeDescription } } = this.props
 		const { slidertitle, subtitle, sliderimage, message } = item
 
 		return (
@@ -118,7 +118,9 @@ class Edit extends Component {
 						<div className="qubely-image-content">
 							<div className="qubely-image-title" >{this.renderName(slidertitle, index)}</div>
 							<div className="qubely-image-subtitle" >{this.renderDesignation(subtitle, index)}</div>
-							<span className="qubely-image-content" >{this.renderMessage(message, index)} </span>
+							{activeDescription &&
+								<span className="qubely-image-content" >{this.renderMessage(message, index)} </span>
+							}
 						</div>
 					</div>
 				}
@@ -131,7 +133,7 @@ class Edit extends Component {
 		return (
 			carouselItems.map((item, index) => {
 				return (
-					<div key={index} className={`qubely-carousel-item qubely-carousel-extended-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
+					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
 						<div className={`qubely-image-item layout-${layout}`}>
 							{this.renderSliderInfo(item, index)}
 						</div>
@@ -145,8 +147,8 @@ class Edit extends Component {
 		const { setAttributes, attributes: { carouselItems, items } } = this.props
 		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
 		let defaultItem = {
-			slidertitle: 'Word Camp 2019',
-			subtitle: 'Word Camp Dhaka ',
+			slidertitle: 'Wordcamp Dhaka 2019',
+			subtitle: '28 September 2019',
 			message: '“Instantly raise your website appearance with this stylish new plugin.”',
 			ratings: '5',
 			sliderimage: {}
@@ -184,7 +186,7 @@ class Edit extends Component {
 	render() {
 		const { setAttributes, attributes: {
 			uniqueId, items, itemthree, autoPlay, interval, speed, nav, carouselItems, dragable,
-			layout, messageSpacingTop, messageSpacingBottom, nameColor, alignment, subtitleColor,
+			layout, messageSpacingTop, messageSpacingBottom, nameColor, alignment, subtitleColor, activeDescription,
 			nameTypo, nameSpacing, messageTypo, subtitleTypo, bgPadding, textColor, bgColor, bgBorderRadius, border, boxShadow,
 			boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, isCentered, notCentered, activeFade,
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
@@ -406,6 +408,25 @@ class Edit extends Component {
 					
 					{ (layout == 6) && 
 						<Fragment>
+							<PanelBody title={__('Title')} initialOpen={false}>
+								<Range
+									label={__('Spacing')}
+									value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
+									unit={['px', 'em', '%']} max={300}
+									min={0}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })} />
+								<Color
+									label={__('Color')}
+									value={nameColor} onChange={(value) => setAttributes({ nameColor: value })}
+								/>
+								<Typography
+									label={__('Typography')}
+									value={nameTypo}
+									onChange={(value) => setAttributes({ nameTypo: value })}
+									device={device} onDeviceChange={value => this.setState({ device: value })} />
+							</PanelBody>
 							<PanelBody title={__('Subtitle')} initialOpen={false}>
 								<Range
 									label={__('Top Spacing')}
@@ -429,36 +450,27 @@ class Edit extends Component {
 									onChange={(value) => setAttributes({ messageTypo: value })}
 									device={device} onDeviceChange={value => this.setState({ device: value })} />
 							</PanelBody>
-							<PanelBody title={__('Title')} initialOpen={false}>
-								<Range
-									label={__('Spacing')}
-									value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
-									unit={['px', 'em', '%']} max={300}
-									min={0}
-									responsive
-									device={device}
-									onDeviceChange={value => this.setState({ device: value })} />
-								<Color
-									label={__('Color')}
-									value={nameColor} onChange={(value) => setAttributes({ nameColor: value })}
-								/>
-								<Typography
-									label={__('Typography')}
-									value={nameTypo}
-									onChange={(value) => setAttributes({ nameTypo: value })}
-									device={device} onDeviceChange={value => this.setState({ device: value })} />
+
+							<PanelBody title={__('Description')} initialOpen={false}>
+
+								<Toggle label={__('Hide Description')} value={activeDescription} onChange={value => setAttributes({ activeDescription: value })} />
+								{ activeDescription && 
+									<Fragment>
+										<Color
+											label={__('Color')}
+											value={subtitleColor} onChange={(value) => setAttributes({ subtitleColor: value })}
+										/>
+										<Typography
+											label={__('Typography')}
+											value={subtitleTypo}
+											onChange={(value) => setAttributes({ subtitleTypo: value })}
+											device={device} onDeviceChange={value => this.setState({ device: value })} />
+									</Fragment>
+								}
+
+								
 							</PanelBody>
-							<PanelBody title={__('Content Text')} initialOpen={false}>
-								<Color
-									label={__('Color')}
-									value={subtitleColor} onChange={(value) => setAttributes({ subtitleColor: value })}
-								/>
-								<Typography
-									label={__('Typography')}
-									value={subtitleTypo}
-									onChange={(value) => setAttributes({ subtitleTypo: value })}
-									device={device} onDeviceChange={value => this.setState({ device: value })} />
-							</PanelBody>
+
 						</Fragment>
 					}
 

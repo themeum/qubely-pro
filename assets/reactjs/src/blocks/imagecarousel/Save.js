@@ -14,7 +14,7 @@ class Save extends Component {
     )
   }
   renderSliderInfo = (item, index) => {
-    const { attributes: { layout } } = this.props
+    const { attributes: { layout, activeDescription } } = this.props
     const { slidertitle, subtitle, sliderimage, message } = item
 
     return (
@@ -25,7 +25,7 @@ class Save extends Component {
 						<div className="qubely-image-content">
 							<div className="qubely-image-title" ><RichText.Content value={slidertitle} /></div>
 							<div className="qubely-image-subtitle" ><RichText.Content value={subtitle} /></div>
-							<span className="qubely-image-content" ><RichText.Content value={message} /></span>
+              { activeDescription && <span className="qubely-image-content" ><RichText.Content value={message} /></span> }
 						</div>
 					</div>
 				}
@@ -34,7 +34,6 @@ class Save extends Component {
   }
   renderImage() {
     const { attributes: { carouselItems, layout } } = this.props
-
     return (carouselItems.map((item, index) => {
       return (
         <div key={index} className={`qubely-carousel-item qubely-carousel-extended-item${index === 0 ? ' active' : ''}`} >
