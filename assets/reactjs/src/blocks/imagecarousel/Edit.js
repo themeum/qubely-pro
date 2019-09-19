@@ -3,8 +3,7 @@ const { Fragment, Component } = wp.element;
 const { PanelBody } = wp.components
 const { InspectorControls, RichText, MediaUpload } = wp.editor
 import icons from '../../helpers/icons'
-const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
-
+const { Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
 
 class Edit extends Component {
 	constructor(props) {
@@ -58,6 +57,7 @@ class Edit extends Component {
 			/>
 		)
 	}
+
 	renderDesignation = (subtitle, index) => {
 		return (
 			<RichText
@@ -70,6 +70,7 @@ class Edit extends Component {
 			/>
 		)
 	}
+
 	renderAvatar = (sliderimage, index) => {
 		const { attributes: { sliderimageAlt } } = this.props
 		return (
@@ -80,8 +81,7 @@ class Edit extends Component {
 				value={sliderimage}
 				render={({ open }) => (
 					<div className="qubely-single-img qubely-backend">
-						{
-							(sliderimage && sliderimage.url) ?
+						{(sliderimage && sliderimage.url) ?
 								<img onClick={open} className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
 								:
 								<div onClick={open} className="qubely-image-placeholder qubely-image-sliderimage" ><i className="fas fa-upload"></i></div>
@@ -89,10 +89,8 @@ class Edit extends Component {
 					</div>
 				)}
 			/>
-
 		)
 	}
-
 
 	renderMessage = (message, index) => {
 		return (
@@ -106,8 +104,9 @@ class Edit extends Component {
 			/>
 		)
 	}
-	renderAuthorInfo = (item, index) => {
-		const { attributes: { layout, showAvatar, sliderimageLayout } } = this.props
+
+	renderSliderInfo = (item, index) => {
+		const { attributes: { layout } } = this.props
 		const { slidertitle, subtitle, sliderimage, message } = item
 
 		return (
@@ -128,28 +127,27 @@ class Edit extends Component {
 	}
 
 	renderImages = () => {
-		const { attributes: { layout, items, showRatings, carouselItems, quoteIcon, ratings } } = this.props
+		const { attributes: { layout, items, carouselItems } } = this.props
 		return (
 			carouselItems.map((item, index) => {
 				return (
-					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
+					<div key={index} className={`qubely-carousel-item qubely-carousel-extended-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
 						<div className={`qubely-image-item layout-${layout}`}>
-							{this.renderAuthorInfo(item, index)}
+							{this.renderSliderInfo(item, index)}
 						</div>
 					</div>
 				)
 			})
 		)
-
 	}
 
 	setCarouselLength = (newLength) => {
 		const { setAttributes, attributes: { carouselItems, items } } = this.props
 		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
 		let defaultItem = {
-			slidertitle: 'James Moriarty',
-			subtitle: 'Web WordPress Developer',
-			message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.”',
+			slidertitle: 'Word Camp 2019',
+			subtitle: 'Word Camp Dhaka ',
+			message: '“Instantly raise your website appearance with this stylish new plugin.”',
 			ratings: '5',
 			sliderimage: {}
 		}
@@ -159,8 +157,8 @@ class Edit extends Component {
 			(newLength >= items.md && newLength >= items.sm && newLength >= items.sm) && newCarouselItems.pop()
 		}
 		setAttributes({ carouselItems: newCarouselItems })
-
 	}
+
 	parseResponsiveViewPort = () => {
 		const { attributes: { items } } = this.props
 		let responsive = [
@@ -201,8 +199,8 @@ class Edit extends Component {
 			items: layout != 2 ? items : itemthree,
 			margin: 10,
 			center: (layout == 3 || layout == 4) ? isCentered : notCentered,
-			dots: dots,
 			dot_indicator: dotIndicator,
+			dots: dots,
 			nav: nav,
 			arrowStyle: arrowStyle,
 			arrowPosition: arrowPosition,
@@ -252,10 +250,9 @@ class Edit extends Component {
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
 
-						<Range
-							label={__('Number of Carousels')}
-							min={1}
-							max={20}
+						<Range label={__('Number of Carousels')}
+							min={1} 
+							max={20} 
 							value={carouselItems.length}
 							onChange={val => this.setCarouselLength(val)}
 						/>

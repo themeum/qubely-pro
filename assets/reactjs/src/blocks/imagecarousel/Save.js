@@ -2,70 +2,44 @@ const { Component, Fragment } = wp.element
 const { RichText } = wp.editor
 const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
-  renderAvatar = (sliderimage, sliderimageAlt) => {
+  renderSlider = (sliderimage, sliderimageAlt) => {
     return (
       <div className="qubely-single-img">
         {sliderimage.url != undefined ?
           <img className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
           :
-          <div className="qubely-image-placeholder qubely-image-sliderimage"><i className="far fa-user"></i></div>
+          <div className="qubely-image-placeholder qubely-image-sliderimage"><i className="dashicons dashicons-format-image"></i></div>
         }
       </div>
     )
   }
-  renderAuthorInfo = (item) => {
-    const { attributes: { layout, showAvatar, sliderimageAlt, sliderimageLayout } } = this.props
-    const { slidertitle, subtitle, sliderimage } = item
+  renderSliderInfo = (item, index) => {
+    const { attributes: { layout } } = this.props
+    const { slidertitle, subtitle, sliderimage, message } = item
 
     return (
-      <div className={`qubely-image-slidertitle`}>
-
-        {(layout === 3 && showAvatar) && this.renderAvatar(sliderimage, sliderimageAlt)}
-
-        <div className={showAvatar ? `qubely-image-sliderimage-layout-${sliderimageLayout}` : ``}>
-
-          {(layout !== 3 && showAvatar && (sliderimageLayout == 'left' || sliderimageLayout == 'top')) && this.renderAvatar(sliderimage, sliderimageAlt)}
-
-          <div className="qubely-image-slidertitle-info">
-            <div className="qubely-image-slidertitle-name"><RichText.Content value={slidertitle} /></div>
-            <div className="qubely-image-slidertitle-subtitle"><RichText.Content value={subtitle} /></div>
-          </div>
-
-          {(layout !== 3 && showAvatar && (sliderimageLayout == 'right' || sliderimageLayout == 'bottom')) && this.renderAvatar(sliderimage, sliderimageAlt)}
-        </div>
+      <div className={`qubely-image-slider`}>
+        {this.renderSlider(sliderimage, index)}
+        { (layout == 6) && 
+					<div className={`qubely-image-slider-text`}>
+						<div className="qubely-image-content">
+							<div className="qubely-image-title" ><RichText.Content value={slidertitle} /></div>
+							<div className="qubely-image-subtitle" ><RichText.Content value={subtitle} /></div>
+							<span className="qubely-image-content" ><RichText.Content value={message} /></span>
+						</div>
+					</div>
+				}
       </div>
     )
   }
   renderImage() {
-    const { attributes: { carouselItems, showRatings, layout, ratings, quoteIcon } } = this.props
+    const { attributes: { carouselItems, layout } } = this.props
 
     return (carouselItems.map((item, index) => {
-      const { message } = item
       return (
-        <div key={index} className={`qubely-carousel-extended-item${index === 0 ? ' active' : ''}`} >
+        <div key={index} className={`qubely-carousel-item qubely-carousel-extended-item${index === 0 ? ' active' : ''}`} >
           <div className={`qubely-image-item layout-${layout}`}>
-
-            {layout == 2 && this.renderAuthorInfo(item)}
-            {(quoteIcon && layout == 1) && <div className="qubely-image-quote">
-              <span className={`qubely-quote-icon ${quoteIcon}`}></span>
-            </div>
-            }
-
-            <div className={`qubely-image-carousel-content-wrapper`}>
-              {(showRatings && ratings > 0 && layout !== 1) &&
-                <div className="qubely-image-ratings" data-qubelyrating={ratings}></div>
-              }
-              <div className="qubely-image-content"> <RichText.Content value={message} /></div>
-              {(showRatings && ratings > 0 && layout == 1) && <div className="qubely-image-ratings" data-qubelyrating={ratings} />}
-            </div>
-
-            {layout !== 2 && this.renderAuthorInfo(item)}
-
-            {(quoteIcon && layout == 2) && <div className="qubely-image-quote qubely-position-bottom">
-              <span className={`qubely-quote-icon ${quoteIcon}`}></span>
-            </div>
-            }
-
+            { this.renderSliderInfo(item) }
           </div>
         </div>
       )
@@ -73,12 +47,13 @@ class Save extends Component {
   }
 
   render() {
-    const { attributes: { uniqueId, layout, items, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
+    const { 
+      attributes: { uniqueId, layout, items, itemthree, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, notCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
     let options = JSON.stringify({
       autoplay: autoPlay,
-      items: items,
+      items: layout != 2 ? items : itemthree,
       margin: 10,
-      center: isCentered,
+      center: (layout == 3 || layout == 4) ? isCentered : notCentered,
       dots: dots,
       dot_indicator: dotIndicator,
       nav: nav,
@@ -90,17 +65,17 @@ class Save extends Component {
       arrowStyle: arrowStyle,
       responsive: [
         {
-          viewport: 1170,
-          items: items.md
-        },
-        {
-          viewport: 980,
-          items: items.sm
-        },
-        {
-          viewport: 580,
-          items: items.xs
-        }
+					viewport: 1170,
+					items: layout != 2 ? items.md : itemthree.md
+				},
+				{
+					viewport: 980,
+					items: layout != 2 ? items.sm : itemthree.sm
+				},
+				{
+					viewport: 580,
+					items: layout != 2 ? items.xs : itemthree.xs
+				}
       ],
     }
     )
