@@ -4,7 +4,7 @@ import Edit from './Edit'
 import Save from './Save';
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks;
-const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
+const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes } } = wp.qubelyComponents
 
 const defaultFormItems = [
     { type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: { md: 50 }, required: true, hideLabel: false },
@@ -24,6 +24,7 @@ registerBlockType('qubely/form', {
     attributes: {
         uniqueId: { type: 'string', default: '' },
         ...globalAttributes,
+        ...buttonAttributes,
         layout: { type: 'string', default: 'classic' },
         useDefaultStyle: { type: 'boolean', default: true },
         spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },

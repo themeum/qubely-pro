@@ -14,12 +14,20 @@ const {
     Border,
     RadioAdvanced,
     QubelyButtonEdit,
-    gloalSettings: {
-        globalSettingsPanel
-    },
     Inline: { InlineToolbar },
-    CssGenerator: { CssGenerator }
+    CssGenerator: { CssGenerator },
+    QubelyButton: { buttonSettings },
+    gloalSettings: { globalSettingsPanel },
 } = wp.qubelyComponents
+
+const itemTypes = [
+    { label: 'Text', value: 'text' },
+    { label: 'Email', value: 'email' },
+    { label: 'Radio', value: 'radio' },
+    { label: 'Checkbox', value: 'checkbox' },
+    { label: 'Textarea', value: 'textarea' },
+    { label: 'Dropdown', value: 'dropdown' },
+]
 
 import icons from '../../helpers/icons';
 
@@ -32,7 +40,8 @@ class Edit extends Component {
             spacer: true,
             selectedItem: -1,
             dropdownOpen: -1,
-            newItemType: 'text'
+            newItemType: 'text',
+            device: 'md',
         }
         this.removeItem = this.removeItem.bind(this);
     }
@@ -121,16 +130,84 @@ class Edit extends Component {
     }
 
     render() {
-        const { selectedItem, dropdownOpen } = this.state;
-        const { attributes, setAttributes } = this.props;
-        const { uniqueId, formItems, labelTypography, labelColor, labelColorFocus, inputTypography, inputColor, inputColorFocus, inputColorHover, inputBg, inputBgFocus, inputBgHover, inputBorder, inputBorderMaterial, inputBorderColorFocus, inputBorderColorHover, inputCorner, inputCornerRadius, inputSize, inputPaddingX, inputPaddingY, textareaHeight, placeholderColor, placeholderColorFocus, placeholderColorHover, enableButton, buttonTag, buttonSize, buttonFillType, buttonText, buttonIconName, buttonIconPosition, spacing, gutter, fieldErrorMessage, formSuccessMessage, formErrorMessage, reCaptcha, reCaptchaSiteKey, reCaptchaSecretKey, policyCheckbox, policyCheckboxText, emailReceiver, emailHeaders, emailFrom, emailSubject, emailBody, layout, globalZindex, hideTablet, hideMobile, globalCss, } = attributes;
+        const { attributes, setAttributes } = this.props
+
+        const {
+            setAttributes,
+            attributes: {
+                uniqueId,
+                layout,
+                formItems,
+
+                labelTypography,
+                labelColor,
+                labelColorFocus,
+
+                inputTypography,
+                inputColor,
+                inputColorFocus,
+                inputColorHover,
+                inputBg,
+                inputBgFocus,
+                inputBgHover,
+                inputBorder,
+                inputBorderMaterial,
+                inputBorderColorFocus,
+                inputBorderColorHover,
+                inputCorner,
+                inputCornerRadius,
+                inputSize,
+                inputPaddingX,
+                inputPaddingY,
+
+                textareaHeight,
+
+                placeholderColor,
+                placeholderColorFocus,
+                placeholderColorHover,
+
+                enableButton,
+                buttonTag,
+                buttonSize,
+                buttonFillType,
+                buttonText,
+                buttonIconName,
+                buttonIconPosition,
+
+                spacing,
+                gutter,
+                fieldErrorMessage,
+                formSuccessMessage,
+                formErrorMessage,
+
+                reCaptcha,
+                reCaptchaSiteKey,
+                reCaptchaSecretKey,
+                policyCheckbox,
+                policyCheckboxText,
+
+                emailReceiver,
+                emailHeaders,
+                emailFrom,
+                emailSubject,
+                emailBody,
+
+                globalZindex,
+                hideTablet,
+                hideMobile,
+                globalCss
+            }
+        } = this.props
+
+        const { device, selectedItem, dropdownOpen } = this.state
+
         if (uniqueId) { CssGenerator(this.props.attributes, 'form', uniqueId); }
 
         return (
             <Fragment>
                 <InspectorControls key="inspector">
 
-                    <PanelBody title={__('')} initialOpen={true}>
+                    <PanelBody title={__('')} opened={true}>
                         <Styles
                             value={layout}
                             onChange={val => setAttributes({ layout: val })}
@@ -401,6 +478,9 @@ class Edit extends Component {
                             </Tab>
                         </Tabs>
                     </PanelBody>
+
+                    {buttonSettings(this.props.attributes, device, setAttributes, (key, value) => { this.setState({ [key]: value }) })}
+
                 </InspectorControls>
 
                 <BlockControls>
@@ -503,7 +583,21 @@ class Edit extends Component {
                             }
                         </form>
 
-                        <div className="qubely-form-group" style={{ width: '100%' }}>
+                        <div className="qubely-accordion-add-item">
+                            <SelectControl
+                                label=""
+                                value={this.state.newItemType}
+                                options={itemTypes}
+                                onChange={val => this.setState({ newItemType: val })}
+                            />
+                            <IconButton
+                                icon={'insert'}
+                                onClick={() => this.insertItem()} >
+                                {__('Add New Item')}
+                            </IconButton>
+                        </div>
+
+                        <div className="qubely-form-group qubely-form-button" >
                             <QubelyButtonEdit
                                 enableButton={enableButton}
                                 buttonFillType={buttonFillType}
@@ -514,26 +608,6 @@ class Edit extends Component {
                                 buttonTag={buttonTag}
                                 onTextChange={value => setAttributes({ buttonText: value })}
                             />
-                        </div>
-                        <div className="qubely-accordion-add-item">
-                            <SelectControl
-                                label=""
-                                value={this.state.newItemType}
-                                options={[
-                                    { label: 'Text', value: 'text' },
-                                    { label: 'Email', value: 'email' },
-                                    { label: 'Radio', value: 'radio' },
-                                    { label: 'Checkbox', value: 'checkbox' },
-                                    { label: 'Textarea', value: 'textarea' },
-                                    { label: 'Dropdown', value: 'dropdown' },
-                                ]}
-                                onChange={(val) => this.setState({ newItemType: val })}
-                            />
-                            <IconButton
-                                icon={'insert'}
-                                onClick={() => this.insertItem()} >
-                                {__('Add New Item')}
-                            </IconButton>
                         </div>
                     </div>
                 </div>
