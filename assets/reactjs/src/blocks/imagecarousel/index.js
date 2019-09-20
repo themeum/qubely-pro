@@ -24,6 +24,10 @@ registerBlockType('qubely/imagecarousel', {
 			type: 'object', 
 			default: { md: '3', sm: '3', xs: '1' } 
 		},
+		itemfive: { 
+			type: 'object', 
+			default: { md: '4', sm: '3', xs: '3' } 
+		},
 		autoPlay: { type: 'boolean', default: false },
 		dots: { type: 'boolean', default: true },
 		dragable: { type: 'boolean', default: true },
@@ -85,6 +89,7 @@ registerBlockType('qubely/imagecarousel', {
 		notCentered: { type: 'boolean', default: false },
 		activeFade: { type: 'boolean', default: false },
 		activeDescription: { type: 'boolean', default: false },
+		sliderContent: { type: 'boolean', default: false },
 
 		/*------------------------------------
 		* 			Slider Settings 			
@@ -254,11 +259,7 @@ registerBlockType('qubely/imagecarousel', {
             },
             style: [
                 {
-                    condition: [
-                        { key: 'layout', relation: '==', value: '6' },
-                        { key: 'enableOverlay', relation: '==', value: true }
-                    ],
-                    selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text:before'
+                    selector: '{{QUBELY}} .layout-3 .qubely-image-slider-text:before, {{QUBELY}} .layout-4 .qubely-image-slider-text:before, {{QUBELY}} .layout-5 .qubely-image-slider-text:before, {{QUBELY}} .layout-6 .qubely-image-slider-text:before'
                 }
             ]
         },
@@ -281,6 +282,30 @@ registerBlockType('qubely/imagecarousel', {
             style: [
                 {
                     condition: [
+                        { key: 'layout', relation: '==', value: '3' },
+                        { key: 'enableOverlay', relation: '==', value: true },
+                        { key: 'animateOnHover', relation: '==', value: true },
+                    ],
+                    selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:hover:before'
+				},
+				{
+                    condition: [
+                        { key: 'layout', relation: '==', value: '4' },
+                        { key: 'enableOverlay', relation: '==', value: true },
+                        { key: 'animateOnHover', relation: '==', value: true },
+                    ],
+                    selector: '{{QUBELY}} .layout-4 .qubely-image-slider-text:hover:before'
+				},
+				{
+                    condition: [
+                        { key: 'layout', relation: '==', value: '5' },
+                        { key: 'enableOverlay', relation: '==', value: true },
+                        { key: 'animateOnHover', relation: '==', value: true },
+                    ],
+                    selector: '{{QUBELY}} .layout-5 .qubely-image-slider-text:hover:before'
+				},
+				{
+                    condition: [
                         { key: 'layout', relation: '==', value: '6' },
                         { key: 'enableOverlay', relation: '==', value: true },
                         { key: 'animateOnHover', relation: '==', value: true },
@@ -300,7 +325,7 @@ registerBlockType('qubely/imagecarousel', {
                         { key: 'enableOverlay', relation: '==', value: true },
                         { key: 'overlayBlend', relation: '!=', value: 'normal' }
                     ],
-                    selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};}'
+                    selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};} {{QUBELY}} .layout-4 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};}'
                 }
             ]
         },
@@ -311,7 +336,11 @@ registerBlockType('qubely/imagecarousel', {
 		contentSpacing: { 
 			type: 'object', 
 			default: { md: 60, unit: 'px' }, 
-			style: [{ selector: '{{QUBELY}} .qubely-image-content {bottom: {{contentSpacing}};}' }] 
+			style: [
+				{ 
+					selector: '{{QUBELY}} .qubely-image-content {bottom: {{contentSpacing}};}' 
+				}
+			] 
 		},
 
 

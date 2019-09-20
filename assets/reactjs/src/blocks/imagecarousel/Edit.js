@@ -71,7 +71,7 @@ class Edit extends Component {
 		)
 	}
 
-	renderAvatar = (sliderimage, index) => {
+	renderSlider = (sliderimage, index) => {
 		const { attributes: { sliderimageAlt } } = this.props
 		return (
 			<MediaUpload
@@ -106,22 +106,25 @@ class Edit extends Component {
 	}
 
 	renderSliderInfo = (item, index) => {
-		const { attributes: { layout, activeDescription } } = this.props
+		const { attributes: { layout, sliderContent, activeDescription } } = this.props
 		const { slidertitle, subtitle, sliderimage, message } = item
 
 		return (
 			<div className={`qubely-image-slider`}>
-				{this.renderAvatar(sliderimage, index)}
-
-				{ (layout == 6) && 
-					<div className={`qubely-image-slider-text`}>
-						<div className="qubely-image-content">
-							<div className="qubely-image-title" >{this.renderName(slidertitle, index)}</div>
-							<div className="qubely-image-subtitle" >{this.renderDesignation(subtitle, index)}</div>
-							{activeDescription &&
-								<span className="qubely-slider-description" >{this.renderMessage(message, index)} </span>
-							}
-						</div>
+				{this.renderSlider(sliderimage, index)}
+				{ (layout != 1 && layout != 2 ) &&
+					<div>
+						{ (sliderContent || layout === 6) && 
+							<div className={`qubely-image-slider-text`}>
+								<div className="qubely-image-content">
+									<div className="qubely-image-title" >{this.renderName(slidertitle, index)}</div>
+									<div className="qubely-image-subtitle" >{this.renderDesignation(subtitle, index)}</div>
+									{activeDescription &&
+										<span className="qubely-slider-description" >{this.renderMessage(message, index)} </span>
+									}
+								</div>
+							</div>
+						}
 					</div>
 				}
 			</div>
@@ -185,13 +188,16 @@ class Edit extends Component {
 	}
 	render() {
 		const { setAttributes, attributes: {
-			uniqueId, items, itemthree, autoPlay, interval, speed, nav, carouselItems, dragable,
+			uniqueId, items, itemthree, itemfive, autoPlay, interval, speed, nav, carouselItems, dragable,
 			layout, messageSpacingTop, messageSpacingBottom, nameColor, descriptionColor,  alignment, subtitleColor, activeDescription,
 			nameTypo, nameSpacing, messageTypo, subtitleTypo, contentSpacing, textColor, bgBorderRadius, border, boxShadow,
 			boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, isCentered, notCentered, activeFade,
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
 			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
+
+
+			sliderContent,
 
 			animateOnHover,
 			enableOverlay,
@@ -204,7 +210,7 @@ class Edit extends Component {
 
 		const carouselSettings = {
 			autoplay: autoPlay,
-			items: layout != 2 ? items : itemthree,
+			items: layout != 2 ? ((layout == 5) ? itemfive : items) : itemthree,
 			margin: 10,
 			center: (layout == 3 || layout == 4) ? isCentered : notCentered,
 			dot_indicator: dotIndicator,
@@ -215,17 +221,17 @@ class Edit extends Component {
 			speed: speed,
 			interval: interval,
 			responsive: [
-				{
+				{ 
 					viewport: 1170,
-					items: layout != 2 ? items.md : itemthree.md
+					items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md
 				},
 				{
 					viewport: 980,
-					items: layout != 2 ? items.sm : itemthree.sm
+					items: layout != 2 ? ((layout == 5) ? itemfive.sm : items.sm) : itemthree.sm
 				},
 				{
 					viewport: 580,
-					items: layout != 2 ? items.xs : itemthree.xs
+					items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs
 				}
 			],
 		};
@@ -265,15 +271,18 @@ class Edit extends Component {
 							onChange={val => this.setCarouselLength(val)}
 						/>
 
-						{ layout == 2 && 
+						{ layout == 5 && 
 							<Range
 								label={__('Number of Columns')}
 								min={1} max={20} responsive device={device}
 								device={this.state.device}
-								value={ (layout != 2) ? items : itemthree }
-								onChange={value => setAttributes( (layout != 2 ) ? { items: value } : { itemthree: value })}
+								value={ (layout != 2) ? ((layout == 5) ? itemfive : items) : itemthree }
+								onChange={value => setAttributes( (layout != 2 ) ? ((layout == 5) ? { itemfive: value } : { items: value }) : { itemthree: value })}
 								onDeviceChange={value => this.setState({ device: value })}
 							/>
+						}
+						{ (layout != 6 && layout != 1 && layout != 2) &&
+							<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
 						}
 					</PanelBody>
 
@@ -292,10 +301,10 @@ class Edit extends Component {
 							onChange={value => setAttributes((layout == 3 || layout == 4) ? { isCentered: value } : { notCentered: value })}
 						/>
 
-						{
-							isCentered &&
+						{ isCentered &&
 							<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
 						}
+						
 					</PanelBody>
 
 					<PanelBody title={__('Slider Settings')} initialOpen={false}>
@@ -412,7 +421,8 @@ class Edit extends Component {
 						}
 					</PanelBody>
 					
-					{ (layout == 6) && 
+					{ (sliderContent || layout === 6 ) && 
+					
 						<Fragment>
 							<PanelBody title={__('Title')} initialOpen={false}>
 								<Range
