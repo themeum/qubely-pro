@@ -3,7 +3,7 @@ const { Fragment, Component } = wp.element;
 const { PanelBody } = wp.components
 const { InspectorControls, RichText, MediaUpload } = wp.editor
 import icons from '../../helpers/icons'
-const { Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const { Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Select, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
 
 class Edit extends Component {
 	constructor(props) {
@@ -119,7 +119,7 @@ class Edit extends Component {
 							<div className="qubely-image-title" >{this.renderName(slidertitle, index)}</div>
 							<div className="qubely-image-subtitle" >{this.renderDesignation(subtitle, index)}</div>
 							{activeDescription &&
-								<span className="qubely-image-content" >{this.renderMessage(message, index)} </span>
+								<span className="qubely-slider-description" >{this.renderMessage(message, index)} </span>
 							}
 						</div>
 					</div>
@@ -186,12 +186,18 @@ class Edit extends Component {
 	render() {
 		const { setAttributes, attributes: {
 			uniqueId, items, itemthree, autoPlay, interval, speed, nav, carouselItems, dragable,
-			layout, messageSpacingTop, messageSpacingBottom, nameColor, alignment, subtitleColor, activeDescription,
-			nameTypo, nameSpacing, messageTypo, subtitleTypo, bgPadding, textColor, bgColor, bgBorderRadius, border, boxShadow,
+			layout, messageSpacingTop, messageSpacingBottom, nameColor, descriptionColor,  alignment, subtitleColor, activeDescription,
+			nameTypo, nameSpacing, messageTypo, subtitleTypo, contentSpacing, textColor, bgBorderRadius, border, boxShadow,
 			boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, isCentered, notCentered, activeFade,
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
 			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
+
+			animateOnHover,
+			enableOverlay,
+            overlayBg,
+            overlayHoverBg,
+            overlayBlend,
 		} } = this.props
 
 		const { device } = this.state
@@ -427,101 +433,90 @@ class Edit extends Component {
 									onChange={(value) => setAttributes({ nameTypo: value })}
 									device={device} onDeviceChange={value => this.setState({ device: value })} />
 							</PanelBody>
+							
 							<PanelBody title={__('Subtitle')} initialOpen={false}>
-								<Range
-									label={__('Top Spacing')}
-									value={messageSpacingTop} onChange={(value) => setAttributes({ messageSpacingTop: value })}
-									unit={['px', 'em', '%']} max={300}
-									min={0}
-									responsive
-									device={device}
-									onDeviceChange={value => this.setState({ device: value })} />
-								<Range
-									label={__('Bottom Spacing')}
-									value={messageSpacingBottom} onChange={(value) => setAttributes({ messageSpacingBottom: value })}
-									unit={['px', 'em', '%']} max={300}
-									min={0}
-									responsive
-									device={device}
-									onDeviceChange={value => this.setState({ device: value })} />
+								<Color
+									label={__('Color')}
+									value={subtitleColor} onChange={(value) => setAttributes({ subtitleColor: value })}
+								/>
 								<Typography
 									label={__('Typography')}
-									value={messageTypo}
-									onChange={(value) => setAttributes({ messageTypo: value })}
+									value={subtitleTypo}
+									onChange={(value) => setAttributes({ subtitleTypo: value })}
 									device={device} onDeviceChange={value => this.setState({ device: value })} />
 							</PanelBody>
 
 							<PanelBody title={__('Description')} initialOpen={false}>
-
 								<Toggle label={__('Hide Description')} value={activeDescription} onChange={value => setAttributes({ activeDescription: value })} />
 								{ activeDescription && 
 									<Fragment>
 										<Color
 											label={__('Color')}
-											value={subtitleColor} onChange={(value) => setAttributes({ subtitleColor: value })}
+											value={descriptionColor} onChange={(value) => setAttributes({ descriptionColor: value })}
 										/>
 										<Typography
 											label={__('Typography')}
-											value={subtitleTypo}
-											onChange={(value) => setAttributes({ subtitleTypo: value })}
+											value={messageTypo}
+											onChange={(value) => setAttributes({ messageTypo: value })}
 											device={device} onDeviceChange={value => this.setState({ device: value })} />
+										<Range
+											label={__('Top Spacing')}
+											value={messageSpacingTop} onChange={(value) => setAttributes({ messageSpacingTop: value })}
+											unit={['px', 'em', '%']} max={300}
+											min={0}
+											responsive
+											device={device}
+											onDeviceChange={value => this.setState({ device: value })} />
+										<Range
+											label={__('Bottom Spacing')}
+											value={messageSpacingBottom} onChange={(value) => setAttributes({ messageSpacingBottom: value })}
+											unit={['px', 'em', '%']} max={300}
+											min={0}
+											responsive
+											device={device}
+											onDeviceChange={value => this.setState({ device: value })} />
 									</Fragment>
 								}
+							</PanelBody>
 
-								
+							<PanelBody title={__('Overlay')} initialOpen={false}>
+								<Toggle label={__('Animate on Hover')} value={animateOnHover} onChange={val => setAttributes({ animateOnHover: val })} />
+								<Toggle label={__('Enable')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
+								{enableOverlay == 1 &&
+                                    <Fragment>
+
+                                        {animateOnHover == 1 ?
+                                            <Tabs>
+                                                <Tab tabTitle={__('Normal')}>
+                                                    <ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
+                                                </Tab>
+                                                <Tab tabTitle={__('Hover')}>
+                                                    <ColorAdvanced label={__('Background')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
+                                                </Tab>
+                                            </Tabs>
+                                            :
+                                            <Fragment>
+                                                <ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
+                                                <Separator />
+                                            </Fragment>
+                                        }
+                                        <Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
+                                    </Fragment>
+                                }
+								<Range
+									label={__('Content Spacing')}
+									value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })}
+									unit={['px', 'em', '%']} max={300}
+									min={0}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })} />
 							</PanelBody>
 
 						</Fragment>
 					}
 
-					<PanelBody title={__('Design')} initialOpen={false}>
-						<Color
-							label={__('Text Color')}
-							value={textColor}
-							onChange={val => setAttributes({ textColor: val })} />
-						<Color
-							label={__('Background')}
-							value={bgColor}
-							onChange={val => setAttributes({ bgColor: val })} />
-						<Separator />
-						<Border
-							label={__('Border')}
-							value={border}
-							onChange={val => setAttributes({ border: val })} />
-						<Padding
-							label={__('Padding')}
-							value={bgPadding} onChange={(value) => setAttributes({ bgPadding: value })}
-							unit={['px', 'em', '%']}
-							min={0}
-							max={100}
-							responsive
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })} />
-						<BorderRadius
-							label={__('Border Radius')}
-							value={bgBorderRadius}
-							onChange={val => setAttributes({ bgBorderRadius: val })}
-							min={0}
-							max={100}
-							unit={['px', 'em', '%']}
-							responsive
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })} />
-						<Tabs>
-							<Tab tabTitle={__('Normal')}>
-								<BoxShadow
-									label={__('Box Shadow')}
-									value={boxShadow} onChange={val => setAttributes({ boxShadow: val })}
-								/>
-							</Tab>
-							<Tab tabTitle={__('Hover')}>
-								<BoxShadow
-									label={__('Box Shadow')}
-									value={boxShadowHover} onChange={val => setAttributes({ boxShadowHover: val })}
-								/>
-							</Tab>
-						</Tabs>
-					</PanelBody>
+					
 				</InspectorControls>
 
 				<div className={`qubely-block-${uniqueId}`}>

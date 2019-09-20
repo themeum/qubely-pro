@@ -133,7 +133,7 @@ class Edit extends Component {
         const { attributes, setAttributes } = this.props
 
         const {
-            setAttributes
+            setAttributes,
             attributes: {
                 uniqueId,
                 layout,
@@ -207,7 +207,7 @@ class Edit extends Component {
             <Fragment>
                 <InspectorControls key="inspector">
 
-                    <PanelBody title={__('')} initialOpen={true}>
+                    <PanelBody title={__('')} opened={true}>
                         <Styles
                             value={layout}
                             onChange={val => setAttributes({ layout: val })}

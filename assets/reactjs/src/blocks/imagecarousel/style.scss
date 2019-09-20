@@ -22,6 +22,7 @@
   }
   .qubely-single-img.qubely-backend .qubely-image-sliderimage{
     cursor: pointer;
+    display: block;
   }
 
   .qubely-image-placeholder.qubely-image-sliderimage i {
@@ -36,7 +37,9 @@
   .qubely-carousel-item.qubely-carousel-extended-item {
       transition: .4s;
   }
-
+  .qubely-image-item span.qubely-slider-description {
+    display: block;
+  }
   .qubely-image-sliderimage {
     &.qubely-image-placeholder i {
       font-size: 52px;
@@ -469,8 +472,27 @@
 }
 // Layout 6
 .layout-6 .qubely-image-slider-text {
+  display: flex;
   position: absolute;
   padding: 30px;
+  height: 100%;
   width: 100%;
   bottom: 0;
+  transition: .3s;
+}
+.layout-6 .qubely-image-slider-text:before {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: .3s;
+}
+.qubely-image-content {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
 }
