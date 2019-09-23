@@ -2,6 +2,10 @@ const { __ } = wp.i18n;
 const img_path = qubely_pro_admin.plugin + 'assets/img/blocks';
 
 const icons = {
+
+    //form 
+    form_classic: <img src={`${img_path}/form/classic.svg`} alt={__('Classic')} />,
+    form_material: <img src={`${img_path}/form/material.svg`} alt={__('Material')} />,
     // Testimonial Carousel icon.
     testimonial_1: <img src={`${img_path}/testimonial/1.svg`} alt={__('Testimonial 1')} />,
     testimonial_2: <img src={`${img_path}/testimonial/2.svg`} alt={__('Testimonial 2')} />,
@@ -17,17 +21,18 @@ const icons = {
     social_fill: <img src={`${img_path}/socialicon/fill.svg`} alt={__('Fill')} />,
 
     // PostGrid Icon
-    postgrid_1 : <img src={`${img_path}/postgrid/1.svg`} alt={__('Layout 1')} />,
-    postgrid_2 : <img src={`${img_path}/postgrid/2.svg`} alt={__('Layout 2')} />,
-    postgrid_3 : <img src={`${img_path}/postgrid/pro1.svg`} alt={__('Layout 3')} />,
-    postgrid_4 : <img src={`${img_path}/postgrid/pro2.svg`} alt={__('Layout 4')} />,
-    postgrid_5 : <img src={`${img_path}/postgrid/pro3.svg`} alt={__('Layout 4')} />,
-    postgrid_design_1 : <img src={`${img_path}/postgrid/11.svg`} alt={__('Design 1')} />,
-    postgrid_design_2 : <img src={`${img_path}/postgrid/12.svg`} alt={__('Design 2')} />,
-    postgrid_design_3 : <img src={`${img_path}/postgrid/13.svg`} alt={__('Design 3')} />,
-    postgrid_design_4 : <img src={`${img_path}/postgrid/14.svg`} alt={__('Design 4')} />,
-    postgrid_design_5 : <img src={`${img_path}/postgrid/15.svg`} alt={__('Design 5')} />,
-    postgrid_design_6 : <img src={`${img_path}/postgrid/16.svg`} alt={__('Design 6')} />,
+    postgrid_1: <img src={`${img_path}/postgrid/1.svg`} alt={__('Layout 1')} />,
+    postgrid_2: <img src={`${img_path}/postgrid/2.svg`} alt={__('Layout 2')} />,
+    postgrid_3: <img src={`${img_path}/postgrid/pro1.svg`} alt={__('Layout 3')} />,
+    postgrid_4: <img src={`${img_path}/postgrid/pro2.svg`} alt={__('Layout 4')} />,
+    postgrid_5: <img src={`${img_path}/postgrid/pro3.svg`} alt={__('Layout 4')} />,
+    postgrid_design_1: <img src={`${img_path}/postgrid/11.svg`} alt={__('Design 1')} />,
+    postgrid_design_2: <img src={`${img_path}/postgrid/12.svg`} alt={__('Design 2')} />,
+    postgrid_design_3: <img src={`${img_path}/postgrid/13.svg`} alt={__('Design 3')} />,
+    postgrid_design_4: <img src={`${img_path}/postgrid/14.svg`} alt={__('Design 4')} />,
+    postgrid_design_5: <img src={`${img_path}/postgrid/15.svg`} alt={__('Design 5')} />,
+    postgrid_design_6: <img src={`${img_path}/postgrid/16.svg`} alt={__('Design 6')} />,
+
 }
 
 

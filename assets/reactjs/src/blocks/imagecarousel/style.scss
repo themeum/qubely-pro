@@ -1,4 +1,4 @@
-.qubely-block-testimonial-carousel {
+.qubely-block-image-carousel {
   transition: all 400ms;
   // Editor line height hack
   .editor-rich-text {
@@ -7,7 +7,7 @@
     }
   }
 
-  .qubely-testimonial-quote {
+  .qubely-image-quote {
     .qubely-quote-icon {
       line-height: 1;
       width: auto;
@@ -20,32 +20,52 @@
       }
     }
   }
-  .qubely-single-img.qubely-backend .qubely-testimonial-avatar{
+  .qubely-single-img.qubely-backend .qubely-image-sliderimage{
     cursor: pointer;
-  }
-  .qubely-testimonial-avatar {
-    &.qubely-image-placeholder i {
-      font-size: 0.5em;
-    }
+    display: block;
   }
 
-  .qubely-testimonial-avatar-layout-left,
-  .qubely-testimonial-avatar-layout-right {
+  .qubely-image-placeholder.qubely-image-sliderimage i {
+      padding: 120px;
+      width: inherit;
+      height: inherit;
+  }
+  .qubely-image-subtitle div {
+      font-size: 24px;
+  }
+
+  .qubely-carousel-item.qubely-carousel-extended-item {
+      transition: .4s;
+  }
+  .qubely-image-item span.qubely-slider-description {
+    display: block;
+  }
+  .qubely-image-sliderimage {
+    &.qubely-image-placeholder i {
+      font-size: 52px;
+    }
+  }
+  .qubely-image-placeholder {
+    width: 100%;
+    height: 100%;
+}
+  .qubely-image-sliderimage-layout-left,
+  .qubely-image-sliderimage-layout-right {
     display: inline-flex;
     align-items: center;
-    .qubely-testimonial-author-info {
+    .qubely-image-slidertitle-info {
       text-align: left;
     }
   }
 
-  .qubely-testimonial-avatar-layout-right {
-    .qubely-testimonial-author-info {
+  .qubely-image-sliderimage-layout-right {
+    .qubely-image-slidertitle-info {
       text-align: right;
     }
   }
 
   //rating
-  .qubely-testimonial-ratings {
+  .qubely-image-ratings {
     unicode-bidi: bidi-override;
     display: inline-block;
     position: relative;
@@ -99,7 +119,7 @@
       width: 100%;
     }
   }
-  .qubely-testimonial-carousel-arrow-down {
+  .qubely-image-carousel-arrow-down {
     width: 0;
     height: 0;
     border-left: 15px solid transparent;
@@ -108,15 +128,15 @@
   }
 }
 
-.qubely-testimonial-carousel-content-wrapper {
+.qubely-image-carousel-content-wrapper {
   position: relative;
 }
-.layout-3 .qubely-testimonial-carousel-content-wrapper {
+.layout-3 .qubely-image-carousel-content-wrapper {
   padding: 20px;
   border-radius: 10px;
   background: #f4f4f4;
 }
-.layout-3 .qubely-testimonial-carousel-content-wrapper:before {
+.layout-3 .qubely-image-carousel-content-wrapper:before {
   content: " ";
   position: absolute;
   width: 0;
@@ -129,18 +149,18 @@
   left: 50%;
   bottom: -15px;
 }
-.layout-3 .qubely-testimonial-author {
+.layout-3 .qubely-image-slidertitle {
   margin-top: 40px;
   text-align: center;
 }
-.layout-3 .qubely-testimonial-avatar {
+.layout-3 .qubely-image-sliderimage {
   margin-right: 0px;
 }
-.layout-3 .qubely-testimonial-avatar-layout-left .qubely-testimonial-author-info {
+.layout-3 .qubely-image-sliderimage-layout-left .qubely-image-slidertitle-info {
   text-align: center;
 }
-.layout-1 .qubely-testimonial-avatar,
-.layout-2 .qubely-testimonial-avatar {
+.layout-1 .qubely-image-sliderimage,
+.layout-2 .qubely-image-sliderimage {
   margin-right: 20px;
 }
 
@@ -180,28 +200,7 @@
   position: relative;
   float: left;
   overflow: hidden;
-  &:hover {
-    .qubely-action-carousel-remove {
-      display: block;
-    }
-  }
-  .qubely-action-carousel-remove {
-    display: none;
-    font-size: 12px;
-    width: 18px;
-    height: 18px;
-    line-height: 20px;
-    text-align: center;
-    background: rgba(0, 0, 0, .8);
-    color: #fff;
-    position: absolute;
-    right: 5px;
-    border-radius: 10px;
-    z-index: 1;
-    cursor: pointer;
-  }
 }
-
 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active,
 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {
   visibility: visible;
@@ -297,10 +296,10 @@
   border-radius: 2px;
 }
 
-.qubely-tesitmonial-item.layout-3 .qubely-testimonial-avatar {
+.qubely-image-item.layout-3 .qubely-image-sliderimage {
   margin-right: 0;
 }
-.qubely-testimonial-carousel-content-wrapper {
+.qubely-image-carousel-content-wrapper {
   position: relative;
 }
 .qubely-carousel {
@@ -437,3 +436,88 @@
   }
 }
 
+.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {
+  opacity: .35;
+}
+.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {
+  opacity: 1;
+}
+
+// Layout 3
+.qubely-block-image-carousel.qubely-layout-3 {
+  overflow: hidden;
+}
+.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper {
+  padding: 30px 0;
+}
+.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list, 
+.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-extended-outer-stage {
+  position: relative;
+  overflow: inherit;
+}
+.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {
+  padding: 0 15px;
+}
+.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {
+  transform: scale(1);
+}
+.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {
+  transform: scale(1.1);
+}
+.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {
+  padding: 0 22px;
+}
+.qubely-layout-4 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {
+  padding: 0 10px;
+}
+// Layout 6
+.layout-3 .qubely-image-slider-text,
+.layout-4 .qubely-image-slider-text,
+.layout-5 .qubely-image-slider-text,
+.layout-6 .qubely-image-slider-text  {
+  display: flex;
+  position: absolute;
+  padding: 30px;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  transition: .3s;
+}
+
+.layout-3 .qubely-image-slider-text:before,
+.layout-4 .qubely-image-slider-text:before,
+.layout-5 .qubely-image-slider-text:before,
+.layout-6 .qubely-image-slider-text:before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: .3s;
+}
+.qubely-image-slider {
+  position: relative;
+  height: 100%;
+}
+.qubely-image-content {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+
+.qubely-block-image-carousel .qubely-image-item.layout-5 .qubely-image-placeholder.qubely-image-sliderimage i {
+  padding: 56px;
+}
+.qubely-image-item {
+  height: 100%;
+}
+.qubely-block-image-carousel.qubely-layout-5 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {
+  height: 8px;
+  margin-top: 0px;
+}
+.item-layout5 .qubely-image-slider-text {
+  display: none;
+}
