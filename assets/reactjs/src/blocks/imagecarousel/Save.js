@@ -36,6 +36,7 @@ class Save extends Component {
       </div>
     )
   }
+
   renderImage() {
     const { attributes: { carouselItems, layout } } = this.props
     return (carouselItems.map((item, index) => {
@@ -51,45 +52,50 @@ class Save extends Component {
 
   render() {
     const { 
-      attributes: { uniqueId, layout, items, itemthree, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, notCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
-    let options = JSON.stringify({
-      autoplay: autoPlay,
-      items: layout != 2 ? items : itemthree,
-      margin: 10,
-      center: (layout == 3 || layout == 4) ? isCentered : notCentered,
-      dots: dots,
-      dot_indicator: dotIndicator,
-      nav: nav,
-      speed: speed,
-      interval: interval,
-      dragable: dragable,
-      infiniteLoop: infiniteLoop,
-      activeFade: activeFade,
-      arrowStyle: arrowStyle,
-      responsive: [
-        {
-					viewport: 1170,
-					items: layout != 2 ? items.md : itemthree.md
-				},
-				{
-					viewport: 980,
-					items: layout != 2 ? items.sm : itemthree.sm
-				},
-				{
-					viewport: 580,
-					items: layout != 2 ? items.xs : itemthree.xs
-				}
-      ],
-    }
-    )
+      attributes: { 
+        uniqueId, layout, items, itemthree, itemfive, autoPlay, arrowStyle, 
+        infiniteLoop, activeFade, isCentered, notCentered, dragable, nav, dots, dotIndicator, interval, speed, animation 
+      } 
+    } = this.props
+      
+      let options = JSON.stringify({
+        autoplay: autoPlay,
+        items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md,
+        margin: 10,
+        center: (layout == 3 || layout == 4) ? isCentered : notCentered,
+        dots: dots,
+        dot_indicator: dotIndicator,
+        nav: nav,
+        speed: speed,
+        interval: interval,
+        dragable: dragable,
+        infiniteLoop: infiniteLoop,
+        activeFade: activeFade,
+        arrowStyle: arrowStyle,
+        responsive: [
+          { 
+            viewport: 1170,
+            items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md
+          },
+          {
+            viewport: 980,
+            items: layout != 2 ? ((layout == 5) ? itemfive.sm : items.sm) : itemthree.sm
+          },
+          {
+            viewport: 580,
+            items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs
+          }
+        ],
+      } )
+
     return (
-      <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-        <div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
-          <div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ''}`} data-options={options} id="qubelyCarousel1" >
-            {this.renderImage()}
+        <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
+          <div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
+            <div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ''}`} data-options={options} id="qubelyCarousel1" >
+              {this.renderImage()}
+            </div>
           </div>
         </div>
-      </div>
     )
   }
 }

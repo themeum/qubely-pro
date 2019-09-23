@@ -498,6 +498,7 @@
 }
 .qubely-image-slider {
   position: relative;
+  height: 100%;
 }
 .qubely-image-content {
   color: #fff;
@@ -509,4 +510,14 @@
 
 .qubely-block-image-carousel .qubely-image-item.layout-5 .qubely-image-placeholder.qubely-image-sliderimage i {
   padding: 56px;
+}
+.qubely-image-item {
+  height: 100%;
+}
+.qubely-block-image-carousel.qubely-layout-5 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {
+  height: 8px;
+  margin-top: 0px;
+}
+.item-layout5 .qubely-image-slider-text {
+  display: none;
 }

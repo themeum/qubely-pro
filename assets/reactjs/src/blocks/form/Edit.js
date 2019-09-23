@@ -130,8 +130,7 @@ class Edit extends Component {
     }
 
     render() {
-        const { attributes, setAttributes } = this.props
-
+        const { attributes } = this.props
         const {
             setAttributes,
             attributes: {

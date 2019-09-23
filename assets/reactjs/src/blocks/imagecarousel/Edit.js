@@ -75,16 +75,16 @@ class Edit extends Component {
 		const { attributes: { sliderimageAlt } } = this.props
 		return (
 			<MediaUpload
-				onSelect={val => this.updateAtrributes('sliderimage', val, index)}
+				onSelect={ val => this.updateAtrributes('sliderimage', val, index) }
 				allowedTypes={['image']}
 				multiple={false}
 				value={sliderimage}
 				render={({ open }) => (
 					<div className="qubely-single-img qubely-backend">
-						{(sliderimage && sliderimage.url) ?
-								<img onClick={open} className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
-								:
-								<div onClick={open} className="qubely-image-placeholder qubely-image-sliderimage" ><i className="fas fa-upload"></i></div>
+						{ (sliderimage && sliderimage.url) ?
+							<img onClick={open} className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
+							:
+							<div onClick={open} className="qubely-image-placeholder qubely-image-sliderimage" ><i className="fas fa-upload"></i></div>
 						}
 					</div>
 				)}
@@ -114,7 +114,7 @@ class Edit extends Component {
 				{this.renderSlider(sliderimage, index)}
 				{ (layout != 1 && layout != 2 ) &&
 					<div>
-						{ (sliderContent || layout === 6) && 
+						{ (sliderContent || layout === 6 ) && 
 							<div className={`qubely-image-slider-text`}>
 								<div className="qubely-image-content">
 									<div className="qubely-image-title" >{this.renderName(slidertitle, index)}</div>
@@ -136,7 +136,22 @@ class Edit extends Component {
 		return (
 			carouselItems.map((item, index) => {
 				return (
-					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
+					<div key={index} className={`qubely-carousel-item item-layout${layout} ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
+						<div className={`qubely-image-item layout-${layout}`}>
+							{this.renderSliderInfo(item, index)}
+						</div>
+					</div>
+				)
+			})
+		)
+	}
+
+	renderLayoutFive = () => { 
+		const { attributes: { layout, items, carouselItems } } = this.props
+		return (
+			carouselItems.map((item, index) => {
+				return (
+					<div key={index} className={`qubely-carousel-item layout5 active `} >
 						<div className={`qubely-image-item layout-${layout}`}>
 							{this.renderSliderInfo(item, index)}
 						</div>
@@ -165,12 +180,13 @@ class Edit extends Component {
 	}
 
 	parseResponsiveViewPort = () => {
-		const { attributes: { items } } = this.props
+		const { attributes: { layout, items, itemthree, itemfive } } = this.props
 		let responsive = [
-			{ viewport: 1170, items: items.md },
-			{ viewport: 980, items: items.sm },
-			{ viewport: 580, items: items.xs }
+			{ viewport: 1170, items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md },
+			{ viewport: 980, items: layout != 2 ? ((layout == 5) ? itemfive.sm : items.sm) : itemthree.sm },
+			{ viewport: 580, items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs }
 		]
+
 		if (typeof responsive === 'undefined')
 			return
 		let activeView = null
@@ -196,9 +212,7 @@ class Edit extends Component {
 			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
 
-
 			sliderContent,
-
 			animateOnHover,
 			enableOverlay,
             overlayBg,
@@ -233,6 +247,27 @@ class Edit extends Component {
 					viewport: 580,
 					items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs
 				}
+			],
+		};
+
+		// Item Five.
+		const carouselFiveSettings = {
+			autoplay: autoPlay,
+			items: items,
+			margin: 10,
+			center: false,
+			dot_indicator: dotIndicator,
+			dots: false,
+			nav: nav,
+			arrowStyle: arrowStyle,
+			arrowPosition: arrowPosition,
+			speed: speed,
+			interval: interval,
+			responsive: [
+				{ 
+					viewport: 1170,
+					items: 1,
+				},
 			],
 		};
 
@@ -531,9 +566,17 @@ class Edit extends Component {
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
+						
+						{layout == 5 && 
+							<Carousel options={carouselFiveSettings}>
+								{this.renderLayoutFive()}
+							</Carousel>	
+						}
+
 						<Carousel options={carouselSettings}>
 							{this.renderImages()}
 						</Carousel>
+						
 					</div>
 				</div>
 			</Fragment>
