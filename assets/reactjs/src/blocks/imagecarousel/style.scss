@@ -471,7 +471,10 @@
   padding: 0 10px;
 }
 // Layout 6
-.layout-6 .qubely-image-slider-text {
+.layout-3 .qubely-image-slider-text,
+.layout-4 .qubely-image-slider-text,
+.layout-5 .qubely-image-slider-text,
+.layout-6 .qubely-image-slider-text  {
   display: flex;
   position: absolute;
   padding: 30px;
@@ -480,14 +483,21 @@
   bottom: 0;
   transition: .3s;
 }
+
+.layout-3 .qubely-image-slider-text:before,
+.layout-4 .qubely-image-slider-text:before,
+.layout-5 .qubely-image-slider-text:before,
 .layout-6 .qubely-image-slider-text:before {
-  position: absolute;
   content: '';
+  position: absolute;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
   transition: .3s;
+}
+.qubely-image-slider {
+  position: relative;
 }
 .qubely-image-content {
   color: #fff;
@@ -495,4 +505,8 @@
   bottom: 0;
   width: 100%;
   left: 0;
+}
+
+.qubely-block-image-carousel .qubely-image-item.layout-5 .qubely-image-placeholder.qubely-image-sliderimage i {
+  padding: 56px;
 }

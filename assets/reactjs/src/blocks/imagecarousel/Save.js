@@ -14,19 +14,23 @@ class Save extends Component {
     )
   }
   renderSliderInfo = (item, index) => {
-    const { attributes: { layout, activeDescription } } = this.props
+    const { attributes: { layout, sliderContent, activeDescription } } = this.props
     const { slidertitle, subtitle, sliderimage, message } = item
 
     return (
       <div className={`qubely-image-slider`}>
         {this.renderSlider(sliderimage, index)}
-        { (layout == 6) && 
-					<div className={`qubely-image-slider-text`}>
-						<div className="qubely-image-content">
-							<div className="qubely-image-title" ><RichText.Content value={slidertitle} /></div>
-							<div className="qubely-image-subtitle" ><RichText.Content value={subtitle} /></div>
-              { activeDescription && <span className="qubely-slider-description" ><RichText.Content value={message} /></span> }
-						</div>
+        { (layout != 1 && layout != 2 ) &&
+					<div>
+						{ (sliderContent || layout === 6) && 
+              <div className={`qubely-image-slider-text`}>
+                  <div className="qubely-image-content">
+                    <div className="qubely-image-title" ><RichText.Content value={slidertitle} /></div>
+                    <div className="qubely-image-subtitle" ><RichText.Content value={subtitle} /></div>
+                    { activeDescription && <span className="qubely-slider-description" ><RichText.Content value={message} /></span> }
+                  </div>
+                </div>
+              }
 					</div>
 				}
       </div>
@@ -36,7 +40,7 @@ class Save extends Component {
     const { attributes: { carouselItems, layout } } = this.props
     return (carouselItems.map((item, index) => {
       return (
-        <div key={index} className={`qubely-carousel-item qubely-carousel-extended-item${index === 0 ? ' active' : ''}`} >
+        <div key={index} className={`qubely-carousel-item qubely-carousel-extended-item ${index === 0 ? ' active' : ''}`} >
           <div className={`qubely-image-item layout-${layout}`}>
             { this.renderSliderInfo(item) }
           </div>
