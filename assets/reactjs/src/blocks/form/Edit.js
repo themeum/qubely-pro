@@ -145,7 +145,6 @@ class Edit extends Component {
     }
 
     render() {
-        const { attributes } = this.props
         const {
             attributes,
             setAttributes,

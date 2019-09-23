@@ -7,8 +7,8 @@ import Save from './Save'
 registerBlockType('qubely/imagecarousel', {
 	title: __('Image Carousel'),
 	description: __('Insert images and beautify them with Qubely Image Carousel Block'),
-	icon: 'carrot',
-	category: 'qubely',
+	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg'} alt={__('Team Block')} />,
+	category: 'qubely', 
 	keywords: [
 		__('Image'),
 		__('Carousel')
@@ -73,6 +73,13 @@ registerBlockType('qubely/imagecarousel', {
 					ratings: '5',
 					sliderimage: {}
 				},
+				{
+					slidertitle: 'Wordcamp Sponsor JoomShaper',
+					subtitle: 'WordCamp Dhaka will be happening',
+					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
+					ratings: '5',
+					sliderimage: {}
+				},
 				
 			]
 		},
@@ -90,6 +97,7 @@ registerBlockType('qubely/imagecarousel', {
 		activeFade: { type: 'boolean', default: false },
 		activeDescription: { type: 'boolean', default: false },
 		sliderContent: { type: 'boolean', default: false },
+		sliderOffContent: { type: 'boolean', default: false },
 
 		/*------------------------------------
 		* 			Slider Settings 			
