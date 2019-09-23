@@ -101,6 +101,21 @@ exports.push([module.i, ".editor-styles-wrapper .wp-block h1.qubely-postgrid-tit
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/pricelist/style.scss":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/pricelist/style.scss ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".qubely-block-pricelist .qubely-pricelist-image-container {\n  position: relative; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-empty-image {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background: #f5f5f5;\n    border: 2px dashed #e5e5e5;\n    padding: 30px;\n    border-radius: 5px;\n    min-height: 150px; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image {\n    text-align: center;\n    display: inline-block;\n    color: #2184F9;\n    text-decoration: none;\n    line-height: 1; }\n    .qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image span {\n      margin-top: 5px;\n      display: block; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image .editor-rich-text {\n    position: absolute;\n    left: 15px;\n    top: 15px; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n    position: relative;\n    display: inline-block; }\n    .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor .qubely-media-actions {\n      bottom: 10px;\n      right: 10px;\n      position: absolute;\n      z-index: 2; }\n\n.qubely-block-pricelist .qubely-pricelist-title-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .qubely-block-pricelist .qubely-pricelist-title-wrapper div:first-child {\n    margin-right: auto; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper > div {\n  display: inline-block; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper > div:first-child {\n  margin-right: 10px;\n  text-decoration: line-through; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper .qubely-pricelist-discount {\n  text-decoration: line-through; }\n\n.qubely-block-pricelist .qubely-pricelist-description {\n  flex: 1; }\n", ""]);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamcarousel/style.scss":
 /*!*************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/teamcarousel/style.scss ***!
@@ -1779,6 +1794,1097 @@ registerBlockType('qubely/postgrid', {
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/postgrid/style.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/blocks/pricelist/Edit.js":
+/*!**************************************!*\
+  !*** ./src/blocks/pricelist/Edit.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _icons = __webpack_require__(/*! ../../helpers/icons */ "./src/helpers/icons.js");
+
+var _icons2 = _interopRequireDefault(_icons);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    Component = _wp$element.Component;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    Tooltip = _wp$components.Tooltip,
+    Toolbar = _wp$components.Toolbar;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    RichText = _wp$editor.RichText,
+    BlockControls = _wp$editor.BlockControls,
+    MediaUpload = _wp$editor.MediaUpload;
+var _wp$qubelyComponents = wp.qubelyComponents,
+    IconList = _wp$qubelyComponents.IconList,
+    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar,
+    RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
+    Range = _wp$qubelyComponents.Range,
+    Color = _wp$qubelyComponents.Color,
+    Styles = _wp$qubelyComponents.Styles,
+    Typography = _wp$qubelyComponents.Typography,
+    Toggle = _wp$qubelyComponents.Toggle,
+    Separator = _wp$qubelyComponents.Separator,
+    Border = _wp$qubelyComponents.Border,
+    BorderRadius = _wp$qubelyComponents.BorderRadius,
+    BoxShadow = _wp$qubelyComponents.BoxShadow,
+    Alignment = _wp$qubelyComponents.Alignment,
+    Padding = _wp$qubelyComponents.Padding,
+    Headings = _wp$qubelyComponents.Headings,
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+
+var Edit = function (_Component) {
+	_inherits(Edit, _Component);
+
+	function Edit(props) {
+		_classCallCheck(this, Edit);
+
+		var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
+
+		_this.updatePricelistContent = function (key, value, index) {
+			var _this$props = _this.props,
+			    setAttributes = _this$props.setAttributes,
+			    _this$props$attribute = _this$props.attributes,
+			    pricelistItems = _this$props$attribute.pricelistItems,
+			    pricelistContents = _this$props$attribute.pricelistContents;
+
+			if (key === 'add' || key === 'delete') {
+				var updatedAttributes = key === 'add' ? [].concat(_toConsumableArray(pricelistContents), [{ title: 'Pricelist Block', date: 'January 1, 2021', description: 'Include detailed for your products, company, etc with Qubely Pricelist.' }]) : pricelistContents.slice(0, pricelistItems - 1);
+				setAttributes({
+					pricelistContents: updatedAttributes,
+					pricelistItems: key === 'add' ? pricelistItems + 1 : pricelistItems - 1
+				});
+			} else {
+				var _updatedAttributes = pricelistContents.map(function (data, itemIndex) {
+					if (index === itemIndex) {
+						return _extends({}, data, _defineProperty({}, key, value));
+					} else {
+						return data;
+					}
+				});
+				setAttributes({ pricelistContents: _updatedAttributes });
+			}
+		};
+
+		_this.renderPricelist = function () {
+			var _this$props$attribute2 = _this.props.attributes,
+			    pricelistContents = _this$props$attribute2.pricelistContents,
+			    enableContentBorder = _this$props$attribute2.enableContentBorder,
+			    headingLevel = _this$props$attribute2.headingLevel,
+			    enableImage = _this$props$attribute2.enableImage,
+			    enableBadge = _this$props$attribute2.enableBadge,
+			    enablePrice = _this$props$attribute2.enablePrice,
+			    enableDiscount = _this$props$attribute2.enableDiscount,
+			    enableDescription = _this$props$attribute2.enableDescription,
+			    priceAfterTitle = _this$props$attribute2.priceAfterTitle;
+
+			var titleTagName = 'h' + headingLevel;
+			return pricelistContents.map(function (_ref, index) {
+				var title = _ref.title,
+				    date = _ref.date,
+				    description = _ref.description,
+				    image = _ref.image,
+				    price = _ref.price,
+				    discount = _ref.discount,
+				    badge = _ref.badge;
+
+
+				return React.createElement(
+					'div',
+					{ key: index, className: 'qubely-pricelist-item' },
+					React.createElement(
+						'div',
+						{ className: 'qubely-pricelist-content' },
+						enableImage == 1 && React.createElement(
+							'div',
+							{ className: 'qubely-pricelist-image-container' },
+							React.createElement(
+								'div',
+								{ className: 'qubely-pricelist-content-image' + (image != undefined && image.url != undefined ? '' : ' qubely-empty-image') },
+								React.createElement(MediaUpload, {
+									onSelect: function onSelect(value) {
+										return _this.updatePricelistContent('image', value, index);
+									},
+									allowedTypes: ['image'],
+									multiple: false,
+									value: image,
+									render: function render(_ref2) {
+										var open = _ref2.open;
+										return React.createElement(
+											Fragment,
+											null,
+											image != undefined && image.url != undefined ? React.createElement(
+												'div',
+												{ className: 'qubely-pricelist-content-image-editor' },
+												React.createElement('img', { src: image.url, alt: __('image') }),
+												React.createElement(
+													'div',
+													{ className: 'qubely-media-actions qubely-field-button-list' },
+													React.createElement(
+														Tooltip,
+														{ text: __('Edit') },
+														React.createElement(
+															'button',
+															{ className: 'qubely-button', 'aria-label': __('Edit'), onClick: open, role: 'button' },
+															React.createElement('span', { 'aria-label': __('Edit'), className: 'fas fa-pencil-alt fa-fw' })
+														)
+													),
+													React.createElement(
+														Tooltip,
+														{ text: __('Remove') },
+														React.createElement(
+															'button',
+															{ className: 'qubely-button', 'aria-label': __('Remove'), onClick: function onClick() {
+																	return _this.updatePricelistContent('image', '', index);
+																}, role: 'button' },
+															React.createElement('span', { 'aria-label': __('Close'), className: 'far fa-trash-alt fa-fw' })
+														)
+													)
+												)
+											) : React.createElement(
+												'a',
+												{ className: 'qubely-insert-image', href: '#', onClick: open },
+												React.createElement(
+													'svg',
+													{ 'aria-hidden': 'true', role: 'img', focusable: 'false', 'class': 'dashicon dashicons-insert', xmlns: 'http://www.w3.org/2000/svg', width: '20', height: '20', viewBox: '0 0 20 20' },
+													React.createElement('path', { d: 'M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z' })
+												),
+												React.createElement(
+													'span',
+													null,
+													__('Insert')
+												)
+											)
+										);
+									}
+								}),
+								enableBadge && React.createElement(RichText, {
+									placeholder: __('Badge'),
+									tagName: 'div',
+									className: 'qubely-pricelist-badge',
+									value: badge,
+									onChange: function onChange(value) {
+										return _this.updatePricelistContent('badge', value, index);
+									},
+									keepPlaceholderOnFocus: true
+								})
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'qubely-pricelist-description' },
+							React.createElement(
+								'div',
+								{ className: 'qubely-pricelist-title-wrapper' },
+								React.createElement(RichText, {
+									placeholder: __('Add title'),
+									tagName: titleTagName,
+									className: 'qubely-pricelist-title',
+									value: title,
+									onChange: function onChange(value) {
+										return _this.updatePricelistContent('title', value, index);
+									},
+									keepPlaceholderOnFocus: true
+								}),
+								React.createElement(
+									'div',
+									{ className: 'qubely-pricelist-price-wrapper' },
+									enableDiscount && React.createElement(RichText, {
+										placeholder: __('Discount Price'),
+										tagName: 'div',
+										className: 'qubely-pricelist-discount',
+										value: discount,
+										onChange: function onChange(value) {
+											return _this.updatePricelistContent('discount', value, index);
+										},
+										keepPlaceholderOnFocus: true
+									}),
+									enablePrice && React.createElement(RichText, {
+										placeholder: __('Add Price'),
+										tagName: 'div',
+										className: 'qubely-pricelist-price',
+										value: price,
+										onChange: function onChange(value) {
+											return _this.updatePricelistContent('price', value, index);
+										},
+										keepPlaceholderOnFocus: true
+									})
+								)
+							),
+							enableDescription && React.createElement(RichText, {
+								placeholder: __('Add description'),
+								tagName: 'div',
+								className: 'qubely-pricelist-description',
+								value: description,
+								onChange: function onChange(value) {
+									return _this.updatePricelistContent('description', value, index);
+								},
+								keepPlaceholderOnFocus: true
+							})
+						)
+					)
+				);
+			});
+		};
+
+		_this.state = {
+			device: 'md',
+			spacer: true
+		};
+		return _this;
+	}
+
+	_createClass(Edit, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _props = this.props,
+			    setAttributes = _props.setAttributes,
+			    clientId = _props.clientId,
+			    uniqueId = _props.attributes.uniqueId;
+
+			var _client = clientId.substr(0, 6);
+			if (!uniqueId) {
+				setAttributes({ uniqueId: _client });
+			} else if (uniqueId && uniqueId != _client) {
+				setAttributes({ uniqueId: _client });
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			var _props2 = this.props,
+			    setAttributes = _props2.setAttributes,
+			    _props2$attributes = _props2.attributes,
+			    uniqueId = _props2$attributes.uniqueId,
+			    pricelistItems = _props2$attributes.pricelistItems,
+			    style = _props2$attributes.style,
+			    pricelistContents = _props2$attributes.pricelistContents,
+			    headingLevel = _props2$attributes.headingLevel,
+			    priceAfterTitle = _props2$attributes.priceAfterTitle,
+			    headingTypography = _props2$attributes.headingTypography,
+			    headingColor = _props2$attributes.headingColor,
+			    headingSpacing = _props2$attributes.headingSpacing,
+			    contentBg = _props2$attributes.contentBg,
+			    contentColor = _props2$attributes.contentColor,
+			    contentTypography = _props2$attributes.contentTypography,
+			    enableContentBorder = _props2$attributes.enableContentBorder,
+			    contentBorderWidth = _props2$attributes.contentBorderWidth,
+			    contentBorderColor = _props2$attributes.contentBorderColor,
+			    contentPadding = _props2$attributes.contentPadding,
+			    contentBorderRadius = _props2$attributes.contentBorderRadius,
+			    contentBoxShadow = _props2$attributes.contentBoxShadow,
+			    contentSpacing = _props2$attributes.contentSpacing,
+			    badgePosition = _props2$attributes.badgePosition,
+			    enableImage = _props2$attributes.enableImage,
+			    imagePosition = _props2$attributes.imagePosition,
+			    imageBorderRadius = _props2$attributes.imageBorderRadius,
+			    imageSize = _props2$attributes.imageSize,
+			    imageSpacing = _props2$attributes.imageSpacing,
+			    enableBadge = _props2$attributes.enableBadge,
+			    badgePadding = _props2$attributes.badgePadding,
+			    badgeBorderRadius = _props2$attributes.badgeBorderRadius,
+			    badgeTypography = _props2$attributes.badgeTypography,
+			    badgeBg = _props2$attributes.badgeBg,
+			    badgeColor = _props2$attributes.badgeColor,
+			    enablePrice = _props2$attributes.enablePrice,
+			    priceTypography = _props2$attributes.priceTypography,
+			    priceColor = _props2$attributes.priceColor,
+			    enableDescription = _props2$attributes.enableDescription,
+			    descriptionTypography = _props2$attributes.descriptionTypography,
+			    descriptionColor = _props2$attributes.descriptionColor,
+			    enableDiscount = _props2$attributes.enableDiscount,
+			    discountTypography = _props2$attributes.discountTypography,
+			    discountColor = _props2$attributes.discountColor;
+			var device = this.state.device;
+
+
+			if (uniqueId) {
+				CssGenerator(this.props.attributes, 'pricelist', uniqueId);
+			}
+
+			return React.createElement(
+				Fragment,
+				null,
+				React.createElement(
+					InspectorControls,
+					{ key: 'inspector' },
+					React.createElement(
+						PanelBody,
+						{ title: __('General Settings') },
+						React.createElement(Range, {
+							min: 2,
+							max: 100,
+							label: __('Number of Items'),
+							value: pricelistItems,
+							onChange: function onChange(value) {
+								return _this2.updatePricelistContent(value > pricelistItems ? 'add' : 'delete');
+							}
+						}),
+						React.createElement(Toggle, { label: __('Price After Title'), value: priceAfterTitle, onChange: function onChange(val) {
+								return setAttributes({ priceAfterTitle: val });
+							} })
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Price List Layouts'), initialOpen: false },
+						React.createElement(Styles, { columns: 3, value: style, onChange: function onChange(val) {
+								return setAttributes({ style: val });
+							},
+							options: [{ value: 1, svg: _icons2.default.postgrid_design_1 }, { value: 2, svg: _icons2.default.postgrid_design_3 }, { value: 3, svg: _icons2.default.postgrid_design_6 }]
+						}),
+						React.createElement(Color, { label: __('Background Color'), value: contentBg, onChange: function onChange(value) {
+								return setAttributes({ contentBg: value });
+							} }),
+						React.createElement(Toggle, { label: __('Enable Border'), value: enableContentBorder, onChange: function onChange(val) {
+								return setAttributes({ enableContentBorder: val });
+							} }),
+						enableContentBorder == 1 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Range, { label: __('Border Width'), value: contentBorderWidth, onChange: function onChange(val) {
+									return setAttributes({ contentBorderWidth: val });
+								}, min: 1, max: 5, responsive: true, device: device, unit: ['px'], onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(Color, { label: __('Border Color'), value: contentBorderColor, onChange: function onChange(value) {
+									return setAttributes({ contentBorderColor: value });
+								} }),
+							React.createElement(Separator, null)
+						),
+						React.createElement(BorderRadius, { label: __('Radius'), value: contentBorderRadius, onChange: function onChange(val) {
+								return setAttributes({ contentBorderRadius: val });
+							}, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							} }),
+						React.createElement(BoxShadow, { label: __('Box-Shadow'), value: contentBoxShadow, onChange: function onChange(val) {
+								return setAttributes({ contentBoxShadow: val });
+							}, disableInset: true }),
+						React.createElement(Range, { label: __('Spacing'), value: contentSpacing, onChange: function onChange(val) {
+								return setAttributes({ contentSpacing: val });
+							}, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							} }),
+						React.createElement(Padding, { label: __('Padding'), value: contentPadding, onChange: function onChange(val) {
+								return setAttributes({ contentPadding: val });
+							}, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							} })
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Content'), initialOpen: false },
+						React.createElement(Headings, { label: __('Heading Tag'), selectedLevel: headingLevel, onChange: function onChange(value) {
+								return setAttributes({ headingLevel: value });
+							} }),
+						React.createElement(Typography, { label: __('Heading Typography'), value: headingTypography, onChange: function onChange(val) {
+								return setAttributes({ headingTypography: val });
+							}, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							} }),
+						React.createElement(Color, { label: __('Heading Color'), value: headingColor, onChange: function onChange(value) {
+								return setAttributes({ headingColor: value });
+							} }),
+						React.createElement(Range, { label: __('Heading Spacing'), value: headingSpacing, onChange: function onChange(val) {
+								return setAttributes({ headingSpacing: val });
+							}, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							} }),
+						React.createElement(Separator, null),
+						React.createElement(Toggle, { label: __('Enable Description'), value: enableDescription, onChange: function onChange(val) {
+								return setAttributes({ enableDescription: val });
+							} }),
+						enableDescription == 1 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Typography, { label: __('Description Typography'), value: descriptionTypography, onChange: function onChange(val) {
+									return setAttributes({ descriptionTypography: val });
+								}, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(Color, { label: __('Description Color'), value: descriptionColor, onChange: function onChange(value) {
+									return setAttributes({ descriptionColor: value });
+								} })
+						),
+						React.createElement(Separator, null),
+						React.createElement(Toggle, { label: __('Enable Price'), value: enablePrice, onChange: function onChange(val) {
+								return setAttributes({ enablePrice: val });
+							} }),
+						enablePrice == 1 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Typography, { label: __('Price Typography'), value: priceTypography, onChange: function onChange(val) {
+									return setAttributes({ priceTypography: val });
+								}, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(Color, { label: __('Price Color'), value: priceColor, onChange: function onChange(value) {
+									return setAttributes({ priceColor: value });
+								} })
+						),
+						React.createElement(Toggle, { label: __('Enable Discount'), value: enableDiscount, onChange: function onChange(val) {
+								return setAttributes({ enableDiscount: val });
+							} }),
+						enableDiscount == 1 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Typography, { label: __('Discount Typography'), value: discountTypography, onChange: function onChange(val) {
+									return setAttributes({ discountTypography: val });
+								}, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(Color, { label: __('Discount Color'), value: discountColor, onChange: function onChange(value) {
+									return setAttributes({ discountColor: value });
+								} })
+						)
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Image'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Enable'), value: enableImage, onChange: function onChange(val) {
+								return setAttributes({ enableImage: val });
+							} }),
+						enableImage == 1 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(RadioAdvanced, { label: __('Position'), value: imagePosition, onChange: function onChange(value) {
+									return setAttributes({ imagePosition: value });
+								},
+								options: [{ label: __('Left'), value: 'left', title: __('Left') }, { label: __('Top'), value: 'top', title: __('Top') }]
+							}),
+							React.createElement(Range, { label: __('Size'), value: imageSize, onChange: function onChange(val) {
+									return setAttributes({ imageSize: val });
+								}, min: 0, max: 500, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(BorderRadius, { label: __('Radius'), value: imageBorderRadius, onChange: function onChange(val) {
+									return setAttributes({ imageBorderRadius: val });
+								}, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(Range, { label: __('Spacing'), value: imageSpacing, onChange: function onChange(val) {
+									return setAttributes({ imageSpacing: val });
+								}, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} })
+						)
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Badge'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Enable'), value: enableBadge, onChange: function onChange(val) {
+								return setAttributes({ enableBadge: val });
+							} }),
+						enableBadge == 1 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(RadioAdvanced, { label: __('Position'), value: badgePosition, onChange: function onChange(value) {
+									return setAttributes({ badgePosition: value });
+								},
+								options: [{ label: __('Left Top'), value: 'left', title: __('Left Top') }, { label: __('Right Top'), value: 'right', title: __('Right Top') }]
+							}),
+							React.createElement(Typography, { label: __('Typography'), value: badgeTypography, onChange: function onChange(val) {
+									return setAttributes({ badgeTypography: val });
+								}, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(Color, { label: __('Color'), value: badgeColor, onChange: function onChange(value) {
+									return setAttributes({ badgeColor: value });
+								} }),
+							React.createElement(Color, { label: __('Background Color'), value: badgeBg, onChange: function onChange(value) {
+									return setAttributes({ badgeBg: value });
+								} }),
+							React.createElement(BorderRadius, { label: __('Radius'), value: badgeBorderRadius, onChange: function onChange(val) {
+									return setAttributes({ badgeBorderRadius: val });
+								}, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} }),
+							React.createElement(Padding, { label: __('Padding'), value: badgePadding, onChange: function onChange(val) {
+									return setAttributes({ badgePadding: val });
+								}, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								} })
+						)
+					)
+				),
+				React.createElement(
+					BlockControls,
+					null,
+					React.createElement(
+						Toolbar,
+						null,
+						React.createElement(InlineToolbar, _extends({
+							data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
+						}, this.props, {
+							prevState: this.state
+						}))
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'qubely-block-' + uniqueId },
+					React.createElement(
+						'div',
+						{ className: 'qubely-block-pricelist' },
+						React.createElement(
+							'div',
+							{ className: 'qubely-pricelist-items' },
+							this.renderPricelist()
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Edit;
+}(Component);
+
+exports.default = Edit;
+
+/***/ }),
+
+/***/ "./src/blocks/pricelist/Save.js":
+/*!**************************************!*\
+  !*** ./src/blocks/pricelist/Save.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+var RichText = wp.editor.RichText;
+var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
+
+var Save = function (_Component) {
+	_inherits(Save, _Component);
+
+	function Save() {
+		var _ref;
+
+		var _temp, _this, _ret;
+
+		_classCallCheck(this, Save);
+
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
+
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderPricelist = function () {
+			var _this$props$attribute = _this.props.attributes,
+			    pricelistContents = _this$props$attribute.pricelistContents,
+			    enableContentBorder = _this$props$attribute.enableContentBorder,
+			    headingLevel = _this$props$attribute.headingLevel,
+			    enableImage = _this$props$attribute.enableImage;
+
+
+			var titleTagName = 'h' + headingLevel;
+
+			return pricelistContents.map(function (_ref2, index) {
+				var title = _ref2.title,
+				    description = _ref2.description,
+				    image = _ref2.image;
+
+				return React.createElement(
+					"div",
+					{ key: index, className: "qubely-pricelist-item" },
+					React.createElement(
+						"div",
+						{ className: "qubely-pricelist-content" },
+						enableImage == 1 && image != undefined && image.url != undefined && React.createElement(
+							"div",
+							{ className: "qubely-pricelist-image-container" },
+							React.createElement("img", { src: image.url, alt: title })
+						),
+						React.createElement(
+							"div",
+							{ className: "qubely-pricelist-description" },
+							React.createElement(RichText.Content, { tagName: titleTagName, className: "qubely-pricelist-title", value: title }),
+							React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-description", value: description })
+						)
+					)
+				);
+			});
+		}, _temp), _possibleConstructorReturn(_this, _ret);
+	}
+
+	_createClass(Save, [{
+		key: "render",
+		value: function render() {
+			var _props$attributes = this.props.attributes,
+			    uniqueId = _props$attributes.uniqueId,
+			    animation = _props$attributes.animation;
+
+			return React.createElement(
+				"div",
+				_extends({ className: "qubely-block-" + uniqueId }, animationAttr(animation)),
+				React.createElement(
+					"div",
+					{ className: "qubely-block-pricelist" },
+					React.createElement(
+						"div",
+						{ className: "qubely-pricelist-items" },
+						this.renderPricelist()
+					)
+				)
+			);
+		}
+	}]);
+
+	return Save;
+}(Component);
+
+exports.default = Save;
+
+/***/ }),
+
+/***/ "./src/blocks/pricelist/index.js":
+/*!***************************************!*\
+  !*** ./src/blocks/pricelist/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/pricelist/style.scss");
+
+var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/pricelist/Edit.js");
+
+var _Edit2 = _interopRequireDefault(_Edit);
+
+var _Save = __webpack_require__(/*! ./Save */ "./src/blocks/pricelist/Save.js");
+
+var _Save2 = _interopRequireDefault(_Save);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+registerBlockType('qubely/pricelist', {
+	title: __('Price List'),
+	category: 'qubely',
+	description: 'Showcase detailed with Qubely Price List.',
+	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Price List') }),
+	keywords: [__('Price List'), __('Pricing')],
+	attributes: {
+		uniqueId: { type: 'string', default: '' },
+		spacer: {
+			type: 'object',
+			default: {
+				spaceTop: {
+					md: '10',
+					unit: "px"
+				},
+				spaceBottom: {
+					md: '10',
+					unit: "px"
+				}
+			},
+			style: [{ selector: '{{QUBELY}}' }]
+		},
+		pricelistContents: {
+			type: 'Array',
+			default: [{ title: 'Qubely Blocks', badge: 'Hot', price: '$20', discount: '$10', description: 'Qubely offers a rich collection of highly customizable dedicated Gutenberg blocks.' }, { title: 'Pre-made Sections', badge: 'Hot', price: '$30', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg editor.' }, { title: 'Rich Blocks Collection', badge: 'Hot', price: '$40', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use even for the beginners.' }, { title: 'Layout Packs', badge: 'Hot', price: '$50', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' }, { title: 'Smart Layout Builder', badge: 'Hot', price: '$60', discount: '$45', description: 'Its row-column structure lets you take 1 to as many as 6 columns in a single row.' }]
+		},
+
+		// Content
+		style: {
+			type: 'number',
+			default: 1
+		},
+		enableContentBorder: {
+			type: 'boolean',
+			default: false
+		},
+		contentBorderWidth: {
+			type: 'object',
+			default: {
+				md: 1,
+				unit: 'px'
+			},
+			style: [{
+				condition: [{ key: 'enableContentBorder', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-item {border-style: solid; border-width: {{contentBorderWidth}};}'
+			}]
+		},
+		contentBorderColor: {
+			type: 'string',
+			default: '#F6F7FB',
+			style: [{
+				condition: [{ key: 'enableContentBorder', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-item {border-color: {{contentBorderColor}};}'
+			}]
+		},
+		contentBg: {
+			type: 'string',
+			default: '#F9F9F9',
+			style: [{
+				selector: '{{QUBELY}} .qubely-pricelist-item {background-color: {{contentBg}};}'
+			}]
+		},
+		contentSpacing: {
+			type: 'object',
+			default: {
+				md: 30,
+				unit: 'px'
+			},
+			style: [{ selector: '{{QUBELY}} .qubely-pricelist-item {margin-bottom: {{contentSpacing}};}' }]
+		},
+		contentPadding: {
+			type: 'object',
+			default: {
+				openPadding: 1,
+				paddingType: 'global',
+				unit: 'px',
+				global: {
+					md: 30
+				}
+			},
+			style: [{
+				selector: '{{QUBELY}} .qubely-pricelist-item'
+			}]
+		},
+		contentBorderRadius: {
+			type: 'object',
+			default: {
+				openBorderRadius: 1,
+				radiusType: 'global',
+				global: {
+					md: 5
+				},
+				unit: 'px'
+			},
+			style: [{
+				selector: '{{QUBELY}} .qubely-pricelist-item'
+			}]
+		},
+		contentBoxShadow: {
+			type: 'object',
+			default: {
+				openShadow: true,
+				vertical: 3,
+				horizontal: 0,
+				blur: 6,
+				spread: 0,
+				color: 'rgba(0,0,0,0.1)'
+			},
+			style: [{
+				selector: '{{QUBELY}} .qubely-pricelist-item'
+			}]
+		},
+
+		// Heading
+		headingLevel: {
+			type: 'number',
+			default: 4
+		},
+		headingTypography: {
+			type: 'object',
+			default: {},
+			style: [{
+				selector: '{{QUBELY}} .qubely-pricelist-title'
+			}]
+		},
+		headingColor: {
+			type: 'string',
+			default: '',
+			style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {color: {{headingColor}};}' }]
+		},
+		headingSpacing: {
+			type: 'object',
+			default: {
+				md: 10,
+				unit: 'px'
+			},
+			style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {margin: 0 0 {{headingSpacing}} 0;}' }]
+		},
+
+		// Discount Price
+		enableDescription: {
+			type: 'boolean',
+			default: true
+		},
+		descriptionTypography: {
+			type: 'object',
+			default: {},
+			style: [{
+				condition: [{ key: 'enableDescription', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-description'
+			}]
+		},
+		descriptionColor: {
+			type: 'string',
+			default: '',
+			style: [{
+				condition: [{ key: 'enableDescription', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-description {color: {{descriptionColor}};}'
+			}]
+		},
+
+		// Discount Price
+		enableDiscount: {
+			type: 'boolean',
+			default: false
+		},
+		discountTypography: {
+			type: 'object',
+			default: {},
+			style: [{
+				condition: [{ key: 'enableDiscount', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-discount'
+			}]
+		},
+		discountColor: {
+			type: 'string',
+			default: '',
+			style: [{
+				condition: [{ key: 'enableDiscount', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-discount {color: {{discountColor}};}'
+			}]
+		},
+
+		//Price
+		priceAfterTitle: {
+			type: 'boolean',
+			default: false,
+			style: [{
+				condition: [{ key: 'priceAfterTitle', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-title-wrapper {display: block;}'
+			}]
+		},
+		enablePrice: {
+			type: 'boolean',
+			default: true
+		},
+		priceTypography: {
+			type: 'object',
+			default: {},
+			style: [{
+				condition: [{ key: 'enablePrice', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-price'
+			}]
+		},
+		priceColor: {
+			type: 'string',
+			default: '',
+			style: [{
+				condition: [{ key: 'enablePrice', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-price {color: {{priceColor}};}'
+			}]
+		},
+
+		//Badge
+		enableBadge: {
+			type: 'boolean',
+			default: true
+		},
+		badgePosition: {
+			type: 'string',
+			default: 'before',
+			style: [{
+				condition: [{ key: 'enableBadge', relation: '==', value: true }, { key: 'badgePosition', relation: '==', value: 'right' }],
+				selector: '{{QUBELY}} .qubely-pricelist-content-image .editor-rich-text {left: auto !important; right: 15px;}'
+			}]
+		},
+		badgeTypography: {
+			type: 'object',
+			default: { openTypography: 1, size: { md: 12, unit: 'px' }, height: { md: 15, unit: 'px' } },
+			style: [{
+				condition: [{ key: 'enableBadge', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-badge'
+			}]
+		},
+		badgeColor: {
+			type: 'string',
+			default: '#fff',
+			style: [{
+				condition: [{ key: 'enableBadge', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-badge {color: {{badgeColor}};}'
+			}]
+		},
+		badgeBg: {
+			type: 'string',
+			default: '#2184F9',
+			style: [{
+				condition: [{ key: 'enableBadge', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-badge {background: {{badgeBg}};}'
+			}]
+		},
+		badgeBorderRadius: {
+			type: 'object',
+			default: {
+				openBorderRadius: 1,
+				radiusType: 'global',
+				global: { md: 2 },
+				unit: 'px'
+
+			},
+			style: [{
+				condition: [{ key: 'enableBadge', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-badge'
+			}]
+		},
+		badgePadding: {
+			type: 'object',
+			// default: {
+			// 	openPadding: 1,
+			// 	paddingType: 'global',
+			// 	unit: 'px',
+			// 	global: {
+			// 		md: 30
+			// 	}
+			// },
+
+			default: {
+				openPadding: 1,
+				paddingType: 'custom',
+				custom: {
+					md: '2 6 3 6'
+				},
+				unit: 'px'
+			},
+
+			style: [{
+				condition: [{ key: 'enableBadge', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-badge'
+			}]
+		},
+
+		//image
+		enableImage: {
+			type: 'boolean',
+			default: true
+		},
+		imagePosition: {
+			type: 'string',
+			default: 'left',
+			style: [{
+				condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }],
+				selector: '{{QUBELY}} .qubely-pricelist-content {display: -webkit-box; display: -ms-flexbox; display: flex;}'
+			}]
+		},
+		imageBorderRadius: {
+			type: 'object',
+			default: {},
+			style: [{
+				condition: [{ key: 'enableImage', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-image-container img'
+			}]
+		},
+		imageSize: {
+			type: 'object',
+			default: {
+				md: '',
+				unit: 'px'
+			},
+			style: [{
+				condition: [{ key: 'enableImage', relation: '==', value: true }],
+				selector: '{{QUBELY}} .qubely-pricelist-image-container {width: {{imageSize}};}'
+			}]
+		},
+		imageSpacing: {
+			type: 'object',
+			default: {
+				md: 20,
+				unit: 'px'
+			},
+			style: [{
+				condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }],
+				selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-right: {{imageSpacing}};}'
+			}, {
+				condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'top' }],
+				selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-bottom: {{imageSpacing}};}'
+			}]
+		},
+
+		//
+		pricelistItems: { type: 'number', default: 5 },
+		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
+		showContextMenu: { type: 'boolean', default: true }
+	},
+	edit: _Edit2.default,
+	save: _Save2.default
+});
+
+/***/ }),
+
+/***/ "./src/blocks/pricelist/style.scss":
+/*!*****************************************!*\
+  !*** ./src/blocks/pricelist/style.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/pricelist/style.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5720,9 +6826,12 @@ __webpack_require__(/*! ./blocks/testimonialcarousel */ "./src/blocks/testimonia
 
 __webpack_require__(/*! ./blocks/teamcarousel */ "./src/blocks/teamcarousel/index.js");
 
-// Team Carousel
+__webpack_require__(/*! ./blocks/pricelist */ "./src/blocks/pricelist/index.js");
+
+// Pricelist
 var __ = wp.i18n.__; // Post grid
 // Testimonial Carousel
+// Team Carousel
 
 /***/ }),
 
