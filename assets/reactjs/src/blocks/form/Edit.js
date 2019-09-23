@@ -129,9 +129,25 @@ class Edit extends Component {
         setAttributes({ formItems });
     }
 
+    renderLabel = (index, isRequired) => {
+        const { attributes: { formItems } } = this.props
+        return (
+            <label className="qubely-form-label">
+                <RichText
+                    tagName="label"
+                    className="qubely-form-field-label"
+                    value={formItems[index].label}
+                    onChange={val => this.setSettings('label', val, index)}
+                />
+                {isRequired && '*'}
+            </label>
+        )
+    }
+
     render() {
         const { attributes } = this.props
         const {
+            attributes,
             setAttributes,
             attributes: {
                 uniqueId,
@@ -200,7 +216,7 @@ class Edit extends Component {
 
         const { device, selectedItem, dropdownOpen } = this.state
 
-        if (uniqueId) { CssGenerator(this.props.attributes, 'form', uniqueId); }
+        if (uniqueId) { CssGenerator(attributes, 'form', uniqueId); }
 
         return (
             <Fragment>
@@ -501,12 +517,7 @@ class Edit extends Component {
                                 <div key={index} className={`qubely-form-group qubely-form-group-index-${index} ${selectedItem == index ? 'qubely-form-group-active' : ''}`} style={{ width: `${item.width.md}%` }} onClick={() => this.setState({ selectedItem: index })}>
                                     <div className="qubely-form-group-inner">
 
-                                        {!item.hideLabel && layout == 'classic' &&
-                                            <label className="qubely-form-label">
-                                                <span contenteditable="true" onBlur={(e) => this.setSettings('label', e.target.innerText, index)}>
-                                                    {__(item.label)} </span> {item.required && '*'}
-                                            </label>
-                                        }
+                                        {(!item.hideLabel && layout == 'classic') && this.renderLabel(index, item.required)}
 
                                         {/* Text and Email */}
                                         {(item.type == 'text' || item.type == 'email') &&
@@ -554,12 +565,8 @@ class Edit extends Component {
                                             </div>
                                         }
 
-                                        {layout == 'material' &&
-                                            <label className="qubely-form-label">
-                                                <span contenteditable="true" onBlur={(e) => this.setSettings('label', e.target.innerText, index)}>
-                                                    {__(item.label)} </span> {item.required && '*'}
-                                            </label>
-                                        }
+                                        {(!item.hideLabel && layout == 'material') && this.renderLabel(index, item.required)}
+
                                     </div>
                                     <div className="qubely-form-group-option">
                                         <span onClick={(e) => { e.stopPropagation(); this.moveItem(index, 'left'); }} className={(index == 0) && 'qubely-option-disable'}><i class="fa fa-long-arrow-alt-up" /></span>
