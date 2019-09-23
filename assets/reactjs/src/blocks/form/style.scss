@@ -5,8 +5,11 @@
     .qubely-form-group {
       position: relative;
       .qubely-form-label {
-        margin: 0;
-        line-height: 1;
+		display: flex;
+		padding: 5px 0px;
+		.qubely-form-field-label{
+			padding-right: 20px;
+		}
       }
       .qubely-form-control {
         display: block;
@@ -37,9 +40,6 @@
         margin: 0;
       }
     }
-  }
-  .qubely-form-button {
-	  display: flex;
   }
   &.qubely-layout-material {
     .qubely-form {
