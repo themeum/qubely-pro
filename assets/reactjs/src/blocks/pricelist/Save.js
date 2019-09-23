@@ -17,9 +17,9 @@ class Save extends Component {
 							<img src={image.url} alt={title}/>
 						</div>
 					}
-					<div className="qubely-pricelist-description">
+					<div className="qubely-pricelist-description-wrapper">
 						<RichText.Content tagName={titleTagName} className="qubely-pricelist-title" value={title} />
-						<RichText.Content tagName='div' className="qubely-pricelist-description" value={description} />
+						<RichText.Content tagName='div' className="qubely-pricelist-description-wrapper" value={description} />
 					</div>
 				</div>
 			</div>

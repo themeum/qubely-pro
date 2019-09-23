@@ -49,6 +49,10 @@ registerBlockType('qubely/pricelist', {
 			type: 'number',
 			default: 1,
         },
+        contentAlign: {
+			type: 'string',
+			default: 'left'
+		},
 		enableContentBorder: {
 			type: 'boolean',
 			default: false
@@ -146,7 +150,39 @@ registerBlockType('qubely/pricelist', {
                     selector: '{{QUBELY}} .qubely-pricelist-item'
                 }
             ]
-		},
+        },
+        overlayBg: {
+            type: 'object', default: { 
+                type: 'color', 
+                openColor: 0, 
+                color: '#2184F9', 
+                gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 } 
+            },
+            style: [
+                {
+                    // condition: [
+                    //     { key: 'fillType', relation: '==', value: 'fill' }
+                    // ],
+                    selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+                }
+            ]
+        },
+        overlayHoverBg: {
+            type: 'object', default: { 
+                type: 'color', 
+                openColor: 0, 
+                color: '#2184F9', 
+                gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 } 
+            },
+            style: [
+                {
+                    // condition: [
+                    //     { key: 'fillType', relation: '==', value: 'fill' }
+                    // ],
+                    selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+                }
+            ]
+        },
 
         // Heading
 		headingLevel: {
@@ -193,7 +229,7 @@ registerBlockType('qubely/pricelist', {
 					condition: [
                         { key: 'enableDescription', relation: '==', value: true }
                     ],
-					selector: '{{QUBELY}} .qubely-pricelist-description'
+					selector: '{{QUBELY}} .qubely-pricelist-introtext'
 				}
 			]
 		},
@@ -205,7 +241,7 @@ registerBlockType('qubely/pricelist', {
 					condition: [
                         { key: 'enableDescription', relation: '==', value: true }
                     ],
-                    selector: '{{QUBELY}} .qubely-pricelist-description {color: {{descriptionColor}};}'
+                    selector: '{{QUBELY}} .qubely-pricelist-introtext {color: {{descriptionColor}};}'
                 }
             ]
         },

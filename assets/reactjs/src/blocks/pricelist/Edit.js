@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, BlockControls, MediaUpload } = wp.editor
-const { IconList,Inline: { InlineToolbar }, RadioAdvanced, Range, Color, Styles, Typography, Toggle, Separator, Border, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const { IconList,Inline: { InlineToolbar }, RadioAdvanced, ColorAdvanced, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, Border, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator } } = wp.qubelyComponents
 import icons from '../../helpers/icons'
 
 class Edit extends Component {
@@ -46,14 +46,13 @@ class Edit extends Component {
 	}
 
 	renderPricelist = () => {
-		const { attributes: { pricelistContents, enableContentBorder, headingLevel, enableImage, enableBadge, enablePrice, enableDiscount, enableDescription, priceAfterTitle } } = this.props
+		const { attributes: { pricelistContents, style, contentAlign, headingLevel, enableImage, enableBadge, enablePrice, enableDiscount, enableDescription, priceAfterTitle } } = this.props
 		const titleTagName = 'h' + headingLevel;
-		return (pricelistContents.map(({ title, date, description, image, price, discount, badge }, index) => {
+		return (pricelistContents.map(({ title, description, image, price, discount, badge }, index) => {
 
 			return (
-				<div key={index} className={`qubely-pricelist-item`}>
+				<div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
 					<div className={`qubely-pricelist-content`}>
-
 						{enableImage == 1 &&
 							<div className={`qubely-pricelist-image-container`}>
 								<div className={`qubely-pricelist-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'}`}>
@@ -103,49 +102,51 @@ class Edit extends Component {
 							</div>
 						}
 
-						<div className="qubely-pricelist-description">
-                            <div className="qubely-pricelist-title-wrapper">
-                                <RichText
-                                    placeholder={__('Add title')}
-                                    tagName={titleTagName}
-                                    className="qubely-pricelist-title"
-                                    value={title}
-                                    onChange={value => this.updatePricelistContent('title', value, index)}
-                                    keepPlaceholderOnFocus
-                                />
-                                <div className="qubely-pricelist-price-wrapper">
-                                    {enableDiscount &&
-                                        <RichText
-                                            placeholder={__('Discount Price')}
-                                            tagName='div'
-                                            className="qubely-pricelist-discount"
-                                            value={discount}
-                                            onChange={value => this.updatePricelistContent('discount', value, index)}
-                                            keepPlaceholderOnFocus
-                                        />
-                                    }
-                                    {enablePrice &&
-                                        <RichText
-                                            placeholder={__('Add Price')}
-                                            tagName='div'
-                                            className="qubely-pricelist-price"
-                                            value={price}
-                                            onChange={value => this.updatePricelistContent('price', value, index)}
-                                            keepPlaceholderOnFocus
-                                        />
-                                    }
+						<div className="qubely-pricelist-description-wrapper">
+                            <div className="qubely-pricelist-description">
+                                <div className="qubely-pricelist-title-wrapper">
+                                    <RichText
+                                        placeholder={__('Add title')}
+                                        tagName={titleTagName}
+                                        className="qubely-pricelist-title"
+                                        value={title}
+                                        onChange={value => this.updatePricelistContent('title', value, index)}
+                                        keepPlaceholderOnFocus
+                                    />
+                                    <div className="qubely-pricelist-price-wrapper">
+                                        {enableDiscount &&
+                                            <RichText
+                                                placeholder={__('Discount Price')}
+                                                tagName='div'
+                                                className="qubely-pricelist-discount"
+                                                value={discount}
+                                                onChange={value => this.updatePricelistContent('discount', value, index)}
+                                                keepPlaceholderOnFocus
+                                            />
+                                        }
+                                        {enablePrice &&
+                                            <RichText
+                                                placeholder={__('Add Price')}
+                                                tagName='div'
+                                                className="qubely-pricelist-price"
+                                                value={price}
+                                                onChange={value => this.updatePricelistContent('price', value, index)}
+                                                keepPlaceholderOnFocus
+                                            />
+                                        }
+                                    </div>
                                 </div>
+                                { enableDescription && 
+                                    <RichText
+                                        placeholder={__('Add description')}
+                                        tagName='div'
+                                        className="qubely-pricelist-introtext"
+                                        value={description}
+                                        onChange={value => this.updatePricelistContent('description', value, index)}
+                                        keepPlaceholderOnFocus
+                                    />
+                                }
                             </div>
-                            { enableDescription && 
-                                <RichText
-                                    placeholder={__('Add description')}
-                                    tagName='div'
-                                    className="qubely-pricelist-description"
-                                    value={description}
-                                    onChange={value => this.updatePricelistContent('description', value, index)}
-                                    keepPlaceholderOnFocus
-                                />
-                            }
 						</div>
 					</div>
 				</div>
@@ -175,6 +176,9 @@ class Edit extends Component {
 			contentBorderRadius,
             contentBoxShadow,
             contentSpacing,
+            contentAlign,
+            overlayHoverBg,
+            overlayBg,
 
             
             
@@ -233,6 +237,7 @@ class Edit extends Component {
 								{ value: 3, svg: icons.postgrid_design_6 },
 							]}
 						/>
+                        {/* <Alignment label={__('Alignment')} value={contentAlign} onChange={val => setAttributes({ contentAlign: val })} alignmentType="content" disableJustify /> */}
                         <Color label={__('Background Color')} value={contentBg} onChange={(value) => setAttributes({ contentBg: value })} />
                         <Toggle label={__('Enable Border')} value={enableContentBorder} onChange={val => setAttributes({ enableContentBorder: val })} />
 						{enableContentBorder == 1 &&
@@ -246,6 +251,15 @@ class Edit extends Component {
                         <BoxShadow label={__('Box-Shadow')} value={contentBoxShadow} onChange={val => setAttributes({ contentBoxShadow: val })} disableInset />
                         <Range label={__('Spacing')} value={contentSpacing} onChange={val => setAttributes({ contentSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <Tabs>
+                            <Tab tabTitle={__('Normal')}>
+                                <ColorAdvanced label={__('Overlay')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
+                            </Tab>
+                            <Tab tabTitle={__('Hover')}>
+                                <ColorAdvanced label={__('Hover Overlay')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
+                            </Tab>
+                        </Tabs>
+                    
                     </PanelBody>
 
 					<PanelBody title={__('Content')} initialOpen={false}>
@@ -331,7 +345,7 @@ class Edit extends Component {
 				</BlockControls>
 
 				<div className={`qubely-block-${uniqueId}`}>
-					<div className={`qubely-block-pricelist`}>
+					<div className={`qubely-block-pricelist qubely-pricelist-item-${style}`}>
 						<div className={`qubely-pricelist-items`}>
 							{this.renderPricelist()}
 						</div>
