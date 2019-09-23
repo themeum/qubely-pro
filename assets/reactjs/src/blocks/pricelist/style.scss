@@ -9,7 +9,7 @@
             border: 2px dashed #e5e5e5;
             padding: 30px;
             border-radius: 5px;
-            min-height: 150px;
+            min-height: 200px;
         }
         .qubely-insert-image {
             text-align: center;
@@ -75,6 +75,9 @@
     }
     .qubely-pricelist-description-wrapper {
         flex: 1;
+    }
+    .qubely-pricelist-content {
+        overflow: hidden;
     }
     &.qubely-pricelist-item-3 {
         .qubely-pricelist-content {
