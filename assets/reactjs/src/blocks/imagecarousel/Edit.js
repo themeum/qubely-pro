@@ -1,6 +1,6 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody } = wp.components
+const { PanelBody, Tooltip } = wp.components
 const { InspectorControls, RichText, MediaUpload } = wp.editor
 import icons from '../../helpers/icons'
 const { Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Select, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
@@ -72,25 +72,70 @@ class Edit extends Component {
 	}
 
 	renderSlider = (sliderimage, index) => {
-		const { attributes: { sliderimageAlt } } = this.props
 		return (
-			<MediaUpload
-				onSelect={ val => this.updateAtrributes('sliderimage', val, index) }
-				allowedTypes={['image']}
-				multiple={false}
-				value={sliderimage}
-				render={({ open }) => (
-					<div className="qubely-single-img qubely-backend">
-						{ (sliderimage && sliderimage.url) ?
-							<img onClick={open} className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
-							:
-							<div onClick={open} className="qubely-image-placeholder qubely-image-sliderimage" ><i className="fas fa-upload"></i></div>
-						}
-					</div>
-				)}
-			/>
+			<div className={`qubely-slider-image-container${(sliderimage != undefined && sliderimage.url != undefined) ? '' : ' qubely-empty-image'}`}>
+				<MediaUpload
+					onSelect={value => this.updateAtrributes('sliderimage', value, index)}
+					allowedTypes={['image']}
+					multiple={false}
+					value={sliderimage}
+					render={({ open }) => (
+						<Fragment> 
+							{(sliderimage && sliderimage.url) ?
+								<div className="qubely-slider-content-sliderimage-editor">
+									<img src={sliderimage.url} alt={__('Slider Image')} />
+									<div className="qubely-media-actions qubely-field-button-list">
+										<Tooltip text={__('Edit')}>
+											<button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
+												<span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw"></span>
+											</button>
+										</Tooltip>
+										<Tooltip text={__('Remove')}>
+											<button className="qubely-button" aria-label={__('Remove')} onClick={() => this.updateAtrributes('sliderimage', '', index)} role="button">
+												<span aria-label={__('Close')} className="far fa-trash-alt fa-fw"></span>
+											</button>
+										</Tooltip>
+									</div>
+								</div>
+								:
+								<a className="qubely-insert-image" href="#" onClick={open}>
+									<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+									<path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
+									<span>{__('Insert')}</span>
+								</a>
+							}
+						</Fragment>
+					)}
+				/>
+			</div>
+
+
+
+
 		)
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	renderMessage = (message, index) => {
 		return (
@@ -300,13 +345,13 @@ class Edit extends Component {
 						/>
 
 						<Range label={__('Number of Carousels')}
-							min={1} 
+							min={3} 
 							max={20} 
 							value={carouselItems.length}
 							onChange={val => this.setCarouselLength(val)}
 						/>
 
-						{ layout == 5 && 
+						{ layout == 2 &&  
 							<Range
 								label={__('Number of Columns')}
 								min={1} max={20} responsive device={device}
@@ -316,6 +361,7 @@ class Edit extends Component {
 								onDeviceChange={value => this.setState({ device: value })}
 							/>
 						}
+
 						{ (layout != 6 && layout != 1 && layout != 2) &&
 							<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
 						}
@@ -330,16 +376,20 @@ class Edit extends Component {
 							</Fragment>
 						}
 						<Toggle label={__('Draggable')} value={dragable} onChange={value => setAttributes({ dragable: value })} />
-						<Toggle 
-							label={__('Centered Slides')} 
-							value={(layout == 3 || layout == 4) ? isCentered : notCentered } 
-							onChange={value => setAttributes((layout == 3 || layout == 4) ? { isCentered: value } : { notCentered: value })}
-						/>
-
-						{ isCentered &&
-							<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
-						}
 						
+						{layout != 1 &&
+							<Fragment>
+								<Toggle 
+									label={__('Centered Slides')} 
+									value={(layout == 3 || layout == 4) ? isCentered : notCentered } 
+									onChange={value => setAttributes((layout == 3 || layout == 4) ? { isCentered: value } : { notCentered: value })}
+								/>
+
+								{ isCentered &&
+									<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
+								}
+							</Fragment>
+						}
 					</PanelBody>
 
 					<PanelBody title={__('Slider Settings')} initialOpen={false}>
@@ -457,108 +507,111 @@ class Edit extends Component {
 					</PanelBody>
 					
 					{ (sliderContent || layout === 6 ) && 
-					
 						<Fragment>
-							<PanelBody title={__('Title')} initialOpen={false}>
-								<Range
-									label={__('Spacing')}
-									value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
-									unit={['px', 'em', '%']} max={300}
-									min={0}
-									responsive
-									device={device}
-									onDeviceChange={value => this.setState({ device: value })} />
-								<Color
-									label={__('Color')}
-									value={nameColor} onChange={(value) => setAttributes({ nameColor: value })}
-								/>
-								<Typography
-									label={__('Typography')}
-									value={nameTypo}
-									onChange={(value) => setAttributes({ nameTypo: value })}
-									device={device} onDeviceChange={value => this.setState({ device: value })} />
-							</PanelBody>
-							
-							<PanelBody title={__('Subtitle')} initialOpen={false}>
-								<Color
-									label={__('Color')}
-									value={subtitleColor} onChange={(value) => setAttributes({ subtitleColor: value })}
-								/>
-								<Typography
-									label={__('Typography')}
-									value={subtitleTypo}
-									onChange={(value) => setAttributes({ subtitleTypo: value })}
-									device={device} onDeviceChange={value => this.setState({ device: value })} />
-							</PanelBody>
-
-							<PanelBody title={__('Description')} initialOpen={false}>
-								<Toggle label={__('Hide Description')} value={activeDescription} onChange={value => setAttributes({ activeDescription: value })} />
-								{ activeDescription && 
-									<Fragment>
+							{(layout != 1 && layout != 2) &&
+								<Fragment>
+									<PanelBody title={__('Title')} initialOpen={false}>
+										<Range
+											label={__('Spacing')}
+											value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
+											unit={['px', 'em', '%']} 
+											max={300} min={0} responsive
+											device={device}
+											onDeviceChange={value => this.setState({ device: value })} />
 										<Color
 											label={__('Color')}
-											value={descriptionColor} onChange={(value) => setAttributes({ descriptionColor: value })}
+											value={nameColor} onChange={(value) => setAttributes({ nameColor: value })}
 										/>
 										<Typography
 											label={__('Typography')}
-											value={messageTypo}
-											onChange={(value) => setAttributes({ messageTypo: value })}
+											value={nameTypo}
+											onChange={(value) => setAttributes({ nameTypo: value })}
 											device={device} onDeviceChange={value => this.setState({ device: value })} />
+									</PanelBody>
+									
+									<PanelBody title={__('Subtitle')} initialOpen={false}>
+										<Color
+											label={__('Color')}
+											value={subtitleColor} onChange={(value) => setAttributes({ subtitleColor: value })}
+										/>
+										<Typography
+											label={__('Typography')}
+											value={subtitleTypo}
+											onChange={(value) => setAttributes({ subtitleTypo: value })}
+											device={device} onDeviceChange={value => this.setState({ device: value })} />
+									</PanelBody>
+
+									<PanelBody title={__('Description')} initialOpen={false}>
+										<Toggle label={__('Hide Description')} value={activeDescription} onChange={value => setAttributes({ activeDescription: value })} />
+										{ activeDescription && 
+											<Fragment>
+												<Color
+													label={__('Color')}
+													value={descriptionColor} onChange={(value) => setAttributes({ descriptionColor: value })}
+												/>
+												<Typography
+													label={__('Typography')}
+													value={messageTypo}
+													onChange={(value) => setAttributes({ messageTypo: value })}
+													device={device} onDeviceChange={value => this.setState({ device: value })} />
+												<Range
+													label={__('Top Spacing')}
+													value={messageSpacingTop} onChange={(value) => setAttributes({ messageSpacingTop: value })}
+													unit={['px', 'em', '%']} max={300}
+													min={0}
+													responsive
+													device={device}
+													onDeviceChange={value => this.setState({ device: value })} />
+												<Range
+													label={__('Bottom Spacing')}
+													value={messageSpacingBottom} onChange={(value) => setAttributes({ messageSpacingBottom: value })}
+													unit={['px', 'em', '%']} max={300}
+													min={0}
+													responsive
+													device={device}
+													onDeviceChange={value => this.setState({ device: value })} />
+											</Fragment>
+										}
+									</PanelBody>
+
+									<PanelBody title={__('Overlay')} initialOpen={false}>
+										<Toggle label={__('Animate on Hover')} value={animateOnHover} onChange={val => setAttributes({ animateOnHover: val })} />
+										<Toggle label={__('Enable')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
+										{enableOverlay == 1 &&
+											<Fragment>
+
+												{animateOnHover == 1 ?
+													<Tabs>
+														<Tab tabTitle={__('Normal')}>
+															<ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
+														</Tab>
+														<Tab tabTitle={__('Hover')}>
+															<ColorAdvanced label={__('Background')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
+														</Tab>
+													</Tabs>
+													:
+													<Fragment>
+														<ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
+														<Separator />
+													</Fragment>
+												}
+												<Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
+											</Fragment>
+										}
 										<Range
-											label={__('Top Spacing')}
-											value={messageSpacingTop} onChange={(value) => setAttributes({ messageSpacingTop: value })}
+											label={__('Content Spacing')}
+											value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })}
 											unit={['px', 'em', '%']} max={300}
 											min={0}
 											responsive
 											device={device}
 											onDeviceChange={value => this.setState({ device: value })} />
-										<Range
-											label={__('Bottom Spacing')}
-											value={messageSpacingBottom} onChange={(value) => setAttributes({ messageSpacingBottom: value })}
-											unit={['px', 'em', '%']} max={300}
-											min={0}
-											responsive
-											device={device}
-											onDeviceChange={value => this.setState({ device: value })} />
-									</Fragment>
-								}
-							</PanelBody>
-
-							<PanelBody title={__('Overlay')} initialOpen={false}>
-								<Toggle label={__('Animate on Hover')} value={animateOnHover} onChange={val => setAttributes({ animateOnHover: val })} />
-								<Toggle label={__('Enable')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
-								{enableOverlay == 1 &&
-                                    <Fragment>
-
-                                        {animateOnHover == 1 ?
-                                            <Tabs>
-                                                <Tab tabTitle={__('Normal')}>
-                                                    <ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
-                                                </Tab>
-                                                <Tab tabTitle={__('Hover')}>
-                                                    <ColorAdvanced label={__('Background')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
-                                                </Tab>
-                                            </Tabs>
-                                            :
-                                            <Fragment>
-                                                <ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
-                                                <Separator />
-                                            </Fragment>
-                                        }
-                                        <Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
-                                    </Fragment>
-                                }
-								<Range
-									label={__('Content Spacing')}
-									value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })}
-									unit={['px', 'em', '%']} max={300}
-									min={0}
-									responsive
-									device={device}
-									onDeviceChange={value => this.setState({ device: value })} />
-							</PanelBody>
-
+									</PanelBody>
+								</Fragment>
+							}
 						</Fragment>
+
+						
 					}
 
 					
