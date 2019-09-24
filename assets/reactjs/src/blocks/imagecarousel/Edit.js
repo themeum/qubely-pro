@@ -160,10 +160,11 @@ class Edit extends Component {
 
 	renderImages = () => {
 		const { attributes: { layout, items, carouselItems } } = this.props
+
 		return (
 			carouselItems.map((item, index) => {
 				return (
-					<div key={index} className={`qubely-carousel-item item-layout${layout} ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
+					<div key={index} className={`qubely-carousel-item item-layout${layout}`} >
 
 						<Tooltip text={__('Delete this item')}>
 							<span className="qubely-action-carousel-remove" role="button" onClick={() => this.removeCrouselItem(index)}><span className="dashicons dashicons-dismiss"></span></span>

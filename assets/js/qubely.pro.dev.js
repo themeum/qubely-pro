@@ -1025,10 +1025,11 @@ var Edit = function (_Component) {
 			    items = _this$props$attribute2.items,
 			    carouselItems = _this$props$attribute2.carouselItems;
 
+
 			return carouselItems.map(function (item, index) {
 				return React.createElement(
 					'div',
-					{ key: index, className: 'qubely-carousel-item item-layout' + layout + ' ' + (index < items[_this.parseResponsiveViewPort()] ? 'active' : '') },
+					{ key: index, className: 'qubely-carousel-item item-layout' + layout },
 					React.createElement(
 						Tooltip,
 						{ text: __('Delete this item') },
@@ -1961,12 +1962,13 @@ registerBlockType('qubely/imagecarousel', {
 			default: { md: '4', sm: '3', xs: '3' }
 		},
 		autoPlay: { type: 'boolean', default: false },
-		dots: { type: 'boolean', default: false },
 		dragable: { type: 'boolean', default: true },
 		dotIndicator: { type: 'boolean', default: true },
-		nav: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
+
+		nav: { type: 'boolean', default: true },
+		dots: { type: 'boolean', default: false },
 		centerPadding: { type: 'number', default: 210 },
 
 		carouselItems: {

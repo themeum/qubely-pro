@@ -29,12 +29,13 @@ registerBlockType('qubely/imagecarousel', {
 			default: { md: '4', sm: '3', xs: '3' } 
 		},
 		autoPlay: { type: 'boolean', default: false },
-		dots: { type: 'boolean', default: false },
 		dragable: { type: 'boolean', default: true },
 		dotIndicator: { type: 'boolean', default: true },
-		nav: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
+		
+		nav: { type: 'boolean', default: true },
+		dots: { type: 'boolean', default: false },
 		centerPadding: { type: 'number', default: 210 },
 
 		carouselItems: {
