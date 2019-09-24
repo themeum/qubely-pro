@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-image-carousel {\n  transition: all 400ms; }\n  .qubely-block-image-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-image-carousel .qubely-image-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-image-carousel .qubely-image-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-image-carousel .qubely-single-img.qubely-backend .qubely-image-sliderimage {\n    cursor: pointer;\n    display: block; }\n  .qubely-block-image-carousel .qubely-image-placeholder.qubely-image-sliderimage i {\n    padding: 120px;\n    width: inherit;\n    height: inherit; }\n  .qubely-block-image-carousel .qubely-image-subtitle div {\n    font-size: 24px; }\n  .qubely-block-image-carousel .qubely-carousel-item.qubely-carousel-extended-item {\n    transition: .4s; }\n  .qubely-block-image-carousel .qubely-image-item span.qubely-slider-description {\n    display: block; }\n  .qubely-block-image-carousel .qubely-image-sliderimage.qubely-image-placeholder i {\n    font-size: 52px;\n    background: #f7f7f7; }\n  .qubely-block-image-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 100%; }\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-left,\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-image-carousel .qubely-image-sliderimage-layout-left .qubely-image-slidertitle-info,\n    .qubely-block-image-carousel .qubely-image-sliderimage-layout-right .qubely-image-slidertitle-info {\n      text-align: left; }\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-right .qubely-image-slidertitle-info {\n    text-align: right; }\n  .qubely-block-image-carousel .qubely-image-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-image-carousel .qubely-image-ratings:before, .qubely-block-image-carousel .qubely-image-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-image-carousel .qubely-image-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-image-carousel .qubely-image-ratings:after {\n      z-index: 0; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-image-carousel .qubely-image-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.layout-3 .qubely-image-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n\n.layout-3 .qubely-image-carousel-content-wrapper:before {\n  content: \" \";\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-style: solid;\n  transform: translate(-50%, 50%);\n  border-width: 15px;\n  z-index: 1;\n  border-color: #f4f4f4 transparent transparent transparent;\n  left: 50%;\n  bottom: -15px; }\n\n.layout-3 .qubely-image-slidertitle {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-image-sliderimage {\n  margin-right: 0px; }\n\n.layout-3 .qubely-image-sliderimage-layout-left .qubely-image-slidertitle-info {\n  text-align: center; }\n\n.layout-1 .qubely-image-sliderimage,\n.layout-2 .qubely-image-sliderimage {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list,\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s; }\n\n.qubely-carousel.qubely-carousel-wrapper .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n  position: relative;\n  float: left;\n  overflow: hidden; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 50px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n  position: absolute;\n  bottom: 0px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid #e2e2e2;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 49%;\n  background: rgba(255, 255, 255, 0.4);\n  transition: .3s; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n  width: 100%;\n  height: 100%; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom,\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n  bottom: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n  margin: 15px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: #f4f4f4;\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n  width: 55px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n  background: #2084f9;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-image-item.layout-3 .qubely-image-sliderimage {\n  margin-right: 0; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n.qubely-carousel .qubely-carousel-extended-list {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel .qubely-carousel-extended-item {\n  position: relative;\n  float: left;\n  /* overflow: hidden; */ }\n\n.qubely-carousel .qubely-carousel-extended-item.active,\n.qubely-carousel .qubely-carousel-extended-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel .qubely-carousel-extended-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control,\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: relative;\n  height: 20px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n  display: inline-block;\n  height: 40px;\n  width: 40px;\n  padding: 10px;\n  border: 1px solid #ababab;\n  position: absolute;\n  cursor: pointer;\n  text-align: center;\n  bottom: 100px;\n  background: rgba(255, 255, 255, 0.4); }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n  right: 0; }\n\n.qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n  left: 0; }\n\n.qubely-carousel .qubely-carousel-extended-dots {\n  position: absolute;\n  bottom: 50px;\n  left: 50%;\n  transform: translateX(-50%); }\n\n.qubely-carousel .qubely-carousel-extended-dots ul {\n  margin: -4px;\n  padding: 0;\n  list-style: none;\n  text-align: center; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li {\n  display: inline-block;\n  height: 4px;\n  width: 30px;\n  margin: 5px;\n  border: 0;\n  background: rgba(218, 92, 92, 0.4);\n  border-radius: 2px;\n  cursor: pointer;\n  position: relative; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li.active {\n  width: 80px; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n  position: absolute;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear;\n  width: 0;\n  left: 0;\n  top: 0;\n  height: 4px;\n  border-radius: 2px; }\n\n.qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n  background: #ffffff;\n  width: 100%;\n  top: 0;\n  border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-extended-item:not(.active) {\n  opacity: 0.1; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {\n  opacity: .35; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {\n  opacity: 1; }\n\n.qubely-block-image-carousel.qubely-layout-3 {\n  overflow: hidden; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper {\n  padding: 30px 0; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list,\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: inherit; }\n\n.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 15px; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {\n  transform: scale(1); }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {\n  transform: scale(1.1); }\n\n.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 22px; }\n\n.qubely-layout-4 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 10px; }\n\n.layout-3 .qubely-image-slider-text,\n.layout-4 .qubely-image-slider-text,\n.layout-5 .qubely-image-slider-text,\n.layout-6 .qubely-image-slider-text {\n  display: flex;\n  position: absolute;\n  padding: 30px;\n  height: 100%;\n  width: 100%;\n  bottom: 0;\n  transition: .3s; }\n\n.layout-3 .qubely-image-slider-text:before,\n.layout-4 .qubely-image-slider-text:before,\n.layout-5 .qubely-image-slider-text:before,\n.layout-6 .qubely-image-slider-text:before {\n  content: '';\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  top: 0;\n  left: 0;\n  transition: .3s; }\n\n.qubely-image-slider {\n  position: relative;\n  height: 100%; }\n\n.qubely-image-content {\n  color: #fff;\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  left: 0; }\n\n.qubely-block-image-carousel .qubely-image-item.layout-5 .qubely-image-placeholder.qubely-image-sliderimage i {\n  padding: 56px; }\n\n.qubely-image-item {\n  height: 100%; }\n\n.qubely-block-image-carousel.qubely-layout-5 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 8px;\n  margin-top: 0px; }\n\n.item-layout5 .qubely-image-slider-text {\n  display: none; }\n\n.qubely-image-item .qubely-image-sliderimage {\n  min-height: 100%; }\n\n.qubely-single-img {\n  height: 100%; }\n\n.qubely-slider-image-container.qubely-empty-image {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #f5f5f5;\n  border: 2px dashed #e5e5e5;\n  padding: 30px;\n  border-radius: 5px;\n  min-height: 330px; }\n\n.qubely-insert-image svg.dashicon.dashicons-insert {\n  fill: currentColor;\n  outline: none; }\n\n.qubely-insert-image span {\n  margin-top: 5px;\n  display: block;\n  line-height: 20px; }\n\n.qubely-media-actions.qubely-field-button-list {\n  top: 10px;\n  right: 10px;\n  position: absolute;\n  z-index: 2; }\n\n.qubely-field-button-list .qubely-button {\n  font-size: 14px; }\n\na.qubely-insert-image {\n  color: #ababab;\n  position: absolute;\n  z-index: 9999; }\n", ""]);
+exports.push([module.i, ".qubely-block-image-carousel {\n  transition: all 400ms; }\n  .qubely-block-image-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-image-carousel .qubely-image-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-image-carousel .qubely-image-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-image-carousel .qubely-single-img.qubely-backend .qubely-image-sliderimage {\n    cursor: pointer;\n    display: block; }\n  .qubely-block-image-carousel .qubely-image-placeholder.qubely-image-sliderimage i {\n    padding: 120px;\n    width: inherit;\n    height: inherit; }\n  .qubely-block-image-carousel .qubely-image-subtitle div {\n    font-size: 24px; }\n  .qubely-block-image-carousel .qubely-carousel-item.qubely-carousel-extended-item {\n    transition: .4s; }\n  .qubely-block-image-carousel .qubely-image-item span.qubely-slider-description {\n    display: block; }\n  .qubely-block-image-carousel .qubely-image-sliderimage.qubely-image-placeholder i {\n    font-size: 52px;\n    background: #f7f7f7; }\n  .qubely-block-image-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 100%; }\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-left,\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-image-carousel .qubely-image-sliderimage-layout-left .qubely-image-slidertitle-info,\n    .qubely-block-image-carousel .qubely-image-sliderimage-layout-right .qubely-image-slidertitle-info {\n      text-align: left; }\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-right .qubely-image-slidertitle-info {\n    text-align: right; }\n  .qubely-block-image-carousel .qubely-image-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-image-carousel .qubely-image-ratings:before, .qubely-block-image-carousel .qubely-image-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-image-carousel .qubely-image-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-image-carousel .qubely-image-ratings:after {\n      z-index: 0; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-image-carousel .qubely-image-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.layout-3 .qubely-image-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n  .layout-3 .qubely-image-carousel-content-wrapper:before {\n    content: \" \";\n    position: absolute;\n    width: 0;\n    height: 0;\n    border-style: solid;\n    transform: translate(-50%, 50%);\n    border-width: 15px;\n    z-index: 1;\n    border-color: #f4f4f4 transparent transparent transparent;\n    left: 50%;\n    bottom: -15px; }\n\n.layout-3 .qubely-image-slidertitle {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-image-sliderimage {\n  margin-right: 0px; }\n\n.layout-3 .qubely-image-sliderimage-layout-left .qubely-image-slidertitle-info {\n  text-align: center; }\n\n.layout-1 .qubely-image-sliderimage {\n  margin-right: 20px; }\n\n.layout-2 .qubely-image-sliderimage {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list {\n    position: relative;\n    overflow: hidden; }\n  .qubely-carousel.qubely-carousel-wrapper .js-indicator {\n    position: absolute;\n    z-index: 9;\n    -webkit-perspective: 1000px;\n    perspective: 1000px;\n    transform-style: preserve-3d;\n    transition-property: transform, -webkit-transform, width;\n    -webkit-transition-property: transform, -webkit-transform, width;\n    transition-timing-function: linear;\n    -webkit-transition-timing-function: linear; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n    position: relative;\n    float: left;\n    overflow: hidden; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n    z-index: 1;\n    visibility: visible; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n    height: 50px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n      display: inline-block;\n      padding: 10px;\n      border: 1px solid #e2e2e2;\n      position: absolute;\n      cursor: pointer;\n      text-align: center;\n      bottom: 49%;\n      background: rgba(255, 255, 255, 0.4);\n      transition: .3s; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom {\n      bottom: 0; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n      bottom: 0; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n      right: 0; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n      left: 0; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n    margin-top: 16px;\n    height: 50px;\n    width: 100%;\n    bottom: 0px;\n    z-index: 3;\n    left: 50%;\n    transform: translateX(-50%); }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n      margin: 10px 0 0;\n      padding: 0;\n      list-style: none;\n      text-align: center; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n        width: 55px; }\n        .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n          width: 100%;\n          height: 100%; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n        display: inline-block;\n        height: 4px;\n        width: 30px;\n        margin: 5px;\n        border: 0;\n        background: #f4f4f4;\n        border-radius: 2px;\n        cursor: pointer;\n        position: relative; }\n        .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n          position: absolute;\n          -webkit-perspective: 1000px;\n          perspective: 1000px;\n          transform-style: preserve-3d;\n          transition-property: transform, -webkit-transform, width;\n          -webkit-transition-property: transform, -webkit-transform, width;\n          transition-timing-function: linear;\n          -webkit-transition-timing-function: linear;\n          width: 0;\n          left: 0;\n          top: 0;\n          height: 4px;\n          border-radius: 2px; }\n        .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n          background: #2084f9;\n          width: 100%;\n          top: 0;\n          border-radius: 2px; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-image-item.layout-3 .qubely-image-sliderimage {\n  margin-right: 0; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n  .qubely-carousel .qubely-carousel-extended-list {\n    position: relative;\n    overflow: hidden; }\n  .qubely-carousel .js-indicator {\n    position: absolute;\n    z-index: 9;\n    -webkit-perspective: 1000px;\n    perspective: 1000px;\n    transform-style: preserve-3d;\n    transition-property: transform, -webkit-transform, width;\n    -webkit-transition-property: transform, -webkit-transform, width;\n    transition-timing-function: linear;\n    -webkit-transition-timing-function: linear; }\n  .qubely-carousel .qubely-carousel-extended-item {\n    position: relative;\n    float: left; }\n  .qubely-carousel .qubely-carousel-extended-item.active {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-extended-item.dragenable {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-extended-item.prev-item {\n    z-index: 1;\n    visibility: visible; }\n  .qubely-carousel .qubely-carousel-extended-nav-control {\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n      display: inline-block;\n      height: 40px;\n      width: 40px;\n      padding: 10px;\n      border: 1px solid #ababab;\n      position: absolute;\n      cursor: pointer;\n      text-align: center;\n      bottom: 100px;\n      background: rgba(255, 255, 255, 0.4); }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n      right: 0; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n      left: 0; }\n  .qubely-carousel .qubely-carousel-extended-dots {\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3;\n    position: absolute;\n    bottom: 50px;\n    left: 50%;\n    transform: translateX(-50%); }\n    .qubely-carousel .qubely-carousel-extended-dots ul {\n      margin: -4px;\n      padding: 0;\n      list-style: none;\n      text-align: center; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li {\n        display: inline-block;\n        height: 4px;\n        width: 30px;\n        margin: 5px;\n        border: 0;\n        background: rgba(218, 92, 92, 0.4);\n        border-radius: 2px;\n        cursor: pointer;\n        position: relative; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n          position: absolute;\n          -webkit-perspective: 1000px;\n          perspective: 1000px;\n          transform-style: preserve-3d;\n          transition-property: transform, -webkit-transform, width;\n          -webkit-transition-property: transform, -webkit-transform, width;\n          transition-timing-function: linear;\n          -webkit-transition-timing-function: linear;\n          width: 0;\n          left: 0;\n          top: 0;\n          height: 4px;\n          border-radius: 2px; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n          background: #ffffff;\n          width: 100%;\n          top: 0;\n          border-radius: 2px; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li.active {\n        width: 80px; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-extended-item:not(.active) {\n  opacity: 0.1; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {\n  opacity: .35; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {\n  opacity: 1; }\n\n.qubely-block-image-carousel.qubely-layout-3 {\n  overflow: hidden; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper {\n  padding: 30px 0; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list,\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: inherit; }\n\n.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 15px; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {\n  transform: scale(1); }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {\n  transform: scale(1.1); }\n\n.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 22px; }\n\n.qubely-layout-4 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 10px; }\n\n.layout-3 .qubely-image-slider-text,\n.layout-4 .qubely-image-slider-text,\n.layout-5 .qubely-image-slider-text,\n.layout-6 .qubely-image-slider-text {\n  display: flex;\n  position: absolute;\n  padding: 30px;\n  height: 100%;\n  width: 100%;\n  bottom: 0;\n  transition: .3s; }\n\n.layout-3 .qubely-image-slider-text:before,\n.layout-4 .qubely-image-slider-text:before,\n.layout-5 .qubely-image-slider-text:before,\n.layout-6 .qubely-image-slider-text:before {\n  content: '';\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  top: 0;\n  left: 0;\n  transition: .3s; }\n\n.qubely-image-slider {\n  position: relative;\n  height: 100%; }\n\n.qubely-image-content {\n  color: #fff;\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  left: 0; }\n\n.qubely-block-image-carousel .qubely-image-item.layout-5 .qubely-image-placeholder.qubely-image-sliderimage i {\n  padding: 56px; }\n\n.qubely-image-item {\n  height: 100%; }\n  .qubely-image-item .qubely-image-sliderimage {\n    min-height: 100%; }\n\n.qubely-block-image-carousel.qubely-layout-5 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 8px;\n  margin-top: 0px; }\n\n.item-layout5 .qubely-image-slider-text {\n  display: none; }\n\n.qubely-single-img {\n  height: 100%;\n  line-height: 0; }\n\n.qubely-slider-image-container.qubely-empty-image {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #f5f5f5;\n  border: 2px dashed #e5e5e5;\n  padding: 30px;\n  border-radius: 5px;\n  min-height: 330px; }\n\n.qubely-insert-image svg.dashicon.dashicons-insert {\n  fill: currentColor;\n  outline: none; }\n\n.qubely-insert-image span {\n  margin-top: 5px;\n  display: block;\n  line-height: 20px; }\n\n.qubely-block-image-carousel .qubely-media-actions.qubely-field-button-list {\n  top: 10px;\n  left: 10px;\n  position: absolute;\n  z-index: 2; }\n\n.qubely-block-image-carousel .qubely-carousel .qubely-carousel-item .qubely-action-carousel-remove {\n  display: none;\n  font-size: 12px;\n  width: 22px;\n  height: 22px;\n  line-height: 22px;\n  text-align: center;\n  background: transparent;\n  color: #fafafa;\n  position: absolute;\n  right: 15px;\n  border-radius: 50%;\n  z-index: 1;\n  cursor: pointer;\n  top: 10px;\n  padding: 1px; }\n  .qubely-block-image-carousel .qubely-carousel .qubely-carousel-item .qubely-action-carousel-remove:hover {\n    color: #cf0000; }\n\n.qubely-block-image-carousel span.dashicons.dashicons-dismiss {\n  font-size: 24px; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item .qubely-action-carousel-remove {\n  right: 35px; }\n\n.qubely-block-image-carousel.qubely-layout-4 .qubely-carousel-item .qubely-action-carousel-remove {\n  right: 25px; }\n\n.qubely-field-button-list .qubely-button {\n  font-size: 14px; }\n\n.qubely-image-item a.qubely-insert-image {\n  color: #ababab;\n  position: absolute;\n  z-index: 9999;\n  text-decoration: none; }\n  .qubely-image-item a.qubely-insert-image:hover {\n    color: #2184f9; }\n\n.qubely-image-item .qubely-image-title {\n  line-height: 38px; }\n", ""]);
 
 
 
@@ -889,7 +889,7 @@ var Edit = function (_Component) {
 		_this.renderSlider = function (sliderimage, index) {
 			return React.createElement(
 				'div',
-				{ className: 'qubely-slider-image-container' + (sliderimage != undefined && sliderimage.url != undefined ? '' : ' qubely-empty-image') },
+				{ className: 'qubely-single-img qubely-slider-image-container ' + (sliderimage != undefined && sliderimage.url != undefined ? '' : ' qubely-empty-image') },
 				React.createElement(MediaUpload, {
 					onSelect: function onSelect(value) {
 						return _this.updateAtrributes('sliderimage', value, index);
@@ -1009,6 +1009,16 @@ var Edit = function (_Component) {
 			);
 		};
 
+		_this.removeCrouselItem = function (index) {
+			var _this$props2 = _this.props,
+			    setAttributes = _this$props2.setAttributes,
+			    carouselItems = _this$props2.attributes.carouselItems;
+
+			var newCarouselItems = JSON.parse(JSON.stringify(carouselItems));
+			newCarouselItems.splice(index, 1);
+			setAttributes({ carouselItems: newCarouselItems });
+		};
+
 		_this.renderImages = function () {
 			var _this$props$attribute2 = _this.props.attributes,
 			    layout = _this$props$attribute2.layout,
@@ -1019,6 +1029,17 @@ var Edit = function (_Component) {
 				return React.createElement(
 					'div',
 					{ key: index, className: 'qubely-carousel-item item-layout' + layout + ' ' + (index < items[_this.parseResponsiveViewPort()] ? 'active' : '') },
+					React.createElement(
+						Tooltip,
+						{ text: __('Delete this item') },
+						React.createElement(
+							'span',
+							{ className: 'qubely-action-carousel-remove', role: 'button', onClick: function onClick() {
+									return _this.removeCrouselItem(index);
+								} },
+							React.createElement('span', { className: 'dashicons dashicons-dismiss' })
+						)
+					),
 					React.createElement(
 						'div',
 						{ className: 'qubely-image-item layout-' + layout },
@@ -1048,11 +1069,11 @@ var Edit = function (_Component) {
 		};
 
 		_this.setCarouselLength = function (newLength) {
-			var _this$props2 = _this.props,
-			    setAttributes = _this$props2.setAttributes,
-			    _this$props2$attribut = _this$props2.attributes,
-			    carouselItems = _this$props2$attribut.carouselItems,
-			    items = _this$props2$attribut.items;
+			var _this$props3 = _this.props,
+			    setAttributes = _this$props3.setAttributes,
+			    _this$props3$attribut = _this$props3.attributes,
+			    carouselItems = _this$props3$attribut.carouselItems,
+			    items = _this$props3$attribut.items;
 
 			var newCarouselItems = JSON.parse(JSON.stringify(carouselItems));
 			var defaultItem = {
@@ -1128,27 +1149,57 @@ var Edit = function (_Component) {
 			    setAttributes = _props2.setAttributes,
 			    _props2$attributes = _props2.attributes,
 			    uniqueId = _props2$attributes.uniqueId,
+			    layout = _props2$attributes.layout,
+			    alignment = _props2$attributes.alignment,
+			    carouselItems = _props2$attributes.carouselItems,
 			    items = _props2$attributes.items,
 			    itemthree = _props2$attributes.itemthree,
 			    itemfive = _props2$attributes.itemfive,
+			    sliderContent = _props2$attributes.sliderContent,
 			    autoPlay = _props2$attributes.autoPlay,
-			    interval = _props2$attributes.interval,
 			    speed = _props2$attributes.speed,
-			    nav = _props2$attributes.nav,
-			    carouselItems = _props2$attributes.carouselItems,
+			    interval = _props2$attributes.interval,
 			    dragable = _props2$attributes.dragable,
-			    layout = _props2$attributes.layout,
+			    isCentered = _props2$attributes.isCentered,
+			    notCentered = _props2$attributes.notCentered,
+			    activeFade = _props2$attributes.activeFade,
+			    centerPadding = _props2$attributes.centerPadding,
+			    nav = _props2$attributes.nav,
+			    arrowStyle = _props2$attributes.arrowStyle,
+			    horizontalScroll = _props2$attributes.horizontalScroll,
+			    arrowPosition = _props2$attributes.arrowPosition,
+			    sizeWidth = _props2$attributes.sizeWidth,
+			    arrowSize = _props2$attributes.arrowSize,
+			    arrowColor = _props2$attributes.arrowColor,
+			    arrowShapeColor = _props2$attributes.arrowShapeColor,
+			    arrowBorderColor = _props2$attributes.arrowBorderColor,
+			    cornerRadius = _props2$attributes.cornerRadius,
+			    arrowHoverColor = _props2$attributes.arrowHoverColor,
+			    arrowShapeHoverColor = _props2$attributes.arrowShapeHoverColor,
+			    arrowBorderHoverColor = _props2$attributes.arrowBorderHoverColor,
+			    cornerHoverRadius = _props2$attributes.cornerHoverRadius,
+			    dots = _props2$attributes.dots,
+			    dotIndicator = _props2$attributes.dotIndicator,
+			    dotwidth = _props2$attributes.dotwidth,
+			    dotHeight = _props2$attributes.dotHeight,
+			    dotBorderRadius = _props2$attributes.dotBorderRadius,
+			    dotColor = _props2$attributes.dotColor,
+			    dotActiveColor = _props2$attributes.dotActiveColor,
+			    nameSpacing = _props2$attributes.nameSpacing,
+			    nameColor = _props2$attributes.nameColor,
+			    nameTypo = _props2$attributes.nameTypo,
+			    subtitleColor = _props2$attributes.subtitleColor,
+			    subtitleTypo = _props2$attributes.subtitleTypo,
+			    activeDescription = _props2$attributes.activeDescription,
+			    descriptionColor = _props2$attributes.descriptionColor,
+			    messageTypo = _props2$attributes.messageTypo,
 			    messageSpacingTop = _props2$attributes.messageSpacingTop,
 			    messageSpacingBottom = _props2$attributes.messageSpacingBottom,
-			    nameColor = _props2$attributes.nameColor,
-			    descriptionColor = _props2$attributes.descriptionColor,
-			    alignment = _props2$attributes.alignment,
-			    subtitleColor = _props2$attributes.subtitleColor,
-			    activeDescription = _props2$attributes.activeDescription,
-			    nameTypo = _props2$attributes.nameTypo,
-			    nameSpacing = _props2$attributes.nameSpacing,
-			    messageTypo = _props2$attributes.messageTypo,
-			    subtitleTypo = _props2$attributes.subtitleTypo,
+			    animateOnHover = _props2$attributes.animateOnHover,
+			    enableOverlay = _props2$attributes.enableOverlay,
+			    overlayBg = _props2$attributes.overlayBg,
+			    overlayHoverBg = _props2$attributes.overlayHoverBg,
+			    overlayBlend = _props2$attributes.overlayBlend,
 			    contentSpacing = _props2$attributes.contentSpacing,
 			    textColor = _props2$attributes.textColor,
 			    bgBorderRadius = _props2$attributes.bgBorderRadius,
@@ -1157,36 +1208,7 @@ var Edit = function (_Component) {
 			    boxShadowHover = _props2$attributes.boxShadowHover,
 			    sliderNumber = _props2$attributes.sliderNumber,
 			    itemPerSlides = _props2$attributes.itemPerSlides,
-			    infiniteLoop = _props2$attributes.infiniteLoop,
-			    isCentered = _props2$attributes.isCentered,
-			    notCentered = _props2$attributes.notCentered,
-			    activeFade = _props2$attributes.activeFade,
-			    arrowStyle = _props2$attributes.arrowStyle,
-			    arrowPosition = _props2$attributes.arrowPosition,
-			    cornerRadius = _props2$attributes.cornerRadius,
-			    cornerHoverRadius = _props2$attributes.cornerHoverRadius,
-			    arrowSize = _props2$attributes.arrowSize,
-			    sizeWidth = _props2$attributes.sizeWidth,
-			    arrowColor = _props2$attributes.arrowColor,
-			    arrowShapeColor = _props2$attributes.arrowShapeColor,
-			    arrowBorderColor = _props2$attributes.arrowBorderColor,
-			    arrowHoverColor = _props2$attributes.arrowHoverColor,
-			    arrowShapeHoverColor = _props2$attributes.arrowShapeHoverColor,
-			    arrowBorderHoverColor = _props2$attributes.arrowBorderHoverColor,
-			    dots = _props2$attributes.dots,
-			    dotIndicator = _props2$attributes.dotIndicator,
-			    dotwidth = _props2$attributes.dotwidth,
-			    dotHeight = _props2$attributes.dotHeight,
-			    dotBorderRadius = _props2$attributes.dotBorderRadius,
-			    dotColor = _props2$attributes.dotColor,
-			    dotActiveColor = _props2$attributes.dotActiveColor,
-			    horizontalScroll = _props2$attributes.horizontalScroll,
-			    sliderContent = _props2$attributes.sliderContent,
-			    animateOnHover = _props2$attributes.animateOnHover,
-			    enableOverlay = _props2$attributes.enableOverlay,
-			    overlayBg = _props2$attributes.overlayBg,
-			    overlayHoverBg = _props2$attributes.overlayHoverBg,
-			    overlayBlend = _props2$attributes.overlayBlend;
+			    infiniteLoop = _props2$attributes.infiniteLoop;
 			var device = this.state.device;
 
 
@@ -1196,6 +1218,7 @@ var Edit = function (_Component) {
 				margin: 10,
 				center: layout == 3 || layout == 4 ? isCentered : notCentered,
 				dot_indicator: dotIndicator,
+				centerPadding: centerPadding,
 				dots: dots,
 				nav: nav,
 				arrowStyle: arrowStyle,
@@ -1245,9 +1268,11 @@ var Edit = function (_Component) {
 					{ key: 'inspector' },
 					React.createElement(
 						PanelBody,
-						{ title: 'Image Carousel', initialOpen: false },
+						{ title: '', initialOpen: true },
 						React.createElement(Styles, {
-							options: [{ value: 1, svg: _icons2.default.imagecarousel_1, label: __('Layout 1') }, { value: 2, svg: _icons2.default.imagecarousel_2, label: __('Layout 2') }, { value: 3, svg: _icons2.default.imagecarousel_3, label: __('Layout 3') }, { value: 4, svg: _icons2.default.imagecarousel_4, label: __('Layout 4') }, { value: 5, svg: _icons2.default.imagecarousel_5, label: __('Layout 5') }, { value: 6, svg: _icons2.default.imagecarousel_6, label: __('Layout 6') }],
+							options: [{ value: 1, svg: _icons2.default.imagecarousel_1, label: __('Layout 1') }, { value: 2, svg: _icons2.default.imagecarousel_2, label: __('Layout 2') }, { value: 3, svg: _icons2.default.imagecarousel_3, label: __('Layout 3') }, { value: 4, svg: _icons2.default.imagecarousel_4, label: __('Layout 4') },
+							// { value: 5, svg: icons.imagecarousel_5, label: __('Layout 6') },
+							{ value: 6, svg: _icons2.default.imagecarousel_6, label: __('Layout 5') }],
 							value: layout, onChange: function onChange(val) {
 								return setAttributes({ layout: val });
 							}
@@ -1311,6 +1336,9 @@ var Edit = function (_Component) {
 									return setAttributes(layout == 3 || layout == 4 ? { isCentered: value } : { notCentered: value });
 								}
 							}),
+							isCentered && React.createElement(Range, { label: __('Center Padding'), value: centerPadding, onChange: function onChange(value) {
+									return setAttributes({ centerPadding: parseInt(value) });
+								}, min: 100, max: 5000 }),
 							isCentered && React.createElement(Toggle, { label: __('Fade Deactivated Items'), value: activeFade, onChange: function onChange(value) {
 									return setAttributes({ activeFade: value });
 								} })
@@ -1820,18 +1848,19 @@ var Save = function (_Component) {
           itemthree = _props$attributes2.itemthree,
           itemfive = _props$attributes2.itemfive,
           autoPlay = _props$attributes2.autoPlay,
+          speed = _props$attributes2.speed,
+          interval = _props$attributes2.interval,
+          animation = _props$attributes2.animation,
+          dragable = _props$attributes2.dragable,
+          isCentered = _props$attributes2.isCentered,
+          notCentered = _props$attributes2.notCentered,
+          centerPadding = _props$attributes2.centerPadding,
+          nav = _props$attributes2.nav,
           arrowStyle = _props$attributes2.arrowStyle,
           infiniteLoop = _props$attributes2.infiniteLoop,
           activeFade = _props$attributes2.activeFade,
-          isCentered = _props$attributes2.isCentered,
-          notCentered = _props$attributes2.notCentered,
-          dragable = _props$attributes2.dragable,
-          nav = _props$attributes2.nav,
           dots = _props$attributes2.dots,
-          dotIndicator = _props$attributes2.dotIndicator,
-          interval = _props$attributes2.interval,
-          speed = _props$attributes2.speed,
-          animation = _props$attributes2.animation;
+          dotIndicator = _props$attributes2.dotIndicator;
 
 
       var options = JSON.stringify({
@@ -1841,6 +1870,7 @@ var Save = function (_Component) {
         center: layout == 3 || layout == 4 ? isCentered : notCentered,
         dots: dots,
         dot_indicator: dotIndicator,
+        centerPadding: centerPadding,
         nav: nav,
         speed: speed,
         interval: interval,
@@ -1931,12 +1961,14 @@ registerBlockType('qubely/imagecarousel', {
 			default: { md: '4', sm: '3', xs: '3' }
 		},
 		autoPlay: { type: 'boolean', default: false },
-		dots: { type: 'boolean', default: true },
+		dots: { type: 'boolean', default: false },
 		dragable: { type: 'boolean', default: true },
 		dotIndicator: { type: 'boolean', default: true },
 		nav: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
+		centerPadding: { type: 'number', default: 210 },
+
 		carouselItems: {
 			type: 'array',
 			default: [{
@@ -2133,8 +2165,8 @@ registerBlockType('qubely/imagecarousel', {
 				type: 'gradient',
 				color: 'rgba(6, 80, 183, 0.7)',
 				gradient: {
-					color1: 'rgba(6, 80, 183, 0.7)',
-					color2: 'rgba(96, 10, 255, 0.7)',
+					color1: 'rgba(0, 0, 0, 0.5)',
+					color2: 'rgba(6, 1, 14, 0.6)',
 					direction: 45,
 					start: 0,
 					stop: 100,
@@ -2153,8 +2185,8 @@ registerBlockType('qubely/imagecarousel', {
 				openColor: 1,
 				color: 'rgba(6, 80, 183, 0.85)',
 				gradient: {
-					color1: 'rgba(6, 80, 183, 0.85)',
-					color2: 'rgba(96, 10, 255, 0.85)',
+					color1: 'rgba(0, 0, 0, 0.85)',
+					color2: 'rgba(72, 6, 196, 0.85)',
 					direction: 45,
 					start: 0,
 					stop: 100,
@@ -2190,7 +2222,7 @@ registerBlockType('qubely/imagecarousel', {
 		},
 		contentSpacing: {
 			type: 'object',
-			default: { md: 60, unit: 'px' },
+			default: { md: 40, unit: 'px' },
 			style: [{
 				selector: '{{QUBELY}} .qubely-image-content {bottom: {{contentSpacing}};}'
 			}]
@@ -8078,12 +8110,22 @@ var icons = {
     postgrid_3: React.createElement('img', { src: img_path + '/postgrid/pro1.svg', alt: __('Layout 3') }),
     postgrid_4: React.createElement('img', { src: img_path + '/postgrid/pro2.svg', alt: __('Layout 4') }),
     postgrid_5: React.createElement('img', { src: img_path + '/postgrid/pro3.svg', alt: __('Layout 4') }),
+
+    // Postgrid design 
     postgrid_design_1: React.createElement('img', { src: img_path + '/postgrid/11.svg', alt: __('Design 1') }),
     postgrid_design_2: React.createElement('img', { src: img_path + '/postgrid/12.svg', alt: __('Design 2') }),
     postgrid_design_3: React.createElement('img', { src: img_path + '/postgrid/13.svg', alt: __('Design 3') }),
     postgrid_design_4: React.createElement('img', { src: img_path + '/postgrid/14.svg', alt: __('Design 4') }),
     postgrid_design_5: React.createElement('img', { src: img_path + '/postgrid/15.svg', alt: __('Design 5') }),
-    postgrid_design_6: React.createElement('img', { src: img_path + '/postgrid/16.svg', alt: __('Design 6') })
+    postgrid_design_6: React.createElement('img', { src: img_path + '/postgrid/16.svg', alt: __('Design 6') }),
+
+    // Image Carousel
+    imagecarousel_1: React.createElement('img', { src: img_path + '/imagecarousel/layout1.svg', alt: __('Design 1') }),
+    imagecarousel_2: React.createElement('img', { src: img_path + '/imagecarousel/layout2.svg', alt: __('Design 2') }),
+    imagecarousel_3: React.createElement('img', { src: img_path + '/imagecarousel/layout3.svg', alt: __('Design 3') }),
+    imagecarousel_4: React.createElement('img', { src: img_path + '/imagecarousel/layout4.svg', alt: __('Design 4') }),
+    imagecarousel_5: React.createElement('img', { src: img_path + '/imagecarousel/layout5.svg', alt: __('Design 5') }),
+    imagecarousel_6: React.createElement('img', { src: img_path + '/imagecarousel/layout6.svg', alt: __('Design 6') })
 
 };
 

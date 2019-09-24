@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
         while (indexOfCounterElement < counterElement.length) {
             let currentElement = counterElement[indexOfCounterElement]
 
-            const { items, autoplay, interval, speed, dots, dot_indicator, center, dragable, arrowStyle, infiniteLoop, nav, responsive } = JSON.parse(currentElement.dataset.options)
+            const { items, autoplay, interval, speed, dots, dot_indicator, centerPadding, center, dragable, arrowStyle, infiniteLoop, nav, responsive } = JSON.parse(currentElement.dataset.options)
 
             $(".qubely-carousel-wrapper").qubelyCarousel({
                 autoplay: autoplay,
@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
                 dots: dots,
                 dot_indicator: dot_indicator,
                 nav: nav,
-                centerPadding: 150,
+                centerPadding: centerPadding,
                 center: center,
                 dragable: dragable,
                 responsive: [...responsive],

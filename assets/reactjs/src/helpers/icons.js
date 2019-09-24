@@ -26,12 +26,24 @@ const icons = {
     postgrid_3: <img src={`${img_path}/postgrid/pro1.svg`} alt={__('Layout 3')} />,
     postgrid_4: <img src={`${img_path}/postgrid/pro2.svg`} alt={__('Layout 4')} />,
     postgrid_5: <img src={`${img_path}/postgrid/pro3.svg`} alt={__('Layout 4')} />,
+
+    // Postgrid design 
     postgrid_design_1: <img src={`${img_path}/postgrid/11.svg`} alt={__('Design 1')} />,
     postgrid_design_2: <img src={`${img_path}/postgrid/12.svg`} alt={__('Design 2')} />,
     postgrid_design_3: <img src={`${img_path}/postgrid/13.svg`} alt={__('Design 3')} />,
     postgrid_design_4: <img src={`${img_path}/postgrid/14.svg`} alt={__('Design 4')} />,
     postgrid_design_5: <img src={`${img_path}/postgrid/15.svg`} alt={__('Design 5')} />,
     postgrid_design_6: <img src={`${img_path}/postgrid/16.svg`} alt={__('Design 6')} />,
+
+    // Image Carousel
+    imagecarousel_1: <img src={`${img_path}/imagecarousel/layout1.svg`} alt={__('Design 1')} />,
+    imagecarousel_2: <img src={`${img_path}/imagecarousel/layout2.svg`} alt={__('Design 2')} />,
+    imagecarousel_3: <img src={`${img_path}/imagecarousel/layout3.svg`} alt={__('Design 3')} />,
+    imagecarousel_4: <img src={`${img_path}/imagecarousel/layout4.svg`} alt={__('Design 4')} />,
+    imagecarousel_5: <img src={`${img_path}/imagecarousel/layout5.svg`} alt={__('Design 5')} />,
+    imagecarousel_6: <img src={`${img_path}/imagecarousel/layout6.svg`} alt={__('Design 6')} />,
+
+
 
 }
 

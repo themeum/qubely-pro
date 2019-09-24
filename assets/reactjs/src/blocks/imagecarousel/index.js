@@ -29,12 +29,14 @@ registerBlockType('qubely/imagecarousel', {
 			default: { md: '4', sm: '3', xs: '3' } 
 		},
 		autoPlay: { type: 'boolean', default: false },
-		dots: { type: 'boolean', default: true },
+		dots: { type: 'boolean', default: false },
 		dragable: { type: 'boolean', default: true },
 		dotIndicator: { type: 'boolean', default: true },
 		nav: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
+		centerPadding: { type: 'number', default: 210 },
+
 		carouselItems: {
 			type: 'array',
 			default: [
@@ -257,8 +259,8 @@ registerBlockType('qubely/imagecarousel', {
                 type: 'gradient',
                 color: 'rgba(6, 80, 183, 0.7)',
                 gradient: {
-                    color1: 'rgba(6, 80, 183, 0.7)',
-                    color2: 'rgba(96, 10, 255, 0.7)',
+                    color1: 'rgba(0, 0, 0, 0.5)',
+                    color2: 'rgba(6, 1, 14, 0.6)',
                     direction: 45,
                     start: 0,
                     stop: 100,
@@ -279,8 +281,8 @@ registerBlockType('qubely/imagecarousel', {
                 openColor: 1,
                 color: 'rgba(6, 80, 183, 0.85)',
                 gradient: {
-                    color1: 'rgba(6, 80, 183, 0.85)',
-                    color2: 'rgba(96, 10, 255, 0.85)',
+                    color1: 'rgba(0, 0, 0, 0.85)',
+                    color2: 'rgba(72, 6, 196, 0.85)',
                     direction: 45,
                     start: 0,
                     stop: 100,
@@ -343,7 +345,7 @@ registerBlockType('qubely/imagecarousel', {
 		},
 		contentSpacing: { 
 			type: 'object', 
-			default: { md: 60, unit: 'px' }, 
+			default: { md: 40, unit: 'px' }, 
 			style: [
 				{ 
 					selector: '{{QUBELY}} .qubely-image-content {bottom: {{contentSpacing}};}' 
@@ -351,14 +353,6 @@ registerBlockType('qubely/imagecarousel', {
 			] 
 		},
 
-
-
-
-
-
-
-
-		
 		// Border radius
 		bgBorderRadius: {
 			type: 'object',
