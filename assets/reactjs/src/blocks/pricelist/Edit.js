@@ -237,7 +237,7 @@ class Edit extends Component {
 								{ value: 3, svg: icons.postgrid_design_6 },
 							]}
 						/>
-                        {/* <Alignment label={__('Alignment')} value={contentAlign} onChange={val => setAttributes({ contentAlign: val })} alignmentType="content" disableJustify /> */}
+                        <Alignment label={__('Alignment')} value={contentAlign} onChange={val => setAttributes({ contentAlign: val })} alignmentType="content" disableJustify />
                         { (style != 3) &&
                             <Fragment>
                                 <Color label={__('Background Color')} value={contentBg} onChange={(value) => setAttributes({ contentBg: value })} />
@@ -251,11 +251,6 @@ class Edit extends Component {
                                 }
                             </Fragment>
                         }
-                        <BorderRadius label={__('Radius')} value={contentBorderRadius} onChange={val => setAttributes({ contentBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <BoxShadow label={__('Box-Shadow')} value={contentBoxShadow} onChange={val => setAttributes({ contentBoxShadow: val })} disableInset />
-                        <Range label={__('Spacing')} value={contentSpacing} onChange={val => setAttributes({ contentSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        
                         {(style === 3) &&
                         <Tabs>
                             <Tab tabTitle={__('Normal')}>
@@ -266,6 +261,11 @@ class Edit extends Component {
                             </Tab>
                         </Tabs>
                         }
+                        <BorderRadius label={__('Radius')} value={contentBorderRadius} onChange={val => setAttributes({ contentBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <BoxShadow label={__('Box-Shadow')} value={contentBoxShadow} onChange={val => setAttributes({ contentBoxShadow: val })} disableInset />
+                        <Range label={__('Spacing')} value={contentSpacing} onChange={val => setAttributes({ contentSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        
                     
                     </PanelBody>
 
@@ -305,7 +305,7 @@ class Edit extends Component {
 
 					<PanelBody title={__('Image')} initialOpen={false}>
 						<Toggle label={__('Enable')} value={enableImage} onChange={val => setAttributes({ enableImage: val })} />
-						{enableImage == 1 &&
+						{ (enableImage == 1) && (style != 3) &&
 							<Fragment>
                                 <RadioAdvanced label={__('Position')} value={imagePosition} onChange={(value) => setAttributes({ imagePosition: value })}
 									options={[
@@ -315,7 +315,7 @@ class Edit extends Component {
 								/>
 								<Range label={__('Size')} value={imageSize} onChange={val => setAttributes({ imageSize: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <BorderRadius label={__('Radius')} value={imageBorderRadius} onChange={val => setAttributes({ imageBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Range label={__('Spacing')} value={imageSpacing} onChange={val => setAttributes({ imageSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <Range label={__('Spacing')} value={imageSpacing} onChange={val => setAttributes({ imageSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
 							</Fragment>
 						}
 					</PanelBody>
