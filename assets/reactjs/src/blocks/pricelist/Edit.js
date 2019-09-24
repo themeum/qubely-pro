@@ -238,19 +238,25 @@ class Edit extends Component {
 							]}
 						/>
                         {/* <Alignment label={__('Alignment')} value={contentAlign} onChange={val => setAttributes({ contentAlign: val })} alignmentType="content" disableJustify /> */}
-                        <Color label={__('Background Color')} value={contentBg} onChange={(value) => setAttributes({ contentBg: value })} />
-                        <Toggle label={__('Enable Border')} value={enableContentBorder} onChange={val => setAttributes({ enableContentBorder: val })} />
-						{enableContentBorder == 1 &&
-							<Fragment>
-								<Range label={__('Border Width')} value={contentBorderWidth} onChange={val => setAttributes({ contentBorderWidth: val })} min={1} max={5} responsive device={device} unit={['px']} onDeviceChange={value => this.setState({ device: value })} />
-								<Color label={__('Border Color')} value={contentBorderColor} onChange={(value) => setAttributes({ contentBorderColor: value })} />
-								<Separator />
-							</Fragment>
+                        { (style != 3) &&
+                            <Fragment>
+                                <Color label={__('Background Color')} value={contentBg} onChange={(value) => setAttributes({ contentBg: value })} />
+                                <Toggle label={__('Enable Border')} value={enableContentBorder} onChange={val => setAttributes({ enableContentBorder: val })} />
+                                {(enableContentBorder == 1) &&
+                                    <Fragment>
+                                        <Range label={__('Border Width')} value={contentBorderWidth} onChange={val => setAttributes({ contentBorderWidth: val })} min={1} max={5} responsive device={device} unit={['px']} onDeviceChange={value => this.setState({ device: value })} />
+                                        <Color label={__('Border Color')} value={contentBorderColor} onChange={(value) => setAttributes({ contentBorderColor: value })} />
+                                        <Separator />
+                                    </Fragment>
+                                }
+                            </Fragment>
                         }
                         <BorderRadius label={__('Radius')} value={contentBorderRadius} onChange={val => setAttributes({ contentBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Box-Shadow')} value={contentBoxShadow} onChange={val => setAttributes({ contentBoxShadow: val })} disableInset />
                         <Range label={__('Spacing')} value={contentSpacing} onChange={val => setAttributes({ contentSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        
+                        {(style === 3) &&
                         <Tabs>
                             <Tab tabTitle={__('Normal')}>
                                 <ColorAdvanced label={__('Overlay')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
@@ -259,6 +265,7 @@ class Edit extends Component {
                                 <ColorAdvanced label={__('Hover Overlay')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
                             </Tab>
                         </Tabs>
+                        }
                     
                     </PanelBody>
 
