@@ -53,8 +53,27 @@ class Save extends Component {
   render() {
     const { 
       attributes: { 
-        uniqueId, layout, items, itemthree, itemfive, autoPlay, arrowStyle, 
-        infiniteLoop, activeFade, isCentered, notCentered, dragable, nav, dots, dotIndicator, interval, speed, animation 
+        uniqueId, 
+        layout, 
+        items, 
+        itemthree, 
+        itemfive, 
+        
+        autoPlay, 
+        speed, 
+        interval, 
+        animation, 
+        dragable,
+        isCentered, 
+        notCentered, 
+        centerPadding, 
+
+        nav, 
+        arrowStyle, 
+        infiniteLoop, 
+        activeFade, 
+        dots, 
+        dotIndicator, 
       } 
     } = this.props
       
@@ -65,6 +84,7 @@ class Save extends Component {
         center: (layout == 3 || layout == 4) ? isCentered : notCentered,
         dots: dots,
         dot_indicator: dotIndicator,
+        centerPadding: centerPadding,
         nav: nav,
         speed: speed,
         interval: interval,

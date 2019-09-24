@@ -35,6 +35,8 @@ registerBlockType('qubely/imagecarousel', {
 		nav: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
+		centerPadding: { type: 'number', default: 210 },
+
 		carouselItems: {
 			type: 'array',
 			default: [

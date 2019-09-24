@@ -1149,27 +1149,57 @@ var Edit = function (_Component) {
 			    setAttributes = _props2.setAttributes,
 			    _props2$attributes = _props2.attributes,
 			    uniqueId = _props2$attributes.uniqueId,
+			    layout = _props2$attributes.layout,
+			    alignment = _props2$attributes.alignment,
+			    carouselItems = _props2$attributes.carouselItems,
 			    items = _props2$attributes.items,
 			    itemthree = _props2$attributes.itemthree,
 			    itemfive = _props2$attributes.itemfive,
+			    sliderContent = _props2$attributes.sliderContent,
 			    autoPlay = _props2$attributes.autoPlay,
-			    interval = _props2$attributes.interval,
 			    speed = _props2$attributes.speed,
-			    nav = _props2$attributes.nav,
-			    carouselItems = _props2$attributes.carouselItems,
+			    interval = _props2$attributes.interval,
 			    dragable = _props2$attributes.dragable,
-			    layout = _props2$attributes.layout,
+			    isCentered = _props2$attributes.isCentered,
+			    notCentered = _props2$attributes.notCentered,
+			    activeFade = _props2$attributes.activeFade,
+			    centerPadding = _props2$attributes.centerPadding,
+			    nav = _props2$attributes.nav,
+			    arrowStyle = _props2$attributes.arrowStyle,
+			    horizontalScroll = _props2$attributes.horizontalScroll,
+			    arrowPosition = _props2$attributes.arrowPosition,
+			    sizeWidth = _props2$attributes.sizeWidth,
+			    arrowSize = _props2$attributes.arrowSize,
+			    arrowColor = _props2$attributes.arrowColor,
+			    arrowShapeColor = _props2$attributes.arrowShapeColor,
+			    arrowBorderColor = _props2$attributes.arrowBorderColor,
+			    cornerRadius = _props2$attributes.cornerRadius,
+			    arrowHoverColor = _props2$attributes.arrowHoverColor,
+			    arrowShapeHoverColor = _props2$attributes.arrowShapeHoverColor,
+			    arrowBorderHoverColor = _props2$attributes.arrowBorderHoverColor,
+			    cornerHoverRadius = _props2$attributes.cornerHoverRadius,
+			    dots = _props2$attributes.dots,
+			    dotIndicator = _props2$attributes.dotIndicator,
+			    dotwidth = _props2$attributes.dotwidth,
+			    dotHeight = _props2$attributes.dotHeight,
+			    dotBorderRadius = _props2$attributes.dotBorderRadius,
+			    dotColor = _props2$attributes.dotColor,
+			    dotActiveColor = _props2$attributes.dotActiveColor,
+			    nameSpacing = _props2$attributes.nameSpacing,
+			    nameColor = _props2$attributes.nameColor,
+			    nameTypo = _props2$attributes.nameTypo,
+			    subtitleColor = _props2$attributes.subtitleColor,
+			    subtitleTypo = _props2$attributes.subtitleTypo,
+			    activeDescription = _props2$attributes.activeDescription,
+			    descriptionColor = _props2$attributes.descriptionColor,
+			    messageTypo = _props2$attributes.messageTypo,
 			    messageSpacingTop = _props2$attributes.messageSpacingTop,
 			    messageSpacingBottom = _props2$attributes.messageSpacingBottom,
-			    nameColor = _props2$attributes.nameColor,
-			    descriptionColor = _props2$attributes.descriptionColor,
-			    alignment = _props2$attributes.alignment,
-			    subtitleColor = _props2$attributes.subtitleColor,
-			    activeDescription = _props2$attributes.activeDescription,
-			    nameTypo = _props2$attributes.nameTypo,
-			    nameSpacing = _props2$attributes.nameSpacing,
-			    messageTypo = _props2$attributes.messageTypo,
-			    subtitleTypo = _props2$attributes.subtitleTypo,
+			    animateOnHover = _props2$attributes.animateOnHover,
+			    enableOverlay = _props2$attributes.enableOverlay,
+			    overlayBg = _props2$attributes.overlayBg,
+			    overlayHoverBg = _props2$attributes.overlayHoverBg,
+			    overlayBlend = _props2$attributes.overlayBlend,
 			    contentSpacing = _props2$attributes.contentSpacing,
 			    textColor = _props2$attributes.textColor,
 			    bgBorderRadius = _props2$attributes.bgBorderRadius,
@@ -1178,36 +1208,7 @@ var Edit = function (_Component) {
 			    boxShadowHover = _props2$attributes.boxShadowHover,
 			    sliderNumber = _props2$attributes.sliderNumber,
 			    itemPerSlides = _props2$attributes.itemPerSlides,
-			    infiniteLoop = _props2$attributes.infiniteLoop,
-			    isCentered = _props2$attributes.isCentered,
-			    notCentered = _props2$attributes.notCentered,
-			    activeFade = _props2$attributes.activeFade,
-			    arrowStyle = _props2$attributes.arrowStyle,
-			    arrowPosition = _props2$attributes.arrowPosition,
-			    cornerRadius = _props2$attributes.cornerRadius,
-			    cornerHoverRadius = _props2$attributes.cornerHoverRadius,
-			    arrowSize = _props2$attributes.arrowSize,
-			    sizeWidth = _props2$attributes.sizeWidth,
-			    arrowColor = _props2$attributes.arrowColor,
-			    arrowShapeColor = _props2$attributes.arrowShapeColor,
-			    arrowBorderColor = _props2$attributes.arrowBorderColor,
-			    arrowHoverColor = _props2$attributes.arrowHoverColor,
-			    arrowShapeHoverColor = _props2$attributes.arrowShapeHoverColor,
-			    arrowBorderHoverColor = _props2$attributes.arrowBorderHoverColor,
-			    dots = _props2$attributes.dots,
-			    dotIndicator = _props2$attributes.dotIndicator,
-			    dotwidth = _props2$attributes.dotwidth,
-			    dotHeight = _props2$attributes.dotHeight,
-			    dotBorderRadius = _props2$attributes.dotBorderRadius,
-			    dotColor = _props2$attributes.dotColor,
-			    dotActiveColor = _props2$attributes.dotActiveColor,
-			    horizontalScroll = _props2$attributes.horizontalScroll,
-			    sliderContent = _props2$attributes.sliderContent,
-			    animateOnHover = _props2$attributes.animateOnHover,
-			    enableOverlay = _props2$attributes.enableOverlay,
-			    overlayBg = _props2$attributes.overlayBg,
-			    overlayHoverBg = _props2$attributes.overlayHoverBg,
-			    overlayBlend = _props2$attributes.overlayBlend;
+			    infiniteLoop = _props2$attributes.infiniteLoop;
 			var device = this.state.device;
 
 
@@ -1217,6 +1218,7 @@ var Edit = function (_Component) {
 				margin: 10,
 				center: layout == 3 || layout == 4 ? isCentered : notCentered,
 				dot_indicator: dotIndicator,
+				centerPadding: centerPadding,
 				dots: dots,
 				nav: nav,
 				arrowStyle: arrowStyle,
@@ -1266,9 +1268,11 @@ var Edit = function (_Component) {
 					{ key: 'inspector' },
 					React.createElement(
 						PanelBody,
-						{ title: 'Image Carousel', initialOpen: false },
+						{ title: '', initialOpen: true },
 						React.createElement(Styles, {
-							options: [{ value: 1, svg: _icons2.default.imagecarousel_1, label: __('Layout 1') }, { value: 2, svg: _icons2.default.imagecarousel_2, label: __('Layout 2') }, { value: 3, svg: _icons2.default.imagecarousel_3, label: __('Layout 3') }, { value: 4, svg: _icons2.default.imagecarousel_4, label: __('Layout 4') }, { value: 5, svg: _icons2.default.imagecarousel_5, label: __('Layout 5') }, { value: 6, svg: _icons2.default.imagecarousel_6, label: __('Layout 6') }],
+							options: [{ value: 1, svg: _icons2.default.imagecarousel_1, label: __('Layout 1') }, { value: 2, svg: _icons2.default.imagecarousel_2, label: __('Layout 2') }, { value: 3, svg: _icons2.default.imagecarousel_3, label: __('Layout 3') }, { value: 4, svg: _icons2.default.imagecarousel_4, label: __('Layout 4') },
+							// { value: 5, svg: icons.imagecarousel_5, label: __('Layout 6') },
+							{ value: 6, svg: _icons2.default.imagecarousel_6, label: __('Layout 5') }],
 							value: layout, onChange: function onChange(val) {
 								return setAttributes({ layout: val });
 							}
@@ -1332,6 +1336,9 @@ var Edit = function (_Component) {
 									return setAttributes(layout == 3 || layout == 4 ? { isCentered: value } : { notCentered: value });
 								}
 							}),
+							isCentered && React.createElement(Range, { label: __('Center Padding'), value: centerPadding, onChange: function onChange(value) {
+									return setAttributes({ centerPadding: parseInt(value) });
+								}, min: 100, max: 5000 }),
 							isCentered && React.createElement(Toggle, { label: __('Fade Deactivated Items'), value: activeFade, onChange: function onChange(value) {
 									return setAttributes({ activeFade: value });
 								} })
@@ -1841,18 +1848,19 @@ var Save = function (_Component) {
           itemthree = _props$attributes2.itemthree,
           itemfive = _props$attributes2.itemfive,
           autoPlay = _props$attributes2.autoPlay,
+          speed = _props$attributes2.speed,
+          interval = _props$attributes2.interval,
+          animation = _props$attributes2.animation,
+          dragable = _props$attributes2.dragable,
+          isCentered = _props$attributes2.isCentered,
+          notCentered = _props$attributes2.notCentered,
+          centerPadding = _props$attributes2.centerPadding,
+          nav = _props$attributes2.nav,
           arrowStyle = _props$attributes2.arrowStyle,
           infiniteLoop = _props$attributes2.infiniteLoop,
           activeFade = _props$attributes2.activeFade,
-          isCentered = _props$attributes2.isCentered,
-          notCentered = _props$attributes2.notCentered,
-          dragable = _props$attributes2.dragable,
-          nav = _props$attributes2.nav,
           dots = _props$attributes2.dots,
-          dotIndicator = _props$attributes2.dotIndicator,
-          interval = _props$attributes2.interval,
-          speed = _props$attributes2.speed,
-          animation = _props$attributes2.animation;
+          dotIndicator = _props$attributes2.dotIndicator;
 
 
       var options = JSON.stringify({
@@ -1862,6 +1870,7 @@ var Save = function (_Component) {
         center: layout == 3 || layout == 4 ? isCentered : notCentered,
         dots: dots,
         dot_indicator: dotIndicator,
+        centerPadding: centerPadding,
         nav: nav,
         speed: speed,
         interval: interval,
@@ -1958,6 +1967,8 @@ registerBlockType('qubely/imagecarousel', {
 		nav: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
+		centerPadding: { type: 'number', default: 210 },
+
 		carouselItems: {
 			type: 'array',
 			default: [{
@@ -8066,12 +8077,22 @@ var icons = {
     postgrid_3: React.createElement('img', { src: img_path + '/postgrid/pro1.svg', alt: __('Layout 3') }),
     postgrid_4: React.createElement('img', { src: img_path + '/postgrid/pro2.svg', alt: __('Layout 4') }),
     postgrid_5: React.createElement('img', { src: img_path + '/postgrid/pro3.svg', alt: __('Layout 4') }),
+
+    // Postgrid design 
     postgrid_design_1: React.createElement('img', { src: img_path + '/postgrid/11.svg', alt: __('Design 1') }),
     postgrid_design_2: React.createElement('img', { src: img_path + '/postgrid/12.svg', alt: __('Design 2') }),
     postgrid_design_3: React.createElement('img', { src: img_path + '/postgrid/13.svg', alt: __('Design 3') }),
     postgrid_design_4: React.createElement('img', { src: img_path + '/postgrid/14.svg', alt: __('Design 4') }),
     postgrid_design_5: React.createElement('img', { src: img_path + '/postgrid/15.svg', alt: __('Design 5') }),
-    postgrid_design_6: React.createElement('img', { src: img_path + '/postgrid/16.svg', alt: __('Design 6') })
+    postgrid_design_6: React.createElement('img', { src: img_path + '/postgrid/16.svg', alt: __('Design 6') }),
+
+    // Image Carousel
+    imagecarousel_1: React.createElement('img', { src: img_path + '/imagecarousel/layout1.svg', alt: __('Design 1') }),
+    imagecarousel_2: React.createElement('img', { src: img_path + '/imagecarousel/layout2.svg', alt: __('Design 2') }),
+    imagecarousel_3: React.createElement('img', { src: img_path + '/imagecarousel/layout3.svg', alt: __('Design 3') }),
+    imagecarousel_4: React.createElement('img', { src: img_path + '/imagecarousel/layout4.svg', alt: __('Design 4') }),
+    imagecarousel_5: React.createElement('img', { src: img_path + '/imagecarousel/layout5.svg', alt: __('Design 5') }),
+    imagecarousel_6: React.createElement('img', { src: img_path + '/imagecarousel/layout6.svg', alt: __('Design 6') })
 
 };
 

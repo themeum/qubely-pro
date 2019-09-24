@@ -236,20 +236,76 @@ class Edit extends Component {
 	}
 	render() {
 		const { setAttributes, attributes: {
-			uniqueId, items, itemthree, itemfive, autoPlay, interval, speed, nav, carouselItems, dragable,
-			layout, messageSpacingTop, messageSpacingBottom, nameColor, descriptionColor,  alignment, subtitleColor, activeDescription,
-			nameTypo, nameSpacing, messageTypo, subtitleTypo, contentSpacing, textColor, bgBorderRadius, border, boxShadow,
-			boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, isCentered, notCentered, activeFade,
-			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
-			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
-			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
-
+			uniqueId, 
+			layout,
+			alignment,
+			carouselItems,
+			items,
+			itemthree,
+			itemfive,
 			sliderContent,
+
+			// Carousel Settings
+			autoPlay,
+			speed,
+			interval,
+			dragable,
+			isCentered,
+			notCentered,
+			activeFade,
+			centerPadding,
+
+			// Slider Settings
+			nav,
+			arrowStyle,
+			horizontalScroll,
+			arrowPosition,
+			sizeWidth,
+			arrowSize,
+			arrowColor,
+			arrowShapeColor,
+			arrowBorderColor,
+			cornerRadius,
+			arrowHoverColor,
+			arrowShapeHoverColor,
+			arrowBorderHoverColor,
+			cornerHoverRadius,
+
+			// Show Dot Navigation
+			dots,
+			dotIndicator, 
+			dotwidth,
+			dotHeight,
+			dotBorderRadius,
+			dotColor,
+			dotActiveColor,
+
+			// Title
+			nameSpacing,
+			nameColor,
+			nameTypo,
+
+			// Subtitle
+			subtitleColor,
+			subtitleTypo,
+			// Description,
+			activeDescription,
+			descriptionColor,
+			messageTypo,
+			messageSpacingTop,
+			messageSpacingBottom,
+
+			// Overlay
 			animateOnHover,
 			enableOverlay,
-            overlayBg,
-            overlayHoverBg,
-            overlayBlend,
+			overlayBg,
+			overlayHoverBg,
+			overlayBlend,
+			contentSpacing,
+
+			textColor, bgBorderRadius, border, boxShadow,
+			boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, 
+			
 		} } = this.props
 
 		const { device } = this.state
@@ -260,6 +316,7 @@ class Edit extends Component {
 			margin: 10,
 			center: (layout == 3 || layout == 4) ? isCentered : notCentered,
 			dot_indicator: dotIndicator,
+			centerPadding: centerPadding,
 			dots: dots,
 			nav: nav,
 			arrowStyle: arrowStyle,
@@ -309,19 +366,19 @@ class Edit extends Component {
 			<Fragment>
 				<InspectorControls key="inspector">
 
-					<PanelBody title="Image Carousel" initialOpen={false}>
+					<PanelBody title="" initialOpen={true}>
 						<Styles 
 							options={[
 								{ value: 1, svg: icons.imagecarousel_1, label: __('Layout 1') },
 								{ value: 2, svg: icons.imagecarousel_2, label: __('Layout 2') },
 								{ value: 3, svg: icons.imagecarousel_3, label: __('Layout 3') },
 								{ value: 4, svg: icons.imagecarousel_4, label: __('Layout 4') },
-								{ value: 5, svg: icons.imagecarousel_5, label: __('Layout 5') },
-								{ value: 6, svg: icons.imagecarousel_6, label: __('Layout 6') }
+								// { value: 5, svg: icons.imagecarousel_5, label: __('Layout 6') },
+								{ value: 6, svg: icons.imagecarousel_6, label: __('Layout 5') }
 							]}
 							value={layout} onChange={val => setAttributes({ layout: val })}
 						/>
-
+ 
 						<Alignment
 							label={__('Alignment')}
 							value={alignment}
@@ -371,6 +428,10 @@ class Edit extends Component {
 									value={(layout == 3 || layout == 4) ? isCentered : notCentered } 
 									onChange={value => setAttributes((layout == 3 || layout == 4) ? { isCentered: value } : { notCentered: value })}
 								/>
+
+								{ isCentered && 
+									<Range label={__('Center Padding')} value={centerPadding} onChange={value => setAttributes({ centerPadding: parseInt(value) })} min={100} max={5000} />
+								}
 
 								{ isCentered &&
 									<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
@@ -597,11 +658,7 @@ class Edit extends Component {
 								</Fragment>
 							}
 						</Fragment>
-
-						
 					}
-
-					
 				</InspectorControls>
 
 				<div className={`qubely-block-${uniqueId}`}>
