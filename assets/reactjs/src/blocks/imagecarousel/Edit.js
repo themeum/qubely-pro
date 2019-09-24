@@ -73,7 +73,7 @@ class Edit extends Component {
 
 	renderSlider = (sliderimage, index) => {
 		return (
-			<div className={`qubely-slider-image-container${(sliderimage != undefined && sliderimage.url != undefined) ? '' : ' qubely-empty-image'}`}>
+			<div className={`qubely-single-img qubely-slider-image-container ${(sliderimage != undefined && sliderimage.url != undefined) ? '' : ' qubely-empty-image'}`}>
 				<MediaUpload
 					onSelect={value => this.updateAtrributes('sliderimage', value, index)}
 					allowedTypes={['image']}
@@ -108,34 +108,8 @@ class Edit extends Component {
 					)}
 				/>
 			</div>
-
-
-
-
 		)
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	renderMessage = (message, index) => {
 		return (
@@ -176,12 +150,25 @@ class Edit extends Component {
 		)
 	}
 
+
+	removeCrouselItem = (index) => {
+		const { setAttributes, attributes: { carouselItems } } = this.props
+		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
+		newCarouselItems.splice(index, 1)
+		setAttributes({ carouselItems: newCarouselItems })
+	}
+
 	renderImages = () => {
 		const { attributes: { layout, items, carouselItems } } = this.props
 		return (
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item item-layout${layout} ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
+
+						<Tooltip text={__('Delete this item')}>
+							<span className="qubely-action-carousel-remove" role="button" onClick={() => this.removeCrouselItem(index)}><span className="dashicons dashicons-dismiss"></span></span>
+						</Tooltip>
+
 						<div className={`qubely-image-item layout-${layout}`}>
 							{this.renderSliderInfo(item, index)}
 						</div>
