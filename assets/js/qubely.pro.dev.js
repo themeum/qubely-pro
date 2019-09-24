@@ -125,7 +125,7 @@ exports.push([module.i, ".editor-styles-wrapper .wp-block h1.qubely-postgrid-tit
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-pricelist .qubely-pricelist-image-container {\n  position: relative; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-empty-image {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background: #f5f5f5;\n    border: 2px dashed #e5e5e5;\n    padding: 30px;\n    border-radius: 5px;\n    min-height: 200px; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image {\n    text-align: center;\n    display: inline-block;\n    color: #2184F9;\n    text-decoration: none;\n    line-height: 1;\n    position: relative;\n    z-index: 3; }\n    .qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image span {\n      margin-top: 5px;\n      display: block; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image .editor-rich-text {\n    position: absolute;\n    left: 15px;\n    top: 15px;\n    z-index: 3; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n    position: relative;\n    display: inline-block; }\n    .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor .qubely-media-actions {\n      bottom: 10px;\n      right: 10px;\n      position: absolute;\n      z-index: 4; }\n    .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before {\n      content: \"\";\n      left: 0;\n      top: 0;\n      position: absolute;\n      background: rgba(0, 0, 0, 0.8);\n      z-index: 1;\n      width: 100%;\n      height: 100%; }\n\n.qubely-block-pricelist .qubely-pricelist-title-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .qubely-block-pricelist .qubely-pricelist-title-wrapper div:first-child {\n    margin-right: auto; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper > div {\n  display: inline-block; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper > div:first-child {\n  margin-right: 10px;\n  text-decoration: line-through; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper .qubely-pricelist-discount {\n  text-decoration: line-through; }\n\n.qubely-block-pricelist .qubely-pricelist-description-wrapper {\n  flex: 1; }\n\n.qubely-block-pricelist .qubely-pricelist-content {\n  overflow: hidden; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content {\n  position: relative;\n  min-height: 200px; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description-wrapper {\n    position: absolute;\n    left: 0;\n    top: 0;\n    padding: 30px;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    align-content: center;\n    z-index: 2; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  -webkit-background-size: cover;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  overflow: hidden; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor img {\n    position: absolute;\n    width: auto;\n    height: auto;\n    min-width: 100%;\n    max-width: none;\n    left: 50%;\n    top: 50%;\n    -webkit-transform: translate(-50%, -50%);\n    -ms-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n    min-height: 100%; }\n", ""]);
+exports.push([module.i, ".qubely-block-pricelist .qubely-pricelist-image-container .qubely-empty-image {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #f5f5f5;\n  border: 2px dashed #e5e5e5;\n  padding: 30px;\n  border-radius: 5px;\n  min-height: 200px; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image {\n  text-align: center;\n  display: inline-block;\n  color: #2184F9;\n  text-decoration: none;\n  line-height: 1;\n  position: relative;\n  z-index: 3;\n  background: #fff;\n  border-radius: 4px;\n  padding: 10px; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image span {\n    margin-top: 0px;\n    display: block;\n    font-size: 14px; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image .editor-rich-text {\n  position: absolute;\n  left: 15px;\n  top: 15px;\n  z-index: 3; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n  position: relative;\n  display: inline-block; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor .qubely-media-actions {\n    bottom: 10px;\n    right: 10px;\n    position: absolute;\n    z-index: 4; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before {\n    content: \"\";\n    left: 0;\n    top: 0;\n    position: absolute;\n    background: rgba(0, 0, 0, 0.8);\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n\n.qubely-block-pricelist .qubely-pricelist-title-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .qubely-block-pricelist .qubely-pricelist-title-wrapper > div:first-child {\n    margin-right: auto; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper > div {\n  display: inline-block; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper .qubely-pricelist-discount {\n  text-decoration: line-through;\n  margin-right: 10px; }\n\n.qubely-block-pricelist .qubely-pricelist-description-wrapper {\n  flex: 1; }\n  .qubely-block-pricelist .qubely-pricelist-description-wrapper .qubely-pricelist-description {\n    width: 100%; }\n\n.qubely-block-pricelist .qubely-pricelist-content {\n  overflow: hidden; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container {\n  width: 100%; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content {\n  position: relative;\n  min-height: 200px; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description-wrapper {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    align-content: center;\n    z-index: 2; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  -webkit-background-size: cover;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  overflow: hidden; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor img {\n    position: absolute;\n    width: auto;\n    height: auto;\n    min-width: 100%;\n    max-width: none;\n    left: 50%;\n    top: 50%;\n    -webkit-transform: translate(-50%, -50%);\n    -ms-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n    min-height: 100%; }\n\n.qubely-block-pricelist .qubely-pricelist-item-center .qubely-pricelist-image-container {\n  margin-left: auto;\n  margin-right: auto; }\n\n.qubely-block-pricelist .qubely-pricelist-item-center .qubely-pricelist-description-wrapper {\n  text-align: center; }\n  .qubely-block-pricelist .qubely-pricelist-item-center .qubely-pricelist-description-wrapper .qubely-pricelist-price-wrapper {\n    display: inline-block; }\n\n.qubely-block-pricelist .qubely-pricelist-item-right .qubely-pricelist-description-wrapper {\n  text-align: right; }\n\n.qubely-block-pricelist .qubely-pricelist-item-right .qubely-pricelist-image-container {\n  margin-left: auto; }\n", ""]);
 
 
 
@@ -3716,6 +3716,9 @@ var Edit = function (_Component) {
               },
               options: [{ value: 1, svg: _icons2.default.postgrid_design_1 }, { value: 2, svg: _icons2.default.postgrid_design_3 }, { value: 3, svg: _icons2.default.postgrid_design_6 }]
             }),
+            React.createElement(Alignment, { label: __('Alignment'), value: contentAlign, onChange: function onChange(val) {
+                return setAttributes({ contentAlign: val });
+              }, alignmentType: 'content', disableJustify: true }),
             style != 3 && React.createElement(
               Fragment,
               null,
@@ -3739,24 +3742,6 @@ var Edit = function (_Component) {
                 React.createElement(Separator, null)
               )
             ),
-            React.createElement(BorderRadius, { label: __('Radius'), value: contentBorderRadius, onChange: function onChange(val) {
-                return setAttributes({ contentBorderRadius: val });
-              }, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-                return _this2.setState({ device: value });
-              } }),
-            React.createElement(BoxShadow, { label: __('Box-Shadow'), value: contentBoxShadow, onChange: function onChange(val) {
-                return setAttributes({ contentBoxShadow: val });
-              }, disableInset: true }),
-            React.createElement(Range, { label: __('Spacing'), value: contentSpacing, onChange: function onChange(val) {
-                return setAttributes({ contentSpacing: val });
-              }, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
-                return _this2.setState({ device: value });
-              } }),
-            React.createElement(Padding, { label: __('Padding'), value: contentPadding, onChange: function onChange(val) {
-                return setAttributes({ contentPadding: val });
-              }, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-                return _this2.setState({ device: value });
-              } }),
             style === 3 && React.createElement(
               Tabs,
               null,
@@ -3774,7 +3759,25 @@ var Edit = function (_Component) {
                     return setAttributes({ overlayHoverBg: value });
                   } })
               )
-            )
+            ),
+            React.createElement(BorderRadius, { label: __('Radius'), value: contentBorderRadius, onChange: function onChange(val) {
+                return setAttributes({ contentBorderRadius: val });
+              }, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } }),
+            React.createElement(BoxShadow, { label: __('Box-Shadow'), value: contentBoxShadow, onChange: function onChange(val) {
+                return setAttributes({ contentBoxShadow: val });
+              }, disableInset: true }),
+            React.createElement(Range, { label: __('Spacing'), value: contentSpacing, onChange: function onChange(val) {
+                return setAttributes({ contentSpacing: val });
+              }, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } }),
+            React.createElement(Padding, { label: __('Padding'), value: contentPadding, onChange: function onChange(val) {
+                return setAttributes({ contentPadding: val });
+              }, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } })
           ),
           React.createElement(
             PanelBody,
@@ -3849,7 +3852,7 @@ var Edit = function (_Component) {
             React.createElement(Toggle, { label: __('Enable'), value: enableImage, onChange: function onChange(val) {
                 return setAttributes({ enableImage: val });
               } }),
-            enableImage == 1 && React.createElement(
+            enableImage == 1 && style != 3 && React.createElement(
               Fragment,
               null,
               React.createElement(RadioAdvanced, { label: __('Position'), value: imagePosition, onChange: function onChange(value) {
@@ -4086,378 +4089,408 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 registerBlockType('qubely/pricelist', {
-	title: __('Price List'),
-	category: 'qubely',
-	description: 'Showcase detailed with Qubely Price List.',
-	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Price List') }),
-	keywords: [__('Price List'), __('Pricing')],
-	attributes: {
-		uniqueId: { type: 'string', default: '' },
-		spacer: {
-			type: 'object',
-			default: {
-				spaceTop: {
-					md: '10',
-					unit: "px"
-				},
-				spaceBottom: {
-					md: '10',
-					unit: "px"
-				}
-			},
-			style: [{ selector: '{{QUBELY}}' }]
-		},
-		pricelistContents: {
-			type: 'Array',
-			default: [{ title: 'Qubely Blocks', badge: 'Hot', price: '$20', discount: '$10', description: 'Qubely offers a rich collection of highly customizable dedicated Gutenberg blocks.' }, { title: 'Pre-made Sections', badge: 'Hot', price: '$30', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg editor.' }, { title: 'Rich Blocks Collection', badge: 'Hot', price: '$40', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use even for the beginners.' }, { title: 'Layout Packs', badge: 'Hot', price: '$50', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' }, { title: 'Smart Layout Builder', badge: 'Hot', price: '$60', discount: '$45', description: 'Its row-column structure lets you take 1 to as many as 6 columns in a single row.' }]
-		},
+    title: __('Price List'),
+    category: 'qubely',
+    description: 'Showcase detailed with Qubely Price List.',
+    icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Price List') }),
+    keywords: [__('Price List'), __('Pricing')],
+    attributes: {
+        uniqueId: { type: 'string', default: '' },
+        spacer: {
+            type: 'object',
+            default: {
+                spaceTop: {
+                    md: '10',
+                    unit: "px"
+                },
+                spaceBottom: {
+                    md: '10',
+                    unit: "px"
+                }
+            },
+            style: [{ selector: '{{QUBELY}}' }]
+        },
+        pricelistContents: {
+            type: 'Array',
+            default: [{ title: 'Qubely Blocks', badge: 'Hot', price: '$20', discount: '$10', description: 'Qubely offers a rich collection of highly customizable dedicated Gutenberg blocks.' }, { title: 'Pre-made Sections', badge: 'Hot', price: '$30', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg editor.' }, { title: 'Rich Blocks Collection', badge: 'Hot', price: '$40', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use even for the beginners.' }, { title: 'Layout Packs', badge: 'Hot', price: '$50', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' }, { title: 'Smart Layout Builder', badge: 'Hot', price: '$60', discount: '$45', description: 'Its row-column structure lets you take 1 to as many as 6 columns in a single row.' }]
+        },
 
-		// Content
-		style: {
-			type: 'number',
-			default: 1
-		},
-		contentAlign: {
-			type: 'string',
-			default: 'left'
-		},
-		enableContentBorder: {
-			type: 'boolean',
-			default: false
-		},
-		contentBorderWidth: {
-			type: 'object',
-			default: {
-				md: 1,
-				unit: 'px'
-			},
-			style: [{
-				condition: [{ key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-item {border-style: solid; border-width: {{contentBorderWidth}};}'
-			}]
-		},
-		contentBorderColor: {
-			type: 'string',
-			default: '#F6F7FB',
-			style: [{
-				condition: [{ key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-item {border-color: {{contentBorderColor}};}'
-			}]
-		},
-		contentBg: {
-			type: 'string',
-			default: '#F9F9F9',
-			style: [{
-				condition: [{ key: 'style', relation: '!=', value: '3' }],
-				selector: '{{QUBELY}} .qubely-pricelist-item {background-color: {{contentBg}};}'
-			}]
-		},
-		contentSpacing: {
-			type: 'object',
-			default: {
-				md: 30,
-				unit: 'px'
-			},
-			style: [{ selector: '{{QUBELY}} .qubely-pricelist-item {margin-bottom: {{contentSpacing}};}' }]
-		},
-		contentPadding: {
-			type: 'object',
-			default: {
-				openPadding: 1,
-				paddingType: 'global',
-				unit: 'px',
-				global: {
-					md: 30
-				}
-			},
-			style: [{
-				selector: '{{QUBELY}} .qubely-pricelist-content'
-			}]
-		},
-		contentBorderRadius: {
-			type: 'object',
-			default: {
-				openBorderRadius: 1,
-				radiusType: 'global',
-				global: {
-					md: 5
-				},
-				unit: 'px'
-			},
-			style: [{
-				selector: '{{QUBELY}} .qubely-pricelist-content'
-			}]
-		},
-		contentBoxShadow: {
-			type: 'object',
-			default: {
-				openShadow: true,
-				vertical: 3,
-				horizontal: 0,
-				blur: 6,
-				spread: 0,
-				color: 'rgba(0,0,0,0.1)'
-			},
-			style: [{
-				selector: '{{QUBELY}} .qubely-pricelist-content'
-			}]
-		},
-		overlayBg: {
-			type: 'object', default: {
-				type: 'color',
-				openColor: 0,
-				color: '#2184F9',
-				gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
-			},
-			style: [{
-				condition: [{ key: 'style', relation: '==', value: '3' }],
-				selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
-			}]
-		},
-		overlayHoverBg: {
-			type: 'object', default: {
-				type: 'color',
-				openColor: 0,
-				color: '#2184F9',
-				gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
-			},
-			style: [{
-				condition: [{ key: 'style', relation: '==', value: '3' }],
-				selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
-			}]
-		},
+        // Content
+        style: {
+            type: 'number',
+            default: 1
+        },
+        contentAlign: {
+            type: 'string',
+            default: 'left'
+        },
+        enableContentBorder: {
+            type: 'boolean',
+            default: false
+        },
+        contentBorderWidth: {
+            type: 'object',
+            default: {
+                md: 1,
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-style: solid; border-width: {{contentBorderWidth}};}'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-style: solid; border-width: {{contentBorderWidth}};}'
+            }]
+        },
+        contentBorderColor: {
+            type: 'string',
+            default: '#F6F7FB',
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-color: {{contentBorderColor}};}'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-color: {{contentBorderColor}};}'
+            }]
+        },
+        contentBg: {
+            type: 'string',
+            default: '#F9F9F9',
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: '1' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {background-color: {{contentBg}};}'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '2' }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {background-color: {{contentBg}};}'
+            }]
+        },
+        contentSpacing: {
+            type: 'object',
+            default: {
+                md: 30,
+                unit: 'px'
+            },
+            style: [{ selector: '{{QUBELY}} .qubely-pricelist-item {margin-bottom: {{contentSpacing}};}' }]
+        },
+        contentPadding: {
+            type: 'object',
+            default: {
+                openPadding: 1,
+                paddingType: 'global',
+                unit: 'px',
+                global: {
+                    md: 30
+                }
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: '1' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '2' }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content'
+            }, {
+                condition: [{ key: 'style', relation: '==', value: '3' }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description-wrapper'
+            }]
+        },
+        contentBorderRadius: {
+            type: 'object',
+            default: {
+                openBorderRadius: 1,
+                radiusType: 'global',
+                global: {
+                    md: 5
+                },
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: '1' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '2' }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '3' }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content'
+            }]
+        },
+        contentBoxShadow: {
+            type: 'object',
+            default: {
+                openShadow: true,
+                vertical: 3,
+                horizontal: 0,
+                blur: 6,
+                spread: 0,
+                color: 'rgba(0,0,0,0.1)'
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: '1' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '2' }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '3' }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content'
+            }]
+        },
+        overlayBg: {
+            type: 'object', default: {
+                type: 'color',
+                openColor: 0,
+                color: 'rgba(6, 80, 183, 0.7)',
+                gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '==', value: '3' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+            }]
+        },
+        overlayHoverBg: {
+            type: 'object', default: {
+                type: 'color',
+                openColor: 0,
+                color: 'rgba(6, 80, 183, 0.8)',
+                gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '==', value: '3' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+            }]
+        },
 
-		// Heading
-		headingLevel: {
-			type: 'number',
-			default: 4
-		},
-		headingTypography: {
-			type: 'object',
-			default: {},
-			style: [{
-				selector: '{{QUBELY}} .qubely-pricelist-title'
-			}]
-		},
-		headingColor: {
-			type: 'string',
-			default: '',
-			style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {color: {{headingColor}};}' }]
-		},
-		headingSpacing: {
-			type: 'object',
-			default: {
-				md: 10,
-				unit: 'px'
-			},
-			style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {margin: 0 0 {{headingSpacing}} 0;}' }]
-		},
+        // Heading
+        headingLevel: {
+            type: 'number',
+            default: 4
+        },
+        headingTypography: {
+            type: 'object',
+            default: {},
+            style: [{
+                selector: '{{QUBELY}} .qubely-pricelist-title'
+            }]
+        },
+        headingColor: {
+            type: 'string',
+            default: '',
+            style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {color: {{headingColor}};}' }]
+        },
+        headingSpacing: {
+            type: 'object',
+            default: {
+                md: 10,
+                unit: 'px'
+            },
+            style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {margin: 0 0 {{headingSpacing}} 0;}' }]
+        },
 
-		// Discount Price
-		enableDescription: {
-			type: 'boolean',
-			default: true
-		},
-		descriptionTypography: {
-			type: 'object',
-			default: {},
-			style: [{
-				condition: [{ key: 'enableDescription', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-introtext'
-			}]
-		},
-		descriptionColor: {
-			type: 'string',
-			default: '',
-			style: [{
-				condition: [{ key: 'enableDescription', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-introtext {color: {{descriptionColor}};}'
-			}]
-		},
+        // Discount Price
+        enableDescription: {
+            type: 'boolean',
+            default: true
+        },
+        descriptionTypography: {
+            type: 'object',
+            default: {},
+            style: [{
+                condition: [{ key: 'enableDescription', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-introtext'
+            }]
+        },
+        descriptionColor: {
+            type: 'string',
+            default: '',
+            style: [{
+                condition: [{ key: 'enableDescription', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-introtext {color: {{descriptionColor}};}'
+            }]
+        },
 
-		// Discount Price
-		enableDiscount: {
-			type: 'boolean',
-			default: false
-		},
-		discountTypography: {
-			type: 'object',
-			default: {},
-			style: [{
-				condition: [{ key: 'enableDiscount', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-discount'
-			}]
-		},
-		discountColor: {
-			type: 'string',
-			default: '',
-			style: [{
-				condition: [{ key: 'enableDiscount', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-discount {color: {{discountColor}};}'
-			}]
-		},
+        // Discount Price
+        enableDiscount: {
+            type: 'boolean',
+            default: false
+        },
+        discountTypography: {
+            type: 'object',
+            default: {},
+            style: [{
+                condition: [{ key: 'enableDiscount', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-discount'
+            }]
+        },
+        discountColor: {
+            type: 'string',
+            default: '',
+            style: [{
+                condition: [{ key: 'enableDiscount', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-discount {color: {{discountColor}};}'
+            }]
+        },
 
-		//Price
-		priceAfterTitle: {
-			type: 'boolean',
-			default: false,
-			style: [{
-				condition: [{ key: 'priceAfterTitle', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-title-wrapper {display: block;}'
-			}]
-		},
-		enablePrice: {
-			type: 'boolean',
-			default: true
-		},
-		priceTypography: {
-			type: 'object',
-			default: {},
-			style: [{
-				condition: [{ key: 'enablePrice', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-price'
-			}]
-		},
-		priceColor: {
-			type: 'string',
-			default: '',
-			style: [{
-				condition: [{ key: 'enablePrice', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-price {color: {{priceColor}};}'
-			}]
-		},
+        //Price
+        priceAfterTitle: {
+            type: 'boolean',
+            default: false,
+            style: [{
+                condition: [{ key: 'priceAfterTitle', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-title-wrapper {display: block;}'
+            }]
+        },
+        enablePrice: {
+            type: 'boolean',
+            default: true
+        },
+        priceTypography: {
+            type: 'object',
+            default: {},
+            style: [{
+                condition: [{ key: 'enablePrice', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-price'
+            }]
+        },
+        priceColor: {
+            type: 'string',
+            default: '',
+            style: [{
+                condition: [{ key: 'enablePrice', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-price {color: {{priceColor}};}'
+            }]
+        },
 
-		//Badge
-		enableBadge: {
-			type: 'boolean',
-			default: true
-		},
-		badgePosition: {
-			type: 'string',
-			default: 'before',
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }, { key: 'badgePosition', relation: '==', value: 'right' }],
-				selector: '{{QUBELY}} .qubely-pricelist-content-image .editor-rich-text {left: auto !important; right: 15px;}'
-			}]
-		},
-		badgeTypography: {
-			type: 'object',
-			default: { openTypography: 1, size: { md: 12, unit: 'px' }, height: { md: 15, unit: 'px' } },
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge'
-			}]
-		},
-		badgeColor: {
-			type: 'string',
-			default: '#fff',
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge {color: {{badgeColor}};}'
-			}]
-		},
-		badgeBg: {
-			type: 'string',
-			default: '#2184F9',
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge {background: {{badgeBg}};}'
-			}]
-		},
-		badgeBorderRadius: {
-			type: 'object',
-			default: {
-				openBorderRadius: 1,
-				radiusType: 'global',
-				global: { md: 2 },
-				unit: 'px'
+        //Badge
+        enableBadge: {
+            type: 'boolean',
+            default: true
+        },
+        badgePosition: {
+            type: 'string',
+            default: 'before',
+            style: [{
+                condition: [{ key: 'enableBadge', relation: '==', value: true }, { key: 'badgePosition', relation: '==', value: 'right' }],
+                selector: '{{QUBELY}} .qubely-pricelist-content-image .editor-rich-text {left: auto !important; right: 15px;}'
+            }]
+        },
+        badgeTypography: {
+            type: 'object',
+            default: { openTypography: 1, size: { md: 12, unit: 'px' }, height: { md: 15, unit: 'px' } },
+            style: [{
+                condition: [{ key: 'enableBadge', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-badge'
+            }]
+        },
+        badgeColor: {
+            type: 'string',
+            default: '#fff',
+            style: [{
+                condition: [{ key: 'enableBadge', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-badge {color: {{badgeColor}};}'
+            }]
+        },
+        badgeBg: {
+            type: 'string',
+            default: '#2184F9',
+            style: [{
+                condition: [{ key: 'enableBadge', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-badge {background: {{badgeBg}};}'
+            }]
+        },
+        badgeBorderRadius: {
+            type: 'object',
+            default: {
+                openBorderRadius: 1,
+                radiusType: 'global',
+                global: { md: 2 },
+                unit: 'px'
 
-			},
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge'
-			}]
-		},
-		badgePadding: {
-			type: 'object',
-			// default: {
-			// 	openPadding: 1,
-			// 	paddingType: 'global',
-			// 	unit: 'px',
-			// 	global: {
-			// 		md: 30
-			// 	}
-			// },
+            },
+            style: [{
+                condition: [{ key: 'enableBadge', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-badge'
+            }]
+        },
+        badgePadding: {
+            type: 'object',
+            // default: {
+            // 	openPadding: 1,
+            // 	paddingType: 'global',
+            // 	unit: 'px',
+            // 	global: {
+            // 		md: 30
+            // 	}
+            // },
 
-			default: {
-				openPadding: 1,
-				paddingType: 'custom',
-				custom: {
-					md: '2 6 3 6'
-				},
-				unit: 'px'
-			},
+            default: {
+                openPadding: 1,
+                paddingType: 'custom',
+                custom: {
+                    md: '2 6 3 6'
+                },
+                unit: 'px'
+            },
 
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge'
-			}]
-		},
+            style: [{
+                condition: [{ key: 'enableBadge', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-badge'
+            }]
+        },
 
-		//image
-		enableImage: {
-			type: 'boolean',
-			default: true
-		},
-		imagePosition: {
-			type: 'string',
-			default: 'left',
-			style: [{
-				condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }],
-				selector: '{{QUBELY}} .qubely-pricelist-content {display: -webkit-box; display: -ms-flexbox; display: flex;}'
-			}]
-		},
-		imageBorderRadius: {
-			type: 'object',
-			default: {},
-			style: [{
-				condition: [{ key: 'enableImage', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-image-container img'
-			}]
-		},
-		imageSize: {
-			type: 'object',
-			default: {
-				md: '',
-				unit: 'px'
-			},
-			style: [{
-				condition: [{ key: 'enableImage', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-image-container {width: {{imageSize}};}'
-			}]
-		},
-		imageSpacing: {
-			type: 'object',
-			default: {
-				md: 20,
-				unit: 'px'
-			},
-			style: [{
-				condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }],
-				selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-right: {{imageSpacing}};}'
-			}, {
-				condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'top' }],
-				selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-bottom: {{imageSpacing}};}'
-			}]
-		},
+        //image
+        enableImage: {
+            type: 'boolean',
+            default: true
+        },
+        imagePosition: {
+            type: 'string',
+            default: 'left',
+            style: [{
+                condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }, { key: 'style', relation: '!=', value: '3' }],
+                selector: '{{QUBELY}} .qubely-pricelist-content {display: -webkit-box; display: -ms-flexbox; display: flex;}'
+            }]
+        },
+        imageBorderRadius: {
+            type: 'object',
+            default: {},
+            style: [{
+                condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'style', relation: '!=', value: '3' }],
+                selector: '{{QUBELY}} .qubely-pricelist-image-container img'
+            }]
+        },
+        imageSize: {
+            type: 'object',
+            default: {
+                md: '100',
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'style', relation: '!=', value: '3' }],
+                selector: '{{QUBELY}} .qubely-pricelist-image-container {width: {{imageSize}};}'
+            }]
+        },
+        imageSpacing: {
+            type: 'object',
+            default: {
+                md: 20,
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }, { key: 'style', relation: '!=', value: '3' }],
+                selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-right: {{imageSpacing}};}'
+            }, {
+                condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'top' }, { key: 'style', relation: '!=', value: '3' }],
+                selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-bottom: {{imageSpacing}};}'
+            }]
+        },
 
-		//
-		pricelistItems: { type: 'number', default: 5 },
-		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
-		showContextMenu: { type: 'boolean', default: true }
-	},
-	edit: _Edit2.default,
-	save: _Save2.default
+        //
+        pricelistItems: { type: 'number', default: 5 },
+        showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
+        showContextMenu: { type: 'boolean', default: true }
+    },
+    edit: _Edit2.default,
+    save: _Save2.default
 });
 
 /***/ }),
