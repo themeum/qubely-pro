@@ -7699,7 +7699,7 @@ var Save = function (_Component) {
 
         return React.createElement(
           "div",
-          { key: index, className: "qubely-carousel-extended-item" },
+          { key: index, className: "qubely-carousel-item" },
           React.createElement(
             "div",
             { className: "qubely-tesitmonial-item layout-" + layout },
