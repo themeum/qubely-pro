@@ -19,6 +19,7 @@ class QUBELY_PRO
         
         // dynamic blocks
 		add_action('init', array($this, 'init_dynamic_postgrid_blocks'));
+		add_action('init', array($this, 'init_dynamic_postcarousel_blocks')); 
 	}
 
 		/**
@@ -29,6 +30,10 @@ class QUBELY_PRO
 		require_once QUBELY_PRO_DIR_PATH . 'core/blocks/postgrid.php';
 	}
 
+	public function init_dynamic_postcarousel_blocks()
+	{
+		require_once QUBELY_PRO_DIR_PATH . 'core/blocks/postcarousel.php';
+	}
 
 	/**
 	 * Load Editor Styles and Scripts
