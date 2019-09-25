@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-image-carousel {\n  transition: all 400ms; }\n  .qubely-block-image-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-image-carousel .qubely-image-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-image-carousel .qubely-image-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-image-carousel .qubely-single-img.qubely-backend .qubely-image-sliderimage {\n    cursor: pointer;\n    display: block; }\n  .qubely-block-image-carousel .qubely-image-placeholder.qubely-image-sliderimage i {\n    padding: 120px;\n    width: inherit;\n    height: inherit; }\n  .qubely-block-image-carousel .qubely-image-subtitle div {\n    font-size: 24px; }\n  .qubely-block-image-carousel .qubely-carousel-item.qubely-carousel-extended-item {\n    transition: .4s; }\n  .qubely-block-image-carousel .qubely-image-item span.qubely-slider-description {\n    display: block; }\n  .qubely-block-image-carousel .qubely-image-sliderimage.qubely-image-placeholder i {\n    font-size: 52px;\n    background: #f7f7f7; }\n  .qubely-block-image-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 100%; }\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-left,\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-image-carousel .qubely-image-sliderimage-layout-left .qubely-image-slidertitle-info,\n    .qubely-block-image-carousel .qubely-image-sliderimage-layout-right .qubely-image-slidertitle-info {\n      text-align: left; }\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-right .qubely-image-slidertitle-info {\n    text-align: right; }\n  .qubely-block-image-carousel .qubely-image-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-image-carousel .qubely-image-ratings:before, .qubely-block-image-carousel .qubely-image-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-image-carousel .qubely-image-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-image-carousel .qubely-image-ratings:after {\n      z-index: 0; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-image-carousel .qubely-image-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.layout-3 .qubely-image-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n  .layout-3 .qubely-image-carousel-content-wrapper:before {\n    content: \" \";\n    position: absolute;\n    width: 0;\n    height: 0;\n    border-style: solid;\n    transform: translate(-50%, 50%);\n    border-width: 15px;\n    z-index: 1;\n    border-color: #f4f4f4 transparent transparent transparent;\n    left: 50%;\n    bottom: -15px; }\n\n.layout-3 .qubely-image-slidertitle {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-image-sliderimage {\n  margin-right: 0px; }\n\n.layout-3 .qubely-image-sliderimage-layout-left .qubely-image-slidertitle-info {\n  text-align: center; }\n\n.layout-1 .qubely-image-sliderimage {\n  margin-right: 20px; }\n\n.layout-2 .qubely-image-sliderimage {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list {\n    position: relative;\n    overflow: hidden; }\n  .qubely-carousel.qubely-carousel-wrapper .js-indicator {\n    position: absolute;\n    z-index: 9;\n    -webkit-perspective: 1000px;\n    perspective: 1000px;\n    transform-style: preserve-3d;\n    transition-property: transform, -webkit-transform, width;\n    -webkit-transition-property: transform, -webkit-transform, width;\n    transition-timing-function: linear;\n    -webkit-transition-timing-function: linear; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n    position: relative;\n    float: left;\n    overflow: hidden; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n    z-index: 1;\n    visibility: visible; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n    height: 50px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n      display: inline-block;\n      padding: 10px;\n      border: 1px solid #e2e2e2;\n      position: absolute;\n      cursor: pointer;\n      text-align: center;\n      bottom: 49%;\n      background: rgba(255, 255, 255, 0.4);\n      transition: .3s; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom {\n      bottom: 0; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n      bottom: 0; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n      right: 0; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n      left: 0; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n    margin-top: 16px;\n    height: 50px;\n    width: 100%;\n    bottom: 0px;\n    z-index: 3;\n    left: 50%;\n    transform: translateX(-50%); }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n      margin: 10px 0 0;\n      padding: 0;\n      list-style: none;\n      text-align: center; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n        width: 55px; }\n        .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n          width: 100%;\n          height: 100%; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n        display: inline-block;\n        height: 4px;\n        width: 30px;\n        margin: 5px;\n        border: 0;\n        background: #f4f4f4;\n        border-radius: 2px;\n        cursor: pointer;\n        position: relative; }\n        .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n          position: absolute;\n          -webkit-perspective: 1000px;\n          perspective: 1000px;\n          transform-style: preserve-3d;\n          transition-property: transform, -webkit-transform, width;\n          -webkit-transition-property: transform, -webkit-transform, width;\n          transition-timing-function: linear;\n          -webkit-transition-timing-function: linear;\n          width: 0;\n          left: 0;\n          top: 0;\n          height: 4px;\n          border-radius: 2px; }\n        .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n          background: #2084f9;\n          width: 100%;\n          top: 0;\n          border-radius: 2px; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-image-item.layout-3 .qubely-image-sliderimage {\n  margin-right: 0; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n  .qubely-carousel .qubely-carousel-extended-list {\n    position: relative;\n    overflow: hidden; }\n  .qubely-carousel .js-indicator {\n    position: absolute;\n    z-index: 9;\n    -webkit-perspective: 1000px;\n    perspective: 1000px;\n    transform-style: preserve-3d;\n    transition-property: transform, -webkit-transform, width;\n    -webkit-transition-property: transform, -webkit-transform, width;\n    transition-timing-function: linear;\n    -webkit-transition-timing-function: linear; }\n  .qubely-carousel .qubely-carousel-extended-item {\n    position: relative;\n    float: left; }\n  .qubely-carousel .qubely-carousel-extended-item.active {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-extended-item.dragenable {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-extended-item.prev-item {\n    z-index: 1;\n    visibility: visible; }\n  .qubely-carousel .qubely-carousel-extended-nav-control {\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n      display: inline-block;\n      height: 40px;\n      width: 40px;\n      padding: 10px;\n      border: 1px solid #ababab;\n      position: absolute;\n      cursor: pointer;\n      text-align: center;\n      bottom: 100px;\n      background: rgba(255, 255, 255, 0.4); }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n      right: 0; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n      left: 0; }\n  .qubely-carousel .qubely-carousel-extended-dots {\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3;\n    position: absolute;\n    bottom: 50px;\n    left: 50%;\n    transform: translateX(-50%); }\n    .qubely-carousel .qubely-carousel-extended-dots ul {\n      margin: -4px;\n      padding: 0;\n      list-style: none;\n      text-align: center; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li {\n        display: inline-block;\n        height: 4px;\n        width: 30px;\n        margin: 5px;\n        border: 0;\n        background: rgba(218, 92, 92, 0.4);\n        border-radius: 2px;\n        cursor: pointer;\n        position: relative; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n          position: absolute;\n          -webkit-perspective: 1000px;\n          perspective: 1000px;\n          transform-style: preserve-3d;\n          transition-property: transform, -webkit-transform, width;\n          -webkit-transition-property: transform, -webkit-transform, width;\n          transition-timing-function: linear;\n          -webkit-transition-timing-function: linear;\n          width: 0;\n          left: 0;\n          top: 0;\n          height: 4px;\n          border-radius: 2px; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n          background: #ffffff;\n          width: 100%;\n          top: 0;\n          border-radius: 2px; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li.active {\n        width: 80px; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-extended-item:not(.active) {\n  opacity: 0.1; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {\n  opacity: .35; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {\n  opacity: 1; }\n\n.qubely-block-image-carousel.qubely-layout-3 {\n  overflow: hidden; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper {\n  padding: 30px 0; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list,\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: inherit; }\n\n.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 15px; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {\n  transform: scale(1); }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {\n  transform: scale(1.1); }\n\n.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 22px; }\n\n.qubely-layout-4 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 10px; }\n\n.layout-3 .qubely-image-slider-text,\n.layout-4 .qubely-image-slider-text,\n.layout-5 .qubely-image-slider-text,\n.layout-6 .qubely-image-slider-text {\n  display: flex;\n  position: absolute;\n  padding: 30px;\n  height: 100%;\n  width: 100%;\n  bottom: 0;\n  transition: .3s; }\n\n.layout-3 .qubely-image-slider-text:before,\n.layout-4 .qubely-image-slider-text:before,\n.layout-5 .qubely-image-slider-text:before,\n.layout-6 .qubely-image-slider-text:before {\n  content: '';\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  top: 0;\n  left: 0;\n  transition: .3s; }\n\n.qubely-image-slider {\n  position: relative;\n  height: 100%; }\n\n.qubely-image-content {\n  color: #fff;\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  left: 0; }\n\n.qubely-block-image-carousel .qubely-image-item.layout-5 .qubely-image-placeholder.qubely-image-sliderimage i {\n  padding: 56px; }\n\n.qubely-image-item {\n  height: 100%; }\n  .qubely-image-item .qubely-image-sliderimage {\n    min-height: 100%; }\n\n.qubely-block-image-carousel.qubely-layout-5 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 8px;\n  margin-top: 0px; }\n\n.item-layout5 .qubely-image-slider-text {\n  display: none; }\n\n.qubely-single-img {\n  height: 100%;\n  line-height: 0; }\n\n.qubely-slider-image-container.qubely-empty-image {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #f5f5f5;\n  border: 2px dashed #e5e5e5;\n  padding: 30px;\n  border-radius: 5px;\n  min-height: 330px; }\n\n.qubely-insert-image svg.dashicon.dashicons-insert {\n  fill: currentColor;\n  outline: none; }\n\n.qubely-insert-image span {\n  margin-top: 5px;\n  display: block;\n  line-height: 20px; }\n\n.qubely-block-image-carousel .qubely-media-actions.qubely-field-button-list {\n  top: 10px;\n  left: 10px;\n  position: absolute;\n  z-index: 2; }\n\n.qubely-block-image-carousel .qubely-carousel .qubely-carousel-item .qubely-action-carousel-remove {\n  display: none;\n  font-size: 12px;\n  width: 22px;\n  height: 22px;\n  line-height: 22px;\n  text-align: center;\n  background: transparent;\n  color: #fafafa;\n  position: absolute;\n  right: 15px;\n  border-radius: 50%;\n  z-index: 1;\n  cursor: pointer;\n  top: 10px;\n  padding: 1px; }\n  .qubely-block-image-carousel .qubely-carousel .qubely-carousel-item .qubely-action-carousel-remove:hover {\n    color: #cf0000; }\n\n.qubely-block-image-carousel span.dashicons.dashicons-dismiss {\n  font-size: 24px; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item .qubely-action-carousel-remove {\n  right: 35px; }\n\n.qubely-block-image-carousel.qubely-layout-4 .qubely-carousel-item .qubely-action-carousel-remove {\n  right: 25px; }\n\n.qubely-field-button-list .qubely-button {\n  font-size: 14px; }\n\n.qubely-image-item a.qubely-insert-image {\n  color: #ababab;\n  position: absolute;\n  z-index: 9999;\n  text-decoration: none; }\n  .qubely-image-item a.qubely-insert-image:hover {\n    color: #2184f9; }\n\n.qubely-image-item .qubely-image-title {\n  line-height: 38px; }\n", ""]);
+exports.push([module.i, ".qubely-block-image-carousel {\n  transition: all 400ms; }\n  .qubely-block-image-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-image-carousel .qubely-image-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-image-carousel .qubely-image-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-image-carousel .qubely-single-img.qubely-backend .qubely-image-sliderimage {\n    cursor: pointer;\n    display: block; }\n  .qubely-block-image-carousel .qubely-image-placeholder.qubely-image-sliderimage i {\n    padding: 120px;\n    width: inherit;\n    height: inherit; }\n  .qubely-block-image-carousel .qubely-image-subtitle div {\n    font-size: 24px; }\n  .qubely-block-image-carousel .qubely-carousel-item.qubely-carousel-extended-item {\n    transition: .4s; }\n  .qubely-block-image-carousel .qubely-image-item span.qubely-slider-description {\n    display: block; }\n  .qubely-block-image-carousel .qubely-image-sliderimage.qubely-image-placeholder i {\n    font-size: 52px;\n    background: #f7f7f7; }\n  .qubely-block-image-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 100%; }\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-left,\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-image-carousel .qubely-image-sliderimage-layout-left .qubely-image-slidertitle-info,\n    .qubely-block-image-carousel .qubely-image-sliderimage-layout-right .qubely-image-slidertitle-info {\n      text-align: left; }\n  .qubely-block-image-carousel .qubely-image-sliderimage-layout-right .qubely-image-slidertitle-info {\n    text-align: right; }\n  .qubely-block-image-carousel .qubely-image-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-image-carousel .qubely-image-ratings:before, .qubely-block-image-carousel .qubely-image-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-image-carousel .qubely-image-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-image-carousel .qubely-image-ratings:after {\n      z-index: 0; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-image-carousel .qubely-image-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-image-carousel .qubely-image-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.layout-3 .qubely-image-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n  .layout-3 .qubely-image-carousel-content-wrapper:before {\n    content: \" \";\n    position: absolute;\n    width: 0;\n    height: 0;\n    border-style: solid;\n    transform: translate(-50%, 50%);\n    border-width: 15px;\n    z-index: 1;\n    border-color: #f4f4f4 transparent transparent transparent;\n    left: 50%;\n    bottom: -15px; }\n\n.layout-3 .qubely-image-slidertitle {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-image-sliderimage {\n  margin-right: 0px; }\n\n.layout-3 .qubely-image-sliderimage-layout-left .qubely-image-slidertitle-info {\n  text-align: center; }\n\n.layout-1 .qubely-image-sliderimage {\n  margin-right: 20px; }\n\n.layout-2 .qubely-image-sliderimage {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list {\n    position: relative;\n    overflow: hidden; }\n  .qubely-carousel.qubely-carousel-wrapper .js-indicator {\n    position: absolute;\n    z-index: 9;\n    -webkit-perspective: 1000px;\n    perspective: 1000px;\n    transform-style: preserve-3d;\n    transition-property: transform, -webkit-transform, width;\n    -webkit-transition-property: transform, -webkit-transform, width;\n    transition-timing-function: linear;\n    -webkit-transition-timing-function: linear; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n    position: relative;\n    float: left;\n    overflow: hidden;\n    transition-property: transform;\n    transition-duration: 300ms;\n    transition-timing-function: ease-in-out;\n    transition-delay: 0s; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n    z-index: 1;\n    visibility: visible; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n    height: 50px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n      display: inline-block;\n      padding: 10px;\n      border: 1px solid #e2e2e2;\n      position: absolute;\n      cursor: pointer;\n      text-align: center;\n      bottom: 49%;\n      background: rgba(255, 255, 255, 0.4);\n      transition: .3s; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom {\n      bottom: 0; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n      bottom: 0; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n      right: 0; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n      left: 0; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n    margin-top: 16px;\n    height: 50px;\n    width: 100%;\n    bottom: 0px;\n    z-index: 3;\n    left: 50%;\n    transform: translateX(-50%); }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n      margin: 10px 0 0;\n      padding: 0;\n      list-style: none;\n      text-align: center; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n        width: 55px; }\n        .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n          width: 100%;\n          height: 100%; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n        display: inline-block;\n        height: 4px;\n        width: 30px;\n        margin: 5px;\n        border: 0;\n        background: #f4f4f4;\n        border-radius: 2px;\n        cursor: pointer;\n        position: relative; }\n        .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n          position: absolute;\n          -webkit-perspective: 1000px;\n          perspective: 1000px;\n          transform-style: preserve-3d;\n          transition-property: transform, -webkit-transform, width;\n          -webkit-transition-property: transform, -webkit-transform, width;\n          transition-timing-function: linear;\n          -webkit-transition-timing-function: linear;\n          width: 0;\n          left: 0;\n          top: 0;\n          height: 4px;\n          border-radius: 2px; }\n        .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n          background: #2084f9;\n          width: 100%;\n          top: 0;\n          border-radius: 2px; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-image-item.layout-3 .qubely-image-sliderimage {\n  margin-right: 0; }\n\n.qubely-image-carousel-content-wrapper {\n  position: relative; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n  .qubely-carousel .qubely-carousel-extended-list {\n    position: relative;\n    overflow: hidden; }\n  .qubely-carousel .js-indicator {\n    position: absolute;\n    z-index: 9;\n    -webkit-perspective: 1000px;\n    perspective: 1000px;\n    transform-style: preserve-3d;\n    transition-property: transform, -webkit-transform, width;\n    -webkit-transition-property: transform, -webkit-transform, width;\n    transition-timing-function: linear;\n    -webkit-transition-timing-function: linear; }\n  .qubely-carousel .qubely-carousel-extended-item {\n    position: relative;\n    float: left; }\n  .qubely-carousel .qubely-carousel-extended-item.active {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-extended-item.dragenable {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-extended-item.prev-item {\n    z-index: 1;\n    visibility: visible; }\n  .qubely-carousel .qubely-carousel-extended-nav-control {\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n      display: inline-block;\n      height: 40px;\n      width: 40px;\n      padding: 10px;\n      border: 1px solid #ababab;\n      position: absolute;\n      cursor: pointer;\n      text-align: center;\n      bottom: 100px;\n      background: rgba(255, 255, 255, 0.4); }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n      right: 0; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n      left: 0; }\n  .qubely-carousel .qubely-carousel-extended-dots {\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3;\n    position: absolute;\n    bottom: 50px;\n    left: 50%;\n    transform: translateX(-50%); }\n    .qubely-carousel .qubely-carousel-extended-dots ul {\n      margin: -4px;\n      padding: 0;\n      list-style: none;\n      text-align: center; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li {\n        display: inline-block;\n        height: 4px;\n        width: 30px;\n        margin: 5px;\n        border: 0;\n        background: rgba(218, 92, 92, 0.4);\n        border-radius: 2px;\n        cursor: pointer;\n        position: relative; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n          position: absolute;\n          -webkit-perspective: 1000px;\n          perspective: 1000px;\n          transform-style: preserve-3d;\n          transition-property: transform, -webkit-transform, width;\n          -webkit-transition-property: transform, -webkit-transform, width;\n          transition-timing-function: linear;\n          -webkit-transition-timing-function: linear;\n          width: 0;\n          left: 0;\n          top: 0;\n          height: 4px;\n          border-radius: 2px; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n          background: #ffffff;\n          width: 100%;\n          top: 0;\n          border-radius: 2px; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li.active {\n        width: 80px; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-extended-item:not(.active) {\n  opacity: 0.1; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {\n  opacity: .35; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {\n  opacity: 1; }\n\n.qubely-block-image-carousel.qubely-layout-3 {\n  overflow: hidden; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper {\n  padding: 30px 0; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list,\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: inherit; }\n\n.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 15px; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item {\n  transform: scale(1); }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item.active {\n  transform: scale(1.1); }\n\n.qubely-layout-3 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 22px; }\n\n.qubely-layout-4 .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  padding: 0 10px; }\n\n.layout-2 .qubely-image-slider-text,\n.layout-3 .qubely-image-slider-text,\n.layout-4 .qubely-image-slider-text,\n.layout-5 .qubely-image-slider-text,\n.layout-6 .qubely-image-slider-text {\n  display: flex;\n  position: absolute;\n  padding: 30px;\n  height: 100%;\n  width: 100%;\n  bottom: 0;\n  transition: .3s; }\n\n.layout-2 .qubely-image-slider-text:before,\n.layout-3 .qubely-image-slider-text:before,\n.layout-4 .qubely-image-slider-text:before,\n.layout-5 .qubely-image-slider-text:before,\n.layout-6 .qubely-image-slider-text:before {\n  content: '';\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  top: 0;\n  left: 0;\n  transition: .3s; }\n\n.qubely-image-slider {\n  position: relative;\n  height: 100%; }\n\n.qubely-image-content {\n  position: absolute;\n  padding: 0 50px;\n  color: #fff;\n  width: 100%;\n  bottom: 0;\n  left: 0; }\n\n.qubely-block-image-carousel .qubely-image-item.layout-5 .qubely-image-placeholder.qubely-image-sliderimage i {\n  padding: 56px; }\n\n.qubely-image-item {\n  height: 100%; }\n  .qubely-image-item .qubely-image-sliderimage {\n    min-height: 100%; }\n\n.qubely-block-image-carousel.qubely-layout-5 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 8px;\n  margin-top: 0px; }\n\n.item-layout5 .qubely-image-slider-text {\n  display: none; }\n\n.qubely-single-img {\n  height: 100%;\n  line-height: 0; }\n\n.qubely-slider-image-container.qubely-empty-image {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #f5f5f5;\n  border: 2px dashed #e5e5e5;\n  padding: 30px;\n  border-radius: 5px;\n  min-height: 330px; }\n\n.qubely-insert-image svg.dashicon.dashicons-insert {\n  fill: currentColor;\n  outline: none; }\n\n.qubely-insert-image span {\n  margin-top: 5px;\n  display: block;\n  line-height: 20px; }\n\n.qubely-block-image-carousel .qubely-media-actions.qubely-field-button-list {\n  top: 10px;\n  left: 10px;\n  position: absolute;\n  z-index: 2; }\n\n.qubely-block-image-carousel .qubely-carousel .qubely-carousel-item .qubely-action-carousel-remove {\n  display: none;\n  font-size: 12px;\n  width: 22px;\n  height: 22px;\n  line-height: 22px;\n  text-align: center;\n  background: transparent;\n  color: #ababab;\n  position: absolute;\n  right: 15px;\n  border-radius: 50%;\n  z-index: 1;\n  cursor: pointer;\n  top: 10px;\n  padding: 1px; }\n  .qubely-block-image-carousel .qubely-carousel .qubely-carousel-item .qubely-action-carousel-remove:hover {\n    color: #cf0000; }\n\n.qubely-block-image-carousel span.dashicons.dashicons-dismiss {\n  font-size: 24px; }\n\n.qubely-block-image-carousel.qubely-layout-3 .qubely-carousel-item .qubely-action-carousel-remove {\n  right: 35px; }\n\n.qubely-block-image-carousel.qubely-layout-4 .qubely-carousel-item .qubely-action-carousel-remove {\n  right: 25px; }\n\n.qubely-field-button-list .qubely-button {\n  font-size: 14px; }\n\n.qubely-image-item a.qubely-insert-image {\n  color: #ababab;\n  position: absolute;\n  z-index: 9999;\n  text-decoration: none;\n  text-align: center; }\n  .qubely-image-item a.qubely-insert-image:hover {\n    color: #2184f9; }\n\n.qubely-image-item .qubely-image-title {\n  line-height: 38px; }\n\n.align-top .qubely-image-content {\n  bottom: initial;\n  top: 0; }\n\n.align-center .qubely-image-content {\n  bottom: 34%; }\n\n.align-bottom .qubely-image-content {\n  bottom: 0; }\n", ""]);
 
 
 
@@ -125,7 +125,7 @@ exports.push([module.i, ".editor-styles-wrapper .wp-block h1.qubely-postgrid-tit
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-pricelist .qubely-pricelist-image-container {\n  position: relative; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-empty-image {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background: #f5f5f5;\n    border: 2px dashed #e5e5e5;\n    padding: 30px;\n    border-radius: 5px;\n    min-height: 200px; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image {\n    text-align: center;\n    display: inline-block;\n    color: #2184F9;\n    text-decoration: none;\n    line-height: 1;\n    position: relative;\n    z-index: 3; }\n    .qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image span {\n      margin-top: 5px;\n      display: block; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image .editor-rich-text {\n    position: absolute;\n    left: 15px;\n    top: 15px;\n    z-index: 3; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n    position: relative;\n    display: inline-block; }\n    .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor .qubely-media-actions {\n      bottom: 10px;\n      right: 10px;\n      position: absolute;\n      z-index: 4; }\n    .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before {\n      content: \"\";\n      left: 0;\n      top: 0;\n      position: absolute;\n      background: rgba(0, 0, 0, 0.8);\n      z-index: 1;\n      width: 100%;\n      height: 100%; }\n\n.qubely-block-pricelist .qubely-pricelist-title-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .qubely-block-pricelist .qubely-pricelist-title-wrapper div:first-child {\n    margin-right: auto; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper > div {\n  display: inline-block; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper > div:first-child {\n  margin-right: 10px;\n  text-decoration: line-through; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper .qubely-pricelist-discount {\n  text-decoration: line-through; }\n\n.qubely-block-pricelist .qubely-pricelist-description-wrapper {\n  flex: 1; }\n\n.qubely-block-pricelist .qubely-pricelist-content {\n  overflow: hidden; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content {\n  position: relative;\n  min-height: 200px; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description-wrapper {\n    position: absolute;\n    left: 0;\n    top: 0;\n    padding: 30px;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    align-content: center;\n    z-index: 2; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  -webkit-background-size: cover;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  overflow: hidden; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor img {\n    position: absolute;\n    width: auto;\n    height: auto;\n    min-width: 100%;\n    max-width: none;\n    left: 50%;\n    top: 50%;\n    -webkit-transform: translate(-50%, -50%);\n    -ms-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n    min-height: 100%; }\n", ""]);
+exports.push([module.i, ".qubely-block-pricelist:not(.qubely-pricelist-item-3) .qubely-pricelist-image-container {\n  position: relative; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-badge {\n  position: absolute;\n  left: 15px;\n  top: 15px;\n  z-index: 3; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-empty-image {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #f5f5f5;\n  border: 2px dashed #e5e5e5;\n  padding: 30px;\n  border-radius: 5px;\n  min-height: 100px; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image {\n  text-align: center;\n  display: inline-block;\n  color: #2184F9;\n  text-decoration: none;\n  line-height: 1;\n  position: relative;\n  z-index: 3; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image span {\n    margin-top: 0px;\n    display: block;\n    font-size: 14px; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n  position: relative;\n  display: inline-block; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor .qubely-media-actions {\n    bottom: 10px;\n    right: 10px;\n    position: absolute;\n    z-index: 4; }\n\n.qubely-block-pricelist .qubely-pricelist-line {\n  -webkit-flex-grow: 1;\n  -ms-flex-positive: 1;\n  -moz-box-flex: 1;\n  flex-grow: 1;\n  margin: 0 20px; }\n\n.qubely-block-pricelist .qubely-pricelist-title-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  -moz-box-align: center;\n  align-items: center; }\n  .qubely-block-pricelist .qubely-pricelist-title-wrapper > div:first-child,\n  .qubely-block-pricelist .qubely-pricelist-title-wrapper .qubely-pricelist-title {\n    margin-right: auto; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper > div {\n  display: inline-block; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper .qubely-pricelist-discount {\n  text-decoration: line-through;\n  margin-right: 10px; }\n\n.qubely-block-pricelist .qubely-pricelist-description-wrapper {\n  flex: 1; }\n  .qubely-block-pricelist .qubely-pricelist-description-wrapper .qubely-pricelist-description {\n    width: 100%; }\n\n.qubely-block-pricelist .qubely-pricelist-content {\n  overflow: hidden; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container {\n  width: 100%;\n  height: 100%; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content {\n  position: relative;\n  min-height: 200px; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description-wrapper {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    align-content: center;\n    z-index: 2; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  -webkit-background-size: cover;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  overflow: hidden; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor img {\n    position: absolute;\n    width: auto;\n    height: auto;\n    min-width: 100%;\n    max-width: none;\n    left: 50%;\n    top: 50%;\n    -webkit-transform: translate(-50%, -50%);\n    -ms-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n    min-height: 100%; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before {\n    content: \"\";\n    left: 0;\n    top: 0;\n    position: absolute;\n    background: rgba(0, 0, 0, 0.8);\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n\n.qubely-block-pricelist .qubely-pricelist-item-center .qubely-pricelist-image-container {\n  margin-left: auto;\n  margin-right: auto; }\n\n.qubely-block-pricelist .qubely-pricelist-item-center .qubely-pricelist-description-wrapper {\n  text-align: center; }\n  .qubely-block-pricelist .qubely-pricelist-item-center .qubely-pricelist-description-wrapper .qubely-pricelist-price-wrapper {\n    display: inline-block; }\n\n.qubely-block-pricelist .qubely-pricelist-item-right .qubely-pricelist-description-wrapper {\n  text-align: right; }\n\n.qubely-block-pricelist .qubely-pricelist-item-right .qubely-pricelist-image-container {\n  margin-left: auto; }\n", ""]);
 
 
 
@@ -817,6 +817,7 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Separator = _wp$qubelyComponents.Separator,
     ColorAdvanced = _wp$qubelyComponents.ColorAdvanced,
     Border = _wp$qubelyComponents.Border,
+    RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
     BorderRadius = _wp$qubelyComponents.BorderRadius,
     BoxShadow = _wp$qubelyComponents.BoxShadow,
     Select = _wp$qubelyComponents.Select,
@@ -978,7 +979,7 @@ var Edit = function (_Component) {
 				'div',
 				{ className: 'qubely-image-slider' },
 				_this.renderSlider(sliderimage, index),
-				layout != 1 && layout != 2 && React.createElement(
+				layout != 1 && React.createElement(
 					'div',
 					null,
 					(sliderContent || layout === 6) && React.createElement(
@@ -1023,12 +1024,13 @@ var Edit = function (_Component) {
 			var _this$props$attribute2 = _this.props.attributes,
 			    layout = _this$props$attribute2.layout,
 			    items = _this$props$attribute2.items,
-			    carouselItems = _this$props$attribute2.carouselItems;
+			    carouselItems = _this$props$attribute2.carouselItems,
+			    contentVerticalAlign = _this$props$attribute2.contentVerticalAlign;
 
 			return carouselItems.map(function (item, index) {
 				return React.createElement(
 					'div',
-					{ key: index, className: 'qubely-carousel-item item-layout' + layout + ' ' + (index < items[_this.parseResponsiveViewPort()] ? 'active' : '') },
+					{ key: index, className: 'qubely-carousel-item item-layout' + layout + ' align-' + contentVerticalAlign },
 					React.createElement(
 						Tooltip,
 						{ text: __('Delete this item') },
@@ -1143,7 +1145,8 @@ var Edit = function (_Component) {
 		value: function render() {
 			var _this2 = this,
 			    _React$createElement,
-			    _React$createElement2;
+			    _React$createElement2,
+			    _React$createElement3;
 
 			var _props2 = this.props,
 			    setAttributes = _props2.setAttributes,
@@ -1195,36 +1198,30 @@ var Edit = function (_Component) {
 			    messageTypo = _props2$attributes.messageTypo,
 			    messageSpacingTop = _props2$attributes.messageSpacingTop,
 			    messageSpacingBottom = _props2$attributes.messageSpacingBottom,
+			    contentPadding = _props2$attributes.contentPadding,
+			    contentVerticalAlign = _props2$attributes.contentVerticalAlign,
+			    contentAlignment = _props2$attributes.contentAlignment,
 			    animateOnHover = _props2$attributes.animateOnHover,
 			    enableOverlay = _props2$attributes.enableOverlay,
 			    overlayBg = _props2$attributes.overlayBg,
 			    overlayHoverBg = _props2$attributes.overlayHoverBg,
-			    overlayBlend = _props2$attributes.overlayBlend,
-			    contentSpacing = _props2$attributes.contentSpacing,
-			    textColor = _props2$attributes.textColor,
-			    bgBorderRadius = _props2$attributes.bgBorderRadius,
-			    border = _props2$attributes.border,
-			    boxShadow = _props2$attributes.boxShadow,
-			    boxShadowHover = _props2$attributes.boxShadowHover,
-			    sliderNumber = _props2$attributes.sliderNumber,
-			    itemPerSlides = _props2$attributes.itemPerSlides,
-			    infiniteLoop = _props2$attributes.infiniteLoop;
+			    overlayBlend = _props2$attributes.overlayBlend;
 			var device = this.state.device;
 
 
 			var carouselSettings = {
 				autoplay: autoPlay,
 				items: layout != 2 ? layout == 5 ? itemfive : items : itemthree,
-				margin: 10,
 				center: layout == 3 || layout == 4 ? isCentered : notCentered,
-				dot_indicator: dotIndicator,
-				centerPadding: centerPadding,
-				dots: dots,
 				nav: nav,
-				arrowStyle: arrowStyle,
-				arrowPosition: arrowPosition,
+				dots: dots,
+				margin: 10,
 				speed: speed,
 				interval: interval,
+				arrowStyle: arrowStyle,
+				dot_indicator: dotIndicator,
+				centerPadding: centerPadding,
+				arrowPosition: arrowPosition,
 				responsive: [{
 					viewport: 1170,
 					items: layout != 2 ? layout == 5 ? itemfive.md : items.md : itemthree.md
@@ -1241,15 +1238,15 @@ var Edit = function (_Component) {
 			var carouselFiveSettings = {
 				autoplay: autoPlay,
 				items: items,
-				margin: 10,
-				center: false,
-				dot_indicator: dotIndicator,
-				dots: false,
 				nav: nav,
-				arrowStyle: arrowStyle,
-				arrowPosition: arrowPosition,
+				margin: 10,
+				dots: false,
 				speed: speed,
+				center: false,
 				interval: interval,
+				arrowStyle: arrowStyle,
+				dot_indicator: dotIndicator,
+				arrowPosition: arrowPosition,
 				responsive: [{
 					viewport: 1170,
 					items: 1
@@ -1303,7 +1300,7 @@ var Edit = function (_Component) {
 						}), _defineProperty(_React$createElement2, 'onDeviceChange', function onDeviceChange(value) {
 							return _this2.setState({ device: value });
 						}), _React$createElement2)),
-						layout != 6 && layout != 1 && layout != 2 && React.createElement(Toggle, { label: __('Slider Content'), value: sliderContent, onChange: function onChange(value) {
+						layout != 6 && layout != 1 && React.createElement(Toggle, { label: __('Slider Content'), value: sliderContent, onChange: function onChange(value) {
 								return setAttributes({ sliderContent: value });
 							} })
 					),
@@ -1529,7 +1526,7 @@ var Edit = function (_Component) {
 					(sliderContent || layout === 6) && React.createElement(
 						Fragment,
 						null,
-						layout != 1 && layout != 2 && React.createElement(
+						layout != 1 && React.createElement(
 							Fragment,
 							null,
 							React.createElement(
@@ -1633,6 +1630,23 @@ var Edit = function (_Component) {
 							),
 							React.createElement(
 								PanelBody,
+								{ title: __('Content'), initialOpen: false },
+								React.createElement(Padding, { label: __('Padding'), value: contentPadding, onChange: function onChange(val) {
+										return setAttributes({ contentPadding: val });
+									}, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+										return _this2.setState({ device: value });
+									} }),
+								React.createElement(RadioAdvanced, { label: __('Vertical Align'), value: contentVerticalAlign, onChange: function onChange(value) {
+										return setAttributes({ contentVerticalAlign: value });
+									},
+									options: [{ label: __('Top'), value: 'top', title: __('Top') }, { label: __('Middle'), value: 'center', title: __('Middle') }, { label: __('Bottom'), value: 'bottom', title: __('Bottom') }]
+								}),
+								React.createElement(Alignment, (_React$createElement3 = { label: __('Horizontal Alignment'), value: contentAlignment, alignmentType: 'content', onChange: function onChange(val) {
+										return setAttributes({ contentAlignment: val });
+									} }, _defineProperty(_React$createElement3, 'alignmentType', 'content'), _defineProperty(_React$createElement3, 'disableJustify', true), _React$createElement3))
+							),
+							React.createElement(
+								PanelBody,
 								{ title: __('Overlay'), initialOpen: false },
 								React.createElement(Toggle, { label: __('Animate on Hover'), value: animateOnHover, onChange: function onChange(val) {
 										return setAttributes({ animateOnHover: val });
@@ -1671,19 +1685,7 @@ var Edit = function (_Component) {
 									React.createElement(Select, { label: __('Blend Mode'), options: [['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]], value: overlayBlend, onChange: function onChange(val) {
 											return setAttributes({ overlayBlend: val });
 										} })
-								),
-								React.createElement(Range, {
-									label: __('Content Spacing'),
-									value: contentSpacing, onChange: function onChange(value) {
-										return setAttributes({ contentSpacing: value });
-									},
-									unit: ['px', 'em', '%'], max: 300,
-									min: 0,
-									responsive: true,
-									device: device,
-									onDeviceChange: function onDeviceChange(value) {
-										return _this2.setState({ device: value });
-									} })
+								)
 							)
 						)
 					)
@@ -1786,7 +1788,7 @@ var Save = function (_Component) {
         "div",
         { className: "qubely-image-slider" },
         _this.renderSlider(sliderimage, index),
-        layout != 1 && layout != 2 && React.createElement(
+        layout != 1 && React.createElement(
           "div",
           null,
           (sliderContent || layout === 6) && React.createElement(
@@ -1824,7 +1826,8 @@ var Save = function (_Component) {
 
       var _props$attributes = this.props.attributes,
           carouselItems = _props$attributes.carouselItems,
-          layout = _props$attributes.layout;
+          layout = _props$attributes.layout,
+          contentVerticalAlign = _props$attributes.contentVerticalAlign;
 
       return carouselItems.map(function (item, index) {
         return React.createElement(
@@ -1832,7 +1835,7 @@ var Save = function (_Component) {
           { key: index, className: "qubely-carousel-item qubely-carousel-extended-item " + (index === 0 ? ' active' : '') },
           React.createElement(
             "div",
-            { className: "qubely-image-item layout-" + layout },
+            { className: "qubely-image-item layout-" + layout + " align-" + contentVerticalAlign },
             _this2.renderSliderInfo(item)
           )
         );
@@ -1898,7 +1901,7 @@ var Save = function (_Component) {
           { className: "qubely-block-image-carousel qubely-layout-" + layout },
           React.createElement(
             "div",
-            { className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? ' is-faded' : ''), "data-options": options, id: "qubelyCarousel1" },
+            { className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? ' is-faded' : ' '), "data-options": options, id: "qubelyCarousel1" },
             this.renderImage()
           )
         )
@@ -1942,7 +1945,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 registerBlockType('qubely/imagecarousel', {
 	title: __('Image Carousel'),
 	description: __('Insert images and beautify them with Qubely Image Carousel Block'),
-	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg', alt: __('Team Block') }),
+	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg', alt: __('Image Carousel Block') }),
 	category: 'qubely',
 	keywords: [__('Image'), __('Carousel')],
 	attributes: {
@@ -1961,12 +1964,13 @@ registerBlockType('qubely/imagecarousel', {
 			default: { md: '4', sm: '3', xs: '3' }
 		},
 		autoPlay: { type: 'boolean', default: false },
-		dots: { type: 'boolean', default: false },
 		dragable: { type: 'boolean', default: true },
 		dotIndicator: { type: 'boolean', default: true },
-		nav: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
+
+		nav: { type: 'boolean', default: true },
+		dots: { type: 'boolean', default: false },
 		centerPadding: { type: 'number', default: 210 },
 
 		carouselItems: {
@@ -1978,7 +1982,7 @@ registerBlockType('qubely/imagecarousel', {
 				ratings: '5',
 				sliderimage: {}
 			}, {
-				slidertitle: 'Welcome to Wordcamp Dhaka',
+				slidertitle: 'Welcome to Themeum',
 				subtitle: 'Everything related to WordPress',
 				message: '“WordCamp Dhaka is officially on the calendar!”',
 				ratings: '4.5',
@@ -1990,7 +1994,7 @@ registerBlockType('qubely/imagecarousel', {
 				ratings: '4.5',
 				sliderimage: {}
 			}, {
-				slidertitle: 'International Convention City, Bashundhara',
+				slidertitle: 'ICCB Center Dhaka',
 				subtitle: 'Including speaker submissions',
 				message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
 				ratings: '5',
@@ -2002,7 +2006,7 @@ registerBlockType('qubely/imagecarousel', {
 				ratings: '5',
 				sliderimage: {}
 			}, {
-				slidertitle: 'Wordcamp Sponsor JoomShaper',
+				slidertitle: 'Wordcamp Sponsor?',
 				subtitle: 'WordCamp Dhaka will be happening',
 				message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
 				ratings: '5',
@@ -2149,10 +2153,46 @@ registerBlockType('qubely/imagecarousel', {
 		messageSpacingTop: { type: 'object', default: { md: 0, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-slider-description {margin-top: {{messageSpacingTop}};}' }] },
 		messageSpacingBottom: { type: 'object', default: { md: 5, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-slider-description {margin-bottom: {{messageSpacingBottom}};}' }] },
 
+		/* ----------------------------------
+  * 			Content
+  ------------------------------------- */
+		contentPadding: {
+			type: 'object',
+			default: {
+				openPadding: 1,
+				paddingType: 'global',
+				global: {
+					md: 30
+				},
+				unit: 'px'
+			},
+			style: [{ selector: '{{QUBELY}} .qubely-image-slider .qubely-image-content' }]
+		},
+		contentVerticalAlign: {
+			type: 'string',
+			default: 'bottom',
+			style: [{
+				selector: '{{QUBELY}} .qubely-image-content {-webkit-box-align: start; -ms-flex-align: start; -ms-grid-row-align: flex-start; align-items: flex-start;}'
+			}]
+		},
+		contentAlignment: {
+			type: 'string',
+			default: 'center',
+			style: [{
+				condition: [{ key: 'layout', relation: '!=', value: '1' }, { key: 'contentAlignment', relation: '==', value: 'left' }],
+				selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; text-align: left;}'
+			}, {
+				condition: [{ key: 'layout', relation: '!=', value: '1' }, { key: 'contentAlignment', relation: '==', value: 'center' }],
+				selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center;}'
+			}, {
+				condition: [{ key: 'layout', relation: '!=', value: '1' }, { key: 'contentAlignment', relation: '==', value: 'right' }],
+				selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; text-align: right;}'
+			}]
+		},
+
 		/* ------------------------------------
-  * 				Design 
+  * 			Overlay 
   * ------------------------------------- */
-		// Overlay
 		enableOverlay: {
 			type: 'boolean',
 			default: true
@@ -2174,7 +2214,7 @@ registerBlockType('qubely/imagecarousel', {
 				}
 			},
 			style: [{
-				selector: '{{QUBELY}} .layout-3 .qubely-image-slider-text:before, {{QUBELY}} .layout-4 .qubely-image-slider-text:before, {{QUBELY}} .layout-5 .qubely-image-slider-text:before, {{QUBELY}} .layout-6 .qubely-image-slider-text:before'
+				selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:before, {{QUBELY}} .layout-3 .qubely-image-slider-text:before, {{QUBELY}} .layout-4 .qubely-image-slider-text:before, {{QUBELY}} .layout-5 .qubely-image-slider-text:before, {{QUBELY}} .layout-6 .qubely-image-slider-text:before'
 			}]
 		},
 
@@ -2194,8 +2234,11 @@ registerBlockType('qubely/imagecarousel', {
 				}
 			},
 			style: [{
-				condition: [{ key: 'layout', relation: '==', value: '3' }, { key: 'enableOverlay', relation: '==', value: true }, { key: 'animateOnHover', relation: '==', value: true }],
+				condition: [{ key: 'layout', relation: '==', value: '2' }, { key: 'enableOverlay', relation: '==', value: true }, { key: 'animateOnHover', relation: '==', value: true }],
 				selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:hover:before'
+			}, {
+				condition: [{ key: 'layout', relation: '==', value: '3' }, { key: 'enableOverlay', relation: '==', value: true }, { key: 'animateOnHover', relation: '==', value: true }],
+				selector: '{{QUBELY}} .layout-3 .qubely-image-slider-text:hover:before'
 			}, {
 				condition: [{ key: 'layout', relation: '==', value: '4' }, { key: 'enableOverlay', relation: '==', value: true }, { key: 'animateOnHover', relation: '==', value: true }],
 				selector: '{{QUBELY}} .layout-4 .qubely-image-slider-text:hover:before'
@@ -2220,14 +2263,6 @@ registerBlockType('qubely/imagecarousel', {
 			type: 'boolean',
 			default: true
 		},
-		contentSpacing: {
-			type: 'object',
-			default: { md: 40, unit: 'px' },
-			style: [{
-				selector: '{{QUBELY}} .qubely-image-content {bottom: {{contentSpacing}};}'
-			}]
-		},
-
 		// Border radius
 		bgBorderRadius: {
 			type: 'object',
@@ -3390,6 +3425,7 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
     ColorAdvanced = _wp$qubelyComponents.ColorAdvanced,
+    Select = _wp$qubelyComponents.Select,
     Tabs = _wp$qubelyComponents.Tabs,
     Tab = _wp$qubelyComponents.Tab,
     Range = _wp$qubelyComponents.Range,
@@ -3442,7 +3478,6 @@ var Edit = function (_Component) {
     _this.renderPricelist = function () {
       var _this$props$attribute2 = _this.props.attributes,
           pricelistContents = _this$props$attribute2.pricelistContents,
-          style = _this$props$attribute2.style,
           contentAlign = _this$props$attribute2.contentAlign,
           headingLevel = _this$props$attribute2.headingLevel,
           enableImage = _this$props$attribute2.enableImage,
@@ -3450,6 +3485,7 @@ var Edit = function (_Component) {
           enablePrice = _this$props$attribute2.enablePrice,
           enableDiscount = _this$props$attribute2.enableDiscount,
           enableDescription = _this$props$attribute2.enableDescription,
+          enableLine = _this$props$attribute2.enableLine,
           priceAfterTitle = _this$props$attribute2.priceAfterTitle;
 
       var titleTagName = 'h' + headingLevel;
@@ -3531,16 +3567,19 @@ var Edit = function (_Component) {
                     );
                   }
                 }),
-                enableBadge && React.createElement(RichText, {
-                  placeholder: __('Badge'),
-                  tagName: 'div',
-                  className: 'qubely-pricelist-badge',
-                  value: badge,
-                  onChange: function onChange(value) {
-                    return _this.updatePricelistContent('badge', value, index);
-                  },
-                  keepPlaceholderOnFocus: true
-                })
+                enableBadge && React.createElement(
+                  'div',
+                  { className: 'qubely-pricelist-badge' },
+                  React.createElement(RichText, {
+                    placeholder: __('Badge'),
+                    tagName: 'div',
+                    value: badge,
+                    onChange: function onChange(value) {
+                      return _this.updatePricelistContent('badge', value, index);
+                    },
+                    keepPlaceholderOnFocus: true
+                  })
+                )
               )
             ),
             React.createElement(
@@ -3562,6 +3601,7 @@ var Edit = function (_Component) {
                     },
                     keepPlaceholderOnFocus: true
                   }),
+                  enableLine && priceAfterTitle == 0 && React.createElement('span', { className: 'qubely-pricelist-line' }),
                   React.createElement(
                     'div',
                     { className: 'qubely-pricelist-price-wrapper' },
@@ -3637,15 +3677,12 @@ var Edit = function (_Component) {
           uniqueId = _props2$attributes.uniqueId,
           pricelistItems = _props2$attributes.pricelistItems,
           style = _props2$attributes.style,
-          pricelistContents = _props2$attributes.pricelistContents,
           headingLevel = _props2$attributes.headingLevel,
           priceAfterTitle = _props2$attributes.priceAfterTitle,
           headingTypography = _props2$attributes.headingTypography,
           headingColor = _props2$attributes.headingColor,
           headingSpacing = _props2$attributes.headingSpacing,
           contentBg = _props2$attributes.contentBg,
-          contentColor = _props2$attributes.contentColor,
-          contentTypography = _props2$attributes.contentTypography,
           enableContentBorder = _props2$attributes.enableContentBorder,
           contentBorderWidth = _props2$attributes.contentBorderWidth,
           contentBorderColor = _props2$attributes.contentBorderColor,
@@ -3656,6 +3693,11 @@ var Edit = function (_Component) {
           contentAlign = _props2$attributes.contentAlign,
           overlayHoverBg = _props2$attributes.overlayHoverBg,
           overlayBg = _props2$attributes.overlayBg,
+          height = _props2$attributes.height,
+          enableLine = _props2$attributes.enableLine,
+          lineBorderWidth = _props2$attributes.lineBorderWidth,
+          lineBorderColor = _props2$attributes.lineBorderColor,
+          lineBorderStyle = _props2$attributes.lineBorderStyle,
           badgePosition = _props2$attributes.badgePosition,
           enableImage = _props2$attributes.enableImage,
           imagePosition = _props2$attributes.imagePosition,
@@ -3714,6 +3756,9 @@ var Edit = function (_Component) {
               },
               options: [{ value: 1, svg: _icons2.default.postgrid_design_1 }, { value: 2, svg: _icons2.default.postgrid_design_3 }, { value: 3, svg: _icons2.default.postgrid_design_6 }]
             }),
+            React.createElement(Alignment, { label: __('Alignment'), value: contentAlign, onChange: function onChange(val) {
+                return setAttributes({ contentAlign: val });
+              }, alignmentType: 'content', disableJustify: true }),
             style != 3 && React.createElement(
               Fragment,
               null,
@@ -3737,24 +3782,6 @@ var Edit = function (_Component) {
                 React.createElement(Separator, null)
               )
             ),
-            React.createElement(BorderRadius, { label: __('Radius'), value: contentBorderRadius, onChange: function onChange(val) {
-                return setAttributes({ contentBorderRadius: val });
-              }, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-                return _this2.setState({ device: value });
-              } }),
-            React.createElement(BoxShadow, { label: __('Box-Shadow'), value: contentBoxShadow, onChange: function onChange(val) {
-                return setAttributes({ contentBoxShadow: val });
-              }, disableInset: true }),
-            React.createElement(Range, { label: __('Spacing'), value: contentSpacing, onChange: function onChange(val) {
-                return setAttributes({ contentSpacing: val });
-              }, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
-                return _this2.setState({ device: value });
-              } }),
-            React.createElement(Padding, { label: __('Padding'), value: contentPadding, onChange: function onChange(val) {
-                return setAttributes({ contentPadding: val });
-              }, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-                return _this2.setState({ device: value });
-              } }),
             style === 3 && React.createElement(
               Tabs,
               null,
@@ -3772,6 +3799,56 @@ var Edit = function (_Component) {
                     return setAttributes({ overlayHoverBg: value });
                   } })
               )
+            ),
+            style === 3 && React.createElement(Range, { label: __('Height'), value: height, onChange: function onChange(val) {
+                return setAttributes({ height: val });
+              }, min: 0, max: 500, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } }),
+            React.createElement(BorderRadius, { label: __('Radius'), value: contentBorderRadius, onChange: function onChange(val) {
+                return setAttributes({ contentBorderRadius: val });
+              }, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } }),
+            React.createElement(BoxShadow, { label: __('Box-Shadow'), value: contentBoxShadow, onChange: function onChange(val) {
+                return setAttributes({ contentBoxShadow: val });
+              }, disableInset: true }),
+            React.createElement(Range, { label: __('Spacing'), value: contentSpacing, onChange: function onChange(val) {
+                return setAttributes({ contentSpacing: val });
+              }, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } }),
+            React.createElement(Padding, { label: __('Padding'), value: contentPadding, onChange: function onChange(val) {
+                return setAttributes({ contentPadding: val });
+              }, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } })
+          ),
+          priceAfterTitle == 0 && React.createElement(
+            PanelBody,
+            { title: __('Line Style'), initialOpen: false },
+            React.createElement(Toggle, { label: __('Enable Line'), value: enableLine, onChange: function onChange(val) {
+                return setAttributes({ enableLine: val });
+              } }),
+            enableLine == 1 && React.createElement(
+              Fragment,
+              null,
+              React.createElement(Range, { label: __('Border Width'), value: lineBorderWidth, onChange: function onChange(val) {
+                  return setAttributes({ lineBorderWidth: val });
+                }, min: 1, max: 5, responsive: true, device: device, unit: ['px'], onDeviceChange: function onDeviceChange(value) {
+                  return _this2.setState({ device: value });
+                } }),
+              React.createElement(Color, { label: __('Border Color'), value: lineBorderColor, onChange: function onChange(value) {
+                  return setAttributes({ lineBorderColor: value });
+                } }),
+              React.createElement(Select, {
+                label: __('Position'),
+                options: ['solid', 'dotted', 'dashed'],
+                value: lineBorderStyle,
+                onChange: function onChange(value) {
+                  return setAttributes({ lineBorderStyle: value });
+                }
+              })
             )
           ),
           React.createElement(
@@ -3847,7 +3924,7 @@ var Edit = function (_Component) {
             React.createElement(Toggle, { label: __('Enable'), value: enableImage, onChange: function onChange(val) {
                 return setAttributes({ enableImage: val });
               } }),
-            enableImage == 1 && React.createElement(
+            enableImage == 1 && style != 3 && React.createElement(
               Fragment,
               null,
               React.createElement(RadioAdvanced, { label: __('Position'), value: imagePosition, onChange: function onChange(value) {
@@ -3958,7 +4035,7 @@ exports.default = Edit;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -3976,81 +4053,107 @@ var RichText = wp.editor.RichText;
 var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
 
 var Save = function (_Component) {
-	_inherits(Save, _Component);
+    _inherits(Save, _Component);
 
-	function Save() {
-		var _ref;
+    function Save() {
+        var _ref;
 
-		var _temp, _this, _ret;
+        var _temp, _this, _ret;
 
-		_classCallCheck(this, Save);
+        _classCallCheck(this, Save);
 
-		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-			args[_key] = arguments[_key];
-		}
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderPricelist = function () {
-			var _this$props$attribute = _this.props.attributes,
-			    pricelistContents = _this$props$attribute.pricelistContents,
-			    enableContentBorder = _this$props$attribute.enableContentBorder,
-			    headingLevel = _this$props$attribute.headingLevel,
-			    enableImage = _this$props$attribute.enableImage;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderPricelist = function () {
+            var _this$props$attribute = _this.props.attributes,
+                pricelistContents = _this$props$attribute.pricelistContents,
+                enableLine = _this$props$attribute.enableLine,
+                headingLevel = _this$props$attribute.headingLevel,
+                enableImage = _this$props$attribute.enableImage,
+                contentAlign = _this$props$attribute.contentAlign,
+                enableBadge = _this$props$attribute.enableBadge,
+                enableDiscount = _this$props$attribute.enableDiscount,
+                enablePrice = _this$props$attribute.enablePrice,
+                enableDescription = _this$props$attribute.enableDescription,
+                priceAfterTitle = _this$props$attribute.priceAfterTitle;
 
 
-			var titleTagName = 'h' + headingLevel;
+            var titleTagName = 'h' + headingLevel;
 
-			return pricelistContents.map(function (_ref2, index) {
-				var title = _ref2.title,
-				    description = _ref2.description,
-				    image = _ref2.image;
+            return pricelistContents.map(function (_ref2, index) {
+                var title = _ref2.title,
+                    description = _ref2.description,
+                    image = _ref2.image,
+                    badge = _ref2.badge,
+                    discount = _ref2.discount,
+                    price = _ref2.price;
 
-				return React.createElement(
-					"div",
-					{ key: index, className: "qubely-pricelist-item" },
-					React.createElement(
-						"div",
-						{ className: "qubely-pricelist-content" },
-						enableImage == 1 && image != undefined && image.url != undefined && React.createElement(
-							"div",
-							{ className: "qubely-pricelist-image-container" },
-							React.createElement("img", { src: image.url, alt: title })
-						),
-						React.createElement(
-							"div",
-							{ className: "qubely-pricelist-description-wrapper" },
-							React.createElement(RichText.Content, { tagName: titleTagName, className: "qubely-pricelist-title", value: title }),
-							React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-description-wrapper", value: description })
-						)
-					)
-				);
-			});
-		}, _temp), _possibleConstructorReturn(_this, _ret);
-	}
+                return React.createElement(
+                    'div',
+                    { key: index, className: 'qubely-pricelist-item qubely-pricelist-item-' + contentAlign },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-pricelist-content' },
+                        enableImage == 1 && image != undefined && image.url != undefined && React.createElement(
+                            'div',
+                            { className: 'qubely-pricelist-image-container' },
+                            React.createElement('img', { src: image.url, alt: title }),
+                            enableBadge && React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-pricelist-badge', value: badge })
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'qubely-pricelist-description-wrapper' },
+                            React.createElement(
+                                'div',
+                                { className: 'qubely-pricelist-description' },
+                                React.createElement(
+                                    'div',
+                                    { className: 'qubely-pricelist-title-wrapper' },
+                                    React.createElement(RichText.Content, { tagName: titleTagName, className: 'qubely-pricelist-title', value: title }),
+                                    enableLine && priceAfterTitle == 0 && React.createElement('span', { className: 'qubely-pricelist-line' }),
+                                    React.createElement(
+                                        'div',
+                                        { className: 'qubely-pricelist-price-wrapper' },
+                                        enableDiscount && React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-pricelist-discount', value: discount }),
+                                        enablePrice && React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-pricelist-price', value: price })
+                                    )
+                                ),
+                                enableDescription && React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-pricelist-introtext', value: description })
+                            )
+                        )
+                    )
+                );
+            });
+        }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
 
-	_createClass(Save, [{
-		key: "render",
-		value: function render() {
-			var _props$attributes = this.props.attributes,
-			    uniqueId = _props$attributes.uniqueId,
-			    animation = _props$attributes.animation;
+    _createClass(Save, [{
+        key: 'render',
+        value: function render() {
+            var _props$attributes = this.props.attributes,
+                uniqueId = _props$attributes.uniqueId,
+                animation = _props$attributes.animation,
+                style = _props$attributes.style;
 
-			return React.createElement(
-				"div",
-				_extends({ className: "qubely-block-" + uniqueId }, animationAttr(animation)),
-				React.createElement(
-					"div",
-					{ className: "qubely-block-pricelist" },
-					React.createElement(
-						"div",
-						{ className: "qubely-pricelist-items" },
-						this.renderPricelist()
-					)
-				)
-			);
-		}
-	}]);
+            return React.createElement(
+                'div',
+                _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
+                React.createElement(
+                    'div',
+                    { className: 'qubely-block-pricelist qubely-pricelist-item-' + style },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-pricelist-items' },
+                        this.renderPricelist()
+                    )
+                )
+            );
+        }
+    }]);
 
-	return Save;
+    return Save;
 }(Component);
 
 exports.default = Save;
@@ -4084,378 +4187,452 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 
 registerBlockType('qubely/pricelist', {
-	title: __('Price List'),
-	category: 'qubely',
-	description: 'Showcase detailed with Qubely Price List.',
-	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Price List') }),
-	keywords: [__('Price List'), __('Pricing')],
-	attributes: {
-		uniqueId: { type: 'string', default: '' },
-		spacer: {
-			type: 'object',
-			default: {
-				spaceTop: {
-					md: '10',
-					unit: "px"
+				title: __('Price List'),
+				category: 'qubely',
+				description: 'Showcase detailed with Qubely Price List.',
+				icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Price List') }),
+				keywords: [__('Price List'), __('Pricing')],
+				attributes: {
+								uniqueId: { type: 'string', default: '' },
+								spacer: {
+												type: 'object',
+												default: {
+																spaceTop: {
+																				md: '10',
+																				unit: "px"
+																},
+																spaceBottom: {
+																				md: '10',
+																				unit: "px"
+																}
+												},
+												style: [{ selector: '{{QUBELY}}' }]
+								},
+								pricelistContents: {
+												type: 'Array',
+												default: [{ title: 'Qubely Blocks', badge: 'Hot', price: '$20', discount: '$10', description: 'Qubely offers a rich collection of highly customizable dedicated Gutenberg blocks.' }, { title: 'Pre-made Sections', badge: 'Hot', price: '$30', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg editor.' }, { title: 'Rich Blocks Collection', badge: 'Hot', price: '$40', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use even for the beginners.' }, { title: 'Layout Packs', badge: 'Hot', price: '$50', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' }, { title: 'Smart Layout Builder', badge: 'Hot', price: '$60', discount: '$45', description: 'Its row-column structure lets you take 1 to as many as 6 columns in a single row.' }]
+								},
+
+								// Content
+								style: {
+												type: 'number',
+												default: 1
+								},
+								contentAlign: {
+												type: 'string',
+												default: 'left'
+								},
+								enableContentBorder: {
+												type: 'boolean',
+												default: false
+								},
+								contentBorderWidth: {
+												type: 'object',
+												default: {
+																md: 1,
+																unit: 'px'
+												},
+												style: [{
+																condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-style: solid; border-width: {{contentBorderWidth}};}'
+												}, {
+																condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-style: solid; border-width: {{contentBorderWidth}};}'
+												}]
+								},
+								contentBorderColor: {
+												type: 'string',
+												default: '#F6F7FB',
+												style: [{
+																condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-color: {{contentBorderColor}};}'
+												}, {
+																condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-color: {{contentBorderColor}};}'
+												}]
+								},
+								contentBg: {
+												type: 'string',
+												default: '#F9F9F9',
+												style: [{
+																condition: [{ key: 'style', relation: '===', value: '1' }],
+																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {background-color: {{contentBg}};}'
+												}, {
+																condition: [{ key: 'style', relation: '===', value: '2' }],
+																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {background-color: {{contentBg}};}'
+												}]
+								},
+								height: {
+												type: 'object',
+												default: {
+																md: '200',
+																unit: 'px'
+												},
+												style: [{
+																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'style', relation: '===', value: '3' }],
+																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content, {{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-empty-image {height: {{height}};}'
+												}]
+								},
+								contentSpacing: {
+												type: 'object',
+												default: {
+																md: 30,
+																unit: 'px'
+												},
+												style: [{ selector: '{{QUBELY}} .qubely-pricelist-item {margin-bottom: {{contentSpacing}};}' }]
+								},
+								contentPadding: {
+												type: 'object',
+												default: {
+																openPadding: 1,
+																paddingType: 'global',
+																unit: 'px',
+																global: {
+																				md: 30
+																}
+												},
+												style: [{
+																condition: [{ key: 'style', relation: '===', value: '1' }],
+																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
+												}, {
+																condition: [{ key: 'style', relation: '===', value: '2' }],
+																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content'
+												}, {
+																condition: [{ key: 'style', relation: '==', value: '3' }],
+																selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description'
+												}]
+								},
+								contentBorderRadius: {
+												type: 'object',
+												default: {
+																openBorderRadius: 1,
+																radiusType: 'global',
+																global: {
+																				md: 5
+																},
+																unit: 'px'
+												},
+												style: [{
+																condition: [{ key: 'style', relation: '===', value: '1' }],
+																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
+												}, {
+																condition: [{ key: 'style', relation: '===', value: '2' }],
+																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content'
+												}, {
+																condition: [{ key: 'style', relation: '===', value: '3' }],
+																selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content'
+												}]
+								},
+								contentBoxShadow: {
+												type: 'object',
+												default: {
+																openShadow: true,
+																vertical: 3,
+																horizontal: 0,
+																blur: 6,
+																spread: 0,
+																color: 'rgba(0,0,0,0.1)'
+												},
+												style: [{
+																condition: [{ key: 'style', relation: '===', value: '1' }],
+																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
+												}, {
+																condition: [{ key: 'style', relation: '===', value: '2' }],
+																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content'
+												}, {
+																condition: [{ key: 'style', relation: '===', value: '3' }],
+																selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content'
+												}]
+								},
+								overlayBg: {
+												type: 'object', default: {
+																type: 'color',
+																openColor: 0,
+																color: 'rgba(6, 80, 183, 0.7)',
+																gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
+												},
+												style: [{
+																condition: [{ key: 'style', relation: '==', value: '3' }],
+																selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+												}]
+								},
+								overlayHoverBg: {
+												type: 'object', default: {
+																type: 'color',
+																openColor: 0,
+																color: 'rgba(6, 80, 183, 0.8)',
+																gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
+												},
+												style: [{
+																condition: [{ key: 'style', relation: '==', value: '3' }],
+																selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+												}]
+								},
+
+								//line
+								enableLine: {
+												type: 'boolean',
+												default: false
+								},
+								lineBorderStyle: {
+												type: 'string',
+												default: 'solid',
+												style: [{
+																condition: [{ key: 'enableLine', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-line {border-bottom-style: {{lineBorderStyle}};}'
+												}]
+								},
+								lineBorderWidth: {
+												type: 'object',
+												default: {
+																md: 1,
+																unit: 'px'
+												},
+												style: [{
+																condition: [{ key: 'enableLine', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-line {border-bottom-width: {{lineBorderWidth}};}'
+												}]
+								},
+								lineBorderColor: {
+												type: 'string',
+												default: '#F6F7FB',
+												style: [{
+																condition: [{ key: 'enableLine', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-line {border-bottom-color: {{lineBorderColor}};}'
+												}]
+								},
+
+								// Heading
+								headingLevel: {
+												type: 'number',
+												default: 4
+								},
+								headingTypography: {
+												type: 'object',
+												default: {},
+												style: [{
+																selector: '{{QUBELY}} .qubely-pricelist-title'
+												}]
+								},
+								headingColor: {
+												type: 'string',
+												default: '',
+												style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {color: {{headingColor}};}' }]
+								},
+								headingSpacing: {
+												type: 'object',
+												default: {
+																md: 10,
+																unit: 'px'
+												},
+												style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {margin: 0 0 {{headingSpacing}} 0;}' }]
+								},
+
+								// Discount Price
+								enableDescription: {
+												type: 'boolean',
+												default: true
+								},
+								descriptionTypography: {
+												type: 'object',
+												default: {},
+												style: [{
+																condition: [{ key: 'enableDescription', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-introtext'
+												}]
+								},
+								descriptionColor: {
+												type: 'string',
+												default: '',
+												style: [{
+																condition: [{ key: 'enableDescription', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-introtext {color: {{descriptionColor}};}'
+												}]
+								},
+
+								// Discount Price
+								enableDiscount: {
+												type: 'boolean',
+												default: false
+								},
+								discountTypography: {
+												type: 'object',
+												default: {},
+												style: [{
+																condition: [{ key: 'enableDiscount', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-discount'
+												}]
+								},
+								discountColor: {
+												type: 'string',
+												default: '',
+												style: [{
+																condition: [{ key: 'enableDiscount', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-discount {color: {{discountColor}};}'
+												}]
+								},
+
+								//Price
+								priceAfterTitle: {
+												type: 'boolean',
+												default: false,
+												style: [{
+																condition: [{ key: 'priceAfterTitle', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-title-wrapper {display: block;}'
+												}]
+								},
+								enablePrice: {
+												type: 'boolean',
+												default: true
+								},
+								priceTypography: {
+												type: 'object',
+												default: {},
+												style: [{
+																condition: [{ key: 'enablePrice', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-price'
+												}]
+								},
+								priceColor: {
+												type: 'string',
+												default: '',
+												style: [{
+																condition: [{ key: 'enablePrice', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-price {color: {{priceColor}};}'
+												}]
+								},
+
+								//Badge
+								enableBadge: {
+												type: 'boolean',
+												default: true
+								},
+								badgePosition: {
+												type: 'string',
+												default: 'before',
+												style: [{
+																condition: [{ key: 'enableBadge', relation: '==', value: true }, { key: 'badgePosition', relation: '==', value: 'right' }],
+																selector: '{{QUBELY}} .qubely-pricelist-image-container .qubely-pricelist-badge {left: auto; right: 15px;}'
+												}]
+								},
+								badgeTypography: {
+												type: 'object',
+												default: { openTypography: 1, size: { md: 12, unit: 'px' }, height: { md: 15, unit: 'px' } },
+												style: [{
+																condition: [{ key: 'enableBadge', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-badge'
+												}]
+								},
+								badgeColor: {
+												type: 'string',
+												default: '#fff',
+												style: [{
+																condition: [{ key: 'enableBadge', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-badge {color: {{badgeColor}};}'
+												}]
+								},
+								badgeBg: {
+												type: 'string',
+												default: '#2184F9',
+												style: [{
+																condition: [{ key: 'enableBadge', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-badge {background: {{badgeBg}};}'
+												}]
+								},
+								badgeBorderRadius: {
+												type: 'object',
+												default: {
+																openBorderRadius: 1,
+																radiusType: 'global',
+																global: { md: 2 },
+																unit: 'px'
+
+												},
+												style: [{
+																condition: [{ key: 'enableBadge', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-badge'
+												}]
+								},
+								badgePadding: {
+												type: 'object',
+												// default: {
+												// 	openPadding: 1,
+												// 	paddingType: 'global',
+												// 	unit: 'px',
+												// 	global: {
+												// 		md: 30
+												// 	}
+												// },
+
+												default: {
+																openPadding: 1,
+																paddingType: 'custom',
+																custom: {
+																				md: '2 6 3 6'
+																},
+																unit: 'px'
+												},
+
+												style: [{
+																condition: [{ key: 'enableBadge', relation: '==', value: true }],
+																selector: '{{QUBELY}} .qubely-pricelist-badge'
+												}]
+								},
+
+								//image
+								enableImage: {
+												type: 'boolean',
+												default: true
+								},
+								imagePosition: {
+												type: 'string',
+												default: 'left',
+												style: [{
+																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }, { key: 'style', relation: '!=', value: '3' }],
+																selector: '{{QUBELY}} .qubely-pricelist-content {display: -webkit-box; display: -ms-flexbox; display: flex;}'
+												}]
+								},
+								imageBorderRadius: {
+												type: 'object',
+												default: {},
+												style: [{
+																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'style', relation: '!=', value: '3' }],
+																selector: '{{QUBELY}} .qubely-pricelist-image-container img'
+												}]
+								},
+								imageSize: {
+												type: 'object',
+												default: {
+																md: '100',
+																unit: 'px'
+												},
+												style: [{
+																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'style', relation: '!=', value: '3' }],
+																selector: '{{QUBELY}} .qubely-pricelist-image-container {width: {{imageSize}};}'
+												}]
+								},
+								imageSpacing: {
+												type: 'object',
+												default: {
+																md: 20,
+																unit: 'px'
+												},
+												style: [{
+																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }, { key: 'style', relation: '!=', value: '3' }],
+																selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-right: {{imageSpacing}};}'
+												}, {
+																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'top' }, { key: 'style', relation: '!=', value: '3' }],
+																selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-bottom: {{imageSpacing}};}'
+												}]
+								},
+
+								//
+								pricelistItems: { type: 'number', default: 5 },
+								showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
+								showContextMenu: { type: 'boolean', default: true }
 				},
-				spaceBottom: {
-					md: '10',
-					unit: "px"
-				}
-			},
-			style: [{ selector: '{{QUBELY}}' }]
-		},
-		pricelistContents: {
-			type: 'Array',
-			default: [{ title: 'Qubely Blocks', badge: 'Hot', price: '$20', discount: '$10', description: 'Qubely offers a rich collection of highly customizable dedicated Gutenberg blocks.' }, { title: 'Pre-made Sections', badge: 'Hot', price: '$30', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg editor.' }, { title: 'Rich Blocks Collection', badge: 'Hot', price: '$40', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use even for the beginners.' }, { title: 'Layout Packs', badge: 'Hot', price: '$50', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' }, { title: 'Smart Layout Builder', badge: 'Hot', price: '$60', discount: '$45', description: 'Its row-column structure lets you take 1 to as many as 6 columns in a single row.' }]
-		},
-
-		// Content
-		style: {
-			type: 'number',
-			default: 1
-		},
-		contentAlign: {
-			type: 'string',
-			default: 'left'
-		},
-		enableContentBorder: {
-			type: 'boolean',
-			default: false
-		},
-		contentBorderWidth: {
-			type: 'object',
-			default: {
-				md: 1,
-				unit: 'px'
-			},
-			style: [{
-				condition: [{ key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-item {border-style: solid; border-width: {{contentBorderWidth}};}'
-			}]
-		},
-		contentBorderColor: {
-			type: 'string',
-			default: '#F6F7FB',
-			style: [{
-				condition: [{ key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-item {border-color: {{contentBorderColor}};}'
-			}]
-		},
-		contentBg: {
-			type: 'string',
-			default: '#F9F9F9',
-			style: [{
-				condition: [{ key: 'style', relation: '!=', value: '3' }],
-				selector: '{{QUBELY}} .qubely-pricelist-item {background-color: {{contentBg}};}'
-			}]
-		},
-		contentSpacing: {
-			type: 'object',
-			default: {
-				md: 30,
-				unit: 'px'
-			},
-			style: [{ selector: '{{QUBELY}} .qubely-pricelist-item {margin-bottom: {{contentSpacing}};}' }]
-		},
-		contentPadding: {
-			type: 'object',
-			default: {
-				openPadding: 1,
-				paddingType: 'global',
-				unit: 'px',
-				global: {
-					md: 30
-				}
-			},
-			style: [{
-				selector: '{{QUBELY}} .qubely-pricelist-content'
-			}]
-		},
-		contentBorderRadius: {
-			type: 'object',
-			default: {
-				openBorderRadius: 1,
-				radiusType: 'global',
-				global: {
-					md: 5
-				},
-				unit: 'px'
-			},
-			style: [{
-				selector: '{{QUBELY}} .qubely-pricelist-content'
-			}]
-		},
-		contentBoxShadow: {
-			type: 'object',
-			default: {
-				openShadow: true,
-				vertical: 3,
-				horizontal: 0,
-				blur: 6,
-				spread: 0,
-				color: 'rgba(0,0,0,0.1)'
-			},
-			style: [{
-				selector: '{{QUBELY}} .qubely-pricelist-content'
-			}]
-		},
-		overlayBg: {
-			type: 'object', default: {
-				type: 'color',
-				openColor: 0,
-				color: '#2184F9',
-				gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
-			},
-			style: [{
-				condition: [{ key: 'style', relation: '==', value: '3' }],
-				selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
-			}]
-		},
-		overlayHoverBg: {
-			type: 'object', default: {
-				type: 'color',
-				openColor: 0,
-				color: '#2184F9',
-				gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
-			},
-			style: [{
-				condition: [{ key: 'style', relation: '==', value: '3' }],
-				selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
-			}]
-		},
-
-		// Heading
-		headingLevel: {
-			type: 'number',
-			default: 4
-		},
-		headingTypography: {
-			type: 'object',
-			default: {},
-			style: [{
-				selector: '{{QUBELY}} .qubely-pricelist-title'
-			}]
-		},
-		headingColor: {
-			type: 'string',
-			default: '',
-			style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {color: {{headingColor}};}' }]
-		},
-		headingSpacing: {
-			type: 'object',
-			default: {
-				md: 10,
-				unit: 'px'
-			},
-			style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {margin: 0 0 {{headingSpacing}} 0;}' }]
-		},
-
-		// Discount Price
-		enableDescription: {
-			type: 'boolean',
-			default: true
-		},
-		descriptionTypography: {
-			type: 'object',
-			default: {},
-			style: [{
-				condition: [{ key: 'enableDescription', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-introtext'
-			}]
-		},
-		descriptionColor: {
-			type: 'string',
-			default: '',
-			style: [{
-				condition: [{ key: 'enableDescription', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-introtext {color: {{descriptionColor}};}'
-			}]
-		},
-
-		// Discount Price
-		enableDiscount: {
-			type: 'boolean',
-			default: false
-		},
-		discountTypography: {
-			type: 'object',
-			default: {},
-			style: [{
-				condition: [{ key: 'enableDiscount', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-discount'
-			}]
-		},
-		discountColor: {
-			type: 'string',
-			default: '',
-			style: [{
-				condition: [{ key: 'enableDiscount', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-discount {color: {{discountColor}};}'
-			}]
-		},
-
-		//Price
-		priceAfterTitle: {
-			type: 'boolean',
-			default: false,
-			style: [{
-				condition: [{ key: 'priceAfterTitle', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-title-wrapper {display: block;}'
-			}]
-		},
-		enablePrice: {
-			type: 'boolean',
-			default: true
-		},
-		priceTypography: {
-			type: 'object',
-			default: {},
-			style: [{
-				condition: [{ key: 'enablePrice', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-price'
-			}]
-		},
-		priceColor: {
-			type: 'string',
-			default: '',
-			style: [{
-				condition: [{ key: 'enablePrice', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-price {color: {{priceColor}};}'
-			}]
-		},
-
-		//Badge
-		enableBadge: {
-			type: 'boolean',
-			default: true
-		},
-		badgePosition: {
-			type: 'string',
-			default: 'before',
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }, { key: 'badgePosition', relation: '==', value: 'right' }],
-				selector: '{{QUBELY}} .qubely-pricelist-content-image .editor-rich-text {left: auto !important; right: 15px;}'
-			}]
-		},
-		badgeTypography: {
-			type: 'object',
-			default: { openTypography: 1, size: { md: 12, unit: 'px' }, height: { md: 15, unit: 'px' } },
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge'
-			}]
-		},
-		badgeColor: {
-			type: 'string',
-			default: '#fff',
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge {color: {{badgeColor}};}'
-			}]
-		},
-		badgeBg: {
-			type: 'string',
-			default: '#2184F9',
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge {background: {{badgeBg}};}'
-			}]
-		},
-		badgeBorderRadius: {
-			type: 'object',
-			default: {
-				openBorderRadius: 1,
-				radiusType: 'global',
-				global: { md: 2 },
-				unit: 'px'
-
-			},
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge'
-			}]
-		},
-		badgePadding: {
-			type: 'object',
-			// default: {
-			// 	openPadding: 1,
-			// 	paddingType: 'global',
-			// 	unit: 'px',
-			// 	global: {
-			// 		md: 30
-			// 	}
-			// },
-
-			default: {
-				openPadding: 1,
-				paddingType: 'custom',
-				custom: {
-					md: '2 6 3 6'
-				},
-				unit: 'px'
-			},
-
-			style: [{
-				condition: [{ key: 'enableBadge', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-badge'
-			}]
-		},
-
-		//image
-		enableImage: {
-			type: 'boolean',
-			default: true
-		},
-		imagePosition: {
-			type: 'string',
-			default: 'left',
-			style: [{
-				condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }],
-				selector: '{{QUBELY}} .qubely-pricelist-content {display: -webkit-box; display: -ms-flexbox; display: flex;}'
-			}]
-		},
-		imageBorderRadius: {
-			type: 'object',
-			default: {},
-			style: [{
-				condition: [{ key: 'enableImage', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-image-container img'
-			}]
-		},
-		imageSize: {
-			type: 'object',
-			default: {
-				md: '',
-				unit: 'px'
-			},
-			style: [{
-				condition: [{ key: 'enableImage', relation: '==', value: true }],
-				selector: '{{QUBELY}} .qubely-pricelist-image-container {width: {{imageSize}};}'
-			}]
-		},
-		imageSpacing: {
-			type: 'object',
-			default: {
-				md: 20,
-				unit: 'px'
-			},
-			style: [{
-				condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }],
-				selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-right: {{imageSpacing}};}'
-			}, {
-				condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'top' }],
-				selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-bottom: {{imageSpacing}};}'
-			}]
-		},
-
-		//
-		pricelistItems: { type: 'number', default: 5 },
-		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
-		showContextMenu: { type: 'boolean', default: true }
-	},
-	edit: _Edit2.default,
-	save: _Save2.default
+				edit: _Edit2.default,
+				save: _Save2.default
 });
 
 /***/ }),

@@ -7,7 +7,7 @@ import Save from './Save'
 registerBlockType('qubely/imagecarousel', {
 	title: __('Image Carousel'),
 	description: __('Insert images and beautify them with Qubely Image Carousel Block'),
-	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg'} alt={__('Team Block')} />,
+	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg'} alt={__('Image Carousel Block')} />,
 	category: 'qubely', 
 	keywords: [
 		__('Image'),
@@ -29,12 +29,13 @@ registerBlockType('qubely/imagecarousel', {
 			default: { md: '4', sm: '3', xs: '3' } 
 		},
 		autoPlay: { type: 'boolean', default: false },
-		dots: { type: 'boolean', default: false },
 		dragable: { type: 'boolean', default: true },
 		dotIndicator: { type: 'boolean', default: true },
-		nav: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
+		
+		nav: { type: 'boolean', default: true },
+		dots: { type: 'boolean', default: false },
 		centerPadding: { type: 'number', default: 210 },
 
 		carouselItems: {
@@ -48,7 +49,7 @@ registerBlockType('qubely/imagecarousel', {
 					sliderimage: {}
 				},
 				{
-					slidertitle: 'Welcome to Wordcamp Dhaka',
+					slidertitle: 'Welcome to Themeum',
 					subtitle: 'Everything related to WordPress',
 					message: '“WordCamp Dhaka is officially on the calendar!”',
 					ratings: '4.5',
@@ -62,7 +63,7 @@ registerBlockType('qubely/imagecarousel', {
 					sliderimage: {}
 				},
 				{
-					slidertitle: 'International Convention City, Bashundhara',
+					slidertitle: 'ICCB Center Dhaka',
 					subtitle: 'Including speaker submissions',
 					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
 					ratings: '5',
@@ -76,7 +77,7 @@ registerBlockType('qubely/imagecarousel', {
 					sliderimage: {}
 				},
 				{
-					slidertitle: 'Wordcamp Sponsor JoomShaper',
+					slidertitle: 'Wordcamp Sponsor?',
 					subtitle: 'WordCamp Dhaka will be happening',
 					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
 					ratings: '5',
@@ -243,10 +244,65 @@ registerBlockType('qubely/imagecarousel', {
 		messageSpacingTop: { type: 'object', default: { md: 0, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-slider-description {margin-top: {{messageSpacingTop}};}' }] },
 		messageSpacingBottom: { type: 'object', default: { md: 5, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-slider-description {margin-bottom: {{messageSpacingBottom}};}' }] },
 
+
+		/* ----------------------------------
+		* 			Content
+		------------------------------------- */
+		contentPadding: {
+            type: 'object',
+            default: {
+                openPadding: 1,
+                paddingType: 'global',
+                global: {
+                    md: 30,
+                },
+                unit: 'px'
+            },
+            style: [
+                { selector: '{{QUBELY}} .qubely-image-slider .qubely-image-content' }
+            ]
+		},
+		contentVerticalAlign: {
+            type: 'string',
+            default: 'bottom',
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-align: start; -ms-flex-align: start; -ms-grid-row-align: flex-start; align-items: flex-start;}'
+                },
+                
+            ]
+		},
+		contentAlignment: {
+            type: 'string',
+            default: 'center',
+            style: [
+                {
+                    condition: [
+                        { key: 'layout', relation: '!=', value: '1' },
+                        { key: 'contentAlignment', relation: '==', value: 'left' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; text-align: left;}'
+                },
+                {
+                    condition: [
+                        { key: 'layout', relation: '!=', value: '1' },
+                        { key: 'contentAlignment', relation: '==', value: 'center' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center;}'
+                },
+                {
+                    condition: [
+                        { key: 'layout', relation: '!=', value: '1' },
+                        { key: 'contentAlignment', relation: '==', value: 'right' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; text-align: right;}'
+                }
+            ]
+		},
+		
 		/* ------------------------------------
-		* 				Design 
+		* 			Overlay 
 		* ------------------------------------- */
-		// Overlay
         enableOverlay: {
             type: 'boolean',
             default: true,
@@ -269,7 +325,7 @@ registerBlockType('qubely/imagecarousel', {
             },
             style: [
                 {
-                    selector: '{{QUBELY}} .layout-3 .qubely-image-slider-text:before, {{QUBELY}} .layout-4 .qubely-image-slider-text:before, {{QUBELY}} .layout-5 .qubely-image-slider-text:before, {{QUBELY}} .layout-6 .qubely-image-slider-text:before'
+                    selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:before, {{QUBELY}} .layout-3 .qubely-image-slider-text:before, {{QUBELY}} .layout-4 .qubely-image-slider-text:before, {{QUBELY}} .layout-5 .qubely-image-slider-text:before, {{QUBELY}} .layout-6 .qubely-image-slider-text:before'
                 }
             ]
         },
@@ -290,13 +346,21 @@ registerBlockType('qubely/imagecarousel', {
                 }
             },
             style: [
+				{
+                    condition: [
+                        { key: 'layout', relation: '==', value: '2' },
+                        { key: 'enableOverlay', relation: '==', value: true },
+                        { key: 'animateOnHover', relation: '==', value: true },
+                    ],
+                    selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:hover:before'
+				},
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: '3' },
                         { key: 'enableOverlay', relation: '==', value: true },
                         { key: 'animateOnHover', relation: '==', value: true },
                     ],
-                    selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:hover:before'
+                    selector: '{{QUBELY}} .layout-3 .qubely-image-slider-text:hover:before'
 				},
 				{
                     condition: [
@@ -343,16 +407,6 @@ registerBlockType('qubely/imagecarousel', {
             type: 'boolean',
             default: true
 		},
-		contentSpacing: { 
-			type: 'object', 
-			default: { md: 40, unit: 'px' }, 
-			style: [
-				{ 
-					selector: '{{QUBELY}} .qubely-image-content {bottom: {{contentSpacing}};}' 
-				}
-			] 
-		},
-
 		// Border radius
 		bgBorderRadius: {
 			type: 'object',
