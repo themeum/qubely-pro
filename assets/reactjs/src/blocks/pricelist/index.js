@@ -122,6 +122,22 @@ registerBlockType('qubely/pricelist', {
 				}
             ]
         },
+        height: {
+			type: 'object',
+			default: {
+				md: '200',
+				unit: 'px'
+			},
+			style: [
+				{
+					condition: [
+                        { key: 'enableImage', relation: '==', value: true },
+                        { key: 'style', relation: '===', value: '3' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content, {{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-empty-image {height: {{height}};}'
+                }
+            ]
+		},
         contentSpacing: {
 			type: 'object',
 			default: {
@@ -159,7 +175,7 @@ registerBlockType('qubely/pricelist', {
                     condition: [
                         { key: 'style', relation: '==', value: '3' }
                     ],
-                    selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description-wrapper'
+                    selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description'
                 }
             ]
 		},
@@ -256,6 +272,51 @@ registerBlockType('qubely/pricelist', {
                     selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
                 }
             ]
+        },
+
+        //line
+        enableLine: {
+			type: 'boolean',
+			default: false,
+        },
+        lineBorderStyle: { 
+            type: 'string', 
+            default: 'solid',
+            style: [
+                {
+					condition: [
+						{ key: 'enableLine', relation: '==', value: true }
+					],
+					selector: '{{QUBELY}} .qubely-pricelist-line {border-bottom-style: {{lineBorderStyle}};}'
+                }
+			]
+        },
+        lineBorderWidth: {
+			type: 'object',
+			default: {
+				md: 1,
+				unit: 'px'
+			},
+			style: [
+                {
+					condition: [
+						{ key: 'enableLine', relation: '==', value: true }
+					],
+					selector: '{{QUBELY}} .qubely-pricelist-line {border-bottom-width: {{lineBorderWidth}};}'
+                }
+			]
+		},
+		lineBorderColor: {
+			type: 'string',
+			default: '#F6F7FB',
+			style: [
+				{
+					condition: [
+						{ key: 'enableLine', relation: '==', value: true }
+					],
+					selector: '{{QUBELY}} .qubely-pricelist-line {border-bottom-color: {{lineBorderColor}};}'
+				}
+			]
         },
 
         // Heading
@@ -406,7 +467,7 @@ registerBlockType('qubely/pricelist', {
                         { key: 'enableBadge', relation: '==', value: true },
                         { key: 'badgePosition', relation: '==', value: 'right' },
                     ],
-                    selector: '{{QUBELY}} .qubely-pricelist-content-image .editor-rich-text {left: auto !important; right: 15px;}'
+                    selector: '{{QUBELY}} .qubely-pricelist-image-container .qubely-pricelist-badge {left: auto; right: 15px;}'
                 }
             ]
         },
