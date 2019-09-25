@@ -49,7 +49,7 @@ registerBlockType('qubely/imagecarousel', {
 					sliderimage: {}
 				},
 				{
-					slidertitle: 'Welcome to Wordcamp Dhaka',
+					slidertitle: 'Welcome to Themeum',
 					subtitle: 'Everything related to WordPress',
 					message: '“WordCamp Dhaka is officially on the calendar!”',
 					ratings: '4.5',
@@ -63,7 +63,7 @@ registerBlockType('qubely/imagecarousel', {
 					sliderimage: {}
 				},
 				{
-					slidertitle: 'International Convention City, Bashundhara',
+					slidertitle: 'ICCB Center Dhaka',
 					subtitle: 'Including speaker submissions',
 					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
 					ratings: '5',
@@ -77,7 +77,7 @@ registerBlockType('qubely/imagecarousel', {
 					sliderimage: {}
 				},
 				{
-					slidertitle: 'Wordcamp Sponsor JoomShaper',
+					slidertitle: 'Wordcamp Sponsor?',
 					subtitle: 'WordCamp Dhaka will be happening',
 					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
 					ratings: '5',
@@ -325,7 +325,7 @@ registerBlockType('qubely/imagecarousel', {
             },
             style: [
                 {
-                    selector: '{{QUBELY}} .layout-3 .qubely-image-slider-text:before, {{QUBELY}} .layout-4 .qubely-image-slider-text:before, {{QUBELY}} .layout-5 .qubely-image-slider-text:before, {{QUBELY}} .layout-6 .qubely-image-slider-text:before'
+                    selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:before, {{QUBELY}} .layout-3 .qubely-image-slider-text:before, {{QUBELY}} .layout-4 .qubely-image-slider-text:before, {{QUBELY}} .layout-5 .qubely-image-slider-text:before, {{QUBELY}} .layout-6 .qubely-image-slider-text:before'
                 }
             ]
         },
@@ -346,13 +346,21 @@ registerBlockType('qubely/imagecarousel', {
                 }
             },
             style: [
+				{
+                    condition: [
+                        { key: 'layout', relation: '==', value: '2' },
+                        { key: 'enableOverlay', relation: '==', value: true },
+                        { key: 'animateOnHover', relation: '==', value: true },
+                    ],
+                    selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:hover:before'
+				},
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: '3' },
                         { key: 'enableOverlay', relation: '==', value: true },
                         { key: 'animateOnHover', relation: '==', value: true },
                     ],
-                    selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:hover:before'
+                    selector: '{{QUBELY}} .layout-3 .qubely-image-slider-text:hover:before'
 				},
 				{
                     condition: [

@@ -20,7 +20,7 @@ class Save extends Component {
     return (
       <div className={`qubely-image-slider`}>
         {this.renderSlider(sliderimage, index)}
-        { (layout != 1 && layout != 2 ) &&
+        { (layout != 1 ) &&
 					<div>
 						{ (sliderContent || layout === 6) && 
               <div className={`qubely-image-slider-text`}>
@@ -111,7 +111,7 @@ class Save extends Component {
     return (
         <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
           <div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
-            <div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ''}`} data-options={options} id="qubelyCarousel1" >
+            <div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ' '}`} data-options={options} id="qubelyCarousel1" >
               {this.renderImage()}
             </div>
           </div>

@@ -131,7 +131,7 @@ class Edit extends Component {
 		return (
 			<div className={`qubely-image-slider`}>
 				{this.renderSlider(sliderimage, index)}
-				{ (layout != 1 && layout != 2 ) &&
+				{ (layout != 1 ) &&
 					<div>
 						{ (sliderContent || layout === 6 ) && 
 							<div className={`qubely-image-slider-text`}>
@@ -411,7 +411,7 @@ class Edit extends Component {
 							/>
 						}
 
-						{ (layout != 6 && layout != 1 && layout != 2) &&
+						{ (layout != 6 && layout != 1) &&
 							<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
 						}
 					</PanelBody>
@@ -561,7 +561,7 @@ class Edit extends Component {
 					
 					{ (sliderContent || layout === 6 ) && 
 						<Fragment>
-							{(layout != 1 && layout != 2) &&
+							{(layout != 1) &&
 								<Fragment>
 									<PanelBody title={__('Title')} initialOpen={false}>
 										<Range

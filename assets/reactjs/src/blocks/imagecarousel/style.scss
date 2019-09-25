@@ -512,6 +512,7 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
   padding: 0 10px;
 }
 // Layout 6
+.layout-2 .qubely-image-slider-text,
 .layout-3 .qubely-image-slider-text,
 .layout-4 .qubely-image-slider-text,
 .layout-5 .qubely-image-slider-text,
@@ -524,7 +525,7 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
   bottom: 0;
   transition: .3s;
 }
-
+.layout-2 .qubely-image-slider-text:before,
 .layout-3 .qubely-image-slider-text:before,
 .layout-4 .qubely-image-slider-text:before,
 .layout-5 .qubely-image-slider-text:before,
