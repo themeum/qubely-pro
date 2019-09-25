@@ -1,5 +1,14 @@
 .qubely-block-pricelist {
+    &:not(.qubely-pricelist-item-3) .qubely-pricelist-image-container {
+        position: relative;
+    }
     .qubely-pricelist-image-container {
+        .qubely-pricelist-badge {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            z-index: 3;
+        }
         .qubely-empty-image {
             display: flex;
             align-items: center;
@@ -18,23 +27,23 @@
             line-height: 1;
             position: relative;
             z-index: 3;
-            background: #fff;
-            border-radius: 4px;
-            padding: 10px;
+            // background: #fff;
+            // border-radius: 4px;
+            // padding: 10px;
             span {
                 margin-top: 0px;
                 display: block;
                 font-size: 14px;
             }
         }
-        .qubely-pricelist-content-image {
-            .editor-rich-text {
-                position: absolute;
-                left: 15px;
-                top: 15px;
-                z-index: 3;
-            }
-        }
+        // .qubely-pricelist-content-image {
+        //     .editor-rich-text {
+        //         position: absolute;
+        //         left: 15px;
+        //         top: 15px;
+        //         z-index: 3;
+        //     }
+        // }
         .qubely-pricelist-content-image-editor {
             position: relative;
             display: inline-block;
@@ -44,23 +53,25 @@
                 position: absolute;
                 z-index: 4;
             }
-            &:before {
-                content: "";
-                left: 0;
-                top: 0;
-                position: absolute;
-                background: rgba(0, 0, 0, 0.8);
-                z-index: 1;
-                width: 100%;
-                height: 100%;
-            }
         }
+    }
+    .qubely-pricelist-line {
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        -moz-box-flex: 1;
+        flex-grow: 1;
+        margin: 0 20px;
     }
     .qubely-pricelist-title-wrapper {
         display: -webkit-box; 
         display: -ms-flexbox; 
         display: flex;
-        > div:first-child {
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        -moz-box-align: center;
+        align-items: center;
+        > div:first-child,
+        .qubely-pricelist-title {
             margin-right: auto;
         }
     }
@@ -89,6 +100,7 @@
     &.qubely-pricelist-item-3 {
         .qubely-pricelist-image-container {
             width: 100%;
+            height: 100%;
         }
         .qubely-pricelist-content {
             position: relative;
@@ -128,6 +140,16 @@
                 -ms-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
                 min-height: 100%;
+            }
+            &:before {
+                content: "";
+                left: 0;
+                top: 0;
+                position: absolute;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 1;
+                width: 100%;
+                height: 100%;
             }
         }
     }
