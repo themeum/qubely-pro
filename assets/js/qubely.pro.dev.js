@@ -8129,7 +8129,7 @@ __webpack_require__(/*! ./blocks/imagecarousel */ "./src/blocks/imagecarousel/in
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/plugin/qubely/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/wordpress/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
 
 
 /***/ })
