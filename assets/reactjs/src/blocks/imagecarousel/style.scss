@@ -213,6 +213,10 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 		position: relative;
 		float: left;
 		overflow: hidden;
+		transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
 	}
 	.qubely-carousel-item.active {
 		visibility: visible;
@@ -538,11 +542,12 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
   height: 100%;
 }
 .qubely-image-content {
-  color: #fff;
   position: absolute;
-  bottom: 0;
+	padding: 0 50px;
+  color: #fff;
   width: 100%;
-  left: 0;
+  bottom: 0;
+	left: 0;
 }
 
 
@@ -582,7 +587,7 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 // Empty image
 $color_1: #ababab;
 $color_2: #2184f9;
-$color_3: #fafafa;
+$color_3: #ababab;
 $color_4: #cf0000;
 .qubely-slider-image-container.qubely-empty-image {
 	display: flex;
@@ -666,6 +671,7 @@ $color_4: #cf0000;
 		position: absolute;
 		z-index: 9999;
 		text-decoration: none;
+		text-align: center;
 		&:hover {
 			color: $color_2;
 		}
@@ -673,4 +679,16 @@ $color_4: #cf0000;
 	.qubely-image-title {
 		line-height: 38px;
 	}
+}
+
+
+.align-top .qubely-image-content {
+	bottom: initial;
+	top: 0;
+}
+.align-center .qubely-image-content {
+	bottom: 34%;
+}
+.align-bottom .qubely-image-content {
+	bottom: 0;
 }

@@ -3,7 +3,7 @@ const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip } = wp.components
 const { InspectorControls, RichText, MediaUpload } = wp.editor
 import icons from '../../helpers/icons'
-const { Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Select, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const { Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, RadioAdvanced, BorderRadius, BoxShadow, Select, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
 
 class Edit extends Component {
 	constructor(props) {
@@ -150,7 +150,6 @@ class Edit extends Component {
 		)
 	}
 
-
 	removeCrouselItem = (index) => {
 		const { setAttributes, attributes: { carouselItems } } = this.props
 		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
@@ -159,12 +158,11 @@ class Edit extends Component {
 	}
 
 	renderImages = () => {
-		const { attributes: { layout, items, carouselItems } } = this.props
-
+		const { attributes: { layout, items, carouselItems, contentVerticalAlign } } = this.props
 		return (
 			carouselItems.map((item, index) => {
 				return (
-					<div key={index} className={`qubely-carousel-item item-layout${layout}`} >
+					<div key={index} className={`qubely-carousel-item item-layout${layout} align-${contentVerticalAlign}`} >
 
 						<Tooltip text={__('Delete this item')}>
 							<span className="qubely-action-carousel-remove" role="button" onClick={() => this.removeCrouselItem(index)}><span className="dashicons dashicons-dismiss"></span></span>
@@ -289,6 +287,7 @@ class Edit extends Component {
 			// Subtitle
 			subtitleColor,
 			subtitleTypo,
+
 			// Description,
 			activeDescription,
 			descriptionColor,
@@ -296,16 +295,21 @@ class Edit extends Component {
 			messageSpacingTop,
 			messageSpacingBottom,
 
+			// Content.
+			contentPadding, 
+			contentVerticalAlign, 
+			contentAlignment,
+
+
 			// Overlay
 			animateOnHover,
 			enableOverlay,
 			overlayBg,
 			overlayHoverBg,
 			overlayBlend,
-			contentSpacing,
 
-			textColor, bgBorderRadius, border, boxShadow,
-			boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, 
+			//textColor, bgBorderRadius, border, boxShadow,
+			//boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, 
 			
 		} } = this.props
 
@@ -314,16 +318,16 @@ class Edit extends Component {
 		const carouselSettings = {
 			autoplay: autoPlay,
 			items: layout != 2 ? ((layout == 5) ? itemfive : items) : itemthree,
-			margin: 10,
 			center: (layout == 3 || layout == 4) ? isCentered : notCentered,
-			dot_indicator: dotIndicator,
-			centerPadding: centerPadding,
-			dots: dots,
 			nav: nav,
-			arrowStyle: arrowStyle,
-			arrowPosition: arrowPosition,
+			dots: dots,
+			margin: 10,
 			speed: speed,
 			interval: interval,
+			arrowStyle: arrowStyle,
+			dot_indicator: dotIndicator,
+			centerPadding: centerPadding,
+			arrowPosition: arrowPosition,
 			responsive: [
 				{ 
 					viewport: 1170,
@@ -344,15 +348,15 @@ class Edit extends Component {
 		const carouselFiveSettings = {
 			autoplay: autoPlay,
 			items: items,
-			margin: 10,
-			center: false,
-			dot_indicator: dotIndicator,
-			dots: false,
 			nav: nav,
-			arrowStyle: arrowStyle,
-			arrowPosition: arrowPosition,
+			margin: 10,
+			dots: false,
 			speed: speed,
+			center: false,
 			interval: interval,
+			arrowStyle: arrowStyle,
+			dot_indicator: dotIndicator,
+			arrowPosition: arrowPosition,
 			responsive: [
 				{ 
 					viewport: 1170,
@@ -622,13 +626,24 @@ class Edit extends Component {
 											</Fragment>
 										}
 									</PanelBody>
+									
+									<PanelBody title={__('Content')} initialOpen={false}>  
+										<Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+										<RadioAdvanced label={__('Vertical Align')} value={contentVerticalAlign} onChange={(value) => setAttributes({ contentVerticalAlign: value })}
+											options={[
+												{ label: __('Top'), value: 'top', title: __('Top') },
+												{ label: __('Middle'), value: 'center', title: __('Middle') },
+												{ label: __('Bottom'), value: 'bottom', title: __('Bottom') },
+											]}
+										/>
+										<Alignment label={__('Horizontal Alignment')} value={contentAlignment} alignmentType="content" onChange={val => setAttributes({ contentAlignment: val })} alignmentType="content" disableJustify />
+									</PanelBody>
 
 									<PanelBody title={__('Overlay')} initialOpen={false}>
 										<Toggle label={__('Animate on Hover')} value={animateOnHover} onChange={val => setAttributes({ animateOnHover: val })} />
 										<Toggle label={__('Enable')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
 										{enableOverlay == 1 &&
 											<Fragment>
-
 												{animateOnHover == 1 ?
 													<Tabs>
 														<Tab tabTitle={__('Normal')}>
@@ -647,14 +662,6 @@ class Edit extends Component {
 												<Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
 											</Fragment>
 										}
-										<Range
-											label={__('Content Spacing')}
-											value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })}
-											unit={['px', 'em', '%']} max={300}
-											min={0}
-											responsive
-											device={device}
-											onDeviceChange={value => this.setState({ device: value })} />
 									</PanelBody>
 								</Fragment>
 							}

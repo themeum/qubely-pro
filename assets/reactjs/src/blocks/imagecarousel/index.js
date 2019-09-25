@@ -7,7 +7,7 @@ import Save from './Save'
 registerBlockType('qubely/imagecarousel', {
 	title: __('Image Carousel'),
 	description: __('Insert images and beautify them with Qubely Image Carousel Block'),
-	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg'} alt={__('Team Block')} />,
+	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg'} alt={__('Image Carousel Block')} />,
 	category: 'qubely', 
 	keywords: [
 		__('Image'),
@@ -244,10 +244,65 @@ registerBlockType('qubely/imagecarousel', {
 		messageSpacingTop: { type: 'object', default: { md: 0, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-slider-description {margin-top: {{messageSpacingTop}};}' }] },
 		messageSpacingBottom: { type: 'object', default: { md: 5, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-slider-description {margin-bottom: {{messageSpacingBottom}};}' }] },
 
+
+		/* ----------------------------------
+		* 			Content
+		------------------------------------- */
+		contentPadding: {
+            type: 'object',
+            default: {
+                openPadding: 1,
+                paddingType: 'global',
+                global: {
+                    md: 30,
+                },
+                unit: 'px'
+            },
+            style: [
+                { selector: '{{QUBELY}} .qubely-image-slider .qubely-image-content' }
+            ]
+		},
+		contentVerticalAlign: {
+            type: 'string',
+            default: 'bottom',
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-align: start; -ms-flex-align: start; -ms-grid-row-align: flex-start; align-items: flex-start;}'
+                },
+                
+            ]
+		},
+		contentAlignment: {
+            type: 'string',
+            default: 'center',
+            style: [
+                {
+                    condition: [
+                        { key: 'layout', relation: '!=', value: '1' },
+                        { key: 'contentAlignment', relation: '==', value: 'left' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; text-align: left;}'
+                },
+                {
+                    condition: [
+                        { key: 'layout', relation: '!=', value: '1' },
+                        { key: 'contentAlignment', relation: '==', value: 'center' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center;}'
+                },
+                {
+                    condition: [
+                        { key: 'layout', relation: '!=', value: '1' },
+                        { key: 'contentAlignment', relation: '==', value: 'right' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; text-align: right;}'
+                }
+            ]
+		},
+		
 		/* ------------------------------------
-		* 				Design 
+		* 			Overlay 
 		* ------------------------------------- */
-		// Overlay
         enableOverlay: {
             type: 'boolean',
             default: true,
@@ -344,16 +399,6 @@ registerBlockType('qubely/imagecarousel', {
             type: 'boolean',
             default: true
 		},
-		contentSpacing: { 
-			type: 'object', 
-			default: { md: 40, unit: 'px' }, 
-			style: [
-				{ 
-					selector: '{{QUBELY}} .qubely-image-content {bottom: {{contentSpacing}};}' 
-				}
-			] 
-		},
-
 		// Border radius
 		bgBorderRadius: {
 			type: 'object',
