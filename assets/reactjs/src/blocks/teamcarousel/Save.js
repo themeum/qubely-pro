@@ -67,7 +67,7 @@ class Save extends Component {
     const { attributes: { carouselItems, layout } } = this.props
     return (carouselItems.map((item, index) => {
       return (
-        <div key={index} className={`qubely-carousel-extended-item${index === 0 ? ' active' : ''}`} >
+        <div key={index} className={`qubely-carousel-item`} >
           <div className={`qubely-team-carousel-item`}>
             <div className={`qubely-team-${layout}`}>
               { this.renderAuthorInfo(item)}

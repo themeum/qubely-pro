@@ -41,7 +41,7 @@ class Save extends Component {
     const { attributes: { carouselItems, layout, contentVerticalAlign } } = this.props
     return (carouselItems.map((item, index) => {
       return (
-        <div key={index} className={`qubely-carousel-item qubely-carousel-extended-item ${index === 0 ? ' active' : ''}`} >
+        <div key={index} className={`qubely-carousel-item qubely-carousel-item`} >
           <div className={`qubely-image-item layout-${layout} align-${contentVerticalAlign}`}>
             { this.renderSliderInfo(item) }
           </div>

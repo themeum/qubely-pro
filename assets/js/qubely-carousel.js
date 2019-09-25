@@ -160,7 +160,7 @@
          * @_minL = minimum length of items
          */
         itemProfessor: function () {
-            this._numberOfItems = this.$element.find('.qubely-carousel-extended-item').length
+            this._numberOfItems = this.$element.find('.qubely-carousel-item').length
             let viewPort = null
             if (typeof this.options.responsive !== 'undefined')
                 viewPort = this.parseResponsiveViewPort()
@@ -181,10 +181,10 @@
             let cloneAfter = []
             for (let i = 0; i < this._clones; i++) {
                 if (i < this.options.items) {
-                    this.$element.find(`.qubely-carousel-extended-item:nth-child(${i + 1})`).addClass('active')
+                    this.$element.find(`.qubely-carousel-item:nth-child(${i + 1})`).addClass('active')
                 }
-                cloneBefore.push(this.$element.find(`.qubely-carousel-extended-item:nth-child(${this._numberOfItems - i})`).clone(true).addClass('clone').removeClass('active'))
-                cloneAfter.push(this.$element.find(`.qubely-carousel-extended-item:nth-child(${i + 1})`).clone(true).addClass('clone').removeClass('active'))
+                cloneBefore.push(this.$element.find(`.qubely-carousel-item:nth-child(${this._numberOfItems - i})`).clone(true).addClass('clone').removeClass('active'))
+                cloneAfter.push(this.$element.find(`.qubely-carousel-item:nth-child(${i + 1})`).clone(true).addClass('clone').removeClass('active'))
             }
 
             this.appendBefore(cloneBefore)
@@ -318,7 +318,7 @@
                 cssPropety.marginRight = this.options.margin + 'px'
             }
 
-            this.$element.find('.qubely-carousel-extended-item').each(function () {
+            this.$element.find('.qubely-carousel-item').each(function () {
                 totalItems++;
                 $(this).css(cssPropety)
             })
@@ -852,7 +852,7 @@
         callback: function () {
             let onChange = this.options.onChange
             if (typeof onChange === 'function') {
-                const items = this.$element.find('.qubely-carousel-extended-item').length
+                const items = this.$element.find('.qubely-carousel-item').length
                 let option = { item: this.item, items: items, element: this.$element }
                 onChange.call(this.element, option)
             }
