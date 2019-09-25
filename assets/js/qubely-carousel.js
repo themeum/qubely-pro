@@ -160,7 +160,7 @@
          * @_minL = minimum length of items
          */
         itemProfessor: function () {
-            this._numberOfItems = this.$element.find('.qubely-carousel-extended-item').length
+            this._numberOfItems = this.$element.find('.qubely-carousel-item').length
             let viewPort = null
             if (typeof this.options.responsive !== 'undefined')
                 viewPort = this.parseResponsiveViewPort()
@@ -181,13 +181,10 @@
             let cloneAfter = []
             for (let i = 0; i < this._clones; i++) {
                 if (i < this.options.items) {
-                    this.$element.find(`.qubely-carousel-extended-item:nth-child(${i + 1})`).addClass('active')
+                    this.$element.find(`.qubely-carousel-item:nth-child(${i + 1})`).addClass('active')
                 }
-                cloneBefore.push(this.$element.find(`.qubely-carousel-extended-item:nth-child(${this._numberOfItems - i})`).clone(true).addClass('clone').removeClass('active'))
-                cloneAfter.push(this.$element.find(`.qubely-carousel-extended-item:nth-child(${i + 1})`).clone(true).addClass('clone').removeClass('active'))
-            }
-            if (this.options.center) {
-                this.applyCenterMode(0, this.options.items - 1)
+                cloneBefore.push(this.$element.find(`.qubely-carousel-item:nth-child(${this._numberOfItems - i})`).clone(true).addClass('clone').removeClass('active'))
+                cloneAfter.push(this.$element.find(`.qubely-carousel-item:nth-child(${i + 1})`).clone(true).addClass('clone').removeClass('active'))
             }
 
             this.appendBefore(cloneBefore)
@@ -321,7 +318,7 @@
                 cssPropety.marginRight = this.options.margin + 'px'
             }
 
-            this.$element.find('.qubely-carousel-extended-item').each(function () {
+            this.$element.find('.qubely-carousel-item').each(function () {
                 totalItems++;
                 $(this).css(cssPropety)
             })
@@ -531,29 +528,16 @@
             startIndex = this.options.center ? startIndex + 1 : startIndex
             let endIndex = Math.floor(Math.abs(parseInt(this.options.items) + parseInt(startIndex)))
             this.$outerStage.find('.active').removeClass('active')
-
+    
             for (let i = startIndex; i < endIndex; i++) {
                 this.$outerStage.children(':eq(' + i + ')').addClass('active')
             }
-            if (this.options.center) {
-                this.applyCenterMode(startIndex, endIndex)
-            }
+
             let reminder = Math.floor(((startIndex - this._clones) / this.options.items)) + 1
             if (this.options.dots) {
                 this.$dotContainer.find('.active').removeClass('active')
                 this.$dotContainer.find('li:nth-child(' + reminder + ')').addClass('active')
             }
-        },
-
-        /**
-         * Add center mode class when center enable
-         * @param {Int} start 
-         * @param {Int} end 
-         */
-        applyCenterMode: function (startIndex, endIndex) {
-            const centerEq = Math.floor((startIndex + endIndex) / 2)
-            this.$outerStage.find('.qubely-carousel-extended-item-center').removeClass('qubely-carousel-extended-item-center')
-            this.$outerStage.children(':eq(' + centerEq + ')').addClass('qubely-carousel-extended-item-center')
         },
 
 
@@ -868,7 +852,7 @@
         callback: function () {
             let onChange = this.options.onChange
             if (typeof onChange === 'function') {
-                const items = this.$element.find('.qubely-carousel-extended-item').length
+                const items = this.$element.find('.qubely-carousel-item').length
                 let option = { item: this.item, items: items, element: this.$element }
                 onChange.call(this.element, option)
             }

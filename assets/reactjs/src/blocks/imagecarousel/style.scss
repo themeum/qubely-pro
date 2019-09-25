@@ -39,7 +39,7 @@
       font-size: 24px;
     }
   }
-  .qubely-carousel-item.qubely-carousel-extended-item {
+  .qubely-carousel-item.qubely-carousel-item {
     transition: .4s;
   }
   .qubely-image-item {
@@ -364,19 +364,19 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 		transition-timing-function: linear;
 		-webkit-transition-timing-function: linear;
 	}
-	.qubely-carousel-extended-item {
+	.qubely-carousel-item {
 		position: relative;
 		float: left;
 	}
-	.qubely-carousel-extended-item.active {
+	.qubely-carousel-item.active {
 		visibility: visible;
 		transform-style: preserve-3d;
 	}
-	.qubely-carousel-extended-item.dragenable {
+	.qubely-carousel-item.dragenable {
 		visibility: visible;
 		transform-style: preserve-3d;
 	}
-	.qubely-carousel-extended-item.prev-item {
+	.qubely-carousel-item.prev-item {
 		z-index: 1;
 		visibility: visible;
 	}
@@ -471,7 +471,7 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 
 .qubely-carousel.qubely-carousel-wrapper.is-faded{
   .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage{
-    .qubely-carousel-extended-item:not(.active){
+    .qubely-carousel-item:not(.active){
       opacity: 0.1;
     }
   }
