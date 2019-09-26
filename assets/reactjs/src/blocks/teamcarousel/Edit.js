@@ -1,6 +1,6 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody, TextControl } = wp.components
+const { PanelBody, TextControl, Tooltip } = wp.components
 const { InspectorControls, RichText, MediaUpload } = wp.editor
 import icons from '../../helpers/icons'
 const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
@@ -138,7 +138,12 @@ class Edit extends Component {
 			</div>
 		)
 	} 
-
+	removeCrouselItem = (index) => {
+		const { setAttributes, attributes: { carouselItems } } = this.props
+		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
+		newCarouselItems.splice(index, 1)
+		setAttributes({ carouselItems: newCarouselItems })
+	}
 	/** 
 	 *  Render author informations. */
 	renderTeams = () => {
@@ -147,7 +152,7 @@ class Edit extends Component {
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
-						<div className={`qubely-team-carousel-item`}>
+                        <div className={`qubely-team-carousel-item`}>
 							<div className={`qubely-team-${layout}`}>
 								{this.renderAuthorInfo(item, index)}
 							</div>
