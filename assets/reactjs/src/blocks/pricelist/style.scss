@@ -1,4 +1,18 @@
 .qubely-block-pricelist {
+    .qubely-pricelist-item {
+        position: relative;
+        &:hover {
+          .qubely-repeatable-action-remove {
+            display: block;
+          }
+        }
+    }
+    &.qubely-pricelist-item-1 {
+        .qubely-repeatable-action-remove {
+            top: -10px;
+            right: -10px;
+        } 
+    }
     &:not(.qubely-pricelist-item-3) .qubely-pricelist-image-container {
         position: relative;
     }

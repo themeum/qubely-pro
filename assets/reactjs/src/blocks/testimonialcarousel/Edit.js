@@ -140,7 +140,7 @@ class Edit extends Component {
 				return (
 					<div key={index} className={`qubely-carousel-item`} >
 						<Tooltip text={__('Delete this item')}>
-							<span className="qubely-action-carousel-remove" role="button" onClick={() => this.removeCrouselItem(index)}><i class="fas fa-times"></i></span>
+							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}><i class="fas fa-close"></i></span>
 						</Tooltip>
 						<div className={`qubely-tesitmonial-item layout-${layout}`}>
 

@@ -165,7 +165,7 @@ class Edit extends Component {
 					<div key={index} className={`qubely-carousel-item item-layout${layout} align-${contentVerticalAlign}`} >
 
 						<Tooltip text={__('Delete this item')}>
-							<span className="qubely-action-carousel-remove" role="button" onClick={() => this.removeCrouselItem(index)}><span className="dashicons dashicons-dismiss"></span></span>
+							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}><span className="fas fa-close"></span></span>
 						</Tooltip>
 
 						<div className={`qubely-image-item layout-${layout}`}>

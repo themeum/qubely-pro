@@ -42,7 +42,13 @@ class Edit extends Component {
 			})
 			setAttributes({ pricelistContents: updatedAttributes })
 		}
+	}
 
+    removePricelistItem = (index) => {
+		const { setAttributes, attributes: { pricelistContents } } = this.props
+		let newPricelistItems = JSON.parse(JSON.stringify(pricelistContents))
+		newPricelistItems.splice(index, 1)
+		setAttributes({ pricelistContents: newPricelistItems })
 	}
 
 	renderPricelist = () => {
@@ -52,6 +58,9 @@ class Edit extends Component {
 
 			return (
 				<div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
+                    <Tooltip text={__('Delete this item')}>
+                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><i class="fas fa-close"></i></span>
+                    </Tooltip>
 					<div className={`qubely-pricelist-content`}>
 						{enableImage == 1 &&
 							<div className={`qubely-pricelist-image-container`}>
