@@ -3396,7 +3396,6 @@ registerBlockType('qubely/imagecarousel', {
 		dotIndicator: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
-
 		nav: { type: 'boolean', default: true },
 		dots: { type: 'boolean', default: false },
 		centerPadding: { type: 'number', default: 210 },
@@ -3778,9 +3777,9 @@ var _icons2 = _interopRequireDefault(_icons);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3950,22 +3949,10 @@ var Edit = function (_Component) {
 			);
 		};
 
-		_this.setCarouselLength = function (newLength) {
-			var _this$props = _this.props,
-			    setAttributes = _this$props.setAttributes,
-			    _this$props$attribute3 = _this$props.attributes,
-			    carouselItems = _this$props$attribute3.carouselItems,
-			    items = _this$props$attribute3.items;
-
-			var newCarouselItems = JSON.parse(JSON.stringify(carouselItems))(newLength >= items.md && newLength >= items.sm && newLength >= items.sm) && newCarouselItems.pop();
-
-			setAttributes({ carouselItems: newCarouselItems });
-		};
-
 		_this.parseResponsiveViewPort = function () {
-			var items = _this.props.attributes.items;
+			var postitems = _this.props.attributes.postitems;
 
-			var responsive = [{ viewport: 1170, items: items.md }, { viewport: 980, items: items.sm }, { viewport: 580, items: items.xs }];
+			var responsive = [{ viewport: 1170, items: postitems.md }, { viewport: 980, items: postitems.sm }, { viewport: 580, items: postitems.xs }];
 
 			if (typeof responsive === 'undefined') return;
 			var activeView = null;
@@ -4029,10 +4016,19 @@ var Edit = function (_Component) {
 		value: function truncate(value, limit) {
 			return value.split(' ').splice(0, limit).join(' ');
 		}
+
+		// setCarouselLength = (newLength) => {
+		// 	const { setAttributes, attributes: { carouselItems, items } } = this.props
+		// 	let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
+		// 	(newLength >= items.md && newLength >= items.sm && newLength >= items.sm) && newCarouselItems.pop()
+		// 	setAttributes({ carouselItems: newCarouselItems })
+		// }
+
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this3 = this;
+			var _this3 = this,
+			    _React$createElement;
 
 			var _props2 = this.props,
 			    name = _props2.name,
@@ -4141,13 +4137,49 @@ var Edit = function (_Component) {
 			    globalZindex = _props2$attributes.globalZindex,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
-			    globalCss = _props2$attributes.globalCss;
+			    globalCss = _props2$attributes.globalCss,
+			    autoPlay = _props2$attributes.autoPlay,
+			    postitems = _props2$attributes.postitems,
+			    isCentered = _props2$attributes.isCentered,
+			    speed = _props2$attributes.speed,
+			    interval = _props2$attributes.interval,
+			    dragable = _props2$attributes.dragable,
+			    activeFade = _props2$attributes.activeFade,
+			    nav = _props2$attributes.nav,
+			    arrowStyle = _props2$attributes.arrowStyle,
+			    arrowPosition = _props2$attributes.arrowPosition,
+			    dots = _props2$attributes.dots;
 			var device = this.state.device;
 
 
 			if (uniqueId) {
 				CssGenerator(this.props.attributes, 'postcarousel', uniqueId);
 			}
+
+			// console.log( 'Carousel', arrowposition )
+
+			var carouselSettings = {
+				nav: nav,
+				dots: dots,
+				margin: 10,
+				speed: speed,
+				items: postitems,
+				autoplay: autoPlay,
+				interval: interval,
+				center: isCentered,
+				arrowStyle: arrowStyle,
+				arrowPosition: arrowPosition,
+				responsive: [{
+					viewport: 1170,
+					items: postitems.md
+				}, {
+					viewport: 980,
+					items: postitems.sm
+				}, {
+					viewport: 580,
+					items: postitems.xs
+				}]
+			};
 
 			return React.createElement(
 				Fragment,
@@ -4157,15 +4189,48 @@ var Edit = function (_Component) {
 					{ key: 'inspector' },
 					React.createElement(
 						PanelBody,
-						{ title: '', initialOpen: true },
-						React.createElement(Styles, {
-							options: [{ value: 1, svg: _icons2.default.postcarousel_1, label: __('') }, { value: 2, svg: _icons2.default.postcarousel_2, label: __('') }]
-							// proUpgradation
-							, value: layout,
-							onChange: function onChange(val) {
-								return setAttributes({ layout: val });
+						{ title: __('Carousel Settings'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Autoplay'), value: autoPlay, onChange: function onChange(value) {
+								return setAttributes({ autoPlay: value });
+							} }),
+						autoPlay && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Range, { label: __('Speed (ms)'), value: speed, onChange: function onChange(value) {
+									return setAttributes({ speed: parseInt(value) });
+								}, min: 500, max: 5000 }),
+							React.createElement(Range, { label: __('Interval (ms)'), value: interval, onChange: function onChange(value) {
+									return setAttributes({ interval: parseInt(value) });
+								}, min: 500, max: 5000 })
+						),
+						React.createElement(Toggle, { label: __('Draggable'), value: dragable, onChange: function onChange(value) {
+								return setAttributes({ dragable: value });
+							} }),
+						React.createElement(Toggle, {
+							label: __('Centered Slides'),
+							value: isCentered,
+							onChange: function onChange(value) {
+								return setAttributes({ isCentered: value });
 							}
-						})
+						}),
+						isCentered && React.createElement(Toggle, { label: __('Fade Deactivated Items'), value: activeFade, onChange: function onChange(value) {
+								return setAttributes({ activeFade: value });
+							} }),
+						React.createElement(Range, (_React$createElement = {
+							label: __('Number of Columns'),
+							min: 1, max: 20, responsive: true, device: device
+						}, _defineProperty(_React$createElement, 'device', this.state.device), _defineProperty(_React$createElement, 'value', postitems), _defineProperty(_React$createElement, 'onChange', function onChange(value) {
+							return setAttributes({ postitems: value });
+						}), _defineProperty(_React$createElement, 'onDeviceChange', function onDeviceChange(value) {
+							return _this3.setState({ device: value });
+						}), _React$createElement))
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Slider Settings'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Show Arrow Navigation'), value: nav, onChange: function onChange(value) {
+								return setAttributes({ nav: value });
+							} })
 					),
 					React.createElement(
 						PanelBody,
@@ -4173,52 +4238,48 @@ var Edit = function (_Component) {
 						React.createElement(Styles, { columns: 4, value: style, onChange: function onChange(val) {
 								return setAttributes({ style: val });
 							},
-							options: [{ value: 1, svg: _icons2.default.postcarousel_design_1 }, { value: 2, svg: layout === 1 ? _icons2.default.postcarousel_design_3 : _icons2.default.postcarousel_design_2 }, { value: 3, svg: layout === 1 ? _icons2.default.postcarousel_design_5 : _icons2.default.postcarousel_design_4 }, { value: 4, svg: _icons2.default.postcarousel_design_6 }]
+							options: [{ value: 1, svg: _icons2.default.postgrid_design_1 }, { value: 2, svg: _icons2.default.postgrid_design_2 }, { value: 4, svg: _icons2.default.postgrid_design_4 }, { value: 6, svg: _icons2.default.postgrid_design_6 }]
 						}),
-						layout === 2 && React.createElement(Range, { label: __('Select Column'), value: column, onChange: function onChange(value) {
+						React.createElement(Range, { label: __('Select Column'), value: column, onChange: function onChange(value) {
 								return setAttributes({ column: value });
 							}, min: 1, step: 1, max: 6, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 								return _this3.setState({ device: value });
 							} }),
-						(layout === 1 || layout === 2 && (style === 3 || style === 4)) && React.createElement(ButtonGroup, {
+						React.createElement(ButtonGroup, {
 							label: __('Content Align'),
-							options: layout === 2 && style === 3 ? [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']] : [[__('Top'), 'top'], [__('Middle'), 'center'], [__('Bottom'), 'bottom']],
-							value: layout === 2 && style === 3 ? contentPosition : girdContentPosition,
+							options: [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']],
+							value: contentPosition,
 							onChange: function onChange(value) {
-								return setAttributes(layout === 2 && style === 3 ? { contentPosition: value } : { girdContentPosition: value });
+								return setAttributes({ contentPosition: value });
 							}
 						}),
-						(layout === 1 && style != 3 || layout === 2 && style != 3) && React.createElement(Padding, { label: __('Content Padding'), value: contentPadding, onChange: function onChange(val) {
+						React.createElement(Padding, { label: __('Content Padding'), value: contentPadding, onChange: function onChange(val) {
 								return setAttributes({ contentPadding: val });
 							}, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 								return _this3.setState({ device: value });
 							} }),
 						React.createElement(Separator, null),
-						(layout === 1 && style === 1 || layout === 2 && style === 1) && React.createElement(
-							Fragment,
-							null,
-							React.createElement(ColorAdvanced, { label: __('Background'), value: bgColor, onChange: function onChange(value) {
-									return setAttributes({ bgColor: value });
-								} }),
-							React.createElement(Border, { label: __('Border'), value: border, onChange: function onChange(val) {
-									return setAttributes({ border: val });
-								}, min: 0, max: 10, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								} }),
-							React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Corner'), value: borderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
-									return setAttributes({ borderRadius: value });
-								}, onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								} }),
-							React.createElement(Padding, { label: __('Padding'), value: padding, onChange: function onChange(val) {
-									return setAttributes({ padding: val });
-								}, min: 0, max: 60, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								} }),
-							React.createElement(BoxShadow, { label: __('Box-Shadow'), value: boxShadow, onChange: function onChange(value) {
-									return setAttributes({ boxShadow: value });
-								} })
-						),
+						React.createElement(ColorAdvanced, { label: __('Background'), value: bgColor, onChange: function onChange(value) {
+								return setAttributes({ bgColor: value });
+							} }),
+						React.createElement(Border, { label: __('Border'), value: border, onChange: function onChange(val) {
+								return setAttributes({ border: val });
+							}, min: 0, max: 10, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Corner'), value: borderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
+								return setAttributes({ borderRadius: value });
+							}, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(Padding, { label: __('Padding'), value: padding, onChange: function onChange(val) {
+								return setAttributes({ padding: val });
+							}, min: 0, max: 60, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							} }),
+						React.createElement(BoxShadow, { label: __('Box-Shadow'), value: boxShadow, onChange: function onChange(value) {
+								return setAttributes({ boxShadow: value });
+							} }),
 						style === 2 && React.createElement(
 							Fragment,
 							null,
@@ -4235,7 +4296,7 @@ var Edit = function (_Component) {
 								}, onDeviceChange: function onDeviceChange(value) {
 									return _this3.setState({ device: value });
 								} }),
-							layout === 1 && React.createElement(Range, { label: __('Card Space'), value: cardSpace, onChange: function onChange(value) {
+							React.createElement(Range, { label: __('Card Space'), value: cardSpace, onChange: function onChange(value) {
 									return setAttributes({ cardSpace: value });
 								}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 									return _this3.setState({ device: value });
@@ -4257,7 +4318,7 @@ var Edit = function (_Component) {
 								}, unit: ['px', 'em', '%'], min: 50, max: 700, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 									return _this3.setState({ device: value });
 								} }),
-							layout === 1 && React.createElement(Range, { label: __('Overlay Space'), value: overlaySpace, onChange: function onChange(value) {
+							React.createElement(Range, { label: __('Overlay Space'), value: overlaySpace, onChange: function onChange(value) {
 									return setAttributes({ overlaySpace: value });
 								}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 									return _this3.setState({ device: value });
@@ -4295,14 +4356,9 @@ var Edit = function (_Component) {
 							React.createElement(ColorAdvanced, { label: __('Stack Background'), value: stackBg, onChange: function onChange(value) {
 									return setAttributes({ stackBg: value });
 								} }),
-							layout === 2 && React.createElement(Range, { label: __('Stack Size'), value: stackWidth, onChange: function onChange(value) {
+							React.createElement(Range, { label: __('Stack Size'), value: stackWidth, onChange: function onChange(value) {
 									return setAttributes({ stackWidth: value });
 								}, unit: ['px', 'em', '%'], min: 50, max: 600, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								} }),
-							layout === 1 && React.createElement(Range, { label: __('Stack Space'), value: stackSpace, onChange: function onChange(value) {
-									return setAttributes({ stackSpace: value });
-								}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 									return _this3.setState({ device: value });
 								} }),
 							React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Stack Corner'), value: stackBorderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
@@ -4319,7 +4375,7 @@ var Edit = function (_Component) {
 									return setAttributes({ stackBoxShadow: value });
 								} })
 						),
-						layout === 1 && style === 1 && React.createElement(
+						React.createElement(
 							Fragment,
 							null,
 							React.createElement(Separator, null),
@@ -4327,7 +4383,7 @@ var Edit = function (_Component) {
 									return setAttributes({ showSeparator: value });
 								} })
 						),
-						layout === 1 && style === 1 && showSeparator === true && React.createElement(
+						React.createElement(
 							Fragment,
 							null,
 							React.createElement(Color, { label: __('Separator Color'), value: separatorColor, onChange: function onChange(value) {
@@ -4466,7 +4522,7 @@ var Edit = function (_Component) {
 						showCategory !== 'none' && React.createElement(
 							Fragment,
 							null,
-							layout !== 2 && showCategory == 'badge' && style != 4 && React.createElement(Select, {
+							React.createElement(Select, {
 								label: __("Badge Position"),
 								options: [['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]],
 								value: categoryPosition,
@@ -4474,7 +4530,7 @@ var Edit = function (_Component) {
 									return setAttributes({ categoryPosition: value });
 								}
 							}),
-							layout === 2 && showCategory == 'badge' && style != 4 && React.createElement(
+							React.createElement(
 								Fragment,
 								null,
 								React.createElement(RadioAdvanced, {
@@ -4499,6 +4555,7 @@ var Edit = function (_Component) {
 									} }),
 								React.createElement(Separator, null)
 							),
+							'}',
 							React.createElement(Typography, { label: __('Typography'), value: categoryTypography, onChange: function onChange(value) {
 									return setAttributes({ categoryTypography: value });
 								}, device: device, onDeviceChange: function onDeviceChange(value) {
@@ -4651,7 +4708,7 @@ var Edit = function (_Component) {
 					React.createElement(
 						PanelBody,
 						{ title: __('Spacing'), initialOpen: false },
-						layout === 2 && React.createElement(Range, { label: __('Column Gap'), value: columnGap, onChange: function onChange(value) {
+						React.createElement(Range, { label: __('Column Gap'), value: columnGap, onChange: function onChange(value) {
 								return setAttributes({ columnGap: value });
 							}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 								return _this3.setState({ device: value });
@@ -4735,19 +4792,23 @@ var Edit = function (_Component) {
 					{ className: 'qubely-block-' + uniqueId },
 					posts && posts.length ? React.createElement(
 						'div',
-						{ className: 'qubely-postcarousel-wrapper qubely-postcarousel-layout-' + layout + ' ' + (layout === 2 ? 'qubely-postcarousel-column qubely-postcarousel-column-md' + column.md + ' ' + 'qubely-postcarousel-column-sm' + column.sm + ' ' + 'qubely-postcarousel-column-xs' + column.xs : '') },
-						posts && posts.map(function (post) {
-							return React.createElement(
-								'div',
-								{ className: 'qubely-postcarousel ' + (layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view') + ' qubely-postcarousel-style-' + style },
-								React.createElement(
+						{ className: 'qubely-block-image-carousel qubely-postcarousel-wrapper qubely-postcarousel-layout-2' },
+						React.createElement(
+							Carousel,
+							{ options: carouselSettings },
+							posts && posts.map(function (post) {
+								return React.createElement(
 									'div',
-									{ className: '' + (layout === 1 ? 'qubely-post-list-wrapper qubely-post-list-' + (layout === 2 && style === 3 ? contentPosition : girdContentPosition) : 'qubely-post-grid-wrapper qubely-post-grid-' + (layout === 2 && style === 3 ? contentPosition : girdContentPosition)) },
-									showImages && post.qubely_featured_image_url && _this3.renderFeaturedImage(post),
-									_this3.renderCardContent(post)
-								)
-							);
-						})
+									{ className: 'qubely-postcarousel qubely-post-grid-view AA ' },
+									React.createElement(
+										'div',
+										{ className: 'qubely-post-grid-wrapper qubely-post-grid-center' },
+										showImages && post.qubely_featured_image_url && _this3.renderFeaturedImage(post),
+										_this3.renderCardContent(post)
+									)
+								);
+							})
+						)
 					) : React.createElement(
 						'div',
 						{ className: 'qubely-postcarousel-is-loading' },
@@ -4775,7 +4836,6 @@ exports.default = withSelect(function (select, props) {
 
 
 	var allTaxonomy = qubely_admin.all_taxonomy;
-
 	var seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags';
 	var activeTaxes = taxonomy === 'categories' ? categories : tags;
 
@@ -4788,6 +4848,7 @@ exports.default = withSelect(function (select, props) {
 		    label = _ref.label;
 		return value;
 	}));
+
 	return {
 		posts: getEntityRecords('postType', 'post', query),
 		taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : []

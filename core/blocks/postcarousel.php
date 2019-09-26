@@ -18,6 +18,103 @@ function register_block_qubely_postcarousel_pro()
 				'uniqueId' => array(
 					'type' => 'string',
 				),
+
+				// Post Carousel
+				'postitems' => array(
+					'type' 		=> 'object',
+					'default' 	=> array('md' => 2, 'sm' => 2, 'xs' => 1),
+				),
+				'autoPlay' => array(
+					'type' => 'boolean',
+					'default' => false
+				),
+				'isCentered' => array(
+					'type' 		=> 'boolean',
+					'default' 	=> true
+				),
+				// 'dots' => array(
+				// 	'type' => 'boolean',
+				// 	'default' => false
+				// ),
+				'nav' => array(
+					'type' 		=> 'boolean',
+					'default' 	=> true
+				),
+				'activeFade' => array(
+					'type' 		=> 'boolean',
+					'default' 	=> false
+				),
+				
+				'interval' => array(
+					'type' => 'number',
+					'default' => 3000
+				),
+				'speed' => array(
+					'type' => 'number',
+					'default' => 800
+				),
+
+				// 'arrowPosition' => array(
+				// 	'type' => 'object',
+				// 	'default' => (object) array(
+				// 		'md' => 49, 'unit' => '%'
+				// 	),
+				// 	'style' => [ (object) [
+				// 			'selector' => '{{QUBELY}} .qubely-post-list-view.qubely-postgrid-style'
+				// 		],
+				// 	],
+				// ),
+
+				// 'arrowStyle' => array(
+				// 	'type' => 'string',
+				// 	'default' => 'arrowright',
+				// ),
+
+				// # Dots Navigations.
+				// 'dotwidth' => array(
+				// 	'type'    => 'string',
+				// 	'default' => '30',
+				// 	'style' => [(object) [
+				// 		'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {width: {{dotwidth}};}'
+				// 	]]
+				// ),
+				// 'dotHeight' => array(
+				// 	'type'    => 'string',
+				// 	'default' => '30',
+				// 	'style' => [(object) [
+				// 		'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {width: {{dotHeight}};}'
+				// 	]]
+				// ),
+				// 'dotBorderRadius' => array(
+				// 	'type'    => 'string',
+				// 	'default' => '30',
+				// 	'style' => [(object) [
+				// 		'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {border-radius: {{dotBorderRadius}};}'
+				// 	]]
+				// ),
+				// 'dotColor' => array(
+				// 	'type'    => 'string',
+				// 	'default' => '#e5e5e5',
+				// 	'style' => [(object) [
+				// 		'condition' => [
+				// 			(object) ['key' => 'style', 'relation' => '==', 'value' => 1],
+				// 			(object) ['key' => 'showSeparator', 'relation' => '==', 'value' => true]
+				// 		],
+				// 		'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li'
+				// 	]]
+				// ),
+				// 'dotActiveColor' => array(
+				// 	'type'    => 'string',
+				// 	'default' => '#e5e5e5',
+				// 	'style' => [(object) [
+				// 		'condition' => [
+				// 			(object) ['key' => 'style', 'relation' => '==', 'value' => 1],
+				// 			(object) ['key' => 'showSeparator', 'relation' => '==', 'value' => true]
+				// 		],
+				// 		'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li'
+				// 	]]
+				// ),
+
 				//general
 				'postType' => array(
 					'type' => 'string',
@@ -1116,6 +1213,9 @@ function render_block_qubely_postcarousel_pro($att)
 	if ($query->have_posts()) {
 		$html .= '<div class="qubely-block-' . $uniqueId . '">';
 		$html .= '<div class="qubely-postgrid-wrapper qubely-postgrid-layout-' . esc_attr($layout) . esc_attr($col) . '">';
+
+
+
 		while ($query->have_posts()) {
 			$query->the_post();
 			$id = get_post_thumbnail_id();
