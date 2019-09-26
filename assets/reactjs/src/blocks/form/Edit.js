@@ -1,8 +1,9 @@
-const { __ } = wp.i18n;
-const { InspectorControls, BlockControls, RichText } = wp.editor
-const { PanelBody, TextControl, TextareaControl, SelectControl, Toolbar, IconButton } = wp.components
+const { __ } = wp.i18n
+const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.editor
+const { PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { Component, Fragment } = wp.element
 const {
+    ButtonGroup,
     Styles,
     Wrapper,
     Range,
@@ -20,16 +21,9 @@ const {
     gloalSettings: { globalSettingsPanel },
 } = wp.qubelyComponents
 
-const itemTypes = [
-    { label: 'Text', value: 'text' },
-    { label: 'Email', value: 'email' },
-    { label: 'Radio', value: 'radio' },
-    { label: 'Checkbox', value: 'checkbox' },
-    { label: 'Textarea', value: 'textarea' },
-    { label: 'Dropdown', value: 'dropdown' },
-]
-
 import icons from '../../helpers/icons';
+
+
 
 
 class Edit extends Component {
@@ -143,9 +137,7 @@ class Edit extends Component {
             </label>
         )
     }
-
     render() {
-
         const {
             attributes,
             setAttributes,
@@ -589,19 +581,6 @@ class Edit extends Component {
                             }
                         </form>
 
-                        <div className="qubely-accordion-add-item">
-                            <SelectControl
-                                label=""
-                                value={this.state.newItemType}
-                                options={itemTypes}
-                                onChange={val => this.setState({ newItemType: val })}
-                            />
-                            <IconButton
-                                icon={'insert'}
-                                onClick={() => this.insertItem()} >
-                                {__('Add New Item')}
-                            </IconButton>
-                        </div>
 
                         <div className="qubely-form-group qubely-form-button" >
                             <QubelyButtonEdit
@@ -613,6 +592,26 @@ class Edit extends Component {
                                 buttonIconPosition={buttonIconPosition}
                                 buttonTag={buttonTag}
                                 onTextChange={value => setAttributes({ buttonText: value })}
+                            />
+                        </div>
+
+
+                        <InnerBlocks template={[0, 1, 2].map((item) => ['qubely/formfield-name', { id: item }])} />
+
+                        <div className="qubely-form-add-item">
+                            <span className="qubely-action-add-form-item">Add new item</span>
+                            <ButtonGroup
+                                label={__('')}
+                                options={[
+                                    [__('Text'), 'text'],
+                                    [__('Email'), 'email'],
+                                    [__('Radio'), 'radio'],
+                                    [__('Checkbox'), 'checkbox'],
+                                    [__('Textarea'), 'textarea'],
+                                    [__('Dropdown'), 'dropdown'],
+                                ]}
+                                value={this.state.newItemType}
+                                onChange={() => this.insertItem()}
                             />
                         </div>
                     </div>

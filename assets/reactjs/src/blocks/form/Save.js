@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { RichText } = wp.editor;
+const { RichText, InnerBlocks } = wp.editor
 const { QubelyButtonSave, HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
 
@@ -121,6 +121,7 @@ class Save extends Component {
                             </div>
                         </div>
                     </form>
+                    <InnerBlocks.Content />
                 </div>
             </div>
         )

@@ -86,16 +86,16 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/editor.scss":
-/*!******************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/editor.scss ***!
-  \******************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/fields/style.scss":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/fields/style.scss ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form .qubely-form-group {\n  border: 1px solid #fff; }\n  .qubely-block-form .qubely-form .qubely-form-group .qubely-form-group-option {\n    display: none;\n    position: absolute;\n    right: 0;\n    top: 0;\n    font-size: 14px; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-group-option span {\n      margin-right: 5px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-group-option span.qubely-option-disable {\n        cursor: not-allowed;\n        pointer-events: none;\n        opacity: 0.5; }\n  .qubely-block-form .qubely-form .qubely-form-group:hover {\n    cursor: pointer;\n    border: 1px dashed #ddd; }\n    .qubely-block-form .qubely-form .qubely-form-group:hover .qubely-form-group-option {\n      display: block; }\n\n.qubely-block-form .qubely-form .qubely-form-group-active {\n  background-color: #f6f9fc;\n  border: 1px solid #eee; }\n  .qubely-block-form .qubely-form .qubely-form-group-active .qubely-form-group-option {\n    display: block; }\n", ""]);
+exports.push([module.i, ".qubely-form-field {\n  width: 100%; }\n", ""]);
 
 
 
@@ -819,18 +819,18 @@ var __ = wp.i18n.__;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     BlockControls = _wp$editor.BlockControls,
+    InnerBlocks = _wp$editor.InnerBlocks,
     RichText = _wp$editor.RichText;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     TextControl = _wp$components.TextControl,
-    TextareaControl = _wp$components.TextareaControl,
-    SelectControl = _wp$components.SelectControl,
     Toolbar = _wp$components.Toolbar,
-    IconButton = _wp$components.IconButton;
+    TextareaControl = _wp$components.TextareaControl;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
 var _wp$qubelyComponents = wp.qubelyComponents,
+    ButtonGroup = _wp$qubelyComponents.ButtonGroup,
     Styles = _wp$qubelyComponents.Styles,
     Wrapper = _wp$qubelyComponents.Wrapper,
     Range = _wp$qubelyComponents.Range,
@@ -846,9 +846,6 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
     buttonSettings = _wp$qubelyComponents.QubelyButton.buttonSettings,
     globalSettingsPanel = _wp$qubelyComponents.gloalSettings.globalSettingsPanel;
-
-
-var itemTypes = [{ label: 'Text', value: 'text' }, { label: 'Email', value: 'email' }, { label: 'Radio', value: 'radio' }, { label: 'Checkbox', value: 'checkbox' }, { label: 'Textarea', value: 'textarea' }, { label: 'Dropdown', value: 'dropdown' }];
 
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
@@ -1588,27 +1585,6 @@ var Edit = function (_Component) {
                         ),
                         React.createElement(
                             'div',
-                            { className: 'qubely-accordion-add-item' },
-                            React.createElement(SelectControl, {
-                                label: '',
-                                value: this.state.newItemType,
-                                options: itemTypes,
-                                onChange: function onChange(val) {
-                                    return _this2.setState({ newItemType: val });
-                                }
-                            }),
-                            React.createElement(
-                                IconButton,
-                                {
-                                    icon: 'insert',
-                                    onClick: function onClick() {
-                                        return _this2.insertItem();
-                                    } },
-                                __('Add New Item')
-                            )
-                        ),
-                        React.createElement(
-                            'div',
                             { className: 'qubely-form-group qubely-form-button' },
                             React.createElement(QubelyButtonEdit, {
                                 enableButton: enableButton,
@@ -1620,6 +1596,26 @@ var Edit = function (_Component) {
                                 buttonTag: buttonTag,
                                 onTextChange: function onTextChange(value) {
                                     return setAttributes({ buttonText: value });
+                                }
+                            })
+                        ),
+                        React.createElement(InnerBlocks, { template: [0, 1, 2].map(function (item) {
+                                return ['qubely/formfield-name', { id: item }];
+                            }) }),
+                        React.createElement(
+                            'div',
+                            { className: 'qubely-form-add-item' },
+                            React.createElement(
+                                'span',
+                                { className: 'qubely-action-add-form-item' },
+                                'Add new item'
+                            ),
+                            React.createElement(ButtonGroup, {
+                                label: __(''),
+                                options: [[__('Text'), 'text'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Textarea'), 'textarea'], [__('Dropdown'), 'dropdown']],
+                                value: this.state.newItemType,
+                                onChange: function onChange() {
+                                    return _this2.insertItem();
                                 }
                             })
                         )
@@ -1662,7 +1658,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var __ = wp.i18n.__;
 var Component = wp.element.Component;
-var RichText = wp.editor.RichText;
+var _wp$editor = wp.editor,
+    RichText = _wp$editor.RichText,
+    InnerBlocks = _wp$editor.InnerBlocks;
 var _wp$qubelyComponents = wp.qubelyComponents,
     QubelyButtonSave = _wp$qubelyComponents.QubelyButtonSave,
     animationAttr = _wp$qubelyComponents.HelperFunction.animationAttr;
@@ -1866,7 +1864,8 @@ var Save = function (_Component) {
                                 React.createElement('div', { className: 'qubely-form-message' })
                             )
                         )
-                    )
+                    ),
+                    React.createElement(InnerBlocks.Content, null)
                 )
             );
         }
@@ -1879,15 +1878,108 @@ exports.default = Save;
 
 /***/ }),
 
-/***/ "./src/blocks/form/editor.scss":
-/*!*************************************!*\
-  !*** ./src/blocks/form/editor.scss ***!
-  \*************************************/
+/***/ "./src/blocks/form/fields/formDefaults.js":
+/*!************************************************!*\
+  !*** ./src/blocks/form/fields/formDefaults.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var FieldDefaults = {
+    category: 'qubely',
+    parent: ['qubely/form'],
+    supports: {
+        reusable: false,
+        html: false,
+        inserter: false
+    },
+    attributes: {
+        uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        id: { type: 'number', default: 1 },
+        label: {
+            type: 'string',
+            default: null
+        },
+        required: {
+            type: 'boolean',
+            default: false
+        }
+    }
+};
+exports.default = FieldDefaults;
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/index.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/form/fields/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.registerFromFields = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _text = __webpack_require__(/*! ./text */ "./src/blocks/form/fields/text.js");
+
+var text = _interopRequireWildcard(_text);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var registerBlockType = wp.blocks.registerBlockType;
+
+/**
+ * import required attributes of form fields
+ */
+
+var registerBlock = function registerBlock(block) {
+    if (!block) {
+        return;
+    }
+
+    var blockName = block.blockName,
+        settings = block.settings;
+
+
+    registerBlockType(blockName, _extends({}, settings));
+};
+
+/**
+ * Register form fields
+ */
+var registerFromFields = exports.registerFromFields = function registerFromFields() {
+    [text].forEach(registerBlock);
+};
+
+registerFromFields();
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/style.scss":
+/*!*******************************************!*\
+  !*** ./src/blocks/form/fields/style.scss ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./editor.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/editor.scss");
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!../../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/fields/style.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1901,11 +1993,121 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/text.js":
+/*!****************************************!*\
+  !*** ./src/blocks/form/fields/text.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.settings = exports.blockName = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
+
+var _formDefaults = __webpack_require__(/*! ./formDefaults */ "./src/blocks/form/fields/formDefaults.js");
+
+var _formDefaults2 = _interopRequireDefault(_formDefaults);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var useEffect = wp.element.useEffect;
+var CssGenerator = wp.qubelyComponents.CssGenerator.CssGenerator;
+
+
+var blockName = 'qubely/formfield-name';
+
+var settings = _extends({}, _formDefaults2.default, {
+    title: __('Name'),
+    description: __('Text field for Qubely Form'),
+    icon: 'forms',
+    edit: function edit(props) {
+        return Edit(props);
+    },
+    save: function save(props) {
+        return Save(props);
+    }
+});
+
+var Edit = function Edit(props) {
+
+    useEffect(function () {
+        var setAttributes = props.setAttributes,
+            clientId = props.clientId,
+            uniqueId = props.attributes.uniqueId;
+
+        var _client = clientId.substr(0, 6);
+        if (!uniqueId) {
+            setAttributes({ uniqueId: _client });
+        } else if (uniqueId && uniqueId != _client) {
+            setAttributes({ uniqueId: _client });
+        }
+    });
+    var attributes = props.attributes,
+        _props$attributes = props.attributes,
+        uniqueId = _props$attributes.uniqueId,
+        id = _props$attributes.id,
+        type = _props$attributes.type,
+        inputSize = _props$attributes.inputSize,
+        placeHolder = _props$attributes.placeHolder,
+        required = _props$attributes.required;
+
+
+    if (uniqueId) {
+        CssGenerator(attributes, 'formfield-name', uniqueId);
+    }
+
+    return React.createElement(
+        'div',
+        { className: 'qubely-block-' + uniqueId },
+        React.createElement(
+            'span',
+            null,
+            id
+        ),
+        React.createElement('input', { className: 'qubely-form-field is-' + inputSize, type: type, placeholder: __(placeHolder), required: required, disabled: true })
+    );
+};
+var Save = function Save(props) {
+    var _props$attributes2 = props.attributes,
+        uniqueId = _props$attributes2.uniqueId,
+        id = _props$attributes2.id,
+        type = _props$attributes2.type,
+        inputSize = _props$attributes2.inputSize,
+        placeHolder = _props$attributes2.placeHolder,
+        required = _props$attributes2.required;
+
+
+    return React.createElement(
+        'div',
+        { className: 'qubely-block-' + uniqueId },
+        React.createElement(
+            'span',
+            null,
+            id
+        ),
+        React.createElement('input', { className: 'qubely-form-field qubely-form-text  is-' + inputSize, type: type, placeholder: __(placeHolder), required: required })
+    );
+};
+
+exports.blockName = blockName;
+exports.settings = settings;
 
 /***/ }),
 
@@ -1922,8 +2124,6 @@ if(false) {}
 var _extends2;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-__webpack_require__(/*! ./editor.scss */ "./src/blocks/form/editor.scss");
 
 __webpack_require__(/*! ./style.scss */ "./src/blocks/form/style.scss");
 
@@ -8209,6 +8409,8 @@ exports.default = icons;
 
 
 __webpack_require__(/*! ./blocks/form */ "./src/blocks/form/index.js");
+
+__webpack_require__(/*! ./blocks/form/fields */ "./src/blocks/form/fields/index.js");
 
 __webpack_require__(/*! ./blocks/postgrid */ "./src/blocks/postgrid/index.js");
 

@@ -1,4 +1,4 @@
-import './editor.scss'
+
 import './style.scss'
 import Edit from './Edit'
 import Save from './Save';
