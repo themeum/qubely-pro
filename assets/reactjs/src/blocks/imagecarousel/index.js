@@ -33,6 +33,7 @@ registerBlockType('qubely/imagecarousel', {
 		dotIndicator: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
+		
 		nav: { type: 'boolean', default: true },
 		dots: { type: 'boolean', default: false },
 		centerPadding: { type: 'number', default: 210 },
@@ -40,7 +41,7 @@ registerBlockType('qubely/imagecarousel', {
 		carouselItems: {
 			type: 'array',
 			default: [
-				{	
+				{
 					slidertitle: 'Wordcamp Dhaka',
 					subtitle: '28 September 2019',
 					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',

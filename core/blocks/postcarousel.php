@@ -146,18 +146,11 @@ function register_block_qubely_postcarousel_pro()
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				//layout
-				'layout' => array(
-					'type' => 'number',
-					'default' => 1
-				),
+				
+
 				'style' => array(
 					'type' => 'number',
 					'default' => 1
-				),
-				'column' => array(
-					'type' => 'object',
-					'default' => array('md' => 3, 'sm' => 2, 'xs' => 1),
 				),
 
 				//content
@@ -527,11 +520,11 @@ function register_block_qubely_postcarousel_pro()
 						'openTypography' => 1,
 						'family' => "Roboto",
 						'type' => "sans-serif",
-						'size' => (object) ['md' => 32, 'unit' => 'px'],
+						'size' => (object) ['md' => 22, 'unit' => 'px'],
 					],
 					'style' => [(object) [
 						'condition' => [(object) ['key' => 'showTitle', 'relation' => '==', 'value' => true]],
-						'selector' => '{{QUBELY}} .qubely-postgrid-title'
+						'selector' => '{{QUBELY}} .qubely-post-grid-content h3'
 					]]
 				),
 				'metaTypography' => array(
@@ -540,14 +533,14 @@ function register_block_qubely_postcarousel_pro()
 						'openTypography' => 1,
 						'family' => "Roboto",
 						'type' => "sans-serif",
-						'size' => (object) ['md' => 12, 'unit' => 'px'],
+						'size' => (object) ['md' => 16, 'unit' => 'px'],
 					],
 					'condition' => [
 						(object) ['key' => 'showAuthor', 'relation' => '==', 'value' => true],
 						(object) ['key' => 'showDates', 'relation' => '==', 'value' => true],
 						(object) ['key' => 'showComment', 'relation' => '==', 'value' => true]
 					],
-					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-postgrid-meta']]
+					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-postcarousel-meta span']]
 				),
 				'excerptTypography' => array(
 					'type' => 'object',
@@ -572,7 +565,7 @@ function register_block_qubely_postcarousel_pro()
 					],
 					'style' => [(object) [
 						'condition' => [(object) ['key' => 'showCategory', 'relation' => '!=', 'value' => 'none']],
-						'selector' => '{{QUBELY}} .qubely-postgrid-category a'
+						'selector' => '{{QUBELY}} .qubely-postcarousel-category a'
 					]]
 				),
 

@@ -188,9 +188,7 @@ class Edit extends Component {
 				readmoreHoverColor,
 
 				//content
-				layout,
 				style,
-				column,
 				showDates,
 				showComment,
 				showAuthor,
@@ -371,7 +369,7 @@ class Edit extends Component {
 
 				
 
-					<PanelBody title={__('Post Design')} initialOpen={true}>
+					<PanelBody title={__('Post Design')} initialOpen={false}>
 						<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
 							options={[
 								{ value: 1, svg: icons.postgrid_design_1 },
@@ -380,10 +378,6 @@ class Edit extends Component {
 								{ value: 6, svg: icons.postgrid_design_6 },
 							]}
 						/>
-						
-						<Range label={__('Select Column')} value={column} onChange={(value) => setAttributes({ column: value })} min={1} step={1} max={6} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-						
-
 						
 						<ButtonGroup
 							label={__('Content Align')}
@@ -462,7 +456,7 @@ class Edit extends Component {
 						
 					</PanelBody>
 
-					<PanelBody title={__('Query')} initialOpen={false}>
+					<PanelBody title={__('Post Query')} initialOpen={false}>
 						<ButtonGroup
 							label={__('Taxonomy')}
 							options={[[__('Categories'), 'categories'], [__('Tags'), 'tags']]}
@@ -521,8 +515,16 @@ class Edit extends Component {
 
 						<Select label={__('Hover Effect')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />
 					</PanelBody>
+					
+					<PanelBody title={__('Title Settings')} initialOpen={false}>
+						<Typography label={__('Title')} value={titleTypography} onChange={value => setAttributes({ titleTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+						<Separator />
+						<Typography label={__('Meta')} value={metaTypography} onChange={value => setAttributes({ metaTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+						<Separator />
+						<Typography label={__('Excerpt')} value={excerptTypography} onChange={value => setAttributes({ excerptTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+					</PanelBody>
 
-					<PanelBody title='Content' initialOpen={false}>
+					<PanelBody title='Content Settings' initialOpen={false}>
 						<Toggle label={__('Show Title')} value={showTitle} onChange={value => setAttributes({ showTitle: value })} />
 						<Toggle label={__('Show Excerpt')} value={showExcerpt} onChange={value => setAttributes({ showExcerpt: value })} />
 						<RangeControl label={__('Excerpt Limit')} min={1} max={100} step={1} value={excerptLimit} onChange={val => setAttributes({ excerptLimit: val })} />
@@ -533,7 +535,7 @@ class Edit extends Component {
 						<Toggle label={__('Show Author')} value={showAuthor} onChange={value => setAttributes({ showAuthor: value })} />
 					</PanelBody>
 
-					<PanelBody title={__('Category')} initialOpen={false}>
+					<PanelBody title={__('Category settings')} initialOpen={false}>
 						<RadioAdvanced
 							label={__('Category')}
 							options={[
@@ -546,15 +548,12 @@ class Edit extends Component {
 						/>
 						{showCategory !== 'none' &&
 							<Fragment>
-								
 									<Select
 										label={__("Badge Position")}
 										options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
 										value={categoryPosition}
 										onChange={value => setAttributes({ categoryPosition: value })}
 									/>
-								
-								
 									<Fragment>
 										<RadioAdvanced
 											label={__('Badge Position')}
@@ -577,7 +576,6 @@ class Edit extends Component {
 										}
 										<Separator />
 									</Fragment>
-								}
 								<Typography label={__('Typography')} value={categoryTypography} onChange={value => setAttributes({ categoryTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
 								<Tabs>
 									<Tab tabTitle={__('Normal')}>
@@ -693,14 +691,7 @@ class Edit extends Component {
 						<Range label={__('Excerpt')} value={excerptSpace} onChange={value => setAttributes({ excerptSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 					</PanelBody>
 
-					<PanelBody title={__('Typography')} initialOpen={false}>
-						<Typography label={__('Title')} value={titleTypography} onChange={value => setAttributes({ titleTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-						<Separator />
-						<Typography label={__('Meta')} value={metaTypography} onChange={value => setAttributes({ metaTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-						<Separator />
-						<Typography label={__('Excerpt')} value={excerptTypography} onChange={value => setAttributes({ excerptTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-					</PanelBody>
-
+					
 					<PanelBody title={__('Colors')} initialOpen={false}>
 						<Color label={__('Title')} value={style !== 4 ? titleColor : titleOverlayColor} onChange={value => setAttributes(style !== 4 ? { titleColor: value } : { titleOverlayColor: value })} />
 						<Color label={__('Title Hover')} value={titleHoverColor} onChange={value => setAttributes({ titleHoverColor: value })} />
@@ -728,7 +719,7 @@ class Edit extends Component {
 							<Carousel options={carouselSettings}>
 								{ posts && posts.map(post => {
 									return (
-										<div className={`qubely-postcarousel qubely-post-grid-view AA `}>
+										<div className={`qubely-carousel-item qubely-post-grid-view AA `}>
 											<div className={`qubely-post-grid-wrapper qubely-post-grid-center`}>
 												{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
 												{this.renderCardContent(post)}

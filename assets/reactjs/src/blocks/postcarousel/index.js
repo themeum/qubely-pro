@@ -6,7 +6,7 @@ const { registerBlockType } = wp.blocks
 
 registerBlockType('qubely/postcarousel', {
 	title: __('Post Carousel'),
-	description: 'Fetch blog posts and display them beautifully in grid or list views with Qubely Postgrid Block.',
+	description: 'Blog post carousel',
 	icon: 'image-flip-horizontal',
     category: 'qubely',
     keywords: [__('Post'), __('Blog Post Carousel')],
