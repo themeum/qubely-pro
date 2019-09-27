@@ -367,15 +367,13 @@ class Edit extends Component {
 					<Toggle label={__('Show Arrow Navigation')} value={nav} onChange={value => setAttributes({ nav: value })} />
 				</PanelBody>
 
-				
-
 					<PanelBody title={__('Post Design')} initialOpen={false}>
 						<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
 							options={[
 								{ value: 1, svg: icons.postgrid_design_1 },
 								{ value: 2, svg: icons.postgrid_design_2 },
-								{ value: 4, svg: icons.postgrid_design_4 },
-								{ value: 6, svg: icons.postgrid_design_6 },
+								{ value: 3, svg: icons.postgrid_design_4 },
+								{ value: 4, svg: icons.postgrid_design_6 },
 							]}
 						/>
 						
@@ -385,7 +383,6 @@ class Edit extends Component {
 							value={ contentPosition }
 							onChange={value => setAttributes({ contentPosition: value })}
 						/>
-						
 						
 						<Padding label={__('Content Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						
@@ -719,7 +716,7 @@ class Edit extends Component {
 							<Carousel options={carouselSettings}>
 								{ posts && posts.map(post => {
 									return (
-										<div className={`qubely-carousel-item qubely-post-grid-view AA `}>
+										<div className={`qubely-carousel-item qubely-post-grid-view qubely-postgrid-style-${style}`}>
 											<div className={`qubely-post-grid-wrapper qubely-post-grid-center`}>
 												{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
 												{this.renderCardContent(post)}
