@@ -335,7 +335,6 @@ class Edit extends Component {
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
-
 				<PanelBody title={__('Carousel Settings')} initialOpen={false}>
 					<Toggle label={__('Autoplay')} value={autoPlay} onChange={value => setAttributes({ autoPlay: value })} />
 					{autoPlay &&
@@ -545,34 +544,18 @@ class Edit extends Component {
 						/>
 						{showCategory !== 'none' &&
 							<Fragment>
-									<Select
-										label={__("Badge Position")}
-										options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
-										value={categoryPosition}
-										onChange={value => setAttributes({ categoryPosition: value })}
-									/>
-									<Fragment>
-										<RadioAdvanced
-											label={__('Badge Position')}
-											options={[
-												{ value: 'default', label: __('default'), title: __('Pre-defined') },
-												{ icon: 'fas fa-cog', value: 'none', title: __('Advanced') },
-											]}
-											value={badgePosition}
-											onChange={val => setAttributes({ badgePosition: val })}
-										/>
-										{
-											badgePosition === 'default' ?
-												<Select
-													label={__("")}
-													options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
-													value={categoryPosition}
-													onChange={value => setAttributes({ categoryPosition: value })}
-												/>
-												: <Padding label={__('Advanced')} value={badgePadding} onChange={val => setAttributes({ badgePadding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-										}
-										<Separator />
-									</Fragment>
+                                {( showCategory == 'badge') &&
+                                    <Fragment>
+                                        <Select
+                                            label={__("Badge Position")}
+                                            options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
+                                            value={categoryPosition}
+                                            onChange={value => setAttributes({ categoryPosition: value })}
+                                        />
+                                        <Padding label={__('Advanced')} value={badgePadding} onChange={val => setAttributes({ badgePadding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    </Fragment>
+                                }
+
 								<Typography label={__('Typography')} value={categoryTypography} onChange={value => setAttributes({ categoryTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
 								<Tabs>
 									<Tab tabTitle={__('Normal')}>

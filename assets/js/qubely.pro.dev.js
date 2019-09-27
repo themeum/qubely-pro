@@ -4537,38 +4537,22 @@ var Edit = function (_Component) {
 						showCategory !== 'none' && React.createElement(
 							Fragment,
 							null,
-							React.createElement(Select, {
-								label: __("Badge Position"),
-								options: [['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]],
-								value: categoryPosition,
-								onChange: function onChange(value) {
-									return setAttributes({ categoryPosition: value });
-								}
-							}),
-							React.createElement(
+							showCategory == 'badge' && React.createElement(
 								Fragment,
 								null,
-								React.createElement(RadioAdvanced, {
-									label: __('Badge Position'),
-									options: [{ value: 'default', label: __('default'), title: __('Pre-defined') }, { icon: 'fas fa-cog', value: 'none', title: __('Advanced') }],
-									value: badgePosition,
-									onChange: function onChange(val) {
-										return setAttributes({ badgePosition: val });
-									}
-								}),
-								badgePosition === 'default' ? React.createElement(Select, {
-									label: __(""),
+								React.createElement(Select, {
+									label: __("Badge Position"),
 									options: [['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]],
 									value: categoryPosition,
 									onChange: function onChange(value) {
 										return setAttributes({ categoryPosition: value });
 									}
-								}) : React.createElement(Padding, { label: __('Advanced'), value: badgePadding, onChange: function onChange(val) {
+								}),
+								React.createElement(Padding, { label: __('Advanced'), value: badgePadding, onChange: function onChange(val) {
 										return setAttributes({ badgePadding: val });
 									}, min: 0, max: 60, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 										return _this3.setState({ device: value });
-									} }),
-								React.createElement(Separator, null)
+									} })
 							),
 							React.createElement(Typography, { label: __('Typography'), value: categoryTypography, onChange: function onChange(value) {
 									return setAttributes({ categoryTypography: value });
