@@ -6,6 +6,7 @@ const { registerBlockType } = wp.blocks
  */
 import * as text from './text';
 import * as email from './email';
+import * as textarea from './textarea';
 
 import './style.scss'
 
@@ -19,9 +20,9 @@ const registerBlock = (block) => {
 
     registerBlockType(blockName, {
         ...settings,
-        getEditWrapperProps( attributes ) {
+        getEditWrapperProps(attributes) {
             const { width } = attributes;
-            if ( Number.isFinite( width ) ) {
+            if (Number.isFinite(width)) {
                 return {
                     style: {
                         width: width + '%',
@@ -39,6 +40,7 @@ export const registerFromFields = () => {
     [
         text,
         email,
+        textarea,
     ].forEach(registerBlock);
 }
 

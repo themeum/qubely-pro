@@ -1977,6 +1977,10 @@ var _email = __webpack_require__(/*! ./email */ "./src/blocks/form/fields/email.
 
 var email = _interopRequireWildcard(_email);
 
+var _textarea = __webpack_require__(/*! ./textarea */ "./src/blocks/form/fields/textarea.js");
+
+var textarea = _interopRequireWildcard(_textarea);
+
 __webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -2015,7 +2019,7 @@ var registerBlock = function registerBlock(block) {
  * Register form fields
  */
 var registerFromFields = exports.registerFromFields = function registerFromFields() {
-    [text, email].forEach(registerBlock);
+    [text, email, textarea].forEach(registerBlock);
 };
 
 registerFromFields();
@@ -2200,6 +2204,154 @@ exports.settings = settings;
 
 /***/ }),
 
+/***/ "./src/blocks/form/fields/textarea.js":
+/*!********************************************!*\
+  !*** ./src/blocks/form/fields/textarea.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.settings = exports.blockName = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
+
+var _formDefaults = __webpack_require__(/*! ./formDefaults */ "./src/blocks/form/fields/formDefaults.js");
+
+var _formDefaults2 = _interopRequireDefault(_formDefaults);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    RichText = _wp$editor.RichText;
+var _wp$element = wp.element,
+    useEffect = _wp$element.useEffect,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    RangeControl = _wp$components.RangeControl;
+var CssGenerator = wp.qubelyComponents.CssGenerator.CssGenerator;
+
+
+var blockName = 'qubely/formfield-textarea';
+
+var settings = _extends({}, _formDefaults2.default, {
+    title: __('Text Area'),
+    description: __('Textarea field for Qubely Form'),
+    icon: 'forms',
+    edit: function edit(props) {
+        return Edit(props);
+    },
+    save: function save(props) {
+        return Save(props);
+    }
+});
+
+var Edit = function Edit(props) {
+    var clientId = props.clientId,
+        attributes = props.attributes,
+        setAttributes = props.setAttributes,
+        _props$attributes = props.attributes,
+        uniqueId = _props$attributes.uniqueId,
+        width = _props$attributes.width,
+        type = _props$attributes.type,
+        label = _props$attributes.label,
+        placeHolder = _props$attributes.placeHolder,
+        required = _props$attributes.required;
+
+
+    useEffect(function () {
+        var _client = clientId.substr(0, 6);
+        if (!uniqueId) {
+            setAttributes({ uniqueId: _client });
+        } else if (uniqueId && uniqueId != _client) {
+            setAttributes({ uniqueId: _client });
+        }
+    });
+
+    if (uniqueId) {
+        CssGenerator(attributes, 'formfield-textarea', uniqueId);
+    }
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            InspectorControls,
+            null,
+            React.createElement(
+                PanelBody,
+                { title: __('Form-field Settings'), opened: true },
+                React.createElement(RangeControl, {
+                    label: __('Percentage width'),
+                    value: width || '',
+                    onChange: function onChange(value) {
+                        return setAttributes({ width: value });
+                    },
+                    min: 0,
+                    max: 100,
+                    required: true,
+                    allowReset: true
+                })
+            )
+        ),
+        React.createElement(
+            'div',
+            { className: 'qubely-block-' + uniqueId },
+            React.createElement(
+                'div',
+                { className: 'qubely-form-field-wrapper' },
+                React.createElement(RichText, {
+                    placeholder: __('Input label'),
+                    className: 'qubely-form-field-label',
+                    value: label,
+                    onChange: function onChange(value) {
+                        return setAttributes({ label: value });
+                    }
+                }),
+                React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), required: required })
+            )
+        )
+    );
+};
+
+var Save = function Save(props) {
+    var _props$attributes2 = props.attributes,
+        uniqueId = _props$attributes2.uniqueId,
+        label = _props$attributes2.label,
+        type = _props$attributes2.type,
+        width = _props$attributes2.width,
+        placeHolder = _props$attributes2.placeHolder,
+        required = _props$attributes2.required;
+
+
+    var style = void 0;
+    if (Number.isFinite(width)) {
+        style = { width: width + '%' };
+    }
+
+    return React.createElement(
+        'div',
+        { className: 'qubely-block-' + uniqueId, style: style },
+        React.createElement(RichText.Content, { className: 'qubely-form-field-label', value: label }),
+        React.createElement('input', { className: 'qubely-form-field qubely-form-text', type: 'text', placeholder: __(placeHolder), required: required })
+    );
+};
+
+exports.blockName = blockName;
+exports.settings = settings;
+
+/***/ }),
+
 /***/ "./src/blocks/form/index.js":
 /*!**********************************!*\
   !*** ./src/blocks/form/index.js ***!
@@ -2235,7 +2387,7 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonAttributes = _wp$qubelyComponents.QubelyButton.buttonAttributes;
 
 
-var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false }, { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: 50, required: true, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false }, { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: 90, required: true, hideLabel: false }];
+var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false }, { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: 50, required: true, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false }, { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: 90, required: true, hideLabel: false }, { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false }];
 
 registerBlockType('qubely/form', {
     title: __('Form'),
