@@ -1458,10 +1458,11 @@ var Edit = function (_Component) {
                             React.createElement(InnerBlocks, { template: formItems.map(function (_ref) {
                                     var type = _ref.type,
                                         label = _ref.label,
+                                        options = _ref.options,
                                         placeholder = _ref.placeholder,
                                         width = _ref.width,
                                         required = _ref.required;
-                                    return ['qubely/formfield-' + type, { type: type, label: label, placeholder: placeholder, width: width, required: required }];
+                                    return ['qubely/formfield-' + type, { type: type, label: label, options: options, placeholder: placeholder, width: width, required: required }];
                                 }) })
                         ),
                         React.createElement(
@@ -1821,9 +1822,9 @@ exports.registerFromFields = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _qubelyFormField = __webpack_require__(/*! ./qubelyFormField */ "./src/blocks/form/fields/qubelyFormField.js");
+var _qubelyField = __webpack_require__(/*! ./qubelyField */ "./src/blocks/form/fields/qubelyField.js");
 
-var qubelyFormField = _interopRequireWildcard(_qubelyFormField);
+var qubelyField = _interopRequireWildcard(_qubelyField);
 
 __webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
 
@@ -1860,73 +1861,92 @@ var registerBlock = function registerBlock(block) {
     }));
 };
 
+var qubelyFormFields = [_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Text'),
+        description: __('Text field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            type: {
+                type: 'string',
+                default: 'text'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-text"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Number'),
+        description: __('Number field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            type: {
+                type: 'string',
+                default: 'number'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-number"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Email'),
+        description: __('Email field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            type: {
+                type: 'string',
+                default: 'email'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-email"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Textarea'),
+        description: __('Textarea field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            type: {
+                type: 'string',
+                default: 'textarea'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-textarea"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Dropdown'),
+        description: __('Dropdown field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            type: {
+                type: 'string',
+                default: 'dropdown'
+            },
+            options: {
+                type: 'array',
+                default: ['option one', 'option two', 'option three']
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-dropdown"
+})];
+
 /**
  * Register form fields
  */
 var registerFromFields = exports.registerFromFields = function registerFromFields() {
-    [_extends({}, qubelyFormField, {
-        settings: _extends({}, qubelyFormField.settings, {
-            title: __('Text'),
-            description: __('Text field for Qubely Form'),
-            attributes: _extends({}, qubelyFormField.settings.attributes, {
-                type: {
-                    type: 'string',
-                    default: 'text'
-                }
-            })
-
-        }),
-        blockName: "qubely/formfield-text"
-    }), _extends({}, qubelyFormField, {
-        settings: _extends({}, qubelyFormField.settings, {
-            title: __('Number'),
-            description: __('Number field for Qubely Form'),
-            attributes: _extends({}, qubelyFormField.settings.attributes, {
-                type: {
-                    type: 'string',
-                    default: 'number'
-                }
-            })
-
-        }),
-        blockName: "qubely/formfield-number"
-    }), _extends({}, qubelyFormField, {
-        settings: _extends({}, qubelyFormField.settings, {
-            title: __('Email'),
-            description: __('Email field for Qubely Form'),
-            attributes: _extends({}, qubelyFormField.settings.attributes, {
-                type: {
-                    type: 'string',
-                    default: 'email'
-                }
-            })
-
-        }),
-        blockName: "qubely/formfield-email"
-    }), _extends({}, qubelyFormField, {
-        settings: _extends({}, qubelyFormField.settings, {
-            title: __('Textarea'),
-            description: __('Textarea field for Qubely Form'),
-            attributes: _extends({}, qubelyFormField.settings.attributes, {
-                type: {
-                    type: 'string',
-                    default: 'textarea'
-                }
-            })
-
-        }),
-        blockName: "qubely/formfield-textarea"
-    })].forEach(registerBlock);
+    qubelyFormFields.forEach(registerBlock);
 };
 
 registerFromFields();
 
 /***/ }),
 
-/***/ "./src/blocks/form/fields/qubelyFormField.js":
-/*!***************************************************!*\
-  !*** ./src/blocks/form/fields/qubelyFormField.js ***!
-  \***************************************************/
+/***/ "./src/blocks/form/fields/qubelyField.js":
+/*!***********************************************!*\
+  !*** ./src/blocks/form/fields/qubelyField.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1937,6 +1957,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.settings = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -1953,6 +1975,7 @@ var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText;
 var _wp$element = wp.element,
+    useState = _wp$element.useState,
     useEffect = _wp$element.useEffect,
     Fragment = _wp$element.Fragment;
 var _wp$components = wp.components,
@@ -1972,6 +1995,11 @@ var settings = _extends({}, _formDefaults2.default, {
 });
 
 var Edit = function Edit(props) {
+    var _useState = useState(''),
+        _useState2 = _slicedToArray(_useState, 2),
+        dropdownValue = _useState2[0],
+        setDropdownValue = _useState2[1];
+
     var name = props.name,
         clientId = props.clientId,
         attributes = props.attributes,
@@ -1981,6 +2009,7 @@ var Edit = function Edit(props) {
         width = _props$attributes.width,
         type = _props$attributes.type,
         label = _props$attributes.label,
+        options = _props$attributes.options,
         placeHolder = _props$attributes.placeHolder,
         required = _props$attributes.required;
 
@@ -1997,7 +2026,19 @@ var Edit = function Edit(props) {
         return React.createElement(
             Fragment,
             null,
-            type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), required: required }) : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
+            type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), required: required }) : type === 'dropdown' ? React.createElement(
+                'select',
+                { value: dropdownValue, onChange: function onChange(event) {
+                        return console.log('value : ', event.target.value);
+                    } },
+                options.map(function (option) {
+                    return React.createElement(
+                        'option',
+                        { value: option },
+                        option
+                    );
+                })
+            ) : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
         );
     };
 
@@ -2141,7 +2182,14 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonAttributes = _wp$qubelyComponents.QubelyButton.buttonAttributes;
 
 
-var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false }, { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: 50, required: true, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false }, { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: 90, required: true, hideLabel: false }, { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 90, required: false, hideLabel: false }, { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false }];
+var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false }, { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 50, required: false, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false }, { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false }, {
+    type: 'dropdown',
+    label: 'Select',
+    name: 'message',
+    width: 50,
+    required: true,
+    hideLabel: false
+}];
 
 registerBlockType('qubely/form', {
     title: __('Form'),

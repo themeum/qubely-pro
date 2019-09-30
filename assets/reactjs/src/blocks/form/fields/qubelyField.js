@@ -1,7 +1,7 @@
 
 const { __ } = wp.i18n
 const { InspectorControls, RichText } = wp.editor
-const { useEffect, Fragment } = wp.element
+const { useState, useEffect, Fragment } = wp.element
 const { PanelBody, RangeControl } = wp.components
 
 const {
@@ -24,7 +24,7 @@ const settings = {
 
 
 const Edit = (props) => {
-
+    const [dropdownValue, setDropdownValue] = useState('')
     const {
         name,
         clientId,
@@ -35,6 +35,7 @@ const Edit = (props) => {
             width,
             type,
             label,
+            options,
             placeHolder,
             required,
         }
@@ -56,12 +57,16 @@ const Edit = (props) => {
 
                         <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)} required={required} />
                         :
-                        <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
+                        type === 'dropdown' ?
+                            <select value={dropdownValue} onChange={event => console.log('value : ',event.target.value)}>
+                                {options.map(option => <option value={option}>{option}</option>)}
+                            </select>
+                            :
+                            <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
                 }
             </Fragment>
         )
     }
-
 
     const blockname = name.split('/')[1]
 

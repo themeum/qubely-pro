@@ -512,7 +512,7 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
                         <form className="qubely-form">
-                            <InnerBlocks template={formItems.map(({ type, label, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, placeholder, width, required }])} />
+                            <InnerBlocks template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])} />
                         </form>
 
 

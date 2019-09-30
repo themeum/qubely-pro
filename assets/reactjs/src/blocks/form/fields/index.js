@@ -4,7 +4,7 @@ const { registerBlockType } = wp.blocks
 /**
  * import required attributes of form fields
  */
-import * as qubelyFormField from './qubelyFormField';
+import * as qubelyField from './qubelyField';
 
 import './style.scss'
 
@@ -30,80 +30,105 @@ const registerBlock = (block) => {
     })
 };
 
+
+const qubelyFormFields = [
+    {
+        ...qubelyField,
+        settings: {
+            ...qubelyField.settings,
+            title: __('Text'),
+            description: __('Text field for Qubely Form'),
+            attributes: {
+                ...qubelyField.settings.attributes,
+                type: {
+                    type: 'string',
+                    default: 'text'
+                },
+            }
+
+        },
+        blockName: "qubely/formfield-text"
+    },
+    {
+        ...qubelyField,
+        settings: {
+            ...qubelyField.settings,
+            title: __('Number'),
+            description: __('Number field for Qubely Form'),
+            attributes: {
+                ...qubelyField.settings.attributes,
+                type: {
+                    type: 'string',
+                    default: 'number'
+                },
+            }
+
+        },
+        blockName: "qubely/formfield-number"
+    },
+    {
+        ...qubelyField,
+        settings: {
+            ...qubelyField.settings,
+            title: __('Email'),
+            description: __('Email field for Qubely Form'),
+            attributes: {
+                ...qubelyField.settings.attributes,
+                type: {
+                    type: 'string',
+                    default: 'email'
+                },
+            }
+
+        },
+        blockName: "qubely/formfield-email"
+    },
+    {
+        ...qubelyField,
+        settings: {
+            ...qubelyField.settings,
+            title: __('Textarea'),
+            description: __('Textarea field for Qubely Form'),
+            attributes: {
+                ...qubelyField.settings.attributes,
+                type: {
+                    type: 'string',
+                    default: 'textarea'
+                },
+            }
+
+        },
+        blockName: "qubely/formfield-textarea"
+    },
+    {
+        ...qubelyField,
+        settings: {
+            ...qubelyField.settings,
+            title: __('Dropdown'),
+            description: __('Dropdown field for Qubely Form'),
+            attributes: {
+                ...qubelyField.settings.attributes,
+                type: {
+                    type: 'string',
+                    default: 'dropdown'
+                },
+                options: {
+                    type: 'array',
+                    default: ['option one', 'option two', 'option three']
+                },
+            }
+
+        },
+        blockName: "qubely/formfield-dropdown"
+    },
+]
+
+
 /**
  * Register form fields
  */
 export const registerFromFields = () => {
-    [
-        {
-            ...qubelyFormField,
-            settings: {
-                ...qubelyFormField.settings,
-                title: __('Text'),
-                description: __('Text field for Qubely Form'),
-                attributes: {
-                    ...qubelyFormField.settings.attributes,
-                    type: {
-                        type: 'string',
-                        default: 'text'
-                    },
-                }
-
-            },
-            blockName: "qubely/formfield-text"
-        },
-        {
-            ...qubelyFormField,
-            settings: {
-                ...qubelyFormField.settings,
-                title: __('Number'),
-                description: __('Number field for Qubely Form'),
-                attributes: {
-                    ...qubelyFormField.settings.attributes,
-                    type: {
-                        type: 'string',
-                        default: 'number'
-                    },
-                }
-
-            },
-            blockName: "qubely/formfield-number"
-        },
-        {
-            ...qubelyFormField,
-            settings: {
-                ...qubelyFormField.settings,
-                title: __('Email'),
-                description: __('Email field for Qubely Form'),
-                attributes: {
-                    ...qubelyFormField.settings.attributes,
-                    type: {
-                        type: 'string',
-                        default: 'email'
-                    },
-                }
-
-            },
-            blockName: "qubely/formfield-email"
-        },
-        {
-            ...qubelyFormField,
-            settings: {
-                ...qubelyFormField.settings,
-                title: __('Textarea'),
-                description: __('Textarea field for Qubely Form'),
-                attributes: {
-                    ...qubelyFormField.settings.attributes,
-                    type: {
-                        type: 'string',
-                        default: 'textarea'
-                    },
-                }
-
-            },
-            blockName: "qubely/formfield-textarea"
-        },
-    ].forEach(registerBlock);
+    qubelyFormFields.forEach(registerBlock);
 }
 
 registerFromFields()
