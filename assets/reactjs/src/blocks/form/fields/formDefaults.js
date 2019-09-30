@@ -11,9 +11,9 @@ const FieldDefaults = {
             type: 'string',
             default: ''
         },
-        parentId: {
+        type: {
             type: 'string',
-            default: ''
+            default: null
         },
         width: {
             type: 'number',

@@ -11,6 +11,7 @@ const defaultFormItems = [
     { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: 50, required: true, hideLabel: false },
     { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false },
     { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: 90, required: true, hideLabel: false },
+    { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 90, required: false, hideLabel: false },
     { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false }
 ]
 

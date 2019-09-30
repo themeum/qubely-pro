@@ -14,12 +14,9 @@ import './style.scss'
 
 import FieldDefaults from './formDefaults'
 
-const blockName = 'qubely/formfield-text'
 
 const settings = {
     ...FieldDefaults,
-    title: __('Name'),
-    description: __('Text field for Qubely Form'),
     icon: 'forms',
     edit: props => Edit(props),
     save: props => Save(props)
@@ -29,6 +26,7 @@ const settings = {
 const Edit = (props) => {
 
     const {
+        name,
         clientId,
         attributes,
         setAttributes,
@@ -50,10 +48,24 @@ const Edit = (props) => {
             setAttributes({ uniqueId: _client })
         }
     })
+    const renderInput = () => {
+        return (
+            <Fragment>
+                {
+                    type === 'textarea' ?
+
+                        <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)} required={required} />
+                        :
+                        <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
+                }
+            </Fragment>
+        )
+    }
 
 
+    const blockname = name.split('/')[1]
 
-    if (uniqueId) { CssGenerator(attributes, 'formfield-text', uniqueId) }
+    if (uniqueId) { CssGenerator(attributes, blockname, uniqueId) }
 
     return (
         <Fragment>
@@ -80,8 +92,7 @@ const Edit = (props) => {
                         value={label}
                         onChange={value => setAttributes({ label: value })}
                     />
-                    <input className={`qubely-form-field qubely-form-text`} type={type} placeholder={__(placeHolder)} required={required} />
-
+                    {renderInput()}
                 </div>
             </div>
 
@@ -109,4 +120,4 @@ const Save = (props) => {
 }
 
 
-export { blockName, settings }
+export { settings }
