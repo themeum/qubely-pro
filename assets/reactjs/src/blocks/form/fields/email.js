@@ -14,12 +14,12 @@ import './style.scss'
 
 import FieldDefaults from './formDefaults'
 
-const blockName = 'qubely/formfield-text'
+const blockName = 'qubely/formfield-email'
 
 const settings = {
     ...FieldDefaults,
-    title: __('Name'),
-    description: __('Text field for Qubely Form'),
+    title: __('Email'),
+    description: __('Email field for Qubely Form'),
     icon: 'forms',
     edit: props => Edit(props),
     save: props => Save(props)
@@ -53,7 +53,7 @@ const Edit = (props) => {
 
 
 
-    if (uniqueId) { CssGenerator(attributes, 'formfield-text', uniqueId) }
+    if (uniqueId) { CssGenerator(attributes, 'formfield-email', uniqueId) }
 
     return (
         <Fragment>
@@ -80,7 +80,7 @@ const Edit = (props) => {
                         value={label}
                         onChange={value => setAttributes({ label: value })}
                     />
-                    <input className={`qubely-form-field qubely-form-text`} type={type} placeholder={__(placeHolder)} required={required} />
+                    <input className={`qubely-form-field qubely-form-email`} type={'email'} placeholder={__(placeHolder)} required={required} />
 
                 </div>
             </div>

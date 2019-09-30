@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-field-wrapper {\n  width: 100%; }\n\n.components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-right {\n  right: -30px;\n  top: 0;\n  background: transparent;\n  z-index: 9999;\n  width: auto;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  transform: translateX(50%);\n  background: transparent; }\n  .components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-right::before {\n    width: 6px;\n    height: 34px;\n    border: 0;\n    border-radius: 1.5px; }\n\n.components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-bottom {\n  background: transparent;\n  z-index: 9999;\n  width: auto;\n  display: flex;\n  align-items: center;\n  transform: translate(-50%, 50%);\n  background: transparent;\n  left: 50%; }\n  .components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-bottom::before {\n    width: 34px;\n    height: 6px;\n    border: 0;\n    border-radius: 1.5px; }\n", ""]);
+exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  width: 100%; }\n\n.components-resizable-box__container.qubely-form-field-resizer\n> span\n> .components-resizable-box__handle.components-resizable-box__handle-right {\n  right: -30px;\n  top: 0;\n  background: transparent;\n  z-index: 9999;\n  width: auto;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  transform: translateX(50%);\n  background: transparent; }\n  .components-resizable-box__container.qubely-form-field-resizer\n> span\n> .components-resizable-box__handle.components-resizable-box__handle-right::before {\n    width: 6px;\n    height: 34px;\n    border: 0;\n    border-radius: 1.5px; }\n\n.components-resizable-box__container.qubely-form-field-resizer\n> span\n> .components-resizable-box__handle.components-resizable-box__handle-bottom {\n  background: transparent;\n  z-index: 9999;\n  width: auto;\n  display: flex;\n  align-items: center;\n  transform: translate(-50%, 50%);\n  background: transparent;\n  left: 50%; }\n  .components-resizable-box__container.qubely-form-field-resizer\n> span\n> .components-resizable-box__handle.components-resizable-box__handle-bottom::before {\n    width: 34px;\n    height: 6px;\n    border: 0;\n    border-radius: 1.5px; }\n", ""]);
 
 
 
@@ -1079,7 +1079,6 @@ var Edit = function (_Component) {
             if (uniqueId) {
                 CssGenerator(attributes, 'form', uniqueId);
             }
-
             return React.createElement(
                 Fragment,
                 null,
@@ -1456,135 +1455,14 @@ var Edit = function (_Component) {
                         React.createElement(
                             'form',
                             { className: 'qubely-form' },
-                            formItems.map(function (item, index) {
-                                return React.createElement(
-                                    'div',
-                                    { key: index, className: 'qubely-form-group qubely-form-group-index-' + index + ' ' + (selectedItem == index ? 'qubely-form-group-active' : ''), style: { width: item.width.md + '%' }, onClick: function onClick() {
-                                            return _this2.setState({ selectedItem: index });
-                                        } },
-                                    React.createElement(
-                                        'div',
-                                        { className: 'qubely-form-group-inner' },
-                                        !item.hideLabel && layout == 'classic' && _this2.renderLabel(index, item.required),
-                                        (item.type == 'text' || item.type == 'email') && React.createElement('input', { className: 'qubely-form-control is-' + inputSize, type: item.type, placeholder: __(item.placeholder), required: item.required, disabled: true }),
-                                        (item.type == 'radio' || item.type == 'checkbox') && React.createElement(
-                                            'div',
-                                            null,
-                                            item.options && item.options.map(function (option, i) {
-                                                return React.createElement(
-                                                    'div',
-                                                    { className: 'qubely-radio-control' },
-                                                    React.createElement('input', { type: item.type, name: 'option' + index, value: option }),
-                                                    React.createElement(
-                                                        'label',
-                                                        { contenteditable: 'true', onBlur: function onBlur(e) {
-                                                                return _this2.setOptionSettings(index, i, e.target.innerText);
-                                                            } },
-                                                        ' ',
-                                                        option,
-                                                        ' '
-                                                    ),
-                                                    React.createElement(
-                                                        'span',
-                                                        { className: 'qubely-form-option-remove', onClick: function onClick(e) {
-                                                                _this2.removeOption(index, i);
-                                                            } },
-                                                        React.createElement('i', { className: 'fa fa-times' })
-                                                    )
-                                                );
-                                            }),
-                                            selectedItem >= 0 && selectedItem == index && React.createElement(
-                                                'span',
-                                                { onClick: function onClick() {
-                                                        return _this2.insertOption(index);
-                                                    } },
-                                                React.createElement('i', { className: 'fa fa-plus' })
-                                            )
-                                        ),
-                                        item.type == 'textarea' && React.createElement('textarea', { className: 'qubely-form-control', placeholder: __(item.placeholder), required: item.required, disabled: true }),
-                                        item.type == 'dropdown' && React.createElement(
-                                            'div',
-                                            { 'class': 'qubely-dropdown-control' },
-                                            React.createElement('input', { type: 'text', onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.setState({ dropdownOpen: dropdownOpen == index ? -1 : index });
-                                                } }),
-                                            dropdownOpen == index && React.createElement(
-                                                'ul',
-                                                { 'class': 'qubely-dropdown-content' },
-                                                item.options && item.options.map(function (option, i) {
-                                                    return React.createElement(
-                                                        'li',
-                                                        null,
-                                                        React.createElement(
-                                                            'span',
-                                                            { contenteditable: 'true', onBlur: function onBlur(e) {
-                                                                    return _this2.setOptionSettings(index, i, e.target.innerText);
-                                                                } },
-                                                            option
-                                                        ),
-                                                        React.createElement('i', { className: 'fa fa-times', onClick: function onClick(e) {
-                                                                _this2.removeOption(index, i);
-                                                            } })
-                                                    );
-                                                }),
-                                                React.createElement(
-                                                    'span',
-                                                    { onClick: function onClick() {
-                                                            return _this2.insertOption(index);
-                                                        } },
-                                                    React.createElement('i', { className: 'fa fa-plus' })
-                                                )
-                                            )
-                                        ),
-                                        !item.hideLabel && layout == 'material' && _this2.renderLabel(index, item.required)
-                                    ),
-                                    React.createElement(
-                                        'div',
-                                        { className: 'qubely-form-group-option' },
-                                        React.createElement(
-                                            'span',
-                                            { onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.moveItem(index, 'left');
-                                                }, className: index == 0 && 'qubely-option-disable' },
-                                            React.createElement('i', { 'class': 'fa fa-long-arrow-alt-up' })
-                                        ),
-                                        React.createElement(
-                                            'span',
-                                            { onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.moveItem(index, 'right');
-                                                }, className: index == formItems.length - 1 && 'qubely-option-disable' },
-                                            React.createElement('i', { 'class': 'fa fa-long-arrow-alt-down' })
-                                        ),
-                                        React.createElement(
-                                            'span',
-                                            { onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.cloneItem(index);
-                                                } },
-                                            React.createElement('i', { 'class': 'fa fa-copy' })
-                                        ),
-                                        React.createElement(
-                                            'span',
-                                            { onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.removeItem(index);
-                                                } },
-                                            React.createElement('i', { 'class': 'fa fa-times-circle' })
-                                        )
-                                    )
-                                );
-                            }),
-                            policyCheckbox && React.createElement(
-                                'div',
-                                { className: 'qubely-form-group', style: { width: '100%' } },
-                                React.createElement('input', { className: '', type: 'checkbox', name: 'policy', id: 'qubely-form-policy-checkbox', value: 'Yes' }),
-                                React.createElement(RichText, {
-                                    tagName: 'label',
-                                    className: '',
-                                    value: policyCheckboxText,
-                                    onChange: function onChange(val) {
-                                        return setAttributes({ policyCheckboxText: val });
-                                    }
-                                })
-                            )
+                            React.createElement(InnerBlocks, { template: formItems.map(function (_ref) {
+                                    var type = _ref.type,
+                                        label = _ref.label,
+                                        placeholder = _ref.placeholder,
+                                        width = _ref.width,
+                                        required = _ref.required;
+                                    return ['qubely/formfield-' + type, { label: label, placeholder: placeholder, width: width, required: required }];
+                                }) })
                         ),
                         React.createElement(
                             'div',
@@ -1602,9 +1480,6 @@ var Edit = function (_Component) {
                                 }
                             })
                         ),
-                        React.createElement(InnerBlocks, { template: [0, 1, 2].map(function (item) {
-                                return ['qubely/formfield-name', { parentId: uniqueId }];
-                            }) }),
                         React.createElement(
                             'div',
                             { className: 'qubely-form-add-item' },
@@ -1881,6 +1756,154 @@ exports.default = Save;
 
 /***/ }),
 
+/***/ "./src/blocks/form/fields/email.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/form/fields/email.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.settings = exports.blockName = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
+
+var _formDefaults = __webpack_require__(/*! ./formDefaults */ "./src/blocks/form/fields/formDefaults.js");
+
+var _formDefaults2 = _interopRequireDefault(_formDefaults);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    RichText = _wp$editor.RichText;
+var _wp$element = wp.element,
+    useEffect = _wp$element.useEffect,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    RangeControl = _wp$components.RangeControl;
+var CssGenerator = wp.qubelyComponents.CssGenerator.CssGenerator;
+
+
+var blockName = 'qubely/formfield-email';
+
+var settings = _extends({}, _formDefaults2.default, {
+    title: __('Email'),
+    description: __('Email field for Qubely Form'),
+    icon: 'forms',
+    edit: function edit(props) {
+        return Edit(props);
+    },
+    save: function save(props) {
+        return Save(props);
+    }
+});
+
+var Edit = function Edit(props) {
+    var clientId = props.clientId,
+        attributes = props.attributes,
+        setAttributes = props.setAttributes,
+        _props$attributes = props.attributes,
+        uniqueId = _props$attributes.uniqueId,
+        width = _props$attributes.width,
+        type = _props$attributes.type,
+        label = _props$attributes.label,
+        placeHolder = _props$attributes.placeHolder,
+        required = _props$attributes.required;
+
+
+    useEffect(function () {
+        var _client = clientId.substr(0, 6);
+        if (!uniqueId) {
+            setAttributes({ uniqueId: _client });
+        } else if (uniqueId && uniqueId != _client) {
+            setAttributes({ uniqueId: _client });
+        }
+    });
+
+    if (uniqueId) {
+        CssGenerator(attributes, 'formfield-email', uniqueId);
+    }
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            InspectorControls,
+            null,
+            React.createElement(
+                PanelBody,
+                { title: __('Form-field Settings'), opened: true },
+                React.createElement(RangeControl, {
+                    label: __('Percentage width'),
+                    value: width || '',
+                    onChange: function onChange(value) {
+                        return setAttributes({ width: value });
+                    },
+                    min: 0,
+                    max: 100,
+                    required: true,
+                    allowReset: true
+                })
+            )
+        ),
+        React.createElement(
+            'div',
+            { className: 'qubely-block-' + uniqueId },
+            React.createElement(
+                'div',
+                { className: 'qubely-form-field-wrapper' },
+                React.createElement(RichText, {
+                    placeholder: __('Input label'),
+                    className: 'qubely-form-field-label',
+                    value: label,
+                    onChange: function onChange(value) {
+                        return setAttributes({ label: value });
+                    }
+                }),
+                React.createElement('input', { className: 'qubely-form-field qubely-form-email', type: 'email', placeholder: __(placeHolder), required: required })
+            )
+        )
+    );
+};
+
+var Save = function Save(props) {
+    var _props$attributes2 = props.attributes,
+        uniqueId = _props$attributes2.uniqueId,
+        label = _props$attributes2.label,
+        type = _props$attributes2.type,
+        width = _props$attributes2.width,
+        placeHolder = _props$attributes2.placeHolder,
+        required = _props$attributes2.required;
+
+
+    var style = void 0;
+    if (Number.isFinite(width)) {
+        style = { width: width + '%' };
+    }
+
+    return React.createElement(
+        'div',
+        { className: 'qubely-block-' + uniqueId, style: style },
+        React.createElement(RichText.Content, { className: 'qubely-form-field-label', value: label }),
+        React.createElement('input', { className: 'qubely-form-field qubely-form-text', type: 'text', placeholder: __(placeHolder), required: required })
+    );
+};
+
+exports.blockName = blockName;
+exports.settings = settings;
+
+/***/ }),
+
 /***/ "./src/blocks/form/fields/formDefaults.js":
 /*!************************************************!*\
   !*** ./src/blocks/form/fields/formDefaults.js ***!
@@ -1950,6 +1973,10 @@ var _text = __webpack_require__(/*! ./text */ "./src/blocks/form/fields/text.js"
 
 var text = _interopRequireWildcard(_text);
 
+var _email = __webpack_require__(/*! ./email */ "./src/blocks/form/fields/email.js");
+
+var email = _interopRequireWildcard(_email);
+
 __webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -1988,7 +2015,7 @@ var registerBlock = function registerBlock(block) {
  * Register form fields
  */
 var registerFromFields = exports.registerFromFields = function registerFromFields() {
-    [text].forEach(registerBlock);
+    [text, email].forEach(registerBlock);
 };
 
 registerFromFields();
@@ -2063,7 +2090,7 @@ var _wp$components = wp.components,
 var CssGenerator = wp.qubelyComponents.CssGenerator.CssGenerator;
 
 
-var blockName = 'qubely/formfield-name';
+var blockName = 'qubely/formfield-text';
 
 var settings = _extends({}, _formDefaults2.default, {
     title: __('Name'),
@@ -2100,7 +2127,7 @@ var Edit = function Edit(props) {
     });
 
     if (uniqueId) {
-        CssGenerator(attributes, 'formfield-name', uniqueId);
+        CssGenerator(attributes, 'formfield-text', uniqueId);
     }
 
     return React.createElement(
@@ -2164,7 +2191,7 @@ var Save = function Save(props) {
         'div',
         { className: 'qubely-block-' + uniqueId, style: style },
         React.createElement(RichText.Content, { className: 'qubely-form-field-label', value: label }),
-        React.createElement('input', { className: 'qubely-form-field qubely-form-text', type: type, placeholder: __(placeHolder), required: required })
+        React.createElement('input', { className: 'qubely-form-field qubely-form-text', type: 'text', placeholder: __(placeHolder), required: required })
     );
 };
 
@@ -2208,7 +2235,7 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonAttributes = _wp$qubelyComponents.QubelyButton.buttonAttributes;
 
 
-var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: { md: 50 }, required: true, hideLabel: false }, { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: { md: 50 }, required: true, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: { md: 50 }, required: true, hideLabel: false }, { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: { md: 50 }, required: true, hideLabel: false }, { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: { md: 100 }, required: true, hideLabel: false }];
+var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false }, { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: 50, required: true, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false }, { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: 90, required: true, hideLabel: false }];
 
 registerBlockType('qubely/form', {
     title: __('Form'),

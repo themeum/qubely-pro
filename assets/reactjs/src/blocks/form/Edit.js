@@ -137,6 +137,8 @@ class Edit extends Component {
             </label>
         )
     }
+
+
     render() {
         const {
             attributes,
@@ -215,7 +217,6 @@ class Edit extends Component {
         const { device, selectedItem, dropdownOpen } = this.state
 
         if (uniqueId) { CssGenerator(attributes, 'form', uniqueId); }
-
         return (
             <Fragment>
                 <InspectorControls key="inspector">
@@ -511,80 +512,7 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
                         <form className="qubely-form">
-                            {formItems.map((item, index) =>
-                                <div key={index} className={`qubely-form-group qubely-form-group-index-${index} ${selectedItem == index ? 'qubely-form-group-active' : ''}`} style={{ width: `${item.width.md}%` }} onClick={() => this.setState({ selectedItem: index })}>
-                                    <div className="qubely-form-group-inner">
-
-                                        {(!item.hideLabel && layout == 'classic') && this.renderLabel(index, item.required)}
-
-                                        {/* Text and Email */}
-                                        {(item.type == 'text' || item.type == 'email') &&
-                                            <input className={`qubely-form-control is-${inputSize}`} type={item.type} placeholder={__(item.placeholder)} required={item.required} disabled />
-                                        }
-
-                                        {/* Radio and Checkbox */}
-                                        {(item.type == 'radio' || item.type == 'checkbox') &&
-                                            <div>
-                                                {item.options && item.options.map((option, i) =>
-                                                    <div className="qubely-radio-control">
-                                                        <input type={item.type} name={`option${index}`} value={option} />
-                                                        <label contenteditable="true" onBlur={(e) => this.setOptionSettings(index, i, e.target.innerText)}> {option} </label>
-                                                        <span className="qubely-form-option-remove" onClick={(e) => { this.removeOption(index, i) }} >
-                                                            <i className="fa fa-times" />
-                                                        </span>
-                                                    </div>
-                                                )}
-                                                {(selectedItem >= 0) && (selectedItem == index) &&
-                                                    <span onClick={() => this.insertOption(index)}><i className="fa fa-plus" /></span>
-                                                }
-                                            </div>
-                                        }
-
-                                        {/* Textarea */}
-                                        {item.type == 'textarea' &&
-                                            <textarea className="qubely-form-control" placeholder={__(item.placeholder)} required={item.required} disabled></textarea>
-                                        }
-
-                                        {/* Dropdown */}
-                                        {item.type == 'dropdown' &&
-                                            <div class="qubely-dropdown-control">
-                                                <input type="text" onClick={(e) => { e.stopPropagation(); this.setState({ dropdownOpen: (dropdownOpen == index) ? -1 : index }) }} />
-                                                {(dropdownOpen == index) &&
-                                                    <ul class="qubely-dropdown-content">
-                                                        {item.options && item.options.map((option, i) =>
-                                                            <li>
-                                                                <span contenteditable="true" onBlur={(e) => this.setOptionSettings(index, i, e.target.innerText)}>{option}</span>
-                                                                <i className="fa fa-times" onClick={(e) => { this.removeOption(index, i) }} />
-                                                            </li>
-                                                        )}
-                                                        <span onClick={() => this.insertOption(index)}><i className="fa fa-plus" /></span>
-                                                    </ul>
-                                                }
-                                            </div>
-                                        }
-
-                                        {(!item.hideLabel && layout == 'material') && this.renderLabel(index, item.required)}
-
-                                    </div>
-                                    <div className="qubely-form-group-option">
-                                        <span onClick={(e) => { e.stopPropagation(); this.moveItem(index, 'left'); }} className={(index == 0) && 'qubely-option-disable'}><i class="fa fa-long-arrow-alt-up" /></span>
-                                        <span onClick={(e) => { e.stopPropagation(); this.moveItem(index, 'right'); }} className={(index == formItems.length - 1) && 'qubely-option-disable'}><i class="fa fa-long-arrow-alt-down" /></span>
-                                        <span onClick={(e) => { e.stopPropagation(); this.cloneItem(index); }}><i class="fa fa-copy" /></span>
-                                        <span onClick={(e) => { e.stopPropagation(); this.removeItem(index); }}><i class="fa fa-times-circle" /></span>
-                                    </div>
-                                </div>
-                            )}
-                            {policyCheckbox &&
-                                <div className="qubely-form-group" style={{ width: '100%' }}>
-                                    <input className="" type="checkbox" name="policy" id="qubely-form-policy-checkbox" value="Yes" />
-                                    <RichText
-                                        tagName="label"
-                                        className=""
-                                        value={policyCheckboxText}
-                                        onChange={val => setAttributes({ policyCheckboxText: val })}
-                                    />
-                                </div>
-                            }
+                            <InnerBlocks template={formItems.map(({ type, label, placeholder, width, required }) => [`qubely/formfield-${type}`, { label, placeholder, width, required }])} />
                         </form>
 
 
@@ -600,8 +528,6 @@ class Edit extends Component {
                                 onTextChange={value => setAttributes({ buttonText: value })}
                             />
                         </div>
-
-                        <InnerBlocks template={[0, 1, 2].map((item) => ['qubely/formfield-name', { parentId: uniqueId }])} />
 
                         <div className="qubely-form-add-item">
                             <span className="qubely-action-add-form-item">Add new item</span>

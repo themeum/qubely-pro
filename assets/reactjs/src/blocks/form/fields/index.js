@@ -5,6 +5,7 @@ const { registerBlockType } = wp.blocks
  * import required attributes of form fields
  */
 import * as text from './text';
+import * as email from './email';
 
 import './style.scss'
 
@@ -37,6 +38,7 @@ const registerBlock = (block) => {
 export const registerFromFields = () => {
     [
         text,
+        email,
     ].forEach(registerBlock);
 }
 

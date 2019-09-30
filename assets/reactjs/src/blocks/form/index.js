@@ -7,11 +7,11 @@ const { registerBlockType } = wp.blocks;
 const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes } } = wp.qubelyComponents
 
 const defaultFormItems = [
-    { type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: { md: 50 }, required: true, hideLabel: false },
-    { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: { md: 50 }, required: true, hideLabel: false },
-    { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: { md: 50 }, required: true, hideLabel: false },
-    { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: { md: 50 }, required: true, hideLabel: false },
-    { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: { md: 100 }, required: true, hideLabel: false }
+    { type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false },
+    { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: 50, required: true, hideLabel: false },
+    { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false },
+    { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: 90, required: true, hideLabel: false },
+    // { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: { md: 100 }, required: true, hideLabel: false }
 ]
 
 registerBlockType('qubely/form', {
