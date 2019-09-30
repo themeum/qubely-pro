@@ -3483,7 +3483,7 @@ registerBlockType('qubely/imagecarousel', {
 			style: [{ selector: '{{QUBELY}} .qubely-carousel-nav-control .nav-control:hover { border-radius: {{cornerHoverRadius}}; } ' }]
 		},
 		sizeWidth: {
-			type: 'string',
+			type: 'object',
 			default: { md: 12, unit: 'px' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { padding: {{sizeWidth}}; } ' }]
 		},
@@ -4145,9 +4145,25 @@ var Edit = function (_Component) {
 			    dragable = _props2$attributes.dragable,
 			    activeFade = _props2$attributes.activeFade,
 			    nav = _props2$attributes.nav,
-			    arrowStyle = _props2$attributes.arrowStyle,
-			    arrowPosition = _props2$attributes.arrowPosition,
-			    dots = _props2$attributes.dots;
+			    navStyle = _props2$attributes.navStyle,
+			    horizontalPosition = _props2$attributes.horizontalPosition,
+			    verticalPosition = _props2$attributes.verticalPosition,
+			    shapeWidth = _props2$attributes.shapeWidth,
+			    navSize = _props2$attributes.navSize,
+			    navColor = _props2$attributes.navColor,
+			    navShapeColor = _props2$attributes.navShapeColor,
+			    navBorderColor = _props2$attributes.navBorderColor,
+			    navigationRadius = _props2$attributes.navigationRadius,
+			    navHoverColor = _props2$attributes.navHoverColor,
+			    navShapeHoverColor = _props2$attributes.navShapeHoverColor,
+			    navBorderHoverColor = _props2$attributes.navBorderHoverColor,
+			    navHoverRadius = _props2$attributes.navHoverRadius,
+			    dots = _props2$attributes.dots,
+			    dotwidth = _props2$attributes.dotwidth,
+			    dotHeight = _props2$attributes.dotHeight,
+			    dotBorderRadius = _props2$attributes.dotBorderRadius,
+			    dotColor = _props2$attributes.dotColor,
+			    dotActiveColor = _props2$attributes.dotActiveColor;
 			var device = this.state.device;
 
 
@@ -4166,8 +4182,8 @@ var Edit = function (_Component) {
 				autoplay: autoPlay,
 				interval: interval,
 				center: isCentered,
-				arrowStyle: arrowStyle,
-				arrowPosition: arrowPosition,
+				navStyle: navStyle,
+				arrowPosition: verticalPosition,
 				responsive: [{
 					viewport: 1170,
 					items: postitems.md
@@ -4229,7 +4245,185 @@ var Edit = function (_Component) {
 						{ title: __('Slider Settings'), initialOpen: false },
 						React.createElement(Toggle, { label: __('Show Arrow Navigation'), value: nav, onChange: function onChange(value) {
 								return setAttributes({ nav: value });
-							} })
+							} }),
+						nav && React.createElement(
+							Fragment,
+							null,
+							React.createElement(ButtonGroup, {
+								label: __('Navigation Style'),
+								options: [[React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt' }), 'arrowright'], [React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt2' }), 'arrowright2']],
+								value: navStyle,
+								onChange: function onChange(value) {
+									return setAttributes({ navStyle: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Horizontal Position'),
+								value: horizontalPosition, onChange: function onChange(value) {
+									return setAttributes({ horizontalPosition: value });
+								},
+								min: -100, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Vertical Position'),
+								value: verticalPosition, onChange: function onChange(value) {
+									return setAttributes({ verticalPosition: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Shape Size'),
+								value: shapeWidth, onChange: function onChange(value) {
+									return setAttributes({ shapeWidth: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Arrow Size'),
+								value: navSize, onChange: function onChange(value) {
+									return setAttributes({ navSize: value });
+								},
+								min: 0, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(
+								Tabs,
+								null,
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Normal') },
+									React.createElement(Color, { label: __('Navigation Color'), value: navColor, onChange: function onChange(value) {
+											return setAttributes({ navColor: value });
+										} }),
+									React.createElement(Color, { label: __('Navigation Shape Color'), value: navShapeColor, onChange: function onChange(val) {
+											return setAttributes({ navShapeColor: val });
+										} }),
+									React.createElement(Border, { label: __('Navigation Border'), value: navBorderColor, onChange: function onChange(val) {
+											return setAttributes({ navBorderColor: val });
+										} }),
+									React.createElement(BorderRadius, {
+										min: 0,
+										max: 100,
+										responsive: true,
+										device: device,
+										label: __('Navigation Corner'),
+										value: navigationRadius,
+										unit: ['px', 'em', '%'],
+										onChange: function onChange(value) {
+											return setAttributes({ navigationRadius: value });
+										},
+										onDeviceChange: function onDeviceChange(value) {
+											return _this3.setState({ device: value });
+										}
+									})
+								),
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Hover') },
+									React.createElement(Color, { label: __('Navigation Hover Color'), value: navHoverColor, onChange: function onChange(value) {
+											return setAttributes({ navHoverColor: value });
+										} }),
+									React.createElement(Color, { label: __('Shape Hover Color'), value: navShapeHoverColor, onChange: function onChange(val) {
+											return setAttributes({ navShapeHoverColor: val });
+										} }),
+									React.createElement(Border, { label: __('Border Hover Color'), value: navBorderHoverColor, onChange: function onChange(val) {
+											return setAttributes({ navBorderHoverColor: val });
+										} }),
+									React.createElement(BorderRadius, {
+										label: __('Corner Hover Radius'),
+										value: navHoverRadius, onChange: function onChange(value) {
+											return setAttributes({ navHoverRadius: value });
+										},
+										min: 1, max: 100,
+										responsive: true, unit: ['px', 'em', '%'],
+										device: device,
+										onDeviceChange: function onDeviceChange(value) {
+											return _this3.setState({ device: value });
+										}
+									})
+								)
+							)
+						),
+						React.createElement(Toggle, { label: __('Show Dot Navigation'), value: dots, onChange: function onChange(value) {
+								return setAttributes({ dots: value });
+							} }),
+						dots && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Range, {
+								label: __('Dot Width'),
+								value: dotwidth, onChange: function onChange(value) {
+									return setAttributes({ dotwidth: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Dot Height'),
+								value: dotHeight, onChange: function onChange(value) {
+									return setAttributes({ dotHeight: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Dot Border Radius'),
+								value: dotBorderRadius, onChange: function onChange(value) {
+									return setAttributes({ dotBorderRadius: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(
+								Tabs,
+								null,
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Normal') },
+									React.createElement(ColorAdvanced, { label: __('Dot Color'), value: dotColor, onChange: function onChange(val) {
+											return setAttributes({ dotColor: val });
+										} })
+								),
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Active') },
+									React.createElement(ColorAdvanced, { label: __('Dot Active Color'), value: dotActiveColor, onChange: function onChange(val) {
+											return setAttributes({ dotActiveColor: val });
+										} })
+								)
+							)
+						)
 					),
 					React.createElement(
 						PanelBody,

@@ -136,7 +136,7 @@ registerBlockType('qubely/imagecarousel', {
 			]
 		},
 		sizeWidth: {
-			type: 'string',
+			type: 'object',
 			default: { md: 12, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { padding: {{sizeWidth}}; } ' }
