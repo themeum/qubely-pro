@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  width: 100%; }\n\n.components-resizable-box__container.qubely-form-field-resizer\n> span\n> .components-resizable-box__handle.components-resizable-box__handle-right {\n  right: -30px;\n  top: 0;\n  background: transparent;\n  z-index: 9999;\n  width: auto;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  transform: translateX(50%);\n  background: transparent; }\n  .components-resizable-box__container.qubely-form-field-resizer\n> span\n> .components-resizable-box__handle.components-resizable-box__handle-right::before {\n    width: 6px;\n    height: 34px;\n    border: 0;\n    border-radius: 1.5px; }\n\n.components-resizable-box__container.qubely-form-field-resizer\n> span\n> .components-resizable-box__handle.components-resizable-box__handle-bottom {\n  background: transparent;\n  z-index: 9999;\n  width: auto;\n  display: flex;\n  align-items: center;\n  transform: translate(-50%, 50%);\n  background: transparent;\n  left: 50%; }\n  .components-resizable-box__container.qubely-form-field-resizer\n> span\n> .components-resizable-box__handle.components-resizable-box__handle-bottom::before {\n    width: 34px;\n    height: 6px;\n    border: 0;\n    border-radius: 1.5px; }\n", ""]);
+exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  width: 100%; }\n  .qubely-form-field-wrapper .qubely-form-field-radio-option,\n  .qubely-form-field .qubely-form-field-radio-option {\n    display: flex;\n    align-items: center; }\n", ""]);
 
 
 
@@ -1930,6 +1930,40 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-dropdown"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Radio'),
+        description: __('Radio field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            type: {
+                type: 'string',
+                default: 'radio'
+            },
+            options: {
+                type: 'array',
+                default: ['option one', 'option two', 'option three']
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-radio"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Checkbox'),
+        description: __('Checkbox field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            type: {
+                type: 'string',
+                default: 'checkbox'
+            },
+            options: {
+                type: 'array',
+                default: ['option one', 'option two', 'option three']
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-checkbox"
 })];
 
 /**
@@ -2028,7 +2062,7 @@ var Edit = function Edit(props) {
             null,
             type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), required: required }) : type === 'dropdown' ? React.createElement(
                 'select',
-                { value: dropdownValue, onChange: function onChange(event) {
+                { className: 'qubely-form-field qubely-form-dropdown', value: dropdownValue, onChange: function onChange(event) {
                         return console.log('value : ', event.target.value);
                     } },
                 options.map(function (option) {
@@ -2036,6 +2070,21 @@ var Edit = function Edit(props) {
                         'option',
                         { value: option },
                         option
+                    );
+                })
+            ) : type === 'radio' || type === 'checkbox' ? React.createElement(
+                'div',
+                { className: 'qubely-form-field qubely-form-' + type },
+                options.map(function (option) {
+                    return React.createElement(
+                        'div',
+                        { className: 'qubely-form-field-' + type + '-option' },
+                        React.createElement('input', { type: type, id: option, value: option }),
+                        React.createElement(
+                            'label',
+                            { 'for': option },
+                            'option'
+                        )
                     );
                 })
             ) : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
@@ -2186,6 +2235,18 @@ var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name',
     type: 'dropdown',
     label: 'Select',
     name: 'message',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'radio',
+    label: 'Radio',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'checkbox',
+    label: 'Checkbox',
     width: 50,
     required: true,
     hideLabel: false

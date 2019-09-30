@@ -121,6 +121,48 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-dropdown"
     },
+    {
+        ...qubelyField,
+        settings: {
+            ...qubelyField.settings,
+            title: __('Radio'),
+            description: __('Radio field for Qubely Form'),
+            attributes: {
+                ...qubelyField.settings.attributes,
+                type: {
+                    type: 'string',
+                    default: 'radio'
+                },
+                options: {
+                    type: 'array',
+                    default: ['option one', 'option two', 'option three']
+                },
+            }
+
+        },
+        blockName: "qubely/formfield-radio"
+    },
+    {
+        ...qubelyField,
+        settings: {
+            ...qubelyField.settings,
+            title: __('Checkbox'),
+            description: __('Checkbox field for Qubely Form'),
+            attributes: {
+                ...qubelyField.settings.attributes,
+                type: {
+                    type: 'string',
+                    default: 'checkbox'
+                },
+                options: {
+                    type: 'array',
+                    default: ['option one', 'option two', 'option three']
+                },
+            }
+
+        },
+        blockName: "qubely/formfield-checkbox"
+    },
 ]
 
 

@@ -58,11 +58,23 @@ const Edit = (props) => {
                         <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)} required={required} />
                         :
                         type === 'dropdown' ?
-                            <select value={dropdownValue} onChange={event => console.log('value : ',event.target.value)}>
+                            <select className={`qubely-form-field qubely-form-dropdown`} value={dropdownValue} onChange={event => console.log('value : ', event.target.value)}>
                                 {options.map(option => <option value={option}>{option}</option>)}
                             </select>
                             :
-                            <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
+                            (type === 'radio' || type === 'checkbox') ?
+                                <div className={`qubely-form-field qubely-form-${type}`} >
+                                    {options.map(option => {
+                                        return (
+                                            <div className={`qubely-form-field-${type}-option`}>
+                                                <input type={type} id={option} value={option} />
+                                                <label for={option}>option</label>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                :
+                                <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
                 }
             </Fragment>
         )

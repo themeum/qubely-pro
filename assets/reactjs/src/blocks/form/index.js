@@ -19,6 +19,20 @@ const defaultFormItems = [
         required: true,
         hideLabel: false
     },
+    {
+        type: 'radio',
+        label: 'Radio',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'checkbox',
+        label: 'Checkbox',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
 ]
 
 registerBlockType('qubely/form', {
