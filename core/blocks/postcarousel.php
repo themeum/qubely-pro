@@ -19,27 +19,131 @@ function register_block_qubely_postcarousel_pro()
 					'type' => 'string',
 				),
 
-				// Post Carousel
-				'postitems' => array(
-					'type' 		=> 'object',
-					'default' 	=> array('md' => 2, 'sm' => 2, 'xs' => 1),
-				),
-				'autoPlay' => array(
-					'type' => 'boolean',
-					'default' => false
-				),
-				'isCentered' => array(
+				/* -----------------------------
+				* 	Slider Settings
+				*------------------------------- */
+				'nav' 			=> array(
 					'type' 		=> 'boolean',
 					'default' 	=> true
 				),
+				'arrowStyle' 	=> array(
+					'type' 		=> 'string',
+					'default' 	=> 'arrowright',
+				),
+				'horizontalScroll' => array(
+					'type' 			=> 'object',
+					'default' 		=> (object) array(
+						'md' 	=> 25,
+						'unit' 	=> '%'
+					),
+					'style' 	=> [
+						(object) [
+							'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {right: {{horizontalScroll}};} {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {left: {{horizontalScroll}};}'
+						]
+					]
+				),
+				'arrowPosition' => array(
+					'type' 			=> 'object',
+					'default' 		=> (object) array(
+						'md' 	=> 49,
+						'unit' 	=> '%'
+					),
+					'style' 	=> [
+						(object) [
+							'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { bottom: {{arrowPosition}};}'
+						]
+					]
+				),
+				'sizeWidth' => array(
+					'type' 			=> 'object',
+					'default' 		=> (object) array(
+						'md' 	=> 12,
+						'unit' 	=> 'px'
+					),
+					'style' 	=> [
+						(object) [
+							'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { padding: {{sizeWidth}}; }'
+						]
+					]
+				),
+				'arrowSize' => array(
+					'type' 			=> 'object',
+					'default' 		=> (object) array(
+						'md' 	=> 20,
+						'unit' 	=> 'px'
+					),
+					'style' 	=> [
+						(object) [
+							'selector' => '{{QUBELY}} .qubely-carousel-nav-control .nav-control .dashicons { font-size: {{arrowSize}}; }'
+						]
+					]
+				),
+				# Arrow style.
+				'arrowColor' 	=> array(
+					'type'    	=> 'string',
+					'default' 	=> '#1066CC',
+					'style' 	=> [(object) [
+						'selector' 	=> '{{QUBELY}} .qubely-block-image-carousel .nav-control .dashicons {color: {{arrowColor}};}'
+					]]
+				),
+				# arrow bg color with gradient color.
+				'arrowShapeColor' 	=> array(
+					'type' 		=> 'object',
+					'default' 	=> (object) array(
+						'openColor' 	=> 1,
+						'type' 			=> 'color',
+						'color' 		=> '#fafafa',
+						'gradient'		=> (object) [
+							'color1' 	=> '#16d03e',
+							'color2' 	=> '#1f91f3',
+							'direction' => 45,
+							'start' 	=> 0,
+							'stop' 		=> 100,
+							'type' 		=> 'linear'
+						],
+					),
+					'style' => [(object) [
+						'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control'
+					]]
+				),
+				'arrowBorderColor' 	=> array(
+					'type'    	=> 'string',
+					'default' 	=> '#e2e2e2',
+					'style' 	=> [(object) [
+						'selector' 	=> '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {border-color: {{arrowBorderColor}};}'
+					]]
+				),
+				
+
+
+				// arrowBorderColor, 
+				// cornerRadius, 
+				// arrowHoverColor, 
+				// arrowShapeHoverColor, 
+				// arrowBorderHoverColor, 
+				// cornerHoverRadius,
+
+
+
+				// Post Carousel
+				'postitems' 	=> array(
+					'type' 		=> 'object',
+					'default' 	=> array('md' => 2, 'sm' => 2, 'xs' => 1),
+				),
+				'autoPlay' 		=> array(
+					'type' 		=> 'boolean',
+					'default' 	=> false
+				),
+				'isCentered' 	=> array(
+					'type' 		=> 'boolean',
+					'default' 	=> false
+				), 
+				   
 				// 'dots' => array(
 				// 	'type' => 'boolean',
 				// 	'default' => false
 				// ),
-				'nav' => array(
-					'type' 		=> 'boolean',
-					'default' 	=> true
-				),
+				
 				'activeFade' => array(
 					'type' 		=> 'boolean',
 					'default' 	=> false
