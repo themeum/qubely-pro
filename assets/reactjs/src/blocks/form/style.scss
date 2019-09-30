@@ -5,11 +5,11 @@
     .qubely-form-group {
       position: relative;
       .qubely-form-label {
-		display: flex;
-		padding: 5px 0px;
-		.qubely-form-field-label{
-			padding-right: 20px;
-		}
+        display: flex;
+        padding: 5px 0px;
+        .qubely-form-field-label {
+          padding-right: 20px;
+        }
       }
       .qubely-form-control {
         display: block;
@@ -82,4 +82,11 @@
       }
     }
   }
+}
+
+
+
+.qubely-block-form .editor-inner-blocks>.editor-block-list__layout {
+  display: flex;
+  flex-wrap: wrap;
 }

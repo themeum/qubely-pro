@@ -141,6 +141,7 @@ class Edit extends Component {
         const {
             attributes,
             setAttributes,
+            toggleSelection,
             attributes: {
                 uniqueId,
                 layout,
@@ -202,7 +203,12 @@ class Edit extends Component {
                 globalZindex,
                 hideTablet,
                 hideMobile,
-                globalCss
+                globalCss,
+
+
+
+                height,
+                width,
             }
         } = this.props
 
@@ -595,8 +601,7 @@ class Edit extends Component {
                             />
                         </div>
 
-
-                        <InnerBlocks template={[0, 1, 2].map((item) => ['qubely/formfield-name', { id: item }])} />
+                        <InnerBlocks template={[0, 1, 2].map((item) => ['qubely/formfield-name', { parentId: uniqueId }])} />
 
                         <div className="qubely-form-add-item">
                             <span className="qubely-action-add-form-item">Add new item</span>

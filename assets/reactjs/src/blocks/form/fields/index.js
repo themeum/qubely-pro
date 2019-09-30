@@ -6,6 +6,7 @@ const { registerBlockType } = wp.blocks
  */
 import * as text from './text';
 
+import './style.scss'
 
 const registerBlock = (block) => {
     if (!block) {
@@ -16,7 +17,17 @@ const registerBlock = (block) => {
 
 
     registerBlockType(blockName, {
-        ...settings
+        ...settings,
+        getEditWrapperProps( attributes ) {
+            const { width } = attributes;
+            if ( Number.isFinite( width ) ) {
+                return {
+                    style: {
+                        width: width + '%',
+                    },
+                };
+            }
+        },
     })
 };
 

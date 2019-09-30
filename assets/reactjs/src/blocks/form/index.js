@@ -25,6 +25,14 @@ registerBlockType('qubely/form', {
         uniqueId: { type: 'string', default: '' },
         ...globalAttributes,
         ...buttonAttributes,
+        height: {
+            type: 'number',
+            default: 200,
+        },
+        width: {
+            type: 'number',
+            default: 320,
+        },
         enableButtonAlignment: { type: 'boolean', default: true },
         layout: { type: 'string', default: 'classic' },
         useDefaultStyle: { type: 'boolean', default: true },

@@ -1,3 +1,40 @@
-.qubely-form-field {
+.qubely-form-field-wrapper{
   width: 100%;
+}
+
+.components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-right {
+    right: -30px;
+    top: 0;
+    background: transparent;
+    z-index: 9999;
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transform: translateX(50%);
+    background: transparent;
+    &::before{
+        width: 6px;
+        height: 34px;
+        border: 0;
+        border-radius: 1.5px;
+    }
+}
+
+
+.components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-bottom {
+  background: transparent;
+  z-index: 9999;
+  width: auto;
+  display: flex;
+  align-items: center;
+  transform: translate(-50%, 50%);
+  background: transparent;
+  left: 50%;
+  &::before{
+      width: 34px;
+      height: 6px;
+      border: 0;
+      border-radius: 1.5px;
+  }
 }

@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-field {\n  width: 100%; }\n", ""]);
+exports.push([module.i, ".qubely-form-field-wrapper {\n  width: 100%; }\n\n.components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-right {\n  right: -30px;\n  top: 0;\n  background: transparent;\n  z-index: 9999;\n  width: auto;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  transform: translateX(50%);\n  background: transparent; }\n  .components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-right::before {\n    width: 6px;\n    height: 34px;\n    border: 0;\n    border-radius: 1.5px; }\n\n.components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-bottom {\n  background: transparent;\n  z-index: 9999;\n  width: auto;\n  display: flex;\n  align-items: center;\n  transform: translate(-50%, 50%);\n  background: transparent;\n  left: 50%; }\n  .components-resizable-box__container.qubely-form-field-resizer > span > .components-resizable-box__handle.components-resizable-box__handle-bottom::before {\n    width: 34px;\n    height: 6px;\n    border: 0;\n    border-radius: 1.5px; }\n", ""]);
 
 
 
@@ -110,7 +110,7 @@ exports.push([module.i, ".qubely-form-field {\n  width: 100%; }\n", ""]);
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form {\n  display: flex;\n  flex-wrap: wrap; }\n  .qubely-block-form .qubely-form .qubely-form-group {\n    position: relative; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-label {\n      display: flex;\n      padding: 5px 0px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-label .qubely-form-field-label {\n        padding-right: 20px; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control {\n      display: block;\n      width: 100%;\n      background-clip: padding-box;\n      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-small {\n        padding: 6px 8px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-medium {\n        padding: 8.5px 12px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-large {\n        padding: 14.5px 16px; }\n    .qubely-block-form .qubely-form .qubely-form-group textarea.qubely-form-control {\n      resize: none; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control:focus {\n      outline: 0; }\n    .qubely-block-form .qubely-form .qubely-form-group p.qubely-form-required-field {\n      font-size: 14px;\n      color: red;\n      margin: 0; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-group-inner {\n  position: relative; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-label {\n  position: absolute;\n  pointer-events: none;\n  top: 0px;\n  transition: 0.2s ease all; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control {\n  border-radius: 0;\n  box-shadow: none;\n  padding-left: 0;\n  padding-right: 0; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus, .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid {\n    outline: none;\n    color: #333; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control::placeholder {\n    opacity: 0;\n    transition: 400ms; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus::placeholder {\n    opacity: 1; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus ~ .qubely-form-label,\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid ~ .qubely-form-label {\n  top: -20px; }\n", ""]);
+exports.push([module.i, ".qubely-block-form .qubely-form {\n  display: flex;\n  flex-wrap: wrap; }\n  .qubely-block-form .qubely-form .qubely-form-group {\n    position: relative; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-label {\n      display: flex;\n      padding: 5px 0px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-label .qubely-form-field-label {\n        padding-right: 20px; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control {\n      display: block;\n      width: 100%;\n      background-clip: padding-box;\n      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-small {\n        padding: 6px 8px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-medium {\n        padding: 8.5px 12px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-large {\n        padding: 14.5px 16px; }\n    .qubely-block-form .qubely-form .qubely-form-group textarea.qubely-form-control {\n      resize: none; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control:focus {\n      outline: 0; }\n    .qubely-block-form .qubely-form .qubely-form-group p.qubely-form-required-field {\n      font-size: 14px;\n      color: red;\n      margin: 0; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-group-inner {\n  position: relative; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-label {\n  position: absolute;\n  pointer-events: none;\n  top: 0px;\n  transition: 0.2s ease all; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control {\n  border-radius: 0;\n  box-shadow: none;\n  padding-left: 0;\n  padding-right: 0; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus, .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid {\n    outline: none;\n    color: #333; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control::placeholder {\n    opacity: 0;\n    transition: 400ms; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus::placeholder {\n    opacity: 1; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus ~ .qubely-form-label,\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid ~ .qubely-form-label {\n  top: -20px; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
 
 
 
@@ -1014,6 +1014,7 @@ var Edit = function (_Component) {
             var _props10 = this.props,
                 attributes = _props10.attributes,
                 setAttributes = _props10.setAttributes,
+                toggleSelection = _props10.toggleSelection,
                 _props10$attributes = _props10.attributes,
                 uniqueId = _props10$attributes.uniqueId,
                 layout = _props10$attributes.layout,
@@ -1066,7 +1067,9 @@ var Edit = function (_Component) {
                 globalZindex = _props10$attributes.globalZindex,
                 hideTablet = _props10$attributes.hideTablet,
                 hideMobile = _props10$attributes.hideMobile,
-                globalCss = _props10$attributes.globalCss;
+                globalCss = _props10$attributes.globalCss,
+                height = _props10$attributes.height,
+                width = _props10$attributes.width;
             var _state = this.state,
                 device = _state.device,
                 selectedItem = _state.selectedItem,
@@ -1600,7 +1603,7 @@ var Edit = function (_Component) {
                             })
                         ),
                         React.createElement(InnerBlocks, { template: [0, 1, 2].map(function (item) {
-                                return ['qubely/formfield-name', { id: item }];
+                                return ['qubely/formfield-name', { parentId: uniqueId }];
                             }) }),
                         React.createElement(
                             'div',
@@ -1904,10 +1907,17 @@ var FieldDefaults = {
             type: 'string',
             default: ''
         },
-        id: { type: 'number', default: 1 },
+        parentId: {
+            type: 'string',
+            default: ''
+        },
+        width: {
+            type: 'number',
+            default: 100
+        },
         label: {
             type: 'string',
-            default: null
+            default: 'label'
         },
         required: {
             type: 'boolean',
@@ -1940,6 +1950,8 @@ var _text = __webpack_require__(/*! ./text */ "./src/blocks/form/fields/text.js"
 
 var text = _interopRequireWildcard(_text);
 
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var registerBlockType = wp.blocks.registerBlockType;
@@ -1957,7 +1969,19 @@ var registerBlock = function registerBlock(block) {
         settings = block.settings;
 
 
-    registerBlockType(blockName, _extends({}, settings));
+    registerBlockType(blockName, _extends({}, settings, {
+        getEditWrapperProps: function getEditWrapperProps(attributes) {
+            var width = attributes.width;
+
+            if (Number.isFinite(width)) {
+                return {
+                    style: {
+                        width: width + '%'
+                    }
+                };
+            }
+        }
+    }));
 };
 
 /**
@@ -2027,7 +2051,15 @@ var _formDefaults2 = _interopRequireDefault(_formDefaults);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
-var useEffect = wp.element.useEffect;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    RichText = _wp$editor.RichText;
+var _wp$element = wp.element,
+    useEffect = _wp$element.useEffect,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    RangeControl = _wp$components.RangeControl;
 var CssGenerator = wp.qubelyComponents.CssGenerator.CssGenerator;
 
 
@@ -2046,12 +2078,19 @@ var settings = _extends({}, _formDefaults2.default, {
 });
 
 var Edit = function Edit(props) {
+    var clientId = props.clientId,
+        attributes = props.attributes,
+        setAttributes = props.setAttributes,
+        _props$attributes = props.attributes,
+        uniqueId = _props$attributes.uniqueId,
+        width = _props$attributes.width,
+        type = _props$attributes.type,
+        label = _props$attributes.label,
+        placeHolder = _props$attributes.placeHolder,
+        required = _props$attributes.required;
+
 
     useEffect(function () {
-        var setAttributes = props.setAttributes,
-            clientId = props.clientId,
-            uniqueId = props.attributes.uniqueId;
-
         var _client = clientId.substr(0, 6);
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
@@ -2059,50 +2098,73 @@ var Edit = function Edit(props) {
             setAttributes({ uniqueId: _client });
         }
     });
-    var attributes = props.attributes,
-        _props$attributes = props.attributes,
-        uniqueId = _props$attributes.uniqueId,
-        id = _props$attributes.id,
-        type = _props$attributes.type,
-        inputSize = _props$attributes.inputSize,
-        placeHolder = _props$attributes.placeHolder,
-        required = _props$attributes.required;
-
 
     if (uniqueId) {
         CssGenerator(attributes, 'formfield-name', uniqueId);
     }
 
     return React.createElement(
-        'div',
-        { className: 'qubely-block-' + uniqueId },
+        Fragment,
+        null,
         React.createElement(
-            'span',
+            InspectorControls,
             null,
-            id
+            React.createElement(
+                PanelBody,
+                { title: __('Form-field Settings'), opened: true },
+                React.createElement(RangeControl, {
+                    label: __('Percentage width'),
+                    value: width || '',
+                    onChange: function onChange(value) {
+                        return setAttributes({ width: value });
+                    },
+                    min: 0,
+                    max: 100,
+                    required: true,
+                    allowReset: true
+                })
+            )
         ),
-        React.createElement('input', { className: 'qubely-form-field is-' + inputSize, type: type, placeholder: __(placeHolder), required: required, disabled: true })
+        React.createElement(
+            'div',
+            { className: 'qubely-block-' + uniqueId },
+            React.createElement(
+                'div',
+                { className: 'qubely-form-field-wrapper' },
+                React.createElement(RichText, {
+                    placeholder: __('Input label'),
+                    className: 'qubely-form-field-label',
+                    value: label,
+                    onChange: function onChange(value) {
+                        return setAttributes({ label: value });
+                    }
+                }),
+                React.createElement('input', { className: 'qubely-form-field qubely-form-text', type: type, placeholder: __(placeHolder), required: required })
+            )
+        )
     );
 };
+
 var Save = function Save(props) {
     var _props$attributes2 = props.attributes,
         uniqueId = _props$attributes2.uniqueId,
-        id = _props$attributes2.id,
+        label = _props$attributes2.label,
         type = _props$attributes2.type,
-        inputSize = _props$attributes2.inputSize,
+        width = _props$attributes2.width,
         placeHolder = _props$attributes2.placeHolder,
         required = _props$attributes2.required;
 
 
+    var style = void 0;
+    if (Number.isFinite(width)) {
+        style = { width: width + '%' };
+    }
+
     return React.createElement(
         'div',
-        { className: 'qubely-block-' + uniqueId },
-        React.createElement(
-            'span',
-            null,
-            id
-        ),
-        React.createElement('input', { className: 'qubely-form-field qubely-form-text  is-' + inputSize, type: type, placeholder: __(placeHolder), required: required })
+        { className: 'qubely-block-' + uniqueId, style: style },
+        React.createElement(RichText.Content, { className: 'qubely-form-field-label', value: label }),
+        React.createElement('input', { className: 'qubely-form-field qubely-form-text', type: type, placeholder: __(placeHolder), required: required })
     );
 };
 
@@ -2158,6 +2220,14 @@ registerBlockType('qubely/form', {
     attributes: _extends({
         uniqueId: { type: 'string', default: '' }
     }, globalAttributes, buttonAttributes, (_extends2 = {
+        height: {
+            type: 'number',
+            default: 200
+        },
+        width: {
+            type: 'number',
+            default: 320
+        },
         enableButtonAlignment: { type: 'boolean', default: true },
         layout: { type: 'string', default: 'classic' },
         useDefaultStyle: { type: 'boolean', default: true },

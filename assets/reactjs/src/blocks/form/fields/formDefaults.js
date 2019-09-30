@@ -11,10 +11,17 @@ const FieldDefaults = {
             type: 'string',
             default: ''
         },
-        id: { type: 'number', default: 1, },
+        parentId: {
+            type: 'string',
+            default: ''
+        },
+        width: {
+            type: 'number',
+            default: 100,
+        },
         label: {
             type: 'string',
-            default: null,
+            default: 'label',
         },
         required: {
             type: 'boolean',
