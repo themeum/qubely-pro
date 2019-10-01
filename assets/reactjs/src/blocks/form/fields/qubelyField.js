@@ -2,7 +2,7 @@
 const { __ } = wp.i18n
 const { InspectorControls, RichText } = wp.editor
 const { useState, useEffect, Fragment } = wp.element
-const { PanelBody, RangeControl } = wp.components
+const { PanelBody, RangeControl, Dashicon, Draggable } = wp.components
 
 
 const {
@@ -26,8 +26,12 @@ const settings = {
 
 
 const Edit = (props) => {
-    const [dropdownValue, setDropdownValue] = useState('')
+
     const [device, changeDevice] = useState('md')
+    const [draggedItem, setDraggedItem] = useState(-1)
+    const [draggedOverItem, setDraggedOverItem] = useState(-1)
+    const [dropdownValue, setDropdownValue] = useState('')
+
     const {
         name,
         clientId,
@@ -84,6 +88,28 @@ const Edit = (props) => {
         )
     }
 
+    const handleDragEnd = () => {
+        let newOptions = [...options]
+
+        newOptions[draggedOverItem] = options[draggedItem]
+        newOptions[draggedItem] = options[draggedOverItem]
+
+        setAttributes({ options: newOptions })
+        setDraggedItem(-1)
+        setDraggedOverItem(-1)
+    }
+    const updateOptions = (type, index, newValue) => {
+
+        let newOptions = [...options]
+        if (type === 'add') {
+            newOptions.push('New option')
+        } else {
+            newOptions[index] = newValue
+        }
+        setAttributes({ options: newOptions })
+    }
+
+
     const blockname = name.split('/')[1]
 
     if (uniqueId) { CssGenerator(attributes, blockname, uniqueId) }
@@ -114,6 +140,42 @@ const Edit = (props) => {
                             unit={['px', 'em', '%']}
                             onChange={value => setAttributes({ height: value })}
                             onDeviceChange={value => changeDevice(value)} />
+                    }
+                    {
+                        name === 'qubely/formfield-dropdown' &&
+                        <Fragment>
+                            <label className={`qubely-form-field`}>Dropdown Options</label>
+                            {options.map((option, index) => {
+                                return (
+                                    <div
+                                        draggable
+                                        onDragEnd={() => handleDragEnd()}
+                                        onDragOver={() => setDraggedOverItem(index)}
+                                        onDragStart={() => setDraggedItem(index)}
+                                        className={`qubely-dropdown-field-option qubely-option-${index}`}
+                                    >
+                                        <span class="qubely-option-move-icon">
+                                            <i className="fa fa-bars" />
+                                        </span>
+
+                                        <RichText
+                                            placeholder={__('option')}
+                                            className={`qubely-option`}
+                                            value={option}
+                                            onChange={value => updateOptions('update', index, value)}
+                                        />
+                                    </div>
+                                )
+                            })}
+                            <div className={`qubely-dropdown-add-field-option`}  >
+                                <span class="qubely-option-move-icon">
+                                    <i className="fas fa-plus-circle" />
+                                </span>
+
+                                <span className={`qubely-action-add-option`} onClick={() => updateOptions('add')}>  Add new item </span>
+                            </div>
+
+                        </Fragment>
                     }
 
 

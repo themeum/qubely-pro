@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  width: 100%; }\n  .qubely-form-field-wrapper .qubely-form-field-radio-option,\n  .qubely-form-field .qubely-form-field-radio-option {\n    display: flex;\n    align-items: center; }\n", ""]);
+exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  width: 100%; }\n  .qubely-form-field-wrapper .qubely-form-field-radio-option,\n  .qubely-form-field .qubely-form-field-radio-option {\n    display: flex;\n    align-items: center; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n", ""]);
 
 
 
@@ -2033,6 +2033,8 @@ var _formDefaults2 = _interopRequireDefault(_formDefaults);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var __ = wp.i18n.__;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
@@ -2043,7 +2045,9 @@ var _wp$element = wp.element,
     Fragment = _wp$element.Fragment;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    RangeControl = _wp$components.RangeControl;
+    RangeControl = _wp$components.RangeControl,
+    Dashicon = _wp$components.Dashicon,
+    Draggable = _wp$components.Draggable;
 var _wp$qubelyComponents = wp.qubelyComponents,
     Range = _wp$qubelyComponents.Range,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
@@ -2060,15 +2064,25 @@ var settings = _extends({}, _formDefaults2.default, {
 });
 
 var Edit = function Edit(props) {
-    var _useState = useState(''),
+    var _useState = useState('md'),
         _useState2 = _slicedToArray(_useState, 2),
-        dropdownValue = _useState2[0],
-        setDropdownValue = _useState2[1];
+        device = _useState2[0],
+        changeDevice = _useState2[1];
 
-    var _useState3 = useState('md'),
+    var _useState3 = useState(-1),
         _useState4 = _slicedToArray(_useState3, 2),
-        device = _useState4[0],
-        changeDevice = _useState4[1];
+        draggedItem = _useState4[0],
+        setDraggedItem = _useState4[1];
+
+    var _useState5 = useState(-1),
+        _useState6 = _slicedToArray(_useState5, 2),
+        draggedOverItem = _useState6[0],
+        setDraggedOverItem = _useState6[1];
+
+    var _useState7 = useState(''),
+        _useState8 = _slicedToArray(_useState7, 2),
+        dropdownValue = _useState8[0],
+        setDropdownValue = _useState8[1];
 
     var name = props.name,
         clientId = props.clientId,
@@ -2128,6 +2142,27 @@ var Edit = function Edit(props) {
         );
     };
 
+    var handleDragEnd = function handleDragEnd() {
+        var newOptions = [].concat(_toConsumableArray(options));
+
+        newOptions[draggedOverItem] = options[draggedItem];
+        newOptions[draggedItem] = options[draggedOverItem];
+
+        setAttributes({ options: newOptions });
+        setDraggedItem(-1);
+        setDraggedOverItem(-1);
+    };
+    var updateOptions = function updateOptions(type, index, newValue) {
+
+        var newOptions = [].concat(_toConsumableArray(options));
+        if (type === 'add') {
+            newOptions.push('New option');
+        } else {
+            newOptions[index] = newValue;
+        }
+        setAttributes({ options: newOptions });
+    };
+
     var blockname = name.split('/')[1];
 
     if (uniqueId) {
@@ -2167,7 +2202,63 @@ var Edit = function Edit(props) {
                     },
                     onDeviceChange: function onDeviceChange(value) {
                         return changeDevice(value);
-                    } })
+                    } }),
+                name === 'qubely/formfield-dropdown' && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(
+                        'label',
+                        { className: 'qubely-form-field' },
+                        'Dropdown Options'
+                    ),
+                    options.map(function (option, index) {
+                        return React.createElement(
+                            'div',
+                            {
+                                draggable: true,
+                                onDragEnd: function onDragEnd() {
+                                    return handleDragEnd();
+                                },
+                                onDragOver: function onDragOver() {
+                                    return setDraggedOverItem(index);
+                                },
+                                onDragStart: function onDragStart() {
+                                    return setDraggedItem(index);
+                                },
+                                className: 'qubely-dropdown-field-option qubely-option-' + index
+                            },
+                            React.createElement(
+                                'span',
+                                { 'class': 'qubely-option-move-icon' },
+                                React.createElement('i', { className: 'fa fa-bars' })
+                            ),
+                            React.createElement(RichText, {
+                                placeholder: __('option'),
+                                className: 'qubely-option',
+                                value: option,
+                                onChange: function onChange(value) {
+                                    return updateOptions('update', index, value);
+                                }
+                            })
+                        );
+                    }),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-dropdown-add-field-option' },
+                        React.createElement(
+                            'span',
+                            { 'class': 'qubely-option-move-icon' },
+                            React.createElement('i', { className: 'fas fa-plus-circle' })
+                        ),
+                        React.createElement(
+                            'span',
+                            { className: 'qubely-action-add-option', onClick: function onClick() {
+                                    return updateOptions('add');
+                                } },
+                            '  Add new item '
+                        )
+                    )
+                )
             )
         ),
         React.createElement(

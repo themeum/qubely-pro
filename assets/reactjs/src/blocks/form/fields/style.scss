@@ -1,9 +1,43 @@
 .qubely-form-field-wrapper,
 .qubely-form-field {
   width: 100%;
-  .qubely-form-field-radio-option{
+  .qubely-form-field-radio-option {
     display: flex;
     align-items: center;
   }
 }
 
+.qubely-dropdown-field-option,
+.qubely-dropdown-add-field-option {
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  .qubely-option-move-icon {
+    cursor: pointer;
+    padding: 0px 10px;
+  }
+  > div {
+    width: 80%;
+    .qubely-option {
+      cursor: text;
+      border: 1px solid #d6d6d6;
+      padding: 6px 8px;
+      box-shadow: none;
+    }
+  }
+
+  .qubely-action-add-option {
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    background-color: #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.qubely-dropdown-add-field-option{
+  .qubely-option-move-icon>i{
+    font-size: 15px;
+  }
+}
