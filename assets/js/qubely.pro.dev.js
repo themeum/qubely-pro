@@ -1908,6 +1908,16 @@ var qubelyFormFields = [_extends({}, qubelyField, {
             type: {
                 type: 'string',
                 default: 'textarea'
+            },
+            height: {
+                type: 'object',
+                default: {
+                    md: 150,
+                    unit: 'px'
+                },
+                style: [{
+                    selector: '{{QUBELY}} .qubely-form-field.qubely-form-textarea { height: {{height}};}'
+                }]
             }
         })
 
@@ -2015,7 +2025,9 @@ var _wp$element = wp.element,
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     RangeControl = _wp$components.RangeControl;
-var CssGenerator = wp.qubelyComponents.CssGenerator.CssGenerator;
+var _wp$qubelyComponents = wp.qubelyComponents,
+    Range = _wp$qubelyComponents.Range,
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
 
 
 var settings = _extends({}, _formDefaults2.default, {
@@ -2034,6 +2046,11 @@ var Edit = function Edit(props) {
         dropdownValue = _useState2[0],
         setDropdownValue = _useState2[1];
 
+    var _useState3 = useState('md'),
+        _useState4 = _slicedToArray(_useState3, 2),
+        device = _useState4[0],
+        changeDevice = _useState4[1];
+
     var name = props.name,
         clientId = props.clientId,
         attributes = props.attributes,
@@ -2041,6 +2058,7 @@ var Edit = function Edit(props) {
         _props$attributes = props.attributes,
         uniqueId = _props$attributes.uniqueId,
         width = _props$attributes.width,
+        height = _props$attributes.height,
         type = _props$attributes.type,
         label = _props$attributes.label,
         options = _props$attributes.options,
@@ -2063,7 +2081,7 @@ var Edit = function Edit(props) {
             type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), required: required }) : type === 'dropdown' ? React.createElement(
                 'select',
                 { className: 'qubely-form-field qubely-form-dropdown', value: dropdownValue, onChange: function onChange(event) {
-                        return console.log('value : ', event.target.value);
+                        return setDropdownValue(event.target.value);
                     } },
                 options.map(function (option) {
                     return React.createElement(
@@ -2116,7 +2134,21 @@ var Edit = function Edit(props) {
                     max: 100,
                     required: true,
                     allowReset: true
-                })
+                }),
+                name === 'qubely/formfield-textarea' && React.createElement(Range, {
+                    min: 50,
+                    max: 600,
+                    responsive: true,
+                    value: height,
+                    device: device,
+                    label: __('Height'),
+                    unit: ['px', 'em', '%'],
+                    onChange: function onChange(value) {
+                        return setAttributes({ height: value });
+                    },
+                    onDeviceChange: function onDeviceChange(value) {
+                        return changeDevice(value);
+                    } })
             )
         ),
         React.createElement(

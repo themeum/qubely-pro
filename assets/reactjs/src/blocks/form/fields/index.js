@@ -95,6 +95,18 @@ const qubelyFormFields = [
                     type: 'string',
                     default: 'textarea'
                 },
+                height: {
+                    type: 'object',
+                    default: {
+                        md: 150,
+                        unit: 'px'
+                    },
+                    style: [
+                        {
+                            selector: '{{QUBELY}} .qubely-form-field.qubely-form-textarea { height: {{height}};}'
+                        }
+                    ]
+                },
             }
 
         },

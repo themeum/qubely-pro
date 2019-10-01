@@ -4,7 +4,9 @@ const { InspectorControls, RichText } = wp.editor
 const { useState, useEffect, Fragment } = wp.element
 const { PanelBody, RangeControl } = wp.components
 
+
 const {
+    Range,
     CssGenerator: { CssGenerator }
 } = wp.qubelyComponents
 
@@ -25,6 +27,7 @@ const settings = {
 
 const Edit = (props) => {
     const [dropdownValue, setDropdownValue] = useState('')
+    const [device, changeDevice] = useState('md')
     const {
         name,
         clientId,
@@ -33,6 +36,7 @@ const Edit = (props) => {
         attributes: {
             uniqueId,
             width,
+            height,
             type,
             label,
             options,
@@ -58,7 +62,7 @@ const Edit = (props) => {
                         <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)} required={required} />
                         :
                         type === 'dropdown' ?
-                            <select className={`qubely-form-field qubely-form-dropdown`} value={dropdownValue} onChange={event => console.log('value : ', event.target.value)}>
+                            <select className={`qubely-form-field qubely-form-dropdown`} value={dropdownValue} onChange={event => setDropdownValue(event.target.value)}>
                                 {options.map(option => <option value={option}>{option}</option>)}
                             </select>
                             :
@@ -98,6 +102,21 @@ const Edit = (props) => {
                         required
                         allowReset
                     />
+                    {
+                        name === 'qubely/formfield-textarea' &&
+                        <Range
+                            min={50}
+                            max={600}
+                            responsive
+                            value={height}
+                            device={device}
+                            label={__('Height')}
+                            unit={['px', 'em', '%']}
+                            onChange={value => setAttributes({ height: value })}
+                            onDeviceChange={value => changeDevice(value)} />
+                    }
+
+
                 </PanelBody>
             </InspectorControls>
 
