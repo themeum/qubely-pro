@@ -1,4 +1,6 @@
 const { __ } = wp.i18n
+const { createBlock } = wp.blocks
+const { select, dispatch } = wp.data
 const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.editor
 const { PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { Component, Fragment } = wp.element
@@ -65,17 +67,31 @@ class Edit extends Component {
         setAttributes({ formItems });
     }
 
-    insertItem() {
-        const { newItemType } = this.state;
-        const { attributes, setAttributes } = this.props;
-        const formItems = [...attributes.formItems];
-        const newItem = { type: newItemType, label: 'Label', placeholder: '', width: { md: 100 }, required: true, hideLabel: false };
-        if (newItemType == 'radio' || newItemType == 'checkbox' || newItemType == 'dropdown') {
-            newItem.options = ['Option 1', 'Option 2'];
+    addNewItem(newFieldType) {
+
+        const { clientId, attributes, setAttributes } = this.props
+        const { getBlocks } = select('core/block-editor')
+        const { replaceInnerBlocks } = dispatch('core/block-editor')
+
+        const formItems = [...attributes.formItems]
+        const newItem = {
+            type: newFieldType,
+            label: 'Label',
+            placeholder: '',
+            width: 100,
+            required: true,
+            hideLabel: false
         }
-        formItems.push(newItem);
-        this.setState({ newItemWrapper: false });
-        setAttributes({ formItems });
+
+        formItems.push(newItem)
+        setAttributes({ formItems })
+
+        let innerBlocks = [...getBlocks(clientId)]
+
+        innerBlocks.push(createBlock(`qubely/formfield-${newFieldType}`))
+
+        replaceInnerBlocks(clientId, innerBlocks, false);
+
     }
 
     insertOption(index) {
@@ -541,8 +557,7 @@ class Edit extends Component {
                                     [__('Textarea'), 'textarea'],
                                     [__('Dropdown'), 'dropdown'],
                                 ]}
-                                value={this.state.newItemType}
-                                onChange={() => this.insertItem()}
+                                onChange={value => this.addNewItem(value)}
                             />
                         </div>
                     </div>

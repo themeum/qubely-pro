@@ -17,7 +17,7 @@ const FieldDefaults = {
         },
         width: {
             type: 'number',
-            default: 100,
+            default: 90,
         },
         label: {
             type: 'string',

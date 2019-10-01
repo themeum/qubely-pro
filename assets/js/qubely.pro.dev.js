@@ -816,6 +816,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
+var createBlock = wp.blocks.createBlock;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     BlockControls = _wp$editor.BlockControls,
@@ -925,21 +929,37 @@ var Edit = function (_Component) {
             setAttributes({ formItems: formItems });
         }
     }, {
-        key: 'insertItem',
-        value: function insertItem() {
-            var newItemType = this.state.newItemType;
+        key: 'addNewItem',
+        value: function addNewItem(newFieldType) {
             var _props4 = this.props,
+                clientId = _props4.clientId,
                 attributes = _props4.attributes,
                 setAttributes = _props4.setAttributes;
 
+            var _select = select('core/block-editor'),
+                getBlocks = _select.getBlocks;
+
+            var _dispatch = dispatch('core/block-editor'),
+                replaceInnerBlocks = _dispatch.replaceInnerBlocks;
+
             var formItems = [].concat(_toConsumableArray(attributes.formItems));
-            var newItem = { type: newItemType, label: 'Label', placeholder: '', width: { md: 100 }, required: true, hideLabel: false };
-            if (newItemType == 'radio' || newItemType == 'checkbox' || newItemType == 'dropdown') {
-                newItem.options = ['Option 1', 'Option 2'];
-            }
+            var newItem = {
+                type: newFieldType,
+                label: 'Label',
+                placeholder: '',
+                width: 100,
+                required: true,
+                hideLabel: false
+            };
+
             formItems.push(newItem);
-            this.setState({ newItemWrapper: false });
             setAttributes({ formItems: formItems });
+
+            var innerBlocks = [].concat(_toConsumableArray(getBlocks(clientId)));
+
+            innerBlocks.push(createBlock('qubely/formfield-' + newFieldType));
+
+            replaceInnerBlocks(clientId, innerBlocks, false);
         }
     }, {
         key: 'insertOption',
@@ -1492,9 +1512,8 @@ var Edit = function (_Component) {
                             React.createElement(ButtonGroup, {
                                 label: __(''),
                                 options: [[__('Text'), 'text'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Textarea'), 'textarea'], [__('Dropdown'), 'dropdown']],
-                                value: this.state.newItemType,
-                                onChange: function onChange() {
-                                    return _this2.insertItem();
+                                onChange: function onChange(value) {
+                                    return _this2.addNewItem(value);
                                 }
                             })
                         )
@@ -1789,7 +1808,7 @@ var FieldDefaults = {
         },
         width: {
             type: 'number',
-            default: 100
+            default: 90
         },
         label: {
             type: 'string',
