@@ -4157,8 +4157,6 @@ var Edit = function (_Component) {
 				CssGenerator(this.props.attributes, 'postcarousel', uniqueId);
 			}
 
-			// console.log( 'Carousel', arrowposition )
-
 			var carouselSettings = {
 				nav: nav,
 				dots: dots,

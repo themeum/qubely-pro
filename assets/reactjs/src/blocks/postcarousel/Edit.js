@@ -289,8 +289,6 @@ class Edit extends Component {
 
 		if ( uniqueId ) { CssGenerator(this.props.attributes, 'postcarousel', uniqueId) }
 		
-		// console.log( 'Carousel', arrowposition )
-
 		const carouselSettings = {
 			nav: nav,
 			dots: dots,

@@ -4,23 +4,24 @@ jQuery(document).ready(function ($) {
         let indexOfCounterElement = 0
         while (indexOfCounterElement < counterElement.length) {
             let currentElement = counterElement[indexOfCounterElement]
+            const { autoplay, interval, speed, dots, dot_indicator, centerPadding, center, dragable, arrowStyle, infiniteLoop, nav, responsive } = JSON.parse(currentElement.dataset.options)
 
-            const { items, autoplay, interval, speed, dots, dot_indicator, centerPadding, center, dragable, arrowStyle, infiniteLoop, nav, responsive } = JSON.parse(currentElement.dataset.options)
-
+            console.log(autoplay, interval, speed, dots, dot_indicator, centerPadding, center, dragable, arrowStyle, infiniteLoop, nav, responsive)
+            
             $(".qubely-carousel-wrapper").qubelyCarousel({
-                autoplay: autoplay,
-                interval: interval,
-                dragable: dragable,
-                center: center,
-                speed: speed,
+                nav: nav,
                 margin: 10,
                 dots: dots,
-                nav: nav,
-                dot_indicator: dot_indicator,
-                centerPadding: centerPadding,
-                responsive: [...responsive],
-                infiniteLoop: infiniteLoop,
+                speed: speed,
+                center: center,
+                dragable: dragable,
+                interval: interval,
+                autoplay: autoplay,
                 arrowStyle: arrowStyle,
+                infiniteLoop: infiniteLoop,
+                responsive: [...responsive],
+                centerPadding: centerPadding,
+                dot_indicator: dot_indicator,
                 onChange: function (item) {
                     // console.log("test: ", item)
                 }
