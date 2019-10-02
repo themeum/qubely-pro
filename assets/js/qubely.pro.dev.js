@@ -1810,9 +1810,17 @@ var FieldDefaults = {
             type: 'number',
             default: 90
         },
+        fieldSize: {
+            type: 'string',
+            default: 'large'
+        },
         label: {
             type: 'string',
             default: 'label'
+        },
+        instruction: {
+            type: 'string',
+            default: null
         },
         required: {
             type: 'boolean',
@@ -1867,12 +1875,13 @@ var registerBlock = function registerBlock(block) {
 
     registerBlockType(blockName, _extends({}, settings, {
         getEditWrapperProps: function getEditWrapperProps(attributes) {
-            var width = attributes.width;
+            var fieldSize = attributes.fieldSize,
+                width = attributes.width;
 
             if (Number.isFinite(width)) {
                 return {
                     style: {
-                        width: width + '%'
+                        width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%'
                     }
                 };
             }
@@ -1885,6 +1894,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
         title: __('Text'),
         description: __('Text field for Qubely Form'),
         attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'text'
+            },
             type: {
                 type: 'string',
                 default: 'text'
@@ -1898,6 +1911,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
         title: __('Number'),
         description: __('Number field for Qubely Form'),
         attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'number'
+            },
             type: {
                 type: 'string',
                 default: 'number'
@@ -1911,6 +1928,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
         title: __('Email'),
         description: __('Email field for Qubely Form'),
         attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'email'
+            },
             type: {
                 type: 'string',
                 default: 'email'
@@ -1924,6 +1945,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
         title: __('Textarea'),
         description: __('Textarea field for Qubely Form'),
         attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'textarea'
+            },
             type: {
                 type: 'string',
                 default: 'textarea'
@@ -1947,6 +1972,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
         title: __('Dropdown'),
         description: __('Dropdown field for Qubely Form'),
         attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'dropdown'
+            },
             type: {
                 type: 'string',
                 default: 'dropdown'
@@ -1964,6 +1993,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
         title: __('Radio'),
         description: __('Radio field for Qubely Form'),
         attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'radio'
+            },
             type: {
                 type: 'string',
                 default: 'radio'
@@ -1981,6 +2014,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
         title: __('Checkbox'),
         description: __('Checkbox field for Qubely Form'),
         attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'checkbox'
+            },
             type: {
                 type: 'string',
                 default: 'checkbox'
@@ -2045,10 +2082,15 @@ var _wp$element = wp.element,
     Fragment = _wp$element.Fragment;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
     RangeControl = _wp$components.RangeControl,
     Tooltip = _wp$components.Tooltip;
 var _wp$qubelyComponents = wp.qubelyComponents,
+    RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
     Range = _wp$qubelyComponents.Range,
+    Separator = _wp$qubelyComponents.Separator,
+    Toggle = _wp$qubelyComponents.Toggle,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
 
 
@@ -2089,10 +2131,13 @@ var Edit = function Edit(props) {
         setAttributes = props.setAttributes,
         _props$attributes = props.attributes,
         uniqueId = _props$attributes.uniqueId,
+        fieldName = _props$attributes.fieldName,
+        fieldSize = _props$attributes.fieldSize,
         width = _props$attributes.width,
         height = _props$attributes.height,
         type = _props$attributes.type,
         label = _props$attributes.label,
+        instruction = _props$attributes.instruction,
         options = _props$attributes.options,
         placeHolder = _props$attributes.placeHolder,
         required = _props$attributes.required;
@@ -2105,6 +2150,9 @@ var Edit = function Edit(props) {
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
         }
+
+        var currentField = $('#block-' + clientId);
+        currentField.css({ width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%' });
     });
 
     var updateOptions = function updateOptions(type, index, newValue) {
@@ -2187,6 +2235,35 @@ var Edit = function Edit(props) {
         );
     };
 
+    var renderCommonSettings = function renderCommonSettings() {
+        return React.createElement(
+            Fragment,
+            null,
+            React.createElement(TextControl, {
+                label: __('Label'),
+                value: label,
+                onChange: function onChange(value) {
+                    return setAttributes({ label: value });
+                }
+            }),
+            React.createElement(TextareaControl, {
+                label: __('Instructions'),
+                value: instruction,
+                onChange: function onChange(value) {
+                    return setAttributes({ instruction: value });
+                }
+            }),
+            React.createElement(TextControl, {
+                label: __('Name'),
+                value: fieldName,
+                onChange: function onChange(value) {
+                    return setAttributes({ fieldName: value });
+                },
+                help: __('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')
+            })
+        );
+    };
+
     var handleDragEnd = function handleDragEnd() {
         var newOptions = [].concat(_toConsumableArray(options));
 
@@ -2213,17 +2290,6 @@ var Edit = function Edit(props) {
             React.createElement(
                 PanelBody,
                 { title: __('Form-field Settings'), opened: true },
-                React.createElement(RangeControl, {
-                    label: __('Percentage width'),
-                    value: width || '',
-                    onChange: function onChange(value) {
-                        return setAttributes({ width: value });
-                    },
-                    min: 0,
-                    max: 100,
-                    required: true,
-                    allowReset: true
-                }),
                 name === 'qubely/formfield-textarea' && React.createElement(Range, {
                     min: 50,
                     max: 600,
@@ -2237,8 +2303,31 @@ var Edit = function Edit(props) {
                     },
                     onDeviceChange: function onDeviceChange(value) {
                         return changeDevice(value);
+                    } })
+            ),
+            name === 'qubely/formfield-dropdown' && React.createElement(
+                PanelBody,
+                { title: __('Dropdown'), initialOpen: true },
+                renderCommonSettings(),
+                React.createElement(RadioAdvanced, {
+                    label: __('Field Size'),
+                    options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                    value: fieldSize,
+                    onChange: function onChange(value) {
+                        return setAttributes({ fieldSize: value });
                     } }),
-                name === 'qubely/formfield-dropdown' && React.createElement(
+                fieldSize === 'custom' && React.createElement(RangeControl, {
+                    label: __('Percentage width'),
+                    value: width || '',
+                    onChange: function onChange(value) {
+                        return setAttributes({ width: value });
+                    },
+                    min: 0,
+                    max: 100,
+                    required: true,
+                    allowReset: true
+                }),
+                React.createElement(
                     Fragment,
                     null,
                     React.createElement(
@@ -2293,7 +2382,14 @@ var Edit = function Edit(props) {
                             '  Add new item '
                         )
                     )
-                )
+                ),
+                React.createElement(Separator, null),
+                React.createElement(Toggle, {
+                    label: __('Required'),
+                    value: required,
+                    onChange: function onChange(value) {
+                        return setAttributes({ required: value });
+                    } })
             )
         ),
         React.createElement(
@@ -2320,6 +2416,7 @@ var Save = function Save(props) {
     var _props$attributes2 = props.attributes,
         uniqueId = _props$attributes2.uniqueId,
         label = _props$attributes2.label,
+        fieldSize = _props$attributes2.fieldSize,
         type = _props$attributes2.type,
         width = _props$attributes2.width,
         placeHolder = _props$attributes2.placeHolder,
@@ -2328,14 +2425,14 @@ var Save = function Save(props) {
 
     var style = void 0;
     if (Number.isFinite(width)) {
-        style = { width: width + '%' };
+        style = { width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%' };
     }
 
     return React.createElement(
         'div',
         { className: 'qubely-block-' + uniqueId, style: style },
         React.createElement(RichText.Content, { className: 'qubely-form-field-label', value: label }),
-        React.createElement('input', { className: 'qubely-form-field qubely-form-text', type: 'text', placeholder: __(placeHolder), required: required })
+        React.createElement('input', { className: 'qubely-form-field qubely-form-text', type: type, placeholder: __(placeHolder), required: required })
     );
 };
 

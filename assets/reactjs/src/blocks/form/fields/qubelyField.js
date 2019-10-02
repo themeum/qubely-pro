@@ -2,11 +2,14 @@
 const { __ } = wp.i18n
 const { InspectorControls, RichText } = wp.editor
 const { useState, useEffect, Fragment } = wp.element
-const { PanelBody, RangeControl, Tooltip } = wp.components
+const { PanelBody, TextControl, TextareaControl, RangeControl, Tooltip } = wp.components
 
 
 const {
+    RadioAdvanced,
     Range,
+    Separator,
+    Toggle,
     CssGenerator: { CssGenerator }
 } = wp.qubelyComponents
 
@@ -39,10 +42,13 @@ const Edit = (props) => {
         setAttributes,
         attributes: {
             uniqueId,
+            fieldName,
+            fieldSize,
             width,
             height,
             type,
             label,
+            instruction,
             options,
             placeHolder,
             required,
@@ -56,6 +62,9 @@ const Edit = (props) => {
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client })
         }
+
+        const currentField = $(`#block-${clientId}`)
+        currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
     })
 
     const updateOptions = (type, index, newValue) => {
@@ -120,6 +129,29 @@ const Edit = (props) => {
         )
     }
 
+    const renderCommonSettings = () => {
+        return (
+            <Fragment>
+                <TextControl
+                    label={__('Label')}
+                    value={label}
+                    onChange={value => setAttributes({ label: value })}
+                />
+                <TextareaControl
+                    label={__('Instructions')}
+                    value={instruction}
+                    onChange={value => setAttributes({ instruction: value })}
+                />
+                <TextControl
+                    label={__('Name')}
+                    value={fieldName}
+                    onChange={value => setAttributes({ fieldName: value })}
+                    help={__('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')}
+                />
+            </Fragment>
+        )
+    }
+
     const handleDragEnd = () => {
         let newOptions = [...options]
 
@@ -140,15 +172,6 @@ const Edit = (props) => {
 
             <InspectorControls>
                 <PanelBody title={__('Form-field Settings')} opened={true}>
-                    <RangeControl
-                        label={__('Percentage width')}
-                        value={width || ''}
-                        onChange={value => setAttributes({ width: value })}
-                        min={0}
-                        max={100}
-                        required
-                        allowReset
-                    />
                     {
                         name === 'qubely/formfield-textarea' &&
                         <Range
@@ -162,8 +185,35 @@ const Edit = (props) => {
                             onChange={value => setAttributes({ height: value })}
                             onDeviceChange={value => changeDevice(value)} />
                     }
-                    {
-                        name === 'qubely/formfield-dropdown' &&
+                </PanelBody>
+                {
+                    name === 'qubely/formfield-dropdown' &&
+                    <PanelBody title={__('Dropdown')} initialOpen={true}>
+                        {renderCommonSettings()}
+
+                        <RadioAdvanced
+                            label={__('Field Size')}
+                            options={[
+                                { label: 'S', value: 'small', title: 'Small' },
+                                { label: 'M', value: 'medium', title: 'Medium' },
+                                { label: 'L', value: 'large', title: 'Large' },
+                                { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                            ]}
+                            value={fieldSize}
+                            onChange={value => setAttributes({ fieldSize: value })} />
+
+                        {
+                            fieldSize === 'custom' &&
+                            <RangeControl
+                                label={__('Percentage width')}
+                                value={width || ''}
+                                onChange={value => setAttributes({ width: value })}
+                                min={0}
+                                max={100}
+                                required
+                                allowReset
+                            />}
+
                         <Fragment>
                             <label className={`qubely-form-field`}>Dropdown Options</label>
                             {options.map((option, index) => {
@@ -197,10 +247,20 @@ const Edit = (props) => {
                             </div>
 
                         </Fragment>
-                    }
+
+                        <Separator />
+
+                        < Toggle
+                            label={__('Required')}
+                            value={required}
+                            onChange={value => setAttributes({ required: value })} />
+
+                    </PanelBody>
+
+                }
 
 
-                </PanelBody>
+
             </InspectorControls>
 
             <div className={`qubely-block-${uniqueId}`}>
@@ -222,17 +282,17 @@ const Edit = (props) => {
 
 const Save = (props) => {
 
-    const { attributes: { uniqueId, label, type, width, placeHolder, required } } = props
+    const { attributes: { uniqueId, label, fieldSize, type, width, placeHolder, required } } = props
 
     let style;
     if (Number.isFinite(width)) {
-        style = { width: width + '%' };
+        style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
     }
 
     return (
         <div className={`qubely-block-${uniqueId}`} style={style}>
             <RichText.Content className={`qubely-form-field-label`} value={label} />
-            <input className={`qubely-form-field qubely-form-text`} type={'text'} placeholder={__(placeHolder)} required={required} />
+            <input className={`qubely-form-field qubely-form-text`} type={type} placeholder={__(placeHolder)} required={required} />
         </div>
     )
 

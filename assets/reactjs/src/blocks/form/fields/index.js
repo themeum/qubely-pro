@@ -18,11 +18,11 @@ const registerBlock = (block) => {
     registerBlockType(blockName, {
         ...settings,
         getEditWrapperProps(attributes) {
-            const { width } = attributes;
+            const { fieldSize, width } = attributes;
             if (Number.isFinite(width)) {
                 return {
                     style: {
-                        width: width + '%',
+                        width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%',
                     },
                 }
             }
@@ -40,6 +40,10 @@ const qubelyFormFields = [
             description: __('Text field for Qubely Form'),
             attributes: {
                 ...qubelyField.settings.attributes,
+                fieldName: {
+                    type: 'string',
+                    default: 'text'
+                },
                 type: {
                     type: 'string',
                     default: 'text'
@@ -57,6 +61,10 @@ const qubelyFormFields = [
             description: __('Number field for Qubely Form'),
             attributes: {
                 ...qubelyField.settings.attributes,
+                fieldName: {
+                    type: 'string',
+                    default: 'number'
+                },
                 type: {
                     type: 'string',
                     default: 'number'
@@ -74,6 +82,10 @@ const qubelyFormFields = [
             description: __('Email field for Qubely Form'),
             attributes: {
                 ...qubelyField.settings.attributes,
+                fieldName: {
+                    type: 'string',
+                    default: 'email'
+                },
                 type: {
                     type: 'string',
                     default: 'email'
@@ -91,6 +103,10 @@ const qubelyFormFields = [
             description: __('Textarea field for Qubely Form'),
             attributes: {
                 ...qubelyField.settings.attributes,
+                fieldName: {
+                    type: 'string',
+                    default: 'textarea'
+                },
                 type: {
                     type: 'string',
                     default: 'textarea'
@@ -120,6 +136,10 @@ const qubelyFormFields = [
             description: __('Dropdown field for Qubely Form'),
             attributes: {
                 ...qubelyField.settings.attributes,
+                fieldName: {
+                    type: 'string',
+                    default: 'dropdown'
+                },
                 type: {
                     type: 'string',
                     default: 'dropdown'
@@ -141,6 +161,10 @@ const qubelyFormFields = [
             description: __('Radio field for Qubely Form'),
             attributes: {
                 ...qubelyField.settings.attributes,
+                fieldName: {
+                    type: 'string',
+                    default: 'radio'
+                },
                 type: {
                     type: 'string',
                     default: 'radio'
@@ -162,6 +186,10 @@ const qubelyFormFields = [
             description: __('Checkbox field for Qubely Form'),
             attributes: {
                 ...qubelyField.settings.attributes,
+                fieldName: {
+                    type: 'string',
+                    default: 'checkbox'
+                },
                 type: {
                     type: 'string',
                     default: 'checkbox'

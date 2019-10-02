@@ -19,9 +19,17 @@ const FieldDefaults = {
             type: 'number',
             default: 90,
         },
+        fieldSize: {
+            type: 'string',
+            default: 'large',
+        },
         label: {
             type: 'string',
             default: 'label',
+        },
+        instruction: {
+            type: 'string',
+            default: null,
         },
         required: {
             type: 'boolean',
