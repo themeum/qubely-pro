@@ -1,9 +1,22 @@
 .qubely-form-field-wrapper,
 .qubely-form-field {
   width: 100%;
-  .qubely-form-field-radio-option {
+  .qubely-form-field-radio-option,
+  .qubely-form-field-checkbox-option {
     display: flex;
     align-items: center;
+  }
+
+  .qubely-action-add-option {
+    color: #2184f9;
+    cursor: pointer;
+    .qubely-option-add-icon {
+      margin-right: 5px;
+      -webkit-text-stroke: 2px white;
+    }
+    .qubely-action-add-text {
+      color: #2184f9;
+    }
   }
 }
 
@@ -36,8 +49,8 @@
   }
 }
 
-.qubely-dropdown-add-field-option{
-  .qubely-option-move-icon>i{
+.qubely-dropdown-add-field-option {
+  .qubely-option-move-icon > i {
     font-size: 15px;
   }
 }

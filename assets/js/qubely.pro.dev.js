@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  width: 100%; }\n  .qubely-form-field-wrapper .qubely-form-field-radio-option,\n  .qubely-form-field .qubely-form-field-radio-option {\n    display: flex;\n    align-items: center; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n", ""]);
+exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  width: 100%; }\n  .qubely-form-field-wrapper .qubely-form-field-radio-option,\n  .qubely-form-field-wrapper .qubely-form-field-checkbox-option,\n  .qubely-form-field .qubely-form-field-radio-option,\n  .qubely-form-field .qubely-form-field-checkbox-option {\n    display: flex;\n    align-items: center; }\n  .qubely-form-field-wrapper .qubely-action-add-option,\n  .qubely-form-field .qubely-action-add-option {\n    color: #2184f9;\n    cursor: pointer; }\n    .qubely-form-field-wrapper .qubely-action-add-option .qubely-option-add-icon,\n    .qubely-form-field .qubely-action-add-option .qubely-option-add-icon {\n      margin-right: 5px;\n      -webkit-text-stroke: 2px white; }\n    .qubely-form-field-wrapper .qubely-action-add-option .qubely-action-add-text,\n    .qubely-form-field .qubely-action-add-option .qubely-action-add-text {\n      color: #2184f9; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n", ""]);
 
 
 
@@ -2107,6 +2107,54 @@ var Edit = function Edit(props) {
             setAttributes({ uniqueId: _client });
         }
     });
+
+    var updateOptions = function updateOptions(type, index, newValue) {
+        var newOptions = [].concat(_toConsumableArray(options));
+        if (type === 'add') {
+            newOptions.push('New option');
+        } else if (type === 'update') {
+            newOptions[index] = newValue;
+        }
+        setAttributes({ options: newOptions });
+    };
+
+    var renderOptions = function renderOptions() {
+        return React.createElement(
+            'div',
+            { className: 'qubely-form-field qubely-form-' + type },
+            options.map(function (option, index) {
+                return React.createElement(
+                    'div',
+                    { className: 'qubely-form-field-' + type + '-option' },
+                    React.createElement('input', { type: type, id: option, value: option }),
+                    React.createElement(RichText, {
+                        placeholder: __('option'),
+                        className: 'qubely-' + type + '-option',
+                        value: option,
+                        onChange: function onChange(value) {
+                            return updateOptions('update', index, value);
+                        }
+                    })
+                );
+            }),
+            React.createElement(
+                'div',
+                { className: 'qubely-action-add-option', onClick: function onClick() {
+                        return updateOptions('add');
+                    } },
+                React.createElement(
+                    'span',
+                    { 'class': 'qubely-option-add-icon' },
+                    React.createElement('i', { className: 'fas fa-plus' })
+                ),
+                React.createElement(
+                    'span',
+                    { className: 'qubely-action-add-text' },
+                    ' Add another '
+                )
+            )
+        );
+    };
     var renderInput = function renderInput() {
         return React.createElement(
             Fragment,
@@ -2123,22 +2171,7 @@ var Edit = function Edit(props) {
                         option
                     );
                 })
-            ) : type === 'radio' || type === 'checkbox' ? React.createElement(
-                'div',
-                { className: 'qubely-form-field qubely-form-' + type },
-                options.map(function (option) {
-                    return React.createElement(
-                        'div',
-                        { className: 'qubely-form-field-' + type + '-option' },
-                        React.createElement('input', { type: type, id: option, value: option }),
-                        React.createElement(
-                            'label',
-                            { 'for': option },
-                            'option'
-                        )
-                    );
-                })
-            ) : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
         );
     };
 
@@ -2151,16 +2184,6 @@ var Edit = function Edit(props) {
         setAttributes({ options: newOptions });
         setDraggedItem(-1);
         setDraggedOverItem(-1);
-    };
-    var updateOptions = function updateOptions(type, index, newValue) {
-
-        var newOptions = [].concat(_toConsumableArray(options));
-        if (type === 'add') {
-            newOptions.push('New option');
-        } else {
-            newOptions[index] = newValue;
-        }
-        setAttributes({ options: newOptions });
     };
 
     var blockname = name.split('/')[1];

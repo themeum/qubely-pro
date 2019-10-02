@@ -57,6 +57,42 @@ const Edit = (props) => {
             setAttributes({ uniqueId: _client })
         }
     })
+
+    const updateOptions = (type, index, newValue) => {
+        let newOptions = [...options]
+        if (type === 'add') {
+            newOptions.push('New option')
+        } else if (type === 'update') {
+            newOptions[index] = newValue
+        }
+        setAttributes({ options: newOptions })
+    }
+
+    const renderOptions = () => {
+        return (
+            <div className={`qubely-form-field qubely-form-${type}`} >
+                {options.map((option, index) => {
+                    return (
+                        <div className={`qubely-form-field-${type}-option`}>
+                            <input type={type} id={option} value={option} />
+                            <RichText
+                                placeholder={__('option')}
+                                className={`qubely-${type}-option`}
+                                value={option}
+                                onChange={value => updateOptions('update', index, value)}
+                            />
+                        </div>
+                    )
+                })}
+                <div className={`qubely-action-add-option`} onClick={() => updateOptions('add')}>
+                    <span class="qubely-option-add-icon">
+                        <i className="fas fa-plus" />
+                    </span>
+                    <span className={`qubely-action-add-text`} > Add another </span>
+                </div>
+            </div>
+        )
+    }
     const renderInput = () => {
         return (
             <Fragment>
@@ -71,16 +107,7 @@ const Edit = (props) => {
                             </select>
                             :
                             (type === 'radio' || type === 'checkbox') ?
-                                <div className={`qubely-form-field qubely-form-${type}`} >
-                                    {options.map(option => {
-                                        return (
-                                            <div className={`qubely-form-field-${type}-option`}>
-                                                <input type={type} id={option} value={option} />
-                                                <label for={option}>option</label>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
+                                renderOptions()
                                 :
                                 <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
                 }
@@ -98,17 +125,6 @@ const Edit = (props) => {
         setDraggedItem(-1)
         setDraggedOverItem(-1)
     }
-    const updateOptions = (type, index, newValue) => {
-
-        let newOptions = [...options]
-        if (type === 'add') {
-            newOptions.push('New option')
-        } else {
-            newOptions[index] = newValue
-        }
-        setAttributes({ options: newOptions })
-    }
-
 
     const blockname = name.split('/')[1]
 
