@@ -282,17 +282,49 @@ const Edit = (props) => {
 
 const Save = (props) => {
 
-    const { attributes: { uniqueId, label, fieldSize, type, width, placeHolder, required } } = props
+    const {
+        attributes: {
+            uniqueId,
+            label,
+            fieldSize,
+            type,
+            options,
+            width,
+            placeHolder,
+            required
+        }
+    } = props
 
     let style;
     if (Number.isFinite(width)) {
         style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
     }
 
+    const renderInput = () => {
+        return (
+            <Fragment>
+                {
+                    type === 'textarea' ?
+                        <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)} required={required} />
+                        :
+                        type === 'dropdown' ?
+                            <select className={`qubely-form-field qubely-form-${type}`} >
+                                {options.map(option => <option value={option}>{option}</option>)}
+                            </select>
+                            :
+                            (type === 'radio' || type === 'checkbox') ?
+                                renderOptions()
+                                :
+                                <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
+                }
+            </Fragment>
+        )
+    }
+
     return (
         <div className={`qubely-block-${uniqueId}`} style={style}>
-            <RichText.Content className={`qubely-form-field-label`} value={label} />
-            <input className={`qubely-form-field qubely-form-text`} type={type} placeholder={__(placeHolder)} required={required} />
+            <RichText.Content tagName={'label'} className={`qubely-form-field-label`} value={label} />
+            {renderInput()}
         </div>
     )
 

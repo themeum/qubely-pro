@@ -110,7 +110,7 @@ exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  wi
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form {\n  display: flex;\n  flex-wrap: wrap; }\n  .qubely-block-form .qubely-form .qubely-form-group {\n    position: relative; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-label {\n      display: flex;\n      padding: 5px 0px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-label .qubely-form-field-label {\n        padding-right: 20px; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control {\n      display: block;\n      width: 100%;\n      background-clip: padding-box;\n      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-small {\n        padding: 6px 8px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-medium {\n        padding: 8.5px 12px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-large {\n        padding: 14.5px 16px; }\n    .qubely-block-form .qubely-form .qubely-form-group textarea.qubely-form-control {\n      resize: none; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control:focus {\n      outline: 0; }\n    .qubely-block-form .qubely-form .qubely-form-group p.qubely-form-required-field {\n      font-size: 14px;\n      color: red;\n      margin: 0; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-group-inner {\n  position: relative; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-label {\n  position: absolute;\n  pointer-events: none;\n  top: 0px;\n  transition: 0.2s ease all; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control {\n  border-radius: 0;\n  box-shadow: none;\n  padding-left: 0;\n  padding-right: 0; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus, .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid {\n    outline: none;\n    color: #333; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control::placeholder {\n    opacity: 0;\n    transition: 400ms; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus::placeholder {\n    opacity: 1; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus ~ .qubely-form-label,\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid ~ .qubely-form-label {\n  top: -20px; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
+exports.push([module.i, ".qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-group-inner {\n  position: relative; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-label {\n  position: absolute;\n  pointer-events: none;\n  top: 0px;\n  transition: 0.2s ease all; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control {\n  border-radius: 0;\n  box-shadow: none;\n  padding-left: 0;\n  padding-right: 0; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus, .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid {\n    outline: none;\n    color: #333; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control::placeholder {\n    opacity: 0;\n    transition: 400ms; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus::placeholder {\n    opacity: 1; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus ~ .qubely-form-label,\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid ~ .qubely-form-label {\n  top: -20px; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
 
 
 
@@ -1678,43 +1678,12 @@ var Save = function (_Component) {
                 'div',
                 _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
                 React.createElement(
-                    'style',
-                    null,
-                    this._renderFormGroupCss()
-                ),
-                React.createElement(
                     'div',
                     { className: 'qubely-block-form qubely-layout-' + layout },
                     React.createElement(
                         'form',
                         { className: 'qubely-form' },
-                        formItems.map(function (item, index) {
-                            return React.createElement(
-                                'div',
-                                { key: index, className: 'qubely-form-group qubely-form-group-index-' + index },
-                                React.createElement(
-                                    'div',
-                                    { className: 'qubely-form-group-inner' },
-                                    !item.hideLabel && layout == 'classic' && React.createElement(
-                                        'label',
-                                        { 'for': 'qubely-form-input-' + index, className: 'qubely-form-label' },
-                                        ' ',
-                                        __(item.label),
-                                        ' ',
-                                        item.required && '*'
-                                    ),
-                                    _renderField(item, index, inputSize),
-                                    layout == 'material' && React.createElement(
-                                        'label',
-                                        { className: 'qubely-form-label' },
-                                        ' ',
-                                        __(item.label),
-                                        ' ',
-                                        item.required && '*'
-                                    )
-                                )
-                            );
-                        }),
+                        React.createElement(InnerBlocks.Content, null),
                         reCaptcha && React.createElement(
                             'div',
                             { className: 'qubely-form-group' },
@@ -1762,8 +1731,7 @@ var Save = function (_Component) {
                                 React.createElement('div', { className: 'qubely-form-message' })
                             )
                         )
-                    ),
-                    React.createElement(InnerBlocks.Content, null)
+                    )
                 )
             );
         }
@@ -2418,6 +2386,7 @@ var Save = function Save(props) {
         label = _props$attributes2.label,
         fieldSize = _props$attributes2.fieldSize,
         type = _props$attributes2.type,
+        options = _props$attributes2.options,
         width = _props$attributes2.width,
         placeHolder = _props$attributes2.placeHolder,
         required = _props$attributes2.required;
@@ -2428,11 +2397,29 @@ var Save = function Save(props) {
         style = { width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%' };
     }
 
+    var renderInput = function renderInput() {
+        return React.createElement(
+            Fragment,
+            null,
+            type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), required: required }) : type === 'dropdown' ? React.createElement(
+                'select',
+                { className: 'qubely-form-field qubely-form-' + type },
+                options.map(function (option) {
+                    return React.createElement(
+                        'option',
+                        { value: option },
+                        option
+                    );
+                })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
+        );
+    };
+
     return React.createElement(
         'div',
         { className: 'qubely-block-' + uniqueId, style: style },
-        React.createElement(RichText.Content, { className: 'qubely-form-field-label', value: label }),
-        React.createElement('input', { className: 'qubely-form-field qubely-form-text', type: type, placeholder: __(placeHolder), required: required })
+        React.createElement(RichText.Content, { tagName: 'label', className: 'qubely-form-field-label', value: label }),
+        renderInput()
     );
 };
 
@@ -2505,22 +2492,15 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonAttributes = _wp$qubelyComponents.QubelyButton.buttonAttributes;
 
 
-var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false }, { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 50, required: false, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false }, { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false }, {
+var defaultFormItems = [
+// { type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false },
+// { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 50, required: false, hideLabel: false },
+// { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false },
+// { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false },
+{
     type: 'dropdown',
     label: 'Select',
     name: 'message',
-    width: 50,
-    required: true,
-    hideLabel: false
-}, {
-    type: 'radio',
-    label: 'Radio',
-    width: 50,
-    required: true,
-    hideLabel: false
-}, {
-    type: 'checkbox',
-    label: 'Checkbox',
     width: 50,
     required: true,
     hideLabel: false

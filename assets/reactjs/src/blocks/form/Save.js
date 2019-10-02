@@ -64,10 +64,10 @@ class Save extends Component {
         const { uniqueId, formItems, inputSize, fieldErrorMessage, formSuccessMessage, formErrorMessage, reCaptcha, reCaptchaSiteKey, reCaptchaSecretKey, policyCheckbox, policyCheckboxText, emailReceiver, emailHeaders, emailFrom, emailSubject, emailBody, layout, buttonFillType, buttonSize, buttonText, buttonIconName, buttonIconPosition, buttonTag, animation } = this.props.attributes
         return (
             <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-                <style>{this._renderFormGroupCss()}</style>
+                {/* <style>{this._renderFormGroupCss()}</style> */}
                 <div className={`qubely-block-form qubely-layout-${layout}`}>
                     <form className="qubely-form">
-                        {formItems.map((item, index) =>
+                        {/* {formItems.map((item, index) =>
                             <div key={index} className={`qubely-form-group qubely-form-group-index-${index}`}>
                                 <div className={`qubely-form-group-inner`}>
                                     {!item.hideLabel && layout == 'classic' &&
@@ -79,8 +79,8 @@ class Save extends Component {
                                     }
                                 </div>
                             </div>
-                        )}
-
+                        )} */}
+                        <InnerBlocks.Content />
                         {reCaptcha &&
                             <div className="qubely-form-group">
                                 <div className="qubely-google-recaptcha" />
@@ -121,7 +121,7 @@ class Save extends Component {
                             </div>
                         </div>
                     </form>
-                    <InnerBlocks.Content />
+
                 </div>
             </div>
         )
