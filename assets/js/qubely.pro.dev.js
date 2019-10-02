@@ -2492,15 +2492,22 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonAttributes = _wp$qubelyComponents.QubelyButton.buttonAttributes;
 
 
-var defaultFormItems = [
-// { type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false },
-// { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 50, required: false, hideLabel: false },
-// { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false },
-// { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false },
-{
+var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false }, { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 50, required: false, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false }, { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false }, {
     type: 'dropdown',
     label: 'Select',
     name: 'message',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'radio',
+    label: 'Radio',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'checkbox',
+    label: 'Checkbox',
     width: 50,
     required: true,
     hideLabel: false
