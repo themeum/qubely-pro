@@ -58,8 +58,7 @@ class Edit extends Component {
 		return (
 			<div className={`${layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img'} qubely-post-img qubely-post-img-${imageAnimation}`}>
 				<img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
-				{
-					(showCategory == 'badge' && style !== 4) &&
+				{ (showCategory == 'badge' && style !== 4) &&
 					<div className={`qubely-postcarousel-cat-position qubely-postcarousel-cat-position-${categoryPosition}`}>
 						<span className="qubely-postcarousel-category qubely-backend" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
 					</div>
@@ -76,22 +75,22 @@ class Edit extends Component {
 			<div className={`qubely-post-grid-content align-${contentPosition}`}>
 				{(showCategory === 'default') && <span className="qubely-postcarousel-category qubely-backend" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
 
-				{
-					(showCategory == 'badge' && style === 4) &&
+				{ (showCategory == 'badge' && style === 4) &&
 					<div className={`qubely-postcarousel-cat-position qubely-postcarousel-cat-position-${categoryPosition}`}>
 						<span className="qubely-postcarousel-category qubely-backend" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
 					</div>
 				}
 
 				{showTitle && (titlePosition == true) && title}
-				{
-					(showAuthor || showDates || showComment) &&
+
+				{(showAuthor || showDates || showComment) &&
 					<div className="qubely-postcarousel-meta">
 						{showAuthor && <span><i className="fas fa-user"></i> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
 						{showDates && <span><i className="far fa-calendar-alt"></i> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
 						{showComment && <span><i className="fas fa-comment"></i> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
 					</div>
 				}
+
 				{showTitle && (titlePosition == false) && title}
 				{showExcerpt && <div className="qubely-postcarousel-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
 				{showReadMore && <div className="qubely-postcarousel-btn-wrapper"><a className={`qubely-postcarousel-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}

@@ -7,7 +7,7 @@
  */
 function register_block_qubely_postcarousel_pro()
 {
-	// Check if the register function exists.
+	# Check if the register function exists.
 	if (!function_exists('register_block_type')) {
 		return;
 	}
@@ -827,16 +827,16 @@ function register_block_qubely_postcarousel_pro()
 					]]
 				),
 				'categoryTypography' => array(
-					'type' => 'object',
-					'default' => (object) [
+					'type' 		=> 'object',
+					'default' 	=> (object) [
 						'openTypography' => 1,
-						'family' => "Roboto",
-						'type' => "sans-serif",
-						'size' => (object) ['md' => 12, 'unit' => 'px'], 'spacing' => (object) ['md' => 1.1, 'unit' => 'px'], 'transform' => 'uppercase'
+						'family' 	=> "Roboto",
+						'type' 		=> "sans-serif",
+						'size' 		=> (object) ['md' => 12, 'unit' => 'px'], 'spacing' => (object) ['md' => 1.1, 'unit' => 'px'], 'transform' => 'capitalize'
 					],
-					'style' => [(object) [
-						'condition' => [(object) ['key' => 'showCategory', 'relation' => '!=', 'value' => 'none']],
-						'selector' => '{{QUBELY}} .qubely-postcarousel-category a'
+					'style' 	=> [(object) [
+						'condition' 	=> [(object) ['key' => 'showCategory', 'relation' => '!=', 'value' => 'none']],
+						'selector' 		=> '{{QUBELY}} .qubely-postcarousel-category a'
 					]]
 				),
 
@@ -1260,7 +1260,6 @@ function register_block_qubely_postcarousel_pro()
 
 function render_block_qubely_postcarousel_pro($att)
 {
-	$layout 		        = isset($att['layout']) ? $att['layout'] : 3;
 	$uniqueId 		        = isset($att['uniqueId']) ? $att['uniqueId'] : '';
 	$style 		            = isset($att['style']) ? $att['style'] : 3;
 	$column 		        = isset($att['column']) ? $att['column'] : 3;
@@ -1289,28 +1288,46 @@ function render_block_qubely_postcarousel_pro($att)
 	$tags                   = $att['tags'];
 	$taxonomy               = $att['taxonomy'];
 
-	$postitems              = $att['postitems'];
+	# Attribute value: Using Json Encode.
 	$autoPlay               = $att['autoPlay'];
+	$postitems              = $att['postitems'];
+	$nav					= $att['nav'];
+	$dots					= $att['dots'];
+	$speed					= $att['speed'];
+	$interval				= $att['interval'];
+	$center					= $att['isCentered']; 
+	$arrowStyle				= $att['arrowStyle'];
+	$verticalPosition		= $att['verticalPosition'];
 
+	# Attribute value.
+	$data_options = (object) array(
+		'autoplay' 		=> $autoPlay,
+		'items' 		=> $postitems,
+		'nav' 			=> $nav,
+		'dots' 			=> $dots,
+		'margin' 		=> '10',
+		'speed' 		=> $speed,
+		'interval' 		=> $interval,
+		'center' 		=> $center,
+		'arrowStyle' 	=> $arrowStyle,
+		'arrowPosition' => $verticalPosition,	
+		'responsive' 	=> array(
+			[
+				'viewport' 	=> 1170,
+				'items' 	=> $postitems['md']
+			],
+			[
+				'viewport' 	=> 980,
+				'items' 	=> $postitems['sm']
+			],
+			[
+				'viewport' 	=> 580,
+				'items' 	=> $postitems['xs']
+			],
+		)
+	); # End data options.
 
-	// $data_options = [
-
-	// 	'autoplay' 		=> $autoPlay,
-	// 	'items' 		=> $postitems,
-	// 	'nav' 			=> 'nav',
-	// 	'dots' 			=> 'dots',
-	// 	'margin' 		=> '10',
-	// 	'speed' 		=> 'speed',
-	// 	'interval' 		=> 'interval',
-	// 	'center' 		=> 'isCentered',
-	// 	'arrowStyle' 	=> 'arrowStyle',
-	// 	'arrowPosition' => 'verticalPosition',
-		
-	// ];
-
-
-	echo $autoPlay;
-
+	# Post query.
 	$args = array(
 		'post_type' 		=> 'post',
 		'posts_per_page' 	=> esc_attr($numbers),
@@ -1318,6 +1335,7 @@ function render_block_qubely_postcarousel_pro($att)
 		'orderby' 			=> esc_attr($orderBy),
 		'status' 			=> 'publish',
 	);
+	$query = new WP_Query($args);
 
 	$active_taxonomy_array = $att['taxonomy'] == 'categories' ? $categories : $tags;
 	$active_taxonomy_name = $att['taxonomy'] == 'categories' ? 'category__in' : 'tag__in';
@@ -1326,14 +1344,7 @@ function render_block_qubely_postcarousel_pro($att)
 		$args[$active_taxonomy_name] = array_column($active_taxonomy_array, 'value');
 	}
 
-	$query = new WP_Query($args);
-
-	 $query;
-
-	# The Loop. 
-	$html = '';
-
-	//excerpt;
+	# Excerpt;
 	if (!function_exists('qubely_excerpt_max_charlength')) :
 		function qubely_excerpt_max_charlength($limit)
 		{
@@ -1346,22 +1357,17 @@ function render_block_qubely_postcarousel_pro($att)
 			}
 		}
 	endif;
-
-	//column
-	if ( ($layout == 2) || ($layout == 3) || ($layout == 4) ) {
-		$col = (' qubely-postgrid-column qubely-postgrid-column-md' . $column['md'] . ' qubely-postgrid-column-sm' . $column['sm'] . ' qubely-postgrid-column-xs' . $column['xs']);
-	} else {
-		$col = "";
-	}
-
+	
+	$html = '';
+	# The Loop. 
 	if ($query->have_posts()) { 
 		$html .= '<div class="qubely-block-'.esc_attr($uniqueId).'">';
 		$html .= '<div class="qubely-block-image-carousel qubely-postcarousel-wrapper layout-'.esc_attr($style).'">';
 
 		# Carousel Class.
-		$html .= '<div class="qubely-carousel qubely-carousel-wrapper" data-options="">';
+		$html .= '<div class="qubely-carousel qubely-carousel-wrapper" data-options="'.htmlspecialchars(json_encode($data_options), ENT_QUOTES, 'UTF-8').'">';
 		$html .= '<div class="qubely-carousel-extended-list">';
-		$html .= '<div class="qubely-carousel-extended-outer-stage">';
+		$html .= '<div class="qubely-carousel-extended-outer-stage" style="transition: all 0s ease 0s;">';
 
 		while ($query->have_posts()) {
 			$query->the_post();
@@ -1376,32 +1382,76 @@ function render_block_qubely_postcarousel_pro($att)
 			$btn = '<div class="qubely-postcarousel-btn-wrapper"><a class="qubely-postcarousel-btn qubely-button-' . esc_attr($readmoreStyle) . ' is-' . esc_attr($readmoreSize) . '" href="' . esc_url(get_the_permalink()) . '">' . esc_attr($buttonText) . '</a></div>';
 			$excerpt = '<div class="qubely-postcarousel-intro">' . qubely_excerpt_max_charlength(esc_attr($limit)) . '</div>';
 
-
 			$html .= '<div class="qubely-carousel-item qubely-post-grid-view qubely-postgrid-style-'.esc_attr($style).'">';
-				$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-center">';
-					if (($showImages == 1) && has_post_thumbnail()) {
-						$html .= '<div class="qubely-post-list-img qubely-post-img qubely-post-img-' . esc_attr($imageAnimation) . '">';
-						$html .= '<a href="' . esc_url(get_the_permalink()) . '">';
-						$html .= $image;
-						$html .= '</a>';
-						if ($showCategory == 'badge' && $style != 4) {
+
+				if ( $style == 1 || $style == 2 ) {
+					$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-center">';
+						if (($showImages == 1) && has_post_thumbnail()) {
+							$html .= '<div class="qubely-post-list-img qubely-post-img qubely-post-img-' . esc_attr($imageAnimation) . '">';
+							$html .= '<a href="' . esc_url(get_the_permalink()) . '">';
+							$html .= $image;
+							$html .= '</a>';
+							if ($showCategory == 'badge' && $style != 4) {
+								$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
+								$html .= $category;
+								$html .= '</div>';
+							}
+							$html .= '</div>'; //qubely-post-list-img
+						}
+						$html .= '<div class="qubely-post-grid-content align-top">';
+						if ($showCategory == 'default') {
+							$html .= $category;
+						}
+
+						if ($showCategory == 'badge'  && $style == 4) {
 							$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
 							$html .= $category;
 							$html .= '</div>';
 						}
-						$html .= '</div>'; //qubely-post-list-img
+
+						if ($showTitle == 1) {
+							$html .= $title;
+						}
+						if (($showAuthor == 1) || ($showDates == 1) || ($showComment == 1)) {
+							$html .= '<div class="qubely-postcarousel-meta">';
+							$html .= $meta;
+							$html .= '</div>';
+						}
+						if ($showExcerpt == 1) {
+							$html .= $excerpt;
+						}
+						if ($showReadMore == 1) {
+							$html .= $btn;
+						}
+						$html .= '</div>'; //qubely-post-list-content
+					$html .= '</div>';
+				}
+
+				# Style - 2.
+				if ( $style == 3 || $style == 4 ) {
+					$html .= '<div class="qubely-postgrid qubely-post-grid-view qubely-postgrid-style-' . esc_attr($style) . '">';
+					$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-center qubely-post-grid-'.esc_attr($contentPosition ).'">';
+					if (($showImages == 1) && has_post_thumbnail()) {
+						$html .= '<div class="qubely-post-grid-img qubely-post-img qubely-post-img-' . esc_attr($imageAnimation) . '">';
+						$html .= '<a href="' . esc_url(get_the_permalink()) . '">';
+						$html .= $image;
+						$html .= '</a>';
+						if ($showCategory == 'badge'  && $style != 4) {
+							$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
+							$html .= $category;
+							$html .= '</div>';
+						}
+						$html .= '</div>'; //qubely-post-grid-img
 					}
-					$html .= '<div class="qubely-post-list-content">';
+					$html .= '<div class="qubely-post-grid-content align-top">';
 					if ($showCategory == 'default') {
 						$html .= $category;
 					}
-
 					if ($showCategory == 'badge'  && $style == 4) {
 						$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
 						$html .= $category;
 						$html .= '</div>';
 					}
-
 					if ($showTitle == 1) {
 						$html .= $title;
 					}
@@ -1416,17 +1466,19 @@ function render_block_qubely_postcarousel_pro($att)
 					if ($showReadMore == 1) {
 						$html .= $btn;
 					}
-					$html .= '</div>'; //qubely-post-list-content
-				$html .= '</div>';
-			$html .= '</div>';
+					$html .= '</div>'; //qubely-post-grid-content
+					$html .= '</div>'; //qubely-post-grid-wrap
+					$html .= '</div>'; //qubely-postgrid
+				}
+
+			$html .= '</div>'; # qubely-carousel-item
 		}
 		
-		
-		$html .= '</div>';
-		$html .= '</div>';
-		$html .= '</div>';
-		$html .= '</div>';
-		$html .= '</div>';
+		$html .= '</div>'; # qubely-carousel-extended-outer-stage
+		$html .= '</div>'; # qubely-carousel-extended-list
+		$html .= '</div>'; # qubely-carousel :- carousel class 
+		$html .= '</div>'; # qubely-block-image-carousel
+		$html .= '</div>'; # qubely-block-ID
 		wp_reset_postdata();
 	}
 	return $html;
