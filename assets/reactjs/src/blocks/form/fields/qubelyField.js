@@ -2,7 +2,7 @@
 const { __ } = wp.i18n
 const { InspectorControls, RichText } = wp.editor
 const { useState, useEffect, Fragment } = wp.element
-const { PanelBody, RangeControl, Dashicon, Draggable } = wp.components
+const { PanelBody, RangeControl, Tooltip } = wp.components
 
 
 const {
@@ -62,6 +62,8 @@ const Edit = (props) => {
         let newOptions = [...options]
         if (type === 'add') {
             newOptions.push('New option')
+        } else if (type === 'delete') {
+            newOptions.splice(index, 1)
         } else if (type === 'update') {
             newOptions[index] = newValue
         }
@@ -81,6 +83,9 @@ const Edit = (props) => {
                                 value={option}
                                 onChange={value => updateOptions('update', index, value)}
                             />
+                            <Tooltip text={__('Delete this option')}>
+                                <span className="qubely-action-remove-option" role="button" onClick={() => updateOptions('delete', index)}><i class="fas fa-times"></i></span>
+                            </Tooltip>
                         </div>
                     )
                 })}

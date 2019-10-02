@@ -5,6 +5,25 @@
   .qubely-form-field-checkbox-option {
     display: flex;
     align-items: center;
+    &:hover {
+      .qubely-action-remove-option {
+        display: block;
+      }
+    }
+    .qubely-action-remove-option {
+      display: none;
+      font-size: 12px;
+      width: 18px;
+      height: 18px;
+      line-height: 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, .8);
+      color: #fff; 
+      margin-left: 10px;
+      border-radius: 10px;
+      z-index: 1;
+      cursor: pointer;
+    }
   }
 
   .qubely-action-add-option {
