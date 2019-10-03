@@ -4451,22 +4451,26 @@ var Edit = function (_Component) {
 							}
 						}),
 						React.createElement(Separator, null),
-						React.createElement(ColorAdvanced, { label: __('Background'), value: bgColor, onChange: function onChange(value) {
-								return setAttributes({ bgColor: value });
-							} }),
-						React.createElement(Border, { label: __('Border'), value: border, onChange: function onChange(val) {
-								return setAttributes({ border: val });
-							}, min: 0, max: 10, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-								return _this3.setState({ device: value });
-							} }),
-						style != 2 && React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Corner'), value: borderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
-								return setAttributes({ borderRadius: value });
-							}, onDeviceChange: function onDeviceChange(value) {
-								return _this3.setState({ device: value });
-							} }),
-						style != 1 && React.createElement(BoxShadow, { label: __('Box-Shadow'), value: boxShadow, onChange: function onChange(value) {
-								return setAttributes({ boxShadow: value });
-							} }),
+						style != 4 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(ColorAdvanced, { label: __('Background'), value: bgColor, onChange: function onChange(value) {
+									return setAttributes({ bgColor: value });
+								} }),
+							React.createElement(Border, { label: __('Border'), value: border, onChange: function onChange(val) {
+									return setAttributes({ border: val });
+								}, min: 0, max: 10, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							style != 2 && React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Corner'), value: borderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
+									return setAttributes({ borderRadius: value });
+								}, onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								} }),
+							style != 1 && React.createElement(BoxShadow, { label: __('Box-Shadow'), value: boxShadow, onChange: function onChange(value) {
+									return setAttributes({ boxShadow: value });
+								} })
+						),
 						style === 2 && React.createElement(
 							Fragment,
 							null,
