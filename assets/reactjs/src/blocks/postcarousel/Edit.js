@@ -234,7 +234,6 @@ class Edit extends Component {
 				overlayBorderRadius,
 
 				//spacing
-				columnGap,
 				contentPadding,
 				titleSpace,
 				categorySpace,
@@ -281,6 +280,8 @@ class Edit extends Component {
 				dotBorderRadius,
 				dotColor,
 				dotActiveColor,
+
+				gutterspace
 				
 			}
 		} = this.props
@@ -291,7 +292,7 @@ class Edit extends Component {
 		const carouselSettings = {
 			nav: nav,
 			dots: dots,
-			margin: 10,
+			margin: 15,
 			speed: speed,
 			items: postitems,
 			autoplay: autoPlay,
@@ -478,6 +479,19 @@ class Edit extends Component {
 							value={ contentPosition }
 							onChange={value => setAttributes({ contentPosition: value })}
 						/>
+						
+						{style != 2 &&
+							<Range 
+								label={__('Gutter Space')} 
+								value={gutterspace} 
+								onChange={value => setAttributes({ gutterspace: value })} 
+								unit={['px', 'em', '%']} min={10} max={100} 
+								responsive device={device} 
+								onDeviceChange={value => this.setState({ device: value })} 
+							/>
+						}
+
+
 						<Padding 
 							label={__('Content Padding')} 
 							value={contentPadding} 
@@ -507,7 +521,6 @@ class Edit extends Component {
 								<BorderRadius min={0} max={100} responsive device={device} label={__('Card Corner')} value={cardBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ cardBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
 								<Range label={__('Card Space')} value={cardSpace} onChange={value => setAttributes({ cardSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 								<Padding label={__('Card Padding')} value={cardPadding} onChange={val => setAttributes({ cardPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-							
 							</Fragment>
 						}
 
@@ -751,9 +764,6 @@ class Edit extends Component {
 					</PanelBody>
 
 					<PanelBody title={__('Spacing')} initialOpen={false}>
-						
-						<Range label={__('Column Gap')} value={columnGap} onChange={value => setAttributes({ columnGap: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-					
 						{(showCategory == 'default') &&
 							<Range label={__('Category')} value={categorySpace} onChange={value => setAttributes({ categorySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						}
@@ -762,14 +772,13 @@ class Edit extends Component {
 						<Range label={__('Excerpt')} value={excerptSpace} onChange={value => setAttributes({ excerptSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 					</PanelBody>
 
-					
 					<PanelBody title={__('Colors')} initialOpen={false}>
 						<Color label={__('Title')} value={style !== 4 ? titleColor : titleOverlayColor} onChange={value => setAttributes(style !== 4 ? { titleColor: value } : { titleOverlayColor: value })} />
 						<Color label={__('Title Hover')} value={titleHoverColor} onChange={value => setAttributes({ titleHoverColor: value })} />
 						<Color label={__('Meta')} value={style !== 4 ? metaColor : metaOverlayColor} onChange={value => setAttributes(style !== 4 ? { metaColor: value } : { metaOverlayColor: value })} />
 						<Color label={__('Excerpt')} value={style !== 4 ? excerptColor : excerptColor2} onChange={value => setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value })} />
 					</PanelBody>
-					{animationSettings(uniqueId, animation, setAttributes)}
+					
 				</InspectorControls>
 
 				<BlockControls>
@@ -790,10 +799,12 @@ class Edit extends Component {
 							<Carousel options={carouselSettings}>
 								{ posts && posts.map(post => {
 									return (
-										<div className={`qubely-carousel-item qubely-post-grid-view qubely-postgrid-style-${style}`}>
-											<div className={`qubely-post-grid-wrapper qubely-post-grid-center`}>
-												{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
-												{this.renderCardContent(post)}
+										<div className={`qubely-carousel-item`}>
+											<div className={`qubely-post-grid-view qubely-postgrid-style-${style}`}>
+												<div className={`qubely-post-grid-wrapper qubely-post-grid-center`}>
+													{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
+													{this.renderCardContent(post)}
+												</div>
 											</div>
 										</div>
 									)
