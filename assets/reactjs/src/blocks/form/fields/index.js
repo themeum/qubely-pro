@@ -224,6 +224,27 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-date"
     },
+    {
+        ...qubelyField,
+        settings: {
+            ...qubelyField.settings,
+            title: __('Time Picker'),
+            description: __('Time picker field for Qubely Form'),
+            attributes: {
+                ...qubelyField.settings.attributes,
+                fieldName: {
+                    type: 'string',
+                    default: 'time-picker'
+                },
+                type: {
+                    type: 'string',
+                    default: 'time'
+                }
+            }
+
+        },
+        blockName: "qubely/formfield-time"
+    },
 ]
 
 

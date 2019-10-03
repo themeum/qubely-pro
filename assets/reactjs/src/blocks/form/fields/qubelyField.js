@@ -133,38 +133,6 @@ const Edit = (props) => {
     const renderDatePicker = () => {
         return (
             <Fragment>
-                {/* <DateTimePicker
-                        currentDate={date}
-                        onChange={(date) => setDate(date)}
-                        is12Hour={true}
-                    />
-
-                    <TimePicker
-                        currentTime={date}
-                        onChange={newTime=>console.log(newTime)}
-                        is12Hour={false}
-                    /> */}
-
-                {/* <Dropdown
-                        className={"qubely-form-date-picker"}
-                        contentClassName={"qubely-form-date-picker-content"}
-                        position="bottom center"
-                        renderToggle={({ isOpen, onToggle }) =>
-                            <div onClick={onToggle} aria-expanded={isOpen} >
-                                {dateString}
-                            </div>
-                        }
-                        renderContent={() => <DatePicker
-                            currentDate={date}
-                            onChange={(date) => {
-                                let [year, month, day] = date.substring(0, 10).split(dateSeparator)
-                                setDay(day)
-                                setMonth(month)
-                                setYear(year)
-
-                            }}
-                        />}
-                    /> */}
 
                 <input
                     type="date"
@@ -172,6 +140,20 @@ const Edit = (props) => {
                     name="qubely-form-date"
                     value={dateString}
                     onChange={newDate => setDateString(newDate.target.value)}
+                />
+            </Fragment>
+        )
+    }
+    const renderTimePicker = () => {
+        return (
+            <Fragment>
+
+                <input
+                    type="time"
+                    id="qubely-form-time"
+                    name="qubely-form-time"
+                    // value={dateString}
+                    // onChange={newDate => setDateString(newDate.target.value)}
                 />
             </Fragment>
         )
@@ -196,7 +178,10 @@ const Edit = (props) => {
                                 type === 'date' ?
                                     renderDatePicker()
                                     :
-                                    <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
+                                    type === 'time' ?
+                                        renderTimePicker()
+                                        :
+                                        <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
                 }
             </Fragment>
         )

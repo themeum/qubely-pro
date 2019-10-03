@@ -33,9 +33,16 @@ const defaultFormItems = [
     //     required: true,
     //     hideLabel: false
     // },
-     {
+    {
         type: 'date',
         label: 'Date',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'time',
+        label: 'Time',
         width: 50,
         required: true,
         hideLabel: false

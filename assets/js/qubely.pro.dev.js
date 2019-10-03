@@ -2015,6 +2015,23 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-date"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Time Picker'),
+        description: __('Time picker field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'time-picker'
+            },
+            type: {
+                type: 'string',
+                default: 'time'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-time"
 })];
 
 /**
@@ -2236,6 +2253,19 @@ var Edit = function Edit(props) {
             })
         );
     };
+    var renderTimePicker = function renderTimePicker() {
+        return React.createElement(
+            Fragment,
+            null,
+            React.createElement('input', {
+                type: 'time',
+                id: 'qubely-form-time',
+                name: 'qubely-form-time'
+                // value={dateString}
+                // onChange={newDate => setDateString(newDate.target.value)}
+            })
+        );
+    };
 
     var renderInput = function renderInput() {
         return React.createElement(
@@ -2253,7 +2283,7 @@ var Edit = function Edit(props) {
                         option
                     );
                 })
-            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
         );
     };
 
@@ -2587,6 +2617,12 @@ var defaultFormItems = [
 {
     type: 'date',
     label: 'Date',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'time',
+    label: 'Time',
     width: 50,
     required: true,
     hideLabel: false
