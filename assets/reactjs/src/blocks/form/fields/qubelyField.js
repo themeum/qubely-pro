@@ -2,7 +2,17 @@
 const { __ } = wp.i18n
 const { InspectorControls, RichText } = wp.editor
 const { useState, useEffect, Fragment } = wp.element
-const { PanelBody, TextControl, TextareaControl, RangeControl, Tooltip } = wp.components
+const {
+    DatePicker,
+    DateTimePicker,
+    Dropdown,
+    TimePicker,
+    PanelBody,
+    TextControl,
+    TextareaControl,
+    RangeControl,
+    Tooltip
+} = wp.components
 
 
 const {
@@ -30,10 +40,22 @@ const settings = {
 
 const Edit = (props) => {
 
+    // let newDate = new Date()
     const [device, changeDevice] = useState('md')
+    // const [date, setDate] = useState(new Date())
+    // const [year, setYear] = useState(date.getFullYear())
+    // const [month, setMonth] = useState(newDate.getMonth() + 1)
+    // const [day, setDay] = useState(date.getDate())
+    const [dateString, setDateString] = useState()
+
+    // const [dateSeparator, setDateSeparator] = useState('-')
+    // const [olddate, setOldDate] = useState("2018-07-22")
     const [draggedItem, setDraggedItem] = useState(-1)
     const [draggedOverItem, setDraggedOverItem] = useState(-1)
     const [dropdownValue, setDropdownValue] = useState('')
+
+
+
 
     const {
         name,
@@ -107,6 +129,54 @@ const Edit = (props) => {
             </div>
         )
     }
+
+    const renderDatePicker = () => {
+        return (
+            <Fragment>
+                {/* <DateTimePicker
+                        currentDate={date}
+                        onChange={(date) => setDate(date)}
+                        is12Hour={true}
+                    />
+
+                    <TimePicker
+                        currentTime={date}
+                        onChange={newTime=>console.log(newTime)}
+                        is12Hour={false}
+                    /> */}
+
+                {/* <Dropdown
+                        className={"qubely-form-date-picker"}
+                        contentClassName={"qubely-form-date-picker-content"}
+                        position="bottom center"
+                        renderToggle={({ isOpen, onToggle }) =>
+                            <div onClick={onToggle} aria-expanded={isOpen} >
+                                {dateString}
+                            </div>
+                        }
+                        renderContent={() => <DatePicker
+                            currentDate={date}
+                            onChange={(date) => {
+                                let [year, month, day] = date.substring(0, 10).split(dateSeparator)
+                                setDay(day)
+                                setMonth(month)
+                                setYear(year)
+
+                            }}
+                        />}
+                    /> */}
+
+                <input
+                    type="date"
+                    id="qubely-form-date"
+                    name="qubely-form-date"
+                    value={dateString}
+                    onChange={newDate => setDateString(newDate.target.value)}
+                />
+            </Fragment>
+        )
+    }
+
     const renderInput = () => {
         return (
             <Fragment>
@@ -123,7 +193,10 @@ const Edit = (props) => {
                             (type === 'radio' || type === 'checkbox') ?
                                 renderOptions()
                                 :
-                                <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
+                                type === 'date' ?
+                                    renderDatePicker()
+                                    :
+                                    <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
                 }
             </Fragment>
         )
@@ -166,7 +239,6 @@ const Edit = (props) => {
     const blockname = name.split('/')[1]
 
     if (uniqueId) { CssGenerator(attributes, blockname, uniqueId) }
-
     return (
         <Fragment>
 
@@ -222,7 +294,7 @@ const Edit = (props) => {
                                         draggable
                                         onDragEnd={() => handleDragEnd()}
                                         onDragOver={() => setDraggedOverItem(index)}
-                                        onDragStart={() => setDraggedItem(index)}
+                                        onDragqubely-form-date={() => setDraggedItem(index)}
                                         className={`qubely-dropdown-field-option qubely-option-${index}`}
                                     >
                                         <span class="qubely-option-move-icon">
@@ -272,6 +344,7 @@ const Edit = (props) => {
                         onChange={value => setAttributes({ label: value })}
                     />
                     {renderInput()}
+
                 </div>
             </div>
 
@@ -295,6 +368,7 @@ const Save = (props) => {
         }
     } = props
 
+    let date = `2019-10-09`
     let style;
     if (Number.isFinite(width)) {
         style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
@@ -315,12 +389,26 @@ const Save = (props) => {
                             (type === 'radio' || type === 'checkbox') ?
                                 renderOptions()
                                 :
-                                <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
+                                type === 'date' ?
+                                    renderDatePicker()
+                                    :
+                                    <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
                 }
             </Fragment>
         )
     }
 
+    const renderDatePicker = () => {
+        return (
+            <Fragment>
+                <input
+                    type="date"
+                    id="qubely-form-date"
+                    name="qubely-form-date"
+                />
+            </Fragment>
+        )
+    }
     return (
         <div className={`qubely-block-${uniqueId}`} style={style}>
             <RichText.Content tagName={'label'} className={`qubely-form-field-label`} value={label} />

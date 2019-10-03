@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  width: 100%; }\n  .qubely-form-field-wrapper .qubely-form-field-radio-option,\n  .qubely-form-field-wrapper .qubely-form-field-checkbox-option,\n  .qubely-form-field .qubely-form-field-radio-option,\n  .qubely-form-field .qubely-form-field-checkbox-option {\n    display: flex;\n    align-items: center; }\n    .qubely-form-field-wrapper .qubely-form-field-radio-option:hover .qubely-action-remove-option,\n    .qubely-form-field-wrapper .qubely-form-field-checkbox-option:hover .qubely-action-remove-option,\n    .qubely-form-field .qubely-form-field-radio-option:hover .qubely-action-remove-option,\n    .qubely-form-field .qubely-form-field-checkbox-option:hover .qubely-action-remove-option {\n      display: block; }\n    .qubely-form-field-wrapper .qubely-form-field-radio-option .qubely-action-remove-option,\n    .qubely-form-field-wrapper .qubely-form-field-checkbox-option .qubely-action-remove-option,\n    .qubely-form-field .qubely-form-field-radio-option .qubely-action-remove-option,\n    .qubely-form-field .qubely-form-field-checkbox-option .qubely-action-remove-option {\n      display: none;\n      font-size: 12px;\n      width: 18px;\n      height: 18px;\n      line-height: 20px;\n      text-align: center;\n      background: rgba(0, 0, 0, 0.8);\n      color: #fff;\n      margin-left: 10px;\n      border-radius: 10px;\n      z-index: 1;\n      cursor: pointer; }\n  .qubely-form-field-wrapper .qubely-action-add-option,\n  .qubely-form-field .qubely-action-add-option {\n    color: #2184f9;\n    cursor: pointer; }\n    .qubely-form-field-wrapper .qubely-action-add-option .qubely-option-add-icon,\n    .qubely-form-field .qubely-action-add-option .qubely-option-add-icon {\n      margin-right: 5px;\n      -webkit-text-stroke: 2px white; }\n    .qubely-form-field-wrapper .qubely-action-add-option .qubely-action-add-text,\n    .qubely-form-field .qubely-action-add-option .qubely-action-add-text {\n      color: #2184f9; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n", ""]);
+exports.push([module.i, ".qubely-form-field-wrapper,\n.qubely-form-field {\n  width: 100%; }\n  .qubely-form-field-wrapper .qubely-form-date-picker,\n  .qubely-form-field .qubely-form-date-picker {\n    width: fit-content; }\n  .qubely-form-field-wrapper .qubely-form-field-radio-option,\n  .qubely-form-field-wrapper .qubely-form-field-checkbox-option,\n  .qubely-form-field .qubely-form-field-radio-option,\n  .qubely-form-field .qubely-form-field-checkbox-option {\n    display: flex;\n    align-items: center; }\n    .qubely-form-field-wrapper .qubely-form-field-radio-option:hover .qubely-action-remove-option,\n    .qubely-form-field-wrapper .qubely-form-field-checkbox-option:hover .qubely-action-remove-option,\n    .qubely-form-field .qubely-form-field-radio-option:hover .qubely-action-remove-option,\n    .qubely-form-field .qubely-form-field-checkbox-option:hover .qubely-action-remove-option {\n      display: block; }\n    .qubely-form-field-wrapper .qubely-form-field-radio-option .qubely-action-remove-option,\n    .qubely-form-field-wrapper .qubely-form-field-checkbox-option .qubely-action-remove-option,\n    .qubely-form-field .qubely-form-field-radio-option .qubely-action-remove-option,\n    .qubely-form-field .qubely-form-field-checkbox-option .qubely-action-remove-option {\n      display: none;\n      font-size: 12px;\n      width: 18px;\n      height: 18px;\n      line-height: 20px;\n      text-align: center;\n      background: rgba(0, 0, 0, 0.8);\n      color: #fff;\n      margin-left: 10px;\n      border-radius: 10px;\n      z-index: 1;\n      cursor: pointer; }\n  .qubely-form-field-wrapper .qubely-action-add-option,\n  .qubely-form-field .qubely-action-add-option {\n    color: #2184f9;\n    cursor: pointer; }\n    .qubely-form-field-wrapper .qubely-action-add-option .qubely-option-add-icon,\n    .qubely-form-field .qubely-action-add-option .qubely-option-add-icon {\n      margin-right: 5px;\n      -webkit-text-stroke: 2px white; }\n    .qubely-form-field-wrapper .qubely-action-add-option .qubely-action-add-text,\n    .qubely-form-field .qubely-action-add-option .qubely-action-add-text {\n      color: #2184f9; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n", ""]);
 
 
 
@@ -1998,6 +1998,23 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-checkbox"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Date Picker'),
+        description: __('Date picker field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'date-picker'
+            },
+            type: {
+                type: 'string',
+                default: 'date'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-date"
 })];
 
 /**
@@ -2049,6 +2066,10 @@ var _wp$element = wp.element,
     useEffect = _wp$element.useEffect,
     Fragment = _wp$element.Fragment;
 var _wp$components = wp.components,
+    DatePicker = _wp$components.DatePicker,
+    DateTimePicker = _wp$components.DateTimePicker,
+    Dropdown = _wp$components.Dropdown,
+    TimePicker = _wp$components.TimePicker,
     PanelBody = _wp$components.PanelBody,
     TextControl = _wp$components.TextControl,
     TextareaControl = _wp$components.TextareaControl,
@@ -2073,25 +2094,41 @@ var settings = _extends({}, _formDefaults2.default, {
 });
 
 var Edit = function Edit(props) {
+
+    // let newDate = new Date()
     var _useState = useState('md'),
         _useState2 = _slicedToArray(_useState, 2),
         device = _useState2[0],
         changeDevice = _useState2[1];
+    // const [date, setDate] = useState(new Date())
+    // const [year, setYear] = useState(date.getFullYear())
+    // const [month, setMonth] = useState(newDate.getMonth() + 1)
+    // const [day, setDay] = useState(date.getDate())
 
-    var _useState3 = useState(-1),
+
+    var _useState3 = useState(),
         _useState4 = _slicedToArray(_useState3, 2),
-        draggedItem = _useState4[0],
-        setDraggedItem = _useState4[1];
+        dateString = _useState4[0],
+        setDateString = _useState4[1];
+
+    // const [dateSeparator, setDateSeparator] = useState('-')
+    // const [olddate, setOldDate] = useState("2018-07-22")
+
 
     var _useState5 = useState(-1),
         _useState6 = _slicedToArray(_useState5, 2),
-        draggedOverItem = _useState6[0],
-        setDraggedOverItem = _useState6[1];
+        draggedItem = _useState6[0],
+        setDraggedItem = _useState6[1];
 
-    var _useState7 = useState(''),
+    var _useState7 = useState(-1),
         _useState8 = _slicedToArray(_useState7, 2),
-        dropdownValue = _useState8[0],
-        setDropdownValue = _useState8[1];
+        draggedOverItem = _useState8[0],
+        setDraggedOverItem = _useState8[1];
+
+    var _useState9 = useState(''),
+        _useState10 = _slicedToArray(_useState9, 2),
+        dropdownValue = _useState10[0],
+        setDropdownValue = _useState10[1];
 
     var name = props.name,
         clientId = props.clientId,
@@ -2183,6 +2220,23 @@ var Edit = function Edit(props) {
             )
         );
     };
+
+    var renderDatePicker = function renderDatePicker() {
+        return React.createElement(
+            Fragment,
+            null,
+            React.createElement('input', {
+                type: 'date',
+                id: 'qubely-form-date',
+                name: 'qubely-form-date',
+                value: dateString,
+                onChange: function onChange(newDate) {
+                    return setDateString(newDate.target.value);
+                }
+            })
+        );
+    };
+
     var renderInput = function renderInput() {
         return React.createElement(
             Fragment,
@@ -2199,7 +2253,7 @@ var Edit = function Edit(props) {
                         option
                     );
                 })
-            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
         );
     };
 
@@ -2248,7 +2302,6 @@ var Edit = function Edit(props) {
     if (uniqueId) {
         CssGenerator(attributes, blockname, uniqueId);
     }
-
     return React.createElement(
         Fragment,
         null,
@@ -2314,7 +2367,7 @@ var Edit = function Edit(props) {
                                 onDragOver: function onDragOver() {
                                     return setDraggedOverItem(index);
                                 },
-                                onDragStart: function onDragStart() {
+                                'onDragqubely-form-date': function onDragqubelyFormDate() {
                                     return setDraggedItem(index);
                                 },
                                 className: 'qubely-dropdown-field-option qubely-option-' + index
@@ -2392,6 +2445,7 @@ var Save = function Save(props) {
         required = _props$attributes2.required;
 
 
+    var date = '2019-10-09';
     var style = void 0;
     if (Number.isFinite(width)) {
         style = { width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%' };
@@ -2411,10 +2465,21 @@ var Save = function Save(props) {
                         option
                     );
                 })
-            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
         );
     };
 
+    var renderDatePicker = function renderDatePicker() {
+        return React.createElement(
+            Fragment,
+            null,
+            React.createElement('input', {
+                type: 'date',
+                id: 'qubely-form-date',
+                name: 'qubely-form-date'
+            })
+        );
+    };
     return React.createElement(
         'div',
         { className: 'qubely-block-' + uniqueId, style: style },
@@ -2492,22 +2557,36 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonAttributes = _wp$qubelyComponents.QubelyButton.buttonAttributes;
 
 
-var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false }, { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 50, required: false, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false }, { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false }, {
-    type: 'dropdown',
-    label: 'Select',
-    name: 'message',
-    width: 50,
-    required: true,
-    hideLabel: false
-}, {
-    type: 'radio',
-    label: 'Radio',
-    width: 50,
-    required: true,
-    hideLabel: false
-}, {
-    type: 'checkbox',
-    label: 'Checkbox',
+var defaultFormItems = [
+// { type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false },
+// { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 50, required: false, hideLabel: false },
+// { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false },
+// { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false },
+// {
+//     type: 'dropdown',
+//     label: 'Select',
+//     name: 'message',
+//     width: 50,
+//     required: true,
+//     hideLabel: false
+// },
+// {
+//     type: 'radio',
+//     label: 'Radio',
+//     width: 50,
+//     required: true,
+//     hideLabel: false
+// },
+// {
+//     type: 'checkbox',
+//     label: 'Checkbox',
+//     width: 50,
+//     required: true,
+//     hideLabel: false
+// },
+{
+    type: 'date',
+    label: 'Date',
     width: 50,
     required: true,
     hideLabel: false

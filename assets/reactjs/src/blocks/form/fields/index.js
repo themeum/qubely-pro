@@ -203,6 +203,27 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-checkbox"
     },
+    {
+        ...qubelyField,
+        settings: {
+            ...qubelyField.settings,
+            title: __('Date Picker'),
+            description: __('Date picker field for Qubely Form'),
+            attributes: {
+                ...qubelyField.settings.attributes,
+                fieldName: {
+                    type: 'string',
+                    default: 'date-picker'
+                },
+                type: {
+                    type: 'string',
+                    default: 'date'
+                }
+            }
+
+        },
+        blockName: "qubely/formfield-date"
+    },
 ]
 
 

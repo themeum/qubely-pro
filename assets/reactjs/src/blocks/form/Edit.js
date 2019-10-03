@@ -531,7 +531,6 @@ class Edit extends Component {
                             <InnerBlocks template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])} />
                         </form>
 
-
                         <div className="qubely-form-group qubely-form-button" >
                             <QubelyButtonEdit
                                 enableButton={enableButton}
