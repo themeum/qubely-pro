@@ -319,7 +319,7 @@ class Edit extends Component {
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
-					<PanelBody title={__('Carousel Settings')} initialOpen={false}>
+					<PanelBody title={__('Carousel Settings')} initialOpen={true}>
 						<Toggle label={__('Autoplay')} value={autoPlay} onChange={value => setAttributes({ autoPlay: value })} />
 						{autoPlay &&
 							<Fragment>
@@ -464,7 +464,7 @@ class Edit extends Component {
 						}
 					</PanelBody>
 
-					<PanelBody title={__('Post Design')} initialOpen={true}>
+					<PanelBody title={__('Blog Post Design')} initialOpen={false}>
 						<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
 							options={[
 								{ value: 1, svg: icons.postgrid_design_1 },
@@ -479,7 +479,6 @@ class Edit extends Component {
 							value={ contentPosition }
 							onChange={value => setAttributes({ contentPosition: value })}
 						/>
-						
 						{style != 2 &&
 							<Range 
 								label={__('Gutter Space')} 
@@ -490,8 +489,6 @@ class Edit extends Component {
 								onDeviceChange={value => this.setState({ device: value })} 
 							/>
 						}
-
-
 						<Padding 
 							label={__('Content Padding')} 
 							value={contentPadding} 
@@ -544,8 +541,6 @@ class Edit extends Component {
 						{(style === 4) &&
 							<Fragment>
 								<Range label={__('Overlay Height')} value={overlayHeight} onChange={value => setAttributes({ overlayHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-
-								
 								<BorderRadius min={0} max={100} responsive device={device} label={__('Overlay Corner')} value={overlayBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ overlayBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
 								<Tabs>
 									<Tab tabTitle={__('Normal')}>
@@ -558,7 +553,6 @@ class Edit extends Component {
 								<Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
 							</Fragment>
 						}
-
 						{(style === 3) &&
 							<Fragment>
 								<ColorAdvanced label={__('Stack Background')} value={stackBg} onChange={(value) => setAttributes({ stackBg: value })} />
@@ -567,8 +561,6 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-
-
 
 					<PanelBody title={__('Post Query')} initialOpen={false}>
 						<ButtonGroup

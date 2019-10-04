@@ -4188,7 +4188,7 @@ var Edit = function (_Component) {
 					{ key: 'inspector' },
 					React.createElement(
 						PanelBody,
-						{ title: __('Carousel Settings'), initialOpen: false },
+						{ title: __('Carousel Settings'), initialOpen: true },
 						React.createElement(Toggle, { label: __('Autoplay'), value: autoPlay, onChange: function onChange(value) {
 								return setAttributes({ autoPlay: value });
 							} }),
@@ -4411,7 +4411,7 @@ var Edit = function (_Component) {
 					),
 					React.createElement(
 						PanelBody,
-						{ title: __('Post Design'), initialOpen: true },
+						{ title: __('Blog Post Design'), initialOpen: false },
 						React.createElement(Styles, { columns: 4, value: style, onChange: function onChange(val) {
 								return setAttributes({ style: val });
 							},
