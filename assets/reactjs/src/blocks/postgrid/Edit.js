@@ -82,8 +82,10 @@ class Edit extends Component {
 				}
 
 				{showTitle && (titlePosition == true) && title}
-				{
-					(showAuthor || showDates || showComment) &&
+
+				
+					
+				{(showAuthor || showDates || showComment) &&
 					<div className="qubely-postgrid-meta">
 						{showAuthor && <span><i className="fas fa-user"></i> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
 						{showDates && <span><i className="far fa-calendar-alt"></i> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
@@ -93,6 +95,9 @@ class Edit extends Component {
 				{showTitle && (titlePosition == false) && title}
 				{showExcerpt && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
 				{showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
+					
+				
+
 			</div>
 		)
 	}
@@ -223,12 +228,14 @@ class Edit extends Component {
 				metaSpace,
 				excerptSpace
 
-			}
+			} 
 		} = this.props
 		const { device } = this.state
 
 		if (uniqueId) { CssGenerator(this.props.attributes, 'postgrid', uniqueId) }
 
+		let counts = 0;
+		let output = '';
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
@@ -238,7 +245,8 @@ class Edit extends Component {
 								{ value: 1, svg: icons.postgrid_1, label: __('') },
 								{ value: 2, svg: icons.postgrid_2, label: __('') },
 								{ value: 3, svg: icons.postgrid_3, label: __('') },
-								{ value: 4, svg: icons.postgrid_4, label: __('') }
+								{ value: 4, svg: icons.postgrid_4, label: __('') },
+								{ value: 5, svg: icons.postgrid_5, label: __('Layout 5') },
 							]}
 							value={layout}
 							onChange={val => setAttributes({ layout: val })}
@@ -603,30 +611,49 @@ class Edit extends Component {
 
 				</InspectorControls>
 
-				{/* <BlockControls>
-					<Toolbar>
-						<InlineToolbar
-							data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
-							{...this.props}
-							prevState={this.state}
-						/>
-					</Toolbar>
-				</BlockControls> */}
-
 				<div className={`qubely-block-${uniqueId}`}>
 					{
 						(posts && posts.length) ?
                         <div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${( (layout === 2) || (layout === 3) || (layout === 4) ) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`}>
                             {
                                 posts && posts.map(post => {
-                                    return (
-                                        <div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style}`}>
-                                            <div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
-                                                {showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
-                                                {this.renderCardContent(post)}
-                                            </div>
-                                        </div>
-                                    )
+
+
+									
+									{/* let divStyle = {
+										color: 'white',
+										backgroundImage: 'url(' + post.qubely_featured_image_url[imgSize][0] + ')',
+										WebkitTransition: 'all',
+										msTransition: 'all' 
+									}; */}
+									
+									if( layout == 5 ) {
+										output = ( counts == 0 ) ? ( 
+											<div className={`blog-feature-image`}>
+												{ this.renderFeaturedImage(post) }
+												{this.renderCardContent(post)}
+											</div>
+										) : ( 
+											<div className={`qubely-post-list-view layout-${layout}`}>
+												{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
+												{this.renderCardContent(post)}
+											</div>
+										);
+										counts++;
+                                    	return output;
+									} else {
+										return (
+											<div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style}`}>
+												<div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
+													{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
+													{this.renderCardContent(post)}
+												</div>
+											</div>
+										)
+									}
+
+									
+                                   
                                 })
                             }
                         </div>
