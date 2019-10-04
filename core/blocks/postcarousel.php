@@ -308,7 +308,7 @@ function register_block_qubely_postcarousel_pro()
 					'type' 		=> 'object',
 					'default' 	=> (object) array(),
 					'style' 	=> [(object) [
-						'selector' => '{{QUBELY}} .qubely-post-grid-content'
+						'selector' => '{{QUBELY}} .qubely-post-grid-content, {{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
 					]]
 				),
 
@@ -348,14 +348,14 @@ function register_block_qubely_postcarousel_pro()
 					'type' 		=> 'object',
 					'default' 	=> (object) array(),
 					'style' 	=> [(object) [
-						'selector' => '{{QUBELY}} .qubely-post-grid-wrapper'
+						'selector' => '{{QUBELY}} .qubely-postgrid-style-1 .qubely-post-grid-wrapper, {{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper.qubely-post-grid-center'
 					]]
 				),
 				'borderRadius' 	=> array(
 					'type' 		=> 'object',
 					'default' 	=> (object) array(),
 					'style' 	=> [(object) [
-						'selector' => '{{QUBELY}} .qubely-postgrid-style-1 .qubely-post-grid-wrapper, {{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper, {{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
+						'selector' => '{{QUBELY}} .qubely-postgrid-style-1 .qubely-post-grid-wrapper, {{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper'
 					]]
 				),
 				'boxShadow' 	=> array(
@@ -371,7 +371,7 @@ function register_block_qubely_postcarousel_pro()
 					),
 					'style' => [
 						(object) [
-							'selector' => '{{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper.qubely-post-grid-center, {{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
+							'selector' => '{{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper.qubely-post-grid-center'
 						]
 					]
 				),
@@ -464,19 +464,7 @@ function register_block_qubely_postcarousel_pro()
 						]
 					]
 				),
-				'overlaySpace' => array(
-					'type' => 'object',
-					'default' => (object) array(
-						'md' => 30,
-						'unit' => 'px'
-					),
-					'style' => [
-						(object) [
-							'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 4]],
-							'selector' => '{{QUBELY}} .qubely-post-list-view.qubely-postgrid-style-4:not(:last-child) {margin-bottom: {{overlaySpace}};}'
-						]
-					]
-				),
+				
 				'overlayBorderRadius' => array(
 					'type' => 'object',
 					'default' => (object) array(
@@ -539,7 +527,7 @@ function register_block_qubely_postcarousel_pro()
 					'default' => '',
 					'style' => [(object) [
 						'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 4]],
-						'selector' => '{{QUBELY}} .qubely-postgrid.qubely-post-list-view.qubely-postgrid-style-4:before {mix-blend-mode: {{overlayBlend}};}'
+						'selector' => '{{QUBELY}} .qubely-postgrid-style-4:before {mix-blend-mode: {{overlayBlend}};}'
 					]]
 				),
 				'stackBg' => array(
@@ -548,110 +536,42 @@ function register_block_qubely_postcarousel_pro()
 					'style' => [
 						(object) [
 							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-							],
-							'selector' => '{{QUBELY}} .qubely-post-list-view.qubely-postgrid-style-3 .qubely-post-list-wrapper .qubely-post-list-content'
-						],
-						(object) [
-							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
 								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
 							],
 							'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
-						]
-					]
-				),
-				'stackWidth' => array(
-					'type' => 'object',
-					'default' => (object) array(),
-
-					'style' => [
-						(object) [
-							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
-								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-							],
-							'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-img + .qubely-post-grid-content {width: {{stackWidth}};}'
-						]
+						],
 					]
 				),
 				'stackBorderRadius' => array(
-					'type' => 'object',
-					'default' => (object) array(
-						'unit' => 'px',
+					'type' 			=> 'object',
+					'default' 		=> (object) array(
+						'unit' 		=> 'px',
 						'openBorderRadius' => true,
 						'radiusType' => 'global',
-						'global' => (object) array(
-							'md' => 10,
+						'global' 	=> (object) array(
+							'md' 	=> 10,
 						),
 					),
 					'style' => [
 						(object) [
-							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-							],
-							'selector' => '{{QUBELY}} .qubely-post-list-view.qubely-postgrid-style-3 .qubely-post-list-wrapper .qubely-post-list-content'
-						],
-						(object) [
-							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
-								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-							],
 							'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
 						]
 					]
 				),
-				'stackPadding' => array(
-					'type' => 'object',
-					'default' => (object) [
-						'openPadding' => 1,
-						'paddingType' => 'global',
-						'unit' => 'px',
-						'global' => (object) ['md' => 30],
-					],
-					'style' => [
-						(object) [
-							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-							],
-							'selector' => '{{QUBELY}} .qubely-post-list-view.qubely-postgrid-style-3 .qubely-post-list-wrapper .qubely-post-list-content'
-						],
-						(object) [
-							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
-								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-							],
-							'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-wrapper .qubely-post-grid-content'
-						]
-					]
-				),
-				'stackBoxShadow' => array(
-					'type' => 'object',
-					'default' => (object) array(
-						'blur' => 28,
-						'color' => "rgba(0,0,0,0.15)",
+				
+				'stackBoxShadow' 	=> array(
+					'type' 			=> 'object',
+					'default' 		=> (object) array(
+						'blur' 		=> 8,
+						'color' 	=> "rgba(0,0,0,0.10)",
 						'horizontal' => 0,
-						'inset' => 0,
+						'inset' 	=> 0,
 						'openShadow' => true,
-						'spread' => -20,
-						'vertical' => 34
+						'spread' 	=> 0,
+						'vertical' 	=> 4
 					),
 					'style' => [
 						(object) [
-							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-							],
-							'selector' => '{{QUBELY}} .qubely-post-list-view.qubely-postgrid-style-3 .qubely-post-list-wrapper .qubely-post-list-content'
-						],
-						(object) [
-							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
-								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-							],
 							'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
 						]
 					]

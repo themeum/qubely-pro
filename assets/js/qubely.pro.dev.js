@@ -4451,17 +4451,24 @@ var Edit = function (_Component) {
 							}
 						}),
 						React.createElement(Separator, null),
-						style != 4 && React.createElement(
+						style != 4 || style != 2 && React.createElement(
 							Fragment,
 							null,
 							React.createElement(ColorAdvanced, { label: __('Background'), value: bgColor, onChange: function onChange(value) {
 									return setAttributes({ bgColor: value });
 								} }),
-							React.createElement(Border, { label: __('Border'), value: border, onChange: function onChange(val) {
+							React.createElement(Border, {
+								label: __('Border'),
+								value: border,
+								onChange: function onChange(val) {
 									return setAttributes({ border: val });
-								}, min: 0, max: 10, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+								},
+								min: 0, max: 10, unit: ['px', 'em', '%'],
+								responsive: true, device: device,
+								onDeviceChange: function onDeviceChange(value) {
 									return _this3.setState({ device: value });
-								} }),
+								}
+							}),
 							style != 2 && React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Corner'), value: borderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
 									return setAttributes({ borderRadius: value });
 								}, onDeviceChange: function onDeviceChange(value) {
@@ -4506,11 +4513,6 @@ var Edit = function (_Component) {
 								}, unit: ['px', 'em', '%'], min: 50, max: 700, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 									return _this3.setState({ device: value });
 								} }),
-							React.createElement(Range, { label: __('Overlay Space'), value: overlaySpace, onChange: function onChange(value) {
-									return setAttributes({ overlaySpace: value });
-								}, unit: ['px', 'em', '%'], min: 0, max: 100, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								} }),
 							React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Overlay Corner'), value: overlayBorderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
 									return setAttributes({ overlayBorderRadius: value });
 								}, onDeviceChange: function onDeviceChange(value) {
@@ -4544,19 +4546,9 @@ var Edit = function (_Component) {
 							React.createElement(ColorAdvanced, { label: __('Stack Background'), value: stackBg, onChange: function onChange(value) {
 									return setAttributes({ stackBg: value });
 								} }),
-							React.createElement(Range, { label: __('Stack Size'), value: stackWidth, onChange: function onChange(value) {
-									return setAttributes({ stackWidth: value });
-								}, unit: ['px', 'em', '%'], min: 50, max: 600, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								} }),
 							React.createElement(BorderRadius, { min: 0, max: 100, responsive: true, device: device, label: __('Stack Corner'), value: stackBorderRadius, unit: ['px', 'em', '%'], onChange: function onChange(value) {
 									return setAttributes({ stackBorderRadius: value });
 								}, onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								} }),
-							React.createElement(Padding, { label: __('Stack Padding'), value: stackPadding, onChange: function onChange(val) {
-									return setAttributes({ stackPadding: val });
-								}, min: 0, max: 60, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
 									return _this3.setState({ device: value });
 								} }),
 							React.createElement(BoxShadow, { label: __('Stack Box Shadow'), value: stackBoxShadow, onChange: function onChange(value) {
