@@ -1,7 +1,7 @@
 
 const { __ } = wp.i18n
 const { InspectorControls, RichText } = wp.editor
-const { useState, useEffect, Fragment } = wp.element
+const { useState, useEffect, useRef, Fragment } = wp.element
 const {
     DatePicker,
     DateTimePicker,
@@ -42,8 +42,9 @@ const Edit = (props) => {
 
     // let newDate = new Date()
     const [device, changeDevice] = useState('md')
-    // const [date, setDate] = useState(new Date())
-    // const [year, setYear] = useState(date.getFullYear())
+    const datePicker = useRef(null);
+    const [date, setDate] = useState(new Date())
+    const [year, setYear] = useState(date.getFullYear())
     // const [month, setMonth] = useState(newDate.getMonth() + 1)
     // const [day, setDay] = useState(date.getDate())
     const [dateString, setDateString] = useState()
@@ -85,6 +86,13 @@ const Edit = (props) => {
             setAttributes({ uniqueId: _client })
         }
 
+        $('.qubely-datepicker').datepicker({
+            dateFormat: "dd-mm-yy",
+            yearRange: `${year - 50}:${year + 10}`,
+            duration: "fast",
+            changeMonth: true,
+            changeYear: true,
+        });
         const currentField = $(`#block-${clientId}`)
         currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
     })
@@ -132,29 +140,43 @@ const Edit = (props) => {
 
     const renderDatePicker = () => {
         return (
-            <Fragment>
+            <div class="qubely-date-picker-wrapper">
 
-                <input
+                {/* <input
                     type="date"
                     id="qubely-form-date"
                     name="qubely-form-date"
                     value={dateString}
                     onChange={newDate => setDateString(newDate.target.value)}
-                />
-            </Fragment>
+                /> */}
+                <input type="text" className="qubely-datepicker" ref={datePicker} autocomplete="off"></input>
+            </div>
         )
     }
     const renderTimePicker = () => {
         return (
             <Fragment>
 
-                <input
+                {/* <input
                     type="time"
                     id="qubely-form-time"
                     name="qubely-form-time"
-                    // value={dateString}
-                    // onChange={newDate => setDateString(newDate.target.value)}
-                />
+                // value={dateString}
+                // onChange={newDate => setDateString(newDate.target.value)}
+                /> */}
+                {/* <input type="text" id="qubely-timepicker" autocomplete="off"></input> */}
+
+                <div className="time">
+
+                    <h1 className="time__heading">Select a Time.</h1>
+
+                    <div className="time__input">
+
+                        <input type="text" className="timepicker" />
+
+                    </div>
+
+                </div>
             </Fragment>
         )
     }
@@ -385,13 +407,9 @@ const Save = (props) => {
 
     const renderDatePicker = () => {
         return (
-            <Fragment>
-                <input
-                    type="date"
-                    id="qubely-form-date"
-                    name="qubely-form-date"
-                />
-            </Fragment>
+
+            <input type="text" className="qubely-datepicker" autocomplete="off"></input>
+
         )
     }
     return (

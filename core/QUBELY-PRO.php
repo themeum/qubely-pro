@@ -16,12 +16,13 @@ class QUBELY_PRO
 
 		// Add Styles and Scripts
 		add_action('wp_enqueue_scripts', array($this, 'qubely_pro_enqueue_style'));
-        
-        // dynamic blocks
+		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
+
+		// dynamic blocks
 		add_action('init', array($this, 'init_dynamic_postgrid_blocks'));
 	}
 
-		/**
+	/**
 	 * Init dynamic blocks frontend
 	 */
 	public function init_dynamic_postgrid_blocks()
@@ -51,7 +52,19 @@ class QUBELY_PRO
 	{
 		wp_enqueue_script('qubely-carousel', QUBELY_PRO_DIR_URL . 'assets/js/qubely-carousel.js', array('jquery'), QUBELY_PRO_VERSION);
 		wp_enqueue_script('qubely-slider-script', QUBELY_PRO_DIR_URL . 'assets/js/slider-script.js', array('jquery'), QUBELY_PRO_VERSION);
-
+		wp_enqueue_script('form-script', QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
+		wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
+		wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+	}
+	/**
+	 * Frontend Style & Script
+	 * @since 1.0.0
+	 */
+	public function admin_enqueue_scripts()
+	{
+		wp_enqueue_script('qubely-form',  QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
+		wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
+		wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
 	}
 }
 new QUBELY_PRO();

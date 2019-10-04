@@ -29,6 +29,4 @@ jQuery(document).ready(function ($) {
         }
     }
 
-
-
 });

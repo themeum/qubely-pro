@@ -76,3 +76,223 @@
     font-size: 15px;
   }
 }
+
+
+  #ui-datepicker-div {
+    display: none;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.1);
+    margin-top: 0.25rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  .ui-datepicker-calendar thead th {
+    padding: 0.25rem 0;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #78909C;
+  }
+  .ui-datepicker-calendar tbody td {
+    width: 2.5rem;
+    text-align: center;
+    padding: 0;
+  }
+  .ui-datepicker-calendar tbody td a {
+    display: block;
+    border-radius: 0.25rem;
+    line-height: 2rem;
+    transition: 0.3s all;
+    color: #546E7A;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+  .ui-datepicker-calendar tbody td a:hover {	
+    background-color: #E0F2F1;
+  }
+  .ui-datepicker-calendar tbody td a.ui-state-active {
+    background-color: #009688;
+    color: white;
+  }
+  .ui-datepicker-header a.ui-corner-all {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+    border-radius: 0.25rem;
+    transition: 0.3s all;
+  }
+  .ui-datepicker-header a.ui-corner-all:hover {
+    background-color: #ECEFF1;
+  }
+  .ui-datepicker-header a.ui-datepicker-prev {	
+    left: 0;	
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: 50%;
+    transform: rotate(180deg);
+  }
+  .ui-datepicker-header a.ui-datepicker-next {
+    right: 0;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==');
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: 50%;
+  }
+  .ui-datepicker-header a>span {
+    display: none;
+  }
+  .ui-datepicker-title {
+    text-align: center;
+    line-height: 2rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding-bottom: 0.25rem;
+  }
+  .ui-datepicker-week-col {
+    color: #78909C;
+    font-weight: 400;
+    font-size: 0.75rem;
+  }
+
+  .ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all{
+    table td, table th {
+      border: none;
+      word-break: break-all;
+  }
+  }
+
+
+
+
+  body {
+    margin: 0px;
+    padding-top: 100px;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(30,87,153,1) 0%,rgba(3,169,244,1) 100%);
+    font-family: helvetica, arial;
+  }
+  
+  body * {
+    box-sizing: border-box;
+  }
+  
+  .time {
+    width: 50%;
+    min-width: 200px;
+    margin: 25px auto;
+    
+    &__heading {
+      text-align: center;
+      color: #fff;
+      text-shadow: 4px 4px 0px rgba(0, 0, 0, .2);
+    }
+    
+    &__input {
+      width: 100%;
+      
+      .timepicker {
+        width: 100%;
+        font-size: 25px;
+        padding: 10px;
+        font-weight: 300;
+        text-align: center;
+        border: solid 2px #303233;
+        color: #303233;
+        outline: none;
+        box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, .1);
+      }
+    }
+  }
+  
+  // Start Timepicker CSS
+  
+  div[id^="tp_"].timepicker__wrapper {
+    opacity: 0;
+    height: auto;
+    min-width: 150px;
+    max-height: 0px;
+    overflow: hidden;
+    position: absolute;
+    transition: max-height .1s ease-in-out;
+    background: #F4F5F7;
+    background: linear-gradient(to bottom, rgba(227,227,229,1) 0%,rgba(239,239,239,1) 7%,rgba(244,245,247,1) 100%);
+    border-radius: 0px 0px 5px 5px;
+    border: 2px solid #303233;
+    border-top: transparent;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, .1);
+    text-align: center;
+    
+    * {
+      box-shadow: border-box;
+    }
+    
+    &-active {
+      opacity: 1;
+      max-height: 150px;
+      padding: 15px;
+    }
+    
+    &-full {
+      
+      > div {
+        width: 33% !important;
+      }
+    }
+    
+    > div {
+      margin: 0px;
+      padding: 0px;
+      display: inline-block;
+      text-align: center;
+      width: 50%;
+      max-width: 75px;
+      
+      .display {
+        color: #303233;
+        font-size: 30px;
+        font-weight: 100;
+        line-height: 35px;
+        margin: 0px;
+        text-transform: uppercase;
+        user-select: none;
+      }
+      
+      .timepicker__button {
+        margin: 15px auto;
+        padding: 0px;
+        background: #fff;
+        cursor: pointer;
+        background: transparent;
+        border: solid 5px transparent;
+        
+        &__up > div {
+          width: 0px;
+          height: 0px;
+          margin: auto;
+          border-left: solid 5px transparent;
+          border-right: solid 5px transparent;
+          border-bottom: solid 5px #303233;
+        }
+        
+        &__down > div {
+          width: 0px;
+          height: 0px;
+          margin: auto;
+          border-left: solid 5px transparent;
+          border-right: solid 5px transparent;
+          border-top: solid 5px #303233;
+        }
+      }
+    }
+  }
+  
+  
