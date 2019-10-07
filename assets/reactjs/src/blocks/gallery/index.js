@@ -252,7 +252,7 @@ registerBlockType('qubely/gallery', {
         // Caption
         enableCaption: { 
             type: 'boolean', 
-            default: true 
+            default: false 
         },
 		captionTypography: {
 			type: 'object',
