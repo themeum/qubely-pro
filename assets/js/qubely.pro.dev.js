@@ -2673,7 +2673,7 @@ exports.default = Edit;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -2691,104 +2691,82 @@ var RichText = wp.editor.RichText;
 var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
 
 var Save = function (_Component) {
-    _inherits(Save, _Component);
+  _inherits(Save, _Component);
 
-    function Save() {
-        var _ref;
+  function Save() {
+    var _ref;
 
-        var _temp, _this, _ret;
+    var _temp, _this, _ret;
 
-        _classCallCheck(this, Save);
+    _classCallCheck(this, Save);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderPricelist = function () {
-            var _this$props$attribute = _this.props.attributes,
-                galleryContents = _this$props$attribute.galleryContents,
-                enableLine = _this$props$attribute.enableLine,
-                enableImage = _this$props$attribute.enableImage,
-                contentAlign = _this$props$attribute.contentAlign,
-                enableBadge = _this$props$attribute.enableBadge,
-                enableDiscount = _this$props$attribute.enableDiscount,
-                enablePrice = _this$props$attribute.enablePrice,
-                enableDescription = _this$props$attribute.enableDescription,
-                priceAfterTitle = _this$props$attribute.priceAfterTitle;
-
-
-            return galleryContents.map(function (_ref2, index) {
-                var title = _ref2.title,
-                    description = _ref2.description,
-                    image = _ref2.image,
-                    badge = _ref2.badge,
-                    discount = _ref2.discount,
-                    price = _ref2.price;
-
-                return React.createElement(
-                    "div",
-                    { key: index, className: "qubely-pricelist-item qubely-pricelist-item-" + contentAlign },
-                    React.createElement(
-                        "div",
-                        { className: "qubely-pricelist-content" },
-                        enableImage == 1 && image != undefined && image.url != undefined && React.createElement(
-                            "div",
-                            { className: "qubely-pricelist-image-container" },
-                            React.createElement("img", { src: image.url, alt: title }),
-                            enableBadge && React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-badge", value: badge })
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "qubely-pricelist-description-wrapper" },
-                            React.createElement(
-                                "div",
-                                { className: "qubely-pricelist-description" },
-                                React.createElement(
-                                    "div",
-                                    { className: "qubely-pricelist-title-wrapper" },
-                                    React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-title", value: title }),
-                                    enableLine && priceAfterTitle == 0 && React.createElement("span", { className: "qubely-pricelist-line" }),
-                                    React.createElement(
-                                        "div",
-                                        { className: "qubely-pricelist-price-wrapper" },
-                                        enableDiscount && React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-discount", value: discount }),
-                                        enablePrice && React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-price", value: price })
-                                    )
-                                ),
-                                enableDescription && React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-introtext", value: description })
-                            )
-                        )
-                    )
-                );
-            });
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    _createClass(Save, [{
-        key: "render",
-        value: function render() {
-            var _props$attributes = this.props.attributes,
-                uniqueId = _props$attributes.uniqueId,
-                animation = _props$attributes.animation,
-                style = _props$attributes.style;
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderPricelist = function () {
+      var galleryContents = _this.props.attributes.galleryContents;
 
-            return React.createElement(
+
+      return galleryContents.map(function (_ref2, index) {
+        var title = _ref2.title,
+            image = _ref2.image;
+
+        return React.createElement(
+          "div",
+          { key: index, className: "qubely-pricelist-item" },
+          React.createElement(
+            "div",
+            { className: "qubely-pricelist-content" },
+            image != undefined && image.url != undefined && React.createElement(
+              "div",
+              { className: "qubely-pricelist-image-container" },
+              React.createElement("img", { src: image.url, alt: title })
+            ),
+            React.createElement(
+              "div",
+              { className: "qubely-pricelist-description-wrapper" },
+              React.createElement(
                 "div",
-                _extends({ className: "qubely-block-" + uniqueId }, animationAttr(animation)),
+                { className: "qubely-pricelist-description" },
                 React.createElement(
-                    "div",
-                    { className: "qubely-block-pricelist qubely-pricelist-item-" + style },
-                    React.createElement(
-                        "div",
-                        { className: "qubely-pricelist-items" },
-                        this.renderPricelist()
-                    )
+                  "div",
+                  { className: "qubely-pricelist-title-wrapper" },
+                  React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-title", value: title })
                 )
-            );
-        }
-    }]);
+              )
+            )
+          )
+        );
+      });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
 
-    return Save;
+  _createClass(Save, [{
+    key: "render",
+    value: function render() {
+      var _props$attributes = this.props.attributes,
+          uniqueId = _props$attributes.uniqueId,
+          animation = _props$attributes.animation,
+          style = _props$attributes.style;
+
+      return React.createElement(
+        "div",
+        _extends({ className: "qubely-block-" + uniqueId }, animationAttr(animation)),
+        React.createElement(
+          "div",
+          { className: "qubely-block-pricelist qubely-pricelist-item-" + style },
+          React.createElement(
+            "div",
+            { className: "qubely-pricelist-items" },
+            this.renderPricelist()
+          )
+        )
+      );
+    }
+  }]);
+
+  return Save;
 }(Component);
 
 exports.default = Save;
@@ -2804,8 +2782,6 @@ exports.default = Save;
 
 "use strict";
 
-
-var _attributes;
 
 __webpack_require__(/*! ./style.scss */ "./src/blocks/gallery/style.scss");
 
@@ -2831,7 +2807,7 @@ registerBlockType('qubely/gallery', {
     description: 'Showcase detailed with Qubely Gallery',
     icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Gallery') }),
     keywords: [__('Gallery'), __('Image')],
-    attributes: (_attributes = {
+    attributes: {
         uniqueId: { type: 'string', default: '' },
         spacer: {
             type: 'object',
@@ -2879,54 +2855,9 @@ registerBlockType('qubely/gallery', {
             type: 'object',
             default: 2
         }, 'default', { md: 2, sm: 1, xs: 1, unit: 'px' }),
-
         imgSize: {
             type: 'string',
             default: 'full'
-        },
-        contentAlign: {
-            type: 'string',
-            default: 'left'
-        },
-        enableContentBorder: {
-            type: 'boolean',
-            default: false
-        },
-        contentBorderWidth: {
-            type: 'object',
-            default: {
-                md: 1,
-                unit: 'px'
-            },
-            style: [{
-                condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-style: solid; border-width: {{contentBorderWidth}};}'
-            }, {
-                condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-style: solid; border-width: {{contentBorderWidth}};}'
-            }]
-        },
-        contentBorderColor: {
-            type: 'string',
-            default: '#F6F7FB',
-            style: [{
-                condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-color: {{contentBorderColor}};}'
-            }, {
-                condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-color: {{contentBorderColor}};}'
-            }]
-        },
-        contentBg: {
-            type: 'string',
-            default: '#F9F9F9',
-            style: [{
-                condition: [{ key: 'style', relation: '===', value: '1' }],
-                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {background-color: {{contentBg}};}'
-            }, {
-                condition: [{ key: 'style', relation: '===', value: '2' }],
-                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {background-color: {{contentBg}};}'
-            }]
         },
 
         //image
@@ -2960,7 +2891,7 @@ registerBlockType('qubely/gallery', {
                 unit: 'px'
             },
             style: [{
-                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
+                selector: '{{QUBELY}} .qubely-gallery-image-container'
             }]
         },
         imgBoxShadow: {
@@ -2974,32 +2905,7 @@ registerBlockType('qubely/gallery', {
                 color: 'rgba(0,0,0,0.1)'
             },
             style: [{
-                selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content'
-            }]
-        },
-
-        overlayBg: {
-            type: 'object', default: {
-                type: 'color',
-                openColor: 0,
-                color: 'rgba(6, 80, 183, 0.7)',
-                gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
-            },
-            style: [{
-                condition: [{ key: 'style', relation: '==', value: '3' }],
-                selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
-            }]
-        },
-        overlayHoverBg: {
-            type: 'object', default: {
-                type: 'color',
-                openColor: 0,
-                color: 'rgba(6, 80, 183, 0.8)',
-                gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
-            },
-            style: [{
-                condition: [{ key: 'style', relation: '==', value: '3' }],
-                selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+                selector: '{{QUBELY}} .qubely-gallery-image-container'
             }]
         },
 
@@ -3082,53 +2988,60 @@ registerBlockType('qubely/gallery', {
         enableOverlay: {
             type: 'boolean',
             default: true
-        }
-    }, _defineProperty(_attributes, 'overlayBg', {
-        type: 'object',
-        default: {
-            openColor: 1,
-            type: 'gradient',
-            color: 'rgba(6, 80, 183, 0.7)',
-            gradient: {
-                color1: 'rgba(6, 80, 183, 0.7)',
-                color2: 'rgba(96, 10, 255, 0.7)',
-                direction: 45,
-                start: 0,
-                stop: 100,
-                type: 'linear'
-            }
         },
-        style: [{
-            condition: [{ key: 'enableOverlay', relation: '==', value: true }],
-            selector: '{{QUBELY}} .qubely-gallery-image-container:before'
-        }]
-    }), _defineProperty(_attributes, 'overlayHoverBg', {
-        type: 'object',
-        default: {
-            type: 'gradient',
-            openColor: 1,
-            color: 'rgba(6, 80, 183, 0.85)',
-            gradient: {
-                color1: 'rgba(6, 80, 183, 0.85)',
-                color2: 'rgba(96, 10, 255, 0.85)',
-                direction: 45,
-                start: 0,
-                stop: 100,
-                type: 'linear'
-            }
+        overlayBg: {
+            type: 'object',
+            default: {
+                openColor: 1,
+                type: 'gradient',
+                color: 'rgba(6, 80, 183, 0.7)',
+                gradient: {
+                    color1: 'rgba(6, 80, 183, 0.7)',
+                    color2: 'rgba(96, 10, 255, 0.7)',
+                    direction: 45,
+                    start: 0,
+                    stop: 100,
+                    type: 'linear'
+                }
+            },
+            style: [{
+                condition: [{ key: 'enableOverlay', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-gallery-image-container:before'
+            }]
         },
-        style: [{
-            condition: [{ key: 'enableOverlay', relation: '==', value: true }],
-            selector: '{{QUBELY}} .qubely-gallery-image-container:after'
-        }]
-    }), _defineProperty(_attributes, 'overlayBlend', {
-        type: 'string',
-        default: '',
-        style: [{
-            condition: [{ key: 'enableOverlay', relation: '==', value: true }],
-            selector: '{{QUBELY}} .qubely-gallery-image-container:before {mix-blend-mode: {{overlayBlend}};} {{QUBELY}} .qubely-gallery-image-container:after {mix-blend-mode: {{overlayBlend}};}'
-        }]
-    }), _defineProperty(_attributes, 'showGlobalSettings', { type: 'boolean', default: true }), _defineProperty(_attributes, 'showContextMenu', { type: 'boolean', default: true }), _attributes),
+        overlayHoverBg: {
+            type: 'object',
+            default: {
+                type: 'gradient',
+                openColor: 1,
+                color: 'rgba(6, 80, 183, 0.85)',
+                gradient: {
+                    color1: 'rgba(6, 80, 183, 0.85)',
+                    color2: 'rgba(96, 10, 255, 0.85)',
+                    direction: 45,
+                    start: 0,
+                    stop: 100,
+                    type: 'linear'
+                }
+            },
+            style: [{
+                condition: [{ key: 'enableOverlay', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-gallery-image-container:after'
+            }]
+        },
+        overlayBlend: {
+            type: 'string',
+            default: '',
+            style: [{
+                condition: [{ key: 'enableOverlay', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-gallery-image-container:before {mix-blend-mode: {{overlayBlend}};} {{QUBELY}} .qubely-gallery-image-container:after {mix-blend-mode: {{overlayBlend}};}'
+            }]
+        },
+
+        //global
+        showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
+        showContextMenu: { type: 'boolean', default: true }
+    },
     edit: _Edit2.default,
     save: _Save2.default
 });
