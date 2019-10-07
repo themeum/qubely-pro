@@ -1,0 +1,334 @@
+.qubely-block-gallery {
+    .qubely-gallery-item {
+        position: relative;
+        &:hover {
+          .qubely-repeatable-action-remove {
+            display: block;
+          }
+        }
+    }
+    &.qubely-gallery-item {
+        .qubely-repeatable-action-remove {
+            top: -10px;
+            right: -10px;
+        } 
+    }
+    .qubely-gallery-image-container {
+        position: relative;
+        overflow: hidden;
+        line-height: 0;
+        &:before,
+        &:after {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 1;
+            background-image: linear-gradient(45deg, rgba(6, 80, 183, 0.7) 0%,rgba(96, 10, 255, 0.7) 100%);
+        }
+        &:after {
+            z-index: 2;
+            opacity: 0;
+            -webkit-transition: opacity .6s;
+            transition: opacity .6s;
+        }
+        .qubely-empty-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            border: 2px dashed #e5e5e5;
+            padding: 30px;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+        .qubely-insert-image {
+            text-align: center;
+            display: inline-block;
+            color: #2184F9;
+            text-decoration: none;
+            line-height: 1;
+            position: relative;
+            z-index: 3;
+            span {
+                margin-top: 0px;
+                display: block;
+                font-size: 14px;
+            }
+        }
+        .qubely-gallery-content-image-editor{
+            position: relative;
+            display: inline-block;
+            .qubely-media-actions {
+                bottom: 10px;
+                right: 10px;
+                position: absolute;
+                z-index: 4;
+            }
+        }
+        .qubely-gallery-caption-wrapper {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 3;
+            &.qubely-gallery-caption-onHover {
+                .qubely-gallery-caption {
+                    opacity: 0;
+                    -webkit-transform: translate3d(0,40px,0);
+                    transform: translate3d(0,40px,0);
+                    -webkit-transition: -webkit-transform .35s;
+                    transition: -webkit-transform .35s;
+                    transition: transform .35s;
+                    transition: transform .35s,-webkit-transform .35s;
+                }
+            }
+        }
+        .qubely-gallery-image-zoom-in {
+            img {
+                -webkit-transition: -webkit-transform .35s;
+                transition: -webkit-transform .35s;
+                transition: transform .35s;
+                transition: transform .35s,-webkit-transform .35s;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+        .qubely-gallery-image-zoom-out {
+            img {
+                -webkit-transition: -webkit-transform .35s;
+                transition: -webkit-transform .35s;
+                transition: transform .35s;
+                transition: transform .35s,-webkit-transform .35s;
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+        }
+        .qubely-gallery-image-scale {
+            img {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                -webkit-transition: -webkit-transform .35s;
+                transition: -webkit-transform .35s;
+                transition: transform .35s;
+                transition: transform .35s,-webkit-transform .35s;
+            }
+        }
+        .qubely-gallery-image-slide-left {
+            img {
+                max-width: initial;
+                max-height: 100%;
+                width: calc(100% + 50px);
+                -webkit-transition: opacity .35s,-webkit-transform .35s;
+                transition: opacity .35s,-webkit-transform .35s;
+                transition: opacity .35s,transform .35s;
+                transition: opacity .35s,transform .35s,-webkit-transform .35s;
+                -webkit-transform: translate3d(-40px,0,0);
+                transform: translate3d(-40px,0,0);
+            }
+        }
+        .qubely-gallery-image-slide-right {
+            img {
+                max-width: initial;
+                max-height: 100%;
+                width: calc(100% + 50px);
+                -webkit-transition: opacity .35s,-webkit-transform .35s;
+                transition: opacity .35s,-webkit-transform .35s;
+                transition: opacity .35s,transform .35s;
+                transition: opacity .35s,transform .35s,-webkit-transform .35s;
+                -webkit-transform: translate3d(-10px,0,0);
+                transform: translate3d(-10px,0,0);
+            }
+        }
+        .qubely-gallery-image-slide-bottom {
+            img {
+                -webkit-transform: translate3d(0,20px,0) scale3d(1.2,1.2,1);
+                transform: translate3d(0,20px,0) scale3d(1.2,1.2,1);
+                -webkit-transition: -webkit-transform .35s;
+                transition: -webkit-transform .35s;
+                transition: transform .35s;
+                transition: transform .35s,-webkit-transform .35s;
+            }
+        }
+        .qubely-gallery-image-slide-top {
+            img {
+                -webkit-transform: translate3d(0,-20px,0) scale3d(1.2,1.2,1);
+                transform: translate3d(0,-20px,0) scale3d(1.2,1.2,1);
+                -webkit-transition: -webkit-transform .35s;
+                transition: -webkit-transform .35s;
+                transition: transform .35s;
+                transition: transform .35s,-webkit-transform .35s;
+            }
+        }
+    }
+    .qubely-gallery-item {
+        &:hover {
+            .qubely-gallery-caption-onHover {
+                .qubely-gallery-caption {
+                    opacity: 1;
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+            }
+            .qubely-gallery-image-zoom-in {
+                img {
+                    -webkit-transform: scale(1.2);
+                    transform: scale(1.2);
+                }
+            }
+            .qubely-gallery-image-zoom-out {
+                img {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+            .qubely-gallery-image-scale {
+                img {
+                    -webkit-transform: scale(1.05);
+                    transform: scale(1.05);
+                }
+            }
+            .qubely-gallery-image-slide-left {
+                img {
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+            }
+            .qubely-gallery-image-slide-right {
+                img {
+                    -webkit-transform: translate3d(-40px,0,0);
+                    transform: translate3d(-40px,0,0);
+                }
+            }
+            .qubely-gallery-image-slide-bottom {
+                img {
+                    -webkit-transform: translate3d(0,0,0) scale3d(1.2,1.2,1);
+                    transform: translate3d(0,0,0) scale3d(1.2,1.2,1);
+                }
+            }
+            .qubely-gallery-image-slide-top {
+                img {
+                    -webkit-transform: translate3d(0,0,0) scale3d(1.2,1.2,1);
+                    transform: translate3d(0,0,0) scale3d(1.2,1.2,1);
+                }
+            }
+            .qubely-gallery-image-container:after {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+//qubely column grid
+.qubely-column-grid {
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;  
+}
+//column count
+.qubely-gallery-item-2 {
+    .qubely-column-grid {
+        display: block;
+
+    }
+}
+.qubely-column-grid-xs1 {
+    grid-template-columns: 1fr;
+}
+.qubely-column-grid-xs2 {
+    grid-template-columns: 1fr 1fr;
+}
+.qubely-column-grid-xs3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+@media (min-width: 767px) {
+    .qubely-column-grid-sm1 {
+      grid-template-columns: 1fr;
+    }
+    .qubely-column-grid-sm2 {
+      grid-template-columns: 1fr 1fr;
+    }
+    .qubely-column-grid-sm3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .qubely-gallery-item-2 {
+        .qubely-column-grid-sm1 {
+            column-count: 1;
+        }
+        .qubely-column-grid-sm2 {
+            column-count: 2;
+        }
+        .qubely-column-grid-sm3 {
+            column-count: 3;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .qubely-column-grid-md1 {
+      grid-template-columns: 1fr;
+    }
+    .qubely-column-grid-md2 {
+      grid-template-columns: 1fr 1fr;
+    }
+    .qubely-column-grid-md3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .qubely-column-grid-md4 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .qubely-column-grid-md5 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .qubely-column-grid-md6 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .qubely-gallery-item-2 {
+        .qubely-column-grid-md1 {
+            column-count: 1;
+        }
+        .qubely-column-grid-md2 {
+            column-count: 2;
+        }
+        .qubely-column-grid-md3 {
+            column-count: 3;
+        }
+        .qubely-column-grid-md4 {
+            column-count: 3;
+        }
+        .qubely-column-grid-md5 {
+            column-count: 3;
+        }
+        .qubely-column-grid-md6 {
+            column-count: 3;
+        }
+    }
+}
+
+@media (min-width: 1299px) {
+    .qubely-column-grid-md4 {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .qubely-column-grid-md5 {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    .qubely-column-grid-md6 {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    .qubely-gallery-item-2 {
+        .qubely-column-grid-md4 {
+            column-count: 4;
+        }
+        .qubely-column-grid-md5 {
+            column-count: 5;
+        }
+        .qubely-column-grid-md6 {
+            column-count: 6;
+        }
+    }
+}
+

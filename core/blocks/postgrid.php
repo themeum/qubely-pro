@@ -58,6 +58,10 @@ function register_block_qubely_postgrid_pro()
 					'type' => 'number',
 					'default' => 1
 				),
+				'style5' => array(
+					'type' => 'number',
+					'default' => 1
+				),
 				'column' => array(
 					'type' => 'object',
 					'default' => array('md' => 3, 'sm' => 2, 'xs' => 1),

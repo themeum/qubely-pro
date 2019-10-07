@@ -69,7 +69,7 @@ class Edit extends Component {
 	}
 
 	renderCardContent = (post) => {
-		const { attributes: { layout, style, readmoreStyle, showCategory, showCategory5, categoryPosition, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, excerptLimit5, showReadMore, buttonText, readmoreSize } } = this.props
+		const { attributes: { layout, style, style5, readmoreStyle, showCategory, showCategory5, categoryPosition, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, excerptLimit5, showReadMore, buttonText, readmoreSize } } = this.props
 		let title = <h3 className="qubely-postgrid-title"><a>{post.title.rendered}</a></h3>
 		
 		return (
@@ -77,6 +77,9 @@ class Edit extends Component {
 
 				{ layout != 5 && (showCategory == 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
 				{ layout == 5 && (showCategory5 != 'none') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
+				{ (layout == 5) && ( style5 == 4 ) && (showCategory == 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
+
+
 
 				{(showCategory == 'badge' && style === 4) &&
 					<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
@@ -85,27 +88,39 @@ class Edit extends Component {
 				}
 
 				
-
-
-				{showTitle && (titlePosition == true) && title}
-
-				{(showAuthor || showDates || showComment) &&
+				{ (layout == 5) && ( style5 == 4 ) &&
+					(showAuthor || showDates || showComment) &&
 					<div className="qubely-postgrid-meta">
 						{showAuthor && <span><i className="fas fa-user"></i> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
 						{showDates && <span><i className="far fa-calendar-alt"></i> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
 						{showComment && <span><i className="fas fa-comment"></i> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
 					</div>
 				}
+
+				{showTitle && (titlePosition == true) && title}
+
+				{ (layout == 5) && ( style5 != 4 ) && (showAuthor || showDates || showComment) &&
+					<div className="qubely-postgrid-meta">
+						{showAuthor && <span><i className="fas fa-user"></i> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
+						{showDates && <span><i className="far fa-calendar-alt"></i> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
+						{showComment && <span><i className="fas fa-comment"></i> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
+					</div>
+				}
+
+
 				{showTitle && (titlePosition == false) && title}
-				{ (layout !=5) &&
-					showExcerpt && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />
+
+				{ (style5 != 4) &&
+					<div>
+						{ (layout !=5) &&
+							showExcerpt && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />
+						}
+						{ (layout ==5) &&
+							showExcerpt && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit5) }} />
+						}
+						{showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
+					</div>
 				}
-				{ (layout ==5) &&
-					showExcerpt && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit5) }} />
-				}
-				
-				{showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
-					
 				
 
 			</div>
@@ -240,7 +255,8 @@ class Edit extends Component {
 				imageSpace,
 				categorySpace,
 				metaSpace,
-				excerptSpace
+				excerptSpace,
+				style5
 
 			} 
 		} = this.props
@@ -268,111 +284,121 @@ class Edit extends Component {
 					</PanelBody>
 
 					{ layout != 5 &&
-					<PanelBody title={__('Post Design')} initialOpen={true}>
-						<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
+						<PanelBody title={__('Post Design')} initialOpen={true}>
+							<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
+								options={[
+									{ value: 1, svg: icons.postgrid_design_1 },
+
+									{ value: 2, svg: layout === 1 ? icons.postgrid_design_3 : icons.postgrid_design_2 },
+									{ value: 3, svg: layout === 1 ? icons.postgrid_design_5 : icons.postgrid_design_4 },
+									{ value: 4, svg: icons.postgrid_design_6 },
+								]}
+							/>
+							{ ( (layout === 2) || (layout === 3) || (layout === 4) ) && 
+								<Range label={__('Select Column')} value={column} onChange={(value) => setAttributes({ column: value })} min={1} step={1} max={6} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+							}
+
+							{((layout === 1) || ((layout === 2) && ((style === 3) || (style === 4)))) &&
+								<ButtonGroup
+									label={__('Content Align')}
+									options={
+										((layout === 2) && (style === 3)) ?
+											[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']]
+											:
+											[[__('Top'), 'top'], [__('Middle'), 'center'], [__('Bottom'), 'bottom']]
+									}
+									value={((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}
+									onChange={value => setAttributes(((layout === 2) && (style === 3)) ? { contentPosition: value } : { girdContentPosition: value })}
+								/>
+							}
+							{(((layout === 1) && (style != 3)) || ((layout === 2) && (style != 3)) || ((layout === 4) && (style != 3))) &&
+								<Padding label={__('Content Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+							}
+							<Separator />
+							{(((layout === 1) && (style === 1)) || ((layout === 2) && (style === 1))) &&
+								<Fragment>
+									<ColorAdvanced label={__('Background')} value={bgColor} onChange={(value) => setAttributes({ bgColor: value })} />
+									<Border label={__('Border')} value={border} onChange={val => setAttributes({ border: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									<BorderRadius min={0} max={100} responsive device={device} label={__('Corner')} value={borderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ borderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
+									<Padding label={__('Padding')} value={padding} onChange={val => setAttributes({ padding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									<BoxShadow label={__('Box-Shadow')} value={boxShadow} onChange={(value) => setAttributes({ boxShadow: value })} />
+								</Fragment>
+							}
+							{/* card  settings*/}
+							{(style === 2) &&
+								<Fragment>
+									<ColorAdvanced label={__('Card Background')} value={cardBackground} onChange={(value) => setAttributes({ cardBackground: value })} />
+									<Border label={__('Card Border')} value={cardBorder} onChange={val => setAttributes({ cardBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									<BorderRadius min={0} max={100} responsive device={device} label={__('Card Corner')} value={cardBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ cardBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
+									{(layout === 1) &&
+										<Range label={__('Card Space')} value={cardSpace} onChange={value => setAttributes({ cardSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									}
+									<Padding label={__('Card Padding')} value={cardPadding} onChange={val => setAttributes({ cardPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									<BoxShadow label={__('Card Box Shadow')} value={cardBoxShadow} onChange={(value) => setAttributes({ cardBoxShadow: value })} />
+								</Fragment>
+							}
+
+							{/* Overlay */}
+							{(style === 4) &&
+								<Fragment>
+									<Range label={__('Overlay Height')} value={overlayHeight} onChange={value => setAttributes({ overlayHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									{(layout === 1) &&
+										<Range label={__('Overlay Space')} value={overlaySpace} onChange={value => setAttributes({ overlaySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									}
+									<BorderRadius min={0} max={100} responsive device={device} label={__('Overlay Corner')} value={overlayBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ overlayBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
+									<Tabs>
+										<Tab tabTitle={__('Normal')}>
+											<ColorAdvanced label={__('Overlay')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
+										</Tab>
+										<Tab tabTitle={__('Hover')}>
+											<ColorAdvanced label={__('Hover Overlay')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
+										</Tab>
+									</Tabs>
+									<Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
+								</Fragment>
+							}
+
+							{/* Scart */}
+							{(style === 3) &&
+								<Fragment>
+									<ColorAdvanced label={__('Stack Background')} value={stackBg} onChange={(value) => setAttributes({ stackBg: value })} />
+									{(layout === 2) &&
+										<Range label={__('Stack Size')} value={stackWidth} onChange={value => setAttributes({ stackWidth: value })} unit={['px', 'em', '%']} min={50} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									}
+									{(layout === 1) &&
+										<Range label={__('Stack Space')} value={stackSpace} onChange={value => setAttributes({ stackSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									}
+									<BorderRadius min={0} max={100} responsive device={device} label={__('Stack Corner')} value={stackBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ stackBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
+									<Padding label={__('Stack Padding')} value={stackPadding} onChange={val => setAttributes({ stackPadding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									<BoxShadow label={__('Stack Box Shadow')} value={stackBoxShadow} onChange={(value) => setAttributes({ stackBoxShadow: value })} />
+								</Fragment>
+							}
+
+							{/* Separator  */}
+							{(layout === 1) && (style === 1) &&
+								<Fragment>
+									<Separator />
+									<Toggle label={__('Enable Separator')} value={showSeparator} onChange={value => setAttributes({ showSeparator: value })} />
+								</Fragment>
+							}
+							{(layout === 1) && (style === 1) && (showSeparator === true) &&
+								<Fragment>
+									<Color label={__('Separator Color')} value={separatorColor} onChange={value => setAttributes({ separatorColor: value })} />
+									<Range label={__('Separator Height')} value={separatorHeight} onChange={value => setAttributes({ separatorHeight: value })} unit={['px', 'em', '%']} min={0} max={30} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									<Range label={__('Separator Spacing')} value={separatorSpace} onChange={value => setAttributes({ separatorSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+								</Fragment>
+							}
+						</PanelBody>
+					}
+
+					<PanelBody title={__('Post Design')} initialOpen={false}>
+						<Styles columns={2} value={style5} onChange={val => setAttributes({ style5: val })}
 							options={[
 								{ value: 1, svg: icons.postgrid_design_1 },
-								{ value: 2, svg: layout === 1 ? icons.postgrid_design_3 : icons.postgrid_design_2 },
-								{ value: 3, svg: layout === 1 ? icons.postgrid_design_5 : icons.postgrid_design_4 },
 								{ value: 4, svg: icons.postgrid_design_6 },
 							]}
 						/>
-						{ ( (layout === 2) || (layout === 3) || (layout === 4) ) && 
-							<Range label={__('Select Column')} value={column} onChange={(value) => setAttributes({ column: value })} min={1} step={1} max={6} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-						}
-
-						{((layout === 1) || ((layout === 2) && ((style === 3) || (style === 4)))) &&
-							<ButtonGroup
-								label={__('Content Align')}
-								options={
-									((layout === 2) && (style === 3)) ?
-										[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']]
-										:
-										[[__('Top'), 'top'], [__('Middle'), 'center'], [__('Bottom'), 'bottom']]
-								}
-								value={((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}
-								onChange={value => setAttributes(((layout === 2) && (style === 3)) ? { contentPosition: value } : { girdContentPosition: value })}
-							/>
-						}
-						{(((layout === 1) && (style != 3)) || ((layout === 2) && (style != 3)) || ((layout === 4) && (style != 3))) &&
-							<Padding label={__('Content Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-						}
-						<Separator />
-						{(((layout === 1) && (style === 1)) || ((layout === 2) && (style === 1))) &&
-							<Fragment>
-								<ColorAdvanced label={__('Background')} value={bgColor} onChange={(value) => setAttributes({ bgColor: value })} />
-								<Border label={__('Border')} value={border} onChange={val => setAttributes({ border: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<BorderRadius min={0} max={100} responsive device={device} label={__('Corner')} value={borderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ borderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
-								<Padding label={__('Padding')} value={padding} onChange={val => setAttributes({ padding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<BoxShadow label={__('Box-Shadow')} value={boxShadow} onChange={(value) => setAttributes({ boxShadow: value })} />
-							</Fragment>
-						}
-						{/* card  settings*/}
-						{(style === 2) &&
-							<Fragment>
-								<ColorAdvanced label={__('Card Background')} value={cardBackground} onChange={(value) => setAttributes({ cardBackground: value })} />
-								<Border label={__('Card Border')} value={cardBorder} onChange={val => setAttributes({ cardBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<BorderRadius min={0} max={100} responsive device={device} label={__('Card Corner')} value={cardBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ cardBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
-								{(layout === 1) &&
-									<Range label={__('Card Space')} value={cardSpace} onChange={value => setAttributes({ cardSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								}
-								<Padding label={__('Card Padding')} value={cardPadding} onChange={val => setAttributes({ cardPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<BoxShadow label={__('Card Box Shadow')} value={cardBoxShadow} onChange={(value) => setAttributes({ cardBoxShadow: value })} />
-							</Fragment>
-						}
-
-						{/* Overlay */}
-						{(style === 4) &&
-							<Fragment>
-								<Range label={__('Overlay Height')} value={overlayHeight} onChange={value => setAttributes({ overlayHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								{(layout === 1) &&
-									<Range label={__('Overlay Space')} value={overlaySpace} onChange={value => setAttributes({ overlaySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								}
-								<BorderRadius min={0} max={100} responsive device={device} label={__('Overlay Corner')} value={overlayBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ overlayBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
-								<Tabs>
-									<Tab tabTitle={__('Normal')}>
-										<ColorAdvanced label={__('Overlay')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
-									</Tab>
-									<Tab tabTitle={__('Hover')}>
-										<ColorAdvanced label={__('Hover Overlay')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
-									</Tab>
-								</Tabs>
-								<Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
-							</Fragment>
-						}
-
-						{/* Scart */}
-						{(style === 3) &&
-							<Fragment>
-								<ColorAdvanced label={__('Stack Background')} value={stackBg} onChange={(value) => setAttributes({ stackBg: value })} />
-								{(layout === 2) &&
-									<Range label={__('Stack Size')} value={stackWidth} onChange={value => setAttributes({ stackWidth: value })} unit={['px', 'em', '%']} min={50} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								}
-								{(layout === 1) &&
-									<Range label={__('Stack Space')} value={stackSpace} onChange={value => setAttributes({ stackSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								}
-								<BorderRadius min={0} max={100} responsive device={device} label={__('Stack Corner')} value={stackBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ stackBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
-								<Padding label={__('Stack Padding')} value={stackPadding} onChange={val => setAttributes({ stackPadding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<BoxShadow label={__('Stack Box Shadow')} value={stackBoxShadow} onChange={(value) => setAttributes({ stackBoxShadow: value })} />
-							</Fragment>
-						}
-
-						{/* Separator  */}
-						{(layout === 1) && (style === 1) &&
-							<Fragment>
-								<Separator />
-								<Toggle label={__('Enable Separator')} value={showSeparator} onChange={value => setAttributes({ showSeparator: value })} />
-							</Fragment>
-						}
-						{(layout === 1) && (style === 1) && (showSeparator === true) &&
-							<Fragment>
-								<Color label={__('Separator Color')} value={separatorColor} onChange={value => setAttributes({ separatorColor: value })} />
-								<Range label={__('Separator Height')} value={separatorHeight} onChange={value => setAttributes({ separatorHeight: value })} unit={['px', 'em', '%']} min={0} max={30} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Range label={__('Separator Spacing')} value={separatorSpace} onChange={value => setAttributes({ separatorSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-							</Fragment>
-						}
 					</PanelBody>
-					}
 
 					<PanelBody title={__('Query')} initialOpen={false}>
 						<ButtonGroup
@@ -661,12 +687,12 @@ class Edit extends Component {
                             { posts && posts.map(post => {	
 								if( layout == 5 ) {
 									output = ( counts == 0 ) ? ( 
-										<div className={`blog-feature-image`}>
+										<div className={`blog-feature-image style-${style5}`}>
 											{ this.renderFeaturedImage(post) }
 											{this.renderCardContent(post)}
 										</div>
 									) : ( 
-										<div className={`qubely-post-list-view layout-${layout}`}>
+										<div className={`qubely-post-list-view layout-${layout} style-${style5}`}>
 											{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
 											{this.renderCardContent(post)}
 										</div>
