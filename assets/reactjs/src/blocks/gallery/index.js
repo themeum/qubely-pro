@@ -56,21 +56,21 @@ registerBlockType('qubely/gallery', {
 		gutter: {
 			type: 'object',
 			default: {
-				md: '20',
+				md: '10',
 				unit: 'px'
 			},
 			style: [
                 {
 					condition: [
-                        { key: 'style', relation: '===', value: 2 },
-					],
-					selector: '{{QUBELY}} .qubely-column-grid {column-gap: {{gutter}};} {{QUBELY}} .qubely-block-gallery .qubely-gallery-item {padding-bottom: {{gutter}};}'
-                }, 
-                {
-					condition: [
-                        { key: 'style', relation: '===', value: 1},
+                        { key: 'style', relation: '===', value: '1'},
 					],
 					selector: '{{QUBELY}} .qubely-column-grid {grid-gap: {{gutter}};}'
+                },
+                {
+					condition: [
+                        { key: 'style', relation: '!=', value: '1' },
+					],
+					selector: '{{QUBELY}} .qubely-column-grid {column-gap: {{gutter}};} {{QUBELY}} .qubely-block-gallery .qubely-gallery-item {padding-bottom: {{gutter}};}'
                 }
 			]
 		},
@@ -157,22 +157,6 @@ registerBlockType('qubely/gallery', {
 				}
             ]
         },
-        height: {
-			type: 'object',
-			default: {
-				md: '200',
-				unit: 'px'
-			},
-			style: [
-				{
-					condition: [
-                        { key: 'enableImage', relation: '==', value: true },
-                        { key: 'style', relation: '===', value: '3' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content, {{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-empty-image {height: {{height}};}'
-                }
-            ]
-        },
 
         //image
         imageAnimation: {
@@ -186,15 +170,16 @@ registerBlockType('qubely/gallery', {
         imgFixedHeight: {
 			type: 'object',
 			default: {
-				md: '300',
+				md: '200',
 				unit: 'px'
 			},
 			style: [
 				{
 					condition: [
                         { key: 'enableImgFixedHeight', relation: '==', value: true },
+                        { key: 'style', relation: '!=', value: '2' }
                     ],
-                    selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content, {{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-empty-image {height: {{imgFixedHeight}};}'
+                    selector: '{{QUBELY}} .qubely-gallery-content-image img {width: 100%;object-fit: cover; height: {{imgFixedHeight}};}'
                 }
             ]
         },

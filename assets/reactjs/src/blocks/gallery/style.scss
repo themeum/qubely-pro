@@ -37,21 +37,21 @@
         .qubely-empty-image {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             background: #f5f5f5;
             border: 2px dashed #e5e5e5;
             padding: 30px;
             border-radius: 5px;
-            min-height: 100px;
+            min-height: 200px;
         }
         .qubely-insert-image {
             text-align: center;
             display: inline-block;
-            color: #2184F9;
+            color: #fff;
             text-decoration: none;
             line-height: 1;
             position: relative;
-            z-index: 3;
+            z-index: 4;
             span {
                 margin-top: 0px;
                 display: block;
@@ -76,6 +76,7 @@
             bottom: 0;
             right: 0;
             z-index: 3;
+            line-height: normal;
             &.qubely-gallery-caption-onHover {
                 .qubely-gallery-caption {
                     opacity: 0;

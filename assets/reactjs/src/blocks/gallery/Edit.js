@@ -180,8 +180,12 @@ class Edit extends Component {
                     </PanelBody>
 
                     <PanelBody title={__('Image')} initialOpen={false}>
-                        <Toggle label={__('Fixed Image Height')} value={enableImgFixedHeight} onChange={value => setAttributes({ enableImgFixedHeight: value })} />
-						{enableImgFixedHeight && <Range label={__('')} value={imgFixedHeight} onChange={value => setAttributes({ imgFixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+                        {(style===1) &&
+                        <Fragment>
+                            <Toggle label={__('Fixed Image Height')} value={enableImgFixedHeight} onChange={value => setAttributes({ enableImgFixedHeight: value })} />
+                            {enableImgFixedHeight && <Range label={__('')} value={imgFixedHeight} onChange={value => setAttributes({ imgFixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+                        </Fragment>
+                        }
                         <BorderRadius label={__('Radius')} value={imgBorderRadius} onChange={val => setAttributes({ imgBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Box-Shadow')} value={imgBoxShadow} onChange={val => setAttributes({ imgBoxShadow: val })} disableInset />
                         <Select label={__('Image Animation')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')], ['scale', __('Scale')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />
@@ -189,7 +193,7 @@ class Edit extends Component {
 
                     {/* caption     */}
 					<PanelBody title={__('Caption')} initialOpen={false}>
-                        <Toggle label={__('Enable Description')} value={enableCaption} onChange={val => setAttributes({ enableCaption: val })} />
+                        <Toggle label={__('Enable Caption')} value={enableCaption} onChange={val => setAttributes({ enableCaption: val })} />
                         {enableCaption == 1 &&
                             <Fragment>
                                 <Padding label={__('Padding')} value={captionPadding} onChange={val => setAttributes({ captionPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
