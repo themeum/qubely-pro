@@ -125,7 +125,7 @@ exports.push([module.i, ".qubely-block-form .qubely-form {\n  display: flex;\n  
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-pricelist .qubely-pricelist-item {\n  position: relative; }\n  .qubely-block-pricelist .qubely-pricelist-item:hover .qubely-repeatable-action-remove {\n    display: block; }\n\n.qubely-block-pricelist.qubely-pricelist-item-1 .qubely-repeatable-action-remove {\n  top: -10px;\n  right: -10px; }\n\n.qubely-block-pricelist:not(.qubely-pricelist-item-3) .qubely-pricelist-image-container {\n  position: relative; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-badge {\n  position: absolute;\n  left: 15px;\n  top: 15px;\n  z-index: 3; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-empty-image {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #f5f5f5;\n  border: 2px dashed #e5e5e5;\n  padding: 30px;\n  border-radius: 5px;\n  min-height: 100px; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image {\n  text-align: center;\n  display: inline-block;\n  color: #2184F9;\n  text-decoration: none;\n  line-height: 1;\n  position: relative;\n  z-index: 3; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-insert-image span {\n    margin-top: 0px;\n    display: block;\n    font-size: 14px; }\n\n.qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n  position: relative;\n  display: inline-block; }\n  .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor .qubely-media-actions {\n    bottom: 10px;\n    right: 10px;\n    position: absolute;\n    z-index: 4; }\n\n.qubely-block-pricelist .qubely-pricelist-line {\n  -webkit-flex-grow: 1;\n  -ms-flex-positive: 1;\n  -moz-box-flex: 1;\n  flex-grow: 1;\n  margin: 0 20px; }\n\n.qubely-block-pricelist .qubely-pricelist-title-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  -moz-box-align: center;\n  align-items: center; }\n  .qubely-block-pricelist .qubely-pricelist-title-wrapper > div:first-child,\n  .qubely-block-pricelist .qubely-pricelist-title-wrapper .qubely-pricelist-title {\n    margin-right: auto; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper > div {\n  display: inline-block; }\n\n.qubely-block-pricelist .qubely-pricelist-price-wrapper .qubely-pricelist-discount {\n  text-decoration: line-through;\n  margin-right: 10px; }\n\n.qubely-block-pricelist .qubely-pricelist-description-wrapper {\n  flex: 1; }\n  .qubely-block-pricelist .qubely-pricelist-description-wrapper .qubely-pricelist-description {\n    width: 100%; }\n\n.qubely-block-pricelist .qubely-pricelist-content {\n  overflow: hidden; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container {\n  width: 100%;\n  height: 100%; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content {\n  position: relative;\n  min-height: 200px; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description-wrapper {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    align-content: center;\n    z-index: 2; }\n\n.qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  -webkit-background-size: cover;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center;\n  overflow: hidden; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor img {\n    position: absolute;\n    width: auto;\n    height: auto;\n    min-width: 100%;\n    max-width: none;\n    left: 50%;\n    top: 50%;\n    -webkit-transform: translate(-50%, -50%);\n    -ms-transform: translate(-50%, -50%);\n    transform: translate(-50%, -50%);\n    min-height: 100%; }\n  .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before {\n    content: \"\";\n    left: 0;\n    top: 0;\n    position: absolute;\n    background: rgba(0, 0, 0, 0.8);\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n\n.qubely-block-pricelist .qubely-pricelist-item-center .qubely-pricelist-image-container {\n  margin-left: auto;\n  margin-right: auto; }\n\n.qubely-block-pricelist .qubely-pricelist-item-center .qubely-pricelist-description-wrapper {\n  text-align: center; }\n  .qubely-block-pricelist .qubely-pricelist-item-center .qubely-pricelist-description-wrapper .qubely-pricelist-price-wrapper {\n    display: inline-block; }\n\n.qubely-block-pricelist .qubely-pricelist-item-right .qubely-pricelist-description-wrapper {\n  text-align: right; }\n\n.qubely-block-pricelist .qubely-pricelist-item-right .qubely-pricelist-image-container {\n  margin-left: auto; }\n", ""]);
+exports.push([module.i, ".qubely-block-gallery .qubely-gallery-item {\n  position: relative; }\n  .qubely-block-gallery .qubely-gallery-item:hover .qubely-repeatable-action-remove {\n    display: block; }\n\n.qubely-block-gallery.qubely-gallery-item .qubely-repeatable-action-remove {\n  top: -10px;\n  right: -10px; }\n\n.qubely-block-gallery .qubely-gallery-image-container {\n  position: relative;\n  overflow: hidden;\n  line-height: 0; }\n  .qubely-block-gallery .qubely-gallery-image-container:before, .qubely-block-gallery .qubely-gallery-image-container:after {\n    content: \" \";\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    z-index: 1;\n    background-image: linear-gradient(45deg, rgba(6, 80, 183, 0.7) 0%, rgba(96, 10, 255, 0.7) 100%); }\n  .qubely-block-gallery .qubely-gallery-image-container:after {\n    z-index: 2;\n    opacity: 0;\n    -webkit-transition: opacity .6s;\n    transition: opacity .6s; }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-empty-image {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background: #f5f5f5;\n    border: 2px dashed #e5e5e5;\n    padding: 30px;\n    border-radius: 5px;\n    min-height: 100px; }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-insert-image {\n    text-align: center;\n    display: inline-block;\n    color: #2184F9;\n    text-decoration: none;\n    line-height: 1;\n    position: relative;\n    z-index: 3; }\n    .qubely-block-gallery .qubely-gallery-image-container .qubely-insert-image span {\n      margin-top: 0px;\n      display: block;\n      font-size: 14px; }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-content-image-editor {\n    position: relative;\n    display: inline-block; }\n    .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-content-image-editor .qubely-media-actions {\n      bottom: 10px;\n      right: 10px;\n      position: absolute;\n      z-index: 4; }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-caption-wrapper {\n    display: flex;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    z-index: 3; }\n    .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-caption-wrapper.qubely-gallery-caption-onHover .qubely-gallery-caption {\n      opacity: 0;\n      -webkit-transform: translate3d(0, 40px, 0);\n      transform: translate3d(0, 40px, 0);\n      -webkit-transition: -webkit-transform .35s;\n      transition: -webkit-transform .35s;\n      transition: transform .35s;\n      transition: transform .35s,-webkit-transform .35s; }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-image-zoom-in img {\n    -webkit-transition: -webkit-transform .35s;\n    transition: -webkit-transform .35s;\n    transition: transform .35s;\n    transition: transform .35s,-webkit-transform .35s;\n    -webkit-transform: scale(1);\n    transform: scale(1); }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-image-zoom-out img {\n    -webkit-transition: -webkit-transform .35s;\n    transition: -webkit-transform .35s;\n    transition: transform .35s;\n    transition: transform .35s,-webkit-transform .35s;\n    -webkit-transform: scale(1.2);\n    transform: scale(1.2); }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-image-scale img {\n    -webkit-transform: scale(1);\n    transform: scale(1);\n    -webkit-transition: -webkit-transform .35s;\n    transition: -webkit-transform .35s;\n    transition: transform .35s;\n    transition: transform .35s,-webkit-transform .35s; }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-image-slide-left img {\n    max-width: initial;\n    max-height: 100%;\n    width: calc(100% + 50px);\n    -webkit-transition: opacity .35s,-webkit-transform .35s;\n    transition: opacity .35s,-webkit-transform .35s;\n    transition: opacity .35s,transform .35s;\n    transition: opacity .35s,transform .35s,-webkit-transform .35s;\n    -webkit-transform: translate3d(-40px, 0, 0);\n    transform: translate3d(-40px, 0, 0); }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-image-slide-right img {\n    max-width: initial;\n    max-height: 100%;\n    width: calc(100% + 50px);\n    -webkit-transition: opacity .35s,-webkit-transform .35s;\n    transition: opacity .35s,-webkit-transform .35s;\n    transition: opacity .35s,transform .35s;\n    transition: opacity .35s,transform .35s,-webkit-transform .35s;\n    -webkit-transform: translate3d(-10px, 0, 0);\n    transform: translate3d(-10px, 0, 0); }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-image-slide-bottom img {\n    -webkit-transform: translate3d(0, 20px, 0) scale3d(1.2, 1.2, 1);\n    transform: translate3d(0, 20px, 0) scale3d(1.2, 1.2, 1);\n    -webkit-transition: -webkit-transform .35s;\n    transition: -webkit-transform .35s;\n    transition: transform .35s;\n    transition: transform .35s,-webkit-transform .35s; }\n  .qubely-block-gallery .qubely-gallery-image-container .qubely-gallery-image-slide-top img {\n    -webkit-transform: translate3d(0, -20px, 0) scale3d(1.2, 1.2, 1);\n    transform: translate3d(0, -20px, 0) scale3d(1.2, 1.2, 1);\n    -webkit-transition: -webkit-transform .35s;\n    transition: -webkit-transform .35s;\n    transition: transform .35s;\n    transition: transform .35s,-webkit-transform .35s; }\n\n.qubely-block-gallery .qubely-gallery-item:hover .qubely-gallery-caption-onHover .qubely-gallery-caption {\n  opacity: 1;\n  -webkit-transform: translate3d(0, 0, 0);\n  transform: translate3d(0, 0, 0); }\n\n.qubely-block-gallery .qubely-gallery-item:hover .qubely-gallery-image-zoom-in img {\n  -webkit-transform: scale(1.2);\n  transform: scale(1.2); }\n\n.qubely-block-gallery .qubely-gallery-item:hover .qubely-gallery-image-zoom-out img {\n  -webkit-transform: scale(1);\n  transform: scale(1); }\n\n.qubely-block-gallery .qubely-gallery-item:hover .qubely-gallery-image-scale img {\n  -webkit-transform: scale(1.05);\n  transform: scale(1.05); }\n\n.qubely-block-gallery .qubely-gallery-item:hover .qubely-gallery-image-slide-left img {\n  -webkit-transform: translate3d(0, 0, 0);\n  transform: translate3d(0, 0, 0); }\n\n.qubely-block-gallery .qubely-gallery-item:hover .qubely-gallery-image-slide-right img {\n  -webkit-transform: translate3d(-40px, 0, 0);\n  transform: translate3d(-40px, 0, 0); }\n\n.qubely-block-gallery .qubely-gallery-item:hover .qubely-gallery-image-slide-bottom img {\n  -webkit-transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1);\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-block-gallery .qubely-gallery-item:hover .qubely-gallery-image-slide-top img {\n  -webkit-transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1);\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-block-gallery .qubely-gallery-item:hover .qubely-gallery-image-container:after {\n  opacity: 1; }\n\n.qubely-column-grid {\n  display: grid;\n  grid-column-gap: 30px;\n  grid-row-gap: 30px; }\n\n.qubely-gallery-item-2 .qubely-column-grid {\n  display: block; }\n\n.qubely-column-grid-xs1 {\n  grid-template-columns: 1fr; }\n\n.qubely-column-grid-xs2 {\n  grid-template-columns: 1fr 1fr; }\n\n.qubely-column-grid-xs3 {\n  grid-template-columns: 1fr 1fr 1fr; }\n\n@media (min-width: 767px) {\n  .qubely-column-grid-sm1 {\n    grid-template-columns: 1fr; }\n  .qubely-column-grid-sm2 {\n    grid-template-columns: 1fr 1fr; }\n  .qubely-column-grid-sm3 {\n    grid-template-columns: 1fr 1fr 1fr; }\n  .qubely-gallery-item-2 .qubely-column-grid-sm1 {\n    column-count: 1; }\n  .qubely-gallery-item-2 .qubely-column-grid-sm2 {\n    column-count: 2; }\n  .qubely-gallery-item-2 .qubely-column-grid-sm3 {\n    column-count: 3; } }\n\n@media (min-width: 992px) {\n  .qubely-column-grid-md1 {\n    grid-template-columns: 1fr; }\n  .qubely-column-grid-md2 {\n    grid-template-columns: 1fr 1fr; }\n  .qubely-column-grid-md3 {\n    grid-template-columns: 1fr 1fr 1fr; }\n  .qubely-column-grid-md4 {\n    grid-template-columns: 1fr 1fr 1fr; }\n  .qubely-column-grid-md5 {\n    grid-template-columns: 1fr 1fr 1fr; }\n  .qubely-column-grid-md6 {\n    grid-template-columns: 1fr 1fr 1fr; }\n  .qubely-gallery-item-2 .qubely-column-grid-md1 {\n    column-count: 1; }\n  .qubely-gallery-item-2 .qubely-column-grid-md2 {\n    column-count: 2; }\n  .qubely-gallery-item-2 .qubely-column-grid-md3 {\n    column-count: 3; }\n  .qubely-gallery-item-2 .qubely-column-grid-md4 {\n    column-count: 3; }\n  .qubely-gallery-item-2 .qubely-column-grid-md5 {\n    column-count: 3; }\n  .qubely-gallery-item-2 .qubely-column-grid-md6 {\n    column-count: 3; } }\n\n@media (min-width: 1299px) {\n  .qubely-column-grid-md4 {\n    grid-template-columns: 1fr 1fr 1fr 1fr; }\n  .qubely-column-grid-md5 {\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }\n  .qubely-column-grid-md6 {\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; }\n  .qubely-gallery-item-2 .qubely-column-grid-md4 {\n    column-count: 4; }\n  .qubely-gallery-item-2 .qubely-column-grid-md5 {\n    column-count: 5; }\n  .qubely-gallery-item-2 .qubely-column-grid-md6 {\n    column-count: 6; } }\n", ""]);
 
 
 
@@ -155,7 +155,7 @@ exports.push([module.i, ".qubely-block-image-carousel {\n  transition: all 400ms
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".editor-styles-wrapper .wp-block h1.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h2.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h3.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h4.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h5.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h6.qubely-postcarousel-title {\n  margin: 0; }\n\n.qubely-postcarousel-is-loading {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 200px; }\n\n.qubely-post-list-wrapper {\n  display: block;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap; }\n  .qubely-post-list-wrapper .qubely-post-list-img {\n    -ms-flex: 0 0 100%;\n    flex: 0 0 100%;\n    max-width: 100%;\n    position: relative;\n    width: 100%;\n    min-height: 1px;\n    overflow: hidden; }\n  .qubely-post-list-wrapper .qubely-post-list-content {\n    -ms-flex: 0 0 100%;\n    flex: 0 0 100%;\n    max-width: 100%;\n    position: relative;\n    width: 100%;\n    min-height: 1px;\n    padding-left: 20px; }\n\n@media screen and (min-width: 767px) {\n  .qubely-post-list-wrapper {\n    display: -ms-flexbox;\n    display: flex; }\n    .qubely-post-list-wrapper .qubely-post-list-img {\n      -ms-flex: 0 0 40%;\n      flex: 0 0 40%;\n      max-width: 40%; }\n    .qubely-post-list-wrapper .qubely-post-list-img + .qubely-post-list-content {\n      -ms-flex: 0 0 60%;\n      flex: 0 0 60%;\n      max-width: 60%; } }\n\n.qubely-carousel-item {\n  position: relative; }\n  .qubely-carousel-item img {\n    display: block; }\n  .qubely-carousel-item .qubely-postcarousel-title {\n    margin: 0;\n    line-height: 28px; }\n    .qubely-carousel-item .qubely-postcarousel-title a {\n      text-decoration: none !important; }\n      .qubely-carousel-item .qubely-postcarousel-title a:hover {\n        text-decoration: none; }\n  .qubely-carousel-item .qubely-postcarousel-intro,\n  .qubely-carousel-item .qubely-postcarousel-intro p {\n    font-size: 15px;\n    line-height: 24px;\n    margin: 0; }\n  .qubely-carousel-item .qubely-postcarousel-meta {\n    font-size: 14px;\n    line-height: 22px; }\n  .qubely-carousel-item .qubely-postcarousel-btn {\n    display: inline-block;\n    text-decoration: none !important; }\n    .qubely-carousel-item .qubely-postcarousel-btn:hover {\n      text-decoration: none !important; }\n  .qubely-carousel-item .qubely-button-fill.is-small {\n    padding: 5px 10px;\n    font-size: 14px; }\n  .qubely-carousel-item .qubely-button-fill.is-medium {\n    padding: 8px 15px;\n    font-size: 16px; }\n  .qubely-carousel-item .qubely-button-fill.is-large {\n    padding: 13px 20px;\n    font-size: 18px; }\n\n.qubely-post-img {\n  position: relative;\n  overflow: hidden; }\n  .qubely-post-img .qubely-postcarousel-cat-position {\n    position: absolute; }\n    .qubely-post-img .qubely-postcarousel-cat-position.qubely-postcarousel-cat-position-leftTop {\n      top: 20px;\n      left: 20px; }\n    .qubely-post-img .qubely-postcarousel-cat-position.qubely-postcarousel-cat-position-rightTop {\n      top: 20px;\n      right: 20px; }\n    .qubely-post-img .qubely-postcarousel-cat-position.qubely-postcarousel-cat-position-leftBottom {\n      bottom: 20px;\n      left: 20px; }\n    .qubely-post-img .qubely-postcarousel-cat-position.qubely-postcarousel-cat-position-rightBottom {\n      bottom: 20px;\n      right: 20px; }\n\n.qubely-postcarousel-category a {\n  transition: 400ms !important;\n  text-decoration: none !important; }\n  .qubely-postcarousel-category a:hover {\n    text-decoration: none !important; }\n\n.qubely-postcarousel-meta span {\n  padding-left: 12px;\n  position: relative;\n  padding-right: 12px; }\n  .qubely-postcarousel-meta span i {\n    margin-right: 3px; }\n  .qubely-postcarousel-meta span:before {\n    position: absolute;\n    content: \"\";\n    background: #d8d8d8;\n    left: -1px;\n    top: 50%;\n    width: 2px;\n    height: 2px;\n    border-radius: 20px;\n    margin-top: -1px; }\n  .qubely-postcarousel-meta span:first-child {\n    padding-left: 0; }\n    .qubely-postcarousel-meta span:first-child:before {\n      display: none; }\n\n.qubely-postcarousel-meta a {\n  text-decoration: none !important; }\n  .qubely-postcarousel-meta a:hover {\n    text-decoration: none !important; }\n\n.qubely-postcarousel-style-4 {\n  position: relative;\n  overflow: hidden; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-img,\n  .qubely-postcarousel-style-4 .qubely-post-list-img {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n    -webkit-background-size: cover;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    overflow: hidden; }\n    .qubely-postcarousel-style-4 .qubely-post-grid-img img,\n    .qubely-postcarousel-style-4 .qubely-post-list-img img {\n      position: absolute;\n      width: auto;\n      height: auto;\n      min-width: 100%;\n      max-width: none;\n      left: 50%;\n      top: 50%;\n      -webkit-transform: translate(-50%, -50%);\n      -ms-transform: translate(-50%, -50%);\n      transform: translate(-50%, -50%);\n      min-height: 100%; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-content,\n  .qubely-postcarousel-style-4 .qubely-post-list-content {\n    opacity: 1;\n    position: relative;\n    z-index: 10;\n    overflow: hidden;\n    width: 100%;\n    max-width: 100%;\n    padding: 20px; }\n  .qubely-postcarousel-style-4 > div .qubely-post-grid-img,\n  .qubely-postcarousel-style-4 > div .qubely-post-list-img {\n    width: 100%;\n    max-width: 100%; }\n  .qubely-postcarousel-style-4:before {\n    position: absolute;\n    content: \"\";\n    left: 0;\n    top: 0;\n    bottom: 0;\n    right: 0;\n    z-index: 3;\n    opacity: 0.8;\n    transition: 400ms; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-top .qubely-post-grid-content {\n    top: 0;\n    height: 100%;\n    position: absolute;\n    display: grid;\n    align-content: flex-start; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-center .qubely-post-grid-content {\n    top: 0;\n    height: 100%;\n    position: absolute;\n    display: grid;\n    align-content: center; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-bottom .qubely-post-grid-content {\n    top: 0;\n    height: 100%;\n    position: absolute;\n    display: grid;\n    align-content: flex-end; }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-zoom-out .qubely-post-image {\n  transition: transform 0.35s;\n  transform: scale(1.2); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-zoom-in .qubely-post-image {\n  transition: transform 0.35s;\n  transform: scale(1); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-slide-bottom .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(0, 20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-slide-top .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(0, -20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-slide-right .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-slide-left .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(-20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-zoom-out .qubely-post-image {\n  transform: scale(1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-zoom-in .qubely-post-image {\n  transform: scale(1.2); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-slide-bottom .qubely-post-image {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-slide-top .qubely-post-image {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-slide-right .qubely-post-image {\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-slide-left .qubely-post-image {\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-post-list-center.qubely-post-list-wrapper {\n  align-items: center; }\n\n.qubely-post-list-top.qubely-post-list-wrapper {\n  align-items: flex-start; }\n\n.qubely-post-list-bottom.qubely-post-list-wrapper {\n  align-items: flex-end; }\n\n.qubely-post-list-view.qubely-postcarousel-style-3 .qubely-post-list-wrapper .qubely-post-list-content {\n  background: #fff;\n  padding: 20px;\n  position: relative;\n  z-index: 1; }\n\n.qubely-post-list-view.qubely-postcarousel-style-3 .qubely-post-list-wrapper .qubely-post-list-img + .qubely-post-list-content {\n  margin-left: -40px; }\n\n.qubely-post-grid-view.qubely-postcarousel-style-3 .qubely-post-grid-content {\n  background: #fff;\n  position: relative;\n  z-index: 1;\n  padding: 20px; }\n\n.qubely-post-grid-view.qubely-postcarousel-style-3 .qubely-post-grid-img + .qubely-post-grid-content {\n  margin: -80px auto 0;\n  width: 90%; }\n\n.qubely-post-grid-view.qubely-postcarousel-style-3 .qubely-post-grid-left .qubely-post-grid-content {\n  float: left; }\n\n.qubely-post-grid-view.qubely-postcarousel-style-3 .qubely-post-grid-right .qubely-post-grid-content {\n  float: right; }\n\n.qubely-postcarousel-column {\n  display: grid;\n  grid-column-gap: 30px;\n  grid-row-gap: 30px; }\n  .qubely-postcarousel-column.qubely-postcarousel-layout-5 {\n    display: block;\n    column-fill: initial; }\n    .qubely-postcarousel-column.qubely-postcarousel-layout-5 > div {\n      margin-bottom: 30px; }\n\n.qubely-postcarousel-layout-3 .qubely-postcarousel:nth-child(1) {\n  grid-column-start: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md2 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md3 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md4 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md5 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md6 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column {\n  column-gap: 30px;\n  display: block; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column .qubely-postcarousel {\n    display: inline-block;\n    width: 100%;\n    height: auto;\n    margin-bottom: 30px; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md1 {\n  column-count: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md2 {\n  column-count: 2; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md3 {\n  column-count: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md4 {\n  column-count: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md5 {\n  column-count: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md6 {\n  column-count: 1; }\n\n@media screen and (max-width: 992px) {\n  .qubely-post-list-center.qubely-post-list-wrapper {\n    align-items: flex-start; }\n  .qubely-post-list-view.qubely-postcarousel-style-3\n.qubely-post-list-wrapper\n.qubely-post-list-img\n+ .qubely-post-list-content {\n    margin-left: 0; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md4 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 2; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-sm1 {\n    column-count: 1; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-sm2 {\n    column-count: 2; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-sm3 {\n    column-count: 3; } }\n\n@media screen and (max-width: 768px) {\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-xs1 {\n    column-count: 1; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-xs2 {\n    column-count: 2; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-xs3 {\n    column-count: 3; } }\n\n@media (min-width: 992px) {\n  .qubely-postcarousel-layout-3 .qubely-postcarousel:nth-child(1) {\n    grid-column-start: 1; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md2 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 3; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md3 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 4; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md4 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 4; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md5 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 4; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md6 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 4; } }\n\n@media (min-width: 1299px) {\n  .qubely-postcarousel-column-md4 {\n    grid-template-columns: 1fr 1fr 1fr 1fr; }\n    .qubely-postcarousel-column-md4.qubely-postcarousel-layout-5 {\n      column-count: 5; }\n  .qubely-postcarousel-column-md5 {\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }\n    .qubely-postcarousel-column-md5.qubely-postcarousel-layout-5 {\n      column-count: 6; }\n  .qubely-postcarousel-column-md6 {\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; }\n    .qubely-postcarousel-column-md6.qubely-postcarousel-layout-5 {\n      column-count: 7; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md4 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 5; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md5 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 6; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md6 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 7; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column.qubely-postcarousel-column-md3 {\n    column-count: 3; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column.qubely-postcarousel-column-md4 {\n    column-count: 4; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column.qubely-postcarousel-column-md5 {\n    column-count: 5; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column.qubely-postcarousel-column-md6 {\n    column-count: 6; } }\n\n.qubely-post-img {\n  margin-bottom: 10px; }\n\n.qubely-post-grid-content.align-center {\n  text-align: center; }\n\n.qubely-post-grid-content.align-right {\n  text-align: right; }\n\n.qubely-post-grid-content.align-left {\n  text-align: left; }\n\n.qubely-postgrid-style-3 .qubely-post-grid-wrapper.qubely-post-grid-center {\n  background-color: transparent;\n  padding: 10px 0; }\n\n.qubely-post-grid-wrapper.qubely-post-grid-center {\n  overflow: hidden; }\n\n.qubely-carousel-item.qubely-post-grid-view.qubely-postgrid-style-2 {\n  padding: 10px; }\n\n.qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content {\n  border-radius: 10px; }\n\n.qubely-postgrid-style-4 .qubely-post-grid-img img {\n  left: 0;\n  top: 0; }\n\n.layout-4 .clone.qubely-carousel-item .qubely-post-grid-content.align-top {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 100%; }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-zoom-out img {\n  transition: transform .35s,-webkit-transform .35s;\n  -webkit-transform: scale(1.2);\n  transform: scale(1.2); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-zoom-out img {\n  -webkit-transform: scale(1);\n  transform: scale(1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-zoom-in img {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-slide-left img {\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-slide-right img {\n  transform: translate3d(-20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-slide-bottom img {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-slide-top img {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-zoom-in img {\n  transition: transform .35s,-webkit-transform .35s;\n  -webkit-transform: scale(1);\n  transform: scale(1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-slide-left img {\n  transition: transform 0.35s;\n  transform: translate3d(-20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-slide-right img {\n  transition: transform 0.35s;\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-slide-bottom img {\n  transition: transform 0.35s;\n  transform: translate3d(0, 20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-slide-top img {\n  transition: transform 0.35s;\n  transform: translate3d(0, -20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-block-image-carousel .qubely-postgrid-style-4 .qubely-post-grid-img img {\n  left: 0;\n  top: 0; }\n", ""]);
+exports.push([module.i, ".editor-styles-wrapper .wp-block h1.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h2.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h3.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h4.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h5.qubely-postcarousel-title,\n.editor-styles-wrapper .wp-block h6.qubely-postcarousel-title {\n  margin: 0; }\n\n.qubely-postcarousel-is-loading {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 200px; }\n\n.qubely-post-list-wrapper {\n  display: block;\n  -ms-flex-wrap: wrap;\n  flex-wrap: wrap; }\n  .qubely-post-list-wrapper .qubely-post-list-img {\n    -ms-flex: 0 0 100%;\n    flex: 0 0 100%;\n    max-width: 100%;\n    position: relative;\n    width: 100%;\n    min-height: 1px;\n    overflow: hidden; }\n  .qubely-post-list-wrapper .qubely-post-list-content {\n    -ms-flex: 0 0 100%;\n    flex: 0 0 100%;\n    max-width: 100%;\n    position: relative;\n    width: 100%;\n    min-height: 1px;\n    padding-left: 20px; }\n\n@media screen and (min-width: 767px) {\n  .qubely-post-list-wrapper {\n    display: -ms-flexbox;\n    display: flex; }\n    .qubely-post-list-wrapper .qubely-post-list-img {\n      -ms-flex: 0 0 40%;\n      flex: 0 0 40%;\n      max-width: 40%; }\n    .qubely-post-list-wrapper .qubely-post-list-img + .qubely-post-list-content {\n      -ms-flex: 0 0 60%;\n      flex: 0 0 60%;\n      max-width: 60%; } }\n\n.qubely-carousel-item {\n  position: relative; }\n  .qubely-carousel-item img {\n    display: block; }\n  .qubely-carousel-item .qubely-postcarousel-title {\n    margin: 0;\n    line-height: 28px; }\n    .qubely-carousel-item .qubely-postcarousel-title a {\n      text-decoration: none !important; }\n      .qubely-carousel-item .qubely-postcarousel-title a:hover {\n        text-decoration: none; }\n  .qubely-carousel-item .qubely-postcarousel-intro,\n  .qubely-carousel-item .qubely-postcarousel-intro p {\n    font-size: 15px;\n    line-height: 24px;\n    margin: 0; }\n  .qubely-carousel-item .qubely-postcarousel-meta {\n    font-size: 14px;\n    line-height: 22px; }\n  .qubely-carousel-item .qubely-postcarousel-btn {\n    display: inline-block;\n    text-decoration: none !important; }\n    .qubely-carousel-item .qubely-postcarousel-btn:hover {\n      text-decoration: none !important; }\n  .qubely-carousel-item .qubely-button-fill.is-small {\n    padding: 5px 10px;\n    font-size: 14px; }\n  .qubely-carousel-item .qubely-button-fill.is-medium {\n    padding: 8px 15px;\n    font-size: 16px; }\n  .qubely-carousel-item .qubely-button-fill.is-large {\n    padding: 13px 20px;\n    font-size: 18px; }\n\n.qubely-post-img {\n  position: relative;\n  overflow: hidden; }\n  .qubely-post-img .qubely-postcarousel-cat-position {\n    position: absolute; }\n    .qubely-post-img .qubely-postcarousel-cat-position.qubely-postcarousel-cat-position-leftTop {\n      top: 20px;\n      left: 20px; }\n    .qubely-post-img .qubely-postcarousel-cat-position.qubely-postcarousel-cat-position-rightTop {\n      top: 20px;\n      right: 20px; }\n    .qubely-post-img .qubely-postcarousel-cat-position.qubely-postcarousel-cat-position-leftBottom {\n      bottom: 20px;\n      left: 20px; }\n    .qubely-post-img .qubely-postcarousel-cat-position.qubely-postcarousel-cat-position-rightBottom {\n      bottom: 20px;\n      right: 20px; }\n\n.qubely-postcarousel-category a {\n  transition: 400ms !important;\n  text-decoration: none !important; }\n  .qubely-postcarousel-category a:hover {\n    text-decoration: none !important; }\n\n.qubely-postcarousel-meta span {\n  padding-left: 12px;\n  position: relative;\n  padding-right: 12px; }\n  .qubely-postcarousel-meta span i {\n    margin-right: 3px; }\n  .qubely-postcarousel-meta span:before {\n    position: absolute;\n    content: \"\";\n    background: #d8d8d8;\n    left: -1px;\n    top: 50%;\n    width: 2px;\n    height: 2px;\n    border-radius: 20px;\n    margin-top: -1px; }\n  .qubely-postcarousel-meta span:first-child {\n    padding-left: 0; }\n    .qubely-postcarousel-meta span:first-child:before {\n      display: none; }\n\n.qubely-postcarousel-meta a {\n  text-decoration: none !important; }\n  .qubely-postcarousel-meta a:hover {\n    text-decoration: none !important; }\n\n.qubely-postcarousel-style-4 {\n  position: relative;\n  overflow: hidden; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-img,\n  .qubely-postcarousel-style-4 .qubely-post-list-img {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n    -webkit-background-size: cover;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    overflow: hidden; }\n    .qubely-postcarousel-style-4 .qubely-post-grid-img img,\n    .qubely-postcarousel-style-4 .qubely-post-list-img img {\n      position: absolute;\n      width: auto;\n      height: auto;\n      min-width: 100%;\n      max-width: none;\n      left: 50%;\n      top: 50%;\n      -webkit-transform: translate(-50%, -50%);\n      -ms-transform: translate(-50%, -50%);\n      transform: translate(-50%, -50%);\n      min-height: 100%; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-content,\n  .qubely-postcarousel-style-4 .qubely-post-list-content {\n    opacity: 1;\n    position: relative;\n    z-index: 10;\n    overflow: hidden;\n    width: 100%;\n    max-width: 100%;\n    padding: 20px; }\n  .qubely-postcarousel-style-4 > div .qubely-post-grid-img,\n  .qubely-postcarousel-style-4 > div .qubely-post-list-img {\n    width: 100%;\n    max-width: 100%; }\n  .qubely-postcarousel-style-4:before {\n    position: absolute;\n    content: \"\";\n    left: 0;\n    top: 0;\n    bottom: 0;\n    right: 0;\n    z-index: 3;\n    opacity: 0.8;\n    transition: 400ms; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-top .qubely-post-grid-content {\n    top: 0;\n    height: 100%;\n    position: absolute;\n    display: grid;\n    align-content: flex-start; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-center .qubely-post-grid-content {\n    top: 0;\n    height: 100%;\n    position: absolute;\n    display: grid;\n    align-content: center; }\n  .qubely-postcarousel-style-4 .qubely-post-grid-bottom .qubely-post-grid-content {\n    top: 0;\n    height: 100%;\n    position: absolute;\n    display: grid;\n    align-content: flex-end; }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-zoom-out .qubely-post-image {\n  transition: transform 0.35s;\n  transform: scale(1.2); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-zoom-in .qubely-post-image {\n  transition: transform 0.35s;\n  transform: scale(1); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-slide-bottom .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(0, 20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-slide-top .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(0, -20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-slide-right .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:not(.qubely-postcarousel-style-4) .qubely-post-img.qubely-post-img-slide-left .qubely-post-image {\n  transition: transform 0.35s;\n  transform: translate3d(-20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-zoom-out .qubely-post-image {\n  transform: scale(1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-zoom-in .qubely-post-image {\n  transform: scale(1.2); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-slide-bottom .qubely-post-image {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-slide-top .qubely-post-image {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-slide-right .qubely-post-image {\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel:hover:not(.qubely-postcarousel-style-4) .qubely-post-img-slide-left .qubely-post-image {\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-post-list-center.qubely-post-list-wrapper {\n  align-items: center; }\n\n.qubely-post-list-top.qubely-post-list-wrapper {\n  align-items: flex-start; }\n\n.qubely-post-list-bottom.qubely-post-list-wrapper {\n  align-items: flex-end; }\n\n.qubely-post-list-view.qubely-postcarousel-style-3 .qubely-post-list-wrapper .qubely-post-list-content {\n  background: #fff;\n  padding: 20px;\n  position: relative;\n  z-index: 1; }\n\n.qubely-post-list-view.qubely-postcarousel-style-3 .qubely-post-list-wrapper .qubely-post-list-img + .qubely-post-list-content {\n  margin-left: -40px; }\n\n.qubely-post-grid-view.qubely-postcarousel-style-3 .qubely-post-grid-content {\n  background: #fff;\n  position: relative;\n  z-index: 1;\n  padding: 20px; }\n\n.qubely-post-grid-view.qubely-postcarousel-style-3 .qubely-post-grid-img + .qubely-post-grid-content {\n  margin: -80px auto 0;\n  width: 90%; }\n\n.qubely-post-grid-view.qubely-postcarousel-style-3 .qubely-post-grid-left .qubely-post-grid-content {\n  float: left; }\n\n.qubely-post-grid-view.qubely-postcarousel-style-3 .qubely-post-grid-right .qubely-post-grid-content {\n  float: right; }\n\n.qubely-postcarousel-column {\n  display: grid;\n  grid-column-gap: 30px;\n  grid-row-gap: 30px; }\n  .qubely-postcarousel-column.qubely-postcarousel-layout-5 {\n    display: block;\n    column-fill: initial; }\n    .qubely-postcarousel-column.qubely-postcarousel-layout-5 > div {\n      margin-bottom: 30px; }\n\n.qubely-postcarousel-layout-3 .qubely-postcarousel:nth-child(1) {\n  grid-column-start: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md2 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md3 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md4 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md5 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-3.qubely-postcarousel-column-md6 .qubely-postcarousel:nth-child(1) {\n  grid-column-end: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column {\n  column-gap: 30px;\n  display: block; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column .qubely-postcarousel {\n    display: inline-block;\n    width: 100%;\n    height: auto;\n    margin-bottom: 30px; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md1 {\n  column-count: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md2 {\n  column-count: 2; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md3 {\n  column-count: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md4 {\n  column-count: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md5 {\n  column-count: 1; }\n\n.qubely-postcarousel-layout-4.qubely-postcarousel-column-md6 {\n  column-count: 1; }\n\n@media screen and (max-width: 992px) {\n  .qubely-post-list-center.qubely-post-list-wrapper {\n    align-items: flex-start; }\n  .qubely-post-list-view.qubely-postcarousel-style-3\n.qubely-post-list-wrapper\n.qubely-post-list-img\n+ .qubely-post-list-content {\n    margin-left: 0; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md4 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 2; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-sm1 {\n    column-count: 1; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-sm2 {\n    column-count: 2; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-sm3 {\n    column-count: 3; } }\n\n@media screen and (max-width: 768px) {\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-xs1 {\n    column-count: 1; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-xs2 {\n    column-count: 2; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column-xs3 {\n    column-count: 3; } }\n\n@media (min-width: 992px) {\n  .qubely-postcarousel-layout-3 .qubely-postcarousel:nth-child(1) {\n    grid-column-start: 1; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md2 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 3; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md3 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 4; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md4 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 4; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md5 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 4; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md6 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 4; } }\n\n@media (min-width: 1299px) {\n  .qubely-postcarousel-column-md4 {\n    grid-template-columns: 1fr 1fr 1fr 1fr; }\n    .qubely-postcarousel-column-md4.qubely-postcarousel-layout-5 {\n      column-count: 5; }\n  .qubely-postcarousel-column-md5 {\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }\n    .qubely-postcarousel-column-md5.qubely-postcarousel-layout-5 {\n      column-count: 6; }\n  .qubely-postcarousel-column-md6 {\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; }\n    .qubely-postcarousel-column-md6.qubely-postcarousel-layout-5 {\n      column-count: 7; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md4 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 5; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md5 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 6; }\n  .qubely-postcarousel-layout-3.qubely-postcarousel-column-md6 .qubely-postcarousel:nth-child(1) {\n    grid-column-end: 7; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column.qubely-postcarousel-column-md3 {\n    column-count: 3; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column.qubely-postcarousel-column-md4 {\n    column-count: 4; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column.qubely-postcarousel-column-md5 {\n    column-count: 5; }\n  .qubely-postcarousel-layout-4.qubely-postcarousel-column.qubely-postcarousel-column-md6 {\n    column-count: 6; } }\n\n.qubely-post-img {\n  margin-bottom: 10px; }\n\n.qubely-post-grid-content.align-center {\n  text-align: center; }\n\n.qubely-post-grid-content.align-right {\n  text-align: right; }\n\n.qubely-post-grid-content.align-left {\n  text-align: left; }\n\n.qubely-postgrid-style-3 .qubely-post-grid-wrapper.qubely-post-grid-center {\n  background-color: transparent;\n  padding: 10px 0; }\n\n.qubely-carousel-item.qubely-post-grid-view.qubely-postgrid-style-2 {\n  padding: 10px; }\n\n.qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content {\n  border-radius: 10px; }\n\n.qubely-postgrid-style-4 .qubely-post-grid-img img {\n  left: 0;\n  top: 0; }\n\n.layout-4 .clone.qubely-carousel-item .qubely-post-grid-content.align-top {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 100%; }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-zoom-out img {\n  transition: transform .35s,-webkit-transform .35s;\n  -webkit-transform: scale(1.2);\n  transform: scale(1.2); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-zoom-out img {\n  -webkit-transform: scale(1);\n  transform: scale(1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-zoom-in img {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-slide-left img {\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-slide-right img {\n  transform: translate3d(-20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-slide-bottom img {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item:hover .qubely-post-img-slide-top img {\n  transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-zoom-in img {\n  transition: transform .35s,-webkit-transform .35s;\n  -webkit-transform: scale(1);\n  transform: scale(1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-slide-left img {\n  transition: transform 0.35s;\n  transform: translate3d(-20px, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-slide-right img {\n  transition: transform 0.35s;\n  transform: translate3d(0, 0, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-slide-bottom img {\n  transition: transform 0.35s;\n  transform: translate3d(0, 20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-postcarousel-wrapper .qubely-carousel-item .qubely-post-img-slide-top img {\n  transition: transform 0.35s;\n  transform: translate3d(0, -20px, 0) scale3d(1.2, 1.2, 1); }\n\n.qubely-block-image-carousel .qubely-postgrid-style-4 .qubely-post-grid-img img {\n  left: 0;\n  top: 0; }\n", ""]);
 
 
 
@@ -2220,7 +2220,7 @@ if(false) {}
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -2255,7 +2255,8 @@ var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
     BlockControls = _wp$editor.BlockControls,
-    MediaUpload = _wp$editor.MediaUpload;
+    MediaUpload = _wp$editor.MediaUpload,
+    SelectControl = _wp$editor.SelectControl;
 var _wp$qubelyComponents = wp.qubelyComponents,
     IconList = _wp$qubelyComponents.IconList,
     InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar,
@@ -2279,360 +2280,378 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
 
 var Edit = function (_Component) {
-	_inherits(Edit, _Component);
+  _inherits(Edit, _Component);
 
-	function Edit(props) {
-		_classCallCheck(this, Edit);
+  function Edit(props) {
+    _classCallCheck(this, Edit);
 
-		var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
 
-		_this.updatePricelistContent = function (key, value, index) {
-			var _this$props = _this.props,
-			    setAttributes = _this$props.setAttributes,
-			    _this$props$attribute = _this$props.attributes,
-			    pricelistItems = _this$props$attribute.pricelistItems,
-			    pricelistContents = _this$props$attribute.pricelistContents;
+    _this.updateGalleryImage = function (key, value, index) {
+      var _this$props = _this.props,
+          setAttributes = _this$props.setAttributes,
+          _this$props$attribute = _this$props.attributes,
+          galleryItems = _this$props$attribute.galleryItems,
+          galleryContents = _this$props$attribute.galleryContents;
 
-			if (key === 'add' || key === 'delete') {
-				var updatedAttributes = key === 'add' ? [].concat(_toConsumableArray(pricelistContents), [{ title: 'Pricelist Block', date: 'January 1, 2021', description: 'Include detailed for your products, company, etc with Qubely Pricelist.' }]) : pricelistContents.slice(0, pricelistItems - 1);
-				setAttributes({
-					pricelistContents: updatedAttributes,
-					pricelistItems: key === 'add' ? pricelistItems + 1 : pricelistItems - 1
-				});
-			} else {
-				var _updatedAttributes = pricelistContents.map(function (data, itemIndex) {
-					if (index === itemIndex) {
-						return _extends({}, data, _defineProperty({}, key, value));
-					} else {
-						return data;
-					}
-				});
-				setAttributes({ pricelistContents: _updatedAttributes });
-			}
-		};
+      if (key === 'add' || key === 'delete') {
+        var updatedAttributes = key === 'add' ? [].concat(_toConsumableArray(galleryContents), [{ title: 'Best Gutenberg Plugin' }]) : galleryContents.slice(0, galleryItems - 1);
+        setAttributes({
+          galleryContents: updatedAttributes,
+          galleryItems: key === 'add' ? galleryItems + 1 : galleryItems - 1
+        });
+      } else {
+        var _updatedAttributes = galleryContents.map(function (data, itemIndex) {
+          if (index === itemIndex) {
+            return _extends({}, data, _defineProperty({}, key, value));
+          } else {
+            return data;
+          }
+        });
+        setAttributes({ galleryContents: _updatedAttributes });
+      }
+    };
 
-		_this.removePricelistItem = function (index) {
-			var _this$props2 = _this.props,
-			    setAttributes = _this$props2.setAttributes,
-			    pricelistContents = _this$props2.attributes.pricelistContents;
+    _this.removePricelistItem = function (index) {
+      var _this$props2 = _this.props,
+          setAttributes = _this$props2.setAttributes,
+          galleryContents = _this$props2.attributes.galleryContents;
 
-			var newPricelistItems = JSON.parse(JSON.stringify(pricelistContents));
-			newPricelistItems.splice(index, 1);
-			setAttributes({ pricelistContents: newPricelistItems });
-		};
+      var newgalleryItems = JSON.parse(JSON.stringify(galleryContents));
+      newgalleryItems.splice(index, 1);
+      setAttributes({ galleryContents: newgalleryItems });
+    };
 
-		_this.renderPricelist = function () {
-			var _this$props$attribute2 = _this.props.attributes,
-			    pricelistContents = _this$props$attribute2.pricelistContents,
-			    contentAlign = _this$props$attribute2.contentAlign,
-			    headingLevel = _this$props$attribute2.headingLevel,
-			    enableImage = _this$props$attribute2.enableImage;
+    _this.renderGalleryItem = function () {
+      var _this$props$attribute2 = _this.props.attributes,
+          galleryContents = _this$props$attribute2.galleryContents,
+          enableCaption = _this$props$attribute2.enableCaption,
+          showCaption = _this$props$attribute2.showCaption,
+          imageAnimation = _this$props$attribute2.imageAnimation;
 
-			var titleTagName = 'h' + headingLevel;
-			return pricelistContents.map(function (_ref, index) {
-				var title = _ref.title,
-				    description = _ref.description,
-				    image = _ref.image,
-				    price = _ref.price,
-				    discount = _ref.discount,
-				    badge = _ref.badge;
+      return galleryContents.map(function (_ref, index) {
+        var title = _ref.title,
+            image = _ref.image;
 
+        return React.createElement(
+          'div',
+          { key: index, className: 'qubely-gallery-item' },
+          React.createElement(
+            Tooltip,
+            { text: __('Delete this item') },
+            React.createElement(
+              'span',
+              { className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
+                  return _this.removePricelistItem(index);
+                } },
+              React.createElement('i', { 'class': 'fas fa-close' })
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'qubely-gallery-content' },
+            React.createElement(
+              'div',
+              { className: 'qubely-gallery-image-container' },
+              React.createElement(
+                'div',
+                { className: 'qubely-gallery-content-image' + (image != undefined && image.url != undefined ? '' : ' qubely-empty-image') + ' qubely-gallery-image-' + imageAnimation },
+                React.createElement(MediaUpload, {
+                  onSelect: function onSelect(value) {
+                    return _this.updateGalleryImage('image', value, index);
+                  },
+                  allowedTypes: ['image'],
+                  multiple: false,
+                  value: image,
+                  render: function render(_ref2) {
+                    var open = _ref2.open;
+                    return React.createElement(
+                      Fragment,
+                      null,
+                      image != undefined && image.url != undefined ? React.createElement(
+                        'div',
+                        { className: 'qubely-gallery-content-image-editor' },
+                        React.createElement('img', { src: image.url, alt: __('image') }),
+                        React.createElement(
+                          'div',
+                          { className: 'qubely-media-actions qubely-field-button-list' },
+                          React.createElement(
+                            Tooltip,
+                            { text: __('Edit') },
+                            React.createElement(
+                              'button',
+                              { className: 'qubely-button', 'aria-label': __('Edit'), onClick: open, role: 'button' },
+                              React.createElement('span', { 'aria-label': __('Edit'), className: 'fas fa-pencil-alt fa-fw' })
+                            )
+                          ),
+                          React.createElement(
+                            Tooltip,
+                            { text: __('Remove') },
+                            React.createElement(
+                              'button',
+                              { className: 'qubely-button', 'aria-label': __('Remove'), onClick: function onClick() {
+                                  return _this.updateGalleryImage('image', '', index);
+                                }, role: 'button' },
+                              React.createElement('span', { 'aria-label': __('Close'), className: 'far fa-trash-alt fa-fw' })
+                            )
+                          )
+                        )
+                      ) : React.createElement(
+                        'a',
+                        { className: 'qubely-insert-image', href: '#', onClick: open },
+                        React.createElement(
+                          'svg',
+                          { 'aria-hidden': 'true', role: 'img', focusable: 'false', 'class': 'dashicon dashicons-insert', xmlns: 'http://www.w3.org/2000/svg', width: '20', height: '20', viewBox: '0 0 20 20' },
+                          React.createElement('path', { d: 'M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z' })
+                        ),
+                        React.createElement(
+                          'span',
+                          null,
+                          __('Insert')
+                        )
+                      )
+                    );
+                  }
+                })
+              ),
+              enableCaption == 1 && React.createElement(
+                'div',
+                { className: 'qubely-gallery-caption-wrapper ' + (showCaption === 'onHover' ? 'qubely-gallery-caption-onHover' : 'sad') },
+                React.createElement(RichText, {
+                  placeholder: __('Add title'),
+                  tagName: 'div',
+                  className: 'qubely-gallery-caption',
+                  value: title,
+                  onChange: function onChange(value) {
+                    return _this.updateGalleryImage('title', value, index);
+                  },
+                  keepPlaceholderOnFocus: true
+                })
+              )
+            )
+          )
+        );
+      });
+    };
 
-				return React.createElement(
-					'div',
-					{ key: index, className: 'qubely-pricelist-item qubely-pricelist-item-' + contentAlign },
-					React.createElement(
-						Tooltip,
-						{ text: __('Delete this item') },
-						React.createElement(
-							'span',
-							{ className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
-									return _this.removePricelistItem(index);
-								} },
-							React.createElement('i', { 'class': 'fas fa-close' })
-						)
-					),
-					React.createElement(
-						'div',
-						{ className: 'qubely-pricelist-content' },
-						enableImage == 1 && React.createElement(
-							'div',
-							{ className: 'qubely-pricelist-image-container' },
-							React.createElement(
-								'div',
-								{ className: 'qubely-pricelist-content-image' + (image != undefined && image.url != undefined ? '' : ' qubely-empty-image') },
-								React.createElement(MediaUpload, {
-									onSelect: function onSelect(value) {
-										return _this.updatePricelistContent('image', value, index);
-									},
-									allowedTypes: ['image'],
-									multiple: false,
-									value: image,
-									render: function render(_ref2) {
-										var open = _ref2.open;
-										return React.createElement(
-											Fragment,
-											null,
-											image != undefined && image.url != undefined ? React.createElement(
-												'div',
-												{ className: 'qubely-pricelist-content-image-editor' },
-												React.createElement('img', { src: image.url, alt: __('image') }),
-												React.createElement(
-													'div',
-													{ className: 'qubely-media-actions qubely-field-button-list' },
-													React.createElement(
-														Tooltip,
-														{ text: __('Edit') },
-														React.createElement(
-															'button',
-															{ className: 'qubely-button', 'aria-label': __('Edit'), onClick: open, role: 'button' },
-															React.createElement('span', { 'aria-label': __('Edit'), className: 'fas fa-pencil-alt fa-fw' })
-														)
-													),
-													React.createElement(
-														Tooltip,
-														{ text: __('Remove') },
-														React.createElement(
-															'button',
-															{ className: 'qubely-button', 'aria-label': __('Remove'), onClick: function onClick() {
-																	return _this.updatePricelistContent('image', '', index);
-																}, role: 'button' },
-															React.createElement('span', { 'aria-label': __('Close'), className: 'far fa-trash-alt fa-fw' })
-														)
-													)
-												)
-											) : React.createElement(
-												'a',
-												{ className: 'qubely-insert-image', href: '#', onClick: open },
-												React.createElement(
-													'svg',
-													{ 'aria-hidden': 'true', role: 'img', focusable: 'false', 'class': 'dashicon dashicons-insert', xmlns: 'http://www.w3.org/2000/svg', width: '20', height: '20', viewBox: '0 0 20 20' },
-													React.createElement('path', { d: 'M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z' })
-												),
-												React.createElement(
-													'span',
-													null,
-													__('Insert')
-												)
-											)
-										);
-									}
-								})
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'qubely-pricelist-description-wrapper' },
-							React.createElement(
-								'div',
-								{ className: 'qubely-pricelist-description' },
-								React.createElement(
-									'div',
-									{ className: 'qubely-pricelist-title-wrapper' },
-									React.createElement(RichText, {
-										placeholder: __('Add title'),
-										tagName: titleTagName,
-										className: 'qubely-pricelist-title',
-										value: title,
-										onChange: function onChange(value) {
-											return _this.updatePricelistContent('title', value, index);
-										},
-										keepPlaceholderOnFocus: true
-									})
-								)
-							)
-						)
-					)
-				);
-			});
-		};
+    _this.state = {
+      device: 'md',
+      spacer: true
+    };
+    return _this;
+  }
 
-		_this.state = {
-			device: 'md',
-			spacer: true
-		};
-		return _this;
-	}
+  _createClass(Edit, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _props = this.props,
+          setAttributes = _props.setAttributes,
+          clientId = _props.clientId,
+          uniqueId = _props.attributes.uniqueId;
 
-	_createClass(Edit, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			var _props = this.props,
-			    setAttributes = _props.setAttributes,
-			    clientId = _props.clientId,
-			    uniqueId = _props.attributes.uniqueId;
+      var _client = clientId.substr(0, 6);
+      if (!uniqueId) {
+        setAttributes({ uniqueId: _client });
+      } else if (uniqueId && uniqueId != _client) {
+        setAttributes({ uniqueId: _client });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this,
+          _React$createElement;
 
-			var _client = clientId.substr(0, 6);
-			if (!uniqueId) {
-				setAttributes({ uniqueId: _client });
-			} else if (uniqueId && uniqueId != _client) {
-				setAttributes({ uniqueId: _client });
-			}
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			var _props2 = this.props,
-			    setAttributes = _props2.setAttributes,
-			    _props2$attributes = _props2.attributes,
-			    uniqueId = _props2$attributes.uniqueId,
-			    pricelistItems = _props2$attributes.pricelistItems,
-			    style = _props2$attributes.style,
-			    headingLevel = _props2$attributes.headingLevel,
-			    headingTypography = _props2$attributes.headingTypography,
-			    headingColor = _props2$attributes.headingColor,
-			    headingSpacing = _props2$attributes.headingSpacing,
-			    contentPadding = _props2$attributes.contentPadding,
-			    contentBorderRadius = _props2$attributes.contentBorderRadius,
-			    contentBoxShadow = _props2$attributes.contentBoxShadow,
-			    contentSpacing = _props2$attributes.contentSpacing,
-			    contentAlign = _props2$attributes.contentAlign,
-			    overlayHoverBg = _props2$attributes.overlayHoverBg,
-			    overlayBg = _props2$attributes.overlayBg,
-			    height = _props2$attributes.height,
-			    enableImage = _props2$attributes.enableImage,
-			    imagePosition = _props2$attributes.imagePosition,
-			    imageBorderRadius = _props2$attributes.imageBorderRadius,
-			    imageSize = _props2$attributes.imageSize,
-			    imageSpacing = _props2$attributes.imageSpacing;
-			var device = this.state.device;
+      var _props2 = this.props,
+          setAttributes = _props2.setAttributes,
+          _props2$attributes = _props2.attributes,
+          uniqueId = _props2$attributes.uniqueId,
+          galleryItems = _props2$attributes.galleryItems,
+          style = _props2$attributes.style,
+          column = _props2$attributes.column,
+          gutter = _props2$attributes.gutter,
+          imgSize = _props2$attributes.imgSize,
+          imgBorderRadius = _props2$attributes.imgBorderRadius,
+          imgBoxShadow = _props2$attributes.imgBoxShadow,
+          enableImgFixedHeight = _props2$attributes.enableImgFixedHeight,
+          imgFixedHeight = _props2$attributes.imgFixedHeight,
+          imageAnimation = _props2$attributes.imageAnimation,
+          enableCaption = _props2$attributes.enableCaption,
+          captionPadding = _props2$attributes.captionPadding,
+          captionVerticalAlign = _props2$attributes.captionVerticalAlign,
+          captionAlignment = _props2$attributes.captionAlignment,
+          showCaption = _props2$attributes.showCaption,
+          captionTypography = _props2$attributes.captionTypography,
+          captionColor = _props2$attributes.captionColor,
+          enableOverlay = _props2$attributes.enableOverlay,
+          overlayBg = _props2$attributes.overlayBg,
+          overlayHoverBg = _props2$attributes.overlayHoverBg,
+          overlayBlend = _props2$attributes.overlayBlend;
+      var device = this.state.device;
 
 
-			if (uniqueId) {
-				CssGenerator(this.props.attributes, 'gallery', uniqueId);
-			}
+      if (uniqueId) {
+        CssGenerator(this.props.attributes, 'gallery', uniqueId);
+      }
 
-			return React.createElement(
-				Fragment,
-				null,
-				React.createElement(
-					InspectorControls,
-					{ key: 'inspector' },
-					React.createElement(
-						PanelBody,
-						{ title: __('General Settings') },
-						React.createElement(Range, {
-							min: 2,
-							max: 100,
-							label: __('Number of Items'),
-							value: pricelistItems,
-							onChange: function onChange(value) {
-								return _this2.updatePricelistContent(value > pricelistItems ? 'add' : 'delete');
-							}
-						}),
-						React.createElement(Styles, { columns: 2, value: style, onChange: function onChange(val) {
-								return setAttributes({ style: val });
-							},
-							options: [{ value: 1, svg: _icons2.default.postgrid_design_1 }, { value: 2, svg: _icons2.default.postgrid_design_3 }]
-						})
-					),
-					React.createElement(
-						PanelBody,
-						{ title: __('Image'), initialOpen: false },
-						React.createElement(BorderRadius, { label: __('Radius'), value: contentBorderRadius, onChange: function onChange(val) {
-								return setAttributes({ contentBorderRadius: val });
-							}, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-								return _this2.setState({ device: value });
-							} }),
-						React.createElement(BoxShadow, { label: __('Box-Shadow'), value: contentBoxShadow, onChange: function onChange(val) {
-								return setAttributes({ contentBoxShadow: val });
-							}, disableInset: true }),
-						React.createElement(Range, { label: __('Spacing'), value: contentSpacing, onChange: function onChange(val) {
-								return setAttributes({ contentSpacing: val });
-							}, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
-								return _this2.setState({ device: value });
-							} }),
-						React.createElement(Padding, { label: __('Padding'), value: contentPadding, onChange: function onChange(val) {
-								return setAttributes({ contentPadding: val });
-							}, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-								return _this2.setState({ device: value });
-							} })
-					),
-					React.createElement(
-						PanelBody,
-						{ title: __('Caption'), initialOpen: false },
-						React.createElement(Headings, { label: __('Heading Tag'), selectedLevel: headingLevel, onChange: function onChange(value) {
-								return setAttributes({ headingLevel: value });
-							} }),
-						React.createElement(Typography, { label: __('Heading Typography'), value: headingTypography, onChange: function onChange(val) {
-								return setAttributes({ headingTypography: val });
-							}, device: device, onDeviceChange: function onDeviceChange(value) {
-								return _this2.setState({ device: value });
-							} }),
-						React.createElement(Color, { label: __('Heading Color'), value: headingColor, onChange: function onChange(value) {
-								return setAttributes({ headingColor: value });
-							} }),
-						React.createElement(Range, { label: __('Heading Spacing'), value: headingSpacing, onChange: function onChange(val) {
-								return setAttributes({ headingSpacing: val });
-							}, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
-								return _this2.setState({ device: value });
-							} })
-					),
-					React.createElement(
-						PanelBody,
-						{ title: __('Image'), initialOpen: false },
-						React.createElement(Toggle, { label: __('Enable'), value: enableImage, onChange: function onChange(val) {
-								return setAttributes({ enableImage: val });
-							} }),
-						enableImage == 1 && style != 3 && React.createElement(
-							Fragment,
-							null,
-							React.createElement(RadioAdvanced, { label: __('Position'), value: imagePosition, onChange: function onChange(value) {
-									return setAttributes({ imagePosition: value });
-								},
-								options: [{ label: __('Left'), value: 'left', title: __('Left') }, { label: __('Top'), value: 'top', title: __('Top') }]
-							}),
-							React.createElement(Range, { label: __('Size'), value: imageSize, onChange: function onChange(val) {
-									return setAttributes({ imageSize: val });
-								}, min: 0, max: 500, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								} }),
-							React.createElement(BorderRadius, { label: __('Radius'), value: imageBorderRadius, onChange: function onChange(val) {
-									return setAttributes({ imageBorderRadius: val });
-								}, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								} }),
-							React.createElement(Range, { label: __('Spacing'), value: imageSpacing, onChange: function onChange(val) {
-									return setAttributes({ imageSpacing: val });
-								}, min: 0, max: 100, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								} })
-						)
-					)
-				),
-				React.createElement(
-					BlockControls,
-					null,
-					React.createElement(
-						Toolbar,
-						null,
-						React.createElement(InlineToolbar, _extends({
-							data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
-						}, this.props, {
-							prevState: this.state
-						}))
-					)
-				),
-				React.createElement(
-					'div',
-					{ className: 'qubely-block-' + uniqueId },
-					React.createElement(
-						'div',
-						{ className: 'qubely-block-pricelist qubely-pricelist-item-' + style },
-						React.createElement(
-							'div',
-							{ className: 'qubely-pricelist-items' },
-							this.renderPricelist()
-						)
-					)
-				)
-			);
-		}
-	}]);
+      return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+          InspectorControls,
+          { key: 'inspector' },
+          React.createElement(
+            PanelBody,
+            { title: __('General Settings') },
+            React.createElement(Styles, { columns: 2, value: style, onChange: function onChange(val) {
+                return setAttributes({ style: val });
+              },
+              options: [{ value: 1, svg: _icons2.default.postgrid_design_1 }, { value: 2, svg: _icons2.default.postgrid_design_3 }]
+            }),
+            React.createElement(Range, {
+              min: 2,
+              max: 100,
+              label: __('Number of Items'),
+              value: galleryItems,
+              onChange: function onChange(value) {
+                return _this2.updateGalleryImage(value > galleryItems ? 'add' : 'delete');
+              }
+            }),
+            React.createElement(Range, { label: __('Select Column'), value: column, onChange: function onChange(value) {
+                return setAttributes({ column: value });
+              }, min: 1, step: 1, max: 6, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } }),
+            React.createElement(Range, { label: __('Gutter'), value: gutter, onChange: function onChange(val) {
+                return setAttributes({ gutter: val });
+              }, min: 0, max: 50, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } })
+          ),
+          React.createElement(
+            PanelBody,
+            { title: __('Image'), initialOpen: false },
+            React.createElement(Toggle, { label: __('Fixed Image Height'), value: enableImgFixedHeight, onChange: function onChange(value) {
+                return setAttributes({ enableImgFixedHeight: value });
+              } }),
+            enableImgFixedHeight && React.createElement(Range, { label: __(''), value: imgFixedHeight, onChange: function onChange(value) {
+                return setAttributes({ imgFixedHeight: value });
+              }, unit: ['px', 'em', '%'], min: 10, max: 600, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } }),
+            React.createElement(BorderRadius, { label: __('Radius'), value: imgBorderRadius, onChange: function onChange(val) {
+                return setAttributes({ imgBorderRadius: val });
+              }, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                return _this2.setState({ device: value });
+              } }),
+            React.createElement(BoxShadow, { label: __('Box-Shadow'), value: imgBoxShadow, onChange: function onChange(val) {
+                return setAttributes({ imgBoxShadow: val });
+              }, disableInset: true }),
+            React.createElement(Select, { label: __('Image Animation'), options: [['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')], ['scale', __('Scale')]], value: imageAnimation, onChange: function onChange(val) {
+                return setAttributes({ imageAnimation: val });
+              } })
+          ),
+          React.createElement(
+            PanelBody,
+            { title: __('Caption'), initialOpen: false },
+            React.createElement(Toggle, { label: __('Enable Description'), value: enableCaption, onChange: function onChange(val) {
+                return setAttributes({ enableCaption: val });
+              } }),
+            enableCaption == 1 && React.createElement(
+              Fragment,
+              null,
+              React.createElement(Padding, { label: __('Padding'), value: captionPadding, onChange: function onChange(val) {
+                  return setAttributes({ captionPadding: val });
+                }, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                  return _this2.setState({ device: value });
+                } }),
+              React.createElement(RadioAdvanced, { label: __('Show'), value: showCaption, onChange: function onChange(value) {
+                  return setAttributes({ showCaption: value });
+                },
+                options: [{ label: __('On Hover'), value: 'onHover', title: __('On Hover') }, { label: __('Always'), value: 'always', title: __('Always') }]
+              }),
+              React.createElement(RadioAdvanced, { label: __('Vertical Align'), value: captionVerticalAlign, onChange: function onChange(value) {
+                  return setAttributes({ captionVerticalAlign: value });
+                },
+                options: [{ label: __('Top'), value: 'top', title: __('Top') }, { label: __('Middle'), value: 'center', title: __('Middle') }, { label: __('Bottom'), value: 'bottom', title: __('Bottom') }]
+              }),
+              React.createElement(Alignment, (_React$createElement = { label: __('Horizontal Alignment'), value: captionAlignment, alignmentType: 'content', onChange: function onChange(val) {
+                  return setAttributes({ captionAlignment: val });
+                } }, _defineProperty(_React$createElement, 'alignmentType', 'content'), _defineProperty(_React$createElement, 'disableJustify', true), _React$createElement)),
+              React.createElement(Typography, { label: __('Caption Typography'), value: captionTypography, onChange: function onChange(val) {
+                  return setAttributes({ captionTypography: val });
+                }, device: device, onDeviceChange: function onDeviceChange(value) {
+                  return _this2.setState({ device: value });
+                } }),
+              React.createElement(Color, { label: __('Caption Color'), value: captionColor, onChange: function onChange(value) {
+                  return setAttributes({ captionColor: value });
+                } })
+            )
+          ),
+          React.createElement(
+            PanelBody,
+            { title: __('Overlay'), initialOpen: false },
+            React.createElement(Toggle, { label: __('Enable'), value: enableOverlay, onChange: function onChange(val) {
+                return setAttributes({ enableOverlay: val });
+              } }),
+            enableOverlay == 1 && React.createElement(
+              Fragment,
+              null,
+              React.createElement(
+                Tabs,
+                null,
+                React.createElement(
+                  Tab,
+                  { tabTitle: __('Normal') },
+                  React.createElement(ColorAdvanced, { label: __('Background'), value: overlayBg, onChange: function onChange(value) {
+                      return setAttributes({ overlayBg: value });
+                    } })
+                ),
+                React.createElement(
+                  Tab,
+                  { tabTitle: __('Hover') },
+                  React.createElement(ColorAdvanced, { label: __('Background'), value: overlayHoverBg, onChange: function onChange(value) {
+                      return setAttributes({ overlayHoverBg: value });
+                    } })
+                )
+              ),
+              React.createElement(Select, { label: __('Blend Mode'), options: [['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]], value: overlayBlend, onChange: function onChange(val) {
+                  return setAttributes({ overlayBlend: val });
+                } })
+            )
+          )
+        ),
+        React.createElement(
+          BlockControls,
+          null,
+          React.createElement(
+            Toolbar,
+            null,
+            React.createElement(InlineToolbar, _extends({
+              data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
+            }, this.props, {
+              prevState: this.state
+            }))
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'qubely-block-' + uniqueId },
+          React.createElement(
+            'div',
+            { className: 'qubely-block-gallery qubely-gallery-item-' + style },
+            React.createElement(
+              'div',
+              { className: 'qubely-gallery-items ' + ('qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs) },
+              this.renderGalleryItem()
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-	return Edit;
+  return Edit;
 }(Component);
 
 exports.default = Edit;
@@ -2683,9 +2702,8 @@ var Save = function (_Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderPricelist = function () {
             var _this$props$attribute = _this.props.attributes,
-                pricelistContents = _this$props$attribute.pricelistContents,
+                galleryContents = _this$props$attribute.galleryContents,
                 enableLine = _this$props$attribute.enableLine,
-                headingLevel = _this$props$attribute.headingLevel,
                 enableImage = _this$props$attribute.enableImage,
                 contentAlign = _this$props$attribute.contentAlign,
                 enableBadge = _this$props$attribute.enableBadge,
@@ -2695,9 +2713,7 @@ var Save = function (_Component) {
                 priceAfterTitle = _this$props$attribute.priceAfterTitle;
 
 
-            var titleTagName = 'h' + headingLevel;
-
-            return pricelistContents.map(function (_ref2, index) {
+            return galleryContents.map(function (_ref2, index) {
                 var title = _ref2.title,
                     description = _ref2.description,
                     image = _ref2.image,
@@ -2706,36 +2722,36 @@ var Save = function (_Component) {
                     price = _ref2.price;
 
                 return React.createElement(
-                    'div',
-                    { key: index, className: 'qubely-pricelist-item qubely-pricelist-item-' + contentAlign },
+                    "div",
+                    { key: index, className: "qubely-pricelist-item qubely-pricelist-item-" + contentAlign },
                     React.createElement(
-                        'div',
-                        { className: 'qubely-pricelist-content' },
+                        "div",
+                        { className: "qubely-pricelist-content" },
                         enableImage == 1 && image != undefined && image.url != undefined && React.createElement(
-                            'div',
-                            { className: 'qubely-pricelist-image-container' },
-                            React.createElement('img', { src: image.url, alt: title }),
-                            enableBadge && React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-pricelist-badge', value: badge })
+                            "div",
+                            { className: "qubely-pricelist-image-container" },
+                            React.createElement("img", { src: image.url, alt: title }),
+                            enableBadge && React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-badge", value: badge })
                         ),
                         React.createElement(
-                            'div',
-                            { className: 'qubely-pricelist-description-wrapper' },
+                            "div",
+                            { className: "qubely-pricelist-description-wrapper" },
                             React.createElement(
-                                'div',
-                                { className: 'qubely-pricelist-description' },
+                                "div",
+                                { className: "qubely-pricelist-description" },
                                 React.createElement(
-                                    'div',
-                                    { className: 'qubely-pricelist-title-wrapper' },
-                                    React.createElement(RichText.Content, { tagName: titleTagName, className: 'qubely-pricelist-title', value: title }),
-                                    enableLine && priceAfterTitle == 0 && React.createElement('span', { className: 'qubely-pricelist-line' }),
+                                    "div",
+                                    { className: "qubely-pricelist-title-wrapper" },
+                                    React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-title", value: title }),
+                                    enableLine && priceAfterTitle == 0 && React.createElement("span", { className: "qubely-pricelist-line" }),
                                     React.createElement(
-                                        'div',
-                                        { className: 'qubely-pricelist-price-wrapper' },
-                                        enableDiscount && React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-pricelist-discount', value: discount }),
-                                        enablePrice && React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-pricelist-price', value: price })
+                                        "div",
+                                        { className: "qubely-pricelist-price-wrapper" },
+                                        enableDiscount && React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-discount", value: discount }),
+                                        enablePrice && React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-price", value: price })
                                     )
                                 ),
-                                enableDescription && React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-pricelist-introtext', value: description })
+                                enableDescription && React.createElement(RichText.Content, { tagName: "div", className: "qubely-pricelist-introtext", value: description })
                             )
                         )
                     )
@@ -2745,7 +2761,7 @@ var Save = function (_Component) {
     }
 
     _createClass(Save, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             var _props$attributes = this.props.attributes,
                 uniqueId = _props$attributes.uniqueId,
@@ -2753,14 +2769,14 @@ var Save = function (_Component) {
                 style = _props$attributes.style;
 
             return React.createElement(
-                'div',
-                _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
+                "div",
+                _extends({ className: "qubely-block-" + uniqueId }, animationAttr(animation)),
                 React.createElement(
-                    'div',
-                    { className: 'qubely-block-pricelist qubely-pricelist-item-' + style },
+                    "div",
+                    { className: "qubely-block-pricelist qubely-pricelist-item-" + style },
                     React.createElement(
-                        'div',
-                        { className: 'qubely-pricelist-items' },
+                        "div",
+                        { className: "qubely-pricelist-items" },
                         this.renderPricelist()
                     )
                 )
@@ -2785,6 +2801,8 @@ exports.default = Save;
 "use strict";
 
 
+var _attributes;
+
 __webpack_require__(/*! ./style.scss */ "./src/blocks/gallery/style.scss");
 
 var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/gallery/Edit.js");
@@ -2797,273 +2815,329 @@ var _Save2 = _interopRequireDefault(_Save);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
 registerBlockType('qubely/gallery', {
-				title: __('Gallery'),
-				category: 'qubely',
-				description: 'Showcase detailed with Qubely Gallery',
-				icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Gallery') }),
-				keywords: [__('Gallery'), __('Image')],
-				attributes: {
-								uniqueId: { type: 'string', default: '' },
-								spacer: {
-												type: 'object',
-												default: {
-																spaceTop: {
-																				md: '10',
-																				unit: "px"
-																},
-																spaceBottom: {
-																				md: '10',
-																				unit: "px"
-																}
-												},
-												style: [{ selector: '{{QUBELY}}' }]
-								},
-								pricelistContents: {
-												type: 'Array',
-												default: [{ title: 'Qubely Blocks' }, { title: 'Pre-made Sections' }, { title: 'Rich Blocks Collection' }, { title: 'Layout Packs' }, { title: 'Smart Layout Builder' }]
-								},
+    title: __('Gallery'),
+    category: 'qubely',
+    description: 'Showcase detailed with Qubely Gallery',
+    icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Gallery') }),
+    keywords: [__('Gallery'), __('Image')],
+    attributes: (_attributes = {
+        uniqueId: { type: 'string', default: '' },
+        spacer: {
+            type: 'object',
+            default: {
+                spaceTop: {
+                    md: '10',
+                    unit: "px"
+                },
+                spaceBottom: {
+                    md: '10',
+                    unit: "px"
+                }
+            },
+            style: [{ selector: '{{QUBELY}}' }]
+        },
+        galleryContents: {
+            type: 'Array',
+            default: [{ title: 'Best Gutenberg Plugin' }, { title: 'Pre-made Sections' }, { title: 'Rich Blocks Collection' }, { title: 'Layout Packs' }, { title: 'Smart Layout Builder' }]
+        },
 
-								// Content
-								style: {
-												type: 'number',
-												default: 1
-								},
-								contentAlign: {
-												type: 'string',
-												default: 'left'
-								},
-								enableContentBorder: {
-												type: 'boolean',
-												default: false
-								},
-								contentBorderWidth: {
-												type: 'object',
-												default: {
-																md: 1,
-																unit: 'px'
-												},
-												style: [{
-																condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-style: solid; border-width: {{contentBorderWidth}};}'
-												}, {
-																condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-style: solid; border-width: {{contentBorderWidth}};}'
-												}]
-								},
-								contentBorderColor: {
-												type: 'string',
-												default: '#F6F7FB',
-												style: [{
-																condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-color: {{contentBorderColor}};}'
-												}, {
-																condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
-																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-color: {{contentBorderColor}};}'
-												}]
-								},
-								contentBg: {
-												type: 'string',
-												default: '#F9F9F9',
-												style: [{
-																condition: [{ key: 'style', relation: '===', value: '1' }],
-																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {background-color: {{contentBg}};}'
-												}, {
-																condition: [{ key: 'style', relation: '===', value: '2' }],
-																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {background-color: {{contentBg}};}'
-												}]
-								},
-								height: {
-												type: 'object',
-												default: {
-																md: '200',
-																unit: 'px'
-												},
-												style: [{
-																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'style', relation: '===', value: '3' }],
-																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content, {{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-empty-image {height: {{height}};}'
-												}]
-								},
-								contentSpacing: {
-												type: 'object',
-												default: {
-																md: 30,
-																unit: 'px'
-												},
-												style: [{ selector: '{{QUBELY}} .qubely-pricelist-item {margin-bottom: {{contentSpacing}};}' }]
-								},
-								contentPadding: {
-												type: 'object',
-												default: {
-																openPadding: 1,
-																paddingType: 'global',
-																unit: 'px',
-																global: {
-																				md: 30
-																}
-												},
-												style: [{
-																condition: [{ key: 'style', relation: '===', value: '1' }],
-																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
-												}, {
-																condition: [{ key: 'style', relation: '===', value: '2' }],
-																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content'
-												}, {
-																condition: [{ key: 'style', relation: '==', value: '3' }],
-																selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content .qubely-pricelist-description'
-												}]
-								},
-								contentBorderRadius: {
-												type: 'object',
-												default: {
-																openBorderRadius: 1,
-																radiusType: 'global',
-																global: {
-																				md: 5
-																},
-																unit: 'px'
-												},
-												style: [{
-																condition: [{ key: 'style', relation: '===', value: '1' }],
-																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
-												}, {
-																condition: [{ key: 'style', relation: '===', value: '2' }],
-																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content'
-												}, {
-																condition: [{ key: 'style', relation: '===', value: '3' }],
-																selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content'
-												}]
-								},
-								contentBoxShadow: {
-												type: 'object',
-												default: {
-																openShadow: true,
-																vertical: 3,
-																horizontal: 0,
-																blur: 6,
-																spread: 0,
-																color: 'rgba(0,0,0,0.1)'
-												},
-												style: [{
-																condition: [{ key: 'style', relation: '===', value: '1' }],
-																selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
-												}, {
-																condition: [{ key: 'style', relation: '===', value: '2' }],
-																selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content'
-												}, {
-																condition: [{ key: 'style', relation: '===', value: '3' }],
-																selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content'
-												}]
-								},
-								overlayBg: {
-												type: 'object', default: {
-																type: 'color',
-																openColor: 0,
-																color: 'rgba(6, 80, 183, 0.7)',
-																gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
-												},
-												style: [{
-																condition: [{ key: 'style', relation: '==', value: '3' }],
-																selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
-												}]
-								},
-								overlayHoverBg: {
-												type: 'object', default: {
-																type: 'color',
-																openColor: 0,
-																color: 'rgba(6, 80, 183, 0.8)',
-																gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
-												},
-												style: [{
-																condition: [{ key: 'style', relation: '==', value: '3' }],
-																selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
-												}]
-								},
+        //gallery settings
+        style: {
+            type: 'number',
+            default: 1
+        },
+        galleryItems: {
+            type: 'number',
+            default: 5
+        },
+        gutter: {
+            type: 'object',
+            default: {
+                md: '20',
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: 2 }],
+                selector: '{{QUBELY}} .qubely-column-grid {column-gap: {{gutter}};} {{QUBELY}} .qubely-block-gallery .qubely-gallery-item {padding-bottom: {{gutter}};}'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: 1 }],
+                selector: '{{QUBELY}} .qubely-column-grid {grid-gap: {{gutter}};}'
+            }]
+        },
+        column: _defineProperty({
+            type: 'object',
+            default: 2
+        }, 'default', { md: 2, sm: 1, xs: 1, unit: 'px' }),
 
-								// Heading
-								headingLevel: {
-												type: 'number',
-												default: 4
-								},
-								headingTypography: {
-												type: 'object',
-												default: {},
-												style: [{
-																selector: '{{QUBELY}} .qubely-pricelist-title'
-												}]
-								},
-								headingColor: {
-												type: 'string',
-												default: '',
-												style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {color: {{headingColor}};}' }]
-								},
-								headingSpacing: {
-												type: 'object',
-												default: {
-																md: 10,
-																unit: 'px'
-												},
-												style: [{ selector: '{{QUBELY}} .qubely-pricelist-title {margin: 0 0 {{headingSpacing}} 0;}' }]
-								},
+        imgSize: {
+            type: 'string',
+            default: 'full'
+        },
+        contentAlign: {
+            type: 'string',
+            default: 'left'
+        },
+        enableContentBorder: {
+            type: 'boolean',
+            default: false
+        },
+        contentBorderWidth: {
+            type: 'object',
+            default: {
+                md: 1,
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-style: solid; border-width: {{contentBorderWidth}};}'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-style: solid; border-width: {{contentBorderWidth}};}'
+            }]
+        },
+        contentBorderColor: {
+            type: 'string',
+            default: '#F6F7FB',
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: '1' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {border-color: {{contentBorderColor}};}'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '2' }, { key: 'style', relation: '!=', value: '3' }, { key: 'enableContentBorder', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {border-color: {{contentBorderColor}};}'
+            }]
+        },
+        contentBg: {
+            type: 'string',
+            default: '#F9F9F9',
+            style: [{
+                condition: [{ key: 'style', relation: '===', value: '1' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {background-color: {{contentBg}};}'
+            }, {
+                condition: [{ key: 'style', relation: '===', value: '2' }],
+                selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {background-color: {{contentBg}};}'
+            }]
+        },
+        height: {
+            type: 'object',
+            default: {
+                md: '200',
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'style', relation: '===', value: '3' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content, {{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-empty-image {height: {{height}};}'
+            }]
+        },
 
-								//image
-								enableImage: {
-												type: 'boolean',
-												default: true
-								},
-								imagePosition: {
-												type: 'string',
-												default: 'left',
-												style: [{
-																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }, { key: 'style', relation: '!=', value: '3' }],
-																selector: '{{QUBELY}} .qubely-pricelist-content {display: -webkit-box; display: -ms-flexbox; display: flex;}'
-												}]
-								},
-								imageBorderRadius: {
-												type: 'object',
-												default: {},
-												style: [{
-																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'style', relation: '!=', value: '3' }],
-																selector: '{{QUBELY}} .qubely-pricelist-image-container img'
-												}]
-								},
-								imageSize: {
-												type: 'object',
-												default: {
-																md: '100',
-																unit: 'px'
-												},
-												style: [{
-																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'style', relation: '!=', value: '3' }],
-																selector: '{{QUBELY}} .qubely-pricelist-image-container {width: {{imageSize}};}'
-												}]
-								},
-								imageSpacing: {
-												type: 'object',
-												default: {
-																md: 20,
-																unit: 'px'
-												},
-												style: [{
-																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'left' }, { key: 'style', relation: '!=', value: '3' }],
-																selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-right: {{imageSpacing}};}'
-												}, {
-																condition: [{ key: 'enableImage', relation: '==', value: true }, { key: 'imagePosition', relation: '==', value: 'top' }, { key: 'style', relation: '!=', value: '3' }],
-																selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-bottom: {{imageSpacing}};}'
-												}]
-								},
+        //image
+        imageAnimation: {
+            type: 'string',
+            default: 'zoom-in'
+        },
+        enableImgFixedHeight: {
+            type: 'boolean',
+            default: true
+        },
+        imgFixedHeight: {
+            type: 'object',
+            default: {
+                md: '300',
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'enableImgFixedHeight', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content, {{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-empty-image {height: {{imgFixedHeight}};}'
+            }]
+        },
+        imgBorderRadius: {
+            type: 'object',
+            default: {
+                openBorderRadius: 1,
+                radiusType: 'global',
+                global: {
+                    md: 5
+                },
+                unit: 'px'
+            },
+            style: [{
+                selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
+            }]
+        },
+        imgBoxShadow: {
+            type: 'object',
+            default: {
+                openShadow: true,
+                vertical: 3,
+                horizontal: 0,
+                blur: 6,
+                spread: 0,
+                color: 'rgba(0,0,0,0.1)'
+            },
+            style: [{
+                selector: '{{QUBELY}} .qubely-pricelist-item-3 .qubely-pricelist-content'
+            }]
+        },
 
-								//
-								pricelistItems: { type: 'number', default: 5 },
-								showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
-								showContextMenu: { type: 'boolean', default: true }
-				},
-				edit: _Edit2.default,
-				save: _Save2.default
+        overlayBg: {
+            type: 'object', default: {
+                type: 'color',
+                openColor: 0,
+                color: 'rgba(6, 80, 183, 0.7)',
+                gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '==', value: '3' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+            }]
+        },
+        overlayHoverBg: {
+            type: 'object', default: {
+                type: 'color',
+                openColor: 0,
+                color: 'rgba(6, 80, 183, 0.8)',
+                gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 }
+            },
+            style: [{
+                condition: [{ key: 'style', relation: '==', value: '3' }],
+                selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+            }]
+        },
+
+        // Caption
+        enableCaption: {
+            type: 'boolean',
+            default: true
+        },
+        captionTypography: {
+            type: 'object',
+            default: {},
+            style: [{
+                condition: [{ key: 'enableCaption', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-gallery-caption'
+            }]
+        },
+        captionColor: {
+            type: 'string',
+            default: '#fff',
+            style: [{
+                condition: [{ key: 'enableCaption', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-gallery-caption {color: {{captionColor}};}'
+            }]
+        },
+        captionPadding: {
+            type: 'object',
+            default: {
+                openPadding: 1,
+                paddingType: 'global',
+                global: {
+                    md: 30
+                },
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'enableCaption', relation: '==', value: true }],
+                selector: '{{QUBELY}} .qubely-gallery-caption-wrapper'
+            }]
+        },
+
+        captionVerticalAlign: {
+            type: 'string',
+            default: 'center',
+            style: [{
+                condition: [{ key: 'enableCaption', relation: '==', value: true }, { key: 'captionVerticalAlign', relation: '==', value: 'top' }],
+                selector: '{{QUBELY}} .qubely-gallery-caption-wrapper {-webkit-box-align: start; -ms-flex-align: start; -ms-grid-row-align: flex-start; align-items: flex-start;}'
+            }, {
+                condition: [{ key: 'enableCaption', relation: '==', value: true }, { key: 'captionVerticalAlign', relation: '==', value: 'center' }],
+                selector: '{{QUBELY}} .qubely-gallery-caption-wrapper {-webkit-box-align: center; -ms-flex-align: center; -ms-grid-row-align: center; align-items: center;}'
+            }, {
+                condition: [{ key: 'enableCaption', relation: '==', value: true }, { key: 'captionVerticalAlign', relation: '==', value: 'bottom' }],
+                selector: '{{QUBELY}} .qubely-gallery-caption-wrapper {-webkit-box-align: end; -ms-flex-align: end; -ms-grid-row-align: flex-end; align-items: flex-end;}'
+            }]
+        },
+
+        captionAlignment: {
+            type: 'string',
+            default: 'center',
+            style: [{
+                condition: [{ key: 'enableCaption', relation: '==', value: true }, { key: 'captionAlignment', relation: '==', value: 'left' }],
+                selector: '{{QUBELY}} .qubely-gallery-caption-wrapper {-webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; text-align: left;}'
+            }, {
+                condition: [{ key: 'enableCaption', relation: '==', value: true }, { key: 'captionAlignment', relation: '==', value: 'center' }],
+                selector: '{{QUBELY}} .qubely-gallery-caption-wrapper {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center;}'
+            }, {
+                condition: [{ key: 'enableCaption', relation: '==', value: true }, { key: 'captionAlignment', relation: '==', value: 'right' }],
+                selector: '{{QUBELY}} .qubely-gallery-caption-wrapper {-webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; text-align: right;}'
+            }]
+        },
+        showCaption: {
+            type: 'string',
+            default: 'onHover',
+            style: [{
+                condition: [{ key: 'enableCaption', relation: '==', value: true }, { key: 'showCaption', relation: '==', value: 'onHover' }],
+                selector: '{{QUBELY}} .qubely-pricelist-content {display: -webkit-box; display: -ms-flexbox; display: flex;}'
+            }]
+        },
+
+        // Overlay
+        enableOverlay: {
+            type: 'boolean',
+            default: true
+        }
+    }, _defineProperty(_attributes, 'overlayBg', {
+        type: 'object',
+        default: {
+            openColor: 1,
+            type: 'gradient',
+            color: 'rgba(6, 80, 183, 0.7)',
+            gradient: {
+                color1: 'rgba(6, 80, 183, 0.7)',
+                color2: 'rgba(96, 10, 255, 0.7)',
+                direction: 45,
+                start: 0,
+                stop: 100,
+                type: 'linear'
+            }
+        },
+        style: [{
+            condition: [{ key: 'enableOverlay', relation: '==', value: true }],
+            selector: '{{QUBELY}} .qubely-gallery-image-container:before'
+        }]
+    }), _defineProperty(_attributes, 'overlayHoverBg', {
+        type: 'object',
+        default: {
+            type: 'gradient',
+            openColor: 1,
+            color: 'rgba(6, 80, 183, 0.85)',
+            gradient: {
+                color1: 'rgba(6, 80, 183, 0.85)',
+                color2: 'rgba(96, 10, 255, 0.85)',
+                direction: 45,
+                start: 0,
+                stop: 100,
+                type: 'linear'
+            }
+        },
+        style: [{
+            condition: [{ key: 'enableOverlay', relation: '==', value: true }],
+            selector: '{{QUBELY}} .qubely-gallery-image-container:after'
+        }]
+    }), _defineProperty(_attributes, 'overlayBlend', {
+        type: 'string',
+        default: '',
+        style: [{
+            condition: [{ key: 'enableOverlay', relation: '==', value: true }],
+            selector: '{{QUBELY}} .qubely-gallery-image-container:before {mix-blend-mode: {{overlayBlend}};} {{QUBELY}} .qubely-gallery-image-container:after {mix-blend-mode: {{overlayBlend}};}'
+        }]
+    }), _defineProperty(_attributes, 'showGlobalSettings', { type: 'boolean', default: true }), _defineProperty(_attributes, 'showContextMenu', { type: 'boolean', default: true }), _attributes),
+    edit: _Edit2.default,
+    save: _Save2.default
 });
 
 /***/ }),

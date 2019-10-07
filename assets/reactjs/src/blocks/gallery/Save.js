@@ -4,11 +4,9 @@ const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
 
   renderPricelist = () => {
-	const { attributes: { pricelistContents, enableLine, headingLevel, enableImage, contentAlign, enableBadge, enableDiscount, enablePrice, enableDescription, priceAfterTitle } } = this.props
+	const { attributes: { galleryContents, enableLine, enableImage, contentAlign, enableBadge, enableDiscount, enablePrice, enableDescription, priceAfterTitle } } = this.props
 
-	const titleTagName = 'h' + headingLevel;
-
-    return (pricelistContents.map(({ title, description, image, badge, discount, price }, index) => {
+    return (galleryContents.map(({ title, description, image, badge, discount, price }, index) => {
       	return (
 			<div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
 				<div className={`qubely-pricelist-content`}>
@@ -24,7 +22,7 @@ class Save extends Component {
 					<div className="qubely-pricelist-description-wrapper">
                         <div className="qubely-pricelist-description">
                             <div className="qubely-pricelist-title-wrapper">
-                                <RichText.Content tagName={titleTagName} className="qubely-pricelist-title" value={title} />
+                                <RichText.Content tagName='div' className="qubely-pricelist-title" value={title} />
                                 {enableLine && (priceAfterTitle==0) &&
                                 <span className="qubely-pricelist-line"></span>
                                 }
