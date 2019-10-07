@@ -27,6 +27,8 @@
       z-index: 1;
       cursor: pointer;
     }
+
+
   }
 
   .qubely-action-add-option {
@@ -40,6 +42,35 @@
       color: #2184f9;
     }
   }
+
+  .qubely-form-timepicker{
+    opacity: 0;
+    height: auto;
+    min-width: 150px;
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-transition: max-height .1s ease-in-out;
+    transition: max-height .1s ease-in-out;
+    background: #F4F5F7;
+    background: -webkit-gradient(linear,left top,left bottom,from(#e3e3e5),color-stop(7%,#efefef),to(#f4f5f7));
+    background: linear-gradient(to bottom,#e3e3e5 0,#efefef 7%,#f4f5f7 100%);
+    border-radius: 0 0 5px 5px;
+    border: 2px solid #303233;
+    border-top: transparent;
+    -webkit-box-shadow: 4px 4px 0 0 rgba(0,0,0,.1);
+    box-shadow: 4px 4px 0 0 rgba(0,0,0,.1);
+    text-align: center;
+  }
+   & .active{
+    opacity: 1;
+    max-height: 150px;
+    padding: 15px;
+    z-index: 100;
+   }
 }
 
 .qubely-dropdown-field-option,
@@ -171,128 +202,3 @@
   }
 
 
-
-
-  body {
-    margin: 0px;
-    padding-top: 100px;
-    height: 100vh;
-    background: linear-gradient(135deg, rgba(30,87,153,1) 0%,rgba(3,169,244,1) 100%);
-    font-family: helvetica, arial;
-  }
-  
-  body * {
-    box-sizing: border-box;
-  }
-  
-  .time {
-    width: 50%;
-    min-width: 200px;
-    margin: 25px auto;
-    
-    &__heading {
-      text-align: center;
-      color: #fff;
-      text-shadow: 4px 4px 0px rgba(0, 0, 0, .2);
-    }
-    
-    &__input {
-      width: 100%;
-      
-      .timepicker {
-        width: 100%;
-        font-size: 25px;
-        padding: 10px;
-        font-weight: 300;
-        text-align: center;
-        border: solid 2px #303233;
-        color: #303233;
-        outline: none;
-        box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, .1);
-      }
-    }
-  }
-  
-  // Start Timepicker CSS
-  
-  div[id^="tp_"].timepicker__wrapper {
-    opacity: 0;
-    height: auto;
-    min-width: 150px;
-    max-height: 0px;
-    overflow: hidden;
-    position: absolute;
-    transition: max-height .1s ease-in-out;
-    background: #F4F5F7;
-    background: linear-gradient(to bottom, rgba(227,227,229,1) 0%,rgba(239,239,239,1) 7%,rgba(244,245,247,1) 100%);
-    border-radius: 0px 0px 5px 5px;
-    border: 2px solid #303233;
-    border-top: transparent;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, .1);
-    text-align: center;
-    
-    * {
-      box-shadow: border-box;
-    }
-    
-    &-active {
-      opacity: 1;
-      max-height: 150px;
-      padding: 15px;
-    }
-    
-    &-full {
-      
-      > div {
-        width: 33% !important;
-      }
-    }
-    
-    > div {
-      margin: 0px;
-      padding: 0px;
-      display: inline-block;
-      text-align: center;
-      width: 50%;
-      max-width: 75px;
-      
-      .display {
-        color: #303233;
-        font-size: 30px;
-        font-weight: 100;
-        line-height: 35px;
-        margin: 0px;
-        text-transform: uppercase;
-        user-select: none;
-      }
-      
-      .timepicker__button {
-        margin: 15px auto;
-        padding: 0px;
-        background: #fff;
-        cursor: pointer;
-        background: transparent;
-        border: solid 5px transparent;
-        
-        &__up > div {
-          width: 0px;
-          height: 0px;
-          margin: auto;
-          border-left: solid 5px transparent;
-          border-right: solid 5px transparent;
-          border-bottom: solid 5px #303233;
-        }
-        
-        &__down > div {
-          width: 0px;
-          height: 0px;
-          margin: auto;
-          border-left: solid 5px transparent;
-          border-right: solid 5px transparent;
-          border-top: solid 5px #303233;
-        }
-      }
-    }
-  }
-  
-  

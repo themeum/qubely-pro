@@ -48,9 +48,16 @@ const Edit = (props) => {
     // const [month, setMonth] = useState(newDate.getMonth() + 1)
     // const [day, setDay] = useState(date.getDate())
     const [dateString, setDateString] = useState()
+    const [showTimePicker, setTimePicker] = useState(false)
 
     // const [dateSeparator, setDateSeparator] = useState('-')
     // const [olddate, setOldDate] = useState("2018-07-22")
+
+    const [hour, setHour] = useState(12)
+    const [minute, setMinute] = useState(0)
+    const [timeFormatType, changeTimeFormat] = useState('12Hours')
+    const [seletedTimeFormat, changeseletedTimeFormat] = useState('PM')
+
     const [draggedItem, setDraggedItem] = useState(-1)
     const [draggedOverItem, setDraggedOverItem] = useState(-1)
     const [dropdownValue, setDropdownValue] = useState('')
@@ -73,6 +80,7 @@ const Edit = (props) => {
             options,
             placeHolder,
             required,
+            minuteInterval,
         }
     } = props
 
@@ -152,28 +160,99 @@ const Edit = (props) => {
             </div>
         )
     }
+
+    const handleHourChange = () => {
+
+    }
+
+    const handleTimePicker = (type, actionType) => {
+        
+        if (type === 'hour') {
+            if (actionType === 'increase') {
+
+                hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
+                setHour(hour === 12 ? 1 : hour + 1)
+            } else {
+                (hour === 12 || hour === 1) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
+                setHour(hour === 1 ? 12 : hour - 1)
+            }
+
+        } else if (type === 'minute') {
+
+            if (actionType === 'increase') {
+                if (minute >= 60 - minuteInterval) {
+                    hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
+                    setHour(hour + 1)
+                    setMinute((minute + minuteInterval) % 60)
+
+                } else {
+                    setMinute(minute + minuteInterval)
+                }
+            } else {
+                if (minute <= minuteInterval) {
+                    hour === 12 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
+                    setHour(hour - 1)
+                    setMinute((minute - minuteInterval) === 0 ? 0 : 60 + (minute - minuteInterval))
+                } else {
+                    setMinute(minute - minuteInterval)
+                }
+            }
+        }
+    }
     const renderTimePicker = () => {
         return (
             <Fragment>
+                <input type="text" className="qubely-time-picker" onClick={() => setTimePicker(!showTimePicker)} />
+                <div className={`qubely-form-timepicker${showTimePicker ? ' active' : ''}`}>
 
-                {/* <input
-                    type="time"
-                    id="qubely-form-time"
-                    name="qubely-form-time"
-                // value={dateString}
-                // onChange={newDate => setDateString(newDate.target.value)}
-                /> */}
-                {/* <input type="text" id="qubely-timepicker" autocomplete="off"></input> */}
+                    <div className={`qubely-timepiker-hour`}>
+                        <div className="qubely-timepiker-button button-up"
+                            onClick={() => handleTimePicker('hour', 'increase')}
+                        >
+                            <i className="fas fa-angle-up"></i>
+                        </div>
+                        <div className="qubely-form-timepicker-hour">{hour}</div>
 
-                <div className="time">
-
-                    <h1 className="time__heading">Select a Time.</h1>
-
-                    <div className="time__input">
-
-                        <input type="text" className="timepicker" />
-
+                        <div className="qubely-timepiker-button button-down"
+                            onClick={() => handleTimePicker('hour', 'decrease')}
+                        >
+                            <i className="fas fa-angle-down"></i>
+                        </div>
                     </div>
+                    <div className={`qubely-timepiker-minute`}   >
+                        <div className="qubely-timepiker-button button-up"
+                            onClick={() => handleTimePicker('minute', 'increase')}
+                        >
+                            <i className="fas fa-angle-up"></i>
+                        </div>
+
+                        <div className="qubely-form-timepicker-minute" >{minute}</div>
+
+                        <div className="qubely-timepiker-button button-down"
+                            onClick={() => handleTimePicker('minute', 'decrease')}
+                        >
+                            <i className="fas fa-angle-down"></i>
+                        </div>
+                    </div>
+
+                    {
+                        timeFormatType === '12Hours' &&
+                        <div className={`qubely-timepiker-time-format`}>
+                            <div className="qubely-timepiker-button button-up"
+                                onClick={() => changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')}
+                            >
+                                <i className="fas fa-angle-up"></i>
+                            </div>
+
+                            <div className="qubely-form-time-format">{seletedTimeFormat}</div>
+
+                            <div className="qubely-timepiker-button button-down"
+                                onClick={() => changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')}
+                            >
+                                <i className="fas fa-angle-down"></i>
+                            </div>
+                        </div>
+                    }
 
                 </div>
             </Fragment>
@@ -230,6 +309,8 @@ const Edit = (props) => {
             </Fragment>
         )
     }
+
+
 
     const handleDragEnd = () => {
         let newOptions = [...options]
@@ -349,7 +430,7 @@ const Edit = (props) => {
                         value={label}
                         onChange={value => setAttributes({ label: value })}
                     />
-                    {/* {renderInput()} */}
+                    {renderInput()}
                 </div>
             </div>
 
@@ -413,7 +494,7 @@ const Save = (props) => {
     return (
         <div className={`qubely-block-${uniqueId}`} style={style}>
             <RichText.Content tagName={'label'} className={`qubely-form-field-label`} value={label} />
-            {/* {renderInput()} */}
+            {renderInput()}
         </div>
     )
 

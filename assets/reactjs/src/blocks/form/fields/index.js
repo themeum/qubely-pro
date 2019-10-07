@@ -239,7 +239,19 @@ const qubelyFormFields = [
                 type: {
                     type: 'string',
                     default: 'time'
-                }
+                },
+                timeFormatType: {
+                    type: 'string',
+                    default: '12Hours'
+                },
+                seletedTimeFormat: {
+                    type: 'string',
+                    default: 'AM'
+                },
+                minuteInterval: {
+                    type: 'number',
+                    default: 5
+                },
             }
 
         },
