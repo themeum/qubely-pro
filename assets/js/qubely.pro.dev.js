@@ -2029,8 +2029,8 @@ var qubelyFormFields = [_extends({}, qubelyField, {
                 default: 'time'
             },
             timeFormatType: {
-                type: 'string',
-                default: '12Hours'
+                type: 'number',
+                default: 12
             },
             seletedTimeFormat: {
                 type: 'string',
@@ -2168,31 +2168,28 @@ var Edit = function Edit(props) {
         _useState14 = _slicedToArray(_useState13, 2),
         minute = _useState14[0],
         setMinute = _useState14[1];
+    // const [timeFormatType, changeTimeFormat] = useState('12Hours')
 
-    var _useState15 = useState('12Hours'),
+
+    var _useState15 = useState('PM'),
         _useState16 = _slicedToArray(_useState15, 2),
-        timeFormatType = _useState16[0],
-        changeTimeFormat = _useState16[1];
+        seletedTimeFormat = _useState16[0],
+        changeseletedTimeFormat = _useState16[1];
 
-    var _useState17 = useState('PM'),
+    var _useState17 = useState(-1),
         _useState18 = _slicedToArray(_useState17, 2),
-        seletedTimeFormat = _useState18[0],
-        changeseletedTimeFormat = _useState18[1];
+        draggedItem = _useState18[0],
+        setDraggedItem = _useState18[1];
 
     var _useState19 = useState(-1),
         _useState20 = _slicedToArray(_useState19, 2),
-        draggedItem = _useState20[0],
-        setDraggedItem = _useState20[1];
+        draggedOverItem = _useState20[0],
+        setDraggedOverItem = _useState20[1];
 
-    var _useState21 = useState(-1),
+    var _useState21 = useState(''),
         _useState22 = _slicedToArray(_useState21, 2),
-        draggedOverItem = _useState22[0],
-        setDraggedOverItem = _useState22[1];
-
-    var _useState23 = useState(''),
-        _useState24 = _slicedToArray(_useState23, 2),
-        dropdownValue = _useState24[0],
-        setDropdownValue = _useState24[1];
+        dropdownValue = _useState22[0],
+        setDropdownValue = _useState22[1];
 
     var name = props.name,
         clientId = props.clientId,
@@ -2210,7 +2207,8 @@ var Edit = function Edit(props) {
         options = _props$attributes.options,
         placeHolder = _props$attributes.placeHolder,
         required = _props$attributes.required,
-        minuteInterval = _props$attributes.minuteInterval;
+        minuteInterval = _props$attributes.minuteInterval,
+        timeFormatType = _props$attributes.timeFormatType;
 
 
     useEffect(function () {
@@ -2308,25 +2306,25 @@ var Edit = function Edit(props) {
         if (type === 'hour') {
             if (actionType === 'increase') {
 
-                hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                timeFormatType === 12 && hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
                 setHour(hour === 12 ? 1 : hour + 1);
             } else {
-                (hour === 12 || hour === 1) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                timeFormatType === 12 && (hour === 12 || hour === 1) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
                 setHour(hour === 1 ? 12 : hour - 1);
             }
         } else if (type === 'minute') {
 
             if (actionType === 'increase') {
                 if (minute >= 60 - minuteInterval) {
-                    hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                    timeFormatType === 12 && hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
                     setHour(hour + 1);
                     setMinute((minute + minuteInterval) % 60);
                 } else {
                     setMinute(minute + minuteInterval);
                 }
             } else {
-                if (minute <= minuteInterval) {
-                    hour === 12 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                if (minute < minuteInterval) {
+                    timeFormatType === 12 && hour === 12 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
                     setHour(hour - 1);
                     setMinute(minute - minuteInterval === 0 ? 0 : 60 + (minute - minuteInterval));
                 } else {
@@ -2399,7 +2397,7 @@ var Edit = function Edit(props) {
                         React.createElement('i', { className: 'fas fa-angle-down' })
                     )
                 ),
-                timeFormatType === '12Hours' && React.createElement(
+                timeFormatType === 12 && React.createElement(
                     'div',
                     { className: 'qubely-timepiker-time-format' },
                     React.createElement(

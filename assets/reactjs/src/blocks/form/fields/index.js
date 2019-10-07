@@ -241,8 +241,8 @@ const qubelyFormFields = [
                     default: 'time'
                 },
                 timeFormatType: {
-                    type: 'string',
-                    default: '12Hours'
+                    type: 'number',
+                    default: 12
                 },
                 seletedTimeFormat: {
                     type: 'string',

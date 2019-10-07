@@ -55,7 +55,7 @@ const Edit = (props) => {
 
     const [hour, setHour] = useState(12)
     const [minute, setMinute] = useState(0)
-    const [timeFormatType, changeTimeFormat] = useState('12Hours')
+    // const [timeFormatType, changeTimeFormat] = useState('12Hours')
     const [seletedTimeFormat, changeseletedTimeFormat] = useState('PM')
 
     const [draggedItem, setDraggedItem] = useState(-1)
@@ -81,6 +81,7 @@ const Edit = (props) => {
             placeHolder,
             required,
             minuteInterval,
+            timeFormatType,
         }
     } = props
 
@@ -166,14 +167,14 @@ const Edit = (props) => {
     }
 
     const handleTimePicker = (type, actionType) => {
-        
+
         if (type === 'hour') {
             if (actionType === 'increase') {
 
-                hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
+                (timeFormatType === 12 && hour === 11) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
                 setHour(hour === 12 ? 1 : hour + 1)
             } else {
-                (hour === 12 || hour === 1) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
+                (timeFormatType === 12 && (hour === 12 || hour === 1)) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
                 setHour(hour === 1 ? 12 : hour - 1)
             }
 
@@ -181,7 +182,7 @@ const Edit = (props) => {
 
             if (actionType === 'increase') {
                 if (minute >= 60 - minuteInterval) {
-                    hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
+                    (timeFormatType === 12 && hour === 11) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
                     setHour(hour + 1)
                     setMinute((minute + minuteInterval) % 60)
 
@@ -189,8 +190,8 @@ const Edit = (props) => {
                     setMinute(minute + minuteInterval)
                 }
             } else {
-                if (minute <= minuteInterval) {
-                    hour === 12 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
+                if (minute < minuteInterval) {
+                    (timeFormatType === 12 && hour === 12) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
                     setHour(hour - 1)
                     setMinute((minute - minuteInterval) === 0 ? 0 : 60 + (minute - minuteInterval))
                 } else {
@@ -236,7 +237,7 @@ const Edit = (props) => {
                     </div>
 
                     {
-                        timeFormatType === '12Hours' &&
+                        timeFormatType === 12 &&
                         <div className={`qubely-timepiker-time-format`}>
                             <div className="qubely-timepiker-button button-up"
                                 onClick={() => changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')}
