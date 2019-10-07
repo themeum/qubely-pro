@@ -16,6 +16,7 @@ const {
 
 
 const {
+    ButtonGroup,
     RadioAdvanced,
     Range,
     Separator,
@@ -55,6 +56,7 @@ const Edit = (props) => {
 
     const [hour, setHour] = useState(12)
     const [minute, setMinute] = useState(0)
+
     // const [timeFormatType, changeTimeFormat] = useState('12Hours')
     const [seletedTimeFormat, changeseletedTimeFormat] = useState('PM')
 
@@ -162,20 +164,16 @@ const Edit = (props) => {
         )
     }
 
-    const handleHourChange = () => {
-
-    }
-
     const handleTimePicker = (type, actionType) => {
 
         if (type === 'hour') {
             if (actionType === 'increase') {
 
                 (timeFormatType === 12 && hour === 11) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
-                setHour(hour === 12 ? 1 : hour + 1)
+                setHour(hour === timeFormatType ? (timeFormatType === 12 ? 1 : 0) : hour + 1)
             } else {
                 (timeFormatType === 12 && (hour === 12 || hour === 1)) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
-                setHour(hour === 1 ? 12 : hour - 1)
+                setHour(((timeFormatType === 12 && hour === 1) || (timeFormatType === 23 && hour === 0)) ? timeFormatType : hour - 1)
             }
 
         } else if (type === 'minute') {
@@ -183,7 +181,7 @@ const Edit = (props) => {
             if (actionType === 'increase') {
                 if (minute >= 60 - minuteInterval) {
                     (timeFormatType === 12 && hour === 11) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
-                    setHour(hour + 1)
+                    setHour(hour === timeFormatType ? (timeFormatType === 12 ? 1 : 0) : hour + 1)
                     setMinute((minute + minuteInterval) % 60)
 
                 } else {
@@ -192,7 +190,7 @@ const Edit = (props) => {
             } else {
                 if (minute < minuteInterval) {
                     (timeFormatType === 12 && hour === 12) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')
-                    setHour(hour - 1)
+                    setHour(timeFormatType === 12 ? (hour === 1 ? timeFormatType : hour - 1) : (hour === 0 ? timeFormatType : hour - 1))
                     setMinute((minute - minuteInterval) === 0 ? 0 : 60 + (minute - minuteInterval))
                 } else {
                     setMinute(minute - minuteInterval)
@@ -203,7 +201,7 @@ const Edit = (props) => {
     const renderTimePicker = () => {
         return (
             <Fragment>
-                <input type="text" className="qubely-time-picker" onClick={() => setTimePicker(!showTimePicker)} />
+                <input type="text" className="qubely-time-picker" value={`${hour} : ${minute}`} onClick={() => setTimePicker(!showTimePicker)} />
                 <div className={`qubely-form-timepicker${showTimePicker ? ' active' : ''}`}>
 
                     <div className={`qubely-timepiker-hour`}>
@@ -331,9 +329,10 @@ const Edit = (props) => {
         <Fragment>
 
             <InspectorControls>
-                <PanelBody title={__('Form-field Settings')} opened={true}>
-                    {
-                        name === 'qubely/formfield-textarea' &&
+
+                {
+                    name === 'qubely/formfield-textarea' &&
+                    <PanelBody title={__('Form-field Settings')} opened={true}>
                         <Range
                             min={50}
                             max={600}
@@ -344,8 +343,9 @@ const Edit = (props) => {
                             unit={['px', 'em', '%']}
                             onChange={value => setAttributes({ height: value })}
                             onDeviceChange={value => changeDevice(value)} />
-                    }
-                </PanelBody>
+                    </PanelBody>
+                }
+
                 {
                     name === 'qubely/formfield-dropdown' &&
                     <PanelBody title={__('Dropdown')} initialOpen={true}>
@@ -415,6 +415,51 @@ const Edit = (props) => {
                             value={required}
                             onChange={value => setAttributes({ required: value })} />
 
+                    </PanelBody>
+
+                }
+                {
+                    name === 'qubely/formfield-time' &&
+                    <PanelBody title={__('Time')} initialOpen={true}>
+                        {renderCommonSettings()}
+                        <div className="qubely-form-time-picker-format">
+                            <ButtonGroup
+                                label={__('Time Format')}
+                                options={
+                                    [
+                                        [__('24 Hours'), 23],
+                                        [__('AM/PM'), 12],
+                                    ]}
+                                value={timeFormatType}
+                                onChange={value => {
+                                    setHour(timeFormatType === 12 ? (seletedTimeFormat === 'PM' ? 12 + hour : hour) : hour < 13 ? hour : hour % 12)
+                                    timeFormatType === 23 && changeseletedTimeFormat(hour >= 12 ? 'PM' : 'AM')
+                                    setAttributes({ timeFormatType: value })
+                                }}
+                            />
+                        </div>
+
+                        <div className="qubely-form-time-picker-minute-interval">
+                            <ButtonGroup
+                                label={__('Minute Interval')}
+                                options={
+                                    [
+                                        [__('1'), 1],
+                                        [__('5'), 5],
+                                        [__('10'), 10],
+                                        [__('15'), 15],
+                                        [__('20'), 20],
+                                        [__('30'), 30],
+                                    ]}
+                                value={minuteInterval}
+                                onChange={value => setAttributes({ minuteInterval: value })}
+                            />
+                        </div>
+                        <Toggle
+                            label={__('Required')}
+                            value={required}
+                            onChange={value => setAttributes({ required: value })}
+                        />
                     </PanelBody>
 
                 }

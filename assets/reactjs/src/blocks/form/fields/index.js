@@ -242,7 +242,7 @@ const qubelyFormFields = [
                 },
                 timeFormatType: {
                     type: 'number',
-                    default: 12
+                    default: 23
                 },
                 seletedTimeFormat: {
                     type: 'string',
