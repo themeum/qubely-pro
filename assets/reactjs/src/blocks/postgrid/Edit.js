@@ -69,22 +69,26 @@ class Edit extends Component {
 	}
 
 	renderCardContent = (post) => {
-		const { attributes: { layout, style, readmoreStyle, showCategory, categoryPosition, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
+		const { attributes: { layout, style, readmoreStyle, showCategory, showCategory5, categoryPosition, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, excerptLimit5, showReadMore, buttonText, readmoreSize } } = this.props
 		let title = <h3 className="qubely-postgrid-title"><a>{post.title.rendered}</a></h3>
+		
 		return (
 			<div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
-				{(showCategory === 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
-				{
-					(showCategory == 'badge' && style === 4) &&
+
+				{ layout != 5 && (showCategory == 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
+				{ layout == 5 && (showCategory5 != 'none') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
+
+				{(showCategory == 'badge' && style === 4) &&
 					<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
 						<span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
 					</div>
 				}
 
+				
+
+
 				{showTitle && (titlePosition == true) && title}
 
-				
-					
 				{(showAuthor || showDates || showComment) &&
 					<div className="qubely-postgrid-meta">
 						{showAuthor && <span><i className="fas fa-user"></i> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
@@ -93,7 +97,13 @@ class Edit extends Component {
 					</div>
 				}
 				{showTitle && (titlePosition == false) && title}
-				{showExcerpt && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
+				{ (layout !=5) &&
+					showExcerpt && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />
+				}
+				{ (layout ==5) &&
+					showExcerpt && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit5) }} />
+				}
+				
 				{showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
 					
 				
@@ -122,6 +132,7 @@ class Edit extends Component {
 				imgSize,
 				enableFixedHeight,
 				fixedHeight,
+				fixedHeight5,
 				imageRadius,
 				imageAnimation,
 
@@ -164,9 +175,11 @@ class Edit extends Component {
 				showComment,
 				showAuthor,
 				showCategory,
+				showCategory5,
 				categoryPosition,
 				showExcerpt,
 				excerptLimit,
+				excerptLimit5,
 				showReadMore,
 				showTitle,
 				titlePosition,
@@ -182,6 +195,7 @@ class Edit extends Component {
 				metaTypography,
 				excerptTypography,
 				categoryTypography,
+				excerptTypography5,
 
 				//colors
 				titleColor,
@@ -253,6 +267,7 @@ class Edit extends Component {
 						/>
 					</PanelBody>
 
+					{ layout != 5 &&
 					<PanelBody title={__('Post Design')} initialOpen={true}>
 						<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
 							options={[
@@ -357,7 +372,7 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-
+					}
 
 					<PanelBody title={__('Query')} initialOpen={false}>
 						<ButtonGroup
@@ -395,12 +410,27 @@ class Edit extends Component {
 						/>
 					</PanelBody>
 
-					{/* Global */}
+					
 
 					<PanelBody title={__('Image Settings')} initialOpen={false}>
 						<Toggle label={__('Show Featured Image')} value={showImages} onChange={value => setAttributes({ showImages: value })} />
-						<Toggle label={__('Fixed Image Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
-						{enableFixedHeight && <Range label={__('')} value={fixedHeight} onChange={value => setAttributes({ fixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+						<Toggle 
+							label={__('Fixed Image Height')} 
+							value={enableFixedHeight} 
+							onChange={value => setAttributes({ enableFixedHeight: value })} 
+						/>
+						{enableFixedHeight && 
+							<Range 
+							label={__('')} 
+							responsive 
+							min={10} max={600} 
+							unit={['px', 'em', '%']} 
+							device={device} 
+							value={ (layout != 5) ? fixedHeight : fixedHeight5 }
+							onChange={value => setAttributes( (layout != 5 ) ? { fixedHeight: value } : { fixedHeight5: value })}
+							onDeviceChange={value => this.setState({ device: value })} />
+						}
+						
 						<SelectControl
 							label={__("Image Sizes")}
 							value={imgSize}
@@ -424,7 +454,14 @@ class Edit extends Component {
 					<PanelBody title='Content' initialOpen={false}>
 						<Toggle label={__('Show Title')} value={showTitle} onChange={value => setAttributes({ showTitle: value })} />
 						<Toggle label={__('Show Excerpt')} value={showExcerpt} onChange={value => setAttributes({ showExcerpt: value })} />
-						<RangeControl label={__('Excerpt Limit')} min={1} max={100} step={1} value={excerptLimit} onChange={val => setAttributes({ excerptLimit: val })} />
+						<RangeControl 
+							label={__('Excerpt Limit')} 
+							min={1} max={100} step={1} 
+							value={ (layout != 5) ? excerptLimit : excerptLimit5 }
+							onChange={value => setAttributes( (layout != 5 ) ? { excerptLimit: value } : { excerptLimit5: value })}
+						/>
+					
+
 						<Separator />
 						<Toggle label={__('Title Below Meta')} value={titlePosition} onChange={value => setAttributes({ titlePosition: value })} />
 						<Toggle label={__('Show date')} value={showDates} onChange={value => setAttributes({ showDates: value })} />
@@ -440,8 +477,9 @@ class Edit extends Component {
 								{ value: 'default', label: __('Default'), },
 								{ value: 'badge', label: __('Badge'), }
 							]}
-							value={showCategory}
-							onChange={val => setAttributes({ showCategory: val })}
+							value={ (layout != 5) ? showCategory : showCategory5 }
+							onChange={value => setAttributes( (layout != 5 ) ? { showCategory: value } : { showCategory5: value })}
+
 						/>
 						{showCategory !== 'none' &&
 							<Fragment>
@@ -599,7 +637,13 @@ class Edit extends Component {
 						<Separator />
 						<Typography label={__('Meta')} value={metaTypography} onChange={value => setAttributes({ metaTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Separator />
-						<Typography label={__('Excerpt')} value={excerptTypography} onChange={value => setAttributes({ excerptTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+						<Typography 
+							label={__('Excerpt')} 
+							device={device} 
+							value={ (layout != 5) ? excerptTypography : excerptTypography5 }
+							onChange={value => setAttributes( (layout != 5 ) ? { excerptTypography: value } : { excerptTypography5: value })}
+							onDeviceChange={value => this.setState({ device: value })} 
+						/>
 					</PanelBody>
 
 					<PanelBody title={__('Colors')} initialOpen={false}>
@@ -612,50 +656,34 @@ class Edit extends Component {
 				</InspectorControls>
 
 				<div className={`qubely-block-${uniqueId}`}>
-					{
-						(posts && posts.length) ?
+					{ (posts && posts.length) ?
                         <div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${( (layout === 2) || (layout === 3) || (layout === 4) ) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`}>
-                            {
-                                posts && posts.map(post => {
-
-
-									
-									{/* let divStyle = {
-										color: 'white',
-										backgroundImage: 'url(' + post.qubely_featured_image_url[imgSize][0] + ')',
-										WebkitTransition: 'all',
-										msTransition: 'all' 
-									}; */}
-									
-									if( layout == 5 ) {
-										output = ( counts == 0 ) ? ( 
-											<div className={`blog-feature-image`}>
-												{ this.renderFeaturedImage(post) }
-												{this.renderCardContent(post)}
-											</div>
-										) : ( 
-											<div className={`qubely-post-list-view layout-${layout}`}>
+                            { posts && posts.map(post => {	
+								if( layout == 5 ) {
+									output = ( counts == 0 ) ? ( 
+										<div className={`blog-feature-image`}>
+											{ this.renderFeaturedImage(post) }
+											{this.renderCardContent(post)}
+										</div>
+									) : ( 
+										<div className={`qubely-post-list-view layout-${layout}`}>
+											{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
+											{this.renderCardContent(post)}
+										</div>
+									);
+									counts++;
+									return output;
+								} else {
+									return (
+										<div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style}`}>
+											<div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
 												{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
 												{this.renderCardContent(post)}
 											</div>
-										);
-										counts++;
-                                    	return output;
-									} else {
-										return (
-											<div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style}`}>
-												<div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout === 2) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
-													{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
-													{this.renderCardContent(post)}
-												</div>
-											</div>
-										)
-									}
-
-									
-                                   
-                                })
-                            }
+										</div>
+									)
+								}      
+                            }) }
                         </div>
                         :
                         <div className="qubely-postgrid-is-loading">

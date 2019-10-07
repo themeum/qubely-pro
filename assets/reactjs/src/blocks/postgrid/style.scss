@@ -627,45 +627,41 @@
 .qubely-postgrid-layout-5 .blog-feature-image {
   width: 50%;
   float: left;
-  margin-right: 30px;
   position: relative;
   display: inline-block;
 }
 .qubely-postgrid-layout-5 .qubely-post-list-view {
   width: calc(50% - 30px);
   display: inline-block;
+  position: relative;
+  margin-left: 30px;
 }
 .qubely-postgrid-layout-5 .qubely-post-list-view .qubely-post-img {
-  width: 30%;
+  width: 200px;
   float: left;
 }
-.qubely-postgrid-layout-5 .qubely-post-grid-content {
-  float: left;
-  width: 70%;
-}
-
 .qubely-postgrid-layout-5 h3.qubely-postgrid-title {
   line-height: 28px;
+  margin: 0;
 }
 
 .qubely-postgrid-layout-5 h3.qubely-postgrid-title a {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 4px;
+  text-decoration: none;
 }
-
-.qubely-post-list-view.layout-5 .qubely-postgrid-meta, 
-.qubely-post-list-view.layout-5 .qubely-postgrid-intro {
-  display: none;
-}
-
 .qubely-postgrid-layout-5 .blog-feature-image .qubely-post-grid-content {
-  float: left;
-  width: 100%;
-  height: 100%;
+  width: 87%;
   position: absolute;
-  top: 0;
+  bottom: 0;
+  background: #fff;
+  margin: 0 auto;
+  transform: translate(-50%, 40%);
+  left: 50%;
+  box-shadow: 0 34px 28px -20px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  padding: 30px;
 }
-
 .qubely-postgrid-layout-5 .blog-feature-image .qubely-post-img {
   margin-bottom: 0;
   line-height: 0;
@@ -674,4 +670,70 @@
   padding-bottom: 0;
   margin: 0;
   line-height: 0;
+}
+.qubely-postgrid-wrapper.qubely-postgrid-layout-5 .blog-feature-image img.qubely-post-image,
+.qubely-post-list-view.layout-5 img.qubely-post-image {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.qubely-postgrid-layout-5 .qubely-postgrid-category {
+  display: block;
+  padding-bottom: 12px;
+  line-height: 16px;
+}
+.qubely-postgrid-wrapper.qubely-postgrid-layout-5 .qubely-postgrid-intro p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px
+}
+.qubely-postgrid-layout-5 .qubely-post-list-view.layout-5 .qubely-post-grid-content {
+    width: calc(100% - 140px);
+    position: absolute;
+    background: #fff;
+    right: 0;
+    box-shadow: 0 34px 28px -20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 20px 10px 20px 24px;
+    left: auto;
+    transform: translate(0%, -50%);
+    top: 48%;
+    display: block;
+}
+.qubely-post-list-view.layout-5 .qubely-postgrid-category {
+  display: block;
+}
+.qubely-post-list-view.layout-5 .qubely-postgrid-intro, 
+.qubely-post-list-view.layout-5 .qubely-postgrid-meta,
+.qubely-post-list-view.layout-5 .layout-5 .qubely-postgrid-category,
+.qubely-postgrid-wrapper.qubely-postgrid-layout-5 .blog-feature-image .qubely-postgrid-intro {
+  padding-bottom: 0;
+}
+.qubely-postgrid-layout-5 .blog-feature-image .qubely-postgrid-category {
+  display: block;
+}
+.qubely-postgrid-layout-5 .qubely-postgrid-meta span a {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1.75px;
+  line-height: 18px;
+}
+.qubely-postgrid-layout-5 .layout-5 h3.qubely-postgrid-title {
+  line-height: 22px;
+  margin: 0;
+}
+.qubely-postgrid-layout-5 .layout-5 h3.qubely-postgrid-title a {
+  font-size: 18px;
+  line-height: 12px;
+  text-decoration: none;
+}
+.qubely-postgrid-layout-5 .layout-5 .qubely-postgrid-category {
+  display: block;
+}
+.qubely-postgrid-layout-5 .layout-5 .qubely-postgrid-meta {
+  margin-bottom: 5px;
+}
+.layout-5 .qubely-postgrid-meta span {
+  padding-right: 8px;
 }
