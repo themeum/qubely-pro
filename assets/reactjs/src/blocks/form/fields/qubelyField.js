@@ -56,8 +56,6 @@ const Edit = (props) => {
     const [dropdownValue, setDropdownValue] = useState('')
 
 
-
-
     const {
         name,
         clientId,
@@ -95,6 +93,7 @@ const Edit = (props) => {
         });
         const currentField = $(`#block-${clientId}`)
         currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
+
     })
 
     const updateOptions = (type, index, newValue) => {
@@ -350,8 +349,7 @@ const Edit = (props) => {
                         value={label}
                         onChange={value => setAttributes({ label: value })}
                     />
-                    {renderInput()}
-
+                    {/* {renderInput()} */}
                 </div>
             </div>
 
@@ -415,7 +413,7 @@ const Save = (props) => {
     return (
         <div className={`qubely-block-${uniqueId}`} style={style}>
             <RichText.Content tagName={'label'} className={`qubely-form-field-label`} value={label} />
-            {renderInput()}
+            {/* {renderInput()} */}
         </div>
     )
 

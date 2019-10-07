@@ -2473,8 +2473,7 @@ var Edit = function Edit(props) {
                     onChange: function onChange(value) {
                         return setAttributes({ label: value });
                     }
-                }),
-                renderInput()
+                })
             )
         )
     );
@@ -2522,8 +2521,7 @@ var Save = function Save(props) {
     return React.createElement(
         'div',
         { className: 'qubely-block-' + uniqueId, style: style },
-        React.createElement(RichText.Content, { tagName: 'label', className: 'qubely-form-field-label', value: label }),
-        renderInput()
+        React.createElement(RichText.Content, { tagName: 'label', className: 'qubely-form-field-label', value: label })
     );
 };
 
@@ -2623,13 +2621,14 @@ var defaultFormItems = [
 //     required: true,
 //     hideLabel: false
 // },
+// {
+//     type: 'date',
+//     label: 'Date',
+//     width: 50,
+//     required: true,
+//     hideLabel: false
+// },
 {
-    type: 'date',
-    label: 'Date',
-    width: 50,
-    required: true,
-    hideLabel: false
-}, {
     type: 'time',
     label: 'Time',
     width: 50,
