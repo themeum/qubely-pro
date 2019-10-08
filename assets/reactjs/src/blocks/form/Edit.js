@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { createBlock } = wp.blocks
 const { select, dispatch } = wp.data
 const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.editor
-const { PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
+const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { Component, Fragment } = wp.element
 const {
     ButtonGroup,
@@ -154,7 +154,30 @@ class Edit extends Component {
         )
     }
 
-
+    renderFormFieldTypes = () => {
+        const formFields = [
+            [__('Text'), 'text'],
+            [__('Email'), 'email'],
+            [__('Radio'), 'radio'],
+            [__('Checkbox'), 'checkbox'],
+            [__('Date'), 'date'],
+            [__('Time'), 'time'],
+            [__('Textarea'), 'textarea'],
+            [__('Dropdown'), 'dropdown'],
+        ]
+        return (
+            <div className="qubely-form-field-types">
+                {formFields.map(([fieldName, type], index) => {
+                    return (
+                        <div className="qubely-form-field-type"
+                            onClick={() => this.addNewItem(type)}>
+                            {fieldName}
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
     render() {
         const {
             attributes,
@@ -545,18 +568,19 @@ class Edit extends Component {
                         </div>
 
                         <div className="qubely-form-add-item">
-                            <span className="qubely-action-add-form-item">Add new item</span>
-                            <ButtonGroup
-                                label={__('')}
-                                options={[
-                                    [__('Text'), 'text'],
-                                    [__('Email'), 'email'],
-                                    [__('Radio'), 'radio'],
-                                    [__('Checkbox'), 'checkbox'],
-                                    [__('Textarea'), 'textarea'],
-                                    [__('Dropdown'), 'dropdown'],
-                                ]}
-                                onChange={value => this.addNewItem(value)}
+
+                            <Dropdown
+                                className={"qubely-action-add-form-field"}
+                                contentClassName={"qubely-form-field-picker"}
+                                position="bottom center"
+                                renderToggle={({ isOpen, onToggle }) =>
+                                    <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
+                                        <i className="fas fa-plus-circle"></i>
+                                        <span> {__(`Add new item`)}</span>
+                                    </div>
+
+                                }
+                                renderContent={() => this.renderFormFieldTypes()}
                             />
                         </div>
                     </div>

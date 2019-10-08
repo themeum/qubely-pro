@@ -1,5 +1,4 @@
 .qubely-block-form {
-  
   &.qubely-layout-material {
     .qubely-form {
       .qubely-form-group {
@@ -41,11 +40,59 @@
       }
     }
   }
+
+  .qubely-form-add-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .qubely-action-add-form-field {
+      background: #ffffff;
+      color: #2184f9;
+      border: 1px dashed #2184f9;
+      border-radius: 4px;
+      padding: 5px 35px;
+      .qubely-action-add-form-item {
+        font-size: 16px;
+        i {
+          padding: 0px 5px;
+        }
+      }
+    }
+    .qubely-action-add-form-field:hover {
+      cursor: pointer;
+      background: rgba(33, 132, 249, 0.1);
+      color: #2184f9;
+      border-radius: 5px;
+    }
+  }
 }
 
+.qubely-form-field-picker {
+  .qubely-form-field-types {
+    background: #f7f8fc;
+    box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .qubely-form-field-type {
+      background: #ffffff;
+      border: 1px solid #d6d9dd;
+      border-radius: 4px;
+      padding: 5px 15px;
+      width: 45%;
+      display: flex;
+      align-items: center;
+      margin: 5px 0px;
+    }
+    & :hover {
+      cursor: pointer;
+    }
+  }
+}
 
-
-.qubely-block-form .editor-inner-blocks>.editor-block-list__layout {
+.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {
   display: flex;
   flex-wrap: wrap;
 }

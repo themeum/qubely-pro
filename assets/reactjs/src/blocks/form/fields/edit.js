@@ -272,6 +272,29 @@ export default function Edit(props) {
     const renderCommonSettings = () => {
         return (
             <Fragment>
+                <RadioAdvanced
+                    label={__('Field Size')}
+                    options={[
+                        { label: 'S', value: 'small', title: 'Small' },
+                        { label: 'M', value: 'medium', title: 'Medium' },
+                        { label: 'L', value: 'large', title: 'Large' },
+                        { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                    ]}
+                    value={fieldSize}
+                    onChange={value => setAttributes({ fieldSize: value })} />
+
+                {
+                    fieldSize === 'custom' &&
+                    <RangeControl
+                        label={__('Percentage width')}
+                        value={width || ''}
+                        onChange={value => setAttributes({ width: value })}
+                        min={0}
+                        max={100}
+                        required
+                        allowReset
+                    />
+                }
                 <TextControl
                     label={__('Label')}
                     value={label}
@@ -288,6 +311,7 @@ export default function Edit(props) {
                     onChange={value => setAttributes({ fieldName: value })}
                     help={__('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')}
                 />
+
             </Fragment>
         )
     }
@@ -332,29 +356,6 @@ export default function Edit(props) {
                     name === 'qubely/formfield-dropdown' &&
                     <PanelBody title={__('Dropdown')} initialOpen={true}>
                         {renderCommonSettings()}
-
-                        <RadioAdvanced
-                            label={__('Field Size')}
-                            options={[
-                                { label: 'S', value: 'small', title: 'Small' },
-                                { label: 'M', value: 'medium', title: 'Medium' },
-                                { label: 'L', value: 'large', title: 'Large' },
-                                { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                            ]}
-                            value={fieldSize}
-                            onChange={value => setAttributes({ fieldSize: value })} />
-
-                        {
-                            fieldSize === 'custom' &&
-                            <RangeControl
-                                label={__('Percentage width')}
-                                value={width || ''}
-                                onChange={value => setAttributes({ width: value })}
-                                min={0}
-                                max={100}
-                                required
-                                allowReset
-                            />}
 
                         <Fragment>
                             <label className={`qubely-form-field`}>Dropdown Options</label>
