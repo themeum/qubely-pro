@@ -1744,10 +1744,10 @@ exports.default = Save;
 
 /***/ }),
 
-/***/ "./src/blocks/form/fields/formDefaults.js":
-/*!************************************************!*\
-  !*** ./src/blocks/form/fields/formDefaults.js ***!
-  \************************************************/
+/***/ "./src/blocks/form/fields/edit.js":
+/*!****************************************!*\
+  !*** ./src/blocks/form/fields/edit.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1757,332 +1757,10 @@ exports.default = Save;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var FieldDefaults = {
-    category: 'qubely',
-    parent: ['qubely/form'],
-    supports: {
-        reusable: false,
-        html: false,
-        inserter: false
-    },
-    attributes: {
-        uniqueId: {
-            type: 'string',
-            default: ''
-        },
-        type: {
-            type: 'string',
-            default: null
-        },
-        width: {
-            type: 'number',
-            default: 90
-        },
-        fieldSize: {
-            type: 'string',
-            default: 'large'
-        },
-        label: {
-            type: 'string',
-            default: 'label'
-        },
-        instruction: {
-            type: 'string',
-            default: null
-        },
-        required: {
-            type: 'boolean',
-            default: false
-        }
-    }
-};
-exports.default = FieldDefaults;
-
-/***/ }),
-
-/***/ "./src/blocks/form/fields/index.js":
-/*!*****************************************!*\
-  !*** ./src/blocks/form/fields/index.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.registerFromFields = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _qubelyField = __webpack_require__(/*! ./qubelyField */ "./src/blocks/form/fields/qubelyField.js");
-
-var qubelyField = _interopRequireWildcard(_qubelyField);
-
-__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-/**
- * import required attributes of form fields
- */
-
-var registerBlock = function registerBlock(block) {
-    if (!block) {
-        return;
-    }
-
-    var blockName = block.blockName,
-        settings = block.settings;
-
-
-    registerBlockType(blockName, _extends({}, settings, {
-        getEditWrapperProps: function getEditWrapperProps(attributes) {
-            var fieldSize = attributes.fieldSize,
-                width = attributes.width;
-
-            if (Number.isFinite(width)) {
-                return {
-                    style: {
-                        width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%'
-                    }
-                };
-            }
-        }
-    }));
-};
-
-var qubelyFormFields = [_extends({}, qubelyField, {
-    settings: _extends({}, qubelyField.settings, {
-        title: __('Text'),
-        description: __('Text field for Qubely Form'),
-        attributes: _extends({}, qubelyField.settings.attributes, {
-            fieldName: {
-                type: 'string',
-                default: 'text'
-            },
-            type: {
-                type: 'string',
-                default: 'text'
-            }
-        })
-
-    }),
-    blockName: "qubely/formfield-text"
-}), _extends({}, qubelyField, {
-    settings: _extends({}, qubelyField.settings, {
-        title: __('Number'),
-        description: __('Number field for Qubely Form'),
-        attributes: _extends({}, qubelyField.settings.attributes, {
-            fieldName: {
-                type: 'string',
-                default: 'number'
-            },
-            type: {
-                type: 'string',
-                default: 'number'
-            }
-        })
-
-    }),
-    blockName: "qubely/formfield-number"
-}), _extends({}, qubelyField, {
-    settings: _extends({}, qubelyField.settings, {
-        title: __('Email'),
-        description: __('Email field for Qubely Form'),
-        attributes: _extends({}, qubelyField.settings.attributes, {
-            fieldName: {
-                type: 'string',
-                default: 'email'
-            },
-            type: {
-                type: 'string',
-                default: 'email'
-            }
-        })
-
-    }),
-    blockName: "qubely/formfield-email"
-}), _extends({}, qubelyField, {
-    settings: _extends({}, qubelyField.settings, {
-        title: __('Textarea'),
-        description: __('Textarea field for Qubely Form'),
-        attributes: _extends({}, qubelyField.settings.attributes, {
-            fieldName: {
-                type: 'string',
-                default: 'textarea'
-            },
-            type: {
-                type: 'string',
-                default: 'textarea'
-            },
-            height: {
-                type: 'object',
-                default: {
-                    md: 150,
-                    unit: 'px'
-                },
-                style: [{
-                    selector: '{{QUBELY}} .qubely-form-field.qubely-form-textarea { height: {{height}};}'
-                }]
-            }
-        })
-
-    }),
-    blockName: "qubely/formfield-textarea"
-}), _extends({}, qubelyField, {
-    settings: _extends({}, qubelyField.settings, {
-        title: __('Dropdown'),
-        description: __('Dropdown field for Qubely Form'),
-        attributes: _extends({}, qubelyField.settings.attributes, {
-            fieldName: {
-                type: 'string',
-                default: 'dropdown'
-            },
-            type: {
-                type: 'string',
-                default: 'dropdown'
-            },
-            options: {
-                type: 'array',
-                default: ['option one', 'option two', 'option three']
-            }
-        })
-
-    }),
-    blockName: "qubely/formfield-dropdown"
-}), _extends({}, qubelyField, {
-    settings: _extends({}, qubelyField.settings, {
-        title: __('Radio'),
-        description: __('Radio field for Qubely Form'),
-        attributes: _extends({}, qubelyField.settings.attributes, {
-            fieldName: {
-                type: 'string',
-                default: 'radio'
-            },
-            type: {
-                type: 'string',
-                default: 'radio'
-            },
-            options: {
-                type: 'array',
-                default: ['option one', 'option two', 'option three']
-            }
-        })
-
-    }),
-    blockName: "qubely/formfield-radio"
-}), _extends({}, qubelyField, {
-    settings: _extends({}, qubelyField.settings, {
-        title: __('Checkbox'),
-        description: __('Checkbox field for Qubely Form'),
-        attributes: _extends({}, qubelyField.settings.attributes, {
-            fieldName: {
-                type: 'string',
-                default: 'checkbox'
-            },
-            type: {
-                type: 'string',
-                default: 'checkbox'
-            },
-            options: {
-                type: 'array',
-                default: ['option one', 'option two', 'option three']
-            }
-        })
-
-    }),
-    blockName: "qubely/formfield-checkbox"
-}), _extends({}, qubelyField, {
-    settings: _extends({}, qubelyField.settings, {
-        title: __('Date Picker'),
-        description: __('Date picker field for Qubely Form'),
-        attributes: _extends({}, qubelyField.settings.attributes, {
-            fieldName: {
-                type: 'string',
-                default: 'date-picker'
-            },
-            type: {
-                type: 'string',
-                default: 'date'
-            }
-        })
-
-    }),
-    blockName: "qubely/formfield-date"
-}), _extends({}, qubelyField, {
-    settings: _extends({}, qubelyField.settings, {
-        title: __('Time Picker'),
-        description: __('Time picker field for Qubely Form'),
-        attributes: _extends({}, qubelyField.settings.attributes, {
-            fieldName: {
-                type: 'string',
-                default: 'time-picker'
-            },
-            type: {
-                type: 'string',
-                default: 'time'
-            },
-            timeFormatType: {
-                type: 'number',
-                default: 12
-            },
-            seletedTimeFormat: {
-                type: 'string',
-                default: 'AM'
-            },
-            minuteInterval: {
-                type: 'number',
-                default: 5
-            }
-        })
-
-    }),
-    blockName: "qubely/formfield-time"
-})];
-
-/**
- * Register form fields
- */
-var registerFromFields = exports.registerFromFields = function registerFromFields() {
-    qubelyFormFields.forEach(registerBlock);
-};
-
-registerFromFields();
-
-/***/ }),
-
-/***/ "./src/blocks/form/fields/qubelyField.js":
-/*!***********************************************!*\
-  !*** ./src/blocks/form/fields/qubelyField.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.settings = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
-
-var _formDefaults = __webpack_require__(/*! ./formDefaults */ "./src/blocks/form/fields/formDefaults.js");
-
-var _formDefaults2 = _interopRequireDefault(_formDefaults);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+exports.default = Edit;
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -2096,10 +1774,6 @@ var _wp$element = wp.element,
     useRef = _wp$element.useRef,
     Fragment = _wp$element.Fragment;
 var _wp$components = wp.components,
-    DatePicker = _wp$components.DatePicker,
-    DateTimePicker = _wp$components.DateTimePicker,
-    Dropdown = _wp$components.Dropdown,
-    TimePicker = _wp$components.TimePicker,
     PanelBody = _wp$components.PanelBody,
     TextControl = _wp$components.TextControl,
     TextareaControl = _wp$components.TextareaControl,
@@ -2112,19 +1786,7 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Separator = _wp$qubelyComponents.Separator,
     Toggle = _wp$qubelyComponents.Toggle,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
-
-
-var settings = _extends({}, _formDefaults2.default, {
-    icon: 'forms',
-    edit: function edit(props) {
-        return Edit(props);
-    },
-    save: function save(props) {
-        return Save(props);
-    }
-});
-
-var Edit = function Edit(props) {
+function Edit(props) {
 
     // let newDate = new Date()
     var _useState = useState('md'),
@@ -2660,25 +2322,403 @@ var Edit = function Edit(props) {
             )
         )
     );
+}
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/formDefaults.js":
+/*!************************************************!*\
+  !*** ./src/blocks/form/fields/formDefaults.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var FieldDefaults = {
+    category: 'qubely',
+    parent: ['qubely/form'],
+    supports: {
+        reusable: false,
+        html: false,
+        inserter: false
+    },
+    attributes: {
+        uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        type: {
+            type: 'string',
+            default: null
+        },
+        width: {
+            type: 'number',
+            default: 90
+        },
+        fieldSize: {
+            type: 'string',
+            default: 'large'
+        },
+        label: {
+            type: 'string',
+            default: 'label'
+        },
+        instruction: {
+            type: 'string',
+            default: null
+        },
+        required: {
+            type: 'boolean',
+            default: false
+        }
+    }
+};
+exports.default = FieldDefaults;
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/index.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/form/fields/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.registerFromFields = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _qubelyField = __webpack_require__(/*! ./qubelyField */ "./src/blocks/form/fields/qubelyField.js");
+
+var qubelyField = _interopRequireWildcard(_qubelyField);
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+/**
+ * import required attributes of form fields
+ */
+
+var registerBlock = function registerBlock(block) {
+    if (!block) {
+        return;
+    }
+
+    var blockName = block.blockName,
+        settings = block.settings;
+
+
+    registerBlockType(blockName, _extends({}, settings, {
+        getEditWrapperProps: function getEditWrapperProps(attributes) {
+            var fieldSize = attributes.fieldSize,
+                width = attributes.width;
+
+            if (Number.isFinite(width)) {
+                return {
+                    style: {
+                        width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%'
+                    }
+                };
+            }
+        }
+    }));
 };
 
-var Save = function Save(props) {
-    var _props$attributes2 = props.attributes,
-        uniqueId = _props$attributes2.uniqueId,
-        label = _props$attributes2.label,
-        fieldSize = _props$attributes2.fieldSize,
-        type = _props$attributes2.type,
-        options = _props$attributes2.options,
-        width = _props$attributes2.width,
-        placeHolder = _props$attributes2.placeHolder,
-        required = _props$attributes2.required,
-        hour = _props$attributes2.hour,
-        minute = _props$attributes2.minute,
-        minuteInterval = _props$attributes2.minuteInterval,
-        timeFormatType = _props$attributes2.timeFormatType;
+var qubelyFormFields = [_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Text'),
+        description: __('Text field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'text'
+            },
+            type: {
+                type: 'string',
+                default: 'text'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-text"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Number'),
+        description: __('Number field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'number'
+            },
+            type: {
+                type: 'string',
+                default: 'number'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-number"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Email'),
+        description: __('Email field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'email'
+            },
+            type: {
+                type: 'string',
+                default: 'email'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-email"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Textarea'),
+        description: __('Textarea field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'textarea'
+            },
+            type: {
+                type: 'string',
+                default: 'textarea'
+            },
+            height: {
+                type: 'object',
+                default: {
+                    md: 150,
+                    unit: 'px'
+                },
+                style: [{
+                    selector: '{{QUBELY}} .qubely-form-field.qubely-form-textarea { height: {{height}};}'
+                }]
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-textarea"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Dropdown'),
+        description: __('Dropdown field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'dropdown'
+            },
+            type: {
+                type: 'string',
+                default: 'dropdown'
+            },
+            options: {
+                type: 'array',
+                default: ['option one', 'option two', 'option three']
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-dropdown"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Radio'),
+        description: __('Radio field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'radio'
+            },
+            type: {
+                type: 'string',
+                default: 'radio'
+            },
+            options: {
+                type: 'array',
+                default: ['option one', 'option two', 'option three']
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-radio"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Checkbox'),
+        description: __('Checkbox field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'checkbox'
+            },
+            type: {
+                type: 'string',
+                default: 'checkbox'
+            },
+            options: {
+                type: 'array',
+                default: ['option one', 'option two', 'option three']
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-checkbox"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Date Picker'),
+        description: __('Date picker field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'date-picker'
+            },
+            type: {
+                type: 'string',
+                default: 'date'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-date"
+}), _extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Time Picker'),
+        description: __('Time picker field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'time-picker'
+            },
+            type: {
+                type: 'string',
+                default: 'time'
+            },
+            timeFormatType: {
+                type: 'number',
+                default: 12
+            },
+            seletedTimeFormat: {
+                type: 'string',
+                default: 'AM'
+            },
+            minuteInterval: {
+                type: 'number',
+                default: 5
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-time"
+})];
+
+/**
+ * Register form fields
+ */
+var registerFromFields = exports.registerFromFields = function registerFromFields() {
+    qubelyFormFields.forEach(registerBlock);
+};
+
+registerFromFields();
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/qubelyField.js":
+/*!***********************************************!*\
+  !*** ./src/blocks/form/fields/qubelyField.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
-    var date = '2019-10-09';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.settings = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
+
+var _edit = __webpack_require__(/*! ./edit */ "./src/blocks/form/fields/edit.js");
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(/*! ./save */ "./src/blocks/form/fields/save.js");
+
+var _save2 = _interopRequireDefault(_save);
+
+var _formDefaults = __webpack_require__(/*! ./formDefaults */ "./src/blocks/form/fields/formDefaults.js");
+
+var _formDefaults2 = _interopRequireDefault(_formDefaults);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var settings = _extends({}, _formDefaults2.default, {
+    icon: 'forms',
+    edit: function edit(props) {
+        return (0, _edit2.default)(props);
+    },
+    save: function save(props) {
+        return (0, _save2.default)(props);
+    }
+});
+
+exports.settings = settings;
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/save.js":
+/*!****************************************!*\
+  !*** ./src/blocks/form/fields/save.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Save;
+var __ = wp.i18n.__;
+var RichText = wp.editor.RichText;
+var Fragment = wp.element.Fragment;
+function Save(props) {
+    var _props$attributes = props.attributes,
+        uniqueId = _props$attributes.uniqueId,
+        label = _props$attributes.label,
+        fieldSize = _props$attributes.fieldSize,
+        type = _props$attributes.type,
+        options = _props$attributes.options,
+        width = _props$attributes.width,
+        placeHolder = _props$attributes.placeHolder,
+        required = _props$attributes.required,
+        hour = _props$attributes.hour,
+        minute = _props$attributes.minute,
+        minuteInterval = _props$attributes.minuteInterval,
+        timeFormatType = _props$attributes.timeFormatType;
+
+
     var style = void 0;
     if (Number.isFinite(width)) {
         style = { width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%' };
@@ -2772,13 +2812,10 @@ var Save = function Save(props) {
                         option
                     );
                 })
-            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? React.createElement('input', { type: 'text', className: 'qubely-datepicker', autocomplete: 'off' }) : type === 'time' ? renderTimePicker() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
         );
     };
 
-    var renderDatePicker = function renderDatePicker() {
-        return React.createElement('input', { type: 'text', className: 'qubely-datepicker', autocomplete: 'off' });
-    };
     return React.createElement(
         'div',
         { className: 'qubely-block-' + uniqueId, style: style },
@@ -2789,9 +2826,7 @@ var Save = function Save(props) {
             renderInput()
         )
     );
-};
-
-exports.settings = settings;
+}
 
 /***/ }),
 
