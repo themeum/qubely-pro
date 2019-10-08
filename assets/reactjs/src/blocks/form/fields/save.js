@@ -40,7 +40,7 @@ export default function Save(props) {
         return (
             <Fragment>
                 <input type="text" className="qubely-time-picker" value={`12 : 00`} />
-                <div className={`qubely-form-timepicker`}>
+                <div className={`qubely-form-timepicker`}  data-options={options}>
 
                     <div className={`qubely-timePicker-hour`}>
                         <div className="qubely-timePicker-button qubely-hour-button-up"  >
@@ -52,7 +52,7 @@ export default function Save(props) {
                             <i className="fas fa-angle-down"></i>
                         </div>
                     </div>
-                    <div className={`qubely-timePicker-minute`} data-options={options} >
+                    <div className={`qubely-timePicker-minute`} >
                         <div className="qubely-timePicker-button qubely-minute-button-up"  >
                             <i className="fas fa-angle-up"></i>
                         </div>

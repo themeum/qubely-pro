@@ -2736,7 +2736,7 @@ function Save(props) {
             React.createElement('input', { type: 'text', className: 'qubely-time-picker', value: '12 : 00' }),
             React.createElement(
                 'div',
-                { className: 'qubely-form-timepicker' },
+                { className: 'qubely-form-timepicker', 'data-options': options },
                 React.createElement(
                     'div',
                     { className: 'qubely-timePicker-hour' },
@@ -2758,7 +2758,7 @@ function Save(props) {
                 ),
                 React.createElement(
                     'div',
-                    { className: 'qubely-timePicker-minute', 'data-options': options },
+                    { className: 'qubely-timePicker-minute' },
                     React.createElement(
                         'div',
                         { className: 'qubely-timePicker-button qubely-minute-button-up' },
