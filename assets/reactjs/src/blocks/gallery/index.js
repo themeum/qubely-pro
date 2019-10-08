@@ -87,7 +87,7 @@ registerBlockType('qubely/gallery', {
         //image
         imageAnimation: {
 			type: 'string',
-			default: 'zoom-in'
+			default: 'slide-top'
 		},
         enableImgFixedHeight: {
             type: 'boolean',
@@ -309,7 +309,7 @@ registerBlockType('qubely/gallery', {
                     condition: [
                         { key: 'enableOverlay', relation: '==', value: true }
                     ],
-                    selector: '{{QUBELY}} .qubely-gallery-image-container:after'
+                    selector: '{{QUBELY}} .qubely-gallery-item:hover .qubely-gallery-image-container:after'
                 }
             ]
         },
@@ -321,7 +321,7 @@ registerBlockType('qubely/gallery', {
                     condition: [
                         { key: 'enableOverlay', relation: '==', value: true }
                     ],
-                    selector: '{{QUBELY}} .qubely-gallery-image-container:before {mix-blend-mode: {{overlayBlend}};} {{QUBELY}} .qubely-gallery-image-container:after {mix-blend-mode: {{overlayBlend}};}'
+                    selector: '{{QUBELY}} .qubely-gallery-image-container:before {mix-blend-mode: {{overlayBlend}};} {{QUBELY}} .qubely-gallery-item:hover .qubely-gallery-image-container:after {mix-blend-mode: {{overlayBlend}};}'
                 }
             ]
         },
