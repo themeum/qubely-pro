@@ -63,11 +63,14 @@
     box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);
     text-align: center;
   }
-  & .active {
+  & .qubely-active {
     opacity: 1;
     max-height: 150px;
     padding: 15px;
     z-index: 100;
+  }
+  .qubely-timePicker-button{
+    cursor: pointer;
   }
 }
 
