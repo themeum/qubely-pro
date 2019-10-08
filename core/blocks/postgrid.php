@@ -58,6 +58,10 @@ function register_block_qubely_postgrid_pro()
 					'type' => 'number',
 					'default' => 1
 				),
+				'style5' => array(
+					'type' => 'number',
+					'default' => 1
+				),
 				'column' => array(
 					'type' => 'object',
 					'default' => array('md' => 3, 'sm' => 2, 'xs' => 1),
@@ -73,8 +77,12 @@ function register_block_qubely_postgrid_pro()
 					'default' => true,
 				),
 				'showCategory' => array(
-					'type' => 'string',
-					'default' => 'default',
+					'type' 		=> 'string',
+					'default' 	=> 'default',
+				),
+				'showCategory5' => array(
+					'type' 		=> 'string',
+					'default' 	=> 'none',
 				),
 				'categoryPosition' => array(
 					'type' => 'string',
@@ -120,6 +128,10 @@ function register_block_qubely_postgrid_pro()
 				'excerptLimit' => array(
 					'type' => 'number',
 					'default' => 20
+				),
+				'excerptLimit5' => array (
+					'type' => 'number',
+					'default' => 8
 				),
 				'showReadMore' => array(
 					'type' => 'boolean',
@@ -424,17 +436,17 @@ function register_block_qubely_postgrid_pro()
 				),
 
 				//typography
-				'titleTypography' => array(
-					'type' => 'object',
-					'default' => (object) [
+				'titleTypography' 	=> array(
+					'type' 			=> 'object',
+					'default' 		=> (object) [
 						'openTypography' => 1,
-						'family' => "Roboto",
-						'type' => "sans-serif",
-						'size' => (object) ['md' => 32, 'unit' => 'px'],
+						'family' 	=> "Roboto",
+						'type' 		=> "sans-serif",
+						'size' 		=> (object) ['md' => 20, 'unit' => 'px'],
 					],
 					'style' => [(object) [
 						'condition' => [(object) ['key' => 'showTitle', 'relation' => '==', 'value' => true]],
-						'selector' => '{{QUBELY}} .qubely-postgrid-title'
+						'selector' => '{{QUBELY}} .qubely-postgrid-title, {{QUBELY}} .qubely-postgrid-layout-5 h3.qubely-postgrid-title a'
 					]]
 				),
 				'metaTypography' => array(
@@ -452,17 +464,30 @@ function register_block_qubely_postgrid_pro()
 					],
 					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-postgrid-meta']]
 				),
-				'excerptTypography' => array(
-					'type' => 'object',
-					'default' => (object) [
+				'excerptTypography' 	=> array(
+					'type' 			=> 'object',
+					'default' 		=> (object) [
 						'openTypography' => 1,
-						'family' => "Roboto",
-						'type' => "sans-serif",
-						'size' => (object) ['md' => 16, 'unit' => 'px'],
+						'family' 	=> "Roboto",
+						'type' 		=> "sans-serif",
+						'size' 		=> (object) ['md' => 16, 'unit' => 'px'],
 					],
 					'style' => [(object) [
 						'condition' => [(object) ['key' => 'showExcerpt', 'relation' => '==', 'value' => true]],
 						'selector' => '{{QUBELY}} .qubely-postgrid-intro, {{QUBELY}} .qubely-postgrid-intro p'
+					]]
+				),
+				'excerptTypography5' 	=> array(
+					'type' 			=> 'object',
+					'default' 		=> (object) [
+						'openTypography' => 1,
+						'family' 	=> "Roboto",
+						'type' 		=> "sans-serif",
+						'size' 		=> (object) ['md' => 14, 'unit' => 'px'],
+					],
+					'style' => [(object) [
+						'condition' => [(object) ['key' => 'showExcerpt', 'relation' => '==', 'value' => true]],
+						'selector' => '{{QUBELY}} .qubely-postgrid-wrapper.qubely-postgrid-layout-5 .qubely-postgrid-intro p'
 					]]
 				),
 				'categoryTypography' => array(
@@ -491,8 +516,22 @@ function register_block_qubely_postgrid_pro()
 				'fixedHeight' => array(
 					'type' => 'object',
 					'default' => (object) array(),
-					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-post-image{object-fit: cover;height: {{fixedHeight}};}']]
+					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-post-image{object-fit: cover; height: {{fixedHeight}};}']]
 				),
+				'fixedHeight5' 	=> array(
+					'type' 		=> 'object',
+					'default' 	=> (object) array(
+						'md' 	=> 520,
+						'unit' 	=> 'px'
+					),
+					'style' => [
+						(object) [
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper.qubely-postgrid-layout-5 .blog-feature-image img.qubely-post-image {object-fit: cover; height: {{fixedHeight5}};}'
+						]
+					]
+
+				),
+
 				'imgSize' => array(
 					'type'    => 'string',
 					'default' => 'large',
@@ -956,7 +995,7 @@ function register_block_qubely_postgrid_pro()
 							'selector' => '{{QUBELY}} .qubely-postgrid-style-4 {height: {{overlayHeight}};} {{QUBELY}} .qubely-postgrid-layout-4.qubely-postgrid-column .qubely-postgrid {height: {{overlayHeight}};}'
 						]
 					]
-				),
+				), 
 				'overlayBlend' => array(
 					'type'    => 'string',
 					'default' => '',
@@ -1050,7 +1089,12 @@ function render_block_qubely_postgrid_pro($att)
 	$column 		        = isset($att['column']) ? $att['column'] : 3;
 	$numbers 		        = isset($att['postsToShow']) ? $att['postsToShow'] : 3;
 	$limit 		            = isset($att['excerptLimit']) ? $att['excerptLimit'] : 3;
+
+	$limit5					= isset($att['excerptLimit5']) ? $att['excerptLimit5'] : 3;
+
 	$showCategory 		    = isset($att['showCategory']) ? $att['showCategory'] : 'default';
+	$showCat5 		    	= isset($att['showCategory5']) ? $att['showCategory5'] : 'none';
+
 	$categoryPosition 		= isset($att['categoryPosition']) ? $att['categoryPosition'] : 'leftTop';
 	$contentPosition 		= isset($att['contentPosition']) ? $att['contentPosition'] : 'center';
 	$girdContentPosition 	= isset($att['girdContentPosition']) ? $att['girdContentPosition'] : 'center';
@@ -1092,15 +1136,18 @@ function render_block_qubely_postgrid_pro($att)
 
 	# The Loop. 
 	$html = '';
+
+	$char = ( $layout != 5 ) ? $limit : $limit5;
+	
 	//excerpt;
 	if (!function_exists('qubely_excerpt_max_charlength')) :
-		function qubely_excerpt_max_charlength($limit)
+		function qubely_excerpt_max_charlength($char)
 		{
 			$excerpt = get_the_excerpt();
-			if (str_word_count($excerpt, 0) > $limit) {
+			if (str_word_count($excerpt, 0) > $char) {
 				$words = str_word_count($excerpt, 2);
 				$pos = array_keys($words);
-				$text = substr($excerpt, 0, $pos[$limit]);
+				$text = substr($excerpt, 0, $pos[$char]);
 				return $text;
 			}
 		}
@@ -1112,6 +1159,8 @@ function render_block_qubely_postgrid_pro($att)
 	} else {
 		$col = "";
 	}
+
+	$count = 0;
 
 	if ($query->have_posts()) {
 		$html .= '<div class="qubely-block-' . $uniqueId . '">';
@@ -1127,7 +1176,7 @@ function render_block_qubely_postgrid_pro($att)
 			$meta .= ($showDates == 1) ? '<span><i class="far fa-calendar-alt"></i> ' . date_i18n("d M, Y", strtotime(get_the_date())) . '</span>' : '';
 			$meta .= ($showComment == 1) ? '<span><i class="fas fa-comment"></i> ' . get_comments_number('0', '1', '%') . '</span>' : '';
 			$btn = '<div class="qubely-postgrid-btn-wrapper"><a class="qubely-postgrid-btn qubely-button-' . esc_attr($readmoreStyle) . ' is-' . esc_attr($readmoreSize) . '" href="' . esc_url(get_the_permalink()) . '">' . esc_attr($buttonText) . '</a></div>';
-			$excerpt = '<div class="qubely-postgrid-intro">' . qubely_excerpt_max_charlength(esc_attr($limit)) . '</div>';
+			$excerpt = '<div class="qubely-postgrid-intro"><p>' . qubely_excerpt_max_charlength(esc_attr($char)) . '</p></div>';
 
 			if ($layout === 1) {
 				$html .= '<div class="qubely-postgrid qubely-post-list-view qubely-postgrid-style-' . esc_attr($style) . '">';
@@ -1215,6 +1264,79 @@ function render_block_qubely_postgrid_pro($att)
 				$html .= '</div>'; //qubely-post-grid-wrap
 				$html .= '</div>'; //qubely-postgrid
 			}
+
+
+
+
+			// qubely-postgrid-wrapper qubely-postgrid-layout-5 
+			if ( $layout === 5 ) {
+
+				if ($count == 0) {
+					$html .= '<div class="blog-feature-image">';
+						$html .= '<div class="qubely-post-grid-img qubely-post-img qubely-post-img-' . esc_attr($imageAnimation) . '">';
+							$html .= '<a href="' . esc_url(get_the_permalink()) . '">';
+								$html .= $image;
+							$html .= '</a>';
+						$html .= '</div>';
+						$html .= '<div class="qubely-post-grid-content">';
+							if ($showCat5 != 'none') { 
+								$html .= $category;
+							}
+							if ($showTitle == 1) {
+								$html .= $title;
+							}
+							if (($showAuthor == 1) || ($showDates == 1) || ($showComment == 1)) {
+								$html .= '<div class="qubely-postgrid-meta">';
+								$html .= $meta;
+								$html .= '</div>';
+							}
+							if ($showExcerpt == 1) {
+								$html .= $excerpt;
+							}
+						$html .= '</div>';
+					$html .= '</div>';
+				}else {
+					$html .= '<div class="qubely-post-list-view layout-'.$layout.'">';
+						
+							$html .= '<div class="qubely-post-grid-img qubely-post-img qubely-post-img-'.esc_attr($imageAnimation).'">';
+								$html .= '<a href="' . esc_url(get_the_permalink()) . '">';
+									$html .= $image;
+								$html .= '</a>';
+							$html .= '</div>';
+
+							$html .= '<div class="qubely-post-grid-content">';
+								if ($showCat5 != 'none') { 
+									$html .= $category;
+								}
+								if ($showTitle == 1) {
+									$html .= $title;
+								}
+								if (($showAuthor == 1) || ($showDates == 1) || ($showComment == 1)) {
+									$html .= '<div class="qubely-postgrid-meta">';
+									$html .= $meta;
+									$html .= '</div>';
+								}
+
+								if ($showExcerpt == 1) {
+									$html .= $excerpt;
+								}
+							$html .= '</div>';
+						
+					$html .= '</div>';
+				}
+				$count++;
+
+
+				
+			}
+			
+
+
+
+
+
+
+
 		}
 		$html .= '</div>';
 		wp_reset_postdata();
