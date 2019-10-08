@@ -96,7 +96,7 @@ class Edit extends Component {
                                 />
                             </div>
                             { enableCaption == 1 &&                       
-                                <div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : 'sad'}`}>
+                                <div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>
                                     <RichText
                                         placeholder={__('Add title')}
                                         tagName='div'
