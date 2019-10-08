@@ -110,7 +110,7 @@ exports.push([module.i, ".qubely-form-field-wrapper {\n  display: flex; }\n  .qu
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-group-inner {\n  position: relative; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-label {\n  position: absolute;\n  pointer-events: none;\n  top: 0px;\n  transition: 0.2s ease all; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control {\n  border-radius: 0;\n  box-shadow: none;\n  padding-left: 0;\n  padding-right: 0; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus, .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid {\n    outline: none;\n    color: #333; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control::placeholder {\n    opacity: 0;\n    transition: 400ms; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus::placeholder {\n    opacity: 1; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus ~ .qubely-form-label,\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid ~ .qubely-form-label {\n  top: -20px; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #f7f8fc;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #ffffff;\n    border: 1px solid #d6d9dd;\n    border-radius: 4px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
+exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #f7f8fc;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #ffffff;\n    border: 1px solid #d6d9dd;\n    border-radius: 4px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
 
 
 
@@ -838,9 +838,12 @@ var _wp$element = wp.element,
     Fragment = _wp$element.Fragment;
 var _wp$qubelyComponents = wp.qubelyComponents,
     ButtonGroup = _wp$qubelyComponents.ButtonGroup,
+    BoxShadow = _wp$qubelyComponents.BoxShadow,
+    Padding = _wp$qubelyComponents.Padding,
     Styles = _wp$qubelyComponents.Styles,
     Wrapper = _wp$qubelyComponents.Wrapper,
     Range = _wp$qubelyComponents.Range,
+    Separator = _wp$qubelyComponents.Separator,
     Toggle = _wp$qubelyComponents.Toggle,
     Typography = _wp$qubelyComponents.Typography,
     Color = _wp$qubelyComponents.Color,
@@ -1067,7 +1070,12 @@ var Edit = function (_Component) {
                 labelColor = _props10$attributes.labelColor,
                 labelAlignment = _props10$attributes.labelAlignment,
                 labelTypography = _props10$attributes.labelTypography,
+                spacing = _props10$attributes.spacing,
+                gutter = _props10$attributes.gutter,
+                inputSize = _props10$attributes.inputSize,
+                inputCustomSize = _props10$attributes.inputCustomSize,
                 inputTypography = _props10$attributes.inputTypography,
+                inputBoxShadow = _props10$attributes.inputBoxShadow,
                 inputColor = _props10$attributes.inputColor,
                 inputColorFocus = _props10$attributes.inputColorFocus,
                 inputColorHover = _props10$attributes.inputColorHover,
@@ -1080,9 +1088,6 @@ var Edit = function (_Component) {
                 inputBorderColorHover = _props10$attributes.inputBorderColorHover,
                 inputCorner = _props10$attributes.inputCorner,
                 inputCornerRadius = _props10$attributes.inputCornerRadius,
-                inputSize = _props10$attributes.inputSize,
-                inputPaddingX = _props10$attributes.inputPaddingX,
-                inputPaddingY = _props10$attributes.inputPaddingY,
                 textareaHeight = _props10$attributes.textareaHeight,
                 placeholderColor = _props10$attributes.placeholderColor,
                 placeholderColorFocus = _props10$attributes.placeholderColorFocus,
@@ -1094,8 +1099,6 @@ var Edit = function (_Component) {
                 buttonText = _props10$attributes.buttonText,
                 buttonIconName = _props10$attributes.buttonIconName,
                 buttonIconPosition = _props10$attributes.buttonIconPosition,
-                spacing = _props10$attributes.spacing,
-                gutter = _props10$attributes.gutter,
                 fieldErrorMessage = _props10$attributes.fieldErrorMessage,
                 formSuccessMessage = _props10$attributes.formSuccessMessage,
                 formErrorMessage = _props10$attributes.formErrorMessage,
@@ -1169,76 +1172,57 @@ var Edit = function (_Component) {
                     React.createElement(
                         PanelBody,
                         { title: __('Input'), initialOpen: false },
-                        React.createElement(
-                            Wrapper,
-                            { label: __('Size') },
-                            React.createElement(RadioAdvanced, {
-                                label: __('Input Size'),
-                                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
-                                value: inputSize,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ inputSize: value });
-                                } }),
-                            inputSize == 'custom' && React.createElement(
-                                Fragment,
-                                null,
-                                React.createElement(Range, {
-                                    label: React.createElement('span', { className: 'dashicons dashicons-sort', title: 'Padding Y' }),
-                                    value: inputPaddingY,
-                                    onChange: function onChange(value) {
-                                        return setAttributes({ inputPaddingY: value });
-                                    },
-                                    unit: ['px', 'em', '%'],
-                                    min: 0,
-                                    max: 50,
-                                    responsive: true
-                                }),
-                                layout == 'classic' && React.createElement(Range, {
-                                    label: React.createElement('span', { className: 'dashicons dashicons-leftright', title: 'X Padding' }),
-                                    value: inputPaddingX,
-                                    onChange: function onChange(value) {
-                                        return setAttributes({ inputPaddingX: value });
-                                    },
-                                    unit: ['px', 'em', '%'],
-                                    min: 0,
-                                    max: 50,
-                                    responsive: true
-                                })
-                            ),
-                            React.createElement(Range, {
-                                label: __('Textarea Height'),
-                                value: textareaHeight,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ textareaHeight: value });
-                                },
-                                unit: ['px', 'em', '%'],
-                                min: 100,
-                                max: 500,
-                                responsive: true
-                            }),
-                            React.createElement(Range, {
-                                label: __('Spacing'),
-                                value: spacing,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ spacing: value });
-                                },
-                                unit: ['px', 'em', '%'],
-                                min: 0,
-                                max: 60,
-                                responsive: true
-                            }),
-                            React.createElement(Range, {
-                                label: __('Gutter'),
-                                value: gutter,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ gutter: value });
-                                },
-                                unit: ['px', 'em', '%'],
-                                min: 0,
-                                max: 60,
-                                responsive: true
-                            })
-                        ),
+                        React.createElement(RadioAdvanced, {
+                            label: __('Input Size'),
+                            options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                            value: inputSize,
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputSize: value });
+                            } }),
+                        inputSize == 'custom' && React.createElement(Padding, {
+                            max: 50,
+                            min: 0,
+                            responsive: true,
+                            value: inputCustomSize,
+                            label: __('Custom Size'),
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputCustomSize: value });
+                            }
+                        }),
+                        React.createElement(Range, {
+                            min: 100,
+                            max: 500,
+                            responsive: true,
+                            value: textareaHeight,
+                            unit: ['px', 'em', '%'],
+                            label: __('Textarea Height'),
+                            onChange: function onChange(value) {
+                                return setAttributes({ textareaHeight: value });
+                            }
+                        }),
+                        React.createElement(Range, {
+                            min: 0,
+                            max: 60,
+                            responsive: true,
+                            value: spacing,
+                            label: __('Spacing'),
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ spacing: value });
+                            }
+                        }),
+                        React.createElement(Range, {
+                            min: 0,
+                            max: 60,
+                            responsive: true,
+                            value: gutter,
+                            label: __('Gutter'),
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ gutter: value });
+                            }
+                        }),
                         React.createElement(
                             Tabs,
                             null,
@@ -1314,7 +1298,17 @@ var Edit = function (_Component) {
                         }),
                         React.createElement(Typography, { value: inputTypography, onChange: function onChange(val) {
                                 return setAttributes({ inputTypography: val });
-                            } })
+                            } }),
+                        React.createElement(Separator, null),
+                        React.createElement(BoxShadow, {
+                            disableInset: true,
+                            label: __('Box-Shadow'),
+                            value: inputBoxShadow,
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputBoxShadow: value });
+                            }
+                        }),
+                        React.createElement(Separator, null)
                     ),
                     React.createElement(
                         PanelBody,
@@ -1447,7 +1441,7 @@ var Edit = function (_Component) {
                         { className: 'qubely-block-form qubely-layout-' + layout },
                         React.createElement(
                             'form',
-                            { className: 'qubely-form' },
+                            { className: 'qubely-form is-' + inputSize },
                             React.createElement(InnerBlocks, { template: formItems.map(function (_ref3) {
                                     var type = _ref3.type,
                                         label = _ref3.label,
@@ -1944,8 +1938,8 @@ function Edit(props) {
     var renderDatePicker = function renderDatePicker() {
         return React.createElement(
             'div',
-            { 'class': 'qubely-form-field qubely-date-picker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-datepicker', ref: datePicker, autocomplete: 'off' })
+            { 'class': 'qubely-date-picker-wrapper' },
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', ref: datePicker, autocomplete: 'off' })
         );
     };
 
@@ -1984,8 +1978,8 @@ function Edit(props) {
     var renderTimePicker = function renderTimePicker() {
         return React.createElement(
             'div',
-            { className: 'qubely-form-field  qubely-form-timepicker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-time-picker', value: hour + ' : ' + minute, onClick: function onClick() {
+            { className: 'qubely-form-timepicker-wrapper' },
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', value: hour + ' : ' + minute, onClick: function onClick() {
                     return setTimePicker(!showTimePicker);
                 } }),
             React.createElement(
@@ -2180,6 +2174,7 @@ function Edit(props) {
             name === 'qubely/formfield-textarea' && React.createElement(
                 PanelBody,
                 { title: __('Form-field Settings'), opened: true },
+                renderCommonSettings(),
                 React.createElement(Range, {
                     min: 50,
                     max: 600,
@@ -2443,6 +2438,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
             type: {
                 type: 'string',
                 default: 'text'
+            },
+            placeHolder: {
+                type: 'string',
+                default: 'Add text'
             }
         })
 
@@ -2460,6 +2459,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
             type: {
                 type: 'string',
                 default: 'number'
+            },
+            placeHolder: {
+                type: 'string',
+                default: 'Add number'
             }
         })
 
@@ -2477,6 +2480,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
             type: {
                 type: 'string',
                 default: 'email'
+            },
+            placeHolder: {
+                type: 'string',
+                default: 'Add email'
             }
         })
 
@@ -2504,6 +2511,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
                 style: [{
                     selector: '{{QUBELY}} .qubely-form-field.qubely-form-textarea { height: {{height}};}'
                 }]
+            },
+            placeHolder: {
+                type: 'string',
+                default: 'Add text'
             }
         })
 
@@ -3006,14 +3017,14 @@ registerBlockType('qubely/form', {
         spacing: {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [{
-                selector: '{{QUBELY}} .qubely-form .qubely-form-group:not(:last-child) {margin-bottom: {{spacing}};}'
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
             }]
         },
 
         gutter: {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [{
-                selector: '{{QUBELY}} .qubely-form {margin: 0 calc(-{{gutter}}/2);} {{QUBELY}} .qubely-form .qubely-form-group {padding: 0 calc({{gutter}}/2);}'
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-left: calc(-{{gutter}}/2);margin-right: calc(-{{gutter}}/2);}'
             }]
         },
 
@@ -3046,17 +3057,24 @@ registerBlockType('qubely/form', {
         inputTypography: {
             type: 'obejct', default: { openTypography: 1, size: { md: 14, unit: 'px' } },
             style: [{
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control, {{QUBELY}} .qubely-form .qubely-form-control::placeholder'
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field, {{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field::placeholder'
+            }]
+        },
+        inputBoxShadow: {
+            type: 'object',
+            default: {},
+            style: [{
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
             }]
         },
 
-        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control {color: {{inputColor}};}' }] },
-        inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:Hover {color: {{inputColorHover}};}' }] },
-        inputColorFocus: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {color: {{inputColorFocus}};}' }] },
+        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}' }] },
+        inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):Hover {color: {{inputColorHover}};}' }] },
+        inputColorFocus: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {color: {{inputColorFocus}};}' }] },
 
-        placeholderColor: { type: 'string', default: "#818181", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder {color: {{placeholderColor}};}' }] },
-        placeholderColorHover: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:Hover {color: {{placeholderColorHover}};}' }] },
-        placeholderColorFocus: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:focus {color: {{placeholderColorFocus}};}' }] },
+        placeholderColor: { type: 'string', default: "#818181", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder {color: {{placeholderColor}};}' }] },
+        placeholderColorHover: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:Hover {color: {{placeholderColorHover}};}' }] },
+        placeholderColorFocus: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:focus {color: {{placeholderColorFocus}};}' }] },
 
         inputBg: {
             type: 'string', default: "#fff",
@@ -3137,20 +3155,21 @@ registerBlockType('qubely/form', {
             condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputCorner', relation: '==', value: 'custom' }],
             selector: '{{QUBELY}} .qubely-form .qubely-form-control {border-radius: {{inputCornerRadius}};}'
         }]
-    }), _defineProperty(_extends2, 'inputSize', { type: 'string', default: 'medium' }), _defineProperty(_extends2, 'inputPaddingY', {
-        type: 'object', default: { md: 10, unit: 'px' },
+    }), _defineProperty(_extends2, 'inputSize', { type: 'string', default: 'medium' }), _defineProperty(_extends2, 'inputCustomSize', {
+        type: 'object',
+        default: {
+            openPadding: 1,
+            paddingType: 'custom',
+            global: { md: '5' },
+            custom: { md: '5 10 5 10' },
+            unit: 'px'
+        },
         style: [{
             condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+            selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field '
         }, {
             condition: [{ key: 'layout', relation: '==', value: 'material' }, { key: 'inputSize', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
-        }]
-    }), _defineProperty(_extends2, 'inputPaddingX', {
-        type: 'object', default: { md: 15, unit: 'px' },
-        style: [{
-            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
+            selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field'
         }]
     }), _defineProperty(_extends2, 'textareaHeight', {
         type: 'object', default: { md: 200, unit: 'px' },

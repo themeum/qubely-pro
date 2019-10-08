@@ -48,6 +48,10 @@ const qubelyFormFields = [
                     type: 'string',
                     default: 'text'
                 },
+                placeHolder: {
+                    type: 'string',
+                    default: 'Add text'
+                },
             }
 
         },
@@ -69,6 +73,10 @@ const qubelyFormFields = [
                     type: 'string',
                     default: 'number'
                 },
+                placeHolder: {
+                    type: 'string',
+                    default: 'Add number'
+                },
             }
 
         },
@@ -89,6 +97,10 @@ const qubelyFormFields = [
                 type: {
                     type: 'string',
                     default: 'email'
+                },
+                placeHolder: {
+                    type: 'string',
+                    default: 'Add email'
                 },
             }
 
@@ -122,6 +134,10 @@ const qubelyFormFields = [
                             selector: '{{QUBELY}} .qubely-form-field.qubely-form-textarea { height: {{height}};}'
                         }
                     ]
+                },
+                placeHolder: {
+                    type: 'string',
+                    default: 'Add text'
                 },
             }
 

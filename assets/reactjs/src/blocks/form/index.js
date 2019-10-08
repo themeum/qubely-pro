@@ -114,7 +114,7 @@ registerBlockType('qubely/form', {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-group:not(:last-child) {margin-bottom: {{spacing}};}'
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
                 }
             ]
         },
@@ -123,7 +123,7 @@ registerBlockType('qubely/form', {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-form {margin: 0 calc(-{{gutter}}/2);} {{QUBELY}} .qubely-form .qubely-form-group {padding: 0 calc({{gutter}}/2);}'
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-left: calc(-{{gutter}}/2);margin-right: calc(-{{gutter}}/2);}'
                 }
             ]
         },
@@ -172,18 +172,27 @@ registerBlockType('qubely/form', {
             type: 'obejct', default: { openTypography: 1, size: { md: 14, unit: 'px' } },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control, {{QUBELY}} .qubely-form .qubely-form-control::placeholder'
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field, {{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field::placeholder'
                 }
             ]
         },
+        inputBoxShadow: {
+			type: 'object',
+			default: {},
+			style: [
+				{
+					selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
+				}
+			]
+        },
+        
+        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}' }] },
+        inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):Hover {color: {{inputColorHover}};}' }] },
+        inputColorFocus: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {color: {{inputColorFocus}};}' }] },
 
-        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control {color: {{inputColor}};}' }] },
-        inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:Hover {color: {{inputColorHover}};}' }] },
-        inputColorFocus: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {color: {{inputColorFocus}};}' }] },
-
-        placeholderColor: { type: 'string', default: "#818181", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder {color: {{placeholderColor}};}' }] },
-        placeholderColorHover: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:Hover {color: {{placeholderColorHover}};}' }] },
-        placeholderColorFocus: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:focus {color: {{placeholderColorFocus}};}' }] },
+        placeholderColor: { type: 'string', default: "#818181", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder {color: {{placeholderColor}};}' }] },
+        placeholderColorHover: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:Hover {color: {{placeholderColorHover}};}' }] },
+        placeholderColorFocus: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:focus {color: {{placeholderColorFocus}};}' }] },
 
         inputBg: {
             type: 'string', default: "#fff",
@@ -317,37 +326,63 @@ registerBlockType('qubely/form', {
         },
 
         inputSize: { type: 'string', default: 'medium' },
-        inputPaddingY: {
-            type: 'object', default: { md: 10, unit: 'px' },
+        inputCustomSize: {
+            type: 'object',
+            default: {
+                openPadding: 1,
+                paddingType: 'custom',
+                global: { md: '5' },
+                custom: { md: '5 10 5 10' },
+                unit: 'px'
+            },
             style: [
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                         { key: 'inputSize', relation: '==', value: 'custom' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+                    selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field '
                 },
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: 'material' },
                         { key: 'inputSize', relation: '==', value: 'custom' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+                    selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field'
                 }
             ]
         },
-        inputPaddingX: {
-            type: 'object', default: { md: 15, unit: 'px' },
-            style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                        { key: 'inputSize', relation: '==', value: 'custom' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
-                }
-            ]
-        },
+        // inputPaddingY: {
+        //     type: 'object', default: { md: 10, unit: 'px' },
+        //     style: [
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'classic' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        //         },
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'material' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        //         }
+        //     ]
+        // },
+        // inputPaddingX: {
+        //     type: 'object', default: { md: 15, unit: 'px' },
+        //     style: [
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'classic' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
+        //         }
+        //     ]
+        // },
         textareaHeight: {
             type: 'object', default: { md: 200, unit: 'px' },
             style: [

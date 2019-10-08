@@ -148,7 +148,7 @@ export default function Edit(props) {
 
     const renderDatePicker = () => {
         return (
-            <div class="qubely-form-field qubely-date-picker-wrapper">
+            <div class="qubely-date-picker-wrapper">
 
                 {/* <input
                     type="date"
@@ -157,7 +157,7 @@ export default function Edit(props) {
                     value={dateString}
                     onChange={newDate => setDateString(newDate.target.value)}
                 /> */}
-                <input type="text" className="qubely-datepicker" ref={datePicker} autocomplete="off"></input>
+                <input type="text" className="qubely-form-field qubely-datepicker" ref={datePicker} autocomplete="off"></input>
             </div>
         )
     }
@@ -198,8 +198,8 @@ export default function Edit(props) {
     }
     const renderTimePicker = () => {
         return (
-            <div className="qubely-form-field  qubely-form-timepicker-wrapper">
-                <input type="text" className="qubely-time-picker" value={`${hour} : ${minute}`} onClick={() => setTimePicker(!showTimePicker)} />
+            <div className="qubely-form-timepicker-wrapper">
+                <input type="text" className="qubely-form-field qubely-time-picker" value={`${hour} : ${minute}`} onClick={() => setTimePicker(!showTimePicker)} />
                 <div className={`qubely-form-timepicker${showTimePicker ? ' qubely-active' : ''}`}>
 
                     <div className={`qubely-timePicker-hour`}>
@@ -368,6 +368,7 @@ export default function Edit(props) {
                 {
                     name === 'qubely/formfield-textarea' &&
                     <PanelBody title={__('Form-field Settings')} opened={true}>
+                        {renderCommonSettings()}
                         <Range
                             min={50}
                             max={600}

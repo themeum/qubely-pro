@@ -6,9 +6,12 @@ const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.compon
 const { Component, Fragment } = wp.element
 const {
     ButtonGroup,
+    BoxShadow,
+    Padding,
     Styles,
     Wrapper,
     Range,
+    Separator,
     Toggle,
     Typography,
     Color,
@@ -194,7 +197,14 @@ class Edit extends Component {
                 labelAlignment,
                 labelTypography,
 
+                //input settings
+                spacing,
+                gutter,
+                inputSize,
+                inputCustomSize,
                 inputTypography,
+                inputBoxShadow,
+
                 inputColor,
                 inputColorFocus,
                 inputColorHover,
@@ -207,9 +217,8 @@ class Edit extends Component {
                 inputBorderColorHover,
                 inputCorner,
                 inputCornerRadius,
-                inputSize,
-                inputPaddingX,
-                inputPaddingY,
+
+
 
                 textareaHeight,
 
@@ -217,6 +226,8 @@ class Edit extends Component {
                 placeholderColorFocus,
                 placeholderColorHover,
 
+
+                //button
                 enableButton,
                 buttonTag,
                 buttonSize,
@@ -225,8 +236,6 @@ class Edit extends Component {
                 buttonIconName,
                 buttonIconPosition,
 
-                spacing,
-                gutter,
                 fieldErrorMessage,
                 formSuccessMessage,
                 formErrorMessage,
@@ -298,72 +307,58 @@ class Edit extends Component {
 
 
                     <PanelBody title={__('Input')} initialOpen={false}>
-                        <Wrapper label={__('Size')}>
-                            <RadioAdvanced
-                                label={__('Input Size')}
-                                options={[
-                                    { label: 'S', value: 'small', title: 'Small' },
-                                    { label: 'M', value: 'medium', title: 'Medium' },
-                                    { label: 'L', value: 'large', title: 'Large' },
-                                    { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                                ]}
-                                value={inputSize}
-                                onChange={(value) => setAttributes({ inputSize: value })} />
-                            {inputSize == 'custom' &&
-                                <Fragment>
-                                    <Range
-                                        label={<span className="dashicons dashicons-sort" title="Padding Y" />}
-                                        value={inputPaddingY}
-                                        onChange={(value) => setAttributes({ inputPaddingY: value })}
-                                        unit={['px', 'em', '%']}
-                                        min={0}
-                                        max={50}
-                                        responsive
-                                    />
 
-                                    {layout == 'classic' &&
-                                        <Range
-                                            label={<span className="dashicons dashicons-leftright" title="X Padding" />}
-                                            value={inputPaddingX}
-                                            onChange={(value) => setAttributes({ inputPaddingX: value })}
-                                            unit={['px', 'em', '%']}
-                                            min={0}
-                                            max={50}
-                                            responsive
-                                        />
-                                    }
+                        <RadioAdvanced
+                            label={__('Input Size')}
+                            options={[
+                                { label: 'S', value: 'small', title: 'Small' },
+                                { label: 'M', value: 'medium', title: 'Medium' },
+                                { label: 'L', value: 'large', title: 'Large' },
+                                { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                            ]}
+                            value={inputSize}
+                            onChange={(value) => setAttributes({ inputSize: value })} />
 
-                                </Fragment>
-                            }
-                            <Range
-                                label={__('Textarea Height')}
-                                value={textareaHeight}
-                                onChange={(value) => setAttributes({ textareaHeight: value })}
-                                unit={['px', 'em', '%']}
-                                min={100}
-                                max={500}
-                                responsive
-                            />
-
-                            <Range
-                                label={__('Spacing')}
-                                value={spacing}
-                                onChange={(value) => setAttributes({ spacing: value })}
-                                unit={['px', 'em', '%']}
+                        {inputSize == 'custom' &&
+                            <Padding
+                                max={50}
                                 min={0}
-                                max={60}
                                 responsive
-                            />
-                            <Range
-                                label={__('Gutter')}
-                                value={gutter}
-                                onChange={(value) => setAttributes({ gutter: value })}
+                                value={inputCustomSize}
+                                label={__('Custom Size')}
                                 unit={['px', 'em', '%']}
-                                min={0}
-                                max={60}
-                                responsive
+                                onChange={value => setAttributes({ inputCustomSize: value })}
                             />
-                        </Wrapper>
+                        }
+                        <Range
+                            min={100}
+                            max={500}
+                            responsive
+                            value={textareaHeight}
+                            unit={['px', 'em', '%']}
+                            label={__('Textarea Height')}
+                            onChange={(value) => setAttributes({ textareaHeight: value })}
+                        />
+
+                        <Range
+                            min={0}
+                            max={60}
+                            responsive
+                            value={spacing}
+                            label={__('Spacing')}
+                            unit={['px', 'em', '%']}
+                            onChange={(value) => setAttributes({ spacing: value })}
+                        />
+                        <Range
+                            min={0}
+                            max={60}
+                            responsive
+                            value={gutter}
+                            label={__('Gutter')}
+                            unit={['px', 'em', '%']}
+                            onChange={(value) => setAttributes({ gutter: value })}
+                        />
+
                         <Tabs>
                             <Tab tabTitle={__('Normal')}>
                                 <Color label={__('Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
@@ -411,7 +406,19 @@ class Edit extends Component {
                                 responsive
                             />
                         }
+
                         <Typography value={inputTypography} onChange={val => setAttributes({ inputTypography: val })} />
+
+                        <Separator />
+
+                        <BoxShadow
+                            disableInset
+                            label={__('Box-Shadow')}
+                            value={inputBoxShadow}
+                            onChange={value => setAttributes({ inputBoxShadow: value })}
+                        />
+
+                        <Separator />
                     </PanelBody>
 
 
@@ -509,7 +516,7 @@ class Edit extends Component {
 
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
-                        <form className="qubely-form">
+                        <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])} />
                         </form>
 

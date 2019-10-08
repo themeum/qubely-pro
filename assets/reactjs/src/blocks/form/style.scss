@@ -1,42 +1,18 @@
 .qubely-block-form {
-  &.qubely-layout-material {
-    .qubely-form {
-      .qubely-form-group {
-        .qubely-form-group-inner {
-          position: relative;
-        }
-        .qubely-form-label {
-          position: absolute;
-          pointer-events: none;
-          top: 0px;
-          transition: 0.2s ease all;
-        }
-        .qubely-form-control {
-          border-radius: 0;
-          box-shadow: none;
-          padding-left: 0;
-          padding-right: 0;
-          &:focus,
-          &:valid {
-            outline: none;
-            color: #333;
-          }
-
-          &::placeholder {
-            opacity: 0;
-            transition: 400ms;
-          }
-          &:focus {
-            &::placeholder {
-              opacity: 1;
-            }
-          }
-        }
-
-        .qubely-form-control:focus ~ .qubely-form-label,
-        .qubely-form-control:valid ~ .qubely-form-label {
-          top: -20px;
-        }
+  .qubely-form {
+    &.is-small {
+      .qubely-form-field {
+        padding: 6px 8px;
+      }
+    }
+    &.is-medium {
+      .qubely-form-field {
+        padding: 8.5px 12px;
+      }
+    }
+    &.is-large {
+      .qubely-form-field {
+        padding: 14.5px 16px;
       }
     }
   }
