@@ -1,43 +1,45 @@
-.qubely-form-field-wrapper,
-.qubely-form-field {
-  .qubely-form-date-picker {
-    width: fit-content;
-  }
-  width: 100%;
-  .qubely-form-field-radio-option,
-  .qubely-form-field-checkbox-option {
-    display: flex;
-    align-items: center;
-    &:hover {
+.qubely-form-field-wrapper {
+  display: flex;
+  .qubely-form-field {
+    width: 100%;
+    .qubely-form-date-picker {
+      width: fit-content;
+    }
+    .qubely-form-field-radio-option,
+    .qubely-form-field-checkbox-option {
+      display: flex;
+      align-items: center;
+      &:hover {
+        .qubely-action-remove-option {
+          display: block;
+        }
+      }
       .qubely-action-remove-option {
-        display: block;
+        display: none;
+        font-size: 12px;
+        width: 18px;
+        height: 18px;
+        line-height: 20px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        margin-left: 10px;
+        border-radius: 10px;
+        z-index: 1;
+        cursor: pointer;
       }
     }
-    .qubely-action-remove-option {
-      display: none;
-      font-size: 12px;
-      width: 18px;
-      height: 18px;
-      line-height: 20px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      margin-left: 10px;
-      border-radius: 10px;
-      z-index: 1;
-      cursor: pointer;
-    }
-  }
 
-  .qubely-action-add-option {
-    color: #2184f9;
-    cursor: pointer;
-    .qubely-option-add-icon {
-      margin-right: 5px;
-      -webkit-text-stroke: 2px white;
-    }
-    .qubely-action-add-text {
+    .qubely-action-add-option {
       color: #2184f9;
+      cursor: pointer;
+      .qubely-option-add-icon {
+        margin-right: 5px;
+        -webkit-text-stroke: 2px white;
+      }
+      .qubely-action-add-text {
+        color: #2184f9;
+      }
     }
   }
 
@@ -69,24 +71,12 @@
     padding: 15px;
     z-index: 100;
   }
-  .qubely-timePicker-button{
+  .qubely-timePicker-button {
     cursor: pointer;
   }
 }
 
-.qubely-form-time-picker-format {
-  .qubely-field > label {
-    width: 45%;
-  }
-}
-.qubely-form-time-picker-minute-interval {
-  padding: 10px 0px 15px 0px;
-  .qubely-field {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
+//add item modal css
 .qubely-dropdown-field-option,
 .qubely-dropdown-add-field-option {
   padding: 10px 0px;
@@ -121,6 +111,8 @@
     font-size: 15px;
   }
 }
+
+//jquery ui date-picker
 
 #ui-datepicker-div {
   display: none;

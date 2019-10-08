@@ -128,51 +128,43 @@ registerBlockType('qubely/form', {
             ]
         },
 
+        //label settings
         labelTypography: {
-            type: 'obejct', default: { openTypography: 1, size: { md: 16, unit: 'px' } },
+            type: 'object',
+            default: {},
             style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-label'
-                },
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'material' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-label'
-                }
+                { selector: '{{QUBELY}} .qubely-form-field-label' }
             ]
         },
-
         labelColor: {
-            type: 'string', default: "",
+            type: 'string',
+            default: '',
+            style: [
+                { selector: '{{QUBELY}} .qubely-form-field-label { color:{{labelColor}}; }' }
+            ]
+        },
+        labelAlignment: {
+            type: 'string',
+            default: 'top',
             style: [
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'classic' }
+                        { key: 'labelAlignment', relation: '==', value: 'top' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-label {color: {{labelColor}};}'
+                    selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:column;}'
                 },
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'material' }
+                        { key: 'labelAlignment', relation: '==', value: 'left' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-label {color: {{labelColor}};}'
-                }
-            ]
-        },
-
-        labelColorFocus: {
-            type: 'string', default: "",
-            style: [
+                    selector: '{{QUBELY}} .qubely-form-field-wrapper {justify-content:flex-start;}'
+                },
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'material' }
+                        { key: 'labelAlignment', relation: '==', value: 'right' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form-control:focus ~ .qubely-form-label, {{QUBELY}} .qubely-form-control:valid ~ .qubely-form-label {color: {{labelColorFocus}};}'
-                }
+                    selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:row-reverse;}'
+                },
             ]
         },
 
