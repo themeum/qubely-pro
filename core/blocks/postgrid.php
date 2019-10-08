@@ -64,7 +64,7 @@ function register_block_qubely_postgrid_pro()
 				),
 				'column' => array(
 					'type' => 'object',
-					'default' => array('md' => 3, 'sm' => 2, 'xs' => 1),
+					'default' => array('md' => 2, 'sm' => 1, 'xs' => 1),
 				),
 
 				//content
@@ -1022,7 +1022,7 @@ function register_block_qubely_postgrid_pro()
 						'md' => 10,
 						'unit' => 'px'
 					),
-					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-post-img {padding-bottom: {{imageSpace}};}']]
+					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-post-img {margin-bottom: {{imageSpace}};}']]
 				),
 				'titleSpace' => array(
 					'type' => 'object',
