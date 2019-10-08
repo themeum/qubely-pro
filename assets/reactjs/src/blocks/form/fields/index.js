@@ -144,6 +144,10 @@ const qubelyFormFields = [
                     type: 'string',
                     default: 'dropdown'
                 },
+                label: {
+                    type: 'string',
+                    default: 'Dropdown',
+                },
                 options: {
                     type: 'array',
                     default: ['option one', 'option two', 'option three']

@@ -34,7 +34,29 @@ const FieldDefaults = {
         required: {
             type: 'boolean',
             default: false,
+        },
+
+        //label settings
+        labelTypography: {
+            type: 'object',
+            default: {},
+            style: [
+                { selector: '{{QUBELY}} .qubely-form-field-label' }
+            ]
+        },
+        labelColor: {
+            type: 'string',
+            default: '',
+            style: [
+                { selector: '{{QUBELY}} .qubely-form-field-label { color:{{labelColor}}; }' }
+            ]
+        },
+        labelAlignment: {
+            type: 'string',
+            default: 'top',
+            // style: []
         }
+
     }
 }
 export default FieldDefaults

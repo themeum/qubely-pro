@@ -29,6 +29,25 @@ export default function Save(props) {
         style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
     }
 
+    const renderOptions = () => {
+        return (
+            <div className={`qubely-form-field qubely-form-${type}`} >
+                {options.map((option, index) => {
+                    return (
+                        <div className={`qubely-form-field-${type}-option`}>
+                            <input type={type} id={option} value={option} />
+                            <RichText.Content
+                                placeholder={__('option')}
+                                className={`qubely-${type}-option`}
+                                value={option}
+                            />
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
+
     const renderTimePicker = () => {
 
         let options = JSON.stringify(
@@ -40,7 +59,7 @@ export default function Save(props) {
         return (
             <Fragment>
                 <input type="text" className="qubely-time-picker" value={`12 : 00`} />
-                <div className={`qubely-form-timepicker`}  data-options={options}>
+                <div className={`qubely-form-timepicker`} data-options={options}>
 
                     <div className={`qubely-timePicker-hour`}>
                         <div className="qubely-timePicker-button qubely-hour-button-up"  >
@@ -100,7 +119,7 @@ export default function Save(props) {
                                 renderOptions()
                                 :
                                 type === 'date' ?
-                                <input type="text" className="qubely-datepicker" autocomplete="off"></input>
+                                    <input type="text" className="qubely-datepicker" autocomplete="off"></input>
                                     :
                                     type === 'time' ?
                                         renderTimePicker()

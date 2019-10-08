@@ -1,7 +1,16 @@
 
 const { __ } = wp.i18n
-const { InspectorControls, RichText } = wp.editor
-const { useState, useEffect, useRef, Fragment } = wp.element
+const {
+    InspectorControls,
+    RichText
+} = wp.editor
+
+const {
+    useState,
+    useEffect,
+    useRef,
+    Fragment
+} = wp.element
 
 const {
     PanelBody,
@@ -14,10 +23,12 @@ const {
 
 const {
     ButtonGroup,
+    Color,
     RadioAdvanced,
     Range,
     Separator,
     Toggle,
+    Typography,
     CssGenerator: { CssGenerator }
 } = wp.qubelyComponents
 
@@ -60,7 +71,13 @@ export default function Edit(props) {
             width,
             height,
             type,
+
+            //label
             label,
+            labelColor,
+            labelAlignment,
+            labelTypography,
+
             instruction,
             options,
             placeHolder,
@@ -272,29 +289,6 @@ export default function Edit(props) {
     const renderCommonSettings = () => {
         return (
             <Fragment>
-                <RadioAdvanced
-                    label={__('Field Size')}
-                    options={[
-                        { label: 'S', value: 'small', title: 'Small' },
-                        { label: 'M', value: 'medium', title: 'Medium' },
-                        { label: 'L', value: 'large', title: 'Large' },
-                        { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                    ]}
-                    value={fieldSize}
-                    onChange={value => setAttributes({ fieldSize: value })} />
-
-                {
-                    fieldSize === 'custom' &&
-                    <RangeControl
-                        label={__('Percentage width')}
-                        value={width || ''}
-                        onChange={value => setAttributes({ width: value })}
-                        min={0}
-                        max={100}
-                        required
-                        allowReset
-                    />
-                }
                 <TextControl
                     label={__('Label')}
                     value={label}
@@ -312,6 +306,36 @@ export default function Edit(props) {
                     help={__('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')}
                 />
 
+                <Separator />
+
+
+                <RadioAdvanced
+                    label={__('Field Size')}
+                    options={[
+                        { label: 'S', value: 'small', title: 'Small' },
+                        { label: 'M', value: 'medium', title: 'Medium' },
+                        { label: 'L', value: 'large', title: 'Large' },
+                        { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                    ]}
+                    value={fieldSize}
+                    onChange={value => setAttributes({ fieldSize: value })} />
+
+                {
+                    fieldSize === 'custom' &&
+                    <RangeControl
+                        label={__('Percentage width')}
+                        value={width || ''}
+                        onChange={value => setAttributes({ width: value })}
+                        min={25}
+                        max={100}
+                        required
+                        allowReset
+                    />
+                }
+                < Toggle
+                    label={__('Required')}
+                    value={required}
+                    onChange={value => setAttributes({ required: value })} />
             </Fragment>
         )
     }
@@ -336,6 +360,13 @@ export default function Edit(props) {
         <Fragment>
 
             <InspectorControls>
+
+                {
+                    name === 'qubely/formfield-text' &&
+                    <PanelBody title={__('Text')} opened={true}>
+                        {renderCommonSettings()}
+                    </PanelBody>
+                }
                 {
                     name === 'qubely/formfield-textarea' &&
                     <PanelBody title={__('Form-field Settings')} opened={true}>
@@ -391,13 +422,6 @@ export default function Edit(props) {
 
                         </Fragment>
 
-                        <Separator />
-
-                        < Toggle
-                            label={__('Required')}
-                            value={required}
-                            onChange={value => setAttributes({ required: value })} />
-
                     </PanelBody>
 
                 }
@@ -445,6 +469,149 @@ export default function Edit(props) {
                         />
                     </PanelBody>
                 }
+
+                <PanelBody title={__('Label')} initialOpen={false}>
+                    <ButtonGroup
+                        label={__('Label Alignment')}
+                        options={
+                            [
+                                [__('Top'), 'top'],
+                                [__('Left'), 'left'],
+                                [__('Right'), 'right'],
+                            ]}
+                        value={labelAlignment}
+                        onChange={value => setAttributes({ labelAlignment: value })}
+                    />
+                    <Typography
+                        value={labelTypography}
+                        onChange={val => setAttributes({ labelTypography: val })}
+                    />
+                    <Color
+                        label={__('Color')}
+                        value={labelColor}
+                        onChange={val => setAttributes({ labelColor: val })}
+                    />
+                </PanelBody>
+
+                {/* <PanelBody title={__('Input')} initialOpen={false}>
+                    <Wrapper label={__('Size')}>
+                        <RadioAdvanced
+                            label={__('Input Size')}
+                            options={[
+                                { label: 'S', value: 'small', title: 'Small' },
+                                { label: 'M', value: 'medium', title: 'Medium' },
+                                { label: 'L', value: 'large', title: 'Large' },
+                                { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                            ]}
+                            value={inputSize}
+                            onChange={(value) => setAttributes({ inputSize: value })} />
+                        {inputSize == 'custom' &&
+                            <Fragment>
+                                <Range
+                                    label={<span className="dashicons dashicons-sort" title="Padding Y" />}
+                                    value={inputPaddingY}
+                                    onChange={(value) => setAttributes({ inputPaddingY: value })}
+                                    unit={['px', 'em', '%']}
+                                    min={0}
+                                    max={50}
+                                    responsive
+                                />
+
+                                {layout == 'classic' &&
+                                    <Range
+                                        label={<span className="dashicons dashicons-leftright" title="X Padding" />}
+                                        value={inputPaddingX}
+                                        onChange={(value) => setAttributes({ inputPaddingX: value })}
+                                        unit={['px', 'em', '%']}
+                                        min={0}
+                                        max={50}
+                                        responsive
+                                    />
+                                }
+
+                            </Fragment>
+                        }
+                        <Range
+                            label={__('Textarea Height')}
+                            value={textareaHeight}
+                            onChange={(value) => setAttributes({ textareaHeight: value })}
+                            unit={['px', 'em', '%']}
+                            min={100}
+                            max={500}
+                            responsive
+                        />
+
+                        <Range
+                            label={__('Spacing')}
+                            value={spacing}
+                            onChange={(value) => setAttributes({ spacing: value })}
+                            unit={['px', 'em', '%']}
+                            min={0}
+                            max={60}
+                            responsive
+                        />
+                        <Range
+                            label={__('Gutter')}
+                            value={gutter}
+                            onChange={(value) => setAttributes({ gutter: value })}
+                            unit={['px', 'em', '%']}
+                            min={0}
+                            max={60}
+                            responsive
+                        />
+                    </Wrapper>
+                    <Tabs>
+                        <Tab tabTitle={__('Normal')}>
+                            <Color label={__('Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
+                            <Color label={__('Background Color')} value={inputBg} onChange={val => setAttributes({ inputBg: val })} />
+                            {layout == 'classic' &&
+                                <Border label={__('Border')} value={inputBorder} onChange={val => setAttributes({ inputBorder: val })} min={0} max={10} />
+                            }
+                            {layout == 'material' &&
+                                <Border label={__('Border')} value={inputBorderMaterial} onChange={val => setAttributes({ inputBorderMaterial: val })} min={0} max={10} />
+                            }
+                            <Color label={__('Placeholder Color')} value={placeholderColor} onChange={val => setAttributes({ placeholderColor: val })} />
+                        </Tab>
+                        <Tab tabTitle={__('Focus')}>
+                            <Color label={__('Color')} value={inputColorFocus} onChange={val => setAttributes({ inputColorFocus: val })} />
+                            <Color label={__('Background Color')} value={inputBgFocus} onChange={val => setAttributes({ inputBgFocus: val })} />
+                            <Color label={__('Border Color')} value={inputBorderColorFocus} onChange={(value) => setAttributes({ inputBorderColorFocus: value })} />
+                            <Color label={__('Placeholder Color')} value={placeholderColorFocus} onChange={val => setAttributes({ placeholderColorFocus: val })} />
+                        </Tab>
+                        <Tab tabTitle={__('Hover')}>
+                            <Color label={__('Color')} value={inputColorHover} onChange={val => setAttributes({ inputColorHover: val })} />
+                            <Color label={__('Background Color')} value={inputBgHover} onChange={val => setAttributes({ inputBgHover: val })} />
+                            <Color label={__('Border Color')} value={inputBorderColorHover} onChange={(value) => setAttributes({ inputBorderColorHover: value })} />
+                            <Color label={__('Placeholder Color')} value={placeholderColorHover} onChange={val => setAttributes({ placeholderColorHover: val })} />
+                        </Tab>
+                    </Tabs>
+                    <RadioAdvanced
+                        label={__('Corner')}
+                        options={[
+                            { svg: icons.corner_square, value: '0px', title: __('Square') },
+                            { svg: icons.corner_rounded, value: '4px', title: __('Rounded') },
+                            { svg: icons.corner_round, value: '50px', title: __('Round') },
+                            { icon: 'fas fa-cog', value: 'custom', title: __('Custom') }
+                        ]}
+                        value={inputCorner}
+                        onChange={val => setAttributes({ inputCorner: val })}
+                    />
+
+                    {inputCorner == 'custom' &&
+                        <Range
+                            label={__('Corner Radius')}
+                            value={inputCornerRadius}
+                            onChange={(value) => setAttributes({ inputCornerRadius: value })}
+                            min={0}
+                            max={100} unit={['px', 'em', '%']}
+                            responsive
+                        />
+                    }
+                    <Typography value={inputTypography} onChange={val => setAttributes({ inputTypography: val })} />
+                </PanelBody>
+
+                 */}
+
             </InspectorControls>
 
             <div className={`qubely-block-${uniqueId}`}>

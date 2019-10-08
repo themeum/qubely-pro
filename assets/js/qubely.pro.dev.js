@@ -1141,233 +1141,6 @@ var Edit = function (_Component) {
                             options: [{ value: 'classic', img: _icons2.default.form_classic, label: __('Classic') }, { value: 'material', img: _icons2.default.form_material, label: __('Material') }]
                         })
                     ),
-                    selectedItem >= 0 && React.createElement(
-                        PanelBody,
-                        { title: formItems[selectedItem].label ? formItems[selectedItem].label : __('Input Settings') },
-                        React.createElement(TextControl, {
-                            label: __('Label'),
-                            value: formItems[selectedItem].label,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('label', val);
-                            },
-                            placeholder: __('Enter Label')
-                        }),
-                        React.createElement(TextControl, {
-                            label: __('Name'),
-                            value: formItems[selectedItem].name,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('name', val);
-                            },
-                            placeholder: __('Enter Name'),
-                            help: __('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')
-                        }),
-                        formItems[selectedItem].type == 'checkbox' || formItems[selectedItem].type == 'radio' ? '' : React.createElement(TextControl, {
-                            label: __('Placeholder'),
-                            value: formItems[selectedItem].placeholder,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('placeholder', val);
-                            },
-                            placeholder: __('Enter Placeholder')
-                        }),
-                        React.createElement(Range, {
-                            label: __('Width'),
-                            value: formItems[selectedItem].width,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('width', val);
-                            },
-                            max: 100,
-                            min: 33,
-                            responsive: true
-                        }),
-                        React.createElement(Toggle, {
-                            label: __('Required'),
-                            value: formItems[selectedItem].required,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('required', val);
-                            }
-                        }),
-                        layout == 'classic' && React.createElement(Toggle, {
-                            label: __('Hide Label'),
-                            value: formItems[selectedItem].hideLabel,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('hideLabel', val);
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        PanelBody,
-                        { title: __('Label'), initialOpen: false },
-                        React.createElement(Typography, {
-                            value: labelTypography,
-                            onChange: function onChange(val) {
-                                return setAttributes({ labelTypography: val });
-                            }
-                        }),
-                        React.createElement(Color, {
-                            label: __('Color'),
-                            value: labelColor,
-                            onChange: function onChange(val) {
-                                return setAttributes({ labelColor: val });
-                            }
-                        }),
-                        layout == 'material' && React.createElement(Color, {
-                            label: __('Focus Color'),
-                            value: labelColorFocus,
-                            onChange: function onChange(val) {
-                                return setAttributes({ labelColorFocus: val });
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        PanelBody,
-                        { title: __('Input'), initialOpen: false },
-                        React.createElement(
-                            Wrapper,
-                            { label: __('Size') },
-                            React.createElement(RadioAdvanced, {
-                                label: __('Input Size'),
-                                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
-                                value: inputSize,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ inputSize: value });
-                                } }),
-                            inputSize == 'custom' && React.createElement(
-                                Fragment,
-                                null,
-                                React.createElement(Range, {
-                                    label: React.createElement('span', { className: 'dashicons dashicons-sort', title: 'Padding Y' }),
-                                    value: inputPaddingY,
-                                    onChange: function onChange(value) {
-                                        return setAttributes({ inputPaddingY: value });
-                                    },
-                                    unit: ['px', 'em', '%'],
-                                    min: 0,
-                                    max: 50,
-                                    responsive: true
-                                }),
-                                layout == 'classic' && React.createElement(Range, {
-                                    label: React.createElement('span', { className: 'dashicons dashicons-leftright', title: 'X Padding' }),
-                                    value: inputPaddingX,
-                                    onChange: function onChange(value) {
-                                        return setAttributes({ inputPaddingX: value });
-                                    },
-                                    unit: ['px', 'em', '%'],
-                                    min: 0,
-                                    max: 50,
-                                    responsive: true
-                                })
-                            ),
-                            React.createElement(Range, {
-                                label: __('Textarea Height'),
-                                value: textareaHeight,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ textareaHeight: value });
-                                },
-                                unit: ['px', 'em', '%'],
-                                min: 100,
-                                max: 500,
-                                responsive: true
-                            }),
-                            React.createElement(Range, {
-                                label: __('Spacing'),
-                                value: spacing,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ spacing: value });
-                                },
-                                unit: ['px', 'em', '%'],
-                                min: 0,
-                                max: 60,
-                                responsive: true
-                            }),
-                            React.createElement(Range, {
-                                label: __('Gutter'),
-                                value: gutter,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ gutter: value });
-                                },
-                                unit: ['px', 'em', '%'],
-                                min: 0,
-                                max: 60,
-                                responsive: true
-                            })
-                        ),
-                        React.createElement(
-                            Tabs,
-                            null,
-                            React.createElement(
-                                Tab,
-                                { tabTitle: __('Normal') },
-                                React.createElement(Color, { label: __('Color'), value: inputColor, onChange: function onChange(val) {
-                                        return setAttributes({ inputColor: val });
-                                    } }),
-                                React.createElement(Color, { label: __('Background Color'), value: inputBg, onChange: function onChange(val) {
-                                        return setAttributes({ inputBg: val });
-                                    } }),
-                                layout == 'classic' && React.createElement(Border, { label: __('Border'), value: inputBorder, onChange: function onChange(val) {
-                                        return setAttributes({ inputBorder: val });
-                                    }, min: 0, max: 10 }),
-                                layout == 'material' && React.createElement(Border, { label: __('Border'), value: inputBorderMaterial, onChange: function onChange(val) {
-                                        return setAttributes({ inputBorderMaterial: val });
-                                    }, min: 0, max: 10 }),
-                                React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColor, onChange: function onChange(val) {
-                                        return setAttributes({ placeholderColor: val });
-                                    } })
-                            ),
-                            React.createElement(
-                                Tab,
-                                { tabTitle: __('Focus') },
-                                React.createElement(Color, { label: __('Color'), value: inputColorFocus, onChange: function onChange(val) {
-                                        return setAttributes({ inputColorFocus: val });
-                                    } }),
-                                React.createElement(Color, { label: __('Background Color'), value: inputBgFocus, onChange: function onChange(val) {
-                                        return setAttributes({ inputBgFocus: val });
-                                    } }),
-                                React.createElement(Color, { label: __('Border Color'), value: inputBorderColorFocus, onChange: function onChange(value) {
-                                        return setAttributes({ inputBorderColorFocus: value });
-                                    } }),
-                                React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColorFocus, onChange: function onChange(val) {
-                                        return setAttributes({ placeholderColorFocus: val });
-                                    } })
-                            ),
-                            React.createElement(
-                                Tab,
-                                { tabTitle: __('Hover') },
-                                React.createElement(Color, { label: __('Color'), value: inputColorHover, onChange: function onChange(val) {
-                                        return setAttributes({ inputColorHover: val });
-                                    } }),
-                                React.createElement(Color, { label: __('Background Color'), value: inputBgHover, onChange: function onChange(val) {
-                                        return setAttributes({ inputBgHover: val });
-                                    } }),
-                                React.createElement(Color, { label: __('Border Color'), value: inputBorderColorHover, onChange: function onChange(value) {
-                                        return setAttributes({ inputBorderColorHover: value });
-                                    } }),
-                                React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColorHover, onChange: function onChange(val) {
-                                        return setAttributes({ placeholderColorHover: val });
-                                    } })
-                            )
-                        ),
-                        React.createElement(RadioAdvanced, {
-                            label: __('Corner'),
-                            options: [{ svg: _icons2.default.corner_square, value: '0px', title: __('Square') }, { svg: _icons2.default.corner_rounded, value: '4px', title: __('Rounded') }, { svg: _icons2.default.corner_round, value: '50px', title: __('Round') }, { icon: 'fas fa-cog', value: 'custom', title: __('Custom') }],
-                            value: inputCorner,
-                            onChange: function onChange(val) {
-                                return setAttributes({ inputCorner: val });
-                            }
-                        }),
-                        inputCorner == 'custom' && React.createElement(Range, {
-                            label: __('Corner Radius'),
-                            value: inputCornerRadius,
-                            onChange: function onChange(value) {
-                                return setAttributes({ inputCornerRadius: value });
-                            },
-                            min: 0,
-                            max: 100, unit: ['px', 'em', '%'],
-                            responsive: true
-                        }),
-                        React.createElement(Typography, { value: inputTypography, onChange: function onChange(val) {
-                                return setAttributes({ inputTypography: val });
-                            } })
-                    ),
                     React.createElement(
                         PanelBody,
                         { title: __('Settings'), initialOpen: false },
@@ -1817,10 +1590,12 @@ var _wp$components = wp.components,
     Tooltip = _wp$components.Tooltip;
 var _wp$qubelyComponents = wp.qubelyComponents,
     ButtonGroup = _wp$qubelyComponents.ButtonGroup,
+    Color = _wp$qubelyComponents.Color,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
     Range = _wp$qubelyComponents.Range,
     Separator = _wp$qubelyComponents.Separator,
     Toggle = _wp$qubelyComponents.Toggle,
+    Typography = _wp$qubelyComponents.Typography,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
 function Edit(props) {
 
@@ -1903,6 +1678,9 @@ function Edit(props) {
         height = _props$attributes.height,
         type = _props$attributes.type,
         label = _props$attributes.label,
+        labelColor = _props$attributes.labelColor,
+        labelAlignment = _props$attributes.labelAlignment,
+        labelTypography = _props$attributes.labelTypography,
         instruction = _props$attributes.instruction,
         options = _props$attributes.options,
         placeHolder = _props$attributes.placeHolder,
@@ -2150,24 +1928,6 @@ function Edit(props) {
         return React.createElement(
             Fragment,
             null,
-            React.createElement(RadioAdvanced, {
-                label: __('Field Size'),
-                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
-                value: fieldSize,
-                onChange: function onChange(value) {
-                    return setAttributes({ fieldSize: value });
-                } }),
-            fieldSize === 'custom' && React.createElement(RangeControl, {
-                label: __('Percentage width'),
-                value: width || '',
-                onChange: function onChange(value) {
-                    return setAttributes({ width: value });
-                },
-                min: 0,
-                max: 100,
-                required: true,
-                allowReset: true
-            }),
             React.createElement(TextControl, {
                 label: __('Label'),
                 value: label,
@@ -2189,7 +1949,32 @@ function Edit(props) {
                     return setAttributes({ fieldName: value });
                 },
                 help: __('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')
-            })
+            }),
+            React.createElement(Separator, null),
+            React.createElement(RadioAdvanced, {
+                label: __('Field Size'),
+                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                value: fieldSize,
+                onChange: function onChange(value) {
+                    return setAttributes({ fieldSize: value });
+                } }),
+            fieldSize === 'custom' && React.createElement(RangeControl, {
+                label: __('Percentage width'),
+                value: width || '',
+                onChange: function onChange(value) {
+                    return setAttributes({ width: value });
+                },
+                min: 25,
+                max: 100,
+                required: true,
+                allowReset: true
+            }),
+            React.createElement(Toggle, {
+                label: __('Required'),
+                value: required,
+                onChange: function onChange(value) {
+                    return setAttributes({ required: value });
+                } })
         );
     };
 
@@ -2215,6 +2000,11 @@ function Edit(props) {
         React.createElement(
             InspectorControls,
             null,
+            name === 'qubely/formfield-text' && React.createElement(
+                PanelBody,
+                { title: __('Text'), opened: true },
+                renderCommonSettings()
+            ),
             name === 'qubely/formfield-textarea' && React.createElement(
                 PanelBody,
                 { title: __('Form-field Settings'), opened: true },
@@ -2292,14 +2082,7 @@ function Edit(props) {
                             '  Add new item '
                         )
                     )
-                ),
-                React.createElement(Separator, null),
-                React.createElement(Toggle, {
-                    label: __('Required'),
-                    value: required,
-                    onChange: function onChange(value) {
-                        return setAttributes({ required: value });
-                    } })
+                )
             ),
             name === 'qubely/formfield-time' && React.createElement(
                 PanelBody,
@@ -2336,6 +2119,31 @@ function Edit(props) {
                     value: required,
                     onChange: function onChange(value) {
                         return setAttributes({ required: value });
+                    }
+                })
+            ),
+            React.createElement(
+                PanelBody,
+                { title: __('Label'), initialOpen: false },
+                React.createElement(ButtonGroup, {
+                    label: __('Label Alignment'),
+                    options: [[__('Top'), 'top'], [__('Left'), 'left'], [__('Right'), 'right']],
+                    value: labelAlignment,
+                    onChange: function onChange(value) {
+                        return setAttributes({ labelAlignment: value });
+                    }
+                }),
+                React.createElement(Typography, {
+                    value: labelTypography,
+                    onChange: function onChange(val) {
+                        return setAttributes({ labelTypography: val });
+                    }
+                }),
+                React.createElement(Color, {
+                    label: __('Color'),
+                    value: labelColor,
+                    onChange: function onChange(val) {
+                        return setAttributes({ labelColor: val });
                     }
                 })
             )
@@ -2411,7 +2219,25 @@ var FieldDefaults = {
         required: {
             type: 'boolean',
             default: false
+        },
+
+        //label settings
+        labelTypography: {
+            type: 'object',
+            default: {},
+            style: [{ selector: '{{QUBELY}} .qubely-form-field-label' }]
+        },
+        labelColor: {
+            type: 'string',
+            default: '',
+            style: [{ selector: '{{QUBELY}} .qubely-form-field-label { color:{{labelColor}}; }' }]
+        },
+        labelAlignment: {
+            type: 'string',
+            default: 'top'
+            // style: []
         }
+
     }
 };
 exports.default = FieldDefaults;
@@ -2565,6 +2391,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
             type: {
                 type: 'string',
                 default: 'dropdown'
+            },
+            label: {
+                type: 'string',
+                default: 'Dropdown'
             },
             options: {
                 type: 'array',
@@ -2760,6 +2590,25 @@ function Save(props) {
         style = { width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%' };
     }
 
+    var renderOptions = function renderOptions() {
+        return React.createElement(
+            'div',
+            { className: 'qubely-form-field qubely-form-' + type },
+            options.map(function (option, index) {
+                return React.createElement(
+                    'div',
+                    { className: 'qubely-form-field-' + type + '-option' },
+                    React.createElement('input', { type: type, id: option, value: option }),
+                    React.createElement(RichText.Content, {
+                        placeholder: __('option'),
+                        className: 'qubely-' + type + '-option',
+                        value: option
+                    })
+                );
+            })
+        );
+    };
+
     var renderTimePicker = function renderTimePicker() {
 
         var options = JSON.stringify({
@@ -2931,41 +2780,63 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonAttributes = _wp$qubelyComponents.QubelyButton.buttonAttributes;
 
 
-var defaultFormItems = [
-// { type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: 50, required: true, hideLabel: false },
-// { type: 'number', label: 'Number', name: 'number', placeholder: 'Number', width: 50, required: false, hideLabel: false },
-// { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: 90, required: true, hideLabel: false },
-// { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: 90, required: true, hideLabel: false },
-// {
-//     type: 'dropdown',
-//     label: 'Select',
-//     name: 'message',
-//     width: 50,
-//     required: true,
-//     hideLabel: false
-// },
-// {
-//     type: 'radio',
-//     label: 'Radio',
-//     width: 50,
-//     required: true,
-//     hideLabel: false
-// },
-// {
-//     type: 'checkbox',
-//     label: 'Checkbox',
-//     width: 50,
-//     required: true,
-//     hideLabel: false
-// },
-// {
-//     type: 'date',
-//     label: 'Date',
-//     width: 50,
-//     required: true,
-//     hideLabel: false
-// },
-{
+var defaultFormItems = [{
+    type: 'text',
+    label: 'First Name',
+    name: 'first-name',
+    placeholder: 'First Name',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'number',
+    label: 'Number',
+    name: 'number',
+    placeholder: 'Number',
+    width: 50,
+    required: false,
+    hideLabel: false
+}, {
+    type: 'email',
+    label: 'Email',
+    name: 'email',
+    placeholder: 'Email',
+    width: 90, required: true,
+    hideLabel: false
+}, {
+    type: 'textarea',
+    label: 'Message',
+    name: 'message',
+    placeholder: 'Message',
+    width: 90,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'dropdown',
+    label: 'Dropdown',
+    name: 'message',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'radio',
+    label: 'Radio',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'checkbox',
+    label: 'Checkbox',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'date',
+    label: 'Date',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
     type: 'time',
     label: 'Time',
     width: 50,
