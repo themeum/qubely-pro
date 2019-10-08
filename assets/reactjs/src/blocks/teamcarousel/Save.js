@@ -46,18 +46,20 @@ class Save extends Component {
   /** 
 	 *  Author information. */
   renderAuthorInfo = (item, index) => {
-    const { attributes: { layout, showAvatar } } = this.props
+    const { attributes: { layout, showAvatar, enablename } } = this.props
     const { author, designation, avatar } = item
     return (
       <div className={`qubely-team-author`}>
         { showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */ }
-				<div className="qubely-team-author-info">
-					<div className={`layout-${layout}`}>
-            <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
-            <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
-						{ this.renderSocialShare()  /* Social share callback function */}
-					</div> 
-				</div>
+        {enablename && 
+          <div className="qubely-team-author-info">
+            <div className={`layout-${layout}`}>
+              <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
+              <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
+              { this.renderSocialShare()  /* Social share callback function */}
+            </div> 
+          </div>
+        }
       </div>
     )
   }
@@ -79,36 +81,36 @@ class Save extends Component {
   }
 
   render() {
-    const { attributes: { uniqueId, items, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
+    const { attributes: { uniqueId, items, sliderMargin, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
     let options = JSON.stringify({
-      autoplay: autoPlay,
-      items: items,
-      margin: 10,
-      center: isCentered,
-      dots: dots,
-      dot_indicator: dotIndicator,
-      nav: nav,
-      speed: speed,
-      interval: interval,
-      dragable: dragable,
-      infiniteLoop: infiniteLoop,
-      activeFade: activeFade,
-      arrowStyle: arrowStyle,
-      responsive: [
-        {
-          viewport: 1170,
-          items: items.md
-        },
-        {
-          viewport: 980,
-          items: items.sm
-        },
-        {
-          viewport: 580,
-          items: items.xs
-        }
-      ],
-    }
+        autoplay: autoPlay,
+        items: items,
+        margin: sliderMargin,
+        center: isCentered,
+        dots: dots,
+        dot_indicator: dotIndicator,
+        nav: nav,
+        speed: speed,
+        interval: interval,
+        dragable: dragable,
+        infiniteLoop: infiniteLoop,
+        activeFade: activeFade,
+        arrowStyle: arrowStyle,
+        responsive: [
+          {
+            viewport: 1170,
+            items: items.md
+          },
+          {
+            viewport: 980,
+            items: items.sm
+          },
+          {
+            viewport: 580,
+            items: items.xs
+          }
+        ],
+      }
     )
     return (
       <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>

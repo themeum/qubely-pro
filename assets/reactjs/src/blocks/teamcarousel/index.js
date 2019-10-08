@@ -97,6 +97,10 @@ registerBlockType('qubely/teamcarousel', {
 				selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
 			}]
 		},
+		sliderMargin: {
+			type: 'number',
+			default: 30,
+		},
 		// Infinite Loop
 		infiniteLoop: { type: 'boolean', default: true },
 		isCentered: { type: 'boolean', default: false },
@@ -226,6 +230,7 @@ registerBlockType('qubely/teamcarousel', {
 		/*------------------------------------
 		* 			Avatar 
 		* ------------------------------------ */
+		enablename: { type: 'boolean', default: true },
 		showAvatar: { type: 'boolean', default: true },
 		avatarAlt: { type: 'string', default: '' },
 		avatarSize: {
@@ -333,7 +338,7 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '1' }
 					],
-					selector: '{{QUBELY}} .layout-1'
+					selector: '{{QUBELY}} .qubely-team-1 .qubely-team-author-info'
 				},
 				{
 					condition: [
@@ -371,19 +376,19 @@ registerBlockType('qubely/teamcarousel', {
 		boxShadow: {
 			type: 'object', default: {},
 			style: [
-				{ selector: '{{QUBELY}} .qubely-team-carousel-itemAA' }
+				{ selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-carousel-item' }
 			]
 		},
 		boxShadowHover: {
 			type: 'object', default: {},
 			style: [
-				{ selector: '{{QUBELY}} .qubely-team-carousel-itemAA:hover' }
+				{ selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-carousel-item:hover' }
 			]
 		},
 		showGlobalSettings: { type: 'boolean', default: true }, 
 
 		/**
-		 *  Social Share */
+		* Social Share */
         showSociallinks: { type: 'boolean', default: true },
         facebook: { type: 'string', default: 'https://facebook.com/themeum' },
         twitter: { type: 'string', default: 'https://twitter.com/themeum' },

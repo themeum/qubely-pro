@@ -669,3 +669,13 @@
 .qubely-team-3 .qubely-single-img img {
   min-height: 230px;
 }
+
+.qubely-block-team-carousel .qubely-carousel-extended-outer-stage {
+  padding: 10px;
+}
+.qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {
+  transition: .3s;
+}
+.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active {
+  margin-left: -2px;
+}

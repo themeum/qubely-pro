@@ -1070,7 +1070,7 @@ function register_block_qubely_postgrid_pro()
 						'md' => 10,
 						'unit' => 'px'
 					),
-					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-post-img {margin-bottom: {{imageSpace}};}']]
+					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-post-imgo {margin-bottom: {{imageSpace}};}']]
 				),
 				'titleSpace' => array(
 					'type' => 'object',
