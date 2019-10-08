@@ -788,7 +788,12 @@
   object-fit: cover;
   height: 626px;
 }
-
+.qubely-post-list-view.layout-5.style-4 .qubely-postgrid-category a,
+.qubely-postgrid-layout-5 .blog-feature-image.style-4 .qubely-postgrid-category a {
+  padding: 5px 10px 4px;
+  border-radius: 10px;
+  line-height: 1;
+}
 
 
 

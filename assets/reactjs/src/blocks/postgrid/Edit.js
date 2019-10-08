@@ -256,7 +256,10 @@ class Edit extends Component {
 				categorySpace,
 				metaSpace,
 				excerptSpace,
-				style5
+				style5,
+				imageOverlayBackground,
+				fixedHeight5b,
+				titleColor5
 
 			} 
 		} = this.props
@@ -390,15 +393,16 @@ class Edit extends Component {
 							}
 						</PanelBody>
 					}
-
-					<PanelBody title={__('Post Design')} initialOpen={false}>
-						<Styles columns={2} value={style5} onChange={val => setAttributes({ style5: val })}
-							options={[
-								{ value: 1, svg: icons.postgrid_design_1 },
-								{ value: 4, svg: icons.postgrid_design_6 },
-							]}
-						/>
-					</PanelBody>
+					{ layout == 5 &&
+						<PanelBody title={__('Post Design')} initialOpen={true}>
+							<Styles columns={2} value={style5} onChange={val => setAttributes({ style5: val })}
+								options={[
+									{ value: 1, svg: icons.postgrid_design_1 },
+									{ value: 4, svg: icons.postgrid_design_6 },
+								]}
+							/>
+						</PanelBody>
+					}
 
 					<PanelBody title={__('Query')} initialOpen={false}>
 						<ButtonGroup
@@ -445,16 +449,17 @@ class Edit extends Component {
 							value={enableFixedHeight} 
 							onChange={value => setAttributes({ enableFixedHeight: value })} 
 						/>
+
 						{enableFixedHeight && 
 							<Range 
-							label={__('')} 
-							responsive 
-							min={10} max={600} 
-							unit={['px', 'em', '%']} 
-							device={device} 
-							value={ (layout != 5) ? fixedHeight : fixedHeight5 }
-							onChange={value => setAttributes( (layout != 5 ) ? { fixedHeight: value } : { fixedHeight5: value })}
-							onDeviceChange={value => this.setState({ device: value })} />
+								label={__('')} 
+								responsive 
+								min={10} max={900} 
+								unit={['px', 'em', '%']} 
+								device={device} 
+								value={ (layout != 5) ? fixedHeight : ((style5 == 4) ? fixedHeight5b : fixedHeight5 ) }
+								onChange={value => setAttributes( (layout != 5 ) ? { fixedHeight: value } : ( (style5 == 4) ? { fixedHeight5b: value } : { fixedHeight5: value }) )}
+								onDeviceChange={value => this.setState({ device: value })} />
 						}
 						
 						<SelectControl
@@ -463,6 +468,7 @@ class Edit extends Component {
 							onChange={(value) => setAttributes({ imgSize: value })}
 							options={qubely_admin.image_sizes}
 						/>
+
 						<BorderRadius
 							min={0}
 							max={100}
@@ -486,8 +492,6 @@ class Edit extends Component {
 							value={ (layout != 5) ? excerptLimit : excerptLimit5 }
 							onChange={value => setAttributes( (layout != 5 ) ? { excerptLimit: value } : { excerptLimit5: value })}
 						/>
-					
-
 						<Separator />
 						<Toggle label={__('Title Below Meta')} value={titlePosition} onChange={value => setAttributes({ titlePosition: value })} />
 						<Toggle label={__('Show date')} value={showDates} onChange={value => setAttributes({ showDates: value })} />
@@ -528,30 +532,39 @@ class Edit extends Component {
 											value={badgePosition}
 											onChange={val => setAttributes({ badgePosition: val })}
 										/>
-										{
-											badgePosition === 'default' ?
-												<Select
-													label={__("")}
-													options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
-													value={categoryPosition}
-													onChange={value => setAttributes({ categoryPosition: value })}
-												/>
-												: <Padding label={__('Advanced')} value={badgePadding} onChange={val => setAttributes({ badgePadding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+										{ badgePosition === 'default' ?
+											<Select
+												label={__("")}
+												options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
+												value={categoryPosition}
+												onChange={value => setAttributes({ categoryPosition: value })}
+											/>
+											: <Padding label={__('Advanced')} value={badgePadding} onChange={val => setAttributes({ badgePadding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 										}
 										<Separator />
 									</Fragment>
 								}
 								<Typography label={__('Typography')} value={categoryTypography} onChange={value => setAttributes({ categoryTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+
+
 								<Tabs>
 									<Tab tabTitle={__('Normal')}>
-										<Color label={__('Category Color')} value={showCategory == 'badge' ? categoryColor2 : categoryColor} onChange={value => setAttributes(showCategory == 'badge' ? { categoryColor2: value } : { categoryColor: value })} />
-										{showCategory == 'badge' && <Color label={__('Category Background')} value={categoryBackground} onChange={value => setAttributes({ categoryBackground: value })} />}
+										<Color 
+											label={__('Category Color')} 
+											value={(showCategory === 'badge' || style5 === 4) ? categoryColor2 : categoryColor} 
+											onChange={value => setAttributes(showCategory == 'badge' ? { categoryColor2: value } : { categoryColor: value })} />
+										
+										{showCategory == 'badge' || (style5 == 4) && 
+											<Color label={__('Category Background')} value={categoryBackground} onChange={value => setAttributes({ categoryBackground: value })} />
+										}
 									</Tab>
 									<Tab tabTitle={__('Hover')}>
 										<Color label={__('Category Hover Color')} value={showCategory == 'badge' ? categoryHoverColor2 : categoryHoverColor} onChange={value => setAttributes(showCategory == 'badge' ? { categoryHoverColor2: value } : { categoryHoverColor: value })} />
 										{showCategory == 'badge' && <Color label={__('Category Background')} value={categoryHoverBackground} onChange={value => setAttributes({ categoryHoverBackground: value })} />}
 									</Tab>
 								</Tabs>
+
+
 								<BorderRadius
 									min={0}
 									max={100}
@@ -568,7 +581,8 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-
+					
+					{ layout != 5 && 
 					<PanelBody title={__('Read More Link')} initialOpen={false}>
 						<Toggle label={__('Show Read More Link')} value={showReadMore} onChange={value => setAttributes({ showReadMore: value })} />
 						{
@@ -644,7 +658,7 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-
+					}
 					<PanelBody title={__('Spacing')} initialOpen={false}>
 						{(layout === 2) &&
 							<Range label={__('Column Gap')} value={columnGap} onChange={value => setAttributes({ columnGap: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -673,10 +687,33 @@ class Edit extends Component {
 					</PanelBody>
 
 					<PanelBody title={__('Colors')} initialOpen={false}>
-						<Color label={__('Title')} value={style !== 4 ? titleColor : titleOverlayColor} onChange={value => setAttributes(style !== 4 ? { titleColor: value } : { titleOverlayColor: value })} />
+						{ (style5 === 4) && 
+							<ColorAdvanced label={__('Image Overlay')} value={imageOverlayBackground} onChange={(value) => setAttributes({ imageOverlayBackground: value })} />
+						} 
+
+						{style5 != 4 && 
+						<Color 
+							label={__('Title')} 
+							value={(style !== 4)  ? titleColor : titleOverlayColor} 
+							onChange={value => setAttributes(style !== 4 ? { titleColor: value } : { titleOverlayColor: value })} 
+
+						/>
+						}
+
+						{style5 === 4 && 
+							<Color 
+								label={__('Title')} 
+								value={titleColor5} 
+								onChange={value => setAttributes({ titleColor5: value })} 
+							/>
+						}
+
 						<Color label={__('Title Hover')} value={titleHoverColor} onChange={value => setAttributes({ titleHoverColor: value })} />
 						<Color label={__('Meta')} value={style !== 4 ? metaColor : metaOverlayColor} onChange={value => setAttributes(style !== 4 ? { metaColor: value } : { metaOverlayColor: value })} />
+						
+						{ layout != 5 &&
 						<Color label={__('Excerpt')} value={style !== 4 ? excerptColor : excerptColor2} onChange={value => setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value })} />
+						}
 					</PanelBody>
 
 				</InspectorControls>
