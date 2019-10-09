@@ -27,7 +27,7 @@ class Save extends Component {
 				{ showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
 					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`} 
 					onClick={() => this.handlePanelOpenings('Social')}>
-						{ facebook && <a className="qubely-team-social-facebook"><i className="fab fa-facebook" /></a> }
+						{ facebook && <a className="qubely-team-social-facebook"><i className="fab fa-facebook-f" /></a> }
 						{ twitter && <a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a> }
 						{ instagram && <a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a> }
 						{ linkedin && <a className="qubely-team-social-linkedin"><i className="fab fa-linkedin" /></a> }
@@ -84,8 +84,6 @@ class Save extends Component {
     const { 
       attributes: { uniqueId, items, sliderMargin, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } 
     } = this.props
-
-    console.log('Margin', sliderMargin)
 
     let options = JSON.stringify({
         autoplay: autoPlay,

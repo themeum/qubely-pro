@@ -1,30 +1,33 @@
 jQuery(document).ready(function ($) {
-    $.fn.themeum_qubely_carousel = function() {
+    $.fn.themeum_qubely_carousel = function () {
+        let indexOfCounterElement = 0
+
         if ($('.qubely-carousel.qubely-carousel-wrapper').length > 0) {
-            const qubelyCarousels = $('.qubely-carousel-wrapper')
-            let indexOfCounterElement = 0
 
-            // console.log('QQQ', qubelyCarousels.length)
+            const qubelyCarouselWrapper = $('.qubely-carousel.qubely-carousel-wrapper')
 
-            while (indexOfCounterElement < qubelyCarousels.length) {
-                let currentElement = qubelyCarousels[indexOfCounterElement]
-                const { 
-                    nav, 
-                    dots, 
-                    speed, 
-                    center, 
+            while (indexOfCounterElement < qubelyCarouselWrapper.length) {
+
+                let currentElement = qubelyCarouselWrapper[indexOfCounterElement]
+
+                const {
+                    nav,
+                    dots,
+                    speed,
                     margin,
-                    dragable, 
-                    autoplay, 
-                    interval, 
-                    responsive, 
-                    arrowStyle, 
-                    infiniteLoop, 
-                    dot_indicator, 
-                    centerPadding, 
+                    center,
+                    dragable,
+                    autoplay,
+                    interval,
+                    responsive,
+                    arrowStyle,
+                    infiniteLoop,
+                    dot_indicator,
+                    centerPadding,
                 } = JSON.parse(currentElement.dataset.options)
 
-                qubelyCarousels.qubelyCarousel({
+
+                $('.qubely-carousel.qubely-carousel-wrapper').eq(indexOfCounterElement).qubelyCarousel({
                     nav: nav,
                     dots: dots,
                     speed: speed,

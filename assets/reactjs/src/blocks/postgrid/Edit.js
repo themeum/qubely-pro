@@ -87,19 +87,9 @@ class Edit extends Component {
 					</div>
 				}
 
-				
-				{ (layout == 5) && ( style5 == 4 ) &&
-					(showAuthor || showDates || showComment) &&
-					<div className="qubely-postgrid-meta">
-						{showAuthor && <span><i className="fas fa-user"></i> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
-						{showDates && <span><i className="far fa-calendar-alt"></i> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
-						{showComment && <span><i className="fas fa-comment"></i> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
-					</div>
-				}
-
 				{showTitle && (titlePosition == true) && title}
 
-				{ (layout == 5) && ( style5 != 4 ) && (showAuthor || showDates || showComment) &&
+				{ (showAuthor || showDates || showComment) &&
 					<div className="qubely-postgrid-meta">
 						{showAuthor && <span><i className="fas fa-user"></i> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
 						{showDates && <span><i className="far fa-calendar-alt"></i> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
@@ -286,7 +276,7 @@ class Edit extends Component {
 						/>
 					</PanelBody>
 
-					{ layout != 5 &&
+
 						<PanelBody title={__('Post Design')} initialOpen={true}>
 							<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
 								options={[
@@ -392,8 +382,8 @@ class Edit extends Component {
 								</Fragment>
 							}
 						</PanelBody>
-					}
-					{ layout == 5 &&
+					
+					{/* { layout == 5 &&
 						<PanelBody title={__('Post Design')} initialOpen={true}>
 							<Styles columns={2} value={style5} onChange={val => setAttributes({ style5: val })}
 								options={[
@@ -402,7 +392,7 @@ class Edit extends Component {
 								]}
 							/>
 						</PanelBody>
-					}
+					} */}
 
 					<PanelBody title={__('Query')} initialOpen={false}>
 						<ButtonGroup
@@ -551,10 +541,10 @@ class Edit extends Component {
 									<Tab tabTitle={__('Normal')}>
 										<Color 
 											label={__('Category Color')} 
-											value={(showCategory === 'badge' || style5 === 4) ? categoryColor2 : categoryColor} 
+											value={(showCategory === 'badge') ? categoryColor2 : categoryColor} 
 											onChange={value => setAttributes(showCategory == 'badge' ? { categoryColor2: value } : { categoryColor: value })} />
 										
-										{showCategory == 'badge' || (style5 == 4) && 
+										{showCategory == 'badge' && 
 											<Color label={__('Category Background')} value={categoryBackground} onChange={value => setAttributes({ categoryBackground: value })} />
 										}
 									</Tab>
@@ -665,8 +655,10 @@ class Edit extends Component {
 						}
 						{(showCategory == 'default') &&
 							<Range label={__('Category')} value={categorySpace} onChange={value => setAttributes({ categorySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-						}
-						<Range label={__('Image')} value={imageSpace} onChange={value => setAttributes({ imageSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        }
+                        {( (layout != 1) && (style === 1) || (style === 2) ) &&
+						    <Range label={__('Image')} value={imageSpace} onChange={value => setAttributes({ imageSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        }
 						<Range label={__('Title')} value={titleSpace} onChange={value => setAttributes({ titleSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Range label={__('Meta')} value={metaSpace} onChange={value => setAttributes({ metaSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Range label={__('Excerpt')} value={excerptSpace} onChange={value => setAttributes({ excerptSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -724,12 +716,12 @@ class Edit extends Component {
                             { posts && posts.map(post => {	
 								if( layout == 5 ) {
 									output = ( counts == 0 ) ? ( 
-										<div className={`blog-feature-image style-${style5}`}>
+										<div className={`blog-feature-image style-${style}`}>
 											{ this.renderFeaturedImage(post) }
 											{this.renderCardContent(post)}
 										</div>
 									) : ( 
-										<div className={`qubely-post-list-view layout-${layout} style-${style5}`}>
+										<div className={`qubely-post-list-view layout-${layout} style-${style}`}>
 											{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
 											{this.renderCardContent(post)}
 										</div>

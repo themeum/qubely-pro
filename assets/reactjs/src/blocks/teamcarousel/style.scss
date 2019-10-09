@@ -202,13 +202,21 @@
   z-index: 1;
   visibility: visible;
 }
-.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots,
-.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {
+.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {
   height: 50px;
   width: 100%;
   margin-top: 5px;
   z-index: 3;
 }
+.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {
+    height: 50px;
+    width: 100%;
+    margin-top: 0px;
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+}
+
 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {
   position: absolute;
   bottom: 0px;
