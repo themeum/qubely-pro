@@ -106,7 +106,7 @@ export default function Edit(props) {
             yearRange: `${year - 50}:${year + 10}`,
             duration: "fast",
             changeMonth: true,
-            changeYear: true,
+            changeYear: true
         });
         const currentField = $(`#block-${clientId}`)
         currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
@@ -157,15 +157,7 @@ export default function Edit(props) {
     const renderDatePicker = () => {
         return (
             <div class="qubely-date-picker-wrapper">
-
-                {/* <input
-                    type="date"
-                    id="qubely-form-date"
-                    name="qubely-form-date"
-                    value={dateString}
-                    onChange={newDate => setDateString(newDate.target.value)}
-                /> */}
-                <input type="text" className="qubely-form-field qubely-datepicker" ref={datePicker} autocomplete="off"></input>
+                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__('d : m : y')}></input>
             </div>
         )
     }
@@ -381,6 +373,7 @@ export default function Edit(props) {
     const blockname = name.split('/')[1]
 
     if (uniqueId) { CssGenerator(attributes, blockname, uniqueId) }
+    console.log(props.attributes)
     return (
         <Fragment>
 

@@ -20,6 +20,8 @@ export default function Save(props) {
             columns,
             hour,
             minute,
+            calendarPopup,
+            emailConformation,
             minuteInterval,
             timeFormatType,
         }
@@ -49,6 +51,37 @@ export default function Save(props) {
         )
     }
 
+
+    const renderEmailField = () => {
+
+        return (
+            <Fragment>
+                <input className={`qubely-form-field qubely-form-email`} type={'email'} placeholder={__(placeHolder)} required={required} />
+                {emailConformation &&
+                    <Fragment>
+                        <RichText.Content
+                            placeholder={__('Confirmation Email')}
+                            className={`qubely-form-field-label`}
+                            value={conformationEmailLabel}
+                        />
+                        <input className={`qubely-form-field qubely-form-confirmation-email`} type={'email'} placeholder={__(placeHolder)} required={required} />
+                    </Fragment>
+                }
+            </Fragment>
+        )
+    }
+
+
+    const renderDatePicker = () => {
+        let options = JSON.stringify({
+            showCalendar: calendarPopup,
+        })
+        return (
+            <div class="qubely-date-picker-wrapper" data-options={options}>
+                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off"></input>
+            </div>
+        )
+    }
     const renderTimePicker = () => {
 
         let options = JSON.stringify(
@@ -120,12 +153,15 @@ export default function Save(props) {
                                 renderOptions()
                                 :
                                 type === 'date' ?
-                                    <input type="text" className="qubely-datepicker" autocomplete="off"></input>
+                                    renderDatePicker()
                                     :
                                     type === 'time' ?
                                         renderTimePicker()
                                         :
-                                        <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
+                                        type === 'email' ?
+                                            renderEmailField()
+                                            :
+                                            <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
                 }
             </Fragment>
         )
