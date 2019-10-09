@@ -17,7 +17,17 @@
         position: relative;
         overflow: hidden;
         line-height: 0;
-        &:before,
+        &:before{
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 1;
+            -webkit-transition: 400ms;
+            transition: 400ms;
+        }
         &:after {
             content: " ";
             position: absolute;
@@ -26,32 +36,28 @@
             bottom: 0;
             right: 0;
             z-index: 1;
-            background-image: linear-gradient(45deg, rgba(6, 80, 183, 0.7) 0%,rgba(96, 10, 255, 0.7) 100%);
-        }
-        &:after {
-            z-index: 2;
             opacity: 0;
-            -webkit-transition: opacity .6s;
-            transition: opacity .6s;
+            -webkit-transition: 400ms;
+            transition: 400ms;
         }
         .qubely-empty-image {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             background: #f5f5f5;
             border: 2px dashed #e5e5e5;
             padding: 30px;
             border-radius: 5px;
-            min-height: 100px;
+            min-height: 200px;
         }
         .qubely-insert-image {
             text-align: center;
             display: inline-block;
-            color: #2184F9;
+            color: #fff;
             text-decoration: none;
             line-height: 1;
             position: relative;
-            z-index: 3;
+            z-index: 4;
             span {
                 margin-top: 0px;
                 display: block;
@@ -76,34 +82,35 @@
             bottom: 0;
             right: 0;
             z-index: 3;
+            line-height: normal;
             &.qubely-gallery-caption-onHover {
                 .qubely-gallery-caption {
                     opacity: 0;
                     -webkit-transform: translate3d(0,40px,0);
                     transform: translate3d(0,40px,0);
-                    -webkit-transition: -webkit-transform .35s;
-                    transition: -webkit-transform .35s;
-                    transition: transform .35s;
-                    transition: transform .35s,-webkit-transform .35s;
+                    -webkit-transition: -webkit-transform 400ms;
+                    transition: -webkit-transform 400ms;
+                    transition: transform 400ms;
+                    transition: transform 400ms,-webkit-transform 400ms;
                 }
             }
         }
         .qubely-gallery-image-zoom-in {
             img {
-                -webkit-transition: -webkit-transform .35s;
-                transition: -webkit-transform .35s;
-                transition: transform .35s;
-                transition: transform .35s,-webkit-transform .35s;
+                -webkit-transition: -webkit-transform 400ms;
+                transition: -webkit-transform 400ms;
+                transition: transform 400ms;
+                transition: transform 400ms,-webkit-transform 400ms;
                 -webkit-transform: scale(1);
                 transform: scale(1);
             }
         }
         .qubely-gallery-image-zoom-out {
             img {
-                -webkit-transition: -webkit-transform .35s;
-                transition: -webkit-transform .35s;
-                transition: transform .35s;
-                transition: transform .35s,-webkit-transform .35s;
+                -webkit-transition: -webkit-transform 400ms;
+                transition: -webkit-transform 400ms;
+                transition: transform 400ms;
+                transition: transform 400ms,-webkit-transform 400ms;
                 -webkit-transform: scale(1.2);
                 transform: scale(1.2);
             }
@@ -112,10 +119,10 @@
             img {
                 -webkit-transform: scale(1);
                 transform: scale(1);
-                -webkit-transition: -webkit-transform .35s;
-                transition: -webkit-transform .35s;
-                transition: transform .35s;
-                transition: transform .35s,-webkit-transform .35s;
+                -webkit-transition: -webkit-transform 400ms;
+                transition: -webkit-transform 400ms;
+                transition: transform 400ms;
+                transition: transform 400ms,-webkit-transform 400ms;
             }
         }
         .qubely-gallery-image-slide-left {
@@ -123,10 +130,10 @@
                 max-width: initial;
                 max-height: 100%;
                 width: calc(100% + 50px);
-                -webkit-transition: opacity .35s,-webkit-transform .35s;
-                transition: opacity .35s,-webkit-transform .35s;
-                transition: opacity .35s,transform .35s;
-                transition: opacity .35s,transform .35s,-webkit-transform .35s;
+                -webkit-transition: opacity 400ms,-webkit-transform 400ms;
+                transition: opacity 400ms,-webkit-transform 400ms;
+                transition: opacity 400ms,transform 400ms;
+                transition: opacity 400ms,transform 400ms,-webkit-transform 400ms;
                 -webkit-transform: translate3d(-40px,0,0);
                 transform: translate3d(-40px,0,0);
             }
@@ -136,10 +143,10 @@
                 max-width: initial;
                 max-height: 100%;
                 width: calc(100% + 50px);
-                -webkit-transition: opacity .35s,-webkit-transform .35s;
-                transition: opacity .35s,-webkit-transform .35s;
-                transition: opacity .35s,transform .35s;
-                transition: opacity .35s,transform .35s,-webkit-transform .35s;
+                -webkit-transition: opacity 400ms,-webkit-transform 400ms;
+                transition: opacity 400ms,-webkit-transform 400ms;
+                transition: opacity 400ms,transform 400ms;
+                transition: opacity 400ms,transform 400ms,-webkit-transform 400ms;
                 -webkit-transform: translate3d(-10px,0,0);
                 transform: translate3d(-10px,0,0);
             }
@@ -148,24 +155,26 @@
             img {
                 -webkit-transform: translate3d(0,20px,0) scale3d(1.2,1.2,1);
                 transform: translate3d(0,20px,0) scale3d(1.2,1.2,1);
-                -webkit-transition: -webkit-transform .35s;
-                transition: -webkit-transform .35s;
-                transition: transform .35s;
-                transition: transform .35s,-webkit-transform .35s;
+                -webkit-transition: -webkit-transform 400ms;
+                transition: -webkit-transform 400ms;
+                transition: transform 400ms;
+                transition: transform 400ms,-webkit-transform 400ms;
             }
         }
         .qubely-gallery-image-slide-top {
             img {
                 -webkit-transform: translate3d(0,-20px,0) scale3d(1.2,1.2,1);
                 transform: translate3d(0,-20px,0) scale3d(1.2,1.2,1);
-                -webkit-transition: -webkit-transform .35s;
-                transition: -webkit-transform .35s;
-                transition: transform .35s;
-                transition: transform .35s,-webkit-transform .35s;
+                -webkit-transition: -webkit-transform 400ms;
+                transition: -webkit-transform 400ms;
+                transition: transform 400ms;
+                transition: transform 400ms,-webkit-transform 400ms;
             }
         }
     }
     .qubely-gallery-item {
+        -webkit-transition: 400ms;
+        transition: 400ms;
         &:hover {
             .qubely-gallery-caption-onHover {
                 .qubely-gallery-caption {
@@ -218,6 +227,12 @@
             }
             .qubely-gallery-image-container:after {
                 opacity: 1;
+                -webkit-transition: 400ms;
+                transition: 400ms;
+            }
+            .qubely-gallery-image-container:before {
+                -webkit-transition: 400ms;
+                transition: 400ms;
             }
         }
     }
@@ -233,7 +248,12 @@
 .qubely-gallery-item-2 {
     .qubely-column-grid {
         display: block;
-
+        column-fill: initial;
+        .qubely-gallery-item {
+            display: inline-block;
+            vertical-align: top;
+            width: 100%;
+        }
     }
 }
 .qubely-column-grid-xs1 {
@@ -331,4 +351,3 @@
         }
     }
 }
-

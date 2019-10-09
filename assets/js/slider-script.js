@@ -7,13 +7,14 @@ jQuery(document).ready(function ($) {
             const qubelyCarouselWrapper = $('.qubely-carousel.qubely-carousel-wrapper')
 
             while (indexOfCounterElement < qubelyCarouselWrapper.length) {
-                
+
                 let currentElement = qubelyCarouselWrapper[indexOfCounterElement]
 
                 const {
                     nav,
                     dots,
                     speed,
+                    margin,
                     center,
                     dragable,
                     autoplay,
@@ -28,7 +29,7 @@ jQuery(document).ready(function ($) {
 
                 $('.qubely-carousel.qubely-carousel-wrapper').eq(indexOfCounterElement).qubelyCarousel({
                     nav: nav,
-                    margin: 10,
+                    margin: margin,
                     dots: dots,
                     speed: speed,
                     center: center,

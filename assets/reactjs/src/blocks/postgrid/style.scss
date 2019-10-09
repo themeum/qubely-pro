@@ -13,29 +13,31 @@
   min-height: 200px;
 }
 //list view
-.qubely-post-list-wrapper {
-  display: block;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  .qubely-post-list-img {
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    overflow: hidden;
-  }
-  .qubely-post-list-content {
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-left: 20px;
-  }
-}
+// .qubely-post-list-wrapper {
+//   display: block;
+//   -ms-flex-wrap: wrap;
+//   flex-wrap: wrap;
+//   .qubely-post-list-img {
+//     -ms-flex: 0 0 100%;
+//     flex: 0 0 100%;
+//     max-width: 100%;
+//     position: relative;
+//     width: 100%;
+//     min-height: 1px;
+//     overflow: hidden;
+//   }
+//   .qubely-post-list-content {
+//     -ms-flex: 0 0 100%;
+//     flex: 0 0 100%;
+//     max-width: 100%;
+//     position: relative;
+//     width: 100%;
+//     min-height: 1px;
+//     padding-left: 20px;
+//   }
+// }
+
+
 @media screen and (min-width: 767px) {
   .qubely-post-list-wrapper {
     display: -ms-flexbox;
@@ -103,6 +105,9 @@
 //title default value
 
 //category above image
+.qubely-postgrid-layout-1 .qubely-post-img {
+    margin-bottom: 0;
+}
 .qubely-post-img {
   position: relative;
   overflow: hidden;
@@ -462,6 +467,7 @@
             width: 100%;
             height: auto;
             margin-bottom: 30px;
+            vertical-align: top;
         } 
     }
     &.qubely-postgrid-column-md1 {
@@ -627,45 +633,41 @@
 .qubely-postgrid-layout-5 .blog-feature-image {
   width: 50%;
   float: left;
-  margin-right: 30px;
   position: relative;
   display: inline-block;
 }
 .qubely-postgrid-layout-5 .qubely-post-list-view {
   width: calc(50% - 30px);
   display: inline-block;
+  position: relative;
+  margin-left: 30px;
 }
 .qubely-postgrid-layout-5 .qubely-post-list-view .qubely-post-img {
-  width: 30%;
+  width: 200px;
   float: left;
 }
-.qubely-postgrid-layout-5 .qubely-post-grid-content {
-  float: left;
-  width: 70%;
-}
-
 .qubely-postgrid-layout-5 h3.qubely-postgrid-title {
   line-height: 28px;
+  margin: 0;
 }
 
 .qubely-postgrid-layout-5 h3.qubely-postgrid-title a {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 4px;
+  text-decoration: none;
 }
-
-.qubely-post-list-view.layout-5 .qubely-postgrid-meta, 
-.qubely-post-list-view.layout-5 .qubely-postgrid-intro {
-  display: none;
-}
-
 .qubely-postgrid-layout-5 .blog-feature-image .qubely-post-grid-content {
-  float: left;
-  width: 100%;
-  height: 100%;
+  width: 87%;
   position: absolute;
-  top: 0;
+  bottom: 0;
+  background: #fff;
+  margin: 0 auto;
+  transform: translate(-50%, 40%);
+  left: 50%;
+  box-shadow: 0 34px 28px -20px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  padding: 30px;
 }
-
 .qubely-postgrid-layout-5 .blog-feature-image .qubely-post-img {
   margin-bottom: 0;
   line-height: 0;
@@ -675,3 +677,131 @@
   margin: 0;
   line-height: 0;
 }
+.qubely-postgrid-wrapper.qubely-postgrid-layout-5 .blog-feature-image img.qubely-post-image,
+.qubely-post-list-view.layout-5 img.qubely-post-image {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.qubely-postgrid-layout-5 .qubely-postgrid-category {
+  display: block;
+  padding-bottom: 12px;
+  line-height: 16px;
+}
+.qubely-postgrid-wrapper.qubely-postgrid-layout-5 .qubely-postgrid-intro p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px
+}
+.qubely-postgrid-layout-5 .qubely-post-list-view.layout-5 .qubely-post-grid-content {
+    width: calc(100% - 140px);
+    position: absolute;
+    background: #fff;
+    right: 0;
+    box-shadow: 0 34px 28px -20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 20px 10px 20px 24px;
+    left: auto;
+    transform: translate(0%, -50%);
+    top: 48%;
+    display: block;
+}
+.qubely-post-list-view.layout-5 .qubely-postgrid-category {
+  display: block;
+}
+.qubely-post-list-view.layout-5 .qubely-postgrid-intro, 
+.qubely-post-list-view.layout-5 .qubely-postgrid-meta,
+.qubely-post-list-view.layout-5 .layout-5 .qubely-postgrid-category,
+.qubely-postgrid-wrapper.qubely-postgrid-layout-5 .blog-feature-image .qubely-postgrid-intro {
+  padding-bottom: 0;
+}
+.qubely-postgrid-layout-5 .blog-feature-image .qubely-postgrid-category {
+  display: block;
+}
+.qubely-postgrid-layout-5 .qubely-postgrid-meta span a {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1.75px;
+  line-height: 18px;
+}
+.qubely-postgrid-layout-5 .layout-5 h3.qubely-postgrid-title {
+  line-height: 22px;
+  margin: 0;
+}
+.qubely-postgrid-layout-5 .layout-5 h3.qubely-postgrid-title a {
+  font-size: 18px;
+  line-height: 12px;
+  text-decoration: none;
+}
+.qubely-postgrid-layout-5 .layout-5 .qubely-postgrid-category {
+  display: block;
+}
+.qubely-postgrid-layout-5 .layout-5 .qubely-postgrid-meta {
+  margin-bottom: 5px;
+}
+.layout-5 .qubely-postgrid-meta span {
+  padding-right: 8px;
+}
+
+
+.qubely-postgrid-layout-5 .style-4.qubely-post-list-view .qubely-post-grid-img {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 200px;
+}
+.qubely-postgrid-layout-5 .qubely-post-list-view.layout-5.style-4 .qubely-post-grid-content {
+  width: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.45);
+  right: 0;
+  box-shadow: 0 34px 28px -20px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 20px 10px 20px 24px;
+  left: auto;
+  transform: translate(0%, 0%);
+  top: 0;
+  display: block;
+  height: 100%;
+}
+.qubely-postgrid-layout-5 .blog-feature-image.style-4 .qubely-post-grid-content {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  margin: 0 auto;
+  transform: translate(0%, 0%);
+  left: 0;
+  box-shadow: 0 34px 28px -20px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 30px;
+  height: 100%;
+}
+.qubely-postgrid-layout-5 .blog-feature-image.style-4 .qubely-post-img {
+  padding: 0;
+}
+.blog-feature-image.style-4 .qubely-post-grid-content .qubely-postgrid-meta,
+.qubely-post-list-view.layout-5.style-4 .qubely-postgrid-meta {
+  position: absolute;
+  bottom: 50px;
+}
+.blog-feature-image.style-4 .qubely-post-grid-content h3.qubely-postgrid-title,
+.qubely-post-list-view.layout-5.style-4 h3.qubely-postgrid-title {
+  bottom: 16px;
+  position: absolute;
+}
+.qubely-postgrid-wrapper.qubely-postgrid-layout-5 .blog-feature-image.style-4 img.qubely-post-image {
+  object-fit: cover;
+  height: 626px;
+}
+.qubely-post-list-view.layout-5.style-4 .qubely-postgrid-category a,
+.qubely-postgrid-layout-5 .blog-feature-image.style-4 .qubely-postgrid-category a {
+  padding: 5px 10px 4px;
+  border-radius: 10px;
+  line-height: 1;
+}
+
+
+
+
