@@ -25,13 +25,21 @@
   }
   .qubely-team-avatar {
     &.qubely-image-placeholder i {
-      font-size: 80px;
+      font-size: 70px;
+      transform: translate(0px, 100%);
     }
   }
   .qubely-image-placeholder {
     width: 100%;
     height: 230px;
 }
+  .qubely-single-img {
+    text-align: center;
+    background: #fafafa;
+  }
+  .qubely-team-author .qubely-single-img .qubely-team-avatar {
+      text-align: center;
+  }
 
   .qubely-team-avatar-layout-left,
   .qubely-team-avatar-layout-right {
@@ -194,13 +202,21 @@
   z-index: 1;
   visibility: visible;
 }
-.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots,
-.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {
+.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {
   height: 50px;
   width: 100%;
   margin-top: 5px;
   z-index: 3;
 }
+.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {
+    height: 50px;
+    width: 100%;
+    margin-top: 0px;
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+}
+
 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {
   position: absolute;
   bottom: 0px;
@@ -669,7 +685,6 @@
 .qubely-team-3 .qubely-single-img img {
   min-height: 230px;
 }
-
 .qubely-block-team-carousel .qubely-carousel-extended-outer-stage {
   padding: 10px;
 }
@@ -678,4 +693,7 @@
 }
 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active {
   margin-left: -2px;
+}
+h2.qubely-heading-selector:before {
+  display: block;
 }

@@ -240,7 +240,9 @@ class Edit extends Component {
             iconBackgroundHover,
 			iconBorderColorHover,
 			sliderMargin,
-			enablename
+			enablename,
+			dotsPosition,
+			horizontalScrollleft
 
 		} } = this.props
 
@@ -365,7 +367,15 @@ class Edit extends Component {
 									onChange={value => setAttributes({ arrowStyle: value })}
 								/>
 								<Range
-									label={__('Horizontal Position')}
+									label={__('Horizontal Position Left')}
+									value={horizontalScrollleft} onChange={(value) => setAttributes({ horizontalScrollleft: value })}
+									min={-100} max={100}
+									responsive unit={['px', 'em', '%']}
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+								<Range
+									label={__('Horizontal Position Right')}
 									value={horizontalScroll} onChange={(value) => setAttributes({ horizontalScroll: value })}
 									min={-100} max={100}
 									responsive unit={['px', 'em', '%']}
@@ -451,6 +461,14 @@ class Edit extends Component {
 									label={__('Dot Border Radius')}
 									value={dotBorderRadius} onChange={(value) => setAttributes({ dotBorderRadius: value })}
 									min={1} max={100}
+									responsive unit={['px', 'em', '%']}
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+								<Range
+									label={__('Vertical Position')}
+									value={dotsPosition} onChange={(value) => setAttributes({ dotsPosition: value })}
+									min={-100} max={100}
 									responsive unit={['px', 'em', '%']}
 									device={device}
 									onDeviceChange={value => this.setState({ device: value })}
