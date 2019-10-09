@@ -154,6 +154,9 @@ class Edit extends Component {
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
+						<Tooltip text={__('Delete this item')}>
+							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}><i class="fas fa-close"></i></span>
+						</Tooltip>
                         <div className={`qubely-team-carousel-item`}>
 							<div className={`qubely-team-${layout}`}>
 								{this.renderAuthorInfo(item, index)}
