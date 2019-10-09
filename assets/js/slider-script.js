@@ -10,6 +10,7 @@ jQuery(document).ready(function ($) {
                     dots, 
                     speed, 
                     center, 
+                    margin,
                     dragable, 
                     autoplay, 
                     interval, 
@@ -22,7 +23,7 @@ jQuery(document).ready(function ($) {
     
                 $(".qubely-carousel-wrapper").qubelyCarousel({
                     nav: nav,
-                    margin: 10,
+                    margin: margin,
                     dots: dots,
                     speed: speed,
                     center: center,

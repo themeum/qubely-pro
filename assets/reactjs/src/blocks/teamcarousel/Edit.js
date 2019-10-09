@@ -122,19 +122,21 @@ class Edit extends Component {
 	/** 
 	 *  Author information. */
 	renderAuthorInfo = (item, index) => {
-		const { attributes: { layout, showAvatar } } = this.props
+		const { attributes: { layout, showAvatar, enablename } } = this.props
 		const { author, designation, avatar } = item
 
 		return (
 			<div className={`qubely-team-author`}>
 				{ showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */}
-				<div className="qubely-team-author-info">
-					<div className={`layout-${layout}`}>
-						<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
-						<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-						{ this.renderSocialShare()  /* Social share callback function */}
-					</div> 
-				</div>
+				{enablename && 
+					<div className="qubely-team-author-info">
+						<div className={`layout-${layout}`}>
+							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
+							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
+							{ this.renderSocialShare()  /* Social share callback function */}
+						</div> 
+					</div>
+				}
 			</div>
 		)
 	} 
@@ -236,7 +238,9 @@ class Edit extends Component {
             iconBorder,
             iconColorHover,
             iconBackgroundHover,
-            iconBorderColorHover,
+			iconBorderColorHover,
+			sliderMargin,
+			enablename
 
 		} } = this.props
 
@@ -245,7 +249,7 @@ class Edit extends Component {
 		const carouselSettings = {
 			autoplay: autoPlay,
 			items: items,
-			margin: 10,
+			margin: sliderMargin,
 			center: isCentered,
 			dots: dots,
 			dot_indicator: dotIndicator,
@@ -312,7 +316,6 @@ class Edit extends Component {
 							device={this.state.device}
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
-
 						<Range
 							label={__('Padding')}
 							min={1}
@@ -323,6 +326,13 @@ class Edit extends Component {
 							onChange={(value) => setAttributes({ sliderItemsSpace: value })}
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })}
+						/>
+						<Range
+							label={__('Margin')}
+							min={0}
+							max={80}
+							value={sliderMargin}
+							onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
 						/>
 					</PanelBody>
 
@@ -533,6 +543,7 @@ class Edit extends Component {
 					</PanelBody>
 					
 					<PanelBody title={__('Name')} initialOpen={false}>
+						<Toggle label={__('Enable Name')} value={enablename} onChange={value => setAttributes({ enablename: value })} />
 						<Range
 							label={__('Spacing')}
 							value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}

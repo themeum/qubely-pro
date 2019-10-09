@@ -1067,6 +1067,7 @@ function register_block_qubely_postgrid_pro()
 					'default' => (object) array(
 						'md' => 15,
 						'unit' => 'px'
+<<<<<<< HEAD
                     ),					
                     // 'style' => [(object) [
 					// 	'condition' => [(object) ['key' => 'layout', 'relation' => '!=', 'value' => 1]],
@@ -1093,6 +1094,10 @@ function register_block_qubely_postgrid_pro()
 					]
 
 
+=======
+					),
+					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-post-imgo {margin-bottom: {{imageSpace}};}']]
+>>>>>>> c9bc9607a2264189284aaca9a192d5b55093b777
 				),
 				'titleSpace' => array(
 					'type' => 'object',
