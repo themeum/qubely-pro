@@ -1,10 +1,13 @@
 jQuery(document).ready(function ($) {
     $.fn.themeum_qubely_carousel = function() {
         if ($('.qubely-carousel.qubely-carousel-wrapper').length > 0) {
-            const counterElement = $('.qubely-carousel-wrapper')
+            const qubelyCarousels = $('.qubely-carousel-wrapper')
             let indexOfCounterElement = 0
-            while (indexOfCounterElement < counterElement.length) {
-                let currentElement = counterElement[indexOfCounterElement]
+
+            // console.log('QQQ', qubelyCarousels.length)
+
+            while (indexOfCounterElement < qubelyCarousels.length) {
+                let currentElement = qubelyCarousels[indexOfCounterElement]
                 const { 
                     nav, 
                     dots, 
@@ -20,12 +23,12 @@ jQuery(document).ready(function ($) {
                     dot_indicator, 
                     centerPadding, 
                 } = JSON.parse(currentElement.dataset.options)
-    
-                $(".qubely-carousel-wrapper").qubelyCarousel({
+
+                qubelyCarousels.qubelyCarousel({
                     nav: nav,
-                    margin: margin,
                     dots: dots,
                     speed: speed,
+                    margin: margin,
                     center: center,
                     dragable: dragable,
                     interval: interval,
@@ -39,6 +42,7 @@ jQuery(document).ready(function ($) {
                         // console.log("test: ", item)
                     }
                 })
+                
                 indexOfCounterElement++
             }
         }

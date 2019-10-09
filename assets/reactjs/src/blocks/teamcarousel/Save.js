@@ -44,7 +44,7 @@ class Save extends Component {
 	}
 
   /** 
-	 *  Author information. */
+	*  Author information. */
   renderAuthorInfo = (item, index) => {
     const { attributes: { layout, showAvatar, enablename } } = this.props
     const { author, designation, avatar } = item
@@ -64,7 +64,7 @@ class Save extends Component {
     )
   }
   /** 
-	 *  Render Team informations. */
+	*  Render Team informations. */
   renderTeam() {
     const { attributes: { carouselItems, layout } } = this.props
     return (carouselItems.map((item, index) => {
@@ -81,7 +81,12 @@ class Save extends Component {
   }
 
   render() {
-    const { attributes: { uniqueId, items, sliderMargin, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } } = this.props
+    const { 
+      attributes: { uniqueId, items, sliderMargin, autoPlay, arrowStyle, infiniteLoop, activeFade, isCentered, dragable, nav, dots, dotIndicator, interval, speed, animation } 
+    } = this.props
+
+    console.log('Margin', sliderMargin)
+
     let options = JSON.stringify({
         autoplay: autoPlay,
         items: items,
