@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-field-wrapper {\n  display: flex; }\n  .qubely-form-field-wrapper .qubely-form-field {\n    width: 100%; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-date-picker {\n      width: fit-content; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option,\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option {\n      display: flex;\n      align-items: center; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option:hover .qubely-action-remove-option,\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option:hover .qubely-action-remove-option {\n        display: block; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option .qubely-action-remove-option,\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option .qubely-action-remove-option {\n        display: none;\n        font-size: 12px;\n        width: 18px;\n        height: 18px;\n        line-height: 20px;\n        text-align: center;\n        background: rgba(0, 0, 0, 0.8);\n        color: #fff;\n        margin-left: 10px;\n        border-radius: 10px;\n        z-index: 1;\n        cursor: pointer; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option {\n      color: #2184f9;\n      cursor: pointer; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-option-add-icon {\n        margin-right: 5px;\n        -webkit-text-stroke: 2px white; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-action-add-text {\n        color: #2184f9; }\n  .qubely-form-field-wrapper .qubely-form-timepicker {\n    opacity: 0;\n    height: auto;\n    min-width: 150px;\n    max-height: 0;\n    overflow: hidden;\n    position: absolute;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    -webkit-transition: max-height 0.1s ease-in-out;\n    transition: max-height 0.1s ease-in-out;\n    background: #f4f5f7;\n    background: -webkit-gradient(linear, left top, left bottom, from(#e3e3e5), color-stop(7%, #efefef), to(#f4f5f7));\n    background: linear-gradient(to bottom, #e3e3e5 0, #efefef 7%, #f4f5f7 100%);\n    border-radius: 0 0 5px 5px;\n    border: 2px solid #303233;\n    border-top: transparent;\n    -webkit-box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);\n    box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);\n    text-align: center; }\n  .qubely-form-field-wrapper .qubely-active {\n    opacity: 1;\n    max-height: 150px;\n    padding: 15px;\n    z-index: 100; }\n  .qubely-form-field-wrapper .qubely-timePicker-button {\n    cursor: pointer; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n\n#ui-datepicker-div {\n  display: none;\n  background-color: #fff;\n  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);\n  margin-top: 0.25rem;\n  border-radius: 0.5rem;\n  padding: 0.5rem; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.ui-datepicker-calendar thead th {\n  padding: 0.25rem 0;\n  text-align: center;\n  font-size: 0.75rem;\n  font-weight: 400;\n  color: #78909c; }\n\n.ui-datepicker-calendar tbody td {\n  width: 2.5rem;\n  text-align: center;\n  padding: 0; }\n\n.ui-datepicker-calendar tbody td a {\n  display: block;\n  border-radius: 0.25rem;\n  line-height: 2rem;\n  transition: 0.3s all;\n  color: #546e7a;\n  font-size: 0.875rem;\n  text-decoration: none; }\n\n.ui-datepicker-calendar tbody td a:hover {\n  background-color: #e0f2f1; }\n\n.ui-datepicker-calendar tbody td a.ui-state-active {\n  background-color: #009688;\n  color: white; }\n\n.ui-datepicker-header a.ui-corner-all {\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  width: 2rem;\n  height: 2rem;\n  margin: 0.5rem;\n  border-radius: 0.25rem;\n  transition: 0.3s all; }\n\n.ui-datepicker-header a.ui-corner-all:hover {\n  background-color: #eceff1; }\n\n.ui-datepicker-header a.ui-datepicker-prev {\n  left: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 0.5rem;\n  background-position: 50%;\n  transform: rotate(180deg); }\n\n.ui-datepicker-header a.ui-datepicker-next {\n  right: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 10px;\n  background-position: 50%; }\n\n.ui-datepicker-header a > span {\n  display: none; }\n\n.ui-datepicker-title {\n  text-align: center;\n  line-height: 2rem;\n  margin-bottom: 0.25rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  padding-bottom: 0.25rem; }\n\n.ui-datepicker-week-col {\n  color: #78909c;\n  font-weight: 400;\n  font-size: 0.75rem; }\n\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table td,\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table th {\n  border: none;\n  word-break: break-all; }\n", ""]);
+exports.push([module.i, ".qubely-form-field-wrapper {\n  display: flex; }\n  .qubely-form-field-wrapper .qubely-form-field {\n    width: 100%; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-date-picker {\n      width: fit-content; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio {\n      display: flex;\n      flex-wrap: wrap;\n      margin-left: -10px;\n      margin-right: -10px; }\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-auto .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-auto .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-auto .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-auto .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-auto .qubely-form-field-radio-option {\n        width: auto;\n        padding-left: 10px;\n        padding-right: 10px; }\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-1-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-1-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-1-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-1-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-1-column .qubely-form-field-radio-option {\n        width: 100%;\n        padding-left: 10px;\n        padding-right: 10px; }\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-2-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-2-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-2-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-2-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-2-column .qubely-form-field-radio-option {\n        width: 50%;\n        padding-left: 10px;\n        padding-right: 10px; }\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-3-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-3-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-3-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-3-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-3-column .qubely-form-field-radio-option {\n        width: 33%;\n        padding-left: 10px;\n        padding-right: 10px; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option,\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option {\n      display: flex;\n      align-items: center; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option:hover .qubely-action-remove-option,\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option:hover .qubely-action-remove-option {\n        display: block; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option .qubely-action-remove-option,\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option .qubely-action-remove-option {\n        display: none;\n        font-size: 12px;\n        width: 18px;\n        height: 18px;\n        line-height: 20px;\n        text-align: center;\n        background: rgba(0, 0, 0, 0.8);\n        color: #fff;\n        margin-left: 10px;\n        border-radius: 10px;\n        z-index: 1;\n        cursor: pointer; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option {\n      color: #2184f9;\n      cursor: pointer; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-option-add-icon {\n        margin-right: 5px;\n        -webkit-text-stroke: 2px white; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-action-add-text {\n        color: #2184f9; }\n  .qubely-form-field-wrapper .qubely-form-timepicker {\n    opacity: 0;\n    height: auto;\n    min-width: 150px;\n    max-height: 0;\n    overflow: hidden;\n    position: absolute;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    -webkit-transition: max-height 0.1s ease-in-out;\n    transition: max-height 0.1s ease-in-out;\n    background: #f4f5f7;\n    background: -webkit-gradient(linear, left top, left bottom, from(#e3e3e5), color-stop(7%, #efefef), to(#f4f5f7));\n    background: linear-gradient(to bottom, #e3e3e5 0, #efefef 7%, #f4f5f7 100%);\n    border-radius: 0 0 5px 5px;\n    border: 2px solid #303233;\n    border-top: transparent;\n    -webkit-box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);\n    box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);\n    text-align: center; }\n  .qubely-form-field-wrapper .qubely-active {\n    opacity: 1;\n    max-height: 150px;\n    padding: 15px;\n    z-index: 100; }\n  .qubely-form-field-wrapper .qubely-timePicker-button {\n    cursor: pointer; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n\n#ui-datepicker-div {\n  display: none;\n  background-color: #fff;\n  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);\n  margin-top: 0.25rem;\n  border-radius: 0.5rem;\n  padding: 0.5rem; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.ui-datepicker-calendar thead th {\n  padding: 0.25rem 0;\n  text-align: center;\n  font-size: 0.75rem;\n  font-weight: 400;\n  color: #78909c; }\n\n.ui-datepicker-calendar tbody td {\n  width: 2.5rem;\n  text-align: center;\n  padding: 0; }\n\n.ui-datepicker-calendar tbody td a {\n  display: block;\n  border-radius: 0.25rem;\n  line-height: 2rem;\n  transition: 0.3s all;\n  color: #546e7a;\n  font-size: 0.875rem;\n  text-decoration: none; }\n\n.ui-datepicker-calendar tbody td a:hover {\n  background-color: #e0f2f1; }\n\n.ui-datepicker-calendar tbody td a.ui-state-active {\n  background-color: #009688;\n  color: white; }\n\n.ui-datepicker-header a.ui-corner-all {\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  width: 2rem;\n  height: 2rem;\n  margin: 0.5rem;\n  border-radius: 0.25rem;\n  transition: 0.3s all; }\n\n.ui-datepicker-header a.ui-corner-all:hover {\n  background-color: #eceff1; }\n\n.ui-datepicker-header a.ui-datepicker-prev {\n  left: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 0.5rem;\n  background-position: 50%;\n  transform: rotate(180deg); }\n\n.ui-datepicker-header a.ui-datepicker-next {\n  right: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 10px;\n  background-position: 50%; }\n\n.ui-datepicker-header a > span {\n  display: none; }\n\n.ui-datepicker-title {\n  text-align: center;\n  line-height: 2rem;\n  margin-bottom: 0.25rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  padding-bottom: 0.25rem; }\n\n.ui-datepicker-week-col {\n  color: #78909c;\n  font-weight: 400;\n  font-size: 0.75rem; }\n\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table td,\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table th {\n  border: none;\n  word-break: break-all; }\n", ""]);
 
 
 
@@ -1762,6 +1762,7 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Color = _wp$qubelyComponents.Color,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
     Range = _wp$qubelyComponents.Range,
+    Select = _wp$qubelyComponents.Select,
     Separator = _wp$qubelyComponents.Separator,
     Toggle = _wp$qubelyComponents.Toggle,
     Typography = _wp$qubelyComponents.Typography,
@@ -1847,6 +1848,10 @@ function Edit(props) {
         height = _props$attributes.height,
         type = _props$attributes.type,
         label = _props$attributes.label,
+        emailConformation = _props$attributes.emailConformation,
+        conformationEmailLabel = _props$attributes.conformationEmailLabel,
+        columns = _props$attributes.columns,
+        enableOtherOption = _props$attributes.enableOtherOption,
         instruction = _props$attributes.instruction,
         options = _props$attributes.options,
         placeHolder = _props$attributes.placeHolder,
@@ -1889,7 +1894,7 @@ function Edit(props) {
     var renderOptions = function renderOptions() {
         return React.createElement(
             'div',
-            { className: 'qubely-form-field qubely-form-' + type },
+            { className: 'qubely-form-field qubely-form-' + type + ' qubely-' + type + '-' + columns },
             options.map(function (option, index) {
                 return React.createElement(
                     'div',
@@ -2070,6 +2075,28 @@ function Edit(props) {
         );
     };
 
+    var renderEmailField = function renderEmailField() {
+
+        return React.createElement(
+            Fragment,
+            null,
+            React.createElement('input', { className: 'qubely-form-field qubely-form-email', type: 'email', placeholder: __(placeHolder), required: required }),
+            emailConformation && React.createElement(
+                Fragment,
+                null,
+                React.createElement(RichText, {
+                    placeholder: __('Confirmation Email'),
+                    className: 'qubely-form-field-label',
+                    value: conformationEmailLabel,
+                    onChange: function onChange(value) {
+                        return setAttributes({ conformationEmailLabel: value });
+                    }
+                }),
+                React.createElement('input', { className: 'qubely-form-field qubely-form-confirmation-email', type: 'email', placeholder: __(placeHolder), required: required })
+            )
+        );
+    };
+
     var renderInput = function renderInput() {
         return React.createElement(
             Fragment,
@@ -2086,7 +2113,7 @@ function Edit(props) {
                         option
                     );
                 })
-            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
         );
     };
 
@@ -2134,13 +2161,7 @@ function Edit(props) {
                 max: 100,
                 required: true,
                 allowReset: true
-            }),
-            React.createElement(Toggle, {
-                label: __('Required'),
-                value: required,
-                onChange: function onChange(value) {
-                    return setAttributes({ required: value });
-                } })
+            })
         );
     };
 
@@ -2170,6 +2191,24 @@ function Edit(props) {
                 PanelBody,
                 { title: __(type[0].toUpperCase() + type.slice(1)), opened: true },
                 renderCommonSettings(),
+                name === 'qubely/formfield-email' && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(Toggle, {
+                        label: __('Email Input Confirmation'),
+                        value: emailConformation,
+                        onChange: function onChange(value) {
+                            return setAttributes({ emailConformation: value });
+                        }
+                    }),
+                    emailConformation && React.createElement(TextControl, {
+                        label: __(''),
+                        value: conformationEmailLabel,
+                        onChange: function onChange(value) {
+                            return setAttributes({ conformationEmailLabel: value });
+                        }
+                    })
+                ),
                 name === 'qubely/formfield-textarea' && React.createElement(
                     Fragment,
                     null,
@@ -2187,6 +2226,26 @@ function Edit(props) {
                         onDeviceChange: function onDeviceChange(value) {
                             return changeDevice(value);
                         } })
+                ),
+                (name === 'qubely/formfield-radio' || name === 'qubely/formfield-checkbox') && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(Select, {
+                        label: __('Show Data in'),
+                        value: columns,
+                        options: [['auto', __('Auto')], ['1-column', __('1 Column')], ['2-column', __('2 Column')], ['3-column', __('3 Column')]],
+                        onChange: function onChange(val) {
+                            return setAttributes({ columns: val });
+                        } }),
+                    React.createElement(Toggle, {
+                        label: __('Display Other Option'),
+                        value: enableOtherOption,
+                        onChange: function onChange(value) {
+                            var newOptions = [].concat(_toConsumableArray(options));
+                            value ? newOptions.push('Other') : newOptions.pop();
+                            setAttributes({ enableOtherOption: value, options: newOptions });
+                        }
+                    })
                 ),
                 name === 'qubely/formfield-dropdown' && React.createElement(
                     Fragment,
@@ -2474,6 +2533,14 @@ var qubelyFormFields = [_extends({}, qubelyField, {
                 type: 'string',
                 default: 'email'
             },
+            emailConformation: {
+                type: 'boolean',
+                default: false
+            },
+            conformationEmailLabel: {
+                type: 'string',
+                default: 'Confirm Email'
+            },
             placeHolder: {
                 type: 'string',
                 default: 'Add email'
@@ -2551,9 +2618,17 @@ var qubelyFormFields = [_extends({}, qubelyField, {
                 type: 'string',
                 default: 'radio'
             },
+            columns: {
+                type: 'string',
+                default: '1-column'
+            },
             options: {
                 type: 'array',
                 default: ['option one', 'option two', 'option three']
+            },
+            enableOtherOption: {
+                type: 'boolean',
+                default: false
             }
         })
 
@@ -2571,6 +2646,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
             type: {
                 type: 'string',
                 default: 'checkbox'
+            },
+            columns: {
+                type: 'string',
+                default: '1-column'
             },
             options: {
                 type: 'array',
@@ -2713,6 +2792,7 @@ function Save(props) {
         width = _props$attributes.width,
         placeHolder = _props$attributes.placeHolder,
         required = _props$attributes.required,
+        columns = _props$attributes.columns,
         hour = _props$attributes.hour,
         minute = _props$attributes.minute,
         minuteInterval = _props$attributes.minuteInterval,
@@ -2727,7 +2807,7 @@ function Save(props) {
     var renderOptions = function renderOptions() {
         return React.createElement(
             'div',
-            { className: 'qubely-form-field qubely-form-' + type },
+            { className: 'qubely-form-field qubely-form-' + type + ' qubely-' + type + '-' + columns },
             options.map(function (option, index) {
                 return React.createElement(
                     'div',

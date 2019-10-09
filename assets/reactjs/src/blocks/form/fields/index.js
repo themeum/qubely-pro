@@ -98,6 +98,14 @@ const qubelyFormFields = [
                     type: 'string',
                     default: 'email'
                 },
+                emailConformation: {
+                    type: 'boolean',
+                    default: false
+                },
+                conformationEmailLabel: {
+                    type: 'string',
+                    default: 'Confirm Email'
+                },
                 placeHolder: {
                     type: 'string',
                     default: 'Add email'
@@ -189,10 +197,18 @@ const qubelyFormFields = [
                     type: 'string',
                     default: 'radio'
                 },
+                columns: {
+                    type: 'string',
+                    default: '1-column'
+                },
                 options: {
                     type: 'array',
                     default: ['option one', 'option two', 'option three']
                 },
+                enableOtherOption: {
+                    type: 'boolean',
+                    default: false
+                }
             }
 
         },
@@ -213,6 +229,10 @@ const qubelyFormFields = [
                 type: {
                     type: 'string',
                     default: 'checkbox'
+                },
+                columns: {
+                    type: 'string',
+                    default: '1-column'
                 },
                 options: {
                     type: 'array',

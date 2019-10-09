@@ -17,6 +17,7 @@ export default function Save(props) {
             width,
             placeHolder,
             required,
+            columns,
             hour,
             minute,
             minuteInterval,
@@ -31,7 +32,7 @@ export default function Save(props) {
 
     const renderOptions = () => {
         return (
-            <div className={`qubely-form-field qubely-form-${type}`} >
+            <div className={`qubely-form-field qubely-form-${type} qubely-${type}-${columns}`} >
                 {options.map((option, index) => {
                     return (
                         <div className={`qubely-form-field-${type}-option`}>

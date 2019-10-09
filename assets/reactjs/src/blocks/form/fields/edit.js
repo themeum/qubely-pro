@@ -26,6 +26,7 @@ const {
     Color,
     RadioAdvanced,
     Range,
+    Select,
     Separator,
     Toggle,
     Typography,
@@ -75,6 +76,13 @@ export default function Edit(props) {
             //label
             label,
 
+            //email
+            emailConformation,
+            conformationEmailLabel,
+
+            //radio
+            columns,
+            enableOtherOption,
 
             instruction,
             options,
@@ -119,7 +127,7 @@ export default function Edit(props) {
 
     const renderOptions = () => {
         return (
-            <div className={`qubely-form-field qubely-form-${type}`} >
+            <div className={`qubely-form-field qubely-form-${type} qubely-${type}-${columns}`} >
                 {options.map((option, index) => {
                     return (
                         <div className={`qubely-form-field-${type}-option`}>
@@ -256,6 +264,26 @@ export default function Edit(props) {
         )
     }
 
+    const renderEmailField = () => {
+
+        return (
+            <Fragment>
+                <input className={`qubely-form-field qubely-form-email`} type={'email'} placeholder={__(placeHolder)} required={required} />
+                {emailConformation &&
+                    <Fragment>
+                        <RichText
+                            placeholder={__('Confirmation Email')}
+                            className={`qubely-form-field-label`}
+                            value={conformationEmailLabel}
+                            onChange={value => setAttributes({ conformationEmailLabel: value })}
+                        />
+                        <input className={`qubely-form-field qubely-form-confirmation-email`} type={'email'} placeholder={__(placeHolder)} required={required} />
+                    </Fragment>
+                }
+            </Fragment>
+        )
+    }
+
     const renderInput = () => {
         return (
             <Fragment>
@@ -278,7 +306,10 @@ export default function Edit(props) {
                                     type === 'time' ?
                                         renderTimePicker()
                                         :
-                                        <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
+                                        type === 'email' ?
+                                            renderEmailField()
+                                            :
+                                            <input className={`qubely-form-field qubely-form-${type}`} type={type} placeholder={__(placeHolder)} required={required} />
                 }
             </Fragment>
         )
@@ -330,10 +361,6 @@ export default function Edit(props) {
                         allowReset
                     />
                 }
-                < Toggle
-                    label={__('Required')}
-                    value={required}
-                    onChange={value => setAttributes({ required: value })} />
             </Fragment>
         )
     }
@@ -361,10 +388,28 @@ export default function Edit(props) {
 
 
                 <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} opened={true}>
-                   
+
 
                     {renderCommonSettings()}
-
+                    {/**email */}
+                    {
+                        name === 'qubely/formfield-email' &&
+                        <Fragment>
+                            <Toggle
+                                label={__('Email Input Confirmation')}
+                                value={emailConformation}
+                                onChange={value => setAttributes({ emailConformation: value })}
+                            />
+                            {
+                                emailConformation &&
+                                <TextControl
+                                    label={__('')}
+                                    value={conformationEmailLabel}
+                                    onChange={value => setAttributes({ conformationEmailLabel: value })}
+                                />
+                            }
+                        </Fragment>
+                    }
                     {/*Text-area */}
                     {
                         name === 'qubely/formfield-textarea' &&
@@ -379,6 +424,36 @@ export default function Edit(props) {
                                 unit={['px', 'em', '%']}
                                 onChange={value => setAttributes({ height: value })}
                                 onDeviceChange={value => changeDevice(value)} />
+                        </Fragment>
+                    }
+
+                    {/*radio */}
+
+                    {
+                        (name === 'qubely/formfield-radio' || name === 'qubely/formfield-checkbox') &&
+                        <Fragment>
+
+                            <Select
+                                label={__('Show Data in')}
+                                value={columns}
+                                options={[
+                                    ['auto', __('Auto')],
+                                    ['1-column', __('1 Column')],
+                                    ['2-column', __('2 Column')],
+                                    ['3-column', __('3 Column')],
+                                ]}
+                                onChange={val => setAttributes({ columns: val })} />
+
+                            <Toggle
+                                label={__('Display Other Option')}
+                                value={enableOtherOption}
+                                onChange={value => {
+                                    let newOptions = [...options]
+                                    value ? newOptions.push('Other') : newOptions.pop()
+                                    setAttributes({ enableOtherOption: value, options: newOptions })
+                                }}
+                            />
+
                         </Fragment>
                     }
 
