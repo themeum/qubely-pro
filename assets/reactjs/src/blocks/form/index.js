@@ -198,10 +198,10 @@ registerBlockType('qubely/form', {
             type: 'string', default: "#fff",
             style: [
                 {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {background-color: {{inputBg}};}'
+                    // condition: [
+                    //     { key: 'layout', relation: '==', value: 'classic' },
+                    // ],
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {background-color: {{inputBg}};}'
                 }
             ]
         },

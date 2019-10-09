@@ -359,34 +359,33 @@ export default function Edit(props) {
 
             <InspectorControls>
 
-                {
-                    name === 'qubely/formfield-text' &&
-                    <PanelBody title={__('Text')} opened={true}>
-                        {renderCommonSettings()}
-                    </PanelBody>
-                }
-                {
-                    name === 'qubely/formfield-textarea' &&
-                    <PanelBody title={__('Form-field Settings')} opened={true}>
-                        {renderCommonSettings()}
-                        <Range
-                            min={50}
-                            max={600}
-                            responsive
-                            value={height}
-                            device={device}
-                            label={__('Height')}
-                            unit={['px', 'em', '%']}
-                            onChange={value => setAttributes({ height: value })}
-                            onDeviceChange={value => changeDevice(value)} />
-                    </PanelBody>
-                }
 
-                {
-                    name === 'qubely/formfield-dropdown' &&
-                    <PanelBody title={__('Dropdown')} initialOpen={true}>
-                        {renderCommonSettings()}
+                <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} opened={true}>
+                   
 
+                    {renderCommonSettings()}
+
+                    {/*Text-area */}
+                    {
+                        name === 'qubely/formfield-textarea' &&
+                        <Fragment>
+                            <Range
+                                min={50}
+                                max={600}
+                                responsive
+                                value={height}
+                                device={device}
+                                label={__('Height')}
+                                unit={['px', 'em', '%']}
+                                onChange={value => setAttributes({ height: value })}
+                                onDeviceChange={value => changeDevice(value)} />
+                        </Fragment>
+                    }
+
+                    {/*Dropdown */}
+
+                    {
+                        name === 'qubely/formfield-dropdown' &&
                         <Fragment>
                             <label className={`qubely-form-field`}>Dropdown Options</label>
                             {options.map((option, index) => {
@@ -420,54 +419,54 @@ export default function Edit(props) {
                             </div>
 
                         </Fragment>
+                    }
 
-                    </PanelBody>
+                    {/* time */}
+                    {
+                        name === 'qubely/formfield-time' &&
+                        <Fragment>
+                            <div className="qubely-form-time-picker-format">
+                                <ButtonGroup
+                                    label={__('Time Format')}
+                                    options={
+                                        [
+                                            [__('24 Hours'), 23],
+                                            [__('AM/PM'), 12],
+                                        ]}
+                                    value={timeFormatType}
+                                    onChange={value => {
+                                        setHour(timeFormatType === 12 ? (seletedTimeFormat === 'PM' ? 12 + hour : hour) : hour < 13 ? hour : hour % 12)
+                                        timeFormatType === 23 && changeseletedTimeFormat(hour >= 12 ? 'PM' : 'AM')
+                                        setAttributes({ timeFormatType: value })
+                                    }}
+                                />
+                            </div>
 
-                }
-                {
-                    name === 'qubely/formfield-time' &&
-                    <PanelBody title={__('Time')} initialOpen={true}>
-                        {renderCommonSettings()}
-                        <div className="qubely-form-time-picker-format">
-                            <ButtonGroup
-                                label={__('Time Format')}
-                                options={
-                                    [
-                                        [__('24 Hours'), 23],
-                                        [__('AM/PM'), 12],
-                                    ]}
-                                value={timeFormatType}
-                                onChange={value => {
-                                    setHour(timeFormatType === 12 ? (seletedTimeFormat === 'PM' ? 12 + hour : hour) : hour < 13 ? hour : hour % 12)
-                                    timeFormatType === 23 && changeseletedTimeFormat(hour >= 12 ? 'PM' : 'AM')
-                                    setAttributes({ timeFormatType: value })
-                                }}
-                            />
-                        </div>
+                            <div className="qubely-form-time-picker-minute-interval">
+                                <ButtonGroup
+                                    label={__('Minute Interval')}
+                                    options={
+                                        [
+                                            [__('1'), 1],
+                                            [__('5'), 5],
+                                            [__('10'), 10],
+                                            [__('15'), 15],
+                                            [__('20'), 20],
+                                            [__('30'), 30],
+                                        ]}
+                                    value={minuteInterval}
+                                    onChange={value => setAttributes({ minuteInterval: value })}
+                                />
+                            </div>
+                        </Fragment>
+                    }
 
-                        <div className="qubely-form-time-picker-minute-interval">
-                            <ButtonGroup
-                                label={__('Minute Interval')}
-                                options={
-                                    [
-                                        [__('1'), 1],
-                                        [__('5'), 5],
-                                        [__('10'), 10],
-                                        [__('15'), 15],
-                                        [__('20'), 20],
-                                        [__('30'), 30],
-                                    ]}
-                                value={minuteInterval}
-                                onChange={value => setAttributes({ minuteInterval: value })}
-                            />
-                        </div>
-                        <Toggle
-                            label={__('Required')}
-                            value={required}
-                            onChange={value => setAttributes({ required: value })}
-                        />
-                    </PanelBody>
-                }
+                    <Toggle
+                        label={__('Required')}
+                        value={required}
+                        onChange={value => setAttributes({ required: value })}
+                    />
+                </PanelBody>
 
             </InspectorControls>
 

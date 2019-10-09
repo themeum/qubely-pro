@@ -2166,35 +2166,29 @@ function Edit(props) {
         React.createElement(
             InspectorControls,
             null,
-            name === 'qubely/formfield-text' && React.createElement(
+            React.createElement(
                 PanelBody,
-                { title: __('Text'), opened: true },
-                renderCommonSettings()
-            ),
-            name === 'qubely/formfield-textarea' && React.createElement(
-                PanelBody,
-                { title: __('Form-field Settings'), opened: true },
+                { title: __(type[0].toUpperCase() + type.slice(1)), opened: true },
                 renderCommonSettings(),
-                React.createElement(Range, {
-                    min: 50,
-                    max: 600,
-                    responsive: true,
-                    value: height,
-                    device: device,
-                    label: __('Height'),
-                    unit: ['px', 'em', '%'],
-                    onChange: function onChange(value) {
-                        return setAttributes({ height: value });
-                    },
-                    onDeviceChange: function onDeviceChange(value) {
-                        return changeDevice(value);
-                    } })
-            ),
-            name === 'qubely/formfield-dropdown' && React.createElement(
-                PanelBody,
-                { title: __('Dropdown'), initialOpen: true },
-                renderCommonSettings(),
-                React.createElement(
+                name === 'qubely/formfield-textarea' && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(Range, {
+                        min: 50,
+                        max: 600,
+                        responsive: true,
+                        value: height,
+                        device: device,
+                        label: __('Height'),
+                        unit: ['px', 'em', '%'],
+                        onChange: function onChange(value) {
+                            return setAttributes({ height: value });
+                        },
+                        onDeviceChange: function onDeviceChange(value) {
+                            return changeDevice(value);
+                        } })
+                ),
+                name === 'qubely/formfield-dropdown' && React.createElement(
                     Fragment,
                     null,
                     React.createElement(
@@ -2249,37 +2243,36 @@ function Edit(props) {
                             '  Add new item '
                         )
                     )
-                )
-            ),
-            name === 'qubely/formfield-time' && React.createElement(
-                PanelBody,
-                { title: __('Time'), initialOpen: true },
-                renderCommonSettings(),
-                React.createElement(
-                    'div',
-                    { className: 'qubely-form-time-picker-format' },
-                    React.createElement(ButtonGroup, {
-                        label: __('Time Format'),
-                        options: [[__('24 Hours'), 23], [__('AM/PM'), 12]],
-                        value: timeFormatType,
-                        onChange: function onChange(value) {
-                            setHour(timeFormatType === 12 ? seletedTimeFormat === 'PM' ? 12 + hour : hour : hour < 13 ? hour : hour % 12);
-                            timeFormatType === 23 && changeseletedTimeFormat(hour >= 12 ? 'PM' : 'AM');
-                            setAttributes({ timeFormatType: value });
-                        }
-                    })
                 ),
-                React.createElement(
-                    'div',
-                    { className: 'qubely-form-time-picker-minute-interval' },
-                    React.createElement(ButtonGroup, {
-                        label: __('Minute Interval'),
-                        options: [[__('1'), 1], [__('5'), 5], [__('10'), 10], [__('15'), 15], [__('20'), 20], [__('30'), 30]],
-                        value: minuteInterval,
-                        onChange: function onChange(value) {
-                            return setAttributes({ minuteInterval: value });
-                        }
-                    })
+                name === 'qubely/formfield-time' && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-time-picker-format' },
+                        React.createElement(ButtonGroup, {
+                            label: __('Time Format'),
+                            options: [[__('24 Hours'), 23], [__('AM/PM'), 12]],
+                            value: timeFormatType,
+                            onChange: function onChange(value) {
+                                setHour(timeFormatType === 12 ? seletedTimeFormat === 'PM' ? 12 + hour : hour : hour < 13 ? hour : hour % 12);
+                                timeFormatType === 23 && changeseletedTimeFormat(hour >= 12 ? 'PM' : 'AM');
+                                setAttributes({ timeFormatType: value });
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-time-picker-minute-interval' },
+                        React.createElement(ButtonGroup, {
+                            label: __('Minute Interval'),
+                            options: [[__('1'), 1], [__('5'), 5], [__('10'), 10], [__('15'), 15], [__('20'), 20], [__('30'), 30]],
+                            value: minuteInterval,
+                            onChange: function onChange(value) {
+                                return setAttributes({ minuteInterval: value });
+                            }
+                        })
+                    )
                 ),
                 React.createElement(Toggle, {
                     label: __('Required'),
@@ -3079,8 +3072,10 @@ registerBlockType('qubely/form', {
         inputBg: {
             type: 'string', default: "#fff",
             style: [{
-                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control {background-color: {{inputBg}};}'
+                // condition: [
+                //     { key: 'layout', relation: '==', value: 'classic' },
+                // ],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {background-color: {{inputBg}};}'
             }]
         },
 
