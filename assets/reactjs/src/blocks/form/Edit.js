@@ -161,12 +161,13 @@ class Edit extends Component {
     renderFormFieldTypes = () => {
         const formFields = [
             [__('Text'), 'text'],
+            [__('Number'), 'number'],
             [__('Email'), 'email'],
             [__('Radio'), 'radio'],
             [__('Checkbox'), 'checkbox'],
+            [__('Textarea'), 'textarea'],
             [__('Date'), 'date'],
             [__('Time'), 'time'],
-            [__('Textarea'), 'textarea'],
             [__('Dropdown'), 'dropdown'],
         ]
         return (

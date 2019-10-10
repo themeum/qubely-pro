@@ -24,6 +24,7 @@ const registerBlock = (block) => {
                     style: {
                         width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%',
                     },
+                    className: `wp-block editor-block-list__block block-editor-block-list__block qubely-form-fieldtype-wrapper`
                 }
             }
         },
@@ -32,6 +33,8 @@ const registerBlock = (block) => {
 
 
 const qubelyFormFields = [
+
+    // 1. text field
     {
         ...qubelyField,
         settings: {
@@ -57,6 +60,7 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-text"
     },
+    // 2 . number
     {
         ...qubelyField,
         settings: {
@@ -82,6 +86,7 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-number"
     },
+    //3. email
     {
         ...qubelyField,
         settings: {
@@ -119,6 +124,7 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-email"
     },
+    //4. textarea
     {
         ...qubelyField,
         settings: {
@@ -156,6 +162,7 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-textarea"
     },
+    // 5. dropdown
     {
         ...qubelyField,
         settings: {
@@ -185,6 +192,7 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-dropdown"
     },
+    // 6. radio
     {
         ...qubelyField,
         settings: {
@@ -218,6 +226,7 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-radio"
     },
+    // 7. checkbox
     {
         ...qubelyField,
         settings: {
@@ -247,6 +256,7 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-checkbox"
     },
+    // 8. date picker
     {
         ...qubelyField,
         settings: {
@@ -276,6 +286,7 @@ const qubelyFormFields = [
         },
         blockName: "qubely/formfield-date"
     },
+    // 9. time picker
     {
         ...qubelyField,
         settings: {

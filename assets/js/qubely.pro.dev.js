@@ -885,7 +885,7 @@ var Edit = function (_Component) {
         };
 
         _this.renderFormFieldTypes = function () {
-            var formFields = [[__('Text'), 'text'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Date'), 'date'], [__('Time'), 'time'], [__('Textarea'), 'textarea'], [__('Dropdown'), 'dropdown']];
+            var formFields = [[__('Text'), 'text'], [__('Number'), 'number'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Textarea'), 'textarea'], [__('Date'), 'date'], [__('Time'), 'time'], [__('Dropdown'), 'dropdown']];
             return React.createElement(
                 'div',
                 { className: 'qubely-form-field-types' },
@@ -2494,14 +2494,18 @@ var registerBlock = function registerBlock(block) {
                 return {
                     style: {
                         width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%'
-                    }
+                    },
+                    className: 'wp-block editor-block-list__block block-editor-block-list__block qubely-form-fieldtype-wrapper'
                 };
             }
         }
     }));
 };
 
-var qubelyFormFields = [_extends({}, qubelyField, {
+var qubelyFormFields = [
+
+// 1. text field
+_extends({}, qubelyField, {
     settings: _extends({}, qubelyField.settings, {
         title: __('Text'),
         description: __('Text field for Qubely Form'),
@@ -2522,7 +2526,9 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-text"
-}), _extends({}, qubelyField, {
+}),
+// 2 . number
+_extends({}, qubelyField, {
     settings: _extends({}, qubelyField.settings, {
         title: __('Number'),
         description: __('Number field for Qubely Form'),
@@ -2543,7 +2549,9 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-number"
-}), _extends({}, qubelyField, {
+}),
+//3. email
+_extends({}, qubelyField, {
     settings: _extends({}, qubelyField.settings, {
         title: __('Email'),
         description: __('Email field for Qubely Form'),
@@ -2576,7 +2584,9 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-email"
-}), _extends({}, qubelyField, {
+}),
+//4. textarea
+_extends({}, qubelyField, {
     settings: _extends({}, qubelyField.settings, {
         title: __('Textarea'),
         description: __('Textarea field for Qubely Form'),
@@ -2607,7 +2617,9 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-textarea"
-}), _extends({}, qubelyField, {
+}),
+// 5. dropdown
+_extends({}, qubelyField, {
     settings: _extends({}, qubelyField.settings, {
         title: __('Dropdown'),
         description: __('Dropdown field for Qubely Form'),
@@ -2632,7 +2644,9 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-dropdown"
-}), _extends({}, qubelyField, {
+}),
+// 6. radio
+_extends({}, qubelyField, {
     settings: _extends({}, qubelyField.settings, {
         title: __('Radio'),
         description: __('Radio field for Qubely Form'),
@@ -2661,7 +2675,9 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-radio"
-}), _extends({}, qubelyField, {
+}),
+// 7. checkbox
+_extends({}, qubelyField, {
     settings: _extends({}, qubelyField.settings, {
         title: __('Checkbox'),
         description: __('Checkbox field for Qubely Form'),
@@ -2686,7 +2702,9 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-checkbox"
-}), _extends({}, qubelyField, {
+}),
+// 8. date picker
+_extends({}, qubelyField, {
     settings: _extends({}, qubelyField.settings, {
         title: __('Date Picker'),
         description: __('Date picker field for Qubely Form'),
@@ -2711,7 +2729,9 @@ var qubelyFormFields = [_extends({}, qubelyField, {
 
     }),
     blockName: "qubely/formfield-date"
-}), _extends({}, qubelyField, {
+}),
+// 9. time picker
+_extends({}, qubelyField, {
     settings: _extends({}, qubelyField.settings, {
         title: __('Time Picker'),
         description: __('Time picker field for Qubely Form'),
