@@ -110,7 +110,7 @@ exports.push([module.i, ".qubely-form-field-wrapper {\n  display: flex; }\n  .qu
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #f7f8fc;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #ffffff;\n    border: 1px solid #d6d9dd;\n    border-radius: 4px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
+exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form .editor-inner-blocks.block-editor-inner-blocks .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #f7f8fc;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #ffffff;\n    border: 1px solid #d6d9dd;\n    border-radius: 4px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
 
 
 
@@ -885,6 +885,9 @@ var Edit = function (_Component) {
         };
 
         _this.renderFormFieldTypes = function () {
+            var hideDropdown = _this.state.hideDropdown;
+
+
             var formFields = [[__('Text'), 'text'], [__('Number'), 'number'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Textarea'), 'textarea'], [__('Date'), 'date'], [__('Time'), 'time'], [__('Dropdown'), 'dropdown']];
             return React.createElement(
                 'div',
@@ -898,8 +901,10 @@ var Edit = function (_Component) {
                         'div',
                         { className: 'qubely-form-field-type',
                             onClick: function onClick() {
-                                return _this.addNewItem(type);
-                            } },
+                                _this.addNewItem(type);
+                                hideDropdown();
+                            }
+                        },
                         fieldName
                     );
                 })
@@ -909,7 +914,7 @@ var Edit = function (_Component) {
         _this.state = {
             spacer: true,
             selectedItem: -1,
-            dropdownOpen: -1,
+            hideDropdown: null,
             newItemType: 'text',
             device: 'md'
         };
@@ -1118,10 +1123,7 @@ var Edit = function (_Component) {
                 globalCss = _props10$attributes.globalCss,
                 height = _props10$attributes.height,
                 width = _props10$attributes.width;
-            var _state = this.state,
-                device = _state.device,
-                selectedItem = _state.selectedItem,
-                dropdownOpen = _state.dropdownOpen;
+            var device = this.state.device;
 
 
             if (uniqueId) {
@@ -1434,9 +1436,10 @@ var Edit = function (_Component) {
                         React.createElement(
                             'form',
                             { className: 'qubely-form is-' + inputSize },
-                            React.createElement(InnerBlocks, {
-                                templateLock: 'all',
-                                template: formItems.map(function (_ref3) {
+                            React.createElement(InnerBlocks
+                            // templateLock="insert"
+                            // templateLock={false}
+                            , { template: formItems.map(function (_ref3) {
                                     var type = _ref3.type,
                                         label = _ref3.label,
                                         options = _ref3.options,
@@ -1479,7 +1482,9 @@ var Edit = function (_Component) {
                                         React.createElement('i', { className: 'fas fa-plus-circle' }),
                                         React.createElement(
                                             'span',
-                                            null,
+                                            { onClick: function onClick() {
+                                                    return _this2.setState({ hideDropdown: onToggle });
+                                                } },
                                             ' ',
                                             __('Add new item')
                                         )

@@ -39,7 +39,7 @@ class Edit extends Component {
         this.state = {
             spacer: true,
             selectedItem: -1,
-            dropdownOpen: -1,
+            hideDropdown: null,
             newItemType: 'text',
             device: 'md',
         }
@@ -159,6 +159,9 @@ class Edit extends Component {
     }
 
     renderFormFieldTypes = () => {
+
+        const { hideDropdown } = this.state
+
         const formFields = [
             [__('Text'), 'text'],
             [__('Number'), 'number'],
@@ -175,13 +178,19 @@ class Edit extends Component {
                 {formFields.map(([fieldName, type], index) => {
                     return (
                         <div className="qubely-form-field-type"
-                            onClick={() => this.addNewItem(type)}>
+                            onClick={() => {
+                                this.addNewItem(type)
+                                hideDropdown()
+                            }}
+                        >
                             {fieldName}
                         </div>
                     )
                 })}
             </div>
         )
+
+
     }
     render() {
         const {
@@ -265,7 +274,7 @@ class Edit extends Component {
             }
         } = this.props
 
-        const { device, selectedItem, dropdownOpen } = this.state
+        const { device } = this.state
 
         if (uniqueId) { CssGenerator(attributes, 'form', uniqueId); }
         return (
@@ -512,7 +521,8 @@ class Edit extends Component {
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
-                                templateLock="all"
+                                // templateLock="insert"
+                                // templateLock={false}
                                 template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])}
                             />
                         </form>
@@ -539,7 +549,7 @@ class Edit extends Component {
                                 renderToggle={({ isOpen, onToggle }) =>
                                     <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
                                         <i className="fas fa-plus-circle"></i>
-                                        <span> {__(`Add new item`)}</span>
+                                        <span onClick={() => this.setState({ hideDropdown: onToggle })}> {__(`Add new item`)}</span>
                                     </div>
 
                                 }
