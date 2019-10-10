@@ -258,6 +258,14 @@ const qubelyFormFields = [
                 type: {
                     type: 'string',
                     default: 'date'
+                },
+                dateSeparator: {
+                    type: 'string',
+                    default: '-'
+                },
+                dateFormat: {
+                    type: 'string',
+                    default: 'dd-M-yy'
                 }
             }
 

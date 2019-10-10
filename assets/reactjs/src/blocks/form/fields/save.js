@@ -20,7 +20,10 @@ export default function Save(props) {
             columns,
             hour,
             minute,
-            calendarPopup,
+
+            //date
+            dateFormat,
+            dateSeparator,
             emailConformation,
             minuteInterval,
             timeFormatType,
@@ -74,7 +77,7 @@ export default function Save(props) {
 
     const renderDatePicker = () => {
         let options = JSON.stringify({
-            showCalendar: calendarPopup,
+            dateFormat: dateFormat,
         })
         return (
             <div class="qubely-date-picker-wrapper" data-options={options}>

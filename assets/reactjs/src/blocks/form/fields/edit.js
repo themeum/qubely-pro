@@ -84,6 +84,10 @@ export default function Edit(props) {
             columns,
             enableOtherOption,
 
+            //date
+            dateFormat,
+            dateSeparator,
+
             instruction,
             options,
             placeHolder,
@@ -101,13 +105,14 @@ export default function Edit(props) {
             setAttributes({ uniqueId: _client })
         }
 
-        $('.qubely-datepicker').datepicker({
-            dateFormat: "dd-mm-yy",
-            yearRange: `${year - 50}:${year + 10}`,
+        $(`.qubely-block-${uniqueId} .qubely-datepicker`).datepicker({
             duration: "fast",
             changeMonth: true,
-            changeYear: true
-        });
+            changeYear: true,
+            yearRange: `${year - 50}:${year + 10}`,
+            dateFormat: dateFormat,
+        })
+
         const currentField = $(`#block-${clientId}`)
         currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
 
@@ -157,7 +162,7 @@ export default function Edit(props) {
     const renderDatePicker = () => {
         return (
             <div class="qubely-date-picker-wrapper">
-                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__('d : m : y')}></input>
+                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(`dd${dateSeparator}mm${dateSeparator}yy`)}></input>
             </div>
         )
     }
@@ -373,7 +378,7 @@ export default function Edit(props) {
     const blockname = name.split('/')[1]
 
     if (uniqueId) { CssGenerator(attributes, blockname, uniqueId) }
-    console.log(props.attributes)
+
     return (
         <Fragment>
 
@@ -450,6 +455,38 @@ export default function Edit(props) {
                         </Fragment>
                     }
 
+
+                    {/*Date */}
+
+                    {
+                        name === 'qubely/formfield-date' &&
+                        <Fragment>
+                            <div className="qubely-form-date-picker-format">
+                                <ButtonGroup
+                                    label={__('Date Format')}
+                                    options={
+                                        [
+                                            [__('01-JAN-2000'), `dd${dateSeparator}M${dateSeparator}yy`],
+                                            [__('JAN-01-2000'), `M${dateSeparator}dd${dateSeparator}yy`],
+                                            [__('2000-JAN-01'), `yy${dateSeparator}M${dateSeparator}dd`],
+                                        ]}
+                                    value={dateFormat}
+                                    onChange={value => setAttributes({ dateFormat: value })}
+                                />
+                            </div>
+                            <ButtonGroup
+                                label={__('Separator')}
+                                options={
+                                    [
+                                        [__('-'), '-'],
+                                        [__('/'), '/'],
+                                        [__('.'), '.'],
+                                    ]}
+                                value={dateSeparator}
+                                onChange={value => setAttributes({ dateSeparator: value })}
+                            />
+                        </Fragment>
+                    }
                     {/*Dropdown */}
 
                     {

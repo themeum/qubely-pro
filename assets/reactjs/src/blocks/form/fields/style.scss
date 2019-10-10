@@ -157,6 +157,15 @@
   }
 }
 
+.qubely-form-date-picker-format .qubely-field-group-btn {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  .qubley-group-button {
+    font-size: 11px;
+    padding: 10px 4px;
+  }
+}
 .qubely-form-time-picker-format {
   .components-button-group {
     min-width: 50%;
