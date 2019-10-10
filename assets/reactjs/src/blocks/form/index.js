@@ -7,63 +7,63 @@ const { registerBlockType } = wp.blocks;
 const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes } } = wp.qubelyComponents
 
 const defaultFormItems = [
-    // {
-    //     type: 'text',
-    //     label: 'First Name',
-    //     name: 'first-name',
-    //     placeholder: 'First Name',
-    //     width: 50,
-    //     required: true,
-    //     hideLabel: false
-    // },
-    // {
-    //     type: 'number',
-    //     label: 'Number',
-    //     name: 'number',
-    //     placeholder: 'Number',
-    //     width: 50,
-    //     required: false,
-    //     hideLabel: false
-    // },
-    // {
-    //     type: 'email',
-    //     label: 'Email',
-    //     name: 'email',
-    //     placeholder: 'Email',
-    //     width: 90, required: true,
-    //     hideLabel: false
-    // },
-    // {
-    //     type: 'textarea',
-    //     label: 'Message',
-    //     name: 'message',
-    //     placeholder: 'Message',
-    //     width: 90,
-    //     required: true,
-    //     hideLabel: false
-    // },
-    // {
-    //     type: 'dropdown',
-    //     label: 'Dropdown',
-    //     name: 'message',
-    //     width: 50,
-    //     required: true,
-    //     hideLabel: false
-    // },
-    // {
-    //     type: 'radio',
-    //     label: 'Radio',
-    //     width: 50,
-    //     required: true,
-    //     hideLabel: false
-    // },
-    // {
-    //     type: 'checkbox',
-    //     label: 'Checkbox',
-    //     width: 50,
-    //     required: true,
-    //     hideLabel: false
-    // },
+    {
+        type: 'text',
+        label: 'First Name',
+        name: 'first-name',
+        placeholder: 'First Name',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'number',
+        label: 'Number',
+        name: 'number',
+        placeholder: 'Number',
+        width: 50,
+        required: false,
+        hideLabel: false
+    },
+    {
+        type: 'email',
+        label: 'Email',
+        name: 'email',
+        placeholder: 'Email',
+        width: 90, required: true,
+        hideLabel: false
+    },
+    {
+        type: 'textarea',
+        label: 'Message',
+        name: 'message',
+        placeholder: 'Message',
+        width: 90,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'dropdown',
+        label: 'Dropdown',
+        name: 'message',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'radio',
+        label: 'Radio',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'checkbox',
+        label: 'Checkbox',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
     {
         type: 'date',
         label: 'Date',
@@ -71,22 +71,28 @@ const defaultFormItems = [
         required: true,
         hideLabel: false
     },
-    // {
-    //     type: 'time',
-    //     label: 'Time',
-    //     width: 50,
-    //     required: true,
-    //     hideLabel: false
-    // },
+    {
+        type: 'time',
+        label: 'Time',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
 ]
 
 registerBlockType('qubely/form', {
     title: __('Form'),
     category: 'qubely',
     icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-form.svg'} alt={__('Form')} />,
-    description: 'Create functional Form using this block.',
-    keywords: [__('Form')],
-    supports: { align: ['full'] },
+    description: 'Create functional Form using Qubely Form block.',
+    keywords: [
+        __('Form'),
+        __('Form Builder'),
+        __('Builder')
+    ],
+    supports: {
+        align: ['full'],
+    },
     attributes: {
         uniqueId: { type: 'string', default: '' },
         ...globalAttributes,
@@ -199,9 +205,22 @@ registerBlockType('qubely/form', {
             ]
         },
 
-        placeholderColor: { type: 'string', default: "#818181", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder {color: {{placeholderColor}};}' }] },
-        placeholderColorHover: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:Hover {color: {{placeholderColorHover}};}' }] },
-     
+        placeholderColor: {
+            type: 'string',
+            default: "#818181",
+            style: [
+                { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder {color: {{placeholderColor}};}' }
+            ]
+        },
+
+        placeholderColorHover: {
+            type: 'string',
+            default: "",
+            style: [
+                { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:Hover {color: {{placeholderColorHover}};}' }
+            ]
+        },
+
         placeholderColorFocus: {
             type: 'string',
             default: "",
@@ -251,15 +270,15 @@ registerBlockType('qubely/form', {
             default: {
                 openBorder: 1,
                 type: 'solid',
-                widthType: 'all',
+                widthType: 'global',
                 width: { all: 1 },
                 color: '#ced4da'
             },
             style: [
                 {
-                    // condition: [
-                    //     { key: 'layout', relation: '==', value: 'classic' },
-                    // ],
+                    condition: [
+                        { key: 'layout', relation: '==', value: 'classic' },
+                    ],
                     selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
                 }
             ]

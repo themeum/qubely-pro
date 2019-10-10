@@ -359,6 +359,15 @@ class Edit extends Component {
                             onChange={(value) => setAttributes({ gutter: value })}
                         />
 
+                        {
+                            layout == 'classic' &&
+                            <Border label={__('Border')} value={inputBorder} onChange={val => setAttributes({ inputBorder: val })} min={0} max={10} />
+                        }
+                        {
+                            layout == 'material' &&
+                            <Border label={__('Border')} value={inputBorderMaterial} onChange={val => setAttributes({ inputBorderMaterial: val })} min={0} max={10} />
+                        }
+
                         <BorderRadius
                             min={0}
                             max={100}
@@ -372,14 +381,6 @@ class Edit extends Component {
                             <Tab tabTitle={__('Normal')}>
                                 <Color label={__('Input Text Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
                                 <Color label={__('Background Color')} value={inputBg} onChange={val => setAttributes({ inputBg: val })} />
-                                {/* {
-                                    layout == 'classic' &&
-                                    <Border label={__('Border')} value={inputBorder} onChange={val => setAttributes({ inputBorder: val })} min={0} max={10} />
-                                }
-                                {
-                                    layout == 'material' &&
-                                    <Border label={__('Border')} value={inputBorderMaterial} onChange={val => setAttributes({ inputBorderMaterial: val })} min={0} max={10} />
-                                } */}
                                 <Color label={__('Placeholder Color')} value={placeholderColor} onChange={val => setAttributes({ placeholderColor: val })} />
                             </Tab>
 
@@ -509,7 +510,10 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
                         <form className={`qubely-form is-${inputSize}`}>
-                            <InnerBlocks template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])} />
+                            <InnerBlocks
+                                templateLock="all"
+                                template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])}
+                            />
                         </form>
 
                         <div className="qubely-form-group qubely-form-button" >
