@@ -225,7 +225,7 @@ registerBlockType('qubely/form', {
             type: 'string',
             default: "",
             style: [
-                { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:focus {color: {{placeholderColorFocus}};}' }
+                { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus::placeholder {color: {{placeholderColorFocus}};}' }
             ]
         },
 
@@ -271,7 +271,7 @@ registerBlockType('qubely/form', {
                 openBorder: 1,
                 type: 'solid',
                 widthType: 'global',
-                width: { all: 1 },
+                width: { global: 1 },
                 color: '#ced4da'
             },
             style: [
@@ -335,13 +335,13 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {border-color: {{inputBorderColorFocus}}; box-shadow: 0 0 0 2px {{inputBorderColorFocus}};}'
+                    selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-color: {{inputBorderColorFocus}}; box-shadow: 0 0 0 2px {{inputBorderColorFocus}};}'
                 },
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: 'material' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {border-bottom-color: {{inputBorderColorFocus}};}'
+                    selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-bottom-color: {{inputBorderColorFocus}};}'
                 }
             ]
         },
