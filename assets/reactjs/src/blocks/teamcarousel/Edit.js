@@ -245,7 +245,8 @@ class Edit extends Component {
 			sliderMargin,
 			enablename,
 			dotsPosition,
-			horizontalScrollleft
+			horizontalScrollleft,
+			contentSpacing
 
 		} } = this.props
 
@@ -705,6 +706,16 @@ class Edit extends Component {
 							responsive
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })} />
+						{layout == 3 &&
+							<Range
+								label={__('Content Spacing')}
+								value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })}
+								unit={['px', 'em', '%']} max={300}
+								min={0}
+								responsive
+								device={device}
+								onDeviceChange={value => this.setState({ device: value })} />
+						}
 						<Tabs>
 							<Tab tabTitle={__('Normal')}>
 								<BoxShadow
