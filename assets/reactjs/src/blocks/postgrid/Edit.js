@@ -58,15 +58,24 @@ class Edit extends Component {
 	renderFeaturedImage = (post) => {
 		const { attributes: { layout, style, imgSize, imageAnimation, showCategory, categoryPosition } } = this.props
 		return (
-			<div className={`${layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img'} qubely-post-img qubely-post-img-${imageAnimation}`}>
-				<img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
-				{
-					(showCategory == 'badge' && style !== 4) &&
-					<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
-						<span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
-					</div>
-				}
-			</div>
+            <Fragment>
+                {
+                    (showCategory == 'badge' && style === 4) &&
+                    <div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
+                        <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+                    </div>
+                }
+                <div className={`${layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img'} qubely-post-img qubely-post-img-${imageAnimation}`}>
+
+                    <img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
+                    {
+                        (showCategory == 'badge') &&
+                        <div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
+                            <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+                        </div>
+                    }
+                </div>
+            </Fragment>
 		)
 	}
 
@@ -76,12 +85,12 @@ class Edit extends Component {
 		return (
 			<div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
 				{(showCategory === 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
-				{
+				{/* {
 					(showCategory == 'badge' && style === 4) &&
 					<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
 						<span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
 					</div>
-				}
+				} */}
 
 				{showTitle && (titlePosition == true) && title}
 				{
@@ -118,7 +127,8 @@ class Edit extends Component {
 				showImages,
 				imgSize,
 				enableFixedHeight,
-				fixedHeight,
+                fixedHeight,
+                fixedSmallHeight,
 				imageRadius,
 				imageAnimation,
 
@@ -305,8 +315,8 @@ class Edit extends Component {
 						{(style === 4) &&
 							<Fragment>
 								<Range label={__('Overlay Height')} value={overlayHeight} onChange={value => setAttributes({ overlayHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								{ ( (layout === 5) && (style === 4) ) &&
-                                    <Range label={__('Overlay Height')} value={overlaySmallHeight} onChange={value => setAttributes({ overlaySmallHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+								{ ( (layout === 5) || (layout === 3) ) &&
+                                    <Range label={__('Overlay Small Height')} value={overlaySmallHeight} onChange={value => setAttributes({ overlaySmallHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 }
 								{(layout === 1) &&
 									<Range label={__('Overlay Space')} value={overlaySpace} onChange={value => setAttributes({ overlaySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -397,8 +407,13 @@ class Edit extends Component {
 
 					<PanelBody title={__('Image Settings')} initialOpen={false}>
 						<Toggle label={__('Show Featured Image')} value={showImages} onChange={value => setAttributes({ showImages: value })} />
-						<Toggle label={__('Fixed Image Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
-						{enableFixedHeight && <Range label={__('')} value={fixedHeight} onChange={value => setAttributes({ fixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+                        {( style != 4 ) &&
+                        <Fragment> 
+                            <Toggle label={__('Fixed Image Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
+						    {enableFixedHeight && <Range label={__('large Image')} value={fixedHeight} onChange={value => setAttributes({ fixedHeight: value })} unit={['px', 'em', '%']} min={10} max={1000} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+                            {enableFixedHeight && ((layout === 5) || (layout === 3)) && <Range label={__('Small Image')} value={fixedSmallHeight} onChange={value => setAttributes({ fixedSmallHeight: value })} unit={['px', 'em', '%']} min={10} max={400} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+                        </Fragment> 
+                        }
 						<SelectControl
 							label={__("Image Sizes")}
 							value={imgSize}
@@ -443,7 +458,7 @@ class Edit extends Component {
 						/>
 						{showCategory !== 'none' &&
 							<Fragment>
-								{(layout !== 2 && showCategory == 'badge' && style != 4) &&
+								{(layout !== 2 && showCategory == 'badge') &&
 									<Select
 										label={__("Badge Position")}
 										options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
@@ -451,7 +466,7 @@ class Edit extends Component {
 										onChange={value => setAttributes({ categoryPosition: value })}
 									/>
 								}
-								{(layout === 2 && showCategory == 'badge' && style != 4) &&
+								{(layout === 2 && showCategory == 'badge') &&
 									<Fragment>
 										<RadioAdvanced
 											label={__('Badge Position')}
@@ -627,7 +642,7 @@ class Edit extends Component {
                         <div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${( (layout === 2) || (layout === 3) || (layout === 4) ) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`}>
                             { posts && posts.map( (post,index) => {	
                                 return (
-                                    <div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style} ${( (layout == 5) && (index == 0) ) ? 'qubely-post-large-view': 'qubely-post-small-view'}`}>
+                                    <div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style} ${( (layout == 5) && (index == 0) || (layout == 3) && (index == 0) ) ? 'qubely-post-large-view': 'qubely-post-small-view'}`}>
                                         <div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
                                             {showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
                                             {this.renderCardContent(post)}
