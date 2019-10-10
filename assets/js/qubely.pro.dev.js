@@ -3048,8 +3048,6 @@ if(false) {}
 "use strict";
 
 
-var _extends2;
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 __webpack_require__(/*! ./style.scss */ "./src/blocks/form/style.scss");
@@ -3063,8 +3061,6 @@ var _Save = __webpack_require__(/*! ./Save */ "./src/blocks/form/Save.js");
 var _Save2 = _interopRequireDefault(_Save);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
@@ -3148,7 +3144,7 @@ registerBlockType('qubely/form', {
     },
     attributes: _extends({
         uniqueId: { type: 'string', default: '' }
-    }, globalAttributes, buttonAttributes, (_extends2 = {
+    }, globalAttributes, buttonAttributes, {
         height: {
             type: 'number',
             default: 200
@@ -3223,7 +3219,11 @@ registerBlockType('qubely/form', {
         },
 
         inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}' }] },
-        inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):Hover {color: {{inputColorHover}};}' }] },
+        inputColorHover: {
+            type: 'string',
+            default: "#495057",
+            style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover {color: {{inputColorHover}};}' }]
+        },
 
         inputColorFocus: {
             type: 'string',
@@ -3242,7 +3242,7 @@ registerBlockType('qubely/form', {
         placeholderColorHover: {
             type: 'string',
             default: "",
-            style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:Hover {color: {{placeholderColorHover}};}' }]
+            style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover::placeholder {color: {{placeholderColorHover}};}' }]
         },
 
         placeholderColorFocus: {
@@ -3265,7 +3265,7 @@ registerBlockType('qubely/form', {
             type: 'string', default: '',
             style: [{
                 condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {background-color: {{inputBgHover}};}'
+                selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {background-color: {{inputBgHover}};}'
             }]
         },
 
@@ -3316,10 +3316,10 @@ registerBlockType('qubely/form', {
             type: 'string', default: '',
             style: [{
                 condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {border-color: {{inputBorderColorHover}};}'
+                selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {border-color: {{inputBorderColorHover}};}'
             }, {
                 condition: [{ key: 'layout', relation: '==', value: 'material' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {border-bottom-color: {{inputBorderColorHover}};}'
+                selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {border-bottom-color: {{inputBorderColorHover}};}'
             }]
         },
 
@@ -3332,35 +3332,79 @@ registerBlockType('qubely/form', {
                 condition: [{ key: 'layout', relation: '==', value: 'material' }],
                 selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-bottom-color: {{inputBorderColorFocus}};}'
             }]
-        }
-
-    }, _defineProperty(_extends2, 'inputColorHover', {
-        type: 'string', default: '',
-        style: [{
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {color: {{inputColorHover}};}'
-        }]
-    }), _defineProperty(_extends2, 'inputSize', { type: 'string', default: 'medium' }), _defineProperty(_extends2, 'inputCustomSize', {
-        type: 'object',
-        default: {
-            openPadding: 1,
-            paddingType: 'custom',
-            global: { md: '5' },
-            custom: { md: '5 10 5 10' },
-            unit: 'px'
         },
-        style: [{
-            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field '
-        }, {
-            condition: [{ key: 'layout', relation: '==', value: 'material' }, { key: 'inputSize', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field'
-        }]
-    }), _defineProperty(_extends2, 'textareaHeight', {
-        type: 'object', default: { md: 200, unit: 'px' },
-        style: [{
-            selector: '{{QUBELY}} .qubely-form .qubely-form-group textarea.qubely-form-control {height: {{textareaHeight}};}'
-        }]
-    }), _defineProperty(_extends2, 'fieldErrorMessage', { type: 'string', default: 'Please fill the required field.' }), _defineProperty(_extends2, 'formSuccessMessage', { type: 'string', default: 'Email successfully sent!' }), _defineProperty(_extends2, 'formErrorMessage', { type: 'string', default: 'Email sent failed, fill required field and try again!' }), _defineProperty(_extends2, 'reCaptcha', { type: 'boolean', default: false }), _defineProperty(_extends2, 'reCaptchaSiteKey', { type: 'string', default: '' }), _defineProperty(_extends2, 'reCaptchaSecretKey', { type: 'string', default: '' }), _defineProperty(_extends2, 'policyCheckbox', { type: 'boolean', default: false }), _defineProperty(_extends2, 'policyCheckboxText', { type: 'string', default: 'I agree with the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> and I declare that I have read the information that is required in accordance with <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.119.01.0001.01.ENG&amp;toc=OJ:L:2016:119:TOC" target="_blank">Article 13 of GDPR.</a>' }), _defineProperty(_extends2, 'emailReceiver', { type: 'string', default: '' }), _defineProperty(_extends2, 'emailHeaders', { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{first-name}} {{last-name}}\nCc: {{email}}\nBcc: admin@yourcompany.com' }), _defineProperty(_extends2, 'emailFrom', { type: 'string', default: 'Your Name: admin@example.com' }), _defineProperty(_extends2, 'emailSubject', { type: 'string', default: '{{subject}} | {{email}} | {{site-name}}' }), _defineProperty(_extends2, 'emailBody', { type: 'string', default: '<p><strong>From:</strong> {{first-name}} {{last-name}}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>' }), _defineProperty(_extends2, 'showGlobalSettings', { type: 'boolean', default: true }), _extends2)),
+
+        inputSize: { type: 'string', default: 'medium' },
+        inputCustomSize: {
+            type: 'object',
+            default: {
+                openPadding: 1,
+                paddingType: 'custom',
+                global: { md: '5' },
+                custom: { md: '5 10 5 10' },
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
+                selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field '
+            }, {
+                condition: [{ key: 'layout', relation: '==', value: 'material' }, { key: 'inputSize', relation: '==', value: 'custom' }],
+                selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field'
+            }]
+        },
+        // inputPaddingY: {
+        //     type: 'object', default: { md: 10, unit: 'px' },
+        //     style: [
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'classic' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        //         },
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'material' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        //         }
+        //     ]
+        // },
+        // inputPaddingX: {
+        //     type: 'object', default: { md: 15, unit: 'px' },
+        //     style: [
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'classic' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
+        //         }
+        //     ]
+        // },
+        textareaHeight: {
+            type: 'object', default: { md: 200, unit: 'px' },
+            style: [{
+                selector: '{{QUBELY}} .qubely-form .qubely-form-group textarea.qubely-form-control {height: {{textareaHeight}};}'
+            }]
+        },
+
+        fieldErrorMessage: { type: 'string', default: 'Please fill the required field.' },
+        formSuccessMessage: { type: 'string', default: 'Email successfully sent!' },
+        formErrorMessage: { type: 'string', default: 'Email sent failed, fill required field and try again!' },
+        reCaptcha: { type: 'boolean', default: false },
+        reCaptchaSiteKey: { type: 'string', default: '' },
+        reCaptchaSecretKey: { type: 'string', default: '' },
+        policyCheckbox: { type: 'boolean', default: false },
+        policyCheckboxText: { type: 'string', default: 'I agree with the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> and I declare that I have read the information that is required in accordance with <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.119.01.0001.01.ENG&amp;toc=OJ:L:2016:119:TOC" target="_blank">Article 13 of GDPR.</a>' },
+        emailReceiver: { type: 'string', default: '' },
+        emailHeaders: { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{first-name}} {{last-name}}\nCc: {{email}}\nBcc: admin@yourcompany.com' },
+        emailFrom: { type: 'string', default: 'Your Name: admin@example.com' },
+        emailSubject: { type: 'string', default: '{{subject}} | {{email}} | {{site-name}}' },
+        emailBody: { type: 'string', default: '<p><strong>From:</strong> {{first-name}} {{last-name}}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>' },
+        showGlobalSettings: { type: 'boolean', default: true } // Global Settings
+    }),
     edit: _Edit2.default,
     save: _Save2.default
 });
