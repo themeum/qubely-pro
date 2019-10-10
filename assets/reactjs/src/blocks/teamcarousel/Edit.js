@@ -154,6 +154,9 @@ class Edit extends Component {
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
+						<Tooltip text={__('Delete this item')}>
+							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}><i class="fas fa-close"></i></span>
+						</Tooltip>
                         <div className={`qubely-team-carousel-item`}>
 							<div className={`qubely-team-${layout}`}>
 								{this.renderAuthorInfo(item, index)}
@@ -242,7 +245,8 @@ class Edit extends Component {
 			sliderMargin,
 			enablename,
 			dotsPosition,
-			horizontalScrollleft
+			horizontalScrollleft,
+			contentSpacing
 
 		} } = this.props
 
@@ -702,6 +706,16 @@ class Edit extends Component {
 							responsive
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })} />
+						{layout == 3 &&
+							<Range
+								label={__('Content Spacing')}
+								value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })}
+								unit={['px', 'em', '%']} max={300}
+								min={0}
+								responsive
+								device={device}
+								onDeviceChange={value => this.setState({ device: value })} />
+						}
 						<Tabs>
 							<Tab tabTitle={__('Normal')}>
 								<BoxShadow

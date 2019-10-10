@@ -135,7 +135,7 @@ registerBlockType('qubely/teamcarousel', {
 		}, 
 		dotsPosition: {
 			type: 'object',
-			default: { md: 0, unit: 'px' },
+			default: { md: -40, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots { bottom: {{dotsPosition}}; } ' }
 			]
@@ -335,13 +335,22 @@ registerBlockType('qubely/teamcarousel', {
 			default: '',
 			style: [
 				{
-					selector: '{{QUBELY}} .qubely-team-author-info {background-color: {{bgColor}};} {{QUBELY}} .qubely-tesitmonial-item.layout-2 {background-color: {{bgColor}};}'
+					condition: [
+						{ key: 'layout', relation: '==', value: '1' }
+					],
+					selector: '{{QUBELY}} .qubely-team-carousel-item .qubely-team-1 {background-color: {{bgColor}};}'
+				},
+				{
+					condition: [
+						{ key: 'layout', relation: '==', value: '2' }
+					],
+					selector: '{{QUBELY}} .qubely-team-2 .qubely-team-author-info {background-color: {{bgColor}};}'
 				},
 				{
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper {background-color: {{bgColor}};} {{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
+					selector: '{{QUBELY}} .qubely-team-3 .qubely-team-author {background-color: {{bgColor}};} {{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
 				}
 			]
 		},
@@ -366,9 +375,21 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-team-3 .qubely-team-author-info'
+					selector: '{{QUBELY}} .qubely-team-carousel-item .qubely-team-3'
 				}
 			]
+		},
+		contentSpacing: { 
+			type: 'object', 
+			default: {}, 
+			style: [
+				{ 
+					condition: [
+						{ key: 'layout', relation: '==', value: '3' }
+					],
+					selector: '{{QUBELY}} .qubely-team-author-info .layout-3 {margin-top: {{contentSpacing}};}' 
+				}
+			] 
 		},
 		// Border radius
 		bgBorderRadius: {
