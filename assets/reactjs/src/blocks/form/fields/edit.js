@@ -36,28 +36,16 @@ const {
 
 export default function Edit(props) {
 
-    // let newDate = new Date()
-    const [device, changeDevice] = useState('md')
-    const datePicker = useRef(null);
-    const [date, setDate] = useState(new Date())
-    const [year, setYear] = useState(date.getFullYear())
-    // const [month, setMonth] = useState(newDate.getMonth() + 1)
-    // const [day, setDay] = useState(date.getDate())
-    const [dateString, setDateString] = useState()
-    const [showTimePicker, setTimePicker] = useState(false)
-
-    // const [dateSeparator, setDateSeparator] = useState('-')
-    // const [olddate, setOldDate] = useState("2018-07-22")
-
     const [hour, setHour] = useState(12)
     const [minute, setMinute] = useState(0)
-
-    // const [timeFormatType, changeTimeFormat] = useState('12Hours')
-    const [seletedTimeFormat, changeseletedTimeFormat] = useState('PM')
-
+    const [date, setDate] = useState(new Date())
+    const [device, changeDevice] = useState('md')
     const [draggedItem, setDraggedItem] = useState(-1)
-    const [draggedOverItem, setDraggedOverItem] = useState(-1)
+    const [year, setYear] = useState(date.getFullYear())
     const [dropdownValue, setDropdownValue] = useState('')
+    const [showTimePicker, setTimePicker] = useState(false)
+    const [draggedOverItem, setDraggedOverItem] = useState(-1)
+    const [seletedTimeFormat, changeseletedTimeFormat] = useState('PM')
 
 
     const {

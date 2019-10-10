@@ -1768,73 +1768,55 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Typography = _wp$qubelyComponents.Typography,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
 function Edit(props) {
-
-    // let newDate = new Date()
-    var _useState = useState('md'),
+    var _useState = useState(12),
         _useState2 = _slicedToArray(_useState, 2),
-        device = _useState2[0],
-        changeDevice = _useState2[1];
+        hour = _useState2[0],
+        setHour = _useState2[1];
 
-    var datePicker = useRef(null);
-
-    var _useState3 = useState(new Date()),
+    var _useState3 = useState(0),
         _useState4 = _slicedToArray(_useState3, 2),
-        date = _useState4[0],
-        setDate = _useState4[1];
+        minute = _useState4[0],
+        setMinute = _useState4[1];
 
-    var _useState5 = useState(date.getFullYear()),
+    var _useState5 = useState(new Date()),
         _useState6 = _slicedToArray(_useState5, 2),
-        year = _useState6[0],
-        setYear = _useState6[1];
-    // const [month, setMonth] = useState(newDate.getMonth() + 1)
-    // const [day, setDay] = useState(date.getDate())
+        date = _useState6[0],
+        setDate = _useState6[1];
 
-
-    var _useState7 = useState(),
+    var _useState7 = useState('md'),
         _useState8 = _slicedToArray(_useState7, 2),
-        dateString = _useState8[0],
-        setDateString = _useState8[1];
+        device = _useState8[0],
+        changeDevice = _useState8[1];
 
-    var _useState9 = useState(false),
+    var _useState9 = useState(-1),
         _useState10 = _slicedToArray(_useState9, 2),
-        showTimePicker = _useState10[0],
-        setTimePicker = _useState10[1];
+        draggedItem = _useState10[0],
+        setDraggedItem = _useState10[1];
 
-    // const [dateSeparator, setDateSeparator] = useState('-')
-    // const [olddate, setOldDate] = useState("2018-07-22")
-
-    var _useState11 = useState(12),
+    var _useState11 = useState(date.getFullYear()),
         _useState12 = _slicedToArray(_useState11, 2),
-        hour = _useState12[0],
-        setHour = _useState12[1];
+        year = _useState12[0],
+        setYear = _useState12[1];
 
-    var _useState13 = useState(0),
+    var _useState13 = useState(''),
         _useState14 = _slicedToArray(_useState13, 2),
-        minute = _useState14[0],
-        setMinute = _useState14[1];
+        dropdownValue = _useState14[0],
+        setDropdownValue = _useState14[1];
 
-    // const [timeFormatType, changeTimeFormat] = useState('12Hours')
-
-
-    var _useState15 = useState('PM'),
+    var _useState15 = useState(false),
         _useState16 = _slicedToArray(_useState15, 2),
-        seletedTimeFormat = _useState16[0],
-        changeseletedTimeFormat = _useState16[1];
+        showTimePicker = _useState16[0],
+        setTimePicker = _useState16[1];
 
     var _useState17 = useState(-1),
         _useState18 = _slicedToArray(_useState17, 2),
-        draggedItem = _useState18[0],
-        setDraggedItem = _useState18[1];
+        draggedOverItem = _useState18[0],
+        setDraggedOverItem = _useState18[1];
 
-    var _useState19 = useState(-1),
+    var _useState19 = useState('PM'),
         _useState20 = _slicedToArray(_useState19, 2),
-        draggedOverItem = _useState20[0],
-        setDraggedOverItem = _useState20[1];
-
-    var _useState21 = useState(''),
-        _useState22 = _slicedToArray(_useState21, 2),
-        dropdownValue = _useState22[0],
-        setDropdownValue = _useState22[1];
+        seletedTimeFormat = _useState20[0],
+        changeseletedTimeFormat = _useState20[1];
 
     var name = props.name,
         clientId = props.clientId,
