@@ -384,14 +384,14 @@ class Edit extends Component {
                             </Tab>
 
                             <Tab tabTitle={__('Focus')}>
-                                <Color label={__('Color')} value={inputColorFocus} onChange={val => setAttributes({ inputColorFocus: val })} />
+                                <Color label={__('Text Color')} value={inputColorFocus} onChange={val => setAttributes({ inputColorFocus: val })} />
                                 <Color label={__('Background Color')} value={inputBgFocus} onChange={val => setAttributes({ inputBgFocus: val })} />
                                 <Color label={__('Border Color')} value={inputBorderColorFocus} onChange={(value) => setAttributes({ inputBorderColorFocus: value })} />
                                 <Color label={__('Placeholder Color')} value={placeholderColorFocus} onChange={val => setAttributes({ placeholderColorFocus: val })} />
                             </Tab>
 
                             <Tab tabTitle={__('Hover')}>
-                                <Color label={__('Color')} value={inputColorHover} onChange={val => setAttributes({ inputColorHover: val })} />
+                                <Color label={__('Text Color')} value={inputColorHover} onChange={val => setAttributes({ inputColorHover: val })} />
                                 <Color label={__('Background Color')} value={inputBgHover} onChange={val => setAttributes({ inputBgHover: val })} />
                                 <Color label={__('Border Color')} value={inputBorderColorHover} onChange={(value) => setAttributes({ inputBorderColorHover: value })} />
                                 <Color label={__('Placeholder Color')} value={placeholderColorHover} onChange={val => setAttributes({ placeholderColorHover: val })} />

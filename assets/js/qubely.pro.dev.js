@@ -1252,7 +1252,7 @@ var Edit = function (_Component) {
                             React.createElement(
                                 Tab,
                                 { tabTitle: __('Focus') },
-                                React.createElement(Color, { label: __('Color'), value: inputColorFocus, onChange: function onChange(val) {
+                                React.createElement(Color, { label: __('Text Color'), value: inputColorFocus, onChange: function onChange(val) {
                                         return setAttributes({ inputColorFocus: val });
                                     } }),
                                 React.createElement(Color, { label: __('Background Color'), value: inputBgFocus, onChange: function onChange(val) {
@@ -1268,7 +1268,7 @@ var Edit = function (_Component) {
                             React.createElement(
                                 Tab,
                                 { tabTitle: __('Hover') },
-                                React.createElement(Color, { label: __('Color'), value: inputColorHover, onChange: function onChange(val) {
+                                React.createElement(Color, { label: __('Text Color'), value: inputColorHover, onChange: function onChange(val) {
                                         return setAttributes({ inputColorHover: val });
                                     } }),
                                 React.createElement(Color, { label: __('Background Color'), value: inputBgHover, onChange: function onChange(val) {
@@ -3203,11 +3203,23 @@ registerBlockType('qubely/form', {
 
         inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}' }] },
         inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):Hover {color: {{inputColorHover}};}' }] },
-        inputColorFocus: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {color: {{inputColorFocus}};}' }] },
+
+        inputColorFocus: {
+            type: 'string',
+            default: "#495057",
+            style: [{
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {color: {{inputColorFocus}};}'
+            }]
+        },
 
         placeholderColor: { type: 'string', default: "#818181", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder {color: {{placeholderColor}};}' }] },
         placeholderColorHover: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:Hover {color: {{placeholderColorHover}};}' }] },
-        placeholderColorFocus: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:focus {color: {{placeholderColorFocus}};}' }] },
+
+        placeholderColorFocus: {
+            type: 'string',
+            default: "",
+            style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder:focus {color: {{placeholderColorFocus}};}' }]
+        },
 
         inputBg: {
             type: 'string', default: "#fff",
@@ -3230,16 +3242,27 @@ registerBlockType('qubely/form', {
         inputBgFocus: {
             type: 'string', default: "#fff",
             style: [{
-                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {background-color: {{inputBgFocus}};}'
+                // condition: [
+                //     { key: 'layout', relation: '==', value: 'classic' },
+                // ],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {background-color: {{inputBgFocus}};}'
             }]
         },
 
         inputBorder: {
-            type: 'object', default: { openBorder: 1, type: 'solid', widthType: 'all', width: { all: 1 }, color: '#ced4da' },
+            type: 'object',
+            default: {
+                openBorder: 1,
+                type: 'solid',
+                widthType: 'all',
+                width: { all: 1 },
+                color: '#ced4da'
+            },
             style: [{
-                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control'
+                // condition: [
+                //     { key: 'layout', relation: '==', value: 'classic' },
+                // ],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
             }]
         },
         inputBorderRadius: {
