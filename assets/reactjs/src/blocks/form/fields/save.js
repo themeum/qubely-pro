@@ -21,10 +21,13 @@ export default function Save(props) {
             hour,
             minute,
 
+            //email
+            emailConformation,
+            conformationEmailLabel,
+
             //date
             dateFormat,
-            dateSeparator,
-            emailConformation,
+
             minuteInterval,
             timeFormatType,
         }
@@ -81,7 +84,7 @@ export default function Save(props) {
         })
         return (
             <div class="qubely-date-picker-wrapper" data-options={options}>
-                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off"></input>
+                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} />
             </div>
         )
     }

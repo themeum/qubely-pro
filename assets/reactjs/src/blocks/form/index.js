@@ -177,15 +177,15 @@ registerBlockType('qubely/form', {
             ]
         },
         inputBoxShadow: {
-			type: 'object',
-			default: {},
-			style: [
-				{
-					selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
-				}
-			]
+            type: 'object',
+            default: {},
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
+                }
+            ]
         },
-        
+
         inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}' }] },
         inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):Hover {color: {{inputColorHover}};}' }] },
         inputColorFocus: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {color: {{inputColorFocus}};}' }] },
@@ -241,6 +241,20 @@ registerBlockType('qubely/form', {
                 }
             ]
         },
+        inputBorderRadius: {
+            type: 'object',
+            default: {
+                openBorderRadius: 1,
+                radiusType: 'global'
+            },
+            style: [
+                {
+                    selector: '{{QUBELY}} input.qubely-form-field'
+                }
+            ]
+        },
+
+
 
         inputBorderMaterial: {
             type: 'object', default: { openBorder: 1, type: 'solid', widthType: 'custom', width: { bottom: 2 }, color: '#ced4da' },
@@ -299,31 +313,6 @@ registerBlockType('qubely/form', {
             ]
         },
 
-        inputCorner: {
-            type: 'string', default: '4px',
-            style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                        { key: 'inputCorner', relation: '!=', value: 'custom' },
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {border-radius: {{inputCorner}};}'
-                }
-            ]
-        },
-
-        inputCornerRadius: {
-            type: 'object', default: { md: 5, unit: 'px' },
-            style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                        { key: 'inputCorner', relation: '==', value: 'custom' },
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {border-radius: {{inputCornerRadius}};}'
-                }
-            ]
-        },
 
         inputSize: { type: 'string', default: 'medium' },
         inputCustomSize: {

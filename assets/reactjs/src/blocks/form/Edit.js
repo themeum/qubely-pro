@@ -7,6 +7,7 @@ const { Component, Fragment } = wp.element
 const {
     ButtonGroup,
     BoxShadow,
+    BorderRadius,
     Padding,
     Styles,
     Wrapper,
@@ -212,11 +213,10 @@ class Edit extends Component {
                 inputBgFocus,
                 inputBgHover,
                 inputBorder,
+                inputBorderRadius,
                 inputBorderMaterial,
                 inputBorderColorFocus,
                 inputBorderColorHover,
-                inputCorner,
-                inputCornerRadius,
 
 
 
@@ -359,24 +359,37 @@ class Edit extends Component {
                             onChange={(value) => setAttributes({ gutter: value })}
                         />
 
+                        <BorderRadius
+                            min={0}
+                            max={100}
+                            responsive
+                            label={__('Field Radius')}
+                            value={inputBorderRadius}
+                            unit={['px', 'em', '%']}
+                            onChange={(value) => setAttributes({ inputBorderRadius: value })} />
+
                         <Tabs>
                             <Tab tabTitle={__('Normal')}>
-                                <Color label={__('Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
+                                <Color label={__('Input Text Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
                                 <Color label={__('Background Color')} value={inputBg} onChange={val => setAttributes({ inputBg: val })} />
-                                {layout == 'classic' &&
+                                {/* {
+                                    layout == 'classic' &&
                                     <Border label={__('Border')} value={inputBorder} onChange={val => setAttributes({ inputBorder: val })} min={0} max={10} />
                                 }
-                                {layout == 'material' &&
+                                {
+                                    layout == 'material' &&
                                     <Border label={__('Border')} value={inputBorderMaterial} onChange={val => setAttributes({ inputBorderMaterial: val })} min={0} max={10} />
-                                }
+                                } */}
                                 <Color label={__('Placeholder Color')} value={placeholderColor} onChange={val => setAttributes({ placeholderColor: val })} />
                             </Tab>
+
                             <Tab tabTitle={__('Focus')}>
                                 <Color label={__('Color')} value={inputColorFocus} onChange={val => setAttributes({ inputColorFocus: val })} />
                                 <Color label={__('Background Color')} value={inputBgFocus} onChange={val => setAttributes({ inputBgFocus: val })} />
                                 <Color label={__('Border Color')} value={inputBorderColorFocus} onChange={(value) => setAttributes({ inputBorderColorFocus: value })} />
                                 <Color label={__('Placeholder Color')} value={placeholderColorFocus} onChange={val => setAttributes({ placeholderColorFocus: val })} />
                             </Tab>
+
                             <Tab tabTitle={__('Hover')}>
                                 <Color label={__('Color')} value={inputColorHover} onChange={val => setAttributes({ inputColorHover: val })} />
                                 <Color label={__('Background Color')} value={inputBgHover} onChange={val => setAttributes({ inputBgHover: val })} />
@@ -384,28 +397,7 @@ class Edit extends Component {
                                 <Color label={__('Placeholder Color')} value={placeholderColorHover} onChange={val => setAttributes({ placeholderColorHover: val })} />
                             </Tab>
                         </Tabs>
-                        <RadioAdvanced
-                            label={__('Corner')}
-                            options={[
-                                { svg: icons.corner_square, value: '0px', title: __('Square') },
-                                { svg: icons.corner_rounded, value: '4px', title: __('Rounded') },
-                                { svg: icons.corner_round, value: '50px', title: __('Round') },
-                                { icon: 'fas fa-cog', value: 'custom', title: __('Custom') }
-                            ]}
-                            value={inputCorner}
-                            onChange={val => setAttributes({ inputCorner: val })}
-                        />
 
-                        {inputCorner == 'custom' &&
-                            <Range
-                                label={__('Corner Radius')}
-                                value={inputCornerRadius}
-                                onChange={(value) => setAttributes({ inputCornerRadius: value })}
-                                min={0}
-                                max={100} unit={['px', 'em', '%']}
-                                responsive
-                            />
-                        }
 
                         <Typography value={inputTypography} onChange={val => setAttributes({ inputTypography: val })} />
 

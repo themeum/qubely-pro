@@ -98,6 +98,10 @@ const qubelyFormFields = [
                     type: 'string',
                     default: 'email'
                 },
+                label: {
+                    type: 'string',
+                    default: 'Email',
+                },
                 emailConformation: {
                     type: 'boolean',
                     default: false

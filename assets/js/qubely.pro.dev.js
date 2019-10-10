@@ -839,6 +839,7 @@ var _wp$element = wp.element,
 var _wp$qubelyComponents = wp.qubelyComponents,
     ButtonGroup = _wp$qubelyComponents.ButtonGroup,
     BoxShadow = _wp$qubelyComponents.BoxShadow,
+    BorderRadius = _wp$qubelyComponents.BorderRadius,
     Padding = _wp$qubelyComponents.Padding,
     Styles = _wp$qubelyComponents.Styles,
     Wrapper = _wp$qubelyComponents.Wrapper,
@@ -1083,11 +1084,10 @@ var Edit = function (_Component) {
                 inputBgFocus = _props10$attributes.inputBgFocus,
                 inputBgHover = _props10$attributes.inputBgHover,
                 inputBorder = _props10$attributes.inputBorder,
+                inputBorderRadius = _props10$attributes.inputBorderRadius,
                 inputBorderMaterial = _props10$attributes.inputBorderMaterial,
                 inputBorderColorFocus = _props10$attributes.inputBorderColorFocus,
                 inputBorderColorHover = _props10$attributes.inputBorderColorHover,
-                inputCorner = _props10$attributes.inputCorner,
-                inputCornerRadius = _props10$attributes.inputCornerRadius,
                 textareaHeight = _props10$attributes.textareaHeight,
                 placeholderColor = _props10$attributes.placeholderColor,
                 placeholderColorFocus = _props10$attributes.placeholderColorFocus,
@@ -1223,24 +1223,28 @@ var Edit = function (_Component) {
                                 return setAttributes({ gutter: value });
                             }
                         }),
+                        React.createElement(BorderRadius, {
+                            min: 0,
+                            max: 100,
+                            responsive: true,
+                            label: __('Field Radius'),
+                            value: inputBorderRadius,
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputBorderRadius: value });
+                            } }),
                         React.createElement(
                             Tabs,
                             null,
                             React.createElement(
                                 Tab,
                                 { tabTitle: __('Normal') },
-                                React.createElement(Color, { label: __('Color'), value: inputColor, onChange: function onChange(val) {
+                                React.createElement(Color, { label: __('Input Text Color'), value: inputColor, onChange: function onChange(val) {
                                         return setAttributes({ inputColor: val });
                                     } }),
                                 React.createElement(Color, { label: __('Background Color'), value: inputBg, onChange: function onChange(val) {
                                         return setAttributes({ inputBg: val });
                                     } }),
-                                layout == 'classic' && React.createElement(Border, { label: __('Border'), value: inputBorder, onChange: function onChange(val) {
-                                        return setAttributes({ inputBorder: val });
-                                    }, min: 0, max: 10 }),
-                                layout == 'material' && React.createElement(Border, { label: __('Border'), value: inputBorderMaterial, onChange: function onChange(val) {
-                                        return setAttributes({ inputBorderMaterial: val });
-                                    }, min: 0, max: 10 }),
                                 React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColor, onChange: function onChange(val) {
                                         return setAttributes({ placeholderColor: val });
                                     } })
@@ -1278,24 +1282,6 @@ var Edit = function (_Component) {
                                     } })
                             )
                         ),
-                        React.createElement(RadioAdvanced, {
-                            label: __('Corner'),
-                            options: [{ svg: _icons2.default.corner_square, value: '0px', title: __('Square') }, { svg: _icons2.default.corner_rounded, value: '4px', title: __('Rounded') }, { svg: _icons2.default.corner_round, value: '50px', title: __('Round') }, { icon: 'fas fa-cog', value: 'custom', title: __('Custom') }],
-                            value: inputCorner,
-                            onChange: function onChange(val) {
-                                return setAttributes({ inputCorner: val });
-                            }
-                        }),
-                        inputCorner == 'custom' && React.createElement(Range, {
-                            label: __('Corner Radius'),
-                            value: inputCornerRadius,
-                            onChange: function onChange(value) {
-                                return setAttributes({ inputCornerRadius: value });
-                            },
-                            min: 0,
-                            max: 100, unit: ['px', 'em', '%'],
-                            responsive: true
-                        }),
                         React.createElement(Typography, { value: inputTypography, onChange: function onChange(val) {
                                 return setAttributes({ inputTypography: val });
                             } }),
@@ -1947,7 +1933,7 @@ function Edit(props) {
         return React.createElement(
             'div',
             { 'class': 'qubely-date-picker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __('dd' + dateSeparator + 'mm' + dateSeparator + 'yy') })
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat) })
         );
     };
 
@@ -2561,6 +2547,10 @@ var qubelyFormFields = [_extends({}, qubelyField, {
                 type: 'string',
                 default: 'email'
             },
+            label: {
+                type: 'string',
+                default: 'Email'
+            },
             emailConformation: {
                 type: 'boolean',
                 default: false
@@ -2831,9 +2821,9 @@ function Save(props) {
         columns = _props$attributes.columns,
         hour = _props$attributes.hour,
         minute = _props$attributes.minute,
-        dateFormat = _props$attributes.dateFormat,
-        dateSeparator = _props$attributes.dateSeparator,
         emailConformation = _props$attributes.emailConformation,
+        conformationEmailLabel = _props$attributes.conformationEmailLabel,
+        dateFormat = _props$attributes.dateFormat,
         minuteInterval = _props$attributes.minuteInterval,
         timeFormatType = _props$attributes.timeFormatType;
 
@@ -2888,7 +2878,7 @@ function Save(props) {
         return React.createElement(
             'div',
             { 'class': 'qubely-date-picker-wrapper', 'data-options': options },
-            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off' })
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat) })
         );
     };
     var renderTimePicker = function renderTimePicker() {
@@ -3252,6 +3242,16 @@ registerBlockType('qubely/form', {
                 selector: '{{QUBELY}} .qubely-form .qubely-form-control'
             }]
         },
+        inputBorderRadius: {
+            type: 'object',
+            default: {
+                openBorderRadius: 1,
+                radiusType: 'global'
+            },
+            style: [{
+                selector: '{{QUBELY}} input.qubely-form-field'
+            }]
+        },
 
         inputBorderMaterial: {
             type: 'object', default: { openBorder: 1, type: 'solid', widthType: 'custom', width: { bottom: 2 }, color: '#ced4da' },
@@ -3287,18 +3287,6 @@ registerBlockType('qubely/form', {
         type: 'string', default: '',
         style: [{
             selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {color: {{inputColorHover}};}'
-        }]
-    }), _defineProperty(_extends2, 'inputCorner', {
-        type: 'string', default: '4px',
-        style: [{
-            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputCorner', relation: '!=', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {border-radius: {{inputCorner}};}'
-        }]
-    }), _defineProperty(_extends2, 'inputCornerRadius', {
-        type: 'object', default: { md: 5, unit: 'px' },
-        style: [{
-            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputCorner', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {border-radius: {{inputCornerRadius}};}'
         }]
     }), _defineProperty(_extends2, 'inputSize', { type: 'string', default: 'medium' }), _defineProperty(_extends2, 'inputCustomSize', {
         type: 'object',

@@ -162,7 +162,7 @@ export default function Edit(props) {
     const renderDatePicker = () => {
         return (
             <div class="qubely-date-picker-wrapper">
-                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(`dd${dateSeparator}mm${dateSeparator}yy`)}></input>
+                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)}></input>
             </div>
         )
     }
