@@ -53,127 +53,9 @@
   }
 }
 
-.qubely-postgrid {
-  position: relative;
-  img {
-    display: block;
-  }
-  .qubely-postgrid-title {
-    margin: 0;
-    line-height: 1;
-    a {
-      text-decoration: none !important;
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
-  .qubely-postgrid-intro,
-  .qubely-postgrid-intro p {
-    font-size: 15px;
-    line-height: 24px;
-    margin: 0;
-  }
-  .qubely-postgrid-meta {
-    font-size: 14px;
-    line-height: 22px;
-  }
-  .qubely-postgrid-btn {
-    display: inline-block;
-    text-decoration: none !important;
-    &:hover {
-      text-decoration: none !important;
-    }
-  }
-  .qubely-button-fill {
-    &.is-small {
-      padding: 5px 10px;
-      font-size: 14px;
-    }
-    &.is-medium {
-      padding: 8px 15px;
-      font-size: 16px;
-    }
-    &.is-large {
-      padding: 13px 20px;
-      font-size: 18px;
-    }
-  }
-}
-//title default value
-
 //category above image
 .qubely-postgrid-layout-1 .qubely-post-img {
     margin-bottom: 0;
-}
-.qubely-post-img {
-  position: relative;
-  overflow: hidden;
-  .qubely-postgrid-cat-position {
-    position: absolute;
-    &.qubely-postgrid-cat-position-leftTop {
-      top: 20px;
-      left: 20px;
-    }
-    &.qubely-postgrid-cat-position-rightTop {
-      top: 20px;
-      right: 20px;
-    }
-    &.qubely-postgrid-cat-position-leftBottom {
-      bottom: 20px;
-      left: 20px;
-    }
-    &.qubely-postgrid-cat-position-rightBottom {
-      bottom: 20px;
-      right: 20px;
-    }
-  }
-}
-
-//category
-.qubely-postgrid-category {
-  a {
-    transition: 400ms !important;
-    text-decoration: none !important;
-    &:hover {
-      text-decoration: none !important;
-    }
-  }
-}
-
-//meta
-.qubely-postgrid-meta {
-  span {
-    padding-left: 12px;
-    position: relative;
-    padding-right: 12px;
-    i {
-      margin-right: 3px;
-    }
-    &:before {
-      position: absolute;
-      content: "";
-      background: #d8d8d8;
-      left: -1px;
-      top: 50%;
-      width: 2px;
-      height: 2px;
-      border-radius: 20px;
-      margin-top: -1px;
-    }
-    &:first-child {
-      padding-left: 0;
-      &:before {
-        display: none;
-      }
-    }
-  }
-  a {
-    text-decoration: none !important;
-    &:hover {
-      text-decoration: none !important;
-    }
-  }
 }
 
 //style 4
@@ -405,13 +287,6 @@
   }
 }
 
-//column
-.qubely-postgrid-column {
-    display: grid;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-}
-
 //grid 5
 .qubely-postgrid-layout-5 {
     display: grid;
@@ -422,15 +297,38 @@
     }
     .qubely-post-small-view {
         .qubely-post-grid-wrapper {
-            display: grid;
-            grid-template-columns: 40% 1fr;
+            display: -ms-flexbox;
+            display: -webkit-box;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        &.qubely-postgrid-style-1,
+        &.qubely-postgrid-style-2,
+        &.qubely-postgrid-style-3 {
             .qubely-post-img {
                 margin-bottom: 0 !important;
+                -ms-flex: 0 0 40%;
+                -webkit-box-flex: 0;
+                flex: 0 0 40%;
+                max-width: 40%;
+            }
+            .qubely-post-grid-content {
+                -ms-flex: 0 0 60%;
+                -webkit-box-flex: 0;
+                flex: 0 0 60%;
+                max-width: 60%;
+            }
+        }
+        &.qubely-postgrid-style-1,
+        &.qubely-postgrid-style-2 {
+            .qubely-post-grid-content {
+                padding-left: 20px;
             }
         }
         &.qubely-postgrid-style-3 {
             .qubely-post-grid-img + .qubely-post-grid-content {
-                margin: 0 0 0 -40px;
+                margin: 0 0 0 -40px
             }
         }
     }
@@ -466,11 +364,6 @@
       grid-column-end: 1;
     }
   }
-//   &.qubely-postgrid-column-sm2 {
-//     .qubely-postgrid:nth-child(1) {
-//         grid-column-end: 3;
-//     }
-//   }
 }
 
 .qubely-postgrid-layout-4 {
@@ -491,16 +384,16 @@
         column-count: 2;
     }
     &.qubely-postgrid-column-md3 {
-        column-count: 1;
+        column-count: 3;
     }
     &.qubely-postgrid-column-md4 {
-        column-count: 1;
+        column-count: 4;
     }
     &.qubely-postgrid-column-md5 {
-        column-count: 1;
+        column-count: 5;
     }
     &.qubely-postgrid-column-md6 {
-        column-count: 1;
+        column-count: 6;
     }
 
     // @for $i from 1 through 36 { 
@@ -632,3 +525,33 @@
     }
 }
 
+.qubely-postgrid-style-4 {
+    .qubely-post-grid-wrapper {
+        .qubely-postgrid-cat-position {
+            position: absolute;
+            z-index: 12;
+            &.qubely-postgrid-cat-position-leftTop {
+                top: 20px;
+                left: 20px;
+            }
+            &.qubely-postgrid-cat-position-rightTop {
+                top: 20px;
+                right: 20px;
+            }
+            &.qubely-postgrid-cat-position-leftBottom {
+                bottom: 20px;
+                left: 20px;
+            }
+            &.qubely-postgrid-cat-position-rightBottom {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .qubely-postgrid-layout-5 {
+        grid-template-columns: 1fr;
+    }
+}

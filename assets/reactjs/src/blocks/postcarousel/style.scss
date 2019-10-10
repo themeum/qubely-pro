@@ -104,8 +104,6 @@
 
 //category above image
 .qubely-post-img {
-  position: relative;
-  overflow: hidden;
   .qubely-postcarousel-cat-position {
     position: absolute;
     &.qubely-postcarousel-cat-position-leftTop {
@@ -645,10 +643,6 @@
 .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content {
   border-radius: 10px;
 }
-// .qubely-postgrid-style-4 .qubely-post-grid-img img {
-//   left: 0;
-//   top: 0;
-// }
 .layout-4 {
 	.clone.qubely-carousel-item {
 		.qubely-post-grid-content.align-top {
@@ -736,8 +730,3 @@
 		}
 	}
 }
-
-// .qubely-block-image-carousel .qubely-postgrid-style-4 .qubely-post-grid-img img {
-//   left: 0;
-//   top: 0;
-// }
