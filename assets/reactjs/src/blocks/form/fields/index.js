@@ -23,8 +23,7 @@ const registerBlock = (block) => {
                 return {
                     style: {
                         width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%',
-                    },
-                    className: `wp-block editor-block-list__block block-editor-block-list__block qubely-form-fieldtype-wrapper`
+                    }
                 }
             }
         },

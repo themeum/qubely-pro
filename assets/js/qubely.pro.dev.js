@@ -2499,8 +2499,7 @@ var registerBlock = function registerBlock(block) {
                 return {
                     style: {
                         width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%'
-                    },
-                    className: 'wp-block editor-block-list__block block-editor-block-list__block qubely-form-fieldtype-wrapper'
+                    }
                 };
             }
         }
@@ -3319,7 +3318,7 @@ registerBlockType('qubely/form', {
                 radiusType: 'global'
             },
             style: [{
-                selector: '{{QUBELY}} input.qubely-form-field'
+                selector: '{{QUBELY}} input.qubely-form-field, textarea.qubely-form-field'
             }]
         },
 

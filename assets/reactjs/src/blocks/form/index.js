@@ -291,7 +291,7 @@ registerBlockType('qubely/form', {
             },
             style: [
                 {
-                    selector: '{{QUBELY}} input.qubely-form-field'
+                    selector: '{{QUBELY}} input.qubely-form-field, textarea.qubely-form-field'
                 }
             ]
         },
