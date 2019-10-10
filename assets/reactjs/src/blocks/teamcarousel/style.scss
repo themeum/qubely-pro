@@ -723,14 +723,14 @@ $color_1: #fff;
 .qubely-team-2 {
 	.qubely-team-author-info {
 		.layout-2 {
-			transform: translate(0%, 20%);
+			transform: translate(0%, 0%);
 			transition: .3s;
 		}
 	}
 	&:hover {
 		.qubely-team-author-info {
 			.layout-2 {
-				transform: translate(0%, 0%);
+				transform: translate(0%, 100%);
 			}
 		}
 	}

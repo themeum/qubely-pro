@@ -344,7 +344,7 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '2' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-2 {background-color: {{bgColor}};}'
+					selector: '{{QUBELY}} .qubely-team-2 .qubely-team-author-info {background-color: {{bgColor}};}'
 				},
 				{
 					condition: [

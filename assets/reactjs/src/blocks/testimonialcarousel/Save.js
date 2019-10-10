@@ -19,18 +19,13 @@ class Save extends Component {
 
     return (
       <div className={`qubely-testimonial-author`}>
-
         {(layout === 3 && showAvatar) && this.renderAvatar(avatar, avatarAlt)}
-
         <div className={showAvatar ? `qubely-testimonial-avatar-layout-${avatarLayout}` : ``}>
-
           {(layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top')) && this.renderAvatar(avatar, avatarAlt)}
-
           <div className="qubely-testimonial-author-info">
             <div className="qubely-testimonial-author-name"><RichText.Content value={author} /></div>
             <div className="qubely-testimonial-author-designation"><RichText.Content value={designation} /></div>
           </div>
-
           {(layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom')) && this.renderAvatar(avatar, avatarAlt)}
         </div>
       </div>
