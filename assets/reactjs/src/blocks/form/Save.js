@@ -67,20 +67,9 @@ class Save extends Component {
                 {/* <style>{this._renderFormGroupCss()}</style> */}
                 <div className={`qubely-block-form qubely-layout-${layout}`}>
                     <form className="qubely-form">
-                        {/* {formItems.map((item, index) =>
-                            <div key={index} className={`qubely-form-group qubely-form-group-index-${index}`}>
-                                <div className={`qubely-form-group-inner`}>
-                                    {!item.hideLabel && layout == 'classic' &&
-                                        <label for={`qubely-form-input-${index}`} className="qubely-form-label"> {__(item.label)} {item.required && '*'}</label>
-                                    }
-                                    {_renderField(item, index, inputSize)}
-                                    {layout == 'material' &&
-                                        <label className="qubely-form-label"> {__(item.label)} {item.required && '*'}</label>
-                                    }
-                                </div>
-                            </div>
-                        )} */}
+
                         <InnerBlocks.Content />
+
                         {reCaptcha &&
                             <div className="qubely-form-group">
                                 <div className="qubely-google-recaptcha" />
@@ -115,6 +104,7 @@ class Save extends Component {
                             <input type="hidden" name="email-subject" value={_encrypt(emailSubject)} />
                             <input type="hidden" name="email-body" value={_encrypt(emailBody)} />
                         </div>
+                        
                         <div className="qubely-form-group">
                             <div className="qubely-form-group-inner">
                                 <div className="qubely-form-message"></div>

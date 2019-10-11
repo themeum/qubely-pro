@@ -447,7 +447,9 @@ class Edit extends Component {
                                     onChange={val => setAttributes({ formErrorMessage: val })}
                                     help={__('Set your desired message for form submission error. Leave blank for default.')}
                                 />
+                                
                                 <Toggle label={__('Enable Captcha')} value={reCaptcha} onChange={val => setAttributes({ reCaptcha: val })} />
+                              
                                 {reCaptcha &&
                                     <div>
                                         <TextControl
@@ -501,6 +503,8 @@ class Edit extends Component {
                             </Tab>
                         </Tabs>
                     </PanelBody>
+
+
                     {buttonSettings(this.props.attributes, device, setAttributes, (key, value) => { this.setState({ [key]: value }) })}
 
                 </InspectorControls>
