@@ -1,6 +1,7 @@
 const { __ } = wp.i18n
 const { createBlock } = wp.blocks
-const { select, dispatch } = wp.data
+const { compose } = wp.compose
+const { select, dispatch, withSelect, withDispatch } = wp.data
 const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.editor
 const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { Component, Fragment } = wp.element
@@ -43,7 +44,6 @@ class Edit extends Component {
             newItemType: 'text',
             device: 'md',
         }
-        this.removeItem = this.removeItem.bind(this);
     }
 
     componentDidMount() {
@@ -92,7 +92,36 @@ class Edit extends Component {
 
         let innerBlocks = [...getBlocks(clientId)]
 
-        innerBlocks.push(createBlock(`qubely/formfield-${newFieldType}`))
+        // innerBlocks.push(createBlock(`qubely/formfield-${newFieldType}`))
+
+
+        let field = createBlock(`qubely/formfield-${newFieldType}`)
+
+
+        // innerBlocks.push(
+        //     createBlock(
+        //         'core/column',
+        //         {
+        //             colWidth: { md: 50, sm: 50, xs: 100, unit: '%', device: 'md' }
+        //         },
+        //         [field]
+        //     ),
+
+        // )
+
+        innerBlocks.push(
+            createBlock(
+                'qubely/form-row',
+                {
+
+                },
+                [
+                    createBlock(`qubely/form-column`),
+                    createBlock(`qubely/form-column`)
+                ]
+
+            )
+        )
 
         replaceInnerBlocks(clientId, innerBlocks, false);
 
@@ -105,42 +134,7 @@ class Edit extends Component {
         activeItem.options.push(`Option ${activeItem.options.length + 1}`);
         formItems[index] = activeItem;
         setAttributes({ formItems });
-    }
 
-    moveItem(index, moveTo) {
-        const { attributes, setAttributes } = this.props;
-        const formItems = [...attributes.formItems];
-        const moveIndex = (moveTo == 'left') ? index - 1 : index + 1;
-        const movableItem = formItems[index];
-        formItems[index] = formItems[moveIndex];
-        formItems[moveIndex] = movableItem;
-        this.setState({ selectedItem: moveIndex });
-        setAttributes({ formItems });
-    }
-
-    cloneItem(index) {
-        const { attributes, setAttributes } = this.props;
-        let formItems = [...attributes.formItems];
-        let clonedItem = JSON.parse(JSON.stringify(formItems[index]));
-        formItems.splice(index + 1, 0, clonedItem);
-        setAttributes({ formItems });
-    }
-
-    removeItem(index) {
-        const { selectedItem } = this.state;
-        const { attributes, setAttributes } = this.props;
-        let formItems = [...attributes.formItems];
-        formItems.splice(index, 1);
-        setAttributes({ formItems });
-        if (selectedItem == index);
-        this.setState({ selectedItem: -1 });
-    }
-
-    removeOption(item, option) {
-        const { attributes, setAttributes } = this.props;
-        let formItems = [...attributes.formItems];
-        formItems[item].options.splice(option, 1);
-        setAttributes({ formItems });
     }
 
     renderLabel = (index, isRequired) => {
@@ -180,7 +174,7 @@ class Edit extends Component {
                         <div className="qubely-form-field-type"
                             onClick={() => {
                                 this.addNewItem(type)
-                                hideDropdown()
+                                hideDropdown && hideDropdown()
                             }}
                         >
                             {fieldName}
@@ -192,6 +186,9 @@ class Edit extends Component {
 
 
     }
+
+
+
     render() {
         const {
             attributes,
@@ -447,9 +444,9 @@ class Edit extends Component {
                                     onChange={val => setAttributes({ formErrorMessage: val })}
                                     help={__('Set your desired message for form submission error. Leave blank for default.')}
                                 />
-                                
+
                                 <Toggle label={__('Enable Captcha')} value={reCaptcha} onChange={val => setAttributes({ reCaptcha: val })} />
-                              
+
                                 {reCaptcha &&
                                     <div>
                                         <TextControl
@@ -527,6 +524,20 @@ class Edit extends Component {
                             <InnerBlocks
                                 // templateLock="insert"
                                 // templateLock={false}
+                                allowedBlocks={
+                                    [
+                                        'qubely/formfield-row',
+                                        'qubely/formfield-text',
+                                        'qubely/formfield-number',
+                                        'qubely/formfield-email',
+                                        'qubely/formfield-textarea',
+                                        'qubely/formfield-dropdown',
+                                        'qubely/formfield-radio',
+                                        'qubely/formfield-checkbox',
+                                        'qubely/formfield-date',
+                                        'qubely/formfield-time',
+                                    ]
+                                }
                                 template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])}
                             />
                         </form>
@@ -561,11 +572,34 @@ class Edit extends Component {
                             />
                         </div>
                     </div>
+
+
                 </div>
 
             </Fragment>
         );
     }
 }
+export default compose([
+    withSelect((select, ownProps) => {
+        const { clientId } = ownProps
+        const { getBlock, getBlockRootClientId, getBlockAttributes } = select('core/editor')
+        let rootBlockClientId = getBlockRootClientId(clientId)
 
-export default Edit;
+        return {
+
+            rootBlockClientId,
+
+
+        }
+    }),
+    withDispatch((dispatch) => {
+        const { insertBlock, removeBlock, updateBlockAttributes, toggleSelection } = dispatch('core/editor')
+        return {
+            insertBlock,
+            removeBlock,
+            updateBlockAttributes,
+            toggleSelection
+        }
+    }),
+])(Edit)

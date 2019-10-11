@@ -16,68 +16,68 @@ const defaultFormItems = [
         required: true,
         hideLabel: false
     },
-    {
-        type: 'number',
-        label: 'Number',
-        name: 'number',
-        placeholder: 'Number',
-        width: 50,
-        required: false,
-        hideLabel: false
-    },
-    {
-        type: 'email',
-        label: 'Email',
-        name: 'email',
-        placeholder: 'Email',
-        width: 90, required: true,
-        hideLabel: false
-    },
-    {
-        type: 'textarea',
-        label: 'Message',
-        name: 'message',
-        placeholder: 'Message',
-        width: 90,
-        required: true,
-        hideLabel: false
-    },
-    {
-        type: 'dropdown',
-        label: 'Dropdown',
-        name: 'message',
-        width: 50,
-        required: true,
-        hideLabel: false
-    },
-    {
-        type: 'radio',
-        label: 'Radio',
-        width: 50,
-        required: true,
-        hideLabel: false
-    },
-    {
-        type: 'checkbox',
-        label: 'Checkbox',
-        width: 50,
-        required: true,
-        hideLabel: false
-    },
-    {
-        type: 'date',
-        label: 'Date',
-        width: 50,
-        required: true,
-        hideLabel: false
-    },
-    {
-        type: 'time',
-        label: 'Time',
-        width: 50,
-        required: true,
-        hideLabel: false
-    },
+    // {
+    //     type: 'number',
+    //     label: 'Number',
+    //     name: 'number',
+    //     placeholder: 'Number',
+    //     width: 50,
+    //     required: false,
+    //     hideLabel: false
+    // },
+    // {
+    //     type: 'email',
+    //     label: 'Email',
+    //     name: 'email',
+    //     placeholder: 'Email',
+    //     width: 90, required: true,
+    //     hideLabel: false
+    // },
+    // {
+    //     type: 'textarea',
+    //     label: 'Message',
+    //     name: 'message',
+    //     placeholder: 'Message',
+    //     width: 90,
+    //     required: true,
+    //     hideLabel: false
+    // },
+    // {
+    //     type: 'dropdown',
+    //     label: 'Dropdown',
+    //     name: 'message',
+    //     width: 50,
+    //     required: true,
+    //     hideLabel: false
+    // },
+    // {
+    //     type: 'radio',
+    //     label: 'Radio',
+    //     width: 50,
+    //     required: true,
+    //     hideLabel: false
+    // },
+    // {
+    //     type: 'checkbox',
+    //     label: 'Checkbox',
+    //     width: 50,
+    //     required: true,
+    //     hideLabel: false
+    // },
+    // {
+    //     type: 'date',
+    //     label: 'Date',
+    //     width: 50,
+    //     required: true,
+    //     hideLabel: false
+    // },
+    // {
+    //     type: 'time',
+    //     label: 'Time',
+    //     width: 50,
+    //     required: true,
+    //     hideLabel: false
+    // },
 ]
 
 registerBlockType('qubely/form', {

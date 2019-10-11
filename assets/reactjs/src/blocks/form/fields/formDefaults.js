@@ -1,6 +1,6 @@
 const FieldDefaults = {
     category: 'qubely',
-    parent: ['qubely/form'],
+    // parent: ['qubely/form','qubely/form-column'],
     supports: {
         reusable: false,
         html: false,

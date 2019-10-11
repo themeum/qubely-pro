@@ -16,8 +16,8 @@
       }
     }
 
-    .editor-inner-blocks.block-editor-inner-blocks {
-      .editor-block-list__layout.block-editor-block-list__layout {
+    > .editor-inner-blocks.block-editor-inner-blocks {
+      >.editor-block-list__layout.block-editor-block-list__layout {
         > div:last-child {
           display: none;
         }

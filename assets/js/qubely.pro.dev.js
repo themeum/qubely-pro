@@ -101,6 +101,36 @@ exports.push([module.i, ".qubely-form-field-wrapper {\n  display: flex; }\n  .qu
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/column/style.scss":
+/*!****************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/column/style.scss ***!
+  \****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "", ""]);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/style.scss":
+/*!*********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/style.scss ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".qubely-form-row .editor-inner-blocks.block-editor-inner-blocks .editor-block-list__layout.block-editor-block-list__layout {\n  display: flex;\n  flex-wrap: nowrap; }\n", ""]);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/style.scss":
 /*!*****************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/style.scss ***!
@@ -110,7 +140,7 @@ exports.push([module.i, ".qubely-form-field-wrapper {\n  display: flex; }\n  .qu
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form .editor-inner-blocks.block-editor-inner-blocks .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #f7f8fc;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #ffffff;\n    border: 1px solid #d6d9dd;\n    border-radius: 4px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
+exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form > .editor-inner-blocks.block-editor-inner-blocks > .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #f7f8fc;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #ffffff;\n    border: 1px solid #d6d9dd;\n    border-radius: 4px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
 
 
 
@@ -819,9 +849,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var __ = wp.i18n.__;
 var createBlock = wp.blocks.createBlock;
+var compose = wp.compose.compose;
 var _wp$data = wp.data,
     select = _wp$data.select,
-    dispatch = _wp$data.dispatch;
+    dispatch = _wp$data.dispatch,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     BlockControls = _wp$editor.BlockControls,
@@ -902,7 +935,7 @@ var Edit = function (_Component) {
                         { className: 'qubely-form-field-type',
                             onClick: function onClick() {
                                 _this.addNewItem(type);
-                                hideDropdown();
+                                hideDropdown && hideDropdown();
                             }
                         },
                         fieldName
@@ -918,7 +951,6 @@ var Edit = function (_Component) {
             newItemType: 'text',
             device: 'md'
         };
-        _this.removeItem = _this.removeItem.bind(_this);
         return _this;
     }
 
@@ -991,7 +1023,23 @@ var Edit = function (_Component) {
 
             var innerBlocks = [].concat(_toConsumableArray(getBlocks(clientId)));
 
-            innerBlocks.push(createBlock('qubely/formfield-' + newFieldType));
+            // innerBlocks.push(createBlock(`qubely/formfield-${newFieldType}`))
+
+
+            var field = createBlock('qubely/formfield-' + newFieldType);
+
+            // innerBlocks.push(
+            //     createBlock(
+            //         'core/column',
+            //         {
+            //             colWidth: { md: 50, sm: 50, xs: 100, unit: '%', device: 'md' }
+            //         },
+            //         [field]
+            //     ),
+
+            // )
+
+            innerBlocks.push(createBlock('qubely/form-row', {}, [createBlock('qubely/form-column'), createBlock('qubely/form-column')]));
 
             replaceInnerBlocks(clientId, innerBlocks, false);
         }
@@ -1009,120 +1057,68 @@ var Edit = function (_Component) {
             setAttributes({ formItems: formItems });
         }
     }, {
-        key: 'moveItem',
-        value: function moveItem(index, moveTo) {
-            var _props6 = this.props,
-                attributes = _props6.attributes,
-                setAttributes = _props6.setAttributes;
-
-            var formItems = [].concat(_toConsumableArray(attributes.formItems));
-            var moveIndex = moveTo == 'left' ? index - 1 : index + 1;
-            var movableItem = formItems[index];
-            formItems[index] = formItems[moveIndex];
-            formItems[moveIndex] = movableItem;
-            this.setState({ selectedItem: moveIndex });
-            setAttributes({ formItems: formItems });
-        }
-    }, {
-        key: 'cloneItem',
-        value: function cloneItem(index) {
-            var _props7 = this.props,
-                attributes = _props7.attributes,
-                setAttributes = _props7.setAttributes;
-
-            var formItems = [].concat(_toConsumableArray(attributes.formItems));
-            var clonedItem = JSON.parse(JSON.stringify(formItems[index]));
-            formItems.splice(index + 1, 0, clonedItem);
-            setAttributes({ formItems: formItems });
-        }
-    }, {
-        key: 'removeItem',
-        value: function removeItem(index) {
-            var selectedItem = this.state.selectedItem;
-            var _props8 = this.props,
-                attributes = _props8.attributes,
-                setAttributes = _props8.setAttributes;
-
-            var formItems = [].concat(_toConsumableArray(attributes.formItems));
-            formItems.splice(index, 1);
-            setAttributes({ formItems: formItems });
-            if (selectedItem == index) ;
-            this.setState({ selectedItem: -1 });
-        }
-    }, {
-        key: 'removeOption',
-        value: function removeOption(item, option) {
-            var _props9 = this.props,
-                attributes = _props9.attributes,
-                setAttributes = _props9.setAttributes;
-
-            var formItems = [].concat(_toConsumableArray(attributes.formItems));
-            formItems[item].options.splice(option, 1);
-            setAttributes({ formItems: formItems });
-        }
-    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
 
-            var _props10 = this.props,
-                attributes = _props10.attributes,
-                setAttributes = _props10.setAttributes,
-                toggleSelection = _props10.toggleSelection,
-                _props10$attributes = _props10.attributes,
-                uniqueId = _props10$attributes.uniqueId,
-                layout = _props10$attributes.layout,
-                formItems = _props10$attributes.formItems,
-                labelColor = _props10$attributes.labelColor,
-                labelAlignment = _props10$attributes.labelAlignment,
-                labelTypography = _props10$attributes.labelTypography,
-                spacing = _props10$attributes.spacing,
-                gutter = _props10$attributes.gutter,
-                inputSize = _props10$attributes.inputSize,
-                inputCustomSize = _props10$attributes.inputCustomSize,
-                inputTypography = _props10$attributes.inputTypography,
-                inputBoxShadow = _props10$attributes.inputBoxShadow,
-                inputColor = _props10$attributes.inputColor,
-                inputColorFocus = _props10$attributes.inputColorFocus,
-                inputColorHover = _props10$attributes.inputColorHover,
-                inputBg = _props10$attributes.inputBg,
-                inputBgFocus = _props10$attributes.inputBgFocus,
-                inputBgHover = _props10$attributes.inputBgHover,
-                inputBorder = _props10$attributes.inputBorder,
-                inputBorderRadius = _props10$attributes.inputBorderRadius,
-                inputBorderMaterial = _props10$attributes.inputBorderMaterial,
-                inputBorderColorFocus = _props10$attributes.inputBorderColorFocus,
-                inputBorderColorHover = _props10$attributes.inputBorderColorHover,
-                textareaHeight = _props10$attributes.textareaHeight,
-                placeholderColor = _props10$attributes.placeholderColor,
-                placeholderColorFocus = _props10$attributes.placeholderColorFocus,
-                placeholderColorHover = _props10$attributes.placeholderColorHover,
-                enableButton = _props10$attributes.enableButton,
-                buttonTag = _props10$attributes.buttonTag,
-                buttonSize = _props10$attributes.buttonSize,
-                buttonFillType = _props10$attributes.buttonFillType,
-                buttonText = _props10$attributes.buttonText,
-                buttonIconName = _props10$attributes.buttonIconName,
-                buttonIconPosition = _props10$attributes.buttonIconPosition,
-                fieldErrorMessage = _props10$attributes.fieldErrorMessage,
-                formSuccessMessage = _props10$attributes.formSuccessMessage,
-                formErrorMessage = _props10$attributes.formErrorMessage,
-                reCaptcha = _props10$attributes.reCaptcha,
-                reCaptchaSiteKey = _props10$attributes.reCaptchaSiteKey,
-                reCaptchaSecretKey = _props10$attributes.reCaptchaSecretKey,
-                policyCheckbox = _props10$attributes.policyCheckbox,
-                policyCheckboxText = _props10$attributes.policyCheckboxText,
-                emailReceiver = _props10$attributes.emailReceiver,
-                emailHeaders = _props10$attributes.emailHeaders,
-                emailFrom = _props10$attributes.emailFrom,
-                emailSubject = _props10$attributes.emailSubject,
-                emailBody = _props10$attributes.emailBody,
-                globalZindex = _props10$attributes.globalZindex,
-                hideTablet = _props10$attributes.hideTablet,
-                hideMobile = _props10$attributes.hideMobile,
-                globalCss = _props10$attributes.globalCss,
-                height = _props10$attributes.height,
-                width = _props10$attributes.width;
+            var _props6 = this.props,
+                attributes = _props6.attributes,
+                setAttributes = _props6.setAttributes,
+                toggleSelection = _props6.toggleSelection,
+                _props6$attributes = _props6.attributes,
+                uniqueId = _props6$attributes.uniqueId,
+                layout = _props6$attributes.layout,
+                formItems = _props6$attributes.formItems,
+                labelColor = _props6$attributes.labelColor,
+                labelAlignment = _props6$attributes.labelAlignment,
+                labelTypography = _props6$attributes.labelTypography,
+                spacing = _props6$attributes.spacing,
+                gutter = _props6$attributes.gutter,
+                inputSize = _props6$attributes.inputSize,
+                inputCustomSize = _props6$attributes.inputCustomSize,
+                inputTypography = _props6$attributes.inputTypography,
+                inputBoxShadow = _props6$attributes.inputBoxShadow,
+                inputColor = _props6$attributes.inputColor,
+                inputColorFocus = _props6$attributes.inputColorFocus,
+                inputColorHover = _props6$attributes.inputColorHover,
+                inputBg = _props6$attributes.inputBg,
+                inputBgFocus = _props6$attributes.inputBgFocus,
+                inputBgHover = _props6$attributes.inputBgHover,
+                inputBorder = _props6$attributes.inputBorder,
+                inputBorderRadius = _props6$attributes.inputBorderRadius,
+                inputBorderMaterial = _props6$attributes.inputBorderMaterial,
+                inputBorderColorFocus = _props6$attributes.inputBorderColorFocus,
+                inputBorderColorHover = _props6$attributes.inputBorderColorHover,
+                textareaHeight = _props6$attributes.textareaHeight,
+                placeholderColor = _props6$attributes.placeholderColor,
+                placeholderColorFocus = _props6$attributes.placeholderColorFocus,
+                placeholderColorHover = _props6$attributes.placeholderColorHover,
+                enableButton = _props6$attributes.enableButton,
+                buttonTag = _props6$attributes.buttonTag,
+                buttonSize = _props6$attributes.buttonSize,
+                buttonFillType = _props6$attributes.buttonFillType,
+                buttonText = _props6$attributes.buttonText,
+                buttonIconName = _props6$attributes.buttonIconName,
+                buttonIconPosition = _props6$attributes.buttonIconPosition,
+                fieldErrorMessage = _props6$attributes.fieldErrorMessage,
+                formSuccessMessage = _props6$attributes.formSuccessMessage,
+                formErrorMessage = _props6$attributes.formErrorMessage,
+                reCaptcha = _props6$attributes.reCaptcha,
+                reCaptchaSiteKey = _props6$attributes.reCaptchaSiteKey,
+                reCaptchaSecretKey = _props6$attributes.reCaptchaSecretKey,
+                policyCheckbox = _props6$attributes.policyCheckbox,
+                policyCheckboxText = _props6$attributes.policyCheckboxText,
+                emailReceiver = _props6$attributes.emailReceiver,
+                emailHeaders = _props6$attributes.emailHeaders,
+                emailFrom = _props6$attributes.emailFrom,
+                emailSubject = _props6$attributes.emailSubject,
+                emailBody = _props6$attributes.emailBody,
+                globalZindex = _props6$attributes.globalZindex,
+                hideTablet = _props6$attributes.hideTablet,
+                hideMobile = _props6$attributes.hideMobile,
+                globalCss = _props6$attributes.globalCss,
+                height = _props6$attributes.height,
+                width = _props6$attributes.width;
             var device = this.state.device;
 
 
@@ -1439,7 +1435,8 @@ var Edit = function (_Component) {
                             React.createElement(InnerBlocks
                             // templateLock="insert"
                             // templateLock={false}
-                            , { template: formItems.map(function (_ref3) {
+                            , { allowedBlocks: ['qubely/formfield-row', 'qubely/formfield-text', 'qubely/formfield-number', 'qubely/formfield-email', 'qubely/formfield-textarea', 'qubely/formfield-dropdown', 'qubely/formfield-radio', 'qubely/formfield-checkbox', 'qubely/formfield-date', 'qubely/formfield-time'],
+                                template: formItems.map(function (_ref3) {
                                     var type = _ref3.type,
                                         label = _ref3.label,
                                         options = _ref3.options,
@@ -1504,7 +1501,35 @@ var Edit = function (_Component) {
     return Edit;
 }(Component);
 
-exports.default = Edit;
+exports.default = compose([withSelect(function (select, ownProps) {
+    var clientId = ownProps.clientId;
+
+    var _select2 = select('core/editor'),
+        getBlock = _select2.getBlock,
+        getBlockRootClientId = _select2.getBlockRootClientId,
+        getBlockAttributes = _select2.getBlockAttributes;
+
+    var rootBlockClientId = getBlockRootClientId(clientId);
+
+    return {
+
+        rootBlockClientId: rootBlockClientId
+
+    };
+}), withDispatch(function (dispatch) {
+    var _dispatch2 = dispatch('core/editor'),
+        insertBlock = _dispatch2.insertBlock,
+        removeBlock = _dispatch2.removeBlock,
+        updateBlockAttributes = _dispatch2.updateBlockAttributes,
+        toggleSelection = _dispatch2.toggleSelection;
+
+    return {
+        insertBlock: insertBlock,
+        removeBlock: removeBlock,
+        updateBlockAttributes: updateBlockAttributes,
+        toggleSelection: toggleSelection
+    };
+})])(Edit);
 
 /***/ }),
 
@@ -2389,7 +2414,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var FieldDefaults = {
     category: 'qubely',
-    parent: ['qubely/form'],
+    // parent: ['qubely/form','qubely/form-column'],
     supports: {
         reusable: false,
         html: false,
@@ -3077,60 +3102,6 @@ var defaultFormItems = [{
     width: 50,
     required: true,
     hideLabel: false
-}, {
-    type: 'number',
-    label: 'Number',
-    name: 'number',
-    placeholder: 'Number',
-    width: 50,
-    required: false,
-    hideLabel: false
-}, {
-    type: 'email',
-    label: 'Email',
-    name: 'email',
-    placeholder: 'Email',
-    width: 90, required: true,
-    hideLabel: false
-}, {
-    type: 'textarea',
-    label: 'Message',
-    name: 'message',
-    placeholder: 'Message',
-    width: 90,
-    required: true,
-    hideLabel: false
-}, {
-    type: 'dropdown',
-    label: 'Dropdown',
-    name: 'message',
-    width: 50,
-    required: true,
-    hideLabel: false
-}, {
-    type: 'radio',
-    label: 'Radio',
-    width: 50,
-    required: true,
-    hideLabel: false
-}, {
-    type: 'checkbox',
-    label: 'Checkbox',
-    width: 50,
-    required: true,
-    hideLabel: false
-}, {
-    type: 'date',
-    label: 'Date',
-    width: 50,
-    required: true,
-    hideLabel: false
-}, {
-    type: 'time',
-    label: 'Time',
-    width: 50,
-    required: true,
-    hideLabel: false
 }];
 
 registerBlockType('qubely/form', {
@@ -3408,6 +3379,467 @@ registerBlockType('qubely/form', {
     edit: _Edit2.default,
     save: _Save2.default
 });
+
+/***/ }),
+
+/***/ "./src/blocks/form/row/Edit.js":
+/*!*************************************!*\
+  !*** ./src/blocks/form/row/Edit.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+var InnerBlocks = wp.editor.InnerBlocks;
+var compose = wp.compose.compose;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch;
+
+var Edit = function (_Component) {
+    _inherits(Edit, _Component);
+
+    function Edit() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, Edit);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.getFormColumn = function () {
+            return [0, 1, 2].map(function (data, index) {
+                return ['qubely/form-column', {}];
+            });
+        }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(Edit, [{
+        key: 'render',
+        value: function render() {
+            var _props = this.props,
+                hasInnerBlocks = _props.hasInnerBlocks,
+                hasChildBlocks = _props.hasChildBlocks;
+
+
+            return React.createElement(
+                'div',
+                { className: 'qubely-form-row' },
+                React.createElement(InnerBlocks, {
+                    template: this.getFormColumn(),
+                    allowedBlocks: ['qubely/formfield-column'],
+                    renderAppender: !hasInnerBlocks && InnerBlocks.ButtonBlockAppender()
+                })
+            );
+        }
+    }]);
+
+    return Edit;
+}(Component);
+
+exports.default = compose([withSelect(function (select, _ref2) {
+    var clientId = _ref2.clientId;
+
+    var _select = select('core/block-editor'),
+        getBlock = _select.getBlock;
+
+    var block = getBlock(clientId);
+
+    var _select2 = select('core/block-editor'),
+        getBlockOrder = _select2.getBlockOrder;
+
+    return {
+        hasInnerBlocks: !!(block && block.innerBlocks.length),
+        hasChildBlocks: getBlockOrder(clientId).length > 0
+    };
+}), withDispatch(function (dispatch) {
+    var _dispatch = dispatch('core/editor'),
+        insertBlock = _dispatch.insertBlock,
+        removeBlock = _dispatch.removeBlock,
+        updateBlockAttributes = _dispatch.updateBlockAttributes,
+        toggleSelection = _dispatch.toggleSelection;
+
+    return {
+        insertBlock: insertBlock,
+        removeBlock: removeBlock,
+        updateBlockAttributes: updateBlockAttributes,
+        toggleSelection: toggleSelection
+    };
+})])(Edit);
+
+/***/ }),
+
+/***/ "./src/blocks/form/row/Save.js":
+/*!*************************************!*\
+  !*** ./src/blocks/form/row/Save.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+var InnerBlocks = wp.editor.InnerBlocks;
+
+var Save = function (_Component) {
+    _inherits(Save, _Component);
+
+    function Save() {
+        _classCallCheck(this, Save);
+
+        return _possibleConstructorReturn(this, (Save.__proto__ || Object.getPrototypeOf(Save)).apply(this, arguments));
+    }
+
+    _createClass(Save, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                { className: "qubely-form-row" },
+                React.createElement(InnerBlocks.Content, null)
+            );
+        }
+    }]);
+
+    return Save;
+}(Component);
+
+exports.default = Save;
+
+/***/ }),
+
+/***/ "./src/blocks/form/row/column/Edit.js":
+/*!********************************************!*\
+  !*** ./src/blocks/form/row/column/Edit.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+var InnerBlocks = wp.editor.InnerBlocks;
+var compose = wp.compose.compose;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch;
+
+var Edit = function (_Component) {
+    _inherits(Edit, _Component);
+
+    function Edit() {
+        _classCallCheck(this, Edit);
+
+        return _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).apply(this, arguments));
+    }
+
+    _createClass(Edit, [{
+        key: 'render',
+        value: function render() {
+            var _props = this.props,
+                hasInnerBlocks = _props.hasInnerBlocks,
+                hasChildBlocks = _props.hasChildBlocks;
+
+            console.log('hasInnerBlocks : ', hasInnerBlocks);
+            console.log('hasChildBlocks : ', hasChildBlocks);
+            console.log('ButtonBlockAppender : ', React.createElement(InnerBlocks.ButtonBlockAppender, null));
+            return React.createElement(
+                'div',
+                { className: 'qubely-form-column' },
+                React.createElement(InnerBlocks, {
+                    templateLock: false,
+                    renderAppender: hasInnerBlocks ? undefined : function () {
+                        return React.createElement(InnerBlocks.ButtonBlockAppender, null);
+                    },
+                    allowedBlocks: ['core/paragraph', 'core/button', 'qubely/formfield-text']
+                })
+            );
+        }
+    }]);
+
+    return Edit;
+}(Component);
+
+exports.default = compose([withSelect(function (select, _ref) {
+    var clientId = _ref.clientId;
+
+    var _select = select('core/block-editor'),
+        getBlock = _select.getBlock;
+
+    var block = getBlock(clientId);
+
+    var _select2 = select('core/block-editor'),
+        getBlockOrder = _select2.getBlockOrder;
+
+    return {
+        hasInnerBlocks: !!(block && block.innerBlocks.length),
+        hasChildBlocks: getBlockOrder(clientId).length > 0
+    };
+}), withDispatch(function (dispatch) {
+    var _dispatch = dispatch('core/editor'),
+        insertBlock = _dispatch.insertBlock,
+        removeBlock = _dispatch.removeBlock,
+        updateBlockAttributes = _dispatch.updateBlockAttributes,
+        toggleSelection = _dispatch.toggleSelection;
+
+    return {
+        insertBlock: insertBlock,
+        removeBlock: removeBlock,
+        updateBlockAttributes: updateBlockAttributes,
+        toggleSelection: toggleSelection
+    };
+})])(Edit);
+
+/***/ }),
+
+/***/ "./src/blocks/form/row/column/Save.js":
+/*!********************************************!*\
+  !*** ./src/blocks/form/row/column/Save.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Component = wp.element.Component;
+var InnerBlocks = wp.editor.InnerBlocks;
+
+var Save = function (_Component) {
+    _inherits(Save, _Component);
+
+    function Save() {
+        _classCallCheck(this, Save);
+
+        return _possibleConstructorReturn(this, (Save.__proto__ || Object.getPrototypeOf(Save)).apply(this, arguments));
+    }
+
+    _createClass(Save, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                { className: "qubely-form-column" },
+                React.createElement(InnerBlocks.Content, null)
+            );
+        }
+    }]);
+
+    return Save;
+}(Component);
+
+exports.default = Save;
+
+/***/ }),
+
+/***/ "./src/blocks/form/row/column/index.js":
+/*!*********************************************!*\
+  !*** ./src/blocks/form/row/column/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/row/column/style.scss");
+
+var _Save = __webpack_require__(/*! ./Save */ "./src/blocks/form/row/column/Save.js");
+
+var _Save2 = _interopRequireDefault(_Save);
+
+var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/form/row/column/Edit.js");
+
+var _Edit2 = _interopRequireDefault(_Edit);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+registerBlockType('qubely/form-column', {
+    title: __('Form Column'),
+    category: 'qubely',
+    parent: ['qubely/form-row'],
+    supports: {
+        inserter: false,
+        reusable: false,
+        html: false
+    },
+    icon: React.createElement('img', { src: qubely_admin.plugin + 'assets/img/blocks/block-form.svg', alt: __('Form') }),
+    attributes: {
+        uniqueId: { type: 'string', default: '' }
+    },
+    edit: _Edit2.default,
+    save: _Save2.default
+});
+
+/***/ }),
+
+/***/ "./src/blocks/form/row/column/style.scss":
+/*!***********************************************!*\
+  !*** ./src/blocks/form/row/column/style.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!../../../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/column/style.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/blocks/form/row/index.js":
+/*!**************************************!*\
+  !*** ./src/blocks/form/row/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/row/style.scss");
+
+var _Save = __webpack_require__(/*! ./Save */ "./src/blocks/form/row/Save.js");
+
+var _Save2 = _interopRequireDefault(_Save);
+
+var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/form/row/Edit.js");
+
+var _Edit2 = _interopRequireDefault(_Edit);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+registerBlockType('qubely/form-row', {
+    title: __('Form Row'),
+    category: 'qubely',
+    parent: ['qubely/form'],
+    supports: {
+        // inserter: false,
+        // reusable: false,
+        html: false,
+        className: false
+    },
+    icon: React.createElement('img', { src: qubely_admin.plugin + 'assets/img/blocks/block-form.svg', alt: __('Form') }),
+    attributes: {
+        uniqueId: { type: 'string', default: '' }
+    },
+    edit: _Edit2.default,
+    save: _Save2.default
+});
+
+/***/ }),
+
+/***/ "./src/blocks/form/row/style.scss":
+/*!****************************************!*\
+  !*** ./src/blocks/form/row/style.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!../../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/style.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -9486,6 +9918,10 @@ exports.default = icons;
 
 
 __webpack_require__(/*! ./blocks/form */ "./src/blocks/form/index.js");
+
+__webpack_require__(/*! ./blocks/form/row */ "./src/blocks/form/row/index.js");
+
+__webpack_require__(/*! ./blocks/form/row/column */ "./src/blocks/form/row/column/index.js");
 
 __webpack_require__(/*! ./blocks/form/fields */ "./src/blocks/form/fields/index.js");
 
