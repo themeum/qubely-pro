@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { RichText } = wp.editor;
+const { RichText, InnerBlocks } = wp.editor
 const { QubelyButtonSave, HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
 
@@ -64,22 +64,11 @@ class Save extends Component {
         const { uniqueId, formItems, inputSize, fieldErrorMessage, formSuccessMessage, formErrorMessage, reCaptcha, reCaptchaSiteKey, reCaptchaSecretKey, policyCheckbox, policyCheckboxText, emailReceiver, emailHeaders, emailFrom, emailSubject, emailBody, layout, buttonFillType, buttonSize, buttonText, buttonIconName, buttonIconPosition, buttonTag, animation } = this.props.attributes
         return (
             <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-                <style>{this._renderFormGroupCss()}</style>
+                {/* <style>{this._renderFormGroupCss()}</style> */}
                 <div className={`qubely-block-form qubely-layout-${layout}`}>
                     <form className="qubely-form">
-                        {formItems.map((item, index) =>
-                            <div key={index} className={`qubely-form-group qubely-form-group-index-${index}`}>
-                                <div className={`qubely-form-group-inner`}>
-                                    {!item.hideLabel && layout == 'classic' &&
-                                        <label for={`qubely-form-input-${index}`} className="qubely-form-label"> {__(item.label)} {item.required && '*'}</label>
-                                    }
-                                    {_renderField(item, index, inputSize)}
-                                    {layout == 'material' &&
-                                        <label className="qubely-form-label"> {__(item.label)} {item.required && '*'}</label>
-                                    }
-                                </div>
-                            </div>
-                        )}
+
+                        <InnerBlocks.Content />
 
                         {reCaptcha &&
                             <div className="qubely-form-group">
@@ -115,12 +104,14 @@ class Save extends Component {
                             <input type="hidden" name="email-subject" value={_encrypt(emailSubject)} />
                             <input type="hidden" name="email-body" value={_encrypt(emailBody)} />
                         </div>
+                        
                         <div className="qubely-form-group">
                             <div className="qubely-form-group-inner">
                                 <div className="qubely-form-message"></div>
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         )

@@ -1,4 +1,4 @@
-import './editor.scss'
+
 import './style.scss'
 import Edit from './Edit'
 import Save from './Save';
@@ -7,24 +7,104 @@ const { registerBlockType } = wp.blocks;
 const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes } } = wp.qubelyComponents
 
 const defaultFormItems = [
-    { type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: { md: 50 }, required: true, hideLabel: false },
-    { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: { md: 50 }, required: true, hideLabel: false },
-    { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: { md: 50 }, required: true, hideLabel: false },
-    { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: { md: 50 }, required: true, hideLabel: false },
-    { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: { md: 100 }, required: true, hideLabel: false }
+    {
+        type: 'text',
+        label: 'First Name',
+        name: 'first-name',
+        placeholder: 'First Name',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'number',
+        label: 'Number',
+        name: 'number',
+        placeholder: 'Number',
+        width: 50,
+        required: false,
+        hideLabel: false
+    },
+    {
+        type: 'email',
+        label: 'Email',
+        name: 'email',
+        placeholder: 'Email',
+        width: 90, required: true,
+        hideLabel: false
+    },
+    {
+        type: 'textarea',
+        label: 'Message',
+        name: 'message',
+        placeholder: 'Message',
+        width: 90,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'dropdown',
+        label: 'Dropdown',
+        name: 'message',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'radio',
+        label: 'Radio',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'checkbox',
+        label: 'Checkbox',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'date',
+        label: 'Date',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
+    {
+        type: 'time',
+        label: 'Time',
+        width: 50,
+        required: true,
+        hideLabel: false
+    },
 ]
 
 registerBlockType('qubely/form', {
     title: __('Form'),
     category: 'qubely',
     icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-form.svg'} alt={__('Form')} />,
-    description: 'Create functional Form using this block.',
-    keywords: [__('Form')],
-    supports: { align: ['full'] },
+    description: 'Create functional Form using Qubely Form block.',
+    keywords: [
+        __('Form'),
+        __('Form Builder'),
+        __('Builder')
+    ],
+    supports: {
+        align: ['full'],
+    },
     attributes: {
         uniqueId: { type: 'string', default: '' },
         ...globalAttributes,
         ...buttonAttributes,
+        height: {
+            type: 'number',
+            default: 200,
+        },
+        width: {
+            type: 'number',
+            default: 320,
+        },
         enableButtonAlignment: { type: 'boolean', default: true },
         layout: { type: 'string', default: 'classic' },
         useDefaultStyle: { type: 'boolean', default: true },
@@ -40,7 +120,7 @@ registerBlockType('qubely/form', {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-group:not(:last-child) {margin-bottom: {{spacing}};}'
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
                 }
             ]
         },
@@ -49,56 +129,48 @@ registerBlockType('qubely/form', {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-form {margin: 0 calc(-{{gutter}}/2);} {{QUBELY}} .qubely-form .qubely-form-group {padding: 0 calc({{gutter}}/2);}'
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-left: calc(-{{gutter}}/2);margin-right: calc(-{{gutter}}/2);}'
                 }
             ]
         },
 
+        //label settings
         labelTypography: {
-            type: 'obejct', default: { openTypography: 1, size: { md: 16, unit: 'px' } },
+            type: 'object',
+            default: {},
             style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-label'
-                },
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'material' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-label'
-                }
+                { selector: '{{QUBELY}} .qubely-form-field-label' }
             ]
         },
-
         labelColor: {
-            type: 'string', default: "",
+            type: 'string',
+            default: '',
+            style: [
+                { selector: '{{QUBELY}} .qubely-form-field-label { color:{{labelColor}}; }' }
+            ]
+        },
+        labelAlignment: {
+            type: 'string',
+            default: 'top',
             style: [
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'classic' }
+                        { key: 'labelAlignment', relation: '==', value: 'top' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-label {color: {{labelColor}};}'
+                    selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:column;}'
                 },
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'material' }
+                        { key: 'labelAlignment', relation: '==', value: 'left' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-label {color: {{labelColor}};}'
-                }
-            ]
-        },
-
-        labelColorFocus: {
-            type: 'string', default: "",
-            style: [
+                    selector: '{{QUBELY}} .qubely-form-field-wrapper {justify-content:flex-start;}'
+                },
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'material' }
+                        { key: 'labelAlignment', relation: '==', value: 'right' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form-control:focus ~ .qubely-form-label, {{QUBELY}} .qubely-form-control:valid ~ .qubely-form-label {color: {{labelColorFocus}};}'
-                }
+                    selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:row-reverse;}'
+                },
             ]
         },
 
@@ -106,27 +178,71 @@ registerBlockType('qubely/form', {
             type: 'obejct', default: { openTypography: 1, size: { md: 14, unit: 'px' } },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control, {{QUBELY}} .qubely-form .qubely-form-control::placeholder'
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field, {{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field::placeholder'
+                }
+            ]
+        },
+        inputBoxShadow: {
+            type: 'object',
+            default: {},
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
                 }
             ]
         },
 
-        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control {color: {{inputColor}};}' }] },
-        inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:Hover {color: {{inputColorHover}};}' }] },
-        inputColorFocus: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {color: {{inputColorFocus}};}' }] },
+        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}' }] },
+        inputColorHover: {
+            type: 'string',
+            default: "#495057",
+            style: [
+                { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover {color: {{inputColorHover}};}' }
+            ]
+        },
 
-        placeholderColor: { type: 'string', default: "#818181", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder {color: {{placeholderColor}};}' }] },
-        placeholderColorHover: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:Hover {color: {{placeholderColorHover}};}' }] },
-        placeholderColorFocus: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:focus {color: {{placeholderColorFocus}};}' }] },
+        inputColorFocus: {
+            type: 'string',
+            default: "#495057",
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {color: {{inputColorFocus}};}'
+                }
+            ]
+        },
+
+        placeholderColor: {
+            type: 'string',
+            default: "#818181",
+            style: [
+                { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder {color: {{placeholderColor}};}' }
+            ]
+        },
+
+        placeholderColorHover: {
+            type: 'string',
+            default: "",
+            style: [
+                { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover::placeholder {color: {{placeholderColorHover}};}' }
+            ]
+        },
+
+        placeholderColorFocus: {
+            type: 'string',
+            default: "",
+            style: [
+                { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus::placeholder {color: {{placeholderColorFocus}};}' }
+            ]
+        },
 
         inputBg: {
             type: 'string', default: "#fff",
             style: [
                 {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {background-color: {{inputBg}};}'
+                    // condition: [
+                    //     { key: 'layout', relation: '==', value: 'classic' },
+                    // ],
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {background-color: {{inputBg}};}'
                 }
             ]
         },
@@ -138,7 +254,7 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {background-color: {{inputBgHover}};}'
+                    selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {background-color: {{inputBgHover}};}'
                 }
             ]
         },
@@ -147,25 +263,46 @@ registerBlockType('qubely/form', {
             type: 'string', default: "#fff",
             style: [
                 {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {background-color: {{inputBgFocus}};}'
+                    // condition: [
+                    //     { key: 'layout', relation: '==', value: 'classic' },
+                    // ],
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {background-color: {{inputBgFocus}};}'
                 }
             ]
         },
 
         inputBorder: {
-            type: 'object', default: { openBorder: 1, type: 'solid', widthType: 'all', width: { all: 1 }, color: '#ced4da' },
+            type: 'object',
+            default: {
+                openBorder: 1,
+                type: 'solid',
+                widthType: 'global',
+                width: { global: 1 },
+                color: '#ced4da'
+            },
             style: [
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control'
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
                 }
             ]
         },
+        inputBorderRadius: {
+            type: 'object',
+            default: {
+                openBorderRadius: 1,
+                radiusType: 'global'
+            },
+            style: [
+                {
+                    selector: '{{QUBELY}} input.qubely-form-field, textarea.qubely-form-field'
+                }
+            ]
+        },
+
+
 
         inputBorderMaterial: {
             type: 'object', default: { openBorder: 1, type: 'solid', widthType: 'custom', width: { bottom: 2 }, color: '#ced4da' },
@@ -186,13 +323,13 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {border-color: {{inputBorderColorHover}};}'
+                    selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {border-color: {{inputBorderColorHover}};}'
                 },
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: 'material' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {border-bottom-color: {{inputBorderColorHover}};}'
+                    selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {border-bottom-color: {{inputBorderColorHover}};}'
                 }
             ]
         },
@@ -204,84 +341,77 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {border-color: {{inputBorderColorFocus}}; box-shadow: 0 0 0 2px {{inputBorderColorFocus}};}'
+                    selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-color: {{inputBorderColorFocus}}; box-shadow: 0 0 0 2px {{inputBorderColorFocus}};}'
                 },
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: 'material' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {border-bottom-color: {{inputBorderColorFocus}};}'
+                    selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-bottom-color: {{inputBorderColorFocus}};}'
                 }
             ]
         },
 
-        inputColorHover: {
-            type: 'string', default: '',
-            style: [
-                {
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {color: {{inputColorHover}};}'
-                }
-            ]
-        },
 
-        inputCorner: {
-            type: 'string', default: '4px',
-            style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                        { key: 'inputCorner', relation: '!=', value: 'custom' },
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {border-radius: {{inputCorner}};}'
-                }
-            ]
-        },
-
-        inputCornerRadius: {
-            type: 'object', default: { md: 5, unit: 'px' },
-            style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                        { key: 'inputCorner', relation: '==', value: 'custom' },
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {border-radius: {{inputCornerRadius}};}'
-                }
-            ]
-        },
 
         inputSize: { type: 'string', default: 'medium' },
-        inputPaddingY: {
-            type: 'object', default: { md: 10, unit: 'px' },
+        inputCustomSize: {
+            type: 'object',
+            default: {
+                openPadding: 1,
+                paddingType: 'custom',
+                global: { md: '5' },
+                custom: { md: '5 10 5 10' },
+                unit: 'px'
+            },
             style: [
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                         { key: 'inputSize', relation: '==', value: 'custom' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+                    selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field '
                 },
                 {
                     condition: [
                         { key: 'layout', relation: '==', value: 'material' },
                         { key: 'inputSize', relation: '==', value: 'custom' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+                    selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field'
                 }
             ]
         },
-        inputPaddingX: {
-            type: 'object', default: { md: 15, unit: 'px' },
-            style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                        { key: 'inputSize', relation: '==', value: 'custom' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
-                }
-            ]
-        },
+        // inputPaddingY: {
+        //     type: 'object', default: { md: 10, unit: 'px' },
+        //     style: [
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'classic' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        //         },
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'material' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        //         }
+        //     ]
+        // },
+        // inputPaddingX: {
+        //     type: 'object', default: { md: 15, unit: 'px' },
+        //     style: [
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'classic' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
+        //         }
+        //     ]
+        // },
         textareaHeight: {
             type: 'object', default: { md: 200, unit: 'px' },
             style: [
