@@ -1,85 +1,82 @@
 .qubely-block-form {
   .qubely-form {
+    &.is-small {
+      .qubely-form-field {
+        padding: 6px 8px;
+      }
+    }
+    &.is-medium {
+      .qubely-form-field {
+        padding: 8.5px 12px;
+      }
+    }
+    &.is-large {
+      .qubely-form-field {
+        padding: 14.5px 16px;
+      }
+    }
+
+    .editor-inner-blocks.block-editor-inner-blocks {
+      .editor-block-list__layout.block-editor-block-list__layout {
+        > div:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .qubely-form-add-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .qubely-action-add-form-field {
+      background: #ffffff;
+      color: #2184f9;
+      border: 1px dashed #2184f9;
+      border-radius: 4px;
+      padding: 5px 35px;
+      .qubely-action-add-form-item {
+        font-size: 16px;
+        i {
+          padding: 0px 5px;
+        }
+      }
+    }
+    .qubely-action-add-form-field:hover {
+      cursor: pointer;
+      background: rgba(33, 132, 249, 0.1);
+      color: #2184f9;
+      border-radius: 5px;
+    }
+  }
+}
+
+.qubely-form-field-picker {
+  .qubely-form-field-types {
+    background: #f7f8fc;
+    box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    .qubely-form-group {
-      position: relative;
-      .qubely-form-label {
-		display: flex;
-		padding: 5px 0px;
-		.qubely-form-field-label{
-			padding-right: 20px;
-		}
-      }
-      .qubely-form-control {
-        display: block;
-        width: 100%;
-        background-clip: padding-box;
-        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-          box-shadow 0.15s ease-in-out;
-
-        &.is-small {
-          padding: 6px 8px;
-        }
-        &.is-medium {
-          padding: 8.5px 12px;
-        }
-        &.is-large {
-          padding: 14.5px 16px;
-        }
-      }
-      textarea.qubely-form-control {
-        resize: none;
-      }
-      .qubely-form-control:focus {
-        outline: 0;
-      }
-      p.qubely-form-required-field {
-        font-size: 14px;
-        color: red;
-        margin: 0;
-      }
+    justify-content: space-around;
+    .qubely-form-field-type {
+      background: #ffffff;
+      border: 1px solid #d6d9dd;
+      border-radius: 4px;
+      padding: 5px 15px;
+      width: 45%;
+      display: flex;
+      align-items: center;
+      margin: 5px 0px;
+    }
+    & :hover {
+      cursor: pointer;
     }
   }
-  &.qubely-layout-material {
-    .qubely-form {
-      .qubely-form-group {
-        .qubely-form-group-inner {
-          position: relative;
-        }
-        .qubely-form-label {
-          position: absolute;
-          pointer-events: none;
-          top: 0px;
-          transition: 0.2s ease all;
-        }
-        .qubely-form-control {
-          border-radius: 0;
-          box-shadow: none;
-          padding-left: 0;
-          padding-right: 0;
-          &:focus,
-          &:valid {
-            outline: none;
-            color: #333;
-          }
+}
 
-          &::placeholder {
-            opacity: 0;
-            transition: 400ms;
-          }
-          &:focus {
-            &::placeholder {
-              opacity: 1;
-            }
-          }
-        }
-
-        .qubely-form-control:focus ~ .qubely-form-label,
-        .qubely-form-control:valid ~ .qubely-form-label {
-          top: -20px;
-        }
-      }
-    }
-  }
+.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {
+  display: flex;
+  flex-wrap: wrap;
 }

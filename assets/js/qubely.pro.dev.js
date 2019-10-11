@@ -86,16 +86,16 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/editor.scss":
-/*!******************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/editor.scss ***!
-  \******************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/fields/style.scss":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/fields/style.scss ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form .qubely-form-group {\n  border: 1px solid #fff; }\n  .qubely-block-form .qubely-form .qubely-form-group .qubely-form-group-option {\n    display: none;\n    position: absolute;\n    right: 0;\n    top: 0;\n    font-size: 14px; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-group-option span {\n      margin-right: 5px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-group-option span.qubely-option-disable {\n        cursor: not-allowed;\n        pointer-events: none;\n        opacity: 0.5; }\n  .qubely-block-form .qubely-form .qubely-form-group:hover {\n    cursor: pointer;\n    border: 1px dashed #ddd; }\n    .qubely-block-form .qubely-form .qubely-form-group:hover .qubely-form-group-option {\n      display: block; }\n\n.qubely-block-form .qubely-form .qubely-form-group-active {\n  background-color: #f6f9fc;\n  border: 1px solid #eee; }\n  .qubely-block-form .qubely-form .qubely-form-group-active .qubely-form-group-option {\n    display: block; }\n", ""]);
+exports.push([module.i, ".qubely-form-field-wrapper {\n  display: flex; }\n  .qubely-form-field-wrapper .qubely-form-field {\n    width: 100%; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-date-picker {\n      width: fit-content; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio {\n      display: flex;\n      flex-wrap: wrap;\n      margin-left: -10px;\n      margin-right: -10px; }\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-auto .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-auto .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-auto .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-auto .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-auto .qubely-form-field-radio-option {\n        width: auto;\n        padding-left: 10px;\n        padding-right: 10px; }\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-1-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-1-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-1-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-1-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-1-column .qubely-form-field-radio-option {\n        width: 100%;\n        padding-left: 10px;\n        padding-right: 10px; }\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-2-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-2-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-2-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-2-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-2-column .qubely-form-field-radio-option {\n        width: 50%;\n        padding-left: 10px;\n        padding-right: 10px; }\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-3-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-3-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-3-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-3-column .qubely-form-field-checkbox-option,\n      .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-3-column .qubely-form-field-radio-option {\n        width: 33%;\n        padding-left: 10px;\n        padding-right: 10px; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option,\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option {\n      display: flex;\n      align-items: center; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option:hover .qubely-action-remove-option,\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option:hover .qubely-action-remove-option {\n        display: block; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option .qubely-action-remove-option,\n      .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option .qubely-action-remove-option {\n        display: none;\n        font-size: 12px;\n        width: 18px;\n        height: 18px;\n        line-height: 20px;\n        text-align: center;\n        background: rgba(0, 0, 0, 0.8);\n        color: #fff;\n        margin-left: 10px;\n        border-radius: 10px;\n        z-index: 1;\n        cursor: pointer; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option {\n      color: #2184f9;\n      cursor: pointer; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-option-add-icon {\n        margin-right: 5px;\n        -webkit-text-stroke: 2px white; }\n      .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-action-add-text {\n        color: #2184f9; }\n  .qubely-form-field-wrapper .qubely-form-timepicker {\n    opacity: 0;\n    height: auto;\n    min-width: 150px;\n    max-height: 0;\n    overflow: hidden;\n    position: absolute;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    -webkit-transition: max-height 0.1s ease-in-out;\n    transition: max-height 0.1s ease-in-out;\n    background: #f4f5f7;\n    background: -webkit-gradient(linear, left top, left bottom, from(#e3e3e5), color-stop(7%, #efefef), to(#f4f5f7));\n    background: linear-gradient(to bottom, #e3e3e5 0, #efefef 7%, #f4f5f7 100%);\n    border-radius: 0 0 5px 5px;\n    border: 2px solid #303233;\n    border-top: transparent;\n    -webkit-box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);\n    box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);\n    text-align: center; }\n  .qubely-form-field-wrapper .qubely-active {\n    opacity: 1;\n    max-height: 150px;\n    padding: 15px;\n    z-index: 100; }\n  .qubely-form-field-wrapper .qubely-timePicker-button {\n    cursor: pointer; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n\n.qubely-form-date-picker-format .qubely-field-group-btn {\n  flex-direction: column;\n  align-items: flex-start;\n  margin-bottom: 15px; }\n  .qubely-form-date-picker-format .qubely-field-group-btn .qubley-group-button {\n    font-size: 11px;\n    padding: 10px 4px; }\n\n.qubely-form-time-picker-format .components-button-group {\n  min-width: 50%;\n  margin-bottom: 15px; }\n\n.qubely-form-time-picker-minute-interval {\n  margin-bottom: 15px; }\n  .qubely-form-time-picker-minute-interval .qubely-field-group-btn {\n    flex-direction: column;\n    align-items: flex-start; }\n    .qubely-form-time-picker-minute-interval .qubely-field-group-btn .qubley-group-button {\n      padding: 5px 10px; }\n\n#ui-datepicker-div {\n  display: none;\n  background-color: #fff;\n  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);\n  margin-top: 0.25rem;\n  border-radius: 0.5rem;\n  padding: 0.5rem; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.ui-datepicker-calendar thead th {\n  padding: 0.25rem 0;\n  text-align: center;\n  font-size: 0.75rem;\n  font-weight: 400;\n  color: #78909c; }\n\n.ui-datepicker-calendar tbody td {\n  width: 2.5rem;\n  text-align: center;\n  padding: 0; }\n\n.ui-datepicker-calendar tbody td a {\n  display: block;\n  border-radius: 0.25rem;\n  line-height: 2rem;\n  transition: 0.3s all;\n  color: #546e7a;\n  font-size: 0.875rem;\n  text-decoration: none; }\n\n.ui-datepicker-calendar tbody td a:hover {\n  background-color: #e0f2f1; }\n\n.ui-datepicker-calendar tbody td a.ui-state-active {\n  background-color: #009688;\n  color: white; }\n\n.ui-datepicker-header a.ui-corner-all {\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  width: 2rem;\n  height: 2rem;\n  margin: 0.5rem;\n  border-radius: 0.25rem;\n  transition: 0.3s all; }\n\n.ui-datepicker-header a.ui-corner-all:hover {\n  background-color: #eceff1; }\n\n.ui-datepicker-header a.ui-datepicker-prev {\n  left: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 0.5rem;\n  background-position: 50%;\n  transform: rotate(180deg); }\n\n.ui-datepicker-header a.ui-datepicker-next {\n  right: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 10px;\n  background-position: 50%; }\n\n.ui-datepicker-header a > span {\n  display: none; }\n\n.ui-datepicker-title {\n  text-align: center;\n  line-height: 2rem;\n  margin-bottom: 0.25rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  padding-bottom: 0.25rem; }\n\n.ui-datepicker-week-col {\n  color: #78909c;\n  font-weight: 400;\n  font-size: 0.75rem; }\n\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table td,\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table th {\n  border: none;\n  word-break: break-all; }\n", ""]);
 
 
 
@@ -110,7 +110,7 @@ exports.push([module.i, ".qubely-block-form .qubely-form .qubely-form-group {\n 
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form {\n  display: flex;\n  flex-wrap: wrap; }\n  .qubely-block-form .qubely-form .qubely-form-group {\n    position: relative; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-label {\n      display: flex;\n      padding: 5px 0px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-label .qubely-form-field-label {\n        padding-right: 20px; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control {\n      display: block;\n      width: 100%;\n      background-clip: padding-box;\n      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-small {\n        padding: 6px 8px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-medium {\n        padding: 8.5px 12px; }\n      .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control.is-large {\n        padding: 14.5px 16px; }\n    .qubely-block-form .qubely-form .qubely-form-group textarea.qubely-form-control {\n      resize: none; }\n    .qubely-block-form .qubely-form .qubely-form-group .qubely-form-control:focus {\n      outline: 0; }\n    .qubely-block-form .qubely-form .qubely-form-group p.qubely-form-required-field {\n      font-size: 14px;\n      color: red;\n      margin: 0; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-group-inner {\n  position: relative; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-label {\n  position: absolute;\n  pointer-events: none;\n  top: 0px;\n  transition: 0.2s ease all; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control {\n  border-radius: 0;\n  box-shadow: none;\n  padding-left: 0;\n  padding-right: 0; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus, .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid {\n    outline: none;\n    color: #333; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control::placeholder {\n    opacity: 0;\n    transition: 400ms; }\n  .qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus::placeholder {\n    opacity: 1; }\n\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:focus ~ .qubely-form-label,\n.qubely-block-form.qubely-layout-material .qubely-form .qubely-form-group .qubely-form-control:valid ~ .qubely-form-label {\n  top: -20px; }\n", ""]);
+exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form .editor-inner-blocks.block-editor-inner-blocks .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #f7f8fc;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #ffffff;\n    border: 1px solid #d6d9dd;\n    border-radius: 4px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {\n  display: flex;\n  flex-wrap: wrap; }\n", ""]);
 
 
 
@@ -842,6 +842,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _icons = __webpack_require__(/*! ../../helpers/icons */ "./src/helpers/icons.js");
@@ -861,24 +863,33 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
+var createBlock = wp.blocks.createBlock;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     BlockControls = _wp$editor.BlockControls,
+    InnerBlocks = _wp$editor.InnerBlocks,
     RichText = _wp$editor.RichText;
 var _wp$components = wp.components,
+    Dropdown = _wp$components.Dropdown,
     PanelBody = _wp$components.PanelBody,
     TextControl = _wp$components.TextControl,
-    TextareaControl = _wp$components.TextareaControl,
-    SelectControl = _wp$components.SelectControl,
     Toolbar = _wp$components.Toolbar,
-    IconButton = _wp$components.IconButton;
+    TextareaControl = _wp$components.TextareaControl;
 var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
 var _wp$qubelyComponents = wp.qubelyComponents,
+    ButtonGroup = _wp$qubelyComponents.ButtonGroup,
+    BoxShadow = _wp$qubelyComponents.BoxShadow,
+    BorderRadius = _wp$qubelyComponents.BorderRadius,
+    Padding = _wp$qubelyComponents.Padding,
     Styles = _wp$qubelyComponents.Styles,
     Wrapper = _wp$qubelyComponents.Wrapper,
     Range = _wp$qubelyComponents.Range,
+    Separator = _wp$qubelyComponents.Separator,
     Toggle = _wp$qubelyComponents.Toggle,
     Typography = _wp$qubelyComponents.Typography,
     Color = _wp$qubelyComponents.Color,
@@ -891,9 +902,6 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
     buttonSettings = _wp$qubelyComponents.QubelyButton.buttonSettings,
     globalSettingsPanel = _wp$qubelyComponents.gloalSettings.globalSettingsPanel;
-
-
-var itemTypes = [{ label: 'Text', value: 'text' }, { label: 'Email', value: 'email' }, { label: 'Radio', value: 'radio' }, { label: 'Checkbox', value: 'checkbox' }, { label: 'Textarea', value: 'textarea' }, { label: 'Dropdown', value: 'dropdown' }];
 
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
@@ -921,10 +929,37 @@ var Edit = function (_Component) {
             );
         };
 
+        _this.renderFormFieldTypes = function () {
+            var hideDropdown = _this.state.hideDropdown;
+
+
+            var formFields = [[__('Text'), 'text'], [__('Number'), 'number'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Textarea'), 'textarea'], [__('Date'), 'date'], [__('Time'), 'time'], [__('Dropdown'), 'dropdown']];
+            return React.createElement(
+                'div',
+                { className: 'qubely-form-field-types' },
+                formFields.map(function (_ref, index) {
+                    var _ref2 = _slicedToArray(_ref, 2),
+                        fieldName = _ref2[0],
+                        type = _ref2[1];
+
+                    return React.createElement(
+                        'div',
+                        { className: 'qubely-form-field-type',
+                            onClick: function onClick() {
+                                _this.addNewItem(type);
+                                hideDropdown();
+                            }
+                        },
+                        fieldName
+                    );
+                })
+            );
+        };
+
         _this.state = {
             spacer: true,
             selectedItem: -1,
-            dropdownOpen: -1,
+            hideDropdown: null,
             newItemType: 'text',
             device: 'md'
         };
@@ -973,21 +1008,37 @@ var Edit = function (_Component) {
             setAttributes({ formItems: formItems });
         }
     }, {
-        key: 'insertItem',
-        value: function insertItem() {
-            var newItemType = this.state.newItemType;
+        key: 'addNewItem',
+        value: function addNewItem(newFieldType) {
             var _props4 = this.props,
+                clientId = _props4.clientId,
                 attributes = _props4.attributes,
                 setAttributes = _props4.setAttributes;
 
+            var _select = select('core/block-editor'),
+                getBlocks = _select.getBlocks;
+
+            var _dispatch = dispatch('core/block-editor'),
+                replaceInnerBlocks = _dispatch.replaceInnerBlocks;
+
             var formItems = [].concat(_toConsumableArray(attributes.formItems));
-            var newItem = { type: newItemType, label: 'Label', placeholder: '', width: { md: 100 }, required: true, hideLabel: false };
-            if (newItemType == 'radio' || newItemType == 'checkbox' || newItemType == 'dropdown') {
-                newItem.options = ['Option 1', 'Option 2'];
-            }
+            var newItem = {
+                type: newFieldType,
+                label: 'Label',
+                placeholder: '',
+                width: 100,
+                required: true,
+                hideLabel: false
+            };
+
             formItems.push(newItem);
-            this.setState({ newItemWrapper: false });
             setAttributes({ formItems: formItems });
+
+            var innerBlocks = [].concat(_toConsumableArray(getBlocks(clientId)));
+
+            innerBlocks.push(createBlock('qubely/formfield-' + newFieldType));
+
+            replaceInnerBlocks(clientId, innerBlocks, false);
         }
     }, {
         key: 'insertOption',
@@ -1062,14 +1113,20 @@ var Edit = function (_Component) {
             var _props10 = this.props,
                 attributes = _props10.attributes,
                 setAttributes = _props10.setAttributes,
+                toggleSelection = _props10.toggleSelection,
                 _props10$attributes = _props10.attributes,
                 uniqueId = _props10$attributes.uniqueId,
                 layout = _props10$attributes.layout,
                 formItems = _props10$attributes.formItems,
-                labelTypography = _props10$attributes.labelTypography,
                 labelColor = _props10$attributes.labelColor,
-                labelColorFocus = _props10$attributes.labelColorFocus,
+                labelAlignment = _props10$attributes.labelAlignment,
+                labelTypography = _props10$attributes.labelTypography,
+                spacing = _props10$attributes.spacing,
+                gutter = _props10$attributes.gutter,
+                inputSize = _props10$attributes.inputSize,
+                inputCustomSize = _props10$attributes.inputCustomSize,
                 inputTypography = _props10$attributes.inputTypography,
+                inputBoxShadow = _props10$attributes.inputBoxShadow,
                 inputColor = _props10$attributes.inputColor,
                 inputColorFocus = _props10$attributes.inputColorFocus,
                 inputColorHover = _props10$attributes.inputColorHover,
@@ -1077,14 +1134,10 @@ var Edit = function (_Component) {
                 inputBgFocus = _props10$attributes.inputBgFocus,
                 inputBgHover = _props10$attributes.inputBgHover,
                 inputBorder = _props10$attributes.inputBorder,
+                inputBorderRadius = _props10$attributes.inputBorderRadius,
                 inputBorderMaterial = _props10$attributes.inputBorderMaterial,
                 inputBorderColorFocus = _props10$attributes.inputBorderColorFocus,
                 inputBorderColorHover = _props10$attributes.inputBorderColorHover,
-                inputCorner = _props10$attributes.inputCorner,
-                inputCornerRadius = _props10$attributes.inputCornerRadius,
-                inputSize = _props10$attributes.inputSize,
-                inputPaddingX = _props10$attributes.inputPaddingX,
-                inputPaddingY = _props10$attributes.inputPaddingY,
                 textareaHeight = _props10$attributes.textareaHeight,
                 placeholderColor = _props10$attributes.placeholderColor,
                 placeholderColorFocus = _props10$attributes.placeholderColorFocus,
@@ -1096,8 +1149,6 @@ var Edit = function (_Component) {
                 buttonText = _props10$attributes.buttonText,
                 buttonIconName = _props10$attributes.buttonIconName,
                 buttonIconPosition = _props10$attributes.buttonIconPosition,
-                spacing = _props10$attributes.spacing,
-                gutter = _props10$attributes.gutter,
                 fieldErrorMessage = _props10$attributes.fieldErrorMessage,
                 formSuccessMessage = _props10$attributes.formSuccessMessage,
                 formErrorMessage = _props10$attributes.formErrorMessage,
@@ -1114,17 +1165,15 @@ var Edit = function (_Component) {
                 globalZindex = _props10$attributes.globalZindex,
                 hideTablet = _props10$attributes.hideTablet,
                 hideMobile = _props10$attributes.hideMobile,
-                globalCss = _props10$attributes.globalCss;
-            var _state = this.state,
-                device = _state.device,
-                selectedItem = _state.selectedItem,
-                dropdownOpen = _state.dropdownOpen;
+                globalCss = _props10$attributes.globalCss,
+                height = _props10$attributes.height,
+                width = _props10$attributes.width;
+            var device = this.state.device;
 
 
             if (uniqueId) {
                 CssGenerator(attributes, 'form', uniqueId);
             }
-
             return React.createElement(
                 Fragment,
                 null,
@@ -1142,62 +1191,17 @@ var Edit = function (_Component) {
                             options: [{ value: 'classic', img: _icons2.default.form_classic, label: __('Classic') }, { value: 'material', img: _icons2.default.form_material, label: __('Material') }]
                         })
                     ),
-                    selectedItem >= 0 && React.createElement(
-                        PanelBody,
-                        { title: formItems[selectedItem].label ? formItems[selectedItem].label : __('Input Settings') },
-                        React.createElement(TextControl, {
-                            label: __('Label'),
-                            value: formItems[selectedItem].label,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('label', val);
-                            },
-                            placeholder: __('Enter Label')
-                        }),
-                        React.createElement(TextControl, {
-                            label: __('Name'),
-                            value: formItems[selectedItem].name,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('name', val);
-                            },
-                            placeholder: __('Enter Name'),
-                            help: __('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')
-                        }),
-                        formItems[selectedItem].type == 'checkbox' || formItems[selectedItem].type == 'radio' ? '' : React.createElement(TextControl, {
-                            label: __('Placeholder'),
-                            value: formItems[selectedItem].placeholder,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('placeholder', val);
-                            },
-                            placeholder: __('Enter Placeholder')
-                        }),
-                        React.createElement(Range, {
-                            label: __('Width'),
-                            value: formItems[selectedItem].width,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('width', val);
-                            },
-                            max: 100,
-                            min: 33,
-                            responsive: true
-                        }),
-                        React.createElement(Toggle, {
-                            label: __('Required'),
-                            value: formItems[selectedItem].required,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('required', val);
-                            }
-                        }),
-                        layout == 'classic' && React.createElement(Toggle, {
-                            label: __('Hide Label'),
-                            value: formItems[selectedItem].hideLabel,
-                            onChange: function onChange(val) {
-                                return _this2.setSettings('hideLabel', val);
-                            }
-                        })
-                    ),
                     React.createElement(
                         PanelBody,
                         { title: __('Label'), initialOpen: false },
+                        React.createElement(ButtonGroup, {
+                            label: __('Label Alignment'),
+                            options: [[__('Top'), 'top'], [__('Left'), 'left'], [__('Right'), 'right']],
+                            value: labelAlignment,
+                            onChange: function onChange(value) {
+                                return setAttributes({ labelAlignment: value });
+                            }
+                        }),
                         React.createElement(Typography, {
                             value: labelTypography,
                             onChange: function onChange(val) {
@@ -1210,106 +1214,90 @@ var Edit = function (_Component) {
                             onChange: function onChange(val) {
                                 return setAttributes({ labelColor: val });
                             }
-                        }),
-                        layout == 'material' && React.createElement(Color, {
-                            label: __('Focus Color'),
-                            value: labelColorFocus,
-                            onChange: function onChange(val) {
-                                return setAttributes({ labelColorFocus: val });
-                            }
                         })
                     ),
                     React.createElement(
                         PanelBody,
                         { title: __('Input'), initialOpen: false },
-                        React.createElement(
-                            Wrapper,
-                            { label: __('Size') },
-                            React.createElement(RadioAdvanced, {
-                                label: __('Input Size'),
-                                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
-                                value: inputSize,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ inputSize: value });
-                                } }),
-                            inputSize == 'custom' && React.createElement(
-                                Fragment,
-                                null,
-                                React.createElement(Range, {
-                                    label: React.createElement('span', { className: 'dashicons dashicons-sort', title: 'Padding Y' }),
-                                    value: inputPaddingY,
-                                    onChange: function onChange(value) {
-                                        return setAttributes({ inputPaddingY: value });
-                                    },
-                                    unit: ['px', 'em', '%'],
-                                    min: 0,
-                                    max: 50,
-                                    responsive: true
-                                }),
-                                layout == 'classic' && React.createElement(Range, {
-                                    label: React.createElement('span', { className: 'dashicons dashicons-leftright', title: 'X Padding' }),
-                                    value: inputPaddingX,
-                                    onChange: function onChange(value) {
-                                        return setAttributes({ inputPaddingX: value });
-                                    },
-                                    unit: ['px', 'em', '%'],
-                                    min: 0,
-                                    max: 50,
-                                    responsive: true
-                                })
-                            ),
-                            React.createElement(Range, {
-                                label: __('Textarea Height'),
-                                value: textareaHeight,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ textareaHeight: value });
-                                },
-                                unit: ['px', 'em', '%'],
-                                min: 100,
-                                max: 500,
-                                responsive: true
-                            }),
-                            React.createElement(Range, {
-                                label: __('Spacing'),
-                                value: spacing,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ spacing: value });
-                                },
-                                unit: ['px', 'em', '%'],
-                                min: 0,
-                                max: 60,
-                                responsive: true
-                            }),
-                            React.createElement(Range, {
-                                label: __('Gutter'),
-                                value: gutter,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ gutter: value });
-                                },
-                                unit: ['px', 'em', '%'],
-                                min: 0,
-                                max: 60,
-                                responsive: true
-                            })
-                        ),
+                        React.createElement(RadioAdvanced, {
+                            label: __('Input Size'),
+                            options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                            value: inputSize,
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputSize: value });
+                            } }),
+                        inputSize == 'custom' && React.createElement(Padding, {
+                            max: 50,
+                            min: 0,
+                            responsive: true,
+                            value: inputCustomSize,
+                            label: __('Custom Size'),
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputCustomSize: value });
+                            }
+                        }),
+                        React.createElement(Range, {
+                            min: 100,
+                            max: 500,
+                            responsive: true,
+                            value: textareaHeight,
+                            unit: ['px', 'em', '%'],
+                            label: __('Textarea Height'),
+                            onChange: function onChange(value) {
+                                return setAttributes({ textareaHeight: value });
+                            }
+                        }),
+                        React.createElement(Range, {
+                            min: 0,
+                            max: 60,
+                            responsive: true,
+                            value: spacing,
+                            label: __('Spacing'),
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ spacing: value });
+                            }
+                        }),
+                        React.createElement(Range, {
+                            min: 0,
+                            max: 60,
+                            responsive: true,
+                            value: gutter,
+                            label: __('Gutter'),
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ gutter: value });
+                            }
+                        }),
+                        layout == 'classic' && React.createElement(Border, { label: __('Border'), value: inputBorder, onChange: function onChange(val) {
+                                return setAttributes({ inputBorder: val });
+                            }, min: 0, max: 10 }),
+                        layout == 'material' && React.createElement(Border, { label: __('Border'), value: inputBorderMaterial, onChange: function onChange(val) {
+                                return setAttributes({ inputBorderMaterial: val });
+                            }, min: 0, max: 10 }),
+                        React.createElement(BorderRadius, {
+                            min: 0,
+                            max: 100,
+                            responsive: true,
+                            label: __('Field Radius'),
+                            value: inputBorderRadius,
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputBorderRadius: value });
+                            } }),
                         React.createElement(
                             Tabs,
                             null,
                             React.createElement(
                                 Tab,
                                 { tabTitle: __('Normal') },
-                                React.createElement(Color, { label: __('Color'), value: inputColor, onChange: function onChange(val) {
+                                React.createElement(Color, { label: __('Input Text Color'), value: inputColor, onChange: function onChange(val) {
                                         return setAttributes({ inputColor: val });
                                     } }),
                                 React.createElement(Color, { label: __('Background Color'), value: inputBg, onChange: function onChange(val) {
                                         return setAttributes({ inputBg: val });
                                     } }),
-                                layout == 'classic' && React.createElement(Border, { label: __('Border'), value: inputBorder, onChange: function onChange(val) {
-                                        return setAttributes({ inputBorder: val });
-                                    }, min: 0, max: 10 }),
-                                layout == 'material' && React.createElement(Border, { label: __('Border'), value: inputBorderMaterial, onChange: function onChange(val) {
-                                        return setAttributes({ inputBorderMaterial: val });
-                                    }, min: 0, max: 10 }),
                                 React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColor, onChange: function onChange(val) {
                                         return setAttributes({ placeholderColor: val });
                                     } })
@@ -1317,7 +1305,7 @@ var Edit = function (_Component) {
                             React.createElement(
                                 Tab,
                                 { tabTitle: __('Focus') },
-                                React.createElement(Color, { label: __('Color'), value: inputColorFocus, onChange: function onChange(val) {
+                                React.createElement(Color, { label: __('Text Color'), value: inputColorFocus, onChange: function onChange(val) {
                                         return setAttributes({ inputColorFocus: val });
                                     } }),
                                 React.createElement(Color, { label: __('Background Color'), value: inputBgFocus, onChange: function onChange(val) {
@@ -1333,7 +1321,7 @@ var Edit = function (_Component) {
                             React.createElement(
                                 Tab,
                                 { tabTitle: __('Hover') },
-                                React.createElement(Color, { label: __('Color'), value: inputColorHover, onChange: function onChange(val) {
+                                React.createElement(Color, { label: __('Text Color'), value: inputColorHover, onChange: function onChange(val) {
                                         return setAttributes({ inputColorHover: val });
                                     } }),
                                 React.createElement(Color, { label: __('Background Color'), value: inputBgHover, onChange: function onChange(val) {
@@ -1347,27 +1335,19 @@ var Edit = function (_Component) {
                                     } })
                             )
                         ),
-                        React.createElement(RadioAdvanced, {
-                            label: __('Corner'),
-                            options: [{ svg: _icons2.default.corner_square, value: '0px', title: __('Square') }, { svg: _icons2.default.corner_rounded, value: '4px', title: __('Rounded') }, { svg: _icons2.default.corner_round, value: '50px', title: __('Round') }, { icon: 'fas fa-cog', value: 'custom', title: __('Custom') }],
-                            value: inputCorner,
-                            onChange: function onChange(val) {
-                                return setAttributes({ inputCorner: val });
-                            }
-                        }),
-                        inputCorner == 'custom' && React.createElement(Range, {
-                            label: __('Corner Radius'),
-                            value: inputCornerRadius,
-                            onChange: function onChange(value) {
-                                return setAttributes({ inputCornerRadius: value });
-                            },
-                            min: 0,
-                            max: 100, unit: ['px', 'em', '%'],
-                            responsive: true
-                        }),
                         React.createElement(Typography, { value: inputTypography, onChange: function onChange(val) {
                                 return setAttributes({ inputTypography: val });
-                            } })
+                            } }),
+                        React.createElement(Separator, null),
+                        React.createElement(BoxShadow, {
+                            disableInset: true,
+                            label: __('Box-Shadow'),
+                            value: inputBoxShadow,
+                            onChange: function onChange(value) {
+                                return setAttributes({ inputBoxShadow: value });
+                            }
+                        }),
+                        React.createElement(Separator, null)
                     ),
                     React.createElement(
                         PanelBody,
@@ -1500,157 +1480,20 @@ var Edit = function (_Component) {
                         { className: 'qubely-block-form qubely-layout-' + layout },
                         React.createElement(
                             'form',
-                            { className: 'qubely-form' },
-                            formItems.map(function (item, index) {
-                                return React.createElement(
-                                    'div',
-                                    { key: index, className: 'qubely-form-group qubely-form-group-index-' + index + ' ' + (selectedItem == index ? 'qubely-form-group-active' : ''), style: { width: item.width.md + '%' }, onClick: function onClick() {
-                                            return _this2.setState({ selectedItem: index });
-                                        } },
-                                    React.createElement(
-                                        'div',
-                                        { className: 'qubely-form-group-inner' },
-                                        !item.hideLabel && layout == 'classic' && _this2.renderLabel(index, item.required),
-                                        (item.type == 'text' || item.type == 'email') && React.createElement('input', { className: 'qubely-form-control is-' + inputSize, type: item.type, placeholder: __(item.placeholder), required: item.required, disabled: true }),
-                                        (item.type == 'radio' || item.type == 'checkbox') && React.createElement(
-                                            'div',
-                                            null,
-                                            item.options && item.options.map(function (option, i) {
-                                                return React.createElement(
-                                                    'div',
-                                                    { className: 'qubely-radio-control' },
-                                                    React.createElement('input', { type: item.type, name: 'option' + index, value: option }),
-                                                    React.createElement(
-                                                        'label',
-                                                        { contenteditable: 'true', onBlur: function onBlur(e) {
-                                                                return _this2.setOptionSettings(index, i, e.target.innerText);
-                                                            } },
-                                                        ' ',
-                                                        option,
-                                                        ' '
-                                                    ),
-                                                    React.createElement(
-                                                        'span',
-                                                        { className: 'qubely-form-option-remove', onClick: function onClick(e) {
-                                                                _this2.removeOption(index, i);
-                                                            } },
-                                                        React.createElement('i', { className: 'fa fa-times' })
-                                                    )
-                                                );
-                                            }),
-                                            selectedItem >= 0 && selectedItem == index && React.createElement(
-                                                'span',
-                                                { onClick: function onClick() {
-                                                        return _this2.insertOption(index);
-                                                    } },
-                                                React.createElement('i', { className: 'fa fa-plus' })
-                                            )
-                                        ),
-                                        item.type == 'textarea' && React.createElement('textarea', { className: 'qubely-form-control', placeholder: __(item.placeholder), required: item.required, disabled: true }),
-                                        item.type == 'dropdown' && React.createElement(
-                                            'div',
-                                            { 'class': 'qubely-dropdown-control' },
-                                            React.createElement('input', { type: 'text', onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.setState({ dropdownOpen: dropdownOpen == index ? -1 : index });
-                                                } }),
-                                            dropdownOpen == index && React.createElement(
-                                                'ul',
-                                                { 'class': 'qubely-dropdown-content' },
-                                                item.options && item.options.map(function (option, i) {
-                                                    return React.createElement(
-                                                        'li',
-                                                        null,
-                                                        React.createElement(
-                                                            'span',
-                                                            { contenteditable: 'true', onBlur: function onBlur(e) {
-                                                                    return _this2.setOptionSettings(index, i, e.target.innerText);
-                                                                } },
-                                                            option
-                                                        ),
-                                                        React.createElement('i', { className: 'fa fa-times', onClick: function onClick(e) {
-                                                                _this2.removeOption(index, i);
-                                                            } })
-                                                    );
-                                                }),
-                                                React.createElement(
-                                                    'span',
-                                                    { onClick: function onClick() {
-                                                            return _this2.insertOption(index);
-                                                        } },
-                                                    React.createElement('i', { className: 'fa fa-plus' })
-                                                )
-                                            )
-                                        ),
-                                        !item.hideLabel && layout == 'material' && _this2.renderLabel(index, item.required)
-                                    ),
-                                    React.createElement(
-                                        'div',
-                                        { className: 'qubely-form-group-option' },
-                                        React.createElement(
-                                            'span',
-                                            { onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.moveItem(index, 'left');
-                                                }, className: index == 0 && 'qubely-option-disable' },
-                                            React.createElement('i', { 'class': 'fa fa-long-arrow-alt-up' })
-                                        ),
-                                        React.createElement(
-                                            'span',
-                                            { onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.moveItem(index, 'right');
-                                                }, className: index == formItems.length - 1 && 'qubely-option-disable' },
-                                            React.createElement('i', { 'class': 'fa fa-long-arrow-alt-down' })
-                                        ),
-                                        React.createElement(
-                                            'span',
-                                            { onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.cloneItem(index);
-                                                } },
-                                            React.createElement('i', { 'class': 'fa fa-copy' })
-                                        ),
-                                        React.createElement(
-                                            'span',
-                                            { onClick: function onClick(e) {
-                                                    e.stopPropagation();_this2.removeItem(index);
-                                                } },
-                                            React.createElement('i', { 'class': 'fa fa-times-circle' })
-                                        )
-                                    )
-                                );
-                            }),
-                            policyCheckbox && React.createElement(
-                                'div',
-                                { className: 'qubely-form-group', style: { width: '100%' } },
-                                React.createElement('input', { className: '', type: 'checkbox', name: 'policy', id: 'qubely-form-policy-checkbox', value: 'Yes' }),
-                                React.createElement(RichText, {
-                                    tagName: 'label',
-                                    className: '',
-                                    value: policyCheckboxText,
-                                    onChange: function onChange(val) {
-                                        return setAttributes({ policyCheckboxText: val });
-                                    }
+                            { className: 'qubely-form is-' + inputSize },
+                            React.createElement(InnerBlocks
+                            // templateLock="insert"
+                            // templateLock={false}
+                            , { template: formItems.map(function (_ref3) {
+                                    var type = _ref3.type,
+                                        label = _ref3.label,
+                                        options = _ref3.options,
+                                        placeholder = _ref3.placeholder,
+                                        width = _ref3.width,
+                                        required = _ref3.required;
+                                    return ['qubely/formfield-' + type, { type: type, label: label, options: options, placeholder: placeholder, width: width, required: required }];
                                 })
-                            )
-                        ),
-                        React.createElement(
-                            'div',
-                            { className: 'qubely-accordion-add-item' },
-                            React.createElement(SelectControl, {
-                                label: '',
-                                value: this.state.newItemType,
-                                options: itemTypes,
-                                onChange: function onChange(val) {
-                                    return _this2.setState({ newItemType: val });
-                                }
-                            }),
-                            React.createElement(
-                                IconButton,
-                                {
-                                    icon: 'insert',
-                                    onClick: function onClick() {
-                                        return _this2.insertItem();
-                                    } },
-                                __('Add New Item')
-                            )
+                            })
                         ),
                         React.createElement(
                             'div',
@@ -1665,6 +1508,35 @@ var Edit = function (_Component) {
                                 buttonTag: buttonTag,
                                 onTextChange: function onTextChange(value) {
                                     return setAttributes({ buttonText: value });
+                                }
+                            })
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'qubely-form-add-item' },
+                            React.createElement(Dropdown, {
+                                className: "qubely-action-add-form-field",
+                                contentClassName: "qubely-form-field-picker",
+                                position: 'bottom center',
+                                renderToggle: function renderToggle(_ref4) {
+                                    var isOpen = _ref4.isOpen,
+                                        onToggle = _ref4.onToggle;
+                                    return React.createElement(
+                                        'div',
+                                        { onClick: onToggle, 'aria-expanded': isOpen, className: 'qubely-action-add-form-item' },
+                                        React.createElement('i', { className: 'fas fa-plus-circle' }),
+                                        React.createElement(
+                                            'span',
+                                            { onClick: function onClick() {
+                                                    return _this2.setState({ hideDropdown: onToggle });
+                                                } },
+                                            ' ',
+                                            __('Add new item')
+                                        )
+                                    );
+                                },
+                                renderContent: function renderContent() {
+                                    return _this2.renderFormFieldTypes();
                                 }
                             })
                         )
@@ -1707,7 +1579,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var __ = wp.i18n.__;
 var Component = wp.element.Component;
-var RichText = wp.editor.RichText;
+var _wp$editor = wp.editor,
+    RichText = _wp$editor.RichText,
+    InnerBlocks = _wp$editor.InnerBlocks;
 var _wp$qubelyComponents = wp.qubelyComponents,
     QubelyButtonSave = _wp$qubelyComponents.QubelyButtonSave,
     animationAttr = _wp$qubelyComponents.HelperFunction.animationAttr;
@@ -1827,43 +1701,12 @@ var Save = function (_Component) {
                 'div',
                 _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
                 React.createElement(
-                    'style',
-                    null,
-                    this._renderFormGroupCss()
-                ),
-                React.createElement(
                     'div',
                     { className: 'qubely-block-form qubely-layout-' + layout },
                     React.createElement(
                         'form',
                         { className: 'qubely-form' },
-                        formItems.map(function (item, index) {
-                            return React.createElement(
-                                'div',
-                                { key: index, className: 'qubely-form-group qubely-form-group-index-' + index },
-                                React.createElement(
-                                    'div',
-                                    { className: 'qubely-form-group-inner' },
-                                    !item.hideLabel && layout == 'classic' && React.createElement(
-                                        'label',
-                                        { 'for': 'qubely-form-input-' + index, className: 'qubely-form-label' },
-                                        ' ',
-                                        __(item.label),
-                                        ' ',
-                                        item.required && '*'
-                                    ),
-                                    _renderField(item, index, inputSize),
-                                    layout == 'material' && React.createElement(
-                                        'label',
-                                        { className: 'qubely-form-label' },
-                                        ' ',
-                                        __(item.label),
-                                        ' ',
-                                        item.required && '*'
-                                    )
-                                )
-                            );
-                        }),
+                        React.createElement(InnerBlocks.Content, null),
                         reCaptcha && React.createElement(
                             'div',
                             { className: 'qubely-form-group' },
@@ -1924,15 +1767,1301 @@ exports.default = Save;
 
 /***/ }),
 
-/***/ "./src/blocks/form/editor.scss":
-/*!*************************************!*\
-  !*** ./src/blocks/form/editor.scss ***!
-  \*************************************/
+/***/ "./src/blocks/form/fields/edit.js":
+/*!****************************************!*\
+  !*** ./src/blocks/form/fields/edit.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.default = Edit;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var __ = wp.i18n.__;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    RichText = _wp$editor.RichText;
+var _wp$element = wp.element,
+    useState = _wp$element.useState,
+    useEffect = _wp$element.useEffect,
+    useRef = _wp$element.useRef,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
+    RangeControl = _wp$components.RangeControl,
+    Tooltip = _wp$components.Tooltip;
+var _wp$qubelyComponents = wp.qubelyComponents,
+    ButtonGroup = _wp$qubelyComponents.ButtonGroup,
+    Color = _wp$qubelyComponents.Color,
+    RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
+    Range = _wp$qubelyComponents.Range,
+    Select = _wp$qubelyComponents.Select,
+    Separator = _wp$qubelyComponents.Separator,
+    Toggle = _wp$qubelyComponents.Toggle,
+    Typography = _wp$qubelyComponents.Typography,
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+function Edit(props) {
+    var _useState = useState(12),
+        _useState2 = _slicedToArray(_useState, 2),
+        hour = _useState2[0],
+        setHour = _useState2[1];
+
+    var _useState3 = useState(0),
+        _useState4 = _slicedToArray(_useState3, 2),
+        minute = _useState4[0],
+        setMinute = _useState4[1];
+
+    var _useState5 = useState(new Date()),
+        _useState6 = _slicedToArray(_useState5, 2),
+        date = _useState6[0],
+        setDate = _useState6[1];
+
+    var _useState7 = useState('md'),
+        _useState8 = _slicedToArray(_useState7, 2),
+        device = _useState8[0],
+        changeDevice = _useState8[1];
+
+    var _useState9 = useState(-1),
+        _useState10 = _slicedToArray(_useState9, 2),
+        draggedItem = _useState10[0],
+        setDraggedItem = _useState10[1];
+
+    var _useState11 = useState(date.getFullYear()),
+        _useState12 = _slicedToArray(_useState11, 2),
+        year = _useState12[0],
+        setYear = _useState12[1];
+
+    var _useState13 = useState(''),
+        _useState14 = _slicedToArray(_useState13, 2),
+        dropdownValue = _useState14[0],
+        setDropdownValue = _useState14[1];
+
+    var _useState15 = useState(false),
+        _useState16 = _slicedToArray(_useState15, 2),
+        showTimePicker = _useState16[0],
+        setTimePicker = _useState16[1];
+
+    var _useState17 = useState(-1),
+        _useState18 = _slicedToArray(_useState17, 2),
+        draggedOverItem = _useState18[0],
+        setDraggedOverItem = _useState18[1];
+
+    var _useState19 = useState('PM'),
+        _useState20 = _slicedToArray(_useState19, 2),
+        seletedTimeFormat = _useState20[0],
+        changeseletedTimeFormat = _useState20[1];
+
+    var name = props.name,
+        clientId = props.clientId,
+        attributes = props.attributes,
+        setAttributes = props.setAttributes,
+        _props$attributes = props.attributes,
+        uniqueId = _props$attributes.uniqueId,
+        fieldName = _props$attributes.fieldName,
+        fieldSize = _props$attributes.fieldSize,
+        width = _props$attributes.width,
+        height = _props$attributes.height,
+        type = _props$attributes.type,
+        label = _props$attributes.label,
+        emailConformation = _props$attributes.emailConformation,
+        conformationEmailLabel = _props$attributes.conformationEmailLabel,
+        columns = _props$attributes.columns,
+        enableOtherOption = _props$attributes.enableOtherOption,
+        dateFormat = _props$attributes.dateFormat,
+        dateSeparator = _props$attributes.dateSeparator,
+        instruction = _props$attributes.instruction,
+        options = _props$attributes.options,
+        placeHolder = _props$attributes.placeHolder,
+        required = _props$attributes.required,
+        minuteInterval = _props$attributes.minuteInterval,
+        timeFormatType = _props$attributes.timeFormatType;
+
+
+    useEffect(function () {
+        var _client = clientId.substr(0, 6);
+        if (!uniqueId) {
+            setAttributes({ uniqueId: _client });
+        } else if (uniqueId && uniqueId != _client) {
+            setAttributes({ uniqueId: _client });
+        }
+
+        $('.qubely-block-' + uniqueId + ' .qubely-datepicker').datepicker({
+            duration: "fast",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: year - 50 + ':' + (year + 10),
+            dateFormat: dateFormat
+        });
+
+        var currentField = $('#block-' + clientId);
+        currentField.css({ width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%' });
+    });
+
+    var updateOptions = function updateOptions(type, index, newValue) {
+        var newOptions = [].concat(_toConsumableArray(options));
+        if (type === 'add') {
+            newOptions.push('New option');
+        } else if (type === 'delete') {
+            newOptions.splice(index, 1);
+        } else if (type === 'update') {
+            newOptions[index] = newValue;
+        }
+        setAttributes({ options: newOptions });
+    };
+
+    var renderOptions = function renderOptions() {
+        return React.createElement(
+            'div',
+            { className: 'qubely-form-field qubely-form-' + type + ' qubely-' + type + '-' + columns },
+            options.map(function (option, index) {
+                return React.createElement(
+                    'div',
+                    { className: 'qubely-form-field-' + type + '-option' },
+                    React.createElement('input', { type: type, id: option, value: option }),
+                    React.createElement(RichText, {
+                        placeholder: __('option'),
+                        className: 'qubely-' + type + '-option',
+                        value: option,
+                        onChange: function onChange(value) {
+                            return updateOptions('update', index, value);
+                        }
+                    }),
+                    React.createElement(
+                        Tooltip,
+                        { text: __('Delete this option') },
+                        React.createElement(
+                            'span',
+                            { className: 'qubely-action-remove-option', role: 'button', onClick: function onClick() {
+                                    return updateOptions('delete', index);
+                                } },
+                            React.createElement('i', { 'class': 'fas fa-times' })
+                        )
+                    )
+                );
+            }),
+            React.createElement(
+                'div',
+                { className: 'qubely-action-add-option', onClick: function onClick() {
+                        return updateOptions('add');
+                    } },
+                React.createElement(
+                    'span',
+                    { 'class': 'qubely-option-add-icon' },
+                    React.createElement('i', { className: 'fas fa-plus' })
+                ),
+                React.createElement(
+                    'span',
+                    { className: 'qubely-action-add-text' },
+                    ' Add another '
+                )
+            )
+        );
+    };
+
+    var renderDatePicker = function renderDatePicker() {
+        return React.createElement(
+            'div',
+            { 'class': 'qubely-date-picker-wrapper' },
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat) })
+        );
+    };
+
+    var handleTimePicker = function handleTimePicker(type, actionType) {
+
+        if (type === 'hour') {
+            if (actionType === 'increase') {
+
+                timeFormatType === 12 && hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                setHour(hour === timeFormatType ? timeFormatType === 12 ? 1 : 0 : hour + 1);
+            } else {
+                timeFormatType === 12 && (hour === 12 || hour === 1) && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                setHour(timeFormatType === 12 && hour === 1 || timeFormatType === 23 && hour === 0 ? timeFormatType : hour - 1);
+            }
+        } else if (type === 'minute') {
+
+            if (actionType === 'increase') {
+                if (minute >= 60 - minuteInterval) {
+                    timeFormatType === 12 && hour === 11 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                    setHour(hour === timeFormatType ? timeFormatType === 12 ? 1 : 0 : hour + 1);
+                    setMinute((minute + minuteInterval) % 60);
+                } else {
+                    setMinute(minute + minuteInterval);
+                }
+            } else {
+                if (minute < minuteInterval) {
+                    timeFormatType === 12 && hour === 12 && changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                    setHour(timeFormatType === 12 ? hour === 1 ? timeFormatType : hour - 1 : hour === 0 ? timeFormatType : hour - 1);
+                    setMinute(minute - minuteInterval === 0 ? 0 : 60 + (minute - minuteInterval));
+                } else {
+                    setMinute(minute - minuteInterval);
+                }
+            }
+        }
+    };
+    var renderTimePicker = function renderTimePicker() {
+        return React.createElement(
+            'div',
+            { className: 'qubely-form-timepicker-wrapper' },
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', value: hour + ' : ' + minute, onClick: function onClick() {
+                    return setTimePicker(!showTimePicker);
+                } }),
+            React.createElement(
+                'div',
+                { className: 'qubely-form-timepicker' + (showTimePicker ? ' qubely-active' : '') },
+                React.createElement(
+                    'div',
+                    { className: 'qubely-timePicker-hour' },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button button-up',
+                            onClick: function onClick() {
+                                return handleTimePicker('hour', 'increase');
+                            }
+                        },
+                        React.createElement('i', { className: 'fas fa-angle-up' })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-timepicker-hour' },
+                        hour
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button button-down',
+                            onClick: function onClick() {
+                                return handleTimePicker('hour', 'decrease');
+                            }
+                        },
+                        React.createElement('i', { className: 'fas fa-angle-down' })
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'qubely-timePicker-minute' },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button button-up',
+                            onClick: function onClick() {
+                                return handleTimePicker('minute', 'increase');
+                            }
+                        },
+                        React.createElement('i', { className: 'fas fa-angle-up' })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-timepicker-minute' },
+                        minute
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button button-down',
+                            onClick: function onClick() {
+                                return handleTimePicker('minute', 'decrease');
+                            }
+                        },
+                        React.createElement('i', { className: 'fas fa-angle-down' })
+                    )
+                ),
+                timeFormatType === 12 && React.createElement(
+                    'div',
+                    { className: 'qubely-timePicker-time-format' },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button button-up',
+                            onClick: function onClick() {
+                                return changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                            }
+                        },
+                        React.createElement('i', { className: 'fas fa-angle-up' })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-time-format' },
+                        seletedTimeFormat
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button button-down',
+                            onClick: function onClick() {
+                                return changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM');
+                            }
+                        },
+                        React.createElement('i', { className: 'fas fa-angle-down' })
+                    )
+                )
+            )
+        );
+    };
+
+    var renderEmailField = function renderEmailField() {
+
+        return React.createElement(
+            Fragment,
+            null,
+            React.createElement('input', { className: 'qubely-form-field qubely-form-email', type: 'email', placeholder: __(placeHolder), required: required }),
+            emailConformation && React.createElement(
+                Fragment,
+                null,
+                React.createElement(RichText, {
+                    placeholder: __('Confirmation Email'),
+                    className: 'qubely-form-field-label',
+                    value: conformationEmailLabel,
+                    onChange: function onChange(value) {
+                        return setAttributes({ conformationEmailLabel: value });
+                    }
+                }),
+                React.createElement('input', { className: 'qubely-form-field qubely-form-confirmation-email', type: 'email', placeholder: __(placeHolder), required: required })
+            )
+        );
+    };
+
+    var renderInput = function renderInput() {
+        return React.createElement(
+            Fragment,
+            null,
+            type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), required: required }) : type === 'dropdown' ? React.createElement(
+                'select',
+                { className: 'qubely-form-field qubely-form-dropdown', value: dropdownValue, onChange: function onChange(event) {
+                        return setDropdownValue(event.target.value);
+                    } },
+                options.map(function (option) {
+                    return React.createElement(
+                        'option',
+                        { value: option },
+                        option
+                    );
+                })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
+        );
+    };
+
+    var renderCommonSettings = function renderCommonSettings() {
+        return React.createElement(
+            Fragment,
+            null,
+            React.createElement(TextControl, {
+                label: __('Label'),
+                value: label,
+                onChange: function onChange(value) {
+                    return setAttributes({ label: value });
+                }
+            }),
+            React.createElement(TextareaControl, {
+                label: __('Instructions'),
+                value: instruction,
+                onChange: function onChange(value) {
+                    return setAttributes({ instruction: value });
+                }
+            }),
+            React.createElement(TextControl, {
+                label: __('Name'),
+                value: fieldName,
+                onChange: function onChange(value) {
+                    return setAttributes({ fieldName: value });
+                },
+                help: __('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')
+            }),
+            React.createElement(Separator, null),
+            React.createElement(RadioAdvanced, {
+                label: __('Field Size'),
+                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                value: fieldSize,
+                onChange: function onChange(value) {
+                    return setAttributes({ fieldSize: value });
+                } }),
+            fieldSize === 'custom' && React.createElement(RangeControl, {
+                label: __('Percentage width'),
+                value: width || '',
+                onChange: function onChange(value) {
+                    return setAttributes({ width: value });
+                },
+                min: 25,
+                max: 100,
+                required: true,
+                allowReset: true
+            })
+        );
+    };
+
+    var handleDragEnd = function handleDragEnd() {
+        var newOptions = [].concat(_toConsumableArray(options));
+
+        newOptions[draggedOverItem] = options[draggedItem];
+        newOptions[draggedItem] = options[draggedOverItem];
+
+        setAttributes({ options: newOptions });
+        setDraggedItem(-1);
+        setDraggedOverItem(-1);
+    };
+
+    var blockname = name.split('/')[1];
+
+    if (uniqueId) {
+        CssGenerator(attributes, blockname, uniqueId);
+    }
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            InspectorControls,
+            null,
+            React.createElement(
+                PanelBody,
+                { title: __(type[0].toUpperCase() + type.slice(1)), opened: true },
+                renderCommonSettings(),
+                name === 'qubely/formfield-email' && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(Toggle, {
+                        label: __('Email Input Confirmation'),
+                        value: emailConformation,
+                        onChange: function onChange(value) {
+                            return setAttributes({ emailConformation: value });
+                        }
+                    }),
+                    emailConformation && React.createElement(TextControl, {
+                        label: __(''),
+                        value: conformationEmailLabel,
+                        onChange: function onChange(value) {
+                            return setAttributes({ conformationEmailLabel: value });
+                        }
+                    })
+                ),
+                name === 'qubely/formfield-textarea' && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(Range, {
+                        min: 50,
+                        max: 600,
+                        responsive: true,
+                        value: height,
+                        device: device,
+                        label: __('Height'),
+                        unit: ['px', 'em', '%'],
+                        onChange: function onChange(value) {
+                            return setAttributes({ height: value });
+                        },
+                        onDeviceChange: function onDeviceChange(value) {
+                            return changeDevice(value);
+                        } })
+                ),
+                (name === 'qubely/formfield-radio' || name === 'qubely/formfield-checkbox') && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(Select, {
+                        label: __('Show Data in'),
+                        value: columns,
+                        options: [['auto', __('Auto')], ['1-column', __('1 Column')], ['2-column', __('2 Column')], ['3-column', __('3 Column')]],
+                        onChange: function onChange(val) {
+                            return setAttributes({ columns: val });
+                        } }),
+                    React.createElement(Toggle, {
+                        label: __('Display Other Option'),
+                        value: enableOtherOption,
+                        onChange: function onChange(value) {
+                            var newOptions = [].concat(_toConsumableArray(options));
+                            value ? newOptions.push('Other') : newOptions.pop();
+                            setAttributes({ enableOtherOption: value, options: newOptions });
+                        }
+                    })
+                ),
+                name === 'qubely/formfield-date' && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-date-picker-format' },
+                        React.createElement(ButtonGroup, {
+                            label: __('Date Format'),
+                            options: [[__('01-JAN-2000'), 'dd' + dateSeparator + 'M' + dateSeparator + 'yy'], [__('JAN-01-2000'), 'M' + dateSeparator + 'dd' + dateSeparator + 'yy'], [__('2000-JAN-01'), 'yy' + dateSeparator + 'M' + dateSeparator + 'dd']],
+                            value: dateFormat,
+                            onChange: function onChange(value) {
+                                return setAttributes({ dateFormat: value });
+                            }
+                        })
+                    ),
+                    React.createElement(ButtonGroup, {
+                        label: __('Separator'),
+                        options: [[__('-'), '-'], [__('/'), '/'], [__('.'), '.']],
+                        value: dateSeparator,
+                        onChange: function onChange(value) {
+                            return setAttributes({ dateSeparator: value });
+                        }
+                    })
+                ),
+                name === 'qubely/formfield-dropdown' && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(
+                        'label',
+                        { className: 'qubely-form-field' },
+                        'Dropdown Options'
+                    ),
+                    options.map(function (option, index) {
+                        return React.createElement(
+                            'div',
+                            {
+                                draggable: true,
+                                onDragEnd: function onDragEnd() {
+                                    return handleDragEnd();
+                                },
+                                onDragOver: function onDragOver() {
+                                    return setDraggedOverItem(index);
+                                },
+                                'onDragqubely-form-date': function onDragqubelyFormDate() {
+                                    return setDraggedItem(index);
+                                },
+                                className: 'qubely-dropdown-field-option qubely-option-' + index
+                            },
+                            React.createElement(
+                                'span',
+                                { 'class': 'qubely-option-move-icon' },
+                                React.createElement('i', { className: 'fa fa-bars' })
+                            ),
+                            React.createElement(RichText, {
+                                placeholder: __('option'),
+                                className: 'qubely-option',
+                                value: option,
+                                onChange: function onChange(value) {
+                                    return updateOptions('update', index, value);
+                                }
+                            })
+                        );
+                    }),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-dropdown-add-field-option' },
+                        React.createElement(
+                            'span',
+                            { 'class': 'qubely-option-move-icon' },
+                            React.createElement('i', { className: 'fas fa-plus-circle' })
+                        ),
+                        React.createElement(
+                            'span',
+                            { className: 'qubely-action-add-option', onClick: function onClick() {
+                                    return updateOptions('add');
+                                } },
+                            '  Add new item '
+                        )
+                    )
+                ),
+                name === 'qubely/formfield-time' && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-time-picker-format' },
+                        React.createElement(ButtonGroup, {
+                            label: __('Time Format'),
+                            options: [[__('24 Hours'), 23], [__('AM/PM'), 12]],
+                            value: timeFormatType,
+                            onChange: function onChange(value) {
+                                setHour(timeFormatType === 12 ? seletedTimeFormat === 'PM' ? 12 + hour : hour : hour < 13 ? hour : hour % 12);
+                                timeFormatType === 23 && changeseletedTimeFormat(hour >= 12 ? 'PM' : 'AM');
+                                setAttributes({ timeFormatType: value });
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-time-picker-minute-interval' },
+                        React.createElement(ButtonGroup, {
+                            label: __('Minute Interval'),
+                            options: [[__('1'), 1], [__('5'), 5], [__('10'), 10], [__('15'), 15], [__('20'), 20], [__('30'), 30]],
+                            value: minuteInterval,
+                            onChange: function onChange(value) {
+                                return setAttributes({ minuteInterval: value });
+                            }
+                        })
+                    )
+                ),
+                React.createElement(Toggle, {
+                    label: __('Required'),
+                    value: required,
+                    onChange: function onChange(value) {
+                        return setAttributes({ required: value });
+                    }
+                })
+            )
+        ),
+        React.createElement(
+            'div',
+            { className: 'qubely-block-' + uniqueId },
+            React.createElement(
+                'div',
+                { className: 'qubely-form-field-wrapper' },
+                React.createElement(RichText, {
+                    placeholder: __('Input label'),
+                    className: 'qubely-form-field-label',
+                    value: label,
+                    onChange: function onChange(value) {
+                        return setAttributes({ label: value });
+                    }
+                }),
+                renderInput()
+            )
+        )
+    );
+}
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/formDefaults.js":
+/*!************************************************!*\
+  !*** ./src/blocks/form/fields/formDefaults.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var FieldDefaults = {
+    category: 'qubely',
+    parent: ['qubely/form'],
+    supports: {
+        reusable: false,
+        html: false,
+        inserter: false
+    },
+    attributes: {
+        uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        type: {
+            type: 'string',
+            default: null
+        },
+        width: {
+            type: 'number',
+            default: 90
+        },
+        fieldSize: {
+            type: 'string',
+            default: 'large'
+        },
+        label: {
+            type: 'string',
+            default: 'label'
+        },
+        instruction: {
+            type: 'string',
+            default: null
+        },
+        required: {
+            type: 'boolean',
+            default: false
+        }
+
+    }
+};
+exports.default = FieldDefaults;
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/index.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/form/fields/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.registerFromFields = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _qubelyField = __webpack_require__(/*! ./qubelyField */ "./src/blocks/form/fields/qubelyField.js");
+
+var qubelyField = _interopRequireWildcard(_qubelyField);
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+/**
+ * import required attributes of form fields
+ */
+
+var registerBlock = function registerBlock(block) {
+    if (!block) {
+        return;
+    }
+
+    var blockName = block.blockName,
+        settings = block.settings;
+
+
+    registerBlockType(blockName, _extends({}, settings, {
+        getEditWrapperProps: function getEditWrapperProps(attributes) {
+            var fieldSize = attributes.fieldSize,
+                width = attributes.width;
+
+            if (Number.isFinite(width)) {
+                return {
+                    style: {
+                        width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%'
+                    }
+                };
+            }
+        }
+    }));
+};
+
+var qubelyFormFields = [
+
+// 1. text field
+_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Text'),
+        description: __('Text field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'text'
+            },
+            type: {
+                type: 'string',
+                default: 'text'
+            },
+            placeHolder: {
+                type: 'string',
+                default: 'Add text'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-text"
+}),
+// 2 . number
+_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Number'),
+        description: __('Number field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'number'
+            },
+            type: {
+                type: 'string',
+                default: 'number'
+            },
+            placeHolder: {
+                type: 'string',
+                default: 'Add number'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-number"
+}),
+//3. email
+_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Email'),
+        description: __('Email field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'email'
+            },
+            type: {
+                type: 'string',
+                default: 'email'
+            },
+            label: {
+                type: 'string',
+                default: 'Email'
+            },
+            emailConformation: {
+                type: 'boolean',
+                default: false
+            },
+            conformationEmailLabel: {
+                type: 'string',
+                default: 'Confirm Email'
+            },
+            placeHolder: {
+                type: 'string',
+                default: 'Add email'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-email"
+}),
+//4. textarea
+_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Textarea'),
+        description: __('Textarea field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'textarea'
+            },
+            type: {
+                type: 'string',
+                default: 'textarea'
+            },
+            height: {
+                type: 'object',
+                default: {
+                    md: 150,
+                    unit: 'px'
+                },
+                style: [{
+                    selector: '{{QUBELY}} .qubely-form-field.qubely-form-textarea { height: {{height}};}'
+                }]
+            },
+            placeHolder: {
+                type: 'string',
+                default: 'Add text'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-textarea"
+}),
+// 5. dropdown
+_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Dropdown'),
+        description: __('Dropdown field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'dropdown'
+            },
+            type: {
+                type: 'string',
+                default: 'dropdown'
+            },
+            label: {
+                type: 'string',
+                default: 'Dropdown'
+            },
+            options: {
+                type: 'array',
+                default: ['option one', 'option two', 'option three']
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-dropdown"
+}),
+// 6. radio
+_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Radio'),
+        description: __('Radio field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'radio'
+            },
+            type: {
+                type: 'string',
+                default: 'radio'
+            },
+            columns: {
+                type: 'string',
+                default: '1-column'
+            },
+            options: {
+                type: 'array',
+                default: ['option one', 'option two', 'option three']
+            },
+            enableOtherOption: {
+                type: 'boolean',
+                default: false
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-radio"
+}),
+// 7. checkbox
+_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Checkbox'),
+        description: __('Checkbox field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'checkbox'
+            },
+            type: {
+                type: 'string',
+                default: 'checkbox'
+            },
+            columns: {
+                type: 'string',
+                default: '1-column'
+            },
+            options: {
+                type: 'array',
+                default: ['option one', 'option two', 'option three']
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-checkbox"
+}),
+// 8. date picker
+_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Date Picker'),
+        description: __('Date picker field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'date-picker'
+            },
+            type: {
+                type: 'string',
+                default: 'date'
+            },
+            dateSeparator: {
+                type: 'string',
+                default: '-'
+            },
+            dateFormat: {
+                type: 'string',
+                default: 'dd-M-yy'
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-date"
+}),
+// 9. time picker
+_extends({}, qubelyField, {
+    settings: _extends({}, qubelyField.settings, {
+        title: __('Time Picker'),
+        description: __('Time picker field for Qubely Form'),
+        attributes: _extends({}, qubelyField.settings.attributes, {
+            fieldName: {
+                type: 'string',
+                default: 'time-picker'
+            },
+            type: {
+                type: 'string',
+                default: 'time'
+            },
+            timeFormatType: {
+                type: 'number',
+                default: 12
+            },
+            seletedTimeFormat: {
+                type: 'string',
+                default: 'AM'
+            },
+            minuteInterval: {
+                type: 'number',
+                default: 5
+            }
+        })
+
+    }),
+    blockName: "qubely/formfield-time"
+})];
+
+/**
+ * Register form fields
+ */
+var registerFromFields = exports.registerFromFields = function registerFromFields() {
+    qubelyFormFields.forEach(registerBlock);
+};
+
+registerFromFields();
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/qubelyField.js":
+/*!***********************************************!*\
+  !*** ./src/blocks/form/fields/qubelyField.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.settings = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+__webpack_require__(/*! ./style.scss */ "./src/blocks/form/fields/style.scss");
+
+var _edit = __webpack_require__(/*! ./edit */ "./src/blocks/form/fields/edit.js");
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(/*! ./save */ "./src/blocks/form/fields/save.js");
+
+var _save2 = _interopRequireDefault(_save);
+
+var _formDefaults = __webpack_require__(/*! ./formDefaults */ "./src/blocks/form/fields/formDefaults.js");
+
+var _formDefaults2 = _interopRequireDefault(_formDefaults);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var settings = _extends({}, _formDefaults2.default, {
+    icon: 'forms',
+    supports: {
+        html: false,
+        inserter: false,
+        reusable: false
+    },
+    edit: function edit(props) {
+        return (0, _edit2.default)(props);
+    },
+    save: function save(props) {
+        return (0, _save2.default)(props);
+    }
+});
+
+exports.settings = settings;
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/save.js":
+/*!****************************************!*\
+  !*** ./src/blocks/form/fields/save.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Save;
+var __ = wp.i18n.__;
+var RichText = wp.editor.RichText;
+var Fragment = wp.element.Fragment;
+function Save(props) {
+    var _props$attributes = props.attributes,
+        uniqueId = _props$attributes.uniqueId,
+        label = _props$attributes.label,
+        fieldSize = _props$attributes.fieldSize,
+        type = _props$attributes.type,
+        options = _props$attributes.options,
+        width = _props$attributes.width,
+        placeHolder = _props$attributes.placeHolder,
+        required = _props$attributes.required,
+        columns = _props$attributes.columns,
+        hour = _props$attributes.hour,
+        minute = _props$attributes.minute,
+        emailConformation = _props$attributes.emailConformation,
+        conformationEmailLabel = _props$attributes.conformationEmailLabel,
+        dateFormat = _props$attributes.dateFormat,
+        minuteInterval = _props$attributes.minuteInterval,
+        timeFormatType = _props$attributes.timeFormatType,
+        fieldName = _props$attributes.fieldName;
+
+
+    var style = void 0;
+    if (Number.isFinite(width)) {
+        style = { width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width + '%' };
+    }
+
+    var renderOptions = function renderOptions() {
+        return React.createElement(
+            'div',
+            { className: 'qubely-form-field qubely-form-' + type + ' qubely-' + type + '-' + columns },
+            options.map(function (option, index) {
+                return React.createElement(
+                    'div',
+                    { className: 'qubely-form-field-' + type + '-option' },
+                    React.createElement('input', { type: type, id: option, value: option }),
+                    React.createElement(RichText.Content, {
+                        placeholder: __('option'),
+                        className: 'qubely-' + type + '-option',
+                        value: option
+                    })
+                );
+            })
+        );
+    };
+
+    var renderEmailField = function renderEmailField() {
+
+        return React.createElement(
+            Fragment,
+            null,
+            React.createElement('input', { className: 'qubely-form-field qubely-form-email', type: 'email', placeholder: __(placeHolder), required: required, name: fieldName }),
+            emailConformation && React.createElement(
+                Fragment,
+                null,
+                React.createElement(RichText.Content, {
+                    placeholder: __('Confirmation Email'),
+                    className: 'qubely-form-field-label',
+                    value: conformationEmailLabel
+                }),
+                React.createElement('input', { className: 'qubely-form-field qubely-form-confirmation-email', type: 'email', placeholder: __(placeHolder), required: required })
+            )
+        );
+    };
+
+    var renderDatePicker = function renderDatePicker() {
+        var options = JSON.stringify({
+            dateFormat: dateFormat
+        });
+        return React.createElement(
+            'div',
+            { 'class': 'qubely-date-picker-wrapper', 'data-options': options },
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: fieldName })
+        );
+    };
+    var renderTimePicker = function renderTimePicker() {
+
+        var options = JSON.stringify({
+            minuteInterval: minuteInterval,
+            timeFormatType: timeFormatType
+        });
+        return React.createElement(
+            Fragment,
+            null,
+            React.createElement('input', { type: 'text', className: 'qubely-time-picker', value: '12 : 00', name: fieldName }),
+            React.createElement(
+                'div',
+                { className: 'qubely-form-timepicker', 'data-options': options },
+                React.createElement(
+                    'div',
+                    { className: 'qubely-timePicker-hour' },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-hour-button-up' },
+                        React.createElement('i', { className: 'fas fa-angle-up' })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-timepicker-hour' },
+                        '12'
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-hour-button-down' },
+                        React.createElement('i', { className: 'fas fa-angle-down' })
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'qubely-timePicker-minute' },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-minute-button-up' },
+                        React.createElement('i', { className: 'fas fa-angle-up' })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-timepicker-minute' },
+                        '0'
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-minute-button-down' },
+                        React.createElement('i', { className: 'fas fa-angle-down' })
+                    )
+                ),
+                timeFormatType === 12 && React.createElement(
+                    'div',
+                    { className: 'qubely-timePicker-time-format' },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-hourformat-button' },
+                        React.createElement('i', { className: 'fas fa-angle-up' })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-time-format' },
+                        'PM'
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-hourformat-button' },
+                        React.createElement('i', { className: 'fas fa-angle-down' })
+                    )
+                )
+            )
+        );
+    };
+
+    var renderInput = function renderInput() {
+        return React.createElement(
+            Fragment,
+            null,
+            type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), name: fieldName, required: required }) : type === 'dropdown' ? React.createElement(
+                'select',
+                { className: 'qubely-form-field qubely-form-' + type, name: fieldName },
+                options.map(function (option) {
+                    return React.createElement(
+                        'option',
+                        { value: option },
+                        option
+                    );
+                })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, name: fieldName, placeholder: __(placeHolder), required: required })
+        );
+    };
+
+    return React.createElement(
+        'div',
+        { className: 'qubely-block-' + uniqueId, style: style },
+        React.createElement(
+            'div',
+            { className: 'qubely-form-field-wrapper' },
+            React.createElement(RichText.Content, { tagName: 'label', className: 'qubely-form-field-label', value: label }),
+            renderInput()
+        )
+    );
+}
+
+/***/ }),
+
+/***/ "./src/blocks/form/fields/style.scss":
+/*!*******************************************!*\
+  !*** ./src/blocks/form/fields/style.scss ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./editor.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/editor.scss");
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!../../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/fields/style.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1946,7 +3075,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1964,11 +3093,7 @@ if(false) {}
 "use strict";
 
 
-var _extends2;
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-__webpack_require__(/*! ./editor.scss */ "./src/blocks/form/editor.scss");
 
 __webpack_require__(/*! ./style.scss */ "./src/blocks/form/style.scss");
 
@@ -1982,8 +3107,6 @@ var _Save2 = _interopRequireDefault(_Save);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var _wp$qubelyComponents = wp.qubelyComponents,
@@ -1991,18 +3114,90 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonAttributes = _wp$qubelyComponents.QubelyButton.buttonAttributes;
 
 
-var defaultFormItems = [{ type: 'text', label: 'First Name', name: 'first-name', placeholder: 'First Name', width: { md: 50 }, required: true, hideLabel: false }, { type: 'text', label: 'Last Name', name: 'last-name', placeholder: 'Last Name', width: { md: 50 }, required: true, hideLabel: false }, { type: 'email', label: 'Email', name: 'email', placeholder: 'Email', width: { md: 50 }, required: true, hideLabel: false }, { type: 'text', label: 'Subject', name: 'subject', placeholder: 'Subject', width: { md: 50 }, required: true, hideLabel: false }, { type: 'textarea', label: 'Message', name: 'message', placeholder: 'Message', width: { md: 100 }, required: true, hideLabel: false }];
+var defaultFormItems = [{
+    type: 'text',
+    label: 'First Name',
+    name: 'first-name',
+    placeholder: 'First Name',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'number',
+    label: 'Number',
+    name: 'number',
+    placeholder: 'Number',
+    width: 50,
+    required: false,
+    hideLabel: false
+}, {
+    type: 'email',
+    label: 'Email',
+    name: 'email',
+    placeholder: 'Email',
+    width: 90, required: true,
+    hideLabel: false
+}, {
+    type: 'textarea',
+    label: 'Message',
+    name: 'message',
+    placeholder: 'Message',
+    width: 90,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'dropdown',
+    label: 'Dropdown',
+    name: 'message',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'radio',
+    label: 'Radio',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'checkbox',
+    label: 'Checkbox',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'date',
+    label: 'Date',
+    width: 50,
+    required: true,
+    hideLabel: false
+}, {
+    type: 'time',
+    label: 'Time',
+    width: 50,
+    required: true,
+    hideLabel: false
+}];
 
 registerBlockType('qubely/form', {
     title: __('Form'),
     category: 'qubely',
     icon: React.createElement('img', { src: qubely_admin.plugin + 'assets/img/blocks/block-form.svg', alt: __('Form') }),
-    description: 'Create functional Form using this block.',
-    keywords: [__('Form')],
-    supports: { align: ['full'] },
+    description: 'Create functional Form using Qubely Form block.',
+    keywords: [__('Form'), __('Form Builder'), __('Builder')],
+    supports: {
+        align: ['full']
+    },
     attributes: _extends({
         uniqueId: { type: 'string', default: '' }
-    }, globalAttributes, buttonAttributes, (_extends2 = {
+    }, globalAttributes, buttonAttributes, {
+        height: {
+            type: 'number',
+            default: 200
+        },
+        width: {
+            type: 'number',
+            default: 320
+        },
         enableButtonAlignment: { type: 'boolean', default: true },
         layout: { type: 'string', default: 'classic' },
         useDefaultStyle: { type: 'boolean', default: true },
@@ -2017,67 +3212,97 @@ registerBlockType('qubely/form', {
         spacing: {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [{
-                selector: '{{QUBELY}} .qubely-form .qubely-form-group:not(:last-child) {margin-bottom: {{spacing}};}'
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
             }]
         },
 
         gutter: {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [{
-                selector: '{{QUBELY}} .qubely-form {margin: 0 calc(-{{gutter}}/2);} {{QUBELY}} .qubely-form .qubely-form-group {padding: 0 calc({{gutter}}/2);}'
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-left: calc(-{{gutter}}/2);margin-right: calc(-{{gutter}}/2);}'
             }]
         },
 
+        //label settings
         labelTypography: {
-            type: 'obejct', default: { openTypography: 1, size: { md: 16, unit: 'px' } },
-            style: [{
-                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-label'
-            }, {
-                condition: [{ key: 'layout', relation: '==', value: 'material' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-label'
-            }]
+            type: 'object',
+            default: {},
+            style: [{ selector: '{{QUBELY}} .qubely-form-field-label' }]
         },
-
         labelColor: {
-            type: 'string', default: "",
-            style: [{
-                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-label {color: {{labelColor}};}'
-            }, {
-                condition: [{ key: 'layout', relation: '==', value: 'material' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-label {color: {{labelColor}};}'
-            }]
+            type: 'string',
+            default: '',
+            style: [{ selector: '{{QUBELY}} .qubely-form-field-label { color:{{labelColor}}; }' }]
         },
-
-        labelColorFocus: {
-            type: 'string', default: "",
+        labelAlignment: {
+            type: 'string',
+            default: 'top',
             style: [{
-                condition: [{ key: 'layout', relation: '==', value: 'material' }],
-                selector: '{{QUBELY}} .qubely-form-control:focus ~ .qubely-form-label, {{QUBELY}} .qubely-form-control:valid ~ .qubely-form-label {color: {{labelColorFocus}};}'
+                condition: [{ key: 'labelAlignment', relation: '==', value: 'top' }],
+                selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:column;}'
+            }, {
+                condition: [{ key: 'labelAlignment', relation: '==', value: 'left' }],
+                selector: '{{QUBELY}} .qubely-form-field-wrapper {justify-content:flex-start;}'
+            }, {
+                condition: [{ key: 'labelAlignment', relation: '==', value: 'right' }],
+                selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:row-reverse;}'
             }]
         },
 
         inputTypography: {
             type: 'obejct', default: { openTypography: 1, size: { md: 14, unit: 'px' } },
             style: [{
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control, {{QUBELY}} .qubely-form .qubely-form-control::placeholder'
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field, {{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field::placeholder'
+            }]
+        },
+        inputBoxShadow: {
+            type: 'object',
+            default: {},
+            style: [{
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
             }]
         },
 
-        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control {color: {{inputColor}};}' }] },
-        inputColorHover: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:Hover {color: {{inputColorHover}};}' }] },
-        inputColorFocus: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {color: {{inputColorFocus}};}' }] },
+        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}' }] },
+        inputColorHover: {
+            type: 'string',
+            default: "#495057",
+            style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover {color: {{inputColorHover}};}' }]
+        },
 
-        placeholderColor: { type: 'string', default: "#818181", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder {color: {{placeholderColor}};}' }] },
-        placeholderColorHover: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:Hover {color: {{placeholderColorHover}};}' }] },
-        placeholderColorFocus: { type: 'string', default: "", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-control::placeholder:focus {color: {{placeholderColorFocus}};}' }] },
+        inputColorFocus: {
+            type: 'string',
+            default: "#495057",
+            style: [{
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {color: {{inputColorFocus}};}'
+            }]
+        },
+
+        placeholderColor: {
+            type: 'string',
+            default: "#818181",
+            style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder {color: {{placeholderColor}};}' }]
+        },
+
+        placeholderColorHover: {
+            type: 'string',
+            default: "",
+            style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover::placeholder {color: {{placeholderColorHover}};}' }]
+        },
+
+        placeholderColorFocus: {
+            type: 'string',
+            default: "",
+            style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus::placeholder {color: {{placeholderColorFocus}};}' }]
+        },
 
         inputBg: {
             type: 'string', default: "#fff",
             style: [{
-                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control {background-color: {{inputBg}};}'
+                // condition: [
+                //     { key: 'layout', relation: '==', value: 'classic' },
+                // ],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {background-color: {{inputBg}};}'
             }]
         },
 
@@ -2085,23 +3310,42 @@ registerBlockType('qubely/form', {
             type: 'string', default: '',
             style: [{
                 condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {background-color: {{inputBgHover}};}'
+                selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {background-color: {{inputBgHover}};}'
             }]
         },
 
         inputBgFocus: {
             type: 'string', default: "#fff",
             style: [{
-                condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {background-color: {{inputBgFocus}};}'
+                // condition: [
+                //     { key: 'layout', relation: '==', value: 'classic' },
+                // ],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {background-color: {{inputBgFocus}};}'
             }]
         },
 
         inputBorder: {
-            type: 'object', default: { openBorder: 1, type: 'solid', widthType: 'all', width: { all: 1 }, color: '#ced4da' },
+            type: 'object',
+            default: {
+                openBorder: 1,
+                type: 'solid',
+                widthType: 'global',
+                width: { global: 1 },
+                color: '#ced4da'
+            },
             style: [{
                 condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control'
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
+            }]
+        },
+        inputBorderRadius: {
+            type: 'object',
+            default: {
+                openBorderRadius: 1,
+                radiusType: 'global'
+            },
+            style: [{
+                selector: '{{QUBELY}} input.qubely-form-field, textarea.qubely-form-field'
             }]
         },
 
@@ -2117,10 +3361,10 @@ registerBlockType('qubely/form', {
             type: 'string', default: '',
             style: [{
                 condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {border-color: {{inputBorderColorHover}};}'
+                selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {border-color: {{inputBorderColorHover}};}'
             }, {
                 condition: [{ key: 'layout', relation: '==', value: 'material' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {border-bottom-color: {{inputBorderColorHover}};}'
+                selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {border-bottom-color: {{inputBorderColorHover}};}'
             }]
         },
 
@@ -2128,51 +3372,84 @@ registerBlockType('qubely/form', {
             type: 'string', default: '',
             style: [{
                 condition: [{ key: 'layout', relation: '==', value: 'classic' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {border-color: {{inputBorderColorFocus}}; box-shadow: 0 0 0 2px {{inputBorderColorFocus}};}'
+                selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-color: {{inputBorderColorFocus}}; box-shadow: 0 0 0 2px {{inputBorderColorFocus}};}'
             }, {
                 condition: [{ key: 'layout', relation: '==', value: 'material' }],
-                selector: '{{QUBELY}} .qubely-form .qubely-form-control:focus {border-bottom-color: {{inputBorderColorFocus}};}'
+                selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-bottom-color: {{inputBorderColorFocus}};}'
             }]
-        }
+        },
 
-    }, _defineProperty(_extends2, 'inputColorHover', {
-        type: 'string', default: '',
-        style: [{
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control:hover {color: {{inputColorHover}};}'
-        }]
-    }), _defineProperty(_extends2, 'inputCorner', {
-        type: 'string', default: '4px',
-        style: [{
-            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputCorner', relation: '!=', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {border-radius: {{inputCorner}};}'
-        }]
-    }), _defineProperty(_extends2, 'inputCornerRadius', {
-        type: 'object', default: { md: 5, unit: 'px' },
-        style: [{
-            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputCorner', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {border-radius: {{inputCornerRadius}};}'
-        }]
-    }), _defineProperty(_extends2, 'inputSize', { type: 'string', default: 'medium' }), _defineProperty(_extends2, 'inputPaddingY', {
-        type: 'object', default: { md: 10, unit: 'px' },
-        style: [{
-            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
-        }, {
-            condition: [{ key: 'layout', relation: '==', value: 'material' }, { key: 'inputSize', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
-        }]
-    }), _defineProperty(_extends2, 'inputPaddingX', {
-        type: 'object', default: { md: 15, unit: 'px' },
-        style: [{
-            condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
-            selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
-        }]
-    }), _defineProperty(_extends2, 'textareaHeight', {
-        type: 'object', default: { md: 200, unit: 'px' },
-        style: [{
-            selector: '{{QUBELY}} .qubely-form .qubely-form-group textarea.qubely-form-control {height: {{textareaHeight}};}'
-        }]
-    }), _defineProperty(_extends2, 'fieldErrorMessage', { type: 'string', default: 'Please fill the required field.' }), _defineProperty(_extends2, 'formSuccessMessage', { type: 'string', default: 'Email successfully sent!' }), _defineProperty(_extends2, 'formErrorMessage', { type: 'string', default: 'Email sent failed, fill required field and try again!' }), _defineProperty(_extends2, 'reCaptcha', { type: 'boolean', default: false }), _defineProperty(_extends2, 'reCaptchaSiteKey', { type: 'string', default: '' }), _defineProperty(_extends2, 'reCaptchaSecretKey', { type: 'string', default: '' }), _defineProperty(_extends2, 'policyCheckbox', { type: 'boolean', default: false }), _defineProperty(_extends2, 'policyCheckboxText', { type: 'string', default: 'I agree with the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> and I declare that I have read the information that is required in accordance with <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.119.01.0001.01.ENG&amp;toc=OJ:L:2016:119:TOC" target="_blank">Article 13 of GDPR.</a>' }), _defineProperty(_extends2, 'emailReceiver', { type: 'string', default: '' }), _defineProperty(_extends2, 'emailHeaders', { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{first-name}} {{last-name}}\nCc: {{email}}\nBcc: admin@yourcompany.com' }), _defineProperty(_extends2, 'emailFrom', { type: 'string', default: 'Your Name: admin@example.com' }), _defineProperty(_extends2, 'emailSubject', { type: 'string', default: '{{subject}} | {{email}} | {{site-name}}' }), _defineProperty(_extends2, 'emailBody', { type: 'string', default: '<p><strong>From:</strong> {{first-name}} {{last-name}}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>' }), _defineProperty(_extends2, 'showGlobalSettings', { type: 'boolean', default: true }), _extends2)),
+        inputSize: { type: 'string', default: 'medium' },
+        inputCustomSize: {
+            type: 'object',
+            default: {
+                openPadding: 1,
+                paddingType: 'custom',
+                global: { md: '5' },
+                custom: { md: '5 10 5 10' },
+                unit: 'px'
+            },
+            style: [{
+                condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
+                selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field '
+            }, {
+                condition: [{ key: 'layout', relation: '==', value: 'material' }, { key: 'inputSize', relation: '==', value: 'custom' }],
+                selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field'
+            }]
+        },
+        // inputPaddingY: {
+        //     type: 'object', default: { md: 10, unit: 'px' },
+        //     style: [
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'classic' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        //         },
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'material' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
+        //         }
+        //     ]
+        // },
+        // inputPaddingX: {
+        //     type: 'object', default: { md: 15, unit: 'px' },
+        //     style: [
+        //         {
+        //             condition: [
+        //                 { key: 'layout', relation: '==', value: 'classic' },
+        //                 { key: 'inputSize', relation: '==', value: 'custom' }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
+        //         }
+        //     ]
+        // },
+        textareaHeight: {
+            type: 'object', default: { md: 200, unit: 'px' },
+            style: [{
+                selector: '{{QUBELY}} .qubely-form .qubely-form-group textarea.qubely-form-control {height: {{textareaHeight}};}'
+            }]
+        },
+
+        fieldErrorMessage: { type: 'string', default: 'Please fill the required field.' },
+        formSuccessMessage: { type: 'string', default: 'Email successfully sent!' },
+        formErrorMessage: { type: 'string', default: 'Email sent failed, fill required field and try again!' },
+        reCaptcha: { type: 'boolean', default: false },
+        reCaptchaSiteKey: { type: 'string', default: '' },
+        reCaptchaSecretKey: { type: 'string', default: '' },
+        policyCheckbox: { type: 'boolean', default: false },
+        policyCheckboxText: { type: 'string', default: 'I agree with the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> and I declare that I have read the information that is required in accordance with <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.119.01.0001.01.ENG&amp;toc=OJ:L:2016:119:TOC" target="_blank">Article 13 of GDPR.</a>' },
+        emailReceiver: { type: 'string', default: '' },
+        emailHeaders: { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{first-name}} {{last-name}}\nCc: {{email}}\nBcc: admin@yourcompany.com' },
+        emailFrom: { type: 'string', default: 'Your Name: admin@example.com' },
+        emailSubject: { type: 'string', default: '{{subject}} | {{email}} | {{site-name}}' },
+        emailBody: { type: 'string', default: '<p><strong>From:</strong> {{first-name}} {{last-name}}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>' },
+        showGlobalSettings: { type: 'boolean', default: true } // Global Settings
+    }),
     edit: _Edit2.default,
     save: _Save2.default
 });
@@ -4733,7 +6010,6 @@ var Edit = function (_Component) {
 
 		_this.renderFeaturedImage = function (post) {
 			var _this$props$attribute = _this.props.attributes,
-			    layout = _this$props$attribute.layout,
 			    style = _this$props$attribute.style,
 			    imgSize = _this$props$attribute.imgSize,
 			    imageAnimation = _this$props$attribute.imageAnimation,
@@ -4741,13 +6017,22 @@ var Edit = function (_Component) {
 			    categoryPosition = _this$props$attribute.categoryPosition;
 
 			return React.createElement(
-				'div',
-				{ className: (layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img') + ' qubely-post-img qubely-post-img-' + imageAnimation },
-				React.createElement('img', { className: 'qubely-post-image', src: post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0] }),
-				showCategory == 'badge' && style !== 4 && React.createElement(
+				Fragment,
+				null,
+				showCategory == 'badge' && style === 4 && React.createElement(
 					'div',
-					{ className: 'qubely-postcarousel-cat-position qubely-postcarousel-cat-position-' + categoryPosition },
-					React.createElement('span', { className: 'qubely-postcarousel-category qubely-backend', dangerouslySetInnerHTML: { __html: post.qubely_category } })
+					{ className: 'qubely-postgrid-cat-position qubely-postgrid-cat-position-' + categoryPosition },
+					React.createElement('span', { className: 'qubely-postcarousel-category', dangerouslySetInnerHTML: { __html: post.qubely_category } })
+				),
+				React.createElement(
+					'div',
+					{ className: 'qubely-post-grid-img qubely-post-img qubely-post-img-' + imageAnimation },
+					React.createElement('img', { className: 'qubely-post-image', src: post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0] }),
+					showCategory == 'badge' && style != 4 && React.createElement(
+						'div',
+						{ className: 'qubely-postcarousel-cat-position qubely-postcarousel-cat-position-' + categoryPosition },
+						React.createElement('span', { className: 'qubely-postcarousel-category qubely-backend', dangerouslySetInnerHTML: { __html: post.qubely_category } })
+					)
 				)
 			);
 		};
@@ -4784,11 +6069,6 @@ var Edit = function (_Component) {
 				'div',
 				{ className: 'qubely-post-grid-content align-' + contentPosition },
 				showCategory === 'default' && React.createElement('span', { className: 'qubely-postcarousel-category qubely-backend', dangerouslySetInnerHTML: { __html: post.qubely_category } }),
-				showCategory == 'badge' && style === 4 && React.createElement(
-					'div',
-					{ className: 'qubely-postcarousel-cat-position qubely-postcarousel-cat-position-' + categoryPosition },
-					React.createElement('span', { className: 'qubely-postcarousel-category qubely-backend', dangerouslySetInnerHTML: { __html: post.qubely_category } })
-				),
 				showTitle && titlePosition == true && title,
 				(showAuthor || showDates || showComment) && React.createElement(
 					'div',
@@ -5028,6 +6308,7 @@ var Edit = function (_Component) {
 			    navShapeHoverColor = _props2$attributes.navShapeHoverColor,
 			    navBorderHoverColor = _props2$attributes.navBorderHoverColor,
 			    navHoverRadius = _props2$attributes.navHoverRadius,
+			    dotPosition = _props2$attributes.dotPosition,
 			    dots = _props2$attributes.dots,
 			    dotwidth = _props2$attributes.dotwidth,
 			    dotHeight = _props2$attributes.dotHeight,
@@ -5239,6 +6520,18 @@ var Edit = function (_Component) {
 							Fragment,
 							null,
 							React.createElement(Range, {
+								label: __('Dot Position'),
+								value: dotPosition, onChange: function onChange(value) {
+									return setAttributes({ dotPosition: value });
+								},
+								min: -200, max: 200,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
 								label: __('Dot Width'),
 								value: dotwidth, onChange: function onChange(value) {
 									return setAttributes({ dotwidth: value });
@@ -5302,12 +6595,20 @@ var Edit = function (_Component) {
 							},
 							options: [{ value: 1, svg: _icons2.default.postgrid_design_1 }, { value: 2, svg: _icons2.default.postgrid_design_2 }, { value: 3, svg: _icons2.default.postgrid_design_4 }, { value: 4, svg: _icons2.default.postgrid_design_6 }]
 						}),
-						React.createElement(ButtonGroup, {
+						style != 3 && React.createElement(ButtonGroup, {
 							label: __('Content Align'),
 							options: [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']],
 							value: contentPosition,
 							onChange: function onChange(value) {
 								return setAttributes({ contentPosition: value });
+							}
+						}),
+						(style === 3 || style === 4) && React.createElement(ButtonGroup, {
+							label: __('Content Position'),
+							options: style === 3 ? [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']] : [[__('Top'), 'top'], [__('Middle'), 'center'], [__('Bottom'), 'bottom']],
+							value: style === 3 ? contentPosition : girdContentPosition,
+							onChange: function onChange(value) {
+								return setAttributes(style === 3 ? { contentPosition: value } : { girdContentPosition: value });
 							}
 						}),
 						style != 2 && React.createElement(Range, {
@@ -5810,7 +7111,7 @@ var Edit = function (_Component) {
 					{ className: 'qubely-block-' + uniqueId },
 					posts && posts.length ? React.createElement(
 						'div',
-						{ className: 'qubely-block-image-carousel qubely-postcarousel-wrapper layout-' + style },
+						{ className: 'qubely-block-image-carousel qubely-postcarousel-wrapper' },
 						React.createElement(
 							Carousel,
 							{ options: carouselSettings },
@@ -5823,7 +7124,7 @@ var Edit = function (_Component) {
 										{ className: 'qubely-post-grid-view qubely-postgrid-style-' + style },
 										React.createElement(
 											'div',
-											{ className: 'qubely-post-grid-wrapper qubely-post-grid-center' },
+											{ className: 'qubely-post-grid-wrapper qubely-post-grid-' + (style === 3 ? contentPosition : girdContentPosition) },
 											showImages && post.qubely_featured_image_url && _this3.renderFeaturedImage(post),
 											_this3.renderCardContent(post)
 										)
@@ -6052,7 +7353,7 @@ var Edit = function (_Component) {
 					'div',
 					{ className: (layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img') + ' qubely-post-img qubely-post-img-' + imageAnimation },
 					React.createElement('img', { className: 'qubely-post-image', src: post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0] }),
-					showCategory == 'badge' && React.createElement(
+					showCategory == 'badge' && style != 4 && React.createElement(
 						'div',
 						{ className: 'qubely-postgrid-cat-position qubely-postgrid-cat-position-' + categoryPosition },
 						React.createElement('span', { className: 'qubely-postgrid-category', dangerouslySetInnerHTML: { __html: post.qubely_category } })
@@ -12109,6 +13410,8 @@ exports.default = icons;
 
 
 __webpack_require__(/*! ./blocks/form */ "./src/blocks/form/index.js");
+
+__webpack_require__(/*! ./blocks/form/fields */ "./src/blocks/form/fields/index.js");
 
 __webpack_require__(/*! ./blocks/postgrid */ "./src/blocks/postgrid/index.js");
 

@@ -1194,7 +1194,7 @@ function render_block_qubely_postgrid_pro($att)
 					$html .= '<a href="' . esc_url(get_the_permalink()) . '">';
 					$html .= $image;
 					$html .= '</a>';
-					if ($showCategory == 'badge') {
+					if ($showCategory == 'badge'  && $style != 4) {
 						$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
 						$html .= $category;
 						$html .= '</div>';
@@ -1205,7 +1205,6 @@ function render_block_qubely_postgrid_pro($att)
 				if ($showCategory == 'default') {
 					$html .= $category;
 				}
-
 				if ( ($showTitle == 1) && ($titlePosition == 1 ) ) {
 					$html .= $title;
 				}
@@ -1241,7 +1240,7 @@ function render_block_qubely_postgrid_pro($att)
 					$html .= '<a href="' . esc_url(get_the_permalink()) . '">';
 					$html .= $image;
 					$html .= '</a>';
-					if ($showCategory == 'badge') {
+					if ($showCategory == 'badge'  && $style != 4) {
 						$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
 						$html .= $category;
 						$html .= '</div>';

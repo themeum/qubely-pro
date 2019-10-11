@@ -1,11 +1,18 @@
-const { __ } = wp.i18n;
-const { InspectorControls, BlockControls, RichText } = wp.editor
-const { PanelBody, TextControl, TextareaControl, SelectControl, Toolbar, IconButton } = wp.components
+const { __ } = wp.i18n
+const { createBlock } = wp.blocks
+const { select, dispatch } = wp.data
+const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.editor
+const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { Component, Fragment } = wp.element
 const {
+    ButtonGroup,
+    BoxShadow,
+    BorderRadius,
+    Padding,
     Styles,
     Wrapper,
     Range,
+    Separator,
     Toggle,
     Typography,
     Color,
@@ -20,16 +27,9 @@ const {
     gloalSettings: { globalSettingsPanel },
 } = wp.qubelyComponents
 
-const itemTypes = [
-    { label: 'Text', value: 'text' },
-    { label: 'Email', value: 'email' },
-    { label: 'Radio', value: 'radio' },
-    { label: 'Checkbox', value: 'checkbox' },
-    { label: 'Textarea', value: 'textarea' },
-    { label: 'Dropdown', value: 'dropdown' },
-]
-
 import icons from '../../helpers/icons';
+
+
 
 
 class Edit extends Component {
@@ -39,7 +39,7 @@ class Edit extends Component {
         this.state = {
             spacer: true,
             selectedItem: -1,
-            dropdownOpen: -1,
+            hideDropdown: null,
             newItemType: 'text',
             device: 'md',
         }
@@ -71,17 +71,31 @@ class Edit extends Component {
         setAttributes({ formItems });
     }
 
-    insertItem() {
-        const { newItemType } = this.state;
-        const { attributes, setAttributes } = this.props;
-        const formItems = [...attributes.formItems];
-        const newItem = { type: newItemType, label: 'Label', placeholder: '', width: { md: 100 }, required: true, hideLabel: false };
-        if (newItemType == 'radio' || newItemType == 'checkbox' || newItemType == 'dropdown') {
-            newItem.options = ['Option 1', 'Option 2'];
+    addNewItem(newFieldType) {
+
+        const { clientId, attributes, setAttributes } = this.props
+        const { getBlocks } = select('core/block-editor')
+        const { replaceInnerBlocks } = dispatch('core/block-editor')
+
+        const formItems = [...attributes.formItems]
+        const newItem = {
+            type: newFieldType,
+            label: 'Label',
+            placeholder: '',
+            width: 100,
+            required: true,
+            hideLabel: false
         }
-        formItems.push(newItem);
-        this.setState({ newItemWrapper: false });
-        setAttributes({ formItems });
+
+        formItems.push(newItem)
+        setAttributes({ formItems })
+
+        let innerBlocks = [...getBlocks(clientId)]
+
+        innerBlocks.push(createBlock(`qubely/formfield-${newFieldType}`))
+
+        replaceInnerBlocks(clientId, innerBlocks, false);
+
     }
 
     insertOption(index) {
@@ -144,20 +158,64 @@ class Edit extends Component {
         )
     }
 
+    renderFormFieldTypes = () => {
+
+        const { hideDropdown } = this.state
+
+        const formFields = [
+            [__('Text'), 'text'],
+            [__('Number'), 'number'],
+            [__('Email'), 'email'],
+            [__('Radio'), 'radio'],
+            [__('Checkbox'), 'checkbox'],
+            [__('Textarea'), 'textarea'],
+            [__('Date'), 'date'],
+            [__('Time'), 'time'],
+            [__('Dropdown'), 'dropdown'],
+        ]
+        return (
+            <div className="qubely-form-field-types">
+                {formFields.map(([fieldName, type], index) => {
+                    return (
+                        <div className="qubely-form-field-type"
+                            onClick={() => {
+                                this.addNewItem(type)
+                                hideDropdown()
+                            }}
+                        >
+                            {fieldName}
+                        </div>
+                    )
+                })}
+            </div>
+        )
+
+
+    }
     render() {
         const {
             attributes,
             setAttributes,
+            toggleSelection,
             attributes: {
                 uniqueId,
                 layout,
                 formItems,
 
-                labelTypography,
-                labelColor,
-                labelColorFocus,
 
+                //label settings
+                labelColor,
+                labelAlignment,
+                labelTypography,
+
+                //input settings
+                spacing,
+                gutter,
+                inputSize,
+                inputCustomSize,
                 inputTypography,
+                inputBoxShadow,
+
                 inputColor,
                 inputColorFocus,
                 inputColorHover,
@@ -165,14 +223,12 @@ class Edit extends Component {
                 inputBgFocus,
                 inputBgHover,
                 inputBorder,
+                inputBorderRadius,
                 inputBorderMaterial,
                 inputBorderColorFocus,
                 inputBorderColorHover,
-                inputCorner,
-                inputCornerRadius,
-                inputSize,
-                inputPaddingX,
-                inputPaddingY,
+
+
 
                 textareaHeight,
 
@@ -180,6 +236,8 @@ class Edit extends Component {
                 placeholderColorFocus,
                 placeholderColorHover,
 
+
+                //button
                 enableButton,
                 buttonTag,
                 buttonSize,
@@ -188,8 +246,6 @@ class Edit extends Component {
                 buttonIconName,
                 buttonIconPosition,
 
-                spacing,
-                gutter,
                 fieldErrorMessage,
                 formSuccessMessage,
                 formErrorMessage,
@@ -209,14 +265,18 @@ class Edit extends Component {
                 globalZindex,
                 hideTablet,
                 hideMobile,
-                globalCss
+                globalCss,
+
+
+
+                height,
+                width,
             }
         } = this.props
 
-        const { device, selectedItem, dropdownOpen } = this.state
+        const { device } = this.state
 
         if (uniqueId) { CssGenerator(attributes, 'form', uniqueId); }
-
         return (
             <Fragment>
                 <InspectorControls key="inspector">
@@ -232,56 +292,18 @@ class Edit extends Component {
                         />
                     </PanelBody>
 
-                    {selectedItem >= 0 &&
-                        <PanelBody title={(formItems[selectedItem].label) ? formItems[selectedItem].label : __('Input Settings')}>
-
-                            <TextControl
-                                label={__('Label')}
-                                value={formItems[selectedItem].label}
-                                onChange={val => this.setSettings('label', val)}
-                                placeholder={__('Enter Label')}
-                            />
-
-                            <TextControl
-                                label={__('Name')}
-                                value={formItems[selectedItem].name}
-                                onChange={val => this.setSettings('name', val)}
-                                placeholder={__('Enter Name')}
-                                help={__('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')}
-                            />
-
-                            {(formItems[selectedItem].type == 'checkbox' || formItems[selectedItem].type == 'radio') ? '' :
-                                <TextControl
-                                    label={__('Placeholder')}
-                                    value={formItems[selectedItem].placeholder}
-                                    onChange={val => this.setSettings('placeholder', val)}
-                                    placeholder={__('Enter Placeholder')}
-                                />
-                            }
-                            <Range
-                                label={__('Width')}
-                                value={formItems[selectedItem].width}
-                                onChange={(val) => this.setSettings('width', val)}
-                                max={100}
-                                min={33}
-                                responsive
-                            />
-                            <Toggle
-                                label={__('Required')}
-                                value={formItems[selectedItem].required}
-                                onChange={val => this.setSettings('required', val)}
-                            />
-                            {layout == 'classic' &&
-                                <Toggle
-                                    label={__('Hide Label')}
-                                    value={formItems[selectedItem].hideLabel}
-                                    onChange={val => this.setSettings('hideLabel', val)}
-                                />
-                            }
-                        </PanelBody>
-                    }
-
                     <PanelBody title={__('Label')} initialOpen={false}>
+                        <ButtonGroup
+                            label={__('Label Alignment')}
+                            options={
+                                [
+                                    [__('Top'), 'top'],
+                                    [__('Left'), 'left'],
+                                    [__('Right'), 'right'],
+                                ]}
+                            value={labelAlignment}
+                            onChange={value => setAttributes({ labelAlignment: value })}
+                        />
                         <Typography
                             value={labelTypography}
                             onChange={val => setAttributes({ labelTypography: val })}
@@ -291,131 +313,118 @@ class Edit extends Component {
                             value={labelColor}
                             onChange={val => setAttributes({ labelColor: val })}
                         />
-                        {layout == 'material' &&
-                            <Color
-                                label={__('Focus Color')}
-                                value={labelColorFocus}
-                                onChange={val => setAttributes({ labelColorFocus: val })}
-                            />
-                        }
                     </PanelBody>
 
+
                     <PanelBody title={__('Input')} initialOpen={false}>
-                        <Wrapper label={__('Size')}>
-                            <RadioAdvanced
-                                label={__('Input Size')}
-                                options={[
-                                    { label: 'S', value: 'small', title: 'Small' },
-                                    { label: 'M', value: 'medium', title: 'Medium' },
-                                    { label: 'L', value: 'large', title: 'Large' },
-                                    { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                                ]}
-                                value={inputSize}
-                                onChange={(value) => setAttributes({ inputSize: value })} />
-                            {inputSize == 'custom' &&
-                                <Fragment>
-                                    <Range
-                                        label={<span className="dashicons dashicons-sort" title="Padding Y" />}
-                                        value={inputPaddingY}
-                                        onChange={(value) => setAttributes({ inputPaddingY: value })}
-                                        unit={['px', 'em', '%']}
-                                        min={0}
-                                        max={50}
-                                        responsive
-                                    />
 
-                                    {layout == 'classic' &&
-                                        <Range
-                                            label={<span className="dashicons dashicons-leftright" title="X Padding" />}
-                                            value={inputPaddingX}
-                                            onChange={(value) => setAttributes({ inputPaddingX: value })}
-                                            unit={['px', 'em', '%']}
-                                            min={0}
-                                            max={50}
-                                            responsive
-                                        />
-                                    }
+                        <RadioAdvanced
+                            label={__('Input Size')}
+                            options={[
+                                { label: 'S', value: 'small', title: 'Small' },
+                                { label: 'M', value: 'medium', title: 'Medium' },
+                                { label: 'L', value: 'large', title: 'Large' },
+                                { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                            ]}
+                            value={inputSize}
+                            onChange={(value) => setAttributes({ inputSize: value })} />
 
-                                </Fragment>
-                            }
-                            <Range
-                                label={__('Textarea Height')}
-                                value={textareaHeight}
-                                onChange={(value) => setAttributes({ textareaHeight: value })}
-                                unit={['px', 'em', '%']}
-                                min={100}
-                                max={500}
-                                responsive
-                            />
-
-                            <Range
-                                label={__('Spacing')}
-                                value={spacing}
-                                onChange={(value) => setAttributes({ spacing: value })}
-                                unit={['px', 'em', '%']}
+                        {inputSize == 'custom' &&
+                            <Padding
+                                max={50}
                                 min={0}
-                                max={60}
                                 responsive
-                            />
-                            <Range
-                                label={__('Gutter')}
-                                value={gutter}
-                                onChange={(value) => setAttributes({ gutter: value })}
+                                value={inputCustomSize}
+                                label={__('Custom Size')}
                                 unit={['px', 'em', '%']}
-                                min={0}
-                                max={60}
-                                responsive
+                                onChange={value => setAttributes({ inputCustomSize: value })}
                             />
-                        </Wrapper>
+                        }
+                        <Range
+                            min={100}
+                            max={500}
+                            responsive
+                            value={textareaHeight}
+                            unit={['px', 'em', '%']}
+                            label={__('Textarea Height')}
+                            onChange={(value) => setAttributes({ textareaHeight: value })}
+                        />
+
+                        <Range
+                            min={0}
+                            max={60}
+                            responsive
+                            value={spacing}
+                            label={__('Spacing')}
+                            unit={['px', 'em', '%']}
+                            onChange={(value) => setAttributes({ spacing: value })}
+                        />
+                        <Range
+                            min={0}
+                            max={60}
+                            responsive
+                            value={gutter}
+                            label={__('Gutter')}
+                            unit={['px', 'em', '%']}
+                            onChange={(value) => setAttributes({ gutter: value })}
+                        />
+
+                        {
+                            layout == 'classic' &&
+                            <Border label={__('Border')} value={inputBorder} onChange={val => setAttributes({ inputBorder: val })} min={0} max={10} />
+                        }
+                        {
+                            layout == 'material' &&
+                            <Border label={__('Border')} value={inputBorderMaterial} onChange={val => setAttributes({ inputBorderMaterial: val })} min={0} max={10} />
+                        }
+
+                        <BorderRadius
+                            min={0}
+                            max={100}
+                            responsive
+                            label={__('Field Radius')}
+                            value={inputBorderRadius}
+                            unit={['px', 'em', '%']}
+                            onChange={(value) => setAttributes({ inputBorderRadius: value })} />
+
                         <Tabs>
                             <Tab tabTitle={__('Normal')}>
-                                <Color label={__('Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
+                                <Color label={__('Input Text Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
                                 <Color label={__('Background Color')} value={inputBg} onChange={val => setAttributes({ inputBg: val })} />
-                                {layout == 'classic' &&
-                                    <Border label={__('Border')} value={inputBorder} onChange={val => setAttributes({ inputBorder: val })} min={0} max={10} />
-                                }
-                                {layout == 'material' &&
-                                    <Border label={__('Border')} value={inputBorderMaterial} onChange={val => setAttributes({ inputBorderMaterial: val })} min={0} max={10} />
-                                }
                                 <Color label={__('Placeholder Color')} value={placeholderColor} onChange={val => setAttributes({ placeholderColor: val })} />
                             </Tab>
+
                             <Tab tabTitle={__('Focus')}>
-                                <Color label={__('Color')} value={inputColorFocus} onChange={val => setAttributes({ inputColorFocus: val })} />
+                                <Color label={__('Text Color')} value={inputColorFocus} onChange={val => setAttributes({ inputColorFocus: val })} />
                                 <Color label={__('Background Color')} value={inputBgFocus} onChange={val => setAttributes({ inputBgFocus: val })} />
                                 <Color label={__('Border Color')} value={inputBorderColorFocus} onChange={(value) => setAttributes({ inputBorderColorFocus: value })} />
                                 <Color label={__('Placeholder Color')} value={placeholderColorFocus} onChange={val => setAttributes({ placeholderColorFocus: val })} />
                             </Tab>
+
                             <Tab tabTitle={__('Hover')}>
-                                <Color label={__('Color')} value={inputColorHover} onChange={val => setAttributes({ inputColorHover: val })} />
+                                <Color label={__('Text Color')} value={inputColorHover} onChange={val => setAttributes({ inputColorHover: val })} />
                                 <Color label={__('Background Color')} value={inputBgHover} onChange={val => setAttributes({ inputBgHover: val })} />
                                 <Color label={__('Border Color')} value={inputBorderColorHover} onChange={(value) => setAttributes({ inputBorderColorHover: value })} />
                                 <Color label={__('Placeholder Color')} value={placeholderColorHover} onChange={val => setAttributes({ placeholderColorHover: val })} />
                             </Tab>
                         </Tabs>
-                        <RadioAdvanced
-                            label={__('Corner')}
-                            options={[
-                                { svg: icons.corner_square, value: '0px', title: __('Square') },
-                                { svg: icons.corner_rounded, value: '4px', title: __('Rounded') },
-                                { svg: icons.corner_round, value: '50px', title: __('Round') },
-                                { icon: 'fas fa-cog', value: 'custom', title: __('Custom') }
-                            ]}
-                            value={inputCorner}
-                            onChange={val => setAttributes({ inputCorner: val })}
+
+
+                        <Typography value={inputTypography} onChange={val => setAttributes({ inputTypography: val })} />
+
+                        <Separator />
+
+                        <BoxShadow
+                            disableInset
+                            label={__('Box-Shadow')}
+                            value={inputBoxShadow}
+                            onChange={value => setAttributes({ inputBoxShadow: value })}
                         />
 
-                        {inputCorner == 'custom' &&
-                            <Range
-                                label={__('Corner Radius')}
-                                value={inputCornerRadius}
-                                onChange={(value) => setAttributes({ inputCornerRadius: value })}
-                                min={0}
-                                max={100} unit={['px', 'em', '%']}
-                                responsive
-                            />
-                        }
-                        <Typography value={inputTypography} onChange={val => setAttributes({ inputTypography: val })} />
+                        <Separator />
                     </PanelBody>
+
+
 
                     <PanelBody title={__('Settings')} initialOpen={false}>
 
@@ -438,7 +447,9 @@ class Edit extends Component {
                                     onChange={val => setAttributes({ formErrorMessage: val })}
                                     help={__('Set your desired message for form submission error. Leave blank for default.')}
                                 />
+                                
                                 <Toggle label={__('Enable Captcha')} value={reCaptcha} onChange={val => setAttributes({ reCaptcha: val })} />
+                              
                                 {reCaptcha &&
                                     <div>
                                         <TextControl
@@ -493,6 +504,7 @@ class Edit extends Component {
                         </Tabs>
                     </PanelBody>
 
+
                     {buttonSettings(this.props.attributes, device, setAttributes, (key, value) => { this.setState({ [key]: value }) })}
 
                 </InspectorControls>
@@ -511,96 +523,13 @@ class Edit extends Component {
 
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
-                        <form className="qubely-form">
-                            {formItems.map((item, index) =>
-                                <div key={index} className={`qubely-form-group qubely-form-group-index-${index} ${selectedItem == index ? 'qubely-form-group-active' : ''}`} style={{ width: `${item.width.md}%` }} onClick={() => this.setState({ selectedItem: index })}>
-                                    <div className="qubely-form-group-inner">
-
-                                        {(!item.hideLabel && layout == 'classic') && this.renderLabel(index, item.required)}
-
-                                        {/* Text and Email */}
-                                        {(item.type == 'text' || item.type == 'email') &&
-                                            <input className={`qubely-form-control is-${inputSize}`} type={item.type} placeholder={__(item.placeholder)} required={item.required} disabled />
-                                        }
-
-                                        {/* Radio and Checkbox */}
-                                        {(item.type == 'radio' || item.type == 'checkbox') &&
-                                            <div>
-                                                {item.options && item.options.map((option, i) =>
-                                                    <div className="qubely-radio-control">
-                                                        <input type={item.type} name={`option${index}`} value={option} />
-                                                        <label contenteditable="true" onBlur={(e) => this.setOptionSettings(index, i, e.target.innerText)}> {option} </label>
-                                                        <span className="qubely-form-option-remove" onClick={(e) => { this.removeOption(index, i) }} >
-                                                            <i className="fa fa-times" />
-                                                        </span>
-                                                    </div>
-                                                )}
-                                                {(selectedItem >= 0) && (selectedItem == index) &&
-                                                    <span onClick={() => this.insertOption(index)}><i className="fa fa-plus" /></span>
-                                                }
-                                            </div>
-                                        }
-
-                                        {/* Textarea */}
-                                        {item.type == 'textarea' &&
-                                            <textarea className="qubely-form-control" placeholder={__(item.placeholder)} required={item.required} disabled></textarea>
-                                        }
-
-                                        {/* Dropdown */}
-                                        {item.type == 'dropdown' &&
-                                            <div class="qubely-dropdown-control">
-                                                <input type="text" onClick={(e) => { e.stopPropagation(); this.setState({ dropdownOpen: (dropdownOpen == index) ? -1 : index }) }} />
-                                                {(dropdownOpen == index) &&
-                                                    <ul class="qubely-dropdown-content">
-                                                        {item.options && item.options.map((option, i) =>
-                                                            <li>
-                                                                <span contenteditable="true" onBlur={(e) => this.setOptionSettings(index, i, e.target.innerText)}>{option}</span>
-                                                                <i className="fa fa-times" onClick={(e) => { this.removeOption(index, i) }} />
-                                                            </li>
-                                                        )}
-                                                        <span onClick={() => this.insertOption(index)}><i className="fa fa-plus" /></span>
-                                                    </ul>
-                                                }
-                                            </div>
-                                        }
-
-                                        {(!item.hideLabel && layout == 'material') && this.renderLabel(index, item.required)}
-
-                                    </div>
-                                    <div className="qubely-form-group-option">
-                                        <span onClick={(e) => { e.stopPropagation(); this.moveItem(index, 'left'); }} className={(index == 0) && 'qubely-option-disable'}><i class="fa fa-long-arrow-alt-up" /></span>
-                                        <span onClick={(e) => { e.stopPropagation(); this.moveItem(index, 'right'); }} className={(index == formItems.length - 1) && 'qubely-option-disable'}><i class="fa fa-long-arrow-alt-down" /></span>
-                                        <span onClick={(e) => { e.stopPropagation(); this.cloneItem(index); }}><i class="fa fa-copy" /></span>
-                                        <span onClick={(e) => { e.stopPropagation(); this.removeItem(index); }}><i class="fa fa-times-circle" /></span>
-                                    </div>
-                                </div>
-                            )}
-                            {policyCheckbox &&
-                                <div className="qubely-form-group" style={{ width: '100%' }}>
-                                    <input className="" type="checkbox" name="policy" id="qubely-form-policy-checkbox" value="Yes" />
-                                    <RichText
-                                        tagName="label"
-                                        className=""
-                                        value={policyCheckboxText}
-                                        onChange={val => setAttributes({ policyCheckboxText: val })}
-                                    />
-                                </div>
-                            }
-                        </form>
-
-                        <div className="qubely-accordion-add-item">
-                            <SelectControl
-                                label=""
-                                value={this.state.newItemType}
-                                options={itemTypes}
-                                onChange={val => this.setState({ newItemType: val })}
+                        <form className={`qubely-form is-${inputSize}`}>
+                            <InnerBlocks
+                                // templateLock="insert"
+                                // templateLock={false}
+                                template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])}
                             />
-                            <IconButton
-                                icon={'insert'}
-                                onClick={() => this.insertItem()} >
-                                {__('Add New Item')}
-                            </IconButton>
-                        </div>
+                        </form>
 
                         <div className="qubely-form-group qubely-form-button" >
                             <QubelyButtonEdit
@@ -612,6 +541,23 @@ class Edit extends Component {
                                 buttonIconPosition={buttonIconPosition}
                                 buttonTag={buttonTag}
                                 onTextChange={value => setAttributes({ buttonText: value })}
+                            />
+                        </div>
+
+                        <div className="qubely-form-add-item">
+
+                            <Dropdown
+                                className={"qubely-action-add-form-field"}
+                                contentClassName={"qubely-form-field-picker"}
+                                position="bottom center"
+                                renderToggle={({ isOpen, onToggle }) =>
+                                    <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
+                                        <i className="fas fa-plus-circle"></i>
+                                        <span onClick={() => this.setState({ hideDropdown: onToggle })}> {__(`Add new item`)}</span>
+                                    </div>
+
+                                }
+                                renderContent={() => this.renderFormFieldTypes()}
                             />
                         </div>
                     </div>

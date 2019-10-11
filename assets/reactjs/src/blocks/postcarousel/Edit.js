@@ -54,16 +54,24 @@ class Edit extends Component {
 	}
 
 	renderFeaturedImage = (post) => {
-		const { attributes: { layout, style, imgSize, imageAnimation, showCategory, categoryPosition } } = this.props
+		const { attributes: { style, imgSize, imageAnimation, showCategory, categoryPosition } } = this.props
 		return (
-			<div className={`${layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img'} qubely-post-img qubely-post-img-${imageAnimation}`}>
-				<img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
-				{ (showCategory == 'badge' && style !== 4) &&
-					<div className={`qubely-postcarousel-cat-position qubely-postcarousel-cat-position-${categoryPosition}`}>
-						<span className="qubely-postcarousel-category qubely-backend" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
-					</div>
-				}
-			</div>
+            <Fragment>
+                {
+                    ( (showCategory == 'badge') && (style === 4) ) &&
+                    <div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
+                        <span className="qubely-postcarousel-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+                    </div>
+                }
+                <div className={`qubely-post-grid-img qubely-post-img qubely-post-img-${imageAnimation}`}>
+                    <img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
+                    { ( (showCategory == 'badge') && (style != 4) ) &&
+                        <div className={`qubely-postcarousel-cat-position qubely-postcarousel-cat-position-${categoryPosition}`}>
+                            <span className="qubely-postcarousel-category qubely-backend" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+                        </div>
+                    }
+                </div>
+            </Fragment>
 		)
 	}
 
@@ -74,15 +82,7 @@ class Edit extends Component {
 		return (
 			<div className={`qubely-post-grid-content align-${contentPosition}`}>
 				{(showCategory === 'default') && <span className="qubely-postcarousel-category qubely-backend" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
-
-				{ (showCategory == 'badge' && style === 4) &&
-					<div className={`qubely-postcarousel-cat-position qubely-postcarousel-cat-position-${categoryPosition}`}>
-						<span className="qubely-postcarousel-category qubely-backend" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
-					</div>
-				}
-
 				{showTitle && (titlePosition == true) && title}
-
 				{(showAuthor || showDates || showComment) &&
 					<div className="qubely-postcarousel-meta">
 						{showAuthor && <span><i className="fas fa-user"></i> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
@@ -90,7 +90,6 @@ class Edit extends Component {
 						{showComment && <span><i className="fas fa-comment"></i> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
 					</div>
 				}
-
 				{showTitle && (titlePosition == false) && title}
 				{showExcerpt && <div className="qubely-postcarousel-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
 				{showReadMore && <div className="qubely-postcarousel-btn-wrapper"><a className={`qubely-postcarousel-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
@@ -273,7 +272,8 @@ class Edit extends Component {
 				navBorderHoverColor,
 			    navHoverRadius,
 
-				// // Dot Navigation.
+                // // Dot Navigation.
+                dotPosition,
 				dots,
 				dotwidth,
 				dotHeight,
@@ -428,6 +428,14 @@ class Edit extends Component {
 						<Toggle label={__('Show Dot Navigation')} value={dots} onChange={value => setAttributes({ dots: value })} />
 						{dots &&
 							<Fragment>
+                                <Range
+									label={__('Dot Position')}
+									value={dotPosition} onChange={(value) => setAttributes({ dotPosition: value })}
+									min={-200} max={200}
+									responsive unit={['px', 'em', '%']}
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
 								<Range
 									label={__('Dot Width')}
 									value={dotwidth} onChange={(value) => setAttributes({ dotwidth: value })}
@@ -473,12 +481,28 @@ class Edit extends Component {
 								{ value: 4, svg: icons.postgrid_design_6 },
 							]}
 						/>
+                        { ((style != 3)) &&
 						<ButtonGroup
 							label={__('Content Align')}
 							options={[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']] }
 							value={ contentPosition }
 							onChange={value => setAttributes({ contentPosition: value })}
 						/>
+                        }
+                        { ((style === 3) || (style === 4)) &&
+							<ButtonGroup
+								label={__('Content Position')}
+								options={
+									(style === 3) ?
+										[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']]
+										:
+										[[__('Top'), 'top'], [__('Middle'), 'center'], [__('Bottom'), 'bottom']]
+								}
+								value={(style === 3) ? contentPosition : girdContentPosition}
+								onChange={value => setAttributes((style === 3) ? { contentPosition: value } : { girdContentPosition: value })}
+							/>
+						}
+
 						{style != 2 &&
 							<Range 
 								label={__('Gutter Space')} 
@@ -803,16 +827,16 @@ class Edit extends Component {
 
 				<div className={`qubely-block-${uniqueId}`}>
 					{ (posts && posts.length) ?
-						<div className={`qubely-block-image-carousel qubely-postcarousel-wrapper layout-${style}`}>
+						<div className={`qubely-block-image-carousel qubely-postcarousel-wrapper`}>
 							<Carousel options={carouselSettings}>
 								{ posts && posts.map(post => {
 									return (
 										<div className={`qubely-carousel-item`}>
 											<div className={`qubely-post-grid-view qubely-postgrid-style-${style}`}>
-												<div className={`qubely-post-grid-wrapper qubely-post-grid-center`}>
-													{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
-													{this.renderCardContent(post)}
-												</div>
+                                                <div className={`qubely-post-grid-wrapper qubely-post-grid-${(style === 3) ? contentPosition : girdContentPosition}`}>
+                                                    {showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
+                                                    {this.renderCardContent(post)}
+                                                </div>
 											</div>
 										</div>
 									)
