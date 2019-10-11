@@ -6315,7 +6315,11 @@ var Edit = function (_Component) {
 			    dotBorderRadius = _props2$attributes.dotBorderRadius,
 			    dotColor = _props2$attributes.dotColor,
 			    dotActiveColor = _props2$attributes.dotActiveColor,
-			    gutterspace = _props2$attributes.gutterspace;
+			    gutterspace = _props2$attributes.gutterspace,
+			    sliderItemsSpace = _props2$attributes.sliderItemsSpace,
+			    sliderItemMargin = _props2$attributes.sliderItemMargin,
+			    dotalignment = _props2$attributes.dotalignment,
+			    textalignment = _props2$attributes.textalignment;
 			var device = this.state.device;
 
 
@@ -6326,7 +6330,7 @@ var Edit = function (_Component) {
 			var carouselSettings = {
 				nav: nav,
 				dots: dots,
-				margin: 15,
+				margin: sliderItemMargin,
 				speed: speed,
 				items: postitems,
 				autoplay: autoPlay,
@@ -6388,7 +6392,30 @@ var Edit = function (_Component) {
 							return setAttributes({ postitems: value });
 						}), _defineProperty(_React$createElement, 'onDeviceChange', function onDeviceChange(value) {
 							return _this3.setState({ device: value });
-						}), _React$createElement))
+						}), _React$createElement)),
+						React.createElement(Range, {
+							label: __('Padding'),
+							min: 1,
+							max: 80,
+							responsive: true,
+							unit: ['px', 'em', '%'],
+							value: sliderItemsSpace,
+							onChange: function onChange(value) {
+								return setAttributes({ sliderItemsSpace: value });
+							},
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Margin'),
+							value: sliderItemMargin,
+							onChange: function onChange(value) {
+								return setAttributes({ sliderItemMargin: parseInt(value) });
+							},
+							min: 0, max: 100
+						})
 					),
 					React.createElement(
 						PanelBody,
@@ -6565,6 +6592,14 @@ var Edit = function (_Component) {
 								device: device,
 								onDeviceChange: function onDeviceChange(value) {
 									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(ButtonGroup, {
+								label: __('Dot Alignment'),
+								options: [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']],
+								value: dotalignment,
+								onChange: function onChange(value) {
+									return setAttributes({ dotalignment: value });
 								}
 							}),
 							React.createElement(
@@ -6848,6 +6883,14 @@ var Edit = function (_Component) {
 					React.createElement(
 						PanelBody,
 						{ title: 'Content Settings', initialOpen: false },
+						React.createElement(ButtonGroup, {
+							label: __('Text Align'),
+							options: [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']],
+							value: textalignment,
+							onChange: function onChange(value) {
+								return setAttributes({ textalignment: value });
+							}
+						}),
 						React.createElement(Toggle, { label: __('Show Title'), value: showTitle, onChange: function onChange(value) {
 								return setAttributes({ showTitle: value });
 							} }),

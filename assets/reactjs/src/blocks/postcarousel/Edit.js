@@ -281,7 +281,11 @@ class Edit extends Component {
 				dotColor,
 				dotActiveColor,
 
-				gutterspace
+				gutterspace,
+				sliderItemsSpace, 
+				sliderItemMargin,
+				dotalignment,
+				textalignment
 				
 			}
 		} = this.props
@@ -292,7 +296,7 @@ class Edit extends Component {
 		const carouselSettings = {
 			nav: nav,
 			dots: dots,
-			margin: 15,
+			margin: sliderItemMargin,
 			speed: speed,
 			items: postitems,
 			autoplay: autoPlay,
@@ -336,14 +340,31 @@ class Edit extends Component {
 						{ isCentered &&
 							<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
 						}
-						<Range
+						<Range 
 							label={__('Number of Columns')}
 							min={1} max={20} responsive device={device}
 							device={this.state.device}
 							value={ postitems }
 							onChange={value => setAttributes({ postitems: value })}
 							onDeviceChange={value => this.setState({ device: value })}
+						/>
+						<Range
+							label={__('Padding')}
+							min={1}
+							max={80}
+							responsive
+							unit={['px', 'em', '%']}
+							value={sliderItemsSpace} 
+							onChange={(value) => setAttributes({ sliderItemsSpace: value })}
+							device={device}
+							onDeviceChange={value => this.setState({ device: value })}
 						/>	
+						<Range 
+							label={__('Margin')} 
+							value={sliderItemMargin} 
+							onChange={value => setAttributes({ sliderItemMargin: parseInt(value) })} 
+							min={0} max={100} 
+						/>
 					</PanelBody>
 
 					<PanelBody title={__('Slider Settings')} initialOpen={false}>
@@ -460,6 +481,12 @@ class Edit extends Component {
 									device={device}
 									onDeviceChange={value => this.setState({ device: value })}
 								/>
+								<ButtonGroup
+									label={__('Dot Alignment')}
+									options={[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']] }
+									value={ dotalignment }
+									onChange={value => setAttributes({ dotalignment: value })}
+								/>
 								<Tabs>
 									<Tab tabTitle={__('Normal')}>
 										<ColorAdvanced label={__('Dot Color')} value={dotColor} onChange={val => setAttributes({ dotColor: val })} />
@@ -552,9 +579,7 @@ class Edit extends Component {
 								<Border label={__('Card Border')} value={cardBorder} onChange={val => setAttributes({ cardBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 								
 								<BorderRadius min={0} max={100} responsive device={device} label={__('Card Corner')} value={cardBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ cardBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
-								
-								
-								
+							
 								<Range label={__('Card Space')} value={cardSpace} onChange={value => setAttributes({ cardSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 								
 								<Padding label={__('Card Padding')} value={cardPadding} onChange={val => setAttributes({ cardPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -657,6 +682,12 @@ class Edit extends Component {
 					</PanelBody>
 
 					<PanelBody title='Content Settings' initialOpen={false}>
+						<ButtonGroup
+							label={__('Text Align')}
+							options={[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']] }
+							value={ textalignment }
+							onChange={value => setAttributes({ textalignment: value })}
+						/>
 						<Toggle label={__('Show Title')} value={showTitle} onChange={value => setAttributes({ showTitle: value })} />
 						<Toggle label={__('Show Excerpt')} value={showExcerpt} onChange={value => setAttributes({ showExcerpt: value })} />
 						<RangeControl label={__('Excerpt Limit')} min={1} max={100} step={1} value={excerptLimit} onChange={val => setAttributes({ excerptLimit: val })} />

@@ -18,7 +18,25 @@ function register_block_qubely_postcarousel_pro()
 				'uniqueId' => array(
 					'type' => 'string',
 				),
-				
+
+				'sliderItemsSpace' => array(
+					'type' 			=> 'object',
+					'default' 		=> (object) array(
+						'md' 	=> '0',
+						'unit' 	=> '%'
+					),
+					'style' 	=> [
+						(object) [
+							'selector' => '{{QUBELY}} .qubely-post-grid-wrapper.qubely-post-grid-top {padding: {{sliderItemsSpace}} 0;}'
+						]
+					]
+				),
+
+				'sliderItemMargin' 	=> array(
+					'type' 			=> 'number',
+					'default' 		=> 10
+				),
+
 				/* -----------------------------
 				* 	Slider Settings
 				*------------------------------- */
@@ -171,7 +189,21 @@ function register_block_qubely_postcarousel_pro()
 					]]
 				),
 
+				'dotalignment' 	=>  array(
+					'type' 		=> 'string',
+					'default' 	=> 'center',
+					'style' => [(object) [
+						'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {text-align: {{dotalignment}};}'
+					]]
+				),
 
+				'textalignment' =>  array(
+					'type' 		=> 'string',
+					'default' 	=> 'left',
+					'style' => [(object) [
+						'selector' => '{{QUBELY}} .qubely-post-grid-wrapper .qubely-post-grid-content {text-align: {{textalignment}};}'
+					]]
+				),
 				/*---------------------------------
 				* 		Post Carousel
 				-----------------------------------*/ 
@@ -342,7 +374,7 @@ function register_block_qubely_postcarousel_pro()
 					'default' 	=> (object) array(
 						'openColor' 	=> 1,
 						'type' 			=> 'color',
-						'color' 		=> '#ffffff',
+						'color' 		=> '',
 						'gradient'		=> (object) [
 							'color1' 	=> '#16d03e',
 							'color2' 	=> '#1f91f3',
@@ -1234,6 +1266,7 @@ function render_block_qubely_postcarousel_pro($att)
 	$center					= $att['isCentered']; 
 	$arrowStyle				= $att['arrowStyle'];
 	$verticalPosition		= $att['verticalPosition'];
+	$sliderItemMargin 		= $att['sliderItemMargin'];
 
 	# Attribute value.
 	$data_options = (object) array(
@@ -1241,7 +1274,7 @@ function render_block_qubely_postcarousel_pro($att)
 		'items' 		=> $postitems,
 		'nav' 			=> $nav,
 		'dots' 			=> $dots,
-		'margin' 		=> '10',
+		'margin' 		=> $sliderItemMargin,
 		'speed' 		=> $speed,
 		'interval' 		=> $interval,
 		'center' 		=> $center,
