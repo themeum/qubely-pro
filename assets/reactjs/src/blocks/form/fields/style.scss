@@ -140,6 +140,10 @@
 }
 
 //select
+.wp-admin .qubely-form-field-wrapper select {
+    height: auto;
+    line-height: inherit;
+}
 .qubely-form-dropdown {
     -webkit-appearance: none;
     -moz-appearance: none;
