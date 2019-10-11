@@ -430,8 +430,9 @@ class Edit extends Component {
 							unit={['px', 'em', '%']}
 							onChange={value => setAttributes({ imageRadius: value })}
 							onDeviceChange={value => this.setState({ device: value })} />
-
-						<Select label={__('Hover Effect')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />
+                        {(style === 4) &&
+						    <Select label={__('Hover Effect')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />
+                        }
 					</PanelBody>
 
 					<PanelBody title='Content' initialOpen={false}>
