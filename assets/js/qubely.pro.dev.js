@@ -10523,13 +10523,13 @@ var Edit = function (_Component) {
 						React.createElement(
 							'div',
 							{ className: 'qubely-testimonial-carousel-content-wrapper' },
-							showRatings && ratings > 0 && layout !== 1 && React.createElement('div', { className: 'qubely-testimonial-ratings', 'data-qubelyrating': ratings }),
+							showRatings && ratings > 0 && layout !== 1 && React.createElement('div', { className: 'qubely-testimonial-ratings B', 'data-qubelyrating': ratings }),
 							React.createElement(
 								'div',
 								{ className: 'qubely-testimonial-content' },
 								_this.renderMessage(message, index)
 							),
-							showRatings && ratings > 0 && layout == 1 && React.createElement('div', { className: 'qubely-testimonial-ratings', 'data-qubelyrating': ratings })
+							showRatings && ratings > 0 && layout == 1 && React.createElement('div', { className: 'qubely-testimonial-ratings A', 'data-qubelyrating': ratings })
 						),
 						layout !== 2 && _this.renderAuthorInfo(item, index),
 						quoteIcon && layout == 2 && React.createElement(
@@ -10663,7 +10663,7 @@ var Edit = function (_Component) {
 			    dots = _props2$attributes.dots,
 			    dotsPosition = _props2$attributes.dotsPosition,
 			    dotIndicator = _props2$attributes.dotIndicator,
-			    dotwidth = _props2$attributes.dotwidth,
+			    dotswidth = _props2$attributes.dotswidth,
 			    dotHeight = _props2$attributes.dotHeight,
 			    dotBorderRadius = _props2$attributes.dotBorderRadius,
 			    dotColor = _props2$attributes.dotColor,
@@ -10674,16 +10674,16 @@ var Edit = function (_Component) {
 
 			var carouselSettings = {
 				autoplay: autoPlay,
-				items: items,
-				margin: sliderItemMargin,
-				center: isCentered,
-				dots: dots,
-				dot_indicator: dotIndicator,
 				nav: nav,
-				arrowStyle: arrowStyle,
-				arrowPosition: arrowPosition,
+				dots: dots,
+				items: items,
 				speed: speed,
 				interval: interval,
+				center: isCentered,
+				arrowStyle: arrowStyle,
+				margin: sliderItemMargin,
+				dot_indicator: dotIndicator,
+				arrowPosition: arrowPosition,
 				responsive: [{
 					viewport: 1170,
 					items: items.md
@@ -10925,8 +10925,8 @@ var Edit = function (_Component) {
 							null,
 							React.createElement(Range, {
 								label: __('Dot Width'),
-								value: dotwidth, onChange: function onChange(value) {
-									return setAttributes({ dotwidth: value });
+								value: dotswidth, onChange: function onChange(value) {
+									return setAttributes({ dotswidth: value });
 								},
 								min: 1, max: 100,
 								responsive: true, unit: ['px', 'em', '%'],
@@ -11531,6 +11531,7 @@ var Save = function (_Component) {
           uniqueId = _props$attributes2.uniqueId,
           layout = _props$attributes2.layout,
           items = _props$attributes2.items,
+          sliderItemMargin = _props$attributes2.sliderItemMargin,
           autoPlay = _props$attributes2.autoPlay,
           arrowStyle = _props$attributes2.arrowStyle,
           infiniteLoop = _props$attributes2.infiniteLoop,
@@ -11547,7 +11548,7 @@ var Save = function (_Component) {
       var options = JSON.stringify({
         autoplay: autoPlay,
         items: items,
-        margin: 10,
+        margin: sliderItemMargin,
         center: isCentered,
         dots: dots,
         dot_indicator: dotIndicator,
@@ -11717,7 +11718,7 @@ registerBlockType('qubely/testimonialcarousel', {
 		arrowPosition: {
 			type: 'object',
 			default: { md: 49, unit: '%' },
-			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { bottom: {{arrowPosition}}; } ' }]
+			style: [{ selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control { top: {{arrowPosition}}; } ' }]
 		},
 		cornerRadius: {
 			type: 'object',
@@ -11773,32 +11774,34 @@ registerBlockType('qubely/testimonialcarousel', {
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover' }]
 		},
 		// Dot Navigation.
-		dotwidth: {
+		dotswidth: {
 			type: 'string',
 			default: { md: 30, unit: 'px' },
-			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { width: {{dotwidth}} }' }]
+			style: [{ selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots ul li { width: {{dotswidth}} }' }]
 		},
 		dotHeight: {
 			type: 'string',
 			default: { md: 4, unit: 'px' },
-			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { height: {{dotHeight}} }' }]
+			style: [{ selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots ul li { height: {{dotHeight}} }' }]
 		},
 		dotBorderRadius: {
 			type: 'string',
 			default: { md: 4, unit: 'px' },
-			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { border-radius: {{dotBorderRadius}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator { border-radius: {{dotBorderRadius}} }' }]
+			style: [{ selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots ul li { border-radius: {{dotBorderRadius}} } {{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator { border-radius: {{dotBorderRadius}} }' }]
 		},
 		dotsPosition: {
 			type: 'object',
 			default: { md: 0, unit: 'px' },
-			style: [{ selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots { margin-top: {{dotsPosition}}; } ' }]
+			style: [{
+				selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots { margin-top: {{dotsPosition}}; } '
+			}]
 		},
-		// Dot
+		// Dot.
 		dotColor: {
 			type: 'object', default: { type: 'color', openColor: 1, color: '#f4f4f4' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li' }]
 		},
-		// Dot Active Color
+		// Dot Active Color.
 		dotActiveColor: {
 			type: 'object', default: { type: 'color', openColor: 1, color: '#1066CC' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator' }]
@@ -11825,7 +11828,20 @@ registerBlockType('qubely/testimonialcarousel', {
 			style: [{ selector: '{{QUBELY}} .qubely-testimonial-content' }]
 		},
 		messageSpacingTop: { type: 'object', default: { md: 0, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-testimonial-content {margin-top: {{messageSpacingTop}};}' }] },
-		messageSpacingBottom: { type: 'object', default: { md: 20, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-testimonial-carousel-content-wrapper {margin-bottom: {{messageSpacingBottom}};}' }] },
+		messageSpacingBottom: {
+			type: 'object',
+			default: { md: 20, unit: 'px' },
+			style: [{
+				condition: [{ key: 'layout', relation: '==', value: '1' }],
+				selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}'
+			}, {
+				condition: [{ key: 'layout', relation: '==', value: '2' }],
+				selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-2 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}'
+			}, {
+				condition: [{ key: 'layout', relation: '==', value: '3' }],
+				selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-carousel-content-wrapper {margin-bottom: {{messageSpacingBottom}};}'
+			}]
+		},
 
 		/*------------------------------------
   * 			Avatar 
