@@ -154,15 +154,15 @@ class Edit extends Component {
 
 							{/* showRatings,ratings */}
 							<div className={`qubely-testimonial-carousel-content-wrapper`}>
-								{
-									(showRatings && ratings > 0 && layout !== 1) &&
-									<div className="qubely-testimonial-ratings" data-qubelyrating={ratings}></div>
+								{ (showRatings && ratings > 0 && layout !== 1) &&
+									<div className="qubely-testimonial-ratings B" data-qubelyrating={ratings}></div>
 								}
 
 								<div className="qubely-testimonial-content" >
 									{this.renderMessage(message, index)}
 								</div>
-								{(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings" data-qubelyrating={ratings}></div>}
+
+								{(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings A" data-qubelyrating={ratings}></div>}
 							</div>
 							{layout !== 2 && this.renderAuthorInfo(item, index)}
 							{
@@ -209,22 +209,22 @@ class Edit extends Component {
 			boxShadowHover, sliderNumber, itemPerSlides, sliderItemsSpace, infiniteLoop, isCentered, activeFade,
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
 			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
-			dots, dotsPosition, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll, sliderItemMargin,
+			dots, dotsPosition, dotIndicator, dotswidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll, sliderItemMargin,
 		} } = this.props
 
 		const { device } = this.state
 		const carouselSettings = {
 			autoplay: autoPlay,
-			items: items,
-			margin: sliderItemMargin,
-			center: isCentered,
-			dots: dots,
-			dot_indicator: dotIndicator,
 			nav: nav,
-			arrowStyle: arrowStyle,
-			arrowPosition: arrowPosition,
+			dots: dots,
+			items: items,
 			speed: speed,
 			interval: interval,
+			center: isCentered,
+			arrowStyle: arrowStyle,
+			margin: sliderItemMargin,
+			dot_indicator: dotIndicator,
+			arrowPosition: arrowPosition,
 			responsive: [
 				{
 					viewport: 1170,
@@ -399,7 +399,7 @@ class Edit extends Component {
 							<Fragment>
 								<Range
 									label={__('Dot Width')}
-									value={dotwidth} onChange={(value) => setAttributes({ dotwidth: value })}
+									value={dotswidth} onChange={(value) => setAttributes({ dotswidth: value })}
 									min={1} max={100}
 									responsive unit={['px', 'em', '%']}
 									device={device}
