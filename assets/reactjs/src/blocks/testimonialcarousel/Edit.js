@@ -209,14 +209,14 @@ class Edit extends Component {
 			boxShadowHover, sliderNumber, itemPerSlides, sliderItemsSpace, infiniteLoop, isCentered, activeFade,
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
 			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
-			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
+			dots, dotsPosition, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll, sliderItemMargin,
 		} } = this.props
 
 		const { device } = this.state
 		const carouselSettings = {
 			autoplay: autoPlay,
 			items: items,
-			margin: 10,
+			margin: sliderItemMargin,
 			center: isCentered,
 			dots: dots,
 			dot_indicator: dotIndicator,
@@ -294,6 +294,13 @@ class Edit extends Component {
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
+						<Range
+							label={__('Margin')}
+							min={0}
+							max={80}
+							value={sliderItemMargin}
+							onChange={(value) => setAttributes({ sliderItemMargin: parseInt(value) })}
+						/>
 					</PanelBody>
 
 					<PanelBody title={__('Carousel Settings')} initialOpen={false}>
@@ -306,17 +313,8 @@ class Edit extends Component {
 						}
 						<Toggle label={__('Draggable')} value={dragable} onChange={value => setAttributes({ dragable: value })} />
 
-						{/* <Range
-							label={__('Items per Slide')}
-							value={itemPerSlides} onChange={(value) => setAttributes({ itemPerSlides: value })}
-							min={1}
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/> */}
-						{/* <Toggle label={__('Infinite Loop')} value={infiniteLoop} onChange={value => setAttributes({ infiniteLoop: value })} /> */}
 						<Toggle label={__('Centered Slides')} value={isCentered} onChange={value => setAttributes({ isCentered: value })} />
-						{
-							isCentered &&
+						{isCentered &&
 							<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
 						}
 					</PanelBody>
@@ -419,6 +417,14 @@ class Edit extends Component {
 									label={__('Dot Border Radius')}
 									value={dotBorderRadius} onChange={(value) => setAttributes({ dotBorderRadius: value })}
 									min={1} max={100}
+									responsive unit={['px', 'em', '%']}
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+								<Range
+									label={__('Spacing')}
+									value={dotsPosition} onChange={(value) => setAttributes({ dotsPosition: value })}
+									min={-50} max={100}
 									responsive unit={['px', 'em', '%']}
 									device={device}
 									onDeviceChange={value => this.setState({ device: value })}
