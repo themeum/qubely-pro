@@ -230,7 +230,7 @@ registerBlockType('qubely/testimonialcarousel', {
 			style: [{ selector: '{{QUBELY}} .qubely-testimonial-content' }]
 		},
 		messageSpacingTop: { type: 'object', default: { md: 0, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-testimonial-content {margin-top: {{messageSpacingTop}};}' }] },
-		messageSpacingBottom: { type: 'object', default: { md: 5, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}' }] },
+		messageSpacingBottom: { type: 'object', default: { md: 20, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-testimonial-carousel-content-wrapper {margin-bottom: {{messageSpacingBottom}};}' }] },
 
 		/*------------------------------------
 		* 			Avatar 
@@ -242,7 +242,7 @@ registerBlockType('qubely/testimonialcarousel', {
 			type: 'string',
 			default: '64px',
 			style: [
-				{
+				{ 
 					condition: [
 						{ key: 'avatarSize', relation: '!=', value: 'custom' }
 					],
@@ -282,7 +282,14 @@ registerBlockType('qubely/testimonialcarousel', {
 						{ key: 'avatarLayout', relation: '==', value: 'bottom' }
 					],
 					selector: '{{QUBELY}} .qubely-testimonial-avatar{margin: {{avatarSpacing}} 0px 0px;}'
+				},
+				{
+					condition: [
+						{ key: 'layout', relation: '==', value: '3' }
+					],
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-single-img { margin-bottom: {{avatarSpacing}} }'
 				}
+				
 			]
 		},
 		avatarBorderRadius: {

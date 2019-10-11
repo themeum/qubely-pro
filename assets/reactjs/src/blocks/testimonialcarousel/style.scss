@@ -131,8 +131,8 @@
   bottom: -15px;
 }
 .layout-3 .qubely-testimonial-author {
-  margin-top: 40px;
   text-align: center;
+  line-height: 0;
 }
 .layout-3 .qubely-testimonial-avatar {
   margin-right: 0px;
@@ -201,7 +201,7 @@
 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {
   height: 50px;
   width: 100%;
-  margin-top: 5px;
+  margin-top: 10px;
   z-index: 3;
 }
 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {
@@ -242,7 +242,7 @@
   left: 0;
 }
 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {
-  margin: 15px;
+  margin: 0px;
   padding: 0;
   list-style: none;
   text-align: center;
@@ -414,6 +414,24 @@
   top: 0;
   border-radius: 2px;
 }
+.qubely-testimonial-author .qubely-testimonial-author-name,
+.qubely-testimonial-author .qubely-testimonial-author-designation {
+  line-height: normal;
+}
+
+
+
+.qubely-block-testimonial-carousel .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {
+  position: relative;
+}
+
+
+
+
+
+
+
+
 
 .qubely-carousel.qubely-carousel-wrapper.is-faded{
   .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage{
@@ -425,4 +443,5 @@
 
 .qubely-block-testimonial-carousel .qubely-testimonial-avatar.qubely-image-placeholder i {
   transform: translate(0px, 45%);
+  display: inline-block;
 }
