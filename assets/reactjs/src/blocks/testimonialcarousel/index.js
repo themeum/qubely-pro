@@ -91,6 +91,10 @@ registerBlockType('qubely/testimonialcarousel', {
 				selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
 			}]
 		},
+		sliderItemMargin: {
+			type: 'number',
+			default: 10,
+		},
 		// Infinite Loop
 		infiniteLoop: { type: 'boolean', default: true },
 		isCentered: { type: 'boolean', default: false },
@@ -195,6 +199,13 @@ registerBlockType('qubely/testimonialcarousel', {
 			type: 'string',
 			default: { md: 4, unit: 'px' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { border-radius: {{dotBorderRadius}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator { border-radius: {{dotBorderRadius}} }' }]
+		},
+		dotsPosition: {
+			type: 'object',
+			default: { md: 0, unit: 'px' },
+			style: [
+				{ selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots { margin-top: {{dotsPosition}}; } ' }
+			]
 		},
 		// Dot
 		dotColor: {
