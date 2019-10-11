@@ -69,7 +69,7 @@ class Edit extends Component {
 
                     <img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
                     {
-                        (showCategory == 'badge') &&
+                        (showCategory == 'badge' && style != 4) &&
                         <div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
                             <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
                         </div>
@@ -85,13 +85,6 @@ class Edit extends Component {
 		return (
 			<div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
 				{(showCategory === 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
-				{/* {
-					(showCategory == 'badge' && style === 4) &&
-					<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
-						<span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
-					</div>
-				} */}
-
 				{showTitle && (titlePosition == true) && title}
 				{
 					(showAuthor || showDates || showComment) &&

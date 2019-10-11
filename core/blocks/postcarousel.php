@@ -75,7 +75,19 @@ function register_block_qubely_postcarousel_pro()
 						'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {background: {{navShapeColor}};}'
 					]]
                 ),
-				# Dot style.
+                # Dot style.
+                'dotPosition' => array(
+					'type' 			=> 'object',
+					'default' 		=> (object) array(
+						'md' 	=> -15,
+						'unit' 	=> 'px'
+					),
+					'style' 	=> [
+						(object) [
+							'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots { bottom: {{dotPosition}};}'
+						]
+					]
+				),
 				'dotwidth' => array(
 					'type' 		=> 'object',
 					'default' 	=> (object) array(
@@ -1286,7 +1298,7 @@ function render_block_qubely_postcarousel_pro($att)
 	# The Loop. 
 	if ($query->have_posts()) { 
 		$html .= '<div class="qubely-block-'.esc_attr($uniqueId).'">';
-		$html .= '<div class="qubely-block-image-carousel qubely-postcarousel-wrapper layout-'.esc_attr($style).'">';
+		$html .= '<div class="qubely-block-image-carousel qubely-postcarousel-wrapper">';
 
 		# Carousel Class.
 		$html .= '<div class="qubely-carousel qubely-carousel-wrapper" data-options="'.htmlspecialchars(json_encode($data_options), ENT_QUOTES, 'UTF-8').'">';
@@ -1304,18 +1316,21 @@ function render_block_qubely_postcarousel_pro($att)
 			$btn = '<div class="qubely-postcarousel-btn-wrapper"><a class="qubely-postcarousel-btn qubely-button-' . esc_attr($readmoreStyle) . ' is-' . esc_attr($readmoreSize) . '" href="' . esc_url(get_the_permalink()) . '">' . esc_attr($buttonText) . '</a></div>';
 			$excerpt = '<div class="qubely-postcarousel-intro">' . qubely_excerpt_max_charlength(esc_attr($limit)) . '</div>';
 
-			
-
 				if ( $style == 1 || $style == 2 ) {
 					$html .= '<div class="qubely-carousel-item">';
 					$html .= '<div class="qubely-post-grid-view qubely-postgrid-style-'.esc_attr($style).'">';
 						$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-center">';
 							if (($showImages == 1) && has_post_thumbnail()) {
+                                if ($showCategory == 'badge' && $style == 4) {
+									$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
+									$html .= $category;
+									$html .= '</div>';
+								}
 								$html .= '<div class="qubely-post-list-img qubely-post-img qubely-post-img-' . esc_attr($imageAnimation) . '">';
 								$html .= '<a href="' . esc_url(get_the_permalink()) . '">';
 								$html .= $image;
-								$html .= '</a>';
-								if ($showCategory == 'badge' && $style != 4) {
+                                $html .= '</a>';
+                                if ($showCategory == 'badge' && $style != 4) {
 									$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
 									$html .= $category;
 									$html .= '</div>';
@@ -1326,13 +1341,6 @@ function render_block_qubely_postcarousel_pro($att)
 							if ($showCategory == 'default') {
 								$html .= $category;
 							}
-
-							if ($showCategory == 'badge'  && $style == 4) {
-								$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
-								$html .= $category;
-								$html .= '</div>';
-							}
-
 							if ($showTitle == 1) {
 								$html .= $title;
 							}
@@ -1356,10 +1364,15 @@ function render_block_qubely_postcarousel_pro($att)
 				# Style - 2. 
 				if ( $style == 3 || $style == 4 ) {
 					$html .= '<div class="qubely-carousel-item">';
-					$html .= '<div class="qubely-postgrid qubely-post-grid-view qubely-postgrid-style-' . esc_attr($style) . '">';
-						$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-center qubely-post-grid-'.esc_attr($contentPosition ).'">';
+					$html .= '<div class="qubely-post-grid-view qubely-postgrid-style-'.esc_attr($style).'">';
+                        $html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-' . esc_attr(( $style === 3) ? $contentPosition : $girdContentPosition)  . '">';
 							if (($showImages == 1) && has_post_thumbnail()) {
-								$html .= '<div class="qubely-post-grid-img qubely-post-img qubely-post-img-' . esc_attr($imageAnimation) . '">';
+                                if ($showCategory == 'badge'  && $style == 4) {
+									$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
+									$html .= $category;
+									$html .= '</div>';
+								}
+                                $html .= '<div class="qubely-post-grid-img qubely-post-img qubely-post-img-' . esc_attr($imageAnimation) . '">';
 								$html .= '<a href="' . esc_url(get_the_permalink()) . '">';
 								$html .= $image;
 								$html .= '</a>';
@@ -1373,11 +1386,6 @@ function render_block_qubely_postcarousel_pro($att)
 							$html .= '<div class="qubely-post-grid-content align-top">';
 								if ($showCategory == 'default') {
 									$html .= $category;
-								}
-								if ($showCategory == 'badge'  && $style == 4) {
-									$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
-									$html .= $category;
-									$html .= '</div>';
 								}
 								if ($showTitle == 1) {
 									$html .= $title;
@@ -1397,9 +1405,7 @@ function render_block_qubely_postcarousel_pro($att)
 						$html .= '</div>'; //qubely-post-grid-wrap
 					$html .= '</div>'; //qubely-postgrid
 					$html .= '</div>'; # qubely-carousel-item
-				}
-
-			
+				}	
 		}
 		
 		$html .= '</div>'; # qubely-carousel :- carousel class 

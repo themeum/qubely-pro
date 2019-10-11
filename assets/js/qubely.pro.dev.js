@@ -4733,7 +4733,6 @@ var Edit = function (_Component) {
 
 		_this.renderFeaturedImage = function (post) {
 			var _this$props$attribute = _this.props.attributes,
-			    layout = _this$props$attribute.layout,
 			    style = _this$props$attribute.style,
 			    imgSize = _this$props$attribute.imgSize,
 			    imageAnimation = _this$props$attribute.imageAnimation,
@@ -4741,13 +4740,22 @@ var Edit = function (_Component) {
 			    categoryPosition = _this$props$attribute.categoryPosition;
 
 			return React.createElement(
-				'div',
-				{ className: (layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img') + ' qubely-post-img qubely-post-img-' + imageAnimation },
-				React.createElement('img', { className: 'qubely-post-image', src: post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0] }),
-				showCategory == 'badge' && style !== 4 && React.createElement(
+				Fragment,
+				null,
+				showCategory == 'badge' && style === 4 && React.createElement(
 					'div',
-					{ className: 'qubely-postcarousel-cat-position qubely-postcarousel-cat-position-' + categoryPosition },
-					React.createElement('span', { className: 'qubely-postcarousel-category qubely-backend', dangerouslySetInnerHTML: { __html: post.qubely_category } })
+					{ className: 'qubely-postgrid-cat-position qubely-postgrid-cat-position-' + categoryPosition },
+					React.createElement('span', { className: 'qubely-postcarousel-category', dangerouslySetInnerHTML: { __html: post.qubely_category } })
+				),
+				React.createElement(
+					'div',
+					{ className: 'qubely-post-grid-img qubely-post-img qubely-post-img-' + imageAnimation },
+					React.createElement('img', { className: 'qubely-post-image', src: post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0] }),
+					showCategory == 'badge' && style != 4 && React.createElement(
+						'div',
+						{ className: 'qubely-postcarousel-cat-position qubely-postcarousel-cat-position-' + categoryPosition },
+						React.createElement('span', { className: 'qubely-postcarousel-category qubely-backend', dangerouslySetInnerHTML: { __html: post.qubely_category } })
+					)
 				)
 			);
 		};
@@ -4784,11 +4792,6 @@ var Edit = function (_Component) {
 				'div',
 				{ className: 'qubely-post-grid-content align-' + contentPosition },
 				showCategory === 'default' && React.createElement('span', { className: 'qubely-postcarousel-category qubely-backend', dangerouslySetInnerHTML: { __html: post.qubely_category } }),
-				showCategory == 'badge' && style === 4 && React.createElement(
-					'div',
-					{ className: 'qubely-postcarousel-cat-position qubely-postcarousel-cat-position-' + categoryPosition },
-					React.createElement('span', { className: 'qubely-postcarousel-category qubely-backend', dangerouslySetInnerHTML: { __html: post.qubely_category } })
-				),
 				showTitle && titlePosition == true && title,
 				(showAuthor || showDates || showComment) && React.createElement(
 					'div',
@@ -5028,6 +5031,7 @@ var Edit = function (_Component) {
 			    navShapeHoverColor = _props2$attributes.navShapeHoverColor,
 			    navBorderHoverColor = _props2$attributes.navBorderHoverColor,
 			    navHoverRadius = _props2$attributes.navHoverRadius,
+			    dotPosition = _props2$attributes.dotPosition,
 			    dots = _props2$attributes.dots,
 			    dotwidth = _props2$attributes.dotwidth,
 			    dotHeight = _props2$attributes.dotHeight,
@@ -5239,6 +5243,18 @@ var Edit = function (_Component) {
 							Fragment,
 							null,
 							React.createElement(Range, {
+								label: __('Dot Position'),
+								value: dotPosition, onChange: function onChange(value) {
+									return setAttributes({ dotPosition: value });
+								},
+								min: -200, max: 200,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this3.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
 								label: __('Dot Width'),
 								value: dotwidth, onChange: function onChange(value) {
 									return setAttributes({ dotwidth: value });
@@ -5302,12 +5318,20 @@ var Edit = function (_Component) {
 							},
 							options: [{ value: 1, svg: _icons2.default.postgrid_design_1 }, { value: 2, svg: _icons2.default.postgrid_design_2 }, { value: 3, svg: _icons2.default.postgrid_design_4 }, { value: 4, svg: _icons2.default.postgrid_design_6 }]
 						}),
-						React.createElement(ButtonGroup, {
+						style != 3 && React.createElement(ButtonGroup, {
 							label: __('Content Align'),
 							options: [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']],
 							value: contentPosition,
 							onChange: function onChange(value) {
 								return setAttributes({ contentPosition: value });
+							}
+						}),
+						(style === 3 || style === 4) && React.createElement(ButtonGroup, {
+							label: __('Content Position'),
+							options: style === 3 ? [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']] : [[__('Top'), 'top'], [__('Middle'), 'center'], [__('Bottom'), 'bottom']],
+							value: style === 3 ? contentPosition : girdContentPosition,
+							onChange: function onChange(value) {
+								return setAttributes(style === 3 ? { contentPosition: value } : { girdContentPosition: value });
 							}
 						}),
 						style != 2 && React.createElement(Range, {
@@ -5810,7 +5834,7 @@ var Edit = function (_Component) {
 					{ className: 'qubely-block-' + uniqueId },
 					posts && posts.length ? React.createElement(
 						'div',
-						{ className: 'qubely-block-image-carousel qubely-postcarousel-wrapper layout-' + style },
+						{ className: 'qubely-block-image-carousel qubely-postcarousel-wrapper' },
 						React.createElement(
 							Carousel,
 							{ options: carouselSettings },
@@ -5823,7 +5847,7 @@ var Edit = function (_Component) {
 										{ className: 'qubely-post-grid-view qubely-postgrid-style-' + style },
 										React.createElement(
 											'div',
-											{ className: 'qubely-post-grid-wrapper qubely-post-grid-center' },
+											{ className: 'qubely-post-grid-wrapper qubely-post-grid-' + (style === 3 ? contentPosition : girdContentPosition) },
 											showImages && post.qubely_featured_image_url && _this3.renderFeaturedImage(post),
 											_this3.renderCardContent(post)
 										)
@@ -6052,7 +6076,7 @@ var Edit = function (_Component) {
 					'div',
 					{ className: (layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img') + ' qubely-post-img qubely-post-img-' + imageAnimation },
 					React.createElement('img', { className: 'qubely-post-image', src: post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0] }),
-					showCategory == 'badge' && React.createElement(
+					showCategory == 'badge' && style != 4 && React.createElement(
 						'div',
 						{ className: 'qubely-postgrid-cat-position qubely-postgrid-cat-position-' + categoryPosition },
 						React.createElement('span', { className: 'qubely-postgrid-category', dangerouslySetInnerHTML: { __html: post.qubely_category } })
