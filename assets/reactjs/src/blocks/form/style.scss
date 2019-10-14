@@ -70,8 +70,17 @@
       justify-content: space-around;
       padding: 5px 0px;
       .qubely-form-field-tab {
+        width: 90%;
+        text-align: center;
+        background: #ffffff;
+        border: 1px solid #d6d9dd;
+        border-radius: 4px;
         padding: 5px 30px;
-        width: 45%;
+        display: flex;
+        align-items: center;
+        margin: 7px 0px;
+        display: flex;
+        justify-content: center;
         &.qubely-active {
           color: #fff;
           background-color: #1066cc;
