@@ -57,7 +57,7 @@
 
 .qubely-form-field-picker {
   .qubely-form-field-types {
-    background: #f7f8fc;
+    background: #fff;
     box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     padding: 10px;
@@ -90,14 +90,19 @@
       }
     }
     .qubely-form-field-type {
-      background: #ffffff;
-      border: 1px solid #d6d9dd;
-      border-radius: 4px;
-      padding: 5px 15px;
-      width: 45%;
-      display: flex;
-      align-items: center;
-      margin: 5px 0px;
+        background: #f8f8f8;
+        border: 1px solid #e5e5e5;
+        border-radius: 2px;
+        padding: 5px 15px;
+        width: 45%;
+        display: flex;
+        align-items: center;
+        margin: 5px 0px;
+        transition: 400ms;
+        justify-content: center;
+        &:hover {
+            background: #e5e5e5;
+        }
     }
     & :hover {
       cursor: pointer;

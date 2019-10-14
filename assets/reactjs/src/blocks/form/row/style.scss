@@ -2,3 +2,17 @@
   display: flex;
   // flex-wrap: wrap;
 }
+.qubely-action-add-form-empty {
+    outline: 1px dashed #8d96a0;
+    width: 100%;
+    color: #555d66;
+    background: rgba(237,239,240,.8);
+    min-height: 60px;
+    text-align: center;
+    line-height: 60px;
+    svg {
+        position: relative;
+        top: 4px;
+        cursor: pointer;
+    }
+}
