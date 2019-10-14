@@ -124,15 +124,18 @@ class Edit extends Component {
 
         return (
             <div className="qubely-form-field-types">
-                <div className={`qubely-form-field-tabs`}>
-                    <div
-                        onClick={() => {
-                            this.setState({ groupField: true })
-                        }}
-                        className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`}
-                    >
-                        Add Column</div>
-                </div>
+                {
+                    !groupField &&
+                    <div className={`qubely-form-field-tabs`}>
+                        <div
+                            onClick={() => {
+                                this.setState({ groupField: true })
+                            }}
+                            className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`}
+                        >
+                            Add Column</div>
+                    </div>
+                }
 
                 {
                     groupField ?
