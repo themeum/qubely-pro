@@ -4,19 +4,19 @@ jQuery(document).ready(function ($) {
     if ($('.qubely-datepicker').length > 0) {
         let indexOfCounterElement = 0
         const datePickerlWrapper = $('.qubely-datepicker')
+        datePickerlWrapper.each(function () {
 
-        while (indexOfCounterElement < datePickerlWrapper.length) {
-            let dateFormat = JSON.parse($('.qubely-datepicker').eq(indexOfCounterElement).parent()[indexOfCounterElement].dataset.options).dateFormat
+            let dateFormat = JSON.parse($(this).parent()[0].dataset.options).dateFormat
 
-            $('.qubely-datepicker').eq(indexOfCounterElement).datepicker({
+            $(this).datepicker({
                 dateFormat: dateFormat,
                 duration: "fast",
                 changeMonth: true,
                 changeYear: true,
                 separator: ' T '
             });
-            indexOfCounterElement++
         }
+        )
 
     }
 
