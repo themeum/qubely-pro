@@ -133,8 +133,6 @@ jQuery(document).ready(function ($) {
         $qubelyTimePickerWrapper.find('.qubely-form-timepicker-hour')[0].innerText = ((timeFormatType === 12 && hour === 1) || (timeFormatType === 23 && hour === 0)) ? timeFormatType : hour - 1
 
     })
-<<<<<<< HEAD
-=======
 
 
     //FORM BLOCK
@@ -262,5 +260,4 @@ jQuery(document).ready(function ($) {
 
 
 
->>>>>>> 631a47b689b6e2cdf0e5aeed9c5bf4d1ac8333dd
 })
