@@ -9,7 +9,7 @@ const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes } 
 const defaultFormItems = [
     {
         type: 'text',
-        label: 'First Name faisal',
+        label: 'First Name',
         name: 'first-name',
         placeholder: 'First Name',
         width: 50,
