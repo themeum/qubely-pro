@@ -57,7 +57,8 @@ class Save extends Component {
         layout, 
         items, 
         itemthree, 
-        itemfive, 
+        itemfive,
+        sliderMargin, 
         
         autoPlay, 
         speed, 
@@ -80,7 +81,7 @@ class Save extends Component {
       let options = JSON.stringify({
         autoplay: autoPlay,
         items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md,
-        margin: 10,
+        margin: sliderMargin,
         center: (layout == 3 || layout == 4) ? isCentered : notCentered,
         dots: dots,
         dot_indicator: dotIndicator,

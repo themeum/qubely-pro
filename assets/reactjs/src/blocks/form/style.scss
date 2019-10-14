@@ -16,7 +16,7 @@
       }
     }
 
-     .editor-inner-blocks.block-editor-inner-blocks {
+    .editor-inner-blocks.block-editor-inner-blocks {
       > .editor-block-list__layout.block-editor-block-list__layout {
         > div:last-child {
           display: none;
@@ -102,57 +102,55 @@
   }
 }
 
-//form wrapper
 .qubely-form-field-wrapper {
-    .qubely-form-field-label {
-        margin-bottom: 5px;
-    }
+  .qubely-form-field-label {
+    margin-bottom: 5px;
+  }
 }
 
 //check box
 .qubely-form-field-checkbox-option {
-    margin-bottom: 5px;
-    .qubely-checkbox-option {
-        color: #535F6A;
-        text-transform: capitalize;
-    }
-    input[type=checkbox] {
-        margin-top: 3px;
-        border: 1px solid #8D96A0;
-    }
-    &::last-child {
-        margin-bottom: 0;
-    }
+  margin-bottom: 5px;
+  .qubely-checkbox-option {
+    color: #535f6a;
+    text-transform: capitalize;
+  }
+  input[type="checkbox"] {
+    margin-top: 3px;
+    border: 1px solid #8d96a0;
+  }
+  &::last-child {
+    margin-bottom: 0;
+  }
 }
 .qubely-form-checkbox {
-    margin-bottom: 5px;
-    .qubely-form-field-checkbox-option {
-        color: #535F6A;
-        text-transform: capitalize;
-    }
-    input[type=checkbox] {
-        margin-top: 2px;
-        border: 1px solid #8D96A0;
-        margin-right: 8px;
-    }
-    &::last-child {
-        margin-bottom: 0;
-    }
+  margin-bottom: 5px;
+  .qubely-form-field-checkbox-option {
+    color: #535f6a;
+    text-transform: capitalize;
+  }
+  input[type="checkbox"] {
+    margin-top: 2px;
+    border: 1px solid #8d96a0;
+    margin-right: 8px;
+  }
+  &::last-child {
+    margin-bottom: 0;
+  }
 }
-
 
 // dropdown
 .qubely-form-radio {
-    .qubely-form-field-radio-option {
-        margin-bottom: 5px;
-        color: #535F6A;
-        text-transform: capitalize;
-        &:last-child {
-            margin-bottom: 0;
-        }
+  .qubely-form-field-radio-option {
+    margin-bottom: 5px;
+    color: #535f6a;
+    text-transform: capitalize;
+    &:last-child {
+      margin-bottom: 0;
     }
-    input[type=radio] {
-        margin-top: 0;
-        margin-right: 8px;
-    }
+  }
+  input[type="radio"] {
+    margin-top: 0;
+    margin-right: 8px;
+  }
 }

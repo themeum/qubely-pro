@@ -86,7 +86,7 @@ registerBlockType('qubely/testimonialcarousel', {
 		// Space Between Two item.
 		sliderItemsSpace: {
 			type: 'objext',
-			default: {},
+			default: { md: 1, unit: 'px' },
 			style: [{
 				selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
 			}]
@@ -103,10 +103,10 @@ registerBlockType('qubely/testimonialcarousel', {
 		/*------------------------------------
 		* 			Slider Settings 			
 		-------------------------------------- */
-		arrowStyle: { type: 'string', default: 'arrowright' },
+		arrowStyle: { type: 'string', default: 'arrowright2' },
 		horizontalScroll: {
 			type: 'object',
-			default: { md: 0, unit: '%' },
+			default: { md: -70, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} }  ' }
 			]
@@ -135,7 +135,7 @@ registerBlockType('qubely/testimonialcarousel', {
 		},
 		sizeWidth: {
 			type: 'string',
-			default: { md: 12, unit: 'px' },
+			default: { md: 14, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { padding: {{sizeWidth}}; } ' }
 			]
