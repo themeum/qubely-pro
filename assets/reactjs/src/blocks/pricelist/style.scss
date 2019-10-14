@@ -131,6 +131,7 @@
     }
     .qubely-pricelist-description-wrapper {
         flex: 1;
+        align-self: center;
         .qubely-pricelist-description {
             width: 100%;
         }
@@ -142,10 +143,34 @@
         .qubely-pricelist-image-container {
             width: 100%;
             height: 100%;
+            &:before {
+                content: "";
+                left: 0;
+                top: 0;
+                position: absolute;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                transition: ease-in 300ms;
+            }
+            img {
+                position: absolute;
+                width: auto;
+                height: auto;
+                min-width: 100%;
+                max-width: none;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                min-height: 100%;
+            }
         }
         .qubely-pricelist-content {
             position: relative;
-            min-height: 200px;
+            height: 150px;
             .qubely-pricelist-description-wrapper {
                 position: absolute;
                 left: 0;
@@ -169,29 +194,7 @@
             background-repeat: no-repeat;
             background-position: center;
             overflow: hidden;
-            img {
-                position: absolute;
-                width: auto;
-                height: auto;
-                min-width: 100%;
-                max-width: none;
-                left: 50%;
-                top: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-                min-height: 100%;
-            }
-            &:before {
-                content: "";
-                left: 0;
-                top: 0;
-                position: absolute;
-                background: rgba(0, 0, 0, 0.8);
-                z-index: 1;
-                width: 100%;
-                height: 100%;
-            }
+
         }
     }
     .qubely-pricelist-item-center {
