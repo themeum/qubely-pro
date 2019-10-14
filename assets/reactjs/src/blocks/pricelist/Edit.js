@@ -55,7 +55,6 @@ class Edit extends Component {
 		const { attributes: { pricelistContents, contentAlign, headingLevel, mediaType, enableMedia, enableBadge, enablePrice, enableDiscount, enableDescription, enableLine, priceAfterTitle } } = this.props
 		const titleTagName = 'h' + headingLevel;
 		return (pricelistContents.map(({ title, description, image, price, digitText, discount, badge }, index) => {
-
 			return (
 				<div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
                     <Tooltip text={__('Delete this item')}>

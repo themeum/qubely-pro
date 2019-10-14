@@ -41,6 +41,7 @@ registerBlockType('qubely/gallery', {
 				{ title: 'Rich Blocks Collection' },
 				{ title: 'Layout Packs' },
 				{ title: 'Smart Layout Builder' },
+				{ title: 'Smart Gutenberg Builder' },
 			]
         },
         
@@ -51,7 +52,7 @@ registerBlockType('qubely/gallery', {
         },
 		galleryItems: { 
             type: 'number', 
-            default: 5
+            default: 6
         },
 		gutter: {
 			type: 'object',
@@ -128,7 +129,7 @@ registerBlockType('qubely/gallery', {
 		imgBoxShadow: {
 			type: 'object',
 			default: {
-				openShadow: true,
+				openShadow: false,
 				vertical: 3,
 				horizontal: 0,
 				blur: 6,
@@ -268,8 +269,8 @@ registerBlockType('qubely/gallery', {
         overlayBg: {
             type: 'object',
             default: {
-                openColor: 1,
-                type: 'gradient',
+                openColor: 0,
+                type: 'color',
                 color: 'rgba(6, 80, 183, 0.7)',
                 gradient: {
                     color1: 'rgba(6, 80, 183, 0.7)',
@@ -309,7 +310,7 @@ registerBlockType('qubely/gallery', {
                     condition: [
                         { key: 'enableOverlay', relation: '==', value: true }
                     ],
-                    selector: '{{QUBELY}} .qubely-gallery-item:hover .qubely-gallery-image-container:after'
+                    selector: '{{QUBELY}} .qubely-gallery-item .qubely-gallery-image-container:after'
                 }
             ]
         },

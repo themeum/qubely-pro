@@ -25,8 +25,8 @@
             bottom: 0;
             right: 0;
             z-index: 1;
-            -webkit-transition: 400ms;
-            transition: 400ms;
+            -webkit-transition: ease-in 300ms;
+            transition: ease-in 300ms;
         }
         &:after {
             content: " ";
@@ -37,8 +37,8 @@
             right: 0;
             z-index: 1;
             opacity: 0;
-            -webkit-transition: 400ms;
-            transition: 400ms;
+            -webkit-transition: ease-in 300ms;
+            transition: ease-in 300ms;
         }
         .qubely-empty-image {
             display: flex;
@@ -53,7 +53,7 @@
         .qubely-insert-image {
             text-align: center;
             display: inline-block;
-            color: #fff;
+            color: #000;
             text-decoration: none;
             line-height: 1;
             position: relative;
@@ -88,29 +88,23 @@
                     opacity: 0;
                     -webkit-transform: translate3d(0,40px,0);
                     transform: translate3d(0,40px,0);
-                    -webkit-transition: -webkit-transform 400ms;
-                    transition: -webkit-transform 400ms;
-                    transition: transform 400ms;
-                    transition: transform 400ms,-webkit-transform 400ms;
+                    -webkit-transition: ease-in 300ms;
+                    transition: ease-in 300ms;
                 }
             }
         }
         .qubely-gallery-image-zoom-in {
             img {
-                -webkit-transition: -webkit-transform 400ms;
-                transition: -webkit-transform 400ms;
-                transition: transform 400ms;
-                transition: transform 400ms,-webkit-transform 400ms;
+                -webkit-transition: ease-in 300ms;
+                transition: ease-in 300ms;
                 -webkit-transform: scale(1);
                 transform: scale(1);
             }
         }
         .qubely-gallery-image-zoom-out {
             img {
-                -webkit-transition: -webkit-transform 400ms;
-                transition: -webkit-transform 400ms;
-                transition: transform 400ms;
-                transition: transform 400ms,-webkit-transform 400ms;
+                -webkit-transition: ease-in 300ms;
+                transition: ease-in 300ms;
                 -webkit-transform: scale(1.2);
                 transform: scale(1.2);
             }
@@ -119,10 +113,8 @@
             img {
                 -webkit-transform: scale(1);
                 transform: scale(1);
-                -webkit-transition: -webkit-transform 400ms;
-                transition: -webkit-transform 400ms;
-                transition: transform 400ms;
-                transition: transform 400ms,-webkit-transform 400ms;
+                -webkit-transition: ease-in 300ms;
+                transition: ease-in 300ms;
             }
         }
         .qubely-gallery-image-slide-left {
@@ -130,10 +122,8 @@
                 max-width: initial;
                 max-height: 100%;
                 width: calc(100% + 50px);
-                -webkit-transition: opacity 400ms,-webkit-transform 400ms;
-                transition: opacity 400ms,-webkit-transform 400ms;
-                transition: opacity 400ms,transform 400ms;
-                transition: opacity 400ms,transform 400ms,-webkit-transform 400ms;
+                -webkit-transition: ease-in 300ms;
+                transition: ease-in 300ms;
                 -webkit-transform: translate3d(-40px,0,0);
                 transform: translate3d(-40px,0,0);
             }
@@ -143,10 +133,8 @@
                 max-width: initial;
                 max-height: 100%;
                 width: calc(100% + 50px);
-                -webkit-transition: opacity 400ms,-webkit-transform 400ms;
-                transition: opacity 400ms,-webkit-transform 400ms;
-                transition: opacity 400ms,transform 400ms;
-                transition: opacity 400ms,transform 400ms,-webkit-transform 400ms;
+                -webkit-transition: ease-in 300ms;
+                transition: ease-in 300ms;
                 -webkit-transform: translate3d(-10px,0,0);
                 transform: translate3d(-10px,0,0);
             }
@@ -155,26 +143,22 @@
             img {
                 -webkit-transform: translate3d(0,20px,0) scale3d(1.2,1.2,1);
                 transform: translate3d(0,20px,0) scale3d(1.2,1.2,1);
-                -webkit-transition: -webkit-transform 400ms;
-                transition: -webkit-transform 400ms;
-                transition: transform 400ms;
-                transition: transform 400ms,-webkit-transform 400ms;
+                -webkit-transition: ease-in 300ms;
+                transition: ease-in 300ms;
             }
         }
         .qubely-gallery-image-slide-top {
             img {
                 -webkit-transform: translate3d(0,-20px,0) scale3d(1.2,1.2,1);
                 transform: translate3d(0,-20px,0) scale3d(1.2,1.2,1);
-                -webkit-transition: -webkit-transform 400ms;
-                transition: -webkit-transform 400ms;
-                transition: transform 400ms;
-                transition: transform 400ms,-webkit-transform 400ms;
+                -webkit-transition: ease-in 300ms;
+                transition: ease-in 300ms;
             }
         }
     }
     .qubely-gallery-item {
-        -webkit-transition: 400ms;
-        transition: 400ms;
+        -webkit-transition: ease-in 300ms;
+        transition: ease-in 300ms;
         &:hover {
             .qubely-gallery-caption-onHover {
                 .qubely-gallery-caption {
