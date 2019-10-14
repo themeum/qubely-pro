@@ -126,23 +126,28 @@ class Edit extends Component {
             <div className="qubely-form-field-types">
                 <div className={`qubely-form-field-tabs`}>
                     <div className={`qubely-form-field-tab${groupField ? '' : ' qubely-active'}`} onClick={() => this.setState({ groupField: false })}>fields</div>
-                    <div className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`} onClick={() => this.setState({ groupField: true })}>advanced</div>
+                    <div className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`} onClick={() => this.setState({ groupField: true })}>Columns</div>
                 </div>
 
                 {
                     groupField ?
                         <div className="qubely-form-column-options">
                             {
-                                formColumns.map(([columnName, value]) => {
+                                formColumns.map(([columnName, value], index) => {
                                     return (
                                         <div
                                             className="qubely-form-column-option"
                                             onClick={() => {
                                                 innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`))))
                                                 replaceInnerBlocks(clientId, innerBlocks, false)
+                                                this.setState({ groupField: false })
                                             }}
                                         >
-                                            {columnName}
+                                            {Array(index + 1).fill(0).map(() => {
+                                                return (
+                                                    <i style={{ width: `${Math.floor(100 / (index + 1))}%` }}></i>
+                                                )
+                                            })}
                                         </div>
                                     )
                                 })

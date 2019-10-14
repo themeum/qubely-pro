@@ -95,7 +95,34 @@
     }
   }
   .qubely-form-column-options {
-    display: flex;
+    width: 100%;
+    .qubely-form-column-option {
+      width: 25%;
+      cursor: pointer;
+      width: calc(16.66% - 14px);
+      background: transparent;
+      border: none;
+      height: 50px;
+      margin: 7px !important;
+      display: inline-flex;
+      padding: 0 !important;
+      outline: 1px solid transparent;
+      transition: 300ms;
+      opacity: 1;
+      i {
+        height: 50px;
+        background: #e2e6ec;
+        border: 1px solid #e2e6ec;
+        border-radius: 3px;
+        display: inline-block;
+        position: relative;
+        transition: 300ms;
+        font-style: normal;
+      }
+      i:not(:last-of-type) {
+        margin-right: 2px;
+      }
+    }
     .qubely-form-column-option {
       padding: 5px 20px;
     }
