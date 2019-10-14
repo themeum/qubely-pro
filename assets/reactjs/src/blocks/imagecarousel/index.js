@@ -108,10 +108,10 @@ registerBlockType('qubely/imagecarousel', {
 		/*------------------------------------
 		* 			Slider Settings 			
 		-------------------------------------- */
-		arrowStyle: { type: 'string', default: 'arrowright' },
+		arrowStyle: { type: 'string', default: 'arrowright2' },
 		horizontalScroll: {
 			type: 'object',
-			default: { md: 0, unit: '%' },
+			default: { md: -78, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} }  ' }
 			]
@@ -119,9 +119,9 @@ registerBlockType('qubely/imagecarousel', {
 		// arrowPosition: {type: 'string', default: 'center' },
 		arrowPosition: {
 			type: 'object',
-			default: { md: 49, unit: '%' },
+			default: { md: 50, unit: '%' },
 			style: [
-				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { bottom: {{arrowPosition}}; } ' }
+				{ selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control { top: {{arrowPosition}}; } ' }
 			]
 		},
 		cornerRadius: {
@@ -140,7 +140,7 @@ registerBlockType('qubely/imagecarousel', {
 		},
 		sizeWidth: {
 			type: 'object',
-			default: { md: 12, unit: 'px' },
+			default: { md: 14, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { padding: {{sizeWidth}}; } ' }
 			]
@@ -190,6 +190,15 @@ registerBlockType('qubely/imagecarousel', {
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover' }]
 		},
 		// Dot Navigation.
+		dotsposition: {
+			type: 'string',
+			default: { md: 0, unit: 'px' },
+			style: [
+				{ 
+					selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul { margin-top: {{dotsposition}} }' 
+				}
+			]
+		},
 		dotwidth: {
 			type: 'string',
 			default: { md: 30, unit: 'px' },

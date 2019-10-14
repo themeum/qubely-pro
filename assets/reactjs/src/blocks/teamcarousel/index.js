@@ -109,7 +109,7 @@ registerBlockType('qubely/teamcarousel', {
 		/*------------------------------------
 		* 			Slider Settings 			
 		-------------------------------------- */
-		arrowStyle: { type: 'string', default: 'arrowright' },
+		arrowStyle: { type: 'string', default: 'arrowright2' },
 		horizontalScroll: {
 			type: 'object',
 			default: { md: 0, unit: '%' },
@@ -156,7 +156,7 @@ registerBlockType('qubely/teamcarousel', {
 		},
 		sizeWidth: {
 			type: 'string',
-			default: { md: 12, unit: 'px' },
+			default: { md: 14, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { padding: {{sizeWidth}}; } ' }
 			]

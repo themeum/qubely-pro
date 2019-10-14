@@ -307,10 +307,8 @@ class Edit extends Component {
 			overlayBg,
 			overlayHoverBg,
 			overlayBlend,
-			sliderMargin
-
-			//textColor, bgBorderRadius, border, boxShadow,
-			//boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, 
+			sliderMargin,
+			dotsposition
 			
 		} } = this.props
 
@@ -379,7 +377,6 @@ class Edit extends Component {
 								{ value: 2, svg: icons.imagecarousel_2, label: __('Layout 2') },
 								{ value: 3, svg: icons.imagecarousel_3, label: __('Layout 3') },
 								{ value: 4, svg: icons.imagecarousel_4, label: __('Layout 4') },
-								// { value: 5, svg: icons.imagecarousel_5, label: __('Layout 6') },
 								{ value: 6, svg: icons.imagecarousel_6, label: __('Layout 5') }
 							]}
 							value={layout} onChange={val => setAttributes({ layout: val })}
@@ -533,13 +530,21 @@ class Edit extends Component {
 						{dots &&
 							<Fragment>
 								<Range
+									label={__('Dot Position')}
+									value={dotsposition} onChange={(value) => setAttributes({ dotsposition: value })}
+									min={-20} max={200}
+									responsive unit={['px', 'em', '%']}
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+								<Range
 									label={__('Dot Width')}
 									value={dotwidth} onChange={(value) => setAttributes({ dotwidth: value })}
 									min={1} max={100}
 									responsive unit={['px', 'em', '%']}
 									device={device}
 									onDeviceChange={value => this.setState({ device: value })}
-								/>
+								/> 
 								<Range
 									label={__('Dot Height')}
 									value={dotHeight} onChange={(value) => setAttributes({ dotHeight: value })}
