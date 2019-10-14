@@ -519,7 +519,6 @@ class Edit extends Component {
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
-                                // templateLock="insert"
                                 // templateLock={false}
                                 allowedBlocks={['qubely/formfield-row']}
                                 template={

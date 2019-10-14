@@ -1470,7 +1470,6 @@ var Edit = function (_Component) {
                             'form',
                             { className: 'qubely-form is-' + inputSize },
                             React.createElement(InnerBlocks
-                            // templateLock="insert"
                             // templateLock={false}
                             , { allowedBlocks: ['qubely/formfield-row'],
                                 template: formItems.map(function (_ref5) {
