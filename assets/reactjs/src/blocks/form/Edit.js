@@ -43,6 +43,7 @@ class Edit extends Component {
             hideDropdown: null,
             newItemType: 'text',
             device: 'md',
+            groupField: false
         }
     }
 
@@ -71,7 +72,7 @@ class Edit extends Component {
         setAttributes({ formItems });
     }
 
-    addNewItem(newFieldType) {
+    addNewItem(fieldName, newFieldType) {
 
         const { clientId, attributes, setAttributes } = this.props
         const { getBlocks } = select('core/block-editor')
@@ -80,7 +81,7 @@ class Edit extends Component {
         const formItems = [...attributes.formItems]
         const newItem = {
             type: newFieldType,
-            label: 'Label',
+            label: fieldName,
             placeholder: '',
             width: 100,
             required: true,
@@ -91,70 +92,18 @@ class Edit extends Component {
         setAttributes({ formItems })
 
         let innerBlocks = [...getBlocks(clientId)]
-
-        // innerBlocks.push(createBlock(`qubely/formfield-${newFieldType}`))
-
-
-        let field = createBlock(`qubely/formfield-${newFieldType}`)
-
-
-        // innerBlocks.push(
-        //     createBlock(
-        //         'core/column',
-        //         {
-        //             colWidth: { md: 50, sm: 50, xs: 100, unit: '%', device: 'md' }
-        //         },
-        //         [field]
-        //     ),
-
-        // )
-
-        innerBlocks.push(
-            createBlock(
-                'qubely/form-row',
-                {
-
-                },
-                [
-                    createBlock(`qubely/form-column`),
-                    createBlock(`qubely/form-column`)
-                ]
-
-            )
-        )
-
+        innerBlocks.push(createBlock('qubely/form-row', {}, [createBlock(`qubely/form-column`, {}, [createBlock(`qubely/formfield-${newFieldType}`)])]))
         replaceInnerBlocks(clientId, innerBlocks, false);
 
     }
 
-    insertOption(index) {
-        const { attributes, setAttributes } = this.props;
-        let formItems = [...attributes.formItems];
-        let activeItem = formItems[index];
-        activeItem.options.push(`Option ${activeItem.options.length + 1}`);
-        formItems[index] = activeItem;
-        setAttributes({ formItems });
-
-    }
-
-    renderLabel = (index, isRequired) => {
-        const { attributes: { formItems } } = this.props
-        return (
-            <label className="qubely-form-label">
-                <RichText
-                    tagName="label"
-                    className="qubely-form-field-label"
-                    value={formItems[index].label}
-                    onChange={val => this.setSettings('label', val, index)}
-                />
-                {isRequired && '*'}
-            </label>
-        )
-    }
 
     renderFormFieldTypes = () => {
-
-        const { hideDropdown } = this.state
+        const { clientId } = this.props
+        const { replaceInnerBlocks } = dispatch('core/block-editor')
+        const { getBlocks } = select('core/block-editor')
+        const { hideDropdown, groupField } = this.state
+        let innerBlocks = [...getBlocks(clientId)]
 
         const formFields = [
             [__('Text'), 'text'],
@@ -167,20 +116,54 @@ class Edit extends Component {
             [__('Time'), 'time'],
             [__('Dropdown'), 'dropdown'],
         ]
+        const formColumns = [
+            [__('Two'), 2],
+            [__('Three'), 3],
+            [__('Four'), 4],
+        ]
+
         return (
             <div className="qubely-form-field-types">
-                {formFields.map(([fieldName, type], index) => {
-                    return (
-                        <div className="qubely-form-field-type"
-                            onClick={() => {
-                                this.addNewItem(type)
-                                hideDropdown && hideDropdown()
-                            }}
-                        >
-                            {fieldName}
+                <div className={`qubely-form-field-tabs`}>
+                    <div className={`qubely-form-field-tab${groupField ? '' : ' qubely-active'}`} onClick={() => this.setState({ groupField: false })}>fields</div>
+                    <div className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`} onClick={() => this.setState({ groupField: true })}>advanced</div>
+                </div>
+
+                {
+                    groupField ?
+                        <div className="qubely-form-column-options">
+                            {
+                                formColumns.map(([columnName, value]) => {
+                                    return (
+                                        <div
+                                            className="qubely-form-column-option"
+                                            onClick={() => {
+                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`))))
+                                                replaceInnerBlocks(clientId, innerBlocks, false)
+                                            }}
+                                        >
+                                            {columnName}
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
-                    )
-                })}
+                        :
+                        formFields.map(([fieldName, type]) => {
+                            return (
+                                <div className="qubely-form-field-type"
+                                    onClick={() => {
+                                        this.addNewItem(fieldName, type)
+                                        hideDropdown && hideDropdown()
+                                    }}
+                                >
+                                    {fieldName}
+                                </div>
+                            )
+                        })
+
+
+                }
             </div>
         )
 
@@ -524,21 +507,22 @@ class Edit extends Component {
                             <InnerBlocks
                                 // templateLock="insert"
                                 // templateLock={false}
-                                allowedBlocks={
-                                    [
-                                        'qubely/formfield-row',
-                                        'qubely/formfield-text',
-                                        'qubely/formfield-number',
-                                        'qubely/formfield-email',
-                                        'qubely/formfield-textarea',
-                                        'qubely/formfield-dropdown',
-                                        'qubely/formfield-radio',
-                                        'qubely/formfield-checkbox',
-                                        'qubely/formfield-date',
-                                        'qubely/formfield-time',
-                                    ]
+                                allowedBlocks={['qubely/formfield-row']}
+                                template={
+                                    formItems.map(({ type, label, options, placeholder, width, required }) => {
+                                        return (
+                                            ['qubely/form-row', {},
+                                                [
+                                                    [`qubely/form-column`, {},
+                                                        [
+                                                            [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }]
+                                                        ]
+                                                    ]
+                                                ]
+                                            ]
+                                        )
+                                    })
                                 }
-                                template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])}
                             />
                         </form>
 

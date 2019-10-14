@@ -106,6 +106,21 @@ export default function Edit(props) {
 
     })
 
+
+    const renderLabel = () => {
+        return (
+            <label className="qubely-form-label">
+                <RichText
+                    placeholder={__('Input label')}
+                    className={`qubely-form-field-label`}
+                    value={label}
+                    onChange={value => setAttributes({ label: value })}
+                />
+                {required && '*'}
+            </label>
+        )
+    }
+
     const updateOptions = (type, index, newValue) => {
         let newOptions = [...options]
         if (type === 'add') {
@@ -565,12 +580,7 @@ export default function Edit(props) {
 
             <div className={`qubely-block-${uniqueId}`}>
                 <div className={`qubely-form-field-wrapper`}>
-                    <RichText
-                        placeholder={__('Input label')}
-                        className={`qubely-form-field-label`}
-                        value={label}
-                        onChange={value => setAttributes({ label: value })}
-                    />
+                    {renderLabel()}
                     {renderInput()}
                 </div>
             </div>

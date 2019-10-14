@@ -57,7 +57,6 @@ class Edit extends Component {
                                 <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
                                     <i className="fas fa-plus-circle"></i>
                                 </div>
-
                             }
                             renderContent={() => this.renderFormFieldTypes()}
                         />

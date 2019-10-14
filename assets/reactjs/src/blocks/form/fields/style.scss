@@ -1,5 +1,10 @@
 .qubely-form-field-wrapper {
   display: flex;
+  display: -ms-flexbox;
+  .qubely-form-label {
+    display: flex;
+    display: -ms-flexbox;
+  }
   .qubely-form-field {
     width: 100%;
     .qubely-form-date-picker {

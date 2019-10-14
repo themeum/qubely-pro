@@ -1,7 +1,7 @@
 
 import './style.scss'
-import Save from './Save'
-import Edit from './Edit'
+import Save from './save'
+import Edit from './edit'
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 
