@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, BlockControls, MediaUpload } = wp.editor
-const { IconList,Inline: { InlineToolbar }, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, Border, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const { IconList,Inline: { InlineToolbar }, Background, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, Border, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator } } = wp.qubelyComponents
 import icons from '../../helpers/icons'
 
 class Edit extends Component {
@@ -52,9 +52,9 @@ class Edit extends Component {
 	}
 
 	renderPricelist = () => {
-		const { attributes: { pricelistContents, contentAlign, headingLevel, enableImage, enableBadge, enablePrice, enableDiscount, enableDescription, enableLine, priceAfterTitle } } = this.props
+		const { attributes: { pricelistContents, contentAlign, headingLevel, mediaType, enableMedia, enableBadge, enablePrice, enableDiscount, enableDescription, enableLine, priceAfterTitle } } = this.props
 		const titleTagName = 'h' + headingLevel;
-		return (pricelistContents.map(({ title, description, image, price, discount, badge }, index) => {
+		return (pricelistContents.map(({ title, description, image, price, digitText, discount, badge }, index) => {
 
 			return (
 				<div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
@@ -62,7 +62,7 @@ class Edit extends Component {
                         <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><i class="fas fa-close"></i></span>
                     </Tooltip>
 					<div className={`qubely-pricelist-content`}>
-						{enableImage == 1 &&
+                        { (enableMedia == 1) && (mediaType =='image') &&
 							<div className={`qubely-pricelist-image-container`}>
 								<div className={`qubely-pricelist-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'}`}>
                                     <MediaUpload
@@ -110,8 +110,21 @@ class Edit extends Component {
                                     }
                                 </div>
 							</div>
-						}
-
+                        }
+                        { (enableMedia == 1) && (mediaType =='digit') &&
+                            <div className="qubely-pricelist-media-digit">
+                                <div className="qubely-pricelist-digit">
+                                    <RichText
+                                        placeholder={__('01')}
+                                        tagName='div'
+                                        className="qubely-pricelist-digit"
+                                        value={digitText}
+                                        onChange={value => this.updatePricelistContent('digitText', value, index)}
+                                        keepPlaceholderOnFocus
+                                    />
+                                </div>
+                            </div>
+                        }
 						<div className="qubely-pricelist-description-wrapper">
                             <div className="qubely-pricelist-description">
                                 <div className="qubely-pricelist-title-wrapper">
@@ -166,7 +179,6 @@ class Edit extends Component {
 			)
 		}))
 	}
-
 	render() {
 		const { setAttributes, attributes: {
 			uniqueId,
@@ -197,7 +209,8 @@ class Edit extends Component {
             lineBorderStyle,
             
             badgePosition,
-			enableImage,
+			enableMedia,
+			mediaType,
 			imagePosition,
             imageBorderRadius,
             imageSize,
@@ -209,6 +222,13 @@ class Edit extends Component {
             badgeTypography,
             badgeBg,
             badgeColor,
+
+            digitColor,
+            digitBg,
+            digitSize,
+            digitBorderRadius,
+            digitSpacing,
+            digitTypography,
 
             enablePrice,
             priceTypography,
@@ -243,17 +263,26 @@ class Edit extends Component {
 					</PanelBody>
 
                     <PanelBody title={__('Price List Layouts')} initialOpen={false}>
-                        <Styles columns={3} value={style} onChange={val => setAttributes({ style: val })}
-							options={[
-								{ value: 1, svg: icons.postgrid_design_1 },
-								{ value: 2, svg: icons.postgrid_design_3 },
-								{ value: 3, svg: icons.postgrid_design_6 },
-							]}
-						/>
+                        { (enableMedia == 1) && (mediaType =='image') ?
+                            <Styles columns={3} value={style} onChange={val => setAttributes({ style: val })}
+                                options={[
+                                    { value: 1, svg: icons.postgrid_design_1 },
+                                    { value: 2, svg: icons.postgrid_design_3 },
+                                    { value: 3, svg: icons.postgrid_design_6 },
+                                ]}
+                            />
+                            : 
+                            <Styles columns={2} value={style} onChange={val => setAttributes({ style: val })}
+                                options={[
+                                    { value: 1, svg: icons.postgrid_design_1 },
+                                    { value: 2, svg: icons.postgrid_design_3 },
+                                ]}
+                            />
+                        }
                         <Alignment label={__('Alignment')} value={contentAlign} onChange={val => setAttributes({ contentAlign: val })} alignmentType="content" disableJustify />
                         { (style != 3) &&
                             <Fragment>
-                                <Color label={__('Background Color')} value={contentBg} onChange={(value) => setAttributes({ contentBg: value })} />
+                                <Background label={__('Background')} sources={['image', 'gradient']} parallax value={contentBg} onChange={val => setAttributes({ contentBg: val })} />
                                 <Toggle label={__('Enable Border')} value={enableContentBorder} onChange={val => setAttributes({ enableContentBorder: val })} />
                                 {(enableContentBorder == 1) &&
                                     <Fragment>
@@ -264,7 +293,7 @@ class Edit extends Component {
                                 }
                             </Fragment>
                         }
-                        {(style === 3) &&
+                        {(enableMedia == 1) && (mediaType =='image') && (style === 3) &&
                         <Tabs>
                             <Tab tabTitle={__('Normal')}>
                                 <ColorAdvanced label={__('Overlay')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
@@ -274,9 +303,10 @@ class Edit extends Component {
                             </Tab>
                         </Tabs>
                         }
-                        {(style === 3) &&
+                        { (enableMedia == 1) && (mediaType =='image') && (style === 3) &&
                             <Range label={__('Height')} value={height} onChange={val => setAttributes({ height: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
                         }
+
                         <BorderRadius label={__('Radius')} value={contentBorderRadius} onChange={val => setAttributes({ contentBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Box-Shadow')} value={contentBoxShadow} onChange={val => setAttributes({ contentBoxShadow: val })} disableInset />
                         <Range label={__('Spacing')} value={contentSpacing} onChange={val => setAttributes({ contentSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -302,7 +332,66 @@ class Edit extends Component {
                         </PanelBody>   
                     }             
 
-					<PanelBody title={__('Content')} initialOpen={false}>
+					<PanelBody title={__('Media')} initialOpen={false}>
+						<Toggle label={__('Enable')} value={enableMedia} onChange={val => setAttributes({ enableMedia: val })} />
+                        { (enableMedia==1) &&
+                            <RadioAdvanced label={__('Media Type')} value={mediaType} onChange={(value) => setAttributes({ mediaType: value })}
+                                options={[
+                                    { label: __('Image'), value: 'image', title: __('Image') },
+                                    { label: __('Digit'), value: 'digit', title: __('Digit') }
+                                ]}
+                            />
+                        }
+                        { (enableMedia == 1) && (style != 3) &&
+							<Fragment>
+                                <RadioAdvanced label={__('Position')} value={imagePosition} onChange={(value) => setAttributes({ imagePosition: value })}
+									options={[
+										{ label: __('Left'), value: 'left', title: __('Left') },
+										{ label: __('Top'), value: 'top', title: __('Top') }
+									]}
+								/>
+                                 { (enableMedia == 1) && (mediaType == 'image') &&
+                                 <Fragment>
+								    <Range label={__('Size')} value={imageSize} onChange={val => setAttributes({ imageSize: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    <BorderRadius label={__('Radius')} value={imageBorderRadius} onChange={val => setAttributes({ imageBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    <Range label={__('Spacing')} value={imageSpacing} onChange={val => setAttributes({ imageSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                </Fragment>
+                                }
+							</Fragment>
+						}
+                        { (enableMedia == 1) && (mediaType == 'digit') &&
+							<Fragment>
+                                <Typography label={__('Typography')} value={digitTypography} onChange={val => setAttributes({ digitTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <Color label={__('Color')} value={digitColor} onChange={(value) => setAttributes({ digitColor: value })} />
+                                <Color label={__('Background Color')} value={digitBg} onChange={(value) => setAttributes({ digitBg: value })} />
+								<Range label={__('Size')} value={digitSize} onChange={val => setAttributes({ digitSize: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <BorderRadius label={__('Radius')} value={digitBorderRadius} onChange={val => setAttributes({ digitBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <Range label={__('Spacing')} value={digitSpacing} onChange={val => setAttributes({ digitSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+							</Fragment>
+						}
+					</PanelBody>
+
+                    { (enableMedia == 1) && (mediaType =='image') &&
+                        <PanelBody title={__('Badge')} initialOpen={false}>
+                            <Toggle label={__('Enable')} value={enableBadge} onChange={val => setAttributes({ enableBadge: val })} />
+                            {enableBadge == 1 &&
+                                <Fragment>
+                                    <RadioAdvanced label={__('Position')} value={badgePosition} onChange={(value) => setAttributes({ badgePosition: value })}
+                                        options={[
+                                            { label: __('Left Top'), value: 'left', title: __('Left Top') },
+                                            { label: __('Right Top'), value: 'right', title: __('Right Top') }
+                                        ]}
+                                    />
+                                    <Color label={__('Color')} value={badgeColor} onChange={(value) => setAttributes({ badgeColor: value })} />
+                                    <Color label={__('Background Color')} value={badgeBg} onChange={(value) => setAttributes({ badgeBg: value })} />
+                                    <BorderRadius label={__('Radius')} value={badgeBorderRadius} onChange={val => setAttributes({ badgeBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    <Padding label={__('Padding')} value={badgePadding} onChange={val => setAttributes({ badgePadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} /> 
+                                </Fragment>
+                            }
+                        </PanelBody>
+                    }
+
+                    <PanelBody title={__('Content')} initialOpen={false}>
 						<Headings label={__('Heading Tag')} selectedLevel={headingLevel} onChange={(value) => setAttributes({ headingLevel: value })} />
 						<Typography label={__('Heading Typography')} value={headingTypography} onChange={val => setAttributes({ headingTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Color label={__('Heading Color')} value={headingColor} onChange={(value) => setAttributes({ headingColor: value })} />
@@ -334,42 +423,6 @@ class Edit extends Component {
 							</Fragment>
                         }
                         
-					</PanelBody>
-
-					<PanelBody title={__('Image')} initialOpen={false}>
-						<Toggle label={__('Enable')} value={enableImage} onChange={val => setAttributes({ enableImage: val })} />
-						{ (enableImage == 1) && (style != 3) &&
-							<Fragment>
-                                <RadioAdvanced label={__('Position')} value={imagePosition} onChange={(value) => setAttributes({ imagePosition: value })}
-									options={[
-										{ label: __('Left'), value: 'left', title: __('Left') },
-										{ label: __('Top'), value: 'top', title: __('Top') }
-									]}
-								/>
-								<Range label={__('Size')} value={imageSize} onChange={val => setAttributes({ imageSize: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <BorderRadius label={__('Radius')} value={imageBorderRadius} onChange={val => setAttributes({ imageBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Range label={__('Spacing')} value={imageSpacing} onChange={val => setAttributes({ imageSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
-							</Fragment>
-						}
-					</PanelBody>
-
-					<PanelBody title={__('Badge')} initialOpen={false}>
-						<Toggle label={__('Enable')} value={enableBadge} onChange={val => setAttributes({ enableBadge: val })} />
-						{enableBadge == 1 &&
-							<Fragment>
-								<RadioAdvanced label={__('Position')} value={badgePosition} onChange={(value) => setAttributes({ badgePosition: value })}
-									options={[
-										{ label: __('Left Top'), value: 'left', title: __('Left Top') },
-										{ label: __('Right Top'), value: 'right', title: __('Right Top') }
-									]}
-								/>
-                                <Typography label={__('Typography')} value={badgeTypography} onChange={val => setAttributes({ badgeTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Color label={__('Color')} value={badgeColor} onChange={(value) => setAttributes({ badgeColor: value })} />
-                                <Color label={__('Background Color')} value={badgeBg} onChange={(value) => setAttributes({ badgeBg: value })} />
-                                <BorderRadius label={__('Radius')} value={badgeBorderRadius} onChange={val => setAttributes({ badgeBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Padding label={__('Padding')} value={badgePadding} onChange={val => setAttributes({ badgePadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} /> 
-							</Fragment>
-						}
 					</PanelBody>
 
 				</InspectorControls>
