@@ -307,6 +307,7 @@ class Edit extends Component {
 			overlayBg,
 			overlayHoverBg,
 			overlayBlend,
+			sliderMargin
 
 			//textColor, bgBorderRadius, border, boxShadow,
 			//boxShadowHover, sliderNumber, itemPerSlides, infiniteLoop, 
@@ -321,7 +322,7 @@ class Edit extends Component {
 			center: (layout == 3 || layout == 4) ? isCentered : notCentered,
 			nav: nav,
 			dots: dots,
-			margin: 10,
+			margin: sliderMargin,
 			speed: speed,
 			interval: interval,
 			arrowStyle: arrowStyle,
@@ -411,6 +412,14 @@ class Edit extends Component {
 							/>
 						}
 
+						<Range
+							label={__('Margin')}
+							min={0}
+							max={80}
+							value={sliderMargin}
+							onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
+						/>
+ 
 						{ (layout != 6 && layout != 1) &&
 							<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
 						}

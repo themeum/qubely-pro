@@ -33,7 +33,10 @@ registerBlockType('qubely/imagecarousel', {
 		dotIndicator: { type: 'boolean', default: true },
 		interval: { type: 'number', default: 3000 },
 		speed: { type: 'number', default: 800 },
-		
+		sliderMargin: {
+			type: 'number',
+			default: 30,
+		},
 		nav: { type: 'boolean', default: true },
 		dots: { type: 'boolean', default: false },
 		centerPadding: { type: 'number', default: 210 },
