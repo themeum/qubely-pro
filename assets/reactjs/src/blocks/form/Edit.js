@@ -146,7 +146,8 @@ class Edit extends Component {
                                         <div
                                             className="qubely-form-column-option"
                                             onClick={() => {
-                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`))))
+                                                let tempWidth = `${Math.floor(100 / (index + 2))}`
+                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom' }))))
                                                 replaceInnerBlocks(clientId, innerBlocks, false)
                                                 this.setState({ groupField: false })
                                             }}

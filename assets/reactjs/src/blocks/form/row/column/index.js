@@ -1,5 +1,5 @@
 
-import './style.scss'
+// import './style.scss'
 import Save from './save'
 import Edit from './edit'
 const { __ } = wp.i18n

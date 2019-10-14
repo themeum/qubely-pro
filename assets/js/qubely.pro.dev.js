@@ -101,21 +101,6 @@ exports.push([module.i, ".qubely-form-field-wrapper {\n  display: flex;\n  displ
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/column/style.scss":
-/*!****************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/column/style.scss ***!
-  \****************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
-// Module
-exports.push([module.i, "", ""]);
-
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/style.scss":
 /*!*********************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/style.scss ***!
@@ -125,7 +110,7 @@ exports.push([module.i, "", ""]);
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-row .editor-inner-blocks > .editor-block-list__layout {\n  display: flex; }\n", ""]);
+exports.push([module.i, ".qubely-form-row > .editor-inner-blocks > .editor-block-list__layout {\n  display: flex; }\n", ""]);
 
 
 
@@ -992,8 +977,9 @@ var Edit = function (_Component) {
                             {
                                 className: 'qubely-form-column-option',
                                 onClick: function onClick() {
+                                    var tempWidth = '' + Math.floor(100 / (index + 2));
                                     innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(function () {
-                                        return createBlock('qubely/form-column');
+                                        return createBlock('qubely/form-column', { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom' });
                                     })));
                                     replaceInnerBlocks(clientId, innerBlocks, false);
                                     _this.setState({ groupField: false });
@@ -3664,8 +3650,6 @@ exports.default = compose([withSelect(function (select, _ref5) {
 "use strict";
 
 
-__webpack_require__(/*! ./style.scss */ "./src/blocks/form/row/column/style.scss");
-
 var _save = __webpack_require__(/*! ./save */ "./src/blocks/form/row/column/save.js");
 
 var _save2 = _interopRequireDefault(_save);
@@ -3676,6 +3660,7 @@ var _edit2 = _interopRequireDefault(_edit);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import './style.scss'
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var parseResponsiveViewPort = wp.qubelyComponents.HelperFunction.parseResponsiveViewPort;
@@ -3816,36 +3801,6 @@ var Save = function (_Component) {
 }(Component);
 
 exports.default = Save;
-
-/***/ }),
-
-/***/ "./src/blocks/form/row/column/style.scss":
-/*!***********************************************!*\
-  !*** ./src/blocks/form/row/column/style.scss ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!../../../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/column/style.scss");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 
