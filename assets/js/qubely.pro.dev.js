@@ -3555,6 +3555,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3563,9 +3565,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Component = wp.element.Component;
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
 var InnerBlocks = wp.editor.InnerBlocks;
 var compose = wp.compose.compose;
+var createBlock = wp.blocks.createBlock;
+var _wp$components = wp.components,
+    Dropdown = _wp$components.Dropdown,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl,
+    Toolbar = _wp$components.Toolbar,
+    TextareaControl = _wp$components.TextareaControl;
 var _wp$data = wp.data,
     select = _wp$data.select,
     dispatch = _wp$data.dispatch,
@@ -3576,30 +3588,74 @@ var Edit = function (_Component) {
     _inherits(Edit, _Component);
 
     function Edit() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Edit);
 
-        return _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.renderFormFieldTypes = function () {
+            var _this$props = _this.props,
+                clientId = _this$props.clientId,
+                hasInnerBlocks = _this$props.hasInnerBlocks,
+                hasChildBlocks = _this$props.hasChildBlocks,
+                insertBlock = _this$props.insertBlock;
+
+
+            var formFields = [[__('Text'), 'text'], [__('Number'), 'number'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Textarea'), 'textarea'], [__('Date'), 'date'], [__('Time'), 'time'], [__('Dropdown'), 'dropdown']];
+            return React.createElement(
+                'div',
+                { className: 'qubely-form-field-types' },
+                formFields.map(function (_ref2, index) {
+                    var _ref3 = _slicedToArray(_ref2, 2),
+                        fieldName = _ref3[0],
+                        type = _ref3[1];
+
+                    return React.createElement(
+                        'div',
+                        { className: 'qubely-form-field-type',
+                            onClick: function onClick() {
+                                return insertBlock(createBlock('qubely/formfield-' + type, {}), undefined, clientId);
+                            }
+                        },
+                        fieldName
+                    );
+                })
+            );
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Edit, [{
         key: 'render',
         value: function render() {
-            var _props = this.props,
-                hasInnerBlocks = _props.hasInnerBlocks,
-                hasChildBlocks = _props.hasChildBlocks;
+            var _this2 = this;
 
-            console.log('hasInnerBlocks : ', hasInnerBlocks);
-            console.log('hasChildBlocks : ', hasChildBlocks);
-            console.log('ButtonBlockAppender : ', React.createElement(InnerBlocks.ButtonBlockAppender, null));
+            var hasInnerBlocks = this.props.hasInnerBlocks;
+
+
             return React.createElement(
                 'div',
                 { className: 'qubely-form-column' },
-                React.createElement(InnerBlocks, {
-                    templateLock: false,
-                    renderAppender: hasInnerBlocks ? undefined : function () {
-                        return React.createElement(InnerBlocks.ButtonBlockAppender, null);
+                hasInnerBlocks ? React.createElement(InnerBlocks, { templateLock: false }) : React.createElement(Dropdown, {
+                    className: "qubely-action-add-form-field",
+                    contentClassName: "qubely-form-field-picker",
+                    position: 'bottom center',
+                    renderToggle: function renderToggle(_ref4) {
+                        var isOpen = _ref4.isOpen,
+                            onToggle = _ref4.onToggle;
+                        return React.createElement(
+                            'div',
+                            { onClick: onToggle, 'aria-expanded': isOpen, className: 'qubely-action-add-form-item' },
+                            React.createElement('i', { className: 'fas fa-plus-circle' })
+                        );
                     },
-                    allowedBlocks: ['core/paragraph', 'core/button', 'qubely/formfield-text']
+                    renderContent: function renderContent() {
+                        return _this2.renderFormFieldTypes();
+                    }
                 })
             );
         }
@@ -3608,8 +3664,8 @@ var Edit = function (_Component) {
     return Edit;
 }(Component);
 
-exports.default = compose([withSelect(function (select, _ref) {
-    var clientId = _ref.clientId;
+exports.default = compose([withSelect(function (select, _ref5) {
+    var clientId = _ref5.clientId;
 
     var _select = select('core/block-editor'),
         getBlock = _select.getBlock;
@@ -9917,11 +9973,11 @@ exports.default = icons;
 "use strict";
 
 
-__webpack_require__(/*! ./blocks/form */ "./src/blocks/form/index.js");
-
 __webpack_require__(/*! ./blocks/form/row */ "./src/blocks/form/row/index.js");
 
 __webpack_require__(/*! ./blocks/form/row/column */ "./src/blocks/form/row/column/index.js");
+
+__webpack_require__(/*! ./blocks/form */ "./src/blocks/form/index.js");
 
 __webpack_require__(/*! ./blocks/form/fields */ "./src/blocks/form/fields/index.js");
 

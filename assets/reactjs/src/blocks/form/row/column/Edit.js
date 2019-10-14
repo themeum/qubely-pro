@@ -1,43 +1,69 @@
-const { Component } = wp.element
+const { __ } = wp.i18n
+const { Component, Fragment } = wp.element
 const { InnerBlocks } = wp.editor
 const { compose } = wp.compose
+const { createBlock } = wp.blocks
+const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { select, dispatch, withSelect, withDispatch } = wp.data
 class Edit extends Component {
 
+    renderFormFieldTypes = () => {
+
+        const { clientId, hasInnerBlocks, hasChildBlocks, insertBlock } = this.props
+
+        const formFields = [
+            [__('Text'), 'text'],
+            [__('Number'), 'number'],
+            [__('Email'), 'email'],
+            [__('Radio'), 'radio'],
+            [__('Checkbox'), 'checkbox'],
+            [__('Textarea'), 'textarea'],
+            [__('Date'), 'date'],
+            [__('Time'), 'time'],
+            [__('Dropdown'), 'dropdown'],
+        ]
+        return (
+            <div className="qubely-form-field-types">
+                {formFields.map(([fieldName, type], index) => {
+                    return (
+                        <div className="qubely-form-field-type"
+                            onClick={() => insertBlock(createBlock(`qubely/formfield-${type}`, {}), undefined, clientId)}
+                        >
+                            {fieldName}
+                        </div>
+                    )
+                })}
+            </div>
+        )
+
+
+    }
+
     render() {
-        const { hasInnerBlocks, hasChildBlocks } = this.props
-        console.log('hasInnerBlocks : ', hasInnerBlocks)
-        console.log('hasChildBlocks : ', hasChildBlocks)
-        console.log('ButtonBlockAppender : ', <InnerBlocks.ButtonBlockAppender />)
+        const { hasInnerBlocks } = this.props
+
         return (
             <div className={`qubely-form-column`}>
-                {/* {
-                    hasInnerBlocks ? */}
-                <InnerBlocks
-                    templateLock={false}
-                    renderAppender={(
-                        hasInnerBlocks ?
-                            undefined :
-                            () => { return <InnerBlocks.ButtonBlockAppender /> }
-                    )}
-                    allowedBlocks={
-                        [
-                            'core/paragraph',
-                            'core/button',
-                            'qubely/formfield-text',
-                            // 'qubely/formfield-number',
-                            // 'qubely/formfield-email',
-                            // 'qubely/formfield-textarea',
-                            // 'qubely/formfield-dropdown',
-                            // 'qubely/formfield-radio',
-                            // 'qubely/formfield-checkbox',
-                            // 'qubely/formfield-date',
-                            // 'qubely/formfield-time',
-                        ]
-                    }
-                />
-                {/* <span>bla bla bla</span>
-                } */}
+
+                {
+                    hasInnerBlocks ?
+                        <InnerBlocks templateLock={false} />
+                        :
+                        <Dropdown
+                            className={"qubely-action-add-form-field"}
+                            contentClassName={"qubely-form-field-picker"}
+                            position="bottom center"
+                            renderToggle={({ isOpen, onToggle }) =>
+                                <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
+                                    <i className="fas fa-plus-circle"></i>
+                                </div>
+
+                            }
+                            renderContent={() => this.renderFormFieldTypes()}
+                        />
+
+                }
+
 
             </div>
         )
