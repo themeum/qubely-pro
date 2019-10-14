@@ -965,7 +965,7 @@ var Edit = function (_Component) {
             return React.createElement(
                 'div',
                 { className: 'qubely-form-field-types' },
-                React.createElement(
+                !groupField && React.createElement(
                     'div',
                     { className: 'qubely-form-field-tabs' },
                     React.createElement(
