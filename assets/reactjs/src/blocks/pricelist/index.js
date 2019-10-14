@@ -39,8 +39,7 @@ registerBlockType('qubely/pricelist', {
 				{ title: 'Qubely Blocks', digitText: '01', badge: 'Hot',  price: '$20.00', discount: '$10', description: 'Qubely offers a rich collection of highly customizable dedicated Gutenberg blocks.' },
 				{ title: 'Pre-made Sections', digitText: '02', badge: 'Hot', price: '$30.00', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg editor.' },
 				{ title: 'Rich Blocks Collection', digitText: '03',  badge: 'Hot', price: '$40.00', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use even for the beginners.' },
-				{ title: 'Layout Packs', digitText: '04', badge: 'Hot', price: '$50.00', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' },
-				{ title: 'Smart Layout Builder', digitText: '05', badge: 'Hot', price: '$60.00', discount: '$45', description: 'Its row-column structure lets you take 1 to as many as 6 columns in a single row.' },
+				{ title: 'Layout Packs', digitText: '04', badge: 'Hot', price: '$50.00', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' }
 			]
 		},
 
@@ -106,9 +105,11 @@ registerBlockType('qubely/pricelist', {
         },
         contentBg: { 
             type: 'object', 
-            default: { bgimgPosition: 'center center', bgimgSize: 'cover', bgimgRepeat: 'no-repeat', bgDefaultColor: '#f5f5f5' }, 
+            default: {
+				openBg: 1,
+				bgDefaultColor: '#f5f5f5'
+			},
             style: [
-                // { selector: '{{QUBELY}}.qubely-section' }
                 {
                     condition: [
                         { key: 'style', relation: '===', value: '1' }
@@ -123,28 +124,10 @@ registerBlockType('qubely/pricelist', {
                 }
             ] 
         },
-		// contentBg: {
-        //     type: 'string',
-        //     default: '#F9F9F9',
-        //     style: [
-		// 		{
-        //             condition: [
-        //                 { key: 'style', relation: '===', value: '1' }
-		// 			],
-		// 			selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {background-color: {{contentBg}};}'
-        //         },
-        //         {
-        //             condition: [
-        //                 { key: 'style', relation: '===', value: '2' }
-		// 			],
-		// 			selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {background-color: {{contentBg}};}'
-		// 		}
-        //     ]
-        // },
         height: {
 			type: 'object',
 			default: {
-				md: '200',
+				md: '150',
 				unit: 'px'
 			},
 			style: [
@@ -161,7 +144,7 @@ registerBlockType('qubely/pricelist', {
         contentSpacing: {
 			type: 'object',
 			default: {
-				md: 30,
+				md: 20,
 				unit: 'px'
 			},
 			style: [
@@ -175,7 +158,7 @@ registerBlockType('qubely/pricelist', {
 				paddingType: 'global',
 				unit: 'px',
 				global: {
-					md: 30
+					md: 20
 				}
 			},
 			style: [
@@ -273,7 +256,7 @@ registerBlockType('qubely/pricelist', {
                     condition: [
                         { key: 'style', relation: '==', value: '3' }
                     ],
-                    selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+                    selector: '{{QUBELY}} .qubely-pricelist-item .qubely-pricelist-image-container:before'
                 }
             ]
         },
@@ -289,7 +272,7 @@ registerBlockType('qubely/pricelist', {
                     condition: [
                         { key: 'style', relation: '==', value: '3' }
                     ],
-                    selector: '{{QUBELY}} .qubely-block-pricelist:hover .qubely-pricelist-image-container .qubely-pricelist-content-image-editor:before'
+                    selector: '{{QUBELY}} .qubely-pricelist-item:hover .qubely-pricelist-image-container:before'
                 }
             ]
         },

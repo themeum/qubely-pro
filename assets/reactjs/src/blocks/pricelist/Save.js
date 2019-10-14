@@ -15,7 +15,7 @@ class Save extends Component {
                     {( enableMedia == 1 && (mediaType=='image') && (image != undefined && image.url != undefined)) &&
 						<div className={`qubely-pricelist-image-container`}>
 							<img src={image.url} alt={title}/>
-                            {enableBadge &&
+                            {enableBadge && badge &&
                                 <RichText.Content tagName='div' className="qubely-pricelist-badge" value={badge} />
                             }
 						</div>
@@ -35,15 +35,15 @@ class Save extends Component {
                                 <span className="qubely-pricelist-line"></span>
                                 }
                                 <div className="qubely-pricelist-price-wrapper">
-                                    {enableDiscount &&
+                                    {enableDiscount && discount &&
                                         <RichText.Content tagName='div' className="qubely-pricelist-discount" value={discount} />
                                     }
-                                    {enablePrice &&
+                                    {enablePrice && price &&
                                         <RichText.Content tagName='div' className="qubely-pricelist-price" value={price} />
                                     }
                                 </div>
                             </div>
-                            { enableDescription && 
+                            { enableDescription && description &&
                                 <RichText.Content tagName='div' className="qubely-pricelist-introtext" value={description} />
                             }
                         </div>

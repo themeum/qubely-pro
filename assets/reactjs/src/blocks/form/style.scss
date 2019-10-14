@@ -16,11 +16,15 @@
       }
     }
 
-    .editor-inner-blocks.block-editor-inner-blocks {
-      .editor-block-list__layout.block-editor-block-list__layout {
+     .editor-inner-blocks.block-editor-inner-blocks {
+      > .editor-block-list__layout.block-editor-block-list__layout {
         > div:last-child {
           display: none;
         }
+        // .editor-block-list__block-edit.block-editor-block-list__block-edit {
+        //   margin-top: 15px;
+        //   margin-bottom: 15px;
+        // }
       }
     }
   }
@@ -60,6 +64,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    .qubely-form-field-tabs {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      padding: 5px 0px;
+      .qubely-form-field-tab {
+        padding: 5px 30px;
+        width: 45%;
+        &.qubely-active {
+          color: #fff;
+          background-color: #1066cc;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      }
+    }
     .qubely-form-field-type {
       background: #ffffff;
       border: 1px solid #d6d9dd;
@@ -74,12 +94,18 @@
       cursor: pointer;
     }
   }
+  .qubely-form-column-options {
+    display: flex;
+    .qubely-form-column-option {
+      padding: 5px 20px;
+    }
+  }
 }
 
-.qubely-block-form .editor-inner-blocks > .editor-block-list__layout {
-  display: flex;
-  flex-wrap: wrap;
-}
+// .qubely-block-form .editor-inner-blocks > .editor-block-list__layout {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
 //form wrapper
 .qubely-form-field-wrapper {
