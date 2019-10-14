@@ -1,8 +1,7 @@
-.qubely-form-row {
-  .editor-inner-blocks.block-editor-inner-blocks {
-    .editor-block-list__layout.block-editor-block-list__layout {
-      display: flex;
-      flex-wrap: nowrap;
-    }
-  }
+.qubely-form-row .editor-inner-blocks > .editor-block-list__layout {
+  display: flex;
+  // flex-wrap: wrap;
 }
+// .qubely-form-row.qubely-form-frontend{
+//   display: flex;
+// }

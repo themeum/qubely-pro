@@ -44,7 +44,7 @@ registerBlockType('qubely/form-column', {
                     condition: [
                         { key: 'fieldSize', relation: '==', value: 'large' }
                     ],
-                    selector: '{{QUBELY}}.qubely-form-field-front.qubely-large {background-color:red;}'
+                    selector: '{{QUBELY}}.qubely-form-field-front.qubely-large {flex:90%;max-width:90%;}'
                 },
                 {
                     condition: [
@@ -64,6 +64,21 @@ registerBlockType('qubely/form-column', {
                     ],
                     selector: '{{QUBELY}}.qubely-form-field-front.qubely-custom {flex:{{width}};max-width:{{width}};}'
                 },
+            ]
+        },
+        gutter: {
+            type: 'object',
+            default: {
+                md: 10,
+                sm: 10,
+                xs: 10,
+                unit: 'px',
+                device: 'md'
+            },
+            style: [
+                {
+                    selector: '{{QUBELY}}.qubely-form-field-front {margin-right:{{gutter}};}'
+                }
             ]
         },
     },
