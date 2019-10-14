@@ -4,23 +4,29 @@ const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
 
   renderPricelist = () => {
-	const { attributes: { pricelistContents, enableLine, headingLevel, enableImage, contentAlign, enableBadge, enableDiscount, enablePrice, enableDescription, priceAfterTitle } } = this.props
+	const { attributes: { pricelistContents, enableLine, headingLevel, enableMedia, mediaType, contentAlign, enableBadge, enableDiscount, enablePrice, enableDescription, priceAfterTitle } } = this.props
 
 	const titleTagName = 'h' + headingLevel;
 
-    return (pricelistContents.map(({ title, description, image, badge, discount, price }, index) => {
+    return (pricelistContents.map(({ title, description, image, badge, discount, digitText, price }, index) => {
       	return (
 			<div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
 				<div className={`qubely-pricelist-content`}>
-                
-                    {(enableImage == 1 && (image != undefined && image.url != undefined)) &&
+                    {( enableMedia == 1 && (mediaType=='image') && (image != undefined && image.url != undefined)) &&
 						<div className={`qubely-pricelist-image-container`}>
 							<img src={image.url} alt={title}/>
                             {enableBadge &&
                                 <RichText.Content tagName='div' className="qubely-pricelist-badge" value={badge} />
                             }
 						</div>
-					}
+                    }
+                    {( enableMedia == 1) && ( mediaType=='digit' ) && digitText &&
+                        <div className="qubely-pricelist-media-digit">
+                            <div className="qubely-pricelist-digit">
+                                <RichText.Content tagName='div' className="qubely-pricelist-discount" value={digitText} />
+                            </div>
+                        </div>
+                    }
 					<div className="qubely-pricelist-description-wrapper">
                         <div className="qubely-pricelist-description">
                             <div className="qubely-pricelist-title-wrapper">

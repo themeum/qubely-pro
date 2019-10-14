@@ -36,22 +36,22 @@ registerBlockType('qubely/pricelist', {
 		pricelistContents: {
 			type: 'Array',
 			default: [
-				{ title: 'Qubely Blocks', badge: 'Hot',  price: '$20', discount: '$10', description: 'Qubely offers a rich collection of highly customizable dedicated Gutenberg blocks.' },
-				{ title: 'Pre-made Sections', badge: 'Hot', price: '$30', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg editor.' },
-				{ title: 'Rich Blocks Collection',  badge: 'Hot', price: '$40', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use even for the beginners.' },
-				{ title: 'Layout Packs', badge: 'Hot', price: '$50', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' },
-				{ title: 'Smart Layout Builder', badge: 'Hot', price: '$60', discount: '$45', description: 'Its row-column structure lets you take 1 to as many as 6 columns in a single row.' },
+				{ title: 'Qubely Blocks', digitText: '01', badge: 'Hot',  price: '$20.00', discount: '$10', description: 'Qubely offers a rich collection of highly customizable dedicated Gutenberg blocks.' },
+				{ title: 'Pre-made Sections', digitText: '02', badge: 'Hot', price: '$30.00', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg editor.' },
+				{ title: 'Rich Blocks Collection', digitText: '03',  badge: 'Hot', price: '$40.00', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use even for the beginners.' },
+				{ title: 'Layout Packs', digitText: '04', badge: 'Hot', price: '$50.00', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' },
+				{ title: 'Smart Layout Builder', digitText: '05', badge: 'Hot', price: '$60.00', discount: '$45', description: 'Its row-column structure lets you take 1 to as many as 6 columns in a single row.' },
 			]
 		},
 
         // Content
         style: {
 			type: 'number',
-			default: 1,
+			default: 2,
         },
         contentAlign: {
 			type: 'string',
-			default: 'left'
+            default: 'left',
 		},
 		enableContentBorder: {
 			type: 'boolean',
@@ -104,24 +104,43 @@ registerBlockType('qubely/pricelist', {
 				}
 			]
         },
-		contentBg: {
-            type: 'string',
-            default: '#F9F9F9',
+        contentBg: { 
+            type: 'object', 
+            default: { bgimgPosition: 'center center', bgimgSize: 'cover', bgimgRepeat: 'no-repeat', bgDefaultColor: '#f5f5f5' }, 
             style: [
-				{
+                // { selector: '{{QUBELY}}.qubely-section' }
+                {
                     condition: [
                         { key: 'style', relation: '===', value: '1' }
 					],
-					selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {background-color: {{contentBg}};}'
+					selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1}'
                 },
                 {
                     condition: [
                         { key: 'style', relation: '===', value: '2' }
 					],
-					selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {background-color: {{contentBg}};}'
-				}
-            ]
+					selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content' 
+                }
+            ] 
         },
+		// contentBg: {
+        //     type: 'string',
+        //     default: '#F9F9F9',
+        //     style: [
+		// 		{
+        //             condition: [
+        //                 { key: 'style', relation: '===', value: '1' }
+		// 			],
+		// 			selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1 {background-color: {{contentBg}};}'
+        //         },
+        //         {
+        //             condition: [
+        //                 { key: 'style', relation: '===', value: '2' }
+		// 			],
+		// 			selector: '{{QUBELY}} .qubely-pricelist-item-2 .qubely-pricelist-content {background-color: {{contentBg}};}'
+		// 		}
+        //     ]
+        // },
         height: {
 			type: 'object',
 			default: {
@@ -131,8 +150,9 @@ registerBlockType('qubely/pricelist', {
 			style: [
 				{
 					condition: [
-                        { key: 'enableImage', relation: '==', value: true },
-                        { key: 'style', relation: '===', value: '3' }
+                        { key: 'enableMedia', relation: '==', value: true },
+                        { key: 'style', relation: '===', value: '3' },
+                        { key: 'mediaType', relation: '==', value: 'image' }
                     ],
                     selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-content, {{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-3 .qubely-pricelist-image-container .qubely-empty-image {height: {{height}};}'
                 }
@@ -213,7 +233,7 @@ registerBlockType('qubely/pricelist', {
 		contentBoxShadow: {
 			type: 'object',
 			default: {
-				openShadow: true,
+				openShadow: false,
 				vertical: 3,
 				horizontal: 0,
 				blur: 6,
@@ -308,7 +328,7 @@ registerBlockType('qubely/pricelist', {
 		},
 		lineBorderColor: {
 			type: 'string',
-			default: '#F6F7FB',
+			default: '#e5e5e5',
 			style: [
 				{
 					condition: [
@@ -343,7 +363,7 @@ registerBlockType('qubely/pricelist', {
 		headingSpacing: {
 			type: 'object',
 			default: {
-				md: 10,
+				md: 1,
 				unit: 'px'
 			},
 			style: [
@@ -527,15 +547,6 @@ registerBlockType('qubely/pricelist', {
         },
         badgePadding: {
 			type: 'object',
-			// default: {
-			// 	openPadding: 1,
-			// 	paddingType: 'global',
-			// 	unit: 'px',
-			// 	global: {
-			// 		md: 30
-			// 	}
-            // },
-            
             default: {
                 openPadding: 1,
                 paddingType: 'custom',
@@ -556,9 +567,17 @@ registerBlockType('qubely/pricelist', {
 		},
         
         //image
-		enableImage: {
+		// enableImage: {
+		// 	type: 'boolean',
+		// 	default: true,
+		// },
+		enableMedia: {
 			type: 'boolean',
 			default: true,
+		},
+		mediaType: {
+			type: 'string',
+			default: 'image',
 		},
 		imagePosition: {
 			type: 'string',
@@ -566,7 +585,7 @@ registerBlockType('qubely/pricelist', {
 			style: [
                 {
 					condition: [
-                        { key: 'enableImage', relation: '==', value: true },
+                        { key: 'enableMedia', relation: '==', value: true },
                         { key: 'imagePosition', relation: '==', value: 'left' },
                         { key: 'style', relation: '!=', value: '3' }
                     ],
@@ -576,12 +595,20 @@ registerBlockType('qubely/pricelist', {
 		},
 		imageBorderRadius: {
 			type: 'object',
-			default: {},
+			default: {
+				openBorderRadius: 1,
+				radiusType: 'global',
+				global: {
+					md: 5
+				},
+				unit: 'px'
+			},
 			style: [
                 {
 					condition: [
-                        { key: 'enableImage', relation: '==', value: true },
-                        { key: 'style', relation: '!=', value: '3' }
+                        { key: 'enableMedia', relation: '==', value: true },
+                        { key: 'style', relation: '!=', value: '3' },
+                        { key: 'mediaType', relation: '==', value: 'image' }
                     ],
                     selector: '{{QUBELY}} .qubely-pricelist-image-container img'
                 }
@@ -596,8 +623,9 @@ registerBlockType('qubely/pricelist', {
 			style: [
 				{
 					condition: [
-                        { key: 'enableImage', relation: '==', value: true },
-                        { key: 'style', relation: '!=', value: '3' }
+                        { key: 'enableMedia', relation: '==', value: true },
+                        { key: 'style', relation: '!=', value: '3' },
+                        { key: 'mediaType', relation: '==', value: 'image' }
                     ],
                     selector: '{{QUBELY}} .qubely-pricelist-image-container {width: {{imageSize}};}'
                 }
@@ -612,22 +640,149 @@ registerBlockType('qubely/pricelist', {
 			style: [
 				{
 					condition: [
-						{ key: 'enableImage', relation: '==', value: true },
+						{ key: 'enableMedia', relation: '==', value: true },
                         { key: 'imagePosition', relation: '==', value: 'left' },
-                        { key: 'style', relation: '!=', value: '3' }
+                        { key: 'mediaType', relation: '==', value: 'image' },
+                        { key: 'style', relation: '!=', value: '3' },
+                        { key: 'contentAlign', relation: '!=', value: 'left' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-description-wrapper {margin-right: {{imageSpacing}};}'
+                },
+				{
+					condition: [
+						{ key: 'enableMedia', relation: '==', value: true },
+                        { key: 'imagePosition', relation: '==', value: 'left' },
+                        { key: 'mediaType', relation: '==', value: 'image' },
+                        { key: 'style', relation: '!=', value: '3' },
+                        { key: 'contentAlign', relation: '==', value: 'left' }
                     ],
                     selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-right: {{imageSpacing}};}'
                 },
                 {
 					condition: [
-						{ key: 'enableImage', relation: '==', value: true },
+						{ key: 'enableMedia', relation: '==', value: true },
                         { key: 'imagePosition', relation: '==', value: 'top' },
+                        { key: 'mediaType', relation: '==', value: 'image' },
                         { key: 'style', relation: '!=', value: '3' }
                     ],
                     selector: '{{QUBELY}} .qubely-pricelist-image-container {margin-bottom: {{imageSpacing}};}'
                 }
             ]
+        },
+        
+        //digit
+        digitTypography: {
+			type: 'object',
+			default: { openTypography: 1, size: { md: 12, unit: 'px' } },
+			style: [
+				{
+					condition: [
+                        { key: 'enableMedia', relation: '==', value: true },
+                        { key: 'mediaType', relation: '==', value: 'digit' },
+                    ],
+					selector: '{{QUBELY}} .qubely-pricelist-digit'
+				}
+			]
 		},
+        digitColor: {
+			type: 'string',
+			default: '#fff',
+			style: [
+                {
+					condition: [
+                        { key: 'enableMedia', relation: '==', value: true },
+                        { key: 'mediaType', relation: '==', value: 'digit' },
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-digit {color: {{digitColor}};}'
+                }
+            ]
+        },
+        digitBg: {
+			type: 'string',
+			default: '#2184F9',
+			style: [
+                {
+					condition: [
+                        { key: 'enableMedia', relation: '==', value: true },
+                        { key: 'mediaType', relation: '==', value: 'digit' },
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-digit {background: {{digitBg}};}'
+                }
+            ]
+        },
+		digitSize: {
+			type: 'object',
+			default: {
+				md: '40',
+				unit: 'px'
+			},
+			style: [
+				{
+					condition: [
+                        { key: 'enableMedia', relation: '==', value: true },
+                        { key: 'mediaType', relation: '==', value: 'digit' },
+                        { key: 'style', relation: '!=', value: '3' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-digit {text-align:center; width: {{digitSize}};} {{QUBELY}} .qubely-pricelist-digit {height: {{digitSize}};} {{QUBELY}} .qubely-pricelist-digit {line-height: {{digitSize}};}'
+                }
+            ]
+        },
+        digitBorderRadius: {
+			type: 'object',
+			default: {
+				openBorderRadius: 1,
+				radiusType: 'global',
+				global: {
+					md: 100
+				},
+				unit: 'px'
+			},
+			style: [
+                {
+					condition: [
+                        { key: 'enableMedia', relation: '==', value: true },
+                        { key: 'mediaType', relation: '==', value: 'digit' },
+                        { key: 'style', relation: '!=', value: '3' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-digit'
+                }
+            ]
+        },
+        digitSpacing: {
+			type: 'object',
+			default: {
+				md: 15,
+				unit: 'px'
+			},
+			style: [
+                {
+					condition: [
+						{ key: 'enableMedia', relation: '==', value: true },
+                        { key: 'imagePosition', relation: '==', value: 'left' },
+                        { key: 'mediaType', relation: '==', value: 'digit' },
+                        { key: 'contentAlign', relation: '!=', value: 'left' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-description-wrapper {margin-right: {{digitSpacing}};}'
+                },
+				{
+					condition: [
+						{ key: 'enableMedia', relation: '==', value: true },
+                        { key: 'imagePosition', relation: '==', value: 'left' },
+                        { key: 'mediaType', relation: '==', value: 'digit' },
+                        { key: 'contentAlign', relation: '==', value: 'left' }
+                    ],
+                    selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-item .qubely-pricelist-digit {margin-right: {{digitSpacing}};}'
+                },
+                {
+					condition: [
+						{ key: 'enableMedia', relation: '==', value: true },
+                        { key: 'imagePosition', relation: '==', value: 'top' },
+                        { key: 'mediaType', relation: '==', value: 'digit' },
+                    ],
+                    selector: '{{QUBELY}} .qubely-block-pricelist .qubely-pricelist-item .qubely-pricelist-digit {margin-bottom: {{digitSpacing}};}'
+                }
+            ]
+        },
 
 		//
 		pricelistItems: { type: 'number', default: 5 },

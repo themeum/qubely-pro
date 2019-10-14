@@ -6,6 +6,11 @@
             display: block;
           }
         }
+        //digit
+        .qubely-pricelist-digit {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
     &.qubely-pricelist-item-1 {
         .qubely-repeatable-action-remove {
@@ -84,19 +89,41 @@
         -ms-flex-align: center;
         -moz-box-align: center;
         align-items: center;
-        > div:first-child,
-        .qubely-pricelist-title {
-            margin-right: auto;
+    }
+    .qubely-pricelist-item-left {
+        .qubely-pricelist-title-wrapper {
+            > div:first-child,
+            .qubely-pricelist-title {
+                margin-right: auto;
+            }
         }
     }
+    .qubely-pricelist-item-right {
+        .qubely-pricelist-content {
+            flex-direction: row-reverse;
+        }
+        .qubely-pricelist-title-wrapper {
+            flex-direction: row-reverse;
+        }
+        .qubely-pricelist-price-wrapper {
+            margin-left: auto;
+        }
+    }
+    .qubely-pricelist-item-center {
+        .qubely-pricelist-title-wrapper {
+            justify-content: center;
+        }
+        .qubely-pricelist-title-wrapper {
+            > div {
+                margin: 0 30px;
+            }
+        }
+    }
+
     .qubely-pricelist-price-wrapper {
         > div {
             display: inline-block;
         }
-        // > div:first-child {
-        //     margin-right: 10px;
-        //     text-decoration: line-through;
-        // }
         .qubely-pricelist-discount {
             text-decoration: line-through;
             margin-right: 10px;
