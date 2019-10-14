@@ -150,7 +150,21 @@ class Edit extends Component {
 
                         {
                             hasInnerBlocks ?
-                                <InnerBlocks templateLock={false} />
+                                <InnerBlocks
+                                    // allowedBlocks={
+                                    //     [
+                                    //         'qubely/formfield-text',
+                                    //         'qubely/formfield-number',
+                                    //         'qubely/formfield-email',
+                                    //         'qubely/formfield-textarea',
+                                    //         'qubely/formfield-radio',
+                                    //         'qubely/formfield-dropdown',
+                                    //         'qubely/formfield-checkbox',
+                                    //         'qubely/formfield-date',
+                                    //         'qubely/formfield-time',
+                                    //     ]
+                                    // }
+                                />
                                 :
                                 <Dropdown
                                     className={"qubely-action-add-form-field"}

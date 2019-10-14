@@ -3582,7 +3582,21 @@ var Edit = function (_Component) {
                     React.createElement(
                         'div',
                         { className: 'qubely-form-column' },
-                        hasInnerBlocks ? React.createElement(InnerBlocks, { templateLock: false }) : React.createElement(Dropdown, {
+                        hasInnerBlocks ? React.createElement(InnerBlocks
+                        // allowedBlocks={
+                        //     [
+                        //         'qubely/formfield-text',
+                        //         'qubely/formfield-number',
+                        //         'qubely/formfield-email',
+                        //         'qubely/formfield-textarea',
+                        //         'qubely/formfield-radio',
+                        //         'qubely/formfield-dropdown',
+                        //         'qubely/formfield-checkbox',
+                        //         'qubely/formfield-date',
+                        //         'qubely/formfield-time',
+                        //     ]
+                        // }
+                        , null) : React.createElement(Dropdown, {
                             className: "qubely-action-add-form-field",
                             contentClassName: "qubely-form-field-picker",
                             position: 'bottom center',
