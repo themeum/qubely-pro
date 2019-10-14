@@ -36,9 +36,18 @@ export default function Save(props) {
         }
     } = props
 
-    let style;
-    if (Number.isFinite(width)) {
-        style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
+    // let style;
+    // if (Number.isFinite(width)) {
+    //     style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
+    // }
+
+    const renderLabel = () => {
+        return (
+            <label className="qubely-form-label">
+                <RichText.Content value={label} />
+                {required && '*'}
+            </label>
+        )
     }
 
     const renderOptions = () => {
@@ -65,7 +74,7 @@ export default function Save(props) {
 
         return (
             <Fragment>
-                <input className={`qubely-form-field qubely-form-email`} type={'email'} placeholder={__(placeHolder)} required={required}   name={fieldName}/>
+                <input className={`qubely-form-field qubely-form-email`} type={'email'} placeholder={__(placeHolder)} required={required} name={fieldName} />
                 {emailConformation &&
                     <Fragment>
                         <RichText.Content
@@ -87,7 +96,7 @@ export default function Save(props) {
         })
         return (
             <div class="qubely-date-picker-wrapper" data-options={options}>
-                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)}  name={fieldName}/>
+                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} name={fieldName} />
             </div>
         )
     }
@@ -101,7 +110,7 @@ export default function Save(props) {
         )
         return (
             <Fragment>
-                <input type="text" className="qubely-time-picker" value={`12 : 00`}  name={fieldName} />
+                <input type="text" className="qubely-time-picker" value={`12 : 00`} name={fieldName} />
                 <div className={`qubely-form-timepicker`} data-options={options}>
 
                     <div className={`qubely-timePicker-hour`}>
@@ -151,10 +160,10 @@ export default function Save(props) {
             <Fragment>
                 {
                     type === 'textarea' ?
-                        <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)}  name={fieldName} required={required} />
+                        <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)} name={fieldName} required={required} />
                         :
                         type === 'dropdown' ?
-                            <select className={`qubely-form-field qubely-form-${type}`}  name={fieldName} >
+                            <select className={`qubely-form-field qubely-form-${type}`} name={fieldName} >
                                 {options.map(option => <option value={option}>{option}</option>)}
                             </select>
                             :
@@ -170,16 +179,18 @@ export default function Save(props) {
                                         type === 'email' ?
                                             renderEmailField()
                                             :
-                                            <input className={`qubely-form-field qubely-form-${type}`} type={type}  name={fieldName} placeholder={__(placeHolder)} required={required} />
+                                            <input className={`qubely-form-field qubely-form-${type}`} type={type} name={fieldName} placeholder={__(placeHolder)} required={required} />
                 }
             </Fragment>
         )
     }
 
     return (
-        <div className={`qubely-block-${uniqueId}`} style={style}>
+        // <div className={`qubely-block-${uniqueId}`} style={style}>
+        <div className={`qubely-block-${uniqueId}`}>
             <div className={`qubely-form-field-wrapper`}>
-                <RichText.Content tagName={'label'} className={`qubely-form-field-label`} value={label} />
+
+                {renderLabel()}
                 {renderInput()}
             </div>
         </div>

@@ -1,6 +1,7 @@
 const { __ } = wp.i18n
 const { createBlock } = wp.blocks
-const { select, dispatch } = wp.data
+const { compose } = wp.compose
+const { select, dispatch, withSelect, withDispatch } = wp.data
 const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.editor
 const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { Component, Fragment } = wp.element
@@ -42,8 +43,8 @@ class Edit extends Component {
             hideDropdown: null,
             newItemType: 'text',
             device: 'md',
+            groupField: false
         }
-        this.removeItem = this.removeItem.bind(this);
     }
 
     componentDidMount() {
@@ -71,7 +72,7 @@ class Edit extends Component {
         setAttributes({ formItems });
     }
 
-    addNewItem(newFieldType) {
+    addNewItem(fieldName, newFieldType) {
 
         const { clientId, attributes, setAttributes } = this.props
         const { getBlocks } = select('core/block-editor')
@@ -80,7 +81,7 @@ class Edit extends Component {
         const formItems = [...attributes.formItems]
         const newItem = {
             type: newFieldType,
-            label: 'Label',
+            label: fieldName,
             placeholder: '',
             width: 100,
             required: true,
@@ -91,76 +92,18 @@ class Edit extends Component {
         setAttributes({ formItems })
 
         let innerBlocks = [...getBlocks(clientId)]
-
-        innerBlocks.push(createBlock(`qubely/formfield-${newFieldType}`))
-
+        innerBlocks.push(createBlock('qubely/form-row', {}, [createBlock(`qubely/form-column`, {}, [createBlock(`qubely/formfield-${newFieldType}`)])]))
         replaceInnerBlocks(clientId, innerBlocks, false);
 
     }
 
-    insertOption(index) {
-        const { attributes, setAttributes } = this.props;
-        let formItems = [...attributes.formItems];
-        let activeItem = formItems[index];
-        activeItem.options.push(`Option ${activeItem.options.length + 1}`);
-        formItems[index] = activeItem;
-        setAttributes({ formItems });
-    }
-
-    moveItem(index, moveTo) {
-        const { attributes, setAttributes } = this.props;
-        const formItems = [...attributes.formItems];
-        const moveIndex = (moveTo == 'left') ? index - 1 : index + 1;
-        const movableItem = formItems[index];
-        formItems[index] = formItems[moveIndex];
-        formItems[moveIndex] = movableItem;
-        this.setState({ selectedItem: moveIndex });
-        setAttributes({ formItems });
-    }
-
-    cloneItem(index) {
-        const { attributes, setAttributes } = this.props;
-        let formItems = [...attributes.formItems];
-        let clonedItem = JSON.parse(JSON.stringify(formItems[index]));
-        formItems.splice(index + 1, 0, clonedItem);
-        setAttributes({ formItems });
-    }
-
-    removeItem(index) {
-        const { selectedItem } = this.state;
-        const { attributes, setAttributes } = this.props;
-        let formItems = [...attributes.formItems];
-        formItems.splice(index, 1);
-        setAttributes({ formItems });
-        if (selectedItem == index);
-        this.setState({ selectedItem: -1 });
-    }
-
-    removeOption(item, option) {
-        const { attributes, setAttributes } = this.props;
-        let formItems = [...attributes.formItems];
-        formItems[item].options.splice(option, 1);
-        setAttributes({ formItems });
-    }
-
-    renderLabel = (index, isRequired) => {
-        const { attributes: { formItems } } = this.props
-        return (
-            <label className="qubely-form-label">
-                <RichText
-                    tagName="label"
-                    className="qubely-form-field-label"
-                    value={formItems[index].label}
-                    onChange={val => this.setSettings('label', val, index)}
-                />
-                {isRequired && '*'}
-            </label>
-        )
-    }
 
     renderFormFieldTypes = () => {
-
-        const { hideDropdown } = this.state
+        const { clientId } = this.props
+        const { replaceInnerBlocks } = dispatch('core/block-editor')
+        const { getBlocks } = select('core/block-editor')
+        const { hideDropdown, groupField } = this.state
+        let innerBlocks = [...getBlocks(clientId)]
 
         const formFields = [
             [__('Text'), 'text'],
@@ -173,25 +116,62 @@ class Edit extends Component {
             [__('Time'), 'time'],
             [__('Dropdown'), 'dropdown'],
         ]
+        const formColumns = [
+            [__('Two'), 2],
+            [__('Three'), 3],
+            [__('Four'), 4],
+        ]
+
         return (
             <div className="qubely-form-field-types">
-                {formFields.map(([fieldName, type], index) => {
-                    return (
-                        <div className="qubely-form-field-type"
-                            onClick={() => {
-                                this.addNewItem(type)
-                                hideDropdown()
-                            }}
-                        >
-                            {fieldName}
+                <div className={`qubely-form-field-tabs`}>
+                    <div className={`qubely-form-field-tab${groupField ? '' : ' qubely-active'}`} onClick={() => this.setState({ groupField: false })}>fields</div>
+                    <div className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`} onClick={() => this.setState({ groupField: true })}>advanced</div>
+                </div>
+
+                {
+                    groupField ?
+                        <div className="qubely-form-column-options">
+                            {
+                                formColumns.map(([columnName, value]) => {
+                                    return (
+                                        <div
+                                            className="qubely-form-column-option"
+                                            onClick={() => {
+                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`))))
+                                                replaceInnerBlocks(clientId, innerBlocks, false)
+                                            }}
+                                        >
+                                            {columnName}
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
-                    )
-                })}
+                        :
+                        formFields.map(([fieldName, type]) => {
+                            return (
+                                <div className="qubely-form-field-type"
+                                    onClick={() => {
+                                        this.addNewItem(fieldName, type)
+                                        hideDropdown && hideDropdown()
+                                    }}
+                                >
+                                    {fieldName}
+                                </div>
+                            )
+                        })
+
+
+                }
             </div>
         )
 
 
     }
+
+
+
     render() {
         const {
             attributes,
@@ -447,9 +427,9 @@ class Edit extends Component {
                                     onChange={val => setAttributes({ formErrorMessage: val })}
                                     help={__('Set your desired message for form submission error. Leave blank for default.')}
                                 />
-                                
+
                                 <Toggle label={__('Enable Captcha')} value={reCaptcha} onChange={val => setAttributes({ reCaptcha: val })} />
-                              
+
                                 {reCaptcha &&
                                     <div>
                                         <TextControl
@@ -527,7 +507,22 @@ class Edit extends Component {
                             <InnerBlocks
                                 // templateLock="insert"
                                 // templateLock={false}
-                                template={formItems.map(({ type, label, options, placeholder, width, required }) => [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }])}
+                                allowedBlocks={['qubely/formfield-row']}
+                                template={
+                                    formItems.map(({ type, label, options, placeholder, width, required }) => {
+                                        return (
+                                            ['qubely/form-row', {},
+                                                [
+                                                    [`qubely/form-column`, {},
+                                                        [
+                                                            [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }]
+                                                        ]
+                                                    ]
+                                                ]
+                                            ]
+                                        )
+                                    })
+                                }
                             />
                         </form>
 
@@ -561,11 +556,34 @@ class Edit extends Component {
                             />
                         </div>
                     </div>
+
+
                 </div>
 
             </Fragment>
         );
     }
 }
+export default compose([
+    withSelect((select, ownProps) => {
+        const { clientId } = ownProps
+        const { getBlock, getBlockRootClientId, getBlockAttributes } = select('core/editor')
+        let rootBlockClientId = getBlockRootClientId(clientId)
 
-export default Edit;
+        return {
+
+            rootBlockClientId,
+
+
+        }
+    }),
+    withDispatch((dispatch) => {
+        const { insertBlock, removeBlock, updateBlockAttributes, toggleSelection } = dispatch('core/editor')
+        return {
+            insertBlock,
+            removeBlock,
+            updateBlockAttributes,
+            toggleSelection
+        }
+    }),
+])(Edit)

@@ -101,10 +101,25 @@ export default function Edit(props) {
             dateFormat: dateFormat,
         })
 
-        const currentField = $(`#block-${clientId}`)
-        currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
+        // const currentField = $(`#block-${clientId}`)
+        // currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
 
     })
+
+
+    const renderLabel = () => {
+        return (
+            <label className="qubely-form-label">
+                <RichText
+                    placeholder={__('Input label')}
+                    className={`qubely-form-field-label`}
+                    value={label}
+                    onChange={value => setAttributes({ label: value })}
+                />
+                {required && '*'}
+            </label>
+        )
+    }
 
     const updateOptions = (type, index, newValue) => {
         let newOptions = [...options]
@@ -565,12 +580,7 @@ export default function Edit(props) {
 
             <div className={`qubely-block-${uniqueId}`}>
                 <div className={`qubely-form-field-wrapper`}>
-                    <RichText
-                        placeholder={__('Input label')}
-                        className={`qubely-form-field-label`}
-                        value={label}
-                        onChange={value => setAttributes({ label: value })}
-                    />
+                    {renderLabel()}
                     {renderInput()}
                 </div>
             </div>
