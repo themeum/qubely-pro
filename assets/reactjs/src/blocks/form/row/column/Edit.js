@@ -1,11 +1,48 @@
 const { __ } = wp.i18n
 const { Component, Fragment } = wp.element
-const { InnerBlocks } = wp.editor
+const { InnerBlocks, InspectorControls } = wp.editor
 const { compose } = wp.compose
 const { createBlock } = wp.blocks
 const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { select, dispatch, withSelect, withDispatch } = wp.data
+
+const {
+    Range,
+    RadioAdvanced,
+    CssGenerator: {
+        CssGenerator
+    },
+    HelperFunction: {
+        parseResponsiveViewPort
+    },
+
+} = wp.qubelyComponents
+
 class Edit extends Component {
+
+    componentDidMount() {
+        const { setAttributes, clientId, attributes: { uniqueId } } = this.props
+        const _client = clientId.substr(0, 6)
+        if (!uniqueId) {
+            setAttributes({ uniqueId: _client });
+        } else if (uniqueId && uniqueId != _client) {
+            setAttributes({ uniqueId: _client });
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const {
+            clientId,
+            attributes: {
+                fieldSize,
+                width,
+            }
+        } = this.props
+
+        const currentField = $(`#block-${clientId}`)
+        currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width[parseResponsiveViewPort()] + '%' })
+
+    }
 
     renderFormFieldTypes = () => {
 
@@ -40,31 +77,75 @@ class Edit extends Component {
     }
 
     render() {
-        const { hasInnerBlocks } = this.props
+        const {
+            hasInnerBlocks,
+            setAttributes,
+            attributes,
+            attributes: {
+                uniqueId,
+                fieldSize,
+                width
+            }
+        } = this.props
 
+        if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
+        
         return (
-            <div className={`qubely-form-column`}>
+            <Fragment>
+                <InspectorControls key="inspector">
 
-                {
-                    hasInnerBlocks ?
-                        <InnerBlocks templateLock={false} />
-                        :
-                        <Dropdown
-                            className={"qubely-action-add-form-field"}
-                            contentClassName={"qubely-form-field-picker"}
-                            position="bottom center"
-                            renderToggle={({ isOpen, onToggle }) =>
-                                <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
-                                    <i className="fas fa-plus-circle"></i>
-                                </div>
-                            }
-                            renderContent={() => this.renderFormFieldTypes()}
-                        />
+                    <PanelBody title={__('')} opened={true}>
 
-                }
+                        <RadioAdvanced
+                            label={__('Field Size')}
+                            options={[
+                                { label: 'S', value: 'small', title: 'Small' },
+                                { label: 'M', value: 'medium', title: 'Medium' },
+                                { label: 'L', value: 'large', title: 'Large' },
+                                { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                            ]}
+                            value={fieldSize}
+                            onChange={value => setAttributes({ fieldSize: value })} />
+                        {
+                            fieldSize === 'custom' &&
+                            <Range
+                                min={20}
+                                max={100}
+                                responsive
+                                value={width}
+                                label={__('Width')}
+                                onChange={value => setAttributes({ width: value })}
+                            />
+                        }
+                    </PanelBody>
+                </InspectorControls>
+
+                <div className={`qubely-block-${uniqueId}  qubely-${fieldSize}`}>
+                    <div className={`qubely-form-column`}>
+
+                        {
+                            hasInnerBlocks ?
+                                <InnerBlocks templateLock={false} />
+                                :
+                                <Dropdown
+                                    className={"qubely-action-add-form-field"}
+                                    contentClassName={"qubely-form-field-picker"}
+                                    position="bottom center"
+                                    renderToggle={({ isOpen, onToggle }) =>
+                                        <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
+                                            <i className="fas fa-plus-circle"></i>
+                                        </div>
+                                    }
+                                    renderContent={() => this.renderFormFieldTypes()}
+                                />
+
+                        }
 
 
-            </div>
+                    </div>
+
+                </div>
+            </Fragment>
         )
     }
 }

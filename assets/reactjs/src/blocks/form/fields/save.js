@@ -36,10 +36,10 @@ export default function Save(props) {
         }
     } = props
 
-    let style;
-    if (Number.isFinite(width)) {
-        style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
-    }
+    // let style;
+    // if (Number.isFinite(width)) {
+    //     style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
+    // }
 
     const renderLabel = () => {
         return (
@@ -186,7 +186,8 @@ export default function Save(props) {
     }
 
     return (
-        <div className={`qubely-block-${uniqueId}`} style={style}>
+        // <div className={`qubely-block-${uniqueId}`} style={style}>
+        <div className={`qubely-block-${uniqueId}`}>
             <div className={`qubely-form-field-wrapper`}>
 
                 {renderLabel()}

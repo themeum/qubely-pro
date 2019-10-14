@@ -17,16 +17,7 @@ const registerBlock = (block) => {
 
     registerBlockType(blockName, {
         ...settings,
-        getEditWrapperProps(attributes) {
-            const { fieldSize, width } = attributes;
-            if (Number.isFinite(width)) {
-                return {
-                    style: {
-                        width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%',
-                    }
-                }
-            }
-        },
+      
     })
 };
 

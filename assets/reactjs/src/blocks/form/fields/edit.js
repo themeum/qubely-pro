@@ -101,8 +101,8 @@ export default function Edit(props) {
             dateFormat: dateFormat,
         })
 
-        const currentField = $(`#block-${clientId}`)
-        currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
+        // const currentField = $(`#block-${clientId}`)
+        // currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
 
     })
 

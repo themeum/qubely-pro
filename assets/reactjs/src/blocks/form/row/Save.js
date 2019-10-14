@@ -2,9 +2,12 @@ const { Component } = wp.element
 const { InnerBlocks } = wp.editor
 class Save extends Component {
     render() {
+        const { attributes: { uniqueId } } = this.props
         return (
-            <div className={`qubely-form-row`}>
-                <InnerBlocks.Content />
+            <div className={`qubely-block-${uniqueId}`}>
+                <div className={`qubely-form-row`}>
+                    <InnerBlocks.Content />
+                </div>
             </div>
         )
     }
