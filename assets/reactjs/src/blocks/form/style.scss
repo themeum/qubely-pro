@@ -99,7 +99,7 @@
     .qubely-form-column-option {
       width: 25%;
       cursor: pointer;
-      width: calc(16.66% - 14px);
+      width: 26%;
       background: transparent;
       border: none;
       height: 50px;
@@ -109,6 +109,7 @@
       outline: 1px solid transparent;
       transition: 300ms;
       opacity: 1;
+      padding: 5px 20px;
       i {
         height: 50px;
         background: #e2e6ec;
@@ -122,9 +123,6 @@
       i:not(:last-of-type) {
         margin-right: 2px;
       }
-    }
-    .qubely-form-column-option {
-      padding: 5px 20px;
     }
   }
 }

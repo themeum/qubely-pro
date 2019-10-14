@@ -143,9 +143,9 @@ class Edit extends Component {
                                                 this.setState({ groupField: false })
                                             }}
                                         >
-                                            {Array(index + 1).fill(0).map(() => {
+                                            {Array(index + 2).fill(0).map(() => {
                                                 return (
-                                                    <i style={{ width: `${Math.floor(100 / (index + 1))}%` }}></i>
+                                                    <i onClick={() => hideDropdown && hideDropdown()} style={{ width: `${Math.floor(100 / (index + 1))}%` }} />
                                                 )
                                             })}
                                         </div>
