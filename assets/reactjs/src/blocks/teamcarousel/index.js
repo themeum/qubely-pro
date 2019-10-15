@@ -116,15 +116,8 @@ registerBlockType('qubely/teamcarousel', {
 			default: { md: 0, unit: '%' },
 			style: [
 				{ 
-					selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} }' 
+					selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} }' 
 				}
-			]
-		},
-		horizontalScrollleft: {
-			type: 'object',
-			default: { md: 0, unit: '%' },
-			style: [
-				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScrollleft}} }  ' }
 			]
 		},
 		arrowPosition: {
