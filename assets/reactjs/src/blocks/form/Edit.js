@@ -182,7 +182,40 @@ class Edit extends Component {
 
     }
 
+    renderFormTemplate = () => {
+        const { clientId, attributes: { formItems } } = this.props
+        return (
+            [
+                ['qubely/form-row', { parentClientId: clientId },
+                    [
+                        [`qubely/form-column`, { parentClientId: clientId },
+                            [
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'First Name', placeholder: 'Add first name', width: 'large', required: true }]
+                            ]
+                        ],
+                        [`qubely/form-column`, { parentClientId: clientId },
+                            [
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'Last Name', placeholder: 'Add last name', width: 'large', required: true }]
+                            ]
+                        ],
+                    ]
+                ],
+                ...formItems.map(({ type, label, options, placeholder, width, required }) => {
+                    return (
+                        ['qubely/form-row', { parentClientId: clientId },
+                            [
+                                [`qubely/form-column`, { parentClientId: clientId },
+                                    [
+                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required }]
+                                    ]
+                                ]
+                            ]
+                        ]
 
+                    )
+                })]
+        )
+    }
 
     render() {
         const {
@@ -271,6 +304,8 @@ class Edit extends Component {
 
 
         if (uniqueId) { CssGenerator(attributes, 'form', uniqueId); }
+
+
         return (
             <Fragment>
                 <InspectorControls key="inspector">
@@ -520,22 +555,8 @@ class Edit extends Component {
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
-                                allowedBlocks={['qubely/formfield-row','qubely/formfield-column',]}
-                                template={
-                                    formItems.map(({ type, label, options, placeholder, width, required }) => {
-                                        return (
-                                            ['qubely/form-row', { parentClientId: clientId },
-                                                [
-                                                    [`qubely/form-column`, { parentClientId: clientId },
-                                                        [
-                                                            [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required }]
-                                                        ]
-                                                    ],
-                                                ]
-                                            ]
-                                        )
-                                    })
-                                }
+                                allowedBlocks={['qubely/formfield-row', 'qubely/formfield-column',]}
+                                template={this.renderFormTemplate()}
                             />
                         </form>
 
@@ -583,12 +604,7 @@ export default compose([
         const { getBlock, getBlockRootClientId, getBlockAttributes } = select('core/editor')
         let rootBlockClientId = getBlockRootClientId(clientId)
 
-        return {
-
-            rootBlockClientId,
-
-
-        }
+        return { rootBlockClientId }
     }),
     withDispatch((dispatch) => {
         const { insertBlock, removeBlock, updateBlockAttributes, toggleSelection } = dispatch('core/editor')

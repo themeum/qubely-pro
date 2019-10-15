@@ -1013,6 +1013,23 @@ var Edit = function (_Component) {
             );
         };
 
+        _this.renderFormTemplate = function () {
+            var _this$props = _this.props,
+                clientId = _this$props.clientId,
+                formItems = _this$props.attributes.formItems;
+
+            return [['qubely/form-row', { parentClientId: clientId }, [['qubely/form-column', { parentClientId: clientId }, [['qubely/formfield-text', { parentClientId: clientId, type: 'text', label: 'First Name', placeholder: 'Add first name', width: 'large', required: true }]]], ['qubely/form-column', { parentClientId: clientId }, [['qubely/formfield-text', { parentClientId: clientId, type: 'text', label: 'Last Name', placeholder: 'Add last name', width: 'large', required: true }]]]]]].concat(_toConsumableArray(formItems.map(function (_ref5) {
+                var type = _ref5.type,
+                    label = _ref5.label,
+                    options = _ref5.options,
+                    placeholder = _ref5.placeholder,
+                    width = _ref5.width,
+                    required = _ref5.required;
+
+                return ['qubely/form-row', { parentClientId: clientId }, [['qubely/form-column', { parentClientId: clientId }, [['qubely/formfield-' + type, { parentClientId: clientId, type: type, label: label, options: options, placeholder: placeholder, width: width, required: required }]]]]];
+            })));
+        };
+
         _this.state = {
             spacer: true,
             selectedItem: -1,
@@ -1166,6 +1183,7 @@ var Edit = function (_Component) {
             if (uniqueId) {
                 CssGenerator(attributes, 'form', uniqueId);
             }
+
             return React.createElement(
                 Fragment,
                 null,
@@ -1478,16 +1496,7 @@ var Edit = function (_Component) {
                             { className: 'qubely-form is-' + inputSize },
                             React.createElement(InnerBlocks, {
                                 allowedBlocks: ['qubely/formfield-row', 'qubely/formfield-column'],
-                                template: formItems.map(function (_ref5) {
-                                    var type = _ref5.type,
-                                        label = _ref5.label,
-                                        options = _ref5.options,
-                                        placeholder = _ref5.placeholder,
-                                        width = _ref5.width,
-                                        required = _ref5.required;
-
-                                    return ['qubely/form-row', { parentClientId: clientId }, [['qubely/form-column', { parentClientId: clientId }, [['qubely/formfield-' + type, { parentClientId: clientId, type: type, label: label, options: options, placeholder: placeholder, width: width, required: required }]]]]];
-                                })
+                                template: this.renderFormTemplate()
                             })
                         ),
                         React.createElement(
@@ -1554,11 +1563,7 @@ exports.default = compose([withSelect(function (select, ownProps) {
 
     var rootBlockClientId = getBlockRootClientId(clientId);
 
-    return {
-
-        rootBlockClientId: rootBlockClientId
-
-    };
+    return { rootBlockClientId: rootBlockClientId };
 }), withDispatch(function (dispatch) {
     var _dispatch3 = dispatch('core/editor'),
         insertBlock = _dispatch3.insertBlock,
@@ -3552,11 +3557,18 @@ var _wp$qubelyComponents = wp.qubelyComponents,
 
 
 var defaultFormItems = [{
-    type: 'text',
-    label: 'First Name',
-    name: 'first-name',
-    placeholder: 'First Name',
-    width: 50,
+    type: 'email',
+    label: 'Email',
+    name: 'email',
+    placeholder: 'Email',
+    width: 90, required: true,
+    hideLabel: false
+}, {
+    type: 'textarea',
+    label: 'Message',
+    name: 'message',
+    placeholder: 'Message',
+    width: 90,
     required: true,
     hideLabel: false
 }];
