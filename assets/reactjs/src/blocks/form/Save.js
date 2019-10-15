@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { RichText, InnerBlocks } = wp.editor
-const { QubelyButtonSave, HelperFunction: { animationAttr } } = wp.qubelyComponents
+const { QubelyButtonSave, HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
 class Save extends Component {
 
     _encrypt(str) {
@@ -61,10 +61,11 @@ class Save extends Component {
 
     render() {
         const { _encrypt } = this;
-        const { uniqueId, fieldErrorMessage, formSuccessMessage, formErrorMessage, reCaptcha, reCaptchaSiteKey, reCaptchaSecretKey, policyCheckbox, policyCheckboxText, emailReceiver, emailHeaders, emailFrom, emailSubject, emailBody, layout, buttonFillType, buttonSize, buttonText, buttonIconName, buttonIconPosition, buttonTag, animation } = this.props.attributes
+        const { uniqueId, fieldErrorMessage, formSuccessMessage, formErrorMessage, reCaptcha, reCaptchaSiteKey, reCaptchaSecretKey, policyCheckbox, policyCheckboxText, emailReceiver, emailHeaders, emailFrom, emailSubject, emailBody, layout, buttonFillType, buttonSize, buttonText, buttonIconName, buttonIconPosition, buttonTag, animation, interaction } = this.props.attributes
+        const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
         return (
             <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-                <div className={`qubely-block-form qubely-layout-${layout}`}>
+                <div className={`qubely-block-form ${interactionClass} qubely-layout-${layout}`}>
                     <form className="qubely-form">
 
                         <InnerBlocks.Content />

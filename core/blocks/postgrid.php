@@ -1083,6 +1083,10 @@ function register_block_qubely_postgrid_pro()
 					'type' => 'boolean',
 					'default' => true
 				),
+				'interaction' => array(
+					'type' => 'object',
+					'default' => (object) array(),
+				),
 				'animation' => array(
 					'type' => 'object',
 					'default' => (object) array(),
@@ -1152,7 +1156,25 @@ function render_block_qubely_postgrid_pro($att)
 	$categories             = $att['categories'];
 	$tags                   = $att['tags'];
 	$taxonomy               = $att['taxonomy'];
-	$animation 		        = isset($att['animation']) ? 'data-qubelyanimation="'.htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8').'"' : '';
+	$animation 		        = isset($att['animation']) ? ( count((array)$att['animation']) > 0 && $att['animation']['animation']  ? 'data-qubelyanimation="'.htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8').'"' : '' ) : '';
+
+
+	$interaction = '';
+	if(isset($att['interaction'])) {
+		if (!empty($att['interaction'])) {
+			if(isset($att['interaction']['while_scroll_into_view'])) {
+				if($att['interaction']['while_scroll_into_view']['enable']){
+					$interaction = 'qubley-block-interaction';
+				}
+			}
+			if(isset($att['interaction']['mouse_movement'])) {
+				if($att['interaction']['mouse_movement']['enable']) {
+					$interaction = 'qubley-block-interaction';
+				}
+			}
+		}
+	}
+
 
 	$args = array(
 		'post_type' 		=> 'post',
@@ -1196,7 +1218,7 @@ function render_block_qubely_postgrid_pro($att)
     $count = 0;
 	if ($query->have_posts()) {
 		$html .= '<div class="qubely-block-' . $uniqueId . '">';
-		$html .= '<div class="qubely-postgrid-wrapper qubely-postgrid-layout-' . esc_attr($layout) . esc_attr($col) . '" '.$animation.'>';
+		$html .= '<div class="qubely-postgrid-wrapper '.$interaction.' qubely-postgrid-layout-' . esc_attr($layout) . esc_attr($col) . '" '.$animation.'>';
 		while ($query->have_posts()) {
 			$query->the_post();
 			$id = get_post_thumbnail_id();
