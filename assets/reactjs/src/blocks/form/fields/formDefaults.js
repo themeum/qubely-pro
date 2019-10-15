@@ -15,14 +15,6 @@ const FieldDefaults = {
             type: 'string',
             default: null
         },
-        width: {
-            type: 'number',
-            default: 90,
-        },
-        fieldSize: {
-            type: 'string',
-            default: 'large',
-        },
         label: {
             type: 'string',
             default: 'label',

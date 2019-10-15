@@ -124,25 +124,39 @@ class Edit extends Component {
 
         return (
             <div className="qubely-form-field-types">
-                <div className={`qubely-form-field-tabs`}>
-                    <div className={`qubely-form-field-tab${groupField ? '' : ' qubely-active'}`} onClick={() => this.setState({ groupField: false })}>fields</div>
-                    <div className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`} onClick={() => this.setState({ groupField: true })}>advanced</div>
-                </div>
+                {
+                    !groupField &&
+                    <div className={`qubely-form-field-tabs`}>
+                        <div
+                            onClick={() => {
+                                this.setState({ groupField: true })
+                            }}
+                            className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`}
+                        >
+                            Add Column</div>
+                    </div>
+                }
 
                 {
                     groupField ?
                         <div className="qubely-form-column-options">
                             {
-                                formColumns.map(([columnName, value]) => {
+                                formColumns.map(([columnName, value], index) => {
                                     return (
                                         <div
                                             className="qubely-form-column-option"
                                             onClick={() => {
-                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`))))
+                                                let tempWidth = `${Math.floor(100 / (index + 2))}`
+                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom' }))))
                                                 replaceInnerBlocks(clientId, innerBlocks, false)
+                                                this.setState({ groupField: false })
                                             }}
                                         >
-                                            {columnName}
+                                            {Array(index + 2).fill(0).map(() => {
+                                                return (
+                                                    <i onClick={() => hideDropdown && hideDropdown()} style={{ width: `${Math.floor(100 / (index + 1))}%` }} />
+                                                )
+                                            })}
                                         </div>
                                     )
                                 })
@@ -505,7 +519,6 @@ class Edit extends Component {
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
-                                // templateLock="insert"
                                 // templateLock={false}
                                 allowedBlocks={['qubely/formfield-row']}
                                 template={

@@ -11,15 +11,11 @@ export default function Save(props) {
         attributes: {
             uniqueId,
             label,
-            fieldSize,
             type,
             options,
-            width,
             placeHolder,
             required,
             columns,
-            hour,
-            minute,
 
             //email
             emailConformation,
@@ -35,11 +31,6 @@ export default function Save(props) {
             fieldName
         }
     } = props
-
-    // let style;
-    // if (Number.isFinite(width)) {
-    //     style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
-    // }
 
     const renderLabel = () => {
         return (

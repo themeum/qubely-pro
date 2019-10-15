@@ -56,8 +56,6 @@ export default function Edit(props) {
         attributes: {
             uniqueId,
             fieldName,
-            fieldSize,
-            width,
             height,
             type,
 
@@ -100,9 +98,6 @@ export default function Edit(props) {
             yearRange: `${year - 50}:${year + 10}`,
             dateFormat: dateFormat,
         })
-
-        // const currentField = $(`#block-${clientId}`)
-        // currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
 
     })
 
@@ -336,31 +331,6 @@ export default function Edit(props) {
                 />
 
                 <Separator />
-
-
-                <RadioAdvanced
-                    label={__('Field Size')}
-                    options={[
-                        { label: 'S', value: 'small', title: 'Small' },
-                        { label: 'M', value: 'medium', title: 'Medium' },
-                        { label: 'L', value: 'large', title: 'Large' },
-                        { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                    ]}
-                    value={fieldSize}
-                    onChange={value => setAttributes({ fieldSize: value })} />
-
-                {
-                    fieldSize === 'custom' &&
-                    <RangeControl
-                        label={__('Percentage width')}
-                        value={width || ''}
-                        onChange={value => setAttributes({ width: value })}
-                        min={25}
-                        max={100}
-                        required
-                        allowReset
-                    />
-                }
             </Fragment>
         )
     }

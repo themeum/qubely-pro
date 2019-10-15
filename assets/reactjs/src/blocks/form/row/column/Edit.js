@@ -3,8 +3,8 @@ const { Component, Fragment } = wp.element
 const { InnerBlocks, InspectorControls } = wp.editor
 const { compose } = wp.compose
 const { createBlock } = wp.blocks
-const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
-const { select, dispatch, withSelect, withDispatch } = wp.data
+const { Dropdown, PanelBody } = wp.components
+const { withSelect, withDispatch } = wp.data
 
 const {
     Range,
@@ -21,13 +21,20 @@ const {
 class Edit extends Component {
 
     componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId } } = this.props
+        const { setAttributes, clientId, attributes: { uniqueId, fieldSize, width, gutter } } = this.props
         const _client = clientId.substr(0, 6)
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
         }
+        const currentField = $(`#block-${clientId}`)
+        currentField.css(
+            {
+                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width[parseResponsiveViewPort()] + '%',
+                marginRight: `${gutter[parseResponsiveViewPort()]}${gutter.unit}`
+            }
+        )
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -36,17 +43,23 @@ class Edit extends Component {
             attributes: {
                 fieldSize,
                 width,
+                gutter
             }
         } = this.props
 
         const currentField = $(`#block-${clientId}`)
-        currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width[parseResponsiveViewPort()] + '%' })
+        currentField.css(
+            {
+                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width[parseResponsiveViewPort()] + '%',
+                marginRight: `${gutter[parseResponsiveViewPort()]}${gutter.unit}`
+            }
+        )
 
     }
 
     renderFormFieldTypes = () => {
 
-        const { clientId, hasInnerBlocks, hasChildBlocks, insertBlock } = this.props
+        const { clientId, insertBlock } = this.props
 
         const formFields = [
             [__('Text'), 'text'],
@@ -84,12 +97,13 @@ class Edit extends Component {
             attributes: {
                 uniqueId,
                 fieldSize,
-                width
+                width,
+                gutter
             }
         } = this.props
 
         if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
-        
+
         return (
             <Fragment>
                 <InspectorControls key="inspector">
@@ -117,6 +131,17 @@ class Edit extends Component {
                                 onChange={value => setAttributes({ width: value })}
                             />
                         }
+
+                        <Range
+                            min={0}
+                            max={60}
+                            responsive
+                            value={gutter}
+                            label={__('Gutter')}
+                            unit={['px', 'em', '%']}
+                            onChange={value => setAttributes({ gutter: value })}
+                        />
+
                     </PanelBody>
                 </InspectorControls>
 
@@ -125,7 +150,21 @@ class Edit extends Component {
 
                         {
                             hasInnerBlocks ?
-                                <InnerBlocks templateLock={false} />
+                                <InnerBlocks
+                                    // allowedBlocks={
+                                    //     [
+                                    //         'qubely/formfield-text',
+                                    //         'qubely/formfield-number',
+                                    //         'qubely/formfield-email',
+                                    //         'qubely/formfield-textarea',
+                                    //         'qubely/formfield-radio',
+                                    //         'qubely/formfield-dropdown',
+                                    //         'qubely/formfield-checkbox',
+                                    //         'qubely/formfield-date',
+                                    //         'qubely/formfield-time',
+                                    //     ]
+                                    // }
+                                />
                                 :
                                 <Dropdown
                                     className={"qubely-action-add-form-field"}
@@ -133,7 +172,10 @@ class Edit extends Component {
                                     position="bottom center"
                                     renderToggle={({ isOpen, onToggle }) =>
                                         <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
-                                            <i className="fas fa-plus-circle"></i>
+                                            <div className="qubely-action-add-form-empty">
+                                                {/* <i className="fas fa-plus-circle"></i> */}
+                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
+                                            </div>
                                         </div>
                                     }
                                     renderContent={() => this.renderFormFieldTypes()}

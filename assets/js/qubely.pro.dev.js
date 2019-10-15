@@ -101,21 +101,6 @@ exports.push([module.i, ".qubely-form-field-wrapper {\n  display: flex;\n  displ
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/column/style.scss":
-/*!****************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/column/style.scss ***!
-  \****************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
-// Module
-exports.push([module.i, "", ""]);
-
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/style.scss":
 /*!*********************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/style.scss ***!
@@ -125,7 +110,7 @@ exports.push([module.i, "", ""]);
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-row .editor-inner-blocks.block-editor-inner-blocks .editor-block-list__layout.block-editor-block-list__layout {\n  display: flex;\n  flex-wrap: nowrap; }\n", ""]);
+exports.push([module.i, ".qubely-form-row > .editor-inner-blocks > .editor-block-list__layout {\n  display: flex; }\n\n.qubely-action-add-form-empty {\n  outline: 1px dashed #8d96a0;\n  width: 100%;\n  color: #555d66;\n  background: rgba(237, 239, 240, 0.8);\n  min-height: 60px;\n  text-align: center;\n  line-height: 60px; }\n  .qubely-action-add-form-empty svg {\n    position: relative;\n    top: 4px;\n    cursor: pointer; }\n", ""]);
 
 
 
@@ -140,7 +125,7 @@ exports.push([module.i, ".qubely-form-row .editor-inner-blocks.block-editor-inne
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form .editor-inner-blocks.block-editor-inner-blocks > .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #f7f8fc;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs {\n    width: 100%;\n    display: flex;\n    justify-content: space-around;\n    padding: 5px 0px; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab {\n      padding: 5px 30px;\n      width: 45%; }\n      .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab.qubely-active {\n        color: #fff;\n        background-color: #1066cc;\n        border-radius: 5px;\n        cursor: pointer; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #ffffff;\n    border: 1px solid #d6d9dd;\n    border-radius: 4px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-form-field-picker .qubely-form-column-options {\n  display: flex; }\n  .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option {\n    padding: 5px 20px; }\n\n.qubely-form-field-wrapper .qubely-form-field-label {\n  margin-bottom: 5px; }\n\n.qubely-form-field-checkbox-option {\n  margin-bottom: 5px; }\n  .qubely-form-field-checkbox-option .qubely-checkbox-option {\n    color: #535F6A;\n    text-transform: capitalize; }\n  .qubely-form-field-checkbox-option input[type=checkbox] {\n    margin-top: 3px;\n    border: 1px solid #8D96A0; }\n  .qubely-form-field-checkbox-option::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-checkbox {\n  margin-bottom: 5px; }\n  .qubely-form-checkbox .qubely-form-field-checkbox-option {\n    color: #535F6A;\n    text-transform: capitalize; }\n  .qubely-form-checkbox input[type=checkbox] {\n    margin-top: 2px;\n    border: 1px solid #8D96A0;\n    margin-right: 8px; }\n  .qubely-form-checkbox::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio .qubely-form-field-radio-option {\n  margin-bottom: 5px;\n  color: #535F6A;\n  text-transform: capitalize; }\n  .qubely-form-radio .qubely-form-field-radio-option:last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio input[type=radio] {\n  margin-top: 0;\n  margin-right: 8px; }\n", ""]);
+exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form .editor-inner-blocks.block-editor-inner-blocks > .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #fff;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs {\n    width: 100%;\n    display: flex;\n    justify-content: space-around;\n    padding: 5px 0px; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab {\n      width: 95%;\n      text-align: center;\n      background: #ffffff;\n      border: 1px solid #d6d9dd;\n      border-radius: 4px;\n      padding: 5px 30px;\n      display: flex;\n      align-items: center;\n      margin: 7px 0px;\n      display: flex;\n      justify-content: center; }\n      .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab.qubely-active {\n        color: #fff;\n        background-color: #1066cc;\n        border-radius: 5px;\n        cursor: pointer; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #f8f8f8;\n    border: 1px solid #e5e5e5;\n    border-radius: 2px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px;\n    transition: 400ms;\n    justify-content: center; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type:hover {\n      background: #e5e5e5; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-form-field-picker .qubely-form-column-options {\n  width: 100%; }\n  .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option {\n    width: 25%;\n    cursor: pointer;\n    width: 26%;\n    background: transparent;\n    border: none;\n    height: 50px;\n    margin: 7px !important;\n    display: inline-flex;\n    padding: 0 !important;\n    outline: 1px solid transparent;\n    transition: 300ms;\n    opacity: 1;\n    padding: 5px 20px; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i {\n      height: 50px;\n      background: #e2e6ec;\n      border: 1px solid #e2e6ec;\n      border-radius: 3px;\n      display: inline-block;\n      position: relative;\n      transition: 300ms;\n      font-style: normal; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i:not(:last-of-type) {\n      margin-right: 2px; }\n\n.qubely-form-field-wrapper .qubely-form-field-label {\n  margin-bottom: 5px; }\n\n.qubely-form-field-checkbox-option {\n  margin-bottom: 5px; }\n  .qubely-form-field-checkbox-option .qubely-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-field-checkbox-option input[type=\"checkbox\"] {\n    margin-top: 3px;\n    border: 1px solid #8d96a0; }\n  .qubely-form-field-checkbox-option::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-checkbox {\n  margin-bottom: 5px; }\n  .qubely-form-checkbox .qubely-form-field-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-checkbox input[type=\"checkbox\"] {\n    margin-top: 2px;\n    border: 1px solid #8d96a0;\n    margin-right: 8px; }\n  .qubely-form-checkbox::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio .qubely-form-field-radio-option {\n  margin-bottom: 5px;\n  color: #535f6a;\n  text-transform: capitalize; }\n  .qubely-form-radio .qubely-form-field-radio-option:last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio input[type=\"radio\"] {\n  margin-top: 0;\n  margin-right: 8px; }\n", ""]);
 
 
 
@@ -965,28 +950,24 @@ var Edit = function (_Component) {
             return React.createElement(
                 'div',
                 { className: 'qubely-form-field-types' },
-                React.createElement(
+                !groupField && React.createElement(
                     'div',
                     { className: 'qubely-form-field-tabs' },
                     React.createElement(
                         'div',
-                        { className: 'qubely-form-field-tab' + (groupField ? '' : ' qubely-active'), onClick: function onClick() {
-                                return _this.setState({ groupField: false });
-                            } },
-                        'fields'
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'qubely-form-field-tab' + (groupField ? ' qubely-active' : ''), onClick: function onClick() {
-                                return _this.setState({ groupField: true });
-                            } },
-                        'advanced'
+                        {
+                            onClick: function onClick() {
+                                _this.setState({ groupField: true });
+                            },
+                            className: 'qubely-form-field-tab' + (groupField ? ' qubely-active' : '')
+                        },
+                        'Add Column'
                     )
                 ),
                 groupField ? React.createElement(
                     'div',
                     { className: 'qubely-form-column-options' },
-                    formColumns.map(function (_ref) {
+                    formColumns.map(function (_ref, index) {
                         var _ref2 = _slicedToArray(_ref, 2),
                             columnName = _ref2[0],
                             value = _ref2[1];
@@ -996,13 +977,19 @@ var Edit = function (_Component) {
                             {
                                 className: 'qubely-form-column-option',
                                 onClick: function onClick() {
+                                    var tempWidth = '' + Math.floor(100 / (index + 2));
                                     innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(function () {
-                                        return createBlock('qubely/form-column');
+                                        return createBlock('qubely/form-column', { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom' });
                                     })));
                                     replaceInnerBlocks(clientId, innerBlocks, false);
+                                    _this.setState({ groupField: false });
                                 }
                             },
-                            columnName
+                            Array(index + 2).fill(0).map(function () {
+                                return React.createElement('i', { onClick: function onClick() {
+                                        return hideDropdown && hideDropdown();
+                                    }, style: { width: Math.floor(100 / (index + 1)) + '%' } });
+                            })
                         );
                     })
                 ) : formFields.map(function (_ref3) {
@@ -1483,7 +1470,6 @@ var Edit = function (_Component) {
                             'form',
                             { className: 'qubely-form is-' + inputSize },
                             React.createElement(InnerBlocks
-                            // templateLock="insert"
                             // templateLock={false}
                             , { allowedBlocks: ['qubely/formfield-row'],
                                 template: formItems.map(function (_ref5) {
@@ -1901,8 +1887,6 @@ function Edit(props) {
         _props$attributes = props.attributes,
         uniqueId = _props$attributes.uniqueId,
         fieldName = _props$attributes.fieldName,
-        fieldSize = _props$attributes.fieldSize,
-        width = _props$attributes.width,
         height = _props$attributes.height,
         type = _props$attributes.type,
         label = _props$attributes.label,
@@ -1935,9 +1919,6 @@ function Edit(props) {
             yearRange: year - 50 + ':' + (year + 10),
             dateFormat: dateFormat
         });
-
-        // const currentField = $(`#block-${clientId}`)
-        // currentField.css({ width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' })
     });
 
     var renderLabel = function renderLabel() {
@@ -2220,25 +2201,7 @@ function Edit(props) {
                 },
                 help: __('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')
             }),
-            React.createElement(Separator, null),
-            React.createElement(RadioAdvanced, {
-                label: __('Field Size'),
-                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
-                value: fieldSize,
-                onChange: function onChange(value) {
-                    return setAttributes({ fieldSize: value });
-                } }),
-            fieldSize === 'custom' && React.createElement(RangeControl, {
-                label: __('Percentage width'),
-                value: width || '',
-                onChange: function onChange(value) {
-                    return setAttributes({ width: value });
-                },
-                min: 25,
-                max: 100,
-                required: true,
-                allowReset: true
-            })
+            React.createElement(Separator, null)
         );
     };
 
@@ -2488,14 +2451,6 @@ var FieldDefaults = {
         type: {
             type: 'string',
             default: null
-        },
-        width: {
-            type: 'number',
-            default: 90
-        },
-        fieldSize: {
-            type: 'string',
-            default: 'large'
         },
         label: {
             type: 'string',
@@ -2904,15 +2859,11 @@ function Save(props) {
     var _props$attributes = props.attributes,
         uniqueId = _props$attributes.uniqueId,
         label = _props$attributes.label,
-        fieldSize = _props$attributes.fieldSize,
         type = _props$attributes.type,
         options = _props$attributes.options,
-        width = _props$attributes.width,
         placeHolder = _props$attributes.placeHolder,
         required = _props$attributes.required,
         columns = _props$attributes.columns,
-        hour = _props$attributes.hour,
-        minute = _props$attributes.minute,
         emailConformation = _props$attributes.emailConformation,
         conformationEmailLabel = _props$attributes.conformationEmailLabel,
         dateFormat = _props$attributes.dateFormat,
@@ -2920,10 +2871,6 @@ function Save(props) {
         timeFormatType = _props$attributes.timeFormatType,
         fieldName = _props$attributes.fieldName;
 
-    // let style;
-    // if (Number.isFinite(width)) {
-    //     style = { width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width + '%' }
-    // }
 
     var renderLabel = function renderLabel() {
         return React.createElement(
@@ -3475,13 +3422,8 @@ var compose = wp.compose.compose;
 var createBlock = wp.blocks.createBlock;
 var _wp$components = wp.components,
     Dropdown = _wp$components.Dropdown,
-    PanelBody = _wp$components.PanelBody,
-    TextControl = _wp$components.TextControl,
-    Toolbar = _wp$components.Toolbar,
-    TextareaControl = _wp$components.TextareaControl;
+    PanelBody = _wp$components.PanelBody;
 var _wp$data = wp.data,
-    select = _wp$data.select,
-    dispatch = _wp$data.dispatch,
     withSelect = _wp$data.withSelect,
     withDispatch = _wp$data.withDispatch;
 var _wp$qubelyComponents = wp.qubelyComponents,
@@ -3507,8 +3449,6 @@ var Edit = function (_Component) {
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.renderFormFieldTypes = function () {
             var _this$props = _this.props,
                 clientId = _this$props.clientId,
-                hasInnerBlocks = _this$props.hasInnerBlocks,
-                hasChildBlocks = _this$props.hasChildBlocks,
                 insertBlock = _this$props.insertBlock;
 
 
@@ -3541,7 +3481,11 @@ var Edit = function (_Component) {
             var _props = this.props,
                 setAttributes = _props.setAttributes,
                 clientId = _props.clientId,
-                uniqueId = _props.attributes.uniqueId;
+                _props$attributes = _props.attributes,
+                uniqueId = _props$attributes.uniqueId,
+                fieldSize = _props$attributes.fieldSize,
+                width = _props$attributes.width,
+                gutter = _props$attributes.gutter;
 
             var _client = clientId.substr(0, 6);
             if (!uniqueId) {
@@ -3549,6 +3493,11 @@ var Edit = function (_Component) {
             } else if (uniqueId && uniqueId != _client) {
                 setAttributes({ uniqueId: _client });
             }
+            var currentField = $('#block-' + clientId);
+            currentField.css({
+                width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width[parseResponsiveViewPort()] + '%',
+                marginRight: '' + gutter[parseResponsiveViewPort()] + gutter.unit
+            });
         }
     }, {
         key: 'componentDidUpdate',
@@ -3557,11 +3506,15 @@ var Edit = function (_Component) {
                 clientId = _props2.clientId,
                 _props2$attributes = _props2.attributes,
                 fieldSize = _props2$attributes.fieldSize,
-                width = _props2$attributes.width;
+                width = _props2$attributes.width,
+                gutter = _props2$attributes.gutter;
 
 
             var currentField = $('#block-' + clientId);
-            currentField.css({ width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width[parseResponsiveViewPort()] + '%' });
+            currentField.css({
+                width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width[parseResponsiveViewPort()] + '%',
+                marginRight: '' + gutter[parseResponsiveViewPort()] + gutter.unit
+            });
         }
     }, {
         key: 'render',
@@ -3575,7 +3528,8 @@ var Edit = function (_Component) {
                 _props3$attributes = _props3.attributes,
                 uniqueId = _props3$attributes.uniqueId,
                 fieldSize = _props3$attributes.fieldSize,
-                width = _props3$attributes.width;
+                width = _props3$attributes.width,
+                gutter = _props3$attributes.gutter;
 
 
             if (uniqueId) {
@@ -3607,6 +3561,17 @@ var Edit = function (_Component) {
                             onChange: function onChange(value) {
                                 return setAttributes({ width: value });
                             }
+                        }),
+                        React.createElement(Range, {
+                            min: 0,
+                            max: 60,
+                            responsive: true,
+                            value: gutter,
+                            label: __('Gutter'),
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ gutter: value });
+                            }
                         })
                     )
                 ),
@@ -3616,7 +3581,21 @@ var Edit = function (_Component) {
                     React.createElement(
                         'div',
                         { className: 'qubely-form-column' },
-                        hasInnerBlocks ? React.createElement(InnerBlocks, { templateLock: false }) : React.createElement(Dropdown, {
+                        hasInnerBlocks ? React.createElement(InnerBlocks
+                        // allowedBlocks={
+                        //     [
+                        //         'qubely/formfield-text',
+                        //         'qubely/formfield-number',
+                        //         'qubely/formfield-email',
+                        //         'qubely/formfield-textarea',
+                        //         'qubely/formfield-radio',
+                        //         'qubely/formfield-dropdown',
+                        //         'qubely/formfield-checkbox',
+                        //         'qubely/formfield-date',
+                        //         'qubely/formfield-time',
+                        //     ]
+                        // }
+                        , null) : React.createElement(Dropdown, {
                             className: "qubely-action-add-form-field",
                             contentClassName: "qubely-form-field-picker",
                             position: 'bottom center',
@@ -3626,7 +3605,15 @@ var Edit = function (_Component) {
                                 return React.createElement(
                                     'div',
                                     { onClick: onToggle, 'aria-expanded': isOpen, className: 'qubely-action-add-form-item' },
-                                    React.createElement('i', { className: 'fas fa-plus-circle' })
+                                    React.createElement(
+                                        'div',
+                                        { className: 'qubely-action-add-form-empty' },
+                                        React.createElement(
+                                            'svg',
+                                            { 'aria-hidden': 'true', role: 'img', focusable: 'false', 'class': 'dashicon dashicons-insert', xmlns: 'http://www.w3.org/2000/svg', width: '20', height: '20', viewBox: '0 0 20 20' },
+                                            React.createElement('path', { d: 'M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z' })
+                                        )
+                                    )
                                 );
                             },
                             renderContent: function renderContent() {
@@ -3684,8 +3671,6 @@ exports.default = compose([withSelect(function (select, _ref5) {
 "use strict";
 
 
-__webpack_require__(/*! ./style.scss */ "./src/blocks/form/row/column/style.scss");
-
 var _save = __webpack_require__(/*! ./save */ "./src/blocks/form/row/column/save.js");
 
 var _save2 = _interopRequireDefault(_save);
@@ -3696,6 +3681,7 @@ var _edit2 = _interopRequireDefault(_edit);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import './style.scss'
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var parseResponsiveViewPort = wp.qubelyComponents.HelperFunction.parseResponsiveViewPort;
@@ -3731,7 +3717,7 @@ registerBlockType('qubely/form-column', {
             },
             style: [{
                 condition: [{ key: 'fieldSize', relation: '==', value: 'large' }],
-                selector: '{{QUBELY}}.qubely-form-field-front.qubely-large {background-color:red;}'
+                selector: '{{QUBELY}}.qubely-form-field-front.qubely-large {flex:90%;max-width:90%;}'
             }, {
                 condition: [{ key: 'fieldSize', relation: '==', value: 'small' }],
                 selector: '{{QUBELY}}.qubely-form-field-front.qubely-small {flex:25%;max-width:25%;}'
@@ -3741,6 +3727,19 @@ registerBlockType('qubely/form-column', {
             }, {
                 condition: [{ key: 'fieldSize', relation: '==', value: 'custom' }],
                 selector: '{{QUBELY}}.qubely-form-field-front.qubely-custom {flex:{{width}};max-width:{{width}};}'
+            }]
+        },
+        gutter: {
+            type: 'object',
+            default: {
+                md: 10,
+                sm: 10,
+                xs: 10,
+                unit: 'px',
+                device: 'md'
+            },
+            style: [{
+                selector: '{{QUBELY}}.qubely-form-field-front {margin-right:{{gutter}};}'
             }]
         }
     },
@@ -3823,36 +3822,6 @@ var Save = function (_Component) {
 }(Component);
 
 exports.default = Save;
-
-/***/ }),
-
-/***/ "./src/blocks/form/row/column/style.scss":
-/*!***********************************************!*\
-  !*** ./src/blocks/form/row/column/style.scss ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!../../../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/blocks/form/row/column/style.scss");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 

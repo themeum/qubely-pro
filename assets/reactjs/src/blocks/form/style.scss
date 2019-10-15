@@ -16,7 +16,7 @@
       }
     }
 
-     .editor-inner-blocks.block-editor-inner-blocks {
+    .editor-inner-blocks.block-editor-inner-blocks {
       > .editor-block-list__layout.block-editor-block-list__layout {
         > div:last-child {
           display: none;
@@ -57,7 +57,7 @@
 
 .qubely-form-field-picker {
   .qubely-form-field-types {
-    background: #f7f8fc;
+    background: #fff;
     box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     padding: 10px;
@@ -70,8 +70,17 @@
       justify-content: space-around;
       padding: 5px 0px;
       .qubely-form-field-tab {
+        width: 95%;
+        text-align: center;
+        background: #ffffff;
+        border: 1px solid #d6d9dd;
+        border-radius: 4px;
         padding: 5px 30px;
-        width: 45%;
+        display: flex;
+        align-items: center;
+        margin: 7px 0px;
+        display: flex;
+        justify-content: center;
         &.qubely-active {
           color: #fff;
           background-color: #1066cc;
@@ -81,83 +90,106 @@
       }
     }
     .qubely-form-field-type {
-      background: #ffffff;
-      border: 1px solid #d6d9dd;
-      border-radius: 4px;
-      padding: 5px 15px;
-      width: 45%;
-      display: flex;
-      align-items: center;
-      margin: 5px 0px;
+        background: #f8f8f8;
+        border: 1px solid #e5e5e5;
+        border-radius: 2px;
+        padding: 5px 15px;
+        width: 45%;
+        display: flex;
+        align-items: center;
+        margin: 5px 0px;
+        transition: 400ms;
+        justify-content: center;
+        &:hover {
+            background: #e5e5e5;
+        }
     }
     & :hover {
       cursor: pointer;
     }
   }
   .qubely-form-column-options {
-    display: flex;
+    width: 100%;
     .qubely-form-column-option {
+      width: 25%;
+      cursor: pointer;
+      width: 26%;
+      background: transparent;
+      border: none;
+      height: 50px;
+      margin: 7px !important;
+      display: inline-flex;
+      padding: 0 !important;
+      outline: 1px solid transparent;
+      transition: 300ms;
+      opacity: 1;
       padding: 5px 20px;
+      i {
+        height: 50px;
+        background: #e2e6ec;
+        border: 1px solid #e2e6ec;
+        border-radius: 3px;
+        display: inline-block;
+        position: relative;
+        transition: 300ms;
+        font-style: normal;
+      }
+      i:not(:last-of-type) {
+        margin-right: 2px;
+      }
     }
   }
 }
 
-// .qubely-block-form .editor-inner-blocks > .editor-block-list__layout {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
-
-//form wrapper
 .qubely-form-field-wrapper {
-    .qubely-form-field-label {
-        margin-bottom: 5px;
-    }
+  .qubely-form-field-label {
+    margin-bottom: 5px;
+  }
 }
 
 //check box
 .qubely-form-field-checkbox-option {
-    margin-bottom: 5px;
-    .qubely-checkbox-option {
-        color: #535F6A;
-        text-transform: capitalize;
-    }
-    input[type=checkbox] {
-        margin-top: 3px;
-        border: 1px solid #8D96A0;
-    }
-    &::last-child {
-        margin-bottom: 0;
-    }
+  margin-bottom: 5px;
+  .qubely-checkbox-option {
+    color: #535f6a;
+    text-transform: capitalize;
+  }
+  input[type="checkbox"] {
+    margin-top: 3px;
+    border: 1px solid #8d96a0;
+  }
+  &::last-child {
+    margin-bottom: 0;
+  }
 }
 .qubely-form-checkbox {
-    margin-bottom: 5px;
-    .qubely-form-field-checkbox-option {
-        color: #535F6A;
-        text-transform: capitalize;
-    }
-    input[type=checkbox] {
-        margin-top: 2px;
-        border: 1px solid #8D96A0;
-        margin-right: 8px;
-    }
-    &::last-child {
-        margin-bottom: 0;
-    }
+  margin-bottom: 5px;
+  .qubely-form-field-checkbox-option {
+    color: #535f6a;
+    text-transform: capitalize;
+  }
+  input[type="checkbox"] {
+    margin-top: 2px;
+    border: 1px solid #8d96a0;
+    margin-right: 8px;
+  }
+  &::last-child {
+    margin-bottom: 0;
+  }
 }
-
 
 // dropdown
 .qubely-form-radio {
-    .qubely-form-field-radio-option {
-        margin-bottom: 5px;
-        color: #535F6A;
-        text-transform: capitalize;
-        &:last-child {
-            margin-bottom: 0;
-        }
+  .qubely-form-field-radio-option {
+    margin-bottom: 5px;
+    color: #535f6a;
+    text-transform: capitalize;
+    &:last-child {
+      margin-bottom: 0;
     }
-    input[type=radio] {
-        margin-top: 0;
-        margin-right: 8px;
-    }
+  }
+  input[type="radio"] {
+    margin-top: 0;
+    margin-right: 8px;
+  }
 }
