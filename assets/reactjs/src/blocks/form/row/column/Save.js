@@ -14,7 +14,6 @@ class Save extends Component {
             attributes: {
                 uniqueId,
                 fieldSize,
-                width,
             }
         } = this.props
        

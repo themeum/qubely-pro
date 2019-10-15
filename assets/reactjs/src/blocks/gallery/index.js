@@ -78,8 +78,8 @@ registerBlockType('qubely/gallery', {
 		},
 		column: { 
             type: 'object', 
-            default: 2,
-            default: { md: 2,  sm: 1,  xs: 1, unit: 'px' },
+            default: 3,
+            default: { md: 3,  sm: 1,  xs: 1, unit: 'px' },
         },
 		imgSize: { 
             type: 'string', 

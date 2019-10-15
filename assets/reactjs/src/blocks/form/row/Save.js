@@ -5,7 +5,7 @@ class Save extends Component {
         const { attributes: { uniqueId } } = this.props
         return (
             <div className={`qubely-block-${uniqueId}`}>
-                <div className={`qubely-form-row`}>
+                <div className={`qubely-form-row qubely-frontend`}>
                     <InnerBlocks.Content />
                 </div>
             </div>

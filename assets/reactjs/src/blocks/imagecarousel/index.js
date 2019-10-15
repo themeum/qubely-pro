@@ -193,10 +193,10 @@ registerBlockType('qubely/imagecarousel', {
 		// Dot Navigation.
 		dotsposition: {
 			type: 'string',
-			default: { md: 0, unit: 'px' },
+			default: { md: 80, unit: 'px' },
 			style: [
 				{ 
-					selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul { margin-top: {{dotsposition}} }' 
+					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul { margin-top: {{dotsposition}} }' 
 				}
 			]
 		},
@@ -227,6 +227,45 @@ registerBlockType('qubely/imagecarousel', {
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator' }
 			]
 		},
+
+		/*------------------------------------
+		* 			Media 
+		* ------------------------------------ */
+		carouselImageSize: {
+			type: 'string',
+			default: '1140px',
+			style: [
+				{ 
+					condition: [
+						{ key: 'carouselImageSize', relation: '!=', value: 'custom' }
+					],
+					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img { display: inline-block; width: {{carouselImageSize}}; height: auto; }'
+				}
+			]
+		},
+		imageWidth: { 
+			type: 'string', 
+			default: { md: 100, unit: '%' }, 
+			style: [
+				{ 
+					condition: [
+						{ key: 'carouselImageSize', relation: '==', value: 'custom' }
+					], 
+					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {width: {{imageWidth}};}' 
+				}
+			] 
+		},
+		avatarHeight: { 
+			type: 'string', 
+			default: { md: 100, unit: '%' }, 
+			style: [
+				{ 
+					condition: [{ key: 'carouselImageSize', relation: '==', value: 'custom' }], 
+					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {height: {{avatarHeight}};}' 
+				}
+			] 
+		},
+		
 
 		/*------------------------------------
 		* 			Title 
