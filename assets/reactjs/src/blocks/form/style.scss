@@ -290,6 +290,10 @@
 .block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-row"] > .block-editor-block-list__block-edit .block-editor-block-mover {
     left: -35px;
 }
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-row"] > .block-editor-block-list__block-edit [data-block] {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 .qubely-form-field-wrapper {
     .qubely-form-label {
         vertical-align: baseline;
