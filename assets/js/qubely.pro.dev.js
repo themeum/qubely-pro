@@ -921,7 +921,8 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonSettings = _wp$qubelyComponents.QubelyButton.buttonSettings,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
-    animationSettings = _wp$qubelyComponents$.animationSettings;
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    interactionSettings = _wp$qubelyComponents$.interactionSettings;
 
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
@@ -1103,7 +1104,6 @@ var Edit = function (_Component) {
             var _props5 = this.props,
                 attributes = _props5.attributes,
                 setAttributes = _props5.setAttributes,
-                toggleSelection = _props5.toggleSelection,
                 _props5$attributes = _props5.attributes,
                 uniqueId = _props5$attributes.uniqueId,
                 layout = _props5$attributes.layout,
@@ -1146,7 +1146,6 @@ var Edit = function (_Component) {
                 reCaptchaSiteKey = _props5$attributes.reCaptchaSiteKey,
                 reCaptchaSecretKey = _props5$attributes.reCaptchaSecretKey,
                 policyCheckbox = _props5$attributes.policyCheckbox,
-                policyCheckboxText = _props5$attributes.policyCheckboxText,
                 emailReceiver = _props5$attributes.emailReceiver,
                 emailHeaders = _props5$attributes.emailHeaders,
                 emailFrom = _props5$attributes.emailFrom,
@@ -1157,8 +1156,7 @@ var Edit = function (_Component) {
                 hideMobile = _props5$attributes.hideMobile,
                 globalCss = _props5$attributes.globalCss,
                 animation = _props5$attributes.animation,
-                height = _props5$attributes.height,
-                width = _props5$attributes.width;
+                interaction = _props5$attributes.interaction;
             var device = this.state.device;
 
 
@@ -1448,7 +1446,8 @@ var Edit = function (_Component) {
                     buttonSettings(this.props.attributes, device, setAttributes, function (key, value) {
                         _this2.setState(_defineProperty({}, key, value));
                     }),
-                    animationSettings(uniqueId, animation, setAttributes)
+                    animationSettings(uniqueId, animation, setAttributes),
+                    interactionSettings(uniqueId, interaction, setAttributes)
                 ),
                 React.createElement(
                     BlockControls,
@@ -1605,7 +1604,9 @@ var _wp$editor = wp.editor,
     InnerBlocks = _wp$editor.InnerBlocks;
 var _wp$qubelyComponents = wp.qubelyComponents,
     QubelyButtonSave = _wp$qubelyComponents.QubelyButtonSave,
-    animationAttr = _wp$qubelyComponents.HelperFunction.animationAttr;
+    _wp$qubelyComponents$ = _wp$qubelyComponents.HelperFunction,
+    animationAttr = _wp$qubelyComponents$.animationAttr,
+    IsInteraction = _wp$qubelyComponents$.IsInteraction;
 
 var Save = function (_Component) {
     _inherits(Save, _Component);
@@ -1713,14 +1714,16 @@ var Save = function (_Component) {
                 buttonIconName = _props$attributes.buttonIconName,
                 buttonIconPosition = _props$attributes.buttonIconPosition,
                 buttonTag = _props$attributes.buttonTag,
-                animation = _props$attributes.animation;
+                animation = _props$attributes.animation,
+                interaction = _props$attributes.interaction;
 
+            var interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
             return React.createElement(
                 'div',
                 _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
                 React.createElement(
                     'div',
-                    { className: 'qubely-block-form qubely-layout-' + layout },
+                    { className: 'qubely-block-form ' + interactionClass + ' qubely-layout-' + layout },
                     React.createElement(
                         'form',
                         { className: 'qubely-form' },
@@ -4129,7 +4132,8 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
-    animationSettings = _wp$qubelyComponents$.animationSettings;
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    interactionSettings = _wp$qubelyComponents$.interactionSettings;
 
 var Edit = function (_Component) {
   _inherits(Edit, _Component);
@@ -4322,7 +4326,6 @@ var Edit = function (_Component) {
           style = _props2$attributes.style,
           column = _props2$attributes.column,
           gutter = _props2$attributes.gutter,
-          imgSize = _props2$attributes.imgSize,
           imgBorderRadius = _props2$attributes.imgBorderRadius,
           imgBoxShadow = _props2$attributes.imgBoxShadow,
           enableImgFixedHeight = _props2$attributes.enableImgFixedHeight,
@@ -4343,7 +4346,8 @@ var Edit = function (_Component) {
           hideTablet = _props2$attributes.hideTablet,
           hideMobile = _props2$attributes.hideMobile,
           globalCss = _props2$attributes.globalCss,
-          animation = _props2$attributes.animation;
+          animation = _props2$attributes.animation,
+          interaction = _props2$attributes.interaction;
       var device = this.state.device;
 
 
@@ -4481,7 +4485,8 @@ var Edit = function (_Component) {
                 } })
             )
           ),
-          animationSettings(uniqueId, animation, setAttributes)
+          animationSettings(uniqueId, animation, setAttributes),
+          interactionSettings(uniqueId, interaction, setAttributes)
         ),
         React.createElement(
           BlockControls,
@@ -4547,7 +4552,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Component = wp.element.Component;
 var RichText = wp.editor.RichText;
-var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
+var _wp$qubelyComponents$ = wp.qubelyComponents.HelperFunction,
+    animationAttr = _wp$qubelyComponents$.animationAttr,
+    IsInteraction = _wp$qubelyComponents$.IsInteraction;
 
 var Save = function (_Component) {
 	_inherits(Save, _Component);
@@ -4608,14 +4615,16 @@ var Save = function (_Component) {
 			    uniqueId = _props$attributes.uniqueId,
 			    animation = _props$attributes.animation,
 			    style = _props$attributes.style,
-			    column = _props$attributes.column;
+			    column = _props$attributes.column,
+			    interaction = _props$attributes.interaction;
 
+			var interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 			return React.createElement(
 				'div',
 				_extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
 				React.createElement(
 					'div',
-					{ className: 'qubely-block-gallery qubely-gallery-item-' + style },
+					{ className: 'qubely-block-gallery ' + interactionClass + ' qubely-gallery-item-' + style },
 					React.createElement(
 						'div',
 						{ className: 'qubely-gallery-items ' + ('qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs) },
@@ -8021,6 +8030,7 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
     animationSettings = _wp$qubelyComponents$.animationSettings,
+    interactionSettings = _wp$qubelyComponents$.interactionSettings,
     InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar;
 
 
@@ -8194,9 +8204,9 @@ var Edit = function (_Component) {
 			var _this3 = this;
 
 			var _props2 = this.props,
-			    setAttributes = _props2.setAttributes,
 			    posts = _props2.posts,
 			    taxonomyList = _props2.taxonomyList,
+			    setAttributes = _props2.setAttributes,
 			    _props2$attributes = _props2.attributes,
 			    uniqueId = _props2$attributes.uniqueId,
 			    taxonomy = _props2$attributes.taxonomy,
@@ -8300,7 +8310,8 @@ var Edit = function (_Component) {
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
-			    animation = _props2$attributes.animation;
+			    animation = _props2$attributes.animation,
+			    interaction = _props2$attributes.interaction;
 			var device = this.state.device;
 
 
@@ -8890,7 +8901,8 @@ var Edit = function (_Component) {
 								return setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value });
 							} })
 					),
-					animationSettings(uniqueId, animation, setAttributes)
+					animationSettings(uniqueId, animation, setAttributes),
+					interactionSettings(uniqueId, interaction, setAttributes)
 				),
 				React.createElement(
 					BlockControls,
@@ -9109,7 +9121,8 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
-    animationSettings = _wp$qubelyComponents$.animationSettings;
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    interactionSettings = _wp$qubelyComponents$.interactionSettings;
 
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
@@ -9439,7 +9452,8 @@ var Edit = function (_Component) {
                 hideTablet = _props2$attributes.hideTablet,
                 hideMobile = _props2$attributes.hideMobile,
                 globalCss = _props2$attributes.globalCss,
-                animation = _props2$attributes.animation;
+                animation = _props2$attributes.animation,
+                interaction = _props2$attributes.interaction;
             var device = this.state.device;
 
 
@@ -9745,7 +9759,8 @@ var Edit = function (_Component) {
                                 } })
                         )
                     ),
-                    animationSettings(uniqueId, animation, setAttributes)
+                    animationSettings(uniqueId, animation, setAttributes),
+                    interactionSettings(uniqueId, interaction, setAttributes)
                 ),
                 React.createElement(
                     BlockControls,
@@ -9811,7 +9826,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Component = wp.element.Component;
 var RichText = wp.editor.RichText;
-var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
+var _wp$qubelyComponents$ = wp.qubelyComponents.HelperFunction,
+    animationAttr = _wp$qubelyComponents$.animationAttr,
+    IsInteraction = _wp$qubelyComponents$.IsInteraction;
 
 var Save = function (_Component) {
     _inherits(Save, _Component);
@@ -9907,14 +9924,16 @@ var Save = function (_Component) {
             var _props$attributes = this.props.attributes,
                 uniqueId = _props$attributes.uniqueId,
                 animation = _props$attributes.animation,
-                style = _props$attributes.style;
+                style = _props$attributes.style,
+                interaction = _props$attributes.interaction;
 
+            var interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
             return React.createElement(
                 'div',
                 _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
                 React.createElement(
                     'div',
-                    { className: 'qubely-block-pricelist qubely-pricelist-item-' + style },
+                    { className: 'qubely-block-pricelist ' + interactionClass + ' qubely-pricelist-item-' + style },
                     React.createElement(
                         'div',
                         { className: 'qubely-pricelist-items' },

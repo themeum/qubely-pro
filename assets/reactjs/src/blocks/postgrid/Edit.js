@@ -5,7 +5,28 @@ const { dateI18n, __experimentalGetSettings } = wp.date
 const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
 const { InspectorControls, BlockControls } = wp.editor
-const { Range, ButtonGroup, Toggle, Dropdown, Select, Separator, ColorAdvanced, Typography, Color, Border, BorderRadius, Padding, BoxShadow, Styles, Tabs, Tab, RadioAdvanced, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } } = wp.qubelyComponents
+const { 
+	Range, 
+	ButtonGroup, 
+	Toggle, 
+	Dropdown, 
+	Select, 
+	Separator, 
+	ColorAdvanced, 
+	Typography, 
+	Color, 
+	Border, 
+	BorderRadius, 
+	Padding, 
+	BoxShadow, 
+	Styles, 
+	Tabs, 
+	Tab, 
+	RadioAdvanced, 
+	CssGenerator: { CssGenerator }, 
+	gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, 
+	Inline: { InlineToolbar } 
+} = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
 
@@ -101,20 +122,17 @@ class Edit extends Component {
 
 	render() {
 		const {
-			setAttributes,
 			posts,
 			taxonomyList,
+			setAttributes,
 			attributes: {
 				uniqueId,
-				//general
 				taxonomy,
 				categories,
 				tags,
 				order,
 				orderBy,
 				postsToShow,
-
-				//image
 				showImages,
 				imgSize,
 				enableFixedHeight,
@@ -122,24 +140,18 @@ class Edit extends Component {
                 fixedSmallHeight,
 				imageRadius,
 				imageAnimation,
-
-				//card
 				cardBackground,
 				cardBorder,
 				cardBorderRadius,
 				cardPadding,
 				cardBoxShadow,
 				cardSpace,
-
-				//scart
 				stackBg,
 				stackWidth,
 				stackSpace,
 				stackBorderRadius,
 				stackPadding,
 				stackBoxShadow,
-
-				//readmore link
 				readmoreStyle,
 				buttonText,
 				readmoreSize,
@@ -153,8 +165,6 @@ class Edit extends Component {
 				readmoreColor,
 				readmoreColor2,
 				readmoreHoverColor,
-
-				//content
 				layout,
 				style,
 				column,
@@ -168,20 +178,14 @@ class Edit extends Component {
 				showReadMore,
 				showTitle,
 				titlePosition,
-
-				//separator
 				showSeparator,
 				separatorColor,
 				separatorHeight,
 				separatorSpace,
-
-				//typography
 				titleTypography,
 				metaTypography,
 				excerptTypography,
 				categoryTypography,
-
-				//colors
 				titleColor,
 				titleOverlayColor,
 				metaColor,
@@ -199,8 +203,6 @@ class Edit extends Component {
 				categoryPadding,
 				badgePosition,
 				badgePadding,
-
-				//design
 				bgColor,
 				border,
 				borderRadius,
@@ -208,8 +210,6 @@ class Edit extends Component {
 				boxShadow,
 				contentPosition,
 				girdContentPosition,
-
-				//overlay
 				overlayBg,
 				overlayHoverBg,
 				overlayBlend,
@@ -217,8 +217,6 @@ class Edit extends Component {
                 overlaySmallHeight,
 				overlaySpace,
 				overlayBorderRadius,
-
-				//spacing
 				columnGap,
 				contentPadding,
 				titleSpace,
@@ -226,12 +224,12 @@ class Edit extends Component {
 				categorySpace,
 				metaSpace,
 				excerptSpace,
-
 				globalZindex,
 				hideTablet,
 				hideMobile,
 				globalCss,
-				animation
+				animation,
+				interaction
 			}
 		} = this.props
 		const { device } = this.state
@@ -622,6 +620,8 @@ class Edit extends Component {
 					</PanelBody>
 
 					{animationSettings(uniqueId, animation, setAttributes)}
+
+					{interactionSettings(uniqueId, interaction, setAttributes)}
 					
 				</InspectorControls>
 

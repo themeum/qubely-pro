@@ -19,7 +19,7 @@ const {
     Padding, 
     Inline: { InlineToolbar }, 
     CssGenerator: { CssGenerator }, 
-    gloalSettings: { globalSettingsPanel, animationSettings }, 
+    gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, 
 } = wp.qubelyComponents
 import icons from '../../helpers/icons'
 
@@ -133,42 +133,38 @@ class Edit extends Component {
 	}
 
 	render() {
-		const { setAttributes, attributes: {
-			uniqueId,
-			galleryItems,
-            style,
-            column,
-            gutter,
-
-            //image
-            imgSize,
-			imgBorderRadius,
-            imgBoxShadow,
-            enableImgFixedHeight,
-            imgFixedHeight,
-            imageAnimation,
-
-            //caption
-            enableCaption,  
-            captionPadding, 
-            captionVerticalAlign, 
-            captionAlignment,
-            showCaption,
-			captionTypography,
-            captionColor,
-            
-            //overlay
-            enableOverlay,
-            overlayBg,
-            overlayHoverBg,
-            overlayBlend,
-
-            globalZindex,
-            hideTablet,
-            hideMobile,
-            globalCss,
-            animation
-		} } = this.props
+		const { 
+            setAttributes, 
+            attributes: {
+                uniqueId,
+                galleryItems,
+                style,
+                column,
+                gutter,
+                imgBorderRadius,
+                imgBoxShadow,
+                enableImgFixedHeight,
+                imgFixedHeight,
+                imageAnimation,
+                enableCaption,  
+                captionPadding, 
+                captionVerticalAlign, 
+                captionAlignment,
+                showCaption,
+                captionTypography,
+                captionColor,
+                enableOverlay,
+                overlayBg,
+                overlayHoverBg,
+                overlayBlend,
+                globalZindex,
+                hideTablet,
+                hideMobile,
+                globalCss,
+                animation,
+                interaction
+            } 
+        } = this.props
 		const { device } = this.state
 
 		if (uniqueId) { CssGenerator(this.props.attributes, 'gallery', uniqueId) }
@@ -259,6 +255,8 @@ class Edit extends Component {
                     </PanelBody>
 
                     {animationSettings(uniqueId, animation, setAttributes)}
+
+                    {interactionSettings(uniqueId, interaction, setAttributes)}
 
 				</InspectorControls>
 

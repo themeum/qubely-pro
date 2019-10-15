@@ -25,7 +25,7 @@ const {
     Inline: { InlineToolbar },
     CssGenerator: { CssGenerator },
     QubelyButton: { buttonSettings },
-    gloalSettings: { globalSettingsPanel, animationSettings },
+    gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons';
@@ -190,26 +190,19 @@ class Edit extends Component {
         const {
             attributes,
             setAttributes,
-            toggleSelection,
             attributes: {
                 uniqueId,
                 layout,
                 formItems,
-
-
-                //label settings
                 labelColor,
                 labelAlignment,
                 labelTypography,
-
-                //input settings
                 spacing,
                 gutter,
                 inputSize,
                 inputCustomSize,
                 inputTypography,
                 inputBoxShadow,
-
                 inputColor,
                 inputColorFocus,
                 inputColorHover,
@@ -221,17 +214,10 @@ class Edit extends Component {
                 inputBorderMaterial,
                 inputBorderColorFocus,
                 inputBorderColorHover,
-
-
-
                 textareaHeight,
-
                 placeholderColor,
                 placeholderColorFocus,
                 placeholderColorHover,
-
-
-                //button
                 enableButton,
                 buttonTag,
                 buttonSize,
@@ -239,32 +225,24 @@ class Edit extends Component {
                 buttonText,
                 buttonIconName,
                 buttonIconPosition,
-
                 fieldErrorMessage,
                 formSuccessMessage,
                 formErrorMessage,
-
                 reCaptcha,
                 reCaptchaSiteKey,
                 reCaptchaSecretKey,
                 policyCheckbox,
-                policyCheckboxText,
-
                 emailReceiver,
                 emailHeaders,
                 emailFrom,
                 emailSubject,
                 emailBody,
-
                 globalZindex,
                 hideTablet,
                 hideMobile,
                 globalCss,
                 animation,
-
-
-                height,
-                width,
+                interaction,
             }
         } = this.props
 
@@ -501,6 +479,8 @@ class Edit extends Component {
                     {buttonSettings(this.props.attributes, device, setAttributes, (key, value) => { this.setState({ [key]: value }) })}
 
                     {animationSettings(uniqueId, animation, setAttributes)}
+
+                    {interactionSettings(uniqueId, interaction, setAttributes)}
 
                 </InspectorControls>
 

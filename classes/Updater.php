@@ -6,9 +6,11 @@ defined('ABSPATH') || exit;
 class Updater {
 
 	//Live Api URL
-	public $api_end_point = 'https://www.themeum.com/wp-json/themeum-license/v1/';
+	public $api_end_point = 'https://www.themeum.com/wp-json/themeum-license/v2/';
     //Is Valid of this license
-    public $is_valid = false;
+	public $is_valid = false;
+	
+	public $plugin_slug = 'qubely-pro';
 
 	public static function init() {
 		return new self();
@@ -52,6 +54,7 @@ class Updater {
 						'action'        => 'check_license_key_api',
 						'blog_ip'       => $unique_id,
 						'request_from'  => 'plugin_license_page',
+						'product_info'  => array('type' => 'plugin', 'unique_id'=> $this->plugin_slug),
 					),
 				)
 			);
@@ -92,30 +95,32 @@ class Updater {
 					$license_info_serialize = serialize($license_info);
 					update_option(QUBELY_FREE_BASENAME.'_license_info', $license_info);
 				}
-
 			}
-
 		}
 	}
 
 	public function license_form(){
-		?>
-
-		<?php
 		$license_key = '';
 		$license_to = '';
 		$license_activated = false;
-		$license_info = (object) get_option(QUBELY_FREE_BASENAME.'_license_info');
 
-		if( !empty($license_info->license_key ) ) {
-			$license_key = $license_info->license_key;
-		}
-		if ( !empty($license_info->license_to) ) {
-			$license_to = $license_info->license_to;
-		}
-		if ( !empty($license_info->activated) ) {
-			$license_activated = $license_info->activated;
-		}
+		$getLicenses = maybe_unserialize(get_option(QUBELY_FREE_BASENAME.'_license_info'));
+
+		$license_info = array('activated' => false);
+        if ( is_array($getLicenses) && count($getLicenses)){
+            $license_info = $getLicenses;
+        }
+        $license_info = (object) $license_info;
+
+        if(! empty($license_info->license_key)){
+            $license_key = $license_info->license_key;
+        }
+        if ( ! empty($license_info->license_to)){
+            $license_to = $license_info->license_to;
+        }
+        if ( ! empty($license_info->activated)){
+            $license_activated = $license_info->activated;
+        }
 		?>
 
 		<div class="qubely-license-head">
@@ -254,34 +259,40 @@ class Updater {
 	 */
 	public function check_for_update_api($request_from = ''){
 		// Plugin update
-		$license_info = (object) get_option(QUBELY_FREE_BASENAME.'_license_info');
-		if (empty($license_info->activated) || ! $license_info->activated || empty($license_info->license_key) ){
-			return false;
-		}
+		$getLicenses = maybe_unserialize(get_option(QUBELY_FREE_BASENAME.'_license_info'));
+		$license_info = array('activated' => false);
+        if ( is_array($getLicenses) && count($getLicenses)){
+            $license_info = $getLicenses;
+        }
+        $license_info = (object) $license_info;
 
-		$params = array(
-			'body' => array(
-				'action'        => 'check_update_by_license',
-				'license_key'   => $license_info->license_key,
-				'product_slug'  => 'qubely-pro',
-				'request_from'  => $request_from,
-			),
-		);
+        if (empty($license_info->activated) || ! $license_info->activated || empty($license_info->license_key) ){
+            return false;
+        }
 
-		// Make the POST request
-		$request = wp_remote_post($this->api_end_point.'check-update', $params );
+        $params = array(
+            'body' => array(
+                'action'        => 'check_update_by_license',
+                'license_key'   => $license_info->license_key,
+                'product_slug'  => $this->plugin_slug,
+                'request_from'  => $request_from,
+            ),
+        );
 
-		$request_body = false;
-		// Check if response is valid
-		if ( !is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) === 200 ) {
-			$request_body = json_decode($request['body']);
-			if ( !$request_body->success){
-				$license_info = (array) $license_info;
-				$license_info['activated'] = 0;
-			}
-		}
+        // Make the POST request
+        $request = wp_remote_post($this->api_end_point.'check-update', $params );
+        $request_body = false;
+        // Check if response is valid
+        if ( !is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) === 200 ) {
+            $request_body = json_decode($request['body']);
 
-		return $request_body;
+            if ( empty($request_body->success) || !$request_body->success){
+                $license_info = (array) $license_info;
+                $license_info['activated'] = 0;
+            }
+        }
+
+        return $request_body;
     }
 
 
@@ -318,11 +329,15 @@ class Updater {
 	 * @return bool
 	 */
     public function is_valid() {
-		$saved_license_info = (object) maybe_unserialize(get_option(QUBELY_FREE_BASENAME.'_license_info'));
-        if ( isset($saved_license_info->activated) ) {
-            return $saved_license_info->activated;
+		$getLicenses = maybe_unserialize(get_option(QUBELY_FREE_BASENAME.'_license_info'));
+        $license_info = (object) array('activated' => false);
+        if ( is_array($getLicenses) && count($getLicenses)){
+            $license_info = (object) $getLicenses;
         }
-	    return false;
-    }
 
+        if ( isset($license_info->activated)){
+            return $license_info->activated;
+        }
+        return false;
+    }
 }
