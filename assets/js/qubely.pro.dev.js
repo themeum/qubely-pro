@@ -5433,9 +5433,1045 @@ if(false) {}
   !*** ./src/blocks/imagecarousel/Edit.js ***!
   \******************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: Unexpected token (331:0)\n\n\u001b[0m \u001b[90m 329 | \u001b[39m\t\t\tsliderMargin\u001b[33m,\u001b[39m\n \u001b[90m 330 | \u001b[39m\t\t\tdotsposition\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 331 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\n \u001b[90m     | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 332 | \u001b[39m\t\t\tcarouselImageSize\u001b[33m,\u001b[39m\n \u001b[90m 333 | \u001b[39m\t\t\timageWidth\u001b[33m,\u001b[39m avatarHeight\n \u001b[90m 334 | \u001b[39m\t\t\t\u001b[0m\n");
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _icons = __webpack_require__(/*! ../../helpers/icons */ "./src/helpers/icons.js");
+
+var _icons2 = _interopRequireDefault(_icons);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    Component = _wp$element.Component;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    Tooltip = _wp$components.Tooltip,
+    Toolbar = _wp$components.Toolbar;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    RichText = _wp$editor.RichText,
+    MediaUpload = _wp$editor.MediaUpload,
+    BlockControls = _wp$editor.BlockControls;
+var _wp$qubelyComponents = wp.qubelyComponents,
+    Range = _wp$qubelyComponents.Range,
+    Color = _wp$qubelyComponents.Color,
+    Typography = _wp$qubelyComponents.Typography,
+    Toggle = _wp$qubelyComponents.Toggle,
+    Separator = _wp$qubelyComponents.Separator,
+    ColorAdvanced = _wp$qubelyComponents.ColorAdvanced,
+    Border = _wp$qubelyComponents.Border,
+    RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
+    Select = _wp$qubelyComponents.Select,
+    Styles = _wp$qubelyComponents.Styles,
+    Alignment = _wp$qubelyComponents.Alignment,
+    Padding = _wp$qubelyComponents.Padding,
+    Tabs = _wp$qubelyComponents.Tabs,
+    Tab = _wp$qubelyComponents.Tab,
+    Carousel = _wp$qubelyComponents.Carousel,
+    ButtonGroup = _wp$qubelyComponents.ButtonGroup,
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
+    _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
+    globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar;
+
+var Edit = function (_Component) {
+	_inherits(Edit, _Component);
+
+	function Edit(props) {
+		_classCallCheck(this, Edit);
+
+		var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
+
+		_this.changePluginAttribute = function (key, value) {
+			_this.setState({
+				key: key,
+				value: value
+			});
+			_this.props.setAttributes(_defineProperty({}, key, value));
+		};
+
+		_this.updateAtrributes = function (name, value, index) {
+			var _this$props = _this.props,
+			    setAttributes = _this$props.setAttributes,
+			    carouselItems = _this$props.attributes.carouselItems;
+
+			var updatedAttributes = carouselItems.map(function (data, itemIndex) {
+				if (index === itemIndex) {
+					return _extends({}, data, _defineProperty({}, name, value));
+				} else {
+					return data;
+				}
+			});
+			setAttributes({ carouselItems: updatedAttributes });
+		};
+
+		_this.renderName = function (name, index) {
+			return React.createElement(RichText, {
+				key: 'editable',
+				keepPlaceholderOnFocus: true,
+				placeholder: __('Add Name...'),
+				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
+				onChange: function onChange(value) {
+					return _this.updateAtrributes('slidertitle', value, index);
+				},
+				value: name
+			});
+		};
+
+		_this.renderDesignation = function (subtitle, index) {
+			return React.createElement(RichText, {
+				key: 'editable',
+				placeholder: __('Add subtitle...'),
+				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
+				keepPlaceholderOnFocus: true,
+				onChange: function onChange(value) {
+					return _this.updateAtrributes('subtitle', value, index);
+				},
+				value: subtitle
+			});
+		};
+
+		_this.renderSlider = function (sliderimage, index) {
+			return React.createElement(
+				'div',
+				{ className: 'qubely-single-img qubely-slider-image-container ' + (sliderimage != undefined && sliderimage.url != undefined ? '' : ' qubely-empty-image') },
+				React.createElement(MediaUpload, {
+					onSelect: function onSelect(value) {
+						return _this.updateAtrributes('sliderimage', value, index);
+					},
+					allowedTypes: ['image'],
+					multiple: false,
+					value: sliderimage,
+					render: function render(_ref) {
+						var open = _ref.open;
+						return React.createElement(
+							Fragment,
+							null,
+							sliderimage && sliderimage.url ? React.createElement(
+								'div',
+								{ className: 'qubely-slider-content-sliderimage-editor' },
+								React.createElement('img', { src: sliderimage.url, alt: __('Slider Image') }),
+								React.createElement(
+									'div',
+									{ className: 'qubely-media-actions qubely-field-button-list' },
+									React.createElement(
+										Tooltip,
+										{ text: __('Edit') },
+										React.createElement(
+											'button',
+											{ className: 'qubely-button', 'aria-label': __('Edit'), onClick: open, role: 'button' },
+											React.createElement('span', { 'aria-label': __('Edit'), className: 'fas fa-pencil-alt fa-fw' })
+										)
+									),
+									React.createElement(
+										Tooltip,
+										{ text: __('Remove') },
+										React.createElement(
+											'button',
+											{ className: 'qubely-button', 'aria-label': __('Remove'), onClick: function onClick() {
+													return _this.updateAtrributes('sliderimage', '', index);
+												}, role: 'button' },
+											React.createElement('span', { 'aria-label': __('Close'), className: 'far fa-trash-alt fa-fw' })
+										)
+									)
+								)
+							) : React.createElement(
+								'a',
+								{ className: 'qubely-insert-image', href: '#', onClick: open },
+								React.createElement(
+									'svg',
+									{ 'aria-hidden': 'true', role: 'img', focusable: 'false', 'class': 'dashicon dashicons-insert', xmlns: 'http://www.w3.org/2000/svg', width: '20', height: '20', viewBox: '0 0 20 20' },
+									React.createElement('path', { d: 'M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z' })
+								),
+								React.createElement(
+									'span',
+									null,
+									__('Insert')
+								)
+							)
+						);
+					}
+				})
+			);
+		};
+
+		_this.renderMessage = function (message, index) {
+			return React.createElement(RichText, {
+				key: 'editable',
+				placeholder: __('Add Message...'),
+				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
+				keepPlaceholderOnFocus: true,
+				onChange: function onChange(value) {
+					return _this.updateAtrributes('message', value, index);
+				},
+				value: message
+			});
+		};
+
+		_this.renderSliderInfo = function (item, index) {
+			var _this$props$attribute = _this.props.attributes,
+			    layout = _this$props$attribute.layout,
+			    sliderContent = _this$props$attribute.sliderContent,
+			    activeDescription = _this$props$attribute.activeDescription;
+			var slidertitle = item.slidertitle,
+			    subtitle = item.subtitle,
+			    sliderimage = item.sliderimage,
+			    message = item.message;
+
+
+			return React.createElement(
+				'div',
+				{ className: 'qubely-image-slider' },
+				_this.renderSlider(sliderimage, index),
+				layout != 1 && React.createElement(
+					'div',
+					null,
+					(sliderContent || layout === 6) && React.createElement(
+						'div',
+						{ className: 'qubely-image-slider-text' },
+						React.createElement(
+							'div',
+							{ className: 'qubely-image-content' },
+							React.createElement(
+								'div',
+								{ className: 'qubely-image-title' },
+								_this.renderName(slidertitle, index)
+							),
+							React.createElement(
+								'div',
+								{ className: 'qubely-image-subtitle' },
+								_this.renderDesignation(subtitle, index)
+							),
+							activeDescription && React.createElement(
+								'span',
+								{ className: 'qubely-slider-description' },
+								_this.renderMessage(message, index),
+								' '
+							)
+						)
+					)
+				)
+			);
+		};
+
+		_this.removeCrouselItem = function (index) {
+			var _this$props2 = _this.props,
+			    setAttributes = _this$props2.setAttributes,
+			    carouselItems = _this$props2.attributes.carouselItems;
+
+			var newCarouselItems = JSON.parse(JSON.stringify(carouselItems));
+			newCarouselItems.splice(index, 1);
+			setAttributes({ carouselItems: newCarouselItems });
+		};
+
+		_this.renderImages = function () {
+			var _this$props$attribute2 = _this.props.attributes,
+			    layout = _this$props$attribute2.layout,
+			    items = _this$props$attribute2.items,
+			    carouselItems = _this$props$attribute2.carouselItems,
+			    contentVerticalAlign = _this$props$attribute2.contentVerticalAlign;
+
+			return carouselItems.map(function (item, index) {
+				return React.createElement(
+					'div',
+					{ key: index, className: 'qubely-carousel-item item-layout' + layout + ' align-' + contentVerticalAlign },
+					React.createElement(
+						Tooltip,
+						{ text: __('Delete this item') },
+						React.createElement(
+							'span',
+							{ className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
+									return _this.removeCrouselItem(index);
+								} },
+							React.createElement('span', { 'class': 'dashicons dashicons-no-alt' })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'qubely-image-item layout-' + layout },
+						_this.renderSliderInfo(item, index)
+					)
+				);
+			});
+		};
+
+		_this.renderLayoutFive = function () {
+			var _this$props$attribute3 = _this.props.attributes,
+			    layout = _this$props$attribute3.layout,
+			    items = _this$props$attribute3.items,
+			    carouselItems = _this$props$attribute3.carouselItems;
+
+			return carouselItems.map(function (item, index) {
+				return React.createElement(
+					'div',
+					{ key: index, className: 'qubely-carousel-item layout5 active ' },
+					React.createElement(
+						'div',
+						{ className: 'qubely-image-item layout-' + layout },
+						_this.renderSliderInfo(item, index)
+					)
+				);
+			});
+		};
+
+		_this.setCarouselLength = function (newLength) {
+			var _this$props3 = _this.props,
+			    setAttributes = _this$props3.setAttributes,
+			    _this$props3$attribut = _this$props3.attributes,
+			    carouselItems = _this$props3$attribut.carouselItems,
+			    items = _this$props3$attribut.items;
+
+			var newCarouselItems = JSON.parse(JSON.stringify(carouselItems));
+			var defaultItem = {
+				slidertitle: 'Wordcamp Dhaka 2019',
+				subtitle: '28 September 2019',
+				message: '“Instantly raise your website appearance with this stylish new plugin.”',
+				ratings: '5',
+				sliderimage: {}
+			};
+			if (newLength > carouselItems.length) {
+				newCarouselItems.push(defaultItem);
+			} else {
+				newLength >= items.md && newLength >= items.sm && newLength >= items.sm && newCarouselItems.pop();
+			}
+			setAttributes({ carouselItems: newCarouselItems });
+		};
+
+		_this.parseResponsiveViewPort = function () {
+			var _this$props$attribute4 = _this.props.attributes,
+			    layout = _this$props$attribute4.layout,
+			    items = _this$props$attribute4.items,
+			    itemthree = _this$props$attribute4.itemthree,
+			    itemfive = _this$props$attribute4.itemfive;
+
+			var responsive = [{ viewport: 1170, items: layout != 2 ? layout == 5 ? itemfive.md : items.md : itemthree.md }, { viewport: 980, items: layout != 2 ? layout == 5 ? itemfive.sm : items.sm : itemthree.sm }, { viewport: 580, items: layout != 2 ? layout == 5 ? itemfive.xs : items.xs : itemthree.xs }];
+
+			if (typeof responsive === 'undefined') return;
+			var activeView = null;
+
+			for (var i = 0; i < responsive.length; i++) {
+				if (window.innerWidth > responsive[i].viewport) {
+					activeView = responsive[i];
+					break;
+				}
+			}
+			if (activeView === null) {
+				activeView = responsive[responsive.length - 1];
+			}
+			return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md';
+		};
+
+		_this.state = {
+			device: 'md',
+			spacer: true,
+			openPanelSetting: ''
+		};
+		return _this;
+	}
+
+	_createClass(Edit, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _props = this.props,
+			    setAttributes = _props.setAttributes,
+			    clientId = _props.clientId,
+			    uniqueId = _props.attributes.uniqueId;
+
+			var _client = clientId.substr(0, 6);
+			if (!uniqueId) {
+				setAttributes({ uniqueId: _client });
+			} else if (uniqueId && uniqueId != _client) {
+				setAttributes({ uniqueId: _client });
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this,
+			    _React$createElement,
+			    _React$createElement2,
+			    _React$createElement3;
+
+			var _props2 = this.props,
+			    setAttributes = _props2.setAttributes,
+			    _props2$attributes = _props2.attributes,
+			    uniqueId = _props2$attributes.uniqueId,
+			    layout = _props2$attributes.layout,
+			    alignment = _props2$attributes.alignment,
+			    carouselItems = _props2$attributes.carouselItems,
+			    items = _props2$attributes.items,
+			    itemthree = _props2$attributes.itemthree,
+			    itemfive = _props2$attributes.itemfive,
+			    sliderContent = _props2$attributes.sliderContent,
+			    autoPlay = _props2$attributes.autoPlay,
+			    speed = _props2$attributes.speed,
+			    interval = _props2$attributes.interval,
+			    dragable = _props2$attributes.dragable,
+			    isCentered = _props2$attributes.isCentered,
+			    notCentered = _props2$attributes.notCentered,
+			    activeFade = _props2$attributes.activeFade,
+			    centerPadding = _props2$attributes.centerPadding,
+			    nav = _props2$attributes.nav,
+			    arrowStyle = _props2$attributes.arrowStyle,
+			    horizontalScroll = _props2$attributes.horizontalScroll,
+			    arrowPosition = _props2$attributes.arrowPosition,
+			    sizeWidth = _props2$attributes.sizeWidth,
+			    arrowSize = _props2$attributes.arrowSize,
+			    arrowColor = _props2$attributes.arrowColor,
+			    arrowShapeColor = _props2$attributes.arrowShapeColor,
+			    arrowBorderColor = _props2$attributes.arrowBorderColor,
+			    cornerRadius = _props2$attributes.cornerRadius,
+			    arrowHoverColor = _props2$attributes.arrowHoverColor,
+			    arrowShapeHoverColor = _props2$attributes.arrowShapeHoverColor,
+			    arrowBorderHoverColor = _props2$attributes.arrowBorderHoverColor,
+			    cornerHoverRadius = _props2$attributes.cornerHoverRadius,
+			    dots = _props2$attributes.dots,
+			    dotIndicator = _props2$attributes.dotIndicator,
+			    dotwidth = _props2$attributes.dotwidth,
+			    dotHeight = _props2$attributes.dotHeight,
+			    dotBorderRadius = _props2$attributes.dotBorderRadius,
+			    dotColor = _props2$attributes.dotColor,
+			    dotActiveColor = _props2$attributes.dotActiveColor,
+			    nameSpacing = _props2$attributes.nameSpacing,
+			    nameColor = _props2$attributes.nameColor,
+			    nameTypo = _props2$attributes.nameTypo,
+			    subtitleColor = _props2$attributes.subtitleColor,
+			    subtitleTypo = _props2$attributes.subtitleTypo,
+			    activeDescription = _props2$attributes.activeDescription,
+			    descriptionColor = _props2$attributes.descriptionColor,
+			    messageTypo = _props2$attributes.messageTypo,
+			    messageSpacingTop = _props2$attributes.messageSpacingTop,
+			    messageSpacingBottom = _props2$attributes.messageSpacingBottom,
+			    contentPadding = _props2$attributes.contentPadding,
+			    contentVerticalAlign = _props2$attributes.contentVerticalAlign,
+			    contentAlignment = _props2$attributes.contentAlignment,
+			    animateOnHover = _props2$attributes.animateOnHover,
+			    enableOverlay = _props2$attributes.enableOverlay,
+			    overlayBg = _props2$attributes.overlayBg,
+			    overlayHoverBg = _props2$attributes.overlayHoverBg,
+			    overlayBlend = _props2$attributes.overlayBlend,
+			    sliderMargin = _props2$attributes.sliderMargin,
+			    dotsposition = _props2$attributes.dotsposition,
+			    carouselImageSize = _props2$attributes.carouselImageSize,
+			    imageWidth = _props2$attributes.imageWidth,
+			    avatarHeight = _props2$attributes.avatarHeight,
+			    globalZindex = _props2$attributes.globalZindex,
+			    hideTablet = _props2$attributes.hideTablet,
+			    hideMobile = _props2$attributes.hideMobile,
+			    globalCss = _props2$attributes.globalCss,
+			    animation = _props2$attributes.animation;
+			var device = this.state.device;
+
+
+			var carouselSettings = {
+				autoplay: autoPlay,
+				items: layout != 2 ? layout == 5 ? itemfive : items : itemthree,
+				center: layout == 3 || layout == 4 ? isCentered : notCentered,
+				nav: nav,
+				dots: dots,
+				margin: sliderMargin,
+				speed: speed,
+				interval: interval,
+				arrowStyle: arrowStyle,
+				dot_indicator: dotIndicator,
+				centerPadding: centerPadding,
+				arrowPosition: arrowPosition,
+				responsive: [{
+					viewport: 1170,
+					items: layout != 2 ? layout == 5 ? itemfive.md : items.md : itemthree.md
+				}, {
+					viewport: 980,
+					items: layout != 2 ? layout == 5 ? itemfive.sm : items.sm : itemthree.sm
+				}, {
+					viewport: 580,
+					items: layout != 2 ? layout == 5 ? itemfive.xs : items.xs : itemthree.xs
+				}]
+			};
+
+			// Item Five.
+			var carouselFiveSettings = {
+				autoplay: autoPlay,
+				items: items,
+				nav: nav,
+				margin: 10,
+				dots: false,
+				speed: speed,
+				center: false,
+				interval: interval,
+				arrowStyle: arrowStyle,
+				dot_indicator: dotIndicator,
+				arrowPosition: arrowPosition,
+				responsive: [{
+					viewport: 1170,
+					items: 1
+				}]
+			};
+
+			if (uniqueId) {
+				CssGenerator(this.props.attributes, 'imagecarousel', uniqueId);
+			}
+
+			return React.createElement(
+				Fragment,
+				null,
+				React.createElement(
+					InspectorControls,
+					{ key: 'inspector' },
+					React.createElement(
+						PanelBody,
+						{ title: '', initialOpen: true },
+						React.createElement(Styles, {
+							options: [{ value: 1, svg: _icons2.default.imagecarousel_1, label: __('Layout 1') }, { value: 2, svg: _icons2.default.imagecarousel_2, label: __('Layout 2') }, { value: 3, svg: _icons2.default.imagecarousel_3, label: __('Layout 3') }, { value: 4, svg: _icons2.default.imagecarousel_4, label: __('Layout 4') }, { value: 6, svg: _icons2.default.imagecarousel_6, label: __('Layout 5') }],
+							value: layout, onChange: function onChange(val) {
+								return setAttributes({ layout: val });
+							}
+						}),
+						React.createElement(Alignment, (_React$createElement = {
+							label: __('Alignment'),
+							value: alignment,
+							alignmentType: 'content',
+							onChange: function onChange(val) {
+								return setAttributes({ alignment: val });
+							}
+						}, _defineProperty(_React$createElement, 'alignmentType', 'content'), _defineProperty(_React$createElement, 'disableJustify', true), _defineProperty(_React$createElement, 'responsive', true), _defineProperty(_React$createElement, 'device', device), _defineProperty(_React$createElement, 'onDeviceChange', function onDeviceChange(value) {
+							return _this2.setState({ device: value });
+						}), _React$createElement)),
+						React.createElement(Range, { label: __('Number of Carousels'),
+							min: 3,
+							max: 20,
+							value: carouselItems.length,
+							onChange: function onChange(val) {
+								return _this2.setCarouselLength(val);
+							}
+						}),
+						layout == 2 && React.createElement(Range, (_React$createElement2 = {
+							label: __('Number of Columns'),
+							min: 1, max: 20, responsive: true, device: device
+						}, _defineProperty(_React$createElement2, 'device', this.state.device), _defineProperty(_React$createElement2, 'value', layout != 2 ? layout == 5 ? itemfive : items : itemthree), _defineProperty(_React$createElement2, 'onChange', function onChange(value) {
+							return setAttributes(layout != 2 ? layout == 5 ? { itemfive: value } : { items: value } : { itemthree: value });
+						}), _defineProperty(_React$createElement2, 'onDeviceChange', function onDeviceChange(value) {
+							return _this2.setState({ device: value });
+						}), _React$createElement2)),
+						React.createElement(Range, {
+							label: __('Margin'),
+							min: 0,
+							max: 80,
+							value: sliderMargin,
+							onChange: function onChange(value) {
+								return setAttributes({ sliderMargin: parseInt(value) });
+							}
+						}),
+						layout != 6 && layout != 1 && React.createElement(Toggle, { label: __('Slider Content'), value: sliderContent, onChange: function onChange(value) {
+								return setAttributes({ sliderContent: value });
+							} })
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Carousel Settings'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Autoplay'), value: autoPlay, onChange: function onChange(value) {
+								return setAttributes({ autoPlay: value });
+							} }),
+						autoPlay && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Range, { label: __('Speed (ms)'), value: speed, onChange: function onChange(value) {
+									return setAttributes({ speed: parseInt(value) });
+								}, min: 500, max: 5000 }),
+							React.createElement(Range, { label: __('Interval (ms)'), value: interval, onChange: function onChange(value) {
+									return setAttributes({ interval: parseInt(value) });
+								}, min: 500, max: 5000 })
+						),
+						React.createElement(Toggle, { label: __('Draggable'), value: dragable, onChange: function onChange(value) {
+								return setAttributes({ dragable: value });
+							} }),
+						layout != 1 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Toggle, {
+								label: __('Centered Slides'),
+								value: layout == 3 || layout == 4 ? isCentered : notCentered,
+								onChange: function onChange(value) {
+									return setAttributes(layout == 3 || layout == 4 ? { isCentered: value } : { notCentered: value });
+								}
+							}),
+							isCentered && React.createElement(Range, { label: __('Center Padding'), value: centerPadding, onChange: function onChange(value) {
+									return setAttributes({ centerPadding: parseInt(value) });
+								}, min: 100, max: 5000 }),
+							isCentered && React.createElement(Toggle, { label: __('Fade Deactivated Items'), value: activeFade, onChange: function onChange(value) {
+									return setAttributes({ activeFade: value });
+								} })
+						)
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Slider Settings'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Show Arrow Navigation'), value: nav, onChange: function onChange(value) {
+								return setAttributes({ nav: value });
+							} }),
+						nav && React.createElement(
+							Fragment,
+							null,
+							React.createElement(ButtonGroup, {
+								label: __('Arrow Style'),
+								options: [[React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt' }), 'arrowright'], [React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt2' }), 'arrowright2']],
+								value: arrowStyle,
+								onChange: function onChange(value) {
+									return setAttributes({ arrowStyle: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Horizontal Position'),
+								value: horizontalScroll, onChange: function onChange(value) {
+									return setAttributes({ horizontalScroll: value });
+								},
+								min: -100, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Vertical Position'),
+								value: arrowPosition, onChange: function onChange(value) {
+									return setAttributes({ arrowPosition: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Shape Size'),
+								value: sizeWidth, onChange: function onChange(value) {
+									return setAttributes({ sizeWidth: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Arrow Size'),
+								value: arrowSize, onChange: function onChange(value) {
+									return setAttributes({ arrowSize: value });
+								},
+								min: 0, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							}),
+							React.createElement(
+								Tabs,
+								null,
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Normal') },
+									React.createElement(Color, { label: __('Arrow Color'), value: arrowColor, onChange: function onChange(value) {
+											return setAttributes({ arrowColor: value });
+										} }),
+									React.createElement(ColorAdvanced, { label: __('Shape Color'), value: arrowShapeColor, onChange: function onChange(val) {
+											return setAttributes({ arrowShapeColor: val });
+										} }),
+									React.createElement(Border, { label: __('Border'), value: arrowBorderColor, onChange: function onChange(val) {
+											return setAttributes({ arrowBorderColor: val });
+										} }),
+									React.createElement(Range, {
+										label: __('Corner Radius'),
+										value: cornerRadius, onChange: function onChange(value) {
+											return setAttributes({ cornerRadius: value });
+										},
+										min: 1, max: 100,
+										responsive: true, unit: ['px', 'em', '%'],
+										device: device,
+										onDeviceChange: function onDeviceChange(value) {
+											return _this2.setState({ device: value });
+										}
+									})
+								),
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Hover') },
+									React.createElement(Color, { label: __('Arrow Hover Color'), value: arrowHoverColor, onChange: function onChange(value) {
+											return setAttributes({ arrowHoverColor: value });
+										} }),
+									React.createElement(ColorAdvanced, { label: __('Shape Hover Color'), value: arrowShapeHoverColor, onChange: function onChange(val) {
+											return setAttributes({ arrowShapeHoverColor: val });
+										} }),
+									React.createElement(Border, { label: __('Border Hover Color'), value: arrowBorderHoverColor, onChange: function onChange(val) {
+											return setAttributes({ arrowBorderHoverColor: val });
+										} }),
+									React.createElement(Range, {
+										label: __('Corner Hover Radius'),
+										value: cornerHoverRadius, onChange: function onChange(value) {
+											return setAttributes({ cornerHoverRadius: value });
+										},
+										min: 1, max: 100,
+										responsive: true, unit: ['px', 'em', '%'],
+										device: device,
+										onDeviceChange: function onDeviceChange(value) {
+											return _this2.setState({ device: value });
+										}
+									})
+								)
+							)
+						),
+						React.createElement(Toggle, { label: __('Show Dot Navigation'), value: dots, onChange: function onChange(value) {
+								return setAttributes({ dots: value });
+							} }),
+						dots && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Range, {
+								label: __('Dot Position'),
+								value: dotsposition, onChange: function onChange(value) {
+									return setAttributes({ dotsposition: value });
+								},
+								min: -20, max: 200,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Dot Width'),
+								value: dotwidth, onChange: function onChange(value) {
+									return setAttributes({ dotwidth: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Dot Height'),
+								value: dotHeight, onChange: function onChange(value) {
+									return setAttributes({ dotHeight: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: __('Dot Border Radius'),
+								value: dotBorderRadius, onChange: function onChange(value) {
+									return setAttributes({ dotBorderRadius: value });
+								},
+								min: 1, max: 100,
+								responsive: true, unit: ['px', 'em', '%'],
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							}),
+							React.createElement(
+								Tabs,
+								null,
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Normal') },
+									React.createElement(ColorAdvanced, { label: __('Dot Color'), value: dotColor, onChange: function onChange(val) {
+											return setAttributes({ dotColor: val });
+										} })
+								),
+								React.createElement(
+									Tab,
+									{ tabTitle: __('Active') },
+									React.createElement(ColorAdvanced, { label: __('Dot Active Color'), value: dotActiveColor, onChange: function onChange(val) {
+											return setAttributes({ dotActiveColor: val });
+										} })
+								)
+							)
+						)
+					),
+					(sliderContent || layout === 6) && React.createElement(
+						Fragment,
+						null,
+						layout != 1 && React.createElement(
+							Fragment,
+							null,
+							React.createElement(
+								PanelBody,
+								{ title: __('Title'), initialOpen: false },
+								React.createElement(Range, {
+									label: __('Spacing'),
+									value: nameSpacing, onChange: function onChange(value) {
+										return setAttributes({ nameSpacing: value });
+									},
+									unit: ['px', 'em', '%'],
+									max: 300, min: 0, responsive: true,
+									device: device,
+									onDeviceChange: function onDeviceChange(value) {
+										return _this2.setState({ device: value });
+									} }),
+								React.createElement(Color, {
+									label: __('Color'),
+									value: nameColor, onChange: function onChange(value) {
+										return setAttributes({ nameColor: value });
+									}
+								}),
+								React.createElement(Typography, {
+									label: __('Typography'),
+									value: nameTypo,
+									onChange: function onChange(value) {
+										return setAttributes({ nameTypo: value });
+									},
+									device: device, onDeviceChange: function onDeviceChange(value) {
+										return _this2.setState({ device: value });
+									} })
+							),
+							React.createElement(
+								PanelBody,
+								{ title: __('Subtitle'), initialOpen: false },
+								React.createElement(Color, {
+									label: __('Color'),
+									value: subtitleColor, onChange: function onChange(value) {
+										return setAttributes({ subtitleColor: value });
+									}
+								}),
+								React.createElement(Typography, {
+									label: __('Typography'),
+									value: subtitleTypo,
+									onChange: function onChange(value) {
+										return setAttributes({ subtitleTypo: value });
+									},
+									device: device, onDeviceChange: function onDeviceChange(value) {
+										return _this2.setState({ device: value });
+									} })
+							),
+							React.createElement(
+								PanelBody,
+								{ title: __('Description'), initialOpen: false },
+								React.createElement(Toggle, { label: __('Hide Description'), value: activeDescription, onChange: function onChange(value) {
+										return setAttributes({ activeDescription: value });
+									} }),
+								activeDescription && React.createElement(
+									Fragment,
+									null,
+									React.createElement(Color, {
+										label: __('Color'),
+										value: descriptionColor, onChange: function onChange(value) {
+											return setAttributes({ descriptionColor: value });
+										}
+									}),
+									React.createElement(Typography, {
+										label: __('Typography'),
+										value: messageTypo,
+										onChange: function onChange(value) {
+											return setAttributes({ messageTypo: value });
+										},
+										device: device, onDeviceChange: function onDeviceChange(value) {
+											return _this2.setState({ device: value });
+										} }),
+									React.createElement(Range, {
+										label: __('Top Spacing'),
+										value: messageSpacingTop, onChange: function onChange(value) {
+											return setAttributes({ messageSpacingTop: value });
+										},
+										unit: ['px', 'em', '%'], max: 300,
+										min: 0,
+										responsive: true,
+										device: device,
+										onDeviceChange: function onDeviceChange(value) {
+											return _this2.setState({ device: value });
+										} }),
+									React.createElement(Range, {
+										label: __('Bottom Spacing'),
+										value: messageSpacingBottom, onChange: function onChange(value) {
+											return setAttributes({ messageSpacingBottom: value });
+										},
+										unit: ['px', 'em', '%'], max: 300,
+										min: 0,
+										responsive: true,
+										device: device,
+										onDeviceChange: function onDeviceChange(value) {
+											return _this2.setState({ device: value });
+										} })
+								)
+							),
+							React.createElement(
+								PanelBody,
+								{ title: __('Content'), initialOpen: false },
+								React.createElement(Padding, { label: __('Padding'), value: contentPadding, onChange: function onChange(val) {
+										return setAttributes({ contentPadding: val });
+									}, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+										return _this2.setState({ device: value });
+									} }),
+								React.createElement(RadioAdvanced, { label: __('Vertical Align'), value: contentVerticalAlign, onChange: function onChange(value) {
+										return setAttributes({ contentVerticalAlign: value });
+									},
+									options: [{ label: __('Top'), value: 'top', title: __('Top') }, { label: __('Middle'), value: 'center', title: __('Middle') }, { label: __('Bottom'), value: 'bottom', title: __('Bottom') }]
+								}),
+								React.createElement(Alignment, (_React$createElement3 = { label: __('Horizontal Alignment'), value: contentAlignment, alignmentType: 'content', onChange: function onChange(val) {
+										return setAttributes({ contentAlignment: val });
+									} }, _defineProperty(_React$createElement3, 'alignmentType', 'content'), _defineProperty(_React$createElement3, 'disableJustify', true), _React$createElement3))
+							),
+							React.createElement(
+								PanelBody,
+								{ title: __('Overlay'), initialOpen: false },
+								React.createElement(Toggle, { label: __('Animate on Hover'), value: animateOnHover, onChange: function onChange(val) {
+										return setAttributes({ animateOnHover: val });
+									} }),
+								React.createElement(Toggle, { label: __('Enable'), value: enableOverlay, onChange: function onChange(val) {
+										return setAttributes({ enableOverlay: val });
+									} }),
+								enableOverlay == 1 && React.createElement(
+									Fragment,
+									null,
+									animateOnHover == 1 ? React.createElement(
+										Tabs,
+										null,
+										React.createElement(
+											Tab,
+											{ tabTitle: __('Normal') },
+											React.createElement(ColorAdvanced, { label: __('Background'), value: overlayBg, onChange: function onChange(value) {
+													return setAttributes({ overlayBg: value });
+												} })
+										),
+										React.createElement(
+											Tab,
+											{ tabTitle: __('Hover') },
+											React.createElement(ColorAdvanced, { label: __('Background'), value: overlayHoverBg, onChange: function onChange(value) {
+													return setAttributes({ overlayHoverBg: value });
+												} })
+										)
+									) : React.createElement(
+										Fragment,
+										null,
+										React.createElement(ColorAdvanced, { label: __('Background'), value: overlayBg, onChange: function onChange(value) {
+												return setAttributes({ overlayBg: value });
+											} }),
+										React.createElement(Separator, null)
+									),
+									React.createElement(Select, { label: __('Blend Mode'), options: [['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]], value: overlayBlend, onChange: function onChange(val) {
+											return setAttributes({ overlayBlend: val });
+										} })
+								)
+							)
+						)
+					),
+					React.createElement(
+						PanelBody,
+						{ title: __('Media'), initialOpen: false },
+						React.createElement(RadioAdvanced, {
+							label: __('Image Size'),
+							options: [{ label: 'L', value: '1140px', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+							value: carouselImageSize,
+							onChange: function onChange(value) {
+								return setAttributes({ carouselImageSize: value });
+							}
+						}),
+						carouselImageSize == 'custom' && React.createElement(
+							Fragment,
+							null,
+							React.createElement(Range, {
+								label: React.createElement('span', { className: 'dashicons dashicons-leftright', title: 'Width' }),
+								value: imageWidth,
+								onChange: function onChange(value) {
+									return setAttributes({ imageWidth: value });
+								},
+								unit: ['px', 'em', '%'],
+								max: 300,
+								min: 0,
+								responsive: true,
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							}),
+							React.createElement(Range, {
+								label: React.createElement('span', { className: 'dashicons dashicons-sort', title: 'Height' }),
+								value: avatarHeight,
+								onChange: function onChange(value) {
+									return setAttributes({ avatarHeight: value });
+								},
+								unit: ['px', 'em', '%'],
+								max: 300,
+								min: 0,
+								responsive: true,
+								device: device,
+								onDeviceChange: function onDeviceChange(value) {
+									return _this2.setState({ device: value });
+								}
+							})
+						)
+					),
+					animationSettings(uniqueId, animation, setAttributes)
+				),
+				React.createElement(
+					BlockControls,
+					null,
+					React.createElement(
+						Toolbar,
+						null,
+						React.createElement(InlineToolbar, _extends({
+							data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
+						}, this.props, {
+							prevState: this.state
+						}))
+					)
+				),
+				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				React.createElement(
+					'div',
+					{ className: 'qubely-block-' + uniqueId },
+					React.createElement(
+						'div',
+						{ className: 'qubely-block-image-carousel qubely-layout-' + layout },
+						layout == 5 && React.createElement(
+							Carousel,
+							{ options: carouselFiveSettings },
+							this.renderLayoutFive()
+						),
+						React.createElement(
+							Carousel,
+							{ options: carouselSettings },
+							this.renderImages()
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Edit;
+}(Component);
+
+exports.default = Edit;
 
 /***/ }),
 

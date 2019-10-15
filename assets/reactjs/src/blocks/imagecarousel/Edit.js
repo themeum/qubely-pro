@@ -328,18 +328,15 @@ class Edit extends Component {
 			overlayBlend,
 			sliderMargin,
 			dotsposition,
-<<<<<<< HEAD
 			carouselImageSize,
-			imageWidth, avatarHeight
+			imageWidth, avatarHeight,
 			
-=======
 
 			globalZindex,
 			hideTablet,
 			hideMobile,
 			globalCss,
 			animation
->>>>>>> e9f21f74fb6224e91f35ae148f1b0a225cbe5a55
 		} } = this.props
 
 		const { device } = this.state
@@ -710,7 +707,6 @@ class Edit extends Component {
 							}
 						</Fragment>
 					}
-<<<<<<< HEAD
 					<PanelBody title={__('Media')} initialOpen={false}>
 						<RadioAdvanced
 							label={__('Image Size')}
@@ -748,11 +744,9 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-=======
 
 					{animationSettings(uniqueId, animation, setAttributes)}
 
->>>>>>> e9f21f74fb6224e91f35ae148f1b0a225cbe5a55
 				</InspectorControls>
 
 				<BlockControls>
