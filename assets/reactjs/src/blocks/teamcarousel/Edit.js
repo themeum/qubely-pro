@@ -371,21 +371,13 @@ class Edit extends Component {
 									onChange={value => setAttributes({ arrowStyle: value })}
 								/>
 								<Range
-									label={__('Horizontal Position Left')}
-									value={horizontalScrollleft} onChange={(value) => setAttributes({ horizontalScrollleft: value })}
-									min={-100} max={100}
-									responsive unit={['px', 'em', '%']}
-									device={device}
-									onDeviceChange={value => this.setState({ device: value })}
-								/>
-								<Range
-									label={__('Horizontal Position Right')}
+									label={__('Horizontal Position')}
 									value={horizontalScroll} onChange={(value) => setAttributes({ horizontalScroll: value })}
 									min={-100} max={100}
 									responsive unit={['px', 'em', '%']}
 									device={device}
 									onDeviceChange={value => this.setState({ device: value })}
-								/>
+								/> 
 								<Range
 									label={__('Vertical Position')}
 									value={arrowPosition} onChange={(value) => setAttributes({ arrowPosition: value })}
