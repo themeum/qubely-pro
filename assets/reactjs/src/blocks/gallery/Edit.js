@@ -70,7 +70,7 @@ class Edit extends Component {
 	}
 
 	renderGalleryItem = () => {
-		const { attributes: { galleryContents,enableCaption, showCaption,imageAnimation } } = this.props
+		const { galleryContents, enableCaption, showCaption,imageAnimation } = this.props.attributes
 		return (galleryContents.map(({ title, image }, index) => {
 			return (
 				<div key={index} className={`qubely-gallery-item`}>
