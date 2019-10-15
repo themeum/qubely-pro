@@ -104,7 +104,7 @@ class Edit extends Component {
         } = this.props
 
         if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
-        // console.log('in column : ', parentClientId)
+        
         return (
             <Fragment>
                 <InspectorControls key="inspector">

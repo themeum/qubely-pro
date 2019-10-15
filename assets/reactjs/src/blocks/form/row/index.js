@@ -24,6 +24,21 @@ registerBlockType('qubely/form-row', {
             type: 'string',
             default: ''
         },
+        gutter: {
+            type: 'object',
+            default: {
+                md: 10,
+                sm: 10,
+                xs: 10,
+                unit: 'px',
+                device: 'md'
+            },
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-form-row {margin-bottom:{{gutter}};}'
+                }
+            ]
+        },
     },
     edit: Edit,
     save: Save

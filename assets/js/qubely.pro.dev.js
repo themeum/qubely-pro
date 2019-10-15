@@ -3988,7 +3988,7 @@ var Edit = function (_Component) {
             if (uniqueId) {
                 CssGenerator(attributes, 'form-column', uniqueId);
             }
-            // console.log('in column : ', parentClientId)
+
             return React.createElement(
                 Fragment,
                 null,
@@ -4304,8 +4304,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Component = wp.element.Component;
-var InnerBlocks = wp.editor.InnerBlocks;
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$editor = wp.editor,
+    InnerBlocks = _wp$editor.InnerBlocks,
+    InspectorControls = _wp$editor.InspectorControls;
+var PanelBody = wp.components.PanelBody;
+var _wp$qubelyComponents = wp.qubelyComponents,
+    Range = _wp$qubelyComponents.Range,
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
 
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
@@ -4334,19 +4343,46 @@ var Edit = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _props$attributes = this.props.attributes,
-                uniqueId = _props$attributes.uniqueId,
-                parentClientId = _props$attributes.parentClientId;
-            // console.log('in row : ', parentClientId)
+            var _props2 = this.props,
+                attributes = _props2.attributes,
+                _props2$attributes = _props2.attributes,
+                uniqueId = _props2$attributes.uniqueId,
+                gutter = _props2$attributes.gutter;
 
+            if (uniqueId) {
+                CssGenerator(attributes, 'form-row', uniqueId);
+            }
             return React.createElement(
-                'div',
-                { className: 'qubely-block-' + uniqueId },
+                Fragment,
+                null,
+                React.createElement(
+                    InspectorControls,
+                    { key: 'inspector' },
+                    React.createElement(
+                        PanelBody,
+                        { title: __(''), opened: true },
+                        React.createElement(Range, {
+                            min: 0,
+                            max: 60,
+                            responsive: true,
+                            value: gutter,
+                            label: __('Gutter'),
+                            unit: ['px', 'em', '%'],
+                            onChange: function onChange(value) {
+                                return setAttributes({ gutter: value });
+                            }
+                        })
+                    )
+                ),
                 React.createElement(
                     'div',
-                    { className: 'qubely-form-row' },
-                    React.createElement(InnerBlocks, {
-                        allowedBlocks: ['qubely/formfield-column'] })
+                    { className: 'qubely-block-' + uniqueId },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-form-row' },
+                        React.createElement(InnerBlocks, {
+                            allowedBlocks: ['qubely/formfield-column'] })
+                    )
                 )
             );
         }
@@ -4403,6 +4439,19 @@ registerBlockType('qubely/form-row', {
         parentClientId: {
             type: 'string',
             default: ''
+        },
+        gutter: {
+            type: 'object',
+            default: {
+                md: 10,
+                sm: 10,
+                xs: 10,
+                unit: 'px',
+                device: 'md'
+            },
+            style: [{
+                selector: '{{QUBELY}} .qubely-form-row {margin-bottom:{{gutter}};}'
+            }]
         }
     },
     edit: _edit2.default,
