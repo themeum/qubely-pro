@@ -3950,8 +3950,7 @@ var Edit = function (_Component) {
                 _props$attributes = _props.attributes,
                 uniqueId = _props$attributes.uniqueId,
                 fieldSize = _props$attributes.fieldSize,
-                width = _props$attributes.width,
-                gutter = _props$attributes.gutter;
+                width = _props$attributes.width;
 
             var _client = clientId.substr(0, 6);
             if (!uniqueId) {
@@ -3961,8 +3960,7 @@ var Edit = function (_Component) {
             }
             var currentField = $('#block-' + clientId);
             currentField.css({
-                width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width[parseResponsiveViewPort()] + '%',
-                marginRight: '' + gutter[parseResponsiveViewPort()] + gutter.unit
+                width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width[parseResponsiveViewPort()] + '%'
             });
         }
     }, {
@@ -3972,14 +3970,12 @@ var Edit = function (_Component) {
                 clientId = _props2.clientId,
                 _props2$attributes = _props2.attributes,
                 fieldSize = _props2$attributes.fieldSize,
-                width = _props2$attributes.width,
-                gutter = _props2$attributes.gutter;
+                width = _props2$attributes.width;
 
 
             var currentField = $('#block-' + clientId);
             currentField.css({
-                width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width[parseResponsiveViewPort()] + '%',
-                marginRight: '' + gutter[parseResponsiveViewPort()] + gutter.unit
+                width: fieldSize === 'small' ? '30%' : fieldSize === 'medium' ? '50%' : fieldSize === 'large' ? '90%' : width[parseResponsiveViewPort()] + '%'
             });
         }
     }, {
@@ -4199,19 +4195,6 @@ registerBlockType('qubely/form-column', {
                 condition: [{ key: 'fieldSize', relation: '==', value: 'custom' }],
                 selector: '{{QUBELY}}.qubely-form-field-front.qubely-custom {flex:{{width}};max-width:{{width}};}'
             }]
-        },
-        gutter: {
-            type: 'object',
-            default: {
-                md: 10,
-                sm: 10,
-                xs: 10,
-                unit: 'px',
-                device: 'md'
-            },
-            style: [{
-                selector: '{{QUBELY}}.qubely-form-field-front {margin-right:{{gutter}};}'
-            }]
         }
     },
     getEditWrapperProps: function getEditWrapperProps(attributes) {
@@ -4273,8 +4256,7 @@ var Save = function (_Component) {
         value: function render() {
             var _props$attributes = this.props.attributes,
                 uniqueId = _props$attributes.uniqueId,
-                fieldSize = _props$attributes.fieldSize,
-                width = _props$attributes.width;
+                fieldSize = _props$attributes.fieldSize;
 
 
             return React.createElement(
@@ -4359,9 +4341,11 @@ var Edit = function (_Component) {
         value: function render() {
             var _props2 = this.props,
                 attributes = _props2.attributes,
+                setAttributes = _props2.setAttributes,
                 _props2$attributes = _props2.attributes,
                 uniqueId = _props2$attributes.uniqueId,
                 gutter = _props2$attributes.gutter;
+
 
             if (uniqueId) {
                 CssGenerator(attributes, 'form-row', uniqueId);
@@ -4393,7 +4377,7 @@ var Edit = function (_Component) {
                     { className: 'qubely-block-' + uniqueId },
                     React.createElement(
                         'div',
-                        { className: 'qubely-form-row' },
+                        { className: 'qubely-form-row qubely-backend' },
                         React.createElement(InnerBlocks, {
                             allowedBlocks: ['qubely/formfield-column'] })
                     )
@@ -4464,7 +4448,7 @@ registerBlockType('qubely/form-row', {
                 device: 'md'
             },
             style: [{
-                selector: '{{QUBELY}} .qubely-form-row {margin-bottom:{{gutter}};}'
+                selector: '{{QUBELY}} .qubely-form-row.qubely-backend .editor-inner-blocks.block-editor-inner-blocks {margin-left:-{{gutter}};margin-right:-{{gutter}};} {{QUBELY}} .qubely-form-row.qubely-frontend {margin-left:-{{gutter}};margin-right:-{{gutter}};} {{QUBELY}} .qubely-form-row.qubely-backend .editor-block-list__layout.block-editor-block-list__layout>div,{{QUBELY}} .qubely-form-row.qubely-frontend .qubely-form-field-front{padding-left:{{gutter}};padding-right:{{gutter}};} '
             }]
         }
     },
@@ -4518,7 +4502,7 @@ var Save = function (_Component) {
                 { className: "qubely-block-" + uniqueId },
                 React.createElement(
                     "div",
-                    { className: "qubely-form-row" },
+                    { className: "qubely-form-row qubely-frontend" },
                     React.createElement(InnerBlocks.Content, null)
                 )
             );

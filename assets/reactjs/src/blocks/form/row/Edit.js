@@ -21,7 +21,15 @@ class Edit extends Component {
         }
     }
     render() {
-        const { attributes, attributes: { uniqueId, gutter } } = this.props
+        const {
+            attributes,
+            setAttributes,
+            attributes: {
+                uniqueId,
+                gutter
+            }
+        } = this.props
+
         if (uniqueId) { CssGenerator(attributes, 'form-row', uniqueId); }
         return (
             <Fragment>
@@ -42,7 +50,7 @@ class Edit extends Component {
                     </PanelBody>
                 </InspectorControls>
                 <div className={`qubely-block-${uniqueId}`}>
-                    <div className={`qubely-form-row`}>
+                    <div className={`qubely-form-row qubely-backend`}>
                         <InnerBlocks
                             allowedBlocks={['qubely/formfield-column']} />
                     </div>

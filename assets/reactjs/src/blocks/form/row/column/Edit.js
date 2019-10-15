@@ -21,7 +21,7 @@ const {
 class Edit extends Component {
 
     componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId, fieldSize, width, gutter } } = this.props
+        const { setAttributes, clientId, attributes: { uniqueId, fieldSize, width } } = this.props
         const _client = clientId.substr(0, 6)
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
@@ -32,7 +32,6 @@ class Edit extends Component {
         currentField.css(
             {
                 width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width[parseResponsiveViewPort()] + '%',
-                marginRight: `${gutter[parseResponsiveViewPort()]}${gutter.unit}`
             }
         )
     }
@@ -43,7 +42,6 @@ class Edit extends Component {
             attributes: {
                 fieldSize,
                 width,
-                gutter
             }
         } = this.props
 
@@ -51,7 +49,6 @@ class Edit extends Component {
         currentField.css(
             {
                 width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width[parseResponsiveViewPort()] + '%',
-                marginRight: `${gutter[parseResponsiveViewPort()]}${gutter.unit}`
             }
         )
 
