@@ -3,6 +3,7 @@ const { registerBlockType } = wp.blocks
 import './style.scss'
 import Edit from './Edit'
 import Save from './Save'
+const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
 
 registerBlockType('qubely/imagecarousel', {
 	title: __('Image Carousel'),
@@ -490,6 +491,7 @@ registerBlockType('qubely/imagecarousel', {
 			]
 		},
 		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
+		...globalAttributes
 	},
 
 	edit: Edit,

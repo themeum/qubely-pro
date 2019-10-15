@@ -239,8 +239,6 @@ class Edit extends Component {
 				metaSpace,
 				excerptSpace,
 
-				//animation
-				animation,
 				//global
 				globalZindex,
 				hideTablet,
@@ -285,7 +283,8 @@ class Edit extends Component {
 				sliderItemsSpace, 
 				sliderItemMargin,
 				dotalignment,
-				textalignment
+				textalignment,
+				animation
 				
 			}
 		} = this.props
@@ -842,6 +841,8 @@ class Edit extends Component {
 						<Color label={__('Excerpt')} value={style !== 4 ? excerptColor : excerptColor2} onChange={value => setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value })} />
 					</PanelBody>
 					
+					{animationSettings(uniqueId, animation, setAttributes)}
+
 				</InspectorControls>
 
 				<BlockControls>

@@ -19,20 +19,15 @@ class QUBELY_PRO
 		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
 
 		// dynamic blocks
-		add_action('init', array($this, 'init_dynamic_postgrid_blocks'));
-		add_action('init', array($this, 'init_dynamic_postcarousel_blocks')); 
+		add_action('init', array($this, 'init_blocks'));
 	}
 
 	/**
 	 * Init dynamic blocks frontend
 	 */
-	public function init_dynamic_postgrid_blocks()
+	public function init_blocks()
 	{
 		require_once QUBELY_PRO_DIR_PATH . 'core/blocks/postgrid.php';
-	}
-
-	public function init_dynamic_postcarousel_blocks()
-	{
 		require_once QUBELY_PRO_DIR_PATH . 'core/blocks/postcarousel.php';
 	}
 

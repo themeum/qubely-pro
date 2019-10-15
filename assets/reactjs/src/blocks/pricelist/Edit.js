@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, BlockControls, MediaUpload } = wp.editor
-const { IconList,Inline: { InlineToolbar }, Background, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, Border, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const { IconList,Inline: { InlineToolbar }, Background, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, Border, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings } } = wp.qubelyComponents
 import icons from '../../helpers/icons'
 
 class Edit extends Component {
@@ -239,8 +239,13 @@ class Edit extends Component {
             
             enableDiscount,
             discountTypography,
-            discountColor
+            discountColor,
 
+            globalZindex,
+            hideTablet,
+            hideMobile,
+            globalCss,
+            animation
 		} } = this.props
 
 		const { device } = this.state
@@ -424,6 +429,8 @@ class Edit extends Component {
                         
 					</PanelBody>
 
+                    {animationSettings(uniqueId, animation, setAttributes)}
+
 				</InspectorControls>
 
 				<BlockControls>
@@ -435,6 +442,8 @@ class Edit extends Component {
 						/>
 					</Toolbar>
 				</BlockControls>
+
+                {globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-pricelist qubely-pricelist-item-${style}`}>

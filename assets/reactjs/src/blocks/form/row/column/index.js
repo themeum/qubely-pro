@@ -26,6 +26,10 @@ registerBlockType('qubely/form-column', {
             type: 'string',
             default: ''
         },
+        parentClientId: {
+            type: 'string',
+            default: ''
+        },
         fieldSize: {
             type: 'string',
             default: 'large',

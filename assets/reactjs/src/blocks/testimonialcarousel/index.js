@@ -3,6 +3,7 @@ const { registerBlockType } = wp.blocks
 import './style.scss'
 import Edit from './Edit'
 import Save from './Save'
+const { gloalSettings: { globalAttributes }} = wp.qubelyComponents
 
 registerBlockType('qubely/testimonialcarousel', {
 	title: __('Testimonial Carousel'),
@@ -488,6 +489,7 @@ registerBlockType('qubely/testimonialcarousel', {
 		},
 		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
 		//showContextMenu: { type: 'boolean', default: true }, 
+		...globalAttributes
 	},
 	edit: Edit,
 	save: Save

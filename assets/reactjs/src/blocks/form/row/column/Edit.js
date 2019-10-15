@@ -59,7 +59,7 @@ class Edit extends Component {
 
     renderFormFieldTypes = () => {
 
-        const { clientId, insertBlock } = this.props
+        const { clientId, insertBlock, attributes: { parentClientId } } = this.props
 
         const formFields = [
             [__('Text'), 'text'],
@@ -77,7 +77,7 @@ class Edit extends Component {
                 {formFields.map(([fieldName, type], index) => {
                     return (
                         <div className="qubely-form-field-type"
-                            onClick={() => insertBlock(createBlock(`qubely/formfield-${type}`, {}), undefined, clientId)}
+                            onClick={() => insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId }), undefined, clientId)}
                         >
                             {fieldName}
                         </div>
@@ -96,6 +96,7 @@ class Edit extends Component {
             attributes,
             attributes: {
                 uniqueId,
+                parentClientId,
                 fieldSize,
                 width,
                 gutter
@@ -103,7 +104,7 @@ class Edit extends Component {
         } = this.props
 
         if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
-
+        // console.log('in column : ', parentClientId)
         return (
             <Fragment>
                 <InspectorControls key="inspector">
@@ -151,19 +152,19 @@ class Edit extends Component {
                         {
                             hasInnerBlocks ?
                                 <InnerBlocks
-                                    // allowedBlocks={
-                                    //     [
-                                    //         'qubely/formfield-text',
-                                    //         'qubely/formfield-number',
-                                    //         'qubely/formfield-email',
-                                    //         'qubely/formfield-textarea',
-                                    //         'qubely/formfield-radio',
-                                    //         'qubely/formfield-dropdown',
-                                    //         'qubely/formfield-checkbox',
-                                    //         'qubely/formfield-date',
-                                    //         'qubely/formfield-time',
-                                    //     ]
-                                    // }
+                                // allowedBlocks={
+                                //     [
+                                //         'qubely/formfield-text',
+                                //         'qubely/formfield-number',
+                                //         'qubely/formfield-email',
+                                //         'qubely/formfield-textarea',
+                                //         'qubely/formfield-radio',
+                                //         'qubely/formfield-dropdown',
+                                //         'qubely/formfield-checkbox',
+                                //         'qubely/formfield-date',
+                                //         'qubely/formfield-time',
+                                //     ]
+                                // }
                                 />
                                 :
                                 <Dropdown

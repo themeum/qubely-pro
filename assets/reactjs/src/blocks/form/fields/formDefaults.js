@@ -11,6 +11,10 @@ const FieldDefaults = {
             type: 'string',
             default: ''
         },
+        parentClientId: {
+            type: 'string',
+            default: ''
+        },
         type: {
             type: 'string',
             default: null

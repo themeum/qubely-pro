@@ -60,11 +60,10 @@ class Save extends Component {
     }
 
     render() {
-        const { _encrypt, _renderField } = this;
-        const { uniqueId, formItems, inputSize, fieldErrorMessage, formSuccessMessage, formErrorMessage, reCaptcha, reCaptchaSiteKey, reCaptchaSecretKey, policyCheckbox, policyCheckboxText, emailReceiver, emailHeaders, emailFrom, emailSubject, emailBody, layout, buttonFillType, buttonSize, buttonText, buttonIconName, buttonIconPosition, buttonTag, animation } = this.props.attributes
+        const { _encrypt } = this;
+        const { uniqueId, fieldErrorMessage, formSuccessMessage, formErrorMessage, reCaptcha, reCaptchaSiteKey, reCaptchaSecretKey, policyCheckbox, policyCheckboxText, emailReceiver, emailHeaders, emailFrom, emailSubject, emailBody, layout, buttonFillType, buttonSize, buttonText, buttonIconName, buttonIconPosition, buttonTag, animation } = this.props.attributes
         return (
             <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-                {/* <style>{this._renderFormGroupCss()}</style> */}
                 <div className={`qubely-block-form qubely-layout-${layout}`}>
                     <form className="qubely-form">
 

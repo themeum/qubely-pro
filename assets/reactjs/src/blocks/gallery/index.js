@@ -1,5 +1,6 @@
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
+const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
 
 import './style.scss'
 
@@ -9,7 +10,7 @@ import Save from './Save'
 registerBlockType('qubely/gallery', {
 	title: __('Gallery'),
     category: 'qubely',
-    description: 'Showcase detailed with Qubely Gallery',
+    description: __('Showcase detailed with Qubely Gallery'),
     icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg'} alt={__('Gallery')} />,
 	keywords: [
 		__('Gallery'),
@@ -329,7 +330,8 @@ registerBlockType('qubely/gallery', {
 
 		//global
 		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
-		showContextMenu: { type: 'boolean', default: true },
+        showContextMenu: { type: 'boolean', default: true },
+        ...globalAttributes,
 	},
 	edit: Edit,
 	save: Save

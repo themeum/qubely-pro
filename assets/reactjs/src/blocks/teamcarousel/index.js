@@ -3,6 +3,7 @@ const { registerBlockType } = wp.blocks
 import './style.scss'
 import Edit from './Edit'
 import Save from './Save'
+const { gloalSettings: { globalAttributes }} = wp.qubelyComponents
 
 registerBlockType('qubely/teamcarousel', {
 	title: __('Team Carousel'),
@@ -559,10 +560,7 @@ registerBlockType('qubely/teamcarousel', {
                 }
             ]
         },
-
-
-
-
+		...globalAttributes
 	},
 	edit: Edit,
 	save: Save
