@@ -182,11 +182,11 @@ class Edit extends Component {
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item item-layout${layout} align-${contentVerticalAlign}`} >
-
 						<Tooltip text={__('Delete this item')}>
-							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}><span className="fas fa-close"></span></span>
+							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
+								<span class="dashicons dashicons-no-alt"></span>
+							</span>
 						</Tooltip>
-
 						<div className={`qubely-image-item layout-${layout}`}>
 							{this.renderSliderInfo(item, index)}
 						</div>
@@ -328,6 +328,9 @@ class Edit extends Component {
 			overlayBlend,
 			sliderMargin,
 			dotsposition,
+			carouselImageSize,
+			imageWidth, avatarHeight,
+			
 
 			globalZindex,
 			hideTablet,
@@ -676,7 +679,6 @@ class Edit extends Component {
 										/>
 										<Alignment label={__('Horizontal Alignment')} value={contentAlignment} alignmentType="content" onChange={val => setAttributes({ contentAlignment: val })} alignmentType="content" disableJustify />
 									</PanelBody>
-
 									<PanelBody title={__('Overlay')} initialOpen={false}>
 										<Toggle label={__('Animate on Hover')} value={animateOnHover} onChange={val => setAttributes({ animateOnHover: val })} />
 										<Toggle label={__('Enable')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
@@ -705,6 +707,43 @@ class Edit extends Component {
 							}
 						</Fragment>
 					}
+					<PanelBody title={__('Media')} initialOpen={false}>
+						<RadioAdvanced
+							label={__('Image Size')}
+							options={[
+								{ label: 'L', value: '1140px', title: 'Large' },
+								{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+							]}
+							value={carouselImageSize}
+							onChange={(value) => setAttributes({ carouselImageSize: value })}
+						/>
+						{carouselImageSize == 'custom' &&
+							<Fragment>
+								<Range
+									label={<span className="dashicons dashicons-leftright" title="Width" />}
+									value={imageWidth} 
+									onChange={(value) => setAttributes({ imageWidth: value })}
+									unit={['px', 'em', '%']}
+									max={300}
+									min={0}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+								<Range
+									label={<span className="dashicons dashicons-sort" title="Height" />}
+									value={avatarHeight}
+									onChange={(value) => setAttributes({ avatarHeight: value })}
+									unit={['px', 'em', '%']}
+									max={300}
+									min={0}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+							</Fragment>
+						}
+					</PanelBody>
 
 					{animationSettings(uniqueId, animation, setAttributes)}
 
