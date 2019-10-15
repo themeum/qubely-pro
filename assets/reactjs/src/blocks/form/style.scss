@@ -193,3 +193,108 @@
     margin-right: 8px;
   }
 }
+
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/formfield-text"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/formfield-email"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/formfield-number"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/formfield-radio"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/formfield-time"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/formfield-date"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/formfield-textarea"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/formfield-dropdown"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/formfield-checkbox"] > .block-editor-block-list__block-edit:before {
+    outline: 1px dashed #000;
+    border-color: transparent;
+    border: none;
+    box-shadow: -2px 0 0 0 #000;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+}
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-checkbox"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-email"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-number"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-radio"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-date"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-time"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-textarea"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-dropdown"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-text"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar{
+    top: 14px;
+    left: 16px;
+}
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-text"] > .editor-block-list__insertion-point,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-email"] > .editor-block-list__insertion-point,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-number"] > .editor-block-list__insertion-point,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-radio"] > .editor-block-list__insertion-point,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-time"] > .editor-block-list__insertion-point,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-date"] > .editor-block-list__insertion-point,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-textarea"] > .editor-block-list__insertion-point,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-dropdown"] > .editor-block-list__insertion-point,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/formfield-checkbox"] > .editor-block-list__insertion-point {
+    display: none;
+}
+
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/form-column"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-column"]:hover > .block-editor-block-list__block-edit:before {
+    outline: 1px dashed #2184F9;
+    border-color: transparent;
+    border: none;
+    box-shadow: -2px 0 0 0 #2184F9;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-column"] > .block-editor-block-list__block-edit > div:last-child {
+    border: 8px solid transparent;
+}
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/form-column"] > .block-editor-block-list__block-edit > div:last-child {
+    border: 8px solid rgba(33, 132, 249, 0.1);
+}
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-column"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar{
+    top: 14px;
+    left: 16px;
+}
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-column"] > .editor-block-list__insertion-point {
+    display: none;
+}
+
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-row"] .block-editor-block-list__block-edit {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/form-row"] > .block-editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-row"]:hover > .block-editor-block-list__block-edit:before {
+    outline: 1px dashed green;
+    border-color: transparent;
+    border: none;
+    box-shadow: -2px 0 0 0 green;
+    top: 0px;
+    bottom: 0px;
+    right: 0;
+    left: 0;
+}
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-row"] > .block-editor-block-list__block-edit > div:last-child {
+    border: 10px solid transparent;
+}
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type="qubely/form-row"] > .block-editor-block-list__block-edit > div:last-child {
+    border: 10px solid rgba(76, 175, 80, 0.1);
+}
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-row"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar{
+    top: 14px;
+    left: 16px;
+}
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-row"] > .block-editor-block-list__block-edit .block-editor-block-mover {
+    left: -35px;
+}
+.qubely-form-field-wrapper {
+    .qubely-form-label {
+        vertical-align: baseline;
+    }
+}
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-row"] > .editor-block-list__insertion-point {
+    display: none;
+}
