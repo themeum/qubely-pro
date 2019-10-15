@@ -144,7 +144,7 @@ class Edit extends Component {
                                         <div
                                             className="qubely-form-column-option"
                                             onClick={() => {
-                                                let tempWidth = `${Math.floor(100 / (index + 2))}`
+                                                let tempWidth = `${100 / (index + 2)}`
                                                 innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId, }))))
                                                 replaceInnerBlocks(clientId, innerBlocks, false)
                                                 this.setState({ groupField: false })
@@ -152,7 +152,7 @@ class Edit extends Component {
                                         >
                                             {Array(index + 2).fill(0).map(() => {
                                                 return (
-                                                    <i onClick={() => hideDropdown && hideDropdown()} style={{ width: `${Math.floor(100 / (index + 1))}%` }} />
+                                                    <i onClick={() => hideDropdown && hideDropdown()} style={{ width: `${100 / (index + 1)}%` }} />
                                                 )
                                             })}
                                         </div>
@@ -498,7 +498,7 @@ class Edit extends Component {
                         </Tabs>
                     </PanelBody>
 
-                    {buttonSettings(this.props.attributes, device, setAttributes, (key, value) => { this.setState({ [key]: value }) })}
+                    {buttonSettings(this.props.attributes, device, (key, value) => setAttributes({ [key]: value }), (key, value) => { this.setState({ [key]: value }) })}
 
                     {animationSettings(uniqueId, animation, setAttributes)}
 
@@ -520,8 +520,7 @@ class Edit extends Component {
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
-                                // templateLock={false}
-                                allowedBlocks={['qubely/formfield-row']}
+                                allowedBlocks={['qubely/formfield-row','qubely/formfield-column',]}
                                 template={
                                     formItems.map(({ type, label, options, placeholder, width, required }) => {
                                         return (
@@ -531,7 +530,7 @@ class Edit extends Component {
                                                         [
                                                             [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required }]
                                                         ]
-                                                    ]
+                                                    ],
                                                 ]
                                             ]
                                         )
