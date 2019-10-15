@@ -1,6 +1,6 @@
 const { Component } = wp.element
 const { RichText } = wp.editor
-const { HelperFunction: { animationAttr } } = wp.qubelyComponents
+const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
 class Save extends Component {
 
 	renderPricelist = () => {
@@ -30,10 +30,11 @@ class Save extends Component {
 	}
 
 	render() {
-		const { attributes: { uniqueId, animation, style, column } } = this.props
+		const { attributes: { uniqueId, animation, style, column, interaction } } = this.props
+		const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-				<div className={`qubely-block-gallery qubely-gallery-item-${style}`}>
+				<div className={`qubely-block-gallery ${interactionClass} qubely-gallery-item-${style}`}>
 					<div className={`qubely-gallery-items ${'qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs}`}>
 						{this.renderPricelist()}
 					</div >

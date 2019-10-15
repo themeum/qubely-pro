@@ -125,7 +125,7 @@ exports.push([module.i, ".qubely-form-row > .editor-inner-blocks > .editor-block
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form .editor-inner-blocks.block-editor-inner-blocks > .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #fff;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs {\n    width: 100%;\n    display: flex;\n    justify-content: space-around;\n    padding: 5px 0px; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab {\n      width: 95%;\n      text-align: center;\n      background: #ffffff;\n      border: 1px solid #d6d9dd;\n      border-radius: 4px;\n      padding: 5px 30px;\n      display: flex;\n      align-items: center;\n      margin: 7px 0px;\n      display: flex;\n      justify-content: center; }\n      .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab.qubely-active {\n        color: #fff;\n        background-color: #1066cc;\n        border-radius: 5px;\n        cursor: pointer; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #f8f8f8;\n    border: 1px solid #e5e5e5;\n    border-radius: 2px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px;\n    transition: 400ms;\n    justify-content: center; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type:hover {\n      background: #e5e5e5; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-form-field-picker .qubely-form-column-options {\n  width: 100%; }\n  .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option {\n    width: 25%;\n    cursor: pointer;\n    width: 26%;\n    background: transparent;\n    border: none;\n    height: 50px;\n    margin: 7px !important;\n    display: inline-flex;\n    padding: 0 !important;\n    outline: 1px solid transparent;\n    transition: 300ms;\n    opacity: 1;\n    padding: 5px 20px; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i {\n      height: 50px;\n      background: #e2e6ec;\n      border: 1px solid #e2e6ec;\n      border-radius: 3px;\n      display: inline-block;\n      position: relative;\n      transition: 300ms;\n      font-style: normal; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i:not(:last-of-type) {\n      margin-right: 2px; }\n\n.qubely-form-field-wrapper .qubely-form-field-label {\n  margin-bottom: 5px; }\n\n.qubely-form-field-checkbox-option {\n  margin-bottom: 5px; }\n  .qubely-form-field-checkbox-option .qubely-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-field-checkbox-option input[type=\"checkbox\"] {\n    margin-top: 3px;\n    border: 1px solid #8d96a0; }\n  .qubely-form-field-checkbox-option::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-checkbox {\n  margin-bottom: 5px; }\n  .qubely-form-checkbox .qubely-form-field-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-checkbox input[type=\"checkbox\"] {\n    margin-top: 2px;\n    border: 1px solid #8d96a0;\n    margin-right: 8px; }\n  .qubely-form-checkbox::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio .qubely-form-field-radio-option {\n  margin-bottom: 5px;\n  color: #535f6a;\n  text-transform: capitalize; }\n  .qubely-form-radio .qubely-form-field-radio-option:last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio input[type=\"radio\"] {\n  margin-top: 0;\n  margin-right: 8px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-text\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-email\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-number\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-radio\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-time\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-date\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-textarea\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-dropdown\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-checkbox\"] > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed #000;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 #000;\n  top: 0px;\n  right: 0px;\n  left: 0px;\n  bottom: 0px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-checkbox\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-email\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-number\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-radio\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-date\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-time\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-textarea\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-dropdown\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-text\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-text\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-email\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-number\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-radio\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-time\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-date\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-textarea\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-dropdown\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-checkbox\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"]:hover > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed #2184F9;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 #2184F9;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 8px solid transparent; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 8px solid rgba(33, 132, 249, 0.1); }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] .block-editor-block-list__block-edit {\n  margin: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"]:hover > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed green;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 green;\n  top: 0px;\n  bottom: 0px;\n  right: 0;\n  left: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 10px solid transparent; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 10px solid rgba(76, 175, 80, 0.1); }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit .block-editor-block-mover {\n  left: -35px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit [data-block] {\n  margin-top: 0;\n  margin-bottom: 0; }\n\n.qubely-form-field-wrapper .qubely-form-label {\n  vertical-align: baseline; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .editor-block-list__insertion-point {\n  display: none; }\n", ""]);
+exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form .editor-inner-blocks.block-editor-inner-blocks > .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #fff;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs {\n    width: 100%;\n    display: flex;\n    justify-content: space-around;\n    padding: 5px 0px; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab {\n      width: 95%;\n      text-align: center;\n      background: #ffffff;\n      border: 1px solid #d6d9dd;\n      border-radius: 4px;\n      padding: 5px 30px;\n      display: flex;\n      align-items: center;\n      margin: 7px 0px;\n      display: flex;\n      justify-content: center; }\n      .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab.qubely-active {\n        color: #fff;\n        background-color: #1066cc;\n        border-radius: 5px;\n        cursor: pointer; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #f8f8f8;\n    border: 1px solid #e5e5e5;\n    border-radius: 2px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px;\n    transition: 400ms;\n    justify-content: center; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type:hover {\n      background: #e5e5e5; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-form-field-picker .qubely-form-column-options {\n  width: 100%; }\n  .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option {\n    width: 25%;\n    cursor: pointer;\n    width: 26%;\n    background: transparent;\n    border: none;\n    height: 50px;\n    margin: 7px !important;\n    display: inline-flex;\n    padding: 0 !important;\n    outline: 1px solid transparent;\n    transition: 300ms;\n    opacity: 1;\n    padding: 5px 20px; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i {\n      height: 50px;\n      background: #e2e6ec;\n      border: 1px solid #e2e6ec;\n      border-radius: 3px;\n      display: inline-block;\n      position: relative;\n      transition: 300ms;\n      font-style: normal; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i:not(:last-of-type) {\n      margin-right: 2px; }\n\n.qubely-form-field-wrapper .qubely-form-field-label {\n  margin-bottom: 5px; }\n\n.qubely-form-field-checkbox-option {\n  margin-bottom: 5px; }\n  .qubely-form-field-checkbox-option .qubely-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-field-checkbox-option input[type=\"checkbox\"] {\n    margin-top: 3px;\n    border: 1px solid #8d96a0; }\n  .qubely-form-field-checkbox-option::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-checkbox {\n  margin-bottom: 5px; }\n  .qubely-form-checkbox .qubely-form-field-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-checkbox input[type=\"checkbox\"] {\n    margin-top: 2px;\n    border: 1px solid #8d96a0;\n    margin-right: 8px; }\n  .qubely-form-checkbox::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio .qubely-form-field-radio-option {\n  margin-bottom: 5px;\n  color: #535f6a;\n  text-transform: capitalize; }\n  .qubely-form-radio .qubely-form-field-radio-option:last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio input[type=\"radio\"] {\n  margin-top: 0;\n  margin-right: 8px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-text\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-email\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-number\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-radio\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-time\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-date\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-textarea\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-dropdown\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-checkbox\"] > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed #9e9e9e;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 #9e9e9e;\n  top: 0px;\n  right: 0px;\n  left: 0px;\n  bottom: 0px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-checkbox\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-email\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-number\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-radio\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-date\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-time\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-textarea\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-dropdown\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-text\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-text\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-email\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-number\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-radio\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-time\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-date\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-textarea\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-dropdown\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-checkbox\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n[data-type=\"qubely/form-row\"]:hover .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed #2184F9;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 #2184F9;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0; }\n\n.block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 5px solid transparent; }\n\n.block-editor-block-list__block.is-selected[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 5px solid rgba(33, 132, 249, 0.1); }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] .block-editor-block-list__block-edit {\n  margin: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"]:hover > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed green;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 green;\n  top: 0px;\n  bottom: 0px;\n  right: 0;\n  left: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 14px solid transparent; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 14px solid rgba(76, 175, 80, 0.1); }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit .block-editor-block-mover {\n  left: -30px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit [data-block] {\n  margin-top: 0;\n  margin-bottom: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n.qubely-block-form .block-editor-inner-blocks [data-type=\"qubely/form-row\"] {\n  padding: 0; }\n\n.qubely-form-field-wrapper .qubely-form-label {\n  vertical-align: baseline; }\n", ""]);
 
 
 
@@ -921,7 +921,8 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     buttonSettings = _wp$qubelyComponents.QubelyButton.buttonSettings,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
-    animationSettings = _wp$qubelyComponents$.animationSettings;
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    interactionSettings = _wp$qubelyComponents$.interactionSettings;
 
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
@@ -1121,7 +1122,6 @@ var Edit = function (_Component) {
                 clientId = _props5.clientId,
                 attributes = _props5.attributes,
                 setAttributes = _props5.setAttributes,
-                toggleSelection = _props5.toggleSelection,
                 _props5$attributes = _props5.attributes,
                 uniqueId = _props5$attributes.uniqueId,
                 layout = _props5$attributes.layout,
@@ -1164,7 +1164,6 @@ var Edit = function (_Component) {
                 reCaptchaSiteKey = _props5$attributes.reCaptchaSiteKey,
                 reCaptchaSecretKey = _props5$attributes.reCaptchaSecretKey,
                 policyCheckbox = _props5$attributes.policyCheckbox,
-                policyCheckboxText = _props5$attributes.policyCheckboxText,
                 emailReceiver = _props5$attributes.emailReceiver,
                 emailHeaders = _props5$attributes.emailHeaders,
                 emailFrom = _props5$attributes.emailFrom,
@@ -1175,8 +1174,7 @@ var Edit = function (_Component) {
                 hideMobile = _props5$attributes.hideMobile,
                 globalCss = _props5$attributes.globalCss,
                 animation = _props5$attributes.animation,
-                height = _props5$attributes.height,
-                width = _props5$attributes.width;
+                interaction = _props5$attributes.interaction;
             var device = this.state.device;
 
 
@@ -1469,7 +1467,8 @@ var Edit = function (_Component) {
                     }, function (key, value) {
                         _this2.setState(_defineProperty({}, key, value));
                     }),
-                    animationSettings(uniqueId, animation, setAttributes)
+                    animationSettings(uniqueId, animation, setAttributes),
+                    interactionSettings(uniqueId, interaction, setAttributes)
                 ),
                 React.createElement(
                     BlockControls,
@@ -1612,7 +1611,9 @@ var _wp$editor = wp.editor,
     InnerBlocks = _wp$editor.InnerBlocks;
 var _wp$qubelyComponents = wp.qubelyComponents,
     QubelyButtonSave = _wp$qubelyComponents.QubelyButtonSave,
-    animationAttr = _wp$qubelyComponents.HelperFunction.animationAttr;
+    _wp$qubelyComponents$ = _wp$qubelyComponents.HelperFunction,
+    animationAttr = _wp$qubelyComponents$.animationAttr,
+    IsInteraction = _wp$qubelyComponents$.IsInteraction;
 
 var Save = function (_Component) {
     _inherits(Save, _Component);
@@ -1720,14 +1721,16 @@ var Save = function (_Component) {
                 buttonIconName = _props$attributes.buttonIconName,
                 buttonIconPosition = _props$attributes.buttonIconPosition,
                 buttonTag = _props$attributes.buttonTag,
-                animation = _props$attributes.animation;
+                animation = _props$attributes.animation,
+                interaction = _props$attributes.interaction;
 
+            var interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
             return React.createElement(
                 'div',
                 _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
                 React.createElement(
                     'div',
-                    { className: 'qubely-block-form qubely-layout-' + layout },
+                    { className: 'qubely-block-form ' + interactionClass + ' qubely-layout-' + layout },
                     React.createElement(
                         'form',
                         { className: 'qubely-form' },
@@ -4639,7 +4642,7 @@ if(false) {}
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -4694,399 +4697,401 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
-    animationSettings = _wp$qubelyComponents$.animationSettings;
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    interactionSettings = _wp$qubelyComponents$.interactionSettings;
 
 var Edit = function (_Component) {
-  _inherits(Edit, _Component);
+    _inherits(Edit, _Component);
 
-  function Edit(props) {
-    _classCallCheck(this, Edit);
+    function Edit(props) {
+        _classCallCheck(this, Edit);
 
-    var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
 
-    _this.updateGalleryImage = function (key, value, index) {
-      var _this$props = _this.props,
-          setAttributes = _this$props.setAttributes,
-          _this$props$attribute = _this$props.attributes,
-          galleryItems = _this$props$attribute.galleryItems,
-          galleryContents = _this$props$attribute.galleryContents;
+        _this.updateGalleryImage = function (key, value, index) {
+            var _this$props = _this.props,
+                setAttributes = _this$props.setAttributes,
+                _this$props$attribute = _this$props.attributes,
+                galleryItems = _this$props$attribute.galleryItems,
+                galleryContents = _this$props$attribute.galleryContents;
 
-      if (key === 'add' || key === 'delete') {
-        var updatedAttributes = key === 'add' ? [].concat(_toConsumableArray(galleryContents), [{ title: 'Best Gutenberg Plugin' }]) : galleryContents.slice(0, galleryItems - 1);
-        setAttributes({
-          galleryContents: updatedAttributes,
-          galleryItems: key === 'add' ? galleryItems + 1 : galleryItems - 1
-        });
-      } else {
-        var _updatedAttributes = galleryContents.map(function (data, itemIndex) {
-          if (index === itemIndex) {
-            return _extends({}, data, _defineProperty({}, key, value));
-          } else {
-            return data;
-          }
-        });
-        setAttributes({ galleryContents: _updatedAttributes });
-      }
-    };
+            if (key === 'add' || key === 'delete') {
+                var updatedAttributes = key === 'add' ? [].concat(_toConsumableArray(galleryContents), [{ title: 'Best Gutenberg Plugin' }]) : galleryContents.slice(0, galleryItems - 1);
+                setAttributes({
+                    galleryContents: updatedAttributes,
+                    galleryItems: key === 'add' ? galleryItems + 1 : galleryItems - 1
+                });
+            } else {
+                var _updatedAttributes = galleryContents.map(function (data, itemIndex) {
+                    if (index === itemIndex) {
+                        return _extends({}, data, _defineProperty({}, key, value));
+                    } else {
+                        return data;
+                    }
+                });
+                setAttributes({ galleryContents: _updatedAttributes });
+            }
+        };
 
-    _this.removePricelistItem = function (index) {
-      var _this$props2 = _this.props,
-          setAttributes = _this$props2.setAttributes,
-          galleryContents = _this$props2.attributes.galleryContents;
+        _this.removePricelistItem = function (index) {
+            var _this$props2 = _this.props,
+                setAttributes = _this$props2.setAttributes,
+                galleryContents = _this$props2.attributes.galleryContents;
 
-      var newgalleryItems = JSON.parse(JSON.stringify(galleryContents));
-      newgalleryItems.splice(index, 1);
-      setAttributes({ galleryContents: newgalleryItems });
-    };
+            var newgalleryItems = JSON.parse(JSON.stringify(galleryContents));
+            newgalleryItems.splice(index, 1);
+            setAttributes({ galleryContents: newgalleryItems });
+        };
 
-    _this.renderGalleryItem = function () {
-      var _this$props$attribute2 = _this.props.attributes,
-          galleryContents = _this$props$attribute2.galleryContents,
-          enableCaption = _this$props$attribute2.enableCaption,
-          showCaption = _this$props$attribute2.showCaption,
-          imageAnimation = _this$props$attribute2.imageAnimation;
+        _this.renderGalleryItem = function () {
+            var _this$props$attribute2 = _this.props.attributes,
+                galleryContents = _this$props$attribute2.galleryContents,
+                enableCaption = _this$props$attribute2.enableCaption,
+                showCaption = _this$props$attribute2.showCaption,
+                imageAnimation = _this$props$attribute2.imageAnimation;
 
-      return galleryContents.map(function (_ref, index) {
-        var title = _ref.title,
-            image = _ref.image;
+            return galleryContents.map(function (_ref, index) {
+                var title = _ref.title,
+                    image = _ref.image;
 
-        return React.createElement(
-          'div',
-          { key: index, className: 'qubely-gallery-item' },
-          React.createElement(
-            Tooltip,
-            { text: __('Delete this item') },
-            React.createElement(
-              'span',
-              { className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
-                  return _this.removePricelistItem(index);
-                } },
-              React.createElement('i', { 'class': 'fas fa-close' })
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'qubely-gallery-content' },
-            React.createElement(
-              'div',
-              { className: 'qubely-gallery-image-container' },
-              React.createElement(
-                'div',
-                { className: 'qubely-gallery-content-image' + (image != undefined && image.url != undefined ? '' : ' qubely-empty-image') + ' qubely-gallery-image-' + imageAnimation },
-                React.createElement(MediaUpload, {
-                  onSelect: function onSelect(value) {
-                    return _this.updateGalleryImage('image', value, index);
-                  },
-                  allowedTypes: ['image'],
-                  multiple: false,
-                  value: image,
-                  render: function render(_ref2) {
-                    var open = _ref2.open;
-                    return React.createElement(
-                      Fragment,
-                      null,
-                      image != undefined && image.url != undefined ? React.createElement(
+                return React.createElement(
+                    'div',
+                    { key: index, className: 'qubely-gallery-item' },
+                    React.createElement(
+                        Tooltip,
+                        { text: __('Delete this item') },
+                        React.createElement(
+                            'span',
+                            { className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
+                                    return _this.removePricelistItem(index);
+                                } },
+                            React.createElement('i', { 'class': 'fas fa-close' })
+                        )
+                    ),
+                    React.createElement(
                         'div',
-                        { className: 'qubely-gallery-content-image-editor' },
-                        React.createElement('img', { src: image.url, alt: __('image') }),
+                        { className: 'qubely-gallery-content' },
                         React.createElement(
-                          'div',
-                          { className: 'qubely-media-actions qubely-field-button-list' },
-                          React.createElement(
-                            Tooltip,
-                            { text: __('Edit') },
+                            'div',
+                            { className: 'qubely-gallery-image-container' },
                             React.createElement(
-                              'button',
-                              { className: 'qubely-button', 'aria-label': __('Edit'), onClick: open, role: 'button' },
-                              React.createElement('span', { 'aria-label': __('Edit'), className: 'fas fa-pencil-alt fa-fw' })
+                                'div',
+                                { className: 'qubely-gallery-content-image' + (image != undefined && image.url != undefined ? '' : ' qubely-empty-image') + ' qubely-gallery-image-' + imageAnimation },
+                                React.createElement(MediaUpload, {
+                                    onSelect: function onSelect(value) {
+                                        return _this.updateGalleryImage('image', value, index);
+                                    },
+                                    allowedTypes: ['image'],
+                                    multiple: false,
+                                    value: image,
+                                    render: function render(_ref2) {
+                                        var open = _ref2.open;
+                                        return React.createElement(
+                                            Fragment,
+                                            null,
+                                            image != undefined && image.url != undefined ? React.createElement(
+                                                'div',
+                                                { className: 'qubely-gallery-content-image-editor' },
+                                                React.createElement('img', { src: image.url, alt: __('image') }),
+                                                React.createElement(
+                                                    'div',
+                                                    { className: 'qubely-media-actions qubely-field-button-list' },
+                                                    React.createElement(
+                                                        Tooltip,
+                                                        { text: __('Edit') },
+                                                        React.createElement(
+                                                            'button',
+                                                            { className: 'qubely-button', 'aria-label': __('Edit'), onClick: open, role: 'button' },
+                                                            React.createElement('span', { 'aria-label': __('Edit'), className: 'fas fa-pencil-alt fa-fw' })
+                                                        )
+                                                    ),
+                                                    React.createElement(
+                                                        Tooltip,
+                                                        { text: __('Remove') },
+                                                        React.createElement(
+                                                            'button',
+                                                            { className: 'qubely-button', 'aria-label': __('Remove'), onClick: function onClick() {
+                                                                    return _this.updateGalleryImage('image', '', index);
+                                                                }, role: 'button' },
+                                                            React.createElement('span', { 'aria-label': __('Close'), className: 'far fa-trash-alt fa-fw' })
+                                                        )
+                                                    )
+                                                )
+                                            ) : React.createElement(
+                                                'a',
+                                                { className: 'qubely-insert-image', href: '#', onClick: open },
+                                                React.createElement(
+                                                    'svg',
+                                                    { 'aria-hidden': 'true', role: 'img', focusable: 'false', 'class': 'dashicon dashicons-insert', xmlns: 'http://www.w3.org/2000/svg', width: '20', height: '20', viewBox: '0 0 20 20' },
+                                                    React.createElement('path', { d: 'M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z' })
+                                                ),
+                                                React.createElement(
+                                                    'span',
+                                                    null,
+                                                    __('Insert Image')
+                                                )
+                                            )
+                                        );
+                                    }
+                                })
+                            ),
+                            enableCaption == 1 && React.createElement(
+                                'div',
+                                { className: 'qubely-gallery-caption-wrapper ' + (showCaption === 'onHover' ? 'qubely-gallery-caption-onHover' : '') },
+                                React.createElement(RichText, {
+                                    placeholder: __('Add title'),
+                                    tagName: 'div',
+                                    className: 'qubely-gallery-caption',
+                                    value: title,
+                                    onChange: function onChange(value) {
+                                        return _this.updateGalleryImage('title', value, index);
+                                    },
+                                    keepPlaceholderOnFocus: true
+                                })
                             )
-                          ),
-                          React.createElement(
-                            Tooltip,
-                            { text: __('Remove') },
-                            React.createElement(
-                              'button',
-                              { className: 'qubely-button', 'aria-label': __('Remove'), onClick: function onClick() {
-                                  return _this.updateGalleryImage('image', '', index);
-                                }, role: 'button' },
-                              React.createElement('span', { 'aria-label': __('Close'), className: 'far fa-trash-alt fa-fw' })
-                            )
-                          )
                         )
-                      ) : React.createElement(
-                        'a',
-                        { className: 'qubely-insert-image', href: '#', onClick: open },
-                        React.createElement(
-                          'svg',
-                          { 'aria-hidden': 'true', role: 'img', focusable: 'false', 'class': 'dashicon dashicons-insert', xmlns: 'http://www.w3.org/2000/svg', width: '20', height: '20', viewBox: '0 0 20 20' },
-                          React.createElement('path', { d: 'M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z' })
-                        ),
-                        React.createElement(
-                          'span',
-                          null,
-                          __('Insert Image')
-                        )
-                      )
-                    );
-                  }
-                })
-              ),
-              enableCaption == 1 && React.createElement(
-                'div',
-                { className: 'qubely-gallery-caption-wrapper ' + (showCaption === 'onHover' ? 'qubely-gallery-caption-onHover' : '') },
-                React.createElement(RichText, {
-                  placeholder: __('Add title'),
-                  tagName: 'div',
-                  className: 'qubely-gallery-caption',
-                  value: title,
-                  onChange: function onChange(value) {
-                    return _this.updateGalleryImage('title', value, index);
-                  },
-                  keepPlaceholderOnFocus: true
-                })
-              )
-            )
-          )
-        );
-      });
-    };
+                    )
+                );
+            });
+        };
 
-    _this.state = {
-      device: 'md',
-      spacer: true
-    };
-    return _this;
-  }
-
-  _createClass(Edit, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _props = this.props,
-          setAttributes = _props.setAttributes,
-          clientId = _props.clientId,
-          uniqueId = _props.attributes.uniqueId;
-
-      var _client = clientId.substr(0, 6);
-      if (!uniqueId) {
-        setAttributes({ uniqueId: _client });
-      } else if (uniqueId && uniqueId != _client) {
-        setAttributes({ uniqueId: _client });
-      }
+        _this.state = {
+            device: 'md',
+            spacer: true
+        };
+        return _this;
     }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this,
-          _React$createElement;
 
-      var _props2 = this.props,
-          setAttributes = _props2.setAttributes,
-          _props2$attributes = _props2.attributes,
-          uniqueId = _props2$attributes.uniqueId,
-          galleryItems = _props2$attributes.galleryItems,
-          style = _props2$attributes.style,
-          column = _props2$attributes.column,
-          gutter = _props2$attributes.gutter,
-          imgSize = _props2$attributes.imgSize,
-          imgBorderRadius = _props2$attributes.imgBorderRadius,
-          imgBoxShadow = _props2$attributes.imgBoxShadow,
-          enableImgFixedHeight = _props2$attributes.enableImgFixedHeight,
-          imgFixedHeight = _props2$attributes.imgFixedHeight,
-          imageAnimation = _props2$attributes.imageAnimation,
-          enableCaption = _props2$attributes.enableCaption,
-          captionPadding = _props2$attributes.captionPadding,
-          captionVerticalAlign = _props2$attributes.captionVerticalAlign,
-          captionAlignment = _props2$attributes.captionAlignment,
-          showCaption = _props2$attributes.showCaption,
-          captionTypography = _props2$attributes.captionTypography,
-          captionColor = _props2$attributes.captionColor,
-          enableOverlay = _props2$attributes.enableOverlay,
-          overlayBg = _props2$attributes.overlayBg,
-          overlayHoverBg = _props2$attributes.overlayHoverBg,
-          overlayBlend = _props2$attributes.overlayBlend,
-          globalZindex = _props2$attributes.globalZindex,
-          hideTablet = _props2$attributes.hideTablet,
-          hideMobile = _props2$attributes.hideMobile,
-          globalCss = _props2$attributes.globalCss,
-          animation = _props2$attributes.animation;
-      var device = this.state.device;
+    _createClass(Edit, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _props = this.props,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId,
+                uniqueId = _props.attributes.uniqueId;
+
+            var _client = clientId.substr(0, 6);
+            if (!uniqueId) {
+                setAttributes({ uniqueId: _client });
+            } else if (uniqueId && uniqueId != _client) {
+                setAttributes({ uniqueId: _client });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this,
+                _React$createElement;
+
+            var _props2 = this.props,
+                setAttributes = _props2.setAttributes,
+                _props2$attributes = _props2.attributes,
+                uniqueId = _props2$attributes.uniqueId,
+                galleryItems = _props2$attributes.galleryItems,
+                style = _props2$attributes.style,
+                column = _props2$attributes.column,
+                gutter = _props2$attributes.gutter,
+                imgBorderRadius = _props2$attributes.imgBorderRadius,
+                imgBoxShadow = _props2$attributes.imgBoxShadow,
+                enableImgFixedHeight = _props2$attributes.enableImgFixedHeight,
+                imgFixedHeight = _props2$attributes.imgFixedHeight,
+                imageAnimation = _props2$attributes.imageAnimation,
+                enableCaption = _props2$attributes.enableCaption,
+                captionPadding = _props2$attributes.captionPadding,
+                captionVerticalAlign = _props2$attributes.captionVerticalAlign,
+                captionAlignment = _props2$attributes.captionAlignment,
+                showCaption = _props2$attributes.showCaption,
+                captionTypography = _props2$attributes.captionTypography,
+                captionColor = _props2$attributes.captionColor,
+                enableOverlay = _props2$attributes.enableOverlay,
+                overlayBg = _props2$attributes.overlayBg,
+                overlayHoverBg = _props2$attributes.overlayHoverBg,
+                overlayBlend = _props2$attributes.overlayBlend,
+                globalZindex = _props2$attributes.globalZindex,
+                hideTablet = _props2$attributes.hideTablet,
+                hideMobile = _props2$attributes.hideMobile,
+                globalCss = _props2$attributes.globalCss,
+                animation = _props2$attributes.animation,
+                interaction = _props2$attributes.interaction;
+            var device = this.state.device;
 
 
-      if (uniqueId) {
-        CssGenerator(this.props.attributes, 'gallery', uniqueId);
-      }
+            if (uniqueId) {
+                CssGenerator(this.props.attributes, 'gallery', uniqueId);
+            }
 
-      return React.createElement(
-        Fragment,
-        null,
-        React.createElement(
-          InspectorControls,
-          { key: 'inspector' },
-          React.createElement(
-            PanelBody,
-            { title: __('General Settings') },
-            React.createElement(Styles, { columns: 2, value: style, onChange: function onChange(val) {
-                return setAttributes({ style: val });
-              },
-              options: [{ value: 1, svg: _icons2.default.gallery_1 }, { value: 2, svg: _icons2.default.gallery_2 }]
-            }),
-            React.createElement(Range, {
-              min: 2,
-              max: 100,
-              label: __('Number of Items'),
-              value: galleryItems,
-              onChange: function onChange(value) {
-                return _this2.updateGalleryImage(value > galleryItems ? 'add' : 'delete');
-              }
-            }),
-            React.createElement(Range, {
-              label: __('Select Column'),
-              value: column,
-              onChange: function onChange(value) {
-                return setAttributes({ column: value });
-              },
-              min: 1, step: 1, max: 6,
-              responsive: true, device: device,
-              onDeviceChange: function onDeviceChange(value) {
-                return _this2.setState({ device: value });
-              }
-            }),
-            React.createElement(Range, { label: __('Gutter'), value: gutter, onChange: function onChange(val) {
-                return setAttributes({ gutter: val });
-              }, min: 0, max: 50, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
-                return _this2.setState({ device: value });
-              } })
-          ),
-          React.createElement(
-            PanelBody,
-            { title: __('Image'), initialOpen: false },
-            style === 1 && React.createElement(
-              Fragment,
-              null,
-              React.createElement(Toggle, { label: __('Fixed Image Height'), value: enableImgFixedHeight, onChange: function onChange(value) {
-                  return setAttributes({ enableImgFixedHeight: value });
-                } }),
-              enableImgFixedHeight && React.createElement(Range, { label: __(''), value: imgFixedHeight, onChange: function onChange(value) {
-                  return setAttributes({ imgFixedHeight: value });
-                }, unit: ['px', 'em', '%'], min: 10, max: 600, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-                  return _this2.setState({ device: value });
-                } })
-            ),
-            React.createElement(BorderRadius, { label: __('Radius'), value: imgBorderRadius, onChange: function onChange(val) {
-                return setAttributes({ imgBorderRadius: val });
-              }, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-                return _this2.setState({ device: value });
-              } }),
-            React.createElement(BoxShadow, { label: __('Box-Shadow'), value: imgBoxShadow, onChange: function onChange(val) {
-                return setAttributes({ imgBoxShadow: val });
-              }, disableInset: true }),
-            React.createElement(Select, { label: __('Image Animation'), options: [['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')], ['scale', __('Scale')]], value: imageAnimation, onChange: function onChange(val) {
-                return setAttributes({ imageAnimation: val });
-              } })
-          ),
-          React.createElement(
-            PanelBody,
-            { title: __('Caption'), initialOpen: false },
-            React.createElement(Toggle, { label: __('Enable Caption'), value: enableCaption, onChange: function onChange(val) {
-                return setAttributes({ enableCaption: val });
-              } }),
-            enableCaption == 1 && React.createElement(
-              Fragment,
-              null,
-              React.createElement(Padding, { label: __('Padding'), value: captionPadding, onChange: function onChange(val) {
-                  return setAttributes({ captionPadding: val });
-                }, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
-                  return _this2.setState({ device: value });
-                } }),
-              React.createElement(RadioAdvanced, { label: __('Show'), value: showCaption, onChange: function onChange(value) {
-                  return setAttributes({ showCaption: value });
-                },
-                options: [{ label: __('On Hover'), value: 'onHover', title: __('On Hover') }, { label: __('Always'), value: 'always', title: __('Always') }]
-              }),
-              React.createElement(RadioAdvanced, { label: __('Vertical Align'), value: captionVerticalAlign, onChange: function onChange(value) {
-                  return setAttributes({ captionVerticalAlign: value });
-                },
-                options: [{ label: __('Top'), value: 'top', title: __('Top') }, { label: __('Middle'), value: 'center', title: __('Middle') }, { label: __('Bottom'), value: 'bottom', title: __('Bottom') }]
-              }),
-              React.createElement(Alignment, (_React$createElement = { label: __('Horizontal Alignment'), value: captionAlignment, alignmentType: 'content', onChange: function onChange(val) {
-                  return setAttributes({ captionAlignment: val });
-                } }, _defineProperty(_React$createElement, 'alignmentType', 'content'), _defineProperty(_React$createElement, 'disableJustify', true), _React$createElement)),
-              React.createElement(Typography, { label: __('Caption Typography'), value: captionTypography, onChange: function onChange(val) {
-                  return setAttributes({ captionTypography: val });
-                }, device: device, onDeviceChange: function onDeviceChange(value) {
-                  return _this2.setState({ device: value });
-                } }),
-              React.createElement(Color, { label: __('Caption Color'), value: captionColor, onChange: function onChange(value) {
-                  return setAttributes({ captionColor: value });
-                } })
-            )
-          ),
-          React.createElement(
-            PanelBody,
-            { title: __('Overlay'), initialOpen: false },
-            React.createElement(Toggle, { label: __('Enable'), value: enableOverlay, onChange: function onChange(val) {
-                return setAttributes({ enableOverlay: val });
-              } }),
-            enableOverlay == 1 && React.createElement(
-              Fragment,
-              null,
-              React.createElement(
-                Tabs,
+            return React.createElement(
+                Fragment,
                 null,
                 React.createElement(
-                  Tab,
-                  { tabTitle: __('Normal') },
-                  React.createElement(ColorAdvanced, { label: __('Background'), value: overlayBg, onChange: function onChange(value) {
-                      return setAttributes({ overlayBg: value });
-                    } })
+                    InspectorControls,
+                    { key: 'inspector' },
+                    React.createElement(
+                        PanelBody,
+                        { title: __('General Settings') },
+                        React.createElement(Styles, { columns: 2, value: style, onChange: function onChange(val) {
+                                return setAttributes({ style: val });
+                            },
+                            options: [{ value: 1, svg: _icons2.default.gallery_1 }, { value: 2, svg: _icons2.default.gallery_2 }]
+                        }),
+                        React.createElement(Range, {
+                            min: 2,
+                            max: 100,
+                            label: __('Number of Items'),
+                            value: galleryItems,
+                            onChange: function onChange(value) {
+                                return _this2.updateGalleryImage(value > galleryItems ? 'add' : 'delete');
+                            }
+                        }),
+                        React.createElement(Range, {
+                            label: __('Select Column'),
+                            value: column,
+                            onChange: function onChange(value) {
+                                return setAttributes({ column: value });
+                            },
+                            min: 1, step: 1, max: 6,
+                            responsive: true, device: device,
+                            onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            }
+                        }),
+                        React.createElement(Range, { label: __('Gutter'), value: gutter, onChange: function onChange(val) {
+                                return setAttributes({ gutter: val });
+                            }, min: 0, max: 50, responsive: true, unit: ['px', 'em', '%'], device: device, onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            } })
+                    ),
+                    React.createElement(
+                        PanelBody,
+                        { title: __('Image'), initialOpen: false },
+                        style === 1 && React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(Toggle, { label: __('Fixed Image Height'), value: enableImgFixedHeight, onChange: function onChange(value) {
+                                    return setAttributes({ enableImgFixedHeight: value });
+                                } }),
+                            enableImgFixedHeight && React.createElement(Range, { label: __(''), value: imgFixedHeight, onChange: function onChange(value) {
+                                    return setAttributes({ imgFixedHeight: value });
+                                }, unit: ['px', 'em', '%'], min: 10, max: 600, responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                                    return _this2.setState({ device: value });
+                                } })
+                        ),
+                        React.createElement(BorderRadius, { label: __('Radius'), value: imgBorderRadius, onChange: function onChange(val) {
+                                return setAttributes({ imgBorderRadius: val });
+                            }, min: 0, max: 100, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                                return _this2.setState({ device: value });
+                            } }),
+                        React.createElement(BoxShadow, { label: __('Box-Shadow'), value: imgBoxShadow, onChange: function onChange(val) {
+                                return setAttributes({ imgBoxShadow: val });
+                            }, disableInset: true }),
+                        React.createElement(Select, { label: __('Image Animation'), options: [['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')], ['scale', __('Scale')]], value: imageAnimation, onChange: function onChange(val) {
+                                return setAttributes({ imageAnimation: val });
+                            } })
+                    ),
+                    React.createElement(
+                        PanelBody,
+                        { title: __('Caption'), initialOpen: false },
+                        React.createElement(Toggle, { label: __('Enable Caption'), value: enableCaption, onChange: function onChange(val) {
+                                return setAttributes({ enableCaption: val });
+                            } }),
+                        enableCaption == 1 && React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(Padding, { label: __('Padding'), value: captionPadding, onChange: function onChange(val) {
+                                    return setAttributes({ captionPadding: val });
+                                }, min: 0, max: 200, unit: ['px', 'em', '%'], responsive: true, device: device, onDeviceChange: function onDeviceChange(value) {
+                                    return _this2.setState({ device: value });
+                                } }),
+                            React.createElement(RadioAdvanced, { label: __('Show'), value: showCaption, onChange: function onChange(value) {
+                                    return setAttributes({ showCaption: value });
+                                },
+                                options: [{ label: __('On Hover'), value: 'onHover', title: __('On Hover') }, { label: __('Always'), value: 'always', title: __('Always') }]
+                            }),
+                            React.createElement(RadioAdvanced, { label: __('Vertical Align'), value: captionVerticalAlign, onChange: function onChange(value) {
+                                    return setAttributes({ captionVerticalAlign: value });
+                                },
+                                options: [{ label: __('Top'), value: 'top', title: __('Top') }, { label: __('Middle'), value: 'center', title: __('Middle') }, { label: __('Bottom'), value: 'bottom', title: __('Bottom') }]
+                            }),
+                            React.createElement(Alignment, (_React$createElement = { label: __('Horizontal Alignment'), value: captionAlignment, alignmentType: 'content', onChange: function onChange(val) {
+                                    return setAttributes({ captionAlignment: val });
+                                } }, _defineProperty(_React$createElement, 'alignmentType', 'content'), _defineProperty(_React$createElement, 'disableJustify', true), _React$createElement)),
+                            React.createElement(Typography, { label: __('Caption Typography'), value: captionTypography, onChange: function onChange(val) {
+                                    return setAttributes({ captionTypography: val });
+                                }, device: device, onDeviceChange: function onDeviceChange(value) {
+                                    return _this2.setState({ device: value });
+                                } }),
+                            React.createElement(Color, { label: __('Caption Color'), value: captionColor, onChange: function onChange(value) {
+                                    return setAttributes({ captionColor: value });
+                                } })
+                        )
+                    ),
+                    React.createElement(
+                        PanelBody,
+                        { title: __('Overlay'), initialOpen: false },
+                        React.createElement(Toggle, { label: __('Enable'), value: enableOverlay, onChange: function onChange(val) {
+                                return setAttributes({ enableOverlay: val });
+                            } }),
+                        enableOverlay == 1 && React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(
+                                Tabs,
+                                null,
+                                React.createElement(
+                                    Tab,
+                                    { tabTitle: __('Normal') },
+                                    React.createElement(ColorAdvanced, { label: __('Background'), value: overlayBg, onChange: function onChange(value) {
+                                            return setAttributes({ overlayBg: value });
+                                        } })
+                                ),
+                                React.createElement(
+                                    Tab,
+                                    { tabTitle: __('Hover') },
+                                    React.createElement(ColorAdvanced, { label: __('Background'), value: overlayHoverBg, onChange: function onChange(value) {
+                                            return setAttributes({ overlayHoverBg: value });
+                                        } })
+                                )
+                            ),
+                            React.createElement(Select, { label: __('Blend Mode'), options: [['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]], value: overlayBlend, onChange: function onChange(val) {
+                                    return setAttributes({ overlayBlend: val });
+                                } })
+                        )
+                    ),
+                    animationSettings(uniqueId, animation, setAttributes),
+                    interactionSettings(uniqueId, interaction, setAttributes)
                 ),
                 React.createElement(
-                  Tab,
-                  { tabTitle: __('Hover') },
-                  React.createElement(ColorAdvanced, { label: __('Background'), value: overlayHoverBg, onChange: function onChange(value) {
-                      return setAttributes({ overlayHoverBg: value });
-                    } })
+                    BlockControls,
+                    null,
+                    React.createElement(
+                        Toolbar,
+                        null,
+                        React.createElement(InlineToolbar, _extends({
+                            data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
+                        }, this.props, {
+                            prevState: this.state
+                        }))
+                    )
+                ),
+                globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+                React.createElement(
+                    'div',
+                    { className: 'qubely-block-' + uniqueId },
+                    React.createElement(
+                        'div',
+                        { className: 'qubely-block-gallery qubely-gallery-item-' + style },
+                        React.createElement(
+                            'div',
+                            { className: 'qubely-gallery-items ' + ('qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs) },
+                            this.renderGalleryItem()
+                        )
+                    )
                 )
-              ),
-              React.createElement(Select, { label: __('Blend Mode'), options: [['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]], value: overlayBlend, onChange: function onChange(val) {
-                  return setAttributes({ overlayBlend: val });
-                } })
-            )
-          ),
-          animationSettings(uniqueId, animation, setAttributes)
-        ),
-        React.createElement(
-          BlockControls,
-          null,
-          React.createElement(
-            Toolbar,
-            null,
-            React.createElement(InlineToolbar, _extends({
-              data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
-            }, this.props, {
-              prevState: this.state
-            }))
-          )
-        ),
-        globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
-        React.createElement(
-          'div',
-          { className: 'qubely-block-' + uniqueId },
-          React.createElement(
-            'div',
-            { className: 'qubely-block-gallery qubely-gallery-item-' + style },
-            React.createElement(
-              'div',
-              { className: 'qubely-gallery-items ' + ('qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs) },
-              this.renderGalleryItem()
-            )
-          )
-        )
-      );
-    }
-  }]);
+            );
+        }
+    }]);
 
-  return Edit;
+    return Edit;
 }(Component);
 
 exports.default = Edit;
@@ -5119,7 +5124,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Component = wp.element.Component;
 var RichText = wp.editor.RichText;
-var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
+var _wp$qubelyComponents$ = wp.qubelyComponents.HelperFunction,
+    animationAttr = _wp$qubelyComponents$.animationAttr,
+    IsInteraction = _wp$qubelyComponents$.IsInteraction;
 
 var Save = function (_Component) {
 	_inherits(Save, _Component);
@@ -5180,14 +5187,16 @@ var Save = function (_Component) {
 			    uniqueId = _props$attributes.uniqueId,
 			    animation = _props$attributes.animation,
 			    style = _props$attributes.style,
-			    column = _props$attributes.column;
+			    column = _props$attributes.column,
+			    interaction = _props$attributes.interaction;
 
+			var interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 			return React.createElement(
 				'div',
 				_extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
 				React.createElement(
 					'div',
-					{ className: 'qubely-block-gallery qubely-gallery-item-' + style },
+					{ className: 'qubely-block-gallery ' + interactionClass + ' qubely-gallery-item-' + style },
 					React.createElement(
 						'div',
 						{ className: 'qubely-gallery-items ' + ('qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs) },
@@ -8670,6 +8679,7 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
     animationSettings = _wp$qubelyComponents$.animationSettings,
+    interactionSettings = _wp$qubelyComponents$.interactionSettings,
     InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar;
 
 
@@ -8843,9 +8853,9 @@ var Edit = function (_Component) {
 			var _this3 = this;
 
 			var _props2 = this.props,
-			    setAttributes = _props2.setAttributes,
 			    posts = _props2.posts,
 			    taxonomyList = _props2.taxonomyList,
+			    setAttributes = _props2.setAttributes,
 			    _props2$attributes = _props2.attributes,
 			    uniqueId = _props2$attributes.uniqueId,
 			    taxonomy = _props2$attributes.taxonomy,
@@ -8949,7 +8959,8 @@ var Edit = function (_Component) {
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
-			    animation = _props2$attributes.animation;
+			    animation = _props2$attributes.animation,
+			    interaction = _props2$attributes.interaction;
 			var device = this.state.device;
 
 
@@ -9539,7 +9550,8 @@ var Edit = function (_Component) {
 								return setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value });
 							} })
 					),
-					animationSettings(uniqueId, animation, setAttributes)
+					animationSettings(uniqueId, animation, setAttributes),
+					interactionSettings(uniqueId, interaction, setAttributes)
 				),
 				React.createElement(
 					BlockControls,
@@ -9758,7 +9770,8 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
-    animationSettings = _wp$qubelyComponents$.animationSettings;
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    interactionSettings = _wp$qubelyComponents$.interactionSettings;
 
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
@@ -10088,7 +10101,8 @@ var Edit = function (_Component) {
                 hideTablet = _props2$attributes.hideTablet,
                 hideMobile = _props2$attributes.hideMobile,
                 globalCss = _props2$attributes.globalCss,
-                animation = _props2$attributes.animation;
+                animation = _props2$attributes.animation,
+                interaction = _props2$attributes.interaction;
             var device = this.state.device;
 
 
@@ -10394,7 +10408,8 @@ var Edit = function (_Component) {
                                 } })
                         )
                     ),
-                    animationSettings(uniqueId, animation, setAttributes)
+                    animationSettings(uniqueId, animation, setAttributes),
+                    interactionSettings(uniqueId, interaction, setAttributes)
                 ),
                 React.createElement(
                     BlockControls,
@@ -10460,7 +10475,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Component = wp.element.Component;
 var RichText = wp.editor.RichText;
-var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
+var _wp$qubelyComponents$ = wp.qubelyComponents.HelperFunction,
+    animationAttr = _wp$qubelyComponents$.animationAttr,
+    IsInteraction = _wp$qubelyComponents$.IsInteraction;
 
 var Save = function (_Component) {
     _inherits(Save, _Component);
@@ -10556,14 +10573,16 @@ var Save = function (_Component) {
             var _props$attributes = this.props.attributes,
                 uniqueId = _props$attributes.uniqueId,
                 animation = _props$attributes.animation,
-                style = _props$attributes.style;
+                style = _props$attributes.style,
+                interaction = _props$attributes.interaction;
 
+            var interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
             return React.createElement(
                 'div',
                 _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
                 React.createElement(
                     'div',
-                    { className: 'qubely-block-pricelist qubely-pricelist-item-' + style },
+                    { className: 'qubely-block-pricelist ' + interactionClass + ' qubely-pricelist-item-' + style },
                     React.createElement(
                         'div',
                         { className: 'qubely-pricelist-items' },
