@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 /**
  * Registers the `qubely/postgrid` block on server.
  *
@@ -1221,6 +1223,38 @@ function register_block_qubely_postcarousel_pro()
 					'type' => 'boolean',
 					'default' => true
 				),
+				'animation' => array(
+					'type' => 'object',
+					'default' => (object) array(),
+				),
+				'globalZindex' => array(
+					'type'    => 'string',
+					'default' => '0',
+					'style' => [(object) [
+						'selector' => '{{QUBELY}} {z-index:{{globalZindex}};}'
+					]]
+				),
+				'hideTablet' => array(
+					'type' => 'boolean',
+					'default' => false,
+					'style' => [(object) [
+						'selector' => '{{QUBELY}}{display:none;}'
+					]]
+				),
+				'hideMobile' => array(
+					'type' => 'boolean',
+					'default' => false,
+					'style' => [(object) [
+						'selector' => '{{QUBELY}}{display:none;}'
+					]]
+				),
+				'globalCss' => array(
+					'type' => 'string',
+					'default' => '',
+					'style' => [(object) [
+						'selector' => ''
+					]]
+				),
 			),
 			'render_callback' => 'render_block_qubely_postcarousel_pro'
 		)
@@ -1256,7 +1290,8 @@ function render_block_qubely_postcarousel_pro($att)
 	$categories             = $att['categories'];
 	$tags                   = $att['tags'];
 	$taxonomy               = $att['taxonomy'];
-
+	$animation 		        = isset($att['animation']) ? 'data-qubelyanimation="'.htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8').'"' : '';
+	
 	# Attribute value: Using Json Encode.
 	$autoPlay               = $att['autoPlay'];
 	$postitems              = $att['postitems'];
@@ -1332,7 +1367,7 @@ function render_block_qubely_postcarousel_pro($att)
 	# The Loop. 
 	if ($query->have_posts()) { 
 		$html .= '<div class="qubely-block-'.esc_attr($uniqueId).'">';
-		$html .= '<div class="qubely-block-image-carousel qubely-postcarousel-wrapper">';
+		$html .= '<div class="qubely-block-image-carousel qubely-postcarousel-wrapper" '.$animation.'>';
 
 		# Carousel Class.
 		$html .= '<div class="qubely-carousel qubely-carousel-wrapper" data-options="'.htmlspecialchars(json_encode($data_options), ENT_QUOTES, 'UTF-8').'">';

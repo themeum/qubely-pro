@@ -61,8 +61,8 @@ class Save extends Component {
         	<div className={`qubely-block-pricelist qubely-pricelist-item-${style}`}>
 				<div className={`qubely-pricelist-items`}>
 					{this.renderPricelist()}
-				</div >
-        	</div >
+				</div>
+        	</div>
     	</div>
     )}
 }

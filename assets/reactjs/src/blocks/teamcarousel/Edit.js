@@ -1,9 +1,9 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody, TextControl, Tooltip } = wp.components
-const { InspectorControls, RichText, MediaUpload } = wp.editor
+const { PanelBody, TextControl, Tooltip, Toolbar } = wp.components
+const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.editor
 import icons from '../../helpers/icons'
-const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } } = wp.qubelyComponents
 
 class Edit extends Component {
 	constructor(props) {
@@ -101,8 +101,7 @@ class Edit extends Component {
 		return (
 			<div className="social-share">
 				{ showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
-					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`} 
-					onClick={() => this.handlePanelOpenings('Social')}>
+					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`}>
 						{ facebook && <a className="qubely-team-social-facebook"><i class="fab fa-facebook-f"></i></a> }
 						{ twitter && <a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a> }
 						{ instagram && <a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a> }
@@ -246,8 +245,13 @@ class Edit extends Component {
 			enablename,
 			dotsPosition,
 			horizontalScrollleft,
-			contentSpacing
+			contentSpacing,
 
+			globalZindex,
+			hideTablet,
+			hideMobile,
+			globalCss,
+			animation
 		} } = this.props
 
 		const { device } = this.state
@@ -732,8 +736,21 @@ class Edit extends Component {
 						</Tabs>
 					</PanelBody>
 				
+					{animationSettings(uniqueId, animation, setAttributes)}
 					
 				</InspectorControls>
+
+				<BlockControls>
+					<Toolbar>
+						<InlineToolbar
+							data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
+							{...this.props}
+							prevState={this.state}
+						/>
+					</Toolbar>
+				</BlockControls>
+				
+				{globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-team-carousel qubely-layout-style`}>

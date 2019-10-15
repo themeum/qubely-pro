@@ -25,7 +25,7 @@ class Save extends Component {
 		return (
 			<div className="social-share">
 				{ showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
-					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`} 
+					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`}
 					onClick={() => this.handlePanelOpenings('Social')}>
 						{ facebook && <a className="qubely-team-social-facebook"><i className="fab fa-facebook-f" /></a> }
 						{ twitter && <a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a> }
