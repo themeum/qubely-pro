@@ -1,5 +1,8 @@
 
+import CommonSettings from '../commonSettings'
+
 const { __ } = wp.i18n
+
 const {
     InspectorControls,
     RichText
@@ -33,6 +36,7 @@ const {
     CssGenerator: { CssGenerator }
 } = wp.qubelyComponents
 
+const { select, dispatch } = wp.data
 
 export default function Edit(props) {
 
@@ -46,7 +50,7 @@ export default function Edit(props) {
     const [showTimePicker, setTimePicker] = useState(false)
     const [draggedOverItem, setDraggedOverItem] = useState(-1)
     const [seletedTimeFormat, changeseletedTimeFormat] = useState('PM')
-
+    const { getBlockRootClientId, getBlockName } = select('core/block-editor')
 
     const {
         name,
@@ -55,6 +59,7 @@ export default function Edit(props) {
         setAttributes,
         attributes: {
             uniqueId,
+            parentClientId,
             fieldName,
             height,
             type,
@@ -348,15 +353,26 @@ export default function Edit(props) {
         setDraggedOverItem(-1)
     }
 
+    const getParentClientId = (clientId) => {
+        let parentClientID = getBlockRootClientId(clientId)
+        if (getBlockName(parentClientID) === 'qubely/form') {
+            return parentClientID
+        } else {
+            return getParentClientId(parentClientID)
+        }
+    }
+
     const blockname = name.split('/')[1]
 
     if (uniqueId) { CssGenerator(attributes, blockname, uniqueId) }
+
 
     return (
         <Fragment>
 
             <InspectorControls>
-
+               
+                {CommonSettings(getParentClientId(clientId))}
 
                 <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} opened={true}>
 

@@ -979,7 +979,7 @@ var Edit = function (_Component) {
                                 onClick: function onClick() {
                                     var tempWidth = '' + Math.floor(100 / (index + 2));
                                     innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(function () {
-                                        return createBlock('qubely/form-column', { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom' });
+                                        return createBlock('qubely/form-column', { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId });
                                     })));
                                     replaceInnerBlocks(clientId, innerBlocks, false);
                                     _this.setState({ groupField: false });
@@ -1099,6 +1099,7 @@ var Edit = function (_Component) {
             var _this2 = this;
 
             var _props5 = this.props,
+                clientId = _props5.clientId,
                 attributes = _props5.attributes,
                 setAttributes = _props5.setAttributes,
                 toggleSelection = _props5.toggleSelection,
@@ -1480,7 +1481,7 @@ var Edit = function (_Component) {
                                         width = _ref5.width,
                                         required = _ref5.required;
 
-                                    return ['qubely/form-row', {}, [['qubely/form-column', {}, [['qubely/formfield-' + type, { type: type, label: label, options: options, placeholder: placeholder, width: width, required: required }]]]]];
+                                    return ['qubely/form-row', { parentClientId: clientId }, [['qubely/form-column', { parentClientId: clientId }, [['qubely/formfield-' + type, { parentClientId: clientId, type: type, label: label, options: options, placeholder: placeholder, width: width, required: required }]]]]];
                                 })
                             })
                         ),
@@ -1784,6 +1785,427 @@ exports.default = Save;
 
 /***/ }),
 
+/***/ "./src/blocks/form/commonSettings.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/form/commonSettings.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.default = function (clientId) {
+    var _useState = useState('md'),
+        _useState2 = _slicedToArray(_useState, 2),
+        device = _useState2[0],
+        changeDevice = _useState2[1];
+
+    var _useState3 = useState(false),
+        _useState4 = _slicedToArray(_useState3, 2),
+        isUpdating = _useState4[0],
+        setUpdate = _useState4[1];
+
+    var _select = select('core/block-editor'),
+        getBlockAttributes = _select.getBlockAttributes;
+
+    var attributes = getBlockAttributes(clientId);
+
+    var _dispatch = dispatch('core/block-editor'),
+        updateBlockAttributes = _dispatch.updateBlockAttributes,
+        toggleSelection = _dispatch.toggleSelection;
+
+    var _attributes = attributes,
+        layout = _attributes.layout,
+        labelColor = _attributes.labelColor,
+        labelAlignment = _attributes.labelAlignment,
+        labelTypography = _attributes.labelTypography,
+        spacing = _attributes.spacing,
+        gutter = _attributes.gutter,
+        inputSize = _attributes.inputSize,
+        inputCustomSize = _attributes.inputCustomSize,
+        inputTypography = _attributes.inputTypography,
+        inputBoxShadow = _attributes.inputBoxShadow,
+        inputColor = _attributes.inputColor,
+        inputColorFocus = _attributes.inputColorFocus,
+        inputColorHover = _attributes.inputColorHover,
+        inputBg = _attributes.inputBg,
+        inputBgFocus = _attributes.inputBgFocus,
+        inputBgHover = _attributes.inputBgHover,
+        inputBorder = _attributes.inputBorder,
+        inputBorderRadius = _attributes.inputBorderRadius,
+        inputBorderMaterial = _attributes.inputBorderMaterial,
+        inputBorderColorFocus = _attributes.inputBorderColorFocus,
+        inputBorderColorHover = _attributes.inputBorderColorHover,
+        textareaHeight = _attributes.textareaHeight,
+        placeholderColor = _attributes.placeholderColor,
+        placeholderColorFocus = _attributes.placeholderColorFocus,
+        placeholderColorHover = _attributes.placeholderColorHover,
+        enableButton = _attributes.enableButton,
+        buttonTag = _attributes.buttonTag,
+        buttonSize = _attributes.buttonSize,
+        buttonFillType = _attributes.buttonFillType,
+        buttonText = _attributes.buttonText,
+        buttonIconName = _attributes.buttonIconName,
+        buttonIconPosition = _attributes.buttonIconPosition,
+        fieldErrorMessage = _attributes.fieldErrorMessage,
+        formSuccessMessage = _attributes.formSuccessMessage,
+        formErrorMessage = _attributes.formErrorMessage,
+        reCaptcha = _attributes.reCaptcha,
+        reCaptchaSiteKey = _attributes.reCaptchaSiteKey,
+        reCaptchaSecretKey = _attributes.reCaptchaSecretKey,
+        policyCheckbox = _attributes.policyCheckbox,
+        policyCheckboxText = _attributes.policyCheckboxText,
+        emailReceiver = _attributes.emailReceiver,
+        emailHeaders = _attributes.emailHeaders,
+        emailFrom = _attributes.emailFrom,
+        emailSubject = _attributes.emailSubject,
+        emailBody = _attributes.emailBody,
+        globalZindex = _attributes.globalZindex,
+        hideTablet = _attributes.hideTablet,
+        hideMobile = _attributes.hideMobile,
+        globalCss = _attributes.globalCss,
+        height = _attributes.height,
+        width = _attributes.width;
+
+
+    var updateAttributes = function updateAttributes(key, value) {
+        updateBlockAttributes(clientId, _defineProperty({}, key, value));
+        attributes = getBlockAttributes(clientId);
+        setUpdate(!isUpdating);
+    };
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            PanelBody,
+            { title: __(''), opened: true },
+            React.createElement(Styles, {
+                value: layout,
+                onChange: function onChange(val) {
+                    return updateAttributes('layout', val);
+                },
+                options: [{ value: 'classic', img: _icons2.default.form_classic, label: __('Classic') }, { value: 'material', img: _icons2.default.form_material, label: __('Material') }]
+            })
+        ),
+        React.createElement(
+            PanelBody,
+            { title: __('Label'), initialOpen: false },
+            React.createElement(ButtonGroup, {
+                label: __('Label Alignment'),
+                options: [[__('Top'), 'top'], [__('Left'), 'left'], [__('Right'), 'right']],
+                value: labelAlignment,
+                onChange: function onChange(value) {
+                    return updateAttributes('labelAlignment', value);
+                }
+            }),
+            React.createElement(Typography, {
+                value: labelTypography,
+                onChange: function onChange(val) {
+                    return updateAttributes('labelTypography', val);
+                }
+            }),
+            React.createElement(Color, {
+                label: __('Color'),
+                value: labelColor,
+                onChange: function onChange(val) {
+                    return updateAttributes('labelColor', val);
+                }
+            })
+        ),
+        React.createElement(
+            PanelBody,
+            { title: __('Input'), initialOpen: false },
+            React.createElement(RadioAdvanced, {
+                label: __('Input Size'),
+                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                value: inputSize,
+                onChange: function onChange(value) {
+                    return updateAttributes('inputSize', value);
+                } }),
+            inputSize == 'custom' && React.createElement(Padding, {
+                max: 50,
+                min: 0,
+                responsive: true,
+                value: inputCustomSize,
+                label: __('Custom Size'),
+                unit: ['px', 'em', '%'],
+                onChange: function onChange(value) {
+                    return updateAttributes('inputCustomSize', value);
+                }
+            }),
+            React.createElement(Range, {
+                min: 100,
+                max: 500,
+                responsive: true,
+                value: textareaHeight,
+                unit: ['px', 'em', '%'],
+                label: __('Textarea Height'),
+                onChange: function onChange(value) {
+                    return updateAttributes('textareaHeight', value);
+                }
+            }),
+            React.createElement(Range, {
+                min: 0,
+                max: 60,
+                responsive: true,
+                value: spacing,
+                label: __('Spacing'),
+                unit: ['px', 'em', '%'],
+                onChange: function onChange(value) {
+                    return updateAttributes('spacing', value);
+                }
+            }),
+            React.createElement(Range, {
+                min: 0,
+                max: 60,
+                responsive: true,
+                value: gutter,
+                label: __('Gutter'),
+                unit: ['px', 'em', '%'],
+                onChange: function onChange(value) {
+                    return updateAttributes('gutter', value);
+                }
+            }),
+            layout == 'classic' && React.createElement(Border, { label: __('Border'), value: inputBorder, onChange: function onChange(val) {
+                    return updateAttributes('inputBorder', val);
+                }, min: 0, max: 10 }),
+            layout == 'material' && React.createElement(Border, { label: __('Border'), value: inputBorderMaterial, onChange: function onChange(val) {
+                    return updateAttributes('inputBorderMaterial', val);
+                }, min: 0, max: 10 }),
+            React.createElement(BorderRadius, {
+                min: 0,
+                max: 100,
+                responsive: true,
+                label: __('Field Radius'),
+                value: inputBorderRadius,
+                unit: ['px', 'em', '%'],
+                onChange: function onChange(value) {
+                    return updateAttributes('inputBorderRadius', value);
+                } }),
+            React.createElement(
+                Tabs,
+                null,
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Normal') },
+                    React.createElement(Color, { label: __('Input Text Color'), value: inputColor, onChange: function onChange(val) {
+                            return updateAttributes('inputColor', val);
+                        } }),
+                    React.createElement(Color, { label: __('Background Color'), value: inputBg, onChange: function onChange(val) {
+                            return updateAttributes('inputBg', val);
+                        } }),
+                    React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColor, onChange: function onChange(val) {
+                            return updateAttributes('placeholderColor', val);
+                        } })
+                ),
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Focus') },
+                    React.createElement(Color, { label: __('Text Color'), value: inputColorFocus, onChange: function onChange(val) {
+                            return updateAttributes('inputColorFocus', val);
+                        } }),
+                    React.createElement(Color, { label: __('Background Color'), value: inputBgFocus, onChange: function onChange(val) {
+                            return updateAttributes('inputBgFocus', val);
+                        } }),
+                    React.createElement(Color, { label: __('Border Color'), value: inputBorderColorFocus, onChange: function onChange(value) {
+                            return updateAttributes('inputBorderColorFocus', value);
+                        } }),
+                    React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColorFocus, onChange: function onChange(val) {
+                            return updateAttributes('placeholderColorFocus', val);
+                        } })
+                ),
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Hover') },
+                    React.createElement(Color, { label: __('Text Color'), value: inputColorHover, onChange: function onChange(val) {
+                            return updateAttributes('inputColorHover', val);
+                        } }),
+                    React.createElement(Color, { label: __('Background Color'), value: inputBgHover, onChange: function onChange(val) {
+                            return updateAttributes('inputBgHover', val);
+                        } }),
+                    React.createElement(Color, { label: __('Border Color'), value: inputBorderColorHover, onChange: function onChange(value) {
+                            return updateAttributes('inputBorderColorHover', value);
+                        } }),
+                    React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColorHover, onChange: function onChange(val) {
+                            return updateAttributes('placeholderColorHover', val);
+                        } })
+                )
+            ),
+            React.createElement(Typography, { value: inputTypography, onChange: function onChange(val) {
+                    return updateAttributes('inputTypography', val);
+                } }),
+            React.createElement(Separator, null),
+            React.createElement(BoxShadow, {
+                disableInset: true,
+                label: __('Box-Shadow'),
+                value: inputBoxShadow,
+                onChange: function onChange(value) {
+                    return updateAttributes('inputBoxShadow', value);
+                }
+            }),
+            React.createElement(Separator, null)
+        ),
+        React.createElement(
+            PanelBody,
+            { title: __('Settings'), initialOpen: false },
+            React.createElement(
+                Tabs,
+                null,
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Form') },
+                    React.createElement(TextControl, {
+                        label: __('Required Field Error Message'),
+                        value: fieldErrorMessage,
+                        onChange: function onChange(val) {
+                            return updateAttributes('fieldErrorMessage', val);
+                        }
+                    }),
+                    React.createElement(TextareaControl, {
+                        label: __('Form Submit Success Message'),
+                        value: formSuccessMessage,
+                        onChange: function onChange(val) {
+                            return updateAttributes('formSuccessMessage', val);
+                        },
+                        help: __('Set your desired message after successful form submission. Leave blank for default.')
+                    }),
+                    React.createElement(TextareaControl, {
+                        label: __('Form Submit Failed Message'),
+                        value: formErrorMessage,
+                        onChange: function onChange(val) {
+                            return updateAttributes('formErrorMessage', val);
+                        },
+                        help: __('Set your desired message for form submission error. Leave blank for default.')
+                    }),
+                    React.createElement(Toggle, { label: __('Enable Captcha'), value: reCaptcha, onChange: function onChange(val) {
+                            return updateAttributes('reCaptcha', val);
+                        } }),
+                    reCaptcha && React.createElement(
+                        'div',
+                        null,
+                        React.createElement(TextControl, {
+                            label: __('Site Key '),
+                            value: reCaptchaSiteKey,
+                            onChange: function onChange(val) {
+                                return updateAttributes('reCaptchaSiteKey', val);
+                            },
+                            placeholder: __('Enter Google Site Key')
+                        }),
+                        React.createElement(TextControl, {
+                            label: __('Secret Key '),
+                            value: reCaptchaSecretKey,
+                            onChange: function onChange(val) {
+                                return updateAttributes('reCaptchaSecretKey', val);
+                            },
+                            placeholder: __('Enter Google Secret Key')
+                        })
+                    ),
+                    React.createElement(Toggle, { label: __('Enable Policy Checkbox'), value: policyCheckbox, onChange: function onChange(val) {
+                            return updateAttributes('policyCheckbox', val);
+                        } })
+                ),
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Email') },
+                    React.createElement(TextControl, {
+                        label: __('Recipient Email'),
+                        value: emailReceiver,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailReceiver', val);
+                        },
+                        placeholder: __('Enter Recipient Email'),
+                        help: __('Enter the recipient email address. This field is mandatory. Without a recipient email, contact form will not work.')
+                    }),
+                    React.createElement(TextareaControl, {
+                        label: __('Email Headers'),
+                        value: emailHeaders,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailHeaders', val);
+                        }
+                    }),
+                    React.createElement(TextControl, {
+                        label: __('From Email'),
+                        value: emailFrom,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailFrom', val);
+                        },
+                        placeholder: __('Your Name: admin@example.com')
+                    }),
+                    React.createElement(TextControl, {
+                        label: __('Subject'),
+                        value: emailSubject,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailSubject', val);
+                        },
+                        placeholder: __('Enter Subject')
+                    }),
+                    React.createElement(TextareaControl, {
+                        label: __('Email Body'),
+                        value: emailBody,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailBody', val);
+                        },
+                        help: __("Set your form email body here. In editor don't add any CSS style or others option just add your form field name between double curly braces {{field-name}} as you set in 'Field Name'.")
+                    })
+                )
+            )
+        ),
+        buttonSettings(attributes, device, function (key, value) {
+            updateAttributes(key, value);
+        }, function (key, value) {
+            changeDevice(value);
+        })
+    );
+};
+
+var _icons = __webpack_require__(/*! ../../helpers/icons */ "./src/helpers/icons.js");
+
+var _icons2 = _interopRequireDefault(_icons);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var __ = wp.i18n.__;
+var InspectorControls = wp.editor.InspectorControls;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch;
+var _wp$element = wp.element,
+    useState = _wp$element.useState,
+    useEffect = _wp$element.useEffect,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl;
+var _wp$qubelyComponents = wp.qubelyComponents,
+    ButtonGroup = _wp$qubelyComponents.ButtonGroup,
+    BoxShadow = _wp$qubelyComponents.BoxShadow,
+    BorderRadius = _wp$qubelyComponents.BorderRadius,
+    Padding = _wp$qubelyComponents.Padding,
+    Styles = _wp$qubelyComponents.Styles,
+    Range = _wp$qubelyComponents.Range,
+    Separator = _wp$qubelyComponents.Separator,
+    Toggle = _wp$qubelyComponents.Toggle,
+    Typography = _wp$qubelyComponents.Typography,
+    Color = _wp$qubelyComponents.Color,
+    Tabs = _wp$qubelyComponents.Tabs,
+    Tab = _wp$qubelyComponents.Tab,
+    Border = _wp$qubelyComponents.Border,
+    RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
+    buttonSettings = _wp$qubelyComponents.QubelyButton.buttonSettings;
+
+/***/ }),
+
 /***/ "./src/blocks/form/fields/edit.js":
 /*!****************************************!*\
   !*** ./src/blocks/form/fields/edit.js ***!
@@ -1801,6 +2223,12 @@ Object.defineProperty(exports, "__esModule", {
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 exports.default = Edit;
+
+var _commonSettings = __webpack_require__(/*! ../commonSettings */ "./src/blocks/form/commonSettings.js");
+
+var _commonSettings2 = _interopRequireDefault(_commonSettings);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -1829,6 +2257,9 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Toggle = _wp$qubelyComponents.Toggle,
     Typography = _wp$qubelyComponents.Typography,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch;
 function Edit(props) {
     var _useState = useState(12),
         _useState2 = _slicedToArray(_useState, 2),
@@ -1880,12 +2311,17 @@ function Edit(props) {
         seletedTimeFormat = _useState20[0],
         changeseletedTimeFormat = _useState20[1];
 
+    var _select = select('core/block-editor'),
+        getBlockRootClientId = _select.getBlockRootClientId,
+        getBlockName = _select.getBlockName;
+
     var name = props.name,
         clientId = props.clientId,
         attributes = props.attributes,
         setAttributes = props.setAttributes,
         _props$attributes = props.attributes,
         uniqueId = _props$attributes.uniqueId,
+        parentClientId = _props$attributes.parentClientId,
         fieldName = _props$attributes.fieldName,
         height = _props$attributes.height,
         type = _props$attributes.type,
@@ -2216,6 +2652,15 @@ function Edit(props) {
         setDraggedOverItem(-1);
     };
 
+    var getParentClientId = function getParentClientId(clientId) {
+        var parentClientID = getBlockRootClientId(clientId);
+        if (getBlockName(parentClientID) === 'qubely/form') {
+            return parentClientID;
+        } else {
+            return getParentClientId(parentClientID);
+        }
+    };
+
     var blockname = name.split('/')[1];
 
     if (uniqueId) {
@@ -2228,6 +2673,7 @@ function Edit(props) {
         React.createElement(
             InspectorControls,
             null,
+            (0, _commonSettings2.default)(getParentClientId(clientId)),
             React.createElement(
                 PanelBody,
                 { title: __(type[0].toUpperCase() + type.slice(1)), opened: true },
@@ -2445,6 +2891,10 @@ var FieldDefaults = {
     },
     attributes: {
         uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        parentClientId: {
             type: 'string',
             default: ''
         },
@@ -3449,7 +3899,8 @@ var Edit = function (_Component) {
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.renderFormFieldTypes = function () {
             var _this$props = _this.props,
                 clientId = _this$props.clientId,
-                insertBlock = _this$props.insertBlock;
+                insertBlock = _this$props.insertBlock,
+                parentClientId = _this$props.attributes.parentClientId;
 
 
             var formFields = [[__('Text'), 'text'], [__('Number'), 'number'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Textarea'), 'textarea'], [__('Date'), 'date'], [__('Time'), 'time'], [__('Dropdown'), 'dropdown']];
@@ -3465,7 +3916,7 @@ var Edit = function (_Component) {
                         'div',
                         { className: 'qubely-form-field-type',
                             onClick: function onClick() {
-                                return insertBlock(createBlock('qubely/formfield-' + type, {}), undefined, clientId);
+                                return insertBlock(createBlock('qubely/formfield-' + type, { parentClientId: parentClientId }), undefined, clientId);
                             }
                         },
                         fieldName
@@ -3527,6 +3978,7 @@ var Edit = function (_Component) {
                 attributes = _props3.attributes,
                 _props3$attributes = _props3.attributes,
                 uniqueId = _props3$attributes.uniqueId,
+                parentClientId = _props3$attributes.parentClientId,
                 fieldSize = _props3$attributes.fieldSize,
                 width = _props3$attributes.width,
                 gutter = _props3$attributes.gutter;
@@ -3535,7 +3987,7 @@ var Edit = function (_Component) {
             if (uniqueId) {
                 CssGenerator(attributes, 'form-column', uniqueId);
             }
-
+            // console.log('in column : ', parentClientId)
             return React.createElement(
                 Fragment,
                 null,
@@ -3699,6 +4151,10 @@ registerBlockType('qubely/form-column', {
     icon: React.createElement('img', { src: qubely_admin.plugin + 'assets/img/blocks/block-form.svg', alt: __('Form') }),
     attributes: {
         uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        parentClientId: {
             type: 'string',
             default: ''
         },
@@ -3877,7 +4333,10 @@ var Edit = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var uniqueId = this.props.attributes.uniqueId;
+            var _props$attributes = this.props.attributes,
+                uniqueId = _props$attributes.uniqueId,
+                parentClientId = _props$attributes.parentClientId;
+            // console.log('in row : ', parentClientId)
 
             return React.createElement(
                 'div',
@@ -3936,7 +4395,14 @@ registerBlockType('qubely/form-row', {
     },
     icon: React.createElement('img', { src: qubely_admin.plugin + 'assets/img/blocks/block-form.svg', alt: __('Form') }),
     attributes: {
-        uniqueId: { type: 'string', default: '' }
+        uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        parentClientId: {
+            type: 'string',
+            default: ''
+        }
     },
     edit: _edit2.default,
     save: _save2.default

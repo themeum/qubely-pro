@@ -11,7 +11,9 @@ class Edit extends Component {
         }
     }
     render() {
-        const { attributes: { uniqueId } } = this.props
+        const { attributes: { uniqueId, parentClientId } } = this.props
+        // console.log('in row : ', parentClientId)
+
         return (
             <div className={`qubely-block-${uniqueId}`}>
                 <div className={`qubely-form-row`}>
