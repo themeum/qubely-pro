@@ -1,9 +1,9 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody, Tooltip } = wp.components
-const { InspectorControls, RichText, MediaUpload } = wp.editor
+const { PanelBody, Tooltip, Toolbar } = wp.components
+const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.editor
 import icons from '../../helpers/icons'
-const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } } = wp.qubelyComponents
 
 
 class Edit extends Component {
@@ -195,7 +195,6 @@ class Edit extends Component {
 			(newLength >= items.md && newLength >= items.sm && newLength >= items.sm) && newCarouselItems.pop()
 		}
 		setAttributes({ carouselItems: newCarouselItems })
-
 	}
 
 	render() {
@@ -210,6 +209,7 @@ class Edit extends Component {
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
 			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotsPosition, dotIndicator, dotswidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll, sliderItemMargin,
+			globalZindex, hideTablet, hideMobile, globalCss, animation
 		} } = this.props
 
 		const { device } = this.state
@@ -707,7 +707,22 @@ class Edit extends Component {
 							</Tab>
 						</Tabs>
 					</PanelBody>
+
+					{animationSettings(uniqueId, animation, setAttributes)}
+
 				</InspectorControls>
+
+				<BlockControls>
+					<Toolbar>
+						<InlineToolbar
+							data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
+							{...this.props}
+							prevState={this.state}
+						/>
+					</Toolbar>
+				</BlockControls>
+
+				{globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-testimonial-carousel qubely-layout-${layout}`}>

@@ -1,8 +1,26 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
-const { InspectorControls, RichText, BlockControls, MediaUpload, SelectControl } = wp.editor
-const { IconList,Inline: { InlineToolbar }, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, Border, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const { InspectorControls, RichText, BlockControls, MediaUpload } = wp.editor
+const {
+    RadioAdvanced, 
+    ColorAdvanced, 
+    Select, 
+    Tabs, 
+    Tab, 
+    Range, 
+    Color, 
+    Styles, 
+    Typography, 
+    Toggle, 
+    BorderRadius, 
+    BoxShadow, 
+    Alignment, 
+    Padding, 
+    Inline: { InlineToolbar }, 
+    CssGenerator: { CssGenerator }, 
+    gloalSettings: { globalSettingsPanel, animationSettings }, 
+} = wp.qubelyComponents
 import icons from '../../helpers/icons'
 
 class Edit extends Component {
@@ -145,8 +163,12 @@ class Edit extends Component {
             overlayHoverBg,
             overlayBlend,
 
+            globalZindex,
+            hideTablet,
+            hideMobile,
+            globalCss,
+            animation
 		} } = this.props
-
 		const { device } = this.state
 
 		if (uniqueId) { CssGenerator(this.props.attributes, 'gallery', uniqueId) }
@@ -236,6 +258,7 @@ class Edit extends Component {
                         }
                     </PanelBody>
 
+                    {animationSettings(uniqueId, animation, setAttributes)}
 
 				</InspectorControls>
 
@@ -248,6 +271,8 @@ class Edit extends Component {
 						/>
 					</Toolbar>
 				</BlockControls>
+
+                {globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-gallery qubely-gallery-item-${style}`}>

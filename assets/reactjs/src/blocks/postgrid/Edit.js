@@ -5,10 +5,8 @@ const { dateI18n, __experimentalGetSettings } = wp.date
 const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
 const { InspectorControls, BlockControls } = wp.editor
-const { Range, ButtonGroup, Toggle, Dropdown, Select, Separator, ColorAdvanced, Typography, Color, Border, BorderRadius, Padding, BoxShadow, Styles, Tabs, Tab, RadioAdvanced, CssGenerator: { CssGenerator } } = wp.qubelyComponents
-//import InlineToolbar from '../../components/fields/inline/InlineToolbar'
-// import '../../components/GlobalSettings'
-// import '../../components/ContextMenu'
+const { Range, ButtonGroup, Toggle, Dropdown, Select, Separator, ColorAdvanced, Typography, Color, Border, BorderRadius, Padding, BoxShadow, Styles, Tabs, Tab, RadioAdvanced, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } } = wp.qubelyComponents
+
 import icons from '../../helpers/icons'
 
 const CATEGORIES_LIST_QUERY = { per_page: -1 };
@@ -227,12 +225,17 @@ class Edit extends Component {
 				imageSpace,
 				categorySpace,
 				metaSpace,
-				excerptSpace
+				excerptSpace,
 
+				globalZindex,
+				hideTablet,
+				hideMobile,
+				globalCss,
+				animation
 			}
 		} = this.props
 		const { device } = this.state
-
+		
 		if (uniqueId) { CssGenerator(this.props.attributes, 'postgrid', uniqueId) }
 		return (
 			<Fragment>
@@ -618,9 +621,11 @@ class Edit extends Component {
 						<Color label={__('Excerpt')} value={style !== 4 ? excerptColor : excerptColor2} onChange={value => setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value })} />
 					</PanelBody>
 
+					{animationSettings(uniqueId, animation, setAttributes)}
+					
 				</InspectorControls>
 
-				{/* <BlockControls>
+				<BlockControls>
 					<Toolbar>
 						<InlineToolbar
 							data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
@@ -628,7 +633,9 @@ class Edit extends Component {
 							prevState={this.state}
 						/>
 					</Toolbar>
-				</BlockControls> */}
+				</BlockControls>
+
+				{globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					{

@@ -1,5 +1,6 @@
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
+const { gloalSettings: { globalAttributes }} = wp.qubelyComponents
 
 import './style.scss'
 
@@ -770,7 +771,8 @@ registerBlockType('qubely/pricelist', {
 		//
 		pricelistItems: { type: 'number', default: 5 },
 		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
-		showContextMenu: { type: 'boolean', default: true },
+        showContextMenu: { type: 'boolean', default: true },
+        ...globalAttributes
 	},
 	edit: Edit,
 	save: Save

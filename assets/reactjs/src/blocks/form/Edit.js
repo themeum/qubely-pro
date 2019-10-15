@@ -25,7 +25,7 @@ const {
     Inline: { InlineToolbar },
     CssGenerator: { CssGenerator },
     QubelyButton: { buttonSettings },
-    gloalSettings: { globalSettingsPanel },
+    gloalSettings: { globalSettingsPanel, animationSettings },
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons';
@@ -259,7 +259,7 @@ class Edit extends Component {
                 hideTablet,
                 hideMobile,
                 globalCss,
-
+                animation,
 
 
                 height,
@@ -498,8 +498,9 @@ class Edit extends Component {
                         </Tabs>
                     </PanelBody>
 
-
                     {buttonSettings(this.props.attributes, device, setAttributes, (key, value) => { this.setState({ [key]: value }) })}
+
+                    {animationSettings(uniqueId, animation, setAttributes)}
 
                 </InspectorControls>
 

@@ -1,9 +1,28 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody, Tooltip } = wp.components
-const { InspectorControls, RichText, MediaUpload } = wp.editor
+const { PanelBody, Tooltip, Toolbar } = wp.components
+const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.editor
 import icons from '../../helpers/icons'
-const { Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, RadioAdvanced, BorderRadius, BoxShadow, Select, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const { 
+	Range,
+	Color,
+	Typography,
+	Toggle,
+	Separator,
+	ColorAdvanced,
+	Border,
+	RadioAdvanced,
+	Select,
+	Styles,
+	Alignment,
+	Padding,
+	Tabs,
+	Tab,
+	Carousel,
+	ButtonGroup, 
+	CssGenerator: { CssGenerator }, 
+	gloalSettings: { globalSettingsPanel, animationSettings }, 
+	Inline: { InlineToolbar } } = wp.qubelyComponents
 
 class Edit extends Component {
 	constructor(props) {
@@ -308,8 +327,13 @@ class Edit extends Component {
 			overlayHoverBg,
 			overlayBlend,
 			sliderMargin,
-			dotsposition
-			
+			dotsposition,
+
+			globalZindex,
+			hideTablet,
+			hideMobile,
+			globalCss,
+			animation
 		} } = this.props
 
 		const { device } = this.state
@@ -681,7 +705,22 @@ class Edit extends Component {
 							}
 						</Fragment>
 					}
+
+					{animationSettings(uniqueId, animation, setAttributes)}
+
 				</InspectorControls>
+
+				<BlockControls>
+                    <Toolbar>
+                        <InlineToolbar
+                            data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
+                            {...this.props}
+                            prevState={this.state}
+                        />
+                    </Toolbar>
+                </BlockControls>
+
+				{globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
