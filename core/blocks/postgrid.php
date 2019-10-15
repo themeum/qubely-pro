@@ -1083,10 +1083,38 @@ function register_block_qubely_postgrid_pro()
 					'type' => 'boolean',
 					'default' => true
 				),
-				// 'showContextMenu' => array(
-				// 	'type' => 'boolean',
-				// 	'default' => true
-				// ),
+				'animation' => array(
+					'type' => 'object',
+					'default' => (object) array(),
+				),
+				'globalZindex' => array(
+					'type'    => 'string',
+					'default' => '0',
+					'style' => [(object) [
+						'selector' => '{{QUBELY}} {z-index:{{globalZindex}};}'
+					]]
+				),
+				'hideTablet' => array(
+					'type' => 'boolean',
+					'default' => false,
+					'style' => [(object) [
+						'selector' => '{{QUBELY}}{display:none;}'
+					]]
+				),
+				'hideMobile' => array(
+					'type' => 'boolean',
+					'default' => false,
+					'style' => [(object) [
+						'selector' => '{{QUBELY}}{display:none;}'
+					]]
+				),
+				'globalCss' => array(
+					'type' => 'string',
+					'default' => '',
+					'style' => [(object) [
+						'selector' => ''
+					]]
+				),
 			),
 			'render_callback' => 'render_block_qubely_postgrid_pro'
 		)
@@ -1124,6 +1152,7 @@ function render_block_qubely_postgrid_pro($att)
 	$categories             = $att['categories'];
 	$tags                   = $att['tags'];
 	$taxonomy               = $att['taxonomy'];
+	$animation 		        = isset($att['animation']) ? 'data-qubelyanimation="'.htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8').'"' : '';
 
 	$args = array(
 		'post_type' 		=> 'post',
@@ -1167,7 +1196,7 @@ function render_block_qubely_postgrid_pro($att)
     $count = 0;
 	if ($query->have_posts()) {
 		$html .= '<div class="qubely-block-' . $uniqueId . '">';
-		$html .= '<div class="qubely-postgrid-wrapper qubely-postgrid-layout-' . esc_attr($layout) . esc_attr($col) . '">';
+		$html .= '<div class="qubely-postgrid-wrapper qubely-postgrid-layout-' . esc_attr($layout) . esc_attr($col) . '" '.$animation.'>';
 		while ($query->have_posts()) {
 			$query->the_post();
 			$id = get_post_thumbnail_id();

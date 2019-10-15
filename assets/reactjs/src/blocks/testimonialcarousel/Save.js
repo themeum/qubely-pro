@@ -1,4 +1,4 @@
-const { Component, Fragment } = wp.element
+const { Component } = wp.element
 const { RichText } = wp.editor
 const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {

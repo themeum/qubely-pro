@@ -25,7 +25,7 @@ const {
     Inline: { InlineToolbar },
     CssGenerator: { CssGenerator },
     QubelyButton: { buttonSettings },
-    gloalSettings: { globalSettingsPanel },
+    gloalSettings: { globalSettingsPanel, animationSettings },
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons';
@@ -128,9 +128,7 @@ class Edit extends Component {
                     !groupField &&
                     <div className={`qubely-form-field-tabs`}>
                         <div
-                            onClick={() => {
-                                this.setState({ groupField: true })
-                            }}
+                            onClick={() => { this.setState({ groupField: true }) }}
                             className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`}
                         >
                             Add Column</div>
@@ -147,7 +145,7 @@ class Edit extends Component {
                                             className="qubely-form-column-option"
                                             onClick={() => {
                                                 let tempWidth = `${Math.floor(100 / (index + 2))}`
-                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom' }))))
+                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId, }))))
                                                 replaceInnerBlocks(clientId, innerBlocks, false)
                                                 this.setState({ groupField: false })
                                             }}
@@ -188,6 +186,7 @@ class Edit extends Component {
 
     render() {
         const {
+            clientId,
             attributes,
             setAttributes,
             toggleSelection,
@@ -260,7 +259,7 @@ class Edit extends Component {
                 hideTablet,
                 hideMobile,
                 globalCss,
-
+                animation,
 
 
                 height,
@@ -269,6 +268,7 @@ class Edit extends Component {
         } = this.props
 
         const { device } = this.state
+
 
         if (uniqueId) { CssGenerator(attributes, 'form', uniqueId); }
         return (
@@ -498,8 +498,9 @@ class Edit extends Component {
                         </Tabs>
                     </PanelBody>
 
-
                     {buttonSettings(this.props.attributes, device, setAttributes, (key, value) => { this.setState({ [key]: value }) })}
+
+                    {animationSettings(uniqueId, animation, setAttributes)}
 
                 </InspectorControls>
 
@@ -524,11 +525,11 @@ class Edit extends Component {
                                 template={
                                     formItems.map(({ type, label, options, placeholder, width, required }) => {
                                         return (
-                                            ['qubely/form-row', {},
+                                            ['qubely/form-row', { parentClientId: clientId },
                                                 [
-                                                    [`qubely/form-column`, {},
+                                                    [`qubely/form-column`, { parentClientId: clientId },
                                                         [
-                                                            [`qubely/formfield-${type}`, { type, label, options, placeholder, width, required }]
+                                                            [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required }]
                                                         ]
                                                     ]
                                                 ]

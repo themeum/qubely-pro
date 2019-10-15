@@ -215,7 +215,11 @@ exports.push([module.i, ".qubely-block-pricelist .qubely-pricelist-item {\n  pos
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
+<<<<<<< HEAD
 exports.push([module.i, ".qubely-block-team-carousel {\n  transition: all 400ms; }\n  .qubely-block-team-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-team-carousel .qubely-team-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-team-carousel .qubely-team-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-team-carousel .qubely-single-img.qubely-backend .qubely-team-avatar {\n    cursor: pointer; }\n  .qubely-block-team-carousel .qubely-team-avatar.qubely-image-placeholder i {\n    font-size: 50px;\n    padding: 26px;\n    background: #fafafa; }\n  .qubely-block-team-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 230px; }\n  .qubely-block-team-carousel .qubely-single-img {\n    text-align: center; }\n  .qubely-block-team-carousel .qubely-team-author .qubely-single-img .qubely-team-avatar {\n    text-align: center; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-left,\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-team-carousel .qubely-team-avatar-layout-left .qubely-team-author-info,\n    .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n      text-align: left; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n    text-align: right; }\n  .qubely-block-team-carousel .qubely-team-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-team-carousel .qubely-team-ratings:before, .qubely-block-team-carousel .qubely-team-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-team-carousel .qubely-team-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-team-carousel .qubely-team-ratings:after {\n      z-index: 0; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-team-carousel .qubely-team-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-team-carousel-content-wrapper {\n  position: relative;\n  position: relative; }\n\n.layout-3 .qubely-team-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n  .layout-3 .qubely-team-carousel-content-wrapper:before {\n    content: \" \";\n    position: absolute;\n    width: 0;\n    height: 0;\n    border-style: solid;\n    transform: translate(-50%, 50%);\n    border-width: 15px;\n    z-index: 1;\n    border-color: #f4f4f4 transparent transparent transparent;\n    left: 50%;\n    bottom: -15px; }\n\n.layout-3 .qubely-team-author {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-team-avatar {\n  margin-right: 0px; }\n\n.layout-3 .qubely-team-avatar-layout-left .qubely-team-author-info {\n  text-align: center; }\n\n.layout-1 .qubely-team-avatar {\n  margin-right: 20px; }\n\n.layout-2 .qubely-team-avatar {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel.qubely-carousel-wrapper .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n  position: relative;\n  float: left;\n  overflow: hidden; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n  height: 50px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3;\n  margin-top: 0;\n  height: 50px;\n  width: 100%;\n  bottom: -40px;\n  z-index: 3;\n  left: 50%;\n  transform: translateX(-50%); }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n    margin: 15px;\n    padding: 0;\n    list-style: none;\n    text-align: center; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n      width: 55px; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n        width: 100%;\n        height: 100%; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n      display: inline-block;\n      height: 4px;\n      width: 30px;\n      margin: 5px;\n      border: 0;\n      background: #f4f4f4;\n      border-radius: 2px;\n      cursor: pointer;\n      position: relative; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n        position: absolute;\n        -webkit-perspective: 1000px;\n        perspective: 1000px;\n        transform-style: preserve-3d;\n        transition-property: transform, -webkit-transform, width;\n        -webkit-transition-property: transform, -webkit-transform, width;\n        transition-timing-function: linear;\n        -webkit-transition-timing-function: linear;\n        width: 0;\n        left: 0;\n        top: 0;\n        height: 4px;\n        border-radius: 2px; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n        background: #2084f9;\n        width: 100%;\n        top: 0;\n        border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 50px;\n  width: 100%;\n  margin-top: 0px;\n  z-index: 3;\n  position: absolute;\n  top: 50%; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n    display: inline-block;\n    padding: 10px;\n    border: 1px solid #e2e2e2;\n    position: absolute;\n    cursor: pointer;\n    text-align: center;\n    bottom: 49%;\n    background: rgba(255, 255, 255, 0.4);\n    transition: .3s; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover {\n      border: 1px solid #1066cc; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom {\n    bottom: 0; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n    bottom: 0; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n    right: 0; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n    left: 0; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n  .qubely-carousel .qubely-carousel-extended-dots {\n    position: absolute;\n    bottom: 50px;\n    left: 50%;\n    transform: translateX(-50%);\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel .qubely-carousel-extended-dots ul {\n      margin: -4px;\n      padding: 0;\n      list-style: none;\n      text-align: center; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li {\n        display: inline-block;\n        height: 4px;\n        width: 30px;\n        margin: 5px;\n        border: 0;\n        background: rgba(218, 92, 92, 0.4);\n        border-radius: 2px;\n        cursor: pointer;\n        position: relative; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n          position: absolute;\n          -webkit-perspective: 1000px;\n          perspective: 1000px;\n          transform-style: preserve-3d;\n          transition-property: transform, -webkit-transform, width;\n          -webkit-transition-property: transform, -webkit-transform, width;\n          transition-timing-function: linear;\n          -webkit-transition-timing-function: linear;\n          width: 0;\n          left: 0;\n          top: 0;\n          height: 4px;\n          border-radius: 2px; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n          background: #ffffff;\n          width: 100%;\n          top: 0;\n          border-radius: 2px; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li.active {\n        width: 80px; }\n  .qubely-carousel .qubely-carousel-extended-list {\n    position: relative;\n    overflow: hidden; }\n  .qubely-carousel .js-indicator {\n    position: absolute;\n    z-index: 9;\n    -webkit-perspective: 1000px;\n    perspective: 1000px;\n    transform-style: preserve-3d;\n    transition-property: transform, -webkit-transform, width;\n    -webkit-transition-property: transform, -webkit-transform, width;\n    transition-timing-function: linear;\n    -webkit-transition-timing-function: linear; }\n  .qubely-carousel .qubely-carousel-item {\n    position: relative;\n    float: left; }\n  .qubely-carousel .qubely-carousel-item.active {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-item.dragenable {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-item.prev-item {\n    z-index: 1;\n    visibility: visible; }\n  .qubely-carousel .qubely-carousel-extended-nav-control {\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n      display: inline-block;\n      height: 40px;\n      width: 40px;\n      padding: 10px;\n      border: 1px solid #ababab;\n      position: absolute;\n      cursor: pointer;\n      text-align: center;\n      bottom: 100px;\n      background: rgba(255, 255, 255, 0.4); }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n      right: 0; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n      left: 0; }\n\n.qubely-tesitmonial-item.layout-3 .qubely-team-avatar {\n  margin-right: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-item:not(.active) {\n  opacity: 0.1; }\n\n.qubely-team-1 .qubely-team-author-info {\n  width: 100%;\n  padding: 30px; }\n\n.qubely-team-1 .qubely-single-img img.qubely-team-avatar {\n  transition: .3s; }\n\n.qubely-team-1:hover .qubely-image-placeholder {\n  transform: scale(1.1); }\n\n.qubely-team-1:hover .qubely-single-img img.qubely-team-avatar {\n  transform: scale(1.1); }\n\n.qubely-team-2 {\n  position: relative; }\n  .qubely-team-2 .qubely-team-author-info {\n    background: rgba(0, 0, 0, 0.65);\n    position: absolute;\n    line-height: 30px;\n    transition: .3s;\n    height: 100%;\n    width: 100%;\n    opacity: 0;\n    z-index: 1;\n    top: 0;\n    color: #fff;\n    transform: translate(0%, 0%);\n    width: 100%;\n    padding: 70px; }\n  .qubely-team-2:hover .qubely-team-author-info {\n    opacity: 1; }\n\n.qubely-team-carousel-item {\n  overflow: hidden; }\n  .qubely-team-carousel-item .qubely-single-img {\n    line-height: 0; }\n\n.qubely-team-3 {\n  overflow: hidden; }\n  .qubely-team-3 .qubely-single-img {\n    width: calc(30% - 15px);\n    float: left;\n    display: inline-block;\n    margin-right: 15px; }\n  .qubely-team-3 .qubely-team-author {\n    display: inline-block;\n    width: 100%; }\n  .qubely-team-3 .qubely-team-author-info {\n    transform: translate(0px, 20%);\n    display: initial; }\n\n.qubely-block-team-carousel .qubely-team-3 .qubely-image-placeholder {\n  height: 100%; }\n\n.qubely-block-team-carousel .qubely-image-placeholder {\n  width: 100%;\n  height: 230px;\n  transform: scale(1);\n  transition: .3s; }\n\n.qubely-team-author-info {\n  width: 70%;\n  display: inline-block; }\n\n.qubely-carousel-item {\n  height: fit-content; }\n\n.editor-styles-wrapper .qubely-team-2 {\n  line-height: 0; }\n\n.qubely-single-img {\n  overflow: hidden; }\n\n.qubely-team-social-links {\n  font-size: 0; }\n  .qubely-team-social-links a {\n    display: inline-block;\n    text-decoration: none !important;\n    transition: color 300ms, background-color 300ms; }\n  .qubely-team-social-links.qubely-team-icon-layout-fill a {\n    padding: 10px; }\n    .qubely-team-social-links.qubely-team-icon-layout-fill a i {\n      width: 1em;\n      height: 1em;\n      display: block;\n      text-align: center; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-facebook {\n    color: #3b5998; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-facebook:hover {\n      color: #2f477c; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-twitter {\n    color: #1da1f2; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-twitter:hover {\n      color: #1a93df; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-instagram {\n    color: #e1306c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-instagram:hover {\n      color: #c0275a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-linkedin {\n    color: #0077b5; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-linkedin:hover {\n      color: #005f92; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-youtube {\n    color: #ff0000; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-youtube:hover {\n      color: #e40000; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-github {\n    color: #333; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-github:hover {\n      color: #181818; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-flickr {\n    color: #ff0084; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-flickr:hover {\n      color: #e60077; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-pinterest {\n    color: #bd081c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-pinterest:hover {\n      color: #9c0718; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-dribbble {\n    color: #ea4c89; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-dribbble:hover {\n      color: #d3437a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-behance {\n    color: #1769ff; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-behance:hover {\n      color: #135add; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill a {\n    color: #fff; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill a:hover {\n      color: #fff; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-facebook {\n    background-color: #3b5998; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-facebook:hover {\n      background-color: #2f477c; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-twitter {\n    background-color: #1da1f2; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-twitter:hover {\n      background-color: #1a93df; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-instagram {\n    background-color: #e1306c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-instagram:hover {\n      background-color: #c0275a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-linkedin {\n    background-color: #0077b5; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-linkedin:hover {\n      background-color: #005f92; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-youtube {\n    background-color: #ff0000; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-youtube:hover {\n      background-color: #e40000; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-github {\n    background-color: #333; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-github:hover {\n      background-color: #181818; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-flickr {\n    background-color: #ff0084; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-flickr:hover {\n      background-color: #e60077; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-pinterest {\n    background-color: #bd081c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-pinterest:hover {\n      background-color: #9c0718; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-dribbble {\n    background-color: #ea4c89; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-dribbble:hover {\n      background-color: #d3437a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-behance {\n    background-color: #1769ff; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-behance:hover {\n      background-color: #135add; }\n\n.social-share .qubely-team-social-links a {\n  margin-bottom: 8px;\n  display: inline-block; }\n\n.qubely-team-2 .qubely-team-author-info .layout-2 {\n  transform: translate(0%, 0%);\n  transition: .3s; }\n\n.qubely-team-2:hover .qubely-team-author-info .layout-2 {\n  transform: translate(0%, 100%); }\n\n.qubely-block-team-carousel .qubely-carousel-extended-outer-stage {\n  padding: 24px 4px 10px; }\n\n.qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  transition: .3s; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active {\n  margin-left: -2px; }\n\nh2.qubely-heading-selector:before {\n  display: none; }\n", ""]);
+=======
+exports.push([module.i, ".qubely-block-team-carousel {\n  transition: all 400ms; }\n  .qubely-block-team-carousel .editor-rich-text .editor-rich-text__tinymce {\n    line-height: inherit; }\n  .qubely-block-team-carousel .qubely-team-quote .qubely-quote-icon {\n    line-height: 1;\n    width: auto;\n    height: auto; }\n  .qubely-block-team-carousel .qubely-team-quote.qubely-position-bottom .qubely-quote-icon {\n    transform: scaleY(-1); }\n  .qubely-block-team-carousel .qubely-single-img.qubely-backend .qubely-team-avatar {\n    cursor: pointer; }\n  .qubely-block-team-carousel .qubely-team-avatar.qubely-image-placeholder i {\n    font-size: 50px;\n    padding: 26px;\n    background: #fafafa; }\n  .qubely-block-team-carousel .qubely-image-placeholder {\n    width: 100%;\n    height: 230px; }\n  .qubely-block-team-carousel .qubely-single-img {\n    text-align: center; }\n  .qubely-block-team-carousel .qubely-team-author .qubely-single-img .qubely-team-avatar {\n    text-align: center; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-left,\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right {\n    display: inline-flex;\n    align-items: center; }\n    .qubely-block-team-carousel .qubely-team-avatar-layout-left .qubely-team-author-info,\n    .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n      text-align: left; }\n  .qubely-block-team-carousel .qubely-team-avatar-layout-right .qubely-team-author-info {\n    text-align: right; }\n  .qubely-block-team-carousel .qubely-team-ratings {\n    unicode-bidi: bidi-override;\n    display: inline-block;\n    position: relative;\n    letter-spacing: 5px; }\n    .qubely-block-team-carousel .qubely-team-ratings:before, .qubely-block-team-carousel .qubely-team-ratings:after {\n      content: \"\\f005\\f005\\f005\\f005\\f005\";\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 400;\n      display: block;\n      white-space: nowrap; }\n    .qubely-block-team-carousel .qubely-team-ratings:before {\n      position: absolute;\n      z-index: 1;\n      left: 0px;\n      overflow: hidden;\n      font-family: \"Font Awesome\\ 5 Free\";\n      font-weight: 900;\n      content: \"\\f005\\f005\\f005\\f005\\f005\"; }\n    .qubely-block-team-carousel .qubely-team-ratings:after {\n      z-index: 0; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1\"]:before {\n      width: 20%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"1.5\"]:before {\n      width: 29%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2\"]:before {\n      width: 40%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"2.5\"]:before {\n      width: 49%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3\"]:before {\n      width: 60%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"3.5\"]:before {\n      width: 69%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4\"]:before {\n      width: 80%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"4.5\"]:before {\n      width: 89%; }\n    .qubely-block-team-carousel .qubely-team-ratings[data-qubelyrating=\"5\"]:before {\n      width: 100%; }\n  .qubely-block-team-carousel .qubely-team-carousel-arrow-down {\n    width: 0;\n    height: 0;\n    border-left: 15px solid transparent;\n    border-right: 15px solid transparent;\n    border-top: 15px solid #d6d9dd; }\n\n.qubely-team-carousel-content-wrapper {\n  position: relative;\n  position: relative; }\n\n.layout-3 .qubely-team-carousel-content-wrapper {\n  padding: 20px;\n  border-radius: 10px;\n  background: #f4f4f4; }\n  .layout-3 .qubely-team-carousel-content-wrapper:before {\n    content: \" \";\n    position: absolute;\n    width: 0;\n    height: 0;\n    border-style: solid;\n    transform: translate(-50%, 50%);\n    border-width: 15px;\n    z-index: 1;\n    border-color: #f4f4f4 transparent transparent transparent;\n    left: 50%;\n    bottom: -15px; }\n\n.layout-3 .qubely-team-author {\n  margin-top: 40px;\n  text-align: center; }\n\n.layout-3 .qubely-team-avatar {\n  margin-right: 0px; }\n\n.layout-3 .qubely-team-avatar-layout-left .qubely-team-author-info {\n  text-align: center; }\n\n.layout-1 .qubely-team-avatar {\n  margin-right: 20px; }\n\n.layout-2 .qubely-team-avatar {\n  margin-right: 20px; }\n\n.qubely-carousel.qubely-carousel-wrapper {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  position: relative; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-extended-list {\n  position: relative;\n  overflow: hidden; }\n\n.qubely-carousel.qubely-carousel-wrapper .js-indicator {\n  position: absolute;\n  z-index: 9;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transform-style: preserve-3d;\n  transition-property: transform, -webkit-transform, width;\n  -webkit-transition-property: transform, -webkit-transform, width;\n  transition-timing-function: linear;\n  -webkit-transition-timing-function: linear; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {\n  position: relative;\n  float: left;\n  overflow: hidden; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.dragenable {\n  visibility: visible;\n  transform-style: preserve-3d; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.prev-item {\n  z-index: 1;\n  visibility: visible; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots {\n  height: 50px;\n  width: 100%;\n  margin-top: 5px;\n  z-index: 3;\n  margin-top: 0;\n  height: 50px;\n  width: 100%;\n  bottom: -40px;\n  z-index: 3;\n  left: 50%;\n  transform: translateX(-50%); }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {\n    margin: 15px;\n    padding: 0;\n    list-style: none;\n    text-align: center; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {\n      width: 55px; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator {\n        width: 100%;\n        height: 100%; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {\n      display: inline-block;\n      height: 4px;\n      width: 30px;\n      margin: 5px;\n      border: 0;\n      background: #f4f4f4;\n      border-radius: 2px;\n      cursor: pointer;\n      position: relative; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator {\n        position: absolute;\n        -webkit-perspective: 1000px;\n        perspective: 1000px;\n        transform-style: preserve-3d;\n        transition-property: transform, -webkit-transform, width;\n        -webkit-transition-property: transform, -webkit-transform, width;\n        transition-timing-function: linear;\n        -webkit-transition-timing-function: linear;\n        width: 0;\n        left: 0;\n        top: 0;\n        height: 4px;\n        border-radius: 2px; }\n      .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li .dot-indicator.active {\n        background: #2084f9;\n        width: 100%;\n        top: 0;\n        border-radius: 2px; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control {\n  height: 50px;\n  width: 100%;\n  margin-top: 0px;\n  z-index: 3;\n  position: absolute;\n  top: 50%; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {\n    display: inline-block;\n    padding: 10px;\n    border: 1px solid #e2e2e2;\n    position: absolute;\n    cursor: pointer;\n    text-align: center;\n    bottom: 49%;\n    background: rgba(255, 255, 255, 0.4);\n    transition: .3s; }\n    .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover {\n      border: 1px solid #1066cc; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .next-control.nav-control.buttom {\n    bottom: 0; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .prev-control.nav-control.buttom {\n    bottom: 0; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {\n    right: 0; }\n  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {\n    left: 0; }\n\n.qubely-carousel-extended-outer-stage {\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  position: relative;\n  overflow: hidden;\n  -webkit-perspective: 1000px;\n  perspective: 1000px;\n  transition: all 0.25s ease 0s;\n  -webkit-transition: all 0.25s ease 0s;\n  display: flex; }\n\n.qubely-carousel-nav-control .nav-control .dashicons {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  text-align: center; }\n\n.qubely-carousel {\n  -ms-touch-action: pan-y;\n  touch-action: pan-y;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n  .qubely-carousel .qubely-carousel-extended-dots {\n    position: absolute;\n    bottom: 50px;\n    left: 50%;\n    transform: translateX(-50%);\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel .qubely-carousel-extended-dots ul {\n      margin: -4px;\n      padding: 0;\n      list-style: none;\n      text-align: center; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li {\n        display: inline-block;\n        height: 4px;\n        width: 30px;\n        margin: 5px;\n        border: 0;\n        background: rgba(218, 92, 92, 0.4);\n        border-radius: 2px;\n        cursor: pointer;\n        position: relative; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator {\n          position: absolute;\n          -webkit-perspective: 1000px;\n          perspective: 1000px;\n          transform-style: preserve-3d;\n          transition-property: transform, -webkit-transform, width;\n          -webkit-transition-property: transform, -webkit-transform, width;\n          transition-timing-function: linear;\n          -webkit-transition-timing-function: linear;\n          width: 0;\n          left: 0;\n          top: 0;\n          height: 4px;\n          border-radius: 2px; }\n        .qubely-carousel .qubely-carousel-extended-dots ul li .qubely-carousel-extended-dot-indicator.active {\n          background: #ffffff;\n          width: 100%;\n          top: 0;\n          border-radius: 2px; }\n      .qubely-carousel .qubely-carousel-extended-dots ul li.active {\n        width: 80px; }\n  .qubely-carousel .qubely-carousel-extended-list {\n    position: relative;\n    overflow: hidden; }\n  .qubely-carousel .js-indicator {\n    position: absolute;\n    z-index: 9;\n    -webkit-perspective: 1000px;\n    perspective: 1000px;\n    transform-style: preserve-3d;\n    transition-property: transform, -webkit-transform, width;\n    -webkit-transition-property: transform, -webkit-transform, width;\n    transition-timing-function: linear;\n    -webkit-transition-timing-function: linear; }\n  .qubely-carousel .qubely-carousel-item {\n    position: relative;\n    float: left; }\n  .qubely-carousel .qubely-carousel-item.active {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-item.dragenable {\n    visibility: visible;\n    transform-style: preserve-3d; }\n  .qubely-carousel .qubely-carousel-item.prev-item {\n    z-index: 1;\n    visibility: visible; }\n  .qubely-carousel .qubely-carousel-extended-nav-control {\n    position: relative;\n    height: 20px;\n    width: 100%;\n    margin-top: 5px;\n    z-index: 3; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control {\n      display: inline-block;\n      height: 40px;\n      width: 40px;\n      padding: 10px;\n      border: 1px solid #ababab;\n      position: absolute;\n      cursor: pointer;\n      text-align: center;\n      bottom: 100px;\n      background: rgba(255, 255, 255, 0.4); }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.next-control {\n      right: 0; }\n    .qubely-carousel .qubely-carousel-extended-nav-control .nav-control.prev-control {\n      left: 0; }\n\n.qubely-tesitmonial-item.layout-3 .qubely-team-avatar {\n  margin-right: 0; }\n\n.qubely-carousel.qubely-carousel-wrapper.is-faded .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage .qubely-carousel-item:not(.active) {\n  opacity: 0.1; }\n\n.qubely-team-1 .qubely-team-author-info {\n  width: 100%;\n  padding: 30px; }\n\n.qubely-team-1 .qubely-single-img img.qubely-team-avatar {\n  transition: .3s; }\n\n.qubely-team-1:hover .qubely-image-placeholder {\n  transform: scale(1.1); }\n\n.qubely-team-1:hover .qubely-single-img img.qubely-team-avatar {\n  transform: scale(1.1); }\n\n.qubely-team-2 {\n  position: relative; }\n  .qubely-team-2 .qubely-team-author-info {\n    background: rgba(0, 0, 0, 0.65);\n    position: absolute;\n    line-height: 30px;\n    transition: .3s;\n    height: 100%;\n    width: 100%;\n    opacity: 0;\n    z-index: 1;\n    top: 0;\n    color: #fff;\n    transform: translate(0%, 0%);\n    width: 100%;\n    padding: 70px; }\n  .qubely-team-2:hover .qubely-team-author-info {\n    opacity: 1; }\n\n.qubely-team-carousel-item {\n  overflow: hidden; }\n  .qubely-team-carousel-item .qubely-single-img {\n    line-height: 0; }\n\n.qubely-team-3 {\n  overflow: hidden; }\n  .qubely-team-3 .qubely-single-img {\n    width: calc(30% - 15px);\n    float: left;\n    display: inline-block;\n    margin-right: 15px; }\n  .qubely-team-3 .qubely-team-author {\n    display: inline-block;\n    width: 100%; }\n  .qubely-team-3 .qubely-team-author-info {\n    transform: translate(0px, 20%);\n    display: initial; }\n\n.qubely-block-team-carousel .qubely-team-3 .qubely-image-placeholder {\n  height: 100%; }\n\n.qubely-block-team-carousel .qubely-image-placeholder {\n  width: 100%;\n  height: 230px;\n  transform: scale(1);\n  transition: .3s; }\n\n.qubely-team-author-info {\n  width: 70%;\n  display: inline-block; }\n\n.qubely-carousel-item {\n  height: fit-content; }\n\n.editor-styles-wrapper .qubely-team-2 {\n  line-height: 0; }\n\n.qubely-single-img {\n  overflow: hidden; }\n\n.qubely-team-social-links {\n  font-size: 0; }\n  .qubely-team-social-links a {\n    display: inline-block;\n    text-decoration: none !important;\n    transition: color 300ms, background-color 300ms; }\n  .qubely-team-social-links.qubely-team-icon-layout-fill a {\n    padding: 10px; }\n    .qubely-team-social-links.qubely-team-icon-layout-fill a i {\n      width: 1em;\n      height: 1em;\n      display: block;\n      text-align: center; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-facebook {\n    color: #3b5998; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-facebook:hover {\n      color: #2f477c; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-twitter {\n    color: #1da1f2; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-twitter:hover {\n      color: #1a93df; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-instagram {\n    color: #e1306c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-instagram:hover {\n      color: #c0275a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-linkedin {\n    color: #0077b5; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-linkedin:hover {\n      color: #005f92; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-youtube {\n    color: #ff0000; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-youtube:hover {\n      color: #e40000; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-github {\n    color: #333; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-github:hover {\n      color: #181818; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-flickr {\n    color: #ff0084; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-flickr:hover {\n      color: #e60077; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-pinterest {\n    color: #bd081c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-pinterest:hover {\n      color: #9c0718; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-dribbble {\n    color: #ea4c89; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-dribbble:hover {\n      color: #d3437a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-behance {\n    color: #1769ff; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-normal .qubely-team-social-behance:hover {\n      color: #135add; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill a {\n    color: #fff; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill a:hover {\n      color: #fff; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-facebook {\n    background-color: #3b5998; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-facebook:hover {\n      background-color: #2f477c; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-twitter {\n    background-color: #1da1f2; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-twitter:hover {\n      background-color: #1a93df; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-instagram {\n    background-color: #e1306c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-instagram:hover {\n      background-color: #c0275a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-linkedin {\n    background-color: #0077b5; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-linkedin:hover {\n      background-color: #005f92; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-youtube {\n    background-color: #ff0000; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-youtube:hover {\n      background-color: #e40000; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-github {\n    background-color: #333; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-github:hover {\n      background-color: #181818; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-flickr {\n    background-color: #ff0084; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-flickr:hover {\n      background-color: #e60077; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-pinterest {\n    background-color: #bd081c; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-pinterest:hover {\n      background-color: #9c0718; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-dribbble {\n    background-color: #ea4c89; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-dribbble:hover {\n      background-color: #d3437a; }\n  .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-behance {\n    background-color: #1769ff; }\n    .qubely-team-social-links.qubely-team-icon-style-default.qubely-team-icon-layout-fill .qubely-team-social-behance:hover {\n      background-color: #135add; }\n\n.social-share .qubely-team-social-links a {\n  margin-bottom: 8px;\n  display: inline-block; }\n\n.qubely-team-2 .qubely-team-author-info .layout-2 {\n  transition: .3s;\n  transform: translate(50%, -20%);\n  position: absolute;\n  width: 100%;\n  left: -50%;\n  top: 50%; }\n\n.qubely-team-2:hover .qubely-team-author-info .layout-2 {\n  -webkit-transform: translate(50%, 50%);\n  transform: translate(50%, -50%);\n  position: absolute;\n  width: 100%;\n  left: -50%;\n  top: 50%; }\n\n.qubely-block-team-carousel .qubely-carousel-extended-outer-stage {\n  padding: 24px 4px 10px; }\n\n.qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item {\n  transition: .3s; }\n\n.qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item.active {\n  margin-left: 0px; }\n\nh2.qubely-heading-selector:before {\n  display: none; }\n", ""]);
+>>>>>>> f0df4dac9852a95f6b89d87a7ce5f0be06282235
 
 
 
@@ -919,7 +923,9 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
     buttonSettings = _wp$qubelyComponents.QubelyButton.buttonSettings,
-    globalSettingsPanel = _wp$qubelyComponents.gloalSettings.globalSettingsPanel;
+    _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
+    globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
+    animationSettings = _wp$qubelyComponents$.animationSettings;
 
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
@@ -979,7 +985,7 @@ var Edit = function (_Component) {
                                 onClick: function onClick() {
                                     var tempWidth = '' + Math.floor(100 / (index + 2));
                                     innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(function () {
-                                        return createBlock('qubely/form-column', { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom' });
+                                        return createBlock('qubely/form-column', { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId });
                                     })));
                                     replaceInnerBlocks(clientId, innerBlocks, false);
                                     _this.setState({ groupField: false });
@@ -1099,6 +1105,7 @@ var Edit = function (_Component) {
             var _this2 = this;
 
             var _props5 = this.props,
+                clientId = _props5.clientId,
                 attributes = _props5.attributes,
                 setAttributes = _props5.setAttributes,
                 toggleSelection = _props5.toggleSelection,
@@ -1154,6 +1161,7 @@ var Edit = function (_Component) {
                 hideTablet = _props5$attributes.hideTablet,
                 hideMobile = _props5$attributes.hideMobile,
                 globalCss = _props5$attributes.globalCss,
+                animation = _props5$attributes.animation,
                 height = _props5$attributes.height,
                 width = _props5$attributes.width;
             var device = this.state.device;
@@ -1444,7 +1452,8 @@ var Edit = function (_Component) {
                     ),
                     buttonSettings(this.props.attributes, device, setAttributes, function (key, value) {
                         _this2.setState(_defineProperty({}, key, value));
-                    })
+                    }),
+                    animationSettings(uniqueId, animation, setAttributes)
                 ),
                 React.createElement(
                     BlockControls,
@@ -1480,7 +1489,7 @@ var Edit = function (_Component) {
                                         width = _ref5.width,
                                         required = _ref5.required;
 
-                                    return ['qubely/form-row', {}, [['qubely/form-column', {}, [['qubely/formfield-' + type, { type: type, label: label, options: options, placeholder: placeholder, width: width, required: required }]]]]];
+                                    return ['qubely/form-row', { parentClientId: clientId }, [['qubely/form-column', { parentClientId: clientId }, [['qubely/formfield-' + type, { parentClientId: clientId, type: type, label: label, options: options, placeholder: placeholder, width: width, required: required }]]]]];
                                 })
                             })
                         ),
@@ -1686,12 +1695,9 @@ var Save = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _encrypt = this._encrypt,
-                _renderField = this._renderField;
+            var _encrypt = this._encrypt;
             var _props$attributes = this.props.attributes,
                 uniqueId = _props$attributes.uniqueId,
-                formItems = _props$attributes.formItems,
-                inputSize = _props$attributes.inputSize,
                 fieldErrorMessage = _props$attributes.fieldErrorMessage,
                 formSuccessMessage = _props$attributes.formSuccessMessage,
                 formErrorMessage = _props$attributes.formErrorMessage,
@@ -1784,6 +1790,427 @@ exports.default = Save;
 
 /***/ }),
 
+/***/ "./src/blocks/form/commonSettings.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/form/commonSettings.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.default = function (clientId) {
+    var _useState = useState('md'),
+        _useState2 = _slicedToArray(_useState, 2),
+        device = _useState2[0],
+        changeDevice = _useState2[1];
+
+    var _useState3 = useState(false),
+        _useState4 = _slicedToArray(_useState3, 2),
+        isUpdating = _useState4[0],
+        setUpdate = _useState4[1];
+
+    var _select = select('core/block-editor'),
+        getBlockAttributes = _select.getBlockAttributes;
+
+    var attributes = getBlockAttributes(clientId);
+
+    var _dispatch = dispatch('core/block-editor'),
+        updateBlockAttributes = _dispatch.updateBlockAttributes,
+        toggleSelection = _dispatch.toggleSelection;
+
+    var _attributes = attributes,
+        layout = _attributes.layout,
+        labelColor = _attributes.labelColor,
+        labelAlignment = _attributes.labelAlignment,
+        labelTypography = _attributes.labelTypography,
+        spacing = _attributes.spacing,
+        gutter = _attributes.gutter,
+        inputSize = _attributes.inputSize,
+        inputCustomSize = _attributes.inputCustomSize,
+        inputTypography = _attributes.inputTypography,
+        inputBoxShadow = _attributes.inputBoxShadow,
+        inputColor = _attributes.inputColor,
+        inputColorFocus = _attributes.inputColorFocus,
+        inputColorHover = _attributes.inputColorHover,
+        inputBg = _attributes.inputBg,
+        inputBgFocus = _attributes.inputBgFocus,
+        inputBgHover = _attributes.inputBgHover,
+        inputBorder = _attributes.inputBorder,
+        inputBorderRadius = _attributes.inputBorderRadius,
+        inputBorderMaterial = _attributes.inputBorderMaterial,
+        inputBorderColorFocus = _attributes.inputBorderColorFocus,
+        inputBorderColorHover = _attributes.inputBorderColorHover,
+        textareaHeight = _attributes.textareaHeight,
+        placeholderColor = _attributes.placeholderColor,
+        placeholderColorFocus = _attributes.placeholderColorFocus,
+        placeholderColorHover = _attributes.placeholderColorHover,
+        enableButton = _attributes.enableButton,
+        buttonTag = _attributes.buttonTag,
+        buttonSize = _attributes.buttonSize,
+        buttonFillType = _attributes.buttonFillType,
+        buttonText = _attributes.buttonText,
+        buttonIconName = _attributes.buttonIconName,
+        buttonIconPosition = _attributes.buttonIconPosition,
+        fieldErrorMessage = _attributes.fieldErrorMessage,
+        formSuccessMessage = _attributes.formSuccessMessage,
+        formErrorMessage = _attributes.formErrorMessage,
+        reCaptcha = _attributes.reCaptcha,
+        reCaptchaSiteKey = _attributes.reCaptchaSiteKey,
+        reCaptchaSecretKey = _attributes.reCaptchaSecretKey,
+        policyCheckbox = _attributes.policyCheckbox,
+        policyCheckboxText = _attributes.policyCheckboxText,
+        emailReceiver = _attributes.emailReceiver,
+        emailHeaders = _attributes.emailHeaders,
+        emailFrom = _attributes.emailFrom,
+        emailSubject = _attributes.emailSubject,
+        emailBody = _attributes.emailBody,
+        globalZindex = _attributes.globalZindex,
+        hideTablet = _attributes.hideTablet,
+        hideMobile = _attributes.hideMobile,
+        globalCss = _attributes.globalCss,
+        height = _attributes.height,
+        width = _attributes.width;
+
+
+    var updateAttributes = function updateAttributes(key, value) {
+        updateBlockAttributes(clientId, _defineProperty({}, key, value));
+        attributes = getBlockAttributes(clientId);
+        setUpdate(!isUpdating);
+    };
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            PanelBody,
+            { title: __(''), opened: true },
+            React.createElement(Styles, {
+                value: layout,
+                onChange: function onChange(val) {
+                    return updateAttributes('layout', val);
+                },
+                options: [{ value: 'classic', img: _icons2.default.form_classic, label: __('Classic') }, { value: 'material', img: _icons2.default.form_material, label: __('Material') }]
+            })
+        ),
+        React.createElement(
+            PanelBody,
+            { title: __('Label'), initialOpen: false },
+            React.createElement(ButtonGroup, {
+                label: __('Label Alignment'),
+                options: [[__('Top'), 'top'], [__('Left'), 'left'], [__('Right'), 'right']],
+                value: labelAlignment,
+                onChange: function onChange(value) {
+                    return updateAttributes('labelAlignment', value);
+                }
+            }),
+            React.createElement(Typography, {
+                value: labelTypography,
+                onChange: function onChange(val) {
+                    return updateAttributes('labelTypography', val);
+                }
+            }),
+            React.createElement(Color, {
+                label: __('Color'),
+                value: labelColor,
+                onChange: function onChange(val) {
+                    return updateAttributes('labelColor', val);
+                }
+            })
+        ),
+        React.createElement(
+            PanelBody,
+            { title: __('Input'), initialOpen: false },
+            React.createElement(RadioAdvanced, {
+                label: __('Input Size'),
+                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                value: inputSize,
+                onChange: function onChange(value) {
+                    return updateAttributes('inputSize', value);
+                } }),
+            inputSize == 'custom' && React.createElement(Padding, {
+                max: 50,
+                min: 0,
+                responsive: true,
+                value: inputCustomSize,
+                label: __('Custom Size'),
+                unit: ['px', 'em', '%'],
+                onChange: function onChange(value) {
+                    return updateAttributes('inputCustomSize', value);
+                }
+            }),
+            React.createElement(Range, {
+                min: 100,
+                max: 500,
+                responsive: true,
+                value: textareaHeight,
+                unit: ['px', 'em', '%'],
+                label: __('Textarea Height'),
+                onChange: function onChange(value) {
+                    return updateAttributes('textareaHeight', value);
+                }
+            }),
+            React.createElement(Range, {
+                min: 0,
+                max: 60,
+                responsive: true,
+                value: spacing,
+                label: __('Spacing'),
+                unit: ['px', 'em', '%'],
+                onChange: function onChange(value) {
+                    return updateAttributes('spacing', value);
+                }
+            }),
+            React.createElement(Range, {
+                min: 0,
+                max: 60,
+                responsive: true,
+                value: gutter,
+                label: __('Gutter'),
+                unit: ['px', 'em', '%'],
+                onChange: function onChange(value) {
+                    return updateAttributes('gutter', value);
+                }
+            }),
+            layout == 'classic' && React.createElement(Border, { label: __('Border'), value: inputBorder, onChange: function onChange(val) {
+                    return updateAttributes('inputBorder', val);
+                }, min: 0, max: 10 }),
+            layout == 'material' && React.createElement(Border, { label: __('Border'), value: inputBorderMaterial, onChange: function onChange(val) {
+                    return updateAttributes('inputBorderMaterial', val);
+                }, min: 0, max: 10 }),
+            React.createElement(BorderRadius, {
+                min: 0,
+                max: 100,
+                responsive: true,
+                label: __('Field Radius'),
+                value: inputBorderRadius,
+                unit: ['px', 'em', '%'],
+                onChange: function onChange(value) {
+                    return updateAttributes('inputBorderRadius', value);
+                } }),
+            React.createElement(
+                Tabs,
+                null,
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Normal') },
+                    React.createElement(Color, { label: __('Input Text Color'), value: inputColor, onChange: function onChange(val) {
+                            return updateAttributes('inputColor', val);
+                        } }),
+                    React.createElement(Color, { label: __('Background Color'), value: inputBg, onChange: function onChange(val) {
+                            return updateAttributes('inputBg', val);
+                        } }),
+                    React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColor, onChange: function onChange(val) {
+                            return updateAttributes('placeholderColor', val);
+                        } })
+                ),
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Focus') },
+                    React.createElement(Color, { label: __('Text Color'), value: inputColorFocus, onChange: function onChange(val) {
+                            return updateAttributes('inputColorFocus', val);
+                        } }),
+                    React.createElement(Color, { label: __('Background Color'), value: inputBgFocus, onChange: function onChange(val) {
+                            return updateAttributes('inputBgFocus', val);
+                        } }),
+                    React.createElement(Color, { label: __('Border Color'), value: inputBorderColorFocus, onChange: function onChange(value) {
+                            return updateAttributes('inputBorderColorFocus', value);
+                        } }),
+                    React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColorFocus, onChange: function onChange(val) {
+                            return updateAttributes('placeholderColorFocus', val);
+                        } })
+                ),
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Hover') },
+                    React.createElement(Color, { label: __('Text Color'), value: inputColorHover, onChange: function onChange(val) {
+                            return updateAttributes('inputColorHover', val);
+                        } }),
+                    React.createElement(Color, { label: __('Background Color'), value: inputBgHover, onChange: function onChange(val) {
+                            return updateAttributes('inputBgHover', val);
+                        } }),
+                    React.createElement(Color, { label: __('Border Color'), value: inputBorderColorHover, onChange: function onChange(value) {
+                            return updateAttributes('inputBorderColorHover', value);
+                        } }),
+                    React.createElement(Color, { label: __('Placeholder Color'), value: placeholderColorHover, onChange: function onChange(val) {
+                            return updateAttributes('placeholderColorHover', val);
+                        } })
+                )
+            ),
+            React.createElement(Typography, { value: inputTypography, onChange: function onChange(val) {
+                    return updateAttributes('inputTypography', val);
+                } }),
+            React.createElement(Separator, null),
+            React.createElement(BoxShadow, {
+                disableInset: true,
+                label: __('Box-Shadow'),
+                value: inputBoxShadow,
+                onChange: function onChange(value) {
+                    return updateAttributes('inputBoxShadow', value);
+                }
+            }),
+            React.createElement(Separator, null)
+        ),
+        React.createElement(
+            PanelBody,
+            { title: __('Settings'), initialOpen: false },
+            React.createElement(
+                Tabs,
+                null,
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Form') },
+                    React.createElement(TextControl, {
+                        label: __('Required Field Error Message'),
+                        value: fieldErrorMessage,
+                        onChange: function onChange(val) {
+                            return updateAttributes('fieldErrorMessage', val);
+                        }
+                    }),
+                    React.createElement(TextareaControl, {
+                        label: __('Form Submit Success Message'),
+                        value: formSuccessMessage,
+                        onChange: function onChange(val) {
+                            return updateAttributes('formSuccessMessage', val);
+                        },
+                        help: __('Set your desired message after successful form submission. Leave blank for default.')
+                    }),
+                    React.createElement(TextareaControl, {
+                        label: __('Form Submit Failed Message'),
+                        value: formErrorMessage,
+                        onChange: function onChange(val) {
+                            return updateAttributes('formErrorMessage', val);
+                        },
+                        help: __('Set your desired message for form submission error. Leave blank for default.')
+                    }),
+                    React.createElement(Toggle, { label: __('Enable Captcha'), value: reCaptcha, onChange: function onChange(val) {
+                            return updateAttributes('reCaptcha', val);
+                        } }),
+                    reCaptcha && React.createElement(
+                        'div',
+                        null,
+                        React.createElement(TextControl, {
+                            label: __('Site Key '),
+                            value: reCaptchaSiteKey,
+                            onChange: function onChange(val) {
+                                return updateAttributes('reCaptchaSiteKey', val);
+                            },
+                            placeholder: __('Enter Google Site Key')
+                        }),
+                        React.createElement(TextControl, {
+                            label: __('Secret Key '),
+                            value: reCaptchaSecretKey,
+                            onChange: function onChange(val) {
+                                return updateAttributes('reCaptchaSecretKey', val);
+                            },
+                            placeholder: __('Enter Google Secret Key')
+                        })
+                    ),
+                    React.createElement(Toggle, { label: __('Enable Policy Checkbox'), value: policyCheckbox, onChange: function onChange(val) {
+                            return updateAttributes('policyCheckbox', val);
+                        } })
+                ),
+                React.createElement(
+                    Tab,
+                    { tabTitle: __('Email') },
+                    React.createElement(TextControl, {
+                        label: __('Recipient Email'),
+                        value: emailReceiver,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailReceiver', val);
+                        },
+                        placeholder: __('Enter Recipient Email'),
+                        help: __('Enter the recipient email address. This field is mandatory. Without a recipient email, contact form will not work.')
+                    }),
+                    React.createElement(TextareaControl, {
+                        label: __('Email Headers'),
+                        value: emailHeaders,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailHeaders', val);
+                        }
+                    }),
+                    React.createElement(TextControl, {
+                        label: __('From Email'),
+                        value: emailFrom,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailFrom', val);
+                        },
+                        placeholder: __('Your Name: admin@example.com')
+                    }),
+                    React.createElement(TextControl, {
+                        label: __('Subject'),
+                        value: emailSubject,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailSubject', val);
+                        },
+                        placeholder: __('Enter Subject')
+                    }),
+                    React.createElement(TextareaControl, {
+                        label: __('Email Body'),
+                        value: emailBody,
+                        onChange: function onChange(val) {
+                            return updateAttributes('emailBody', val);
+                        },
+                        help: __("Set your form email body here. In editor don't add any CSS style or others option just add your form field name between double curly braces {{field-name}} as you set in 'Field Name'.")
+                    })
+                )
+            )
+        ),
+        buttonSettings(attributes, device, function (key, value) {
+            updateAttributes(key, value);
+        }, function (key, value) {
+            changeDevice(value);
+        })
+    );
+};
+
+var _icons = __webpack_require__(/*! ../../helpers/icons */ "./src/helpers/icons.js");
+
+var _icons2 = _interopRequireDefault(_icons);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var __ = wp.i18n.__;
+var InspectorControls = wp.editor.InspectorControls;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch;
+var _wp$element = wp.element,
+    useState = _wp$element.useState,
+    useEffect = _wp$element.useEffect,
+    Fragment = _wp$element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl;
+var _wp$qubelyComponents = wp.qubelyComponents,
+    ButtonGroup = _wp$qubelyComponents.ButtonGroup,
+    BoxShadow = _wp$qubelyComponents.BoxShadow,
+    BorderRadius = _wp$qubelyComponents.BorderRadius,
+    Padding = _wp$qubelyComponents.Padding,
+    Styles = _wp$qubelyComponents.Styles,
+    Range = _wp$qubelyComponents.Range,
+    Separator = _wp$qubelyComponents.Separator,
+    Toggle = _wp$qubelyComponents.Toggle,
+    Typography = _wp$qubelyComponents.Typography,
+    Color = _wp$qubelyComponents.Color,
+    Tabs = _wp$qubelyComponents.Tabs,
+    Tab = _wp$qubelyComponents.Tab,
+    Border = _wp$qubelyComponents.Border,
+    RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
+    buttonSettings = _wp$qubelyComponents.QubelyButton.buttonSettings;
+
+/***/ }),
+
 /***/ "./src/blocks/form/fields/edit.js":
 /*!****************************************!*\
   !*** ./src/blocks/form/fields/edit.js ***!
@@ -1801,6 +2228,12 @@ Object.defineProperty(exports, "__esModule", {
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 exports.default = Edit;
+
+var _commonSettings = __webpack_require__(/*! ../commonSettings */ "./src/blocks/form/commonSettings.js");
+
+var _commonSettings2 = _interopRequireDefault(_commonSettings);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -1829,6 +2262,9 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Toggle = _wp$qubelyComponents.Toggle,
     Typography = _wp$qubelyComponents.Typography,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+var _wp$data = wp.data,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch;
 function Edit(props) {
     var _useState = useState(12),
         _useState2 = _slicedToArray(_useState, 2),
@@ -1880,12 +2316,17 @@ function Edit(props) {
         seletedTimeFormat = _useState20[0],
         changeseletedTimeFormat = _useState20[1];
 
+    var _select = select('core/block-editor'),
+        getBlockRootClientId = _select.getBlockRootClientId,
+        getBlockName = _select.getBlockName;
+
     var name = props.name,
         clientId = props.clientId,
         attributes = props.attributes,
         setAttributes = props.setAttributes,
         _props$attributes = props.attributes,
         uniqueId = _props$attributes.uniqueId,
+        parentClientId = _props$attributes.parentClientId,
         fieldName = _props$attributes.fieldName,
         height = _props$attributes.height,
         type = _props$attributes.type,
@@ -2216,6 +2657,15 @@ function Edit(props) {
         setDraggedOverItem(-1);
     };
 
+    var getParentClientId = function getParentClientId(clientId) {
+        var parentClientID = getBlockRootClientId(clientId);
+        if (getBlockName(parentClientID) === 'qubely/form') {
+            return parentClientID;
+        } else {
+            return getParentClientId(parentClientID);
+        }
+    };
+
     var blockname = name.split('/')[1];
 
     if (uniqueId) {
@@ -2228,6 +2678,7 @@ function Edit(props) {
         React.createElement(
             InspectorControls,
             null,
+            (0, _commonSettings2.default)(getParentClientId(clientId)),
             React.createElement(
                 PanelBody,
                 { title: __(type[0].toUpperCase() + type.slice(1)), opened: true },
@@ -2445,6 +2896,10 @@ var FieldDefaults = {
     },
     attributes: {
         uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        parentClientId: {
             type: 'string',
             default: ''
         },
@@ -3463,7 +3918,8 @@ var Edit = function (_Component) {
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.renderFormFieldTypes = function () {
             var _this$props = _this.props,
                 clientId = _this$props.clientId,
-                insertBlock = _this$props.insertBlock;
+                insertBlock = _this$props.insertBlock,
+                parentClientId = _this$props.attributes.parentClientId;
 
 
             var formFields = [[__('Text'), 'text'], [__('Number'), 'number'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Textarea'), 'textarea'], [__('Date'), 'date'], [__('Time'), 'time'], [__('Dropdown'), 'dropdown']];
@@ -3479,7 +3935,7 @@ var Edit = function (_Component) {
                         'div',
                         { className: 'qubely-form-field-type',
                             onClick: function onClick() {
-                                return insertBlock(createBlock('qubely/formfield-' + type, {}), undefined, clientId);
+                                return insertBlock(createBlock('qubely/formfield-' + type, { parentClientId: parentClientId }), undefined, clientId);
                             }
                         },
                         fieldName
@@ -3541,6 +3997,7 @@ var Edit = function (_Component) {
                 attributes = _props3.attributes,
                 _props3$attributes = _props3.attributes,
                 uniqueId = _props3$attributes.uniqueId,
+                parentClientId = _props3$attributes.parentClientId,
                 fieldSize = _props3$attributes.fieldSize,
                 width = _props3$attributes.width,
                 gutter = _props3$attributes.gutter;
@@ -3549,7 +4006,7 @@ var Edit = function (_Component) {
             if (uniqueId) {
                 CssGenerator(attributes, 'form-column', uniqueId);
             }
-
+            // console.log('in column : ', parentClientId)
             return React.createElement(
                 Fragment,
                 null,
@@ -3713,6 +4170,10 @@ registerBlockType('qubely/form-column', {
     icon: React.createElement('img', { src: qubely_admin.plugin + 'assets/img/blocks/block-form.svg', alt: __('Form') }),
     attributes: {
         uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        parentClientId: {
             type: 'string',
             default: ''
         },
@@ -3891,7 +4352,10 @@ var Edit = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var uniqueId = this.props.attributes.uniqueId;
+            var _props$attributes = this.props.attributes,
+                uniqueId = _props$attributes.uniqueId,
+                parentClientId = _props$attributes.parentClientId;
+            // console.log('in row : ', parentClientId)
 
             return React.createElement(
                 'div',
@@ -3950,7 +4414,14 @@ registerBlockType('qubely/form-row', {
     },
     icon: React.createElement('img', { src: qubely_admin.plugin + 'assets/img/blocks/block-form.svg', alt: __('Form') }),
     attributes: {
-        uniqueId: { type: 'string', default: '' }
+        uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        parentClientId: {
+            type: 'string',
+            default: ''
+        }
     },
     edit: _edit2.default,
     save: _save2.default
@@ -4122,11 +4593,8 @@ var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
     BlockControls = _wp$editor.BlockControls,
-    MediaUpload = _wp$editor.MediaUpload,
-    SelectControl = _wp$editor.SelectControl;
+    MediaUpload = _wp$editor.MediaUpload;
 var _wp$qubelyComponents = wp.qubelyComponents,
-    IconList = _wp$qubelyComponents.IconList,
-    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
     ColorAdvanced = _wp$qubelyComponents.ColorAdvanced,
     Select = _wp$qubelyComponents.Select,
@@ -4137,14 +4605,15 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Styles = _wp$qubelyComponents.Styles,
     Typography = _wp$qubelyComponents.Typography,
     Toggle = _wp$qubelyComponents.Toggle,
-    Separator = _wp$qubelyComponents.Separator,
-    Border = _wp$qubelyComponents.Border,
     BorderRadius = _wp$qubelyComponents.BorderRadius,
     BoxShadow = _wp$qubelyComponents.BoxShadow,
     Alignment = _wp$qubelyComponents.Alignment,
     Padding = _wp$qubelyComponents.Padding,
-    Headings = _wp$qubelyComponents.Headings,
-    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar,
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
+    _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
+    globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
+    animationSettings = _wp$qubelyComponents$.animationSettings;
 
 var Edit = function (_Component) {
   _inherits(Edit, _Component);
@@ -4353,7 +4822,12 @@ var Edit = function (_Component) {
           enableOverlay = _props2$attributes.enableOverlay,
           overlayBg = _props2$attributes.overlayBg,
           overlayHoverBg = _props2$attributes.overlayHoverBg,
-          overlayBlend = _props2$attributes.overlayBlend;
+          overlayBlend = _props2$attributes.overlayBlend,
+          globalZindex = _props2$attributes.globalZindex,
+          hideTablet = _props2$attributes.hideTablet,
+          hideMobile = _props2$attributes.hideMobile,
+          globalCss = _props2$attributes.globalCss,
+          animation = _props2$attributes.animation;
       var device = this.state.device;
 
 
@@ -4490,7 +4964,8 @@ var Edit = function (_Component) {
                   return setAttributes({ overlayBlend: val });
                 } })
             )
-          )
+          ),
+          animationSettings(uniqueId, animation, setAttributes)
         ),
         React.createElement(
           BlockControls,
@@ -4505,6 +4980,7 @@ var Edit = function (_Component) {
             }))
           )
         ),
+        globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
         React.createElement(
           'div',
           { className: 'qubely-block-' + uniqueId },
@@ -4540,7 +5016,7 @@ exports.default = Edit;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -4558,83 +5034,83 @@ var RichText = wp.editor.RichText;
 var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
 
 var Save = function (_Component) {
-    _inherits(Save, _Component);
+	_inherits(Save, _Component);
 
-    function Save() {
-        var _ref;
+	function Save() {
+		var _ref;
 
-        var _temp, _this, _ret;
+		var _temp, _this, _ret;
 
-        _classCallCheck(this, Save);
+		_classCallCheck(this, Save);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderPricelist = function () {
-            var _this$props$attribute = _this.props.attributes,
-                galleryContents = _this$props$attribute.galleryContents,
-                imageAnimation = _this$props$attribute.imageAnimation,
-                showCaption = _this$props$attribute.showCaption,
-                enableCaption = _this$props$attribute.enableCaption;
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderPricelist = function () {
+			var _this$props$attribute = _this.props.attributes,
+			    galleryContents = _this$props$attribute.galleryContents,
+			    imageAnimation = _this$props$attribute.imageAnimation,
+			    showCaption = _this$props$attribute.showCaption,
+			    enableCaption = _this$props$attribute.enableCaption;
 
 
-            return galleryContents.map(function (_ref2, index) {
-                var title = _ref2.title,
-                    image = _ref2.image;
+			return galleryContents.map(function (_ref2, index) {
+				var title = _ref2.title,
+				    image = _ref2.image;
 
-                return React.createElement(
-                    'div',
-                    { key: index, className: 'qubely-gallery-item' },
-                    React.createElement(
-                        'div',
-                        { className: 'qubely-gallery-content' },
-                        image != undefined && image.url != undefined && React.createElement(
-                            'div',
-                            { className: 'qubely-gallery-image-container' },
-                            React.createElement(
-                                'div',
-                                { className: 'qubely-gallery-content-image qubely-gallery-image-' + imageAnimation },
-                                React.createElement('img', { src: image.url, alt: title })
-                            ),
-                            enableCaption == 1 && React.createElement(
-                                'div',
-                                { className: 'qubely-gallery-caption-wrapper ' + (showCaption === 'onHover' ? 'qubely-gallery-caption-onHover' : '') },
-                                React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-gallery-caption', value: title })
-                            )
-                        )
-                    )
-                );
-            });
-        }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
+				return React.createElement(
+					'div',
+					{ key: index, className: 'qubely-gallery-item' },
+					React.createElement(
+						'div',
+						{ className: 'qubely-gallery-content' },
+						image != undefined && image.url != undefined && React.createElement(
+							'div',
+							{ className: 'qubely-gallery-image-container' },
+							React.createElement(
+								'div',
+								{ className: 'qubely-gallery-content-image qubely-gallery-image-' + imageAnimation },
+								React.createElement('img', { src: image.url, alt: title })
+							),
+							enableCaption == 1 && React.createElement(
+								'div',
+								{ className: 'qubely-gallery-caption-wrapper ' + (showCaption === 'onHover' ? 'qubely-gallery-caption-onHover' : '') },
+								React.createElement(RichText.Content, { tagName: 'div', className: 'qubely-gallery-caption', value: title })
+							)
+						)
+					)
+				);
+			});
+		}, _temp), _possibleConstructorReturn(_this, _ret);
+	}
 
-    _createClass(Save, [{
-        key: 'render',
-        value: function render() {
-            var _props$attributes = this.props.attributes,
-                uniqueId = _props$attributes.uniqueId,
-                animation = _props$attributes.animation,
-                style = _props$attributes.style,
-                column = _props$attributes.column;
+	_createClass(Save, [{
+		key: 'render',
+		value: function render() {
+			var _props$attributes = this.props.attributes,
+			    uniqueId = _props$attributes.uniqueId,
+			    animation = _props$attributes.animation,
+			    style = _props$attributes.style,
+			    column = _props$attributes.column;
 
-            return React.createElement(
-                'div',
-                _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
-                React.createElement(
-                    'div',
-                    { className: 'qubely-block-gallery qubely-gallery-item-' + style },
-                    React.createElement(
-                        'div',
-                        { className: 'qubely-gallery-items ' + ('qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs) },
-                        this.renderPricelist()
-                    )
-                )
-            );
-        }
-    }]);
+			return React.createElement(
+				'div',
+				_extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
+				React.createElement(
+					'div',
+					{ className: 'qubely-block-gallery qubely-gallery-item-' + style },
+					React.createElement(
+						'div',
+						{ className: 'qubely-gallery-items ' + ('qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs) },
+						this.renderPricelist()
+					)
+				)
+			);
+		}
+	}]);
 
-    return Save;
+	return Save;
 }(Component);
 
 exports.default = Save;
@@ -4650,6 +5126,8 @@ exports.default = Save;
 
 "use strict";
 
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 __webpack_require__(/*! ./style.scss */ "./src/blocks/gallery/style.scss");
 
@@ -4667,15 +5145,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
+var globalAttributes = wp.qubelyComponents.gloalSettings.globalAttributes;
 
 
 registerBlockType('qubely/gallery', {
     title: __('Gallery'),
     category: 'qubely',
-    description: 'Showcase detailed with Qubely Gallery',
+    description: __('Showcase detailed with Qubely Gallery'),
     icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Gallery') }),
     keywords: [__('Gallery'), __('Image')],
-    attributes: {
+    attributes: _extends({
         uniqueId: { type: 'string', default: '' },
         spacer: {
             type: 'object',
@@ -4909,7 +5388,7 @@ registerBlockType('qubely/gallery', {
         //global
         showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
         showContextMenu: { type: 'boolean', default: true }
-    },
+    }, globalAttributes),
     edit: _Edit2.default,
     save: _Save2.default
 });
@@ -4984,11 +5463,13 @@ var _wp$element = wp.element,
     Component = _wp$element.Component;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    Tooltip = _wp$components.Tooltip;
+    Tooltip = _wp$components.Tooltip,
+    Toolbar = _wp$components.Toolbar;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
-    MediaUpload = _wp$editor.MediaUpload;
+    MediaUpload = _wp$editor.MediaUpload,
+    BlockControls = _wp$editor.BlockControls;
 var _wp$qubelyComponents = wp.qubelyComponents,
     Range = _wp$qubelyComponents.Range,
     Color = _wp$qubelyComponents.Color,
@@ -4998,8 +5479,6 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     ColorAdvanced = _wp$qubelyComponents.ColorAdvanced,
     Border = _wp$qubelyComponents.Border,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
-    BorderRadius = _wp$qubelyComponents.BorderRadius,
-    BoxShadow = _wp$qubelyComponents.BoxShadow,
     Select = _wp$qubelyComponents.Select,
     Styles = _wp$qubelyComponents.Styles,
     Alignment = _wp$qubelyComponents.Alignment,
@@ -5008,7 +5487,11 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Tab = _wp$qubelyComponents.Tab,
     Carousel = _wp$qubelyComponents.Carousel,
     ButtonGroup = _wp$qubelyComponents.ButtonGroup,
-    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
+    _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
+    globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar;
 
 var Edit = function (_Component) {
 	_inherits(Edit, _Component);
@@ -5387,7 +5870,12 @@ var Edit = function (_Component) {
 			    overlayHoverBg = _props2$attributes.overlayHoverBg,
 			    overlayBlend = _props2$attributes.overlayBlend,
 			    sliderMargin = _props2$attributes.sliderMargin,
-			    dotsposition = _props2$attributes.dotsposition;
+			    dotsposition = _props2$attributes.dotsposition,
+			    globalZindex = _props2$attributes.globalZindex,
+			    hideTablet = _props2$attributes.hideTablet,
+			    hideMobile = _props2$attributes.hideMobile,
+			    globalCss = _props2$attributes.globalCss,
+			    animation = _props2$attributes.animation;
 			var device = this.state.device;
 
 
@@ -5889,8 +6377,23 @@ var Edit = function (_Component) {
 								)
 							)
 						)
+					),
+					animationSettings(uniqueId, animation, setAttributes)
+				),
+				React.createElement(
+					BlockControls,
+					null,
+					React.createElement(
+						Toolbar,
+						null,
+						React.createElement(InlineToolbar, _extends({
+							data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
+						}, this.props, {
+							prevState: this.state
+						}))
 					)
 				),
+				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -5931,7 +6434,7 @@ exports.default = Edit;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -5944,174 +6447,185 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
+var Component = wp.element.Component;
 var RichText = wp.editor.RichText;
 var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
 
 var Save = function (_Component) {
-  _inherits(Save, _Component);
+	_inherits(Save, _Component);
 
-  function Save() {
-    var _ref;
+	function Save() {
+		var _ref;
 
-    var _temp, _this, _ret;
+		var _temp, _this, _ret;
 
-    _classCallCheck(this, Save);
+		_classCallCheck(this, Save);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderSlider = function (sliderimage, sliderimageAlt) {
-      return React.createElement(
-        "div",
-        { className: "qubely-single-img" },
-        sliderimage.url != undefined ? React.createElement("img", { className: "qubely-image-sliderimage", src: sliderimage.url, alt: sliderimageAlt }) : React.createElement(
-          "div",
-          { className: "qubely-image-placeholder qubely-image-sliderimage" },
-          React.createElement("i", { className: "dashicons dashicons-format-image" })
-        )
-      );
-    }, _this.renderSliderInfo = function (item, index) {
-      var _this$props$attribute = _this.props.attributes,
-          layout = _this$props$attribute.layout,
-          sliderContent = _this$props$attribute.sliderContent,
-          activeDescription = _this$props$attribute.activeDescription;
-      var slidertitle = item.slidertitle,
-          subtitle = item.subtitle,
-          sliderimage = item.sliderimage,
-          message = item.message;
-
-
-      return React.createElement(
-        "div",
-        { className: "qubely-image-slider" },
-        _this.renderSlider(sliderimage, index),
-        layout != 1 && React.createElement(
-          "div",
-          null,
-          (sliderContent || layout === 6) && React.createElement(
-            "div",
-            { className: "qubely-image-slider-text" },
-            React.createElement(
-              "div",
-              { className: "qubely-image-content" },
-              React.createElement(
-                "div",
-                { className: "qubely-image-title" },
-                React.createElement(RichText.Content, { value: slidertitle })
-              ),
-              React.createElement(
-                "div",
-                { className: "qubely-image-subtitle" },
-                React.createElement(RichText.Content, { value: subtitle })
-              ),
-              activeDescription && React.createElement(
-                "span",
-                { className: "qubely-slider-description" },
-                React.createElement(RichText.Content, { value: message })
-              )
-            )
-          )
-        )
-      );
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Save, [{
-    key: "renderImage",
-    value: function renderImage() {
-      var _this2 = this;
-
-      var _props$attributes = this.props.attributes,
-          carouselItems = _props$attributes.carouselItems,
-          layout = _props$attributes.layout,
-          contentVerticalAlign = _props$attributes.contentVerticalAlign;
-
-      return carouselItems.map(function (item, index) {
-        return React.createElement(
-          "div",
-          { key: index, className: "qubely-carousel-item qubely-carousel-item" },
-          React.createElement(
-            "div",
-            { className: "qubely-image-item layout-" + layout + " align-" + contentVerticalAlign },
-            _this2.renderSliderInfo(item)
-          )
-        );
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _props$attributes2 = this.props.attributes,
-          uniqueId = _props$attributes2.uniqueId,
-          layout = _props$attributes2.layout,
-          items = _props$attributes2.items,
-          itemthree = _props$attributes2.itemthree,
-          itemfive = _props$attributes2.itemfive,
-          sliderMargin = _props$attributes2.sliderMargin,
-          autoPlay = _props$attributes2.autoPlay,
-          speed = _props$attributes2.speed,
-          interval = _props$attributes2.interval,
-          animation = _props$attributes2.animation,
-          dragable = _props$attributes2.dragable,
-          isCentered = _props$attributes2.isCentered,
-          notCentered = _props$attributes2.notCentered,
-          centerPadding = _props$attributes2.centerPadding,
-          nav = _props$attributes2.nav,
-          arrowStyle = _props$attributes2.arrowStyle,
-          infiniteLoop = _props$attributes2.infiniteLoop,
-          activeFade = _props$attributes2.activeFade,
-          dots = _props$attributes2.dots,
-          dotIndicator = _props$attributes2.dotIndicator;
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.renderSlider = function (sliderimage, sliderimageAlt) {
+			return React.createElement(
+				"div",
+				{ className: "qubely-single-img" },
+				sliderimage.url != undefined ? React.createElement("img", {
+					className: "qubely-image-sliderimage",
+					src: sliderimage.url,
+					alt: sliderimageAlt
+				}) : React.createElement(
+					"div",
+					{ className: "qubely-image-placeholder qubely-image-sliderimage" },
+					React.createElement("i", { className: "dashicons dashicons-format-image" })
+				)
+			);
+		}, _this.renderSliderInfo = function (item, index) {
+			var _this$props$attribute = _this.props.attributes,
+			    layout = _this$props$attribute.layout,
+			    sliderContent = _this$props$attribute.sliderContent,
+			    activeDescription = _this$props$attribute.activeDescription;
+			var slidertitle = item.slidertitle,
+			    subtitle = item.subtitle,
+			    sliderimage = item.sliderimage,
+			    message = item.message;
 
 
-      var options = JSON.stringify({
-        autoplay: autoPlay,
-        items: layout != 2 ? layout == 5 ? itemfive.md : items.md : itemthree.md,
-        margin: sliderMargin,
-        center: layout == 3 || layout == 4 ? isCentered : notCentered,
-        dots: dots,
-        dot_indicator: dotIndicator,
-        centerPadding: centerPadding,
-        nav: nav,
-        speed: speed,
-        interval: interval,
-        dragable: dragable,
-        infiniteLoop: infiniteLoop,
-        activeFade: activeFade,
-        arrowStyle: arrowStyle,
-        responsive: [{
-          viewport: 1170,
-          items: layout != 2 ? layout == 5 ? itemfive.md : items.md : itemthree.md
-        }, {
-          viewport: 980,
-          items: layout != 2 ? layout == 5 ? itemfive.sm : items.sm : itemthree.sm
-        }, {
-          viewport: 580,
-          items: layout != 2 ? layout == 5 ? itemfive.xs : items.xs : itemthree.xs
-        }]
-      });
+			return React.createElement(
+				"div",
+				{ className: "qubely-image-slider" },
+				_this.renderSlider(sliderimage, index),
+				layout != 1 && React.createElement(
+					"div",
+					null,
+					(sliderContent || layout === 6) && React.createElement(
+						"div",
+						{ className: "qubely-image-slider-text" },
+						React.createElement(
+							"div",
+							{ className: "qubely-image-content" },
+							React.createElement(
+								"div",
+								{ className: "qubely-image-title" },
+								React.createElement(RichText.Content, { value: slidertitle })
+							),
+							React.createElement(
+								"div",
+								{ className: "qubely-image-subtitle" },
+								React.createElement(RichText.Content, { value: subtitle })
+							),
+							activeDescription && React.createElement(
+								"span",
+								{ className: "qubely-slider-description" },
+								React.createElement(RichText.Content, { value: message })
+							)
+						)
+					)
+				)
+			);
+		}, _temp), _possibleConstructorReturn(_this, _ret);
+	}
 
-      return React.createElement(
-        "div",
-        _extends({ className: "qubely-block-" + uniqueId }, animationAttr(animation)),
-        React.createElement(
-          "div",
-          { className: "qubely-block-image-carousel qubely-layout-" + layout },
-          React.createElement(
-            "div",
-            { className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? ' is-faded' : ' '), "data-options": options, id: "qubelyCarousel1" },
-            this.renderImage()
-          )
-        )
-      );
-    }
-  }]);
+	_createClass(Save, [{
+		key: "renderImage",
+		value: function renderImage() {
+			var _this2 = this;
 
-  return Save;
+			var _props$attributes = this.props.attributes,
+			    carouselItems = _props$attributes.carouselItems,
+			    layout = _props$attributes.layout,
+			    contentVerticalAlign = _props$attributes.contentVerticalAlign;
+
+			return carouselItems.map(function (item, index) {
+				return React.createElement(
+					"div",
+					{
+						key: index,
+						className: "qubely-carousel-item qubely-carousel-item"
+					},
+					React.createElement(
+						"div",
+						{
+							className: "qubely-image-item layout-" + layout + " align-" + contentVerticalAlign
+						},
+						_this2.renderSliderInfo(item)
+					)
+				);
+			});
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			var _props$attributes2 = this.props.attributes,
+			    uniqueId = _props$attributes2.uniqueId,
+			    layout = _props$attributes2.layout,
+			    items = _props$attributes2.items,
+			    itemthree = _props$attributes2.itemthree,
+			    itemfive = _props$attributes2.itemfive,
+			    sliderMargin = _props$attributes2.sliderMargin,
+			    autoPlay = _props$attributes2.autoPlay,
+			    speed = _props$attributes2.speed,
+			    interval = _props$attributes2.interval,
+			    animation = _props$attributes2.animation,
+			    dragable = _props$attributes2.dragable,
+			    isCentered = _props$attributes2.isCentered,
+			    notCentered = _props$attributes2.notCentered,
+			    centerPadding = _props$attributes2.centerPadding,
+			    nav = _props$attributes2.nav,
+			    arrowStyle = _props$attributes2.arrowStyle,
+			    infiniteLoop = _props$attributes2.infiniteLoop,
+			    activeFade = _props$attributes2.activeFade,
+			    dots = _props$attributes2.dots,
+			    dotIndicator = _props$attributes2.dotIndicator;
+
+
+			var options = JSON.stringify({
+				autoplay: autoPlay,
+				items: layout != 2 ? layout == 5 ? itemfive.md : items.md : itemthree.md,
+				margin: sliderMargin,
+				center: layout == 3 || layout == 4 ? isCentered : notCentered,
+				dots: dots,
+				dot_indicator: dotIndicator,
+				centerPadding: centerPadding,
+				nav: nav,
+				speed: speed,
+				interval: interval,
+				dragable: dragable,
+				infiniteLoop: infiniteLoop,
+				activeFade: activeFade,
+				arrowStyle: arrowStyle,
+				responsive: [{
+					viewport: 1170,
+					items: layout != 2 ? layout == 5 ? itemfive.md : items.md : itemthree.md
+				}, {
+					viewport: 980,
+					items: layout != 2 ? layout == 5 ? itemfive.sm : items.sm : itemthree.sm
+				}, {
+					viewport: 580,
+					items: layout != 2 ? layout == 5 ? itemfive.xs : items.xs : itemthree.xs
+				}]
+			});
+
+			return React.createElement(
+				"div",
+				_extends({ className: "qubely-block-" + uniqueId }, animationAttr(animation)),
+				React.createElement(
+					"div",
+					{ className: "qubely-block-image-carousel qubely-layout-" + layout },
+					React.createElement(
+						"div",
+						{
+							className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? " is-faded" : " "),
+							"data-options": options,
+							id: "qubelyCarousel1"
+						},
+						this.renderImage()
+					)
+				)
+			);
+		}
+	}]);
+
+	return Save;
 }(Component);
 
 exports.default = Save;
@@ -6128,6 +6642,8 @@ exports.default = Save;
 "use strict";
 
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 __webpack_require__(/*! ./style.scss */ "./src/blocks/imagecarousel/style.scss");
 
 var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/imagecarousel/Edit.js");
@@ -6142,6 +6658,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
+var globalAttributes = wp.qubelyComponents.gloalSettings.globalAttributes;
 
 
 registerBlockType('qubely/imagecarousel', {
@@ -6150,7 +6667,7 @@ registerBlockType('qubely/imagecarousel', {
 	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg', alt: __('Image Carousel Block') }),
 	category: 'qubely',
 	keywords: [__('Image'), __('Carousel')],
-	attributes: {
+	attributes: _extends({
 		uniqueId: { type: 'string', default: '' },
 		layout: { type: 'number', default: 1 },
 		items: {
@@ -6499,8 +7016,7 @@ registerBlockType('qubely/imagecarousel', {
 			type: 'object', default: {},
 			style: [{ selector: '{{QUBELY}} .qubely-image-item.layout-1:hover, {{QUBELY}} .qubely-image-item.layout-2:hover, {{QUBELY}} .qubely-image-item.layout-3 .qubely-image-carousel-content-wrapper:hover' }]
 		},
-		showGlobalSettings: { type: 'boolean', default: true } // Global Settings
-	},
+		showGlobalSettings: { type: 'boolean', default: true } }, globalAttributes),
 
 	edit: _Edit2.default,
 	save: _Save2.default
@@ -6904,7 +7420,6 @@ var Edit = function (_Component) {
 			    categorySpace = _props2$attributes.categorySpace,
 			    metaSpace = _props2$attributes.metaSpace,
 			    excerptSpace = _props2$attributes.excerptSpace,
-			    animation = _props2$attributes.animation,
 			    globalZindex = _props2$attributes.globalZindex,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
@@ -6941,7 +7456,8 @@ var Edit = function (_Component) {
 			    sliderItemsSpace = _props2$attributes.sliderItemsSpace,
 			    sliderItemMargin = _props2$attributes.sliderItemMargin,
 			    dotalignment = _props2$attributes.dotalignment,
-			    textalignment = _props2$attributes.textalignment;
+			    textalignment = _props2$attributes.textalignment,
+			    animation = _props2$attributes.animation;
 			var device = this.state.device;
 
 
@@ -7755,7 +8271,8 @@ var Edit = function (_Component) {
 						React.createElement(Color, { label: __('Excerpt'), value: style !== 4 ? excerptColor : excerptColor2, onChange: function onChange(value) {
 								return setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value });
 							} })
-					)
+					),
+					animationSettings(uniqueId, animation, setAttributes)
 				),
 				React.createElement(
 					BlockControls,
@@ -7927,6 +8444,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _icons = __webpack_require__(/*! ../../helpers/icons */ "./src/helpers/icons.js");
@@ -7982,10 +8501,12 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Tabs = _wp$qubelyComponents.Tabs,
     Tab = _wp$qubelyComponents.Tab,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
-    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
-//import InlineToolbar from '../../components/fields/inline/InlineToolbar'
-// import '../../components/GlobalSettings'
-// import '../../components/ContextMenu'
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
+    _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
+    globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar;
+
 
 var CATEGORIES_LIST_QUERY = { per_page: -1 };
 
@@ -8258,7 +8779,12 @@ var Edit = function (_Component) {
 			    imageSpace = _props2$attributes.imageSpace,
 			    categorySpace = _props2$attributes.categorySpace,
 			    metaSpace = _props2$attributes.metaSpace,
-			    excerptSpace = _props2$attributes.excerptSpace;
+			    excerptSpace = _props2$attributes.excerptSpace,
+			    globalZindex = _props2$attributes.globalZindex,
+			    hideTablet = _props2$attributes.hideTablet,
+			    hideMobile = _props2$attributes.hideMobile,
+			    globalCss = _props2$attributes.globalCss,
+			    animation = _props2$attributes.animation;
 			var device = this.state.device;
 
 
@@ -8847,8 +9373,23 @@ var Edit = function (_Component) {
 						React.createElement(Color, { label: __('Excerpt'), value: style !== 4 ? excerptColor : excerptColor2, onChange: function onChange(value) {
 								return setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value });
 							} })
+					),
+					animationSettings(uniqueId, animation, setAttributes)
+				),
+				React.createElement(
+					BlockControls,
+					null,
+					React.createElement(
+						Toolbar,
+						null,
+						React.createElement(InlineToolbar, _extends({
+							data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
+						}, this.props, {
+							prevState: this.state
+						}))
 					)
 				),
+				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -9049,7 +9590,10 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Alignment = _wp$qubelyComponents.Alignment,
     Padding = _wp$qubelyComponents.Padding,
     Headings = _wp$qubelyComponents.Headings,
-    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
+    _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
+    globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
+    animationSettings = _wp$qubelyComponents$.animationSettings;
 
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
@@ -9374,7 +9918,12 @@ var Edit = function (_Component) {
                 descriptionColor = _props2$attributes.descriptionColor,
                 enableDiscount = _props2$attributes.enableDiscount,
                 discountTypography = _props2$attributes.discountTypography,
-                discountColor = _props2$attributes.discountColor;
+                discountColor = _props2$attributes.discountColor,
+                globalZindex = _props2$attributes.globalZindex,
+                hideTablet = _props2$attributes.hideTablet,
+                hideMobile = _props2$attributes.hideMobile,
+                globalCss = _props2$attributes.globalCss,
+                animation = _props2$attributes.animation;
             var device = this.state.device;
 
 
@@ -9679,7 +10228,8 @@ var Edit = function (_Component) {
                                     return setAttributes({ discountColor: value });
                                 } })
                         )
-                    )
+                    ),
+                    animationSettings(uniqueId, animation, setAttributes)
                 ),
                 React.createElement(
                     BlockControls,
@@ -9694,6 +10244,7 @@ var Edit = function (_Component) {
                         }))
                     )
                 ),
+                globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
                 React.createElement(
                     'div',
                     { className: 'qubely-block-' + uniqueId },
@@ -9875,6 +10426,8 @@ exports.default = Save;
 "use strict";
 
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 __webpack_require__(/*! ./style.scss */ "./src/blocks/pricelist/style.scss");
 
 var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/pricelist/Edit.js");
@@ -9889,6 +10442,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
+var globalAttributes = wp.qubelyComponents.gloalSettings.globalAttributes;
 
 
 registerBlockType('qubely/pricelist', {
@@ -9897,7 +10451,7 @@ registerBlockType('qubely/pricelist', {
     description: 'Showcase detailed with Qubely Price List.',
     icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Price List') }),
     keywords: [__('Price List'), __('Pricing')],
-    attributes: {
+    attributes: _extends({
         uniqueId: { type: 'string', default: '' },
         spacer: {
             type: 'object',
@@ -10416,7 +10970,7 @@ registerBlockType('qubely/pricelist', {
         pricelistItems: { type: 'number', default: 5 },
         showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
         showContextMenu: { type: 'boolean', default: true }
-    },
+    }, globalAttributes),
     edit: _Edit2.default,
     save: _Save2.default
 });
@@ -10492,11 +11046,13 @@ var _wp$element = wp.element,
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     TextControl = _wp$components.TextControl,
-    Tooltip = _wp$components.Tooltip;
+    Tooltip = _wp$components.Tooltip,
+    Toolbar = _wp$components.Toolbar;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
-    MediaUpload = _wp$editor.MediaUpload;
+    MediaUpload = _wp$editor.MediaUpload,
+    BlockControls = _wp$editor.BlockControls;
 var _wp$qubelyComponents = wp.qubelyComponents,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
     Range = _wp$qubelyComponents.Range,
@@ -10515,7 +11071,11 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Tab = _wp$qubelyComponents.Tab,
     Carousel = _wp$qubelyComponents.Carousel,
     ButtonGroup = _wp$qubelyComponents.ButtonGroup,
-    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
+    _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
+    globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar;
 
 var Edit = function (_Component) {
 	_inherits(Edit, _Component);
@@ -10618,10 +11178,7 @@ var Edit = function (_Component) {
 				{ className: 'social-share' },
 				showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) && React.createElement(
 					'div',
-					{ className: 'qubely-team-social-links qubely-team-icon-layout-' + iconStyle + ' qubely-team-icon-style-' + (iconUseDefaultStyle == 1 ? 'default' : 'custom'),
-						onClick: function onClick() {
-							return _this.handlePanelOpenings('Social');
-						} },
+					{ className: 'qubely-team-social-links qubely-team-icon-layout-' + iconStyle + ' qubely-team-icon-style-' + (iconUseDefaultStyle == 1 ? 'default' : 'custom') },
 					facebook && React.createElement(
 						'a',
 						{ className: 'qubely-team-social-facebook' },
@@ -10925,7 +11482,12 @@ var Edit = function (_Component) {
 			    enablename = _props2$attributes.enablename,
 			    dotsPosition = _props2$attributes.dotsPosition,
 			    horizontalScrollleft = _props2$attributes.horizontalScrollleft,
-			    contentSpacing = _props2$attributes.contentSpacing;
+			    contentSpacing = _props2$attributes.contentSpacing,
+			    globalZindex = _props2$attributes.globalZindex,
+			    hideTablet = _props2$attributes.hideTablet,
+			    hideMobile = _props2$attributes.hideMobile,
+			    globalCss = _props2$attributes.globalCss,
+			    animation = _props2$attributes.animation;
 			var device = this.state.device;
 
 
@@ -11072,19 +11634,7 @@ var Edit = function (_Component) {
 								}
 							}),
 							React.createElement(Range, {
-								label: __('Horizontal Position Left'),
-								value: horizontalScrollleft, onChange: function onChange(value) {
-									return setAttributes({ horizontalScrollleft: value });
-								},
-								min: -100, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Horizontal Position Right'),
+								label: __('Horizontal Position'),
 								value: horizontalScroll, onChange: function onChange(value) {
 									return setAttributes({ horizontalScroll: value });
 								},
@@ -11614,8 +12164,23 @@ var Edit = function (_Component) {
 								})
 							)
 						)
+					),
+					animationSettings(uniqueId, animation, setAttributes)
+				),
+				React.createElement(
+					BlockControls,
+					null,
+					React.createElement(
+						Toolbar,
+						null,
+						React.createElement(InlineToolbar, _extends({
+							data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
+						}, this.props, {
+							prevState: this.state
+						}))
 					)
 				),
+				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -11923,6 +12488,8 @@ exports.default = Save;
 "use strict";
 
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 __webpack_require__(/*! ./style.scss */ "./src/blocks/teamcarousel/style.scss");
 
 var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/teamcarousel/Edit.js");
@@ -11937,6 +12504,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
+var globalAttributes = wp.qubelyComponents.gloalSettings.globalAttributes;
 
 
 registerBlockType('qubely/teamcarousel', {
@@ -11945,7 +12513,7 @@ registerBlockType('qubely/teamcarousel', {
 	icon: 'groups',
 	category: 'qubely',
 	keywords: [__('Team'), __('Carousel')],
-	attributes: {
+	attributes: _extends({
 		uniqueId: { type: 'string', default: '' },
 		items: { type: 'object', default: { md: '2', sm: '2', xs: '1' } },
 		columns: { type: 'number', default: 2 },
@@ -12037,13 +12605,8 @@ registerBlockType('qubely/teamcarousel', {
 			type: 'object',
 			default: { md: 0, unit: '%' },
 			style: [{
-				selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} }'
+				selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} }'
 			}]
-		},
-		horizontalScrollleft: {
-			type: 'object',
-			default: { md: 0, unit: '%' },
-			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScrollleft}} }  ' }]
 		},
 		arrowPosition: {
 			type: 'object',
@@ -12366,8 +12929,7 @@ registerBlockType('qubely/teamcarousel', {
 				selector: '{{QUBELY}} .qubely-team-social-links>a:hover {border-color: {{iconBorderColorHover}};}'
 			}]
 		}
-
-	},
+	}, globalAttributes),
 	edit: _Edit2.default,
 	save: _Save2.default
 });
@@ -12442,11 +13004,13 @@ var _wp$element = wp.element,
     Component = _wp$element.Component;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    Tooltip = _wp$components.Tooltip;
+    Tooltip = _wp$components.Tooltip,
+    Toolbar = _wp$components.Toolbar;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
-    MediaUpload = _wp$editor.MediaUpload;
+    MediaUpload = _wp$editor.MediaUpload,
+    BlockControls = _wp$editor.BlockControls;
 var _wp$qubelyComponents = wp.qubelyComponents,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
     Range = _wp$qubelyComponents.Range,
@@ -12465,7 +13029,11 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Tab = _wp$qubelyComponents.Tab,
     Carousel = _wp$qubelyComponents.Carousel,
     ButtonGroup = _wp$qubelyComponents.ButtonGroup,
-    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
+    _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
+    globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
+    animationSettings = _wp$qubelyComponents$.animationSettings,
+    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar;
 
 var Edit = function (_Component) {
 	_inherits(Edit, _Component);
@@ -12792,7 +13360,12 @@ var Edit = function (_Component) {
 			    dotColor = _props2$attributes.dotColor,
 			    dotActiveColor = _props2$attributes.dotActiveColor,
 			    horizontalScroll = _props2$attributes.horizontalScroll,
-			    sliderItemMargin = _props2$attributes.sliderItemMargin;
+			    sliderItemMargin = _props2$attributes.sliderItemMargin,
+			    globalZindex = _props2$attributes.globalZindex,
+			    hideTablet = _props2$attributes.hideTablet,
+			    hideMobile = _props2$attributes.hideMobile,
+			    globalCss = _props2$attributes.globalCss,
+			    animation = _props2$attributes.animation;
 			var device = this.state.device;
 
 			var carouselSettings = {
@@ -13478,8 +14051,23 @@ var Edit = function (_Component) {
 								})
 							)
 						)
+					),
+					animationSettings(uniqueId, animation, setAttributes)
+				),
+				React.createElement(
+					BlockControls,
+					null,
+					React.createElement(
+						Toolbar,
+						null,
+						React.createElement(InlineToolbar, _extends({
+							data: [{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]
+						}, this.props, {
+							prevState: this.state
+						}))
 					)
 				),
+				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -13528,9 +14116,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
+var Component = wp.element.Component;
 var RichText = wp.editor.RichText;
 var animationAttr = wp.qubelyComponents.HelperFunction.animationAttr;
 
@@ -13726,6 +14312,8 @@ exports.default = Save;
 "use strict";
 
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 __webpack_require__(/*! ./style.scss */ "./src/blocks/testimonialcarousel/style.scss");
 
 var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/testimonialcarousel/Edit.js");
@@ -13740,6 +14328,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
+var globalAttributes = wp.qubelyComponents.gloalSettings.globalAttributes;
 
 
 registerBlockType('qubely/testimonialcarousel', {
@@ -13748,7 +14337,7 @@ registerBlockType('qubely/testimonialcarousel', {
 	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Team Block') }),
 	category: 'qubely',
 	keywords: [__('Testimonial'), __('Carousel')],
-	attributes: {
+	attributes: _extends({
 		uniqueId: { type: 'string', default: '' },
 		items: { type: 'object', default: { md: '2', sm: '2', xs: '1' } },
 		columns: { type: 'number', default: 2 },
@@ -14117,9 +14706,7 @@ registerBlockType('qubely/testimonialcarousel', {
 			type: 'object', default: {},
 			style: [{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1:hover, {{QUBELY}} .qubely-tesitmonial-item.layout-2:hover, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-carousel-content-wrapper:hover' }]
 		},
-		showGlobalSettings: { type: 'boolean', default: true } // Global Settings
-		//showContextMenu: { type: 'boolean', default: true }, 
-	},
+		showGlobalSettings: { type: 'boolean', default: true } }, globalAttributes),
 	edit: _Edit2.default,
 	save: _Save2.default
 });

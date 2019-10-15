@@ -16,7 +16,14 @@ registerBlockType('qubely/form-row', {
     },
     icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-form.svg'} alt={__('Form')} />,
     attributes: {
-        uniqueId: { type: 'string', default: '' },
+        uniqueId: {
+            type: 'string',
+            default: ''
+        },
+        parentClientId: {
+            type: 'string',
+            default: ''
+        },
     },
     edit: Edit,
     save: Save
