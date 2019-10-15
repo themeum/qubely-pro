@@ -1,5 +1,15 @@
-const { Component } = wp.element
-const { InnerBlocks } = wp.editor
+const { __ } = wp.i18n
+const { Component, Fragment } = wp.element
+const { InnerBlocks, InspectorControls } = wp.editor
+const { PanelBody } = wp.components
+
+const {
+    Range,
+    CssGenerator: {
+        CssGenerator
+    }
+} = wp.qubelyComponents
+
 class Edit extends Component {
     componentDidMount() {
         const { setAttributes, clientId, attributes: { uniqueId } } = this.props
@@ -11,14 +21,41 @@ class Edit extends Component {
         }
     }
     render() {
-        const { attributes: { uniqueId } } = this.props
+        const {
+            attributes,
+            setAttributes,
+            attributes: {
+                uniqueId,
+                gutter
+            }
+        } = this.props
+
+        if (uniqueId) { CssGenerator(attributes, 'form-row', uniqueId); }
         return (
-            <div className={`qubely-block-${uniqueId}`}>
-                <div className={`qubely-form-row`}>
-                    <InnerBlocks
-                        allowedBlocks={['qubely/formfield-column']} />
+            <Fragment>
+                <InspectorControls key="inspector">
+
+                    <PanelBody title={__('')} opened={true}>
+
+                        <Range
+                            min={0}
+                            max={60}
+                            responsive
+                            value={gutter}
+                            label={__('Gutter')}
+                            unit={['px', 'em', '%']}
+                            onChange={value => setAttributes({ gutter: value })}
+                        />
+
+                    </PanelBody>
+                </InspectorControls>
+                <div className={`qubely-block-${uniqueId}`}>
+                    <div className={`qubely-form-row qubely-backend`}>
+                        <InnerBlocks
+                            allowedBlocks={['qubely/formfield-column']} />
+                    </div>
                 </div>
-            </div>
+            </Fragment>
         )
     }
 }

@@ -119,18 +119,18 @@ registerBlockType('qubely/form', {
         spacing: {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [
-                {
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
-                }
+                // {
+                //     selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
+                // }
             ]
         },
 
         gutter: {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [
-                {
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-left: calc(-{{gutter}}/2);margin-right: calc(-{{gutter}}/2);}'
-                }
+                // {
+                //     selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-left: calc(-{{gutter}}/2);margin-right: calc(-{{gutter}}/2);}'
+                // }
             ]
         },
 
@@ -152,26 +152,26 @@ registerBlockType('qubely/form', {
         labelAlignment: {
             type: 'string',
             default: 'top',
-            style: [
-                {
-                    condition: [
-                        { key: 'labelAlignment', relation: '==', value: 'top' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:column;}'
-                },
-                {
-                    condition: [
-                        { key: 'labelAlignment', relation: '==', value: 'left' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-form-field-wrapper {justify-content:flex-start;}'
-                },
-                {
-                    condition: [
-                        { key: 'labelAlignment', relation: '==', value: 'right' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:row-reverse;}'
-                },
-            ]
+            // style: [
+            //     {
+            //         condition: [
+            //             { key: 'labelAlignment', relation: '==', value: 'top' }
+            //         ],
+            //         selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:column;}'
+            //     },
+            //     {
+            //         condition: [
+            //             { key: 'labelAlignment', relation: '==', value: 'left' }
+            //         ],
+            //         selector: '{{QUBELY}} .qubely-form-field-wrapper {justify-content:flex-start;}'
+            //     },
+            //     {
+            //         condition: [
+            //             { key: 'labelAlignment', relation: '==', value: 'right' }
+            //         ],
+            //         selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:row-reverse;}'
+            //     },
+            // ]
         },
 
         inputTypography: {

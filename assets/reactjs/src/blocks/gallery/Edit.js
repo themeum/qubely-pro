@@ -175,8 +175,8 @@ class Edit extends Component {
 					<PanelBody title={__('General Settings')}>
                         <Styles columns={2} value={style} onChange={val => setAttributes({ style: val })}
 							options={[
-								{ value: 1, svg: icons.postgrid_design_1 },
-								{ value: 2, svg: icons.postgrid_design_3 },
+								{ value: 1, svg: icons.gallery_1 },
+								{ value: 2, svg: icons.gallery_2 },
 							]}
 						/>
 						<Range
@@ -186,15 +186,15 @@ class Edit extends Component {
 							value={galleryItems}
 							onChange={value => this.updateGalleryImage(value > galleryItems ? 'add' : 'delete')}
 						/>
-                        <Range label={__('Select Column')} value={column} onChange={(value) => setAttributes({ column: value })} min={1} step={1} max={6} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <Range 
+                            label={__('Select Column')} 
+                            value={column} 
+                            onChange={(value) => setAttributes({ column: value })} 
+                            min={1} step={1} max={6} 
+                            responsive device={device} 
+                            onDeviceChange={value => this.setState({ device: value })} 
+                        />
                         <Range label={__('Gutter')} value={gutter} onChange={val => setAttributes({ gutter: val })} min={0} max={50} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                            
-						{/* <SelectControl
-							label={__("Image Sizes")}
-							value={imgSize}
-							onChange={(value) => setAttributes({ imgSize: value })}
-							options={qubely_admin.image_sizes}
-						/>                             */}
                     </PanelBody>
 
                     <PanelBody title={__('Image')} initialOpen={false}>

@@ -26,6 +26,10 @@ registerBlockType('qubely/form-column', {
             type: 'string',
             default: ''
         },
+        parentClientId: {
+            type: 'string',
+            default: ''
+        },
         fieldSize: {
             type: 'string',
             default: 'large',
@@ -65,22 +69,7 @@ registerBlockType('qubely/form-column', {
                     selector: '{{QUBELY}}.qubely-form-field-front.qubely-custom {flex:{{width}};max-width:{{width}};}'
                 },
             ]
-        },
-        gutter: {
-            type: 'object',
-            default: {
-                md: 10,
-                sm: 10,
-                xs: 10,
-                unit: 'px',
-                device: 'md'
-            },
-            style: [
-                {
-                    selector: '{{QUBELY}}.qubely-form-field-front {margin-right:{{gutter}};}'
-                }
-            ]
-        },
+        }
     },
     getEditWrapperProps(attributes) {
         const { fieldSize, width } = attributes;

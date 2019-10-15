@@ -154,7 +154,9 @@ class Edit extends Component {
 				return (
 					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
 						<Tooltip text={__('Delete this item')}>
-							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}><i class="fas fa-close"></i></span>
+							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
+								<span class="dashicons dashicons-no-alt"></span>
+							</span>
 						</Tooltip>
                         <div className={`qubely-team-carousel-item`}>
 							<div className={`qubely-team-${layout}`}>

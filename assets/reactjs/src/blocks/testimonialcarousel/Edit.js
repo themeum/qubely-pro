@@ -140,7 +140,9 @@ class Edit extends Component {
 				return (
 					<div key={index} className={`qubely-carousel-item`} >
 						<Tooltip text={__('Delete this item')}>
-							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}><i class="fas fa-close"></i></span>
+							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
+								<span class="dashicons dashicons-no-alt"></span>
+							</span>
 						</Tooltip>
 						<div className={`qubely-tesitmonial-item layout-${layout}`}>
 
@@ -516,7 +518,7 @@ class Edit extends Component {
 									</Fragment>
 								}
 
-								<RadioAdvanced
+								<RadioAdvanced 
 									label={__('Avatar Size')}
 									options={[
 										{ label: 'S', value: '48px', title: 'Small' },

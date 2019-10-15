@@ -43,7 +43,9 @@ const icons = {
     imagecarousel_5: <img src={`${img_path}/imagecarousel/layout5.svg`} alt={__('Design 5')} />,
     imagecarousel_6: <img src={`${img_path}/imagecarousel/layout6.svg`} alt={__('Design 6')} />,
 
-
+    // Gallery.
+    gallery_1: <img src={`${img_path}/gallery/layout1.svg`} alt={__('Design 1')} />,
+    gallery_2: <img src={`${img_path}/gallery/layout2.svg`} alt={__('Design 2')} />,
 
 }
 
