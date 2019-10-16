@@ -4,7 +4,21 @@ const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
 class Save extends Component {
 
   renderPricelist = () => {
-	const { attributes: { pricelistContents, enableLine, headingLevel, enableMedia, mediaType, contentAlign, enableBadge, enableDiscount, enablePrice, enableDescription, priceAfterTitle } } = this.props
+	const { 
+        attributes: { 
+            pricelistContents, 
+            enableLine, 
+            headingLevel, 
+            enableMedia, 
+            mediaType,
+            contentAlign, 
+            enableBadge, 
+            enableDiscount,
+            enablePrice,
+            enableDescription,
+            priceAfterTitle 
+        } 
+    } = this.props
 
 	const titleTagName = 'h' + headingLevel;
 
@@ -32,7 +46,7 @@ class Save extends Component {
                             <div className="qubely-pricelist-title-wrapper">
                                 <RichText.Content tagName={titleTagName} className="qubely-pricelist-title" value={title} />
                                 {enableLine && (priceAfterTitle==0) &&
-                                <span className="qubely-pricelist-line"></span>
+                                    <span className="qubely-pricelist-line"/>
                                 }
                                 <div className="qubely-pricelist-price-wrapper">
                                     {enableDiscount && discount &&

@@ -24,8 +24,7 @@ define('QUBELY_PRO_DIR_PATH', plugin_dir_path(QUBELY_PRO_FILE));
 define('QUBELY_FREE_BASENAME', 'qubely/qubely.php');
 
 add_action('init', 'qubely_pro_language_load');
-function qubely_pro_language_load()
-{
+function qubely_pro_language_load() {
     load_plugin_textdomain('qubely-pro', false, basename(dirname(QUBELY_PRO_FILE)) . '/languages/');
 }
 
@@ -33,14 +32,14 @@ function qubely_pro_language_load()
 require_once QUBELY_PRO_DIR_PATH . 'core/initial-setup.php'; // Initial Setup Data
 
 
-// //Version Check & Include Core
-// if (!version_compare(PHP_VERSION, '5.4', '>=')) {
-//     add_action('admin_notices', array('QUBELY_Pro_Initial_Setup', 'php_error_notice')); // PHP Version Check
-// } elseif (!version_compare(get_bloginfo('version'), '4.5', '>=')) {
-//     add_action('admin_notices', array('QUBELY_Pro_Initial_Setup', 'wordpress_error_notice')); // WordPress Version Check
-// } else {
-//     require_once QUBELY_PRO_DIR_PATH . 'core/QUBELY-PRO.php';   // Loading QUBELY Blocks Main Files
-// }
+//Version Check & Include Core
+if (!version_compare(PHP_VERSION, '5.4', '>=')) {
+    add_action('admin_notices', array('QUBELY_Pro_Initial_Setup', 'php_error_notice')); // PHP Version Check
+} elseif (!version_compare(get_bloginfo('version'), '4.5', '>=')) {
+    add_action('admin_notices', array('QUBELY_Pro_Initial_Setup', 'wordpress_error_notice')); // WordPress Version Check
+} else {
+    require_once QUBELY_PRO_DIR_PATH . 'core/QUBELY-PRO.php';   // Loading QUBELY Blocks Main Files
+}
 
 require_once QUBELY_PRO_DIR_PATH . 'core/QUBELY-PRO.php'; // Initial Setup Data
 

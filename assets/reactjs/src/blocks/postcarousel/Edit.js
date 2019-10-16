@@ -5,7 +5,29 @@ const { dateI18n, __experimentalGetSettings } = wp.date
 const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
 const { InspectorControls, BlockControls } = wp.editor
-const { Range, ButtonGroup, Inline: { InlineToolbar }, Toggle, Dropdown, Select, Separator, ColorAdvanced, Carousel, Typography, Color, Border, BorderRadius, Padding, BoxShadow, Styles, Tabs, Tab, RadioAdvanced, gloalSettings: { globalSettingsPanel, animationSettings }, CssGenerator: { CssGenerator }, ContextMenu: { ContextMenu, handleContextMenu }, } = wp.qubelyComponents
+const { 
+	Range, 
+	ButtonGroup, 
+	Toggle, 
+	Dropdown, 
+	Select, 
+	Separator, 
+	ColorAdvanced, 
+	Carousel, 
+	Typography, 
+	Color, 
+	Border, 
+	BorderRadius, 
+	Padding, 
+	BoxShadow, 
+	Styles, 
+	Tabs, 
+	Tab, 
+	RadioAdvanced, 
+	Inline: { InlineToolbar }, 
+	gloalSettings: { globalSettingsPanel, animationSettings }, 
+	CssGenerator: { CssGenerator } 
+} = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
 
@@ -57,8 +79,7 @@ class Edit extends Component {
 		const { attributes: { style, imgSize, imageAnimation, showCategory, categoryPosition } } = this.props
 		return (
             <Fragment>
-                {
-                    ( (showCategory == 'badge') && (style === 4) ) &&
+                {((showCategory == 'badge') && (style === 4)) &&
                     <div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
                         <span className="qubely-postcarousel-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
                     </div>
@@ -76,8 +97,24 @@ class Edit extends Component {
 	}
 
 	renderCardContent = (post) => {
-		const { attributes: { contentPosition, style, readmoreStyle, showCategory, categoryPosition, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
-		let title = <h3 className="qubely-postcarousel-title"><a>{post.title.rendered}</a></h3>
+		const { 
+			attributes: {
+				contentPosition,
+				readmoreStyle,
+				showCategory,
+				showTitle,
+				titlePosition,
+				showAuthor,
+				showDates,
+				showComment,
+				showExcerpt,
+				excerptLimit,
+				showReadMore,
+				buttonText,
+				readmoreSize 
+			} 
+		} = this.props
+		const title = <h3 className="qubely-postcarousel-title"><a>{post.title.rendered}</a></h3>
 
 		return (
 			<div className={`qubely-post-grid-content align-${contentPosition}`}>
@@ -85,9 +122,9 @@ class Edit extends Component {
 				{showTitle && (titlePosition == true) && title}
 				{(showAuthor || showDates || showComment) &&
 					<div className="qubely-postcarousel-meta">
-						{showAuthor && <span><i className="fas fa-user"></i> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
-						{showDates && <span><i className="far fa-calendar-alt"></i> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
-						{showComment && <span><i className="fas fa-comment"></i> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
+						{showAuthor && <span><i className="fas fa-user"/> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
+						{showDates && <span><i className="far fa-calendar-alt"/> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
+						{showComment && <span><i className="fas fa-comment"/> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
 					</div>
 				}
 				{showTitle && (titlePosition == false) && title}
@@ -123,46 +160,31 @@ class Edit extends Component {
 
 	render() {
 		const {
-			name,
-			clientId,
-			attributes,
-			setAttributes,
 			posts,
 			taxonomyList,
+			setAttributes,
 			attributes: {
 				uniqueId,
-				//general
 				taxonomy,
 				categories,
 				tags,
 				order,
 				orderBy,
 				postsToShow,
-
-				//image
 				showImages,
 				imgSize,
 				enableFixedHeight,
 				fixedHeight,
 				imageRadius,
 				imageAnimation,
-
-				//card
 				cardBackground,
 				cardBorder,
 				cardBorderRadius,
 				cardPadding,
 				cardSpace,
-
-				//scart
 				stackBg,
-				stackWidth,
-				stackSpace,
 				stackBorderRadius,
-				stackPadding,
 				stackBoxShadow,
-
-				//readmore link
 				readmoreStyle,
 				buttonText,
 				readmoreSize,
@@ -176,8 +198,6 @@ class Edit extends Component {
 				readmoreColor,
 				readmoreColor2,
 				readmoreHoverColor,
-
-				//content
 				style,
 				showDates,
 				showComment,
@@ -189,14 +209,10 @@ class Edit extends Component {
 				showReadMore,
 				showTitle,
 				titlePosition,
-
-				//typography
 				titleTypography,
 				metaTypography,
 				excerptTypography,
 				categoryTypography,
-
-				//colors
 				titleColor,
 				titleOverlayColor,
 				metaColor,
@@ -212,40 +228,27 @@ class Edit extends Component {
 				categoryHoverBackground,
 				categoryRadius,
 				categoryPadding,
-				badgePosition,
 				badgePadding,
-
-				//design
 				bgColor,
 				border,
 				borderRadius,
-				
 				boxShadow,
 				contentPosition,
 				girdContentPosition,
-
-				//overlay
 				overlayBg,
 				overlayHoverBg,
 				overlayBlend,
 				overlayHeight,
-				overlaySpace,
 				overlayBorderRadius,
-
-				//spacing
 				contentPadding,
 				titleSpace,
 				categorySpace,
 				metaSpace,
 				excerptSpace,
-
-				//global
 				globalZindex,
 				hideTablet,
 				hideMobile,
 				globalCss,	
-
-				//  ---
 				autoPlay,
 				postitems,
 				isCentered,
@@ -253,8 +256,6 @@ class Edit extends Component {
 				interval,
 				dragable,
 				activeFade,
-
-				// Slider settings
 				nav,
 				arrowStyle,
 				horizontalPosition,
@@ -269,8 +270,6 @@ class Edit extends Component {
 				navShapeHoverColor,
 				navBorderHoverColor,
 			    navHoverRadius,
-
-                // // Dot Navigation.
                 dotPosition,
 				dots,
 				dotwidth,
@@ -278,14 +277,12 @@ class Edit extends Component {
 				dotBorderRadius,
 				dotColor,
 				dotActiveColor,
-
 				gutterspace,
 				sliderItemsSpace, 
 				sliderItemMargin,
 				dotalignment,
 				textalignment,
 				animation
-				
 			}
 		} = this.props
 		const { device } = this.state
@@ -374,7 +371,7 @@ class Edit extends Component {
 							<Fragment>
 								<ButtonGroup
 									label={__('Navigation Style')}
-									options={[[<span className="dashicons dashicons-arrow-right-alt"></span>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"></span>, 'arrowright2']]}
+									options={[[<span className="dashicons dashicons-arrow-right-alt"/>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"/>, 'arrowright2']]}
 									value={arrowStyle}
 									onChange={value => setAttributes({ arrowStyle: value })}
 								/>
@@ -426,7 +423,6 @@ class Edit extends Component {
 											onChange={value => setAttributes({ navigationRadius: value })}
 											onDeviceChange={value => this.setState({ device: value })} 
 										/>
-
 									</Tab>
 									<Tab tabTitle={__('Hover')}>
 										<Color label={__('Navigation Hover Color')} value={navHoverColor} onChange={(value) => setAttributes({ navHoverColor: value })} />
@@ -905,7 +901,6 @@ export default withSelect((select, props) => {
 		posts: getEntityRecords('postType', 'post', query),
 		taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
 	};
-
 })
 
 (Edit)

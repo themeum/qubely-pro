@@ -106,12 +106,12 @@ class Edit extends Component {
 									<div className="qubely-media-actions qubely-field-button-list">
 										<Tooltip text={__('Edit')}>
 											<button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
-												<span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw"></span>
+												<span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw"/>
 											</button>
 										</Tooltip>
 										<Tooltip text={__('Remove')}>
 											<button className="qubely-button" aria-label={__('Remove')} onClick={() => this.updateAtrributes('sliderimage', '', index)} role="button">
-												<span aria-label={__('Close')} className="far fa-trash-alt fa-fw"></span>
+												<span aria-label={__('Close')} className="far fa-trash-alt fa-fw"/>
 											</button>
 										</Tooltip>
 									</div>
@@ -177,14 +177,14 @@ class Edit extends Component {
 	}
 
 	renderImages = () => {
-		const { attributes: { layout, items, carouselItems, contentVerticalAlign } } = this.props
+		const { attributes: { layout, carouselItems, contentVerticalAlign } } = this.props
 		return (
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item item-layout${layout} align-${contentVerticalAlign}`} >
 						<Tooltip text={__('Delete this item')}>
 							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
-								<span class="dashicons dashicons-no-alt"></span>
+								<span class="dashicons dashicons-no-alt"/>
 							</span>
 						</Tooltip>
 						<div className={`qubely-image-item layout-${layout}`}>
@@ -197,7 +197,7 @@ class Edit extends Component {
 	}
 
 	renderLayoutFive = () => { 
-		const { attributes: { layout, items, carouselItems } } = this.props
+		const { attributes: { layout, carouselItems } } = this.props
 		return (
 			carouselItems.map((item, index) => {
 				return (
@@ -253,91 +253,75 @@ class Edit extends Component {
 		return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md'
 	}
 	render() {
-		const { setAttributes, attributes: {
-			uniqueId, 
-			layout,
-			alignment,
-			carouselItems,
-			items,
-			itemthree,
-			itemfive,
-			sliderContent,
-
-			// Carousel Settings
-			autoPlay,
-			speed,
-			interval,
-			dragable,
-			isCentered,
-			notCentered,
-			activeFade,
-			centerPadding,
-
-			// Slider Settings
-			nav,
-			arrowStyle,
-			horizontalScroll,
-			arrowPosition,
-			sizeWidth,
-			arrowSize,
-			arrowColor,
-			arrowShapeColor,
-			arrowBorderColor,
-			cornerRadius,
-			arrowHoverColor,
-			arrowShapeHoverColor,
-			arrowBorderHoverColor,
-			cornerHoverRadius,
-
-			// Show Dot Navigation
-			dots,
-			dotIndicator, 
-			dotwidth,
-			dotHeight,
-			dotBorderRadius,
-			dotColor,
-			dotActiveColor,
-
-			// Title
-			nameSpacing,
-			nameColor,
-			nameTypo,
-
-			// Subtitle
-			subtitleColor,
-			subtitleTypo,
-
-			// Description,
-			activeDescription,
-			descriptionColor,
-			messageTypo,
-			messageSpacingTop,
-			messageSpacingBottom,
-
-			// Content.
-			contentPadding, 
-			contentVerticalAlign, 
-			contentAlignment,
-
-
-			// Overlay
-			animateOnHover,
-			enableOverlay,
-			overlayBg,
-			overlayHoverBg,
-			overlayBlend,
-			sliderMargin,
-			dotsposition,
-			carouselImageSize,
-			imageWidth, avatarHeight,
-			
-
-			globalZindex,
-			hideTablet,
-			hideMobile,
-			globalCss,
-			animation
-		} } = this.props
+		const { 
+			setAttributes, 
+			attributes: {
+				uniqueId, 
+				layout,
+				alignment,
+				carouselItems,
+				items,
+				itemthree,
+				itemfive,
+				sliderContent,
+				autoPlay,
+				speed,
+				interval,
+				dragable,
+				isCentered,
+				notCentered,
+				activeFade,
+				centerPadding,
+				nav,
+				arrowStyle,
+				horizontalScroll,
+				arrowPosition,
+				sizeWidth,
+				arrowSize,
+				arrowColor,
+				arrowShapeColor,
+				arrowBorderColor,
+				cornerRadius,
+				arrowHoverColor,
+				arrowShapeHoverColor,
+				arrowBorderHoverColor,
+				cornerHoverRadius,
+				dots,
+				dotIndicator, 
+				dotwidth,
+				dotHeight,
+				dotBorderRadius,
+				dotColor,
+				dotActiveColor,
+				nameSpacing,
+				nameColor,
+				nameTypo,
+				subtitleColor,
+				subtitleTypo,
+				activeDescription,
+				descriptionColor,
+				messageTypo,
+				messageSpacingTop,
+				messageSpacingBottom,
+				contentPadding, 
+				contentVerticalAlign, 
+				contentAlignment,
+				animateOnHover,
+				enableOverlay,
+				overlayBg,
+				overlayHoverBg,
+				overlayBlend,
+				sliderMargin,
+				dotsposition,
+				carouselImageSize,
+				imageWidth, avatarHeight,
+				globalZindex,
+				hideTablet,
+				hideMobile,
+				globalCss,
+				animation
+			} 
+		} = this.props
 
 		const { device } = this.state
 
@@ -485,7 +469,7 @@ class Edit extends Component {
 							<Fragment>
 								<ButtonGroup
 									label={__('Arrow Style')}
-									options={[[<span className="dashicons dashicons-arrow-right-alt"></span>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"></span>, 'arrowright2']]}
+									options={[[<span className="dashicons dashicons-arrow-right-alt"/>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"/>, 'arrowright2']]}
 									value={arrowStyle}
 									onChange={value => setAttributes({ arrowStyle: value })}
 								/>

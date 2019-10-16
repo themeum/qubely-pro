@@ -83,7 +83,7 @@ class Edit extends Component {
 						{ (avatar && avatar.url) ? 
 							<img onClick={open} className="qubely-team-avatar" src={avatar.url} /> 
 							: 
-							<div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image"></i></div> 
+							<div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image"/></div> 
 						}
 					</div>
 				)}
@@ -102,7 +102,7 @@ class Edit extends Component {
 			<div className="social-share">
 				{ showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
 					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`}>
-						{ facebook && <a className="qubely-team-social-facebook"><i class="fab fa-facebook-f"></i></a> }
+						{ facebook && <a className="qubely-team-social-facebook"><i className="fab fa-facebook-f"/></a> }
 						{ twitter && <a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a> }
 						{ instagram && <a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a> }
 						{ linkedin && <a className="qubely-team-social-linkedin"><i className="fab fa-linkedin" /></a> }
@@ -155,7 +155,7 @@ class Edit extends Component {
 					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
 						<Tooltip text={__('Delete this item')}>
 							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
-								<span class="dashicons dashicons-no-alt"></span>
+								<span className={`dashicons dashicons-no-alt`} />
 							</span>
 						</Tooltip>
                         <div className={`qubely-team-carousel-item`}>
@@ -372,7 +372,7 @@ class Edit extends Component {
 							<Fragment>
 								<ButtonGroup
 									label={__('Arrow Style')}
-									options={[[<span className="dashicons dashicons-arrow-right-alt"></span>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"></span>, 'arrowright2']]}
+									options={[[<span className="dashicons dashicons-arrow-right-alt"/>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"/>, 'arrowright2']]}
 									value={arrowStyle}
 									onChange={value => setAttributes({ arrowStyle: value })}
 								/>

@@ -10,7 +10,7 @@ class Save extends Component {
         {avatar.url != undefined ?
           <img className="qubely-team-avatar" src={avatar.url} alt={avatarAlt} />
           :
-          <div className="qubely-image-placeholder qubely-team-avatar"><i className="far fa-user"></i></div>
+          <div className="qubely-image-placeholder qubely-team-avatar"><i className="far fa-user"/></div>
         }
       </div>
     )

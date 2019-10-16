@@ -3,7 +3,7 @@
 defined('ABSPATH') || exit;
 
 /**
- * Registers the `qubely/postgrid` block on server.
+ * Registers the `qubely/postcarousel block on server.
  *
  * @since 1.1.0
  */
@@ -1278,7 +1278,7 @@ function render_block_qubely_postcarousel_pro($att)
 	$showComment 		    = isset($att['showComment']) ? $att['showComment'] : 1;
 	$showExcerpt 		    = isset($att['showExcerpt']) ? $att['showExcerpt'] : 1;
 	$showReadMore 		    = isset($att['showReadMore']) ? $att['showReadMore'] : 1;
-	$buttonText 		    = isset($att['buttonText']) ? $att['buttonText'] : 'Read More';
+	$buttonText 		    = isset($att['buttonText']) ? $att['buttonText'] : __('Read More', 'qubely-pro');
 	$readmoreSize 		    = isset($att['readmoreSize']) ? $att['readmoreSize'] : 'small';
 	$readmoreStyle 		    = isset($att['readmoreStyle']) ? $att['readmoreStyle'] : 'fill';
 	$showImages 		    = isset($att['showImages']) ? $att['showImages'] : 1;
@@ -1379,9 +1379,9 @@ function render_block_qubely_postcarousel_pro($att)
 			$image = '<img class="qubely-post-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/>';
 			$title = '<h3 class="qubely-postcarousel-title"><a href="' . esc_url(get_the_permalink()) . '">' . get_the_title() . '</a></h3>';
 			$category = '<span class="qubely-postcarousel-category">' . get_the_category_list(' ') . '</span>';
-			$meta = ($showAuthor == 1) ? '<span><i class="fas fa-user"></i> ' . __('By ', 'qubely') . get_the_author_posts_link() . '</span>' : '';
-			$meta .= ($showDates == 1) ? '<span><i class="far fa-calendar-alt"></i> ' . date_i18n("d M, Y", strtotime(get_the_date())) . '</span>' : '';
-			$meta .= ($showComment == 1) ? '<span><i class="fas fa-comment"></i> ' . get_comments_number('0', '1', '%') . '</span>' : '';
+			$meta = ($showAuthor == 1) ? '<span><i class="fas fa-user"/> ' . __('By ', 'qubely') . get_the_author_posts_link() . '</span>' : '';
+			$meta .= ($showDates == 1) ? '<span><i class="far fa-calendar-alt"/> ' . date_i18n("d M, Y", strtotime(get_the_date())) . '</span>' : '';
+			$meta .= ($showComment == 1) ? '<span><i class="fas fa-comment"/> ' . get_comments_number('0', '1', '%') . '</span>' : '';
 			$btn = '<div class="qubely-postcarousel-btn-wrapper"><a class="qubely-postcarousel-btn qubely-button-' . esc_attr($readmoreStyle) . ' is-' . esc_attr($readmoreSize) . '" href="' . esc_url(get_the_permalink()) . '">' . esc_attr($buttonText) . '</a></div>';
 			$excerpt = '<div class="qubely-postcarousel-intro">' . qubely_excerpt_max_charlength(esc_attr($limit)) . '</div>';
 

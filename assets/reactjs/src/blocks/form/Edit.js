@@ -562,7 +562,7 @@ class Edit extends Component {
                                 position="bottom center"
                                 renderToggle={({ isOpen, onToggle }) =>
                                     <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
-                                        <i className="fas fa-plus-circle"></i>
+                                        <i className="fas fa-plus-circle"/>
                                         <span onClick={() => this.setState({ hideDropdown: onToggle })}> {__(`Add new item`)}</span>
                                     </div>
 

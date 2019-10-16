@@ -2328,7 +2328,7 @@ function Edit(props) {
                             { className: 'qubely-action-remove-option', role: 'button', onClick: function onClick() {
                                     return updateOptions('delete', index);
                                 } },
-                            React.createElement('i', { 'class': 'fas fa-times' })
+                            React.createElement('i', { className: 'fas fa-times' })
                         )
                     )
                 );
@@ -2340,7 +2340,7 @@ function Edit(props) {
                     } },
                 React.createElement(
                     'span',
-                    { 'class': 'qubely-option-add-icon' },
+                    { className: 'qubely-option-add-icon' },
                     React.createElement('i', { className: 'fas fa-plus' })
                 ),
                 React.createElement(
@@ -2674,7 +2674,7 @@ function Edit(props) {
                             },
                             React.createElement(
                                 'span',
-                                { 'class': 'qubely-option-move-icon' },
+                                { className: 'qubely-option-move-icon' },
                                 React.createElement('i', { className: 'fa fa-bars' })
                             ),
                             React.createElement(RichText, {
@@ -2692,7 +2692,7 @@ function Edit(props) {
                         { className: 'qubely-dropdown-add-field-option' },
                         React.createElement(
                             'span',
-                            { 'class': 'qubely-option-move-icon' },
+                            { className: 'qubely-option-move-icon' },
                             React.createElement('i', { className: 'fas fa-plus-circle' })
                         ),
                         React.createElement(
@@ -3286,7 +3286,7 @@ function Save(props) {
         var options = JSON.stringify({ dateFormat: dateFormat });
         return React.createElement(
             'div',
-            { 'class': 'qubely-date-picker-wrapper', 'data-options': options },
+            { className: 'qubely-date-picker-wrapper', 'data-options': options },
             React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: fieldName })
         );
     };
@@ -4643,7 +4643,7 @@ var Edit = function (_Component) {
                             { className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
                                     return _this.removePricelistItem(index);
                                 } },
-                            React.createElement('i', { 'class': 'fas fa-close' })
+                            React.createElement('i', { className: 'fas fa-close' })
                         )
                     ),
                     React.createElement(
@@ -5661,7 +5661,6 @@ var Edit = function (_Component) {
 		_this.renderImages = function () {
 			var _this$props$attribute2 = _this.props.attributes,
 			    layout = _this$props$attribute2.layout,
-			    items = _this$props$attribute2.items,
 			    carouselItems = _this$props$attribute2.carouselItems,
 			    contentVerticalAlign = _this$props$attribute2.contentVerticalAlign;
 
@@ -5692,7 +5691,6 @@ var Edit = function (_Component) {
 		_this.renderLayoutFive = function () {
 			var _this$props$attribute3 = _this.props.attributes,
 			    layout = _this$props$attribute3.layout,
-			    items = _this$props$attribute3.items,
 			    carouselItems = _this$props$attribute3.carouselItems;
 
 			return carouselItems.map(function (item, index) {
@@ -6493,11 +6491,7 @@ var Save = function (_Component) {
 			return React.createElement(
 				"div",
 				{ className: "qubely-single-img" },
-				sliderimage.url != undefined ? React.createElement("img", {
-					className: "qubely-image-sliderimage",
-					src: sliderimage.url,
-					alt: sliderimageAlt
-				}) : React.createElement(
+				sliderimage.url != undefined ? React.createElement("img", { className: "qubely-image-sliderimage", src: sliderimage.url, alt: sliderimageAlt }) : React.createElement(
 					"div",
 					{ className: "qubely-image-placeholder qubely-image-sliderimage" },
 					React.createElement("i", { className: "dashicons dashicons-format-image" })
@@ -6562,15 +6556,10 @@ var Save = function (_Component) {
 			return carouselItems.map(function (item, index) {
 				return React.createElement(
 					"div",
-					{
-						key: index,
-						className: "qubely-carousel-item qubely-carousel-item"
-					},
+					{ key: index, className: "qubely-carousel-item qubely-carousel-item" },
 					React.createElement(
 						"div",
-						{
-							className: "qubely-image-item layout-" + layout + " align-" + contentVerticalAlign
-						},
+						{ className: "qubely-image-item layout-" + layout + " align-" + contentVerticalAlign },
 						_this2.renderSliderInfo(item)
 					)
 				);
@@ -6637,11 +6626,7 @@ var Save = function (_Component) {
 					{ className: "qubely-block-image-carousel qubely-layout-" + layout },
 					React.createElement(
 						"div",
-						{
-							className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? " is-faded" : " "),
-							"data-options": options,
-							id: "qubelyCarousel1"
-						},
+						{ className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? " is-faded" : " "), "data-options": options, id: "qubelyCarousel1" },
 						this.renderImage()
 					)
 				)
@@ -7162,7 +7147,6 @@ var _wp$editor = wp.editor,
 var _wp$qubelyComponents = wp.qubelyComponents,
     Range = _wp$qubelyComponents.Range,
     ButtonGroup = _wp$qubelyComponents.ButtonGroup,
-    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar,
     Toggle = _wp$qubelyComponents.Toggle,
     Dropdown = _wp$qubelyComponents.Dropdown,
     Select = _wp$qubelyComponents.Select,
@@ -7179,13 +7163,11 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Tabs = _wp$qubelyComponents.Tabs,
     Tab = _wp$qubelyComponents.Tab,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
+    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
     animationSettings = _wp$qubelyComponents$.animationSettings,
-    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
-    _wp$qubelyComponents$2 = _wp$qubelyComponents.ContextMenu,
-    ContextMenu = _wp$qubelyComponents$2.ContextMenu,
-    handleContextMenu = _wp$qubelyComponents$2.handleContextMenu;
+    CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator;
 
 
 var CATEGORIES_LIST_QUERY = { per_page: -1 };
@@ -7230,10 +7212,8 @@ var Edit = function (_Component) {
 		_this.renderCardContent = function (post) {
 			var _this$props$attribute2 = _this.props.attributes,
 			    contentPosition = _this$props$attribute2.contentPosition,
-			    style = _this$props$attribute2.style,
 			    readmoreStyle = _this$props$attribute2.readmoreStyle,
 			    showCategory = _this$props$attribute2.showCategory,
-			    categoryPosition = _this$props$attribute2.categoryPosition,
 			    showTitle = _this$props$attribute2.showTitle,
 			    titlePosition = _this$props$attribute2.titlePosition,
 			    showAuthor = _this$props$attribute2.showAuthor,
@@ -7379,12 +7359,9 @@ var Edit = function (_Component) {
 			    _React$createElement;
 
 			var _props2 = this.props,
-			    name = _props2.name,
-			    clientId = _props2.clientId,
-			    attributes = _props2.attributes,
-			    setAttributes = _props2.setAttributes,
 			    posts = _props2.posts,
 			    taxonomyList = _props2.taxonomyList,
+			    setAttributes = _props2.setAttributes,
 			    _props2$attributes = _props2.attributes,
 			    uniqueId = _props2$attributes.uniqueId,
 			    taxonomy = _props2$attributes.taxonomy,
@@ -7405,10 +7382,7 @@ var Edit = function (_Component) {
 			    cardPadding = _props2$attributes.cardPadding,
 			    cardSpace = _props2$attributes.cardSpace,
 			    stackBg = _props2$attributes.stackBg,
-			    stackWidth = _props2$attributes.stackWidth,
-			    stackSpace = _props2$attributes.stackSpace,
 			    stackBorderRadius = _props2$attributes.stackBorderRadius,
-			    stackPadding = _props2$attributes.stackPadding,
 			    stackBoxShadow = _props2$attributes.stackBoxShadow,
 			    readmoreStyle = _props2$attributes.readmoreStyle,
 			    buttonText = _props2$attributes.buttonText,
@@ -7453,7 +7427,6 @@ var Edit = function (_Component) {
 			    categoryHoverBackground = _props2$attributes.categoryHoverBackground,
 			    categoryRadius = _props2$attributes.categoryRadius,
 			    categoryPadding = _props2$attributes.categoryPadding,
-			    badgePosition = _props2$attributes.badgePosition,
 			    badgePadding = _props2$attributes.badgePadding,
 			    bgColor = _props2$attributes.bgColor,
 			    border = _props2$attributes.border,
@@ -7465,7 +7438,6 @@ var Edit = function (_Component) {
 			    overlayHoverBg = _props2$attributes.overlayHoverBg,
 			    overlayBlend = _props2$attributes.overlayBlend,
 			    overlayHeight = _props2$attributes.overlayHeight,
-			    overlaySpace = _props2$attributes.overlaySpace,
 			    overlayBorderRadius = _props2$attributes.overlayBorderRadius,
 			    contentPadding = _props2$attributes.contentPadding,
 			    titleSpace = _props2$attributes.titleSpace,
@@ -9535,7 +9507,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 registerBlockType('qubely/postgrid', {
 	title: __('Post Grid'),
-	description: 'Fetch blog posts and display them beautifully in grid or list views with Qubely Postgrid Block.',
+	description: __('Fetch blog posts and display them beautifully in grid or list views with Qubely Postgrid Block.'),
 	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Post Grid Block') }),
 	category: 'qubely',
 	keywords: [__('Post'), __('Post Grid')],
@@ -9729,7 +9701,7 @@ var Edit = function (_Component) {
                             { className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
                                     return _this.removePricelistItem(index);
                                 } },
-                            React.createElement('i', { 'class': 'fas fa-close' })
+                            React.createElement('i', { className: 'fas fa-close' })
                         )
                     ),
                     React.createElement(
@@ -10510,7 +10482,7 @@ var globalAttributes = wp.qubelyComponents.gloalSettings.globalAttributes;
 registerBlockType('qubely/pricelist', {
     title: __('Price List'),
     category: 'qubely',
-    description: 'Showcase detailed with Qubely Price List.',
+    description: __('Showcase detailed with Qubely Price List.'),
     icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Price List') }),
     keywords: [__('Price List'), __('Pricing')],
     attributes: _extends({
@@ -11244,7 +11216,7 @@ var Edit = function (_Component) {
 					facebook && React.createElement(
 						'a',
 						{ className: 'qubely-team-social-facebook' },
-						React.createElement('i', { 'class': 'fab fa-facebook-f' })
+						React.createElement('i', { className: 'fab fa-facebook-f' })
 					),
 					twitter && React.createElement(
 						'a',
@@ -11359,7 +11331,7 @@ var Edit = function (_Component) {
 							{ className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
 									return _this.removeCrouselItem(index);
 								} },
-							React.createElement('span', { 'class': 'dashicons dashicons-no-alt' })
+							React.createElement('span', { className: 'dashicons dashicons-no-alt' })
 						)
 					),
 					React.createElement(
@@ -13261,7 +13233,7 @@ var Edit = function (_Component) {
 							{ className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
 									return _this.removeCrouselItem(index);
 								} },
-							React.createElement('span', { 'class': 'dashicons dashicons-no-alt' })
+							React.createElement('span', { className: 'dashicons dashicons-no-alt' })
 						)
 					),
 					React.createElement(
@@ -14280,7 +14252,6 @@ var Save = function (_Component) {
               React.createElement(
                 "div",
                 { className: "qubely-testimonial-content" },
-                " ",
                 React.createElement(RichText.Content, { value: message })
               ),
               showRatings && ratings > 0 && layout == 1 && React.createElement("div", { className: "qubely-testimonial-ratings", "data-qubelyrating": ratings })
