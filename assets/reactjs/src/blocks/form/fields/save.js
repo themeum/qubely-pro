@@ -36,7 +36,7 @@ export default function Save(props) {
         return (
             <label className="qubely-form-label">
                 <RichText.Content value={label} />
-                {required && '*'}
+                {required && <span className="qubely-from-field-required-sign">*</span>}
             </label>
         )
     }

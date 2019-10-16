@@ -116,7 +116,7 @@ export default function Edit(props) {
                     value={label}
                     onChange={value => setAttributes({ label: value })}
                 />
-                {required && '*'}
+                {required && <span className="qubely-from-field-required-sign">*</span>}
             </label>
         )
     }
@@ -371,7 +371,7 @@ export default function Edit(props) {
         <Fragment>
 
             <InspectorControls>
-               
+
                 {CommonSettings(getParentClientId(clientId))}
 
                 <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} opened={true}>
