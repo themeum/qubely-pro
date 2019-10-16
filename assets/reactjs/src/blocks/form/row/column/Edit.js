@@ -31,7 +31,7 @@ class Edit extends Component {
         const currentField = $(`#block-${clientId}`)
         currentField.css(
             {
-                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width[parseResponsiveViewPort()] + '%',
+                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[parseResponsiveViewPort()] + '%',
             }
         )
     }
@@ -48,7 +48,7 @@ class Edit extends Component {
         const currentField = $(`#block-${clientId}`)
         currentField.css(
             {
-                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width[parseResponsiveViewPort()] + '%',
+                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[parseResponsiveViewPort()] + '%',
             }
         )
 

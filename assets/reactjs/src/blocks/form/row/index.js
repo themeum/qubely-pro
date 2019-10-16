@@ -39,6 +39,21 @@ registerBlockType('qubely/form-row', {
                 }
             ]
         },
+        spacer: {
+            type: 'object',
+            default: {
+                md: 10,
+                sm: 10,
+                xs: 10,
+                unit: 'px',
+                device: 'md'
+            },
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-form-row.qubely-backend .editor-inner-blocks.block-editor-inner-blocks >div {margin-top:-{{spacer}};margin-bottom:-{{spacer}};} {{QUBELY}} .qubely-form-row.qubely-frontend {margin-top:-{{spacer}};margin-bottom:-{{spacer}};} {{QUBELY}} .qubely-form-row.qubely-backend .editor-block-list__layout.block-editor-block-list__layout>div,{{QUBELY}} .qubely-form-row.qubely-frontend .qubely-form-field-front{padding-top:{{spacer}};padding-bottom:{{spacer}};} '
+                }
+            ]
+        },
     },
     edit: Edit,
     save: Save

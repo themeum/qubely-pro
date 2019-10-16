@@ -11,6 +11,11 @@ const {
 } = wp.qubelyComponents
 
 class Edit extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { device: 'md' }
+    }
+
     componentDidMount() {
         const { setAttributes, clientId, attributes: { uniqueId } } = this.props
         const _client = clientId.substr(0, 6)
@@ -26,9 +31,12 @@ class Edit extends Component {
             setAttributes,
             attributes: {
                 uniqueId,
-                gutter
+                gutter,
+                spacer
             }
         } = this.props
+
+        const { device } = this.state
 
         if (uniqueId) { CssGenerator(attributes, 'form-row', uniqueId); }
         return (
@@ -39,12 +47,26 @@ class Edit extends Component {
 
                         <Range
                             min={0}
-                            max={60}
+                            max={100}
                             responsive
                             value={gutter}
                             label={__('Gutter')}
                             unit={['px', 'em', '%']}
+                            device={device}
+                            onDeviceChange={value => this.setState({ device: value })}
                             onChange={value => setAttributes({ gutter: value })}
+                        />
+
+                        <Range
+                            min={5}
+                            max={100}
+                            responsive
+                            value={spacer}
+                            label={__('Spacer')}
+                            unit={['px', 'em', '%']}
+                            device={device}
+                            onDeviceChange={value => this.setState({ device: value })}
+                            onChange={value => setAttributes({ spacer: value })}
                         />
 
                     </PanelBody>

@@ -144,7 +144,7 @@ class Edit extends Component {
                                         <div
                                             className="qubely-form-column-option"
                                             onClick={() => {
-                                                let tempWidth = `${Math.floor(100 / (index + 2))}`
+                                                let tempWidth = `${100 / (index + 2)}`
                                                 innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId, }))))
                                                 replaceInnerBlocks(clientId, innerBlocks, false)
                                                 this.setState({ groupField: false })
@@ -152,7 +152,7 @@ class Edit extends Component {
                                         >
                                             {Array(index + 2).fill(0).map(() => {
                                                 return (
-                                                    <i onClick={() => hideDropdown && hideDropdown()} style={{ width: `${Math.floor(100 / (index + 1))}%` }} />
+                                                    <i onClick={() => hideDropdown && hideDropdown()} style={{ width: `${100 / (index + 1)}%` }} />
                                                 )
                                             })}
                                         </div>
@@ -182,7 +182,40 @@ class Edit extends Component {
 
     }
 
+    renderFormTemplate = () => {
+        const { clientId, attributes: { formItems } } = this.props
+        return (
+            [
+                ['qubely/form-row', { parentClientId: clientId },
+                    [
+                        [`qubely/form-column`, { parentClientId: clientId },
+                            [
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'First Name', placeholder: 'Add first name', width: 'large', required: true }]
+                            ]
+                        ],
+                        [`qubely/form-column`, { parentClientId: clientId },
+                            [
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'Last Name', placeholder: 'Add last name', width: 'large', required: true }]
+                            ]
+                        ],
+                    ]
+                ],
+                ...formItems.map(({ type, label, options, placeholder, width, required }) => {
+                    return (
+                        ['qubely/form-row', { parentClientId: clientId },
+                            [
+                                [`qubely/form-column`, { parentClientId: clientId },
+                                    [
+                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required }]
+                                    ]
+                                ]
+                            ]
+                        ]
 
+                    )
+                })]
+        )
+    }
 
     render() {
         const {
@@ -249,6 +282,8 @@ class Edit extends Component {
 
 
         if (uniqueId) { CssGenerator(attributes, 'form', uniqueId); }
+
+
         return (
             <Fragment>
                 <InspectorControls key="inspector">
@@ -476,7 +511,7 @@ class Edit extends Component {
                         </Tabs>
                     </PanelBody>
 
-                    {buttonSettings(this.props.attributes, device, setAttributes, (key, value) => { this.setState({ [key]: value }) })}
+                    {buttonSettings(this.props.attributes, device, (key, value) => setAttributes({ [key]: value }), (key, value) => { this.setState({ [key]: value }) })}
 
                     {animationSettings(uniqueId, animation, setAttributes)}
 
@@ -500,23 +535,8 @@ class Edit extends Component {
                     <div className={`qubely-block-form qubely-layout-${layout}`}>
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
-                                // templateLock={false}
-                                allowedBlocks={['qubely/formfield-row']}
-                                template={
-                                    formItems.map(({ type, label, options, placeholder, width, required }) => {
-                                        return (
-                                            ['qubely/form-row', { parentClientId: clientId },
-                                                [
-                                                    [`qubely/form-column`, { parentClientId: clientId },
-                                                        [
-                                                            [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required }]
-                                                        ]
-                                                    ]
-                                                ]
-                                            ]
-                                        )
-                                    })
-                                }
+                                allowedBlocks={['qubely/formfield-row', 'qubely/formfield-column',]}
+                                template={this.renderFormTemplate()}
                             />
                         </form>
 
@@ -564,12 +584,7 @@ export default compose([
         const { getBlock, getBlockRootClientId, getBlockAttributes } = select('core/editor')
         let rootBlockClientId = getBlockRootClientId(clientId)
 
-        return {
-
-            rootBlockClientId,
-
-
-        }
+        return { rootBlockClientId }
     }),
     withDispatch((dispatch) => {
         const { insertBlock, removeBlock, updateBlockAttributes, toggleSelection } = dispatch('core/editor')
