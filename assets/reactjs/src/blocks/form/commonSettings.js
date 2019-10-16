@@ -3,12 +3,10 @@ import icons from '../../helpers/icons';
 
 const { __ } = wp.i18n
 
-const { InspectorControls } = wp.editor
 const { select, dispatch } = wp.data
 
 const {
     useState,
-    useEffect,
     Fragment
 } = wp.element
 
@@ -42,7 +40,7 @@ export default function (clientId) {
 
     const { getBlockAttributes } = select('core/block-editor')
     let attributes = getBlockAttributes(clientId)
-    const { updateBlockAttributes, toggleSelection } = dispatch('core/block-editor')
+    const { updateBlockAttributes } = dispatch('core/block-editor')
 
     let {
         layout,

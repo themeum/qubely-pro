@@ -187,7 +187,7 @@ export default function Edit(props) {
     const renderTimePicker = () => {
         return (
             <div className="qubely-form-timepicker-wrapper">
-                <input type="text" className="qubely-form-field qubely-time-picker" value={`${hour} : ${minute}`} onClick={() => setTimePicker(!showTimePicker)} />
+                <input type="text" className="qubely-form-field qubely-time-picker" value={`${hour} : ${minute} ${timeFormatType === 12 ? `${seletedTimeFormat}` : ''}`} onClick={() => setTimePicker(!showTimePicker)} />
                 <div className={`qubely-form-timepicker${showTimePicker ? ' qubely-active' : ''}`}>
 
                     <div className={`qubely-timePicker-hour`}>
