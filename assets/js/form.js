@@ -1,6 +1,14 @@
 
 jQuery(document).ready(function ($) {
 
+    $(document).click(function (event) {
+        $target = $(event.target)
+        if (!$target.parents('.qubely-form-timepicker.qubely-active').length && !$target.hasClass('qubely-time-picker')) {
+            $('.qubely-form-timepicker.qubely-active').removeClass('qubely-active')
+        }  
+    });
+
+
     if ($('.qubely-datepicker').length > 0) {
 
         $('.qubely-datepicker').each(function () {
@@ -46,7 +54,7 @@ jQuery(document).ready(function ($) {
 
     //change timepicker input field value
     function changeTimepickerValue($element) {
- 
+
         let $qubelyTimePicker = $element.parents('.qubely-form-timepicker-wrapper').find('.qubely-time-picker')
         let hour = $element.parents('.qubely-form-timepicker-wrapper').find('.qubely-form-timepicker-hour')[0].innerText
         let min = $element.parents('.qubely-form-timepicker-wrapper').find('.qubely-form-timepicker-minute')[0].innerText
@@ -128,7 +136,7 @@ jQuery(document).ready(function ($) {
             $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText = currentHourFormat === 'AM' ? 'PM' : 'AM'
         }
         $qubelyTimePickerWrapper.find('.qubely-form-timepicker-hour')[0].innerText = addZeroPrefix(hour === timeFormatType ? (timeFormatType === 12 ? 1 : 0) : hour + 1)
-       
+
         changeTimepickerValue($qubelyTimePickerFormat)
     })
 
@@ -148,7 +156,7 @@ jQuery(document).ready(function ($) {
             $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText = currentHourFormat === 'AM' ? 'PM' : 'AM'
         }
         $qubelyTimePickerWrapper.find('.qubely-form-timepicker-hour')[0].innerText = addZeroPrefix(((timeFormatType === 12 && hour === 1) || (timeFormatType === 23 && hour === 0)) ? timeFormatType : hour - 1)
-       
+
         changeTimepickerValue($qubelyTimePickerFormat)
     })
 
