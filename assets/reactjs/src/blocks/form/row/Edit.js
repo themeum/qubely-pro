@@ -38,7 +38,8 @@ class Edit extends Component {
 
         const { device } = this.state
 
-        if (uniqueId) { CssGenerator(attributes, 'form-row', uniqueId); }
+        if (uniqueId) { CssGenerator(attributes, 'form-row', uniqueId) }
+        
         return (
             <Fragment>
                 <InspectorControls key="inspector">
@@ -73,8 +74,7 @@ class Edit extends Component {
                 </InspectorControls>
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-form-row qubely-backend`}>
-                        <InnerBlocks
-                            allowedBlocks={['qubely/formfield-column']} />
+                        <InnerBlocks allowedBlocks={['qubely/formfield-column']} />
                     </div>
                 </div>
             </Fragment>

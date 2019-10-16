@@ -32,19 +32,12 @@ export default function Save(props) {
         }
     } = props
 
-    const renderLabel = () => {
-        return (
-            <label className="qubely-form-label">
-                <RichText.Content value={label} />
-                {required && <span className="qubely-from-field-required-sign">*</span>}
-            </label>
-        )
-    }
+
 
     const renderOptions = () => {
         return (
             <div className={`qubely-form-field qubely-form-${type} qubely-${type}-${columns}`} >
-                {options.map((option, index) => {
+                {options.map(option => {
                     return (
                         <div className={`qubely-form-field-${type}-option`}>
                             <input type={type} id={option} value={option} />
@@ -69,11 +62,10 @@ export default function Save(props) {
                 {emailConformation &&
                     <Fragment>
                         <RichText.Content
-                            placeholder={__('Confirmation Email')}
                             className={`qubely-form-field-label`}
                             value={conformationEmailLabel}
                         />
-                        <input className={`qubely-form-field qubely-form-confirmation-email`} type={'email'} placeholder={__(placeHolder)} required={required} />
+                        <input className={`qubely-form-field qubely-form-confirmation-email`} type={'email'} placeholder={__(placeHolder)} required={required} name={`confirmation-${fieldName}`} />
                     </Fragment>
                 }
             </Fragment>
@@ -82,9 +74,7 @@ export default function Save(props) {
 
 
     const renderDatePicker = () => {
-        let options = JSON.stringify({
-            dateFormat: dateFormat,
-        })
+        let options = JSON.stringify({ dateFormat: dateFormat })
         return (
             <div class="qubely-date-picker-wrapper" data-options={options}>
                 <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} name={fieldName} />
@@ -146,15 +136,23 @@ export default function Save(props) {
         )
     }
 
-    const renderInput = () => {
-        return (
-            <Fragment>
+
+    return (
+        <div className={`qubely-block-${uniqueId}`}>
+            <div className={`qubely-form-field-wrapper`}>
+
+                <label className="qubely-form-label">
+                    <RichText.Content value={label} />
+                    {required && <span className="qubely-from-field-required-sign">*</span>}
+                </label>
+
+                {/** input fields */}
                 {
                     type === 'textarea' ?
                         <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)} name={fieldName} required={required} />
                         :
                         type === 'dropdown' ?
-                            <select className={`qubely-form-field qubely-form-${type}`} name={fieldName} >
+                            <select className={`qubely-form-field qubely-form-dropdown`} name={fieldName} >
                                 {options.map(option => <option value={option}>{option}</option>)}
                             </select>
                             :
@@ -172,17 +170,6 @@ export default function Save(props) {
                                             :
                                             <input className={`qubely-form-field qubely-form-${type}`} type={type} name={fieldName} placeholder={__(placeHolder)} required={required} />
                 }
-            </Fragment>
-        )
-    }
-
-    return (
-        // <div className={`qubely-block-${uniqueId}`} style={style}>
-        <div className={`qubely-block-${uniqueId}`}>
-            <div className={`qubely-form-field-wrapper`}>
-
-                {renderLabel()}
-                {renderInput()}
             </div>
         </div>
     )

@@ -50,7 +50,7 @@ registerBlockType('qubely/form-row', {
             },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-form-row.qubely-backend {margin-bottom:{{spacer}};}'
+                    selector: '{{QUBELY}} .qubely-form-row {margin-bottom:{{spacer}};}'
                 }
             ]
         },

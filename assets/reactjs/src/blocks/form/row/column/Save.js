@@ -17,7 +17,6 @@ class Save extends Component {
             }
         } = this.props
        
-
         return (
             <div className={`qubely-block-${uniqueId} qubely-form-field-front qubely-${fieldSize}`}>
                 <div className={`qubely-form-column`} >

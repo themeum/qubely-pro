@@ -48,7 +48,7 @@ registerBlockType('qubely/form-column', {
                     condition: [
                         { key: 'fieldSize', relation: '==', value: 'large' }
                     ],
-                    selector: '{{QUBELY}}.qubely-form-field-front.qubely-large {flex:90%;max-width:90%;}'
+                    selector: '{{QUBELY}}.qubely-form-field-front.qubely-large {flex:100%;max-width:100%;}'
                 },
                 {
                     condition: [
