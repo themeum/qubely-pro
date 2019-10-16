@@ -147,13 +147,13 @@ export default function Edit(props) {
                                 onChange={value => updateOptions('update', index, value)}
                             />
                             <Tooltip text={__('Delete this option')}>
-                                <span className="qubely-action-remove-option" role="button" onClick={() => updateOptions('delete', index)}><i class="fas fa-times"></i></span>
+                                <span className="qubely-action-remove-option" role="button" onClick={() => updateOptions('delete', index)}><i className={`fas fa-times`}/></span>
                             </Tooltip>
                         </div>
                     )
                 })}
                 <div className={`qubely-action-add-option`} onClick={() => updateOptions('add')}>
-                    <span class="qubely-option-add-icon">
+                    <span className={`qubely-option-add-icon`}>
                         <i className="fas fa-plus" />
                     </span>
                     <span className={`qubely-action-add-text`} > Add another </span>
@@ -164,7 +164,7 @@ export default function Edit(props) {
 
     const renderDatePicker = () => {
         return (
-            <div class="qubely-date-picker-wrapper">
+            <div className={`qubely-date-picker-wrapper`}>
                 <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)}></input>
             </div>
         )
@@ -214,21 +214,21 @@ export default function Edit(props) {
                         <div className="qubely-timePicker-button button-up"
                             onClick={() => handleTimePicker('hour', 'increase')}
                         >
-                            <i className="fas fa-angle-up"></i>
+                            <i className="fas fa-angle-up"/>
                         </div>
                         <div className="qubely-form-timepicker-hour">{hour}</div>
 
                         <div className="qubely-timePicker-button button-down"
                             onClick={() => handleTimePicker('hour', 'decrease')}
                         >
-                            <i className="fas fa-angle-down"></i>
+                            <i className="fas fa-angle-down"/>
                         </div>
                     </div>
                     <div className={`qubely-timePicker-minute`}>
                         <div className="qubely-timePicker-button button-up"
                             onClick={() => handleTimePicker('minute', 'increase')}
                         >
-                            <i className="fas fa-angle-up"></i>
+                            <i className="fas fa-angle-up"/>
                         </div>
 
                         <div className="qubely-form-timepicker-minute" >{minute}</div>
@@ -236,7 +236,7 @@ export default function Edit(props) {
                         <div className="qubely-timePicker-button button-down"
                             onClick={() => handleTimePicker('minute', 'decrease')}
                         >
-                            <i className="fas fa-angle-down"></i>
+                            <i className="fas fa-angle-down"/>
                         </div>
                     </div>
 
@@ -246,7 +246,7 @@ export default function Edit(props) {
                             <div className="qubely-timePicker-button button-up"
                                 onClick={() => changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')}
                             >
-                                <i className="fas fa-angle-up"></i>
+                                <i className="fas fa-angle-up"/>
                             </div>
 
                             <div className="qubely-form-time-format">{seletedTimeFormat}</div>
@@ -254,7 +254,7 @@ export default function Edit(props) {
                             <div className="qubely-timePicker-button button-down"
                                 onClick={() => changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')}
                             >
-                                <i className="fas fa-angle-down"></i>
+                                <i className="fas fa-angle-down"/>
                             </div>
                         </div>
                     }
@@ -491,8 +491,8 @@ export default function Edit(props) {
                                         onDragqubely-form-date={() => setDraggedItem(index)}
                                         className={`qubely-dropdown-field-option qubely-option-${index}`}
                                     >
-                                        <span class="qubely-option-move-icon">
-                                            <i className="fa fa-bars" />
+                                        <span className={`qubely-option-move-icon`}>
+                                            <i className={`fa fa-bars`}/>
                                         </span>
 
                                         <RichText
@@ -505,7 +505,7 @@ export default function Edit(props) {
                                 )
                             })}
                             <div className={`qubely-dropdown-add-field-option`}  >
-                                <span class="qubely-option-move-icon">
+                                <span className={`qubely-option-move-icon`}>
                                     <i className="fas fa-plus-circle" />
                                 </span>
 

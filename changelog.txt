@@ -1,4 +1,4 @@
 # Change Log of Qubely Pro 
 
-#### 1.0.0 - 2019-09-01
+#### 1.0.0 - 2019-10-20
 * Initial version release

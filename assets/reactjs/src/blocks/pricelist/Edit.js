@@ -52,13 +52,27 @@ class Edit extends Component {
 	}
 
 	renderPricelist = () => {
-		const { attributes: { pricelistContents, contentAlign, headingLevel, mediaType, enableMedia, enableBadge, enablePrice, enableDiscount, enableDescription, enableLine, priceAfterTitle } } = this.props
+        const {
+            attributes: { 
+                pricelistContents, 
+                contentAlign,
+                headingLevel,
+                mediaType,
+                enableMedia,
+                enableBadge,
+                enablePrice,
+                enableDiscount,
+                enableDescription,
+                enableLine,
+                priceAfterTitle 
+            }
+        } = this.props
 		const titleTagName = 'h' + headingLevel;
 		return (pricelistContents.map(({ title, description, image, price, digitText, discount, badge }, index) => {
 			return (
 				<div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
                     <Tooltip text={__('Delete this item')}>
-                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><i class="fas fa-close"></i></span>
+                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><i className={`fas fa-close`} /></span>
                     </Tooltip>
 					<div className={`qubely-pricelist-content`}>
                         { (enableMedia == 1) && (mediaType =='image') &&
@@ -77,12 +91,12 @@ class Edit extends Component {
                                                         <div className="qubely-media-actions qubely-field-button-list">
                                                             <Tooltip text={__('Edit')}>
                                                                 <button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
-                                                                    <span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw"></span>
+                                                                    <span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw"/>
                                                                 </button>
                                                             </Tooltip>
                                                             <Tooltip text={__('Remove')}>
                                                                 <button className="qubely-button" aria-label={__('Remove')} onClick={() => this.updatePricelistContent('image', '', index)} role="button">
-                                                                    <span aria-label={__('Close')} className="far fa-trash-alt fa-fw"></span>
+                                                                    <span aria-label={__('Close')} className="far fa-trash-alt fa-fw"/>
                                                                 </button>
                                                             </Tooltip>
                                                         </div>
@@ -136,7 +150,7 @@ class Edit extends Component {
                                         keepPlaceholderOnFocus
                                     />
                                     { enableLine && (priceAfterTitle==0) &&
-                                     <span className="qubely-pricelist-line"></span>
+                                     <span className="qubely-pricelist-line"/>
                                     }
                                     <div className="qubely-pricelist-price-wrapper">
                                         {enableDiscount &&
@@ -188,7 +202,6 @@ class Edit extends Component {
 			headingTypography,
 			headingColor,
 			headingSpacing,
-
 			contentBg,
 			enableContentBorder,
 			contentBorderWidth,
@@ -201,12 +214,10 @@ class Edit extends Component {
             overlayHoverBg,
             overlayBg,
             height,
-            
             enableLine,
             lineBorderWidth,
             lineBorderColor,
             lineBorderStyle,
-            
             badgePosition,
 			enableMedia,
 			mediaType,
@@ -214,33 +225,27 @@ class Edit extends Component {
             imageBorderRadius,
             imageSize,
             imageSpacing,
-
             enableBadge,
             badgePadding,
             badgeBorderRadius,
             badgeTypography,
             badgeBg,
             badgeColor,
-
             digitColor,
             digitBg,
             digitSize,
             digitBorderRadius,
             digitSpacing,
             digitTypography,
-
             enablePrice,
             priceTypography,
             priceColor,
-
             enableDescription,
             descriptionTypography,
             descriptionColor,
-            
             enableDiscount,
             discountTypography,
             discountColor,
-
             globalZindex,
             hideTablet,
             hideMobile,

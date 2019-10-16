@@ -42,7 +42,6 @@ jQuery(document).ready(function ($) {
                     centerPadding: centerPadding,
                     dot_indicator: dot_indicator,
                     onChange: function (item) {
-                        // console.log("test: ", item)
                     }
                 })
                 

@@ -20,7 +20,7 @@ class Save extends Component {
                 return <textarea id={fieldID} name={fieldName} className={fieldClass} placeholder={__(item.placeholder)} required={item.required}></textarea>;
             case 'dropdown':
                 return (
-                    <div class="qubely-dropdown-control">
+                    <div className={`qubely-dropdown-control`}>
                         <select id={fieldID} name={fieldName} required={item.required}>
                             {item.placeholder &&
                                 <option value="">{__(item.placeholder)}</option>

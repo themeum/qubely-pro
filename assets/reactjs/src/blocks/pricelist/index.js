@@ -10,7 +10,7 @@ import Save from './Save'
 registerBlockType('qubely/pricelist', {
 	title: __('Price List'),
     category: 'qubely',
-    description: 'Showcase detailed with Qubely Price List.',
+    description: __('Showcase detailed with Qubely Price List.'),
     icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg'} alt={__('Price List')} />,
 	keywords: [
 		__('Price List'),

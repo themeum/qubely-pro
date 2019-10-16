@@ -20,8 +20,6 @@ class Init {
 		//Load Component from Class
 		new \QUBELY_PRO\Assets();
 		new \QUBELY_PRO\Updater();
-		//add_action('plugins_loaded', array($this, 'load_addons'));
-		//add_action('plugins_loaded', array($this, 'enable_addons'));
     }
     
 	/**

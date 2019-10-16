@@ -4,23 +4,21 @@ const {
 	HelperFunction: { animationAttr }
 } = wp.qubelyComponents;
 class Save extends Component {
+
 	renderSlider = (sliderimage, sliderimageAlt) => {
 		return (
 			<div className="qubely-single-img">
-				{sliderimage.url != undefined ? (
-					<img
-						className="qubely-image-sliderimage"
-						src={sliderimage.url}
-						alt={sliderimageAlt}
-					/>
+				{ sliderimage.url != undefined ? (
+					<img className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
 				) : (
-						<div className="qubely-image-placeholder qubely-image-sliderimage">
-							<i className="dashicons dashicons-format-image"></i>
-						</div>
-					)}
+					<div className="qubely-image-placeholder qubely-image-sliderimage">
+						<i className="dashicons dashicons-format-image"/>
+					</div>
+				) }
 			</div>
 		);
 	};
+
 	renderSliderInfo = (item, index) => {
 		const {
 			attributes: { layout, sliderContent, activeDescription }
@@ -61,13 +59,8 @@ class Save extends Component {
 		} = this.props;
 		return carouselItems.map((item, index) => {
 			return (
-				<div
-					key={index}
-					className={`qubely-carousel-item qubely-carousel-item`}
-				>
-					<div
-						className={`qubely-image-item layout-${layout} align-${contentVerticalAlign}`}
-					>
+				<div key={index} className={`qubely-carousel-item qubely-carousel-item`}>
+					<div className={`qubely-image-item layout-${layout} align-${contentVerticalAlign}`}>
 						{this.renderSliderInfo(item)}
 					</div>
 				</div>
@@ -84,7 +77,6 @@ class Save extends Component {
 				itemthree,
 				itemfive,
 				sliderMargin,
-
 				autoPlay,
 				speed,
 				interval,
@@ -93,7 +85,6 @@ class Save extends Component {
 				isCentered,
 				notCentered,
 				centerPadding,
-
 				nav,
 				arrowStyle,
 				infiniteLoop,
@@ -105,8 +96,7 @@ class Save extends Component {
 
 		let options = JSON.stringify({
 			autoplay: autoPlay,
-			items:
-				layout != 2 ? (layout == 5 ? itemfive.md : items.md) : itemthree.md,
+			items: layout != 2 ? (layout == 5 ? itemfive.md : items.md) : itemthree.md,
 			margin: sliderMargin,
 			center: layout == 3 || layout == 4 ? isCentered : notCentered,
 			dots: dots,
@@ -122,18 +112,15 @@ class Save extends Component {
 			responsive: [
 				{
 					viewport: 1170,
-					items:
-						layout != 2 ? (layout == 5 ? itemfive.md : items.md) : itemthree.md
+					items: layout != 2 ? (layout == 5 ? itemfive.md : items.md) : itemthree.md
 				},
 				{
 					viewport: 980,
-					items:
-						layout != 2 ? (layout == 5 ? itemfive.sm : items.sm) : itemthree.sm
+					items: layout != 2 ? (layout == 5 ? itemfive.sm : items.sm) : itemthree.sm
 				},
 				{
 					viewport: 580,
-					items:
-						layout != 2 ? (layout == 5 ? itemfive.xs : items.xs) : itemthree.xs
+					items: layout != 2 ? (layout == 5 ? itemfive.xs : items.xs) : itemthree.xs
 				}
 			]
 		});
@@ -141,13 +128,7 @@ class Save extends Component {
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
 				<div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
-					<div
-						className={`qubely-carousel qubely-carousel-wrapper${
-							isCentered && activeFade ? " is-faded" : " "
-							}`}
-						data-options={options}
-						id="qubelyCarousel1"
-					>
+					<div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? " is-faded" : " "}`} data-options={options} id="qubelyCarousel1">
 						{this.renderImage()}
 					</div>
 				</div>

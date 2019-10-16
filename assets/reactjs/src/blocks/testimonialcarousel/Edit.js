@@ -80,11 +80,10 @@ class Edit extends Component {
 				value={avatar}
 				render={({ open }) => (
 					<div className="qubely-single-img qubely-backend">
-						{
-							(avatar && avatar.url) ?
-								<img onClick={open} className="qubely-testimonial-avatar" src={avatar.url} alt={avatarAlt} />
-								:
-								<div onClick={open} className="qubely-image-placeholder qubely-testimonial-avatar" ><i className="far fa-user"></i></div>
+						{ (avatar && avatar.url) ?
+							<img onClick={open} className="qubely-testimonial-avatar" src={avatar.url} alt={avatarAlt} />
+							:
+							<div onClick={open} className="qubely-image-placeholder qubely-testimonial-avatar" ><i className="far fa-user"/></div>
 						}
 					</div>
 				)}
@@ -110,7 +109,6 @@ class Edit extends Component {
 		return (
 			<div className={`qubely-testimonial-author`}>
 				{(layout === 3 && showAvatar) && this.renderAvatar(avatar, index)}
-
 				<div className={showAvatar ? `qubely-testimonial-avatar-layout-${avatarLayout}` : ``}>
 					{(layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top')) && this.renderAvatar(avatar, index)}
 
@@ -141,22 +139,22 @@ class Edit extends Component {
 					<div key={index} className={`qubely-carousel-item`} >
 						<Tooltip text={__('Delete this item')}>
 							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
-								<span class="dashicons dashicons-no-alt"></span>
+								<span className={`dashicons dashicons-no-alt`} />
 							</span>
 						</Tooltip>
 						<div className={`qubely-tesitmonial-item layout-${layout}`}>
 
 							{layout === 2 && this.renderAuthorInfo(item, index)}
 
-							{
-								(quoteIcon && layout === 1) && <div className="qubely-testimonial-quote" >
-									<span className={`qubely-quote-icon ${quoteIcon}`}></span>
+							{(quoteIcon && layout === 1) && 
+								<div className="qubely-testimonial-quote">
+									<span className={`qubely-quote-icon ${quoteIcon}`}/>
 								</div>
 							}
 
 							{/* showRatings,ratings */}
 							<div className={`qubely-testimonial-carousel-content-wrapper`}>
-								{ (showRatings && ratings > 0 && layout !== 1) &&
+								{(showRatings && ratings > 0 && layout !== 1) &&
 									<div className="qubely-testimonial-ratings B" data-qubelyrating={ratings}></div>
 								}
 
@@ -167,10 +165,9 @@ class Edit extends Component {
 								{(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings A" data-qubelyrating={ratings}></div>}
 							</div>
 							{layout !== 2 && this.renderAuthorInfo(item, index)}
-							{
-								(quoteIcon && layout == 2) &&
+							{(quoteIcon && layout == 2) &&
 								<div className="qubely-testimonial-quote qubely-position-bottom" >
-									<span className={`qubely-quote-icon ${quoteIcon}`}></span>
+									<span className={`qubely-quote-icon ${quoteIcon}`}/>
 								</div>
 							}
 						</div>
@@ -328,7 +325,7 @@ class Edit extends Component {
 							<Fragment>
 								<ButtonGroup
 									label={__('Arrow Style')}
-									options={[[<span className="dashicons dashicons-arrow-right-alt"></span>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"></span>, 'arrowright2']]}
+									options={[[<span className="dashicons dashicons-arrow-right-alt"/>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"/>, 'arrowright2']]}
 									value={arrowStyle}
 									onChange={value => setAttributes({ arrowStyle: value })}
 								/>
