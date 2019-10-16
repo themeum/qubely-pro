@@ -4,7 +4,14 @@ const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
 class Save extends Component {
 
 	renderPricelist = () => {
-		const { attributes: { galleryContents, imageAnimation, showCaption, enableCaption } } = this.props
+		const {
+			attributes: {
+				galleryContents,
+				imageAnimation,
+				showCaption,
+				enableCaption 
+			}
+		} = this.props
 
 		return (galleryContents.map(({ title, image }, index) => {
 			return (
@@ -30,7 +37,15 @@ class Save extends Component {
 	}
 
 	render() {
-		const { attributes: { uniqueId, animation, style, column, interaction } } = this.props
+		const { 
+			attributes: { 
+				uniqueId,
+				animation,
+				style,
+				column,
+				interaction 
+			} 
+		} = this.props
 		const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>

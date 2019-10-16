@@ -50,7 +50,7 @@ registerBlockType('qubely/form-row', {
             },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-form-row.qubely-backend .editor-inner-blocks.block-editor-inner-blocks >div {margin-top:-{{spacer}};margin-bottom:-{{spacer}};} {{QUBELY}} .qubely-form-row.qubely-frontend {margin-top:-{{spacer}};margin-bottom:-{{spacer}};} {{QUBELY}} .qubely-form-row.qubely-backend .editor-block-list__layout.block-editor-block-list__layout>div,{{QUBELY}} .qubely-form-row.qubely-frontend .qubely-form-field-front{padding-top:{{spacer}};padding-bottom:{{spacer}};} '
+                    selector: '{{QUBELY}} .qubely-form-row.qubely-backend {margin-bottom:{{spacer}};}'
                 }
             ]
         },
