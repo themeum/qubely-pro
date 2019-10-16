@@ -293,8 +293,9 @@ class Edit extends Component {
                             value={layout}
                             onChange={val => setAttributes({ layout: val })}
                             options={[
-                                { value: 'classic', img: icons.form_classic, label: __('Classic') },
-                                { value: 'material', img: icons.form_material, label: __('Material') },
+                                { value: 'classic', img: icons.form_classic },
+                                { value: 'material', img: icons.form_material },
+                                { value: 'materialdark', img: icons.form_material_dark },
                             ]}
                         />
                     </PanelBody>
@@ -540,7 +541,7 @@ class Edit extends Component {
                             />
                         </form>
 
-                        <div className="qubely-form-group qubely-form-button" >
+                        <div className="qubely-form-button" >
                             <QubelyButtonEdit
                                 enableButton={enableButton}
                                 buttonFillType={buttonFillType}

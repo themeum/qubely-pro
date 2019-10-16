@@ -6,6 +6,8 @@ const icons = {
     //form 
     form_classic: <img src={`${img_path}/form/classic.svg`} alt={__('Classic')} />,
     form_material: <img src={`${img_path}/form/material.svg`} alt={__('Material')} />,
+    form_material_dark: <img src={`${img_path}/form/materialdark.svg`} alt={__('Material dark')} />,
+   
     // Testimonial Carousel icon.
     testimonial_1: <img src={`${img_path}/testimonial/1.svg`} alt={__('Testimonial 1')} />,
     testimonial_2: <img src={`${img_path}/testimonial/2.svg`} alt={__('Testimonial 2')} />,

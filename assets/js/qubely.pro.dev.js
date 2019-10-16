@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-field-wrapper .qubely-form-field {\n  width: 100%; }\n  .qubely-form-field-wrapper .qubely-form-field .qubely-form-date-picker {\n    width: fit-content; }\n  .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio {\n    display: flex;\n    flex-wrap: wrap;\n    margin-left: -10px;\n    margin-right: -10px; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-auto .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-auto .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-auto .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-auto .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-auto .qubely-form-field-radio-option {\n      width: auto;\n      padding-left: 10px;\n      padding-right: 10px; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-1-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-1-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-1-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-1-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-1-column .qubely-form-field-radio-option {\n      width: 100%;\n      padding-left: 10px;\n      padding-right: 10px; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-2-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-2-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-2-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-2-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-2-column .qubely-form-field-radio-option {\n      width: 50%;\n      padding-left: 10px;\n      padding-right: 10px; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-3-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-3-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-3-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-3-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-3-column .qubely-form-field-radio-option {\n      width: 33%;\n      padding-left: 10px;\n      padding-right: 10px; }\n  .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option,\n  .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option {\n    display: flex;\n    align-items: center; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option:hover .qubely-action-remove-option,\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option:hover .qubely-action-remove-option {\n      display: block; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option .qubely-action-remove-option,\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option .qubely-action-remove-option {\n      display: none;\n      font-size: 10px;\n      width: 18px;\n      height: 18px;\n      line-height: 18px;\n      text-align: center;\n      background: rgba(0, 0, 0, 0.8);\n      color: #fff;\n      margin-left: 10px;\n      border-radius: 10px;\n      z-index: 1;\n      cursor: pointer; }\n  .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option {\n    color: #2184f9;\n    cursor: pointer; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-option-add-icon {\n      margin-right: 5px;\n      -webkit-text-stroke: 2px white; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-action-add-text {\n      color: #2184f9; }\n\n.qubely-form-field-wrapper .qubely-form-timepicker {\n  opacity: 0;\n  height: auto;\n  min-width: 150px;\n  max-height: 0;\n  overflow: hidden;\n  position: absolute;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  transition: max-height 0.1s ease-in-out;\n  background: #ffffff;\n  border-radius: 4px;\n  border: none;\n  border-top: transparent;\n  -webkit-box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);\n  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.1);\n  text-align: center; }\n\n.qubely-form-field-wrapper .qubely-active {\n  opacity: 1;\n  max-height: 150px;\n  padding: 15px;\n  z-index: 100; }\n\n.qubely-form-field-wrapper .qubely-timePicker-button {\n  cursor: pointer;\n  color: #d7d7d7;\n  line-height: 1;\n  transition: 400ms; }\n  .qubely-form-field-wrapper .qubely-timePicker-button:hover {\n    color: #151515; }\n\n.wp-block-qubely-formfield-time .qubely-form-field-wrapper {\n  position: relative; }\n  .wp-block-qubely-formfield-time .qubely-form-field-wrapper .qubely-form-timepicker.qubely-active {\n    top: 100%; }\n\n.qubely-form-field.qubely-form-number {\n  height: auto; }\n\n.wp-admin .qubely-form-field-wrapper select {\n  height: auto;\n  line-height: inherit; }\n\n.qubely-form-dropdown {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  background-position: right 50%;\n  background-repeat: no-repeat;\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAMCAYAAABSgIzaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDZFNDEwNjlGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDZFNDEwNkFGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NkU0MTA2N0Y3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NkU0MTA2OEY3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuGsgwQAAAA5SURBVHjaYvz//z8DOYCJgUxAf42MQIzTk0D/M+KzkRGPoQSdykiKJrBGpOhgJFYTWNEIiEeAAAMAzNENEOH+do8AAAAASUVORK5CYII=);\n  padding: .5em;\n  padding-right: 1.5em;\n  border-radius: 0;\n  text-transform: capitalize; }\n\n.ui-datepicker-title select {\n  border: 1px solid #ced4d9;\n  margin: 0 2px;\n  background: none; }\n\n.ui-datepicker-calendar tbody td a:hover {\n  background-color: #e3f0ff; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n\n.qubely-form-date-picker-format .qubely-field-group-btn {\n  flex-direction: column;\n  align-items: flex-start;\n  margin-bottom: 15px; }\n  .qubely-form-date-picker-format .qubely-field-group-btn .qubley-group-button {\n    font-size: 11px;\n    padding: 10px 4px; }\n\n.qubely-form-time-picker-format .components-button-group {\n  min-width: 50%;\n  margin-bottom: 15px; }\n\n.qubely-form-time-picker-minute-interval {\n  margin-bottom: 15px; }\n  .qubely-form-time-picker-minute-interval .qubely-field-group-btn {\n    flex-direction: column;\n    align-items: flex-start; }\n    .qubely-form-time-picker-minute-interval .qubely-field-group-btn .qubley-group-button {\n      padding: 5px 10px; }\n\n#ui-datepicker-div {\n  display: none;\n  background-color: #fff;\n  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);\n  margin-top: 0.25rem;\n  border-radius: 0.5rem;\n  padding: 0.5rem; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.ui-datepicker-calendar thead th {\n  padding: 0.25rem 0;\n  text-align: center;\n  font-size: 0.75rem;\n  font-weight: 400;\n  color: #78909c; }\n\n.ui-datepicker-calendar tbody td {\n  width: 2.5rem;\n  text-align: center;\n  padding: 0; }\n\n.ui-datepicker-calendar tbody td a {\n  display: block;\n  border-radius: 0.25rem;\n  line-height: 2rem;\n  transition: 0.3s all;\n  color: #546e7a;\n  font-size: 0.875rem;\n  text-decoration: none; }\n\n.ui-datepicker-calendar tbody td a:hover {\n  background-color: #e0f2f1; }\n\n.ui-datepicker-calendar tbody td a.ui-state-active {\n  background-color: #009688;\n  color: white; }\n\n.ui-datepicker-header a.ui-corner-all {\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  width: 2rem;\n  height: 2rem;\n  margin: 0.5rem;\n  border-radius: 0.25rem;\n  transition: 0.3s all; }\n\n.ui-datepicker-header a.ui-corner-all:hover {\n  background-color: #eceff1; }\n\n.ui-datepicker-header a.ui-datepicker-prev {\n  left: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 0.5rem;\n  background-position: 50%;\n  transform: rotate(180deg); }\n\n.ui-datepicker-header a.ui-datepicker-next {\n  right: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 10px;\n  background-position: 50%; }\n\n.ui-datepicker-header a > span {\n  display: none; }\n\n.ui-datepicker-title {\n  text-align: center;\n  line-height: 2rem;\n  margin-bottom: 0.25rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  padding-bottom: 0.25rem; }\n\n.ui-datepicker-week-col {\n  color: #78909c;\n  font-weight: 400;\n  font-size: 0.75rem; }\n\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table td,\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table th {\n  border: none;\n  word-break: break-all; }\n", ""]);
+exports.push([module.i, ".qubely-form-field-wrapper .qubely-form-field {\n  width: 100%; }\n  .qubely-form-field-wrapper .qubely-form-field .qubely-form-date-picker {\n    width: fit-content; }\n  .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio {\n    display: flex;\n    flex-wrap: wrap;\n    margin-left: -10px;\n    margin-right: -10px; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-auto .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-auto .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-auto .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-auto .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-auto .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-auto .qubely-form-field-radio-option {\n      width: auto;\n      padding-left: 10px;\n      padding-right: 10px; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-1-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-1-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-1-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-1-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-1-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-1-column .qubely-form-field-radio-option {\n      width: 100%;\n      padding-left: 10px;\n      padding-right: 10px; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-2-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-2-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-2-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-2-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-2-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-2-column .qubely-form-field-radio-option {\n      width: 50%;\n      padding-left: 10px;\n      padding-right: 10px; }\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-3-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-checkbox-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-3-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-checkbox.qubely-radio-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-3-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-checkbox-3-column .qubely-form-field-radio-option, .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-3-column .qubely-form-field-checkbox-option,\n    .qubely-form-field-wrapper .qubely-form-field.qubely-form-radio.qubely-radio-3-column .qubely-form-field-radio-option {\n      width: 33%;\n      padding-left: 10px;\n      padding-right: 10px; }\n  .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option,\n  .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option {\n    display: flex;\n    align-items: center; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option:hover .qubely-action-remove-option,\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option:hover .qubely-action-remove-option {\n      display: block; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-radio-option .qubely-action-remove-option,\n    .qubely-form-field-wrapper .qubely-form-field .qubely-form-field-checkbox-option .qubely-action-remove-option {\n      display: none;\n      font-size: 10px;\n      width: 18px;\n      height: 18px;\n      line-height: 18px;\n      text-align: center;\n      background: rgba(0, 0, 0, 0.8);\n      color: #fff;\n      margin-left: 10px;\n      border-radius: 10px;\n      z-index: 1;\n      cursor: pointer; }\n  .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option {\n    color: #2184f9;\n    cursor: pointer; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-option-add-icon {\n      margin-right: 5px;\n      -webkit-text-stroke: 2px white; }\n    .qubely-form-field-wrapper .qubely-form-field .qubely-action-add-option .qubely-action-add-text {\n      color: #2184f9; }\n\n.qubely-form-field-wrapper .qubely-form-timepicker {\n  opacity: 0;\n  height: auto;\n  min-width: 150px;\n  max-height: 0;\n  overflow: hidden;\n  position: absolute;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  transition: max-height 0.1s ease-in-out;\n  background: #ffffff;\n  border-radius: 4px;\n  border: none;\n  border-top: transparent;\n  -webkit-box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);\n  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.1);\n  text-align: center; }\n\n.qubely-form-field-wrapper .qubely-active {\n  opacity: 1;\n  max-height: 150px;\n  padding: 15px;\n  z-index: 100; }\n\n.qubely-form-field-wrapper .qubely-timePicker-button {\n  cursor: pointer;\n  color: #d7d7d7;\n  line-height: 1;\n  transition: 400ms; }\n  .qubely-form-field-wrapper .qubely-timePicker-button:hover {\n    color: #151515; }\n\n.wp-block-qubely-formfield-time .qubely-form-field-wrapper {\n  position: relative; }\n  .wp-block-qubely-formfield-time .qubely-form-field-wrapper .qubely-form-timepicker.qubely-active {\n    top: 100%; }\n\n.qubely-form-field.qubely-form-number {\n  height: auto; }\n\n.wp-admin .qubely-form-field-wrapper select {\n  height: auto;\n  line-height: inherit; }\n\n.qubely-form-dropdown {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  background-position: right 50%;\n  background-repeat: no-repeat;\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAMCAYAAABSgIzaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDZFNDEwNjlGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDZFNDEwNkFGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NkU0MTA2N0Y3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NkU0MTA2OEY3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuGsgwQAAAA5SURBVHjaYvz//z8DOYCJgUxAf42MQIzTk0D/M+KzkRGPoQSdykiKJrBGpOhgJFYTWNEIiEeAAAMAzNENEOH+do8AAAAASUVORK5CYII=);\n  border-radius: 0;\n  text-transform: capitalize;\n  padding: 5px 10px !important; }\n\n.ui-datepicker-title select {\n  border: 1px solid #ced4d9;\n  margin: 0 2px;\n  background: none; }\n\n.ui-datepicker-calendar tbody td a:hover {\n  background-color: #e3f0ff; }\n\n.qubely-dropdown-field-option,\n.qubely-dropdown-add-field-option {\n  padding: 10px 0px;\n  display: flex;\n  align-items: center; }\n  .qubely-dropdown-field-option .qubely-option-move-icon,\n  .qubely-dropdown-add-field-option .qubely-option-move-icon {\n    cursor: pointer;\n    padding: 0px 10px; }\n  .qubely-dropdown-field-option > div,\n  .qubely-dropdown-add-field-option > div {\n    width: 80%; }\n    .qubely-dropdown-field-option > div .qubely-option,\n    .qubely-dropdown-add-field-option > div .qubely-option {\n      cursor: text;\n      border: 1px solid #d6d6d6;\n      padding: 6px 8px;\n      box-shadow: none; }\n  .qubely-dropdown-field-option .qubely-action-add-option,\n  .qubely-dropdown-add-field-option .qubely-action-add-option {\n    padding: 8px 20px;\n    display: flex;\n    align-items: center;\n    background-color: #ccc;\n    border-radius: 5px;\n    cursor: pointer; }\n\n.qubely-dropdown-add-field-option .qubely-option-move-icon > i {\n  font-size: 15px; }\n\n.qubely-form-date-picker-format .qubely-field-group-btn {\n  flex-direction: column;\n  align-items: flex-start;\n  margin-bottom: 15px; }\n  .qubely-form-date-picker-format .qubely-field-group-btn .qubley-group-button {\n    font-size: 11px;\n    padding: 10px 4px; }\n\n.qubely-form-time-picker-format .components-button-group {\n  min-width: 50%;\n  margin-bottom: 15px; }\n\n.qubely-form-time-picker-minute-interval {\n  margin-bottom: 15px; }\n  .qubely-form-time-picker-minute-interval .qubely-field-group-btn {\n    flex-direction: column;\n    align-items: flex-start; }\n    .qubely-form-time-picker-minute-interval .qubely-field-group-btn .qubley-group-button {\n      padding: 5px 10px; }\n\n#ui-datepicker-div {\n  display: none;\n  background-color: #fff;\n  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);\n  margin-top: 0.25rem;\n  border-radius: 0.5rem;\n  padding: 0.5rem; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.ui-datepicker-calendar thead th {\n  padding: 0.25rem 0;\n  text-align: center;\n  font-size: 0.75rem;\n  font-weight: 400;\n  color: #78909c; }\n\n.ui-datepicker-calendar tbody td {\n  width: 2.5rem;\n  text-align: center;\n  padding: 0; }\n\n.ui-datepicker-calendar tbody td a {\n  display: block;\n  border-radius: 0.25rem;\n  line-height: 2rem;\n  transition: 0.3s all;\n  color: #546e7a;\n  font-size: 0.875rem;\n  text-decoration: none; }\n\n.ui-datepicker-calendar tbody td a:hover {\n  background-color: #e0f2f1; }\n\n.ui-datepicker-calendar tbody td a.ui-state-active {\n  background-color: #009688;\n  color: white; }\n\n.ui-datepicker-header a.ui-corner-all {\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  width: 2rem;\n  height: 2rem;\n  margin: 0.5rem;\n  border-radius: 0.25rem;\n  transition: 0.3s all; }\n\n.ui-datepicker-header a.ui-corner-all:hover {\n  background-color: #eceff1; }\n\n.ui-datepicker-header a.ui-datepicker-prev {\n  left: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 0.5rem;\n  background-position: 50%;\n  transform: rotate(180deg); }\n\n.ui-datepicker-header a.ui-datepicker-next {\n  right: 0;\n  background: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-size: 10px;\n  background-position: 50%; }\n\n.ui-datepicker-header a > span {\n  display: none; }\n\n.ui-datepicker-title {\n  text-align: center;\n  line-height: 2rem;\n  margin-bottom: 0.25rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  padding-bottom: 0.25rem; }\n\n.ui-datepicker-week-col {\n  color: #78909c;\n  font-weight: 400;\n  font-size: 0.75rem; }\n\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table td,\n.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all table th {\n  border: none;\n  word-break: break-all; }\n", ""]);
 
 
 
@@ -110,7 +110,7 @@ exports.push([module.i, ".qubely-form-field-wrapper .qubely-form-field {\n  widt
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-row > .editor-inner-blocks > .editor-block-list__layout {\n  display: flex; }\n\n.qubely-action-add-form-empty {\n  outline: 1px dashed #8d96a0;\n  width: 100%;\n  color: #555d66;\n  background: rgba(237, 239, 240, 0.8);\n  min-height: 60px;\n  text-align: center;\n  line-height: 60px; }\n  .qubely-action-add-form-empty svg {\n    position: relative;\n    top: 4px;\n    cursor: pointer; }\n", ""]);
+exports.push([module.i, ".qubely-form-row.qubely-frontend,\n.qubely-form-row.qubely-backend > .editor-inner-blocks > .editor-block-list__layout {\n  display: flex; }\n\n.qubely-action-add-form-empty {\n  outline: 1px dashed #8d96a0;\n  width: 100%;\n  color: #555d66;\n  background: rgba(237, 239, 240, 0.8);\n  min-height: 60px;\n  text-align: center;\n  line-height: 60px; }\n  .qubely-action-add-form-empty svg {\n    position: relative;\n    top: 4px;\n    cursor: pointer; }\n", ""]);
 
 
 
@@ -125,7 +125,7 @@ exports.push([module.i, ".qubely-form-row > .editor-inner-blocks > .editor-block
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form .editor-inner-blocks.block-editor-inner-blocks > .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #fff;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs {\n    width: 100%;\n    display: flex;\n    justify-content: space-around;\n    padding: 5px 0px; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab {\n      width: 95%;\n      text-align: center;\n      background: #ffffff;\n      border: 1px solid #d6d9dd;\n      border-radius: 4px;\n      padding: 5px 30px;\n      display: flex;\n      align-items: center;\n      margin: 7px 0px;\n      display: flex;\n      justify-content: center; }\n      .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab.qubely-active {\n        color: #fff;\n        background-color: #1066cc;\n        border-radius: 5px;\n        cursor: pointer; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #f8f8f8;\n    border: 1px solid #e5e5e5;\n    border-radius: 2px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px;\n    transition: 400ms;\n    justify-content: center; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type:hover {\n      background: #e5e5e5; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-form-field-picker .qubely-form-column-options {\n  width: 100%; }\n  .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option {\n    width: 25%;\n    cursor: pointer;\n    width: 26%;\n    background: transparent;\n    border: none;\n    height: 50px;\n    margin: 7px !important;\n    display: inline-flex;\n    padding: 0 !important;\n    outline: 1px solid transparent;\n    transition: 300ms;\n    opacity: 1;\n    padding: 5px 20px; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i {\n      height: 50px;\n      background: #e2e6ec;\n      border: 1px solid #e2e6ec;\n      border-radius: 3px;\n      display: inline-block;\n      position: relative;\n      transition: 300ms;\n      font-style: normal; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i:not(:last-of-type) {\n      margin-right: 2px; }\n\n.qubely-form-field-wrapper .qubely-form-field-label {\n  margin-bottom: 5px; }\n\n.qubely-form-field-checkbox-option {\n  margin-bottom: 5px; }\n  .qubely-form-field-checkbox-option .qubely-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-field-checkbox-option input[type=\"checkbox\"] {\n    margin-top: 3px;\n    border: 1px solid #8d96a0; }\n  .qubely-form-field-checkbox-option::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-checkbox {\n  margin-bottom: 5px; }\n  .qubely-form-checkbox .qubely-form-field-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-checkbox input[type=\"checkbox\"] {\n    margin-top: 2px;\n    border: 1px solid #8d96a0;\n    margin-right: 8px; }\n  .qubely-form-checkbox::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio .qubely-form-field-radio-option {\n  margin-bottom: 5px;\n  color: #535f6a;\n  text-transform: capitalize; }\n  .qubely-form-radio .qubely-form-field-radio-option:last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio input[type=\"radio\"] {\n  margin-top: 0;\n  margin-right: 8px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-text\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-email\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-number\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-radio\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-time\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-date\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-textarea\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-dropdown\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-checkbox\"] > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed #9e9e9e;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 #9e9e9e;\n  top: 0px;\n  right: 0px;\n  left: 0px;\n  bottom: 0px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-checkbox\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-email\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-number\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-radio\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-date\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-time\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-textarea\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-dropdown\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-text\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-text\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-email\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-number\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-radio\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-time\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-date\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-textarea\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-dropdown\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-checkbox\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n[data-type=\"qubely/form-row\"]:hover .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed #2184F9;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 #2184F9;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0; }\n\n.block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 5px solid transparent; }\n\n.block-editor-block-list__block.is-selected[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 5px solid rgba(33, 132, 249, 0.1); }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] .block-editor-block-list__block-edit {\n  margin: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"]:hover > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed green;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 green;\n  top: 0px;\n  bottom: 0px;\n  right: 0;\n  left: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 14px solid transparent; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 14px solid rgba(76, 175, 80, 0.1); }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit .block-editor-block-mover {\n  left: -30px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit [data-block] {\n  margin-top: 0;\n  margin-bottom: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n.qubely-block-form .block-editor-inner-blocks [data-type=\"qubely/form-row\"] {\n  padding: 0; }\n\n.qubely-form-field-wrapper .qubely-form-label {\n  vertical-align: baseline; }\n", ""]);
+exports.push([module.i, ".qubely-block-form .qubely-form.is-small .qubely-form-field {\n  padding: 6px 8px; }\n\n.qubely-block-form .qubely-form.is-medium .qubely-form-field {\n  padding: 8.5px 12px; }\n\n.qubely-block-form .qubely-form.is-large .qubely-form-field {\n  padding: 14.5px 16px; }\n\n.qubely-block-form .qubely-form .editor-inner-blocks.block-editor-inner-blocks > .editor-block-list__layout.block-editor-block-list__layout > div:last-child {\n  display: none; }\n\n.qubely-block-form .qubely-form-add-item {\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field {\n    background: #ffffff;\n    color: #2184f9;\n    border: 1px dashed #2184f9;\n    border-radius: 4px;\n    padding: 5px 35px; }\n    .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item {\n      font-size: 16px; }\n      .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field .qubely-action-add-form-item i {\n        padding: 0px 5px; }\n  .qubely-block-form .qubely-form-add-item .qubely-action-add-form-field:hover {\n    cursor: pointer;\n    background: rgba(33, 132, 249, 0.1);\n    color: #2184f9;\n    border-radius: 5px; }\n\n.qubely-form-field-picker .qubely-form-field-types {\n  background: #fff;\n  box-shadow: 0 22px 54px -15px rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs {\n    width: 100%;\n    display: flex;\n    justify-content: space-around;\n    padding: 5px 0px; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab {\n      width: 95%;\n      text-align: center;\n      background: #ffffff;\n      border: 1px solid #d6d9dd;\n      border-radius: 4px;\n      padding: 5px 30px;\n      display: flex;\n      align-items: center;\n      margin: 7px 0px;\n      display: flex;\n      justify-content: center; }\n      .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-tabs .qubely-form-field-tab.qubely-active {\n        color: #fff;\n        background-color: #1066cc;\n        border-radius: 5px;\n        cursor: pointer; }\n  .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type {\n    background: #f8f8f8;\n    border: 1px solid #e5e5e5;\n    border-radius: 2px;\n    padding: 5px 15px;\n    width: 45%;\n    display: flex;\n    align-items: center;\n    margin: 5px 0px;\n    transition: 400ms;\n    justify-content: center; }\n    .qubely-form-field-picker .qubely-form-field-types .qubely-form-field-type:hover {\n      background: #e5e5e5; }\n  .qubely-form-field-picker .qubely-form-field-types :hover {\n    cursor: pointer; }\n\n.qubely-form-field-picker .qubely-form-column-options {\n  width: 100%; }\n  .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option {\n    width: 25%;\n    cursor: pointer;\n    width: 26%;\n    background: transparent;\n    border: none;\n    height: 50px;\n    margin: 7px !important;\n    display: inline-flex;\n    padding: 0 !important;\n    outline: 1px solid transparent;\n    transition: 300ms;\n    opacity: 1;\n    padding: 5px 20px; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i {\n      height: 50px;\n      background: #e2e6ec;\n      border: 1px solid #e2e6ec;\n      border-radius: 3px;\n      display: inline-block;\n      position: relative;\n      transition: 300ms;\n      font-style: normal; }\n    .qubely-form-field-picker .qubely-form-column-options .qubely-form-column-option i:not(:last-of-type) {\n      margin-right: 2px; }\n\n.qubely-form-field-wrapper .qubely-form-field-label {\n  margin-bottom: 5px; }\n\n.qubely-form-field-checkbox-option {\n  margin-bottom: 5px; }\n  .qubely-form-field-checkbox-option .qubely-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-field-checkbox-option input[type=\"checkbox\"] {\n    margin-top: 3px;\n    border: 1px solid #8d96a0; }\n    .qubely-form-field-checkbox-option input[type=\"checkbox\"]:before {\n      margin: -1px 0 0 -1px !important;\n      font: normal 16px/1 dashicons !important; }\n    .qubely-form-field-checkbox-option input[type=\"checkbox\"]:checked:focus {\n      box-shadow: none; }\n  .qubely-form-field-checkbox-option::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-checkbox {\n  margin-bottom: 5px; }\n  .qubely-form-checkbox .qubely-form-field-checkbox-option {\n    color: #535f6a;\n    text-transform: capitalize; }\n  .qubely-form-checkbox input[type=\"checkbox\"] {\n    margin-top: 2px;\n    border: 1px solid #8d96a0;\n    margin-right: 8px; }\n  .qubely-form-checkbox::last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio .qubely-form-field-radio-option {\n  margin-bottom: 5px;\n  color: #535f6a;\n  text-transform: capitalize; }\n  .qubely-form-radio .qubely-form-field-radio-option:last-child {\n    margin-bottom: 0; }\n\n.qubely-form-radio input[type=\"radio\"] {\n  margin-top: 0;\n  margin-right: 8px; }\n  .qubely-form-radio input[type=\"radio\"]:checked:focus {\n    box-shadow: none; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-text\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-email\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-number\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-radio\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-time\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-date\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-textarea\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-dropdown\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/formfield-checkbox\"] > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed #9e9e9e;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 #9e9e9e;\n  top: 0px;\n  right: 0px;\n  left: 0px;\n  bottom: 0px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-checkbox\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-email\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-number\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-radio\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-date\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-time\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-textarea\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-dropdown\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-text\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-text\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-email\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-number\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-radio\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-time\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-date\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-textarea\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-dropdown\"] > .editor-block-list__insertion-point,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/formfield-checkbox\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n[data-type=\"qubely/form-row\"]:hover .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed #2184F9;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 #2184F9;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0; }\n\n.block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 8px solid transparent; }\n\n.block-editor-block-list__block.is-selected[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 8px solid rgba(33, 132, 249, 0.1); }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-column\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] .block-editor-block-list__block-edit {\n  margin: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit:before,\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"]:hover > .block-editor-block-list__block-edit:before {\n  outline: 1px dashed green;\n  border-color: transparent;\n  border: none;\n  box-shadow: -2px 0 0 0 green;\n  top: 0px;\n  bottom: 0px;\n  right: 0;\n  left: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 14px solid transparent; }\n\n.block-editor-block-list__layout .block-editor-block-list__block.is-selected[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > div:last-child {\n  border: 14px solid rgba(76, 175, 80, 0.1); }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit > .block-editor-block-contextual-toolbar .block-editor-block-toolbar {\n  top: 14px;\n  left: 16px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit .block-editor-block-mover {\n  left: -30px; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .block-editor-block-list__block-edit [data-block] {\n  margin-top: 0;\n  margin-bottom: 0; }\n\n.block-editor-block-list__layout .block-editor-block-list__block[data-type=\"qubely/form-row\"] > .editor-block-list__insertion-point {\n  display: none; }\n\n.qubely-block-form .block-editor-inner-blocks [data-type=\"qubely/form-row\"] {\n  padding: 0; }\n\n.qubely-form-field-wrapper .qubely-form-label {\n  vertical-align: baseline; }\n", ""]);
 
 
 
@@ -1196,7 +1196,7 @@ var Edit = function (_Component) {
                             onChange: function onChange(val) {
                                 return setAttributes({ layout: val });
                             },
-                            options: [{ value: 'classic', img: _icons2.default.form_classic, label: __('Classic') }, { value: 'material', img: _icons2.default.form_material, label: __('Material') }]
+                            options: [{ value: 'classic', img: _icons2.default.form_classic }, { value: 'material', img: _icons2.default.form_material }, { value: 'materialdark', img: _icons2.default.form_material_dark }]
                         })
                     ),
                     React.createElement(
@@ -1500,7 +1500,7 @@ var Edit = function (_Component) {
                         ),
                         React.createElement(
                             'div',
-                            { className: 'qubely-form-group qubely-form-button' },
+                            { className: 'qubely-form-button' },
                             React.createElement(QubelyButtonEdit, {
                                 enableButton: enableButton,
                                 buttonFillType: buttonFillType,
@@ -1605,7 +1605,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
-var Component = wp.element.Component;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
 var _wp$editor = wp.editor,
     RichText = _wp$editor.RichText,
     InnerBlocks = _wp$editor.InnerBlocks;
@@ -1630,77 +1632,12 @@ var Save = function (_Component) {
             return window.btoa(str);
         }
     }, {
-        key: '_renderField',
-        value: function _renderField(item, index, inputSize) {
-            var fieldID = 'qubely-form-input-' + index;
-            var fieldName = 'qubely-form-input[' + item.name + (item.required ? '*' : '') + ']';
-            var fieldClass = 'qubely-form-control is-' + inputSize;
-            switch (item.type) {
-                case 'text':
-                case 'email':
-                    return React.createElement('input', { id: fieldID, name: fieldName, className: fieldClass, type: item.type, placeholder: __(item.placeholder), required: item.required });
-                case 'textarea':
-                    return React.createElement('textarea', { id: fieldID, name: fieldName, className: fieldClass, placeholder: __(item.placeholder), required: item.required });
-                case 'dropdown':
-                    return React.createElement(
-                        'div',
-                        { className: 'qubely-dropdown-control' },
-                        React.createElement(
-                            'select',
-                            { id: fieldID, name: fieldName, required: item.required },
-                            item.placeholder && React.createElement(
-                                'option',
-                                { value: '' },
-                                __(item.placeholder)
-                            ),
-                            item.options && item.options.map(function (option, i) {
-                                return React.createElement(
-                                    'option',
-                                    { value: option },
-                                    __(option)
-                                );
-                            })
-                        )
-                    );
-                case 'radio':
-                case 'checkbox':
-                    return React.createElement(
-                        'div',
-                        { className: 'qubely-form-group-radio', 'data-required': item.required ? 'true' : '' },
-                        item.options && item.options.map(function (option, i) {
-                            return React.createElement(
-                                'div',
-                                { className: 'qubely-radio-control' },
-                                React.createElement('input', { id: 'qubely-form-input-' + index + '-' + i, type: item.type, name: item.type == 'checkbox' ? fieldName + '[' + i + ']' : fieldName, value: option }),
-                                React.createElement(
-                                    'label',
-                                    { 'for': 'qubely-form-input-' + index + '-' + i },
-                                    __(option)
-                                )
-                            );
-                        })
-                    );
-                default:
-                    return '';
-            }
-        }
-    }, {
-        key: '_renderFormGroupCss',
-        value: function _renderFormGroupCss() {
-            var formItems = this.props.attributes.formItems;
-
-            var formGroupCss = '';
-            formItems.forEach(function (item, index) {
-                formGroupCss += (item.width.md ? '.qubely-form-group.qubely-form-group-index-' + index + ' { width: ' + item.width.md + '% }' : '') + '\n                ' + (item.width.sm ? '@media (max-width: 991px) { .qubely-form-group.qubely-form-group-index-' + index + ' { width: ' + item.width.sm + '% } }' : '') + '\n                ' + (item.width.xs ? '@media (max-width: 767px) { .qubely-form-group.qubely-form-group-index-' + index + ' { width: ' + item.width.xs + '% } }' : '');
-            });
-            return formGroupCss;
-        }
-    }, {
         key: 'render',
         value: function render() {
             var _encrypt = this._encrypt;
             var _props$attributes = this.props.attributes,
                 uniqueId = _props$attributes.uniqueId,
+                inputSize = _props$attributes.inputSize,
                 fieldErrorMessage = _props$attributes.fieldErrorMessage,
                 formSuccessMessage = _props$attributes.formSuccessMessage,
                 formErrorMessage = _props$attributes.formErrorMessage,
@@ -1724,7 +1661,9 @@ var Save = function (_Component) {
                 animation = _props$attributes.animation,
                 interaction = _props$attributes.interaction;
 
+
             var interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
+
             return React.createElement(
                 'div',
                 _extends({ className: 'qubely-block-' + uniqueId }, animationAttr(animation)),
@@ -1733,16 +1672,12 @@ var Save = function (_Component) {
                     { className: 'qubely-block-form ' + interactionClass + ' qubely-layout-' + layout },
                     React.createElement(
                         'form',
-                        { className: 'qubely-form' },
+                        { className: 'qubely-form is-' + inputSize },
                         React.createElement(InnerBlocks.Content, null),
-                        reCaptcha && React.createElement(
-                            'div',
-                            { className: 'qubely-form-group' },
-                            React.createElement('div', { className: 'qubely-google-recaptcha' })
-                        ),
+                        reCaptcha && React.createElement('div', { className: 'qubely-google-recaptcha' }),
                         policyCheckbox && React.createElement(
-                            'div',
-                            { className: 'qubely-form-group', style: { width: '100%' } },
+                            Fragment,
+                            null,
                             React.createElement('input', { className: '', type: 'checkbox', name: 'qubely-form-has-policy', id: 'qubely-form-policy-checkbox', value: 'Yes', required: true }),
                             React.createElement(
                                 'label',
@@ -1752,7 +1687,7 @@ var Save = function (_Component) {
                         ),
                         React.createElement(
                             'div',
-                            { className: 'qubely-form-group', style: { width: '100%' } },
+                            { className: 'qubely-form-button' },
                             React.createElement(QubelyButtonSave, {
                                 buttonFillType: buttonFillType,
                                 buttonSize: buttonSize,
@@ -1773,15 +1708,7 @@ var Save = function (_Component) {
                             React.createElement('input', { type: 'hidden', name: 'email-subject', value: _encrypt(emailSubject) }),
                             React.createElement('input', { type: 'hidden', name: 'email-body', value: _encrypt(emailBody) })
                         ),
-                        React.createElement(
-                            'div',
-                            { className: 'qubely-form-group' },
-                            React.createElement(
-                                'div',
-                                { className: 'qubely-form-group-inner' },
-                                React.createElement('div', { className: 'qubely-form-message' })
-                            )
-                        )
+                        React.createElement('div', { className: 'qubely-form-message' })
                     )
                 )
             );
@@ -1902,7 +1829,7 @@ exports.default = function (clientId) {
                 onChange: function onChange(val) {
                     return updateAttributes('layout', val);
                 },
-                options: [{ value: 'classic', img: _icons2.default.form_classic, label: __('Classic') }, { value: 'material', img: _icons2.default.form_material, label: __('Material') }]
+                options: [{ value: 'classic', img: _icons2.default.form_classic }, { value: 'material', img: _icons2.default.form_material }, { value: 'materialdark', img: _icons2.default.form_material_dark }]
             })
         ),
         React.createElement(
@@ -2367,26 +2294,6 @@ function Edit(props) {
         });
     });
 
-    var renderLabel = function renderLabel() {
-        return React.createElement(
-            'label',
-            { className: 'qubely-form-label' },
-            React.createElement(RichText, {
-                placeholder: __('Input label'),
-                className: 'qubely-form-field-label',
-                value: label,
-                onChange: function onChange(value) {
-                    return setAttributes({ label: value });
-                }
-            }),
-            required && React.createElement(
-                'span',
-                { className: 'qubely-from-field-required-sign' },
-                '*'
-            )
-        );
-    };
-
     var updateOptions = function updateOptions(type, index, newValue) {
         var newOptions = [].concat(_toConsumableArray(options));
         if (type === 'add') {
@@ -2445,14 +2352,6 @@ function Edit(props) {
                     ' Add another '
                 )
             )
-        );
-    };
-
-    var renderDatePicker = function renderDatePicker() {
-        return React.createElement(
-            'div',
-            { className: 'qubely-date-picker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat) })
         );
     };
 
@@ -2588,7 +2487,7 @@ function Edit(props) {
         return React.createElement(
             Fragment,
             null,
-            React.createElement('input', { className: 'qubely-form-field qubely-form-email', type: 'email', placeholder: __(placeHolder), required: required }),
+            React.createElement('input', { className: 'qubely-form-field qubely-form-email', type: 'email', placeholder: __(placeHolder), required: required, name: fieldName }),
             emailConformation && React.createElement(
                 Fragment,
                 null,
@@ -2600,28 +2499,8 @@ function Edit(props) {
                         return setAttributes({ conformationEmailLabel: value });
                     }
                 }),
-                React.createElement('input', { className: 'qubely-form-field qubely-form-confirmation-email', type: 'email', placeholder: __(placeHolder), required: required })
+                React.createElement('input', { className: 'qubely-form-field qubely-form-confirmation-email', type: 'email', placeholder: __(placeHolder), required: required, name: 'confirmation-' + fieldName })
             )
-        );
-    };
-
-    var renderInput = function renderInput() {
-        return React.createElement(
-            Fragment,
-            null,
-            type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), required: required }) : type === 'dropdown' ? React.createElement(
-                'select',
-                { className: 'qubely-form-field qubely-form-dropdown', value: dropdownValue, onChange: function onChange(event) {
-                        return setDropdownValue(event.target.value);
-                    } },
-                options.map(function (option) {
-                    return React.createElement(
-                        'option',
-                        { value: option },
-                        option
-                    );
-                })
-            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, placeholder: __(placeHolder), required: required })
         );
     };
 
@@ -2873,8 +2752,40 @@ function Edit(props) {
             React.createElement(
                 'div',
                 { className: 'qubely-form-field-wrapper' },
-                renderLabel(),
-                renderInput()
+                React.createElement(
+                    'label',
+                    { className: 'qubely-form-label' },
+                    React.createElement(RichText, {
+                        placeholder: __('Input label'),
+                        className: 'qubely-form-field-label',
+                        value: label,
+                        onChange: function onChange(value) {
+                            return setAttributes({ label: value });
+                        }
+                    }),
+                    required && React.createElement(
+                        'span',
+                        { className: 'qubely-from-field-required-sign' },
+                        '*'
+                    )
+                ),
+                type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), name: fieldName, required: required }) : type === 'dropdown' ? React.createElement(
+                    'select',
+                    { className: 'qubely-form-field qubely-form-dropdown', value: dropdownValue, onChange: function onChange(event) {
+                            return setDropdownValue(event.target.value);
+                        } },
+                    options.map(function (option) {
+                        return React.createElement(
+                            'option',
+                            { value: option },
+                            option
+                        );
+                    })
+                ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? React.createElement(
+                    'div',
+                    { 'class': 'qubely-date-picker-wrapper' },
+                    React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: fieldName })
+                ) : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, name: fieldName, type: type, placeholder: __(placeHolder), required: required })
             )
         )
     );
@@ -3336,31 +3247,18 @@ function Save(props) {
         fieldName = _props$attributes.fieldName;
 
 
-    var renderLabel = function renderLabel() {
-        return React.createElement(
-            "label",
-            { className: "qubely-form-label" },
-            React.createElement(RichText.Content, { value: label }),
-            required && React.createElement(
-                "span",
-                { className: "qubely-from-field-required-sign" },
-                "*"
-            )
-        );
-    };
-
     var renderOptions = function renderOptions() {
         return React.createElement(
-            "div",
-            { className: "qubely-form-field qubely-form-" + type + " qubely-" + type + "-" + columns },
-            options.map(function (option, index) {
+            'div',
+            { className: 'qubely-form-field qubely-form-' + type + ' qubely-' + type + '-' + columns },
+            options.map(function (option) {
                 return React.createElement(
-                    "div",
-                    { className: "qubely-form-field-" + type + "-option" },
-                    React.createElement("input", { type: type, id: option, value: option }),
+                    'div',
+                    { className: 'qubely-form-field-' + type + '-option' },
+                    React.createElement('input', { type: type, id: option, value: option }),
                     React.createElement(RichText.Content, {
                         placeholder: __('option'),
-                        className: "qubely-" + type + "-option",
+                        className: 'qubely-' + type + '-option',
                         value: option
                     })
                 );
@@ -3373,28 +3271,25 @@ function Save(props) {
         return React.createElement(
             Fragment,
             null,
-            React.createElement("input", { className: "qubely-form-field qubely-form-email", type: 'email', placeholder: __(placeHolder), required: required, name: fieldName }),
+            React.createElement('input', { className: 'qubely-form-field qubely-form-email', type: 'email', placeholder: __(placeHolder), required: required, name: fieldName }),
             emailConformation && React.createElement(
                 Fragment,
                 null,
                 React.createElement(RichText.Content, {
-                    placeholder: __('Confirmation Email'),
-                    className: "qubely-form-field-label",
+                    className: 'qubely-form-field-label',
                     value: conformationEmailLabel
                 }),
-                React.createElement("input", { className: "qubely-form-field qubely-form-confirmation-email", type: 'email', placeholder: __(placeHolder), required: required })
+                React.createElement('input', { className: 'qubely-form-field qubely-form-confirmation-email', type: 'email', placeholder: __(placeHolder), required: required, name: 'confirmation-' + fieldName })
             )
         );
     };
 
     var renderDatePicker = function renderDatePicker() {
-        var options = JSON.stringify({
-            dateFormat: dateFormat
-        });
+        var options = JSON.stringify({ dateFormat: dateFormat });
         return React.createElement(
-            "div",
-            { className: "qubely-date-picker-wrapper", "data-options": options },
-            React.createElement("input", { type: "text", className: "qubely-form-field qubely-datepicker", autocomplete: "off", placeholder: __(dateFormat), name: fieldName })
+            'div',
+            { className: 'qubely-date-picker-wrapper', 'data-options': options },
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: fieldName })
         );
     };
     var renderTimePicker = function renderTimePicker() {
@@ -3404,102 +3299,100 @@ function Save(props) {
             timeFormatType: timeFormatType
         });
         return React.createElement(
-            Fragment,
-            null,
-            React.createElement("input", { type: "text", className: "qubely-time-picker", value: "12 : 00", name: fieldName }),
+            'div',
+            { className: 'qubely-form-timepicker-wrapper' },
+            React.createElement('input', { type: 'text', className: 'qubely-time-picker', value: '12 : 00', name: fieldName }),
             React.createElement(
-                "div",
-                { className: "qubely-form-timepicker", "data-options": options },
+                'div',
+                { className: 'qubely-form-timepicker', 'data-options': options },
                 React.createElement(
-                    "div",
-                    { className: "qubely-timePicker-hour" },
+                    'div',
+                    { className: 'qubely-timePicker-hour' },
                     React.createElement(
-                        "div",
-                        { className: "qubely-timePicker-button qubely-hour-button-up" },
-                        React.createElement("i", { className: "fas fa-angle-up" })
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-hour-button-up' },
+                        React.createElement('i', { className: 'fas fa-angle-up' })
                     ),
                     React.createElement(
-                        "div",
-                        { className: "qubely-form-timepicker-hour" },
-                        "12"
+                        'div',
+                        { className: 'qubely-form-timepicker-hour' },
+                        '12'
                     ),
                     React.createElement(
-                        "div",
-                        { className: "qubely-timePicker-button qubely-hour-button-down" },
-                        React.createElement("i", { className: "fas fa-angle-down" })
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-hour-button-down' },
+                        React.createElement('i', { className: 'fas fa-angle-down' })
                     )
                 ),
                 React.createElement(
-                    "div",
-                    { className: "qubely-timePicker-minute" },
+                    'div',
+                    { className: 'qubely-timePicker-minute' },
                     React.createElement(
-                        "div",
-                        { className: "qubely-timePicker-button qubely-minute-button-up" },
-                        React.createElement("i", { className: "fas fa-angle-up" })
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-minute-button-up' },
+                        React.createElement('i', { className: 'fas fa-angle-up' })
                     ),
                     React.createElement(
-                        "div",
-                        { className: "qubely-form-timepicker-minute" },
-                        "0"
+                        'div',
+                        { className: 'qubely-form-timepicker-minute' },
+                        '0'
                     ),
                     React.createElement(
-                        "div",
-                        { className: "qubely-timePicker-button qubely-minute-button-down" },
-                        React.createElement("i", { className: "fas fa-angle-down" })
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-minute-button-down' },
+                        React.createElement('i', { className: 'fas fa-angle-down' })
                     )
                 ),
                 timeFormatType === 12 && React.createElement(
-                    "div",
-                    { className: "qubely-timePicker-time-format" },
+                    'div',
+                    { className: 'qubely-timePicker-time-format' },
                     React.createElement(
-                        "div",
-                        { className: "qubely-timePicker-button qubely-hourformat-button" },
-                        React.createElement("i", { className: "fas fa-angle-up" })
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-hourformat-button' },
+                        React.createElement('i', { className: 'fas fa-angle-up' })
                     ),
                     React.createElement(
-                        "div",
-                        { className: "qubely-form-time-format" },
-                        "PM"
+                        'div',
+                        { className: 'qubely-form-time-format' },
+                        'PM'
                     ),
                     React.createElement(
-                        "div",
-                        { className: "qubely-timePicker-button qubely-hourformat-button" },
-                        React.createElement("i", { className: "fas fa-angle-down" })
+                        'div',
+                        { className: 'qubely-timePicker-button qubely-hourformat-button' },
+                        React.createElement('i', { className: 'fas fa-angle-down' })
                     )
                 )
             )
         );
     };
 
-    var renderInput = function renderInput() {
-        return React.createElement(
-            Fragment,
-            null,
-            type === 'textarea' ? React.createElement("textarea", { className: "qubely-form-field qubely-form-textarea", placeholder: __(placeHolder), name: fieldName, required: required }) : type === 'dropdown' ? React.createElement(
-                "select",
-                { className: "qubely-form-field qubely-form-" + type, name: fieldName },
+    return React.createElement(
+        'div',
+        { className: 'qubely-block-' + uniqueId },
+        React.createElement(
+            'div',
+            { className: 'qubely-form-field-wrapper' },
+            React.createElement(
+                'label',
+                { className: 'qubely-form-label' },
+                React.createElement(RichText.Content, { value: label }),
+                required && React.createElement(
+                    'span',
+                    { className: 'qubely-from-field-required-sign' },
+                    '*'
+                )
+            ),
+            type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), name: fieldName, required: required }) : type === 'dropdown' ? React.createElement(
+                'select',
+                { className: 'qubely-form-field qubely-form-dropdown', name: fieldName },
                 options.map(function (option) {
                     return React.createElement(
-                        "option",
+                        'option',
                         { value: option },
                         option
                     );
                 })
-            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement("input", { className: "qubely-form-field qubely-form-" + type, type: type, name: fieldName, placeholder: __(placeHolder), required: required })
-        );
-    };
-
-    return (
-        // <div className={`qubely-block-${uniqueId}`} style={style}>
-        React.createElement(
-            "div",
-            { className: "qubely-block-" + uniqueId },
-            React.createElement(
-                "div",
-                { className: "qubely-form-field-wrapper" },
-                renderLabel(),
-                renderInput()
-            )
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, name: fieldName, placeholder: __(placeHolder), required: required })
         )
     );
 }
@@ -3750,7 +3643,8 @@ registerBlockType('qubely/form', {
                 openBorder: 1,
                 type: 'solid',
                 widthType: 'global',
-                width: { global: 1 },
+                global: { md: 1 },
+                custom: { md: '1 1 1 1' },
                 color: '#ced4da'
             },
             style: [{
@@ -3924,45 +3818,46 @@ var _wp$qubelyComponents = wp.qubelyComponents,
 var Edit = function (_Component) {
     _inherits(Edit, _Component);
 
-    function Edit() {
-        var _ref;
-
-        var _temp, _this, _ret;
-
+    function Edit(props) {
         _classCallCheck(this, Edit);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
+        var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.renderFormFieldTypes = function () {
+        _this.renderFormFieldTypes = function () {
             var _this$props = _this.props,
                 clientId = _this$props.clientId,
                 insertBlock = _this$props.insertBlock,
                 parentClientId = _this$props.attributes.parentClientId;
+            var hideDropdown = _this.state.hideDropdown;
 
 
             var formFields = [[__('Text'), 'text'], [__('Number'), 'number'], [__('Email'), 'email'], [__('Radio'), 'radio'], [__('Checkbox'), 'checkbox'], [__('Textarea'), 'textarea'], [__('Date'), 'date'], [__('Time'), 'time'], [__('Dropdown'), 'dropdown']];
             return React.createElement(
                 'div',
                 { className: 'qubely-form-field-types' },
-                formFields.map(function (_ref2, index) {
-                    var _ref3 = _slicedToArray(_ref2, 2),
-                        fieldName = _ref3[0],
-                        type = _ref3[1];
+                formFields.map(function (_ref, index) {
+                    var _ref2 = _slicedToArray(_ref, 2),
+                        fieldName = _ref2[0],
+                        type = _ref2[1];
 
                     return React.createElement(
                         'div',
                         { className: 'qubely-form-field-type',
                             onClick: function onClick() {
-                                return insertBlock(createBlock('qubely/formfield-' + type, { parentClientId: parentClientId }), undefined, clientId);
+                                hideDropdown && hideDropdown();
+                                insertBlock(createBlock('qubely/formfield-' + type, { parentClientId: parentClientId }), undefined, clientId);
                             }
                         },
                         fieldName
                     );
                 })
             );
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+        };
+
+        _this.state = {
+            hideDropdown: null
+        };
+        return _this;
     }
 
     _createClass(Edit, [{
@@ -4013,10 +3908,8 @@ var Edit = function (_Component) {
                 attributes = _props3.attributes,
                 _props3$attributes = _props3.attributes,
                 uniqueId = _props3$attributes.uniqueId,
-                parentClientId = _props3$attributes.parentClientId,
                 fieldSize = _props3$attributes.fieldSize,
-                width = _props3$attributes.width,
-                gutter = _props3$attributes.gutter;
+                width = _props3$attributes.width;
 
 
             if (uniqueId) {
@@ -4048,17 +3941,6 @@ var Edit = function (_Component) {
                             onChange: function onChange(value) {
                                 return setAttributes({ width: value });
                             }
-                        }),
-                        React.createElement(Range, {
-                            min: 0,
-                            max: 60,
-                            responsive: true,
-                            value: gutter,
-                            label: __('Gutter'),
-                            unit: ['px', 'em', '%'],
-                            onChange: function onChange(value) {
-                                return setAttributes({ gutter: value });
-                            }
                         })
                     )
                 ),
@@ -4068,33 +3950,23 @@ var Edit = function (_Component) {
                     React.createElement(
                         'div',
                         { className: 'qubely-form-column' },
-                        hasInnerBlocks ? React.createElement(InnerBlocks
-                        // allowedBlocks={
-                        //     [
-                        //         'qubely/formfield-text',
-                        //         'qubely/formfield-number',
-                        //         'qubely/formfield-email',
-                        //         'qubely/formfield-textarea',
-                        //         'qubely/formfield-radio',
-                        //         'qubely/formfield-dropdown',
-                        //         'qubely/formfield-checkbox',
-                        //         'qubely/formfield-date',
-                        //         'qubely/formfield-time',
-                        //     ]
-                        // }
-                        , null) : React.createElement(Dropdown, {
+                        hasInnerBlocks ? React.createElement(InnerBlocks, {
+                            allowedBlocks: ['qubely/formfield-text', 'qubely/formfield-number', 'qubely/formfield-email', 'qubely/formfield-textarea', 'qubely/formfield-radio', 'qubely/formfield-dropdown', 'qubely/formfield-checkbox', 'qubely/formfield-date', 'qubely/formfield-time']
+                        }) : React.createElement(Dropdown, {
                             className: "qubely-action-add-form-field",
                             contentClassName: "qubely-form-field-picker",
                             position: 'bottom center',
-                            renderToggle: function renderToggle(_ref4) {
-                                var isOpen = _ref4.isOpen,
-                                    onToggle = _ref4.onToggle;
+                            renderToggle: function renderToggle(_ref3) {
+                                var isOpen = _ref3.isOpen,
+                                    onToggle = _ref3.onToggle;
                                 return React.createElement(
                                     'div',
                                     { onClick: onToggle, 'aria-expanded': isOpen, className: 'qubely-action-add-form-item' },
                                     React.createElement(
                                         'div',
-                                        { className: 'qubely-action-add-form-empty' },
+                                        { className: 'qubely-action-add-form-empty', onClick: function onClick() {
+                                                return _this2.setState({ hideDropdown: onToggle });
+                                            } },
                                         React.createElement(
                                             'svg',
                                             { 'aria-hidden': 'true', role: 'img', focusable: 'false', 'class': 'dashicon dashicons-insert', xmlns: 'http://www.w3.org/2000/svg', width: '20', height: '20', viewBox: '0 0 20 20' },
@@ -4116,8 +3988,8 @@ var Edit = function (_Component) {
     return Edit;
 }(Component);
 
-exports.default = compose([withSelect(function (select, _ref5) {
-    var clientId = _ref5.clientId;
+exports.default = compose([withSelect(function (select, _ref4) {
+    var clientId = _ref4.clientId;
 
     var _select = select('core/block-editor'),
         getBlock = _select.getBlock;
@@ -4208,7 +4080,7 @@ registerBlockType('qubely/form-column', {
             },
             style: [{
                 condition: [{ key: 'fieldSize', relation: '==', value: 'large' }],
-                selector: '{{QUBELY}}.qubely-form-field-front.qubely-large {flex:90%;max-width:90%;}'
+                selector: '{{QUBELY}}.qubely-form-field-front.qubely-large {flex:100%;max-width:100%;}'
             }, {
                 condition: [{ key: 'fieldSize', relation: '==', value: 'small' }],
                 selector: '{{QUBELY}}.qubely-form-field-front.qubely-small {flex:25%;max-width:25%;}'
@@ -4381,6 +4253,7 @@ var Edit = function (_Component) {
             if (uniqueId) {
                 CssGenerator(attributes, 'form-row', uniqueId);
             }
+
             return React.createElement(
                 Fragment,
                 null,
@@ -4428,8 +4301,7 @@ var Edit = function (_Component) {
                     React.createElement(
                         'div',
                         { className: 'qubely-form-row qubely-backend' },
-                        React.createElement(InnerBlocks, {
-                            allowedBlocks: ['qubely/formfield-column'] })
+                        React.createElement(InnerBlocks, { allowedBlocks: ['qubely/formfield-column'] })
                     )
                 )
             );
@@ -4511,7 +4383,7 @@ registerBlockType('qubely/form-row', {
                 device: 'md'
             },
             style: [{
-                selector: '{{QUBELY}} .qubely-form-row.qubely-backend .editor-inner-blocks.block-editor-inner-blocks >div {margin-top:-{{spacer}};margin-bottom:-{{spacer}};} {{QUBELY}} .qubely-form-row.qubely-frontend {margin-top:-{{spacer}};margin-bottom:-{{spacer}};} {{QUBELY}} .qubely-form-row.qubely-backend .editor-block-list__layout.block-editor-block-list__layout>div,{{QUBELY}} .qubely-form-row.qubely-frontend .qubely-form-field-front{padding-top:{{spacer}};padding-bottom:{{spacer}};} '
+                selector: '{{QUBELY}} .qubely-form-row {margin-bottom:{{spacer}};}'
             }]
         }
     },
@@ -14928,6 +14800,8 @@ var icons = {
     //form 
     form_classic: React.createElement('img', { src: img_path + '/form/classic.svg', alt: __('Classic') }),
     form_material: React.createElement('img', { src: img_path + '/form/material.svg', alt: __('Material') }),
+    form_material_dark: React.createElement('img', { src: img_path + '/form/materialdark.svg', alt: __('Material dark') }),
+
     // Testimonial Carousel icon.
     testimonial_1: React.createElement('img', { src: img_path + '/testimonial/1.svg', alt: __('Testimonial 1') }),
     testimonial_2: React.createElement('img', { src: img_path + '/testimonial/2.svg', alt: __('Testimonial 2') }),

@@ -157,6 +157,13 @@
   input[type="checkbox"] {
     margin-top: 3px;
     border: 1px solid #8d96a0;
+    &:before {
+        margin: -1px 0 0 -1px !important;
+        font: normal 16px/1 dashicons !important;
+    }
+    &:checked:focus {
+        box-shadow: none;
+    }
   }
   &::last-child {
     margin-bottom: 0;
@@ -191,6 +198,9 @@
   input[type="radio"] {
     margin-top: 0;
     margin-right: 8px;
+    &:checked:focus {
+        box-shadow: none;
+    }
   }
 }
 
@@ -257,11 +267,11 @@
 //     border: 10px solid rgba(33, 132, 249, 0.1);
 // }
 .block-editor-block-list__block[data-type="qubely/form-column"] > .block-editor-block-list__block-edit > div:last-child {
-    border: 5px solid transparent;
+    border: 8px solid transparent;
 }
 
 .block-editor-block-list__block.is-selected[data-type="qubely/form-column"] > .block-editor-block-list__block-edit > div:last-child {
-    border: 5px solid rgba(33, 132, 249, 0.1);
+    border: 8px solid rgba(33, 132, 249, 0.1);
 }
 // [data-type="qubely/form-row"]:hover .block-editor-block-list__block[data-type="qubely/form-column"] > .block-editor-block-list__block-edit > div:last-child {
 //     border: 10px solid rgba(33, 132, 249, 0.1);

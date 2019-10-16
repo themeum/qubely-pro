@@ -19,7 +19,12 @@ const {
 } = wp.qubelyComponents
 
 class Edit extends Component {
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            hideDropdown: null,
+        }
+    }
     componentDidMount() {
         const { setAttributes, clientId, attributes: { uniqueId, fieldSize, width } } = this.props
         const _client = clientId.substr(0, 6)
@@ -56,7 +61,15 @@ class Edit extends Component {
 
     renderFormFieldTypes = () => {
 
-        const { clientId, insertBlock, attributes: { parentClientId } } = this.props
+        const {
+            clientId,
+            insertBlock,
+            attributes: {
+                parentClientId
+            }
+        } = this.props
+
+        const { hideDropdown } = this.state
 
         const formFields = [
             [__('Text'), 'text'],
@@ -74,7 +87,10 @@ class Edit extends Component {
                 {formFields.map(([fieldName, type], index) => {
                     return (
                         <div className="qubely-form-field-type"
-                            onClick={() => insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId }), undefined, clientId)}
+                            onClick={() => {
+                                hideDropdown && hideDropdown()
+                                insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId }), undefined, clientId)
+                            }}
                         >
                             {fieldName}
                         </div>
@@ -93,15 +109,13 @@ class Edit extends Component {
             attributes,
             attributes: {
                 uniqueId,
-                parentClientId,
                 fieldSize,
                 width,
-                gutter
             }
         } = this.props
 
         if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
-        
+
         return (
             <Fragment>
                 <InspectorControls key="inspector">
@@ -130,16 +144,6 @@ class Edit extends Component {
                             />
                         }
 
-                        <Range
-                            min={0}
-                            max={60}
-                            responsive
-                            value={gutter}
-                            label={__('Gutter')}
-                            unit={['px', 'em', '%']}
-                            onChange={value => setAttributes({ gutter: value })}
-                        />
-
                     </PanelBody>
                 </InspectorControls>
 
@@ -149,19 +153,19 @@ class Edit extends Component {
                         {
                             hasInnerBlocks ?
                                 <InnerBlocks
-                                // allowedBlocks={
-                                //     [
-                                //         'qubely/formfield-text',
-                                //         'qubely/formfield-number',
-                                //         'qubely/formfield-email',
-                                //         'qubely/formfield-textarea',
-                                //         'qubely/formfield-radio',
-                                //         'qubely/formfield-dropdown',
-                                //         'qubely/formfield-checkbox',
-                                //         'qubely/formfield-date',
-                                //         'qubely/formfield-time',
-                                //     ]
-                                // }
+                                    allowedBlocks={
+                                        [
+                                            'qubely/formfield-text',
+                                            'qubely/formfield-number',
+                                            'qubely/formfield-email',
+                                            'qubely/formfield-textarea',
+                                            'qubely/formfield-radio',
+                                            'qubely/formfield-dropdown',
+                                            'qubely/formfield-checkbox',
+                                            'qubely/formfield-date',
+                                            'qubely/formfield-time',
+                                        ]
+                                    }
                                 />
                                 :
                                 <Dropdown
@@ -170,7 +174,7 @@ class Edit extends Component {
                                     position="bottom center"
                                     renderToggle={({ isOpen, onToggle }) =>
                                         <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
-                                            <div className="qubely-action-add-form-empty">
+                                            <div className="qubely-action-add-form-empty" onClick={() => this.setState({ hideDropdown: onToggle })}>
                                                 <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
                                             </div>
                                         </div>

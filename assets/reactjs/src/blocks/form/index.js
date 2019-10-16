@@ -223,7 +223,8 @@ registerBlockType('qubely/form', {
                 openBorder: 1,
                 type: 'solid',
                 widthType: 'global',
-                width: { global: 1 },
+                global: { md: 1 },
+                custom: { md: '1 1 1 1' },
                 color: '#ced4da'
             },
             style: [

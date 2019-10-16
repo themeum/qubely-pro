@@ -132,8 +132,9 @@ export default function (clientId) {
                     value={layout}
                     onChange={val => updateAttributes('layout', val)}
                     options={[
-                        { value: 'classic', img: icons.form_classic, label: __('Classic') },
-                        { value: 'material', img: icons.form_material, label: __('Material') },
+                        { value: 'classic', img: icons.form_classic, },
+                        { value: 'material', img: icons.form_material },
+                        { value: 'materialdark', img: icons.form_material_dark },
                     ]}
                 />
             </PanelBody>
