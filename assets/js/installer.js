@@ -1,11 +1,14 @@
 jQuery(document).ready(function($){
     'use strict';
+
+    console.log('ajaxurl->', ajaxurl);
+
     $(document).on('click', '.install-qubely-button', function(e){
         e.preventDefault();
         var $btn = $(this);
         $.ajax({
             type: 'POST',
-            url: qubely_pro.ajaxurl,
+            url: ajaxurl,
             data: {install_plugin: 'qubely', action: 'install_qubely_plugin'},
             beforeSend: function(){
                 $btn.addClass('updating-message');
