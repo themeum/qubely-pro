@@ -26,6 +26,7 @@ export default function Save(props) {
 
             minuteInterval,
             timeFormatType,
+            seletedTimeFormat,
 
             //settings
             fieldName
@@ -91,14 +92,14 @@ export default function Save(props) {
         )
         return (
             <div className="qubely-form-timepicker-wrapper">
-                <input type="text" className="qubely-time-picker" value={`12 : 00`} name={fieldName} />
+                <input type="text" className="qubely-time-picker" value={`12 : 00 ${timeFormatType === 12 ? `${seletedTimeFormat}` : ''}`} name={fieldName} />
                 <div className={`qubely-form-timepicker`} data-options={options}>
 
                     <div className={`qubely-timePicker-hour`}>
                         <div className="qubely-timePicker-button qubely-hour-button-up"  >
                             <i className="fas fa-angle-up"/>
                         </div>
-                        <div className="qubely-form-timepicker-hour">12</div>
+                        <div className="qubely-form-timepicker-hour">{__('12')}</div>
 
                         <div className="qubely-timePicker-button qubely-hour-button-down"   >
                             <i className="fas fa-angle-down"/>
@@ -109,7 +110,7 @@ export default function Save(props) {
                             <i className="fas fa-angle-up"/>
                         </div>
 
-                        <div className="qubely-form-timepicker-minute" >0</div>
+                        <div className="qubely-form-timepicker-minute" >{__('00')}</div>
 
                         <div className="qubely-timePicker-button qubely-minute-button-down"  >
                             <i className="fas fa-angle-down"/>
@@ -123,7 +124,7 @@ export default function Save(props) {
                                 <i className="fas fa-angle-up"/>
                             </div>
 
-                            <div className="qubely-form-time-format">PM</div>
+                            <div className="qubely-form-time-format">{__('PM')}</div>
 
                             <div className="qubely-timePicker-button qubely-hourformat-button"  >
                                 <i className="fas fa-angle-down"/>

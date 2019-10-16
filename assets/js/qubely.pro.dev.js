@@ -1755,8 +1755,7 @@ exports.default = function (clientId) {
     var attributes = getBlockAttributes(clientId);
 
     var _dispatch = dispatch('core/block-editor'),
-        updateBlockAttributes = _dispatch.updateBlockAttributes,
-        toggleSelection = _dispatch.toggleSelection;
+        updateBlockAttributes = _dispatch.updateBlockAttributes;
 
     var _attributes = attributes,
         layout = _attributes.layout,
@@ -2112,13 +2111,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var __ = wp.i18n.__;
-var InspectorControls = wp.editor.InspectorControls;
 var _wp$data = wp.data,
     select = _wp$data.select,
     dispatch = _wp$data.dispatch;
 var _wp$element = wp.element,
     useState = _wp$element.useState,
-    useEffect = _wp$element.useEffect,
     Fragment = _wp$element.Fragment;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
@@ -2391,7 +2388,7 @@ function Edit(props) {
         return React.createElement(
             'div',
             { className: 'qubely-form-timepicker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', value: hour + ' : ' + minute, onClick: function onClick() {
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', value: hour + ' : ' + minute + ' ' + (timeFormatType === 12 ? '' + seletedTimeFormat : ''), onClick: function onClick() {
                     return setTimePicker(!showTimePicker);
                 } }),
             React.createElement(
@@ -3138,7 +3135,7 @@ _extends({}, qubelyField, {
             },
             seletedTimeFormat: {
                 type: 'string',
-                default: 'AM'
+                default: 'PM'
             },
             minuteInterval: {
                 type: 'number',
@@ -3244,6 +3241,7 @@ function Save(props) {
         dateFormat = _props$attributes.dateFormat,
         minuteInterval = _props$attributes.minuteInterval,
         timeFormatType = _props$attributes.timeFormatType,
+        seletedTimeFormat = _props$attributes.seletedTimeFormat,
         fieldName = _props$attributes.fieldName;
 
 
@@ -3301,7 +3299,7 @@ function Save(props) {
         return React.createElement(
             'div',
             { className: 'qubely-form-timepicker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-time-picker', value: '12 : 00', name: fieldName }),
+            React.createElement('input', { type: 'text', className: 'qubely-time-picker', value: '12 : 00 ' + (timeFormatType === 12 ? '' + seletedTimeFormat : ''), name: fieldName }),
             React.createElement(
                 'div',
                 { className: 'qubely-form-timepicker', 'data-options': options },
@@ -3316,7 +3314,7 @@ function Save(props) {
                     React.createElement(
                         'div',
                         { className: 'qubely-form-timepicker-hour' },
-                        '12'
+                        __('12')
                     ),
                     React.createElement(
                         'div',
@@ -3335,7 +3333,7 @@ function Save(props) {
                     React.createElement(
                         'div',
                         { className: 'qubely-form-timepicker-minute' },
-                        '0'
+                        __('00')
                     ),
                     React.createElement(
                         'div',
@@ -3354,7 +3352,7 @@ function Save(props) {
                     React.createElement(
                         'div',
                         { className: 'qubely-form-time-format' },
-                        'PM'
+                        __('PM')
                     ),
                     React.createElement(
                         'div',
@@ -14890,7 +14888,7 @@ __webpack_require__(/*! ./blocks/gallery */ "./src/blocks/gallery/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/plugins/qubely/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/wordpress/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
 
 
 /***/ })
