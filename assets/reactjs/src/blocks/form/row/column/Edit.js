@@ -109,10 +109,8 @@ class Edit extends Component {
             attributes,
             attributes: {
                 uniqueId,
-                parentClientId,
                 fieldSize,
                 width,
-                gutter
             }
         } = this.props
 
@@ -145,16 +143,6 @@ class Edit extends Component {
                                 onChange={value => setAttributes({ width: value })}
                             />
                         }
-
-                        <Range
-                            min={0}
-                            max={60}
-                            responsive
-                            value={gutter}
-                            label={__('Gutter')}
-                            unit={['px', 'em', '%']}
-                            onChange={value => setAttributes({ gutter: value })}
-                        />
 
                     </PanelBody>
                 </InspectorControls>

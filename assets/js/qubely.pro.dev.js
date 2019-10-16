@@ -3299,8 +3299,8 @@ function Save(props) {
             timeFormatType: timeFormatType
         });
         return React.createElement(
-            Fragment,
-            null,
+            'div',
+            { className: 'qubely-form-timepicker-wrapper' },
             React.createElement('input', { type: 'text', className: 'qubely-time-picker', value: '12 : 00', name: fieldName }),
             React.createElement(
                 'div',
@@ -3908,10 +3908,8 @@ var Edit = function (_Component) {
                 attributes = _props3.attributes,
                 _props3$attributes = _props3.attributes,
                 uniqueId = _props3$attributes.uniqueId,
-                parentClientId = _props3$attributes.parentClientId,
                 fieldSize = _props3$attributes.fieldSize,
-                width = _props3$attributes.width,
-                gutter = _props3$attributes.gutter;
+                width = _props3$attributes.width;
 
 
             if (uniqueId) {
@@ -3942,17 +3940,6 @@ var Edit = function (_Component) {
                             label: __('Width'),
                             onChange: function onChange(value) {
                                 return setAttributes({ width: value });
-                            }
-                        }),
-                        React.createElement(Range, {
-                            min: 0,
-                            max: 60,
-                            responsive: true,
-                            value: gutter,
-                            label: __('Gutter'),
-                            unit: ['px', 'em', '%'],
-                            onChange: function onChange(value) {
-                                return setAttributes({ gutter: value });
                             }
                         })
                     )

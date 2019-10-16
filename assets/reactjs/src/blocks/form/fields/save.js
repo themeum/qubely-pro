@@ -90,7 +90,7 @@ export default function Save(props) {
             }
         )
         return (
-            <Fragment>
+            <div className="qubely-form-timepicker-wrapper">
                 <input type="text" className="qubely-time-picker" value={`12 : 00`} name={fieldName} />
                 <div className={`qubely-form-timepicker`} data-options={options}>
 
@@ -132,7 +132,7 @@ export default function Save(props) {
                     }
 
                 </div>
-            </Fragment>
+            </div>
         )
     }
 
