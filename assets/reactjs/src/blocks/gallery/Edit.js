@@ -43,9 +43,12 @@ class Edit extends Component {
 	}
 
 	updateGalleryImage = (key, value, index) => {
-		const { setAttributes, attributes: { galleryItems, galleryContents } } = this.props
+		const { 
+            setAttributes, 
+            attributes: { galleryItems, galleryContents }
+        } = this.props
 		if (key === 'add' || key === 'delete') {
-			let updatedAttributes = key === 'add' ? [...galleryContents, { title: 'Best Gutenberg Plugin' }] : galleryContents.slice(0, galleryItems - 1)
+			let updatedAttributes = key === 'add' ? [...galleryContents, { title: __('Best Gutenberg Plugin') }] : galleryContents.slice(0, galleryItems - 1)
 			setAttributes({
 				galleryContents: updatedAttributes,
 				galleryItems: key === 'add' ? galleryItems + 1 : galleryItems - 1

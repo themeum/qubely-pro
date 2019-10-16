@@ -1161,7 +1161,7 @@ function render_block_qubely_postgrid_pro($att)
 
 	$interaction = '';
 	if(isset($att['interaction'])) {
-		if (!empty($att['interaction'])) {
+		if (!empty((array)$att['interaction'])) {
 			if(isset($att['interaction']['while_scroll_into_view'])) {
 				if($att['interaction']['while_scroll_into_view']['enable']){
 					$interaction = 'qubley-block-interaction';
