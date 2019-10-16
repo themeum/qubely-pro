@@ -1,17 +1,18 @@
-.qubely-form-row >.editor-inner-blocks > .editor-block-list__layout {
+.qubely-form-row.qubely-frontend,
+.qubely-form-row.qubely-backend > .editor-inner-blocks > .editor-block-list__layout {
   display: flex;
 }
 .qubely-action-add-form-empty {
-    outline: 1px dashed #8d96a0;
-    width: 100%;
-    color: #555d66;
-    background: rgba(237,239,240,.8);
-    min-height: 60px;
-    text-align: center;
-    line-height: 60px;
-    svg {
-        position: relative;
-        top: 4px;
-        cursor: pointer;
-    }
+  outline: 1px dashed #8d96a0;
+  width: 100%;
+  color: #555d66;
+  background: rgba(237, 239, 240, 0.8);
+  min-height: 60px;
+  text-align: center;
+  line-height: 60px;
+  svg {
+    position: relative;
+    top: 4px;
+    cursor: pointer;
+  }
 }

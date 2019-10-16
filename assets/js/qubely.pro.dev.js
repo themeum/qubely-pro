@@ -110,7 +110,7 @@ exports.push([module.i, ".qubely-form-field-wrapper .qubely-form-field {\n  widt
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".qubely-form-row > .editor-inner-blocks > .editor-block-list__layout {\n  display: flex; }\n\n.qubely-action-add-form-empty {\n  outline: 1px dashed #8d96a0;\n  width: 100%;\n  color: #555d66;\n  background: rgba(237, 239, 240, 0.8);\n  min-height: 60px;\n  text-align: center;\n  line-height: 60px; }\n  .qubely-action-add-form-empty svg {\n    position: relative;\n    top: 4px;\n    cursor: pointer; }\n", ""]);
+exports.push([module.i, ".qubely-form-row.qubely-frontend,\n.qubely-form-row.qubely-backend > .editor-inner-blocks > .editor-block-list__layout {\n  display: flex; }\n\n.qubely-action-add-form-empty {\n  outline: 1px dashed #8d96a0;\n  width: 100%;\n  color: #555d66;\n  background: rgba(237, 239, 240, 0.8);\n  min-height: 60px;\n  text-align: center;\n  line-height: 60px; }\n  .qubely-action-add-form-empty svg {\n    position: relative;\n    top: 4px;\n    cursor: pointer; }\n", ""]);
 
 
 
