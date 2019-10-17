@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
         $target = $(event.target)
         if (!$target.parents('.qubely-form-timepicker.qubely-active').length && !$target.hasClass('qubely-time-picker')) {
             $('.qubely-form-timepicker.qubely-active').removeClass('qubely-active')
-        }  
+        }
     });
 
 
@@ -34,6 +34,7 @@ jQuery(document).ready(function ($) {
             $qubelyTimePicker.find('.qubely-form-timepicker.qubely-active').removeClass('qubely-active');
         } else {
             $qubelyTimePicker.find('.qubely-form-timepicker').addClass('qubely-active');
+            changeTimepickerValue($(this))
         }
 
     })
@@ -56,11 +57,12 @@ jQuery(document).ready(function ($) {
     function changeTimepickerValue($element) {
 
         let $qubelyTimePicker = $element.parents('.qubely-form-timepicker-wrapper').find('.qubely-time-picker')
+        let meridian = JSON.parse($element.parents('.qubely-form-timepicker-wrapper').find('.qubely-form-timepicker')[0].dataset.options).timeFormatType
         let hour = $element.parents('.qubely-form-timepicker-wrapper').find('.qubely-form-timepicker-hour')[0].innerText
         let min = $element.parents('.qubely-form-timepicker-wrapper').find('.qubely-form-timepicker-minute')[0].innerText
-        let format = $element.parents('.qubely-form-timepicker-wrapper').find('.qubely-form-time-format')[0].innerText
+        let format = meridian === 12 ? $element.parents('.qubely-form-timepicker-wrapper').find('.qubely-form-time-format')[0].innerText : null
 
-        $qubelyTimePicker.val(`${hour} : ${min} ${format}`)
+        $qubelyTimePicker.val(`${hour}:${min}${meridian === 12 ? ` ${format}` : ''}`)
 
     }
 
@@ -73,8 +75,10 @@ jQuery(document).ready(function ($) {
             timeFormatType
         } = JSON.parse($qubelyTimePickerWrapper[0].dataset.options)
 
+
+
         let minute = $qubelyTimePickerFormat.find('.qubely-form-timepicker-minute')[0].innerText
-        let currentHourFormat = $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText
+        let currentHourFormat = timeFormatType === 12 ? $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText : null
         let hour = parseInt($qubelyTimePickerWrapper.find('.qubely-form-timepicker-hour')[0].innerText)
 
         if (minute >= 60 - parseInt(minuteInterval)) {
@@ -102,7 +106,7 @@ jQuery(document).ready(function ($) {
         } = JSON.parse($qubelyTimePickerWrapper[0].dataset.options)
 
         let minute = $qubelyTimePickerFormat.find('.qubely-form-timepicker-minute')[0].innerText
-        let currentHourFormat = $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText
+        let currentHourFormat = timeFormatType === 12 ? $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText : null
         let hour = parseInt($qubelyTimePickerWrapper.find('.qubely-form-timepicker-hour')[0].innerText)
 
         if (minute < parseInt(minuteInterval)) {
@@ -129,7 +133,7 @@ jQuery(document).ready(function ($) {
             timeFormatType
         } = JSON.parse($qubelyTimePickerWrapper[0].dataset.options)
 
-        let currentHourFormat = $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText
+        let currentHourFormat = timeFormatType === 12 ? $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText : null
         let hour = parseInt($qubelyTimePickerWrapper.find('.qubely-form-timepicker-hour')[0].innerText)
 
         if (timeFormatType === 12 && hour === 11) {
@@ -149,7 +153,7 @@ jQuery(document).ready(function ($) {
             timeFormatType
         } = JSON.parse($qubelyTimePickerWrapper[0].dataset.options)
 
-        let currentHourFormat = $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText
+        let currentHourFormat = timeFormatType === 12 ? $qubelyTimePickerWrapper.find('.qubely-form-time-format')[0].innerText : null
         let hour = parseInt($qubelyTimePickerWrapper.find('.qubely-form-timepicker-hour')[0].innerText)
 
         if (timeFormatType === 12 && (hour === 12 || hour === 1)) {
@@ -203,13 +207,13 @@ jQuery(document).ready(function ($) {
                     },
                     success: (response) => {
                         $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                        $form.find(".qubely-form-message").html(`< div class= "qubely-alert qubely-alert-success" > ${response.data.msg}</div > `);
+                        $form.find(".qubely-form-message").html(`<div class= "qubely-alert qubely-alert-success" > ${response.data.msg}</div> `);
                         setTimeout(() => $form.find('.qubely-form-message').html(''), 4000);
                         if (response.data.status == 1) $form.trigger("reset");
                     },
                     error: (jqxhr, textStatus, error) => {
                         $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                        $form.find(".qubely-form-message").html(`< div class= "qubely-alert qubely-alert-danger" > ${textStatus} : ${error} - ${jqxhr.responseJSON}</div > `);
+                        $form.find(".qubely-form-message").html(`<div class= "qubely-alert qubely-alert-danger" > ${textStatus} : ${error} - ${jqxhr.responseJSON}</div> `);
                     }
                 });
             }

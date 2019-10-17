@@ -2276,10 +2276,11 @@ function Edit(props) {
 
     useEffect(function () {
         var _client = clientId.substr(0, 6);
+
         if (!uniqueId) {
-            setAttributes({ uniqueId: _client });
+            setAttributes({ uniqueId: _client, fieldName: fieldName + '-' + _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client });
+            setAttributes({ uniqueId: _client, fieldName: fieldName + '-' + _client });
         }
 
         $('.qubely-block-' + uniqueId + ' .qubely-datepicker').datepicker({
@@ -2390,7 +2391,7 @@ function Edit(props) {
             { className: 'qubely-form-timepicker-wrapper' },
             React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', value: hour + ' : ' + minute + ' ' + (timeFormatType === 12 ? '' + seletedTimeFormat : ''), onClick: function onClick() {
                     return setTimePicker(!showTimePicker);
-                } }),
+                }, readonly: true }),
             React.createElement(
                 'div',
                 { className: 'qubely-form-timepicker' + (showTimePicker ? ' qubely-active' : '') },
@@ -3248,7 +3249,7 @@ function Save(props) {
     var renderOptions = function renderOptions() {
         return React.createElement(
             'div',
-            { className: 'qubely-form-field qubely-form-' + type + ' qubely-' + type + '-' + columns },
+            { className: 'qubely-form-field qubely-form-' + type + ' qubely-' + type + '-' + columns, 'data-required': required },
             options.map(function (option) {
                 return React.createElement(
                     'div',
@@ -3299,7 +3300,7 @@ function Save(props) {
         return React.createElement(
             'div',
             { className: 'qubely-form-timepicker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-time-picker', value: '12 : 00 ' + (timeFormatType === 12 ? '' + seletedTimeFormat : ''), name: fieldName }),
+            React.createElement('input', { type: 'text', className: 'qubely-time-picker', placeholder: __('add time'), name: fieldName, readonly: true }),
             React.createElement(
                 'div',
                 { className: 'qubely-form-timepicker', 'data-options': options },

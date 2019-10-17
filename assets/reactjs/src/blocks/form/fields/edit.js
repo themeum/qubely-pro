@@ -90,10 +90,11 @@ export default function Edit(props) {
 
     useEffect(() => {
         const _client = clientId.substr(0, 6)
+
         if (!uniqueId) {
-            setAttributes({ uniqueId: _client });
+            setAttributes({ uniqueId: _client, fieldName: `${fieldName}-${_client}` });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client })
+            setAttributes({ uniqueId: _client, fieldName: `${fieldName}-${_client}` })
         }
 
         $(`.qubely-block-${uniqueId} .qubely-datepicker`).datepicker({
@@ -126,7 +127,7 @@ export default function Edit(props) {
                 {options.map((option, index) => {
                     return (
                         <div className={`qubely-form-field-${type}-option`}>
-                            <input type={type} id={option} value={option} name={fieldName}/>
+                            <input type={type} id={option} value={option} name={fieldName} />
                             <RichText
                                 placeholder={__('option')}
                                 className={`qubely-${type}-option`}
@@ -134,7 +135,7 @@ export default function Edit(props) {
                                 onChange={value => updateOptions('update', index, value)}
                             />
                             <Tooltip text={__('Delete this option')}>
-                                <span className="qubely-action-remove-option" role="button" onClick={() => updateOptions('delete', index)}><i className={`fas fa-times`}/></span>
+                                <span className="qubely-action-remove-option" role="button" onClick={() => updateOptions('delete', index)}><i className={`fas fa-times`} /></span>
                             </Tooltip>
                         </div>
                     )
@@ -187,28 +188,28 @@ export default function Edit(props) {
     const renderTimePicker = () => {
         return (
             <div className="qubely-form-timepicker-wrapper">
-                <input type="text" className="qubely-form-field qubely-time-picker" value={`${hour} : ${minute} ${timeFormatType === 12 ? `${seletedTimeFormat}` : ''}`} onClick={() => setTimePicker(!showTimePicker)} />
+                <input type="text" className="qubely-form-field qubely-time-picker" value={`${hour} : ${minute} ${timeFormatType === 12 ? `${seletedTimeFormat}` : ''}`} onClick={() => setTimePicker(!showTimePicker)}  readonly/>
                 <div className={`qubely-form-timepicker${showTimePicker ? ' qubely-active' : ''}`}>
 
                     <div className={`qubely-timePicker-hour`}>
                         <div className="qubely-timePicker-button button-up"
                             onClick={() => handleTimePicker('hour', 'increase')}
                         >
-                            <i className="fas fa-angle-up"/>
+                            <i className="fas fa-angle-up" />
                         </div>
                         <div className="qubely-form-timepicker-hour">{hour}</div>
 
                         <div className="qubely-timePicker-button button-down"
                             onClick={() => handleTimePicker('hour', 'decrease')}
                         >
-                            <i className="fas fa-angle-down"/>
+                            <i className="fas fa-angle-down" />
                         </div>
                     </div>
                     <div className={`qubely-timePicker-minute`}>
                         <div className="qubely-timePicker-button button-up"
                             onClick={() => handleTimePicker('minute', 'increase')}
                         >
-                            <i className="fas fa-angle-up"/>
+                            <i className="fas fa-angle-up" />
                         </div>
 
                         <div className="qubely-form-timepicker-minute" >{minute}</div>
@@ -216,7 +217,7 @@ export default function Edit(props) {
                         <div className="qubely-timePicker-button button-down"
                             onClick={() => handleTimePicker('minute', 'decrease')}
                         >
-                            <i className="fas fa-angle-down"/>
+                            <i className="fas fa-angle-down" />
                         </div>
                     </div>
 
@@ -226,7 +227,7 @@ export default function Edit(props) {
                             <div className="qubely-timePicker-button button-up"
                                 onClick={() => changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')}
                             >
-                                <i className="fas fa-angle-up"/>
+                                <i className="fas fa-angle-up" />
                             </div>
 
                             <div className="qubely-form-time-format">{seletedTimeFormat}</div>
@@ -234,7 +235,7 @@ export default function Edit(props) {
                             <div className="qubely-timePicker-button button-down"
                                 onClick={() => changeseletedTimeFormat(seletedTimeFormat === 'AM' ? 'PM' : 'AM')}
                             >
-                                <i className="fas fa-angle-down"/>
+                                <i className="fas fa-angle-down" />
                             </div>
                         </div>
                     }
@@ -442,7 +443,7 @@ export default function Edit(props) {
                                         className={`qubely-dropdown-field-option qubely-option-${index}`}
                                     >
                                         <span className={`qubely-option-move-icon`}>
-                                            <i className={`fa fa-bars`}/>
+                                            <i className={`fa fa-bars`} />
                                         </span>
 
                                         <RichText

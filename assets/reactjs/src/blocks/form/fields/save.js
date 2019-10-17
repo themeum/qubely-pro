@@ -37,11 +37,11 @@ export default function Save(props) {
 
     const renderOptions = () => {
         return (
-            <div className={`qubely-form-field qubely-form-${type} qubely-${type}-${columns}`} >
+            <div className={`qubely-form-field qubely-form-${type} qubely-${type}-${columns}`} data-required={required} >
                 {options.map(option => {
                     return (
                         <div className={`qubely-form-field-${type}-option`}>
-                            <input type={type} id={option} value={option} name={fieldName}/>
+                            <input type={type} id={option} value={option} name={fieldName} />
                             <RichText.Content
                                 placeholder={__('option')}
                                 className={`qubely-${type}-option`}
@@ -92,28 +92,28 @@ export default function Save(props) {
         )
         return (
             <div className="qubely-form-timepicker-wrapper">
-                <input type="text" className="qubely-time-picker" value={`12 : 00 ${timeFormatType === 12 ? `${seletedTimeFormat}` : ''}`} name={fieldName} />
+                <input type="text" className={`qubely-time-picker`} placeholder={__('add time')} name={fieldName} readonly />
                 <div className={`qubely-form-timepicker`} data-options={options}>
 
                     <div className={`qubely-timePicker-hour`}>
                         <div className="qubely-timePicker-button qubely-hour-button-up"  >
-                            <i className="fas fa-angle-up"/>
+                            <i className="fas fa-angle-up" />
                         </div>
                         <div className="qubely-form-timepicker-hour">{__('12')}</div>
 
                         <div className="qubely-timePicker-button qubely-hour-button-down"   >
-                            <i className="fas fa-angle-down"/>
+                            <i className="fas fa-angle-down" />
                         </div>
                     </div>
                     <div className={`qubely-timePicker-minute`} >
                         <div className="qubely-timePicker-button qubely-minute-button-up"  >
-                            <i className="fas fa-angle-up"/>
+                            <i className="fas fa-angle-up" />
                         </div>
 
                         <div className="qubely-form-timepicker-minute" >{__('00')}</div>
 
                         <div className="qubely-timePicker-button qubely-minute-button-down"  >
-                            <i className="fas fa-angle-down"/>
+                            <i className="fas fa-angle-down" />
                         </div>
                     </div>
 
@@ -121,13 +121,13 @@ export default function Save(props) {
                         timeFormatType === 12 &&
                         <div className={`qubely-timePicker-time-format`}>
                             <div className="qubely-timePicker-button qubely-hourformat-button" >
-                                <i className="fas fa-angle-up"/>
+                                <i className="fas fa-angle-up" />
                             </div>
 
                             <div className="qubely-form-time-format">{__('PM')}</div>
 
                             <div className="qubely-timePicker-button qubely-hourformat-button"  >
-                                <i className="fas fa-angle-down"/>
+                                <i className="fas fa-angle-down" />
                             </div>
                         </div>
                     }
