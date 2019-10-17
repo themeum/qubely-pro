@@ -78,7 +78,7 @@ class Edit extends Component {
 			return (
 				<div key={index} className={`qubely-gallery-item`}>
                     <Tooltip text={__('Delete this item')}>
-                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><i className={`fas fa-close`} /></span>
+                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><span className="dashicons dashicons-no-alt"/></span>
                     </Tooltip>
 					<div className={`qubely-gallery-content`}>
 						<div className={`qubely-gallery-image-container`}>

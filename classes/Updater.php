@@ -176,7 +176,6 @@ class Updater {
                         }
                         ?>
                     </h3>
-
 					<p><i class="dashicons-before dashicons-tickets-alt"></i> <?php _e('A valid license is required to unlock available features', 'qubely-pro'); ?> </p>
 					<?php
 				}
@@ -195,7 +194,7 @@ class Updater {
 					</div>
 					<p>
 						<?php _e('Please enter your license key. An active license key is needed for automatic plugin updates and', 'qubely-pro'); ?>
-                        <a href="https://www.themeum.com/support/" target="_blank">support</a>.</p>
+                        <a href="https://www.themeum.com/support/" target="_blank"><?php _e('support', 'qubely-pro'); ?></a>.</p>
 				</div>
 				<div class="qubely-box">
 					<h3><?php _e('Enter License Key', 'qubely-pro'); ?></h3>
