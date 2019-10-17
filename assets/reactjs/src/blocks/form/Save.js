@@ -48,13 +48,16 @@ class Save extends Component {
 
                         <InnerBlocks.Content />
 
-                        {reCaptcha && <div className="qubely-google-recaptcha" />}
+                        {reCaptcha && <div className="qubely-form qubely-google-recaptcha" />}
 
                         {policyCheckbox &&
-                            <Fragment>
-                                <input className="" type="checkbox" name="qubely-form-has-policy" id="qubely-form-policy-checkbox" value="Yes" required />
-                                <label for="qubely-form-policy-checkbox"><RichText.Content value={policyCheckboxText} /></label>
-                            </Fragment>
+                            <div className={`qubely-form-checkbox`}>
+                                <input className="qubely-from-policy-checkbox" type="checkbox" name={`qubely-form-policy-${uniqueId}`} id={`qubely-form-policy-checkbox-${uniqueId}`} value="Yes" required />
+                                <RichText.Content
+                                    className={`qubely-form-policy-checkbox-message`}
+                                    value={policyCheckboxText}
+                                />
+                            </div>
                         }
 
                         <div className="qubely-form-button" >

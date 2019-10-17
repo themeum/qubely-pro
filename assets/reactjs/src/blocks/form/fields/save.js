@@ -78,7 +78,7 @@ export default function Save(props) {
         let options = JSON.stringify({ dateFormat: dateFormat })
         return (
             <div className={`qubely-date-picker-wrapper`} data-options={options}>
-                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} name={fieldName} />
+                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} name={fieldName} readonly />
             </div>
         )
     }
@@ -92,7 +92,7 @@ export default function Save(props) {
         )
         return (
             <div className="qubely-form-timepicker-wrapper">
-                <input type="text" className={`qubely-time-picker`} placeholder={__('add time')} name={fieldName} readonly />
+                <input type="text" className={`qubely-form-field qubely-time-picker`} placeholder={__(timeFormatType===12?'12:00 PM':'23:00')} name={fieldName} readonly />
                 <div className={`qubely-form-timepicker`} data-options={options}>
 
                     <div className={`qubely-timePicker-hour`}>

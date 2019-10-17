@@ -986,12 +986,11 @@ var Edit = function (_Component) {
                                     })));
                                     replaceInnerBlocks(clientId, innerBlocks, false);
                                     _this.setState({ groupField: false });
+                                    hideDropdown && hideDropdown();
                                 }
                             },
                             Array(index + 2).fill(0).map(function () {
-                                return React.createElement('i', { onClick: function onClick() {
-                                        return hideDropdown && hideDropdown();
-                                    }, style: { width: 100 / (index + 1) + '%' } });
+                                return React.createElement('i', { style: { width: 100 / (index + 1) + '%' } });
                             })
                         );
                     })
@@ -1004,8 +1003,8 @@ var Edit = function (_Component) {
                         'div',
                         { className: 'qubely-form-field-type',
                             onClick: function onClick() {
-                                _this.addNewItem(fieldName, type);
                                 hideDropdown && hideDropdown();
+                                _this.addNewItem(fieldName, type);
                             }
                         },
                         fieldName
@@ -1164,6 +1163,7 @@ var Edit = function (_Component) {
                 reCaptchaSiteKey = _props5$attributes.reCaptchaSiteKey,
                 reCaptchaSecretKey = _props5$attributes.reCaptchaSecretKey,
                 policyCheckbox = _props5$attributes.policyCheckbox,
+                policyCheckboxText = _props5$attributes.policyCheckboxText,
                 emailReceiver = _props5$attributes.emailReceiver,
                 emailHeaders = _props5$attributes.emailHeaders,
                 emailFrom = _props5$attributes.emailFrom,
@@ -1494,25 +1494,38 @@ var Edit = function (_Component) {
                             'form',
                             { className: 'qubely-form is-' + inputSize },
                             React.createElement(InnerBlocks, {
-                                allowedBlocks: ['qubely/formfield-row', 'qubely/formfield-column'],
-                                template: this.renderFormTemplate()
-                            })
-                        ),
-                        React.createElement(
-                            'div',
-                            { className: 'qubely-form-button' },
-                            React.createElement(QubelyButtonEdit, {
-                                enableButton: enableButton,
-                                buttonFillType: buttonFillType,
-                                buttonSize: buttonSize,
-                                buttonText: buttonText,
-                                buttonIconName: buttonIconName,
-                                buttonIconPosition: buttonIconPosition,
-                                buttonTag: buttonTag,
-                                onTextChange: function onTextChange(value) {
-                                    return setAttributes({ buttonText: value });
-                                }
-                            })
+                                allowedBlocks: ['qubely/formfield-row', 'qubely/formfield-column']
+                                // template={this.renderFormTemplate()}
+                            }),
+                            policyCheckbox && React.createElement(
+                                'div',
+                                { className: 'qubely-form-checkbox' },
+                                React.createElement('input', { className: 'qubely-from-policy-checkbox', type: 'checkbox', name: 'qubely-form-policy-' + uniqueId, id: 'qubely-form-policy-checkbox-' + uniqueId, value: 'Yes', required: true }),
+                                React.createElement(RichText, {
+                                    placeholder: __('Add checkbox message'),
+                                    className: 'qubely-form-policy-checkbox-message',
+                                    value: policyCheckboxText,
+                                    onChange: function onChange(value) {
+                                        return setAttributes({ policyCheckboxText: value });
+                                    }
+                                })
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'qubely-form-button' },
+                                React.createElement(QubelyButtonEdit, {
+                                    enableButton: enableButton,
+                                    buttonFillType: buttonFillType,
+                                    buttonSize: buttonSize,
+                                    buttonText: buttonText,
+                                    buttonIconName: buttonIconName,
+                                    buttonIconPosition: buttonIconPosition,
+                                    buttonTag: buttonTag,
+                                    onTextChange: function onTextChange(value) {
+                                        return setAttributes({ buttonText: value });
+                                    }
+                                })
+                            )
                         ),
                         React.createElement(
                             'div',
@@ -1674,16 +1687,15 @@ var Save = function (_Component) {
                         'form',
                         { className: 'qubely-form is-' + inputSize },
                         React.createElement(InnerBlocks.Content, null),
-                        reCaptcha && React.createElement('div', { className: 'qubely-google-recaptcha' }),
+                        reCaptcha && React.createElement('div', { className: 'qubely-form qubely-google-recaptcha' }),
                         policyCheckbox && React.createElement(
-                            Fragment,
-                            null,
-                            React.createElement('input', { className: '', type: 'checkbox', name: 'qubely-form-has-policy', id: 'qubely-form-policy-checkbox', value: 'Yes', required: true }),
-                            React.createElement(
-                                'label',
-                                { 'for': 'qubely-form-policy-checkbox' },
-                                React.createElement(RichText.Content, { value: policyCheckboxText })
-                            )
+                            'div',
+                            { className: 'qubely-form-checkbox' },
+                            React.createElement('input', { className: 'qubely-from-policy-checkbox', type: 'checkbox', name: 'qubely-form-policy-' + uniqueId, id: 'qubely-form-policy-checkbox-' + uniqueId, value: 'Yes', required: true }),
+                            React.createElement(RichText.Content, {
+                                className: 'qubely-form-policy-checkbox-message',
+                                value: policyCheckboxText
+                            })
                         ),
                         React.createElement(
                             'div',
@@ -2278,9 +2290,9 @@ function Edit(props) {
         var _client = clientId.substr(0, 6);
 
         if (!uniqueId) {
-            setAttributes({ uniqueId: _client, fieldName: fieldName + '-' + _client });
+            setAttributes({ uniqueId: _client, fieldName: type + '-' + _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client, fieldName: fieldName + '-' + _client });
+            setAttributes({ uniqueId: _client, fieldName: type + '-' + _client });
         }
 
         $('.qubely-block-' + uniqueId + ' .qubely-datepicker').datepicker({
@@ -2389,7 +2401,7 @@ function Edit(props) {
         return React.createElement(
             'div',
             { className: 'qubely-form-timepicker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', value: hour + ' : ' + minute + ' ' + (timeFormatType === 12 ? '' + seletedTimeFormat : ''), onClick: function onClick() {
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', value: hour + ':' + minute + ' ' + (timeFormatType === 12 ? '' + seletedTimeFormat : ''), onClick: function onClick() {
                     return setTimePicker(!showTimePicker);
                 }, readonly: true }),
             React.createElement(
@@ -2782,7 +2794,7 @@ function Edit(props) {
                 ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? React.createElement(
                     'div',
                     { 'class': 'qubely-date-picker-wrapper' },
-                    React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: fieldName })
+                    React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: fieldName, readonly: true })
                 ) : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, name: fieldName, type: type, placeholder: __(placeHolder), required: required })
             )
         )
@@ -3288,7 +3300,7 @@ function Save(props) {
         return React.createElement(
             'div',
             { className: 'qubely-date-picker-wrapper', 'data-options': options },
-            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: fieldName })
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: fieldName, readonly: true })
         );
     };
     var renderTimePicker = function renderTimePicker() {
@@ -3300,7 +3312,7 @@ function Save(props) {
         return React.createElement(
             'div',
             { className: 'qubely-form-timepicker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-time-picker', placeholder: __('add time'), name: fieldName, readonly: true }),
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', placeholder: __(timeFormatType === 12 ? '12:00 PM' : '23:00'), name: fieldName, readonly: true }),
             React.createElement(
                 'div',
                 { className: 'qubely-form-timepicker', 'data-options': options },
@@ -3755,7 +3767,7 @@ registerBlockType('qubely/form', {
         reCaptchaSiteKey: { type: 'string', default: '' },
         reCaptchaSecretKey: { type: 'string', default: '' },
         policyCheckbox: { type: 'boolean', default: false },
-        policyCheckboxText: { type: 'string', default: 'I agree with the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> and I declare that I have read the information that is required in accordance with <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.119.01.0001.01.ENG&amp;toc=OJ:L:2016:119:TOC" target="_blank">Article 13 of GDPR.</a>' },
+        policyCheckboxText: { type: 'string', default: 'I agree with the Terms & Conditions and I declare that I have read the information that is required in accordance with the terms' },
         emailReceiver: { type: 'string', default: '' },
         emailHeaders: { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{first-name}} {{last-name}}\nCc: {{email}}\nBcc: admin@yourcompany.com' },
         emailFrom: { type: 'string', default: 'Your Name: admin@example.com' },

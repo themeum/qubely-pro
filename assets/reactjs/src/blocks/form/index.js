@@ -375,7 +375,7 @@ registerBlockType('qubely/form', {
         reCaptchaSiteKey: { type: 'string', default: '' },
         reCaptchaSecretKey: { type: 'string', default: '' },
         policyCheckbox: { type: 'boolean', default: false },
-        policyCheckboxText: { type: 'string', default: 'I agree with the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> and I declare that I have read the information that is required in accordance with <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.119.01.0001.01.ENG&amp;toc=OJ:L:2016:119:TOC" target="_blank">Article 13 of GDPR.</a>' },
+        policyCheckboxText: { type: 'string', default: 'I agree with the Terms & Conditions and I declare that I have read the information that is required in accordance with the terms' },
         emailReceiver: { type: 'string', default: '' },
         emailHeaders: { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{first-name}} {{last-name}}\nCc: {{email}}\nBcc: admin@yourcompany.com' },
         emailFrom: { type: 'string', default: 'Your Name: admin@example.com' },

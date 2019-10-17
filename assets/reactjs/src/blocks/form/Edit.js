@@ -148,11 +148,12 @@ class Edit extends Component {
                                                 innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId, }))))
                                                 replaceInnerBlocks(clientId, innerBlocks, false)
                                                 this.setState({ groupField: false })
+                                                hideDropdown && hideDropdown()
                                             }}
                                         >
                                             {Array(index + 2).fill(0).map(() => {
                                                 return (
-                                                    <i onClick={() => hideDropdown && hideDropdown()} style={{ width: `${100 / (index + 1)}%` }} />
+                                                    <i style={{ width: `${100 / (index + 1)}%` }} />
                                                 )
                                             })}
                                         </div>
@@ -165,8 +166,8 @@ class Edit extends Component {
                             return (
                                 <div className="qubely-form-field-type"
                                     onClick={() => {
-                                        this.addNewItem(fieldName, type)
                                         hideDropdown && hideDropdown()
+                                        this.addNewItem(fieldName, type)
                                     }}
                                 >
                                     {fieldName}
@@ -260,10 +261,14 @@ class Edit extends Component {
                 fieldErrorMessage,
                 formSuccessMessage,
                 formErrorMessage,
+
                 reCaptcha,
                 reCaptchaSiteKey,
                 reCaptchaSecretKey,
+
                 policyCheckbox,
+                policyCheckboxText,
+
                 emailReceiver,
                 emailHeaders,
                 emailFrom,
@@ -537,22 +542,36 @@ class Edit extends Component {
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
                                 allowedBlocks={['qubely/formfield-row', 'qubely/formfield-column',]}
-                                template={this.renderFormTemplate()}
+                                // template={this.renderFormTemplate()}
                             />
+
+                            {policyCheckbox &&
+                                <div className={`qubely-form-checkbox`}>
+                                    <input className="qubely-from-policy-checkbox" type="checkbox" name={`qubely-form-policy-${uniqueId}`} id={`qubely-form-policy-checkbox-${uniqueId}`} value="Yes" required />
+                                    <RichText
+                                        placeholder={__('Add checkbox message')}
+                                        className={`qubely-form-policy-checkbox-message`}
+                                        value={policyCheckboxText}
+                                        onChange={value => setAttributes({ policyCheckboxText: value })}
+                                    />
+                                </div>
+                            }
+
+                            <div className="qubely-form-button" >
+                                <QubelyButtonEdit
+                                    enableButton={enableButton}
+                                    buttonFillType={buttonFillType}
+                                    buttonSize={buttonSize}
+                                    buttonText={buttonText}
+                                    buttonIconName={buttonIconName}
+                                    buttonIconPosition={buttonIconPosition}
+                                    buttonTag={buttonTag}
+                                    onTextChange={value => setAttributes({ buttonText: value })}
+                                />
+                            </div>
                         </form>
 
-                        <div className="qubely-form-button" >
-                            <QubelyButtonEdit
-                                enableButton={enableButton}
-                                buttonFillType={buttonFillType}
-                                buttonSize={buttonSize}
-                                buttonText={buttonText}
-                                buttonIconName={buttonIconName}
-                                buttonIconPosition={buttonIconPosition}
-                                buttonTag={buttonTag}
-                                onTextChange={value => setAttributes({ buttonText: value })}
-                            />
-                        </div>
+
 
                         <div className="qubely-form-add-item">
 
@@ -562,7 +581,7 @@ class Edit extends Component {
                                 position="bottom center"
                                 renderToggle={({ isOpen, onToggle }) =>
                                     <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
-                                        <i className="fas fa-plus-circle"/>
+                                        <i className="fas fa-plus-circle" />
                                         <span onClick={() => this.setState({ hideDropdown: onToggle })}> {__(`Add new item`)}</span>
                                     </div>
 

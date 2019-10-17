@@ -92,9 +92,9 @@ export default function Edit(props) {
         const _client = clientId.substr(0, 6)
 
         if (!uniqueId) {
-            setAttributes({ uniqueId: _client, fieldName: `${fieldName}-${_client}` });
+            setAttributes({ uniqueId: _client, fieldName: `${type}-${_client}` });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client, fieldName: `${fieldName}-${_client}` })
+            setAttributes({ uniqueId: _client, fieldName: `${type}-${_client}` })
         }
 
         $(`.qubely-block-${uniqueId} .qubely-datepicker`).datepicker({
@@ -188,7 +188,7 @@ export default function Edit(props) {
     const renderTimePicker = () => {
         return (
             <div className="qubely-form-timepicker-wrapper">
-                <input type="text" className="qubely-form-field qubely-time-picker" value={`${hour} : ${minute} ${timeFormatType === 12 ? `${seletedTimeFormat}` : ''}`} onClick={() => setTimePicker(!showTimePicker)}  readonly/>
+                <input type="text" className="qubely-form-field qubely-time-picker" value={`${hour}:${minute} ${timeFormatType === 12 ? `${seletedTimeFormat}` : ''}`} onClick={() => setTimePicker(!showTimePicker)}  readonly/>
                 <div className={`qubely-form-timepicker${showTimePicker ? ' qubely-active' : ''}`}>
 
                     <div className={`qubely-timePicker-hour`}>
@@ -543,7 +543,7 @@ export default function Edit(props) {
                                     :
                                     type === 'date' ?
                                         <div class="qubely-date-picker-wrapper">
-                                            <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} name={fieldName} />
+                                            <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} name={fieldName} readonly />
                                         </div>
                                         :
                                         type === 'time' ?
