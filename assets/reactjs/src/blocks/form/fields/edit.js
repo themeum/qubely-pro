@@ -126,7 +126,7 @@ export default function Edit(props) {
                 {options.map((option, index) => {
                     return (
                         <div className={`qubely-form-field-${type}-option`}>
-                            <input type={type} id={option} value={option} />
+                            <input type={type} id={option} value={option} name={fieldName}/>
                             <RichText
                                 placeholder={__('option')}
                                 className={`qubely-${type}-option`}
