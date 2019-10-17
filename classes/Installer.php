@@ -30,7 +30,7 @@ class Installer {
         <div class="notice notice-error qubely-install-notice">
             <div class="qubely-install-notice-inner">
                 <div class="qubely-install-notice-icon">
-                    <img src="<?php echo QUBELY_PRO_DIR_URL.'assets/images/logo-qubely.png'; ?>" alt="Qubely Logo">
+                    <img src="<?php echo QUBELY_PRO_DIR_URL.'assets/img/logo-qubely.png'; ?>" alt="Qubely Logo">
                 </div>
                 <div class="qubely-install-notice-content">
                     <h2><?php _e('Thanks for using Qubely Pro','qubely-pro'); ?></h2>
@@ -49,7 +49,7 @@ class Installer {
         <div class="notice notice-error qubely-install-notice">
             <div class="qubely-install-notice-inner">
                 <div class="qubely-install-notice-icon">
-                    <img src="<?php echo QUBELY_PRO_DIR_URL.'assets/images/logo-qubely.png'; ?>" alt="Qubely Logo">
+                    <img src="<?php echo QUBELY_PRO_DIR_URL.'assets/img/logo-qubely.png'; ?>" alt="Qubely Logo">
                 </div>
                 <div class="qubely-install-notice-content">
                     <h2><?php _e('Thanks for using Qubely Pro','qubely-pro'); ?></h2>
@@ -66,9 +66,7 @@ class Installer {
     }
  
     public function activate_qubely_free(){
-        activate_plugin( QUBELY_FREE_BASENAME );
-        wp_redirect( admin_url('plugins.php') );
-        exit;
+        activate_plugin('qubely/qubely.php');
     }
  
  

@@ -156,10 +156,10 @@ class Updater {
 			<div class="qubely-box qubely-box-<?php echo $license_activated ? 'success':'error'; ?>">
 				<?php if ($license_activated){
 					?>
-					<h3> <i class="dashicons-before dashicons-thumbs-up"/> <?php _e('Your license is connected with', 'qubely-pro'); ?> Themeum.com</h3>
-					<p><i class="dashicons-before dashicons-tickets-alt"/> <?php _e('Licensed To', 'qubely-pro'); ?> : <?php echo $license_to; ?> </p>
+					<h3> <i class="dashicons-before dashicons-thumbs-up"></i> <?php _e('Your license is connected with', 'qubely-pro'); ?> Themeum.com</h3>
+					<p><i class="dashicons-before dashicons-tickets-alt"></i> <?php _e('Licensed To', 'qubely-pro'); ?> : <?php echo $license_to; ?> </p>
                     <p>
-                        <i class="dashicons dashicons-calendar"/>
+                        <i class="dashicons dashicons-calendar"></i>
                         <?php echo __('License Valid Until', 'qubely-pro') .' : '. date(get_option( 'date_format' ),
                                 strtotime($license_info->expires_at)) ?>
                     </p>
@@ -167,7 +167,7 @@ class Updater {
 				}else{
 					?>
 					<h3>
-                        <i class="dashicons-before dashicons-warning"/>
+                        <i class="dashicons-before dashicons-warning"></i>
                         <?php
                         if ($license_key){
 	                        _e('Your license is not connected', 'qubely-pro');
@@ -177,11 +177,11 @@ class Updater {
                         ?>
                     </h3>
 
-					<p><i class="dashicons-before dashicons-tickets-alt"/> <?php _e('A valid license is required to unlock available features', 'qubely-pro'); ?> </p>
+					<p><i class="dashicons-before dashicons-tickets-alt"></i> <?php _e('A valid license is required to unlock available features', 'qubely-pro'); ?> </p>
 					<?php
 				}
 				if ( ! empty($license_info->msg)){
-					echo "<p> <i class='dashicons-before dashicons-admin-comments'/> {$license_info->msg}</p>";
+					echo "<p> <i class='dashicons-before dashicons-admin-comments'></i> {$license_info->msg}</p>";
 				}
 				?>
 			</div>
