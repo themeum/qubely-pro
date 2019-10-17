@@ -238,7 +238,7 @@ jQuery(document).ready(function ($) {
     function checkFields($field, fieldErrorMessage) {
         let isRequired = false;
         const $parent = $field.parents('.qubely-form-field-wrapper');
-        fieldErrorMessage = `< p class= "qubely-form-required-field" > ${fieldErrorMessage}</p > `;
+        fieldErrorMessage = `<p class= "qubely-form-required-field"> ${fieldErrorMessage}</p> `;
         const hasNoError = $parent.find("p.qubely-form-required-field").length === 0;
 
         if (typeof $field.prop('required') !== 'undefined') {
