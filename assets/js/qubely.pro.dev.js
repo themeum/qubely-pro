@@ -2311,7 +2311,7 @@ function Edit(props) {
                 return React.createElement(
                     'div',
                     { className: 'qubely-form-field-' + type + '-option' },
-                    React.createElement('input', { type: type, id: option, value: option }),
+                    React.createElement('input', { type: type, id: option, value: option, name: fieldName }),
                     React.createElement(RichText, {
                         placeholder: __('option'),
                         className: 'qubely-' + type + '-option',
@@ -3253,7 +3253,7 @@ function Save(props) {
                 return React.createElement(
                     'div',
                     { className: 'qubely-form-field-' + type + '-option' },
-                    React.createElement('input', { type: type, id: option, value: option }),
+                    React.createElement('input', { type: type, id: option, value: option, name: fieldName }),
                     React.createElement(RichText.Content, {
                         placeholder: __('option'),
                         className: 'qubely-' + type + '-option',
