@@ -315,7 +315,11 @@ class Edit extends Component {
 				dotsposition,
 				carouselImageSize,
 				imageWidth, avatarHeight,
-				globalZindex,
+                globalZindex,
+                enablePosition, 
+                selectPosition, 
+                positionXaxis, 
+                positionYaxis,
 				hideTablet,
 				hideMobile,
 				globalCss,
@@ -743,7 +747,7 @@ class Edit extends Component {
                     </Toolbar>
                 </BlockControls>
 
-				{globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
+				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-image-carousel qubely-layout-${layout}`}>

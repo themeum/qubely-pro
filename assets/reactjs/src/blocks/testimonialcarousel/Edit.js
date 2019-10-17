@@ -208,7 +208,7 @@ class Edit extends Component {
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
 			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotsPosition, dotIndicator, dotswidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll, sliderItemMargin,
-			globalZindex, hideTablet, hideMobile, globalCss, animation
+			globalZindex, enablePosition, selectPosition, positionXaxis, positionYaxis, hideTablet, hideMobile, globalCss, animation
 		} } = this.props
 
 		const { device } = this.state
@@ -721,7 +721,7 @@ class Edit extends Component {
 					</Toolbar>
 				</BlockControls>
 
-				{globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
+				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-testimonial-carousel qubely-layout-${layout}`}>

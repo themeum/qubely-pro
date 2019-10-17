@@ -1170,6 +1170,10 @@ var Edit = function (_Component) {
                 emailSubject = _props5$attributes.emailSubject,
                 emailBody = _props5$attributes.emailBody,
                 globalZindex = _props5$attributes.globalZindex,
+                enablePosition = _props5$attributes.enablePosition,
+                selectPosition = _props5$attributes.selectPosition,
+                positionXaxis = _props5$attributes.positionXaxis,
+                positionYaxis = _props5$attributes.positionYaxis,
                 hideTablet = _props5$attributes.hideTablet,
                 hideMobile = _props5$attributes.hideMobile,
                 globalCss = _props5$attributes.globalCss,
@@ -1483,7 +1487,7 @@ var Edit = function (_Component) {
                         }))
                     )
                 ),
-                globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+                globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
                 React.createElement(
                     'div',
                     { className: 'qubely-block-' + uniqueId },
@@ -3266,7 +3270,7 @@ function Save(props) {
                 return React.createElement(
                     'div',
                     { className: 'qubely-form-field-' + type + '-option' },
-                    React.createElement('input', { type: type, id: option, value: option, name: fieldName }),
+                    React.createElement('input', { type: type, id: option, value: option, name: 'qubely-form-input[' + fieldName + (required ? '*' : '') + ']' }),
                     React.createElement(RichText.Content, {
                         placeholder: __('option'),
                         className: 'qubely-' + type + '-option',
@@ -3282,7 +3286,7 @@ function Save(props) {
         return React.createElement(
             Fragment,
             null,
-            React.createElement('input', { className: 'qubely-form-field qubely-form-email', type: 'email', placeholder: __(placeHolder), required: required, name: fieldName }),
+            React.createElement('input', { className: 'qubely-form-field qubely-form-email', type: 'email', placeholder: __(placeHolder), required: required, name: 'qubely-form-input[' + fieldName + (required ? '*' : '') + ']' }),
             emailConformation && React.createElement(
                 Fragment,
                 null,
@@ -3290,7 +3294,7 @@ function Save(props) {
                     className: 'qubely-form-field-label',
                     value: conformationEmailLabel
                 }),
-                React.createElement('input', { className: 'qubely-form-field qubely-form-confirmation-email', type: 'email', placeholder: __(placeHolder), required: required, name: 'confirmation-' + fieldName })
+                React.createElement('input', { className: 'qubely-form-field qubely-form-confirmation-email', type: 'email', placeholder: __(placeHolder), required: required, name: 'qubely-form-input[confirmation-' + fieldName + (required ? '*' : '') + ']' })
             )
         );
     };
@@ -3300,7 +3304,7 @@ function Save(props) {
         return React.createElement(
             'div',
             { className: 'qubely-date-picker-wrapper', 'data-options': options },
-            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: fieldName, readonly: true })
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-datepicker', autocomplete: 'off', placeholder: __(dateFormat), name: 'qubely-form-input[' + fieldName + (required ? '*' : '') + ']', readonly: true })
         );
     };
     var renderTimePicker = function renderTimePicker() {
@@ -3312,7 +3316,7 @@ function Save(props) {
         return React.createElement(
             'div',
             { className: 'qubely-form-timepicker-wrapper' },
-            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', placeholder: __(timeFormatType === 12 ? '12:00 PM' : '23:00'), name: fieldName, readonly: true }),
+            React.createElement('input', { type: 'text', className: 'qubely-form-field qubely-time-picker', placeholder: __(timeFormatType === 12 ? '12:00 PM' : '23:00'), name: 'qubely-form-input[' + fieldName + (required ? '*' : '') + ']', readonly: true }),
             React.createElement(
                 'div',
                 { className: 'qubely-form-timepicker', 'data-options': options },
@@ -3393,9 +3397,9 @@ function Save(props) {
                     '*'
                 )
             ),
-            type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), name: fieldName, required: required }) : type === 'dropdown' ? React.createElement(
+            type === 'textarea' ? React.createElement('textarea', { className: 'qubely-form-field qubely-form-textarea', placeholder: __(placeHolder), name: 'qubely-form-input[' + fieldName + (required ? '*' : '') + ']', required: required }) : type === 'dropdown' ? React.createElement(
                 'select',
-                { className: 'qubely-form-field qubely-form-dropdown', name: fieldName },
+                { className: 'qubely-form-field qubely-form-dropdown', name: 'qubely-form-input[' + fieldName + (required ? '*' : '') + ']' },
                 options.map(function (option) {
                     return React.createElement(
                         'option',
@@ -3403,7 +3407,7 @@ function Save(props) {
                         option
                     );
                 })
-            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, name: fieldName, placeholder: __(placeHolder), required: required })
+            ) : type === 'radio' || type === 'checkbox' ? renderOptions() : type === 'date' ? renderDatePicker() : type === 'time' ? renderTimePicker() : type === 'email' ? renderEmailField() : React.createElement('input', { className: 'qubely-form-field qubely-form-' + type, type: type, name: 'qubely-form-input[' + fieldName + (required ? '*' : '') + ']', placeholder: __(placeHolder), required: required })
         )
     );
 }
@@ -4799,6 +4803,10 @@ var Edit = function (_Component) {
                 overlayHoverBg = _props2$attributes.overlayHoverBg,
                 overlayBlend = _props2$attributes.overlayBlend,
                 globalZindex = _props2$attributes.globalZindex,
+                enablePosition = _props2$attributes.enablePosition,
+                selectPosition = _props2$attributes.selectPosition,
+                positionXaxis = _props2$attributes.positionXaxis,
+                positionYaxis = _props2$attributes.positionYaxis,
                 hideTablet = _props2$attributes.hideTablet,
                 hideMobile = _props2$attributes.hideMobile,
                 globalCss = _props2$attributes.globalCss,
@@ -4964,7 +4972,7 @@ var Edit = function (_Component) {
                         }))
                     )
                 ),
-                globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+                globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
                 React.createElement(
                     'div',
                     { className: 'qubely-block-' + uniqueId },
@@ -5861,6 +5869,10 @@ var Edit = function (_Component) {
 			    imageWidth = _props2$attributes.imageWidth,
 			    avatarHeight = _props2$attributes.avatarHeight,
 			    globalZindex = _props2$attributes.globalZindex,
+			    enablePosition = _props2$attributes.enablePosition,
+			    selectPosition = _props2$attributes.selectPosition,
+			    positionXaxis = _props2$attributes.positionXaxis,
+			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -6428,7 +6440,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -7458,6 +7470,10 @@ var Edit = function (_Component) {
 			    metaSpace = _props2$attributes.metaSpace,
 			    excerptSpace = _props2$attributes.excerptSpace,
 			    globalZindex = _props2$attributes.globalZindex,
+			    enablePosition = _props2$attributes.enablePosition,
+			    selectPosition = _props2$attributes.selectPosition,
+			    positionXaxis = _props2$attributes.positionXaxis,
+			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -8324,7 +8340,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -8819,6 +8835,10 @@ var Edit = function (_Component) {
 			    metaSpace = _props2$attributes.metaSpace,
 			    excerptSpace = _props2$attributes.excerptSpace,
 			    globalZindex = _props2$attributes.globalZindex,
+			    enablePosition = _props2$attributes.enablePosition,
+			    selectPosition = _props2$attributes.selectPosition,
+			    positionXaxis = _props2$attributes.positionXaxis,
+			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -9429,7 +9449,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -9961,6 +9981,10 @@ var Edit = function (_Component) {
                 discountTypography = _props2$attributes.discountTypography,
                 discountColor = _props2$attributes.discountColor,
                 globalZindex = _props2$attributes.globalZindex,
+                enablePosition = _props2$attributes.enablePosition,
+                selectPosition = _props2$attributes.selectPosition,
+                positionXaxis = _props2$attributes.positionXaxis,
+                positionYaxis = _props2$attributes.positionYaxis,
                 hideTablet = _props2$attributes.hideTablet,
                 hideMobile = _props2$attributes.hideMobile,
                 globalCss = _props2$attributes.globalCss,
@@ -10287,7 +10311,7 @@ var Edit = function (_Component) {
                         }))
                     )
                 ),
-                globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+                globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
                 React.createElement(
                     'div',
                     { className: 'qubely-block-' + uniqueId },
@@ -11531,6 +11555,10 @@ var Edit = function (_Component) {
 			    horizontalScrollleft = _props2$attributes.horizontalScrollleft,
 			    contentSpacing = _props2$attributes.contentSpacing,
 			    globalZindex = _props2$attributes.globalZindex,
+			    enablePosition = _props2$attributes.enablePosition,
+			    selectPosition = _props2$attributes.selectPosition,
+			    positionXaxis = _props2$attributes.positionXaxis,
+			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -12227,7 +12255,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -13409,6 +13437,10 @@ var Edit = function (_Component) {
 			    horizontalScroll = _props2$attributes.horizontalScroll,
 			    sliderItemMargin = _props2$attributes.sliderItemMargin,
 			    globalZindex = _props2$attributes.globalZindex,
+			    enablePosition = _props2$attributes.enablePosition,
+			    selectPosition = _props2$attributes.selectPosition,
+			    positionXaxis = _props2$attributes.positionXaxis,
+			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -14114,7 +14146,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
