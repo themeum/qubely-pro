@@ -4643,7 +4643,7 @@ var Edit = function (_Component) {
                             { className: 'qubely-repeatable-action-remove', role: 'button', onClick: function onClick() {
                                     return _this.removePricelistItem(index);
                                 } },
-                            React.createElement('i', { className: 'fas fa-close' })
+                            React.createElement('span', { className: 'dashicons dashicons-no-alt' })
                         )
                     ),
                     React.createElement(
@@ -14888,7 +14888,7 @@ __webpack_require__(/*! ./blocks/gallery */ "./src/blocks/gallery/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/wordpress/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/plugins/qubely/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
 
 
 /***/ })
