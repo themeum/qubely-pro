@@ -1170,6 +1170,10 @@ var Edit = function (_Component) {
                 emailSubject = _props5$attributes.emailSubject,
                 emailBody = _props5$attributes.emailBody,
                 globalZindex = _props5$attributes.globalZindex,
+                enablePosition = _props5$attributes.enablePosition,
+                selectPosition = _props5$attributes.selectPosition,
+                positionXaxis = _props5$attributes.positionXaxis,
+                positionYaxis = _props5$attributes.positionYaxis,
                 hideTablet = _props5$attributes.hideTablet,
                 hideMobile = _props5$attributes.hideMobile,
                 globalCss = _props5$attributes.globalCss,
@@ -1483,7 +1487,7 @@ var Edit = function (_Component) {
                         }))
                     )
                 ),
-                globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+                globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
                 React.createElement(
                     'div',
                     { className: 'qubely-block-' + uniqueId },
@@ -4787,6 +4791,10 @@ var Edit = function (_Component) {
                 overlayHoverBg = _props2$attributes.overlayHoverBg,
                 overlayBlend = _props2$attributes.overlayBlend,
                 globalZindex = _props2$attributes.globalZindex,
+                enablePosition = _props2$attributes.enablePosition,
+                selectPosition = _props2$attributes.selectPosition,
+                positionXaxis = _props2$attributes.positionXaxis,
+                positionYaxis = _props2$attributes.positionYaxis,
                 hideTablet = _props2$attributes.hideTablet,
                 hideMobile = _props2$attributes.hideMobile,
                 globalCss = _props2$attributes.globalCss,
@@ -4952,7 +4960,7 @@ var Edit = function (_Component) {
                         }))
                     )
                 ),
-                globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+                globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
                 React.createElement(
                     'div',
                     { className: 'qubely-block-' + uniqueId },
@@ -5849,6 +5857,10 @@ var Edit = function (_Component) {
 			    imageWidth = _props2$attributes.imageWidth,
 			    avatarHeight = _props2$attributes.avatarHeight,
 			    globalZindex = _props2$attributes.globalZindex,
+			    enablePosition = _props2$attributes.enablePosition,
+			    selectPosition = _props2$attributes.selectPosition,
+			    positionXaxis = _props2$attributes.positionXaxis,
+			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -6416,7 +6428,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -7446,6 +7458,10 @@ var Edit = function (_Component) {
 			    metaSpace = _props2$attributes.metaSpace,
 			    excerptSpace = _props2$attributes.excerptSpace,
 			    globalZindex = _props2$attributes.globalZindex,
+			    enablePosition = _props2$attributes.enablePosition,
+			    selectPosition = _props2$attributes.selectPosition,
+			    positionXaxis = _props2$attributes.positionXaxis,
+			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -8312,7 +8328,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -8807,6 +8823,10 @@ var Edit = function (_Component) {
 			    metaSpace = _props2$attributes.metaSpace,
 			    excerptSpace = _props2$attributes.excerptSpace,
 			    globalZindex = _props2$attributes.globalZindex,
+			    enablePosition = _props2$attributes.enablePosition,
+			    selectPosition = _props2$attributes.selectPosition,
+			    positionXaxis = _props2$attributes.positionXaxis,
+			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -9417,7 +9437,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -9949,6 +9969,10 @@ var Edit = function (_Component) {
                 discountTypography = _props2$attributes.discountTypography,
                 discountColor = _props2$attributes.discountColor,
                 globalZindex = _props2$attributes.globalZindex,
+                enablePosition = _props2$attributes.enablePosition,
+                selectPosition = _props2$attributes.selectPosition,
+                positionXaxis = _props2$attributes.positionXaxis,
+                positionYaxis = _props2$attributes.positionYaxis,
                 hideTablet = _props2$attributes.hideTablet,
                 hideMobile = _props2$attributes.hideMobile,
                 globalCss = _props2$attributes.globalCss,
@@ -10275,7 +10299,7 @@ var Edit = function (_Component) {
                         }))
                     )
                 ),
-                globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+                globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
                 React.createElement(
                     'div',
                     { className: 'qubely-block-' + uniqueId },
@@ -13397,6 +13421,10 @@ var Edit = function (_Component) {
 			    horizontalScroll = _props2$attributes.horizontalScroll,
 			    sliderItemMargin = _props2$attributes.sliderItemMargin,
 			    globalZindex = _props2$attributes.globalZindex,
+			    enablePosition = _props2$attributes.enablePosition,
+			    selectPosition = _props2$attributes.selectPosition,
+			    positionXaxis = _props2$attributes.positionXaxis,
+			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -14102,7 +14130,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -14889,7 +14917,7 @@ __webpack_require__(/*! ./blocks/gallery */ "./src/blocks/gallery/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/wordpress/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/plugins/quebly/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
 
 
 /***/ })
