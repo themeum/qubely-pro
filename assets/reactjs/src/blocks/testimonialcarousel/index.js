@@ -8,7 +8,7 @@ const { gloalSettings: { globalAttributes }} = wp.qubelyComponents
 registerBlockType('qubely/testimonialcarousel', {
 	title: __('Testimonial Carousel'),
 	description: __('Design and showcase customer reviews, remarks as testimonials with Qubely Testimonial Carousel block'),
-	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg'} alt={__('Team Block')} />,
+	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/testimonial-carousel.svg'} alt={__('Team Block')} />,
 	category: 'qubely',
 	keywords: [
 		__('Testimonial'),

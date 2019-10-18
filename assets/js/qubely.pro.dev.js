@@ -5148,7 +5148,7 @@ registerBlockType('qubely/gallery', {
     title: __('Gallery'),
     category: 'qubely',
     description: __('Showcase detailed with Qubely Gallery'),
-    icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Gallery') }),
+    icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/testimonial-carousel.svg', alt: __('Gallery') }),
     keywords: [__('Gallery'), __('Image')],
     attributes: _extends({
         uniqueId: { type: 'string', default: '' },
@@ -6698,7 +6698,7 @@ var globalAttributes = wp.qubelyComponents.gloalSettings.globalAttributes;
 registerBlockType('qubely/imagecarousel', {
 	title: __('Image Carousel'),
 	description: __('Insert images and beautify them with Qubely Image Carousel Block'),
-	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg', alt: __('Image Carousel Block') }),
+	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/image-carousel.svg', alt: __('Image Carousel Block') }),
 	category: 'qubely',
 	keywords: [__('Image'), __('Carousel')],
 	attributes: _extends({
@@ -8425,6 +8425,8 @@ exports.default = withSelect(function (select, props) {
 "use strict";
 
 
+var _registerBlockType;
+
 __webpack_require__(/*! ./style.scss */ "./src/blocks/postcarousel/style.scss");
 
 var _Edit = __webpack_require__(/*! ./Edit */ "./src/blocks/postcarousel/Edit.js");
@@ -8433,23 +8435,19 @@ var _Edit2 = _interopRequireDefault(_Edit);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
 
-registerBlockType('qubely/postcarousel', {
+registerBlockType('qubely/postcarousel', (_registerBlockType = {
 	title: __('Post Carousel'),
 	description: 'Blog post carousel',
-	icon: 'image-flip-horizontal',
-	category: 'qubely',
-	keywords: [__('Post'), __('Blog Post Carousel')],
-	edit: _Edit2.default,
-
-	save: function save(props) {
-		return null;
-	}
-
-});
+	icon: 'image-flip-horizontal'
+}, _defineProperty(_registerBlockType, 'icon', React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/post-carousel.svg', alt: __('Post Carousel Block') })), _defineProperty(_registerBlockType, 'category', 'qubely'), _defineProperty(_registerBlockType, 'keywords', [__('Post'), __('Blog Post Carousel')]), _defineProperty(_registerBlockType, 'edit', _Edit2.default), _defineProperty(_registerBlockType, 'save', function save(props) {
+	return null;
+}), _registerBlockType));
 
 /***/ }),
 
@@ -9541,7 +9539,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 registerBlockType('qubely/postgrid', {
 	title: __('Post Grid'),
 	description: __('Fetch blog posts and display them beautifully in grid or list views with Qubely Postgrid Block.'),
-	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Post Grid Block') }),
+	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/testimonial-carousel.svg', alt: __('Post Grid Block') }),
 	category: 'qubely',
 	keywords: [__('Post'), __('Post Grid')],
 	edit: _Edit2.default,
@@ -10520,7 +10518,7 @@ registerBlockType('qubely/pricelist', {
     title: __('Price List'),
     category: 'qubely',
     description: __('Showcase detailed with Qubely Price List.'),
-    icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Price List') }),
+    icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/testimonial-carousel.svg', alt: __('Price List') }),
     keywords: [__('Price List'), __('Pricing')],
     attributes: _extends({
         uniqueId: { type: 'string', default: '' },
@@ -11555,10 +11553,6 @@ var Edit = function (_Component) {
 			    horizontalScrollleft = _props2$attributes.horizontalScrollleft,
 			    contentSpacing = _props2$attributes.contentSpacing,
 			    globalZindex = _props2$attributes.globalZindex,
-			    enablePosition = _props2$attributes.enablePosition,
-			    selectPosition = _props2$attributes.selectPosition,
-			    positionXaxis = _props2$attributes.positionXaxis,
-			    positionYaxis = _props2$attributes.positionYaxis,
 			    hideTablet = _props2$attributes.hideTablet,
 			    hideMobile = _props2$attributes.hideMobile,
 			    globalCss = _props2$attributes.globalCss,
@@ -12255,7 +12249,7 @@ var Edit = function (_Component) {
 						}))
 					)
 				),
-				globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
+				globalSettingsPanel(globalZindex, hideTablet, hideMobile, globalCss, setAttributes),
 				React.createElement(
 					'div',
 					{ className: 'qubely-block-' + uniqueId },
@@ -14412,7 +14406,7 @@ var globalAttributes = wp.qubelyComponents.gloalSettings.globalAttributes;
 registerBlockType('qubely/testimonialcarousel', {
 	title: __('Testimonial Carousel'),
 	description: __('Design and showcase customer reviews, remarks as testimonials with Qubely Testimonial Carousel block'),
-	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg', alt: __('Team Block') }),
+	icon: React.createElement('img', { src: qubely_pro_admin.plugin + 'assets/img/blocks/testimonial-carousel.svg', alt: __('Team Block') }),
 	category: 'qubely',
 	keywords: [__('Testimonial'), __('Carousel')],
 	attributes: _extends({
@@ -14933,7 +14927,7 @@ __webpack_require__(/*! ./blocks/gallery */ "./src/blocks/gallery/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/wordpress/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/plugins/quebly/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
 
 
 /***/ })
