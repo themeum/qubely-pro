@@ -25,9 +25,9 @@ const icons = {
     // PostGrid Icon
     postgrid_1: <img src={`${img_path}/postgrid/1.svg`} alt={__('Layout 1')} />,
     postgrid_2: <img src={`${img_path}/postgrid/2.svg`} alt={__('Layout 2')} />,
-    postgrid_3: <img src={`${img_path}/postgrid/pro1.svg`} alt={__('Layout 3')} />,
-    postgrid_4: <img src={`${img_path}/postgrid/pro2.svg`} alt={__('Layout 4')} />,
-    postgrid_5: <img src={`${img_path}/postgrid/pro3.svg`} alt={__('Layout 4')} />,
+    postgrid_3: <img src={`${img_path}/postgrid/3.svg`} alt={__('Layout 3')} />,
+    postgrid_4: <img src={`${img_path}/postgrid/4.svg`} alt={__('Layout 4')} />,
+    postgrid_5: <img src={`${img_path}/postgrid/5.svg`} alt={__('Layout 5')} />,
 
     // Postgrid design 
     postgrid_design_1: <img src={`${img_path}/postgrid/11.svg`} alt={__('Design 1')} />,
