@@ -38,14 +38,16 @@ export default function Save(props) {
     const renderOptions = () => {
         return (
             <div className={`qubely-form-field qubely-form-${type} qubely-${type}-${columns}`} data-required={required} >
-                {options.map(option => {
+                {options.map((option, index) => {
                     return (
                         <div className={`qubely-form-field-${type}-option`}>
-                            <input type={type} id={option} value={option} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} />
+                            <input type={type} id={`${uniqueId}${index}`} value={option} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} />
                             <RichText.Content
+                                tagName="label"
                                 placeholder={__('option')}
                                 className={`qubely-${type}-option`}
                                 value={option}
+                                for={`${uniqueId}${index}`}
                             />
                         </div>
                     )
@@ -59,14 +61,14 @@ export default function Save(props) {
 
         return (
             <Fragment>
-                <input className={`qubely-form-field qubely-form-email`} type={'email'} placeholder={__(placeHolder)} required={required} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} />
+                <input className={`qubely-form-field qubely-form-email`} type={'email'} placeholder={__(placeHolder)} required={required} id={uniqueId} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} />
                 {emailConformation &&
                     <Fragment>
-                        <RichText.Content
-                            className={`qubely-form-field-label`}
-                            value={conformationEmailLabel}
-                        />
-                        <input className={`qubely-form-field qubely-form-confirmation-email`} type={'email'} placeholder={__(placeHolder)} required={required} name={`qubely-form-input[confirmation-${fieldName}${(required ? '*' : '')}]`} />
+                        <label className="qubely-form-label" for={`confirmation-${uniqueId}`} >
+                            <RichText.Content value={conformationEmailLabel} />
+                            {required && <span className="qubely-from-field-required-sign">*</span>}
+                        </label>
+                        <input className={`qubely-form-field qubely-form-confirmation-email`} type={'email'} placeholder={__(placeHolder)} required={required} id={`confirmation-${uniqueId}`} name={`qubely-form-input[confirmation-${fieldName}${(required ? '*' : '')}]`} />
                     </Fragment>
                 }
             </Fragment>
@@ -78,7 +80,7 @@ export default function Save(props) {
         let options = JSON.stringify({ dateFormat: dateFormat })
         return (
             <div className={`qubely-date-picker-wrapper`} data-options={options}>
-                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} readonly />
+                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} id={uniqueId} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} readonly />
             </div>
         )
     }
@@ -92,7 +94,7 @@ export default function Save(props) {
         )
         return (
             <div className="qubely-form-timepicker-wrapper">
-                <input type="text" className={`qubely-form-field qubely-time-picker`} placeholder={__(timeFormatType === 12 ? '12:00 PM' : '23:00')} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} readonly />
+                <input type="text" className={`qubely-form-field qubely-time-picker`} placeholder={__(timeFormatType === 12 ? '12:00 PM' : '23:00')} id={uniqueId} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} readonly />
                 <div className={`qubely-form-timepicker`} data-options={options}>
 
                     <div className={`qubely-timePicker-hour`}>
@@ -142,7 +144,7 @@ export default function Save(props) {
         <div className={`qubely-block-${uniqueId}`}>
             <div className={`qubely-form-field-wrapper`}>
 
-                <label className="qubely-form-label">
+                <label className="qubely-form-label" for={uniqueId} >
                     <RichText.Content value={label} />
                     {required && <span className="qubely-from-field-required-sign">*</span>}
                 </label>
@@ -150,10 +152,10 @@ export default function Save(props) {
                 {/** input fields */}
                 {
                     type === 'textarea' ?
-                        <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} required={required} />
+                        <textarea className={`qubely-form-field qubely-form-textarea`} placeholder={__(placeHolder)} id={uniqueId} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} required={required} />
                         :
                         type === 'dropdown' ?
-                            <select className={`qubely-form-field qubely-form-dropdown`} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} >
+                            <select className={`qubely-form-field qubely-form-dropdown`} id={uniqueId} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} >
                                 {options.map(option => <option value={option}>{option}</option>)}
                             </select>
                             :
@@ -169,7 +171,7 @@ export default function Save(props) {
                                         type === 'email' ?
                                             renderEmailField()
                                             :
-                                            <input className={`qubely-form-field qubely-form-${type}`} type={type} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} placeholder={__(placeHolder)} required={required} />
+                                            <input className={`qubely-form-field qubely-form-${type}`} type={type} id={uniqueId} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} placeholder={__(placeHolder)} required={required} />
                 }
             </div>
         </div>

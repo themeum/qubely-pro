@@ -3,7 +3,7 @@ const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.editor
 import icons from '../../helpers/icons'
-const { 
+const {
 	Range,
 	Color,
 	Typography,
@@ -19,9 +19,9 @@ const {
 	Tabs,
 	Tab,
 	Carousel,
-	ButtonGroup, 
-	CssGenerator: { CssGenerator }, 
-	gloalSettings: { globalSettingsPanel, animationSettings }, 
+	ButtonGroup,
+	CssGenerator: { CssGenerator },
+	gloalSettings: { globalSettingsPanel, animationSettings },
 	Inline: { InlineToolbar } } = wp.qubelyComponents
 
 class Edit extends Component {
@@ -99,19 +99,19 @@ class Edit extends Component {
 					multiple={false}
 					value={sliderimage}
 					render={({ open }) => (
-						<Fragment> 
+						<Fragment>
 							{(sliderimage && sliderimage.url) ?
 								<div className="qubely-slider-content-sliderimage-editor">
 									<img src={sliderimage.url} alt={__('Slider Image')} />
 									<div className="qubely-media-actions qubely-field-button-list">
 										<Tooltip text={__('Edit')}>
 											<button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
-												<span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw"/>
+												<span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw" />
 											</button>
 										</Tooltip>
 										<Tooltip text={__('Remove')}>
 											<button className="qubely-button" aria-label={__('Remove')} onClick={() => this.updateAtrributes('sliderimage', '', index)} role="button">
-												<span aria-label={__('Close')} className="far fa-trash-alt fa-fw"/>
+												<span aria-label={__('Close')} className="far fa-trash-alt fa-fw" />
 											</button>
 										</Tooltip>
 									</div>
@@ -119,7 +119,7 @@ class Edit extends Component {
 								:
 								<a className="qubely-insert-image" href="#" onClick={open}>
 									<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-									<path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
+										<path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
 									<span>{__('Insert')}</span>
 								</a>
 							}
@@ -150,9 +150,9 @@ class Edit extends Component {
 		return (
 			<div className={`qubely-image-slider`}>
 				{this.renderSlider(sliderimage, index)}
-				{ (layout != 1 ) &&
+				{(layout != 1) &&
 					<div>
-						{ (sliderContent || layout === 6 ) && 
+						{(sliderContent || layout === 6) &&
 							<div className={`qubely-image-slider-text`}>
 								<div className="qubely-image-content">
 									<div className="qubely-image-title" >{this.renderName(slidertitle, index)}</div>
@@ -177,16 +177,19 @@ class Edit extends Component {
 	}
 
 	renderImages = () => {
-		const { attributes: { layout, carouselItems, contentVerticalAlign } } = this.props
+		const { attributes: { layout, carouselItems, items, contentVerticalAlign } } = this.props
 		return (
 			carouselItems.map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item item-layout${layout} align-${contentVerticalAlign}`} >
-						<Tooltip text={__('Delete this item')}>
-							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
-								<span class="dashicons dashicons-no-alt"/>
-							</span>
-						</Tooltip>
+						{
+							(carouselItems.length > items.md && carouselItems.length > items.sm && carouselItems.length > items.sm) &&
+							<Tooltip text={__('Delete this item')}>
+								<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
+									<span class="dashicons dashicons-no-alt" />
+								</span>
+							</Tooltip>
+						}
 						<div className={`qubely-image-item layout-${layout}`}>
 							{this.renderSliderInfo(item, index)}
 						</div>
@@ -196,7 +199,7 @@ class Edit extends Component {
 		)
 	}
 
-	renderLayoutFive = () => { 
+	renderLayoutFive = () => {
 		const { attributes: { layout, carouselItems } } = this.props
 		return (
 			carouselItems.map((item, index) => {
@@ -253,10 +256,10 @@ class Edit extends Component {
 		return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md'
 	}
 	render() {
-		const { 
-			setAttributes, 
+		const {
+			setAttributes,
 			attributes: {
-				uniqueId, 
+				uniqueId,
 				layout,
 				alignment,
 				carouselItems,
@@ -287,7 +290,7 @@ class Edit extends Component {
 				arrowBorderHoverColor,
 				cornerHoverRadius,
 				dots,
-				dotIndicator, 
+				dotIndicator,
 				dotwidth,
 				dotHeight,
 				dotBorderRadius,
@@ -303,8 +306,8 @@ class Edit extends Component {
 				messageTypo,
 				messageSpacingTop,
 				messageSpacingBottom,
-				contentPadding, 
-				contentVerticalAlign, 
+				contentPadding,
+				contentVerticalAlign,
 				contentAlignment,
 				animateOnHover,
 				enableOverlay,
@@ -315,16 +318,16 @@ class Edit extends Component {
 				dotsposition,
 				carouselImageSize,
 				imageWidth, avatarHeight,
-                globalZindex,
-                enablePosition, 
-                selectPosition, 
-                positionXaxis, 
-                positionYaxis,
+				globalZindex,
+				enablePosition,
+				selectPosition,
+				positionXaxis,
+				positionYaxis,
 				hideTablet,
 				hideMobile,
 				globalCss,
 				animation
-			} 
+			}
 		} = this.props
 
 		const { device } = this.state
@@ -343,7 +346,7 @@ class Edit extends Component {
 			centerPadding: centerPadding,
 			arrowPosition: arrowPosition,
 			responsive: [
-				{ 
+				{
 					viewport: 1170,
 					items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md
 				},
@@ -372,7 +375,7 @@ class Edit extends Component {
 			dot_indicator: dotIndicator,
 			arrowPosition: arrowPosition,
 			responsive: [
-				{ 
+				{
 					viewport: 1170,
 					items: 1,
 				},
@@ -386,7 +389,7 @@ class Edit extends Component {
 				<InspectorControls key="inspector">
 
 					<PanelBody title="" initialOpen={true}>
-						<Styles 
+						<Styles
 							options={[
 								{ value: 1, svg: icons.imagecarousel_1, label: __('Layout 1') },
 								{ value: 2, svg: icons.imagecarousel_2, label: __('Layout 2') },
@@ -396,7 +399,7 @@ class Edit extends Component {
 							]}
 							value={layout} onChange={val => setAttributes({ layout: val })}
 						/>
- 
+
 						<Alignment
 							label={__('Alignment')}
 							value={alignment}
@@ -407,19 +410,19 @@ class Edit extends Component {
 						/>
 
 						<Range label={__('Number of Carousels')}
-							min={3} 
-							max={20} 
+							min={3}
+							max={20}
 							value={carouselItems.length}
 							onChange={val => this.setCarouselLength(val)}
 						/>
 
-						{ layout == 2 &&  
+						{layout == 2 &&
 							<Range
 								label={__('Number of Columns')}
 								min={1} max={20} responsive device={device}
 								device={this.state.device}
-								value={ (layout != 2) ? ((layout == 5) ? itemfive : items) : itemthree }
-								onChange={value => setAttributes( (layout != 2 ) ? ((layout == 5) ? { itemfive: value } : { items: value }) : { itemthree: value })}
+								value={(layout != 2) ? ((layout == 5) ? itemfive : items) : itemthree}
+								onChange={value => setAttributes((layout != 2) ? ((layout == 5) ? { itemfive: value } : { items: value }) : { itemthree: value })}
 								onDeviceChange={value => this.setState({ device: value })}
 							/>
 						}
@@ -431,8 +434,8 @@ class Edit extends Component {
 							value={sliderMargin}
 							onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
 						/>
- 
-						{ (layout != 6 && layout != 1) &&
+
+						{(layout != 6 && layout != 1) &&
 							<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
 						}
 					</PanelBody>
@@ -446,20 +449,20 @@ class Edit extends Component {
 							</Fragment>
 						}
 						<Toggle label={__('Draggable')} value={dragable} onChange={value => setAttributes({ dragable: value })} />
-						
+
 						{layout != 1 &&
 							<Fragment>
-								<Toggle 
-									label={__('Centered Slides')} 
-									value={(layout == 3 || layout == 4) ? isCentered : notCentered } 
+								<Toggle
+									label={__('Centered Slides')}
+									value={(layout == 3 || layout == 4) ? isCentered : notCentered}
 									onChange={value => setAttributes((layout == 3 || layout == 4) ? { isCentered: value } : { notCentered: value })}
 								/>
 
-								{ isCentered && 
+								{isCentered &&
 									<Range label={__('Center Padding')} value={centerPadding} onChange={value => setAttributes({ centerPadding: parseInt(value) })} min={100} max={5000} />
 								}
 
-								{ isCentered &&
+								{isCentered &&
 									<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
 								}
 							</Fragment>
@@ -473,7 +476,7 @@ class Edit extends Component {
 							<Fragment>
 								<ButtonGroup
 									label={__('Arrow Style')}
-									options={[[<span className="dashicons dashicons-arrow-right-alt"/>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"/>, 'arrowright2']]}
+									options={[[<span className="dashicons dashicons-arrow-right-alt" />, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2" />, 'arrowright2']]}
 									value={arrowStyle}
 									onChange={value => setAttributes({ arrowStyle: value })}
 								/>
@@ -559,7 +562,7 @@ class Edit extends Component {
 									responsive unit={['px', 'em', '%']}
 									device={device}
 									onDeviceChange={value => this.setState({ device: value })}
-								/> 
+								/>
 								<Range
 									label={__('Dot Height')}
 									value={dotHeight} onChange={(value) => setAttributes({ dotHeight: value })}
@@ -587,8 +590,8 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-					
-					{ (sliderContent || layout === 6 ) && 
+
+					{(sliderContent || layout === 6) &&
 						<Fragment>
 							{(layout != 1) &&
 								<Fragment>
@@ -596,7 +599,7 @@ class Edit extends Component {
 										<Range
 											label={__('Spacing')}
 											value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
-											unit={['px', 'em', '%']} 
+											unit={['px', 'em', '%']}
 											max={300} min={0} responsive
 											device={device}
 											onDeviceChange={value => this.setState({ device: value })} />
@@ -610,7 +613,7 @@ class Edit extends Component {
 											onChange={(value) => setAttributes({ nameTypo: value })}
 											device={device} onDeviceChange={value => this.setState({ device: value })} />
 									</PanelBody>
-									
+
 									<PanelBody title={__('Subtitle')} initialOpen={false}>
 										<Color
 											label={__('Color')}
@@ -625,7 +628,7 @@ class Edit extends Component {
 
 									<PanelBody title={__('Description')} initialOpen={false}>
 										<Toggle label={__('Hide Description')} value={activeDescription} onChange={value => setAttributes({ activeDescription: value })} />
-										{ activeDescription && 
+										{activeDescription &&
 											<Fragment>
 												<Color
 													label={__('Color')}
@@ -655,8 +658,8 @@ class Edit extends Component {
 											</Fragment>
 										}
 									</PanelBody>
-									
-									<PanelBody title={__('Content')} initialOpen={false}>  
+
+									<PanelBody title={__('Content')} initialOpen={false}>
 										<Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 										<RadioAdvanced label={__('Vertical Align')} value={contentVerticalAlign} onChange={(value) => setAttributes({ contentVerticalAlign: value })}
 											options={[
@@ -709,7 +712,7 @@ class Edit extends Component {
 							<Fragment>
 								<Range
 									label={<span className="dashicons dashicons-leftright" title="Width" />}
-									value={imageWidth} 
+									value={imageWidth}
 									onChange={(value) => setAttributes({ imageWidth: value })}
 									unit={['px', 'em', '%']}
 									max={300}
@@ -738,30 +741,30 @@ class Edit extends Component {
 				</InspectorControls>
 
 				<BlockControls>
-                    <Toolbar>
-                        <InlineToolbar
-                            data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
-                            {...this.props}
-                            prevState={this.state}
-                        />
-                    </Toolbar>
-                </BlockControls>
+					<Toolbar>
+						<InlineToolbar
+							data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
+							{...this.props}
+							prevState={this.state}
+						/>
+					</Toolbar>
+				</BlockControls>
 
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
-						
-						{layout == 5 && 
+
+						{layout == 5 &&
 							<Carousel options={carouselFiveSettings}>
 								{this.renderLayoutFive()}
-							</Carousel>	
+							</Carousel>
 						}
 
 						<Carousel options={carouselSettings}>
 							{this.renderImages()}
 						</Carousel>
-						
+
 					</div>
 				</div>
 			</Fragment>
