@@ -5691,13 +5691,14 @@ var Edit = function (_Component) {
 			var _this$props$attribute2 = _this.props.attributes,
 			    layout = _this$props$attribute2.layout,
 			    carouselItems = _this$props$attribute2.carouselItems,
+			    items = _this$props$attribute2.items,
 			    contentVerticalAlign = _this$props$attribute2.contentVerticalAlign;
 
 			return carouselItems.map(function (item, index) {
 				return React.createElement(
 					'div',
 					{ key: index, className: 'qubely-carousel-item item-layout' + layout + ' align-' + contentVerticalAlign },
-					React.createElement(
+					carouselItems.length > items.md && carouselItems.length > items.sm && carouselItems.length > items.sm && React.createElement(
 						Tooltip,
 						{ text: __('Delete this item') },
 						React.createElement(
@@ -11365,8 +11366,8 @@ var Edit = function (_Component) {
 			return carouselItems.map(function (item, index) {
 				return React.createElement(
 					'div',
-					{ key: index, className: 'qubely-carousel-item ' + (index < items[_this.parseResponsiveViewPort()] ? 'active' : '') },
-					React.createElement(
+					{ key: index, className: 'qubely-carousel-item' },
+					carouselItems.length > items.md && carouselItems.length > items.sm && carouselItems.length > items.sm && React.createElement(
 						Tooltip,
 						{ text: __('Delete this item') },
 						React.createElement(
@@ -13262,6 +13263,7 @@ var Edit = function (_Component) {
 			    layout = _this$props$attribute2.layout,
 			    showRatings = _this$props$attribute2.showRatings,
 			    carouselItems = _this$props$attribute2.carouselItems,
+			    items = _this$props$attribute2.items,
 			    quoteIcon = _this$props$attribute2.quoteIcon,
 			    ratings = _this$props$attribute2.ratings;
 
@@ -13272,7 +13274,7 @@ var Edit = function (_Component) {
 				return React.createElement(
 					'div',
 					{ key: index, className: 'qubely-carousel-item' },
-					React.createElement(
+					carouselItems.length > items.md && carouselItems.length > items.sm && carouselItems.length > items.sm && React.createElement(
 						Tooltip,
 						{ text: __('Delete this item') },
 						React.createElement(

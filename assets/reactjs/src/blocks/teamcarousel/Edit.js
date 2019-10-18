@@ -70,7 +70,7 @@ class Edit extends Component {
 		)
 	}
 	/** 
-	 *  Author Avatar*/  
+	 *  Author Avatar*/
 	renderAvatar = (avatar, index) => {
 		return (
 			<MediaUpload
@@ -80,10 +80,10 @@ class Edit extends Component {
 				value={avatar}
 				render={({ open }) => (
 					<div className="qubely-single-img qubely-backend">
-						{ (avatar && avatar.url) ? 
-							<img onClick={open} className="qubely-team-avatar" src={avatar.url} /> 
-							: 
-							<div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image"/></div> 
+						{(avatar && avatar.url) ?
+							<img onClick={open} className="qubely-team-avatar" src={avatar.url} />
+							:
+							<div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image" /></div>
 						}
 					</div>
 				)}
@@ -93,25 +93,25 @@ class Edit extends Component {
 	}
 
 	/** 
-	 *  Social Share callback function. */  
+	 *  Social Share callback function. */
 	renderSocialShare = () => {
-		const { attributes: { 
+		const { attributes: {
 			showSociallinks, iconStyle, iconUseDefaultStyle, facebook, twitter, instagram, linkedin, youtube, github, flickr, pinterest, dribbble, behance,
 		} } = this.props
 		return (
 			<div className="social-share">
-				{ showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
+				{showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
 					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`}>
-						{ facebook && <a className="qubely-team-social-facebook"><i className="fab fa-facebook-f"/></a> }
-						{ twitter && <a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a> }
-						{ instagram && <a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a> }
-						{ linkedin && <a className="qubely-team-social-linkedin"><i className="fab fa-linkedin" /></a> }
-						{ youtube && <a className="qubely-team-social-youtube"><i className="fab fa-youtube" /></a> }
-						{ github && <a className="qubely-team-social-github"><i className="fab fa-github" /></a> }
-						{ flickr && <a className="qubely-team-social-flickr"><i className="fab fa-flickr" /></a> }
-						{ pinterest && <a className="qubely-team-social-pinterest"><i className="fab fa-pinterest" /></a> }
-						{ dribbble && <a className="qubely-team-social-dribbble"><i className="fab fa-dribbble" /></a> }
-						{ behance && <a className="qubely-team-social-behance"><i className="fab fa-behance" /></a> }
+						{facebook && <a className="qubely-team-social-facebook"><i className="fab fa-facebook-f" /></a>}
+						{twitter && <a className="qubely-team-social-twitter"><i className="fab fa-twitter" /></a>}
+						{instagram && <a className="qubely-team-social-instagram"><i className="fab fa-instagram" /></a>}
+						{linkedin && <a className="qubely-team-social-linkedin"><i className="fab fa-linkedin" /></a>}
+						{youtube && <a className="qubely-team-social-youtube"><i className="fab fa-youtube" /></a>}
+						{github && <a className="qubely-team-social-github"><i className="fab fa-github" /></a>}
+						{flickr && <a className="qubely-team-social-flickr"><i className="fab fa-flickr" /></a>}
+						{pinterest && <a className="qubely-team-social-pinterest"><i className="fab fa-pinterest" /></a>}
+						{dribbble && <a className="qubely-team-social-dribbble"><i className="fab fa-dribbble" /></a>}
+						{behance && <a className="qubely-team-social-behance"><i className="fab fa-behance" /></a>}
 					</div>
 				}
 			</div>
@@ -126,19 +126,19 @@ class Edit extends Component {
 
 		return (
 			<div className={`qubely-team-author`}>
-				{ showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */}
-				{enablename && 
+				{showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */}
+				{enablename &&
 					<div className="qubely-team-author-info">
 						<div className={`layout-${layout}`}>
 							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
 							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-							{ this.renderSocialShare()  /* Social share callback function */}
-						</div> 
+							{this.renderSocialShare()  /* Social share callback function */}
+						</div>
 					</div>
 				}
 			</div>
 		)
-	} 
+	}
 	removeCrouselItem = (index) => {
 		const { setAttributes, attributes: { carouselItems } } = this.props
 		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
@@ -152,13 +152,16 @@ class Edit extends Component {
 		return (
 			carouselItems.map((item, index) => {
 				return (
-					<div key={index} className={`qubely-carousel-item ${index < items[this.parseResponsiveViewPort()] ? 'active' : ''}`} >
-						<Tooltip text={__('Delete this item')}>
-							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
-								<span className={`dashicons dashicons-no-alt`} />
-							</span>
-						</Tooltip>
-                        <div className={`qubely-team-carousel-item`}>
+					<div key={index} className={`qubely-carousel-item`} >
+						{
+							(carouselItems.length > items.md && carouselItems.length > items.sm && carouselItems.length > items.sm) &&
+							<Tooltip text={__('Delete this item')}>
+								<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
+									<span className={`dashicons dashicons-no-alt`} />
+								</span>
+							</Tooltip>
+						}
+						<div className={`qubely-team-carousel-item`}>
 							<div className={`qubely-team-${layout}`}>
 								{this.renderAuthorInfo(item, index)}
 							</div>
@@ -213,35 +216,35 @@ class Edit extends Component {
 		const { setAttributes, attributes: {
 			uniqueId, items, autoPlay, interval, speed, nav, carouselItems, dragable,
 			layout, nameColor, alignment, designationColor, showAvatar, avatarBorderRadius, avatarSize, avatarWidth, avatarHeight,
-			avatarBorder, avatarSpacing, nameTypo, nameSpacing, designationTypo, bgPadding, textColor, bgColor, 
+			avatarBorder, avatarSpacing, nameTypo, nameSpacing, designationTypo, bgPadding, textColor, bgColor,
 			bgBorderRadius, border, boxShadow, boxShadowHover, sliderItemsSpace, isCentered, activeFade,
 			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth, arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
 			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
 
 			// Social Share.
 			showSociallinks,
-            facebook,
-            twitter,
-            instagram,
-            linkedin,
-            youtube,
-            github,
-            flickr,
-            pinterest,
-            dribbble,
-            behance,
-            iconSize,
-            iconSizeCustom,
-            iconGutter,
-            iconSpacing,
-            iconStyle,
-            iconUseDefaultStyle,
-            iconBorderRadius,
-            iconColor,
-            iconBackground,
-            iconBorder,
-            iconColorHover,
-            iconBackgroundHover,
+			facebook,
+			twitter,
+			instagram,
+			linkedin,
+			youtube,
+			github,
+			flickr,
+			pinterest,
+			dribbble,
+			behance,
+			iconSize,
+			iconSizeCustom,
+			iconGutter,
+			iconSpacing,
+			iconStyle,
+			iconUseDefaultStyle,
+			iconBorderRadius,
+			iconColor,
+			iconBackground,
+			iconBorder,
+			iconColorHover,
+			iconBackgroundHover,
 			iconBorderColorHover,
 			sliderMargin,
 			enablename,
@@ -249,11 +252,11 @@ class Edit extends Component {
 			horizontalScrollleft,
 			contentSpacing,
 
-            globalZindex,
-            enablePosition, 
-            selectPosition, 
-            positionXaxis, 
-            positionYaxis,
+			globalZindex,
+			enablePosition,
+			selectPosition,
+			positionXaxis,
+			positionYaxis,
 			hideTablet,
 			hideMobile,
 			globalCss,
@@ -376,7 +379,7 @@ class Edit extends Component {
 							<Fragment>
 								<ButtonGroup
 									label={__('Arrow Style')}
-									options={[[<span className="dashicons dashicons-arrow-right-alt"/>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"/>, 'arrowright2']]}
+									options={[[<span className="dashicons dashicons-arrow-right-alt" />, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2" />, 'arrowright2']]}
 									value={arrowStyle}
 									onChange={value => setAttributes({ arrowStyle: value })}
 								/>
@@ -387,7 +390,7 @@ class Edit extends Component {
 									responsive unit={['px', 'em', '%']}
 									device={device}
 									onDeviceChange={value => this.setState({ device: value })}
-								/> 
+								/>
 								<Range
 									label={__('Vertical Position')}
 									value={arrowPosition} onChange={(value) => setAttributes({ arrowPosition: value })}
@@ -490,10 +493,10 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-					
+
 					<PanelBody title={__('Avatar')} initialOpen={false}>
 						<Toggle label={__('Show Avatar')} value={showAvatar} onChange={val => setAttributes({ showAvatar: val })} />
-						
+
 						{showAvatar &&
 							<Fragment>
 
@@ -565,7 +568,7 @@ class Edit extends Component {
 							</Fragment>
 						}
 					</PanelBody>
-					
+
 					<PanelBody title={__('Name')} initialOpen={false}>
 						<Toggle label={__('Enable Name')} value={enablename} onChange={value => setAttributes({ enablename: value })} />
 						<Range
@@ -600,79 +603,79 @@ class Edit extends Component {
 					</PanelBody>
 
 					<PanelBody title={__('Social')} initialOpen={false}>
-                        <Toggle label={__('Show Social-links')} value={showSociallinks} onChange={val => setAttributes({ showSociallinks: val })} />
-                        {
-                            showSociallinks &&
-                            <Fragment>
-                                <TextControl label={__('Facebook')} value={facebook} onChange={val => setAttributes({ facebook: val })} />
-                                <TextControl label={__('Twitter')} value={twitter} onChange={val => setAttributes({ twitter: val })} />
-                                <TextControl label={__('Instagram')} value={instagram} onChange={val => setAttributes({ instagram: val })} />
-                                <TextControl label={__('Linkedin')} value={linkedin} onChange={val => setAttributes({ linkedin: val })} />
-                                <TextControl label={__('Youtube')} value={youtube} onChange={val => setAttributes({ youtube: val })} />
-                                <TextControl label={__('Github')} value={github} onChange={val => setAttributes({ github: val })} />
-                                <TextControl label={__('Flickr')} value={flickr} onChange={val => setAttributes({ flickr: val })} />
-                                <TextControl label={__('Pinterest')} value={pinterest} onChange={val => setAttributes({ pinterest: val })} />
-                                <TextControl label={__('Dribbble')} value={dribbble} onChange={val => setAttributes({ dribbble: val })} />
-                                <TextControl label={__('Behance')} value={behance} onChange={val => setAttributes({ behance: val })} />
-                                <Separator />
-                                <Styles label={__('Icon Style')} value={iconStyle} onChange={val => setAttributes({ iconStyle: val })}
-                                    options={[
-                                        { value: 'fill', svg: icons.social_fill, label: __('Fill') },
-                                        { value: 'normal', svg: icons.social_normal, label: __('Normal') },
-                                    ]}
-                                />
-                                <RadioAdvanced label={__('Icon Size')} value={iconSize} onChange={(value) => setAttributes({ iconSize: value })}
-                                    options={[
-                                        { label: 'S', value: '14px', title: 'Small' },
-                                        { label: 'M', value: '18px', title: 'Medium' },
-                                        { label: 'L', value: '24px', title: 'Large' },
-                                        { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                                    ]}
-                                />
-                                {iconSize == 'custom' &&
-                                    <Range label={__('Custom Size')} value={iconSizeCustom} onChange={val => setAttributes({ iconSizeCustom: val })} min={12} max={300} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                }
-                                {iconStyle == 'fill' &&
-                                    <BorderRadius
-                                        label={__('Corner Radius')}
-                                        value={iconBorderRadius}
-                                        onChange={(value) => setAttributes({ iconBorderRadius: value })}
-                                        min={0}
-                                        max={100} unit={['px', 'em', '%']}
-                                        responsive
-                                        device={device}
-                                        onDeviceChange={value => this.setState({ device: value })} />
-                                }
+						<Toggle label={__('Show Social-links')} value={showSociallinks} onChange={val => setAttributes({ showSociallinks: val })} />
+						{
+							showSociallinks &&
+							<Fragment>
+								<TextControl label={__('Facebook')} value={facebook} onChange={val => setAttributes({ facebook: val })} />
+								<TextControl label={__('Twitter')} value={twitter} onChange={val => setAttributes({ twitter: val })} />
+								<TextControl label={__('Instagram')} value={instagram} onChange={val => setAttributes({ instagram: val })} />
+								<TextControl label={__('Linkedin')} value={linkedin} onChange={val => setAttributes({ linkedin: val })} />
+								<TextControl label={__('Youtube')} value={youtube} onChange={val => setAttributes({ youtube: val })} />
+								<TextControl label={__('Github')} value={github} onChange={val => setAttributes({ github: val })} />
+								<TextControl label={__('Flickr')} value={flickr} onChange={val => setAttributes({ flickr: val })} />
+								<TextControl label={__('Pinterest')} value={pinterest} onChange={val => setAttributes({ pinterest: val })} />
+								<TextControl label={__('Dribbble')} value={dribbble} onChange={val => setAttributes({ dribbble: val })} />
+								<TextControl label={__('Behance')} value={behance} onChange={val => setAttributes({ behance: val })} />
+								<Separator />
+								<Styles label={__('Icon Style')} value={iconStyle} onChange={val => setAttributes({ iconStyle: val })}
+									options={[
+										{ value: 'fill', svg: icons.social_fill, label: __('Fill') },
+										{ value: 'normal', svg: icons.social_normal, label: __('Normal') },
+									]}
+								/>
+								<RadioAdvanced label={__('Icon Size')} value={iconSize} onChange={(value) => setAttributes({ iconSize: value })}
+									options={[
+										{ label: 'S', value: '14px', title: 'Small' },
+										{ label: 'M', value: '18px', title: 'Medium' },
+										{ label: 'L', value: '24px', title: 'Large' },
+										{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+									]}
+								/>
+								{iconSize == 'custom' &&
+									<Range label={__('Custom Size')} value={iconSizeCustom} onChange={val => setAttributes({ iconSizeCustom: val })} min={12} max={300} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+								}
+								{iconStyle == 'fill' &&
+									<BorderRadius
+										label={__('Corner Radius')}
+										value={iconBorderRadius}
+										onChange={(value) => setAttributes({ iconBorderRadius: value })}
+										min={0}
+										max={100} unit={['px', 'em', '%']}
+										responsive
+										device={device}
+										onDeviceChange={value => this.setState({ device: value })} />
+								}
 
-                                <Range label={__('Gutter')} value={iconGutter} onChange={val => setAttributes({ iconGutter: val })} min={0} max={40} unit={['px', 'em']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Range label={__('Spacing')} value={iconSpacing} onChange={val => setAttributes({ iconSpacing: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Toggle label={__('Default Styles')} value={iconUseDefaultStyle} onChange={val => setAttributes({ iconUseDefaultStyle: val })} />
+								<Range label={__('Gutter')} value={iconGutter} onChange={val => setAttributes({ iconGutter: val })} min={0} max={40} unit={['px', 'em']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+								<Range label={__('Spacing')} value={iconSpacing} onChange={val => setAttributes({ iconSpacing: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+								<Toggle label={__('Default Styles')} value={iconUseDefaultStyle} onChange={val => setAttributes({ iconUseDefaultStyle: val })} />
 
-                                {!iconUseDefaultStyle &&
-                                    <Tabs>
-                                        <Tab tabTitle={__('Normal')}>
-                                            <Color label={__('Color')} value={iconColor} onChange={(value) => setAttributes({ iconColor: value })} />
-                                            {iconStyle == 'fill' &&
-                                                <Fragment>
-                                                    <Color label={__('Background Color')} value={iconBackground} onChange={(value) => setAttributes({ iconBackground: value })} />
-                                                    <Border label={__('Border')} value={iconBorder} onChange={(value) => setAttributes({ iconBorder: value })} />
-                                                </Fragment>
-                                            }
-                                        </Tab>
-                                        <Tab tabTitle={__('Hover')}>
-                                            <Color label={__('Color')} value={iconColorHover} onChange={(value) => setAttributes({ iconColorHover: value })} />
-                                            {iconStyle == 'fill' &&
-                                                <Fragment>
-                                                    <Color label={__('Background Color')} value={iconBackgroundHover} onChange={(value) => setAttributes({ iconBackgroundHover: value })} />
-                                                    <Color label={__('Border Color')} value={iconBorderColorHover} onChange={(value) => setAttributes({ iconBorderColorHover: value })} />
-                                                </Fragment>
-                                            }
-                                        </Tab>
-                                    </Tabs>
-                                }
-                            </Fragment>
-                        }
-                    </PanelBody>
+								{!iconUseDefaultStyle &&
+									<Tabs>
+										<Tab tabTitle={__('Normal')}>
+											<Color label={__('Color')} value={iconColor} onChange={(value) => setAttributes({ iconColor: value })} />
+											{iconStyle == 'fill' &&
+												<Fragment>
+													<Color label={__('Background Color')} value={iconBackground} onChange={(value) => setAttributes({ iconBackground: value })} />
+													<Border label={__('Border')} value={iconBorder} onChange={(value) => setAttributes({ iconBorder: value })} />
+												</Fragment>
+											}
+										</Tab>
+										<Tab tabTitle={__('Hover')}>
+											<Color label={__('Color')} value={iconColorHover} onChange={(value) => setAttributes({ iconColorHover: value })} />
+											{iconStyle == 'fill' &&
+												<Fragment>
+													<Color label={__('Background Color')} value={iconBackgroundHover} onChange={(value) => setAttributes({ iconBackgroundHover: value })} />
+													<Color label={__('Border Color')} value={iconBorderColorHover} onChange={(value) => setAttributes({ iconBorderColorHover: value })} />
+												</Fragment>
+											}
+										</Tab>
+									</Tabs>
+								}
+							</Fragment>
+						}
+					</PanelBody>
 
 
 					<PanelBody title={__('Design')} initialOpen={false}>
@@ -733,9 +736,9 @@ class Edit extends Component {
 							</Tab>
 						</Tabs>
 					</PanelBody>
-				
+
 					{animationSettings(uniqueId, animation, setAttributes)}
-					
+
 				</InspectorControls>
 
 				<BlockControls>
@@ -747,7 +750,7 @@ class Edit extends Component {
 						/>
 					</Toolbar>
 				</BlockControls>
-				
+
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>

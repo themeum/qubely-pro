@@ -80,10 +80,10 @@ class Edit extends Component {
 				value={avatar}
 				render={({ open }) => (
 					<div className="qubely-single-img qubely-backend">
-						{ (avatar && avatar.url) ?
+						{(avatar && avatar.url) ?
 							<img onClick={open} className="qubely-testimonial-avatar" src={avatar.url} alt={avatarAlt} />
 							:
-							<div onClick={open} className="qubely-image-placeholder qubely-testimonial-avatar" ><i className="far fa-user"/></div>
+							<div onClick={open} className="qubely-image-placeholder qubely-testimonial-avatar" ><i className="far fa-user" /></div>
 						}
 					</div>
 				)}
@@ -130,25 +130,29 @@ class Edit extends Component {
 	}
 
 	renderTestimonials = () => {
-		const { attributes: { layout, showRatings, carouselItems, quoteIcon, ratings } } = this.props
+		const { attributes: { layout, showRatings, carouselItems, items, quoteIcon, ratings } } = this.props
 
 		return (
 			carouselItems.map((item, index) => {
 				const { message } = item
 				return (
 					<div key={index} className={`qubely-carousel-item`} >
-						<Tooltip text={__('Delete this item')}>
-							<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
-								<span className={`dashicons dashicons-no-alt`} />
-							</span>
-						</Tooltip>
+						{
+							(carouselItems.length > items.md && carouselItems.length > items.sm && carouselItems.length > items.sm) &&
+							<Tooltip text={__('Delete this item')}>
+								<span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removeCrouselItem(index)}>
+									<span className={`dashicons dashicons-no-alt`} />
+								</span>
+							</Tooltip>
+						}
+
 						<div className={`qubely-tesitmonial-item layout-${layout}`}>
 
 							{layout === 2 && this.renderAuthorInfo(item, index)}
 
-							{(quoteIcon && layout === 1) && 
+							{(quoteIcon && layout === 1) &&
 								<div className="qubely-testimonial-quote">
-									<span className={`qubely-quote-icon ${quoteIcon}`}/>
+									<span className={`qubely-quote-icon ${quoteIcon}`} />
 								</div>
 							}
 
@@ -167,7 +171,7 @@ class Edit extends Component {
 							{layout !== 2 && this.renderAuthorInfo(item, index)}
 							{(quoteIcon && layout == 2) &&
 								<div className="qubely-testimonial-quote qubely-position-bottom" >
-									<span className={`qubely-quote-icon ${quoteIcon}`}/>
+									<span className={`qubely-quote-icon ${quoteIcon}`} />
 								</div>
 							}
 						</div>
@@ -325,7 +329,7 @@ class Edit extends Component {
 							<Fragment>
 								<ButtonGroup
 									label={__('Arrow Style')}
-									options={[[<span className="dashicons dashicons-arrow-right-alt"/>, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2"/>, 'arrowright2']]}
+									options={[[<span className="dashicons dashicons-arrow-right-alt" />, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2" />, 'arrowright2']]}
 									value={arrowStyle}
 									onChange={value => setAttributes({ arrowStyle: value })}
 								/>
@@ -515,7 +519,7 @@ class Edit extends Component {
 									</Fragment>
 								}
 
-								<RadioAdvanced 
+								<RadioAdvanced
 									label={__('Avatar Size')}
 									options={[
 										{ label: 'S', value: '48px', title: 'Small' },
