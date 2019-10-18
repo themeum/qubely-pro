@@ -1,3 +1,4 @@
+import icons from '../../../../helpers/icons';
 const { __ } = wp.i18n
 const { Component, Fragment } = wp.element
 const { InnerBlocks, InspectorControls } = wp.editor
@@ -92,7 +93,7 @@ class Edit extends Component {
                                 insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId }), undefined, clientId)
                             }}
                         >
-                            {fieldName}
+                            {icons.from_fields[type]} {fieldName}
                         </div>
                     )
                 })}

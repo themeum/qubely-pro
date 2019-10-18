@@ -17,7 +17,7 @@ const registerBlock = (block) => {
 
     registerBlockType(blockName, {
         ...settings,
-      
+
     })
 };
 
@@ -31,6 +31,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Text'),
             description: __('Text field for Qubely Form'),
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/text.svg'} alt={__('Text field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {
@@ -57,6 +58,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Number'),
             description: __('Number field for Qubely Form'),
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/number.svg'} alt={__('Number field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {
@@ -83,6 +85,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Email'),
             description: __('Email field for Qubely Form'),
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/email.svg'} alt={__('Email field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {
@@ -121,6 +124,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Textarea'),
             description: __('Textarea field for Qubely Form'),
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/textarea.svg'} alt={__('Textarea field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {
@@ -159,6 +163,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Dropdown'),
             description: __('Dropdown field for Qubely Form'),
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/dropdown.svg'} alt={__('Dropdown field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {
@@ -189,6 +194,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Radio'),
             description: __('Radio field for Qubely Form'),
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/radio.svg'} alt={__('Radio field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {
@@ -223,6 +229,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Checkbox'),
             description: __('Checkbox field for Qubely Form'),
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/checkbox.svg'} alt={__('Checkbox field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {
@@ -253,6 +260,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Date Picker'),
             description: __('Date picker field for Qubely Form'),
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/date.svg'} alt={__('Date field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {
@@ -283,6 +291,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Time Picker'),
             description: __('Time picker field for Qubely Form'),
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/time.svg'} alt={__('Time field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {

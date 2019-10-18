@@ -170,7 +170,7 @@ class Edit extends Component {
                                         this.addNewItem(fieldName, type)
                                     }}
                                 >
-                                    {fieldName}
+                                    {icons.from_fields[type]}   {fieldName}
                                 </div>
                             )
                         })
@@ -275,9 +275,9 @@ class Edit extends Component {
                 emailSubject,
                 emailBody,
                 globalZindex,
-                enablePosition, 
-                selectPosition, 
-                positionXaxis, 
+                enablePosition,
+                selectPosition,
+                positionXaxis,
                 positionYaxis,
                 hideTablet,
                 hideMobile,
@@ -546,7 +546,7 @@ class Edit extends Component {
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
                                 allowedBlocks={['qubely/formfield-row', 'qubely/formfield-column',]}
-                                // template={this.renderFormTemplate()}
+                                template={this.renderFormTemplate()}
                             />
 
                             {policyCheckbox &&

@@ -7,7 +7,19 @@ const icons = {
     form_classic: <img src={`${img_path}/form/classic.svg`} alt={__('Classic')} />,
     form_material: <img src={`${img_path}/form/material.svg`} alt={__('Material')} />,
     form_material_dark: <img src={`${img_path}/form/materialdark.svg`} alt={__('Material dark')} />,
-   
+    
+    from_fields: {
+        text: <img src={`${img_path}/form/text.svg`} alt={__('qubely form text-field')} />,
+        number: <img src={`${img_path}/form/number.svg`} alt={__('qubely form number-field')} />,
+        textarea: <img src={`${img_path}/form/textarea.svg`} alt={__('qubely form textarea-field')} />,
+        checkbox: <img src={`${img_path}/form/checkbox.svg`} alt={__('qubely form checkbox-field')} />,
+        date: <img src={`${img_path}/form/date.svg`} alt={__('qubely form date-field')} />,
+        dropdown: <img src={`${img_path}/form/dropdown.svg`} alt={__('qubely form dropdown-field')} />,
+        email: <img src={`${img_path}/form/email.svg`} alt={__('qubely form email-field')} />,
+        radio: <img src={`${img_path}/form/radio.svg`} alt={__('qubely form radio-field')} />,
+        time: <img src={`${img_path}/form/time.svg`} alt={__('qubely form time-field')} />,
+    },
+
     // Testimonial Carousel icon.
     testimonial_1: <img src={`${img_path}/testimonial/1.svg`} alt={__('Testimonial 1')} />,
     testimonial_2: <img src={`${img_path}/testimonial/2.svg`} alt={__('Testimonial 2')} />,

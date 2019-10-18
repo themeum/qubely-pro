@@ -29,7 +29,7 @@ const defaultFormItems = [
 registerBlockType('qubely/form', {
     title: __('Form'),
     category: 'qubely',
-    icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-form.svg'} alt={__('Form')} />,
+    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-form.svg'} alt={__('Form')} />,
     description: 'Create functional Form using Qubely Form block.',
     keywords: [
         __('Form'),
