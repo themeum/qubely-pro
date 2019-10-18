@@ -8,7 +8,7 @@ const { gloalSettings: { globalAttributes }} = wp.qubelyComponents
 registerBlockType('qubely/teamcarousel', {
 	title: __('Team Carousel'),
 	description: __('Design and showcase Qubely Team Carousel block'),
-    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/team-carousel.svg'} alt={__('Team Carousel Block')} />,
+    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-team-carousel.svg'} alt={__('Team Carousel Block')} />,
 	category: 'qubely',
 	keywords: [
 		__('Team'),

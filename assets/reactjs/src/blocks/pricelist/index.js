@@ -11,7 +11,7 @@ registerBlockType('qubely/pricelist', {
 	title: __('Price List'),
     category: 'qubely',
     description: __('Showcase detailed with Qubely Price List.'),
-    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/testimonial-carousel.svg'} alt={__('Price List')} />,
+    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg'} alt={__('Price List')} />,
 	keywords: [
 		__('Price List'),
 		__('Pricing')

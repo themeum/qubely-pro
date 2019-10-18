@@ -334,5 +334,13 @@
 .qubely-form-field-wrapper {
     .qubely-form-label {
         vertical-align: baseline;
+        .editor-rich-text {
+            display: inline-block;
+        }
+        .qubely-from-field-required-sign {
+            display: inline-block;
+            margin-left: 3px;
+            color: #e80d0d;
+        }
     }
 }
