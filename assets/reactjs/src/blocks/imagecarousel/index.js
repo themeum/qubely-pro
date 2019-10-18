@@ -8,7 +8,7 @@ const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
 registerBlockType('qubely/imagecarousel', {
 	title: __('Image Carousel'),
 	description: __('Insert images and beautify them with Qubely Image Carousel Block'),
-	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/imagecarousel/image-carousel.svg'} alt={__('Image Carousel Block')} />,
+	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/image-carousel.svg'} alt={__('Image Carousel Block')} />,
 	category: 'qubely', 
 	keywords: [
 		__('Image'),
