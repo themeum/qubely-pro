@@ -76,7 +76,23 @@ registerBlockType('qubely/pricelist', {
 			type: 'string',
             default: 'left',
 		},
-		enableContentBorder: {
+        overlayContentBg: {
+            type: 'object', default: { 
+                type: 'color', 
+                openColor: 0, 
+                color: 'rgba(6, 80, 183, 0.7)', 
+                gradient: { color1: '#1066CC', color2: '#2184F9', direction: 0, start: 0, stop: 100 } 
+            },
+            style: [
+                {
+                    condition: [
+                        { key: 'style', relation: '==', value: '2' },
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-content:before'
+                }
+            ]
+        },
+        enableContentBorder: {
 			type: 'boolean',
 			default: false,
         },
