@@ -214,6 +214,7 @@ class Edit extends Component {
             contentBoxShadow,
             contentSpacing,
             contentAlign,
+            overlayContentBg,
             overlayHoverBg,
             overlayBg,
             height,
@@ -305,6 +306,9 @@ class Edit extends Component {
                         { (style != 3) &&
                             <Fragment>
                                 <Background label={__('Background')} sources={['image', 'gradient']} parallax value={contentBg} onChange={val => setAttributes({ contentBg: val })} />
+                                { (style == 2) &&
+                                    <ColorAdvanced label={__('Overlay')} value={overlayContentBg} onChange={(value) => setAttributes({ overlayContentBg: value })} />
+                                }
                                 <Toggle label={__('Enable Border')} value={enableContentBorder} onChange={val => setAttributes({ enableContentBorder: val })} />
                                 {(enableContentBorder == 1) &&
                                     <Fragment>
@@ -328,7 +332,6 @@ class Edit extends Component {
                         { (enableMedia == 1) && (mediaType =='image') && (style === 3) &&
                             <Range label={__('Height')} value={height} onChange={val => setAttributes({ height: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
                         }
-
                         <BorderRadius label={__('Radius')} value={contentBorderRadius} onChange={val => setAttributes({ contentBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Box-Shadow')} value={contentBoxShadow} onChange={val => setAttributes({ contentBoxShadow: val })} disableInset />
                         <Range label={__('Spacing')} value={contentSpacing} onChange={val => setAttributes({ contentSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
