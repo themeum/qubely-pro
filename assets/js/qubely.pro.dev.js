@@ -4625,7 +4625,8 @@ var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
     BlockControls = _wp$editor.BlockControls,
-    MediaUpload = _wp$editor.MediaUpload;
+    MediaUpload = _wp$editor.MediaUpload,
+    MediaPlaceholder = _wp$editor.MediaPlaceholder;
 var _wp$qubelyComponents = wp.qubelyComponents,
     RadioAdvanced = _wp$qubelyComponents.RadioAdvanced,
     ColorAdvanced = _wp$qubelyComponents.ColorAdvanced,
@@ -4663,6 +4664,7 @@ var Edit = function (_Component) {
                 galleryItems = _this$props$attribute.galleryItems,
                 galleryContents = _this$props$attribute.galleryContents;
 
+
             if (key === 'add' || key === 'delete') {
                 var updatedAttributes = key === 'add' ? [].concat(_toConsumableArray(galleryContents), [{ title: __('Best Gutenberg Plugin') }]) : galleryContents.slice(0, galleryItems - 1);
                 setAttributes({
@@ -4698,7 +4700,8 @@ var Edit = function (_Component) {
                 showCaption = _this$props$attribute2.showCaption,
                 imageAnimation = _this$props$attribute2.imageAnimation;
 
-            return galleryContents.map(function (_ref, index) {
+
+            return [].concat(_toConsumableArray(galleryContents), [{ image: undefined, title: undefined }]).map(function (_ref, index) {
                 var title = _ref.title,
                     image = _ref.image;
 
@@ -4727,7 +4730,7 @@ var Edit = function (_Component) {
                                 { className: 'qubely-gallery-content-image' + (image != undefined && image.url != undefined ? '' : ' qubely-empty-image') + ' qubely-gallery-image-' + imageAnimation },
                                 React.createElement(MediaUpload, {
                                     onSelect: function onSelect(value) {
-                                        return _this.updateGalleryImage('image', value, index);
+                                        index === galleryContents.length ? _this.updateGalleryImage('add') : _this.updateGalleryImage('image', value, index);
                                     },
                                     allowedTypes: ['image'],
                                     multiple: false,
@@ -4803,6 +4806,19 @@ var Edit = function (_Component) {
             });
         };
 
+        _this.onSelectImages = function (images) {
+            var setAttributes = _this.props.setAttributes;
+
+            var galleryContents = images.map(function (image) {
+                return {
+                    title: image.caption,
+                    image: image
+                };
+            });
+            galleryContents.push({ image: undefined, title: null });
+            setAttributes({ galleryContents: galleryContents, galleryItems: galleryContents.length });
+        };
+
         _this.state = {
             device: 'md',
             spacer: true
@@ -4836,6 +4852,7 @@ var Edit = function (_Component) {
                 _props2$attributes = _props2.attributes,
                 uniqueId = _props2$attributes.uniqueId,
                 galleryItems = _props2$attributes.galleryItems,
+                galleryContents = _props2$attributes.galleryContents,
                 style = _props2$attributes.style,
                 column = _props2$attributes.column,
                 gutter = _props2$attributes.gutter,
@@ -4872,6 +4889,21 @@ var Edit = function (_Component) {
                 CssGenerator(this.props.attributes, 'gallery', uniqueId);
             }
 
+            if (galleryContents.length === 0) {
+                return React.createElement(MediaPlaceholder, {
+                    icon: React.createElement('span', { className: 'dashicons-format-image' }),
+                    className: 'qubely-image-carousel-media-placeholder',
+                    labels: {
+                        title: __('Qubely Image Carousel'),
+                        instructions: __('Drag images, upload new ones or select files from your library.')
+                    },
+                    onSelect: this.onSelectImages,
+                    accept: 'image/*',
+                    allowedTypes: ['image'],
+                    multiple: true
+                });
+            }
+
             return React.createElement(
                 Fragment,
                 null,
@@ -4886,15 +4918,7 @@ var Edit = function (_Component) {
                             },
                             options: [{ value: 1, svg: _icons2.default.gallery_1 }, { value: 2, svg: _icons2.default.gallery_2 }]
                         }),
-                        React.createElement(Range, {
-                            min: 2,
-                            max: 100,
-                            label: __('Number of Items'),
-                            value: galleryItems,
-                            onChange: function onChange(value) {
-                                return _this2.updateGalleryImage(value > galleryItems ? 'add' : 'delete');
-                            }
-                        }),
+                        '/>',
                         React.createElement(Range, {
                             label: __('Select Column'),
                             value: column,
@@ -5221,9 +5245,42 @@ registerBlockType('qubely/gallery', {
         },
         galleryContents: {
             type: 'Array',
-            default: [{ title: 'Best Gutenberg Plugin' }, { title: 'Pre-made Sections' }, { title: 'Rich Blocks Collection' }, { title: 'Layout Packs' }, { title: 'Smart Layout Builder' }, { title: 'Smart Gutenberg Builder' }]
+            default: []
         },
-
+        images: {
+            type: 'array',
+            default: [],
+            source: 'query',
+            selector: '.qubely-image-carousel-item',
+            query: {
+                url: {
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'src'
+                },
+                link: {
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'data-link'
+                },
+                alt: {
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'alt',
+                    default: ''
+                },
+                id: {
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'data-id'
+                },
+                caption: {
+                    type: 'array',
+                    source: 'children',
+                    selector: 'figcaption'
+                }
+            }
+        },
         //gallery settings
         style: {
             type: 'number',

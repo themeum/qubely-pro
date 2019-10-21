@@ -8,17 +8,17 @@ import Edit from './Edit'
 import Save from './Save'
 
 registerBlockType('qubely/gallery', {
-	title: __('Gallery'),
+    title: __('Gallery'),
     category: 'qubely',
     description: __('Showcase detailed with Qubely Gallery'),
     icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg'} alt={__('Gallery')} />,
-	keywords: [
-		__('Gallery'),
-		__('Image')
-	],
-	attributes: {
-		uniqueId: { type: 'string', default: '' },
-		spacer: {
+    keywords: [
+        __('Gallery'),
+        __('Image')
+    ],
+    attributes: {
+        uniqueId: { type: 'string', default: '' },
+        spacer: {
             type: 'object',
             default: {
                 spaceTop: {
@@ -34,76 +34,102 @@ registerBlockType('qubely/gallery', {
                 { selector: '{{QUBELY}}' }
             ]
         },
-		galleryContents: {
-			type: 'Array',
-			default: [
-				{ title: 'Best Gutenberg Plugin' },
-				{ title: 'Pre-made Sections' },
-				{ title: 'Rich Blocks Collection' },
-				{ title: 'Layout Packs' },
-				{ title: 'Smart Layout Builder' },
-				{ title: 'Smart Gutenberg Builder' },
-			]
+        galleryContents: {
+            type: 'Array',
+            default: []
         },
-        
+        images: {
+            type: 'array',
+            default: [],
+            source: 'query',
+            selector: '.qubely-image-carousel-item',
+            query: {
+                url: {
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'src',
+                },
+                link: {
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'data-link',
+                },
+                alt: {
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'alt',
+                    default: '',
+                },
+                id: {
+                    source: 'attribute',
+                    selector: 'img',
+                    attribute: 'data-id',
+                },
+                caption: {
+                    type: 'array',
+                    source: 'children',
+                    selector: 'figcaption',
+                },
+            },
+        },
         //gallery settings
         style: {
-			type: 'number',
-			default: 1,
+            type: 'number',
+            default: 1,
         },
-		galleryItems: { 
-            type: 'number', 
+        galleryItems: {
+            type: 'number',
             default: 6
         },
-		gutter: {
-			type: 'object',
-			default: {
-				md: '10',
-				unit: 'px'
-			},
-			style: [
+        gutter: {
+            type: 'object',
+            default: {
+                md: '10',
+                unit: 'px'
+            },
+            style: [
                 {
-					condition: [
-                        { key: 'style', relation: '===', value: '1'},
-					],
-					selector: '{{QUBELY}} .qubely-column-grid {grid-gap: {{gutter}};}'
+                    condition: [
+                        { key: 'style', relation: '===', value: '1' },
+                    ],
+                    selector: '{{QUBELY}} .qubely-column-grid {grid-gap: {{gutter}};}'
                 },
                 {
-					condition: [
+                    condition: [
                         { key: 'style', relation: '!=', value: '1' },
-					],
-					selector: '{{QUBELY}} .qubely-column-grid {column-gap: {{gutter}};} {{QUBELY}} .qubely-block-gallery .qubely-gallery-item {padding-bottom: {{gutter}};}'
+                    ],
+                    selector: '{{QUBELY}} .qubely-column-grid {column-gap: {{gutter}};} {{QUBELY}} .qubely-block-gallery .qubely-gallery-item {padding-bottom: {{gutter}};}'
                 }
-			]
-		},
-		column: { 
-            type: 'object', 
+            ]
+        },
+        column: {
+            type: 'object',
             default: 3,
-            default: { md: 3,  sm: 1,  xs: 1, unit: 'px' },
+            default: { md: 3, sm: 1, xs: 1, unit: 'px' },
         },
-		imgSize: { 
-            type: 'string', 
-            default: 'full' 
+        imgSize: {
+            type: 'string',
+            default: 'full'
         },
-        
+
         //image
         imageAnimation: {
-			type: 'string',
-			default: 'slide-top'
-		},
+            type: 'string',
+            default: 'slide-top'
+        },
         enableImgFixedHeight: {
             type: 'boolean',
             default: true,
         },
         imgFixedHeight: {
-			type: 'object',
-			default: {
-				md: '200',
-				unit: 'px'
-			},
-			style: [
-				{
-					condition: [
+            type: 'object',
+            default: {
+                md: '200',
+                unit: 'px'
+            },
+            style: [
+                {
+                    condition: [
                         { key: 'enableImgFixedHeight', relation: '==', value: true },
                         { key: 'style', relation: '!=', value: '2' }
                     ],
@@ -111,68 +137,68 @@ registerBlockType('qubely/gallery', {
                 }
             ]
         },
-		imgBorderRadius: {
-			type: 'object',
-			default: {
-				openBorderRadius: 1,
-				radiusType: 'global',
-				global: {
-					md: 5
-				},
-				unit: 'px'
-			},
-			style: [
-                {
-                    selector: '{{QUBELY}} .qubely-gallery-image-container'
-                }
-            ]
-		},
-		imgBoxShadow: {
-			type: 'object',
-			default: {
-				openShadow: false,
-				vertical: 3,
-				horizontal: 0,
-				blur: 6,
-				spread:	0,
-				color: 'rgba(0,0,0,0.1)',
-			},
-			style: [
+        imgBorderRadius: {
+            type: 'object',
+            default: {
+                openBorderRadius: 1,
+                radiusType: 'global',
+                global: {
+                    md: 5
+                },
+                unit: 'px'
+            },
+            style: [
                 {
                     selector: '{{QUBELY}} .qubely-gallery-image-container'
                 }
             ]
         },
-    
+        imgBoxShadow: {
+            type: 'object',
+            default: {
+                openShadow: false,
+                vertical: 3,
+                horizontal: 0,
+                blur: 6,
+                spread: 0,
+                color: 'rgba(0,0,0,0.1)',
+            },
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-gallery-image-container'
+                }
+            ]
+        },
+
         // Caption
-        enableCaption: { 
-            type: 'boolean', 
-            default: false 
+        enableCaption: {
+            type: 'boolean',
+            default: false
         },
-		captionTypography: {
-			type: 'object',
-			default: {},
-			style: [
-				{
+        captionTypography: {
+            type: 'object',
+            default: {},
+            style: [
+                {
                     condition: [
                         { key: 'enableCaption', relation: '==', value: true }
                     ],
-					selector: '{{QUBELY}} .qubely-gallery-caption'
-				}
-			]
-		},
-		captionColor: {
-			type: 'string',
-			default: '#fff',
-			style: [
-				{ 
-                    condition: [
-                        { key: 'enableCaption', relation: '==', value: true }
-                    ],
-                    selector: '{{QUBELY}} .qubely-gallery-caption {color: {{captionColor}};}' 
+                    selector: '{{QUBELY}} .qubely-gallery-caption'
                 }
-			]
-		},
+            ]
+        },
+        captionColor: {
+            type: 'string',
+            default: '#fff',
+            style: [
+                {
+                    condition: [
+                        { key: 'enableCaption', relation: '==', value: true }
+                    ],
+                    selector: '{{QUBELY}} .qubely-gallery-caption {color: {{captionColor}};}'
+                }
+            ]
+        },
         captionPadding: {
             type: 'object',
             default: {
@@ -248,19 +274,19 @@ registerBlockType('qubely/gallery', {
                 }
             ]
         },
-		showCaption: {
-			type: 'string',
-			default: 'onHover',
-			style: [
+        showCaption: {
+            type: 'string',
+            default: 'onHover',
+            style: [
                 {
-					condition: [
+                    condition: [
                         { key: 'enableCaption', relation: '==', value: true },
                         { key: 'showCaption', relation: '==', value: 'onHover' }
                     ],
                     selector: '{{QUBELY}} .qubely-pricelist-content {display: -webkit-box; display: -ms-flexbox; display: flex;}'
                 }
             ]
-		},
+        },
 
         // Overlay
         enableOverlay: {
@@ -328,11 +354,11 @@ registerBlockType('qubely/gallery', {
             ]
         },
 
-		//global
-		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
+        //global
+        showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
         showContextMenu: { type: 'boolean', default: true },
         ...globalAttributes,
-	},
-	edit: Edit,
-	save: Save
+    },
+    edit: Edit,
+    save: Save
 });
