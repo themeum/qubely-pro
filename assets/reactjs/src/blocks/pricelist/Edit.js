@@ -72,7 +72,7 @@ class Edit extends Component {
 			return (
 				<div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
                     <Tooltip text={__('Delete this item')}>
-                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><i className={`fas fa-close`} /></span>
+                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><span class="dashicons dashicons-no-alt" /></span>
                     </Tooltip>
 					<div className={`qubely-pricelist-content`}>
                         { (enableMedia == 1) && (mediaType =='image') &&
@@ -196,7 +196,9 @@ class Edit extends Component {
 		const { setAttributes, attributes: {
 			uniqueId,
 			pricelistItems,
-			style,
+            style,
+            column,
+            columnGap,
             headingLevel,
             priceAfterTitle,
 			headingTypography,
@@ -273,6 +275,8 @@ class Edit extends Component {
 							value={pricelistItems}
 							onChange={value => this.updatePricelistContent(value > pricelistItems ? 'add' : 'delete')}
 						/>
+                        <Range label={__('Select Column')} value={column} onChange={(value) => setAttributes({ column: value })} min={1} step={1} max={3} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <Range label={__('Column Gap')} value={columnGap} onChange={value => setAttributes({ columnGap: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Toggle label={__('Price After Title')} value={priceAfterTitle} onChange={val => setAttributes({ priceAfterTitle: val })} />
 					</PanelBody>
 

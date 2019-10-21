@@ -38,13 +38,36 @@ registerBlockType('qubely/pricelist', {
 			type: 'Array',
 			default: [
 				{ title: 'Qubely Blocks', digitText: '01', badge: 'Hot',  price: '$20.00', discount: '$10', description: 'Qubely offers a rich collection of highly customizable dedicated Gutenberg blocks.' },
-				{ title: 'Pre-made Sections', digitText: '02', badge: 'Hot', price: '$30.00', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg editor.' },
-				{ title: 'Rich Blocks Collection', digitText: '03',  badge: 'Hot', price: '$40.00', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use even for the beginners.' },
-				{ title: 'Layout Packs', digitText: '04', badge: 'Hot', price: '$50.00', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also be customized and styled your way.' }
+				{ title: 'Pre-made Sections', digitText: '02', badge: 'Hot', price: '$30.00', discount: '$15', description: 'Qubely has a rich library of ready sections that can be imported and used as blocks on the Gutenberg.' },
+				{ title: 'Rich Blocks Collection', digitText: '03',  badge: 'Hot', price: '$40.00', discount: '$25', description: 'Get a rich collection of blocks that are highly customizable and easy to use.' },
+				{ title: 'Layout Packs', digitText: '04', badge: 'Hot', price: '$50.00', discount: '$35', description: 'Qubely gives you many beautiful template layouts completely free of cost. These can also customize.' }
 			]
 		},
 
         // Content
+        column: {
+			type: 'object',
+			default: {
+				md: '2'
+			},
+			style: [
+				{
+                    selector: '{{QUBELY}} .qubely-pricelist-items {grid-template-columns: repeat({{column}}, 1fr);}'
+                }
+            ]
+		},
+        columnGap: {
+			type: 'object',
+			default: {
+                md: '20',
+                unit: 'px'
+			},
+			style: [
+				{
+                    selector: '{{QUBELY}} .qubely-pricelist-items {grid-gap: {{columnGap}};}'
+                }
+            ]
+		},
         style: {
 			type: 'number',
 			default: 2,
@@ -145,7 +168,7 @@ registerBlockType('qubely/pricelist', {
         contentSpacing: {
 			type: 'object',
 			default: {
-				md: 20,
+				md: 0,
 				unit: 'px'
 			},
 			style: [
@@ -460,7 +483,7 @@ registerBlockType('qubely/pricelist', {
         //Badge
         enableBadge: {
 			type: 'boolean',
-			default: true,
+			default: false,
         },
         badgePosition: {
 			type: 'string',
@@ -769,7 +792,7 @@ registerBlockType('qubely/pricelist', {
         },
 
 		//
-		pricelistItems: { type: 'number', default: 5 },
+		pricelistItems: { type: 'number', default: 4 },
 		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
         showContextMenu: { type: 'boolean', default: true },
         ...globalAttributes
