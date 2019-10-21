@@ -232,6 +232,7 @@ class Edit extends Component {
                 labelTypography,
                 spacing,
                 gutter,
+
                 inputSize,
                 inputCustomSize,
                 inputTypography,
@@ -240,6 +241,7 @@ class Edit extends Component {
                 inputColorFocus,
                 inputColorHover,
                 inputBg,
+                materialDarkInputBg,
                 inputBgFocus,
                 inputBgHover,
                 inputBorder,
@@ -247,6 +249,7 @@ class Edit extends Component {
                 inputBorderMaterial,
                 inputBorderColorFocus,
                 inputBorderColorHover,
+                
                 textareaHeight,
                 placeholderColor,
                 placeholderColorFocus,
@@ -386,14 +389,15 @@ class Edit extends Component {
                             onChange={(value) => setAttributes({ gutter: value })}
                         />
 
-                        {
-                            layout == 'classic' &&
-                            <Border label={__('Border')} value={inputBorder} onChange={val => setAttributes({ inputBorder: val })} min={0} max={10} />
-                        }
-                        {
-                            layout == 'material' &&
-                            <Border label={__('Border')} value={inputBorderMaterial} onChange={val => setAttributes({ inputBorderMaterial: val })} min={0} max={10} />
-                        }
+                        <Border
+                            min={0}
+                            max={10}
+                            responsive
+                            value={layout === 'classic' ? inputBorder : inputBorderMaterial}
+                            label={__('Border')}
+                            unit={['px', 'em', '%']}
+                            onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })} />
+
 
                         <BorderRadius
                             min={0}
@@ -407,7 +411,11 @@ class Edit extends Component {
                         <Tabs>
                             <Tab tabTitle={__('Normal')}>
                                 <Color label={__('Input Text Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
-                                <Color label={__('Background Color')} value={inputBg} onChange={val => setAttributes({ inputBg: val })} />
+                                <Color
+                                    label={__('Background Color')}
+                                    value={layout !== 'materialdark' ? inputBg : materialDarkInputBg}
+                                    onChange={val => setAttributes(layout !== 'materialdark' ? { inputBg: val } : { materialDarkInputBg: val })}
+                                />
                                 <Color label={__('Placeholder Color')} value={placeholderColor} onChange={val => setAttributes({ placeholderColor: val })} />
                             </Tab>
 

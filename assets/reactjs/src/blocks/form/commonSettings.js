@@ -214,14 +214,15 @@ export default function (clientId) {
                     onChange={(value) => updateAttributes('gutter', value)}
                 />
 
-                {
-                    layout == 'classic' &&
-                    <Border label={__('Border')} value={inputBorder} onChange={val => updateAttributes('inputBorder', val)} min={0} max={10} />
-                }
-                {
-                    layout == 'material' &&
-                    <Border label={__('Border')} value={inputBorderMaterial} onChange={val => updateAttributes('inputBorderMaterial', val)} min={0} max={10} />
-                }
+                <Border
+                    min={0}
+                    max={10}
+                    responsive
+                    value={layout === 'classic' ? inputBorder : inputBorderMaterial}
+                    label={__('Border')}
+                    unit={['px', 'em', '%']}
+                    onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })} />
+
 
                 <BorderRadius
                     min={0}

@@ -185,10 +185,21 @@ registerBlockType('qubely/form', {
             type: 'string', default: "#fff",
             style: [
                 {
-                    // condition: [
-                    //     { key: 'layout', relation: '==', value: 'classic' },
-                    // ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {background-color: {{inputBg}};}'
+                    condition: [
+                        { key: 'layout', relation: '!=', value: 'materialdark' },
+                    ],
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {background-color: {{inputBg}};}'
+                }
+            ]
+        },
+        materialDarkInputBg: {
+            type: 'string', default: "#f5f5f5",
+            style: [
+                {
+                    condition: [
+                        { key: 'layout', relation: '==', value: 'materialdark' },
+                    ],
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {background-color: {{materialDarkInputBg}};}'
                 }
             ]
         },
@@ -232,7 +243,7 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
+                    selector: '{{QUBELY}} .qubely-block-form.qubely-layout-classic .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
                 }
             ]
         },
@@ -252,13 +263,21 @@ registerBlockType('qubely/form', {
 
 
         inputBorderMaterial: {
-            type: 'object', default: { openBorder: 1, type: 'solid', widthType: 'custom', width: { bottom: 2 }, color: '#ced4da' },
+            type: 'object',
+            default: {
+                openBorder: 1,
+                type: 'solid',
+                widthType: 'custom',
+                custom: { md: '0 0 2 0' },
+                color: '#e5e5e5'
+            },
             style: [
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'material' },
+                        { key: 'layout', relation: '!=', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-control'
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)'
+
                 }
             ]
         },
