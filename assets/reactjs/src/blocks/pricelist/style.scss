@@ -1,4 +1,7 @@
 .qubely-block-pricelist {
+    .qubely-pricelist-items {
+        display: grid;
+    }
     .qubely-pricelist-item {
         position: relative;
         &:hover {
