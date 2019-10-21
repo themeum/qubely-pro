@@ -4907,10 +4907,9 @@ var Edit = function (_Component) {
 
             if (galleryContents.length === 0) {
                 return React.createElement(MediaPlaceholder, {
-                    icon: React.createElement('span', { className: 'dashicons-format-image' }),
-                    className: 'qubely-image-carousel-media-placeholder',
+                    className: 'qubely-gallery-media-placeholder',
                     labels: {
-                        title: __('Qubely Image Carousel'),
+                        title: __('Qubely Gallery'),
                         instructions: __('Drag images, upload new ones or select files from your library.')
                     },
                     onSelect: this.onSelectImages,
@@ -5609,10 +5608,10 @@ var _wp$qubelyComponents = wp.qubelyComponents,
     Carousel = _wp$qubelyComponents.Carousel,
     ButtonGroup = _wp$qubelyComponents.ButtonGroup,
     CssGenerator = _wp$qubelyComponents.CssGenerator.CssGenerator,
+    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar,
     _wp$qubelyComponents$ = _wp$qubelyComponents.gloalSettings,
     globalSettingsPanel = _wp$qubelyComponents$.globalSettingsPanel,
-    animationSettings = _wp$qubelyComponents$.animationSettings,
-    InlineToolbar = _wp$qubelyComponents.Inline.InlineToolbar;
+    animationSettings = _wp$qubelyComponents$.animationSettings;
 
 var Edit = function (_Component) {
 	_inherits(Edit, _Component);
@@ -5643,32 +5642,6 @@ var Edit = function (_Component) {
 				}
 			});
 			setAttributes({ carouselItems: updatedAttributes });
-		};
-
-		_this.renderName = function (name, index) {
-			return React.createElement(RichText, {
-				key: 'editable',
-				keepPlaceholderOnFocus: true,
-				placeholder: __('Add Name...'),
-				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
-				onChange: function onChange(value) {
-					return _this.updateAtrributes('slidertitle', value, index);
-				},
-				value: name
-			});
-		};
-
-		_this.renderDesignation = function (subtitle, index) {
-			return React.createElement(RichText, {
-				key: 'editable',
-				placeholder: __('Add subtitle...'),
-				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
-				keepPlaceholderOnFocus: true,
-				onChange: function onChange(value) {
-					return _this.updateAtrributes('subtitle', value, index);
-				},
-				value: subtitle
-			});
 		};
 
 		_this.renderSlider = function (sliderimage, index) {
@@ -5735,19 +5708,6 @@ var Edit = function (_Component) {
 			);
 		};
 
-		_this.renderMessage = function (message, index) {
-			return React.createElement(RichText, {
-				key: 'editable',
-				placeholder: __('Add Message...'),
-				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
-				keepPlaceholderOnFocus: true,
-				onChange: function onChange(value) {
-					return _this.updateAtrributes('message', value, index);
-				},
-				value: message
-			});
-		};
-
 		_this.renderSliderInfo = function (item, index) {
 			var _this$props$attribute = _this.props.attributes,
 			    layout = _this$props$attribute.layout,
@@ -5775,18 +5735,43 @@ var Edit = function (_Component) {
 							React.createElement(
 								'div',
 								{ className: 'qubely-image-title' },
-								_this.renderName(slidertitle, index)
+								React.createElement(RichText, {
+									keepPlaceholderOnFocus: true,
+									placeholder: __('Add image title...'),
+									formattingControls: ['bold', 'italic', 'link'],
+									onChange: function onChange(value) {
+										return _this.updateAtrributes('slidertitle', value, index);
+									},
+									value: slidertitle
+								})
 							),
 							React.createElement(
 								'div',
 								{ className: 'qubely-image-subtitle' },
-								_this.renderDesignation(subtitle, index)
+								React.createElement(RichText, {
+									placeholder: __('Add image subtitle...'),
+									formattingControls: ['bold', 'italic', 'link'],
+									keepPlaceholderOnFocus: true,
+									onChange: function onChange(value) {
+										return _this.updateAtrributes('subtitle', value, index);
+									},
+									value: subtitle
+								})
 							),
 							activeDescription && React.createElement(
-								'span',
+								'div',
 								{ className: 'qubely-slider-description' },
-								_this.renderMessage(message, index),
-								' '
+								React.createElement(RichText, {
+									key: 'editable',
+									placeholder: __('Add description...'),
+									formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
+									keepPlaceholderOnFocus: true,
+									onChange: function onChange(value) {
+										return _this.updateAtrributes('message', value, index);
+									},
+									value: message
+								}),
+								'\xCE'
 							)
 						)
 					)
@@ -6683,7 +6668,7 @@ var Save = function (_Component) {
 								React.createElement(RichText.Content, { value: subtitle })
 							),
 							activeDescription && React.createElement(
-								"span",
+								"div",
 								{ className: "qubely-slider-description" },
 								React.createElement(RichText.Content, { value: message })
 							)

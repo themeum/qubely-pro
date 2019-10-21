@@ -216,10 +216,9 @@ class Edit extends Component {
         if (galleryContents.length === 0) {
             return (
                 <MediaPlaceholder
-                    icon={<span className='dashicons-format-image'></span>}
-                    className={'qubely-image-carousel-media-placeholder'}
+                    className={'qubely-gallery-media-placeholder'}
                     labels={{
-                        title: __('Qubely Image Carousel'),
+                        title: __('Qubely Gallery'),
                         instructions: __('Drag images, upload new ones or select files from your library.'),
                     }}
                     onSelect={this.onSelectImages}

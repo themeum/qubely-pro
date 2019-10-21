@@ -8,13 +8,13 @@ class Save extends Component {
 	renderSlider = (sliderimage, sliderimageAlt) => {
 		return (
 			<div className="qubely-single-img">
-				{ sliderimage.url != undefined ? (
+				{sliderimage.url != undefined ? (
 					<img className="qubely-image-sliderimage" src={sliderimage.url} alt={sliderimageAlt} />
 				) : (
-					<div className="qubely-image-placeholder qubely-image-sliderimage">
-						<i className="dashicons dashicons-format-image"/>
-					</div>
-				) }
+						<div className="qubely-image-placeholder qubely-image-sliderimage">
+							<i className="dashicons dashicons-format-image" />
+						</div>
+					)}
 			</div>
 		);
 	};
@@ -39,11 +39,12 @@ class Save extends Component {
 									<div className="qubely-image-subtitle">
 										<RichText.Content value={subtitle} />
 									</div>
-									{activeDescription && (
-										<span className="qubely-slider-description">
+									{
+										activeDescription &&
+										<div className="qubely-slider-description">
 											<RichText.Content value={message} />
-										</span>
-									)}
+										</div>
+									}
 								</div>
 							</div>
 						)}

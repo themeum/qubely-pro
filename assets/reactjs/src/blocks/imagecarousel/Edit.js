@@ -21,8 +21,12 @@ const {
 	Carousel,
 	ButtonGroup,
 	CssGenerator: { CssGenerator },
-	gloalSettings: { globalSettingsPanel, animationSettings },
-	Inline: { InlineToolbar } } = wp.qubelyComponents
+	Inline: { InlineToolbar },
+	gloalSettings: {
+		globalSettingsPanel,
+		animationSettings
+	}
+} = wp.qubelyComponents
 
 class Edit extends Component {
 	constructor(props) {
@@ -64,31 +68,6 @@ class Edit extends Component {
 		setAttributes({ carouselItems: updatedAttributes })
 	}
 
-	renderName = (name, index) => {
-		return (
-			<RichText
-				key="editable"
-				keepPlaceholderOnFocus
-				placeholder={__('Add Name...')}
-				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-				onChange={value => this.updateAtrributes('slidertitle', value, index)}
-				value={name}
-			/>
-		)
-	}
-
-	renderDesignation = (subtitle, index) => {
-		return (
-			<RichText
-				key="editable"
-				placeholder={__('Add subtitle...')}
-				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-				keepPlaceholderOnFocus
-				onChange={value => this.updateAtrributes('subtitle', value, index)}
-				value={subtitle}
-			/>
-		)
-	}
 
 	renderSlider = (sliderimage, index) => {
 		return (
@@ -130,18 +109,6 @@ class Edit extends Component {
 		)
 	}
 
-	renderMessage = (message, index) => {
-		return (
-			<RichText
-				key="editable"
-				placeholder={__('Add Message...')}
-				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-				keepPlaceholderOnFocus
-				onChange={value => this.updateAtrributes('message', value, index)}
-				value={message}
-			/>
-		)
-	}
 
 	renderSliderInfo = (item, index) => {
 		const { attributes: { layout, sliderContent, activeDescription } } = this.props
@@ -155,10 +122,36 @@ class Edit extends Component {
 						{(sliderContent || layout === 6) &&
 							<div className={`qubely-image-slider-text`}>
 								<div className="qubely-image-content">
-									<div className="qubely-image-title" >{this.renderName(slidertitle, index)}</div>
-									<div className="qubely-image-subtitle" >{this.renderDesignation(subtitle, index)}</div>
-									{activeDescription &&
-										<span className="qubely-slider-description" >{this.renderMessage(message, index)} </span>
+									<div className="qubely-image-title" >
+										<RichText
+											keepPlaceholderOnFocus
+											placeholder={__('Add image title...')}
+											formattingControls={['bold', 'italic', 'link']}
+											onChange={value => this.updateAtrributes('slidertitle', value, index)}
+											value={slidertitle}
+										/>
+									</div>
+									<div className="qubely-image-subtitle" >
+										<RichText
+											placeholder={__('Add image subtitle...')}
+											formattingControls={['bold', 'italic', 'link']}
+											keepPlaceholderOnFocus
+											onChange={value => this.updateAtrributes('subtitle', value, index)}
+											value={subtitle}
+										/>
+									</div>
+									{
+										activeDescription &&
+										<div className="qubely-slider-description" >
+											<RichText
+												key="editable"
+												placeholder={__('Add description...')}
+												formattingControls={['bold', 'italic', 'link', 'strikethrough']}
+												keepPlaceholderOnFocus
+												onChange={value => this.updateAtrributes('message', value, index)}
+												value={message}
+											/>Î
+										</div>
 									}
 								</div>
 							</div>
