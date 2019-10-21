@@ -1,7 +1,7 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
-const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.editor
+const { InspectorControls, RichText, MediaUpload, BlockControls, MediaPlaceholder } = wp.editor
 import icons from '../../helpers/icons'
 const {
 	Range,
@@ -214,7 +214,6 @@ class Edit extends Component {
 			slidertitle: 'Wordcamp Dhaka 2019',
 			subtitle: '28 September 2019',
 			message: '“Instantly raise your website appearance with this stylish new plugin.”',
-			ratings: '5',
 			sliderimage: {}
 		}
 		if (newLength > carouselItems.length) {
@@ -248,6 +247,23 @@ class Edit extends Component {
 		}
 		return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md'
 	}
+
+	onSelectImages = (images) => {
+		const { setAttributes } = this.props
+		let newImages = images.map(image => {
+			return (
+				{
+					sliderimage: image,
+					slidertitle: null,
+					subtitle: null,
+					message: null,
+				}
+			)
+		})
+
+		setAttributes({ carouselItems: newImages })
+	}
+
 	render() {
 		const {
 			setAttributes,
@@ -376,6 +392,23 @@ class Edit extends Component {
 		};
 
 		if (uniqueId) { CssGenerator(this.props.attributes, 'imagecarousel', uniqueId) }
+
+
+		if (carouselItems.length === 0) {
+			return (
+				<MediaPlaceholder
+					className={'qubely-image-carousel-media-placeholder'}
+					labels={{
+						title: __('Qubely Image Carousel'),
+						instructions: __('Drag images, upload new ones or select files from your library.'),
+					}}
+					onSelect={this.onSelectImages}
+					accept="image/*"
+					allowedTypes={['image']}
+					multiple
+				/>
+			)
+		}
 
 		return (
 			<Fragment>

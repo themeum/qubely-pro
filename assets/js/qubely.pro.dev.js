@@ -5589,7 +5589,8 @@ var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
     MediaUpload = _wp$editor.MediaUpload,
-    BlockControls = _wp$editor.BlockControls;
+    BlockControls = _wp$editor.BlockControls,
+    MediaPlaceholder = _wp$editor.MediaPlaceholder;
 var _wp$qubelyComponents = wp.qubelyComponents,
     Range = _wp$qubelyComponents.Range,
     Color = _wp$qubelyComponents.Color,
@@ -5850,7 +5851,6 @@ var Edit = function (_Component) {
 				slidertitle: 'Wordcamp Dhaka 2019',
 				subtitle: '28 September 2019',
 				message: '“Instantly raise your website appearance with this stylish new plugin.”',
-				ratings: '5',
 				sliderimage: {}
 			};
 			if (newLength > carouselItems.length) {
@@ -5883,6 +5883,21 @@ var Edit = function (_Component) {
 				activeView = responsive[responsive.length - 1];
 			}
 			return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md';
+		};
+
+		_this.onSelectImages = function (images) {
+			var setAttributes = _this.props.setAttributes;
+
+			var newImages = images.map(function (image) {
+				return {
+					sliderimage: image,
+					slidertitle: null,
+					subtitle: null,
+					message: null
+				};
+			});
+
+			setAttributes({ carouselItems: newImages });
 		};
 
 		_this.state = {
@@ -6037,6 +6052,20 @@ var Edit = function (_Component) {
 
 			if (uniqueId) {
 				CssGenerator(this.props.attributes, 'imagecarousel', uniqueId);
+			}
+
+			if (carouselItems.length === 0) {
+				return React.createElement(MediaPlaceholder, {
+					className: 'qubely-image-carousel-media-placeholder',
+					labels: {
+						title: __('Qubely Image Carousel'),
+						instructions: __('Drag images, upload new ones or select files from your library.')
+					},
+					onSelect: this.onSelectImages,
+					accept: 'image/*',
+					allowedTypes: ['image'],
+					multiple: true
+				});
 			}
 
 			return React.createElement(
@@ -6842,43 +6871,45 @@ registerBlockType('qubely/imagecarousel', {
 
 		carouselItems: {
 			type: 'array',
-			default: [{
-				slidertitle: 'Wordcamp Dhaka',
-				subtitle: '28 September 2019',
-				message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-				ratings: '5',
-				sliderimage: {}
-			}, {
-				slidertitle: 'Welcome to Themeum',
-				subtitle: 'Everything related to WordPress',
-				message: '“WordCamp Dhaka is officially on the calendar!”',
-				ratings: '4.5',
-				sliderimage: {}
-			}, {
-				slidertitle: 'Accommodation to Dhaka',
-				subtitle: 'Dhaka being a crowded city',
-				message: '“Dhaka Regency Hotel & Resort Limited”',
-				ratings: '4.5',
-				sliderimage: {}
-			}, {
-				slidertitle: 'ICCB Center Dhaka',
-				subtitle: 'Including speaker submissions',
-				message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
-				ratings: '5',
-				sliderimage: {}
-			}, {
-				slidertitle: 'Mark Your Calendar',
-				subtitle: 'WordCamp Dhaka will be happening on 28th September',
-				message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-				ratings: '5',
-				sliderimage: {}
-			}, {
-				slidertitle: 'Wordcamp Sponsor?',
-				subtitle: 'WordCamp Dhaka will be happening',
-				message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-				ratings: '5',
-				sliderimage: {}
-			}]
+			default: [
+				// {
+				// 	slidertitle: 'Wordcamp Dhaka',
+				// 	subtitle: '28 September 2019',
+				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'Welcome to Themeum',
+				// 	subtitle: 'Everything related to WordPress',
+				// 	message: '“WordCamp Dhaka is officially on the calendar!”',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'Accommodation to Dhaka',
+				// 	subtitle: 'Dhaka being a crowded city',
+				// 	message: '“Dhaka Regency Hotel & Resort Limited”',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'ICCB Center Dhaka',
+				// 	subtitle: 'Including speaker submissions',
+				// 	message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'Mark Your Calendar',
+				// 	subtitle: 'WordCamp Dhaka will be happening on 28th September',
+				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'Wordcamp Sponsor?',
+				// 	subtitle: 'WordCamp Dhaka will be happening',
+				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
+				// 	sliderimage: {}
+				// },
+
+			]
 		},
 
 		/*---------------------------------------------------

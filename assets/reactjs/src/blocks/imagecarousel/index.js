@@ -45,48 +45,42 @@ registerBlockType('qubely/imagecarousel', {
 		carouselItems: {
 			type: 'array',
 			default: [
-				{
-					slidertitle: 'Wordcamp Dhaka',
-					subtitle: '28 September 2019',
-					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-					ratings: '5',
-					sliderimage: {}
-				},
-				{
-					slidertitle: 'Welcome to Themeum',
-					subtitle: 'Everything related to WordPress',
-					message: '“WordCamp Dhaka is officially on the calendar!”',
-					ratings: '4.5',
-					sliderimage: {}
-				},
-				{
-					slidertitle: 'Accommodation to Dhaka',
-					subtitle: 'Dhaka being a crowded city',
-					message: '“Dhaka Regency Hotel & Resort Limited”',
-					ratings: '4.5',
-					sliderimage: {}
-				},
-				{
-					slidertitle: 'ICCB Center Dhaka',
-					subtitle: 'Including speaker submissions',
-					message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
-					ratings: '5',
-					sliderimage: {}
-				},
-				{
-					slidertitle: 'Mark Your Calendar',
-					subtitle: 'WordCamp Dhaka will be happening on 28th September',
-					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-					ratings: '5',
-					sliderimage: {}
-				},
-				{
-					slidertitle: 'Wordcamp Sponsor?',
-					subtitle: 'WordCamp Dhaka will be happening',
-					message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-					ratings: '5',
-					sliderimage: {}
-				},
+				// {
+				// 	slidertitle: 'Wordcamp Dhaka',
+				// 	subtitle: '28 September 2019',
+				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'Welcome to Themeum',
+				// 	subtitle: 'Everything related to WordPress',
+				// 	message: '“WordCamp Dhaka is officially on the calendar!”',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'Accommodation to Dhaka',
+				// 	subtitle: 'Dhaka being a crowded city',
+				// 	message: '“Dhaka Regency Hotel & Resort Limited”',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'ICCB Center Dhaka',
+				// 	subtitle: 'Including speaker submissions',
+				// 	message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'Mark Your Calendar',
+				// 	subtitle: 'WordCamp Dhaka will be happening on 28th September',
+				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
+				// 	sliderimage: {}
+				// },
+				// {
+				// 	slidertitle: 'Wordcamp Sponsor?',
+				// 	subtitle: 'WordCamp Dhaka will be happening',
+				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
+				// 	sliderimage: {}
+				// },
 				
 			]
 		},
