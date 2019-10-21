@@ -74,9 +74,9 @@ class Edit extends Component {
     }
 
     renderGalleryItem = () => {
-        const { galleryContents, enableCaption, showCaption, imageAnimation } = this.props.attributes
+        const {setAttributes,attributes:{ galleryContents, enableCaption, showCaption, imageAnimation} } = this.props
 
-        return ([...galleryContents, { image: undefined, title: undefined }].map(({ title, image }, index) => {
+        return ([...galleryContents, { image: undefined, title: undefined, addNewItem: true }].map(({ title, image, addNewItem = false }, index) => {
             return (
                 <div key={index} className={`qubely-gallery-item`}>
                     <Tooltip text={__('Delete this item')}>
@@ -86,9 +86,29 @@ class Edit extends Component {
                         <div className={`qubely-gallery-image-container`}>
                             <div className={`qubely-gallery-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'} qubely-gallery-image-${imageAnimation}`}>
                                 <MediaUpload
-                                    onSelect={value => { index === galleryContents.length ? this.updateGalleryImage('add') : this.updateGalleryImage('image', value, index) }}
+                                    onSelect={value => {
+                                        if (addNewItem) {
+                                            setAttributes({
+                                                galleryContents: [
+                                                    ...galleryContents,
+                                                    ...value.map(item => {
+                                                        return (
+                                                            {
+                                                                title: item.caption,
+                                                                image: item
+                                                            }
+                                                        )
+                                                    })
+                                                ]
+                                            })
+                                        } else {
+                                            this.updateGalleryImage('image', value, index)
+                                        }
+
+                                    }
+                                    }
                                     allowedTypes={['image']}
-                                    multiple={false}
+                                    multiple={addNewItem}
                                     value={image}
                                     render={({ open }) => (
                                         <Fragment>
@@ -139,7 +159,7 @@ class Edit extends Component {
 
     onSelectImages = (images) => {
         const { setAttributes } = this.props
-        let galleryContents = images.map(image => {
+        let galleryNewContents = images.map(image => {
             return (
                 {
                     title: image.caption,
@@ -147,8 +167,8 @@ class Edit extends Component {
                 }
             )
         })
-        galleryContents.push({ image: undefined, title: null })
-        setAttributes({ galleryContents: galleryContents, galleryItems: galleryContents.length })
+
+        setAttributes({ galleryContents: galleryNewContents, galleryItems: galleryNewContents.length })
     }
 
     render() {
@@ -220,13 +240,7 @@ class Edit extends Component {
                                 { value: 2, svg: icons.gallery_2 },
                             ]}
                         />
-                        {/* <Range
-                            min={2}
-                            max={100}
-                            label={__('Number of Items')}
-                            value={galleryItems}
-                            onChange={value => this.updateGalleryImage(value > galleryItems ? 'add' : 'delete')} */}
-                        />
+                
                         <Range
                             label={__('Select Column')}
                             value={column}

@@ -4694,16 +4694,20 @@ var Edit = function (_Component) {
         };
 
         _this.renderGalleryItem = function () {
-            var _this$props$attribute2 = _this.props.attributes,
-                galleryContents = _this$props$attribute2.galleryContents,
-                enableCaption = _this$props$attribute2.enableCaption,
-                showCaption = _this$props$attribute2.showCaption,
-                imageAnimation = _this$props$attribute2.imageAnimation;
+            var _this$props3 = _this.props,
+                setAttributes = _this$props3.setAttributes,
+                _this$props3$attribut = _this$props3.attributes,
+                galleryContents = _this$props3$attribut.galleryContents,
+                enableCaption = _this$props3$attribut.enableCaption,
+                showCaption = _this$props3$attribut.showCaption,
+                imageAnimation = _this$props3$attribut.imageAnimation;
 
 
-            return [].concat(_toConsumableArray(galleryContents), [{ image: undefined, title: undefined }]).map(function (_ref, index) {
+            return [].concat(_toConsumableArray(galleryContents), [{ image: undefined, title: undefined, addNewItem: true }]).map(function (_ref, index) {
                 var title = _ref.title,
-                    image = _ref.image;
+                    image = _ref.image,
+                    _ref$addNewItem = _ref.addNewItem,
+                    addNewItem = _ref$addNewItem === undefined ? false : _ref$addNewItem;
 
                 return React.createElement(
                     'div',
@@ -4730,10 +4734,21 @@ var Edit = function (_Component) {
                                 { className: 'qubely-gallery-content-image' + (image != undefined && image.url != undefined ? '' : ' qubely-empty-image') + ' qubely-gallery-image-' + imageAnimation },
                                 React.createElement(MediaUpload, {
                                     onSelect: function onSelect(value) {
-                                        index === galleryContents.length ? _this.updateGalleryImage('add') : _this.updateGalleryImage('image', value, index);
+                                        if (addNewItem) {
+                                            setAttributes({
+                                                galleryContents: [].concat(_toConsumableArray(galleryContents), _toConsumableArray(value.map(function (item) {
+                                                    return {
+                                                        title: item.caption,
+                                                        image: item
+                                                    };
+                                                })))
+                                            });
+                                        } else {
+                                            _this.updateGalleryImage('image', value, index);
+                                        }
                                     },
                                     allowedTypes: ['image'],
-                                    multiple: false,
+                                    multiple: addNewItem,
                                     value: image,
                                     render: function render(_ref2) {
                                         var open = _ref2.open;
@@ -4809,14 +4824,14 @@ var Edit = function (_Component) {
         _this.onSelectImages = function (images) {
             var setAttributes = _this.props.setAttributes;
 
-            var galleryContents = images.map(function (image) {
+            var galleryNewContents = images.map(function (image) {
                 return {
                     title: image.caption,
                     image: image
                 };
             });
-            galleryContents.push({ image: undefined, title: null });
-            setAttributes({ galleryContents: galleryContents, galleryItems: galleryContents.length });
+
+            setAttributes({ galleryContents: galleryNewContents, galleryItems: galleryNewContents.length });
         };
 
         _this.state = {
@@ -4918,7 +4933,6 @@ var Edit = function (_Component) {
                             },
                             options: [{ value: 1, svg: _icons2.default.gallery_1 }, { value: 2, svg: _icons2.default.gallery_2 }]
                         }),
-                        '/>',
                         React.createElement(Range, {
                             label: __('Select Column'),
                             value: column,
