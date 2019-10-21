@@ -131,7 +131,7 @@ class Edit extends Component {
                             onClick={() => { this.setState({ groupField: true }) }}
                             className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`}
                         >
-                            Add Column</div>
+                         {icons.from_fields.column} Add Column</div>
                     </div>
                 }
 

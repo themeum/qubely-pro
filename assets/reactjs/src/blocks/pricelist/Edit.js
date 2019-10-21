@@ -202,7 +202,8 @@ class Edit extends Component {
             headingLevel,
             priceAfterTitle,
 			headingTypography,
-			headingColor,
+            headingColor,
+            headingWhiteColor,
 			headingSpacing,
 			contentBg,
 			enableContentBorder,
@@ -242,12 +243,15 @@ class Edit extends Component {
             enablePrice,
             priceTypography,
             priceColor,
+            priceWhiteColor,
             enableDescription,
             descriptionTypography,
             descriptionColor,
+            descriptionWhiteColor,
             enableDiscount,
             discountTypography,
             discountColor,
+            discountWhiteColor,
             globalZindex,
             enablePosition, 
             selectPosition, 
@@ -412,16 +416,24 @@ class Edit extends Component {
                     <PanelBody title={__('Content')} initialOpen={false}>
 						<Headings label={__('Heading Tag')} selectedLevel={headingLevel} onChange={(value) => setAttributes({ headingLevel: value })} />
 						<Typography label={__('Heading Typography')} value={headingTypography} onChange={val => setAttributes({ headingTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-						<Color label={__('Heading Color')} value={headingColor} onChange={(value) => setAttributes({ headingColor: value })} />
-						<Range label={__('Heading Spacing')} value={headingSpacing} onChange={val => setAttributes({ headingSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <Color
+                            label={__('Heading Color')}
+                            value={style != '3' ? headingColor : headingWhiteColor}
+                            onChange={val => setAttributes(style != '3' ? { headingColor: val } : { headingWhiteColor: val })}
+                        />
+                        <Range label={__('Heading Spacing')} value={headingSpacing} onChange={val => setAttributes({ headingSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Separator />
 
                         <Toggle label={__('Enable Description')} value={enableDescription} onChange={val => setAttributes({ enableDescription: val })} />
 						{enableDescription == 1 &&
 							<Fragment>
 								<Typography label={__('Description Typography')} value={descriptionTypography} onChange={val => setAttributes({ descriptionTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Color label={__('Description Color')} value={descriptionColor} onChange={(value) => setAttributes({ descriptionColor: value })} />
-							</Fragment>
+                                <Color
+                                    label={__('Description Color')}
+                                    value={style != '3' ? descriptionColor : descriptionWhiteColor}
+                                    onChange={val => setAttributes(style != '3' ? { descriptionColor: val } : { descriptionWhiteColor: val })}
+                                />
+                            </Fragment>
 						}
                         
                         <Separator />
@@ -429,16 +441,24 @@ class Edit extends Component {
 						{enablePrice == 1 &&
 							<Fragment>
 								<Typography label={__('Price Typography')} value={priceTypography} onChange={val => setAttributes({ priceTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Color label={__('Price Color')} value={priceColor} onChange={(value) => setAttributes({ priceColor: value })} />
-							</Fragment>
+                                <Color
+                                    label={__('Price Color')}
+                                    value={style != '3' ? priceColor : priceWhiteColor}
+                                    onChange={val => setAttributes(style != '3' ? { priceColor: val } : { priceWhiteColor: val })}
+                                />
+                            </Fragment>
                         }
                         
 						<Toggle label={__('Enable Discount')} value={enableDiscount} onChange={val => setAttributes({ enableDiscount: val })} />
 						{enableDiscount == 1 &&
 							<Fragment>
 								<Typography label={__('Discount Typography')} value={discountTypography} onChange={val => setAttributes({ discountTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Color label={__('Discount Color')} value={discountColor} onChange={(value) => setAttributes({ discountColor: value })} />
-							</Fragment>
+                                <Color
+                                    label={__('Discount Color')}
+                                    value={style != '3' ? discountColor : discountWhiteColor}
+                                    onChange={val => setAttributes(style != '3' ? { discountColor: val } : { discountWhiteColor: val })}
+                                />
+                            </Fragment>
                         }
                         
 					</PanelBody>
