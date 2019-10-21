@@ -4906,10 +4906,9 @@ var Edit = function (_Component) {
 
             if (galleryContents.length === 0) {
                 return React.createElement(MediaPlaceholder, {
-                    icon: React.createElement('span', { className: 'dashicons-format-image' }),
-                    className: 'qubely-image-carousel-media-placeholder',
+                    className: 'qubely-gallery-media-placeholder',
                     labels: {
-                        title: __('Qubely Image Carousel'),
+                        title: __('Qubely Gallery'),
                         instructions: __('Drag images, upload new ones or select files from your library.')
                     },
                     onSelect: this.onSelectImages,
