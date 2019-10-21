@@ -1,20 +1,5 @@
 .qubely-block-form {
   .qubely-form {
-    &.is-small {
-      .qubely-form-field {
-        padding: 6px 8px;
-      }
-    }
-    &.is-medium {
-      .qubely-form-field {
-        padding: 8.5px 12px;
-      }
-    }
-    &.is-large {
-      .qubely-form-field {
-        padding: 14.5px 16px;
-      }
-    }
 
     .editor-inner-blocks.block-editor-inner-blocks {
       > .editor-block-list__layout.block-editor-block-list__layout {
@@ -55,6 +40,26 @@
       background: rgba(33, 132, 249, 0.1);
       color: #2184f9;
       border-radius: 5px;
+    }
+  }
+}
+
+.qubely-block-form:not(.qubely-layout-material) {
+  .qubely-form {
+    &.is-small {
+      .qubely-form-field {
+        padding: 6px 8px;
+      }
+    }
+    &.is-medium {
+      .qubely-form-field {
+        padding: 8.5px 12px;
+      }
+    }
+    &.is-large {
+      .qubely-form-field {
+        padding: 14.5px 16px;
+      }
     }
   }
 }
