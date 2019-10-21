@@ -138,7 +138,7 @@ registerBlockType('qubely/pricelist', {
                     condition: [
                         { key: 'style', relation: '===', value: '1' }
 					],
-					selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1}'
+					selector: '{{QUBELY}} .qubely-block-pricelist.qubely-pricelist-item-1'
                 },
                 {
                     condition: [
@@ -362,10 +362,27 @@ registerBlockType('qubely/pricelist', {
 		},
 		headingColor: {
 			type: 'string',
-			default: '',
-			style: [
-				{ selector: '{{QUBELY}} .qubely-pricelist-title {color: {{headingColor}};}' }
-			]
+            default: '',
+            style: [
+                {
+                    condition: [
+                        { key: 'style', relation: '!=', value: '3' },
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-title {color: {{headingColor}};}'
+                }
+            ]
+		},
+		headingWhiteColor: {
+			type: 'string',
+            default: '#fff',
+            style: [
+                {
+                    condition: [
+                        { key: 'style', relation: '==', value: '3' },
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-title {color: {{headingWhiteColor}};}'
+                }
+            ]
 		},
 		headingSpacing: {
 			type: 'object',
@@ -395,18 +412,46 @@ registerBlockType('qubely/pricelist', {
 				}
 			]
 		},
+		// descriptionColor: {
+		// 	type: 'string',
+		// 	default: '',
+		// 	style: [
+        //         {
+		// 			condition: [
+        //                 { key: 'enableDescription', relation: '==', value: true }
+        //             ],
+        //             selector: '{{QUBELY}} .qubely-pricelist-introtext {color: {{descriptionColor}};}'
+        //         }
+        //     ]
+        // },
+
 		descriptionColor: {
 			type: 'string',
-			default: '',
-			style: [
+            default: '',
+            style: [
                 {
-					condition: [
+                    condition: [
+                        { key: 'style', relation: '!=', value: '3' },
                         { key: 'enableDescription', relation: '==', value: true }
                     ],
                     selector: '{{QUBELY}} .qubely-pricelist-introtext {color: {{descriptionColor}};}'
                 }
             ]
-        },
+		},
+		descriptionWhiteColor: {
+			type: 'string',
+            default: '#fff',
+            style: [
+                {
+                    condition: [
+                        { key: 'style', relation: '==', value: '3' },
+                        { key: 'enableDescription', relation: '==', value: true }
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-introtext {color: {{descriptionWhiteColor}};}'
+                }
+            ]
+		},
+
 
         // Discount Price
         enableDiscount: {
@@ -425,19 +470,34 @@ registerBlockType('qubely/pricelist', {
 				}
 			]
 		},
-		discountColor: {
+
+        discountColor: {
 			type: 'string',
-			default: '',
-			style: [
+            default: '',
+            style: [
                 {
-					condition: [
+                    condition: [
+                        { key: 'style', relation: '!=', value: '3' },
                         { key: 'enableDiscount', relation: '==', value: true }
                     ],
                     selector: '{{QUBELY}} .qubely-pricelist-discount {color: {{discountColor}};}'
                 }
             ]
-        },
-            
+		},
+		discountWhiteColor: {
+			type: 'string',
+            default: '#fff',
+            style: [
+                {
+                    condition: [
+                        { key: 'style', relation: '==', value: '3' },
+                        { key: 'enableDiscount', relation: '==', value: true }
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-discount {color: {{discountWhiteColor}};}'
+                }
+            ]
+		},
+
         //Price
         priceAfterTitle: {
 			type: 'boolean',
@@ -467,18 +527,32 @@ registerBlockType('qubely/pricelist', {
 				}
 			]
 		},
-		priceColor: {
+        priceColor: {
 			type: 'string',
-			default: '',
-			style: [
+            default: '',
+            style: [
                 {
-					condition: [
+                    condition: [
+                        { key: 'style', relation: '!=', value: '3' },
                         { key: 'enablePrice', relation: '==', value: true }
                     ],
                     selector: '{{QUBELY}} .qubely-pricelist-price {color: {{priceColor}};}'
                 }
             ]
-        },
+		},
+		priceWhiteColor: {
+			type: 'string',
+            default: '#fff',
+            style: [
+                {
+                    condition: [
+                        { key: 'style', relation: '==', value: '3' },
+                        { key: 'enablePrice', relation: '==', value: true }
+                    ],
+                    selector: '{{QUBELY}} .qubely-pricelist-price {color: {{priceWhiteColor}};}'
+                }
+            ]
+		},
         
         //Badge
         enableBadge: {

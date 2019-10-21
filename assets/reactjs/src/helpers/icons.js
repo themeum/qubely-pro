@@ -9,6 +9,7 @@ const icons = {
     form_material_dark: <img src={`${img_path}/form/materialdark.svg`} alt={__('Material dark')} />,
     
     from_fields: {
+        column: <img src={`${img_path}/form/column.svg`} alt={__('qubely form Column')} />,
         text: <img src={`${img_path}/form/text.svg`} alt={__('qubely form text-field')} />,
         number: <img src={`${img_path}/form/number.svg`} alt={__('qubely form number-field')} />,
         textarea: <img src={`${img_path}/form/textarea.svg`} alt={__('qubely form textarea-field')} />,
