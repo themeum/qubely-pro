@@ -14972,7 +14972,7 @@ __webpack_require__(/*! ./blocks/gallery */ "./src/blocks/gallery/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/plugins/quebly/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/wordpress/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
 
 
 /***/ })

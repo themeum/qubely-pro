@@ -241,17 +241,37 @@ jQuery(document).ready(function ($) {
     function checkFields($field, fieldErrorMessage) {
         let isRequired = false;
         const $parent = $field.parents('.qubely-form-field-wrapper');
-        fieldErrorMessage = `<p class= "qubely-form-required-field"> ${fieldErrorMessage}</p> `;
+        fieldErrorMessage = `<p class="qubely-form-required-field"> ${fieldErrorMessage}</p>`;
+        confirmEmailErrorMessage = "<p class='qubely-form-confirmation-email-error'> Email doesn't match</p>";
+
         const hasNoError = $parent.find("p.qubely-form-required-field").length === 0;
 
         if (typeof $field.prop('required') !== 'undefined') {
             if ($field.attr('type') === 'email') {
-                if (!validateEmail($field.val())) {
-                    if (hasNoError) {
-                        $parent.append(fieldErrorMessage);
+                const $parenField = $field.parents('.qubely-form-field-wrapper')
+
+                if ($parenField.find('.qubely-form-confirmation-email').length > 0) {
+                   
+                    let confirmationEmailFlag = $parenField.find('.qubely-form-confirmation-email-error').length === 0
+
+                    if (validateEmail($field.val())) {
+                        $parenField.find("p.qubely-form-required-field").remove()
+                    } else if (hasNoError) {
+                        $parent.append(fieldErrorMessage)
                     }
+
+                    if ($parenField.find('.qubely-form-field.qubely-form-email')[0].value === $field[0].value) {
+                        $parenField.find("p.qubely-form-confirmation-email-error").remove()
+                        return isRequired = false;
+                    } else {
+                        confirmationEmailFlag && $parent.append(confirmEmailErrorMessage);
+                        return isRequired = true;
+                    }
+                } else if (!validateEmail($field.val())) {
+                    hasNoError && $parent.append(fieldErrorMessage);
                     return isRequired = true;
                 }
+
             }
             if ($field.val().length === 0) {
                 if (hasNoError) {
