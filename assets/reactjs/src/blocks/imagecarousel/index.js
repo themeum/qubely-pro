@@ -9,7 +9,7 @@ registerBlockType('qubely/imagecarousel', {
 	title: __('Image Carousel'),
 	description: __('Insert images and beautify them with Qubely Image Carousel Block'),
 	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg'} alt={__('Image Carousel Block')} />,
-	category: 'qubely', 
+	category: 'qubely',
 	keywords: [
 		__('Image'),
 		__('Carousel')
@@ -17,17 +17,17 @@ registerBlockType('qubely/imagecarousel', {
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
 		layout: { type: 'number', default: 1 },
-		items: { 
-			type: 'object', 
-			default: { md: '1', sm: '1', xs: '1' } 
+		items: {
+			type: 'object',
+			default: { md: '1', sm: '1', xs: '1' }
 		},
-		itemthree: { 
-			type: 'object', 
-			default: { md: '3', sm: '3', xs: '1' } 
+		itemthree: {
+			type: 'object',
+			default: { md: '3', sm: '3', xs: '1' }
 		},
-		itemfive: { 
-			type: 'object', 
-			default: { md: '4', sm: '3', xs: '3' } 
+		itemfive: {
+			type: 'object',
+			default: { md: '4', sm: '3', xs: '3' }
 		},
 		autoPlay: { type: 'boolean', default: false },
 		dragable: { type: 'boolean', default: true },
@@ -44,45 +44,7 @@ registerBlockType('qubely/imagecarousel', {
 
 		carouselItems: {
 			type: 'array',
-			default: [
-				// {
-				// 	slidertitle: 'Wordcamp Dhaka',
-				// 	subtitle: '28 September 2019',
-				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'Welcome to Themeum',
-				// 	subtitle: 'Everything related to WordPress',
-				// 	message: '“WordCamp Dhaka is officially on the calendar!”',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'Accommodation to Dhaka',
-				// 	subtitle: 'Dhaka being a crowded city',
-				// 	message: '“Dhaka Regency Hotel & Resort Limited”',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'ICCB Center Dhaka',
-				// 	subtitle: 'Including speaker submissions',
-				// 	message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'Mark Your Calendar',
-				// 	subtitle: 'WordCamp Dhaka will be happening on 28th September',
-				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'Wordcamp Sponsor?',
-				// 	subtitle: 'WordCamp Dhaka will be happening',
-				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-				// 	sliderimage: {}
-				// },
-				
-			]
+			default: []
 		},
 
 		/*---------------------------------------------------
@@ -189,8 +151,8 @@ registerBlockType('qubely/imagecarousel', {
 			type: 'string',
 			default: { md: 80, unit: 'px' },
 			style: [
-				{ 
-					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul { margin-top: {{dotsposition}} }' 
+				{
+					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul { margin-top: {{dotsposition}} }'
 				}
 			]
 		},
@@ -229,7 +191,7 @@ registerBlockType('qubely/imagecarousel', {
 			type: 'string',
 			default: '1140px',
 			style: [
-				{ 
+				{
 					condition: [
 						{ key: 'carouselImageSize', relation: '!=', value: 'custom' }
 					],
@@ -237,29 +199,29 @@ registerBlockType('qubely/imagecarousel', {
 				}
 			]
 		},
-		imageWidth: { 
-			type: 'string', 
-			default: { md: 100, unit: '%' }, 
+		imageWidth: {
+			type: 'string',
+			default: { md: 100, unit: '%' },
 			style: [
-				{ 
+				{
 					condition: [
 						{ key: 'carouselImageSize', relation: '==', value: 'custom' }
-					], 
-					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {width: {{imageWidth}};}' 
+					],
+					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {width: {{imageWidth}};}'
 				}
-			] 
+			]
 		},
-		avatarHeight: { 
-			type: 'string', 
-			default: { md: 100, unit: '%' }, 
+		avatarHeight: {
+			type: 'string',
+			default: { md: 100, unit: '%' },
 			style: [
-				{ 
-					condition: [{ key: 'carouselImageSize', relation: '==', value: 'custom' }], 
-					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {height: {{avatarHeight}};}' 
+				{
+					condition: [{ key: 'carouselImageSize', relation: '==', value: 'custom' }],
+					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {height: {{avatarHeight}};}'
 				}
-			] 
+			]
 		},
-		
+
 
 		/*------------------------------------
 		* 			Title 
@@ -295,163 +257,163 @@ registerBlockType('qubely/imagecarousel', {
 		* 			Content
 		------------------------------------- */
 		contentPadding: {
-            type: 'object',
-            default: {
-                openPadding: 1,
-                paddingType: 'global',
-                global: {
-                    md: 30,
-                },
-                unit: 'px'
-            },
-            style: [
-                { selector: '{{QUBELY}} .qubely-image-slider .qubely-image-content' }
-            ]
+			type: 'object',
+			default: {
+				openPadding: 1,
+				paddingType: 'global',
+				global: {
+					md: 30,
+				},
+				unit: 'px'
+			},
+			style: [
+				{ selector: '{{QUBELY}} .qubely-image-slider .qubely-image-content' }
+			]
 		},
 		contentVerticalAlign: {
-            type: 'string',
-            default: 'bottom',
-            style: [
-                {
-                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-align: start; -ms-flex-align: start; -ms-grid-row-align: flex-start; align-items: flex-start;}'
-                },
-                
-            ]
+			type: 'string',
+			default: 'bottom',
+			style: [
+				{
+					selector: '{{QUBELY}} .qubely-image-content {-webkit-box-align: start; -ms-flex-align: start; -ms-grid-row-align: flex-start; align-items: flex-start;}'
+				},
+
+			]
 		},
 		contentAlignment: {
-            type: 'string',
-            default: 'center',
-            style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '!=', value: '1' },
-                        { key: 'contentAlignment', relation: '==', value: 'left' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; text-align: left;}'
-                },
-                {
-                    condition: [
-                        { key: 'layout', relation: '!=', value: '1' },
-                        { key: 'contentAlignment', relation: '==', value: 'center' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center;}'
-                },
-                {
-                    condition: [
-                        { key: 'layout', relation: '!=', value: '1' },
-                        { key: 'contentAlignment', relation: '==', value: 'right' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; text-align: right;}'
-                }
-            ]
+			type: 'string',
+			default: 'center',
+			style: [
+				{
+					condition: [
+						{ key: 'layout', relation: '!=', value: '1' },
+						{ key: 'contentAlignment', relation: '==', value: 'left' }
+					],
+					selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; text-align: left;}'
+				},
+				{
+					condition: [
+						{ key: 'layout', relation: '!=', value: '1' },
+						{ key: 'contentAlignment', relation: '==', value: 'center' }
+					],
+					selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center;}'
+				},
+				{
+					condition: [
+						{ key: 'layout', relation: '!=', value: '1' },
+						{ key: 'contentAlignment', relation: '==', value: 'right' }
+					],
+					selector: '{{QUBELY}} .qubely-image-content {-webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; text-align: right;}'
+				}
+			]
 		},
-		
+
 		/* ------------------------------------
 		* 			Overlay 
 		* ------------------------------------- */
-        enableOverlay: {
-            type: 'boolean',
-            default: true,
-        },
+		enableOverlay: {
+			type: 'boolean',
+			default: true,
+		},
 
-        overlayBg: {
-            type: 'object',
-            default: {
-                openColor: 1,
-                type: 'gradient',
-                color: 'rgba(6, 80, 183, 0.7)',
-                gradient: {
-                    color1: 'rgba(0, 0, 0, 0.5)',
-                    color2: 'rgba(6, 1, 14, 0.6)',
-                    direction: 45,
-                    start: 0,
-                    stop: 100,
-                    type: 'linear'
-                },
-            },
-            style: [
-                {
-                    selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:before, {{QUBELY}} .layout-3 .qubely-image-slider-text:before, {{QUBELY}} .layout-4 .qubely-image-slider-text:before, {{QUBELY}} .layout-5 .qubely-image-slider-text:before, {{QUBELY}} .layout-6 .qubely-image-slider-text:before'
-                }
-            ]
-        },
+		overlayBg: {
+			type: 'object',
+			default: {
+				openColor: 1,
+				type: 'gradient',
+				color: 'rgba(6, 80, 183, 0.7)',
+				gradient: {
+					color1: 'rgba(0, 0, 0, 0.5)',
+					color2: 'rgba(6, 1, 14, 0.6)',
+					direction: 45,
+					start: 0,
+					stop: 100,
+					type: 'linear'
+				},
+			},
+			style: [
+				{
+					selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:before, {{QUBELY}} .layout-3 .qubely-image-slider-text:before, {{QUBELY}} .layout-4 .qubely-image-slider-text:before, {{QUBELY}} .layout-5 .qubely-image-slider-text:before, {{QUBELY}} .layout-6 .qubely-image-slider-text:before'
+				}
+			]
+		},
 
-        overlayHoverBg: {
-            type: 'object',
-            default: {
-                type: 'gradient',
-                openColor: 1,
-                color: 'rgba(6, 80, 183, 0.85)',
-                gradient: {
-                    color1: 'rgba(0, 0, 0, 0.85)',
-                    color2: 'rgba(72, 6, 196, 0.85)',
-                    direction: 45,
-                    start: 0,
-                    stop: 100,
-                    type: 'linear'
-                }
-            },
-            style: [
+		overlayHoverBg: {
+			type: 'object',
+			default: {
+				type: 'gradient',
+				openColor: 1,
+				color: 'rgba(6, 80, 183, 0.85)',
+				gradient: {
+					color1: 'rgba(0, 0, 0, 0.85)',
+					color2: 'rgba(72, 6, 196, 0.85)',
+					direction: 45,
+					start: 0,
+					stop: 100,
+					type: 'linear'
+				}
+			},
+			style: [
 				{
-                    condition: [
-                        { key: 'layout', relation: '==', value: '2' },
-                        { key: 'enableOverlay', relation: '==', value: true },
-                        { key: 'animateOnHover', relation: '==', value: true },
-                    ],
-                    selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:hover:before'
-				},
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: '3' },
-                        { key: 'enableOverlay', relation: '==', value: true },
-                        { key: 'animateOnHover', relation: '==', value: true },
-                    ],
-                    selector: '{{QUBELY}} .layout-3 .qubely-image-slider-text:hover:before'
+					condition: [
+						{ key: 'layout', relation: '==', value: '2' },
+						{ key: 'enableOverlay', relation: '==', value: true },
+						{ key: 'animateOnHover', relation: '==', value: true },
+					],
+					selector: '{{QUBELY}} .layout-2 .qubely-image-slider-text:hover:before'
 				},
 				{
-                    condition: [
-                        { key: 'layout', relation: '==', value: '4' },
-                        { key: 'enableOverlay', relation: '==', value: true },
-                        { key: 'animateOnHover', relation: '==', value: true },
-                    ],
-                    selector: '{{QUBELY}} .layout-4 .qubely-image-slider-text:hover:before'
+					condition: [
+						{ key: 'layout', relation: '==', value: '3' },
+						{ key: 'enableOverlay', relation: '==', value: true },
+						{ key: 'animateOnHover', relation: '==', value: true },
+					],
+					selector: '{{QUBELY}} .layout-3 .qubely-image-slider-text:hover:before'
 				},
 				{
-                    condition: [
-                        { key: 'layout', relation: '==', value: '5' },
-                        { key: 'enableOverlay', relation: '==', value: true },
-                        { key: 'animateOnHover', relation: '==', value: true },
-                    ],
-                    selector: '{{QUBELY}} .layout-5 .qubely-image-slider-text:hover:before'
+					condition: [
+						{ key: 'layout', relation: '==', value: '4' },
+						{ key: 'enableOverlay', relation: '==', value: true },
+						{ key: 'animateOnHover', relation: '==', value: true },
+					],
+					selector: '{{QUBELY}} .layout-4 .qubely-image-slider-text:hover:before'
 				},
 				{
-                    condition: [
-                        { key: 'layout', relation: '==', value: '6' },
-                        { key: 'enableOverlay', relation: '==', value: true },
-                        { key: 'animateOnHover', relation: '==', value: true },
-                    ],
-                    selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text:hover:before'
-                }
-            ]
-        },
+					condition: [
+						{ key: 'layout', relation: '==', value: '5' },
+						{ key: 'enableOverlay', relation: '==', value: true },
+						{ key: 'animateOnHover', relation: '==', value: true },
+					],
+					selector: '{{QUBELY}} .layout-5 .qubely-image-slider-text:hover:before'
+				},
+				{
+					condition: [
+						{ key: 'layout', relation: '==', value: '6' },
+						{ key: 'enableOverlay', relation: '==', value: true },
+						{ key: 'animateOnHover', relation: '==', value: true },
+					],
+					selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text:hover:before'
+				}
+			]
+		},
 
-        overlayBlend: {
-            type: 'string',
-            default: '',
-            style: [
-                {
-                    condition: [
-                        { key: 'layout', relation: '==', value: '6' },
-                        { key: 'enableOverlay', relation: '==', value: true },
-                        { key: 'overlayBlend', relation: '!=', value: 'normal' }
-                    ],
-                    selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};} {{QUBELY}} .layout-4 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};}'
-                }
-            ]
-        },
+		overlayBlend: {
+			type: 'string',
+			default: '',
+			style: [
+				{
+					condition: [
+						{ key: 'layout', relation: '==', value: '6' },
+						{ key: 'enableOverlay', relation: '==', value: true },
+						{ key: 'overlayBlend', relation: '!=', value: 'normal' }
+					],
+					selector: '{{QUBELY}} .layout-6 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};} {{QUBELY}} .layout-4 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};}'
+				}
+			]
+		},
 		animateOnHover: {
-            type: 'boolean',
-            default: true
+			type: 'boolean',
+			default: true
 		},
 		// Border radius
 		bgBorderRadius: {
