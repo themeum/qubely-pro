@@ -172,7 +172,7 @@ class Edit extends Component {
 												keepPlaceholderOnFocus
 												onChange={value => this.updateAtrributes('message', value, index)}
 												value={message}
-											/>Î
+											/>
 										</div>
 									}
 								</div>

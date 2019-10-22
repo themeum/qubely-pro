@@ -5876,8 +5876,7 @@ var Edit = function (_Component) {
 										return _this.updateAtrributes('message', value, index);
 									},
 									value: message
-								}),
-								'\xCE'
+								})
 							)
 						)
 					)
