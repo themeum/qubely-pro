@@ -223,7 +223,7 @@ export default function (clientId) {
                     unit={['px', 'em', '%']}
                     onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })} />
 
-
+                { (layout != 'material') && 
                 <BorderRadius
                     min={0}
                     max={100}
@@ -231,7 +231,9 @@ export default function (clientId) {
                     label={__('Field Radius')}
                     value={inputBorderRadius}
                     unit={['px', 'em', '%']}
-                    onChange={(value) => updateAttributes('inputBorderRadius', value)} />
+                    onChange={(value) => updateAttributes('inputBorderRadius', value)} 
+                />
+                }
 
                 <Tabs>
                     <Tab tabTitle={__('Normal')}>

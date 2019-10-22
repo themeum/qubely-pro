@@ -1295,17 +1295,19 @@ var Edit = function (_Component) {
                             unit: ['px', 'em', '%'],
                             onChange: function onChange(val) {
                                 return setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val });
-                            } }),
-                        React.createElement(BorderRadius, {
+                            }
+                        }),
+                        layout != 'material' && React.createElement(BorderRadius, {
                             min: 0,
                             max: 100,
                             responsive: true,
-                            label: __('Field Radius'),
+                            label: __('Radius'),
                             value: inputBorderRadius,
                             unit: ['px', 'em', '%'],
                             onChange: function onChange(value) {
                                 return setAttributes({ inputBorderRadius: value });
-                            } }),
+                            }
+                        }),
                         React.createElement(
                             Tabs,
                             null,
@@ -1948,7 +1950,7 @@ exports.default = function (clientId) {
                 onChange: function onChange(val) {
                     return setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val });
                 } }),
-            React.createElement(BorderRadius, {
+            layout != 'material' && React.createElement(BorderRadius, {
                 min: 0,
                 max: 100,
                 responsive: true,
@@ -1957,7 +1959,8 @@ exports.default = function (clientId) {
                 unit: ['px', 'em', '%'],
                 onChange: function onChange(value) {
                     return updateAttributes('inputBorderRadius', value);
-                } }),
+                }
+            }),
             React.createElement(
                 Tabs,
                 null,
@@ -3709,10 +3712,18 @@ registerBlockType('qubely/form', {
             type: 'object',
             default: {
                 openBorderRadius: 1,
-                radiusType: 'global'
+                radiusType: 'global',
+                global: {
+                    md: 4
+                },
+                unit: 'px'
             },
             style: [{
-                selector: '{{QUBELY}} input.qubely-form-field, textarea.qubely-form-field'
+                condition: [{ key: 'layout', relation: '!=', value: 'material' }],
+                selector: '{{QUBELY}} input.qubely-form-field, {{QUBELY}} textarea.qubely-form-field'
+            }, {
+                condition: [{ key: 'layout', relation: '==', value: 'material' }],
+                selector: '{{QUBELY}} input.qubely-form-field{border-radius:0;}, {{QUBELY}} textarea.qubely-form-field{border-radius:0;}'
             }]
         },
 
@@ -3755,6 +3766,7 @@ registerBlockType('qubely/form', {
         },
 
         inputSize: { type: 'string', default: 'medium' },
+
         inputCustomSize: {
             type: 'object',
             default: {
@@ -15203,7 +15215,7 @@ __webpack_require__(/*! ./blocks/gallery */ "./src/blocks/gallery/index.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/wordpress/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/plugins/quebly/wp-content/plugins/qubely-pro/assets/reactjs/src/index.js */"./src/index.js");
 
 
 /***/ })
