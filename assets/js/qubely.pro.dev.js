@@ -5655,9 +5655,8 @@ var Edit = function (_Component) {
 			return React.createElement(
 				'div',
 				{ className: 'qubely-single-img qubely-slider-image-container ' + (sliderimage != undefined && sliderimage.url != undefined ? '' : ' qubely-empty-image') },
-				React.createElement(MediaUpload
-				// onSelect={value => this.updateAtrributes('sliderimage', value, index)}
-				, { onSelect: function onSelect(value) {
+				React.createElement(MediaUpload, {
+					onSelect: function onSelect(value) {
 						if (addNewItem) {
 							setAttributes({
 								carouselItems: [].concat(_toConsumableArray(carouselItems), _toConsumableArray(value.map(function (item) {
@@ -5802,16 +5801,6 @@ var Edit = function (_Component) {
 			);
 		};
 
-		_this.removeCrouselItem = function (index) {
-			var _this$props3 = _this.props,
-			    setAttributes = _this$props3.setAttributes,
-			    carouselItems = _this$props3.attributes.carouselItems;
-
-			var newCarouselItems = JSON.parse(JSON.stringify(carouselItems));
-			newCarouselItems.splice(index, 1);
-			setAttributes({ carouselItems: newCarouselItems });
-		};
-
 		_this.renderImages = function () {
 			var _this$props$attribute2 = _this.props.attributes,
 			    layout = _this$props$attribute2.layout,
@@ -5843,37 +5832,14 @@ var Edit = function (_Component) {
 			});
 		};
 
-		_this.renderLayoutFive = function () {
-			var _this$props$attribute3 = _this.props.attributes,
-			    layout = _this$props$attribute3.layout,
-			    carouselItems = _this$props$attribute3.carouselItems;
+		_this.removeCrouselItem = function (index) {
+			var _this$props3 = _this.props,
+			    setAttributes = _this$props3.setAttributes,
+			    carouselItems = _this$props3.attributes.carouselItems;
 
-			return carouselItems.map(function (item, index) {
-				return React.createElement(
-					'div',
-					{ key: index, className: 'qubely-carousel-item layout5 active ' },
-					React.createElement(
-						'div',
-						{ className: 'qubely-image-item layout-' + layout },
-						_this.renderSliderInfo(item, index)
-					)
-				);
-			});
-		};
-
-		_this.onSelectImages = function (images) {
-			var setAttributes = _this.props.setAttributes;
-
-			var newImages = images.map(function (image) {
-				return {
-					sliderimage: image,
-					slidertitle: image.caption,
-					subtitle: null,
-					message: null
-				};
-			});
-
-			setAttributes({ carouselItems: newImages });
+			var newCarouselItems = JSON.parse(JSON.stringify(carouselItems));
+			newCarouselItems.splice(index, 1);
+			setAttributes({ carouselItems: newCarouselItems });
 		};
 
 		_this.state = {
@@ -6007,25 +5973,6 @@ var Edit = function (_Component) {
 				}]
 			};
 
-			// Item Five.
-			var carouselFiveSettings = {
-				autoplay: autoPlay,
-				items: items,
-				nav: nav,
-				margin: 10,
-				dots: false,
-				speed: speed,
-				center: false,
-				interval: interval,
-				arrowStyle: arrowStyle,
-				dot_indicator: dotIndicator,
-				arrowPosition: arrowPosition,
-				responsive: [{
-					viewport: 1170,
-					items: 1
-				}]
-			};
-
 			if (uniqueId) {
 				CssGenerator(this.props.attributes, 'imagecarousel', uniqueId);
 			}
@@ -6037,7 +5984,18 @@ var Edit = function (_Component) {
 						title: __('Qubely Image Carousel'),
 						instructions: __('Drag images, upload new ones or select files from your library.')
 					},
-					onSelect: this.onSelectImages,
+					onSelect: function onSelect(images) {
+						setAttributes({
+							carouselItems: images.map(function (image) {
+								return {
+									sliderimage: image,
+									slidertitle: image.caption,
+									subtitle: null,
+									message: null
+								};
+							})
+						});
+					},
 					accept: 'image/*',
 					allowedTypes: ['image'],
 					multiple: true
@@ -6555,11 +6513,6 @@ var Edit = function (_Component) {
 					React.createElement(
 						'div',
 						{ className: 'qubely-block-image-carousel qubely-layout-' + layout },
-						layout == 5 && React.createElement(
-							Carousel,
-							{ options: carouselFiveSettings },
-							this.renderLayoutFive()
-						),
 						React.createElement(
 							Carousel,
 							{ options: carouselSettings },

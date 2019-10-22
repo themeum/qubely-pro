@@ -74,7 +74,6 @@ class Edit extends Component {
 		return (
 			<div className={`qubely-single-img qubely-slider-image-container ${(sliderimage != undefined && sliderimage.url != undefined) ? '' : ' qubely-empty-image'}`}>
 				<MediaUpload
-					// onSelect={value => this.updateAtrributes('sliderimage', value, index)}
 					onSelect={value => {
 						if (addNewItem) {
 							setAttributes({
@@ -185,13 +184,6 @@ class Edit extends Component {
 		)
 	}
 
-	removeCrouselItem = (index) => {
-		const { setAttributes, attributes: { carouselItems } } = this.props
-		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
-		newCarouselItems.splice(index, 1)
-		setAttributes({ carouselItems: newCarouselItems })
-	}
-
 	renderImages = () => {
 		const { attributes: { layout, carouselItems, items, contentVerticalAlign } } = this.props
 		return (
@@ -215,35 +207,11 @@ class Edit extends Component {
 		)
 	}
 
-	renderLayoutFive = () => {
-		const { attributes: { layout, carouselItems } } = this.props
-		return (
-			carouselItems.map((item, index) => {
-				return (
-					<div key={index} className={`qubely-carousel-item layout5 active `} >
-						<div className={`qubely-image-item layout-${layout}`}>
-							{this.renderSliderInfo(item, index)}
-						</div>
-					</div>
-				)
-			})
-		)
-	}
-
-	onSelectImages = (images) => {
-		const { setAttributes } = this.props
-		let newImages = images.map(image => {
-			return (
-				{
-					sliderimage: image,
-					slidertitle: image.caption,
-					subtitle: null,
-					message: null,
-				}
-			)
-		})
-
-		setAttributes({ carouselItems: newImages })
+	removeCrouselItem = (index) => {
+		const { setAttributes, attributes: { carouselItems } } = this.props
+		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
+		newCarouselItems.splice(index, 1)
+		setAttributes({ carouselItems: newCarouselItems })
 	}
 
 	render() {
@@ -350,28 +318,7 @@ class Edit extends Component {
 					items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs
 				}
 			],
-		};
-
-		// Item Five.
-		const carouselFiveSettings = {
-			autoplay: autoPlay,
-			items: items,
-			nav: nav,
-			margin: 10,
-			dots: false,
-			speed: speed,
-			center: false,
-			interval: interval,
-			arrowStyle: arrowStyle,
-			dot_indicator: dotIndicator,
-			arrowPosition: arrowPosition,
-			responsive: [
-				{
-					viewport: 1170,
-					items: 1,
-				},
-			],
-		};
+		}
 
 		if (uniqueId) { CssGenerator(this.props.attributes, 'imagecarousel', uniqueId) }
 
@@ -384,7 +331,22 @@ class Edit extends Component {
 						title: __('Qubely Image Carousel'),
 						instructions: __('Drag images, upload new ones or select files from your library.'),
 					}}
-					onSelect={this.onSelectImages}
+					onSelect={images => {
+						setAttributes(
+							{
+								carouselItems: images.map(image => {
+									return (
+										{
+											sliderimage: image,
+											slidertitle: image.caption,
+											subtitle: null,
+											message: null,
+										}
+									)
+								})
+							}
+						)
+					}}
 					accept="image/*"
 					allowedTypes={['image']}
 					multiple
@@ -755,17 +717,9 @@ class Edit extends Component {
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
-
-						{layout == 5 &&
-							<Carousel options={carouselFiveSettings}>
-								{this.renderLayoutFive()}
-							</Carousel>
-						}
-
 						<Carousel options={carouselSettings}>
 							{this.renderImages()}
 						</Carousel>
-
 					</div>
 				</div>
 			</Fragment>
