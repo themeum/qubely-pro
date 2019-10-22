@@ -50,7 +50,8 @@ export default function Edit(props) {
     const [showTimePicker, setTimePicker] = useState(false)
     const [draggedOverItem, setDraggedOverItem] = useState(-1)
     const [seletedTimeFormat, changeseletedTimeFormat] = useState('PM')
-    const { getBlockRootClientId, getBlockName } = select('core/block-editor')
+    const { getBlockAttributes, getBlockRootClientId, getBlockName } = select('core/block-editor')
+
 
     const {
         name,
@@ -188,7 +189,7 @@ export default function Edit(props) {
     const renderTimePicker = () => {
         return (
             <div className="qubely-form-timepicker-wrapper">
-                <input type="text" className="qubely-form-field qubely-time-picker" value={`${hour}:${minute} ${timeFormatType === 12 ? `${seletedTimeFormat}` : ''}`} onClick={() => setTimePicker(!showTimePicker)}  readonly/>
+                <input type="text" className="qubely-form-field qubely-time-picker" value={`${hour}:${minute} ${timeFormatType === 12 ? `${seletedTimeFormat}` : ''}`} onClick={() => setTimePicker(!showTimePicker)} readonly />
                 <div className={`qubely-form-timepicker${showTimePicker ? ' qubely-active' : ''}`}>
 
                     <div className={`qubely-timePicker-hour`}>
@@ -314,7 +315,8 @@ export default function Edit(props) {
     }
 
     const blockname = name.split('/')[1]
-
+    const rootClientId = getParentClientId(clientId)
+    const { showLabel, labelAlignment } = getBlockAttributes(rootClientId)
     if (uniqueId) { CssGenerator(attributes, blockname, uniqueId) }
 
 
@@ -323,7 +325,7 @@ export default function Edit(props) {
 
             <InspectorControls>
 
-                {CommonSettings(getParentClientId(clientId))}
+                {CommonSettings(rootClientId)}
 
                 <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} opened={true}>
 
@@ -516,16 +518,21 @@ export default function Edit(props) {
             </InspectorControls>
 
             <div className={`qubely-block-${uniqueId}`}>
-                <div className={`qubely-form-field-wrapper`}>
-                    <label className="qubely-form-label">
-                        <RichText
-                            placeholder={__('Input label')}
-                            className={`qubely-form-field-label`}
-                            value={label}
-                            onChange={value => setAttributes({ label: value })}
-                        />
-                        {required && <span className="qubely-from-field-required-sign">*</span>}
-                    </label>
+                <div className={`qubely-form-field-wrapper label-alignment-${labelAlignment}`}>
+
+                    {
+                        showLabel &&
+                        <label className="qubely-form-label">
+                            <RichText
+                                placeholder={__('Input label')}
+                                className={`qubely-form-field-label`}
+                                value={label}
+                                onChange={value => setAttributes({ label: value })}
+                            />
+                            {required && <span className="qubely-from-field-required-sign">*</span>}
+                        </label>
+                    }
+
 
                     {/** input fields */}
                     {

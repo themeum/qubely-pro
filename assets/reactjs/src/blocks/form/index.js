@@ -81,6 +81,10 @@ registerBlockType('qubely/form', {
         },
 
         //label settings
+        showLabel: {
+            type: 'boolean',
+            default: true
+        },
         labelTypography: {
             type: 'object',
             default: {},
@@ -98,26 +102,6 @@ registerBlockType('qubely/form', {
         labelAlignment: {
             type: 'string',
             default: 'top',
-            // style: [
-            //     {
-            //         condition: [
-            //             { key: 'labelAlignment', relation: '==', value: 'top' }
-            //         ],
-            //         selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:column;}'
-            //     },
-            //     {
-            //         condition: [
-            //             { key: 'labelAlignment', relation: '==', value: 'left' }
-            //         ],
-            //         selector: '{{QUBELY}} .qubely-form-field-wrapper {justify-content:flex-start;}'
-            //     },
-            //     {
-            //         condition: [
-            //             { key: 'labelAlignment', relation: '==', value: 'right' }
-            //         ],
-            //         selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:row-reverse;}'
-            //     },
-            // ]
         },
 
         inputTypography: {

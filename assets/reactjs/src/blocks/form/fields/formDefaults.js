@@ -19,9 +19,17 @@ const FieldDefaults = {
             type: 'string',
             default: null
         },
+        showLabel: {
+            type: 'boolean',
+            default: true
+        },
         label: {
             type: 'string',
             default: 'label',
+        },
+        labelAlignment: {
+            type: 'string',
+            default: 'top',
         },
         instruction: {
             type: 'string',
