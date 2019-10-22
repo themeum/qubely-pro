@@ -5746,7 +5746,7 @@ var Edit = function (_Component) {
 								carouselItems: [].concat(_toConsumableArray(carouselItems), _toConsumableArray(value.map(function (item) {
 									return {
 										sliderimage: item,
-										message: null,
+										description: null,
 										slidertitle: item.caption,
 										subtitle: null
 									};
@@ -5820,7 +5820,7 @@ var Edit = function (_Component) {
 			var slidertitle = item.slidertitle,
 			    subtitle = item.subtitle,
 			    sliderimage = item.sliderimage,
-			    message = item.message,
+			    description = item.description,
 			    _item$addNewItem = item.addNewItem,
 			    addNewItem = _item$addNewItem === undefined ? false : _item$addNewItem;
 
@@ -5873,9 +5873,9 @@ var Edit = function (_Component) {
 									formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
 									keepPlaceholderOnFocus: true,
 									onChange: function onChange(value) {
-										return _this.updateAtrributes('message', value, index);
+										return _this.updateAtrributes('description', value, index);
 									},
-									value: message
+									value: description
 								})
 							)
 						)
@@ -5891,7 +5891,7 @@ var Edit = function (_Component) {
 			    items = _this$props$attribute2.items,
 			    contentVerticalAlign = _this$props$attribute2.contentVerticalAlign;
 
-			return [].concat(_toConsumableArray(carouselItems), [{ sliderimage: null, message: null, slidertitle: null, subtitle: null, addNewItem: true }]).map(function (item, index) {
+			return [].concat(_toConsumableArray(carouselItems), [{ sliderimage: null, description: null, slidertitle: null, subtitle: null, addNewItem: true }]).map(function (item, index) {
 				return React.createElement(
 					'div',
 					{ key: index, className: 'qubely-carousel-item item-layout' + layout + ' align-' + contentVerticalAlign },
@@ -6074,7 +6074,7 @@ var Edit = function (_Component) {
 									sliderimage: image,
 									slidertitle: image.caption,
 									subtitle: null,
-									message: null
+									description: null
 								};
 							})
 						});
@@ -6670,7 +6670,7 @@ var Save = function (_Component) {
 			var slidertitle = item.slidertitle,
 			    subtitle = item.subtitle,
 			    sliderimage = item.sliderimage,
-			    message = item.message;
+			    description = item.description;
 
 
 			return React.createElement(
@@ -6699,7 +6699,7 @@ var Save = function (_Component) {
 							activeDescription && React.createElement(
 								"div",
 								{ className: "qubely-slider-description" },
-								React.createElement(RichText.Content, { value: message })
+								React.createElement(RichText.Content, { value: description })
 							)
 						)
 					)

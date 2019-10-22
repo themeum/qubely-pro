@@ -23,7 +23,7 @@ class Save extends Component {
 		const {
 			attributes: { layout, sliderContent, activeDescription }
 		} = this.props;
-		const { slidertitle, subtitle, sliderimage, message } = item;
+		const { slidertitle, subtitle, sliderimage, description } = item;
 
 		return (
 			<div className={`qubely-image-slider`}>
@@ -42,7 +42,7 @@ class Save extends Component {
 									{
 										activeDescription &&
 										<div className="qubely-slider-description">
-											<RichText.Content value={message} />
+											<RichText.Content value={description} />
 										</div>
 									}
 								</div>

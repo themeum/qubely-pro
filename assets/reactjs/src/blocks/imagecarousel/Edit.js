@@ -83,7 +83,7 @@ class Edit extends Component {
 										return (
 											{
 												sliderimage: item,
-												message: null,
+												description: null,
 												slidertitle: item.caption,
 												subtitle: null
 											}
@@ -134,7 +134,7 @@ class Edit extends Component {
 
 	renderSliderInfo = (item, index) => {
 		const { attributes: { layout, sliderContent, activeDescription } } = this.props
-		const { slidertitle, subtitle, sliderimage, message, addNewItem = false } = item
+		const { slidertitle, subtitle, sliderimage, description, addNewItem = false } = item
 
 		return (
 			<div className={`qubely-image-slider`}>
@@ -170,8 +170,8 @@ class Edit extends Component {
 												placeholder={__('Add description...')}
 												formattingControls={['bold', 'italic', 'link', 'strikethrough']}
 												keepPlaceholderOnFocus
-												onChange={value => this.updateAtrributes('message', value, index)}
-												value={message}
+												onChange={value => this.updateAtrributes('description', value, index)}
+												value={description}
 											/>
 										</div>
 									}
@@ -187,7 +187,7 @@ class Edit extends Component {
 	renderImages = () => {
 		const { attributes: { layout, carouselItems, items, contentVerticalAlign } } = this.props
 		return (
-			[...carouselItems, { sliderimage: null, message: null, slidertitle: null, subtitle: null, addNewItem: true }].map((item, index) => {
+			[...carouselItems, { sliderimage: null, description: null, slidertitle: null, subtitle: null, addNewItem: true }].map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item item-layout${layout} align-${contentVerticalAlign}`} >
 						{
@@ -340,7 +340,7 @@ class Edit extends Component {
 											sliderimage: image,
 											slidertitle: image.caption,
 											subtitle: null,
-											message: null,
+											description: null,
 										}
 									)
 								})
