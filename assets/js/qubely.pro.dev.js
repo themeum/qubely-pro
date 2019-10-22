@@ -878,6 +878,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var __ = wp.i18n.__;
+var _wp = wp,
+    isShallowEqual = _wp.isShallowEqual;
 var createBlock = wp.blocks.createBlock;
 var compose = wp.compose.compose;
 var _wp$data = wp.data,
@@ -1039,7 +1041,8 @@ var Edit = function (_Component) {
             hideDropdown: null,
             newItemType: 'text',
             device: 'md',
-            groupField: false
+            groupField: false,
+            test: false
         };
         return _this;
     }
@@ -1060,14 +1063,40 @@ var Edit = function (_Component) {
             }
         }
     }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            var _this2 = this;
+
+            var _props2 = this.props,
+                block = _props2.block,
+                _props2$attributes = _props2.attributes,
+                showLabel = _props2$attributes.showLabel,
+                labelAlignment = _props2$attributes.labelAlignment;
+
+            var _dispatch2 = dispatch('core/block-editor'),
+                updateBlock = _dispatch2.updateBlock,
+                toggleSelection = _dispatch2.toggleSelection;
+
+            var changedAttribute = showLabel !== prevProps.attributes.showLabel ? 'showLabel' : labelAlignment !== prevProps.attributes.labelAlignment ? 'labelAlignment' : false;
+
+            if (changedAttribute !== false) {
+                block.innerBlocks.forEach(function (column) {
+                    updateBlock(column.innerBlocks[0].clientId, {
+                        attributes: _extends({}, column.innerBlocks[0].attributes, _defineProperty({}, changedAttribute, _this2.props.attributes[changedAttribute]))
+                    });
+                });
+                toggleSelection(false);
+            }
+        }
+    }, {
         key: 'setSettings',
         value: function setSettings(type, val) {
             var index = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
 
             var selectedItem = index !== -1 ? index : this.state.selectedItem;
-            var _props2 = this.props,
-                attributes = _props2.attributes,
-                setAttributes = _props2.setAttributes;
+            var _props3 = this.props,
+                attributes = _props3.attributes,
+                setAttributes = _props3.setAttributes;
 
             var formItems = [].concat(_toConsumableArray(attributes.formItems));
             formItems[selectedItem][type] = val;
@@ -1076,9 +1105,9 @@ var Edit = function (_Component) {
     }, {
         key: 'setOptionSettings',
         value: function setOptionSettings(selectedItem, index, val) {
-            var _props3 = this.props,
-                attributes = _props3.attributes,
-                setAttributes = _props3.setAttributes;
+            var _props4 = this.props,
+                attributes = _props4.attributes,
+                setAttributes = _props4.setAttributes;
 
             var formItems = [].concat(_toConsumableArray(attributes.formItems));
             formItems[selectedItem].options[index] = val;
@@ -1087,16 +1116,16 @@ var Edit = function (_Component) {
     }, {
         key: 'addNewItem',
         value: function addNewItem(fieldName, newFieldType) {
-            var _props4 = this.props,
-                clientId = _props4.clientId,
-                attributes = _props4.attributes,
-                setAttributes = _props4.setAttributes;
+            var _props5 = this.props,
+                clientId = _props5.clientId,
+                attributes = _props5.attributes,
+                setAttributes = _props5.setAttributes;
 
             var _select2 = select('core/block-editor'),
                 getBlocks = _select2.getBlocks;
 
-            var _dispatch2 = dispatch('core/block-editor'),
-                replaceInnerBlocks = _dispatch2.replaceInnerBlocks;
+            var _dispatch3 = dispatch('core/block-editor'),
+                replaceInnerBlocks = _dispatch3.replaceInnerBlocks;
 
             var formItems = [].concat(_toConsumableArray(attributes.formItems));
             var newItem = {
@@ -1118,71 +1147,71 @@ var Edit = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
-            var _props5 = this.props,
-                clientId = _props5.clientId,
-                attributes = _props5.attributes,
-                setAttributes = _props5.setAttributes,
-                _props5$attributes = _props5.attributes,
-                uniqueId = _props5$attributes.uniqueId,
-                layout = _props5$attributes.layout,
-                formItems = _props5$attributes.formItems,
-                labelColor = _props5$attributes.labelColor,
-                labelAlignment = _props5$attributes.labelAlignment,
-                labelTypography = _props5$attributes.labelTypography,
-                spacing = _props5$attributes.spacing,
-                gutter = _props5$attributes.gutter,
-                inputSize = _props5$attributes.inputSize,
-                inputCustomSize = _props5$attributes.inputCustomSize,
-                inputTypography = _props5$attributes.inputTypography,
-                inputBoxShadow = _props5$attributes.inputBoxShadow,
-                inputColor = _props5$attributes.inputColor,
-                inputColorFocus = _props5$attributes.inputColorFocus,
-                inputColorHover = _props5$attributes.inputColorHover,
-                inputBg = _props5$attributes.inputBg,
-                materialDarkInputBg = _props5$attributes.materialDarkInputBg,
-                inputBgFocus = _props5$attributes.inputBgFocus,
-                inputBgHover = _props5$attributes.inputBgHover,
-                inputBorder = _props5$attributes.inputBorder,
-                inputBorderRadius = _props5$attributes.inputBorderRadius,
-                inputBorderMaterial = _props5$attributes.inputBorderMaterial,
-                inputBorderColorFocus = _props5$attributes.inputBorderColorFocus,
-                inputBorderColorHover = _props5$attributes.inputBorderColorHover,
-                textareaHeight = _props5$attributes.textareaHeight,
-                placeholderColor = _props5$attributes.placeholderColor,
-                placeholderColorFocus = _props5$attributes.placeholderColorFocus,
-                placeholderColorHover = _props5$attributes.placeholderColorHover,
-                enableButton = _props5$attributes.enableButton,
-                buttonTag = _props5$attributes.buttonTag,
-                buttonSize = _props5$attributes.buttonSize,
-                buttonFillType = _props5$attributes.buttonFillType,
-                buttonText = _props5$attributes.buttonText,
-                buttonIconName = _props5$attributes.buttonIconName,
-                buttonIconPosition = _props5$attributes.buttonIconPosition,
-                fieldErrorMessage = _props5$attributes.fieldErrorMessage,
-                formSuccessMessage = _props5$attributes.formSuccessMessage,
-                formErrorMessage = _props5$attributes.formErrorMessage,
-                reCaptcha = _props5$attributes.reCaptcha,
-                reCaptchaSiteKey = _props5$attributes.reCaptchaSiteKey,
-                reCaptchaSecretKey = _props5$attributes.reCaptchaSecretKey,
-                policyCheckbox = _props5$attributes.policyCheckbox,
-                policyCheckboxText = _props5$attributes.policyCheckboxText,
-                emailReceiver = _props5$attributes.emailReceiver,
-                emailHeaders = _props5$attributes.emailHeaders,
-                emailFrom = _props5$attributes.emailFrom,
-                emailSubject = _props5$attributes.emailSubject,
-                emailBody = _props5$attributes.emailBody,
-                globalZindex = _props5$attributes.globalZindex,
-                enablePosition = _props5$attributes.enablePosition,
-                selectPosition = _props5$attributes.selectPosition,
-                positionXaxis = _props5$attributes.positionXaxis,
-                positionYaxis = _props5$attributes.positionYaxis,
-                hideTablet = _props5$attributes.hideTablet,
-                hideMobile = _props5$attributes.hideMobile,
-                globalCss = _props5$attributes.globalCss,
-                animation = _props5$attributes.animation,
-                interaction = _props5$attributes.interaction;
+            var _props6 = this.props,
+                clientId = _props6.clientId,
+                attributes = _props6.attributes,
+                setAttributes = _props6.setAttributes,
+                _props6$attributes = _props6.attributes,
+                uniqueId = _props6$attributes.uniqueId,
+                layout = _props6$attributes.layout,
+                showLabel = _props6$attributes.showLabel,
+                labelColor = _props6$attributes.labelColor,
+                labelAlignment = _props6$attributes.labelAlignment,
+                labelTypography = _props6$attributes.labelTypography,
+                spacing = _props6$attributes.spacing,
+                gutter = _props6$attributes.gutter,
+                inputSize = _props6$attributes.inputSize,
+                inputCustomSize = _props6$attributes.inputCustomSize,
+                inputTypography = _props6$attributes.inputTypography,
+                inputBoxShadow = _props6$attributes.inputBoxShadow,
+                inputColor = _props6$attributes.inputColor,
+                inputColorFocus = _props6$attributes.inputColorFocus,
+                inputColorHover = _props6$attributes.inputColorHover,
+                inputBg = _props6$attributes.inputBg,
+                materialDarkInputBg = _props6$attributes.materialDarkInputBg,
+                inputBgFocus = _props6$attributes.inputBgFocus,
+                inputBgHover = _props6$attributes.inputBgHover,
+                inputBorder = _props6$attributes.inputBorder,
+                inputBorderRadius = _props6$attributes.inputBorderRadius,
+                inputBorderMaterial = _props6$attributes.inputBorderMaterial,
+                inputBorderColorFocus = _props6$attributes.inputBorderColorFocus,
+                inputBorderColorHover = _props6$attributes.inputBorderColorHover,
+                textareaHeight = _props6$attributes.textareaHeight,
+                placeholderColor = _props6$attributes.placeholderColor,
+                placeholderColorFocus = _props6$attributes.placeholderColorFocus,
+                placeholderColorHover = _props6$attributes.placeholderColorHover,
+                enableButton = _props6$attributes.enableButton,
+                buttonTag = _props6$attributes.buttonTag,
+                buttonSize = _props6$attributes.buttonSize,
+                buttonFillType = _props6$attributes.buttonFillType,
+                buttonText = _props6$attributes.buttonText,
+                buttonIconName = _props6$attributes.buttonIconName,
+                buttonIconPosition = _props6$attributes.buttonIconPosition,
+                fieldErrorMessage = _props6$attributes.fieldErrorMessage,
+                formSuccessMessage = _props6$attributes.formSuccessMessage,
+                formErrorMessage = _props6$attributes.formErrorMessage,
+                reCaptcha = _props6$attributes.reCaptcha,
+                reCaptchaSiteKey = _props6$attributes.reCaptchaSiteKey,
+                reCaptchaSecretKey = _props6$attributes.reCaptchaSecretKey,
+                policyCheckbox = _props6$attributes.policyCheckbox,
+                policyCheckboxText = _props6$attributes.policyCheckboxText,
+                emailReceiver = _props6$attributes.emailReceiver,
+                emailHeaders = _props6$attributes.emailHeaders,
+                emailFrom = _props6$attributes.emailFrom,
+                emailSubject = _props6$attributes.emailSubject,
+                emailBody = _props6$attributes.emailBody,
+                globalZindex = _props6$attributes.globalZindex,
+                enablePosition = _props6$attributes.enablePosition,
+                selectPosition = _props6$attributes.selectPosition,
+                positionXaxis = _props6$attributes.positionXaxis,
+                positionYaxis = _props6$attributes.positionYaxis,
+                hideTablet = _props6$attributes.hideTablet,
+                hideMobile = _props6$attributes.hideMobile,
+                globalCss = _props6$attributes.globalCss,
+                animation = _props6$attributes.animation,
+                interaction = _props6$attributes.interaction;
             var device = this.state.device;
 
 
@@ -1210,6 +1239,12 @@ var Edit = function (_Component) {
                     React.createElement(
                         PanelBody,
                         { title: __('Label'), initialOpen: false },
+                        React.createElement(Toggle, {
+                            label: __('Show label'),
+                            value: showLabel,
+                            onChange: function onChange(val) {
+                                return setAttributes({ showLabel: val });
+                            } }),
                         React.createElement(ButtonGroup, {
                             label: __('Label Alignment'),
                             options: [[__('Top'), 'top'], [__('Left'), 'left'], [__('Right'), 'right']],
@@ -1487,7 +1522,7 @@ var Edit = function (_Component) {
                     buttonSettings(this.props.attributes, device, function (key, value) {
                         return setAttributes(_defineProperty({}, key, value));
                     }, function (key, value) {
-                        _this2.setState(_defineProperty({}, key, value));
+                        _this3.setState(_defineProperty({}, key, value));
                     }),
                     animationSettings(uniqueId, animation, setAttributes),
                     interactionSettings(uniqueId, interaction, setAttributes)
@@ -1566,7 +1601,7 @@ var Edit = function (_Component) {
                                         React.createElement(
                                             'span',
                                             { onClick: function onClick() {
-                                                    return _this2.setState({ hideDropdown: onToggle });
+                                                    return _this3.setState({ hideDropdown: onToggle });
                                                 } },
                                             ' ',
                                             __('Add new item')
@@ -1574,7 +1609,7 @@ var Edit = function (_Component) {
                                     );
                                 },
                                 renderContent: function renderContent() {
-                                    return _this2.renderFormFieldTypes();
+                                    return _this3.renderFormFieldTypes();
                                 }
                             })
                         )
@@ -1596,14 +1631,18 @@ exports.default = compose([withSelect(function (select, ownProps) {
         getBlockAttributes = _select3.getBlockAttributes;
 
     var rootBlockClientId = getBlockRootClientId(clientId);
+    rootBlockClientId = getBlockRootClientId(clientId);
 
-    return { rootBlockClientId: rootBlockClientId };
+    return {
+        rootBlockClientId: rootBlockClientId,
+        block: getBlock(clientId)
+    };
 }), withDispatch(function (dispatch) {
-    var _dispatch3 = dispatch('core/editor'),
-        insertBlock = _dispatch3.insertBlock,
-        removeBlock = _dispatch3.removeBlock,
-        updateBlockAttributes = _dispatch3.updateBlockAttributes,
-        toggleSelection = _dispatch3.toggleSelection;
+    var _dispatch4 = dispatch('core/editor'),
+        insertBlock = _dispatch4.insertBlock,
+        removeBlock = _dispatch4.removeBlock,
+        updateBlockAttributes = _dispatch4.updateBlockAttributes,
+        toggleSelection = _dispatch4.toggleSelection;
 
     return {
         insertBlock: insertBlock,
@@ -1783,8 +1822,12 @@ exports.default = function (clientId) {
         isUpdating = _useState4[0],
         setUpdate = _useState4[1];
 
-    var _select = select('core/block-editor'),
-        getBlockAttributes = _select.getBlockAttributes;
+    var _select = select('core/editor'),
+        getBlocks = _select.getBlocks;
+
+    var _select2 = select('core/block-editor'),
+        getBlockAttributes = _select2.getBlockAttributes,
+        getBlockName = _select2.getBlockName;
 
     var attributes = getBlockAttributes(clientId);
 
@@ -1793,6 +1836,7 @@ exports.default = function (clientId) {
 
     var _attributes = attributes,
         layout = _attributes.layout,
+        showLabel = _attributes.showLabel,
         labelColor = _attributes.labelColor,
         labelAlignment = _attributes.labelAlignment,
         labelTypography = _attributes.labelTypography,
@@ -1851,6 +1895,20 @@ exports.default = function (clientId) {
         setUpdate(!isUpdating);
     };
 
+    var updateFormFields = function updateFormFields(field) {
+        field.innerBlocks.forEach(function (column, index) {
+            updateBlockAttributes(column.innerBlocks[0].clientId, { showLabel: !showLabel, labelAlignment: labelAlignment });
+        });
+    };
+
+    var fieldIndex = 0;
+    var childBlocks = getBlocks(clientId);
+
+    while (fieldIndex < childBlocks.length) {
+        updateFormFields(childBlocks[fieldIndex]);
+        fieldIndex++;
+    }
+
     return React.createElement(
         Fragment,
         null,
@@ -1868,6 +1926,12 @@ exports.default = function (clientId) {
         React.createElement(
             PanelBody,
             { title: __('Label'), initialOpen: false },
+            React.createElement(Toggle, {
+                label: __('Show label'),
+                value: showLabel,
+                onChange: function onChange(val) {
+                    return updateAttributes('showLabel', val);
+                } }),
             React.createElement(ButtonGroup, {
                 label: __('Label Alignment'),
                 options: [[__('Top'), 'top'], [__('Left'), 'left'], [__('Right'), 'right']],
@@ -2289,6 +2353,7 @@ function Edit(props) {
         changeseletedTimeFormat = _useState20[1];
 
     var _select = select('core/block-editor'),
+        getBlockAttributes = _select.getBlockAttributes,
         getBlockRootClientId = _select.getBlockRootClientId,
         getBlockName = _select.getBlockName;
 
@@ -2596,6 +2661,11 @@ function Edit(props) {
     };
 
     var blockname = name.split('/')[1];
+    var rootClientId = getParentClientId(clientId);
+
+    var _getBlockAttributes = getBlockAttributes(rootClientId),
+        showLabel = _getBlockAttributes.showLabel,
+        labelAlignment = _getBlockAttributes.labelAlignment;
 
     if (uniqueId) {
         CssGenerator(attributes, blockname, uniqueId);
@@ -2607,7 +2677,7 @@ function Edit(props) {
         React.createElement(
             InspectorControls,
             null,
-            (0, _commonSettings2.default)(getParentClientId(clientId)),
+            (0, _commonSettings2.default)(rootClientId),
             React.createElement(
                 PanelBody,
                 { title: __(type[0].toUpperCase() + type.slice(1)), opened: true },
@@ -2792,8 +2862,8 @@ function Edit(props) {
             { className: 'qubely-block-' + uniqueId },
             React.createElement(
                 'div',
-                { className: 'qubely-form-field-wrapper' },
-                React.createElement(
+                { className: 'qubely-form-field-wrapper label-alignment-' + labelAlignment },
+                showLabel && React.createElement(
                     'label',
                     { className: 'qubely-form-label' },
                     React.createElement(RichText, {
@@ -2868,9 +2938,17 @@ var FieldDefaults = {
             type: 'string',
             default: null
         },
+        showLabel: {
+            type: 'boolean',
+            default: true
+        },
         label: {
             type: 'string',
             default: 'label'
+        },
+        labelAlignment: {
+            type: 'string',
+            default: 'top'
         },
         instruction: {
             type: 'string',
@@ -3283,7 +3361,9 @@ var Fragment = wp.element.Fragment;
 function Save(props) {
     var _props$attributes = props.attributes,
         uniqueId = _props$attributes.uniqueId,
+        showLabel = _props$attributes.showLabel,
         label = _props$attributes.label,
+        labelAlignment = _props$attributes.labelAlignment,
         type = _props$attributes.type,
         options = _props$attributes.options,
         placeHolder = _props$attributes.placeHolder,
@@ -3430,8 +3510,8 @@ function Save(props) {
         { className: 'qubely-block-' + uniqueId },
         React.createElement(
             'div',
-            { className: 'qubely-form-field-wrapper' },
-            React.createElement(
+            { className: 'qubely-form-field-wrapper label-alignment-' + labelAlignment },
+            showLabel && React.createElement(
                 'label',
                 { className: 'qubely-form-label', 'for': uniqueId },
                 React.createElement(RichText.Content, { value: label }),
@@ -3586,6 +3666,10 @@ registerBlockType('qubely/form', {
         },
 
         //label settings
+        showLabel: {
+            type: 'boolean',
+            default: true
+        },
         labelTypography: {
             type: 'object',
             default: {},
@@ -3599,26 +3683,6 @@ registerBlockType('qubely/form', {
         labelAlignment: {
             type: 'string',
             default: 'top'
-            // style: [
-            //     {
-            //         condition: [
-            //             { key: 'labelAlignment', relation: '==', value: 'top' }
-            //         ],
-            //         selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:column;}'
-            //     },
-            //     {
-            //         condition: [
-            //             { key: 'labelAlignment', relation: '==', value: 'left' }
-            //         ],
-            //         selector: '{{QUBELY}} .qubely-form-field-wrapper {justify-content:flex-start;}'
-            //     },
-            //     {
-            //         condition: [
-            //             { key: 'labelAlignment', relation: '==', value: 'right' }
-            //         ],
-            //         selector: '{{QUBELY}} .qubely-form-field-wrapper {flex-direction:row-reverse;}'
-            //     },
-            // ]
         },
 
         inputTypography: {
@@ -5682,7 +5746,7 @@ var Edit = function (_Component) {
 								carouselItems: [].concat(_toConsumableArray(carouselItems), _toConsumableArray(value.map(function (item) {
 									return {
 										sliderimage: item,
-										message: null,
+										description: null,
 										slidertitle: item.caption,
 										subtitle: null
 									};
@@ -5756,7 +5820,7 @@ var Edit = function (_Component) {
 			var slidertitle = item.slidertitle,
 			    subtitle = item.subtitle,
 			    sliderimage = item.sliderimage,
-			    message = item.message,
+			    description = item.description,
 			    _item$addNewItem = item.addNewItem,
 			    addNewItem = _item$addNewItem === undefined ? false : _item$addNewItem;
 
@@ -5809,11 +5873,10 @@ var Edit = function (_Component) {
 									formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
 									keepPlaceholderOnFocus: true,
 									onChange: function onChange(value) {
-										return _this.updateAtrributes('message', value, index);
+										return _this.updateAtrributes('description', value, index);
 									},
-									value: message
-								}),
-								'\xCE'
+									value: description
+								})
 							)
 						)
 					)
@@ -5828,7 +5891,7 @@ var Edit = function (_Component) {
 			    items = _this$props$attribute2.items,
 			    contentVerticalAlign = _this$props$attribute2.contentVerticalAlign;
 
-			return [].concat(_toConsumableArray(carouselItems), [{ sliderimage: null, message: null, slidertitle: null, subtitle: null, addNewItem: true }]).map(function (item, index) {
+			return [].concat(_toConsumableArray(carouselItems), [{ sliderimage: null, description: null, slidertitle: null, subtitle: null, addNewItem: true }]).map(function (item, index) {
 				return React.createElement(
 					'div',
 					{ key: index, className: 'qubely-carousel-item item-layout' + layout + ' align-' + contentVerticalAlign },
@@ -6011,7 +6074,7 @@ var Edit = function (_Component) {
 									sliderimage: image,
 									slidertitle: image.caption,
 									subtitle: null,
-									message: null
+									description: null
 								};
 							})
 						});
@@ -6071,6 +6134,15 @@ var Edit = function (_Component) {
 					React.createElement(
 						PanelBody,
 						{ title: __('Carousel Settings'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Show Arrow Navigation'), value: nav, onChange: function onChange(value) {
+								return setAttributes({ nav: value });
+							} }),
+						React.createElement(Toggle, { label: __('Show Dot Navigation'), value: dots, onChange: function onChange(value) {
+								return setAttributes({ dots: value });
+							} }),
+						React.createElement(Toggle, { label: __('Draggable'), value: dragable, onChange: function onChange(value) {
+								return setAttributes({ dragable: value });
+							} }),
 						React.createElement(Toggle, { label: __('Autoplay'), value: autoPlay, onChange: function onChange(value) {
 								return setAttributes({ autoPlay: value });
 							} }),
@@ -6084,10 +6156,7 @@ var Edit = function (_Component) {
 									return setAttributes({ interval: parseInt(value) });
 								}, min: 500, max: 5000 })
 						),
-						React.createElement(Toggle, { label: __('Draggable'), value: dragable, onChange: function onChange(value) {
-								return setAttributes({ dragable: value });
-							} }),
-						layout != 1 && React.createElement(
+						layout !== 1 && React.createElement(
 							Fragment,
 							null,
 							React.createElement(Toggle, {
@@ -6097,205 +6166,195 @@ var Edit = function (_Component) {
 									return setAttributes(layout == 3 || layout == 4 ? { isCentered: value } : { notCentered: value });
 								}
 							}),
-							isCentered && React.createElement(Range, { label: __('Center Padding'), value: centerPadding, onChange: function onChange(value) {
+							(isCentered || notCentered) && React.createElement(Range, { label: __('Center Padding'), value: centerPadding, onChange: function onChange(value) {
 									return setAttributes({ centerPadding: parseInt(value) });
-								}, min: 100, max: 5000 }),
-							isCentered && React.createElement(Toggle, { label: __('Fade Deactivated Items'), value: activeFade, onChange: function onChange(value) {
+								}, min: 10, max: 5000 }),
+							(isCentered || notCentered) && React.createElement(Toggle, { label: __('Fade Deactivated Items'), value: activeFade, onChange: function onChange(value) {
 									return setAttributes({ activeFade: value });
 								} })
 						)
 					),
-					React.createElement(
+					nav && React.createElement(
 						PanelBody,
-						{ title: __('Slider Settings'), initialOpen: false },
-						React.createElement(Toggle, { label: __('Show Arrow Navigation'), value: nav, onChange: function onChange(value) {
-								return setAttributes({ nav: value });
-							} }),
-						nav && React.createElement(
-							Fragment,
+						{ title: __('Arrow Settings'), initialOpen: false },
+						React.createElement(ButtonGroup, {
+							label: __('Arrow Style'),
+							options: [[React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt' }), 'arrowright'], [React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt2' }), 'arrowright2']],
+							value: arrowStyle,
+							onChange: function onChange(value) {
+								return setAttributes({ arrowStyle: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Horizontal Position'),
+							value: horizontalScroll, onChange: function onChange(value) {
+								return setAttributes({ horizontalScroll: value });
+							},
+							min: -100, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Vertical Position'),
+							value: arrowPosition, onChange: function onChange(value) {
+								return setAttributes({ arrowPosition: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Shape Size'),
+							value: sizeWidth, onChange: function onChange(value) {
+								return setAttributes({ sizeWidth: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Arrow Size'),
+							value: arrowSize, onChange: function onChange(value) {
+								return setAttributes({ arrowSize: value });
+							},
+							min: 0, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(
+							Tabs,
 							null,
-							React.createElement(ButtonGroup, {
-								label: __('Arrow Style'),
-								options: [[React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt' }), 'arrowright'], [React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt2' }), 'arrowright2']],
-								value: arrowStyle,
-								onChange: function onChange(value) {
-									return setAttributes({ arrowStyle: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Horizontal Position'),
-								value: horizontalScroll, onChange: function onChange(value) {
-									return setAttributes({ horizontalScroll: value });
-								},
-								min: -100, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Vertical Position'),
-								value: arrowPosition, onChange: function onChange(value) {
-									return setAttributes({ arrowPosition: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Shape Size'),
-								value: sizeWidth, onChange: function onChange(value) {
-									return setAttributes({ sizeWidth: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Arrow Size'),
-								value: arrowSize, onChange: function onChange(value) {
-									return setAttributes({ arrowSize: value });
-								},
-								min: 0, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
 							React.createElement(
-								Tabs,
-								null,
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Normal') },
-									React.createElement(Color, { label: __('Arrow Color'), value: arrowColor, onChange: function onChange(value) {
-											return setAttributes({ arrowColor: value });
-										} }),
-									React.createElement(ColorAdvanced, { label: __('Shape Color'), value: arrowShapeColor, onChange: function onChange(val) {
-											return setAttributes({ arrowShapeColor: val });
-										} }),
-									React.createElement(Border, { label: __('Border'), value: arrowBorderColor, onChange: function onChange(val) {
-											return setAttributes({ arrowBorderColor: val });
-										} }),
-									React.createElement(Range, {
-										label: __('Corner Radius'),
-										value: cornerRadius, onChange: function onChange(value) {
-											return setAttributes({ cornerRadius: value });
-										},
-										min: 1, max: 100,
-										responsive: true, unit: ['px', 'em', '%'],
-										device: device,
-										onDeviceChange: function onDeviceChange(value) {
-											return _this2.setState({ device: value });
-										}
-									})
-								),
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Hover') },
-									React.createElement(Color, { label: __('Arrow Hover Color'), value: arrowHoverColor, onChange: function onChange(value) {
-											return setAttributes({ arrowHoverColor: value });
-										} }),
-									React.createElement(ColorAdvanced, { label: __('Shape Hover Color'), value: arrowShapeHoverColor, onChange: function onChange(val) {
-											return setAttributes({ arrowShapeHoverColor: val });
-										} }),
-									React.createElement(Border, { label: __('Border Hover Color'), value: arrowBorderHoverColor, onChange: function onChange(val) {
-											return setAttributes({ arrowBorderHoverColor: val });
-										} }),
-									React.createElement(Range, {
-										label: __('Corner Hover Radius'),
-										value: cornerHoverRadius, onChange: function onChange(value) {
-											return setAttributes({ cornerHoverRadius: value });
-										},
-										min: 1, max: 100,
-										responsive: true, unit: ['px', 'em', '%'],
-										device: device,
-										onDeviceChange: function onDeviceChange(value) {
-											return _this2.setState({ device: value });
-										}
-									})
-								)
+								Tab,
+								{ tabTitle: __('Normal') },
+								React.createElement(Color, { label: __('Arrow Color'), value: arrowColor, onChange: function onChange(value) {
+										return setAttributes({ arrowColor: value });
+									} }),
+								React.createElement(ColorAdvanced, { label: __('Shape Color'), value: arrowShapeColor, onChange: function onChange(val) {
+										return setAttributes({ arrowShapeColor: val });
+									} }),
+								React.createElement(Border, { label: __('Border'), value: arrowBorderColor, onChange: function onChange(val) {
+										return setAttributes({ arrowBorderColor: val });
+									} }),
+								React.createElement(Range, {
+									label: __('Corner Radius'),
+									value: cornerRadius, onChange: function onChange(value) {
+										return setAttributes({ cornerRadius: value });
+									},
+									min: 1, max: 100,
+									responsive: true, unit: ['px', 'em', '%'],
+									device: device,
+									onDeviceChange: function onDeviceChange(value) {
+										return _this2.setState({ device: value });
+									}
+								})
+							),
+							React.createElement(
+								Tab,
+								{ tabTitle: __('Hover') },
+								React.createElement(Color, { label: __('Arrow Hover Color'), value: arrowHoverColor, onChange: function onChange(value) {
+										return setAttributes({ arrowHoverColor: value });
+									} }),
+								React.createElement(ColorAdvanced, { label: __('Shape Hover Color'), value: arrowShapeHoverColor, onChange: function onChange(val) {
+										return setAttributes({ arrowShapeHoverColor: val });
+									} }),
+								React.createElement(Border, { label: __('Border Hover Color'), value: arrowBorderHoverColor, onChange: function onChange(val) {
+										return setAttributes({ arrowBorderHoverColor: val });
+									} }),
+								React.createElement(Range, {
+									label: __('Corner Hover Radius'),
+									value: cornerHoverRadius, onChange: function onChange(value) {
+										return setAttributes({ cornerHoverRadius: value });
+									},
+									min: 1, max: 100,
+									responsive: true, unit: ['px', 'em', '%'],
+									device: device,
+									onDeviceChange: function onDeviceChange(value) {
+										return _this2.setState({ device: value });
+									}
+								})
 							)
-						),
-						React.createElement(Toggle, { label: __('Show Dot Navigation'), value: dots, onChange: function onChange(value) {
-								return setAttributes({ dots: value });
-							} }),
-						dots && React.createElement(
-							Fragment,
+						)
+					),
+					dots && React.createElement(
+						PanelBody,
+						{ title: __('Dot Settings'), initialOpen: false },
+						React.createElement(Range, {
+							label: __('Dot Position'),
+							value: dotsposition, onChange: function onChange(value) {
+								return setAttributes({ dotsposition: value });
+							},
+							min: -20, max: 200,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Dot Width'),
+							value: dotwidth, onChange: function onChange(value) {
+								return setAttributes({ dotwidth: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Dot Height'),
+							value: dotHeight, onChange: function onChange(value) {
+								return setAttributes({ dotHeight: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Dot Border Radius'),
+							value: dotBorderRadius, onChange: function onChange(value) {
+								return setAttributes({ dotBorderRadius: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(
+							Tabs,
 							null,
-							React.createElement(Range, {
-								label: __('Dot Position'),
-								value: dotsposition, onChange: function onChange(value) {
-									return setAttributes({ dotsposition: value });
-								},
-								min: -20, max: 200,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Dot Width'),
-								value: dotwidth, onChange: function onChange(value) {
-									return setAttributes({ dotwidth: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Dot Height'),
-								value: dotHeight, onChange: function onChange(value) {
-									return setAttributes({ dotHeight: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Dot Border Radius'),
-								value: dotBorderRadius, onChange: function onChange(value) {
-									return setAttributes({ dotBorderRadius: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
 							React.createElement(
-								Tabs,
-								null,
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Normal') },
-									React.createElement(ColorAdvanced, { label: __('Dot Color'), value: dotColor, onChange: function onChange(val) {
-											return setAttributes({ dotColor: val });
-										} })
-								),
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Active') },
-									React.createElement(ColorAdvanced, { label: __('Dot Active Color'), value: dotActiveColor, onChange: function onChange(val) {
-											return setAttributes({ dotActiveColor: val });
-										} })
-								)
+								Tab,
+								{ tabTitle: __('Normal') },
+								React.createElement(ColorAdvanced, { label: __('Dot Color'), value: dotColor, onChange: function onChange(val) {
+										return setAttributes({ dotColor: val });
+									} })
+							),
+							React.createElement(
+								Tab,
+								{ tabTitle: __('Active') },
+								React.createElement(ColorAdvanced, { label: __('Dot Active Color'), value: dotActiveColor, onChange: function onChange(val) {
+										return setAttributes({ dotActiveColor: val });
+									} })
 							)
 						)
 					),
@@ -6611,7 +6670,7 @@ var Save = function (_Component) {
 			var slidertitle = item.slidertitle,
 			    subtitle = item.subtitle,
 			    sliderimage = item.sliderimage,
-			    message = item.message;
+			    description = item.description;
 
 
 			return React.createElement(
@@ -6640,7 +6699,7 @@ var Save = function (_Component) {
 							activeDescription && React.createElement(
 								"div",
 								{ className: "qubely-slider-description" },
-								React.createElement(RichText.Content, { value: message })
+								React.createElement(RichText.Content, { value: description })
 							)
 						)
 					)
@@ -7595,6 +7654,15 @@ var Edit = function (_Component) {
 					React.createElement(
 						PanelBody,
 						{ title: __('Carousel Settings'), initialOpen: true },
+						React.createElement(Toggle, { label: __('Show Arrow Navigation'), value: nav, onChange: function onChange(value) {
+								return setAttributes({ nav: value });
+							} }),
+						React.createElement(Toggle, { label: __('Show Dot Navigation'), value: dots, onChange: function onChange(value) {
+								return setAttributes({ dots: value });
+							} }),
+						React.createElement(Toggle, { label: __('Draggable'), value: dragable, onChange: function onChange(value) {
+								return setAttributes({ dragable: value });
+							} }),
 						React.createElement(Toggle, { label: __('Autoplay'), value: autoPlay, onChange: function onChange(value) {
 								return setAttributes({ autoPlay: value });
 							} }),
@@ -7608,9 +7676,6 @@ var Edit = function (_Component) {
 									return setAttributes({ interval: parseInt(value) });
 								}, min: 500, max: 5000 })
 						),
-						React.createElement(Toggle, { label: __('Draggable'), value: dragable, onChange: function onChange(value) {
-								return setAttributes({ dragable: value });
-							} }),
 						React.createElement(Toggle, {
 							label: __('Centered Slides'),
 							value: isCentered,
@@ -7653,208 +7718,198 @@ var Edit = function (_Component) {
 							min: 0, max: 100
 						})
 					),
-					React.createElement(
+					nav && React.createElement(
 						PanelBody,
-						{ title: __('Slider Settings'), initialOpen: false },
-						React.createElement(Toggle, { label: __('Show Arrow Navigation'), value: nav, onChange: function onChange(value) {
-								return setAttributes({ nav: value });
-							} }),
-						nav && React.createElement(
-							Fragment,
+						{ title: __('Arrow Settings'), initialOpen: false },
+						React.createElement(ButtonGroup, {
+							label: __('Navigation Style'),
+							options: [[React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt' }), 'arrowright'], [React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt2' }), 'arrowright2']],
+							value: arrowStyle,
+							onChange: function onChange(value) {
+								return setAttributes({ arrowStyle: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Horizontal Position'),
+							value: horizontalPosition, onChange: function onChange(value) {
+								return setAttributes({ horizontalPosition: value });
+							},
+							min: -100, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Vertical Position'),
+							value: verticalPosition, onChange: function onChange(value) {
+								return setAttributes({ verticalPosition: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Shape Size'),
+							value: shapeWidth, onChange: function onChange(value) {
+								return setAttributes({ shapeWidth: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Arrow Size'),
+							value: navSize, onChange: function onChange(value) {
+								return setAttributes({ navSize: value });
+							},
+							min: 0, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							}
+						}),
+						React.createElement(
+							Tabs,
 							null,
-							React.createElement(ButtonGroup, {
-								label: __('Navigation Style'),
-								options: [[React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt' }), 'arrowright'], [React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt2' }), 'arrowright2']],
-								value: arrowStyle,
-								onChange: function onChange(value) {
-									return setAttributes({ arrowStyle: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Horizontal Position'),
-								value: horizontalPosition, onChange: function onChange(value) {
-									return setAttributes({ horizontalPosition: value });
-								},
-								min: -100, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Vertical Position'),
-								value: verticalPosition, onChange: function onChange(value) {
-									return setAttributes({ verticalPosition: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Shape Size'),
-								value: shapeWidth, onChange: function onChange(value) {
-									return setAttributes({ shapeWidth: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Arrow Size'),
-								value: navSize, onChange: function onChange(value) {
-									return setAttributes({ navSize: value });
-								},
-								min: 0, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								}
-							}),
 							React.createElement(
-								Tabs,
-								null,
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Normal') },
-									React.createElement(Color, { label: __('Navigation Color'), value: navColor, onChange: function onChange(value) {
-											return setAttributes({ navColor: value });
-										} }),
-									React.createElement(Color, { label: __('Navigation Shape Color'), value: navShapeColor, onChange: function onChange(val) {
-											return setAttributes({ navShapeColor: val });
-										} }),
-									React.createElement(Border, { label: __('Navigation Border'), value: navBorderColor, onChange: function onChange(val) {
-											return setAttributes({ navBorderColor: val });
-										} }),
-									React.createElement(BorderRadius, {
-										min: 0,
-										max: 100,
-										responsive: true,
-										device: device,
-										label: __('Navigation Corner'),
-										value: navigationRadius,
-										unit: ['px', 'em', '%'],
-										onChange: function onChange(value) {
-											return setAttributes({ navigationRadius: value });
-										},
-										onDeviceChange: function onDeviceChange(value) {
-											return _this3.setState({ device: value });
-										}
-									})
-								),
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Hover') },
-									React.createElement(Color, { label: __('Navigation Hover Color'), value: navHoverColor, onChange: function onChange(value) {
-											return setAttributes({ navHoverColor: value });
-										} }),
-									React.createElement(Color, { label: __('Shape Hover Color'), value: navShapeHoverColor, onChange: function onChange(val) {
-											return setAttributes({ navShapeHoverColor: val });
-										} }),
-									React.createElement(Border, { label: __('Border Hover Color'), value: navBorderHoverColor, onChange: function onChange(val) {
-											return setAttributes({ navBorderHoverColor: val });
-										} }),
-									React.createElement(BorderRadius, {
-										label: __('Corner Hover Radius'),
-										value: navHoverRadius, onChange: function onChange(value) {
-											return setAttributes({ navHoverRadius: value });
-										},
-										min: 1, max: 100,
-										responsive: true, unit: ['px', 'em', '%'],
-										device: device,
-										onDeviceChange: function onDeviceChange(value) {
-											return _this3.setState({ device: value });
-										}
-									})
-								)
+								Tab,
+								{ tabTitle: __('Normal') },
+								React.createElement(Color, { label: __('Navigation Color'), value: navColor, onChange: function onChange(value) {
+										return setAttributes({ navColor: value });
+									} }),
+								React.createElement(Color, { label: __('Navigation Shape Color'), value: navShapeColor, onChange: function onChange(val) {
+										return setAttributes({ navShapeColor: val });
+									} }),
+								React.createElement(Border, { label: __('Navigation Border'), value: navBorderColor, onChange: function onChange(val) {
+										return setAttributes({ navBorderColor: val });
+									} }),
+								React.createElement(BorderRadius, {
+									min: 0,
+									max: 100,
+									responsive: true,
+									device: device,
+									label: __('Navigation Corner'),
+									value: navigationRadius,
+									unit: ['px', 'em', '%'],
+									onChange: function onChange(value) {
+										return setAttributes({ navigationRadius: value });
+									},
+									onDeviceChange: function onDeviceChange(value) {
+										return _this3.setState({ device: value });
+									}
+								})
+							),
+							React.createElement(
+								Tab,
+								{ tabTitle: __('Hover') },
+								React.createElement(Color, { label: __('Navigation Hover Color'), value: navHoverColor, onChange: function onChange(value) {
+										return setAttributes({ navHoverColor: value });
+									} }),
+								React.createElement(Color, { label: __('Shape Hover Color'), value: navShapeHoverColor, onChange: function onChange(val) {
+										return setAttributes({ navShapeHoverColor: val });
+									} }),
+								React.createElement(Border, { label: __('Border Hover Color'), value: navBorderHoverColor, onChange: function onChange(val) {
+										return setAttributes({ navBorderHoverColor: val });
+									} }),
+								React.createElement(BorderRadius, {
+									label: __('Corner Hover Radius'),
+									value: navHoverRadius, onChange: function onChange(value) {
+										return setAttributes({ navHoverRadius: value });
+									},
+									min: 1, max: 100,
+									responsive: true, unit: ['px', 'em', '%'],
+									device: device,
+									onDeviceChange: function onDeviceChange(value) {
+										return _this3.setState({ device: value });
+									}
+								})
 							)
-						),
-						React.createElement(Toggle, { label: __('Show Dot Navigation'), value: dots, onChange: function onChange(value) {
-								return setAttributes({ dots: value });
-							} }),
-						dots && React.createElement(
-							Fragment,
+						)
+					),
+					dots && React.createElement(
+						PanelBody,
+						{ title: __('Dot Settings'), initialOpen: false },
+						React.createElement(Range, {
+							label: __('Dot Position'),
+							value: dotPosition, onChange: function onChange(value) {
+								return setAttributes({ dotPosition: value });
+							},
+							min: -200, max: 200,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Dot Width'),
+							value: dotwidth, onChange: function onChange(value) {
+								return setAttributes({ dotwidth: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Dot Height'),
+							value: dotHeight, onChange: function onChange(value) {
+								return setAttributes({ dotHeight: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Dot Border Radius'),
+							value: dotBorderRadius, onChange: function onChange(value) {
+								return setAttributes({ dotBorderRadius: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this3.setState({ device: value });
+							}
+						}),
+						React.createElement(ButtonGroup, {
+							label: __('Dot Alignment'),
+							options: [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']],
+							value: dotalignment,
+							onChange: function onChange(value) {
+								return setAttributes({ dotalignment: value });
+							}
+						}),
+						React.createElement(
+							Tabs,
 							null,
-							React.createElement(Range, {
-								label: __('Dot Position'),
-								value: dotPosition, onChange: function onChange(value) {
-									return setAttributes({ dotPosition: value });
-								},
-								min: -200, max: 200,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Dot Width'),
-								value: dotwidth, onChange: function onChange(value) {
-									return setAttributes({ dotwidth: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Dot Height'),
-								value: dotHeight, onChange: function onChange(value) {
-									return setAttributes({ dotHeight: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Dot Border Radius'),
-								value: dotBorderRadius, onChange: function onChange(value) {
-									return setAttributes({ dotBorderRadius: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this3.setState({ device: value });
-								}
-							}),
-							React.createElement(ButtonGroup, {
-								label: __('Dot Alignment'),
-								options: [[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']],
-								value: dotalignment,
-								onChange: function onChange(value) {
-									return setAttributes({ dotalignment: value });
-								}
-							}),
 							React.createElement(
-								Tabs,
-								null,
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Normal') },
-									React.createElement(ColorAdvanced, { label: __('Dot Color'), value: dotColor, onChange: function onChange(val) {
-											return setAttributes({ dotColor: val });
-										} })
-								),
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Active') },
-									React.createElement(ColorAdvanced, { label: __('Dot Active Color'), value: dotActiveColor, onChange: function onChange(val) {
-											return setAttributes({ dotActiveColor: val });
-										} })
-								)
+								Tab,
+								{ tabTitle: __('Normal') },
+								React.createElement(ColorAdvanced, { label: __('Dot Color'), value: dotColor, onChange: function onChange(val) {
+										return setAttributes({ dotColor: val });
+									} })
+							),
+							React.createElement(
+								Tab,
+								{ tabTitle: __('Active') },
+								React.createElement(ColorAdvanced, { label: __('Dot Active Color'), value: dotActiveColor, onChange: function onChange(val) {
+										return setAttributes({ dotActiveColor: val });
+									} })
 							)
 						)
 					),
@@ -13727,6 +13782,15 @@ var Edit = function (_Component) {
 					React.createElement(
 						PanelBody,
 						{ title: __('Carousel Settings'), initialOpen: false },
+						React.createElement(Toggle, { label: __('Show Arrow Navigation'), value: nav, onChange: function onChange(value) {
+								return setAttributes({ nav: value });
+							} }),
+						React.createElement(Toggle, { label: __('Show Dot Navigation'), value: dots, onChange: function onChange(value) {
+								return setAttributes({ dots: value });
+							} }),
+						React.createElement(Toggle, { label: __('Draggable'), value: dragable, onChange: function onChange(value) {
+								return setAttributes({ dragable: value });
+							} }),
 						React.createElement(Toggle, { label: __('Autoplay'), value: autoPlay, onChange: function onChange(value) {
 								return setAttributes({ autoPlay: value });
 							} }),
@@ -13740,9 +13804,6 @@ var Edit = function (_Component) {
 									return setAttributes({ interval: parseInt(value) });
 								}, min: 500, max: 5000 })
 						),
-						React.createElement(Toggle, { label: __('Draggable'), value: dragable, onChange: function onChange(value) {
-								return setAttributes({ dragable: value });
-							} }),
 						React.createElement(Toggle, { label: __('Centered Slides'), value: isCentered, onChange: function onChange(value) {
 								return setAttributes({ isCentered: value });
 							} }),
@@ -13750,197 +13811,187 @@ var Edit = function (_Component) {
 								return setAttributes({ activeFade: value });
 							} })
 					),
-					React.createElement(
+					nav && React.createElement(
 						PanelBody,
-						{ title: __('Slider Settings'), initialOpen: false },
-						React.createElement(Toggle, { label: __('Show Arrow Navigation'), value: nav, onChange: function onChange(value) {
-								return setAttributes({ nav: value });
-							} }),
-						nav && React.createElement(
-							Fragment,
+						{ title: __('Arrow Settings'), initialOpen: false },
+						React.createElement(ButtonGroup, {
+							label: __('Arrow Style'),
+							options: [[React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt' }), 'arrowright'], [React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt2' }), 'arrowright2']],
+							value: arrowStyle,
+							onChange: function onChange(value) {
+								return setAttributes({ arrowStyle: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Horizontal Position'),
+							value: horizontalScroll, onChange: function onChange(value) {
+								return setAttributes({ horizontalScroll: value });
+							},
+							min: -100, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Vertical Position'),
+							value: arrowPosition, onChange: function onChange(value) {
+								return setAttributes({ arrowPosition: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Shape Size'),
+							value: sizeWidth, onChange: function onChange(value) {
+								return setAttributes({ sizeWidth: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Arrow Size'),
+							value: arrowSize, onChange: function onChange(value) {
+								return setAttributes({ arrowSize: value });
+							},
+							min: 0, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(
+							Tabs,
 							null,
-							React.createElement(ButtonGroup, {
-								label: __('Arrow Style'),
-								options: [[React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt' }), 'arrowright'], [React.createElement('span', { className: 'dashicons dashicons-arrow-right-alt2' }), 'arrowright2']],
-								value: arrowStyle,
-								onChange: function onChange(value) {
-									return setAttributes({ arrowStyle: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Horizontal Position'),
-								value: horizontalScroll, onChange: function onChange(value) {
-									return setAttributes({ horizontalScroll: value });
-								},
-								min: -100, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Vertical Position'),
-								value: arrowPosition, onChange: function onChange(value) {
-									return setAttributes({ arrowPosition: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Shape Size'),
-								value: sizeWidth, onChange: function onChange(value) {
-									return setAttributes({ sizeWidth: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Arrow Size'),
-								value: arrowSize, onChange: function onChange(value) {
-									return setAttributes({ arrowSize: value });
-								},
-								min: 0, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
 							React.createElement(
-								Tabs,
-								null,
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Normal') },
-									React.createElement(Color, { label: __('Arrow Color'), value: arrowColor, onChange: function onChange(value) {
-											return setAttributes({ arrowColor: value });
-										} }),
-									React.createElement(ColorAdvanced, { label: __('Shape Color'), value: arrowShapeColor, onChange: function onChange(val) {
-											return setAttributes({ arrowShapeColor: val });
-										} }),
-									React.createElement(Border, { label: __('Border'), value: arrowBorderColor, onChange: function onChange(val) {
-											return setAttributes({ arrowBorderColor: val });
-										} }),
-									React.createElement(Range, {
-										label: __('Corner Radius'),
-										value: cornerRadius, onChange: function onChange(value) {
-											return setAttributes({ cornerRadius: value });
-										},
-										min: 1, max: 100,
-										responsive: true, unit: ['px', 'em', '%'],
-										device: device,
-										onDeviceChange: function onDeviceChange(value) {
-											return _this2.setState({ device: value });
-										}
-									})
-								),
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Hover') },
-									React.createElement(Color, { label: __('Arrow Hover Color'), value: arrowHoverColor, onChange: function onChange(value) {
-											return setAttributes({ arrowHoverColor: value });
-										} }),
-									React.createElement(ColorAdvanced, { label: __('Shape Hover Color'), value: arrowShapeHoverColor, onChange: function onChange(val) {
-											return setAttributes({ arrowShapeHoverColor: val });
-										} }),
-									React.createElement(Border, { label: __('Border Hover Color'), value: arrowBorderHoverColor, onChange: function onChange(val) {
-											return setAttributes({ arrowBorderHoverColor: val });
-										} }),
-									React.createElement(Range, {
-										label: __('Corner Hover Radius'),
-										value: cornerHoverRadius, onChange: function onChange(value) {
-											return setAttributes({ cornerHoverRadius: value });
-										},
-										min: 1, max: 100,
-										responsive: true, unit: ['px', 'em', '%'],
-										device: device,
-										onDeviceChange: function onDeviceChange(value) {
-											return _this2.setState({ device: value });
-										}
-									})
-								)
+								Tab,
+								{ tabTitle: __('Normal') },
+								React.createElement(Color, { label: __('Arrow Color'), value: arrowColor, onChange: function onChange(value) {
+										return setAttributes({ arrowColor: value });
+									} }),
+								React.createElement(ColorAdvanced, { label: __('Shape Color'), value: arrowShapeColor, onChange: function onChange(val) {
+										return setAttributes({ arrowShapeColor: val });
+									} }),
+								React.createElement(Border, { label: __('Border'), value: arrowBorderColor, onChange: function onChange(val) {
+										return setAttributes({ arrowBorderColor: val });
+									} }),
+								React.createElement(Range, {
+									label: __('Corner Radius'),
+									value: cornerRadius, onChange: function onChange(value) {
+										return setAttributes({ cornerRadius: value });
+									},
+									min: 1, max: 100,
+									responsive: true, unit: ['px', 'em', '%'],
+									device: device,
+									onDeviceChange: function onDeviceChange(value) {
+										return _this2.setState({ device: value });
+									}
+								})
+							),
+							React.createElement(
+								Tab,
+								{ tabTitle: __('Hover') },
+								React.createElement(Color, { label: __('Arrow Hover Color'), value: arrowHoverColor, onChange: function onChange(value) {
+										return setAttributes({ arrowHoverColor: value });
+									} }),
+								React.createElement(ColorAdvanced, { label: __('Shape Hover Color'), value: arrowShapeHoverColor, onChange: function onChange(val) {
+										return setAttributes({ arrowShapeHoverColor: val });
+									} }),
+								React.createElement(Border, { label: __('Border Hover Color'), value: arrowBorderHoverColor, onChange: function onChange(val) {
+										return setAttributes({ arrowBorderHoverColor: val });
+									} }),
+								React.createElement(Range, {
+									label: __('Corner Hover Radius'),
+									value: cornerHoverRadius, onChange: function onChange(value) {
+										return setAttributes({ cornerHoverRadius: value });
+									},
+									min: 1, max: 100,
+									responsive: true, unit: ['px', 'em', '%'],
+									device: device,
+									onDeviceChange: function onDeviceChange(value) {
+										return _this2.setState({ device: value });
+									}
+								})
 							)
-						),
-						React.createElement(Toggle, { label: __('Show Dot Navigation'), value: dots, onChange: function onChange(value) {
-								return setAttributes({ dots: value });
-							} }),
-						dots && React.createElement(
-							Fragment,
+						)
+					),
+					dots && React.createElement(
+						PanelBody,
+						{ title: __('Dot Settings'), initialOpen: false },
+						React.createElement(Range, {
+							label: __('Dot Width'),
+							value: dotswidth, onChange: function onChange(value) {
+								return setAttributes({ dotswidth: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Dot Height'),
+							value: dotHeight, onChange: function onChange(value) {
+								return setAttributes({ dotHeight: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Dot Border Radius'),
+							value: dotBorderRadius, onChange: function onChange(value) {
+								return setAttributes({ dotBorderRadius: value });
+							},
+							min: 1, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(Range, {
+							label: __('Spacing'),
+							value: dotsPosition, onChange: function onChange(value) {
+								return setAttributes({ dotsPosition: value });
+							},
+							min: -50, max: 100,
+							responsive: true, unit: ['px', 'em', '%'],
+							device: device,
+							onDeviceChange: function onDeviceChange(value) {
+								return _this2.setState({ device: value });
+							}
+						}),
+						React.createElement(
+							Tabs,
 							null,
-							React.createElement(Range, {
-								label: __('Dot Width'),
-								value: dotswidth, onChange: function onChange(value) {
-									return setAttributes({ dotswidth: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Dot Height'),
-								value: dotHeight, onChange: function onChange(value) {
-									return setAttributes({ dotHeight: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Dot Border Radius'),
-								value: dotBorderRadius, onChange: function onChange(value) {
-									return setAttributes({ dotBorderRadius: value });
-								},
-								min: 1, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
-							React.createElement(Range, {
-								label: __('Spacing'),
-								value: dotsPosition, onChange: function onChange(value) {
-									return setAttributes({ dotsPosition: value });
-								},
-								min: -50, max: 100,
-								responsive: true, unit: ['px', 'em', '%'],
-								device: device,
-								onDeviceChange: function onDeviceChange(value) {
-									return _this2.setState({ device: value });
-								}
-							}),
 							React.createElement(
-								Tabs,
-								null,
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Normal') },
-									React.createElement(ColorAdvanced, { label: __('Dot Color'), value: dotColor, onChange: function onChange(val) {
-											return setAttributes({ dotColor: val });
-										} })
-								),
-								React.createElement(
-									Tab,
-									{ tabTitle: __('Active') },
-									React.createElement(ColorAdvanced, { label: __('Dot Active Color'), value: dotActiveColor, onChange: function onChange(val) {
-											return setAttributes({ dotActiveColor: val });
-										} })
-								)
+								Tab,
+								{ tabTitle: __('Normal') },
+								React.createElement(ColorAdvanced, { label: __('Dot Color'), value: dotColor, onChange: function onChange(val) {
+										return setAttributes({ dotColor: val });
+									} })
+							),
+							React.createElement(
+								Tab,
+								{ tabTitle: __('Active') },
+								React.createElement(ColorAdvanced, { label: __('Dot Active Color'), value: dotActiveColor, onChange: function onChange(val) {
+										return setAttributes({ dotActiveColor: val });
+									} })
 							)
 						)
 					),

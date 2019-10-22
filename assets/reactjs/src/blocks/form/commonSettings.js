@@ -38,8 +38,10 @@ export default function (clientId) {
     const [device, changeDevice] = useState('md')
     const [isUpdating, setUpdate] = useState(false)
 
-    const { getBlockAttributes } = select('core/block-editor')
+    const { getBlocks } = select('core/editor')
+    const { getBlockAttributes, getBlockName } = select('core/block-editor')
     let attributes = getBlockAttributes(clientId)
+
     const { updateBlockAttributes } = dispatch('core/block-editor')
 
     let {
@@ -47,6 +49,7 @@ export default function (clientId) {
 
 
         //label settings
+        showLabel,
         labelColor,
         labelAlignment,
         labelTypography,
@@ -122,6 +125,23 @@ export default function (clientId) {
         setUpdate(!isUpdating)
     }
 
+
+    const updateFormFields = (field) => {
+        field.innerBlocks.forEach((column, index) => {
+            updateBlockAttributes(column.innerBlocks[0].clientId, { showLabel: !showLabel, labelAlignment: labelAlignment })
+        })
+    }
+
+    let fieldIndex = 0
+    let childBlocks = getBlocks(clientId)
+
+    while (fieldIndex < childBlocks.length) {
+        updateFormFields(childBlocks[fieldIndex])
+        fieldIndex++
+    }
+
+
+
     return (
         <Fragment>
 
@@ -138,6 +158,12 @@ export default function (clientId) {
             </PanelBody>
 
             <PanelBody title={__('Label')} initialOpen={false}>
+
+                <Toggle
+                    label={__('Show label')}
+                    value={showLabel}
+                    onChange={val => updateAttributes('showLabel', val)} />
+
                 <ButtonGroup
                     label={__('Label Alignment')}
                     options={
@@ -163,8 +189,8 @@ export default function (clientId) {
 
             <PanelBody title={__('Input')} initialOpen={false}>
 
-                {(layout!='material') &&    
-                    <Fragment>    
+                {(layout != 'material') &&
+                    <Fragment>
                         <RadioAdvanced
                             label={__('Input Size')}
                             options={[
@@ -228,16 +254,16 @@ export default function (clientId) {
                     unit={['px', 'em', '%']}
                     onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })} />
 
-                { (layout != 'material') && 
-                <BorderRadius
-                    min={0}
-                    max={100}
-                    responsive
-                    label={__('Field Radius')}
-                    value={inputBorderRadius}
-                    unit={['px', 'em', '%']}
-                    onChange={(value) => updateAttributes('inputBorderRadius', value)} 
-                />
+                {(layout != 'material') &&
+                    <BorderRadius
+                        min={0}
+                        max={100}
+                        responsive
+                        label={__('Field Radius')}
+                        value={inputBorderRadius}
+                        unit={['px', 'em', '%']}
+                        onChange={(value) => updateAttributes('inputBorderRadius', value)}
+                    />
                 }
                 <Tabs>
                     <Tab tabTitle={__('Normal')}>

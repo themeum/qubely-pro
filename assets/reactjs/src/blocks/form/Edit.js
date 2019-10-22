@@ -1,4 +1,5 @@
 const { __ } = wp.i18n
+const { isShallowEqual } = wp
 const { createBlock } = wp.blocks
 const { compose } = wp.compose
 const { select, dispatch, withSelect, withDispatch } = wp.data
@@ -43,7 +44,8 @@ class Edit extends Component {
             hideDropdown: null,
             newItemType: 'text',
             device: 'md',
-            groupField: false
+            groupField: false,
+            test: false
         }
     }
 
@@ -55,6 +57,28 @@ class Edit extends Component {
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
         }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+
+        const { block, attributes: { showLabel, labelAlignment } } = this.props
+        const { updateBlock, toggleSelection } = dispatch('core/block-editor')
+
+        let changedAttribute = showLabel !== prevProps.attributes.showLabel ? 'showLabel' : labelAlignment !== prevProps.attributes.labelAlignment ? 'labelAlignment' : false
+
+        if (changedAttribute!==false) {
+            block.innerBlocks.forEach(column => {
+                updateBlock(column.innerBlocks[0].clientId, {
+                    attributes: {
+                        ...column.innerBlocks[0].attributes,
+                        [changedAttribute]: this.props.attributes[changedAttribute]
+                    }
+                })
+            })
+            toggleSelection(false)
+        }
+
+
     }
 
     setSettings(type, val, index = -1) {
@@ -131,7 +155,7 @@ class Edit extends Component {
                             onClick={() => { this.setState({ groupField: true }) }}
                             className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`}
                         >
-                         {icons.from_fields.column} Add Column</div>
+                            {icons.from_fields.column} Add Column</div>
                     </div>
                 }
 
@@ -226,7 +250,9 @@ class Edit extends Component {
             attributes: {
                 uniqueId,
                 layout,
-                formItems,
+
+                //label 
+                showLabel,
                 labelColor,
                 labelAlignment,
                 labelTypography,
@@ -249,7 +275,7 @@ class Edit extends Component {
                 inputBorderMaterial,
                 inputBorderColorFocus,
                 inputBorderColorHover,
-                
+
                 textareaHeight,
                 placeholderColor,
                 placeholderColorFocus,
@@ -313,6 +339,12 @@ class Edit extends Component {
                     </PanelBody>
 
                     <PanelBody title={__('Label')} initialOpen={false}>
+
+                        <Toggle
+                            label={__('Show label')}
+                            value={showLabel}
+                            onChange={val => setAttributes({ showLabel: val })} />
+
                         <ButtonGroup
                             label={__('Label Alignment')}
                             options={
@@ -337,30 +369,30 @@ class Edit extends Component {
 
 
                     <PanelBody title={__('Input')} initialOpen={false}>
-                    {(layout!='material') &&    
-                        <Fragment>    
-                            <RadioAdvanced
-                                label={__('Input Size')}
-                                options={[
-                                    { label: 'S', value: 'small', title: 'Small' },
-                                    { label: 'M', value: 'medium', title: 'Medium' },
-                                    { label: 'L', value: 'large', title: 'Large' },
-                                    { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                                ]}
-                                value={inputSize}
-                                onChange={(value) => setAttributes({ inputSize: value })} />
+                        {(layout != 'material') &&
+                            <Fragment>
+                                <RadioAdvanced
+                                    label={__('Input Size')}
+                                    options={[
+                                        { label: 'S', value: 'small', title: 'Small' },
+                                        { label: 'M', value: 'medium', title: 'Medium' },
+                                        { label: 'L', value: 'large', title: 'Large' },
+                                        { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                                    ]}
+                                    value={inputSize}
+                                    onChange={(value) => setAttributes({ inputSize: value })} />
 
-                            {inputSize == 'custom' &&
-                                <Padding
-                                    max={50}
-                                    min={0}
-                                    responsive
-                                    value={inputCustomSize}
-                                    label={__('Custom Size')}
-                                    unit={['px', 'em', '%']}
-                                    onChange={value => setAttributes({ inputCustomSize: value })}
-                                />
-                            }
+                                {inputSize == 'custom' &&
+                                    <Padding
+                                        max={50}
+                                        min={0}
+                                        responsive
+                                        value={inputCustomSize}
+                                        label={__('Custom Size')}
+                                        unit={['px', 'em', '%']}
+                                        onChange={value => setAttributes({ inputCustomSize: value })}
+                                    />
+                                }
                             </Fragment>
                         }
                         <Range
@@ -399,19 +431,19 @@ class Edit extends Component {
                             value={layout === 'classic' ? inputBorder : inputBorderMaterial}
                             label={__('Border')}
                             unit={['px', 'em', '%']}
-                            onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })} 
+                            onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })}
                         />
 
-                        { (layout != 'material') && 
-                        <BorderRadius
-                            min={0}
-                            max={100}
-                            responsive
-                            label={__('Radius')}
-                            value={inputBorderRadius}
-                            unit={['px', 'em', '%']}
-                            onChange={(value) => setAttributes({ inputBorderRadius: value })} 
-                        />
+                        {(layout != 'material') &&
+                            <BorderRadius
+                                min={0}
+                                max={100}
+                                responsive
+                                label={__('Radius')}
+                                value={inputBorderRadius}
+                                unit={['px', 'em', '%']}
+                                onChange={(value) => setAttributes({ inputBorderRadius: value })}
+                            />
                         }
 
                         <Tabs>
@@ -621,8 +653,12 @@ export default compose([
         const { clientId } = ownProps
         const { getBlock, getBlockRootClientId, getBlockAttributes } = select('core/editor')
         let rootBlockClientId = getBlockRootClientId(clientId)
+        rootBlockClientId = getBlockRootClientId(clientId)
 
-        return { rootBlockClientId }
+        return {
+            rootBlockClientId,
+            block: getBlock(clientId),
+        }
     }),
     withDispatch((dispatch) => {
         const { insertBlock, removeBlock, updateBlockAttributes, toggleSelection } = dispatch('core/editor')

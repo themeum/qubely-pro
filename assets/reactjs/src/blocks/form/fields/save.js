@@ -10,7 +10,9 @@ export default function Save(props) {
     const {
         attributes: {
             uniqueId,
+            showLabel,
             label,
+            labelAlignment,
             type,
             options,
             placeHolder,
@@ -142,12 +144,15 @@ export default function Save(props) {
 
     return (
         <div className={`qubely-block-${uniqueId}`}>
-            <div className={`qubely-form-field-wrapper`}>
+            <div className={`qubely-form-field-wrapper label-alignment-${labelAlignment}`}>
+                {
+                    showLabel &&
+                    <label className="qubely-form-label" for={uniqueId} >
+                        <RichText.Content value={label} />
+                        {required && <span className="qubely-from-field-required-sign">*</span>}
+                    </label>
+                }
 
-                <label className="qubely-form-label" for={uniqueId} >
-                    <RichText.Content value={label} />
-                    {required && <span className="qubely-from-field-required-sign">*</span>}
-                </label>
 
                 {/** input fields */}
                 {
