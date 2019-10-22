@@ -396,17 +396,20 @@ class Edit extends Component {
                             value={layout === 'classic' ? inputBorder : inputBorderMaterial}
                             label={__('Border')}
                             unit={['px', 'em', '%']}
-                            onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })} />
+                            onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })} 
+                        />
 
-
+                        { (layout != 'material') && 
                         <BorderRadius
                             min={0}
                             max={100}
                             responsive
-                            label={__('Field Radius')}
+                            label={__('Radius')}
                             value={inputBorderRadius}
                             unit={['px', 'em', '%']}
-                            onChange={(value) => setAttributes({ inputBorderRadius: value })} />
+                            onChange={(value) => setAttributes({ inputBorderRadius: value })} 
+                        />
+                        }
 
                         <Tabs>
                             <Tab tabTitle={__('Normal')}>

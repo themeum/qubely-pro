@@ -251,17 +251,28 @@ registerBlockType('qubely/form', {
             type: 'object',
             default: {
                 openBorderRadius: 1,
-                radiusType: 'global'
+                radiusType: 'global',
+                global: {
+                    md: 4
+                },
+                unit: 'px'
             },
             style: [
                 {
-                    selector: '{{QUBELY}} input.qubely-form-field, textarea.qubely-form-field'
+                    condition: [
+                        { key: 'layout', relation: '!=', value: 'material' },
+                    ],
+                    selector: '{{QUBELY}} input.qubely-form-field, {{QUBELY}} textarea.qubely-form-field'
+                },
+                {
+                    condition: [
+                        { key: 'layout', relation: '==', value: 'material' },
+                    ],
+                    selector: '{{QUBELY}} input.qubely-form-field{border-radius:0;}, {{QUBELY}} textarea.qubely-form-field{border-radius:0;}'
                 }
             ]
         },
-
-
-
+        
         inputBorderMaterial: {
             type: 'object',
             default: {
@@ -318,9 +329,8 @@ registerBlockType('qubely/form', {
             ]
         },
 
-
-
         inputSize: { type: 'string', default: 'medium' },
+
         inputCustomSize: {
             type: 'object',
             default: {
