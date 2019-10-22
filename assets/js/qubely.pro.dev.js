@@ -5581,6 +5581,8 @@ var _icons2 = _interopRequireDefault(_icons);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -5657,16 +5659,34 @@ var Edit = function (_Component) {
 			setAttributes({ carouselItems: updatedAttributes });
 		};
 
-		_this.renderSlider = function (sliderimage, index) {
+		_this.renderSlider = function (sliderimage, index, addNewItem) {
+			var _this$props2 = _this.props,
+			    setAttributes = _this$props2.setAttributes,
+			    carouselItems = _this$props2.attributes.carouselItems;
+
 			return React.createElement(
 				'div',
 				{ className: 'qubely-single-img qubely-slider-image-container ' + (sliderimage != undefined && sliderimage.url != undefined ? '' : ' qubely-empty-image') },
-				React.createElement(MediaUpload, {
-					onSelect: function onSelect(value) {
-						return _this.updateAtrributes('sliderimage', value, index);
+				React.createElement(MediaUpload
+				// onSelect={value => this.updateAtrributes('sliderimage', value, index)}
+				, { onSelect: function onSelect(value) {
+						if (addNewItem) {
+							setAttributes({
+								carouselItems: [].concat(_toConsumableArray(carouselItems), _toConsumableArray(value.map(function (item) {
+									return {
+										sliderimage: item,
+										message: null,
+										slidertitle: item.caption,
+										subtitle: null
+									};
+								})))
+							});
+						} else {
+							_this.updateAtrributes('sliderimage', value, index);
+						}
 					},
 					allowedTypes: ['image'],
-					multiple: false,
+					multiple: addNewItem,
 					value: sliderimage,
 					render: function render(_ref) {
 						var open = _ref.open;
@@ -5729,13 +5749,15 @@ var Edit = function (_Component) {
 			var slidertitle = item.slidertitle,
 			    subtitle = item.subtitle,
 			    sliderimage = item.sliderimage,
-			    message = item.message;
+			    message = item.message,
+			    _item$addNewItem = item.addNewItem,
+			    addNewItem = _item$addNewItem === undefined ? false : _item$addNewItem;
 
 
 			return React.createElement(
 				'div',
 				{ className: 'qubely-image-slider' },
-				_this.renderSlider(sliderimage, index),
+				_this.renderSlider(sliderimage, index, addNewItem),
 				layout != 1 && React.createElement(
 					'div',
 					null,
@@ -5793,9 +5815,9 @@ var Edit = function (_Component) {
 		};
 
 		_this.removeCrouselItem = function (index) {
-			var _this$props2 = _this.props,
-			    setAttributes = _this$props2.setAttributes,
-			    carouselItems = _this$props2.attributes.carouselItems;
+			var _this$props3 = _this.props,
+			    setAttributes = _this$props3.setAttributes,
+			    carouselItems = _this$props3.attributes.carouselItems;
 
 			var newCarouselItems = JSON.parse(JSON.stringify(carouselItems));
 			newCarouselItems.splice(index, 1);
@@ -5809,7 +5831,7 @@ var Edit = function (_Component) {
 			    items = _this$props$attribute2.items,
 			    contentVerticalAlign = _this$props$attribute2.contentVerticalAlign;
 
-			return carouselItems.map(function (item, index) {
+			return [].concat(_toConsumableArray(carouselItems), [{ sliderimage: null, message: null, slidertitle: null, subtitle: null, addNewItem: true }]).map(function (item, index) {
 				return React.createElement(
 					'div',
 					{ key: index, className: 'qubely-carousel-item item-layout' + layout + ' align-' + contentVerticalAlign },
@@ -5851,59 +5873,13 @@ var Edit = function (_Component) {
 			});
 		};
 
-		_this.setCarouselLength = function (newLength) {
-			var _this$props3 = _this.props,
-			    setAttributes = _this$props3.setAttributes,
-			    _this$props3$attribut = _this$props3.attributes,
-			    carouselItems = _this$props3$attribut.carouselItems,
-			    items = _this$props3$attribut.items;
-
-			var newCarouselItems = JSON.parse(JSON.stringify(carouselItems));
-			var defaultItem = {
-				slidertitle: 'Wordcamp Dhaka 2019',
-				subtitle: '28 September 2019',
-				message: '“Instantly raise your website appearance with this stylish new plugin.”',
-				sliderimage: {}
-			};
-			if (newLength > carouselItems.length) {
-				newCarouselItems.push(defaultItem);
-			} else {
-				newLength >= items.md && newLength >= items.sm && newLength >= items.sm && newCarouselItems.pop();
-			}
-			setAttributes({ carouselItems: newCarouselItems });
-		};
-
-		_this.parseResponsiveViewPort = function () {
-			var _this$props$attribute4 = _this.props.attributes,
-			    layout = _this$props$attribute4.layout,
-			    items = _this$props$attribute4.items,
-			    itemthree = _this$props$attribute4.itemthree,
-			    itemfive = _this$props$attribute4.itemfive;
-
-			var responsive = [{ viewport: 1170, items: layout != 2 ? layout == 5 ? itemfive.md : items.md : itemthree.md }, { viewport: 980, items: layout != 2 ? layout == 5 ? itemfive.sm : items.sm : itemthree.sm }, { viewport: 580, items: layout != 2 ? layout == 5 ? itemfive.xs : items.xs : itemthree.xs }];
-
-			if (typeof responsive === 'undefined') return;
-			var activeView = null;
-
-			for (var i = 0; i < responsive.length; i++) {
-				if (window.innerWidth > responsive[i].viewport) {
-					activeView = responsive[i];
-					break;
-				}
-			}
-			if (activeView === null) {
-				activeView = responsive[responsive.length - 1];
-			}
-			return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md';
-		};
-
 		_this.onSelectImages = function (images) {
 			var setAttributes = _this.props.setAttributes;
 
 			var newImages = images.map(function (image) {
 				return {
 					sliderimage: image,
-					slidertitle: null,
+					slidertitle: image.caption,
 					subtitle: null,
 					message: null
 				};
@@ -6105,14 +6081,6 @@ var Edit = function (_Component) {
 						}, _defineProperty(_React$createElement, 'alignmentType', 'content'), _defineProperty(_React$createElement, 'disableJustify', true), _defineProperty(_React$createElement, 'responsive', true), _defineProperty(_React$createElement, 'device', device), _defineProperty(_React$createElement, 'onDeviceChange', function onDeviceChange(value) {
 							return _this2.setState({ device: value });
 						}), _React$createElement)),
-						React.createElement(Range, { label: __('Number of Carousels'),
-							min: 3,
-							max: 20,
-							value: carouselItems.length,
-							onChange: function onChange(val) {
-								return _this2.setCarouselLength(val);
-							}
-						}),
 						layout == 2 && React.createElement(Range, (_React$createElement2 = {
 							label: __('Number of Columns'),
 							min: 1, max: 20, responsive: true, device: device
@@ -6883,45 +6851,7 @@ registerBlockType('qubely/imagecarousel', {
 
 		carouselItems: {
 			type: 'array',
-			default: [
-				// {
-				// 	slidertitle: 'Wordcamp Dhaka',
-				// 	subtitle: '28 September 2019',
-				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'Welcome to Themeum',
-				// 	subtitle: 'Everything related to WordPress',
-				// 	message: '“WordCamp Dhaka is officially on the calendar!”',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'Accommodation to Dhaka',
-				// 	subtitle: 'Dhaka being a crowded city',
-				// 	message: '“Dhaka Regency Hotel & Resort Limited”',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'ICCB Center Dhaka',
-				// 	subtitle: 'Including speaker submissions',
-				// 	message: '““Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.””',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'Mark Your Calendar',
-				// 	subtitle: 'WordCamp Dhaka will be happening on 28th September',
-				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-				// 	sliderimage: {}
-				// },
-				// {
-				// 	slidertitle: 'Wordcamp Sponsor?',
-				// 	subtitle: 'WordCamp Dhaka will be happening',
-				// 	message: '“Innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit.”',
-				// 	sliderimage: {}
-				// },
-
-			]
+			default: []
 		},
 
 		/*---------------------------------------------------

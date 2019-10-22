@@ -69,13 +69,36 @@ class Edit extends Component {
 	}
 
 
-	renderSlider = (sliderimage, index) => {
+	renderSlider = (sliderimage, index, addNewItem) => {
+		const { setAttributes, attributes: { carouselItems } } = this.props
 		return (
 			<div className={`qubely-single-img qubely-slider-image-container ${(sliderimage != undefined && sliderimage.url != undefined) ? '' : ' qubely-empty-image'}`}>
 				<MediaUpload
-					onSelect={value => this.updateAtrributes('sliderimage', value, index)}
+					// onSelect={value => this.updateAtrributes('sliderimage', value, index)}
+					onSelect={value => {
+						if (addNewItem) {
+							setAttributes({
+								carouselItems: [
+									...carouselItems,
+									...value.map(item => {
+										return (
+											{
+												sliderimage: item,
+												message: null,
+												slidertitle: item.caption,
+												subtitle: null
+											}
+										)
+									})
+								]
+							})
+						} else {
+							this.updateAtrributes('sliderimage', value, index)
+						}
+
+					}}
 					allowedTypes={['image']}
-					multiple={false}
+					multiple={addNewItem}
 					value={sliderimage}
 					render={({ open }) => (
 						<Fragment>
@@ -112,11 +135,11 @@ class Edit extends Component {
 
 	renderSliderInfo = (item, index) => {
 		const { attributes: { layout, sliderContent, activeDescription } } = this.props
-		const { slidertitle, subtitle, sliderimage, message } = item
+		const { slidertitle, subtitle, sliderimage, message, addNewItem = false } = item
 
 		return (
 			<div className={`qubely-image-slider`}>
-				{this.renderSlider(sliderimage, index)}
+				{this.renderSlider(sliderimage, index, addNewItem)}
 				{(layout != 1) &&
 					<div>
 						{(sliderContent || layout === 6) &&
@@ -172,7 +195,7 @@ class Edit extends Component {
 	renderImages = () => {
 		const { attributes: { layout, carouselItems, items, contentVerticalAlign } } = this.props
 		return (
-			carouselItems.map((item, index) => {
+			[...carouselItems, { sliderimage: null, message: null, slidertitle: null, subtitle: null, addNewItem: true }].map((item, index) => {
 				return (
 					<div key={index} className={`qubely-carousel-item item-layout${layout} align-${contentVerticalAlign}`} >
 						{
@@ -207,54 +230,13 @@ class Edit extends Component {
 		)
 	}
 
-	setCarouselLength = (newLength) => {
-		const { setAttributes, attributes: { carouselItems, items } } = this.props
-		let newCarouselItems = JSON.parse(JSON.stringify(carouselItems))
-		let defaultItem = {
-			slidertitle: 'Wordcamp Dhaka 2019',
-			subtitle: '28 September 2019',
-			message: '“Instantly raise your website appearance with this stylish new plugin.”',
-			sliderimage: {}
-		}
-		if (newLength > carouselItems.length) {
-			newCarouselItems.push(defaultItem)
-		} else {
-			(newLength >= items.md && newLength >= items.sm && newLength >= items.sm) && newCarouselItems.pop()
-		}
-		setAttributes({ carouselItems: newCarouselItems })
-	}
-
-	parseResponsiveViewPort = () => {
-		const { attributes: { layout, items, itemthree, itemfive } } = this.props
-		let responsive = [
-			{ viewport: 1170, items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md },
-			{ viewport: 980, items: layout != 2 ? ((layout == 5) ? itemfive.sm : items.sm) : itemthree.sm },
-			{ viewport: 580, items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs }
-		]
-
-		if (typeof responsive === 'undefined')
-			return
-		let activeView = null
-
-		for (let i = 0; i < responsive.length; i++) {
-			if (window.innerWidth > responsive[i].viewport) {
-				activeView = responsive[i]
-				break;
-			}
-		}
-		if (activeView === null) {
-			activeView = responsive[responsive.length - 1]
-		}
-		return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md'
-	}
-
 	onSelectImages = (images) => {
 		const { setAttributes } = this.props
 		let newImages = images.map(image => {
 			return (
 				{
 					sliderimage: image,
-					slidertitle: null,
+					slidertitle: image.caption,
 					subtitle: null,
 					message: null,
 				}
@@ -433,13 +415,6 @@ class Edit extends Component {
 							onChange={val => setAttributes({ alignment: val })}
 							alignmentType="content" disableJustify responsive device={device}
 							onDeviceChange={value => this.setState({ device: value })}
-						/>
-
-						<Range label={__('Number of Carousels')}
-							min={3}
-							max={20}
-							value={carouselItems.length}
-							onChange={val => this.setCarouselLength(val)}
 						/>
 
 						{layout == 2 &&
