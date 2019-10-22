@@ -344,10 +344,11 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-team-3 .qubely-team-author {background-color: {{bgColor}};} {{QUBELY}} .layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
+					selector: '{{QUBELY}} .qubely-team-3 .qubely-team-author {background-color: {{bgColor}};} {{QUBELY}} .qubely-team-info-layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
 				}
 			]
-		},
+        },
+        
 		// Content padding.
 		bgPadding: {
 			type: 'object',
@@ -381,7 +382,7 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-team-author-info .layout-3 {margin-top: {{contentSpacing}};}' 
+					selector: '{{QUBELY}} .qubely-team-author-info .qubely-team-info-layout-3 {margin-top: {{contentSpacing}};}' 
 				}
 			] 
 		},
