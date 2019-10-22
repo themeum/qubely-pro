@@ -1235,24 +1235,28 @@ var Edit = function (_Component) {
                     React.createElement(
                         PanelBody,
                         { title: __('Input'), initialOpen: false },
-                        React.createElement(RadioAdvanced, {
-                            label: __('Input Size'),
-                            options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
-                            value: inputSize,
-                            onChange: function onChange(value) {
-                                return setAttributes({ inputSize: value });
-                            } }),
-                        inputSize == 'custom' && React.createElement(Padding, {
-                            max: 50,
-                            min: 0,
-                            responsive: true,
-                            value: inputCustomSize,
-                            label: __('Custom Size'),
-                            unit: ['px', 'em', '%'],
-                            onChange: function onChange(value) {
-                                return setAttributes({ inputCustomSize: value });
-                            }
-                        }),
+                        layout != 'material' && React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(RadioAdvanced, {
+                                label: __('Input Size'),
+                                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                                value: inputSize,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ inputSize: value });
+                                } }),
+                            inputSize == 'custom' && React.createElement(Padding, {
+                                max: 50,
+                                min: 0,
+                                responsive: true,
+                                value: inputCustomSize,
+                                label: __('Custom Size'),
+                                unit: ['px', 'em', '%'],
+                                onChange: function onChange(value) {
+                                    return setAttributes({ inputCustomSize: value });
+                                }
+                            })
+                        ),
                         React.createElement(Range, {
                             min: 100,
                             max: 500,
@@ -1889,24 +1893,28 @@ exports.default = function (clientId) {
         React.createElement(
             PanelBody,
             { title: __('Input'), initialOpen: false },
-            React.createElement(RadioAdvanced, {
-                label: __('Input Size'),
-                options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
-                value: inputSize,
-                onChange: function onChange(value) {
-                    return updateAttributes('inputSize', value);
-                } }),
-            inputSize == 'custom' && React.createElement(Padding, {
-                max: 50,
-                min: 0,
-                responsive: true,
-                value: inputCustomSize,
-                label: __('Custom Size'),
-                unit: ['px', 'em', '%'],
-                onChange: function onChange(value) {
-                    return updateAttributes('inputCustomSize', value);
-                }
-            }),
+            layout != 'material' && React.createElement(
+                Fragment,
+                null,
+                React.createElement(RadioAdvanced, {
+                    label: __('Input Size'),
+                    options: [{ label: 'S', value: 'small', title: 'Small' }, { label: 'M', value: 'medium', title: 'Medium' }, { label: 'L', value: 'large', title: 'Large' }, { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }],
+                    value: inputSize,
+                    onChange: function onChange(value) {
+                        return updateAttributes('inputSize', value);
+                    } }),
+                inputSize == 'custom' && React.createElement(Padding, {
+                    max: 50,
+                    min: 0,
+                    responsive: true,
+                    value: inputCustomSize,
+                    label: __('Custom Size'),
+                    unit: ['px', 'em', '%'],
+                    onChange: function onChange(value) {
+                        return updateAttributes('inputCustomSize', value);
+                    }
+                })
+            ),
             React.createElement(Range, {
                 min: 100,
                 max: 500,
@@ -3723,7 +3731,7 @@ registerBlockType('qubely/form', {
                 selector: '{{QUBELY}} input.qubely-form-field, {{QUBELY}} textarea.qubely-form-field'
             }, {
                 condition: [{ key: 'layout', relation: '==', value: 'material' }],
-                selector: '{{QUBELY}} input.qubely-form-field{border-radius:0;}, {{QUBELY}} textarea.qubely-form-field{border-radius:0;}'
+                selector: '{{QUBELY}} input.qubely-form-field{border-radius:0;} {{QUBELY}} textarea.qubely-form-field{border-radius:0;}'
             }]
         },
 
@@ -3773,15 +3781,15 @@ registerBlockType('qubely/form', {
                 openPadding: 1,
                 paddingType: 'custom',
                 global: { md: '5' },
-                custom: { md: '5 10 5 10' },
+                custom: { md: '8 15 8 15' },
                 unit: 'px'
             },
             style: [{
-                condition: [{ key: 'layout', relation: '==', value: 'classic' }, { key: 'inputSize', relation: '==', value: 'custom' }],
+                condition: [{ key: 'layout', relation: '!=', value: 'material' }, { key: 'inputSize', relation: '==', value: 'custom' }],
                 selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field '
             }, {
-                condition: [{ key: 'layout', relation: '==', value: 'material' }, { key: 'inputSize', relation: '==', value: 'custom' }],
-                selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field'
+                condition: [{ key: 'layout', relation: '==', value: 'material' }],
+                selector: '{{QUBELY}} .qubely-form .qubely-form-field, {{QUBELY}} .qubely-form textarea.qubely-form-field {padding: 10px 0;}'
             }]
         },
         // inputPaddingY: {

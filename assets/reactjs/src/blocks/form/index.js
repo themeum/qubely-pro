@@ -268,11 +268,11 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '==', value: 'material' },
                     ],
-                    selector: '{{QUBELY}} input.qubely-form-field{border-radius:0;}, {{QUBELY}} textarea.qubely-form-field{border-radius:0;}'
+                    selector: '{{QUBELY}} input.qubely-form-field{border-radius:0;} {{QUBELY}} textarea.qubely-form-field{border-radius:0;}'
                 }
             ]
         },
-        
+
         inputBorderMaterial: {
             type: 'object',
             default: {
@@ -337,23 +337,22 @@ registerBlockType('qubely/form', {
                 openPadding: 1,
                 paddingType: 'custom',
                 global: { md: '5' },
-                custom: { md: '5 10 5 10' },
+                custom: { md: '8 15 8 15' },
                 unit: 'px'
             },
             style: [
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
+                        { key: 'layout', relation: '!=', value: 'material' },
                         { key: 'inputSize', relation: '==', value: 'custom' }
                     ],
                     selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field '
                 },
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'material' },
-                        { key: 'inputSize', relation: '==', value: 'custom' }
+                        { key: 'layout', relation: '==', value: 'material' }
                     ],
-                    selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field'
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field, {{QUBELY}} .qubely-form textarea.qubely-form-field {padding: 10px 0;}'
                 }
             ]
         },

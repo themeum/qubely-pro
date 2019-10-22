@@ -337,28 +337,31 @@ class Edit extends Component {
 
 
                     <PanelBody title={__('Input')} initialOpen={false}>
+                    {(layout!='material') &&    
+                        <Fragment>    
+                            <RadioAdvanced
+                                label={__('Input Size')}
+                                options={[
+                                    { label: 'S', value: 'small', title: 'Small' },
+                                    { label: 'M', value: 'medium', title: 'Medium' },
+                                    { label: 'L', value: 'large', title: 'Large' },
+                                    { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                                ]}
+                                value={inputSize}
+                                onChange={(value) => setAttributes({ inputSize: value })} />
 
-                        <RadioAdvanced
-                            label={__('Input Size')}
-                            options={[
-                                { label: 'S', value: 'small', title: 'Small' },
-                                { label: 'M', value: 'medium', title: 'Medium' },
-                                { label: 'L', value: 'large', title: 'Large' },
-                                { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                            ]}
-                            value={inputSize}
-                            onChange={(value) => setAttributes({ inputSize: value })} />
-
-                        {inputSize == 'custom' &&
-                            <Padding
-                                max={50}
-                                min={0}
-                                responsive
-                                value={inputCustomSize}
-                                label={__('Custom Size')}
-                                unit={['px', 'em', '%']}
-                                onChange={value => setAttributes({ inputCustomSize: value })}
-                            />
+                            {inputSize == 'custom' &&
+                                <Padding
+                                    max={50}
+                                    min={0}
+                                    responsive
+                                    value={inputCustomSize}
+                                    label={__('Custom Size')}
+                                    unit={['px', 'em', '%']}
+                                    onChange={value => setAttributes({ inputCustomSize: value })}
+                                />
+                            }
+                            </Fragment>
                         }
                         <Range
                             min={100}
