@@ -198,7 +198,7 @@ class Edit extends Component {
 								</span>
 							</Tooltip>
 						}
-						<div className={`qubely-image-item layout-${layout}`}>
+						<div className={`qubely-image-item qubely-image-layout-${layout}`}>
 							{this.renderSliderInfo(item, index)}
 						</div>
 					</div>
