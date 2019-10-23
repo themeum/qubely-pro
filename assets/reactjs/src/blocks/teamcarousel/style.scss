@@ -543,6 +543,9 @@ $color_1: #fff;
         transition: .3s;
         border: 2px dashed #e5e5e5;
         border-radius: 4px;
+        z-index: 2;
+        position: relative;
+        padding: 20px;
 	}
 }
 .qubely-team-author-info {
