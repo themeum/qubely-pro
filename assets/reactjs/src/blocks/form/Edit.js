@@ -116,7 +116,7 @@ class Edit extends Component {
         setAttributes({ formItems })
 
         let innerBlocks = [...getBlocks(clientId)]
-        innerBlocks.push(createBlock('qubely/form-row', {}, [createBlock(`qubely/form-column`, {}, [createBlock(`qubely/formfield-${newFieldType}`)])]))
+        innerBlocks.push(createBlock('qubely/form-row', {}, [createBlock(`qubely/form-column`, {}, [createBlock(`qubely/formfield-${newFieldType}`, { fieldName: `${newFieldType}-${innerBlocks.length + 1}1` })])]))
         replaceInnerBlocks(clientId, innerBlocks, false);
 
     }
@@ -155,7 +155,7 @@ class Edit extends Component {
                             onClick={() => { this.setState({ groupField: true }) }}
                             className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`}
                         >
-                            {icons.from_fields.column} Add Column</div>
+                            {icons.from_fields.column} {__('Add Column')}</div>
                     </div>
                 }
 
@@ -169,7 +169,7 @@ class Edit extends Component {
                                             className="qubely-form-column-option"
                                             onClick={() => {
                                                 let tempWidth = `${100 / (index + 2)}`
-                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId, }))))
+                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId }))))
                                                 replaceInnerBlocks(clientId, innerBlocks, false)
                                                 this.setState({ groupField: false })
                                                 hideDropdown && hideDropdown()
@@ -215,23 +215,23 @@ class Edit extends Component {
                     [
                         [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'First Name', placeholder: 'Add first name', width: 'medium', required: true }]
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'First Name', placeholder: 'Add first name', width: 'medium', required: true, fieldName: 'text-11' }]
                             ]
                         ],
                         [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'Last Name', placeholder: 'Add last name', width: 'medium', required: true }]
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'Last Name', placeholder: 'Add last name', width: 'medium', required: true, fieldName: 'text-12' }]
                             ]
                         ],
                     ]
                 ],
-                ...formItems.map(({ type, label, options, placeholder, width, required }) => {
+                ...formItems.map(({ type, label, options, placeholder, width, required }, index) => {
                     return (
                         ['qubely/form-row', { parentClientId: clientId },
                             [
                                 [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'large' },
                                     [
-                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required }]
+                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required, fieldName: `${type}-${index + 2}1` }]
                                     ]
                                 ]
                             ]

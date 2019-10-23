@@ -70,6 +70,8 @@ class Edit extends Component {
         const {
             clientId,
             insertBlock,
+            rowIndex,
+            columnIndex,
             attributes: {
                 parentClientId
             }
@@ -95,7 +97,7 @@ class Edit extends Component {
                         <div className="qubely-form-field-type"
                             onClick={() => {
                                 hideDropdown && hideDropdown()
-                                insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId }), undefined, clientId)
+                                insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId, fieldName: `${type}-${rowIndex + 1}${columnIndex + 1}` }), undefined, clientId)
                             }}
                         >
                             {icons.from_fields[type]} {fieldName}
@@ -120,7 +122,7 @@ class Edit extends Component {
             }
         } = this.props
         const { device } = this.state;
-        // console.log('parseResponsiveViewPort : ',parseResponsiveViewPort())
+        
         if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
 
         return (
@@ -205,13 +207,17 @@ export default compose([
     withSelect((select, { clientId }) => {
         const {
             getBlock,
+            getBlockOrder,
+            getBlockIndex,
+            getBlockRootClientId
         } = select('core/block-editor');
 
         const block = getBlock(clientId);
-        const { getBlockOrder } = select('core/block-editor');
-
+        const rootClientId = getBlockRootClientId(clientId)
         return {
             hasInnerBlocks: !!(block && block.innerBlocks.length),
+            rowIndex: getBlockIndex(rootClientId, getBlockRootClientId(rootClientId)),
+            columnIndex: getBlockIndex(clientId, rootClientId),
             hasChildBlocks: getBlockOrder(clientId).length > 0,
         };
     }),

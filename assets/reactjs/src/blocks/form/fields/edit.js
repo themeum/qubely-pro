@@ -93,9 +93,9 @@ export default function Edit(props) {
         const _client = clientId.substr(0, 6)
 
         if (!uniqueId) {
-            setAttributes({ uniqueId: _client, fieldName: `${type}-${_client}` });
+            setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client, fieldName: `${type}-${_client}` })
+            setAttributes({ uniqueId: _client })
         }
 
         $(`.qubely-block-${uniqueId} .qubely-datepicker`).datepicker({
