@@ -99,7 +99,7 @@ class Save extends Component {
     return (
       <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
         <div className={`qubely-block-testimonial-carousel qubely-layout-${layout}`}>
-          <div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ''}`} data-options={options} id="qubelyCarousel1" >
+          <div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ''}`} data-options={options} >
             {this.renderTestimonial()}
           </div>
         </div>
