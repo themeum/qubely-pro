@@ -25,14 +25,6 @@ class Edit extends Component {
 		}
 	}
 
-	changePluginAttribute = (key, value) => {
-		this.setState({
-			key: key,
-			value: value
-		})
-		this.props.setAttributes({ [key]: value })
-	}
-
 	updateAtrributes = (name, value, index) => {
 		const { setAttributes, attributes: { carouselItems } } = this.props
 		let updatedAttributes = carouselItems.map((data, itemIndex) => {
@@ -45,30 +37,7 @@ class Edit extends Component {
 		setAttributes({ carouselItems: updatedAttributes })
 	}
 
-	renderName = (name, index) => {
-		return (
-			<RichText
-				key="editable"
-				keepPlaceholderOnFocus
-				placeholder={__('Add Name...')}
-				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-				onChange={value => this.updateAtrributes('author', value, index)}
-				value={name}
-			/>
-		)
-	}
-	renderDesignation = (designation, index) => {
-		return (
-			<RichText
-				key="editable"
-				placeholder={__('Add designation...')}
-				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-				keepPlaceholderOnFocus
-				onChange={value => this.updateAtrributes('designation', value, index)}
-				value={designation}
-			/>
-		)
-	}
+
 	/** 
 	 *  Author Avatar*/
 	renderAvatar = (avatar, index) => {
@@ -83,17 +52,14 @@ class Edit extends Component {
 						{(avatar && avatar.url) ?
 							<img onClick={open} className="qubely-team-avatar" src={avatar.url} />
 							:
-							// <div onClick={open} className="qubely-image-placeholder qubely-team-avatar">
-                            //     <i className="far fa-image"/>
-                            // </div>
-                            <div className="qubely-team-avatar">
-                                <div className="qubely-image-placeholder">
-                                    <a className="qubely-insert-image" href="#" onClick={open}>
-                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
-                                        <span>{__('Insert')}</span>
-                                    </a>
-                                </div>
-                            </div>
+							<div className="qubely-team-avatar">
+								<div className="qubely-image-placeholder">
+									<a className="qubely-insert-image" href="#" onClick={open}>
+										<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
+										<span>{__('Insert')}</span>
+									</a>
+								</div>
+							</div>
 						}
 					</div>
 				)}
@@ -136,18 +102,61 @@ class Edit extends Component {
 
 		return (
 			<div className={`qubely-team-author`}>
-				{showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */}
-                <div className="qubely-team-author-info">
-                    <div className={`qubely-team-info-layout-${layout}`}>
-                        { enablename &&
-                            <div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
-                        }
-                        {designation &&
-                        <div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-                        }
-                        {this.renderSocialShare()  /* Social share callback function */}
-                    </div>
-                </div>
+				{
+					showAvatar &&
+					<MediaUpload
+						onSelect={val => this.updateAtrributes('avatar', val, index)}
+						allowedTypes={['image']}
+						multiple={false}
+						value={avatar}
+						render={({ open }) => (
+							<div className="qubely-single-img qubely-backend">
+								{(avatar && avatar.url) ?
+									<img onClick={open} className="qubely-team-avatar" src={avatar.url} />
+									:
+									<div className="qubely-team-avatar">
+										<div className="qubely-image-placeholder">
+											<a className="qubely-insert-image" href="#" onClick={open}>
+												<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
+												<span>{__('Insert')}</span>
+											</a>
+										</div>
+									</div>
+								}
+							</div>
+						)}
+					/>}
+				
+					<div className="qubely-team-author-info">
+						<div className={`qubely-team-info-layout-${layout}`}>
+                            {enablename &&
+                                <div className="qubely-team-author-name" >
+                                    <RichText
+                                        key="editable"
+                                        keepPlaceholderOnFocus
+                                        placeholder={__('Add Name...')}
+                                        formattingControls={['bold', 'italic', 'link', 'strikethrough']}
+                                        onChange={value => this.updateAtrributes('author', value, index)}
+                                        value={author}
+                                    />
+                                </div>
+                            }
+                            {designation &&
+							<div className="qubely-team-author-designation" >
+								<RichText
+									key="editable"
+									placeholder={__('Add designation...')}
+									formattingControls={['bold', 'italic', 'link', 'strikethrough']}
+									keepPlaceholderOnFocus
+									onChange={value => this.updateAtrributes('designation', value, index)}
+									value={designation}
+								/>
+							</div>
+                            }
+							{this.renderSocialShare()  /* Social share callback function */}
+						</div>
+					</div>
+				
 			</div>
 		)
 	}

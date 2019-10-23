@@ -24,6 +24,7 @@ class Edit extends Component {
         super(props)
         this.state = {
             hideDropdown: null,
+            device: 'md'
         }
     }
     componentDidMount() {
@@ -35,9 +36,12 @@ class Edit extends Component {
             setAttributes({ uniqueId: _client });
         }
         const currentField = $(`#block-${clientId}`)
+
+        let device = window.innerWidth <= 1199 ? window.innerWidth <= 991 ? 'xs' : 'sm' : 'md'
+
         currentField.css(
             {
-                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[parseResponsiveViewPort()] + '%',
+                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[device] + '%',
             }
         )
     }
@@ -52,9 +56,10 @@ class Edit extends Component {
         } = this.props
 
         const currentField = $(`#block-${clientId}`)
+        let device = window.innerWidth <= 1199 ? window.innerWidth <= 991 ? 'xs' : 'sm' : 'md'
         currentField.css(
             {
-                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[parseResponsiveViewPort()] + '%',
+                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[device] + '%',
             }
         )
 
@@ -65,6 +70,8 @@ class Edit extends Component {
         const {
             clientId,
             insertBlock,
+            rowIndex,
+            columnIndex,
             attributes: {
                 parentClientId
             }
@@ -90,7 +97,7 @@ class Edit extends Component {
                         <div className="qubely-form-field-type"
                             onClick={() => {
                                 hideDropdown && hideDropdown()
-                                insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId }), undefined, clientId)
+                                insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId, fieldName: `${type}-${rowIndex + 1}${columnIndex + 1}` }), undefined, clientId)
                             }}
                         >
                             {icons.from_fields[type]} {fieldName}
@@ -114,7 +121,8 @@ class Edit extends Component {
                 width,
             }
         } = this.props
-
+        const { device } = this.state;
+        
         if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
 
         return (
@@ -140,8 +148,10 @@ class Edit extends Component {
                                 max={100}
                                 responsive
                                 value={width}
+                                device={device}
                                 label={__('Width')}
                                 onChange={value => setAttributes({ width: value })}
+                                onDeviceChange={value => this.setState({ device: value })}
                             />
                         }
 
@@ -197,13 +207,17 @@ export default compose([
     withSelect((select, { clientId }) => {
         const {
             getBlock,
+            getBlockOrder,
+            getBlockIndex,
+            getBlockRootClientId
         } = select('core/block-editor');
 
         const block = getBlock(clientId);
-        const { getBlockOrder } = select('core/block-editor');
-
+        const rootClientId = getBlockRootClientId(clientId)
         return {
             hasInnerBlocks: !!(block && block.innerBlocks.length),
+            rowIndex: getBlockIndex(rootClientId, getBlockRootClientId(rootClientId)),
+            columnIndex: getBlockIndex(clientId, rootClientId),
             hasChildBlocks: getBlockOrder(clientId).length > 0,
         };
     }),

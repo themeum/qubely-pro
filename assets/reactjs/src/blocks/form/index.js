@@ -12,7 +12,7 @@ const defaultFormItems = [
         label: 'Email',
         name: 'email',
         placeholder: 'Email',
-        width: 90, required: true,
+        required: true,
         hideLabel: false
     },
     {
@@ -20,7 +20,6 @@ const defaultFormItems = [
         label: 'Message',
         name: 'message',
         placeholder: 'Message',
-        width: 90,
         required: true,
         hideLabel: false
     }
@@ -59,15 +58,24 @@ registerBlockType('qubely/form', {
         enableButton: { type: 'boolean', default: true },
         buttonTag: { type: 'string', default: 'button' },
         buttonText: { type: 'string', default: 'Submit' },
+        buttonColor: {
+            type: 'string', default: '#fff',
+            style: [
+                {
+                    condition: [{ key: 'buttonFillType', relation: '==', value: 'fill' }],
+                    selector: '{{QUBELY}} .qubely-block-btn-anchor { color:{{buttonColor}}; }'
+                }
+            ]
+        },
         formItems: { type: 'array', default: defaultFormItems },
         showPlaceholder: { type: 'boolean', default: true },
 
         spacing: {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [
-                // {
-                //     selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
-                // }
+                {
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
+                }
             ]
         },
 
@@ -122,7 +130,15 @@ registerBlockType('qubely/form', {
             ]
         },
 
-        inputColor: { type: 'string', default: "#495057", style: [{ selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}' }] },
+        inputColor: {
+            type: 'string',
+            default: "#495057",
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}'
+                }
+            ]
+        },
         inputColorHover: {
             type: 'string',
             default: "#495057",
@@ -192,10 +208,8 @@ registerBlockType('qubely/form', {
             type: 'string', default: '',
             style: [
                 {
-                    condition: [
-                        { key: 'layout', relation: '==', value: 'classic' },
-                    ],
-                    selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {background-color: {{inputBgHover}};}'
+                    selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover {background-color: {{inputBgHover}};}'
+
                 }
             ]
         },
@@ -204,9 +218,6 @@ registerBlockType('qubely/form', {
             type: 'string', default: "#fff",
             style: [
                 {
-                    // condition: [
-                    //     { key: 'layout', relation: '==', value: 'classic' },
-                    // ],
                     selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {background-color: {{inputBgFocus}};}'
                 }
             ]
@@ -284,13 +295,13 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {border-color: {{inputBorderColorHover}};}'
+                    selector: '{{QUBELY}} .qubely-block-form.qubely-layout-classic .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover {border-color: {{inputBorderColorHover}};}'
                 },
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'material' },
+                        { key: 'layout', relation: '!=', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} input.qubely-form-field:hover,{{QUBELY}} textarea.qubely-form-field:hover {border-bottom-color: {{inputBorderColorHover}};}'
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover {border-bottom-color: {{inputBorderColorHover}};}'
                 }
             ]
         },
@@ -306,7 +317,7 @@ registerBlockType('qubely/form', {
                 },
                 {
                     condition: [
-                        { key: 'layout', relation: '==', value: 'material' },
+                        { key: 'layout', relation: '!=', value: 'classic' },
                     ],
                     selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-bottom-color: {{inputBorderColorFocus}};}'
                 }
@@ -375,7 +386,7 @@ registerBlockType('qubely/form', {
             type: 'object', default: { md: 200, unit: 'px' },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-form .qubely-form-group textarea.qubely-form-control {height: {{textareaHeight}};}'
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper textarea.qubely-form-textarea {height: {{textareaHeight}};}'
                 }
             ]
         },

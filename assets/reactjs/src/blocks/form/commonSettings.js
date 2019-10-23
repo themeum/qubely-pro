@@ -126,19 +126,19 @@ export default function (clientId) {
     }
 
 
-    const updateFormFields = (field) => {
-        field.innerBlocks.forEach((column, index) => {
-            updateBlockAttributes(column.innerBlocks[0].clientId, { showLabel: !showLabel, labelAlignment: labelAlignment })
-        })
-    }
+    // const updateFormFields = (field) => {
+    //     field.innerBlocks.forEach((column, index) => {
+    //         updateBlockAttributes(column.innerBlocks[0].clientId, { showLabel: !showLabel, labelAlignment: labelAlignment })
+    //     })
+    // }
 
-    let fieldIndex = 0
-    let childBlocks = getBlocks(clientId)
+    // let fieldIndex = 0
+    // let childBlocks = getBlocks(clientId)
 
-    while (fieldIndex < childBlocks.length) {
-        updateFormFields(childBlocks[fieldIndex])
-        fieldIndex++
-    }
+    // while (fieldIndex < childBlocks.length) {
+    //     updateFormFields(childBlocks[fieldIndex])
+    //     fieldIndex++
+    // }
 
 
 
@@ -159,12 +159,12 @@ export default function (clientId) {
 
             <PanelBody title={__('Label')} initialOpen={false}>
 
-                <Toggle
+                {/* <Toggle
                     label={__('Show label')}
                     value={showLabel}
-                    onChange={val => updateAttributes('showLabel', val)} />
+                    onChange={val => updateAttributes('showLabel', val)} /> */}
 
-                <ButtonGroup
+                {/* <ButtonGroup
                     label={__('Label Alignment')}
                     options={
                         [
@@ -174,7 +174,7 @@ export default function (clientId) {
                         ]}
                     value={labelAlignment}
                     onChange={value => updateAttributes('labelAlignment', value)}
-                />
+                /> */}
                 <Typography
                     value={labelTypography}
                     onChange={val => updateAttributes('labelTypography', val)}
@@ -227,24 +227,14 @@ export default function (clientId) {
                 />
 
                 <Range
-                    min={0}
-                    max={60}
+                    min={5}
+                    max={300}
                     responsive
                     value={spacing}
                     label={__('Spacing')}
                     unit={['px', 'em', '%']}
                     onChange={(value) => updateAttributes('spacing', value)}
                 />
-                <Range
-                    min={0}
-                    max={60}
-                    responsive
-                    value={gutter}
-                    label={__('Gutter')}
-                    unit={['px', 'em', '%']}
-                    onChange={(value) => updateAttributes('gutter', value)}
-                />
-
                 <Border
                     min={0}
                     max={10}
@@ -252,7 +242,7 @@ export default function (clientId) {
                     value={layout === 'classic' ? inputBorder : inputBorderMaterial}
                     label={__('Border')}
                     unit={['px', 'em', '%']}
-                    onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })} />
+                    onChange={value => layout === 'classic' ? updateAttributes('inputBorder', value) : updateAttributes('inputBorderMaterial', value)} />
 
                 {(layout != 'material') &&
                     <BorderRadius

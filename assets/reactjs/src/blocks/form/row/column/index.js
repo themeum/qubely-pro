@@ -54,13 +54,13 @@ registerBlockType('qubely/form-column', {
                     condition: [
                         { key: 'fieldSize', relation: '==', value: 'small' }
                     ],
-                    selector: '{{QUBELY}}.qubely-form-field-front.qubely-small {flex:25%;max-width:25%;}'
+                    selector: '{{QUBELY}}.qubely-form-field-front.qubely-small {flex:30%;max-width:30%;}'
                 },
                 {
                     condition: [
                         { key: 'fieldSize', relation: '==', value: 'medium' }
                     ],
-                    selector: '{{QUBELY}}.qubely-form-field-front.qubely-medium {flex:45%;max-width:45%;}'
+                    selector: '{{QUBELY}}.qubely-form-field-front.qubely-medium {flex:50%;max-width:50%;}'
                 },
                 {
                     condition: [
@@ -73,10 +73,11 @@ registerBlockType('qubely/form-column', {
     },
     getEditWrapperProps(attributes) {
         const { fieldSize, width } = attributes;
+        let device = window.innerWidth <= 1199 ? window.innerWidth <= 991 ? 'xs' : 'sm' : 'md'
         if (Number.isFinite(width)) {
             return {
                 style: {
-                    width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `90%` : width[parseResponsiveViewPort] + '%',
+                    width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[device] + '%',
                 }
             }
         }
