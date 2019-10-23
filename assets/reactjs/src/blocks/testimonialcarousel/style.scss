@@ -465,8 +465,12 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 }
 .qubely-block-testimonial-carousel {
 	.qubely-testimonial-avatar.qubely-image-placeholder {
+        svg {
+            margin-top: 3px;
+        }
         text-align: center;
 		i {
+            font-size: 30px;
 			transform: translate(0px, 45%);
 			display: inline-block;
 		}

@@ -137,15 +137,17 @@ class Edit extends Component {
 		return (
 			<div className={`qubely-team-author`}>
 				{showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */}
-				{enablename &&
-					<div className="qubely-team-author-info">
-						<div className={`qubely-team-info-layout-${layout}`}>
-							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
-							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
-							{this.renderSocialShare()  /* Social share callback function */}
-						</div>
-					</div>
-				}
+                <div className="qubely-team-author-info">
+                    <div className={`qubely-team-info-layout-${layout}`}>
+                        { enablename &&
+                            <div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
+                        }
+                        {designation &&
+                        <div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
+                        }
+                        {this.renderSocialShare()  /* Social share callback function */}
+                    </div>
+                </div>
 			</div>
 		)
 	}
@@ -397,7 +399,7 @@ class Edit extends Component {
 							<Range
 								label={__('Horizontal Position')}
 								value={horizontalScroll} onChange={(value) => setAttributes({ horizontalScroll: value })}
-								min={-100} max={100}
+								min={-200} max={200}
 								responsive unit={['px', 'em', '%']}
 								device={device}
 								onDeviceChange={value => this.setState({ device: value })}
@@ -405,7 +407,7 @@ class Edit extends Component {
 							<Range
 								label={__('Vertical Position')}
 								value={arrowPosition} onChange={(value) => setAttributes({ arrowPosition: value })}
-								min={1} max={100}
+								min={1} max={200}
 								responsive unit={['px', 'em', '%']}
 								device={device}
 								onDeviceChange={value => this.setState({ device: value })}
@@ -489,7 +491,7 @@ class Edit extends Component {
 							<Range
 								label={__('Vertical Position')}
 								value={dotsPosition} onChange={(value) => setAttributes({ dotsPosition: value })}
-								min={-100} max={100}
+								min={-200} max={200}
 								responsive unit={['px', 'em', '%']}
 								device={device}
 								onDeviceChange={value => this.setState({ device: value })}

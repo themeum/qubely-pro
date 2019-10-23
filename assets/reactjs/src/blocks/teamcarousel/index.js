@@ -113,7 +113,7 @@ registerBlockType('qubely/teamcarousel', {
 		arrowStyle: { type: 'string', default: 'arrowright2' },
 		horizontalScroll: {
 			type: 'object',
-			default: { md: 0, unit: '%' },
+			default: { md: -10, sm: '0', xs:'0', unit: '%' },
 			style: [
 				{ 
 					selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} }' 
@@ -122,14 +122,14 @@ registerBlockType('qubely/teamcarousel', {
 		},
 		arrowPosition: {
 			type: 'object',
-			default: { md: 50, unit: '%' },
+			default: { md: 60, unit: '%' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control { top: {{arrowPosition}}; } ' }
 			]
 		}, 
 		dotsPosition: {
 			type: 'object',
-			default: { md: -40, unit: 'px' },
+			default: { md: -70, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots { bottom: {{dotsPosition}}; } ' }
 			]
@@ -247,7 +247,7 @@ registerBlockType('qubely/teamcarousel', {
 			type: 'string',
 			default: '',
 			style: [
-				{ selector: '{{QUBELY}} .qubely-team-avatar { width: {{avatarSize}}; height: {{avatarSize}}; font-size: {{avatarSize}}; }' }
+				{ selector: '{{QUBELY}} .qubely-team-avatar { width: {{avatarSize}};}' }
 			]
 		},
 		avatarWidth: { 
@@ -257,7 +257,7 @@ registerBlockType('qubely/teamcarousel', {
 				{ condition: [
 					{ key: 'avatarSize', relation: '==', value: 'custom' }
 				], 
-				selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}}; font-size: {{avatarWidth}};}' }
+				selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}};}' }
 			] 
 		},
 		avatarHeight: { 
@@ -344,7 +344,7 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-team-3 .qubely-team-author {background-color: {{bgColor}};} {{QUBELY}} .qubely-team-info-layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
+					selector: '{{QUBELY}} .qubely-team-3 {background-color: {{bgColor}};} {{QUBELY}} .qubely-team-info-layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
 				}
 			]
         },

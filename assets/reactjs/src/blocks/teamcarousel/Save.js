@@ -48,15 +48,17 @@ class Save extends Component {
     return (
       <div className={`qubely-team-author`}>
         { showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */ }
-        {enablename && 
-          <div className="qubely-team-author-info">
-            <div className={`qubely-team-info-layout-${layout}`}>
-              <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
-              <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
-              { this.renderSocialShare()  /* Social share callback function */}
-            </div> 
-          </div>
-        }
+            <div className="qubely-team-author-info">
+                <div className={`qubely-team-info-layout-${layout}`}>
+                    { enablename &&
+                    <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
+                    }
+                    {designation &&
+                    <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
+                    }
+                    { this.renderSocialShare()  /* Social share callback function */}
+                </div> 
+            </div>
       </div>
     )
   }

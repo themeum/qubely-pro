@@ -531,23 +531,38 @@ $color_1: #fff;
 	overflow: hidden;
 }
 .qubely-block-team-carousel {
-	.qubely-team-3 {
-		.qubely-image-placeholder {
-			height: 100%;
-		}
-	}
-	.qubely-image-placeholder {
+    .qubely-image-placeholder {
 		width: 100%;
 		height: 230px;
 		transform: scale(1);
         transition: .3s;
         border: 2px dashed #e5e5e5;
         border-radius: 4px;
+        padding: 20px;
+	}
+	.qubely-team-3 {
+		.qubely-image-placeholder {
+            height: 100%;
+            padding: 0;
+		}
+	}
+}
+
+.qubely-backend {
+    .qubely-image-placeholder {
         z-index: 2;
         position: relative;
         padding: 20px;
-	}
+    }
 }
+.qubely-team-3 {
+    .qubely-backend {
+        .qubely-image-placeholder {
+            padding: 20px;
+        }
+    }
+}
+
 .qubely-team-author-info {
 	width: 70%;
 	display: inline-block;

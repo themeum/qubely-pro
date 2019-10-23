@@ -283,7 +283,7 @@ registerBlockType('qubely/testimonialcarousel', {
 					condition: [
 						{ key: 'avatarSize', relation: '!=', value: 'custom' }
 					],
-					selector: '{{QUBELY}} .qubely-testimonial-avatar { display: inline-block; width: {{avatarSize}}; height: {{avatarSize}}; font-size: {{avatarSize}}; }'
+					selector: '{{QUBELY}} .qubely-testimonial-avatar { display: inline-block; width: {{avatarSize}}; height: {{avatarSize}}; }'
 				}
 			]
 		},
