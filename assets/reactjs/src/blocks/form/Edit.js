@@ -66,7 +66,7 @@ class Edit extends Component {
 
         let changedAttribute = showLabel !== prevProps.attributes.showLabel ? 'showLabel' : labelAlignment !== prevProps.attributes.labelAlignment ? 'labelAlignment' : false
 
-        if (changedAttribute!==false) {
+        if (changedAttribute !== false) {
             block.innerBlocks.forEach(column => {
                 updateBlock(column.innerBlocks[0].clientId, {
                     attributes: {
@@ -213,14 +213,14 @@ class Edit extends Component {
             [
                 ['qubely/form-row', { parentClientId: clientId },
                     [
-                        [`qubely/form-column`, { parentClientId: clientId },
+                        [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'First Name', placeholder: 'Add first name', width: 'large', required: true }]
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'First Name', placeholder: 'Add first name', width: 'medium', required: true }]
                             ]
                         ],
-                        [`qubely/form-column`, { parentClientId: clientId },
+                        [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'Last Name', placeholder: 'Add last name', width: 'large', required: true }]
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'Last Name', placeholder: 'Add last name', width: 'medium', required: true }]
                             ]
                         ],
                     ]
@@ -229,7 +229,7 @@ class Edit extends Component {
                     return (
                         ['qubely/form-row', { parentClientId: clientId },
                             [
-                                [`qubely/form-column`, { parentClientId: clientId },
+                                [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'large' },
                                     [
                                         [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required }]
                                     ]
@@ -340,7 +340,7 @@ class Edit extends Component {
 
                     <PanelBody title={__('Label')} initialOpen={false}>
 
-                        <Toggle
+                        {/* <Toggle
                             label={__('Show label')}
                             value={showLabel}
                             onChange={val => setAttributes({ showLabel: val })} />
@@ -355,7 +355,7 @@ class Edit extends Component {
                                 ]}
                             value={labelAlignment}
                             onChange={value => setAttributes({ labelAlignment: value })}
-                        />
+                        /> */}
                         <Typography
                             value={labelTypography}
                             onChange={val => setAttributes({ labelTypography: val })}
@@ -406,22 +406,13 @@ class Edit extends Component {
                         />
 
                         <Range
-                            min={0}
-                            max={60}
+                            min={10}
+                            max={300}
                             responsive
                             value={spacing}
                             label={__('Spacing')}
                             unit={['px', 'em', '%']}
                             onChange={(value) => setAttributes({ spacing: value })}
-                        />
-                        <Range
-                            min={0}
-                            max={60}
-                            responsive
-                            value={gutter}
-                            label={__('Gutter')}
-                            unit={['px', 'em', '%']}
-                            onChange={(value) => setAttributes({ gutter: value })}
                         />
 
                         <Border

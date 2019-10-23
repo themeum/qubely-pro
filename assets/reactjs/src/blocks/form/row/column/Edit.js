@@ -24,6 +24,7 @@ class Edit extends Component {
         super(props)
         this.state = {
             hideDropdown: null,
+            device: 'md'
         }
     }
     componentDidMount() {
@@ -35,9 +36,12 @@ class Edit extends Component {
             setAttributes({ uniqueId: _client });
         }
         const currentField = $(`#block-${clientId}`)
+
+        let device = window.innerWidth <= 1199 ? window.innerWidth <= 991 ? 'xs' : 'sm' : 'md'
+
         currentField.css(
             {
-                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[parseResponsiveViewPort()] + '%',
+                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[device] + '%',
             }
         )
     }
@@ -52,9 +56,10 @@ class Edit extends Component {
         } = this.props
 
         const currentField = $(`#block-${clientId}`)
+        let device = window.innerWidth <= 1199 ? window.innerWidth <= 991 ? 'xs' : 'sm' : 'md'
         currentField.css(
             {
-                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[parseResponsiveViewPort()] + '%',
+                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[device] + '%',
             }
         )
 
@@ -114,7 +119,8 @@ class Edit extends Component {
                 width,
             }
         } = this.props
-
+        const { device } = this.state;
+        // console.log('parseResponsiveViewPort : ',parseResponsiveViewPort())
         if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
 
         return (
@@ -140,8 +146,10 @@ class Edit extends Component {
                                 max={100}
                                 responsive
                                 value={width}
+                                device={device}
                                 label={__('Width')}
                                 onChange={value => setAttributes({ width: value })}
+                                onDeviceChange={value => this.setState({ device: value })}
                             />
                         }
 

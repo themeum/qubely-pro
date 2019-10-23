@@ -327,7 +327,7 @@ export default function Edit(props) {
 
                 {CommonSettings(rootClientId)}
 
-                <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} opened={true}>
+                <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} initialOpen={true}>
 
 
                     {renderCommonSettings()}

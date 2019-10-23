@@ -45,7 +45,6 @@ class Edit extends Component {
                 <InspectorControls key="inspector">
 
                     <PanelBody title={__('')} opened={true}>
-
                         <Range
                             min={0}
                             max={100}
@@ -57,19 +56,6 @@ class Edit extends Component {
                             onDeviceChange={value => this.setState({ device: value })}
                             onChange={value => setAttributes({ gutter: value })}
                         />
-
-                        <Range
-                            min={5}
-                            max={100}
-                            responsive
-                            value={spacer}
-                            label={__('Spacer')}
-                            unit={['px', 'em', '%']}
-                            device={device}
-                            onDeviceChange={value => this.setState({ device: value })}
-                            onChange={value => setAttributes({ spacer: value })}
-                        />
-
                     </PanelBody>
                 </InspectorControls>
                 <div className={`qubely-block-${uniqueId}`}>

@@ -1,11 +1,6 @@
 const { Component } = wp.element
 const { InnerBlocks } = wp.editor
-const {
-    HelperFunction: {
-        parseResponsiveViewPort
-    },
 
-} = wp.qubelyComponents
 class Save extends Component {
 
     render() {
