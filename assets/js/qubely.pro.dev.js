@@ -12765,7 +12765,7 @@ var Save = function (_Component) {
           { className: "qubely-block-team-carousel qubely-layout-style" },
           React.createElement(
             "div",
-            { className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? ' is-faded' : ''), "data-options": options, id: "qubelyCarousel1" },
+            { className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? ' is-faded' : ''), "data-options": options },
             this.renderTeam()
           )
         )
@@ -13346,14 +13346,6 @@ var Edit = function (_Component) {
 
 		var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
 
-		_this.changePluginAttribute = function (key, value) {
-			_this.setState({
-				key: key,
-				value: value
-			});
-			_this.props.setAttributes(_defineProperty({}, key, value));
-		};
-
 		_this.updateAtrributes = function (name, value, index) {
 			var _this$props = _this.props,
 			    setAttributes = _this$props.setAttributes,
@@ -13367,32 +13359,6 @@ var Edit = function (_Component) {
 				}
 			});
 			setAttributes({ carouselItems: updatedAttributes });
-		};
-
-		_this.renderName = function (name, index) {
-			return React.createElement(RichText, {
-				key: 'editable',
-				keepPlaceholderOnFocus: true,
-				placeholder: __('Add Name...'),
-				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
-				onChange: function onChange(value) {
-					return _this.updateAtrributes('author', value, index);
-				},
-				value: name
-			});
-		};
-
-		_this.renderDesignation = function (designation, index) {
-			return React.createElement(RichText, {
-				key: 'editable',
-				placeholder: __('Add designation...'),
-				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
-				keepPlaceholderOnFocus: true,
-				onChange: function onChange(value) {
-					return _this.updateAtrributes('designation', value, index);
-				},
-				value: designation
-			});
 		};
 
 		_this.renderAvatar = function (avatar, index) {
@@ -13420,19 +13386,6 @@ var Edit = function (_Component) {
 			});
 		};
 
-		_this.renderMessage = function (message, index) {
-			return React.createElement(RichText, {
-				key: 'editable',
-				placeholder: __('Add Message...'),
-				formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
-				keepPlaceholderOnFocus: true,
-				onChange: function onChange(value) {
-					return _this.updateAtrributes('message', value, index);
-				},
-				value: message
-			});
-		};
-
 		_this.renderAuthorInfo = function (item, index) {
 			var _this$props$attribute = _this.props.attributes,
 			    layout = _this$props$attribute.layout,
@@ -13456,12 +13409,30 @@ var Edit = function (_Component) {
 						React.createElement(
 							'div',
 							{ className: 'qubely-testimonial-author-name' },
-							_this.renderName(author, index)
+							React.createElement(RichText, {
+								key: 'editable',
+								keepPlaceholderOnFocus: true,
+								placeholder: __('Add Name...'),
+								formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
+								onChange: function onChange(value) {
+									return _this.updateAtrributes('author', value, index);
+								},
+								value: author
+							})
 						),
 						React.createElement(
 							'div',
 							{ className: 'qubely-testimonial-author-designation' },
-							_this.renderDesignation(designation, index)
+							React.createElement(RichText, {
+								key: 'editable',
+								placeholder: __('Add designation...'),
+								formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
+								keepPlaceholderOnFocus: true,
+								onChange: function onChange(value) {
+									return _this.updateAtrributes('designation', value, index);
+								},
+								value: designation
+							})
 						)
 					),
 					layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom') && _this.renderAvatar(avatar, index)
@@ -13522,7 +13493,16 @@ var Edit = function (_Component) {
 							React.createElement(
 								'div',
 								{ className: 'qubely-testimonial-content' },
-								_this.renderMessage(message, index)
+								React.createElement(RichText, {
+									key: 'editable',
+									placeholder: __('Add Message...'),
+									formattingControls: ['bold', 'italic', 'link', 'strikethrough'],
+									keepPlaceholderOnFocus: true,
+									onChange: function onChange(value) {
+										return _this.updateAtrributes('message', value, index);
+									},
+									value: message
+								})
 							),
 							showRatings && ratings > 0 && layout == 1 && React.createElement('div', { className: 'qubely-testimonial-ratings A', 'data-qubelyrating': ratings })
 						),
@@ -13675,6 +13655,7 @@ var Edit = function (_Component) {
 			    globalCss = _props2$attributes.globalCss,
 			    animation = _props2$attributes.animation;
 			var device = this.state.device;
+
 
 			var carouselSettings = {
 				autoplay: autoPlay,
@@ -14590,7 +14571,7 @@ var Save = function (_Component) {
           { className: "qubely-block-testimonial-carousel qubely-layout-" + layout },
           React.createElement(
             "div",
-            { className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? ' is-faded' : ''), "data-options": options, id: "qubelyCarousel1" },
+            { className: "qubely-carousel qubely-carousel-wrapper" + (isCentered && activeFade ? ' is-faded' : ''), "data-options": options },
             this.renderTestimonial()
           )
         )

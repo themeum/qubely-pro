@@ -26,14 +26,6 @@ class Edit extends Component {
 		}
 	}
 
-	changePluginAttribute = (key, value) => {
-		this.setState({
-			key: key,
-			value: value
-		})
-		this.props.setAttributes({ [key]: value })
-	}
-
 	updateAtrributes = (name, value, index) => {
 		const { setAttributes, attributes: { carouselItems } } = this.props
 		let updatedAttributes = carouselItems.map((data, itemIndex) => {
@@ -46,30 +38,6 @@ class Edit extends Component {
 		setAttributes({ carouselItems: updatedAttributes })
 	}
 
-	renderName = (name, index) => {
-		return (
-			<RichText
-				key="editable"
-				keepPlaceholderOnFocus
-				placeholder={__('Add Name...')}
-				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-				onChange={value => this.updateAtrributes('author', value, index)}
-				value={name}
-			/>
-		)
-	}
-	renderDesignation = (designation, index) => {
-		return (
-			<RichText
-				key="editable"
-				placeholder={__('Add designation...')}
-				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-				keepPlaceholderOnFocus
-				onChange={value => this.updateAtrributes('designation', value, index)}
-				value={designation}
-			/>
-		)
-	}
 	renderAvatar = (avatar, index) => {
 		const { attributes: { avatarAlt } } = this.props
 		return (
@@ -91,18 +59,7 @@ class Edit extends Component {
 
 		)
 	}
-	renderMessage = (message, index) => {
-		return (
-			<RichText
-				key="editable"
-				placeholder={__('Add Message...')}
-				formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-				keepPlaceholderOnFocus
-				onChange={value => this.updateAtrributes('message', value, index)}
-				value={message}
-			/>
-		)
-	}
+
 	renderAuthorInfo = (item, index) => {
 		const { attributes: { layout, showAvatar, avatarLayout } } = this.props
 		const { author, designation, avatar } = item
@@ -113,8 +70,26 @@ class Edit extends Component {
 					{(layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top')) && this.renderAvatar(avatar, index)}
 
 					<div className="qubely-testimonial-author-info">
-						<div className="qubely-testimonial-author-name" >{this.renderName(author, index)}</div>
-						<div className="qubely-testimonial-author-designation" >{this.renderDesignation(designation, index)}</div>
+						<div className="qubely-testimonial-author-name" >
+							<RichText
+								key="editable"
+								keepPlaceholderOnFocus
+								placeholder={__('Add Name...')}
+								formattingControls={['bold', 'italic', 'link', 'strikethrough']}
+								onChange={value => this.updateAtrributes('author', value, index)}
+								value={author}
+							/>
+						</div>
+						<div className="qubely-testimonial-author-designation" >
+							<RichText
+								key="editable"
+								placeholder={__('Add designation...')}
+								formattingControls={['bold', 'italic', 'link', 'strikethrough']}
+								keepPlaceholderOnFocus
+								onChange={value => this.updateAtrributes('designation', value, index)}
+								value={designation}
+							/>
+						</div>
 					</div>
 
 					{(layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom')) && this.renderAvatar(avatar, index)}
@@ -163,7 +138,14 @@ class Edit extends Component {
 								}
 
 								<div className="qubely-testimonial-content" >
-									{this.renderMessage(message, index)}
+									<RichText
+										key="editable"
+										placeholder={__('Add Message...')}
+										formattingControls={['bold', 'italic', 'link', 'strikethrough']}
+										keepPlaceholderOnFocus
+										onChange={value => this.updateAtrributes('message', value, index)}
+										value={message}
+									/>
 								</div>
 
 								{(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings A" data-qubelyrating={ratings}></div>}
@@ -201,21 +183,96 @@ class Edit extends Component {
 	}
 
 	render() {
-		const { setAttributes, attributes: {
-			uniqueId, items, autoPlay, interval, speed, nav, carouselItems, dragable,
-			layout, messageSpacingTop, messageSpacingBottom, nameColor, alignment, designationColor,
-			showAvatar, avatar, avatarAlt, avatarBorderRadius, avatarSize, avatarWidth, avatarHeight,
-			avatarBorder, avatarSpacing, avatarLayout, quoteIconColor, quoteIconSize, quoteIconSpacing,
-			nameTypo, nameSpacing, messageTypo, designationTypo, starsSize, ratingsColor, quoteIcon, ratings, showRatings,
-			ratingsSpacing, bgPadding, textColor, bgColor, bgBorderRadius, border, boxShadow,
-			boxShadowHover, sliderNumber, itemPerSlides, sliderItemsSpace, infiniteLoop, isCentered, activeFade,
-			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth,
-			arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
-			dots, dotsPosition, dotIndicator, dotswidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll, sliderItemMargin,
-			globalZindex, enablePosition, selectPosition, positionXaxis, positionYaxis, hideTablet, hideMobile, globalCss, animation
-		} } = this.props
+		const {
+			setAttributes,
+			attributes: {
+				uniqueId,
+				items,
+				autoPlay,
+				interval,
+				speed,
+				nav,
+				carouselItems,
+				dragable,
+				layout,
+				messageSpacingTop,
+				messageSpacingBottom,
+				nameColor,
+				alignment,
+				designationColor,
+				showAvatar,
+				avatar,
+				avatarAlt,
+				avatarBorderRadius,
+				avatarSize,
+				avatarWidth,
+				avatarHeight,
+
+				avatarBorder,
+				avatarSpacing,
+				avatarLayout,
+				quoteIconColor,
+				quoteIconSize,
+				quoteIconSpacing,
+				nameTypo,
+				nameSpacing,
+				messageTypo,
+				designationTypo,
+				starsSize,
+				ratingsColor,
+				quoteIcon,
+				ratings,
+				showRatings,
+				ratingsSpacing,
+				bgPadding,
+				textColor,
+				bgColor,
+				bgBorderRadius,
+				border,
+				boxShadow,
+				boxShadowHover,
+				sliderNumber,
+				itemPerSlides,
+				sliderItemsSpace,
+				infiniteLoop,
+				isCentered,
+				activeFade,
+				arrowStyle,
+				arrowPosition,
+				cornerRadius,
+				cornerHoverRadius,
+				arrowSize,
+				sizeWidth,
+				arrowColor,
+				arrowShapeColor,
+				arrowBorderColor,
+				arrowHoverColor,
+				arrowShapeHoverColor,
+				arrowBorderHoverColor,
+
+				dots,
+				dotsPosition,
+				dotIndicator,
+				dotswidth,
+				dotHeight,
+				dotBorderRadius,
+				dotColor,
+				dotActiveColor,
+				horizontalScroll,
+				sliderItemMargin,
+				globalZindex,
+				enablePosition,
+				selectPosition,
+				positionXaxis,
+				positionYaxis,
+				hideTablet,
+				hideMobile,
+				globalCss,
+				animation
+			} } = this.props
 
 		const { device } = this.state
+
 		const carouselSettings = {
 			autoplay: autoPlay,
 			nav: nav,
@@ -242,7 +299,7 @@ class Edit extends Component {
 					items: items.xs
 				}
 			],
-		};
+		}
 
 		if (uniqueId) { CssGenerator(this.props.attributes, 'testimonialcarousel', uniqueId) }
 
