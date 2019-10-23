@@ -2,8 +2,7 @@ const { Component } = wp.element
 const { RichText } = wp.editor
 const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
-  /** 
-	 *  Author Avatar*/  
+  /* Author Avatar */  
   renderAvatar = (avatar, avatarAlt) => {
     return (
       <div className="qubely-single-img">
@@ -16,14 +15,13 @@ class Save extends Component {
     )
   }
   
-  /** 
-	 *  Team Social Share. */
+  /* Team Social Share. */
   renderSocialShare = () => {
 		const { attributes: { 
 			showSociallinks, iconStyle, iconUseDefaultStyle, facebook, twitter, instagram, linkedin, youtube, github, flickr, pinterest, dribbble, behance,
 		} } = this.props
 		return (
-			<div className="social-share">
+			<div className="qubely-team-social-share">
 				{ showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
 					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`}
 					onClick={() => this.handlePanelOpenings('Social')}>
@@ -43,8 +41,7 @@ class Save extends Component {
 		)
 	}
 
-  /** 
-	*  Author information. */
+  /* Author information. */
   renderAuthorInfo = (item, index) => {
     const { attributes: { layout, showAvatar, enablename } } = this.props
     const { author, designation, avatar } = item
@@ -53,7 +50,7 @@ class Save extends Component {
         { showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */ }
         {enablename && 
           <div className="qubely-team-author-info">
-            <div className={`layout-${layout}`}>
+            <div className={`qubely-team-info-layout-${layout}`}>
               <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
               <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
               { this.renderSocialShare()  /* Social share callback function */}
@@ -63,8 +60,7 @@ class Save extends Component {
       </div>
     )
   }
-  /** 
-	*  Render Team informations. */
+  /* Render Team informations. */
   renderTeam() {
     const { attributes: { carouselItems, layout } } = this.props
     return (carouselItems.map((item, index) => {

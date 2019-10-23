@@ -1,6 +1,7 @@
 .qubely-form-row.qubely-frontend,
 .qubely-form-row.qubely-backend > .editor-inner-blocks > .editor-block-list__layout {
   display: flex;
+  flex-wrap: wrap;
 }
 .qubely-action-add-form-empty {
   outline: 1px dashed #8d96a0;

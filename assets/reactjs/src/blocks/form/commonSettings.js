@@ -265,21 +265,18 @@ export default function (clientId) {
                         onChange={(value) => updateAttributes('inputBorderRadius', value)}
                     />
                 }
-
                 <Tabs>
                     <Tab tabTitle={__('Normal')}>
                         <Color label={__('Input Text Color')} value={inputColor} onChange={val => updateAttributes('inputColor', val)} />
                         <Color label={__('Background Color')} value={inputBg} onChange={val => updateAttributes('inputBg', val)} />
                         <Color label={__('Placeholder Color')} value={placeholderColor} onChange={val => updateAttributes('placeholderColor', val)} />
                     </Tab>
-
                     <Tab tabTitle={__('Focus')}>
                         <Color label={__('Text Color')} value={inputColorFocus} onChange={val => updateAttributes('inputColorFocus', val)} />
                         <Color label={__('Background Color')} value={inputBgFocus} onChange={val => updateAttributes('inputBgFocus', val)} />
                         <Color label={__('Border Color')} value={inputBorderColorFocus} onChange={(value) => updateAttributes('inputBorderColorFocus', value)} />
                         <Color label={__('Placeholder Color')} value={placeholderColorFocus} onChange={val => updateAttributes('placeholderColorFocus', val)} />
                     </Tab>
-
                     <Tab tabTitle={__('Hover')}>
                         <Color label={__('Text Color')} value={inputColorHover} onChange={val => updateAttributes('inputColorHover', val)} />
                         <Color label={__('Background Color')} value={inputBgHover} onChange={val => updateAttributes('inputBgHover', val)} />
@@ -287,7 +284,6 @@ export default function (clientId) {
                         <Color label={__('Placeholder Color')} value={placeholderColorHover} onChange={val => updateAttributes('placeholderColorHover', val)} />
                     </Tab>
                 </Tabs>
-
 
                 <Typography value={inputTypography} onChange={val => updateAttributes('inputTypography', val)} />
 

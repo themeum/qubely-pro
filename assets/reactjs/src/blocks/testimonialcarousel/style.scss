@@ -268,7 +268,7 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 		}
 	}
 	.qubely-carousel-nav-control {
-		height: 50px;
+		height: auto;
 		width: 100%;
 		margin-top: 10px;
 		z-index: 3;
@@ -465,6 +465,7 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 }
 .qubely-block-testimonial-carousel {
 	.qubely-testimonial-avatar.qubely-image-placeholder {
+        text-align: center;
 		i {
 			transform: translate(0px, 45%);
 			display: inline-block;

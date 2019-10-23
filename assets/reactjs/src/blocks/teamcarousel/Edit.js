@@ -83,7 +83,17 @@ class Edit extends Component {
 						{(avatar && avatar.url) ?
 							<img onClick={open} className="qubely-team-avatar" src={avatar.url} />
 							:
-							<div onClick={open} className="qubely-image-placeholder qubely-team-avatar" ><i className="far fa-image" /></div>
+							// <div onClick={open} className="qubely-image-placeholder qubely-team-avatar">
+                            //     <i className="far fa-image"/>
+                            // </div>
+                            <div className="qubely-team-avatar">
+                                <div className="qubely-image-placeholder">
+                                    <a className="qubely-insert-image" href="#" onClick={open}>
+                                        <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
+                                        <span>{__('Insert')}</span>
+                                    </a>
+                                </div>
+                            </div>
 						}
 					</div>
 				)}
@@ -99,7 +109,7 @@ class Edit extends Component {
 			showSociallinks, iconStyle, iconUseDefaultStyle, facebook, twitter, instagram, linkedin, youtube, github, flickr, pinterest, dribbble, behance,
 		} } = this.props
 		return (
-			<div className="social-share">
+			<div className="qubely-team-social-share">
 				{showSociallinks && (facebook || twitter || instagram || linkedin || youtube || github || flickr || pinterest || dribbble || behance) &&
 					<div className={`qubely-team-social-links qubely-team-icon-layout-${iconStyle} qubely-team-icon-style-${iconUseDefaultStyle == 1 ? 'default' : 'custom'}`}>
 						{facebook && <a className="qubely-team-social-facebook"><i className="fab fa-facebook-f" /></a>}
@@ -129,7 +139,7 @@ class Edit extends Component {
 				{showAvatar && this.renderAvatar(avatar, index) /* Author avater callback function */}
 				{enablename &&
 					<div className="qubely-team-author-info">
-						<div className={`layout-${layout}`}>
+						<div className={`qubely-team-info-layout-${layout}`}>
 							<div className="qubely-team-author-name" >{this.renderName(author, index)}</div>
 							<div className="qubely-team-author-designation" >{this.renderDesignation(designation, index)}</div>
 							{this.renderSocialShare()  /* Social share callback function */}
