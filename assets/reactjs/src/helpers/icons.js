@@ -7,7 +7,7 @@ const icons = {
     form_classic: <img src={`${img_path}/form/classic.svg`} alt={__('Classic')} />,
     form_material: <img src={`${img_path}/form/material.svg`} alt={__('Material')} />,
     form_material_dark: <img src={`${img_path}/form/materialdark.svg`} alt={__('Material dark')} />,
-    
+
     from_fields: {
         column: <img src={`${img_path}/form/column.svg`} alt={__('qubely form Column')} />,
         text: <img src={`${img_path}/form/text.svg`} alt={__('qubely form text-field')} />,
@@ -30,6 +30,12 @@ const icons = {
     teamcarousel_1: <img src={`${img_path}/teamcarousel/1.svg`} alt={__('Team Carousel 1')} />,
     teamcarousel_2: <img src={`${img_path}/teamcarousel/2.svg`} alt={__('Team Carousel 2')} />,
     teamcarousel_3: <img src={`${img_path}/teamcarousel/3.svg`} alt={__('Team Carousel 3')} />,
+    testimonial_avatar: {
+        left: <img src={`${img_path}/teamcarousel/avatars/1.svg`} alt={__('Avatar Left')} />,
+        right: <img src={`${img_path}/teamcarousel/avatars/2.svg`} alt={__('Avatar Right')} />,
+        top: <img src={`${img_path}/teamcarousel/avatars/3.svg`} alt={__('Avatar Top')} />,
+        bottom: <img src={`${img_path}/teamcarousel/avatars/4.svg`} alt={__('Avatar Bottom')} />,
+    },
 
     // Social Share Icons Style.
     social_normal: <img src={`${img_path}/socialicon/normal.svg`} alt={__('Normal')} />,

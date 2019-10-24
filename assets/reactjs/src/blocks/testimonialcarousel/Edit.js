@@ -50,12 +50,12 @@ class Edit extends Component {
 					<div className="qubely-single-img qubely-backend">
 						{(avatar && avatar.url) ?
 							<img onClick={open} className="qubely-testimonial-avatar" src={avatar.url} alt={avatarAlt} />
-                            :
-                            <div className="qubely-image-placeholder qubely-testimonial-avatar">
-                                <a className="qubely-insert-image" href="#" onClick={open}>
-                                    <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
-                                </a>
-                            </div>
+							:
+							<div className="qubely-image-placeholder qubely-testimonial-avatar">
+								<a className="qubely-insert-image" href="#" onClick={open}>
+									<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
+								</a>
+							</div>
 							// <div onClick={open} className="qubely-image-placeholder qubely-testimonial-avatar" ><i className="far fa-user" /></div>
 						}
 					</div>
@@ -568,18 +568,15 @@ class Edit extends Component {
 						{showAvatar &&
 							<Fragment>
 
-								{layout != 3 &&
-									<Fragment>
-										<Styles label={__('Avatar Layout')} value={avatarLayout} onChange={val => setAttributes({ avatarLayout: val })}
-											options={[
-												{ value: 'left', svg: icons.avatar_left, label: __('Left') },
-												{ value: 'right', svg: icons.avatar_right, label: __('Right') },
-												{ value: 'top', svg: icons.avatar_top, label: __('Top') },
-												{ value: 'bottom', svg: icons.avatar_bottom, label: __('Bottom') },
-											]}
-										/>
-										<Separator />
-									</Fragment>
+								{layout !== 3 &&
+									<Styles label={__('Avatar Layout')} value={avatarLayout} onChange={val => setAttributes({ avatarLayout: val })}
+										options={[
+											{ value: 'left', svg: icons.testimonial_avatar.left, label: __('Left') },
+											{ value: 'right', svg: icons.testimonial_avatar.right, label: __('Right') },
+											{ value: 'top', svg: icons.testimonial_avatar.top, label: __('Top') },
+											{ value: 'bottom', svg: icons.testimonial_avatar.bottom, label: __('Bottom') },
+										]}
+									/>
 								}
 
 								<RadioAdvanced
