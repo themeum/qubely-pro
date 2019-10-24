@@ -343,9 +343,9 @@ class Edit extends Component {
                         {/* <Toggle
                             label={__('Show label')}
                             value={showLabel}
-                            onChange={val => setAttributes({ showLabel: val })} />
+                            onChange={val => setAttributes({ showLabel: val })} /> */}
 
-                        <ButtonGroup
+                        {/*  <ButtonGroup
                             label={__('Label Alignment')}
                             options={
                                 [

@@ -3,17 +3,17 @@ const { registerBlockType } = wp.blocks
 import './style.scss'
 import Edit from './Edit'
 import Save from './Save'
-const { gloalSettings: { globalAttributes }} = wp.qubelyComponents
+const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
 
 registerBlockType('qubely/teamcarousel', {
 	title: __('Team Carousel'),
 	description: __('Design and showcase Qubely Team Carousel block'),
-    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-team-carousel.svg'} alt={__('Team Carousel Block')} />,
+	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-team-carousel.svg'} alt={__('Team Carousel Block')} />,
 	category: 'qubely',
 	keywords: [
 		__('Team'),
 		__('Carousel')
-	], 
+	],
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
 		items: { type: 'object', default: { md: '2', sm: '2', xs: '1' } },
@@ -77,12 +77,12 @@ registerBlockType('qubely/teamcarousel', {
 		* 	Team Layouts:  common/style attributes
 		* --------------------------------------------------- */
 		layout: { type: 'number', default: 1 },
-		alignment: { 
-			type: 'object', 
-			default: { md: 'left' }, 
+		alignment: {
+			type: 'object',
+			default: { md: 'left' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-team-author-info {text-align: {{alignment}};} {{QUBELY}} .qubely-single-img {text-align: {{alignment}};}' }
-			] 
+			]
 		},
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
 
@@ -113,10 +113,10 @@ registerBlockType('qubely/teamcarousel', {
 		arrowStyle: { type: 'string', default: 'arrowright2' },
 		horizontalScroll: {
 			type: 'object',
-			default: { md: -10, sm: '0', xs:'0', unit: '%' },
+			default: { md: -10, sm: '0', xs: '0', unit: '%' },
 			style: [
-				{ 
-					selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} }' 
+				{
+					selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} }'
 				}
 			]
 		},
@@ -126,14 +126,14 @@ registerBlockType('qubely/teamcarousel', {
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control { top: {{arrowPosition}}; } ' }
 			]
-		}, 
+		},
 		dotsPosition: {
 			type: 'object',
-			default: { md: -70, unit: 'px' },
+			default: { md: -10, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots { bottom: {{dotsPosition}}; } ' }
 			]
-		}, 
+		},
 		cornerRadius: {
 			type: 'object',
 			default: { md: 10, unit: 'px' },
@@ -193,10 +193,10 @@ registerBlockType('qubely/teamcarousel', {
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover ' },
 			],
 		},
-		// Arroe Border Hover Color.
-		arrowBorderHoverColor: {
+		// // Arroe Border Hover Color.
+		arrowBorderHover: {
 			type: 'object',
-			default: '#3373dc',
+			default: {},
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover' }]
 		},
 		// Dot Navigation.
@@ -218,7 +218,9 @@ registerBlockType('qubely/teamcarousel', {
 		// Dot
 		dotColor: {
 			type: 'object', default: { type: 'color', openColor: 1, color: '#f4f4f4' },
-			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li' }]
+			style: [
+				{ selector: '{{QUBELY}} .qubely-block-team-carousel  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li:not(.active)' }
+			]
 		},
 		// Dot Active Color
 		dotActiveColor: {
@@ -245,32 +247,39 @@ registerBlockType('qubely/teamcarousel', {
 		avatarAlt: { type: 'string', default: '' },
 		avatarSize: {
 			type: 'string',
-			default: '',
+			default: 'custom',
 			style: [
-				{ selector: '{{QUBELY}} .qubely-team-avatar { width: {{avatarSize}};}' }
+				{
+					condition: [
+						{ key: 'avatarSize', relation: '!=', value: 'custom' }
+					],
+					selector: '{{QUBELY}} .qubely-team-avatar { width: {{avatarSize}};}'
+				}
 			]
 		},
-		avatarWidth: { 
-			type: 'object', 
-			default: { md: 100, unit: '%' }, 
+		avatarWidth: {
+			type: 'object',
+			default: { md: 100, unit: '%' },
 			style: [
-				{ condition: [
-					{ key: 'avatarSize', relation: '==', value: 'custom' }
-				], 
-				selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}};}' }
-			] 
-		},
-		avatarHeight: { 
-			type: 'object', 
-			default: { md: 100, unit: '%' }, 
-			style: [
-				{ 
+				{
 					condition: [
 						{ key: 'avatarSize', relation: '==', value: 'custom' }
-					], 
-					selector: '{{QUBELY}} .qubely-team-avatar {height: {{avatarHeight}};}' 
+					],
+					selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}};}'
 				}
-			] 
+			]
+		},
+		avatarHeight: {
+			type: 'object',
+			default: { md: 100, unit: '%' },
+			style: [
+				{
+					condition: [
+						{ key: 'avatarSize', relation: '==', value: 'custom' }
+					],
+					selector: '{{QUBELY}} .qubely-team-avatar {height: {{avatarHeight}};}'
+				}
+			]
 		},
 		avatarSpacing: {
 			type: 'object',
@@ -281,27 +290,9 @@ registerBlockType('qubely/teamcarousel', {
 			style: [
 				{
 					condition: [
-						{ key: 'avatarLayout', relation: '==', value: 'left' }
+						{ key: 'layout', relation: '==', value: 1 }
 					],
-					selector: '{{QUBELY}} .qubely-team-avatar {margin-right: {{avatarSpacing}}; }'
-				},
-				{
-					condition: [
-						{ key: 'avatarLayout', relation: '==', value: 'right' }
-					],
-					selector: '{{QUBELY}} .qubely-team-avatar {margin: 0px 0px 0px {{avatarSpacing}};}'
-				},
-				{
-					condition: [
-						{ key: 'avatarLayout', relation: '==', value: 'top' }
-					],
-					selector: '{{QUBELY}} .qubely-team-avatar {margin: 0px 0px {{avatarSpacing}};}'
-				},
-				{
-					condition: [
-						{ key: 'avatarLayout', relation: '==', value: 'bottom' }
-					],
-					selector: '{{QUBELY}} .qubely-team-avatar{margin: {{avatarSpacing}} 0px 0px;}'
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-team-avatar {margin-bottom: {{avatarSpacing}}; }'
 				}
 			]
 		},
@@ -347,12 +338,18 @@ registerBlockType('qubely/teamcarousel', {
 					selector: '{{QUBELY}} .qubely-team-3 {background-color: {{bgColor}};} {{QUBELY}} .qubely-team-info-layout-3 .qubely-team-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
 				}
 			]
-        },
-        
+		},
+
 		// Content padding.
 		bgPadding: {
 			type: 'object',
-			default: {},
+			default: {
+				openPadding: 1,
+				paddingType: 'global',
+				custom: { md: "20 20 20 20" },
+				global: { md: '20' },
+				unit: 'px',
+			},
 			style: [
 				{
 					condition: [
@@ -374,17 +371,17 @@ registerBlockType('qubely/teamcarousel', {
 				}
 			]
 		},
-		contentSpacing: { 
-			type: 'object', 
-			default: {}, 
+		contentSpacing: {
+			type: 'object',
+			default: {},
 			style: [
-				{ 
+				{
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-team-author-info .qubely-team-info-layout-3 {margin-top: {{contentSpacing}};}' 
+					selector: '{{QUBELY}} .qubely-team-author-info .qubely-team-info-layout-3 {margin-top: {{contentSpacing}};}'
 				}
-			] 
+			]
 		},
 		// Border radius
 		bgBorderRadius: {
@@ -417,150 +414,150 @@ registerBlockType('qubely/teamcarousel', {
 				{ selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-carousel-item:hover' }
 			]
 		},
-		showGlobalSettings: { type: 'boolean', default: true }, 
+		showGlobalSettings: { type: 'boolean', default: true },
 
 		/**
 		* Social Share */
-        showSociallinks: { type: 'boolean', default: true },
-        facebook: { type: 'string', default: 'https://facebook.com/themeum' },
-        twitter: { type: 'string', default: 'https://twitter.com/themeum' },
-        instagram: { type: 'string', default: '' },
-        linkedin: { type: 'string', default: '' },
-        youtube: { type: 'string', default: 'https://youtube.com/user/themeumwp' },
-        github: { type: 'string', default: '' },
-        flickr: { type: 'string', default: '' },
-        pinterest: { type: 'string', default: '' },
-        dribbble: { type: 'string', default: '' },
-        behance: { type: 'string', default: '' },
-        iconStyle: { type: 'string', default: 'normal' },
-        iconUseDefaultStyle: { type: 'boolean', default: true },
-        iconSize: {
-            type: 'string', default: '14px',
-            style: [
-                {
-                    condition: [
-                        { key: 'iconSize', relation: '!=', value: 'custom' },
-                    ],
-                    selector: '{{QUBELY}} .qubely-team-social-links>a {font-size: {{iconSize}};}'
-                }
-            ]
-        },
-        iconSizeCustom: {
-            type: 'object', default: { md: 18, unit: 'px' },
-            style: [
-                {
-                    condition: [
-                        { key: 'iconSize', relation: '==', value: 'custom' },
-                    ],
-                    selector: '{{QUBELY}} .qubely-team-social-links>a {font-size: {{iconSizeCustom}};}'
-                }
-            ]
-        },
-        iconGutter: {
-            type: 'object', default: { md: 10, unit: 'px' },
-            style: [
-                {
-                    selector: '{{QUBELY}} .qubely-team-social-links > a {margin: 0 calc({{iconGutter}}/2);}'
-                }
-            ]
-        },
-        iconSpacing: {
-            type: 'object', default: {},
-            style: [
-                {
-                    selector: '{{QUBELY}} .qubely-team-social-links {margin-top: {{iconSpacing}};}'
-                }
-            ]
-        },
+		showSociallinks: { type: 'boolean', default: true },
+		facebook: { type: 'string', default: 'https://facebook.com/themeum' },
+		twitter: { type: 'string', default: 'https://twitter.com/themeum' },
+		instagram: { type: 'string', default: '' },
+		linkedin: { type: 'string', default: '' },
+		youtube: { type: 'string', default: 'https://youtube.com/user/themeumwp' },
+		github: { type: 'string', default: '' },
+		flickr: { type: 'string', default: '' },
+		pinterest: { type: 'string', default: '' },
+		dribbble: { type: 'string', default: '' },
+		behance: { type: 'string', default: '' },
+		iconStyle: { type: 'string', default: 'normal' },
+		iconUseDefaultStyle: { type: 'boolean', default: true },
+		iconSize: {
+			type: 'string', default: '14px',
+			style: [
+				{
+					condition: [
+						{ key: 'iconSize', relation: '!=', value: 'custom' },
+					],
+					selector: '{{QUBELY}} .qubely-team-social-links>a {font-size: {{iconSize}};}'
+				}
+			]
+		},
+		iconSizeCustom: {
+			type: 'object', default: { md: 18, unit: 'px' },
+			style: [
+				{
+					condition: [
+						{ key: 'iconSize', relation: '==', value: 'custom' },
+					],
+					selector: '{{QUBELY}} .qubely-team-social-links>a {font-size: {{iconSizeCustom}};}'
+				}
+			]
+		},
+		iconGutter: {
+			type: 'object', default: { md: 10, unit: 'px' },
+			style: [
+				{
+					selector: '{{QUBELY}} .qubely-team-social-links > a {margin: 0 calc({{iconGutter}}/2);}'
+				}
+			]
+		},
+		iconSpacing: {
+			type: 'object', default: {},
+			style: [
+				{
+					selector: '{{QUBELY}} .qubely-team-social-links {margin-top: {{iconSpacing}};}'
+				}
+			]
+		},
 
-        iconBorderRadius: {
-            type: 'object',
-            default: {
-                openBorderRadius: 1,
-                radiusType: 'global',
-                global: { md: 4 },
-                unit: 'px'
-            },
-            style: [
-                {
-                    condition: [
-                        { key: 'iconStyle', relation: '==', value: 'fill' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-team-social-links>a'
-                }
-            ]
-        },
+		iconBorderRadius: {
+			type: 'object',
+			default: {
+				openBorderRadius: 1,
+				radiusType: 'global',
+				global: { md: 4 },
+				unit: 'px'
+			},
+			style: [
+				{
+					condition: [
+						{ key: 'iconStyle', relation: '==', value: 'fill' }
+					],
+					selector: '{{QUBELY}} .qubely-team-social-links>a'
+				}
+			]
+		},
 
-        iconColor: {
-            type: 'string', default: '',
-            style: [
-                {
-                    condition: [
-                            { key: 'iconUseDefaultStyle', relation: '==', value: false }
-                        ],
-                    selector: '{{QUBELY}} .qubely-team-social-links>a {color: {{iconColor}};}'
-                }
-            ]
-        },
-        iconColorHover: {
-            type: 'string', default: '',
-            style: [
-                {
-                    condition: [
-                            { key: 'iconUseDefaultStyle', relation: '==', value: false }
-                        ],
-                    selector: '{{QUBELY}} .qubely-team-social-links>a:hover {color: {{iconColorHover}};}'
-                }
-            ]
-        },
-        iconBackground: {
-            type: 'string', default: '',
-            style: [
-                {
-                    condition: [
-                            { key: 'iconUseDefaultStyle', relation: '==', value: false },
-                            { key: 'iconStyle', relation: '==', value: 'fill' }
-                        ],
-                    selector: '{{QUBELY}} .qubely-team-social-links>a {background-color: {{iconBackground}};}'
-                }
-            ]
-        },
-        iconBackgroundHover: {
-            type: 'string', default: '',
-            style: [
-                {
-                    condition: [
-                            { key: 'iconUseDefaultStyle', relation: '==', value: false },
-                            { key: 'iconStyle', relation: '==', value: 'fill' }
-                        ],
-                    selector: '{{QUBELY}} .qubely-team-social-links>a:hover {background-color: {{iconBackgroundHover}};}'
-                }
-            ]
-        },
-        iconBorder: {
-            type: 'object', default: {},
-            style: [
-                {
-                    condition: [
-                            { key: 'iconUseDefaultStyle', relation: '==', value: false },
-                            { key: 'iconStyle', relation: '==', value: 'fill' }
-                        ],
-                    selector: '{{QUBELY}} .qubely-team-social-links>a'
-                }
-            ]
-        },
-        iconBorderColorHover: {
-            type: 'string', default: '',
-            style: [
-                {
-                    condition: [
-                            { key: 'iconUseDefaultStyle', relation: '==', value: false },
-                            { key: 'iconStyle', relation: '==', value: 'fill' }
-                        ],
-                    selector: '{{QUBELY}} .qubely-team-social-links>a:hover {border-color: {{iconBorderColorHover}};}'
-                }
-            ]
-        },
+		iconColor: {
+			type: 'string', default: '',
+			style: [
+				{
+					condition: [
+						{ key: 'iconUseDefaultStyle', relation: '==', value: false }
+					],
+					selector: '{{QUBELY}} .qubely-team-social-links>a {color: {{iconColor}};}'
+				}
+			]
+		},
+		iconColorHover: {
+			type: 'string', default: '',
+			style: [
+				{
+					condition: [
+						{ key: 'iconUseDefaultStyle', relation: '==', value: false }
+					],
+					selector: '{{QUBELY}} .qubely-team-social-links>a:hover {color: {{iconColorHover}};}'
+				}
+			]
+		},
+		iconBackground: {
+			type: 'string', default: '',
+			style: [
+				{
+					condition: [
+						{ key: 'iconUseDefaultStyle', relation: '==', value: false },
+						{ key: 'iconStyle', relation: '==', value: 'fill' }
+					],
+					selector: '{{QUBELY}} .qubely-team-social-links>a {background-color: {{iconBackground}};}'
+				}
+			]
+		},
+		iconBackgroundHover: {
+			type: 'string', default: '',
+			style: [
+				{
+					condition: [
+						{ key: 'iconUseDefaultStyle', relation: '==', value: false },
+						{ key: 'iconStyle', relation: '==', value: 'fill' }
+					],
+					selector: '{{QUBELY}} .qubely-team-social-links>a:hover {background-color: {{iconBackgroundHover}};}'
+				}
+			]
+		},
+		iconBorder: {
+			type: 'object', default: {},
+			style: [
+				{
+					condition: [
+						{ key: 'iconUseDefaultStyle', relation: '==', value: false },
+						{ key: 'iconStyle', relation: '==', value: 'fill' }
+					],
+					selector: '{{QUBELY}} .qubely-team-social-links>a'
+				}
+			]
+		},
+		iconBorderColorHover: {
+			type: 'string', default: '',
+			style: [
+				{
+					condition: [
+						{ key: 'iconUseDefaultStyle', relation: '==', value: false },
+						{ key: 'iconStyle', relation: '==', value: 'fill' }
+					],
+					selector: '{{QUBELY}} .qubely-team-social-links>a:hover {border-color: {{iconBorderColorHover}};}'
+				}
+			]
+		},
 		...globalAttributes
 	},
 	edit: Edit,

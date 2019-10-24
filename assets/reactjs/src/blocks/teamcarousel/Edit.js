@@ -126,22 +126,22 @@ class Edit extends Component {
 							</div>
 						)}
 					/>}
-				
-					<div className="qubely-team-author-info">
-						<div className={`qubely-team-info-layout-${layout}`}>
-                            {enablename &&
-                                <div className="qubely-team-author-name" >
-                                    <RichText
-                                        key="editable"
-                                        keepPlaceholderOnFocus
-                                        placeholder={__('Add Name...')}
-                                        formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-                                        onChange={value => this.updateAtrributes('author', value, index)}
-                                        value={author}
-                                    />
-                                </div>
-                            }
-                            {designation &&
+
+				<div className="qubely-team-author-info">
+					<div className={`qubely-team-info-layout-${layout}`}>
+						{enablename &&
+							<div className="qubely-team-author-name" >
+								<RichText
+									key="editable"
+									keepPlaceholderOnFocus
+									placeholder={__('Add Name...')}
+									formattingControls={['bold', 'italic', 'link', 'strikethrough']}
+									onChange={value => this.updateAtrributes('author', value, index)}
+									value={author}
+								/>
+							</div>
+						}
+						{designation &&
 							<div className="qubely-team-author-designation" >
 								<RichText
 									key="editable"
@@ -152,11 +152,11 @@ class Edit extends Component {
 									value={designation}
 								/>
 							</div>
-                            }
-							{this.renderSocialShare()  /* Social share callback function */}
-						</div>
+						}
+						{this.renderSocialShare()  /* Social share callback function */}
 					</div>
-				
+				</div>
+
 			</div>
 		)
 	}
@@ -239,7 +239,7 @@ class Edit extends Component {
 			layout, nameColor, alignment, designationColor, showAvatar, avatarBorderRadius, avatarSize, avatarWidth, avatarHeight,
 			avatarBorder, avatarSpacing, nameTypo, nameSpacing, designationTypo, bgPadding, textColor, bgColor,
 			bgBorderRadius, border, boxShadow, boxShadowHover, sliderItemsSpace, isCentered, activeFade,
-			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth, arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHoverColor,
+			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth, arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHover,
 			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
 
 			// Social Share.
@@ -320,7 +320,7 @@ class Edit extends Component {
 			<Fragment>
 				<InspectorControls key="inspector">
 
-					<PanelBody title="Team Carousel" initialOpen={false}>
+					<PanelBody title={__('')} opened={true}>
 						<Styles value={layout} onChange={val => setAttributes({ layout: val })}
 							options={[
 								{ value: 1, svg: icons.teamcarousel_1, label: __('Layout 1') },
@@ -452,11 +452,11 @@ class Edit extends Component {
 									/>
 								</Tab>
 								<Tab tabTitle={__('Hover')}>
-									<Color label={__('Arrow Hover Color')} value={arrowHoverColor} onChange={(value) => setAttributes({ arrowHoverColor: value })} />
-									<ColorAdvanced label={__('Shape Hover Color')} value={arrowShapeHoverColor} onChange={val => setAttributes({ arrowShapeHoverColor: val })} />
-									<Border label={__('Border Hover Color')} value={arrowBorderHoverColor} onChange={val => setAttributes({ arrowBorderHoverColor: val })} />
+									<Color label={__('Arrow Color')} value={arrowHoverColor} onChange={(value) => setAttributes({ arrowHoverColor: value })} />
+									<ColorAdvanced label={__('Shape Color')} value={arrowShapeHoverColor} onChange={val => setAttributes({ arrowShapeHoverColor: val })} />
+									<Border label={__('Border')} value={arrowBorderHover} onChange={val => setAttributes({ arrowBorderHover: val })} />
 									<Range
-										label={__('Corner Hover Radius')}
+										label={__('Corner Radius')}
 										value={cornerHoverRadius} onChange={(value) => setAttributes({ cornerHoverRadius: value })}
 										min={1} max={100}
 										responsive unit={['px', 'em', '%']}
@@ -540,42 +540,45 @@ class Edit extends Component {
 											value={avatarWidth}
 											onChange={(value) => setAttributes({ avatarWidth: value })}
 											unit={['px', 'em', '%']}
-											max={300} min={0} responsive
-											device={device}
-											onDeviceChange={value => this.setState({ device: value })}
-										/>
-										<Range
-											label={__('Avatar Height')}
-											value={avatarHeight}
-											onChange={(value) => setAttributes({ avatarHeight: value })}
-											unit={['px', 'em', '%']}
-											max={300}
+											max={avatarWidth.unit === '%' ? 100 : 300}
 											min={0}
 											responsive
 											device={device}
 											onDeviceChange={value => this.setState({ device: value })}
 										/>
+										<Range
+											min={0}
+											responsive
+											device={device}
+											value={avatarHeight}
+											unit={['px', 'em', '%']}
+											label={__('Avatar Height')}
+											max={avatarHeight.unit === '%' ? 100 : 300}
+											onDeviceChange={value => this.setState({ device: value })}
+											onChange={(value) => setAttributes({ avatarHeight: value })}
+										/>
 									</Fragment>
 								}
-								<Fragment>
-									<BorderRadius
-										label={__('Radius')}
-										value={avatarBorderRadius} onChange={(value) => setAttributes({ avatarBorderRadius: value })}
-										min={0}
-										max={100}
-										unit={['px', 'em', '%']}
-										responsive
-										device={device}
-										onDeviceChange={value => this.setState({ device: value })} />
-									<Border
-										label={__('Border')}
-										value={avatarBorder}
-										onChange={(value) => setAttributes({ avatarBorder: value })}
-										unit={['px', 'em', '%']}
-										responsive
-										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
-									/>
+								<BorderRadius
+									label={__('Radius')}
+									value={avatarBorderRadius} onChange={(value) => setAttributes({ avatarBorderRadius: value })}
+									min={0}
+									max={100}
+									unit={['px', 'em', '%']}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })} />
+								<Border
+									label={__('Border')}
+									value={avatarBorder}
+									onChange={(value) => setAttributes({ avatarBorder: value })}
+									unit={['px', 'em', '%']}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+								{
+									layout === 1 &&
 									<Range
 										label={__('Spacing')}
 										value={avatarSpacing}
@@ -586,7 +589,7 @@ class Edit extends Component {
 										responsive
 										device={device}
 										onDeviceChange={value => this.setState({ device: value })} />
-								</Fragment>
+								}
 							</Fragment>
 						}
 					</PanelBody>
@@ -716,7 +719,8 @@ class Edit extends Component {
 							onChange={val => setAttributes({ border: val })} />
 						<Padding
 							label={__('Padding')}
-							value={bgPadding} onChange={(value) => setAttributes({ bgPadding: value })}
+							value={bgPadding}
+							onChange={(value) => setAttributes({ bgPadding: value })}
 							unit={['px', 'em', '%']}
 							min={0}
 							max={100}
@@ -736,7 +740,8 @@ class Edit extends Component {
 						{layout == 3 &&
 							<Range
 								label={__('Content Spacing')}
-								value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })}
+								value={contentSpacing}
+								onChange={(value) => setAttributes({ contentSpacing: value })}
 								unit={['px', 'em', '%']} max={300}
 								min={0}
 								responsive
