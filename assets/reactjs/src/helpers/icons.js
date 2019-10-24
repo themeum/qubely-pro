@@ -1,5 +1,6 @@
 const { __ } = wp.i18n;
-const img_path = qubely_pro_admin.plugin + 'assets/img/blocks';
+const img_path = qubely_pro_admin.plugin + 'assets/img/blocks'
+const free_img_path = qubely_admin.plugin + 'assets/img/blocks'
 
 const icons = {
 
@@ -67,6 +68,10 @@ const icons = {
     // Gallery.
     gallery_1: <img src={`${img_path}/gallery/layout1.svg`} alt={__('Design 1')} />,
     gallery_2: <img src={`${img_path}/gallery/layout2.svg`} alt={__('Design 2')} />,
+
+    //button outline
+    btn_fill : <img src={`${free_img_path}/button/fill.svg`} alt={__('Fill')} />,
+    btn_outline : <img src={`${free_img_path}/button/outline.svg`} alt={__('Outline')} />,
 
 }
 

@@ -323,6 +323,21 @@ class Edit extends Component {
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
+
+					<PanelBody title={__('')} opened={true}>
+						<Styles
+							columns={4}
+							value={style}
+							options={[
+								{ value: 1, svg: icons.postgrid_design_1 },
+								{ value: 2, svg: icons.postgrid_design_2 },
+								{ value: 3, svg: icons.postgrid_design_4 },
+								{ value: 4, svg: icons.postgrid_design_6 },
+							]}
+							onChange={val => setAttributes({ style: val })}
+						/>
+					</PanelBody>
+
 					<PanelBody title={__('Carousel Settings')} initialOpen={true}>
 
 						<Toggle label={__('Show Arrow Navigation')} value={nav} onChange={value => setAttributes({ nav: value })} />
@@ -429,11 +444,11 @@ class Edit extends Component {
 									/>
 								</Tab>
 								<Tab tabTitle={__('Hover')}>
-									<Color label={__('Navigation Hover Color')} value={navHoverColor} onChange={(value) => setAttributes({ navHoverColor: value })} />
-									<Color label={__('Shape Hover Color')} value={navShapeHoverColor} onChange={val => setAttributes({ navShapeHoverColor: val })} />
-									<Border label={__('Border Hover Color')} value={navBorderHoverColor} onChange={val => setAttributes({ navBorderHoverColor: val })} />
+									<Color label={__('Navigation Color')} value={navHoverColor} onChange={(value) => setAttributes({ navHoverColor: value })} />
+									<Color label={__('Shape Color')} value={navShapeHoverColor} onChange={val => setAttributes({ navShapeHoverColor: val })} />
+									<Border label={__('Border Color')} value={navBorderHoverColor} onChange={val => setAttributes({ navBorderHoverColor: val })} />
 									<BorderRadius
-										label={__('Corner Hover Radius')}
+										label={__('Corner Radius')}
 										value={navHoverRadius} onChange={(value) => setAttributes({ navHoverRadius: value })}
 										min={1} max={100}
 										responsive unit={['px', 'em', '%']}
@@ -497,14 +512,6 @@ class Edit extends Component {
 						</PanelBody>
 					}
 					<PanelBody title={__('Blog Post Design')} initialOpen={false}>
-						<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
-							options={[
-								{ value: 1, svg: icons.postgrid_design_1 },
-								{ value: 2, svg: icons.postgrid_design_2 },
-								{ value: 3, svg: icons.postgrid_design_4 },
-								{ value: 4, svg: icons.postgrid_design_6 },
-							]}
-						/>
 						{((style != 3)) &&
 							<ButtonGroup
 								label={__('Content Align')}
@@ -646,27 +653,35 @@ class Edit extends Component {
 
 					<PanelBody title={__('Image Settings')} initialOpen={false}>
 						<Toggle label={__('Show Featured Image')} value={showImages} onChange={value => setAttributes({ showImages: value })} />
-						<Toggle label={__('Fixed Image Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
-						{enableFixedHeight && <Range label={__('')} value={fixedHeight} onChange={value => setAttributes({ fixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+
+						{
+							style !== 4 &&
+							<Fragment>
+								<Toggle label={__('Fixed Image Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
+
+								{enableFixedHeight && <Range label={__('Height')} value={fixedHeight} onChange={value => setAttributes({ fixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+
+							</Fragment>
+						}
 						<SelectControl
 							label={__("Image Sizes")}
 							value={imgSize}
 							onChange={(value) => setAttributes({ imgSize: value })}
 							options={qubely_admin.image_sizes}
 						/>
-						<BorderRadius
-							min={0}
-							max={100}
-							responsive
-							device={device}
-							label={__('Image Corner')}
-							value={imageRadius}
-							unit={['px', 'em', '%']}
-							onChange={value => setAttributes({ imageRadius: value })}
-							onDeviceChange={value => this.setState({ device: value })}
-						/>
-						{(style === 4) &&
-							<Select label={__('Hover Effect')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />
+
+						{style !== 4 &&
+							<BorderRadius
+								min={0}
+								max={100}
+								responsive
+								device={device}
+								label={__('Image Corner')}
+								value={imageRadius}
+								unit={['px', 'em', '%']}
+								onChange={value => setAttributes({ imageRadius: value })}
+								onDeviceChange={value => this.setState({ device: value })}
+							/>
 						}
 					</PanelBody>
 
