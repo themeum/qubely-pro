@@ -253,7 +253,7 @@ class Edit extends Component {
 				arrowBorderColor,
 				arrowHoverColor,
 				arrowShapeHoverColor,
-				arrowBorderHoverColor,
+				arrowHoverBorder,
 
 				dots,
 				dotsPosition,
@@ -432,11 +432,12 @@ class Edit extends Component {
 							<Tabs>
 								<Tab tabTitle={__('Normal')}>
 									<Color label={__('Arrow Color')} value={arrowColor} onChange={(value) => setAttributes({ arrowColor: value })} />
-									<ColorAdvanced label={__('Shape Color')} value={arrowShapeColor} onChange={val => setAttributes({ arrowShapeColor: val })} />
+									<ColorAdvanced label={__('Background Color')} value={arrowShapeColor} onChange={val => setAttributes({ arrowShapeColor: val })} />
 									<Border label={__('Border')} value={arrowBorderColor} onChange={val => setAttributes({ arrowBorderColor: val })} />
 									<Range
 										label={__('Corner Radius')}
-										value={cornerRadius} onChange={(value) => setAttributes({ cornerRadius: value })}
+										value={cornerRadius}
+										onChange={(value) => setAttributes({ cornerRadius: value })}
 										min={1} max={100}
 										responsive unit={['px', 'em', '%']}
 										device={device}
@@ -444,11 +445,11 @@ class Edit extends Component {
 									/>
 								</Tab>
 								<Tab tabTitle={__('Hover')}>
-									<Color label={__('Arrow Hover Color')} value={arrowHoverColor} onChange={(value) => setAttributes({ arrowHoverColor: value })} />
-									<ColorAdvanced label={__('Shape Hover Color')} value={arrowShapeHoverColor} onChange={val => setAttributes({ arrowShapeHoverColor: val })} />
-									<Border label={__('Border Hover Color')} value={arrowBorderHoverColor} onChange={val => setAttributes({ arrowBorderHoverColor: val })} />
+									<Color label={__('Arrow Color')} value={arrowHoverColor} onChange={(value) => setAttributes({ arrowHoverColor: value })} />
+									<ColorAdvanced label={__('Background Color')} value={arrowShapeHoverColor} onChange={val => setAttributes({ arrowShapeHoverColor: val })} />
+									<Border label={__('Border Color')} value={arrowHoverBorder} onChange={val => setAttributes({ arrowHoverBorder: val })} />
 									<Range
-										label={__('Corner Hover Radius')}
+										label={__('Radius')}
 										value={cornerHoverRadius} onChange={(value) => setAttributes({ cornerHoverRadius: value })}
 										min={1} max={100}
 										responsive unit={['px', 'em', '%']}
