@@ -312,10 +312,11 @@ class Edit extends Component {
 						{/* Overlay */}
 						{(style === 4) &&
 							<Fragment>
-								<Range label={__('Overlay Height')} value={overlayHeight} onChange={value => setAttributes({ overlayHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								{ ( (layout === 5) || (layout === 3) ) &&
-                                    <Range label={__('Overlay Small Height')} value={overlaySmallHeight} onChange={value => setAttributes({ overlaySmallHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                { ( (layout === 5) || (layout === 3) ) &&
+								<Range label={__('large Height')} value={overlayHeight} onChange={value => setAttributes({ overlayHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 }
+                                <Range label={__('Overlay Height')} value={overlaySmallHeight} onChange={value => setAttributes({ overlaySmallHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                
 								{(layout === 1) &&
 									<Range label={__('Overlay Space')} value={overlaySpace} onChange={value => setAttributes({ overlaySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 								}
