@@ -512,15 +512,8 @@ class Edit extends Component {
 						</PanelBody>
 					}
 					<PanelBody title={__('Blog Post Design')} initialOpen={false}>
-						{((style != 3)) &&
-							<ButtonGroup
-								label={__('Content Align')}
-								options={[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']]}
-								value={contentPosition}
-								onChange={value => setAttributes({ contentPosition: value })}
-							/>
-						}
-						{((style === 3) || (style === 4)) &&
+
+						{(style === 3 || style === 4) &&
 							<ButtonGroup
 								label={__('Content Position')}
 								options={
@@ -534,16 +527,7 @@ class Edit extends Component {
 							/>
 						}
 
-						{style != 2 &&
-							<Range
-								label={__('Gutter Space')}
-								value={gutterspace}
-								onChange={value => setAttributes({ gutterspace: value })}
-								unit={['px', 'em', '%']} min={10} max={100}
-								responsive device={device}
-								onDeviceChange={value => this.setState({ device: value })}
-							/>
-						}
+
 						<Padding
 							label={__('Content Padding')}
 							value={contentPadding}
@@ -555,38 +539,51 @@ class Edit extends Component {
 						/>
 						<Separator />
 
-						{(style != 4) || (style != 2) &&
+						{(style === 1 || style === 3) &&
 							<Fragment>
-								<ColorAdvanced label={__('Background')} value={bgColor} onChange={(value) => setAttributes({ bgColor: value })} />
+								<ColorAdvanced
+									label={__('Background')}
+									value={style === 3 ? stackBg : bgColor}
+									onChange={value => setAttributes(style === 3 ? { stackBg: value } : { bgColor: value })} />
 								<Border
-									label={__('Border')}
+									min={0}
+									max={10}
+									responsive
 									value={border}
+									device={device}
+									label={__('Border')}
+									unit={['px', 'em', '%']}
 									onChange={val => setAttributes({ border: val })}
-									min={0} max={10} unit={['px', 'em', '%']}
-									responsive device={device}
 									onDeviceChange={value => this.setState({ device: value })}
 								/>
 
-								{(style != 2) &&
-									<BorderRadius min={0} max={100} responsive device={device} label={__('Corner')} value={borderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ borderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
-								}
-								{(style != 1) &&
-									<BoxShadow label={__('Box-Shadow')} value={boxShadow} onChange={(value) => setAttributes({ boxShadow: value })} />
+								{
+									style === 3 &&
+									<BorderRadius
+										min={0}
+										max={100}
+										responsive
+										device={device}
+										label={__('Corner')}
+										value={stackBorderRadius}
+										unit={['px', 'em', '%']}
+										onChange={value => setAttributes({ stackBorderRadius: value })}
+										onDeviceChange={value => this.setState({ stackBorderRadius: value })} />
 								}
 							</Fragment>
 						}
 
-						{(style === 2) &&
+						{style === 2 &&
 							<Fragment>
-								<ColorAdvanced label={__('Card Background')} value={cardBackground} onChange={(value) => setAttributes({ cardBackground: value })} />
+								<ColorAdvanced label={__('Background')} value={cardBackground} onChange={(value) => setAttributes({ cardBackground: value })} />
 
-								<Border label={__('Card Border')} value={cardBorder} onChange={val => setAttributes({ cardBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+								<Border label={__('Border')} value={cardBorder} onChange={val => setAttributes({ cardBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 
 								<BorderRadius min={0} max={100} responsive device={device} label={__('Card Corner')} value={cardBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ cardBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
 
-								<Range label={__('Card Space')} value={cardSpace} onChange={value => setAttributes({ cardSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+								{/* <Range label={__('Card Space')} value={cardSpace} onChange={value => setAttributes({ cardSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} /> */}
 
-								<Padding label={__('Card Padding')} value={cardPadding} onChange={val => setAttributes({ cardPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+								<Padding label={__('Padding')} value={cardPadding} onChange={val => setAttributes({ cardPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 							</Fragment>
 						}
 
@@ -606,13 +603,15 @@ class Edit extends Component {
 								<Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
 							</Fragment>
 						}
-						{(style === 3) &&
-							<Fragment>
-								<ColorAdvanced label={__('Stack Background')} value={stackBg} onChange={(value) => setAttributes({ stackBg: value })} />
-								<BorderRadius min={0} max={100} responsive device={device} label={__('Stack Corner')} value={stackBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ stackBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
-								<BoxShadow label={__('Stack Box Shadow')} value={stackBoxShadow} onChange={(value) => setAttributes({ stackBoxShadow: value })} />
-							</Fragment>
+
+						{
+							style !== 4 &&
+							<BoxShadow
+								label={__('Box-Shadow')}
+								value={style === 3 ? stackBoxShadow : boxShadow}
+								onChange={(value) => setAttributes(style === 3 ? { stackBoxShadow: value } : { boxShadow: value })} />
 						}
+
 					</PanelBody>
 
 					<PanelBody title={__('Post Query')} initialOpen={false}>

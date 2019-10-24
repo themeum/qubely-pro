@@ -25,11 +25,11 @@ function register_block_qubely_postcarousel_pro()
 					'type' 			=> 'object',
 					'default' 		=> (object) array(
 						'md' 	=> '0',
-						'unit' 	=> '%'
+						'unit' 	=> 'px'
 					),
 					'style' 	=> [
 						(object) [
-							'selector' => '{{QUBELY}} .qubely-post-grid-wrapper.qubely-post-grid-top {padding: {{sliderItemsSpace}} 0;}'
+							'selector' => '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
 						]
 					]
 				),
@@ -350,7 +350,7 @@ function register_block_qubely_postcarousel_pro()
 				),
 				'contentPosition' 	=>  array(
 					'type' 		=> 'string',
-					'default' 	=> 'top',
+					'default' 	=> 'center',
 				),
 				'contentPadding' 	=> array(
 					'type' 		=> 'object',
@@ -403,6 +403,10 @@ function register_block_qubely_postcarousel_pro()
 					'type' 		=> 'object',
 					'default' 	=> (object) array(),
 					'style' 	=> [(object) [
+						'condition' => [
+							(object) ['key' => 'style', 'relation' => '!=', 'value' => 4],
+							(object) ['key' => 'style', 'relation' => '!=', 'value' => 3]
+						],
 						'selector' => '{{QUBELY}} .qubely-postgrid-style-1 .qubely-post-grid-wrapper, {{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper'
 					]]
 				),
@@ -419,7 +423,11 @@ function register_block_qubely_postcarousel_pro()
 					),
 					'style' => [
 						(object) [
-							'selector' => '{{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper.qubely-post-grid-center'
+							'condition' => [
+								(object) ['key' => 'style', 'relation' => '!=', 'value' => 4],
+								(object) ['key' => 'style', 'relation' => '!=', 'value' => 3]
+							],
+							'selector' => '{{QUBELY}} .qubely-post-grid-view .qubely-post-grid-wrapper'
 						]
 					]
 				),
@@ -467,19 +475,7 @@ function register_block_qubely_postcarousel_pro()
 						]
 					]
 				),
-				'cardSpace' => array(
-					'type' => 'object',
-					'default' => (object) array(
-						'md' => 10,
-						'unit' => 'px'
-					),
-					'style' => [
-						(object) [
-							'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 2]],
-							'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-2 {padding: {{cardSpace}};}'
-						]
-					]
-				),
+
 				'cardPadding' => array(
 					'type' => 'object',
 					'default' => (object) [
@@ -602,6 +598,9 @@ function register_block_qubely_postcarousel_pro()
 					),
 					'style' => [
 						(object) [
+							'condition' => [
+								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+							],
 							'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
 						]
 					]
@@ -620,6 +619,9 @@ function register_block_qubely_postcarousel_pro()
 					),
 					'style' => [
 						(object) [
+							'condition' => [
+								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+							],
 							'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
 						]
 					]
@@ -1167,7 +1169,7 @@ function register_block_qubely_postcarousel_pro()
 
 				'girdContentPosition' =>  array(
 					'type' => 'string',
-					'default' => 'center',
+					'default' => 'bottom',
 				),
 				'color' => array(
 					'type'    => 'string',
