@@ -595,7 +595,7 @@ class Edit extends Component {
 					</PanelBody>
 
 					<PanelBody title={__('Spacing')} initialOpen={false}>
-						{( (layout === 2) || (layout === 5) ) &&
+						{( layout != 1 ) &&
 							<Range label={__('Column Gap')} value={columnGap} onChange={value => setAttributes({ columnGap: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						}
 						{(showCategory == 'default') &&
