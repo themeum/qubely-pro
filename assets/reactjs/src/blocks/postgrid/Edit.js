@@ -98,8 +98,8 @@ class Edit extends Component {
 		)
 	}
 
-	renderCardContent = (post) => {
-		const { attributes: { layout, style, readmoreStyle, showCategory, categoryPosition, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
+	renderCardContent = (post, index) => {
+		const { attributes: { layout, readmoreStyle, showCategory, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
 		let title = <h3 className="qubely-postgrid-title"><a>{post.title.rendered}</a></h3>
 		return (
 			<div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
@@ -114,7 +114,8 @@ class Edit extends Component {
 					</div>
 				}
 				{showTitle && (titlePosition == false) && title}
-				{showExcerpt && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
+				{showExcerpt && ( (index==0) && (layout === 5) ) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
+				{showExcerpt && (layout != 5) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
 				{showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
 			</div>
 		)
@@ -650,7 +651,7 @@ class Edit extends Component {
                                     <div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style} ${( (layout == 5) && (index == 0) || (layout == 3) && (index == 0) ) ? 'qubely-post-large-view': 'qubely-post-small-view'}`}>
                                         <div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
                                             {showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
-                                            {this.renderCardContent(post)}
+                                            {this.renderCardContent(post, index)}
                                         </div>
                                     </div>
                                 )

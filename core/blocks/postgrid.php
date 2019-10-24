@@ -430,7 +430,7 @@ function register_block_qubely_postgrid_pro()
 						'openTypography' => 1,
 						'family' => "Roboto",
 						'type' => "sans-serif",
-						'size' => (object) ['md' => 32, 'unit' => 'px'],
+						'size' => (object) ['md' => 28, 'unit' => 'px'],
 					],
 					'style' => [(object) [
 						'condition' => [(object) ['key' => 'showTitle', 'relation' => '==', 'value' => true]],
@@ -496,7 +496,7 @@ function register_block_qubely_postgrid_pro()
 				'fixedSmallHeight' => array(
 					'type' => 'object',
                     'default' => (object) array(
-						'md' => 150,
+						'md' => '',
 						'unit' => 'px'
 					),
 					'style' => [(object) ['selector' => '{{QUBELY}} .qubely-postgrid-layout-5 .qubely-post-small-view .qubely-post-image, {{QUBELY}} .qubely-postgrid-layout-3 .qubely-post-small-view .qubely-post-image {width: 100%; object-fit: cover;height: {{fixedSmallHeight}};}']]
@@ -1362,8 +1362,11 @@ function render_block_qubely_postgrid_pro($att)
                 if ( ($att['showTitle']===0) || ($att['titlePosition']!= 1) ) {
 					$html .= $title;
                 }
+                
 				if ($showExcerpt == 1) {
-					$html .= $excerpt;
+                    if($count == 0) {
+                        $html .= $excerpt;
+                    }
 				}
 				if ($showReadMore == 1) {
 					$html .= $btn;
