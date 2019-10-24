@@ -1,10 +1,10 @@
 .qubely-form-field-wrapper {
 //   display: flex;
 //   display: -ms-flexbox;
-  .qubely-form-label {
-    // display: flex;
-    // display: -ms-flexbox;
-  }
+  // .qubely-form-label {
+  //   display: flex;
+  //   display: -ms-flexbox;
+  // }
   .qubely-form-field {
     width: 100%;
     .qubely-form-date-picker {
@@ -15,15 +15,15 @@
     &.qubely-form-radio {
       display: flex;
       flex-wrap: wrap;
-      margin-left: -10px;
-      margin-right: -10px;
+      // margin-left: -10px;
+      // margin-right: -10px;
       &.qubely-checkbox-auto,
       &.qubely-radio-auto {
         .qubely-form-field-checkbox-option,
         .qubely-form-field-radio-option {
           width: auto;
-          padding-left: 10px;
-          padding-right: 10px;
+          // padding-left: 10px;
+          // padding-right: 10px;
         }
       }
       &.qubely-checkbox-1-column,

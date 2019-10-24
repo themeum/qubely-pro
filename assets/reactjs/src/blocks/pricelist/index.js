@@ -577,7 +577,7 @@ registerBlockType('qubely/pricelist', {
         },
         badgePosition: {
 			type: 'string',
-			default: 'before',
+			default: 'left',
 			style: [
                 {
 					condition: [
