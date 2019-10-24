@@ -1276,9 +1276,10 @@ function render_block_qubely_postgrid_pro($att)
 				$html .= '</div>'; //qubely-post-list-content
 				$html .= '</div>'; //qubely-post-list-wrap
 				$html .= '</div>'; //qubely-postgrid
-			}
+            }
+            // (layout == 5) && (index == 0) || (layout == 3) && (index == 0)
 			if ( ($layout === 2) || ($layout === 3) || ($layout === 4) ) {
-                $layoutClass = ($count == 0) ? 'qubely-post-large-view' : 'qubely-post-small-view';
+                $layoutClass = ($count == 0 && $layout == 3) ? 'qubely-post-large-view' : 'qubely-post-small-view';
 				$html .= '<div class="qubely-postgrid qubely-post-grid-view qubely-postgrid-style-' . esc_attr($style) . ' '.$layoutClass.'">';
 				$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-' . esc_attr(($layout == 2 && $style === 3) ? $contentPosition : $girdContentPosition)  . '">';
 				if (($showImages == 1) && has_post_thumbnail()) {

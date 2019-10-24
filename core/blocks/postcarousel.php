@@ -417,7 +417,7 @@ function register_block_qubely_postcarousel_pro()
 						'color' 	=> "rgba(0,0,0,0.10)",
 						'horizontal' => 0,
 						'inset' 	=> 0,
-						'openShadow' => false,
+						'openShadow' => true,
 						'spread' 	=> 0,
 						'vertical' 	=> 4
 					),
@@ -475,19 +475,7 @@ function register_block_qubely_postcarousel_pro()
 						]
 					]
 				),
-				// 'cardSpace' => array(
-				// 	'type' => 'object',
-				// 	'default' => (object) array(
-				// 		'md' => 10,
-				// 		'unit' => 'px'
-				// 	),
-				// 	'style' => [
-				// 		(object) [
-				// 			'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 2]],
-				// 			'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-2 {padding: {{cardSpace}};}'
-				// 		]
-				// 	]
-				// ),
+
 				'cardPadding' => array(
 					'type' => 'object',
 					'default' => (object) [
