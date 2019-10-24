@@ -180,7 +180,7 @@ registerBlockType('qubely/testimonialcarousel', {
 			],
 		},
 		// Arroe Border Hover Color.
-		arrowBorderHoverColor: {
+		arrowHoverBorder: {
 			type: 'object',
 			default: { openTy: 0, color: '#3373dc', width: { bottom: '1', left: '1', right: '1', top: '1', unit: 'px' } },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover' }]
@@ -324,7 +324,7 @@ registerBlockType('qubely/testimonialcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-single-img { margin-bottom: {{avatarSpacing}} }'
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-avatar { margin-bottom: {{avatarSpacing}} }'
 				}
 				
 			]
