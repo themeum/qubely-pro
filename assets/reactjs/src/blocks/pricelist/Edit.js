@@ -2,59 +2,59 @@ const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, BlockControls, MediaUpload } = wp.editor
-const { IconList,Inline: { InlineToolbar }, Background, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, Border, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings } } = wp.qubelyComponents
+const { IconList, Inline: { InlineToolbar }, Background, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, Border, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings } } = wp.qubelyComponents
 import icons from '../../helpers/icons'
 
 class Edit extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			device: 'md',
-			spacer: true,
-		}
-	}
+    constructor(props) {
+        super(props)
+        this.state = {
+            device: 'md',
+            spacer: true,
+        }
+    }
 
-	componentDidMount() {
-		const { setAttributes, clientId, attributes: { uniqueId } } = this.props
-		const _client = clientId.substr(0, 6)
-		if (!uniqueId) {
-			setAttributes({ uniqueId: _client });
-		} else if (uniqueId && uniqueId != _client) {
-			setAttributes({ uniqueId: _client });
-		}
-	}
+    componentDidMount() {
+        const { setAttributes, clientId, attributes: { uniqueId } } = this.props
+        const _client = clientId.substr(0, 6)
+        if (!uniqueId) {
+            setAttributes({ uniqueId: _client });
+        } else if (uniqueId && uniqueId != _client) {
+            setAttributes({ uniqueId: _client });
+        }
+    }
 
-	updatePricelistContent = (key, value, index) => {
-		const { setAttributes, attributes: { pricelistItems, pricelistContents } } = this.props
-		if (key === 'add' || key === 'delete') {
-			let updatedAttributes = key === 'add' ? [...pricelistContents, { title: 'Pricelist Block', date: 'January 1, 2021', description: 'Include detailed for your products, company, etc with Qubely Pricelist.' }] : pricelistContents.slice(0, pricelistItems - 1)
-			setAttributes({
-				pricelistContents: updatedAttributes,
-				pricelistItems: key === 'add' ? pricelistItems + 1 : pricelistItems - 1
-			})
-		} else {
-			let updatedAttributes = pricelistContents.map((data, itemIndex) => {
-				if (index === itemIndex) {
-					return { ...data, [key]: value }
-				} else {
-					return data
-				}
-			})
-			setAttributes({ pricelistContents: updatedAttributes })
-		}
-	}
+    updatePricelistContent = (key, value, index) => {
+        const { setAttributes, attributes: { pricelistItems, pricelistContents } } = this.props
+        if (key === 'add' || key === 'delete') {
+            let updatedAttributes = key === 'add' ? [...pricelistContents, { title: 'Pricelist Block', date: 'January 1, 2021', description: 'Include detailed for your products, company, etc with Qubely Pricelist.' }] : pricelistContents.slice(0, pricelistItems - 1)
+            setAttributes({
+                pricelistContents: updatedAttributes,
+                pricelistItems: key === 'add' ? pricelistItems + 1 : pricelistItems - 1
+            })
+        } else {
+            let updatedAttributes = pricelistContents.map((data, itemIndex) => {
+                if (index === itemIndex) {
+                    return { ...data, [key]: value }
+                } else {
+                    return data
+                }
+            })
+            setAttributes({ pricelistContents: updatedAttributes })
+        }
+    }
 
     removePricelistItem = (index) => {
-		const { setAttributes, attributes: { pricelistContents } } = this.props
-		let newPricelistItems = JSON.parse(JSON.stringify(pricelistContents))
-		newPricelistItems.splice(index, 1)
-		setAttributes({ pricelistContents: newPricelistItems })
-	}
+        const { setAttributes, attributes: { pricelistContents } } = this.props
+        let newPricelistItems = JSON.parse(JSON.stringify(pricelistContents))
+        newPricelistItems.splice(index, 1)
+        setAttributes({ pricelistContents: newPricelistItems })
+    }
 
-	renderPricelist = () => {
+    renderPricelist = () => {
         const {
-            attributes: { 
-                pricelistContents, 
+            attributes: {
+                pricelistContents,
                 contentAlign,
                 headingLevel,
                 mediaType,
@@ -64,20 +64,20 @@ class Edit extends Component {
                 enableDiscount,
                 enableDescription,
                 enableLine,
-                priceAfterTitle 
+                priceAfterTitle
             }
         } = this.props
-		const titleTagName = 'h' + headingLevel;
-		return (pricelistContents.map(({ title, description, image, price, digitText, discount, badge }, index) => {
-			return (
-				<div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
+        const titleTagName = 'h' + headingLevel;
+        return (pricelistContents.map(({ title, description, image, price, digitText, discount, badge }, index) => {
+            return (
+                <div key={index} className={`qubely-pricelist-item qubely-pricelist-item-${contentAlign}`}>
                     <Tooltip text={__('Delete this item')}>
                         <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><span class="dashicons dashicons-no-alt" /></span>
                     </Tooltip>
-					<div className={`qubely-pricelist-content`}>
-                        { (enableMedia == 1) && (mediaType =='image') &&
-							<div className={`qubely-pricelist-image-container`}>
-								<div className={`qubely-pricelist-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'}`}>
+                    <div className={`qubely-pricelist-content`}>
+                        {(enableMedia == 1) && (mediaType == 'image') &&
+                            <div className={`qubely-pricelist-image-container`}>
+                                <div className={`qubely-pricelist-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'}`}>
                                     <MediaUpload
                                         onSelect={value => this.updatePricelistContent('image', value, index)}
                                         allowedTypes={['image']}
@@ -91,12 +91,12 @@ class Edit extends Component {
                                                         <div className="qubely-media-actions qubely-field-button-list">
                                                             <Tooltip text={__('Edit')}>
                                                                 <button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
-                                                                    <span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw"/>
+                                                                    <span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw" />
                                                                 </button>
                                                             </Tooltip>
                                                             <Tooltip text={__('Remove')}>
                                                                 <button className="qubely-button" aria-label={__('Remove')} onClick={() => this.updatePricelistContent('image', '', index)} role="button">
-                                                                    <span aria-label={__('Close')} className="far fa-trash-alt fa-fw"/>
+                                                                    <span aria-label={__('Close')} className="far fa-trash-alt fa-fw" />
                                                                 </button>
                                                             </Tooltip>
                                                         </div>
@@ -122,9 +122,9 @@ class Edit extends Component {
                                         </div>
                                     }
                                 </div>
-							</div>
+                            </div>
                         }
-                        { (enableMedia == 1) && (mediaType =='digit') &&
+                        {(enableMedia == 1) && (mediaType == 'digit') &&
                             <div className="qubely-pricelist-media-digit">
                                 <div className="qubely-pricelist-digit">
                                     <RichText
@@ -138,7 +138,7 @@ class Edit extends Component {
                                 </div>
                             </div>
                         }
-						<div className="qubely-pricelist-description-wrapper">
+                        <div className="qubely-pricelist-description-wrapper">
                             <div className="qubely-pricelist-description">
                                 <div className="qubely-pricelist-title-wrapper">
                                     <RichText
@@ -149,8 +149,8 @@ class Edit extends Component {
                                         onChange={value => this.updatePricelistContent('title', value, index)}
                                         keepPlaceholderOnFocus
                                     />
-                                    { enableLine && (priceAfterTitle==0) &&
-                                     <span className="qubely-pricelist-line"/>
+                                    {enableLine && (priceAfterTitle == 0) &&
+                                        <span className="qubely-pricelist-line" />
                                     }
                                     <div className="qubely-pricelist-price-wrapper">
                                         {enableDiscount &&
@@ -175,7 +175,7 @@ class Edit extends Component {
                                         }
                                     </div>
                                 </div>
-                                { enableDescription && 
+                                {enableDescription &&
                                     <RichText
                                         placeholder={__('Add description')}
                                         tagName='div'
@@ -186,31 +186,31 @@ class Edit extends Component {
                                     />
                                 }
                             </div>
-						</div>
-					</div>
-				</div>
-			)
-		}))
-	}
-	render() {
-		const { setAttributes, attributes: {
-			uniqueId,
-			pricelistItems,
+                        </div>
+                    </div>
+                </div>
+            )
+        }))
+    }
+    render() {
+        const { setAttributes, attributes: {
+            uniqueId,
+            pricelistItems,
             style,
             column,
             columnGap,
             headingLevel,
             priceAfterTitle,
-			headingTypography,
+            headingTypography,
             headingColor,
             headingWhiteColor,
-			headingSpacing,
-			contentBg,
-			enableContentBorder,
-			contentBorderWidth,
-			contentBorderColor,
-			contentPadding,
-			contentBorderRadius,
+            headingSpacing,
+            contentBg,
+            enableContentBorder,
+            contentBorderWidth,
+            contentBorderColor,
+            contentPadding,
+            contentBorderRadius,
             contentBoxShadow,
             contentSpacing,
             contentAlign,
@@ -223,9 +223,9 @@ class Edit extends Component {
             lineBorderColor,
             lineBorderStyle,
             badgePosition,
-			enableMedia,
-			mediaType,
-			imagePosition,
+            enableMedia,
+            mediaType,
+            imagePosition,
             imageBorderRadius,
             imageSize,
             imageSpacing,
@@ -254,39 +254,39 @@ class Edit extends Component {
             discountColor,
             discountWhiteColor,
             globalZindex,
-            enablePosition, 
-            selectPosition, 
-            positionXaxis, 
+            enablePosition,
+            selectPosition,
+            positionXaxis,
             positionYaxis,
             hideTablet,
             hideMobile,
             globalCss,
             animation,
             interaction
-		} } = this.props
+        } } = this.props
 
-		const { device } = this.state
+        const { device } = this.state
 
-		if (uniqueId) { CssGenerator(this.props.attributes, 'pricelist', uniqueId) }
+        if (uniqueId) { CssGenerator(this.props.attributes, 'pricelist', uniqueId) }
 
-		return (
-			<Fragment>
-				<InspectorControls key="inspector">
-					<PanelBody title={__('General Settings')}>
-						<Range
-							min={2}
-							max={100}
-							label={__('Number of Items')}
-							value={pricelistItems}
-							onChange={value => this.updatePricelistContent(value > pricelistItems ? 'add' : 'delete')}
-						/>
+        return (
+            <Fragment>
+                <InspectorControls key="inspector">
+                    <PanelBody title={__('General Settings')}>
+                        <Range
+                            min={2}
+                            max={100}
+                            label={__('Number of Items')}
+                            value={pricelistItems}
+                            onChange={value => this.updatePricelistContent(value > pricelistItems ? 'add' : 'delete')}
+                        />
                         <Range label={__('Select Column')} value={column} onChange={(value) => setAttributes({ column: value })} min={1} step={1} max={3} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Range label={__('Column Gap')} value={columnGap} onChange={value => setAttributes({ columnGap: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Toggle label={__('Price After Title')} value={priceAfterTitle} onChange={val => setAttributes({ priceAfterTitle: val })} />
-					</PanelBody>
+                    </PanelBody>
 
                     <PanelBody title={__('Price List Layouts')} initialOpen={false}>
-                        { (enableMedia == 1) && (mediaType =='image') ?
+                        {(enableMedia == 1) && (mediaType == 'image') ?
                             <Styles columns={3} value={style} onChange={val => setAttributes({ style: val })}
                                 options={[
                                     { value: 1, svg: icons.postgrid_design_1 },
@@ -294,7 +294,7 @@ class Edit extends Component {
                                     { value: 3, svg: icons.postgrid_design_6 },
                                 ]}
                             />
-                            : 
+                            :
                             <Styles columns={2} value={style} onChange={val => setAttributes({ style: val })}
                                 options={[
                                     { value: 1, svg: icons.postgrid_design_1 },
@@ -303,10 +303,10 @@ class Edit extends Component {
                             />
                         }
                         <Alignment label={__('Alignment')} value={contentAlign} onChange={val => setAttributes({ contentAlign: val })} alignmentType="content" disableJustify />
-                        { (style != 3) &&
+                        {(style != 3) &&
                             <Fragment>
                                 <Background label={__('Background')} sources={['image', 'gradient']} parallax value={contentBg} onChange={val => setAttributes({ contentBg: val })} />
-                                { (style == 2) &&
+                                {(style == 2) &&
                                     <ColorAdvanced label={__('Overlay')} value={overlayContentBg} onChange={(value) => setAttributes({ overlayContentBg: value })} />
                                 }
                                 <Toggle label={__('Enable Border')} value={enableContentBorder} onChange={val => setAttributes({ enableContentBorder: val })} />
@@ -319,47 +319,47 @@ class Edit extends Component {
                                 }
                             </Fragment>
                         }
-                        {(enableMedia == 1) && (mediaType =='image') && (style === 3) &&
-                        <Tabs>
-                            <Tab tabTitle={__('Normal')}>
-                                <ColorAdvanced label={__('Overlay')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
-                            </Tab>
-                            <Tab tabTitle={__('Hover')}>
-                                <ColorAdvanced label={__('Hover Overlay')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
-                            </Tab>
-                        </Tabs>
+                        {(enableMedia == 1) && (mediaType == 'image') && (style === 3) &&
+                            <Tabs>
+                                <Tab tabTitle={__('Normal')}>
+                                    <ColorAdvanced label={__('Overlay')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
+                                </Tab>
+                                <Tab tabTitle={__('Hover')}>
+                                    <ColorAdvanced label={__('Hover Overlay')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
+                                </Tab>
+                            </Tabs>
                         }
-                        { (enableMedia == 1) && (mediaType =='image') && (style === 3) &&
+                        {(enableMedia == 1) && (mediaType == 'image') && (style === 3) &&
                             <Range label={__('Height')} value={height} onChange={val => setAttributes({ height: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
                         }
                         <BorderRadius label={__('Radius')} value={contentBorderRadius} onChange={val => setAttributes({ contentBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Box-Shadow')} value={contentBoxShadow} onChange={val => setAttributes({ contentBoxShadow: val })} disableInset />
                         <Range label={__('Spacing')} value={contentSpacing} onChange={val => setAttributes({ contentSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        
-                    
+
+
                     </PanelBody>
-                    {(priceAfterTitle==0) &&
+                    {(priceAfterTitle == 0) &&
                         <PanelBody title={__('Line Style')} initialOpen={false}>
                             <Toggle label={__('Enable Line')} value={enableLine} onChange={val => setAttributes({ enableLine: val })} />
-                            { (enableLine == 1) &&
+                            {(enableLine == 1) &&
                                 <Fragment>
                                     <Range label={__('Border Width')} value={lineBorderWidth} onChange={val => setAttributes({ lineBorderWidth: val })} min={1} max={5} responsive device={device} unit={['px']} onDeviceChange={value => this.setState({ device: value })} />
                                     <Color label={__('Border Color')} value={lineBorderColor} onChange={(value) => setAttributes({ lineBorderColor: value })} />
                                     <Select
                                         label={__('Position')}
-                                        options={['solid', 'dotted','dashed']}
+                                        options={['solid', 'dotted', 'dashed']}
                                         value={lineBorderStyle}
-                                        onChange={(value) => setAttributes({ lineBorderStyle: value })} 
+                                        onChange={(value) => setAttributes({ lineBorderStyle: value })}
                                     />
                                 </Fragment>
                             }
-                        </PanelBody>   
-                    }             
+                        </PanelBody>
+                    }
 
-					<PanelBody title={__('Media')} initialOpen={false}>
-						<Toggle label={__('Enable')} value={enableMedia} onChange={val => setAttributes({ enableMedia: val })} />
-                        { (enableMedia==1) &&
+                    <PanelBody title={__('Media')} initialOpen={false}>
+                        <Toggle label={__('Enable')} value={enableMedia} onChange={val => setAttributes({ enableMedia: val })} />
+                        {(enableMedia == 1) &&
                             <RadioAdvanced label={__('Media Type')} value={mediaType} onChange={(value) => setAttributes({ mediaType: value })}
                                 options={[
                                     { label: __('Image'), value: 'image', title: __('Image') },
@@ -367,36 +367,36 @@ class Edit extends Component {
                                 ]}
                             />
                         }
-                        { (enableMedia == 1) && (style != 3) &&
-							<Fragment>
+                        {(enableMedia == 1) && (style != 3) &&
+                            <Fragment>
                                 <RadioAdvanced label={__('Position')} value={imagePosition} onChange={(value) => setAttributes({ imagePosition: value })}
-									options={[
-										{ label: __('Left'), value: 'left', title: __('Left') },
-										{ label: __('Top'), value: 'top', title: __('Top') }
-									]}
-								/>
-                                 { (enableMedia == 1) && (mediaType == 'image') &&
-                                 <Fragment>
-								    <Range label={__('Size')} value={imageSize} onChange={val => setAttributes({ imageSize: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                    <BorderRadius label={__('Radius')} value={imageBorderRadius} onChange={val => setAttributes({ imageBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                    <Range label={__('Spacing')} value={imageSpacing} onChange={val => setAttributes({ imageSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                </Fragment>
+                                    options={[
+                                        { label: __('Left'), value: 'left', title: __('Left') },
+                                        { label: __('Top'), value: 'top', title: __('Top') }
+                                    ]}
+                                />
+                                {(enableMedia == 1) && (mediaType == 'image') &&
+                                    <Fragment>
+                                        <Range label={__('Size')} value={imageSize} onChange={val => setAttributes({ imageSize: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                        <BorderRadius label={__('Radius')} value={imageBorderRadius} onChange={val => setAttributes({ imageBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                        <Range label={__('Spacing')} value={imageSpacing} onChange={val => setAttributes({ imageSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    </Fragment>
                                 }
-							</Fragment>
-						}
-                        { (enableMedia == 1) && (mediaType == 'digit') &&
-							<Fragment>
+                            </Fragment>
+                        }
+                        {(enableMedia == 1) && (mediaType == 'digit') &&
+                            <Fragment>
                                 <Typography label={__('Typography')} value={digitTypography} onChange={val => setAttributes({ digitTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <Color label={__('Color')} value={digitColor} onChange={(value) => setAttributes({ digitColor: value })} />
                                 <Color label={__('Background Color')} value={digitBg} onChange={(value) => setAttributes({ digitBg: value })} />
-								<Range label={__('Size')} value={digitSize} onChange={val => setAttributes({ digitSize: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <Range label={__('Size')} value={digitSize} onChange={val => setAttributes({ digitSize: val })} min={0} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <BorderRadius label={__('Radius')} value={digitBorderRadius} onChange={val => setAttributes({ digitBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <Range label={__('Spacing')} value={digitSpacing} onChange={val => setAttributes({ digitSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
-							</Fragment>
-						}
-					</PanelBody>
+                            </Fragment>
+                        }
+                    </PanelBody>
 
-                    { (enableMedia == 1) && (mediaType =='image') &&
+                    {(enableMedia == 1) && (mediaType == 'image') &&
                         <PanelBody title={__('Badge')} initialOpen={false}>
                             <Toggle label={__('Enable')} value={enableBadge} onChange={val => setAttributes({ enableBadge: val })} />
                             {enableBadge == 1 &&
@@ -410,40 +410,40 @@ class Edit extends Component {
                                     <Color label={__('Color')} value={badgeColor} onChange={(value) => setAttributes({ badgeColor: value })} />
                                     <Color label={__('Background Color')} value={badgeBg} onChange={(value) => setAttributes({ badgeBg: value })} />
                                     <BorderRadius label={__('Radius')} value={badgeBorderRadius} onChange={val => setAttributes({ badgeBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                    <Padding label={__('Padding')} value={badgePadding} onChange={val => setAttributes({ badgePadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} /> 
+                                    <Padding label={__('Padding')} value={badgePadding} onChange={val => setAttributes({ badgePadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 </Fragment>
                             }
                         </PanelBody>
                     }
 
                     <PanelBody title={__('Content')} initialOpen={false}>
-						<Headings label={__('Heading Tag')} selectedLevel={headingLevel} onChange={(value) => setAttributes({ headingLevel: value })} />
-						<Typography label={__('Heading Typography')} value={headingTypography} onChange={val => setAttributes({ headingTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <Headings label={__('Heading Tag')} selectedLevel={headingLevel} onChange={(value) => setAttributes({ headingLevel: value })} />
+                        <Typography label={__('Heading Typography')} value={headingTypography} onChange={val => setAttributes({ headingTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Color
                             label={__('Heading Color')}
                             value={style != '3' ? headingColor : headingWhiteColor}
                             onChange={val => setAttributes(style != '3' ? { headingColor: val } : { headingWhiteColor: val })}
                         />
                         <Range label={__('Heading Spacing')} value={headingSpacing} onChange={val => setAttributes({ headingSpacing: val })} min={0} max={100} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
-						<Separator />
+                        <Separator />
 
                         <Toggle label={__('Enable Description')} value={enableDescription} onChange={val => setAttributes({ enableDescription: val })} />
-						{enableDescription == 1 &&
-							<Fragment>
-								<Typography label={__('Description Typography')} value={descriptionTypography} onChange={val => setAttributes({ descriptionTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        {enableDescription == 1 &&
+                            <Fragment>
+                                <Typography label={__('Description Typography')} value={descriptionTypography} onChange={val => setAttributes({ descriptionTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <Color
                                     label={__('Description Color')}
                                     value={style != '3' ? descriptionColor : descriptionWhiteColor}
                                     onChange={val => setAttributes(style != '3' ? { descriptionColor: val } : { descriptionWhiteColor: val })}
                                 />
                             </Fragment>
-						}
-                        
+                        }
+
                         <Separator />
                         <Toggle label={__('Enable Price')} value={enablePrice} onChange={val => setAttributes({ enablePrice: val })} />
-						{enablePrice == 1 &&
-							<Fragment>
-								<Typography label={__('Price Typography')} value={priceTypography} onChange={val => setAttributes({ priceTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        {enablePrice == 1 &&
+                            <Fragment>
+                                <Typography label={__('Price Typography')} value={priceTypography} onChange={val => setAttributes({ priceTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <Color
                                     label={__('Price Color')}
                                     value={style != '3' ? priceColor : priceWhiteColor}
@@ -451,11 +451,11 @@ class Edit extends Component {
                                 />
                             </Fragment>
                         }
-                        
-						<Toggle label={__('Enable Discount')} value={enableDiscount} onChange={val => setAttributes({ enableDiscount: val })} />
-						{enableDiscount == 1 &&
-							<Fragment>
-								<Typography label={__('Discount Typography')} value={discountTypography} onChange={val => setAttributes({ discountTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+
+                        <Toggle label={__('Enable Discount')} value={enableDiscount} onChange={val => setAttributes({ enableDiscount: val })} />
+                        {enableDiscount == 1 &&
+                            <Fragment>
+                                <Typography label={__('Discount Typography')} value={discountTypography} onChange={val => setAttributes({ discountTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <Color
                                     label={__('Discount Color')}
                                     value={style != '3' ? discountColor : discountWhiteColor}
@@ -463,37 +463,37 @@ class Edit extends Component {
                                 />
                             </Fragment>
                         }
-                        
-					</PanelBody>
+
+                    </PanelBody>
 
                     {animationSettings(uniqueId, animation, setAttributes)}
 
                     {interactionSettings(uniqueId, interaction, setAttributes)}
 
-				</InspectorControls>
+                </InspectorControls>
 
-				<BlockControls>
-					<Toolbar>
-						<InlineToolbar
-							data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
-							{...this.props}
-							prevState={this.state}
-						/>
-					</Toolbar>
-				</BlockControls>
+                <BlockControls>
+                    <Toolbar>
+                        <InlineToolbar
+                            data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
+                            {...this.props}
+                            prevState={this.state}
+                        />
+                    </Toolbar>
+                </BlockControls>
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-				<div className={`qubely-block-${uniqueId}`}>
-					<div className={`qubely-block-pricelist qubely-pricelist-item-${style}`}>
-						<div className={`qubely-pricelist-items`}>
-							{this.renderPricelist()}
-						</div>
-					</div>
-				</div>
-			</Fragment>
-		)
-	}
+                <div className={`qubely-block-${uniqueId}`}>
+                    <div className={`qubely-block-pricelist qubely-pricelist-item-${style}`}>
+                        <div className={`qubely-pricelist-items`}>
+                            {this.renderPricelist()}
+                        </div>
+                    </div>
+                </div>
+            </Fragment>
+        )
+    }
 }
 
 export default Edit
