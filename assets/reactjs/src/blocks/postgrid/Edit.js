@@ -269,7 +269,6 @@ class Edit extends Component {
 						{ ( (layout === 2) || (layout === 3) || (layout === 4) ) && 
 							<Range label={__('Select Column')} value={column} onChange={(value) => setAttributes({ column: value })} min={1} step={1} max={6} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						}
-
 						{((layout === 1) || ( (layout != 1)  && ((style === 3) || (style === 4)))) &&
 							<ButtonGroup
 								label={__('Content Align')}
