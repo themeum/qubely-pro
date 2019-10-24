@@ -47,7 +47,7 @@ class Edit extends Component {
 				multiple={false}
 				value={avatar}
 				render={({ open }) => (
-					<div className="qubely-single-img qubely-backend">
+					<div className="qubely-testimonial-avatar qubely-backend">
 						{(avatar && avatar.url) ?
 							<img onClick={open} className="qubely-testimonial-avatar" src={avatar.url} alt={avatarAlt} />
 							:

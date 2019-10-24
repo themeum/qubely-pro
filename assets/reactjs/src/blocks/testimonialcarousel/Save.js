@@ -4,7 +4,7 @@ const { HelperFunction: { animationAttr } } = wp.qubelyComponents
 class Save extends Component {
   renderAvatar = (avatar, avatarAlt) => {
     return (
-      <div className="qubely-single-img">
+      <div className="qubely-testimonial-avatar">
         {avatar.url != undefined ?
           <img className="qubely-testimonial-avatar" src={avatar.url} alt={avatarAlt} />
           :

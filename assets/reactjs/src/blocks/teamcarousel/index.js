@@ -265,7 +265,7 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'avatarSize', relation: '==', value: 'custom' }
 					],
-					selector: '{{QUBELY}} .qubely-team-avatar {width: {{avatarWidth}};}'
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img,{{QUBELY}} .qubely-block-team-carousel .qubely-single-img .qubely-team-avatar {width: {{avatarWidth}};}'
 				}
 			]
 		},
@@ -277,11 +277,11 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'avatarSize', relation: '==', value: 'custom' }
 					],
-					selector: '{{QUBELY}} .qubely-team-avatar {height: {{avatarHeight}};}'
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img,{{QUBELY}} .qubely-block-team-carousel .qubely-single-img .qubely-team-avatar {height: {{avatarHeight}};}'
 				}
 			]
 		},
-		avatarSpacing: {
+		avatarVerticalSpacing: {
 			type: 'object',
 			default: {
 				md: 20,
@@ -292,7 +292,22 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: 1 }
 					],
-					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-team-avatar {margin-bottom: {{avatarSpacing}}; }'
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-team-avatar {margin-bottom: {{avatarVerticalSpacing}}; }'
+				}
+			]
+		},
+		avatarHorizontalSpacing: {
+			type: 'object',
+			default: {
+				md: 20,
+				unit: 'px'
+			},
+			style: [
+				{
+					condition: [
+						{ key: 'layout', relation: '==', value: 3 }
+					],
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img {margin-right: {{avatarHorizontalSpacing}}; }'
 				}
 			]
 		},

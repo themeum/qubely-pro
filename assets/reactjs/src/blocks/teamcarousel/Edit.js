@@ -234,55 +234,104 @@ class Edit extends Component {
 		return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md'
 	}
 	render() {
-		const { setAttributes, attributes: {
-			uniqueId, items, autoPlay, interval, speed, nav, carouselItems, dragable,
-			layout, nameColor, alignment, designationColor, showAvatar, avatarBorderRadius, avatarSize, avatarWidth, avatarHeight,
-			avatarBorder, avatarSpacing, nameTypo, nameSpacing, designationTypo, bgPadding, textColor, bgColor,
-			bgBorderRadius, border, boxShadow, boxShadowHover, sliderItemsSpace, isCentered, activeFade,
-			arrowStyle, arrowPosition, cornerRadius, cornerHoverRadius, arrowSize, sizeWidth, arrowColor, arrowShapeColor, arrowBorderColor, arrowHoverColor, arrowShapeHoverColor, arrowBorderHover,
-			dots, dotIndicator, dotwidth, dotHeight, dotBorderRadius, dotColor, dotActiveColor, horizontalScroll,
+		const {
+			setAttributes,
+			attributes: {
+				uniqueId,
+				items,
+				autoPlay,
+				interval,
+				speed, nav,
+				carouselItems,
+				dragable,
+				layout,
+				nameColor,
+				alignment,
+				designationColor,
+				showAvatar,
+				avatarBorderRadius,
+				avatarSize,
+				avatarWidth,
+				avatarHeight,
+				avatarBorder,
+				avatarVerticalSpacing,
+				avatarHorizontalSpacing,
+				nameTypo,
+				nameSpacing,
+				designationTypo,
+				bgPadding,
+				textColor,
+				bgColor,
 
-			// Social Share.
-			showSociallinks,
-			facebook,
-			twitter,
-			instagram,
-			linkedin,
-			youtube,
-			github,
-			flickr,
-			pinterest,
-			dribbble,
-			behance,
-			iconSize,
-			iconSizeCustom,
-			iconGutter,
-			iconSpacing,
-			iconStyle,
-			iconUseDefaultStyle,
-			iconBorderRadius,
-			iconColor,
-			iconBackground,
-			iconBorder,
-			iconColorHover,
-			iconBackgroundHover,
-			iconBorderColorHover,
-			sliderMargin,
-			enablename,
-			dotsPosition,
-			horizontalScrollleft,
-			contentSpacing,
+				bgBorderRadius,
+				border,
+				boxShadow,
+				boxShadowHover,
+				sliderItemsSpace,
+				isCentered,
+				activeFade,
+				arrowStyle,
+				arrowPosition,
+				cornerRadius,
+				cornerHoverRadius,
+				arrowSize,
+				sizeWidth,
+				arrowColor,
+				arrowShapeColor,
+				arrowBorderColor,
+				arrowHoverColor,
+				arrowShapeHoverColor,
+				arrowBorderHover,
+				dots,
+				dotIndicator,
+				dotwidth,
+				dotHeight,
+				dotBorderRadius,
+				dotColor,
+				dotActiveColor,
+				horizontalScroll,
 
-			globalZindex,
-			enablePosition,
-			selectPosition,
-			positionXaxis,
-			positionYaxis,
-			hideTablet,
-			hideMobile,
-			globalCss,
-			animation
-		} } = this.props
+				// Social Share.
+				showSociallinks,
+				facebook,
+				twitter,
+				instagram,
+				linkedin,
+				youtube,
+				github,
+				flickr,
+				pinterest,
+				dribbble,
+				behance,
+				iconSize,
+				iconSizeCustom,
+				iconGutter,
+				iconSpacing,
+				iconStyle,
+				iconUseDefaultStyle,
+				iconBorderRadius,
+				iconColor,
+				iconBackground,
+				iconBorder,
+				iconColorHover,
+				iconBackgroundHover,
+				iconBorderColorHover,
+				sliderMargin,
+				enablename,
+				dotsPosition,
+				horizontalScrollleft,
+				contentSpacing,
+
+				globalZindex,
+				enablePosition,
+				selectPosition,
+				positionXaxis,
+				positionYaxis,
+				hideTablet,
+				hideMobile,
+				globalCss,
+				animation
+			} } = this.props
 
 		const { device } = this.state
 
@@ -525,9 +574,9 @@ class Edit extends Component {
 								<RadioAdvanced
 									label={__('Avatar Size')}
 									options={[
-										{ label: 'S', value: '48px', title: 'Small' },
-										{ label: 'M', value: '64px', title: 'Medium' },
-										{ label: 'L', value: '96px', title: 'Large' },
+										{ label: 'S', value: '60px', title: 'Small' },
+										{ label: 'M', value: '100px', title: 'Medium' },
+										{ label: 'L', value: '140px', title: 'Large' },
 										{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
 									]}
 									value={avatarSize}
@@ -578,17 +627,18 @@ class Edit extends Component {
 									onDeviceChange={value => this.setState({ device: value })}
 								/>
 								{
-									layout === 1 &&
+									layout !== 2 &&
 									<Range
 										label={__('Spacing')}
-										value={avatarSpacing}
-										onChange={(value) => setAttributes({ avatarSpacing: value })}
 										min={0}
 										max={200}
 										unit={['px', 'em', '%']}
 										responsive
 										device={device}
-										onDeviceChange={value => this.setState({ device: value })} />
+										onDeviceChange={value => this.setState({ device: value })}
+										value={layout === 1 ? avatarVerticalSpacing : avatarHorizontalSpacing}
+										onChange={(value) => setAttributes(layout === 1 ? { avatarVerticalSpacing: value } : { avatarHorizontalSpacing: value })}
+									/>
 								}
 							</Fragment>
 						}
