@@ -480,12 +480,11 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 // Layout 3
 $color_1: #fff;
 .qubely-block-image-carousel.qubely-layout-3 {
-	overflow: hidden;
 	.qubely-carousel.qubely-carousel-wrapper {
 		padding: 30px 0 102px;
 		.qubely-carousel-extended-list {
 			position: relative;
-			overflow: inherit;
+			overflow: hidden;
 		}
 	}
 	.qubely-carousel-extended-outer-stage {
