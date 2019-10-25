@@ -134,29 +134,6 @@ class Edit extends Component {
 		)
 	}
 
-	parseResponsiveViewPort = () => {
-		const { attributes: { postitems } } = this.props
-		let responsive = [
-			{ viewport: 1170, items: postitems.md },
-			{ viewport: 980, items: postitems.sm },
-			{ viewport: 580, items: postitems.xs }
-		]
-
-		if (typeof responsive === 'undefined')
-			return
-		let activeView = null
-
-		for (let i = 0; i < responsive.length; i++) {
-			if (window.innerWidth > responsive[i].viewport) {
-				activeView = responsive[i]
-				break;
-			}
-		}
-		if (activeView === null) {
-			activeView = responsive[responsive.length - 1]
-		}
-		return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md'
-	}
 
 	render() {
 		const {
