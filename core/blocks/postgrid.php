@@ -1001,13 +1001,19 @@ function register_block_qubely_postgrid_pro()
 							'condition' => [
 								(object) ['key' => 'layout', 'relation' => '!=', 'value' => 5]
 							],
-                            'selector' => '{{QUBELY}} .qubely-postgrid-column {grid-column-gap: {{columnGap}};}, {{QUBELY}} .qubely-postgrid-column {grid-row-gap: {{columnGap}};}'
+                            'selector' => '{{QUBELY}} .qubely-postgrid-column {grid-gap: {{columnGap}};} {{QUBELY}} .qubely-postgrid-column {grid-row-gap: {{columnGap}};}'
 						],
 						(object) [
 							'condition' => [
 								(object) ['key' => 'layout', 'relation' => '===', 'value' => 5],
 							],
                             'selector' => '{{QUBELY}} .qubely-postgrid-layout-5, {{QUBELY}} .qubely-post-small-view .qubely-post-grid-wrapper {grid-gap: {{columnGap}};}'
+						],
+						(object) [
+							'condition' => [
+								(object) ['key' => 'layout', 'relation' => '===', 'value' => 4],
+							],
+                            'selector' => '{{QUBELY}} .qubely-postgrid-layout-5 {grid-gap: {{columnGap}};} {{QUBELY}} .qubely-postgrid-layout-4.qubely-postgrid-column .qubely-postgrid {margin-bottom: {{columnGap}};}'
 						]
 					]
 
