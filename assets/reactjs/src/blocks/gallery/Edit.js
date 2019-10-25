@@ -49,7 +49,7 @@ class Edit extends Component {
         } = this.props
 
         if (key === 'add' || key === 'delete') {
-            let updatedAttributes = key === 'add' ? [...galleryContents, { title: __('Best Gutenberg Plugin') }] : galleryContents.slice(0, galleryItems - 1)
+            let updatedAttributes = key === 'add' ? [...galleryContents, { title: __('Best Gutenberg Block') }] : galleryContents.slice(0, galleryItems - 1)
             setAttributes({
                 galleryContents: updatedAttributes,
                 galleryItems: key === 'add' ? galleryItems + 1 : galleryItems - 1

@@ -37,37 +37,6 @@ class Edit extends Component {
 		setAttributes({ carouselItems: updatedAttributes })
 	}
 
-
-	/** 
-	 *  Author Avatar*/
-	renderAvatar = (avatar, index) => {
-		return (
-			<MediaUpload
-				onSelect={val => this.updateAtrributes('avatar', val, index)}
-				allowedTypes={['image']}
-				multiple={false}
-				value={avatar}
-				render={({ open }) => (
-					<div className="qubely-single-img qubely-backend">
-						{(avatar && avatar.url) ?
-							<img onClick={open} className="qubely-team-avatar" src={avatar.url} />
-							:
-							<div className="qubely-team-avatar">
-								<div className="qubely-image-placeholder">
-									<a className="qubely-insert-image" href="#" onClick={open}>
-										<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
-										<span>{__('Insert')}</span>
-									</a>
-								</div>
-							</div>
-						}
-					</div>
-				)}
-			/>
-
-		)
-	}
-
 	/** 
 	 *  Social Share callback function. */
 	renderSocialShare = () => {
@@ -211,28 +180,7 @@ class Edit extends Component {
 		setAttributes({ carouselItems: newCarouselItems })
 
 	}
-	parseResponsiveViewPort = () => {
-		const { attributes: { items } } = this.props
-		let responsive = [
-			{ viewport: 1170, items: items.md },
-			{ viewport: 980, items: items.sm },
-			{ viewport: 580, items: items.xs }
-		]
-		if (typeof responsive === 'undefined')
-			return
-		let activeView = null
-
-		for (let i = 0; i < responsive.length; i++) {
-			if (window.innerWidth > responsive[i].viewport) {
-				activeView = responsive[i]
-				break;
-			}
-		}
-		if (activeView === null) {
-			activeView = responsive[responsive.length - 1]
-		}
-		return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md'
-	}
+	
 	render() {
 		const {
 			setAttributes,

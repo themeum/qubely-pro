@@ -1,5 +1,4 @@
 const { __ } = wp.i18n
-const { isShallowEqual } = wp
 const { createBlock } = wp.blocks
 const { compose } = wp.compose
 const { select, dispatch, withSelect, withDispatch } = wp.data
@@ -7,12 +6,10 @@ const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.editor
 const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { Component, Fragment } = wp.element
 const {
-    ButtonGroup,
     BoxShadow,
     BorderRadius,
     Padding,
     Styles,
-    Wrapper,
     Range,
     Separator,
     Toggle,
@@ -244,21 +241,14 @@ class Edit extends Component {
 
     render() {
         const {
-            clientId,
             attributes,
             setAttributes,
             attributes: {
                 uniqueId,
                 layout,
-
-                //label 
-                showLabel,
                 labelColor,
-                labelAlignment,
                 labelTypography,
                 spacing,
-                gutter,
-
                 inputSize,
                 inputCustomSize,
                 inputTypography,
@@ -275,7 +265,6 @@ class Edit extends Component {
                 inputBorderMaterial,
                 inputBorderColorFocus,
                 inputBorderColorHover,
-
                 textareaHeight,
                 placeholderColor,
                 placeholderColorFocus,
@@ -290,14 +279,11 @@ class Edit extends Component {
                 fieldErrorMessage,
                 formSuccessMessage,
                 formErrorMessage,
-
                 reCaptcha,
                 reCaptchaSiteKey,
                 reCaptchaSecretKey,
-
                 policyCheckbox,
                 policyCheckboxText,
-
                 emailReceiver,
                 emailHeaders,
                 emailFrom,
@@ -339,23 +325,6 @@ class Edit extends Component {
                     </PanelBody>
 
                     <PanelBody title={__('Label')} initialOpen={false}>
-
-                        {/* <Toggle
-                            label={__('Show label')}
-                            value={showLabel}
-                            onChange={val => setAttributes({ showLabel: val })} /> */}
-
-                        {/*  <ButtonGroup
-                            label={__('Label Alignment')}
-                            options={
-                                [
-                                    [__('Top'), 'top'],
-                                    [__('Left'), 'left'],
-                                    [__('Right'), 'right'],
-                                ]}
-                            value={labelAlignment}
-                            onChange={value => setAttributes({ labelAlignment: value })}
-                        /> */}
                         <Typography
                             value={labelTypography}
                             onChange={val => setAttributes({ labelTypography: val })}
@@ -642,10 +611,9 @@ class Edit extends Component {
 export default compose([
     withSelect((select, ownProps) => {
         const { clientId } = ownProps
-        const { getBlock, getBlockRootClientId, getBlockAttributes } = select('core/editor')
+        const { getBlock, getBlockRootClientId } = select('core/editor')
         let rootBlockClientId = getBlockRootClientId(clientId)
         rootBlockClientId = getBlockRootClientId(clientId)
-
         return {
             rootBlockClientId,
             block: getBlock(clientId),

@@ -11,7 +11,6 @@ const {
 const {
     useState,
     useEffect,
-    useRef,
     Fragment
 } = wp.element
 
@@ -19,30 +18,26 @@ const {
     PanelBody,
     TextControl,
     TextareaControl,
-    RangeControl,
     Tooltip
 } = wp.components
 
 
 const {
     ButtonGroup,
-    Color,
-    RadioAdvanced,
     Range,
     Select,
     Separator,
     Toggle,
-    Typography,
     CssGenerator: { CssGenerator }
 } = wp.qubelyComponents
 
-const { select, dispatch } = wp.data
+const { select } = wp.data
 
 export default function Edit(props) {
 
     const [hour, setHour] = useState(12)
     const [minute, setMinute] = useState(0)
-    const [date, setDate] = useState(new Date())
+    const [date] = useState(new Date())
     const [device, changeDevice] = useState('md')
     const [draggedItem, setDraggedItem] = useState(-1)
     const [year, setYear] = useState(date.getFullYear())

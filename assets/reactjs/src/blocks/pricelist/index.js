@@ -1,9 +1,7 @@
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 const { gloalSettings: { globalAttributes }} = wp.qubelyComponents
-
 import './style.scss'
-
 import Edit from './Edit'
 import Save from './Save'
 
@@ -428,19 +426,6 @@ registerBlockType('qubely/pricelist', {
 				}
 			]
 		},
-		// descriptionColor: {
-		// 	type: 'string',
-		// 	default: '',
-		// 	style: [
-        //         {
-		// 			condition: [
-        //                 { key: 'enableDescription', relation: '==', value: true }
-        //             ],
-        //             selector: '{{QUBELY}} .qubely-pricelist-introtext {color: {{descriptionColor}};}'
-        //         }
-        //     ]
-        // },
-
 		descriptionColor: {
 			type: 'string',
             default: '',
@@ -467,7 +452,6 @@ registerBlockType('qubely/pricelist', {
                 }
             ]
 		},
-
 
         // Discount Price
         enableDiscount: {
@@ -662,12 +646,6 @@ registerBlockType('qubely/pricelist', {
                 }
             ]
 		},
-        
-        //image
-		// enableImage: {
-		// 	type: 'boolean',
-		// 	default: true,
-		// },
 		enableMedia: {
 			type: 'boolean',
 			default: true,
@@ -881,7 +859,6 @@ registerBlockType('qubely/pricelist', {
             ]
         },
 
-		//
 		pricelistItems: { type: 'number', default: 4 },
 		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
         showContextMenu: { type: 'boolean', default: true },
