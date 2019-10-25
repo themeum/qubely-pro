@@ -4,12 +4,6 @@ import Save from './save'
 import Edit from './edit'
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const {
-    HelperFunction: {
-        parseResponsiveViewPort
-    }
-
-} = wp.qubelyComponents
 
 registerBlockType('qubely/form-column', {
     title: __('Form Column'),

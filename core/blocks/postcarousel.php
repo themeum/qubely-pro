@@ -24,12 +24,12 @@ function register_block_qubely_postcarousel_pro()
 				'sliderItemsSpace' => array(
 					'type' 			=> 'object',
 					'default' 		=> (object) array(
-						'md' 	=> '0',
+						'md' 	=> '10',
 						'unit' 	=> 'px'
 					),
 					'style' 	=> [
 						(object) [
-							'selector' => '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
+							'selector' => '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 10px {{sliderItemsSpace}}; }'
 						]
 					]
 				),
@@ -417,7 +417,7 @@ function register_block_qubely_postcarousel_pro()
 						'color' 	=> "rgba(0,0,0,0.10)",
 						'horizontal' => 0,
 						'inset' 	=> 0,
-						'openShadow' => true,
+						'openShadow' => false,
 						'spread' 	=> 0,
 						'vertical' 	=> 4
 					),

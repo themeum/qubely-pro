@@ -134,29 +134,6 @@ class Edit extends Component {
 		)
 	}
 
-	parseResponsiveViewPort = () => {
-		const { attributes: { postitems } } = this.props
-		let responsive = [
-			{ viewport: 1170, items: postitems.md },
-			{ viewport: 980, items: postitems.sm },
-			{ viewport: 580, items: postitems.xs }
-		]
-
-		if (typeof responsive === 'undefined')
-			return
-		let activeView = null
-
-		for (let i = 0; i < responsive.length; i++) {
-			if (window.innerWidth > responsive[i].viewport) {
-				activeView = responsive[i]
-				break;
-			}
-		}
-		if (activeView === null) {
-			activeView = responsive[responsive.length - 1]
-		}
-		return activeView.viewport <= 1199 ? activeView.viewport <= 991 ? 'xs' : 'sm' : 'md'
-	}
 
 	render() {
 		const {
@@ -367,7 +344,7 @@ class Edit extends Component {
 							onChange={value => setAttributes({ postitems: value })}
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
-						<Range
+						{/* <Range
 							label={__('Padding')}
 							min={1}
 							max={80}
@@ -377,12 +354,13 @@ class Edit extends Component {
 							onChange={(value) => setAttributes({ sliderItemsSpace: value })}
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })}
-						/>
+						/> */}
 						<Range
-							label={__('Margin')}
+							min={0}
+							max={100}
+							label={__('Gutter')}
 							value={sliderItemMargin}
 							onChange={value => setAttributes({ sliderItemMargin: parseInt(value) })}
-							min={0} max={100}
 						/>
 					</PanelBody>
 

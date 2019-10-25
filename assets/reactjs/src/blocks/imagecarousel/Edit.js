@@ -360,13 +360,15 @@ class Edit extends Component {
 
 					<PanelBody title="" initialOpen={true}>
 						<Styles
-							options={[
-								{ value: 1, svg: icons.imagecarousel_1, label: __('Layout 1') },
-								{ value: 2, svg: icons.imagecarousel_2, label: __('Layout 2') },
-								{ value: 3, svg: icons.imagecarousel_3, label: __('Layout 3') },
-								{ value: 4, svg: icons.imagecarousel_4, label: __('Layout 4') },
-								{ value: 6, svg: icons.imagecarousel_6, label: __('Layout 5') }
-							]}
+							options={
+								[
+									{ value: 1, svg: icons.imagecarousel_1, label: __('Layout 1') },
+									{ value: 2, svg: icons.imagecarousel_2, label: __('Layout 2') },
+									{ value: 3, svg: icons.imagecarousel_3, label: __('Layout 3') },
+									{ value: 4, svg: icons.imagecarousel_4, label: __('Layout 4') },
+									{ value: 6, svg: icons.imagecarousel_6, label: __('Layout 5') }
+								]
+							}
 							value={layout} onChange={val => setAttributes({ layout: val })}
 						/>
 
@@ -389,17 +391,18 @@ class Edit extends Component {
 								onDeviceChange={value => this.setState({ device: value })}
 							/>
 						}
-
-						<Range
-							label={__('Margin')}
-							min={0}
-							max={80}
-							value={sliderMargin}
-							onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
-						/>
-
+				
 						{(layout != 6 && layout != 1) &&
-							<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
+							<Fragment>
+								<Range
+									min={0}
+									max={80}
+									label={__('Gutter')}
+									value={sliderMargin}
+									onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
+								/>
+								<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
+							</Fragment>
 						}
 					</PanelBody>
 
