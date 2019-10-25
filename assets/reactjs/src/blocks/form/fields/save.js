@@ -18,19 +18,11 @@ export default function Save(props) {
             placeHolder,
             required,
             columns,
-
-            //email
             emailConformation,
             conformationEmailLabel,
-
-            //date
             dateFormat,
-
             minuteInterval,
             timeFormatType,
-            seletedTimeFormat,
-
-            //settings
             fieldName
         }
     } = props

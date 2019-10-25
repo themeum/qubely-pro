@@ -351,37 +351,6 @@ registerBlockType('qubely/form', {
                 }
             ]
         },
-        // inputPaddingY: {
-        //     type: 'object', default: { md: 10, unit: 'px' },
-        //     style: [
-        //         {
-        //             condition: [
-        //                 { key: 'layout', relation: '==', value: 'classic' },
-        //                 { key: 'inputSize', relation: '==', value: 'custom' }
-        //             ],
-        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
-        //         },
-        //         {
-        //             condition: [
-        //                 { key: 'layout', relation: '==', value: 'material' },
-        //                 { key: 'inputSize', relation: '==', value: 'custom' }
-        //             ],
-        //             selector: '{{QUBELY}} .qubely-form.is-custom .qubely-form-field {padding-top: {{inputPaddingY}}; padding-bottom: {{inputPaddingY}};}'
-        //         }
-        //     ]
-        // },
-        // inputPaddingX: {
-        //     type: 'object', default: { md: 15, unit: 'px' },
-        //     style: [
-        //         {
-        //             condition: [
-        //                 { key: 'layout', relation: '==', value: 'classic' },
-        //                 { key: 'inputSize', relation: '==', value: 'custom' }
-        //             ],
-        //             selector: '{{QUBELY}} .qubely-form .qubely-form-control {padding-left: {{inputPaddingX}}; padding-right: {{inputPaddingX}};}'
-        //         }
-        //     ]
-        // },
         textareaHeight: {
             type: 'object', default: { md: 200, unit: 'px' },
             style: [
