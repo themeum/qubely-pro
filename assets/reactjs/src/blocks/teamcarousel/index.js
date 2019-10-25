@@ -91,13 +91,13 @@ registerBlockType('qubely/teamcarousel', {
 		// Item per Slider  
 		itemPerSlides: { type: 'string', default: '2' },
 		// Space Between Two item.
-		sliderItemsSpace: {
-			type: 'objext',
-			default: {},
-			style: [{
-				selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
-			}]
-		},
+		// sliderItemsSpace: {
+		// 	type: 'objext',
+		// 	default: {},
+		// 	style: [{
+		// 		selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
+		// 	}]
+		// },
 		sliderMargin: {
 			type: 'number',
 			default: 30,
@@ -259,13 +259,21 @@ registerBlockType('qubely/teamcarousel', {
 		},
 		avatarWidth: {
 			type: 'object',
-			default: { md: 100, unit: '%' },
+			default: { md: '', unit: '%' },
 			style: [
 				{
 					condition: [
-						{ key: 'avatarSize', relation: '==', value: 'custom' }
+						{ key: 'avatarSize', relation: '==', value: 'custom' },
+						{ key: 'layout', relation: '!=', value: '3' },
 					],
-					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img,{{QUBELY}} .qubely-block-team-carousel .qubely-single-img .qubely-team-avatar {width: {{avatarWidth}};}'
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img {width: {{avatarWidth}};}'
+				},
+				{
+					condition: [
+                        { key: 'avatarSize', relation: '==', value: 'custom' },
+                        { key: 'layout', relation: '==', value: '3' },
+					],
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img {width: {{avatarWidth}};}'
 				}
 			]
 		},
@@ -277,7 +285,7 @@ registerBlockType('qubely/teamcarousel', {
 					condition: [
 						{ key: 'avatarSize', relation: '==', value: 'custom' }
 					],
-					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img,{{QUBELY}} .qubely-block-team-carousel .qubely-single-img .qubely-team-avatar {height: {{avatarHeight}};}'
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img .qubely-team-avatar {object-fit: cover; height:{{avatarHeight}};}'
 				}
 			]
 		},

@@ -514,18 +514,19 @@ $color_1: #fff;
 	overflow: hidden;
 }
 .qubely-team-3 {
-	.qubely-single-img {
-		// width: calc(30% - 15px);
-		float: left;
+    .qubely-team-author {
 		display: inline-block;
+        width: 100%;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: start;
+        align-items: flex-start;
+	}
+	.qubely-single-img {
+		width: 50%;
 		// margin-right: 15px;
 	}
-	.qubely-team-author {
-		display: inline-block;
-		width: 100%;
-	}
 	.qubely-team-author-info {
-		transform: translate(0px, 20%);
 		display: initial;
 	}
 	overflow: hidden;
@@ -564,7 +565,6 @@ $color_1: #fff;
 }
 
 .qubely-team-author-info {
-	width: 70%;
 	display: inline-block;
 }
 .qubely-carousel-item {
