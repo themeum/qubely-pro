@@ -405,19 +405,9 @@ class Edit extends Component {
 							device={this.state.device}
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
+						
 						<Range
-							label={__('Padding')}
-							min={1}
-							max={80}
-							responsive
-							unit={['px', 'em', '%']}
-							value={sliderItemsSpace}
-							onChange={(value) => setAttributes({ sliderItemsSpace: value })}
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/>
-						<Range
-							label={__('Margin')}
+							label={__('Gutter')}
 							min={0}
 							max={80}
 							value={sliderMargin}

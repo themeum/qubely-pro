@@ -90,14 +90,7 @@ registerBlockType('qubely/teamcarousel', {
 		sliderNumber: { type: 'number', default: 5 },
 		// Item per Slider  
 		itemPerSlides: { type: 'string', default: '2' },
-		// Space Between Two item.
-		sliderItemsSpace: {
-			type: 'objext',
-			default: {},
-			style: [{
-				selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
-			}]
-		},
+	
 		sliderMargin: {
 			type: 'number',
 			default: 30,

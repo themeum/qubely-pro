@@ -367,7 +367,7 @@ class Edit extends Component {
 							onChange={value => setAttributes({ postitems: value })}
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
-						<Range
+						{/* <Range
 							label={__('Padding')}
 							min={1}
 							max={80}
@@ -377,12 +377,13 @@ class Edit extends Component {
 							onChange={(value) => setAttributes({ sliderItemsSpace: value })}
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })}
-						/>
+						/> */}
 						<Range
-							label={__('Margin')}
+							min={0}
+							max={100}
+							label={__('Gutter')}
 							value={sliderItemMargin}
 							onChange={value => setAttributes({ sliderItemMargin: parseInt(value) })}
-							min={0} max={100}
 						/>
 					</PanelBody>
 

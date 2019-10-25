@@ -85,13 +85,13 @@ registerBlockType('qubely/testimonialcarousel', {
 		// Item per Slider  
 		itemPerSlides: { type: 'string', default: '2' },
 		// Space Between Two item.
-		sliderItemsSpace: {
-			type: 'object',
-			default: { md: 5, unit: 'px' },
-			style: [{
-				selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
-			}]
-		},
+		// sliderItemsSpace: {
+		// 	type: 'object',
+		// 	default: { md: 5, unit: 'px' },
+		// 	style: [{
+		// 		selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
+		// 	}]
+		// },
 		sliderItemMargin: {
 			type: 'number',
 			default: 10,
