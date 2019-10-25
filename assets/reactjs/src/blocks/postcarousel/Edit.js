@@ -134,7 +134,6 @@ class Edit extends Component {
 		)
 	}
 
-
 	render() {
 		const {
 			posts,
@@ -153,7 +152,6 @@ class Edit extends Component {
 				enableFixedHeight,
 				fixedHeight,
 				imageRadius,
-				imageAnimation,
 				cardBackground,
 				cardBorder,
 				cardBorderRadius,
@@ -259,7 +257,6 @@ class Edit extends Component {
 				dotBorderRadius,
 				dotColor,
 				dotActiveColor,
-				gutterspace,
 				sliderItemsSpace,
 				sliderItemMargin,
 				dotalignment,

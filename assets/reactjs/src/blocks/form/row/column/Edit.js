@@ -12,7 +12,7 @@ const {
     RadioAdvanced,
     CssGenerator: {
         CssGenerator
-    },
+    }
 } = wp.qubelyComponents
 
 class Edit extends Component {

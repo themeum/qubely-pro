@@ -1,23 +1,11 @@
 
-import icons from '../../helpers/icons';
-
 const { __ } = wp.i18n
-
+import icons from '../../helpers/icons';
 const { select, dispatch } = wp.data
+const { useState, Fragment } = wp.element
+const { PanelBody, TextControl, TextareaControl } = wp.components
 
 const {
-    useState,
-    Fragment
-} = wp.element
-
-const {
-    PanelBody,
-    TextControl,
-    TextareaControl
-} = wp.components
-
-const {
-    ButtonGroup,
     BoxShadow,
     BorderRadius,
     Padding,
@@ -37,31 +25,19 @@ const {
 export default function (clientId) {
     const [device, changeDevice] = useState('md')
     const [isUpdating, setUpdate] = useState(false)
-
-    const { getBlocks } = select('core/editor')
-    const { getBlockAttributes, getBlockName } = select('core/block-editor')
+    const { getBlockAttributes } = select('core/block-editor')
     let attributes = getBlockAttributes(clientId)
-
     const { updateBlockAttributes } = dispatch('core/block-editor')
 
     let {
         layout,
-
-
-        //label settings
-        showLabel,
         labelColor,
-        labelAlignment,
         labelTypography,
-
-        //input settings
         spacing,
-        gutter,
         inputSize,
         inputCustomSize,
         inputTypography,
         inputBoxShadow,
-
         inputColor,
         inputColorFocus,
         inputColorHover,
@@ -73,50 +49,22 @@ export default function (clientId) {
         inputBorderMaterial,
         inputBorderColorFocus,
         inputBorderColorHover,
-
-
-
         textareaHeight,
-
         placeholderColor,
         placeholderColorFocus,
         placeholderColorHover,
-
-
-        //button
-        enableButton,
-        buttonTag,
-        buttonSize,
-        buttonFillType,
-        buttonText,
-        buttonIconName,
-        buttonIconPosition,
-
         fieldErrorMessage,
         formSuccessMessage,
         formErrorMessage,
-
         reCaptcha,
         reCaptchaSiteKey,
         reCaptchaSecretKey,
         policyCheckbox,
-        policyCheckboxText,
-
         emailReceiver,
         emailHeaders,
         emailFrom,
         emailSubject,
         emailBody,
-
-        globalZindex,
-        hideTablet,
-        hideMobile,
-        globalCss,
-
-
-
-        height,
-        width,
     } = attributes
 
     const updateAttributes = (key, value) => {
@@ -124,23 +72,6 @@ export default function (clientId) {
         attributes = getBlockAttributes(clientId)
         setUpdate(!isUpdating)
     }
-
-
-    // const updateFormFields = (field) => {
-    //     field.innerBlocks.forEach((column, index) => {
-    //         updateBlockAttributes(column.innerBlocks[0].clientId, { showLabel: !showLabel, labelAlignment: labelAlignment })
-    //     })
-    // }
-
-    // let fieldIndex = 0
-    // let childBlocks = getBlocks(clientId)
-
-    // while (fieldIndex < childBlocks.length) {
-    //     updateFormFields(childBlocks[fieldIndex])
-    //     fieldIndex++
-    // }
-
-
 
     return (
         <Fragment>
@@ -158,23 +89,6 @@ export default function (clientId) {
             </PanelBody>
 
             <PanelBody title={__('Label')} initialOpen={false}>
-
-                {/* <Toggle
-                    label={__('Show label')}
-                    value={showLabel}
-                    onChange={val => updateAttributes('showLabel', val)} /> */}
-
-                {/* <ButtonGroup
-                    label={__('Label Alignment')}
-                    options={
-                        [
-                            [__('Top'), 'top'],
-                            [__('Left'), 'left'],
-                            [__('Right'), 'right'],
-                        ]}
-                    value={labelAlignment}
-                    onChange={value => updateAttributes('labelAlignment', value)}
-                /> */}
                 <Typography
                     value={labelTypography}
                     onChange={val => updateAttributes('labelTypography', val)}
@@ -188,7 +102,6 @@ export default function (clientId) {
 
 
             <PanelBody title={__('Input')} initialOpen={false}>
-
                 {(layout != 'material') &&
                     <Fragment>
                         <RadioAdvanced

@@ -400,7 +400,7 @@ class Edit extends Component {
 
 
 						<Range
-							max={avatarHeight.unit == '%' ? 100 : 600}
+							max={avatarHeight.unit == '%' ? 100 : 1200}
 							min={0}
 							responsive
 							device={device}
