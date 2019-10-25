@@ -202,10 +202,10 @@ registerBlockType('qubely/imagecarousel', {
 
 		avatarHeight: {
 			type: 'string',
-			default: { md: 100, unit: '%' },
+			default: { md: 500, unit: 'px' },
 			style: [
 				{
-					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {width:100%;object-fit: cover;height: {{avatarHeight}};}'
+					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {width: 100%;object-fit: cover;height: {{avatarHeight}};}'
 				}
 			]
 		},
