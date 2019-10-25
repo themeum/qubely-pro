@@ -38,7 +38,7 @@ class Save extends Component {
       const { message } = item
       return (
         	<div key={index} className={`qubely-carousel-item`}>
-				<div className={`qubely-tesitmonial-item layout-${layout}`}>
+				<div className={`qubely-tesitmonial-item qubely-tesitmonial-item-layout-${layout}`}>
 					{layout == 2 && this.renderAuthorInfo(item)}
 					{(quoteIcon && layout == 1) && 
 						<div className="qubely-testimonial-quote">
@@ -98,7 +98,7 @@ class Save extends Component {
     )
     return (
       <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-        <div className={`qubely-block-testimonial-carousel qubely-layout-${layout}`}>
+        <div className={`qubely-block-testimonial-carousel qubely-testimonial-carousel-layout-${layout}`}>
           <div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ''}`} data-options={options} >
             {this.renderTestimonial()}
           </div>

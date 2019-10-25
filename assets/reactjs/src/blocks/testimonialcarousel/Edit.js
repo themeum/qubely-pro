@@ -126,7 +126,7 @@ class Edit extends Component {
 							</Tooltip>
 						}
 
-						<div className={`qubely-tesitmonial-item layout-${layout}`}>
+						<div className={`qubely-tesitmonial-item qubely-tesitmonial-item-layout-${layout}`}>
 
 							{layout === 2 && this.renderAuthorInfo(item, index)}
 
@@ -139,7 +139,7 @@ class Edit extends Component {
 							{/* showRatings,ratings */}
 							<div className={`qubely-testimonial-carousel-content-wrapper`}>
 								{(showRatings && ratings > 0 && layout !== 1) &&
-									<div className="qubely-testimonial-ratings B" data-qubelyrating={ratings}></div>
+									<div className="qubely-testimonial-ratings" data-qubelyrating={ratings}></div>
 								}
 
 								<div className="qubely-testimonial-content" >
@@ -348,7 +348,7 @@ class Edit extends Component {
 							device={this.state.device}
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
-						<Range
+						{/* <Range
 							label={__('Padding')}
 							min={1}
 							max={80}
@@ -358,9 +358,9 @@ class Edit extends Component {
 							onChange={(value) => setAttributes({ sliderItemsSpace: value })}
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })}
-						/>
+						/> */}
 						<Range
-							label={__('Margin')}
+							label={__('Gutter')}
 							min={0}
 							max={80}
 							value={sliderItemMargin}
@@ -789,7 +789,7 @@ class Edit extends Component {
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
-					<div className={`qubely-block-testimonial-carousel qubely-layout-${layout}`}>
+					<div className={`qubely-block-testimonial-carousel qubely-testimonial-carousel-layout-${layout}`}>
 						<Carousel options={carouselSettings}>
 							{this.renderTestimonials()}
 						</Carousel>

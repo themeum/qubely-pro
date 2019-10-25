@@ -66,7 +66,7 @@ class Edit extends Component {
 	/** 
 	 *  Author information. */
 	renderAuthorInfo = (item, index) => {
-		const { attributes: { layout, showAvatar, enablename } } = this.props
+		const { attributes: { layout, showAvatar, enablename, enableDesignation } } = this.props
 		const { author, designation, avatar } = item
 
 		return (
@@ -110,7 +110,7 @@ class Edit extends Component {
 								/>
 							</div>
 						}
-						{designation &&
+						{enableDesignation &&
 							<div className="qubely-team-author-designation" >
 								<RichText
 									key="editable"
@@ -194,7 +194,8 @@ class Edit extends Component {
 				dragable,
 				layout,
 				nameColor,
-				alignment,
+                alignment,
+                enableDesignation,
 				designationColor,
 				showAvatar,
 				avatarBorderRadius,
@@ -206,7 +207,8 @@ class Edit extends Component {
 				avatarHorizontalSpacing,
 				nameTypo,
 				nameSpacing,
-				designationTypo,
+                designationTypo,
+                designationSpacing,
 				bgPadding,
 				textColor,
 				bgColor,
@@ -353,7 +355,7 @@ class Edit extends Component {
 							device={this.state.device}
 							onDeviceChange={value => this.setState({ device: value })}
 						/>
-						<Range
+						{/* <Range
 							label={__('Padding')}
 							min={1}
 							max={80}
@@ -363,9 +365,9 @@ class Edit extends Component {
 							onChange={(value) => setAttributes({ sliderItemsSpace: value })}
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })}
-						/>
+						/> */}
 						<Range
-							label={__('Margin')}
+							label={__('Gutter')}
 							min={0}
 							max={80}
 							value={sliderMargin}
@@ -594,14 +596,6 @@ class Edit extends Component {
 
 					<PanelBody title={__('Name')} initialOpen={false}>
 						<Toggle label={__('Enable Name')} value={enablename} onChange={value => setAttributes({ enablename: value })} />
-						<Range
-							label={__('Spacing')}
-							value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
-							unit={['px', 'em', '%']} max={300}
-							min={0}
-							responsive
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })} />
 						<Color
 							label={__('Color')}
 							value={nameColor} onChange={(value) => setAttributes({ nameColor: value })}
@@ -610,10 +604,21 @@ class Edit extends Component {
 							label={__('Typography')}
 							value={nameTypo}
 							onChange={(value) => setAttributes({ nameTypo: value })}
-							device={device} onDeviceChange={value => this.setState({ device: value })} />
+							device={device} onDeviceChange={value => this.setState({ device: value })} 
+                        />
+                        <Range
+							label={__('Spacing')}
+							value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
+							unit={['px', 'em', '%']} max={300}
+							min={0}
+							responsive
+							device={device}
+							onDeviceChange={value => this.setState({ device: value })} 
+                        />
 					</PanelBody>
 
 					<PanelBody title={__('Designation')} initialOpen={false}>
+                        <Toggle label={__('Enable Designation')} value={enableDesignation} onChange={value => setAttributes({ enableDesignation: value })} />
 						<Color
 							label={__('Color')}
 							value={designationColor} onChange={(value) => setAttributes({ designationColor: value })}
@@ -622,7 +627,17 @@ class Edit extends Component {
 							label={__('Typography')}
 							value={designationTypo}
 							onChange={(value) => setAttributes({ designationTypo: value })}
-							device={device} onDeviceChange={value => this.setState({ device: value })} />
+							device={device} onDeviceChange={value => this.setState({ device: value })} 
+                        />
+                        <Range
+							label={__('Spacing')}
+							value={designationSpacing} onChange={(value) => setAttributes({ designationSpacing: value })}
+							unit={['px', 'em', '%']} max={300}
+							min={0}
+							responsive
+							device={device}
+							onDeviceChange={value => this.setState({ device: value })} 
+                        />
 					</PanelBody>
 
 					<PanelBody title={__('Social')} initialOpen={false}>

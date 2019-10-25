@@ -24,12 +24,12 @@ function register_block_qubely_postcarousel_pro()
 				'sliderItemsSpace' => array(
 					'type' 			=> 'object',
 					'default' 		=> (object) array(
-						'md' 	=> '0',
+						'md' 	=> '10',
 						'unit' 	=> 'px'
 					),
 					'style' 	=> [
 						(object) [
-							'selector' => '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
+							'selector' => '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 5px {{sliderItemsSpace}}; }'
 						]
 					]
 				),
@@ -346,7 +346,7 @@ function register_block_qubely_postcarousel_pro()
 				---------------------------------- */
 				'style' 		=> array(
 					'type' 		=> 'number',
-					'default' 	=> 2
+					'default' 	=> 1
 				),
 				'contentPosition' 	=>  array(
 					'type' 		=> 'string',
@@ -425,7 +425,8 @@ function register_block_qubely_postcarousel_pro()
 						(object) [
 							'condition' => [
 								(object) ['key' => 'style', 'relation' => '!=', 'value' => 4],
-								(object) ['key' => 'style', 'relation' => '!=', 'value' => 3]
+								(object) ['key' => 'style', 'relation' => '!=', 'value' => 3],
+								(object) ['key' => 'style', 'relation' => '!=', 'value' => 1]
 							],
 							'selector' => '{{QUBELY}} .qubely-post-grid-view .qubely-post-grid-wrapper'
 						]
@@ -490,7 +491,24 @@ function register_block_qubely_postcarousel_pro()
 							'selector' => '{{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper'
 						]
 					]
+                ),
+                'cardBoxShadow' => array(
+					'type' => 'object',
+					'default' 		=> (object) array(
+						'blur' 		=> 8,
+						'color' 	=> "rgba(0,0,0,0.10)",
+						'horizontal' => 0,
+						'inset' 	=> 0,
+						'openShadow' => true,
+						'spread' 	=> 0,
+						'vertical' 	=> 4
+					),
+					'style' => [(object) [
+						'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => '2']],
+						'selector' => '{{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper'
+					]]
 				),
+                
 				'overlayHeight' => array(
 					'type' => 'object',
 					'default' => (object) array(

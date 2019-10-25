@@ -85,13 +85,13 @@ registerBlockType('qubely/testimonialcarousel', {
 		// Item per Slider  
 		itemPerSlides: { type: 'string', default: '2' },
 		// Space Between Two item.
-		sliderItemsSpace: {
-			type: 'objext',
-			default: { md: 1, unit: 'px' },
-			style: [{
-				selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
-			}]
-		},
+		// sliderItemsSpace: {
+		// 	type: 'object',
+		// 	default: { md: 5, unit: 'px' },
+		// 	style: [{
+		// 		selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
+		// 	}]
+		// },
 		sliderItemMargin: {
 			type: 'number',
 			default: 10,
@@ -252,19 +252,19 @@ registerBlockType('qubely/testimonialcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '1' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}' 
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-1 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}' 
 				},
 				{ 
 					condition: [
 						{ key: 'layout', relation: '==', value: '2' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-2 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}' 
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-2 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}' 
 				},
 				{ 
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-carousel-content-wrapper {margin-bottom: {{messageSpacingBottom}};}' 
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-3 .qubely-testimonial-carousel-content-wrapper {margin-bottom: {{messageSpacingBottom}};}' 
 				}
 			] 
 		},
@@ -324,7 +324,7 @@ registerBlockType('qubely/testimonialcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-avatar-wrapper { margin-bottom: {{avatarSpacing}} }'
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-3 .qubely-testimonial-avatar-wrapper { margin-bottom: {{avatarSpacing}} }'
 				}
 				
 			]
@@ -424,19 +424,19 @@ registerBlockType('qubely/testimonialcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '1' }
 					],
-					selector: '{{QUBELY}} .qubely-layout-1 .qubely-tesitmonial-item'
+					selector: '{{QUBELY}} .qubely-testimonial-carousel-layout-1 .qubely-tesitmonial-item'
 				},
 				{
 					condition: [
 						{ key: 'layout', relation: '==', value: '2' }
 					],
-					selector: '{{QUBELY}} .qubely-layout-2 .qubely-tesitmonial-item'
+					selector: '{{QUBELY}} .qubely-testimonial-carousel-layout-2 .qubely-tesitmonial-item'
 				},
 				{
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-layout-3 .qubely-testimonial-carousel-content-wrapper'
+					selector: '{{QUBELY}} .qubely-testimonial-carousel-layout-3 .qubely-testimonial-carousel-content-wrapper'
 				}
 			]
 		},
@@ -446,13 +446,13 @@ registerBlockType('qubely/testimonialcarousel', {
 			default: '',
 			style: [
 				{
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1 {background-color: {{bgColor}};} {{QUBELY}} .qubely-tesitmonial-item.layout-2 {background-color: {{bgColor}};}'
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-1 {background-color: {{bgColor}};} {{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-2 {background-color: {{bgColor}};}'
 				},
 				{
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .layout-3 .qubely-testimonial-carousel-content-wrapper {background-color: {{bgColor}};} {{QUBELY}} .layout-3 .qubely-testimonial-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
+					selector: '{{QUBELY}} .qubely-tesitmonial-item-layout-3 .qubely-testimonial-carousel-content-wrapper {background-color: {{bgColor}};} {{QUBELY}} .qubely-tesitmonial-item-layout-3 .qubely-testimonial-carousel-content-wrapper:before {border-color: {{bgColor}} transparent transparent transparent;}'
 				}
 			]
 		},
@@ -462,29 +462,29 @@ registerBlockType('qubely/testimonialcarousel', {
 			default: {
 				openBorderRadius: 1,
 				radiusType: 'global',
-				global: { md: 20 },
+				global: { md: 10 },
 				unit: 'px'
 			},
 			style: [
-				{ selector: '{{QUBELY}} .qubely-layout-1 .qubely-tesitmonial-item, {{QUBELY}} .qubely-layout-2 .qubely-tesitmonial-item, {{QUBELY}} .qubely-layout-3 .qubely-testimonial-carousel-content-wrapper' }
+				{ selector: '{{QUBELY}} .qubely-testimonial-carousel-layout-1 .qubely-tesitmonial-item, {{QUBELY}} .qubely-testimonial-carousel-layout-2 .qubely-tesitmonial-item, {{QUBELY}} .qubely-testimonial-carousel-layout-3 .qubely-testimonial-carousel-content-wrapper' }
 			]
 		},
 		border: {
 			type: 'object',
 			default: { openTy: 0, color: '#3373dc', width: { bottom: '1', left: '1', right: '1', top: '1', unit: 'px' } },
 			style: [
-				{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1, {{QUBELY}} .qubely-tesitmonial-item.layout-2, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-carousel-content-wrapper' }]
+				{ selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-1, {{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-2, {{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-3 .qubely-testimonial-carousel-content-wrapper' }]
 		},
 		boxShadow: {
 			type: 'object', default: {},
 			style: [
-				{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1, {{QUBELY}} .qubely-tesitmonial-item.layout-2, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-carousel-content-wrapper' }
+				{ selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-1, {{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-2, {{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-3 .qubely-testimonial-carousel-content-wrapper' }
 			]
 		},
 		boxShadowHover: {
 			type: 'object', default: {},
 			style: [
-				{ selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-1:hover, {{QUBELY}} .qubely-tesitmonial-item.layout-2:hover, {{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-carousel-content-wrapper:hover' }
+				{ selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-1:hover, {{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-2:hover, {{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-3 .qubely-testimonial-carousel-content-wrapper:hover' }
 			]
 		},
 		showGlobalSettings: { type: 'boolean', default: true }, // Global Settings

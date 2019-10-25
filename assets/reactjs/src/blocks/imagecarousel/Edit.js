@@ -275,8 +275,7 @@ class Edit extends Component {
 				overlayBlend,
 				sliderMargin,
 				dotsposition,
-				carouselImageSize,
-				imageWidth, avatarHeight,
+				avatarHeight,
 				globalZindex,
 				enablePosition,
 				selectPosition,
@@ -360,13 +359,15 @@ class Edit extends Component {
 
 					<PanelBody title="" initialOpen={true}>
 						<Styles
-							options={[
-								{ value: 1, svg: icons.imagecarousel_1, label: __('Layout 1') },
-								{ value: 2, svg: icons.imagecarousel_2, label: __('Layout 2') },
-								{ value: 3, svg: icons.imagecarousel_3, label: __('Layout 3') },
-								{ value: 4, svg: icons.imagecarousel_4, label: __('Layout 4') },
-								{ value: 6, svg: icons.imagecarousel_6, label: __('Layout 5') }
-							]}
+							options={
+								[
+									{ value: 1, svg: icons.imagecarousel_1, label: __('Layout 1') },
+									{ value: 2, svg: icons.imagecarousel_2, label: __('Layout 2') },
+									{ value: 3, svg: icons.imagecarousel_3, label: __('Layout 3') },
+									{ value: 4, svg: icons.imagecarousel_4, label: __('Layout 4') },
+									{ value: 6, svg: icons.imagecarousel_6, label: __('Layout 5') }
+								]
+							}
 							value={layout} onChange={val => setAttributes({ layout: val })}
 						/>
 
@@ -390,17 +391,32 @@ class Edit extends Component {
 							/>
 						}
 
+						{(layout != 6 && layout != 1) &&
+							<Fragment>
+								<Range
+									min={0}
+									max={80}
+									label={__('Gutter')}
+									value={sliderMargin}
+									onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
+								/>
+								<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
+							</Fragment>
+						}
+
+
 						<Range
-							label={__('Margin')}
+							max={avatarHeight.unit == '%' ? 100 : 1200}
 							min={0}
-							max={80}
-							value={sliderMargin}
-							onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
+							responsive
+							device={device}
+							value={avatarHeight}
+							unit={['px', 'em', '%']}
+							label={__('Image Height')}
+							onChange={(value) => setAttributes({ avatarHeight: value })}
+							onDeviceChange={value => this.setState({ device: value })}
 						/>
 
-						{(layout != 6 && layout != 1) &&
-							<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
-						}
 					</PanelBody>
 
 					<PanelBody title={__('Carousel Settings')} initialOpen={false}>
@@ -660,43 +676,6 @@ class Edit extends Component {
 							}
 						</Fragment>
 					}
-					<PanelBody title={__('Media')} initialOpen={false}>
-						<RadioAdvanced
-							label={__('Image Size')}
-							options={[
-								{ label: 'L', value: '1140px', title: 'Large' },
-								{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-							]}
-							value={carouselImageSize}
-							onChange={(value) => setAttributes({ carouselImageSize: value })}
-						/>
-						{carouselImageSize == 'custom' &&
-							<Fragment>
-								<Range
-									label={<span className="dashicons dashicons-leftright" title="Width" />}
-									value={imageWidth}
-									onChange={(value) => setAttributes({ imageWidth: value })}
-									unit={['px', 'em', '%']}
-									max={300}
-									min={0}
-									responsive
-									device={device}
-									onDeviceChange={value => this.setState({ device: value })}
-								/>
-								<Range
-									label={<span className="dashicons dashicons-sort" title="Height" />}
-									value={avatarHeight}
-									onChange={(value) => setAttributes({ avatarHeight: value })}
-									unit={['px', 'em', '%']}
-									max={300}
-									min={0}
-									responsive
-									device={device}
-									onDeviceChange={value => this.setState({ device: value })}
-								/>
-							</Fragment>
-						}
-					</PanelBody>
 
 					{animationSettings(uniqueId, animation, setAttributes)}
 

@@ -43,7 +43,7 @@ class Save extends Component {
 
   /* Author information. */
   renderAuthorInfo = (item, index) => {
-    const { attributes: { layout, showAvatar, enablename } } = this.props
+    const { attributes: { layout, showAvatar, enablename, enableDesignation } } = this.props
     const { author, designation, avatar } = item
     return (
       <div className={`qubely-team-author`}>
@@ -53,7 +53,7 @@ class Save extends Component {
                     { enablename &&
                     <div className="qubely-team-author-name"><RichText.Content value={author} /></div>
                     }
-                    {designation &&
+                    {enableDesignation &&
                     <div className="qubely-team-author-designation"><RichText.Content value={designation} /></div>
                     }
                     { this.renderSocialShare()  /* Social share callback function */}

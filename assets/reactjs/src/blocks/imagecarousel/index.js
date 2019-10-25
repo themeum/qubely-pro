@@ -187,37 +187,25 @@ registerBlockType('qubely/imagecarousel', {
 		/*------------------------------------
 		* 			Media 
 		* ------------------------------------ */
-		carouselImageSize: {
-			type: 'string',
-			default: '1140px',
-			style: [
-				{
-					condition: [
-						{ key: 'carouselImageSize', relation: '!=', value: 'custom' }
-					],
-					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img { display: inline-block; width: {{carouselImageSize}}; height: auto; }'
-				}
-			]
-		},
-		imageWidth: {
-			type: 'string',
-			default: { md: 100, unit: '%' },
-			style: [
-				{
-					condition: [
-						{ key: 'carouselImageSize', relation: '==', value: 'custom' }
-					],
-					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {width: {{imageWidth}};}'
-				}
-			]
-		},
+		// carouselImageSize: {
+		// 	type: 'string',
+		// 	default: '1140px',
+		// 	style: [
+		// 		{
+		// 			condition: [
+		// 				{ key: 'carouselImageSize', relation: '!=', value: 'custom' }
+		// 			],
+		// 			selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img { display: inline-block; width: {{carouselImageSize}}; height: auto; }'
+		// 		}
+		// 	]
+		// },
+
 		avatarHeight: {
 			type: 'string',
-			default: { md: 100, unit: '%' },
+			default: { md: 500, unit: 'px' },
 			style: [
 				{
-					condition: [{ key: 'carouselImageSize', relation: '==', value: 'custom' }],
-					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {height: {{avatarHeight}};}'
+					selector: '{{QUBELY}} .qubely-block-image-carousel .qubely-image-item img {width: 100%;object-fit: cover;height: {{avatarHeight}};}'
 				}
 			]
 		},
