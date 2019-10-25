@@ -86,8 +86,8 @@ registerBlockType('qubely/testimonialcarousel', {
 		itemPerSlides: { type: 'string', default: '2' },
 		// Space Between Two item.
 		sliderItemsSpace: {
-			type: 'objext',
-			default: { md: 1, unit: 'px' },
+			type: 'object',
+			default: { md: 5, unit: 'px' },
 			style: [{
 				selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
 			}]
