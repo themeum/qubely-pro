@@ -324,7 +324,7 @@ registerBlockType('qubely/testimonialcarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-avatar { margin-bottom: {{avatarSpacing}} }'
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.layout-3 .qubely-testimonial-avatar-wrapper { margin-bottom: {{avatarSpacing}} }'
 				}
 				
 			]
