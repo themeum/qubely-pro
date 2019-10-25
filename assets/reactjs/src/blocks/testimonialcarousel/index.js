@@ -462,7 +462,7 @@ registerBlockType('qubely/testimonialcarousel', {
 			default: {
 				openBorderRadius: 1,
 				radiusType: 'global',
-				global: { md: 20 },
+				global: { md: 10 },
 				unit: 'px'
 			},
 			style: [
