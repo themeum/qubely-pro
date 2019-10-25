@@ -19,7 +19,7 @@ registerBlockType('qubely/teamcarousel', {
 		items: { type: 'object', default: { md: '2', sm: '2', xs: '1' } },
 		columns: { type: 'number', default: 2 },
 		autoPlay: { type: 'boolean', default: false },
-		dots: { type: 'boolean', default: true },
+		dots: { type: 'boolean', default: false },
 		dragable: { type: 'boolean', default: true },
 		dotIndicator: { type: 'boolean', default: true },
 		nav: { type: 'boolean', default: true },
@@ -113,7 +113,7 @@ registerBlockType('qubely/teamcarousel', {
 		arrowStyle: { type: 'string', default: 'arrowright2' },
 		horizontalScroll: {
 			type: 'object',
-			default: { md: -10, sm: '0', xs: '0', unit: '%' },
+			default: { md: -7, sm: '0', xs: '0', unit: '%' },
 			style: [
 				{
 					selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} }'
@@ -122,14 +122,14 @@ registerBlockType('qubely/teamcarousel', {
 		},
 		arrowPosition: {
 			type: 'object',
-			default: { md: 60, unit: '%' },
+			default: { md: 55, unit: '%' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control { top: {{arrowPosition}}; } ' }
 			]
 		},
 		dotsPosition: {
 			type: 'object',
-			default: { md: -10, unit: 'px' },
+			default: { md: -40, unit: 'px' },
 			style: [
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots { bottom: {{dotsPosition}}; } ' }
 			]
@@ -229,20 +229,21 @@ registerBlockType('qubely/teamcarousel', {
 				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator' }
 			]
 		},
-		//Name
+        //Name
+        enablename: { type: 'boolean', default: true },
 		nameColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-team-author-name { color:{{nameColor}}; }' }] },
 		nameTypo: { type: 'object', default: { openTypography: 1, weight: 700, size: { md: 16, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-team-author-name' }] },
 		nameSpacing: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-team-author-name {margin-bottom: {{nameSpacing}};}' }] },
 
-		//Designation
+        //Designation
+        enableDesignation: { type: 'boolean', default: true },
 		designationColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-team-author-designation { color:{{designationColor}}; }' }] },
 		designationTypo: { type: 'object', default: { openTypography: 1, size: { md: 14, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-team-author-designation' }] },
-
+		designationSpacing: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-team-author-designation {margin-bottom: {{designationSpacing}};}' }] },
 
 		/*------------------------------------
 		* 			Avatar 
 		* ------------------------------------ */
-		enablename: { type: 'boolean', default: true },
 		showAvatar: { type: 'boolean', default: true },
 		avatarAlt: { type: 'string', default: '' },
 		avatarSize: {
@@ -279,7 +280,7 @@ registerBlockType('qubely/teamcarousel', {
 		},
 		avatarHeight: {
 			type: 'object',
-			default: { md: 100, unit: '%' },
+			default: { md: '', unit: '%' },
 			style: [
 				{
 					condition: [
@@ -370,7 +371,7 @@ registerBlockType('qubely/teamcarousel', {
 				openPadding: 1,
 				paddingType: 'global',
 				custom: { md: "20 20 20 20" },
-				global: { md: '20' },
+				global: { md: '' },
 				unit: 'px',
 			},
 			style: [
