@@ -45,6 +45,9 @@
     }
   }
 
+  .qubely-testimonial-ratings.qubely-backend{
+	  cursor: pointer;
+  }
   //rating
   .qubely-testimonial-ratings {
     unicode-bidi: bidi-override;
@@ -109,6 +112,11 @@
   }
 }
 
+.qubely-testimonial-ratings-popover{
+	.components-popover__content{
+		padding: 10px 20px;
+	}
+}
 .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {
   position: relative;
   float: left;

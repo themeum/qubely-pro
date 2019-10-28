@@ -140,7 +140,7 @@ export default function Save(props) {
                 {
                     showLabel &&
                     <label className="qubely-form-label" for={uniqueId} >
-                        <RichText.Content value={label} />
+                        <RichText.Content tagName="div" value={label} className="qubely-form-field-label" />
                         {required && <span className="qubely-from-field-required-sign">*</span>}
                     </label>
                 }

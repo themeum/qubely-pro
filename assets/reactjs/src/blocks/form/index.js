@@ -111,7 +111,7 @@ registerBlockType('qubely/form', {
             type: 'object',
             default: {},
             style: [
-                { selector: '{{QUBELY}} .qubely-form-field-label' }
+                { selector: '{{QUBELY}} .qubely-form-field-label, {{QUBELY}} .qubely-from-field-required-sign' }
             ]
         },
         labelColor: {
