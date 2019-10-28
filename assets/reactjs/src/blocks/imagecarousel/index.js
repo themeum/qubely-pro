@@ -321,6 +321,9 @@ registerBlockType('qubely/imagecarousel', {
 			},
 			style: [
 				{
+					condition: [
+						{ key: 'enableOverlay', relation: '===', value: true },
+					],
 					selector: '{{QUBELY}} .qubely-image-layout-2 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-3 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-4 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-5 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-6 .qubely-image-slider-text:before'
 				}
 			]
