@@ -32,6 +32,7 @@ export default function (clientId) {
     let {
         layout,
         labelColor,
+        labelSpacing,
         labelTypography,
         spacing,
         inputSize,
@@ -92,6 +93,15 @@ export default function (clientId) {
                 <Typography
                     value={labelTypography}
                     onChange={val => updateAttributes('labelTypography', val)}
+                />
+                <Range
+                    min={0}
+                    max={100}
+                    responsive
+                    value={labelSpacing}
+                    label={__('Spacing')}
+                    unit={['px', 'em', '%']}
+                    onChange={(value) => updateAttributes('labelSpacing', value)}
                 />
                 <Color
                     label={__('Color')}

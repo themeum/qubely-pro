@@ -247,6 +247,7 @@ class Edit extends Component {
                 uniqueId,
                 layout,
                 labelColor,
+                labelSpacing,
                 labelTypography,
                 spacing,
                 inputSize,
@@ -328,6 +329,15 @@ class Edit extends Component {
                         <Typography
                             value={labelTypography}
                             onChange={val => setAttributes({ labelTypography: val })}
+                        />
+                        <Range
+                            min={0}
+                            max={100}
+                            responsive
+                            value={labelSpacing}
+                            label={__('Spacing')}
+                            unit={['px', 'em', '%']}
+                            onChange={(value) => setAttributes({ labelSpacing: value })}
                         />
                         <Color
                             label={__('Color')}
@@ -556,8 +566,8 @@ class Edit extends Component {
                             />
 
                             {policyCheckbox &&
-                                <div className={`qubely-form-checkbox`}>
-                                    <input className="qubely-from-policy-checkbox" type="checkbox" name={`qubely-form-policy-${uniqueId}`} id={`qubely-form-policy-checkbox-${uniqueId}`} value="Yes" required />
+                                <div className={`qubely-form-policy-checkbox-wrapper`}>
+                                    <input className="qubely-form-policy-checkbox" type="checkbox" name={`qubely-form-policy-${uniqueId}`} id={`qubely-form-policy-checkbox-${uniqueId}`} value="Yes" required />
                                     <RichText
                                         placeholder={__('Add checkbox message')}
                                         className={`qubely-form-policy-checkbox-message`}

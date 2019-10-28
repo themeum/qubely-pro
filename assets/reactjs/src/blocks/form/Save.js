@@ -51,12 +51,9 @@ class Save extends Component {
                         {reCaptcha && <div className="qubely-form qubely-google-recaptcha" />}
 
                         {policyCheckbox &&
-                            <div className={`qubely-form-checkbox`}>
-                                <input className="qubely-from-policy-checkbox" type="checkbox" name={`qubely-form-policy-${uniqueId}`} id={`qubely-form-policy-checkbox-${uniqueId}`} value="Yes" required />
-                                <RichText.Content
-                                    className={`qubely-form-policy-checkbox-message`}
-                                    value={policyCheckboxText}
-                                />
+                            <div className={`qubely-form-policy-checkbox-wrapper`}>
+                                <input className="qubely-form-policy-checkbox" type="checkbox" name={`qubely-form-policy-${uniqueId}`} id={`qubely-form-policy-checkbox-${uniqueId}`} value="Yes" required />
+                                <RichText.Content tagName="div" className={`qubely-form-policy-checkbox-message`} value={policyCheckboxText} />
                             </div>
                         }
 
