@@ -78,7 +78,7 @@ registerBlockType('qubely/form', {
             type: 'object', default: { md: 30, unit: 'px' },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper,{{QUBELY}} .qubely-form.qubely-google-recaptcha,{{QUBELY}} .qubely-form-policy-checkbox-wrapper {margin-bottom: {{spacing}};}'
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper,{{QUBELY}} .qubely-form.qubely-google-recaptcha,{{QUBELY}} .qubely-form-policy-checkbox-wrapper {margin-bottom: {{spacing}};} {{QUBELY}} .qubely-form-field-label.qubely-confirmation-email {margin-top: {{spacing}};}'
                 }
             ]
         },

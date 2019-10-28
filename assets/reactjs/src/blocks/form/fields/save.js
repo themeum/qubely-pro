@@ -59,7 +59,7 @@ export default function Save(props) {
                 {emailConformation &&
                     <Fragment>
                         <label className="qubely-form-label" for={`confirmation-${uniqueId}`} >
-                            <RichText.Content value={conformationEmailLabel} />
+                            <RichText.Content tagName="div" value={conformationEmailLabel} className="qubely-form-field-label qubely-confirmation-email" />
                             {required && <span className="qubely-from-field-required-sign">*</span>}
                         </label>
                         <input className={`qubely-form-field qubely-form-confirmation-email`} type={'email'} placeholder={__(placeHolder)} required={required} id={`confirmation-${uniqueId}`} name={`qubely-form-input[confirmation-${fieldName}${(required ? '*' : '')}]`} />
