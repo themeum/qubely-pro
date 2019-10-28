@@ -3,24 +3,37 @@ const { RichText } = wp.editor
 const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
 class Save extends Component {
 
-	renderPricelist = () => {
+	renderGallery = () => {
 		const {
 			attributes: {
 				galleryContents,
 				imageAnimation,
 				showCaption,
-				enableCaption 
+				enableCaption,
+				linkTo
 			}
 		} = this.props
 
 		return (galleryContents.map(({ title, image }, index) => {
+			let href;
+			switch (linkTo) {
+				case 'media':
+					href = image.fullUrl || image.url;
+					break;
+				case 'attachment':
+					href = image.link;
+					break;
+			}
+
 			return (
 				<div key={index} className={`qubely-gallery-item`}>
 					<div className={`qubely-gallery-content`}>
 						{(image != undefined && image.url != undefined) &&
 							<div className={`qubely-gallery-image-container`}>
 								<div className={`qubely-gallery-content-image qubely-gallery-image-${imageAnimation}`}>
-									<img src={image.url} alt={title} />
+
+									{href ? <a href={href}><img src={image.url} alt={title} /></a> : <img src={image.url} alt={title} />}
+									
 								</div>
 								{enableCaption == 1 &&
 									<div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>
@@ -37,21 +50,21 @@ class Save extends Component {
 	}
 
 	render() {
-		const { 
-			attributes: { 
+		const {
+			attributes: {
 				uniqueId,
 				animation,
 				style,
 				column,
-				interaction 
-			} 
+				interaction
+			}
 		} = this.props
 		const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
 				<div className={`qubely-block-gallery ${interactionClass} qubely-gallery-item-${style}`}>
 					<div className={`qubely-gallery-items ${'qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs}`}>
-						{this.renderPricelist()}
+						{this.renderGallery()}
 					</div >
 				</div >
 			</div>

@@ -1,7 +1,20 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody, Tooltip, Toolbar } = wp.components
-const { InspectorControls, RichText, BlockControls, MediaUpload, MediaPlaceholder } = wp.editor
+const {
+    PanelBody,
+    Tooltip,
+    Toolbar,
+    SelectControl
+} = wp.components
+
+const {
+    InspectorControls,
+    RichText,
+    BlockControls,
+    MediaUpload,
+    MediaPlaceholder
+} = wp.editor
+
 const {
     RadioAdvanced,
     ColorAdvanced,
@@ -21,8 +34,14 @@ const {
     CssGenerator: { CssGenerator },
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
 } = wp.qubelyComponents
+
 import icons from '../../helpers/icons'
 
+const linkOptions = [
+    { value: 'attachment', label: __('Attachment Page') },
+    { value: 'media', label: __('Media File') },
+    { value: 'none', label: __('None') },
+];
 class Edit extends Component {
     constructor(props) {
         super(props)
@@ -74,7 +93,7 @@ class Edit extends Component {
     }
 
     renderGalleryItem = () => {
-        const {setAttributes,attributes:{ galleryContents, enableCaption, showCaption, imageAnimation} } = this.props
+        const { setAttributes, attributes: { galleryContents, enableCaption, showCaption, imageAnimation } } = this.props
 
         return ([...galleryContents, { image: undefined, title: undefined, addNewItem: true }].map(({ title, image, addNewItem = false }, index) => {
             return (
@@ -178,6 +197,7 @@ class Edit extends Component {
                 uniqueId,
                 galleryItems,
                 galleryContents,
+                linkTo,
                 style,
                 column,
                 gutter,
@@ -239,7 +259,7 @@ class Edit extends Component {
                                 { value: 2, svg: icons.gallery_2 },
                             ]}
                         />
-                
+
                         <Range
                             label={__('Select Column')}
                             value={column}
@@ -252,6 +272,14 @@ class Edit extends Component {
                     </PanelBody>
 
                     <PanelBody title={__('Image')} initialOpen={false}>
+
+                        <SelectControl
+                            label={__('Link To')}
+                            value={linkTo}
+                            onChange={value => setAttributes({ linkTo: value })}
+                            options={linkOptions}
+                        />
+
                         {(style === 1) &&
                             <Fragment>
                                 <Toggle label={__('Fixed Image Height')} value={enableImgFixedHeight} onChange={value => setAttributes({ enableImgFixedHeight: value })} />

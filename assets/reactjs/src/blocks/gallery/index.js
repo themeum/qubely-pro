@@ -72,6 +72,10 @@ registerBlockType('qubely/gallery', {
                 },
             },
         },
+        linkTo: {
+            type: "string",
+            default: "none"
+        },
         //gallery settings
         style: {
             type: 'number',

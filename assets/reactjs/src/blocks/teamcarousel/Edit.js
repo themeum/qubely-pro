@@ -515,14 +515,14 @@ class Edit extends Component {
 
 						</PanelBody>
 					}
-					<PanelBody title={__('Avatar')} initialOpen={false}>
-						<Toggle label={__('Show Avatar')} value={showAvatar} onChange={val => setAttributes({ showAvatar: val })} />
+					<PanelBody title={__('Image')} initialOpen={false}>
+						<Toggle label={__('Show Image')} value={showAvatar} onChange={val => setAttributes({ showAvatar: val })} />
 
 						{showAvatar &&
 							<Fragment>
 
 								<RadioAdvanced
-									label={__('Avatar Size')}
+									label={__('Image Size')}
 									options={[
 										{ label: 'S', value: '60px', title: 'Small' },
 										{ label: 'M', value: '100px', title: 'Medium' },
@@ -535,7 +535,7 @@ class Edit extends Component {
 								{avatarSize == 'custom' &&
 									<Fragment>
 										<Range
-											label={__('Avatar Width')}
+											label={__('Image Width')}
 											value={avatarWidth}
 											onChange={(value) => setAttributes({ avatarWidth: value })}
 											unit={['px', 'em', '%']}
@@ -551,7 +551,7 @@ class Edit extends Component {
 											device={device}
 											value={avatarHeight}
 											unit={['px', 'em', '%']}
-											label={__('Avatar Height')}
+											label={__('Image Height')}
 											max={avatarHeight.unit === '%' ? 100 : 300}
 											onDeviceChange={value => this.setState({ device: value })}
 											onChange={(value) => setAttributes({ avatarHeight: value })}
