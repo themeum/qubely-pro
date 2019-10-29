@@ -71,7 +71,7 @@ registerBlockType('qubely/form', {
         showPlaceholder: { type: 'boolean', default: true },
 
         spacing: {
-            type: 'object', default: { md: 30, unit: 'px' },
+            type: 'object', default: { md: 15, unit: 'px' },
             style: [
                 {
                     selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
@@ -80,7 +80,7 @@ registerBlockType('qubely/form', {
         },
 
         gutter: {
-            type: 'object', default: { md: 30, unit: 'px' },
+            type: 'object', default: { md: 15, unit: 'px' },
             style: [
                 // {
                 //     selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper {margin-left: calc(-{{gutter}}/2);margin-right: calc(-{{gutter}}/2);}'
@@ -352,7 +352,7 @@ registerBlockType('qubely/form', {
             ]
         },
         textareaHeight: {
-            type: 'object', default: { md: 200, unit: 'px' },
+            type: 'object', default: { md: 180, unit: 'px' },
             style: [
                 {
                     selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper textarea.qubely-form-textarea {height: {{textareaHeight}};}'
