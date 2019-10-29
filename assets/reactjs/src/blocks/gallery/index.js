@@ -11,7 +11,7 @@ registerBlockType('qubely/gallery', {
     title: __('Gallery'),
     category: 'qubely',
     description: __('Showcase detailed with Qubely Gallery'),
-    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg'} alt={__('Gallery')} />,
+    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-gallery.svg'} alt={__('Gallery')} />,
     keywords: [
         __('Gallery'),
         __('Image')
