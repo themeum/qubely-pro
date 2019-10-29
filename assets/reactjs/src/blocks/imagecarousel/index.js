@@ -50,7 +50,7 @@ registerBlockType('qubely/imagecarousel', {
 		/*---------------------------------------------------
 		* 	Image Layouts:  common/style attributes
 		* --------------------------------------------------- */
-		alignment: { type: 'object', default: { md: 'center' }, style: [{ selector: '{{QUBELY}} .qubely-image-item {text-align: {{alignment}};}' }] },
+	
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
 		sliderNumber: { type: 'number', default: 5 },
 		itemPerSlides: { type: 'string', default: '2' },
@@ -321,6 +321,9 @@ registerBlockType('qubely/imagecarousel', {
 			},
 			style: [
 				{
+					condition: [
+						{ key: 'enableOverlay', relation: '===', value: true },
+					],
 					selector: '{{QUBELY}} .qubely-image-layout-2 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-3 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-4 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-5 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-6 .qubely-image-slider-text:before'
 				}
 			]

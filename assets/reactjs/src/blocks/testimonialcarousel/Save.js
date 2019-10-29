@@ -8,7 +8,7 @@ class Save extends Component {
         {avatar.url != undefined ?
           <img className="qubely-testimonial-avatar" src={avatar.url} alt={avatarAlt} />
           :
-          <div className="qubely-image-placeholder qubely-testimonial-avatar"><i className="far fa-user"/></div>
+          <div className="qubely-image-placeholder qubely-testimonial-avatar"><i className="far fa-user" /></div>
         }
       </div>
     )
@@ -21,46 +21,46 @@ class Save extends Component {
       <div className={`qubely-testimonial-author`}>
         {(layout === 3 && showAvatar) && this.renderAvatar(avatar, avatarAlt)}
         <div className={showAvatar ? `qubely-testimonial-avatar-layout-${avatarLayout}` : ``}>
-			{(layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top')) && this.renderAvatar(avatar, avatarAlt)}
-				<div className="qubely-testimonial-author-info">
-					<div className="qubely-testimonial-author-name"><RichText.Content value={author} /></div>
-					<div className="qubely-testimonial-author-designation"><RichText.Content value={designation} /></div>
-				</div>
-			{(layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom')) && this.renderAvatar(avatar, avatarAlt)}
+          {(layout !== 3 && showAvatar && (avatarLayout == 'left' || avatarLayout == 'top')) && this.renderAvatar(avatar, avatarAlt)}
+          <div className="qubely-testimonial-author-info">
+            <div className="qubely-testimonial-author-name"><RichText.Content value={author} /></div>
+            <div className="qubely-testimonial-author-designation"><RichText.Content value={designation} /></div>
+          </div>
+          {(layout !== 3 && showAvatar && (avatarLayout == 'right' || avatarLayout == 'bottom')) && this.renderAvatar(avatar, avatarAlt)}
         </div>
       </div>
     )
   }
   renderTestimonial() {
-    const { attributes: { carouselItems, showRatings, layout, ratings, quoteIcon } } = this.props
+    const { attributes: { carouselItems, showRatings, layout, quoteIcon } } = this.props
 
     return (carouselItems.map((item, index) => {
-      const { message } = item
+      const { message, ratings } = item
       return (
-        	<div key={index} className={`qubely-carousel-item`}>
-				<div className={`qubely-tesitmonial-item qubely-tesitmonial-item-layout-${layout}`}>
-					{layout == 2 && this.renderAuthorInfo(item)}
-					{(quoteIcon && layout == 1) && 
-						<div className="qubely-testimonial-quote">
-							<span className={`qubely-quote-icon ${quoteIcon}`}/>
-						</div>
-					}
-					<div className={`qubely-testimonial-carousel-content-wrapper`}>
-						{(showRatings && ratings > 0 && layout !== 1) &&
-							<div className="qubely-testimonial-ratings" data-qubelyrating={ratings}></div>
-						}
-						<div className="qubely-testimonial-content"><RichText.Content value={message} /></div>
-						{(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings" data-qubelyrating={ratings} />}
-					</div>
-					{layout !== 2 && this.renderAuthorInfo(item)}
-					{(quoteIcon && layout == 2) && 
-						<div className="qubely-testimonial-quote qubely-position-bottom">
-							<span className={`qubely-quote-icon ${quoteIcon}`}/>
-						</div>
-					}
-				</div>
-        	</div>
-      	)
+        <div key={index} className={`qubely-carousel-item`}>
+          <div className={`qubely-tesitmonial-item qubely-tesitmonial-item-layout-${layout}`}>
+            {layout == 2 && this.renderAuthorInfo(item)}
+            {(quoteIcon && layout == 1) &&
+              <div className="qubely-testimonial-quote">
+                <span className={`qubely-quote-icon ${quoteIcon}`} />
+              </div>
+            }
+            <div className={`qubely-testimonial-carousel-content-wrapper`}>
+              {(showRatings && ratings > 0 && layout !== 1) &&
+                <div className="qubely-testimonial-ratings" data-qubelyrating={ratings}></div>
+              }
+              <div className="qubely-testimonial-content"><RichText.Content value={message} /></div>
+              {(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings" data-qubelyrating={ratings} />}
+            </div>
+            {layout !== 2 && this.renderAuthorInfo(item)}
+            {(quoteIcon && layout == 2) &&
+              <div className="qubely-testimonial-quote qubely-position-bottom">
+                <span className={`qubely-quote-icon ${quoteIcon}`} />
+              </div>
+            }
+          </div>
+        </div>
+      )
     }))
   }
 

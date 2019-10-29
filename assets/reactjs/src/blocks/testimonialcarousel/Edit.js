@@ -1,6 +1,6 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody, Tooltip, Toolbar } = wp.components
+const { PanelBody, Tooltip, Toolbar, Popover } = wp.components
 const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.editor
 import icons from '../../helpers/icons'
 const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } } = wp.qubelyComponents
@@ -12,7 +12,8 @@ class Edit extends Component {
 		this.state = {
 			device: 'md',
 			spacer: true,
-			openPanelSetting: ''
+			openPanelSetting: '',
+			showRatingsPicker: -1
 		}
 	}
 
@@ -109,12 +110,60 @@ class Edit extends Component {
 		setAttributes({ carouselItems: newCarouselItems })
 	}
 
+
+	renderRatings = (ratings, index) => {
+		const { isSelected } = this.props
+		const { showRatingsPicker } = this.state
+
+		return (
+
+			<Fragment>
+				<Tooltip text={__('Change ratings')}>
+					<div
+						className="qubely-testimonial-ratings qubely-backend"
+						data-qubelyrating={ratings}
+						onClick={() => this.setState({ showRatingsPicker: showRatingsPicker === index ? -1 : index })}>
+					</div>
+				</Tooltip>
+				{
+					(isSelected && showRatingsPicker === index) &&
+					<Popover
+						position="top center"
+						className="qubely-testimonial-ratings-popover"
+						// onClickOutside={event => event.target.value === undefined && this.setState({ showRatingsPicker: -1 })}
+					>
+						<Range
+							min={0}
+							max={5}
+							step={.5}
+							value={ratings}
+							label={__('Ratings')}
+							onChange={(value) => this.updateAtrributes('ratings', value, index)}
+						/>
+					</Popover>
+				}
+
+			</Fragment>
+
+
+		)
+
+	}
+
 	renderTestimonials = () => {
-		const { attributes: { layout, showRatings, carouselItems, items, quoteIcon, ratings } } = this.props
+		const {
+			isSelected,
+			attributes: {
+				layout,
+				showRatings,
+				carouselItems,
+				items,
+				quoteIcon }
+		} = this.props
 
 		return (
 			carouselItems.map((item, index) => {
-				const { message } = item
+				const { message, ratings } = item
 				return (
 					<div key={index} className={`qubely-carousel-item`} >
 						{
@@ -138,9 +187,10 @@ class Edit extends Component {
 
 							{/* showRatings,ratings */}
 							<div className={`qubely-testimonial-carousel-content-wrapper`}>
-								{(showRatings && ratings > 0 && layout !== 1) &&
-									<div className="qubely-testimonial-ratings" data-qubelyrating={ratings}></div>
-								}
+
+
+
+								{(showRatings && ratings > 0 && layout !== 1) && this.renderRatings(ratings, index)}
 
 								<div className="qubely-testimonial-content" >
 									<RichText
@@ -153,7 +203,7 @@ class Edit extends Component {
 									/>
 								</div>
 
-								{(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings A" data-qubelyrating={ratings}></div>}
+								{(showRatings && ratings > 0 && layout == 1) && this.renderRatings(ratings, index)}
 							</div>
 							{layout !== 2 && this.renderAuthorInfo(item, index)}
 							{(quoteIcon && layout == 2) &&

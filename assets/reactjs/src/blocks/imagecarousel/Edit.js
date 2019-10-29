@@ -293,7 +293,7 @@ class Edit extends Component {
 		const carouselSettings = {
 			autoplay: autoPlay,
 			items: layout != 2 ? ((layout == 5) ? itemfive : items) : itemthree,
-			center: (layout == 3 || layout == 4) ? isCentered : notCentered,
+			center: (layout == 3 || layout == 4) ? true : false,
 			nav: nav,
 			dots: dots,
 			margin: sliderMargin,
@@ -301,7 +301,7 @@ class Edit extends Component {
 			interval: interval,
 			arrowStyle: arrowStyle,
 			dot_indicator: dotIndicator,
-			centerPadding: centerPadding,
+			centerPadding: (layout === 3 || layout === 4) ? centerPadding : 0,
 			arrowPosition: arrowPosition,
 			responsive: [
 				{
@@ -371,27 +371,21 @@ class Edit extends Component {
 							value={layout} onChange={val => setAttributes({ layout: val })}
 						/>
 
-						<Alignment
-							label={__('Alignment')}
-							value={alignment}
-							alignmentType="content"
-							onChange={val => setAttributes({ alignment: val })}
-							alignmentType="content" disableJustify responsive device={device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/>
-
 						{layout == 2 &&
 							<Range
-								label={__('Number of Columns')}
-								min={1} max={20} responsive device={device}
+								min={1}
+								max={7}
+								responsive
+								device={device}
 								device={this.state.device}
+								label={__('Number of Columns')}
 								value={(layout != 2) ? ((layout == 5) ? itemfive : items) : itemthree}
 								onChange={value => setAttributes((layout != 2) ? ((layout == 5) ? { itemfive: value } : { items: value }) : { itemthree: value })}
 								onDeviceChange={value => this.setState({ device: value })}
 							/>
 						}
 
-						{(layout != 6 && layout != 1) &&
+						{(layout !== 6 && layout !== 1) &&
 							<Fragment>
 								<Range
 									min={0}
@@ -431,25 +425,14 @@ class Edit extends Component {
 							</Fragment>
 						}
 
-						{layout !== 1 &&
+						{
+							(layout === 3 || layout === 4) &&
 							<Fragment>
-								<Toggle
-									label={__('Centered Slides')}
-									value={(layout == 3 || layout == 4) ? isCentered : notCentered}
-									onChange={value => setAttributes((layout == 3 || layout == 4) ? { isCentered: value } : { notCentered: value })}
-								/>
-
-								{
-									(isCentered || notCentered) &&
-									<Range label={__('Center Padding')} value={centerPadding} onChange={value => setAttributes({ centerPadding: parseInt(value) })} min={10} max={5000} />
-								}
-
-								{
-									(isCentered || notCentered) &&
-									<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
-								}
+								<Range label={__('Center Padding')} value={centerPadding} onChange={value => setAttributes({ centerPadding: parseInt(value) })} min={10} max={500} />
+								<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
 							</Fragment>
 						}
+
 					</PanelBody>
 
 					{nav &&

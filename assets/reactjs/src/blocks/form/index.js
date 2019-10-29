@@ -67,6 +67,10 @@ registerBlockType('qubely/form', {
                 }
             ]
         },
+        buttonGap: {
+            type: 'object', default: { md: 0, unit: 'px' },
+            style: [{ selector: '{{QUBELY}} .qubely-block-btn-wrapper { margin-top: {{buttonGap}}; }' }]
+        },
         formItems: { type: 'array', default: defaultFormItems },
         showPlaceholder: { type: 'boolean', default: true },
 
@@ -74,7 +78,7 @@ registerBlockType('qubely/form', {
             type: 'object', default: { md: 15, unit: 'px' },
             style: [
                 {
-                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper {margin-bottom: {{spacing}};}'
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper,{{QUBELY}} .qubely-form.qubely-google-recaptcha,{{QUBELY}} .qubely-form-policy-checkbox-wrapper {margin-bottom: {{spacing}};} {{QUBELY}} .qubely-form-field-label.qubely-confirmation-email {margin-top: {{spacing}};}'
                 }
             ]
         },
@@ -93,11 +97,21 @@ registerBlockType('qubely/form', {
             type: 'boolean',
             default: true
         },
+        labelSpacing: {
+            type: 'object',
+            default: { md: 5, unit: 'px' },
+            style: [
+                {
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper .qubely-form-field {margin-top: {{labelSpacing}};}'
+                }
+            ]
+        },
+
         labelTypography: {
             type: 'object',
             default: {},
             style: [
-                { selector: '{{QUBELY}} .qubely-form-field-label' }
+                { selector: '{{QUBELY}} .qubely-form-field-label, {{QUBELY}} .qubely-from-field-required-sign' }
             ]
         },
         labelColor: {

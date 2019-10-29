@@ -250,7 +250,7 @@ export default function Edit(props) {
                     <Fragment>
                         <RichText
                             placeholder={__('Confirmation Email')}
-                            className={`qubely-form-field-label`}
+                            className={`qubely-form-field-label qubely-confirmation-email`}
                             value={conformationEmailLabel}
                             onChange={value => setAttributes({ conformationEmailLabel: value })}
                         />
