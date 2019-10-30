@@ -5,11 +5,24 @@ jQuery(document).ready(function ($) {
 
         let items = []
         let currentGallery = $(event.currentTarget).parents('.qubely-gallery-items')
+        let imageWraper = $(event.currentTarget).parents('.qubely-gallery-item')
 
-        currentGallery.find('.qubely-gallery-item .qubely-gallery-content-image > img').each(function (idx, value) {
-            let imgSrc = $(this).attr("src");
-            items.push({ src: imgSrc })
-        })
+        let temp = imageWraper.index(), numOfgalleryItems = currentGallery.find('.qubely-gallery-item .qubely-gallery-content-image > img').length
+
+
+        while (temp < numOfgalleryItems) {
+            items.push({ src: currentGallery.children().eq(temp).find('.qubely-gallery-content-image > img').attr("src") })
+            temp++
+        }
+
+        if (imageWraper.index() !== 0) {
+            temp = 0
+            while (temp <= imageWraper.index() - 1) {
+                items.push({ src: currentGallery.children().eq(temp).find('.qubely-gallery-content-image > img').attr("src") })
+                temp++
+            }
+        }
+
 
         $(event.currentTarget).magnificPopup({
             items: [...items],
@@ -17,7 +30,7 @@ jQuery(document).ready(function ($) {
                 enabled: true
             },
             type: 'image',
-            cursor: 'mfp-zoom-out-cur', 
+            cursor: 'mfp-zoom-out-cur',
             tError: '<a href="%url%">The image</a> could not be loaded.'
         })
 
