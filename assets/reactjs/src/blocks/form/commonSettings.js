@@ -172,7 +172,7 @@ export default function (clientId) {
                         min={0}
                         max={100}
                         responsive
-                        label={__('Field Radius')}
+                        label={__('Radius')}
                         value={inputBorderRadius}
                         unit={['px', 'em', '%']}
                         onChange={(value) => updateAttributes('inputBorderRadius', value)}

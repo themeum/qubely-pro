@@ -277,7 +277,7 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '==', value: 'material' },
                     ],
-                    selector: '{{QUBELY}} input.qubely-form-field{border-radius:0;} {{QUBELY}} textarea.qubely-form-field{border-radius:0;}'
+                    selector: '{{QUBELY}} input.qubely-form-field, {{QUBELY}} textarea.qubely-form-field, {{QUBELY}} .qubely-form-dropdown{border-radius:0;}'
                 }
             ]
         },
