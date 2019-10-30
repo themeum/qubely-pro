@@ -151,6 +151,16 @@
       outline: 1px solid transparent;
       transition: 300ms;
       opacity: 1;
+      &:hover {
+        border: none;
+        opacity: 1;
+        i {
+          font-style: normal;
+          background: #FFFFFF;
+          border: 1px solid #2184F9;
+          box-shadow: 0 0 0 1px rgba(33, 132, 249, 0.2);
+      }
+      }
       i {
         height: 50px;
         background: #e2e6ec;
@@ -165,6 +175,7 @@
         margin-right: 2px;
       }
     }
+  
   }
 }
 
@@ -178,7 +189,7 @@
 .qubely-form-policy-checkbox-wrapper {
   display: flex;
   align-items: flex-start;
-  .qubely-form-policy-checkbox{
+  .qubely-form-policy-checkbox {
     margin: 9.5px 15px 0px 0px;
   }
 }
