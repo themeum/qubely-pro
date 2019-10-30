@@ -10,7 +10,8 @@ class Save extends Component {
 				imageAnimation,
 				showCaption,
 				enableCaption,
-				linkTo
+				linkTo,
+				enableOverlay
 			}
 		} = this.props
 
@@ -29,11 +30,11 @@ class Save extends Component {
 				<div key={index} className={`qubely-gallery-item`}>
 					<div className={`qubely-gallery-content`}>
 						{(image != undefined && image.url != undefined) &&
-							<div className={`qubely-gallery-image-container`}>
+							<div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
 								<div className={`qubely-gallery-content-image qubely-gallery-image-${imageAnimation}`}>
 
-									{href ? <a href={href}><img src={image.url} alt={title} /></a> : <img src={image.url} alt={title} />}
-									
+									{(!enableOverlay && typeof (href) !== 'undefined') ? <a href={href}><img src={image.url} alt={title} /></a> : <img src={image.url} alt={title} />}
+
 								</div>
 								{enableCaption == 1 &&
 									<div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>

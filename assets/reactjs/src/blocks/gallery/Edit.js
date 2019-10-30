@@ -273,13 +273,16 @@ class Edit extends Component {
 
                     <PanelBody title={__('Image')} initialOpen={false}>
 
-                        <SelectControl
-                            label={__('Link To')}
-                            value={linkTo}
-                            onChange={value => setAttributes({ linkTo: value })}
-                            options={linkOptions}
-                        />
-
+                        {
+                            !enableOverlay &&
+                            <SelectControl
+                                label={__('Link To')}
+                                value={linkTo}
+                                onChange={value => setAttributes({ linkTo: value })}
+                                options={linkOptions}
+                            />
+                        }
+                        
                         {(style === 1) &&
                             <Fragment>
                                 <Toggle label={__('Fixed Image Height')} value={enableImgFixedHeight} onChange={value => setAttributes({ enableImgFixedHeight: value })} />
