@@ -262,7 +262,8 @@ export default function Edit(props) {
     }
 
 
-    const renderCommonSettings = () => {
+    const renderCommonSettings = (blockname) => {
+
         return (
             <Fragment>
                 <TextControl
@@ -270,11 +271,15 @@ export default function Edit(props) {
                     value={label}
                     onChange={value => setAttributes({ label: value })}
                 />
-                <TextControl
-                    label={__('Placeholder')}
-                    value={placeHolder}
-                    onChange={value => setAttributes({ placeHolder: value })}
-                />
+                {
+                    (blockname !== 'formfield-checkbox' && blockname !== 'formfield-radio') &&
+                    <TextControl
+                        label={__('Placeholder')}
+                        value={placeHolder}
+                        onChange={value => setAttributes({ placeHolder: value })}
+                    />
+                }
+
                 <TextareaControl
                     label={__('Instructions')}
                     value={instruction}
@@ -330,7 +335,7 @@ export default function Edit(props) {
                 <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} initialOpen={true}>
 
 
-                    {renderCommonSettings()}
+                    {renderCommonSettings(blockname)}
                     {/**email */}
                     {
                         name === 'qubely/formfield-email' &&
