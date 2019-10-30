@@ -15,7 +15,7 @@ const icons = {
         number: <img src={`${img_path}/form/number.svg`} alt={__('qubely form number-field')} />,
         textarea: <img src={`${img_path}/form/textarea.svg`} alt={__('qubely form textarea-field')} />,
         checkbox: <img src={`${img_path}/form/checkbox.svg`} alt={__('qubely form checkbox-field')} />,
-        date: <img src={`${img_path}/form/date.svg`} alt={__('qubely form date-field')} />,
+        date: <img src={`${img_path}/form/calendar.svg`} alt={__('qubely form date-field')} />,
         dropdown: <img src={`${img_path}/form/dropdown.svg`} alt={__('qubely form dropdown-field')} />,
         email: <img src={`${img_path}/form/email.svg`} alt={__('qubely form email-field')} />,
         radio: <img src={`${img_path}/form/radio.svg`} alt={__('qubely form radio-field')} />,

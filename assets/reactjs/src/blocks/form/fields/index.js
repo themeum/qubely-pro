@@ -260,7 +260,7 @@ const qubelyFormFields = [
             ...qubelyField.settings,
             title: __('Date Picker'),
             description: __('Date picker field for Qubely Form'),
-            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/date.svg'} alt={__('Date field')} />,
+            icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/form/calendar.svg'} alt={__('Date field')} />,
             attributes: {
                 ...qubelyField.settings.attributes,
                 fieldName: {
