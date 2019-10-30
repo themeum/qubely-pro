@@ -212,23 +212,23 @@ class Edit extends Component {
                     [
                         [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'First Name', placeholder: 'Add first name', width: 'medium', required: true, fieldName: 'text-11' }]
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'First Name', placeHolder: 'First name', width: 'medium', required: true, fieldName: 'text-11' }]
                             ]
                         ],
                         [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'Last Name', placeholder: 'Add last name', width: 'medium', required: true, fieldName: 'text-12' }]
+                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'Last Name', placeHolder: 'Last name', width: 'medium', required: true, fieldName: 'text-12' }]
                             ]
                         ],
                     ]
                 ],
-                ...formItems.map(({ type, label, options, placeholder, width, required }, index) => {
+                ...formItems.map(({ type, label, options, placeHolder, width, required }, index) => {
                     return (
                         ['qubely/form-row', { parentClientId: clientId },
                             [
                                 [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'large' },
                                     [
-                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeholder, width, required, fieldName: `${type}-${index + 2}1` }]
+                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeHolder, width, required, fieldName: `${type}-${index + 2}1` }]
                                     ]
                                 ]
                             ]

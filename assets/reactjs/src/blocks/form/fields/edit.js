@@ -270,6 +270,11 @@ export default function Edit(props) {
                     value={label}
                     onChange={value => setAttributes({ label: value })}
                 />
+                <TextControl
+                    label={__('Placeholder')}
+                    value={placeHolder}
+                    onChange={value => setAttributes({ placeHolder: value })}
+                />
                 <TextareaControl
                     label={__('Instructions')}
                     value={instruction}

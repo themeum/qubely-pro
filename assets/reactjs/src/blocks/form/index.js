@@ -11,7 +11,7 @@ const defaultFormItems = [
         type: 'email',
         label: 'Email',
         name: 'email',
-        placeholder: 'Email',
+        placeHolder: 'Email',
         required: true,
         hideLabel: false
     },
@@ -19,7 +19,7 @@ const defaultFormItems = [
         type: 'textarea',
         label: 'Message',
         name: 'message',
-        placeholder: 'Message',
+        placeHolder: 'Message',
         required: true,
         hideLabel: false
     }
