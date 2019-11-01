@@ -304,12 +304,12 @@ registerBlockType('qubely/gallery', {
                 type: 'color',
                 color: 'rgba(6, 80, 183, 0.7)',
                 gradient: {
-                    color1: 'rgba(6, 80, 183, 0.7)',
-                    color2: 'rgba(96, 10, 255, 0.7)',
-                    direction: 45,
-                    start: 0,
-                    stop: 100,
-                    type: 'linear'
+                    color1: 'rgba(0, 0, 0, 0.5)',
+					color2: 'rgba(6, 1, 14, 0.6)',
+					direction: 45,
+					start: 0,
+					stop: 100,
+					type: 'linear'
                 },
             },
             style: [

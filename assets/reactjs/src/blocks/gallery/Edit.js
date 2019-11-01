@@ -93,7 +93,7 @@ class Edit extends Component {
     }
 
     renderGalleryItem = () => {
-        const { setAttributes, attributes: { galleryContents, enableCaption, showCaption, imageAnimation } } = this.props
+        const { setAttributes, attributes: { galleryContents, enableCaption, enableOverlay, showCaption, imageAnimation } } = this.props
 
         return ([...galleryContents, { image: undefined, title: undefined, addNewItem: true }].map(({ title, image, addNewItem = false }, index) => {
             return (
@@ -102,7 +102,7 @@ class Edit extends Component {
                         <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><span className="dashicons dashicons-no-alt" /></span>
                     </Tooltip>
                     <div className={`qubely-gallery-content`}>
-                        <div className={`qubely-gallery-image-container`}>
+                        <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
                             <div className={`qubely-gallery-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'} qubely-gallery-image-${imageAnimation}`}>
                                 <MediaUpload
                                     onSelect={value => {
@@ -282,7 +282,7 @@ class Edit extends Component {
                                 options={linkOptions}
                             />
                         }
-                        
+
                         {(style === 1) &&
                             <Fragment>
                                 <Toggle label={__('Fixed Image Height')} value={enableImgFixedHeight} onChange={value => setAttributes({ enableImgFixedHeight: value })} />
@@ -324,7 +324,6 @@ class Edit extends Component {
                         <Toggle label={__('Enable')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
                         {enableOverlay == 1 &&
                             <Fragment>
-
                                 <Tabs>
                                     <Tab tabTitle={__('Normal')}>
                                         <ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
