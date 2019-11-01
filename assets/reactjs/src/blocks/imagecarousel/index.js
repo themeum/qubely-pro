@@ -322,9 +322,9 @@ registerBlockType('qubely/imagecarousel', {
 			style: [
 				{
 					condition: [
-						{ key: 'enableOverlay', relation: '===', value: true },
+						{ key: 'enableOverlay', relation: '==', value: true },
 					],
-					selector: '{{QUBELY}} .qubely-image-layout-2 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-3 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-4 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-5 .qubely-image-slider-text:before, {{QUBELY}} .qubely-image-layout-6 .qubely-image-slider-text:before'
+					selector: '{{QUBELY}} .qubely-image-item .qubely-image-slider .qubely-image-slider-text'
 				}
 			]
 		},
@@ -333,7 +333,6 @@ registerBlockType('qubely/imagecarousel', {
 			type: 'object',
 			default: {
 				type: 'gradient',
-				openColor: 1,
 				color: 'rgba(6, 80, 183, 0.85)',
 				gradient: {
 					color1: 'rgba(0, 0, 0, 0.85)',
@@ -349,7 +348,6 @@ registerBlockType('qubely/imagecarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '2' },
 						{ key: 'enableOverlay', relation: '==', value: true },
-						{ key: 'animateOnHover', relation: '==', value: true },
 					],
 					selector: '{{QUBELY}} .qubely-image-layout-2 .qubely-image-slider-text:hover:before'
 				},
@@ -357,7 +355,6 @@ registerBlockType('qubely/imagecarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' },
 						{ key: 'enableOverlay', relation: '==', value: true },
-						{ key: 'animateOnHover', relation: '==', value: true },
 					],
 					selector: '{{QUBELY}} .qubely-image-layout-3 .qubely-image-slider-text:hover:before'
 				},
@@ -365,7 +362,6 @@ registerBlockType('qubely/imagecarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '4' },
 						{ key: 'enableOverlay', relation: '==', value: true },
-						{ key: 'animateOnHover', relation: '==', value: true },
 					],
 					selector: '{{QUBELY}} .qubely-image-layout-4 .qubely-image-slider-text:hover:before'
 				},
@@ -373,7 +369,6 @@ registerBlockType('qubely/imagecarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '5' },
 						{ key: 'enableOverlay', relation: '==', value: true },
-						{ key: 'animateOnHover', relation: '==', value: true },
 					],
 					selector: '{{QUBELY}} .qubely-image-layout-5 .qubely-image-slider-text:hover:before'
 				},
@@ -381,7 +376,6 @@ registerBlockType('qubely/imagecarousel', {
 					condition: [
 						{ key: 'layout', relation: '==', value: '6' },
 						{ key: 'enableOverlay', relation: '==', value: true },
-						{ key: 'animateOnHover', relation: '==', value: true },
 					],
 					selector: '{{QUBELY}} .qubely-image-layout-6 .qubely-image-slider-text:hover:before'
 				}
@@ -401,10 +395,6 @@ registerBlockType('qubely/imagecarousel', {
 					selector: '{{QUBELY}} .qubely-image-layout-6 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};} {{QUBELY}} .qubely-image-layout-4 .qubely-image-slider-text {mix-blend-mode: {{overlayBlend}};}'
 				}
 			]
-		},
-		animateOnHover: {
-			type: 'boolean',
-			default: true
 		},
 		// Border radius
 		bgBorderRadius: {

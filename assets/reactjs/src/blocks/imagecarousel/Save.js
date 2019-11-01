@@ -1,4 +1,4 @@
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { RichText } = wp.editor;
 const {
 	HelperFunction: { animationAttr }
@@ -29,7 +29,7 @@ class Save extends Component {
 			<div className={`qubely-image-slider`}>
 				{this.renderSlider(sliderimage, index)}
 				{layout != 1 && (
-					<div>
+					<Fragment>
 						{(sliderContent || layout === 6) && (
 							<div className={`qubely-image-slider-text`}>
 								<div className="qubely-image-content">
@@ -48,7 +48,7 @@ class Save extends Component {
 								</div>
 							</div>
 						)}
-					</div>
+					</Fragment>
 				)}
 			</div>
 		);

@@ -140,7 +140,7 @@ class Edit extends Component {
 			<div className={`qubely-image-slider`}>
 				{this.renderSlider(sliderimage, index, addNewItem)}
 				{(layout != 1) &&
-					<div>
+					<Fragment>
 						{(sliderContent || layout === 6) &&
 							<div className={`qubely-image-slider-text`}>
 								<div className="qubely-image-content">
@@ -178,7 +178,7 @@ class Edit extends Component {
 								</div>
 							</div>
 						}
-					</div>
+					</Fragment>
 				}
 			</div>
 		)
@@ -268,7 +268,6 @@ class Edit extends Component {
 				contentPadding,
 				contentVerticalAlign,
 				contentAlignment,
-				animateOnHover,
 				enableOverlay,
 				overlayBg,
 				overlayHoverBg,
@@ -371,6 +370,12 @@ class Edit extends Component {
 							value={layout} onChange={val => setAttributes({ layout: val })}
 						/>
 
+
+						{
+							(layout !== 6 && layout !== 1) &&
+							<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
+						}
+
 						{layout == 2 &&
 							<Range
 								min={1}
@@ -385,19 +390,16 @@ class Edit extends Component {
 							/>
 						}
 
-						{(layout !== 6 && layout !== 1) &&
-							<Fragment>
-								<Range
-									min={0}
-									max={80}
-									label={__('Gutter')}
-									value={sliderMargin}
-									onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
-								/>
-								<Toggle label={__('Slider Content')} value={sliderContent} onChange={value => setAttributes({ sliderContent: value })} />
-							</Fragment>
+						{
+							(layout !== 6 && layout !== 1) &&
+							<Range
+								min={0}
+								max={80}
+								label={__('Gutter')}
+								value={sliderMargin}
+								onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
+							/>
 						}
-
 
 						<Range
 							max={avatarHeight.unit == '%' ? 100 : 1200}
@@ -622,7 +624,7 @@ class Edit extends Component {
 
 									<PanelBody title={__('Content')} initialOpen={false}>
 										<Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-										<RadioAdvanced label={__('Vertical Align')} value={contentVerticalAlign} onChange={(value) => setAttributes({ contentVerticalAlign: value })}
+										<RadioAdvanced label={__('Vertical Alignment')} value={contentVerticalAlign} onChange={(value) => setAttributes({ contentVerticalAlign: value })}
 											options={[
 												{ label: __('Top'), value: 'top', title: __('Top') },
 												{ label: __('Middle'), value: 'center', title: __('Middle') },
@@ -632,25 +634,17 @@ class Edit extends Component {
 										<Alignment label={__('Horizontal Alignment')} value={contentAlignment} alignmentType="content" onChange={val => setAttributes({ contentAlignment: val })} alignmentType="content" disableJustify />
 									</PanelBody>
 									<PanelBody title={__('Overlay')} initialOpen={false}>
-										<Toggle label={__('Animate on Hover')} value={animateOnHover} onChange={val => setAttributes({ animateOnHover: val })} />
-										<Toggle label={__('Enable')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
+										<Toggle label={__('Enable Overlay')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
 										{enableOverlay == 1 &&
 											<Fragment>
-												{animateOnHover == 1 ?
-													<Tabs>
-														<Tab tabTitle={__('Normal')}>
-															<ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
-														</Tab>
-														<Tab tabTitle={__('Hover')}>
-															<ColorAdvanced label={__('Background')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
-														</Tab>
-													</Tabs>
-													:
-													<Fragment>
+												<Tabs>
+													<Tab tabTitle={__('Normal')}>
 														<ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
-														<Separator />
-													</Fragment>
-												}
+													</Tab>
+													<Tab tabTitle={__('Hover')}>
+														<ColorAdvanced label={__('Background')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
+													</Tab>
+												</Tabs>
 												<Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
 											</Fragment>
 										}
