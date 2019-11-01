@@ -306,7 +306,7 @@ registerBlockType('qubely/gallery', {
                 gradient: {
                     color1: 'rgba(0, 0, 0, 0.5)',
 					color2: 'rgba(6, 1, 14, 0.6)',
-					direction: 45,
+					direction: 25,
 					start: 0,
 					stop: 100,
 					type: 'linear'
