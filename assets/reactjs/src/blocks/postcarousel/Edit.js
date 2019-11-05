@@ -663,7 +663,7 @@ class Edit extends Component {
 						}
 					</PanelBody>
 
-					<PanelBody title={__('Title Settings')} initialOpen={false}>
+					<PanelBody title={__('Typography')} initialOpen={false}>
 						<Typography label={__('Title')} value={titleTypography} onChange={value => setAttributes({ titleTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Separator />
 						<Typography label={__('Meta')} value={metaTypography} onChange={value => setAttributes({ metaTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
