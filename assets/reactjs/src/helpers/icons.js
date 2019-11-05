@@ -70,8 +70,19 @@ const icons = {
     gallery_2: <img src={`${img_path}/gallery/layout2.svg`} alt={__('Design 2')} />,
 
     //button outline
-    btn_fill : <img src={`${free_img_path}/button/fill.svg`} alt={__('Fill')} />,
-    btn_outline : <img src={`${free_img_path}/button/outline.svg`} alt={__('Outline')} />,
+    btn_fill: <img src={`${free_img_path}/button/fill.svg`} alt={__('Fill')} />,
+    btn_outline: <img src={`${free_img_path}/button/outline.svg`} alt={__('Outline')} />,
+
+    leftArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 8.70002L10.6 14.4L12 12.9L7.8 8.70002L12 4.50002L10.6 3.00002L5 8.70002Z" />
+    </svg>,
+
+    rightArrow:
+        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 8.7L7.4 3L6 4.5L10.2 8.7L6 12.9L7.4 14.4L13 8.7Z" />
+        </svg>
+
+
 
 }
 

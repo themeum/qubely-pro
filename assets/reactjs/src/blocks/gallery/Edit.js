@@ -4,7 +4,8 @@ const {
     PanelBody,
     Tooltip,
     Toolbar,
-    SelectControl
+    SelectControl,
+    IconButton
 } = wp.components
 
 const {
@@ -85,22 +86,57 @@ class Edit extends Component {
         }
     }
 
-    removePricelistItem = (index) => {
+
+    moveItem = (index, direction) => {
         const { setAttributes, attributes: { galleryContents } } = this.props
         let newgalleryItems = JSON.parse(JSON.stringify(galleryContents))
-        newgalleryItems.splice(index, 1)
+
+        if (direction === 'remove') {
+            newgalleryItems.splice(index, 1)
+        } else if (direction === 'right') {
+            let tempElement = newgalleryItems[index]
+            newgalleryItems[index] = newgalleryItems[index + 1]
+            newgalleryItems[index + 1] = tempElement
+        } else {
+            let tempElement = newgalleryItems[index]
+            newgalleryItems[index] = newgalleryItems[index - 1]
+            newgalleryItems[index - 1] = tempElement
+        }
         setAttributes({ galleryContents: newgalleryItems })
     }
 
     renderGalleryItem = () => {
-        const { setAttributes, attributes: { galleryContents, enableCaption, enableOverlay, showCaption, imageAnimation, enableZoom, enableZoomIcon } } = this.props
+        const { isSelected, setAttributes, attributes: { galleryContents, enableCaption, enableOverlay, showCaption, imageAnimation, enableZoom, enableZoomIcon } } = this.props
 
         return ([...galleryContents, { image: undefined, title: undefined, addNewItem: true }].map(({ title, image, addNewItem = false }, index) => {
             return (
                 <div key={index} className={`qubely-gallery-item`}>
                     <Tooltip text={__('Delete this item')}>
-                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><span className="dashicons dashicons-no-alt" /></span>
+                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.moveItem(index, 'remove')}><span className="dashicons dashicons-no-alt" /></span>
                     </Tooltip>
+                    {
+                        index < galleryContents.length &&
+                        <div className="qubely-gallery-item__move-menu">
+                            <IconButton
+                                icon={icons.leftArrow}
+                                onClick={() => index === 0 ? undefined : this.moveItem(index, 'left')}
+                                className="qubely-gallery-item__move-backward"
+                                label={__('Move image backward')}
+                                aria-disabled={index === 0}
+                                disabled={!isSelected}
+                            />
+
+                            <IconButton
+                                icon={icons.rightArrow}
+                                onClick={() => index === galleryContents.length - 1 ? undefined : this.moveItem(index, 'right')}
+                                className="qubely-gallery-item__move-forward"
+                                label={__('Move image forward')}
+                                aria-disabled={index === galleryContents.length - 1}
+                                disabled={!isSelected}
+                            />
+                        </div>
+                    }
+                    
                     <div className={`qubely-gallery-content ${enableZoom ? 'qubely-gallery-pupup' : ''}`}>
                         <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
                             <div className={`qubely-gallery-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'} qubely-gallery-image-${imageAnimation}`}>
