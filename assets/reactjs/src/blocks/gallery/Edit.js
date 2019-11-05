@@ -85,10 +85,22 @@ class Edit extends Component {
         }
     }
 
-    removePricelistItem = (index) => {
+
+    moveItem = (index, direction) => {
         const { setAttributes, attributes: { galleryContents } } = this.props
         let newgalleryItems = JSON.parse(JSON.stringify(galleryContents))
-        newgalleryItems.splice(index, 1)
+
+        if (direction === 'remove') {
+            newgalleryItems.splice(index, 1)
+        } else if (direction === 'right') {
+            let tempElement = newgalleryItems[index]
+            newgalleryItems[index] = newgalleryItems[index + 1]
+            newgalleryItems[index + 1] = tempElement
+        } else {
+            let tempElement = newgalleryItems[index]
+            newgalleryItems[index] = newgalleryItems[index - 1]
+            newgalleryItems[index - 1] = tempElement
+        }
         setAttributes({ galleryContents: newgalleryItems })
     }
 
@@ -99,8 +111,26 @@ class Edit extends Component {
             return (
                 <div key={index} className={`qubely-gallery-item`}>
                     <Tooltip text={__('Delete this item')}>
-                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><span className="dashicons dashicons-no-alt" /></span>
+                        <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.moveItem(index, 'remove')}><span className="dashicons dashicons-no-alt" /></span>
                     </Tooltip>
+                    {
+                        index < galleryContents.length &&
+                        <div className="qubely-action qubely-move-gallery-item">
+                            {
+                                index !== galleryContents.length &&
+                                <Tooltip text={__('Move right')}>
+                                    <span className="qubely-repeatable-move" role="button" onClick={() => this.moveItem(index, 'right')}><span className="dashicons dashicons-arrow-right-alt" /></span>
+                                </Tooltip>
+                            }
+                            {
+                                index !== 0 &&
+                                <Tooltip text={__('Move left')}>
+                                    <span className="qubely-repeatable-move" role="button" onClick={() => this.moveItem(index, 'left')}><span className="dashicons dashicons-arrow-left-alt" /></span>
+                                </Tooltip>
+                            }
+                        </div>
+                    }
+
                     <div className={`qubely-gallery-content`}>
                         <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
                             <div className={`qubely-gallery-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'} qubely-gallery-image-${imageAnimation}`}>
