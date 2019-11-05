@@ -4,7 +4,8 @@ const {
     PanelBody,
     Tooltip,
     Toolbar,
-    SelectControl
+    SelectControl,
+    IconButton
 } = wp.components
 
 const {
@@ -105,7 +106,7 @@ class Edit extends Component {
     }
 
     renderGalleryItem = () => {
-        const { setAttributes, attributes: { galleryContents, enableCaption, enableOverlay, showCaption, imageAnimation } } = this.props
+        const { isSelected, setAttributes, attributes: { galleryContents, enableCaption, enableOverlay, showCaption, imageAnimation } } = this.props
 
         return ([...galleryContents, { image: undefined, title: undefined, addNewItem: true }].map(({ title, image, addNewItem = false }, index) => {
             return (
@@ -115,21 +116,27 @@ class Edit extends Component {
                     </Tooltip>
                     {
                         index < galleryContents.length &&
-                        <div className="qubely-action qubely-move-gallery-item">
-                            {
-                                index !== galleryContents.length &&
-                                <Tooltip text={__('Move right')}>
-                                    <span className="qubely-repeatable-move" role="button" onClick={() => this.moveItem(index, 'right')}><span className="dashicons dashicons-arrow-right-alt" /></span>
-                                </Tooltip>
-                            }
-                            {
-                                index !== 0 &&
-                                <Tooltip text={__('Move left')}>
-                                    <span className="qubely-repeatable-move" role="button" onClick={() => this.moveItem(index, 'left')}><span className="dashicons dashicons-arrow-left-alt" /></span>
-                                </Tooltip>
-                            }
+                        <div className="qubely-gallery-item__move-menu">
+                            <IconButton
+                                icon={icons.leftArrow}
+                                onClick={() => index === 0 ? undefined : this.moveItem(index, 'left')}
+                                className="qubely-gallery-item__move-backward"
+                                label={__('Move image backward')}
+                                aria-disabled={index === 0}
+                                disabled={!isSelected}
+                            />
+
+                            <IconButton
+                                icon={icons.rightArrow}
+                                onClick={() => index === galleryContents.length - 1 ? undefined : this.moveItem(index, 'right')}
+                                className="qubely-gallery-item__move-forward"
+                                label={__('Move image forward')}
+                                aria-disabled={index === galleryContents.length - 1}
+                                disabled={!isSelected}
+                            />
                         </div>
                     }
+
 
                     <div className={`qubely-gallery-content`}>
                         <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
