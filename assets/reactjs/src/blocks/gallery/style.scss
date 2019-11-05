@@ -223,6 +223,33 @@
             }
         }
     }
+
+    .qubely-gallery-pupup-icon {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top:0;
+        opacity: 0;
+        transition: 400ms;
+        transform: translate(0, 20px);
+        cursor: pointer;
+        i {
+            color: #fff;
+        }
+    }
+
+}
+.qubely-gallery-item {
+    &:hover {
+        .qubely-gallery-pupup-icon {
+            opacity: 1;
+            transform: translate(0, 0);
+        } 
+    }
 }
 
 //qubely column grid

@@ -93,7 +93,7 @@ class Edit extends Component {
     }
 
     renderGalleryItem = () => {
-        const { setAttributes, attributes: { galleryContents, enableCaption, enableOverlay, showCaption, imageAnimation } } = this.props
+        const { setAttributes, attributes: { galleryContents, enableCaption, enableOverlay, showCaption, imageAnimation, enableZoom, enableZoomIcon } } = this.props
 
         return ([...galleryContents, { image: undefined, title: undefined, addNewItem: true }].map(({ title, image, addNewItem = false }, index) => {
             return (
@@ -101,7 +101,7 @@ class Edit extends Component {
                     <Tooltip text={__('Delete this item')}>
                         <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><span className="dashicons dashicons-no-alt" /></span>
                     </Tooltip>
-                    <div className={`qubely-gallery-content`}>
+                    <div className={`qubely-gallery-content ${enableZoom ? 'qubely-gallery-pupup' : ''}`}>
                         <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
                             <div className={`qubely-gallery-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'} qubely-gallery-image-${imageAnimation}`}>
                                 <MediaUpload
@@ -123,7 +123,6 @@ class Edit extends Component {
                                         } else {
                                             this.updateGalleryImage('image', value, index)
                                         }
-
                                     }
                                     }
                                     allowedTypes={['image']}
@@ -156,7 +155,9 @@ class Edit extends Component {
                                         </Fragment>
                                     )}
                                 />
+                                {enableZoomIcon && <div className={'qubely-gallery-pupup-icon'}><i class="fas fa-plus"></i></div>}
                             </div>
+
                             {enableCaption == 1 &&
                                 <div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>
                                     <RichText
@@ -202,6 +203,8 @@ class Edit extends Component {
                 column,
                 gutter,
                 imgBorderRadius,
+                enableZoom,
+                enableZoomIcon,
                 imgBoxShadow,
                 enableImgFixedHeight,
                 imgFixedHeight,
@@ -289,6 +292,8 @@ class Edit extends Component {
                                 {enableImgFixedHeight && <Range label={__('')} value={imgFixedHeight} onChange={value => setAttributes({ imgFixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
                             </Fragment>
                         }
+                        <Toggle label={__('Enable Zoom')} value={enableZoom} onChange={value => setAttributes({ enableZoom: value })} />
+                        <Toggle label={__('Enable Zoom Icon')} value={enableZoomIcon} onChange={value => setAttributes({ enableZoomIcon: value })} />
                         <BorderRadius label={__('Radius')} value={imgBorderRadius} onChange={val => setAttributes({ imgBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Box-Shadow')} value={imgBoxShadow} onChange={val => setAttributes({ imgBoxShadow: val })} disableInset />
                         <Select label={__('Image Animation')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')], ['scale', __('Scale')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />

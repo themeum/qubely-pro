@@ -117,6 +117,14 @@ registerBlockType('qubely/gallery', {
         },
 
         //image
+        enableZoom: {
+            type: 'boolean',
+            default: false,
+        },
+        enableZoomIcon: {
+            type: 'string',
+            default: false,
+        },
         imageAnimation: {
             type: 'string',
             default: 'slide-top'
