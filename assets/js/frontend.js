@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
     'use strict';
 
-    $('.qubely-gallery-items .qubely-gallery-item .qubely-gallery-content-image > img').on('click', event => {
+    $('.qubely-gallery-items .qubely-gallery-item .qubely-gallery-pupup-icon').on('click', event => {
 
         let items = []
         let currentGallery = $(event.currentTarget).parents('.qubely-gallery-items')

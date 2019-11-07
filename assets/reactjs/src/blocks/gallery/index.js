@@ -117,12 +117,12 @@ registerBlockType('qubely/gallery', {
         },
 
         //image
-        enableZoom: {
+        enablePopup: {
             type: 'boolean',
             default: false,
         },
-        enableZoomIcon: {
-            type: 'string',
+        enablePopupIcon: {
+            type: 'boolean',
             default: false,
         },
         imageAnimation: {

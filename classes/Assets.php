@@ -12,8 +12,10 @@ class Assets {
 	}
 
 	public function frontend_scripts() {
-        wp_enqueue_style('qubely-pro-style-min', QUBELY_PRO_DIR_URL . 'assets/css/style.min.css', false, QUBELY_PRO_VERSION);
-        wp_enqueue_script( 'qubely-pro-frontend', QUBELY_PRO_DIR_URL.'assets/js/frontend.js', array('jquery'), QUBELY_PRO_VERSION, true );
+        if (get_post_meta(get_the_ID(), '_qubely_css', true) != '') {
+            wp_enqueue_style('qubely-pro-style-min', QUBELY_PRO_DIR_URL . 'assets/css/style.min.css', false, QUBELY_PRO_VERSION);
+            wp_enqueue_script('qubely-pro-frontend', QUBELY_PRO_DIR_URL.'assets/js/frontend.js', array('jquery'), QUBELY_PRO_VERSION, true);
+        }
 	}
 
 	public function admin_scripts() {

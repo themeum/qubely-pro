@@ -685,9 +685,11 @@ $color_4: #cf0000;
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
     transition: 400ms;
     color: #e11d0f;
+    background: #fff;
     &:hover {
         color: #e11d0f;
-        background: #fafafa;
+        background: #e5e5e5;
+       
     }
     span {
         font-size: 16px;

@@ -12,8 +12,8 @@ class Save extends Component {
 				enableCaption,
 				linkTo,
                 enableOverlay,
-                enableZoom,
-                enableZoomIcon
+                enablePopup,
+                enablePopupIcon
 			}
 		} = this.props
 
@@ -27,24 +27,22 @@ class Save extends Component {
 					href = image.link;
 					break;
 			}
+            const renderContent = <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
+                    <div className={`qubely-gallery-content-image qubely-gallery-image-${imageAnimation}`}>
+                        {enablePopup && <div className={'qubely-gallery-pupup-icon'}>{enablePopupIcon &&<i class="fas fa-plus"></i>}</div>}
+                        <img src={image.url} alt={title} />
+                    </div>
+                    {enableCaption == 1 &&
+                        <div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>
+                            <RichText.Content tagName='div' className="qubely-gallery-caption" value={title} />
+                        </div>
+                    }
+                </div>
 
 			return (
 				<div key={index} className={`qubely-gallery-item`}>
-					<div className={`qubely-gallery-content  ${enableZoom ? 'qubely-gallery-pupup' : ''}`}>
-						{(image != undefined && image.url != undefined) &&
-							<div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
-								<div className={`qubely-gallery-content-image qubely-gallery-image-${imageAnimation}`}>
-                                    {enableZoomIcon && <div className={'qubely-gallery-pupup-icon'}><i class="fas fa-plus"></i></div>}
-									{(!enableOverlay && typeof (href) !== 'undefined') ? <a href={href}><img src={image.url} alt={title} /></a> : <img src={image.url} alt={title} />}
-								</div>
-								{enableCaption == 1 &&
-									<div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>
-										<RichText.Content tagName='div' className="qubely-gallery-caption" value={title} />
-									</div>
-								}
-							</div>
-						}
-
+					<div className={`qubely-gallery-content  ${enablePopup ? 'qubely-gallery-pupup' : ''}`}>
+                        {(!enablePopup && typeof (href) !== 'undefined') ? <a href={href}>{renderContent}</a> : renderContent}
 					</div>
 				</div>
 			)
