@@ -53,7 +53,7 @@ class Installer {
                 </div>
                 <div class="qubely-install-notice-content">
                     <h2><?php _e('Thanks for using Qubely Pro','qubely-pro'); ?></h2>
-                    <p><?php sprintf( __( 'You must have <a href="%s" target="_blank">Qubely</a> Free version installed and activated on this website in order to use Qubely Pro.', 'qubely-pro' ), esc_url( 'https://wordpress.org/plugins/qubely/' ) ); ?></p>
+                    <p><?php echo sprintf( __( 'You must have <a href="%s" target="_blank">Qubely</a> Free version installed and activated on this website in order to use Qubely Pro.', 'qubely-pro' ), esc_url( 'https://wordpress.org/plugins/qubely/' ) ); ?></p>
                     <a href="https://www.themeum.com/docs/qubely-introduction/" target="_blank"><?php _e('Learn more about Qubely','qubely-pro'); ?></a>
                 </div>
                 <div class="qubely-install-notice-button">
