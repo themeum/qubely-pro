@@ -10,7 +10,7 @@ class Edit extends Component {
     constructor(props) {
         super(props)
         this.state = { device: 'md', selector: true, spacer: true, openPanelSetting: '' };
-    }
+    } 
 
     componentDidMount() {
         const { setAttributes, clientId, attributes: { uniqueId } } = this.props
@@ -22,6 +22,7 @@ class Edit extends Component {
 
         }
     }
+
     handlePanelOpenings = (panelName) => {
         this.setState({ ...this.state, openPanelSetting: panelName })
     }

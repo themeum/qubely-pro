@@ -1,4 +1,5 @@
 const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes }, } = wp.qubelyComponents
+
 export const attributes = {
 
     uniqueId: { type: 'string', default: '' },
@@ -112,7 +113,7 @@ export const attributes = {
                selector: '{{QUBELY}} .qubely-mediacard-number {color: {{numberColor}};}'
            }
        ]
-   },
+   }, 
    numberColorHover: {
        type: 'string', default: '',
        style: [

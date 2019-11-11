@@ -196,7 +196,6 @@ function render_block_qubely_pro_instagramfeed($attributes) {
 		$result = qubely_instagram_block_get_from_cache( $suffix );
 	}
 
-	
 	$thumbs 	= $result->data;
 	$profile 	= $profileContainer = '';
 	

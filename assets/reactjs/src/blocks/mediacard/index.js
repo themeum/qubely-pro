@@ -8,7 +8,7 @@ const { registerBlockType } = wp.blocks
 
 registerBlockType('qubely/mediacard', {
     title: __('Media Card'),
-    description: 'Be creatively informative with Qubely Info Box.',
+    description: 'Add an image or video with an offset with Qubely Media Card.',
     icon: 'index-card',
     category: 'qubely',
     supports: { align: false },
