@@ -3,11 +3,14 @@ Stable tag: 1.0.2
 
 == Changelog ==
 
-= 1.0.2 - 08 November, 2019 =
-New: Gallery popup
-New: Gallery image move option
-Fix: Gallery link issue
-Update: Post Carousel label text updated
+= 1.0.2 - 11 November, 2019 =
+New: Gallery block - Image popup option  
+New: Gallery block - Image move option  
+Fix: Gallery block - Link issue  
+Fix: Image Carousel block - Height issue  
+Fix: Post Carousel block issue  
+Update: Form block - Text area height option removed  
+Update: Post Carousel block - Label text  
 
 = 1.0.1 - 01 November, 2019 =
 Fix: Image Carousel block - Overlay issue  
