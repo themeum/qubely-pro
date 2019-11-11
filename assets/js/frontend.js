@@ -2,7 +2,6 @@ jQuery(document).ready(function ($) {
     'use strict';
 
     $('.qubely-gallery-items .qubely-gallery-item .qubely-gallery-pupup-icon').on('click', event => {
-
         let items = []
         let currentGallery = $(event.currentTarget).parents('.qubely-gallery-items')
         let imageWraper = $(event.currentTarget).parents('.qubely-gallery-item')
@@ -22,9 +21,7 @@ jQuery(document).ready(function ($) {
                 temp++
             }
         }
-
-
-        $(event.currentTarget).magnificPopup({
+        $.magnificPopup.open({
             items: [...items],
             gallery: {
                 enabled: true
