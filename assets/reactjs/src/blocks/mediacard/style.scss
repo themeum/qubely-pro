@@ -1,0 +1,104 @@
+.qubely-block-mediacard {
+    transition: border-color 400ms, background-color 400ms, box-shadow 400ms;
+    h1, h2, h3, h4, h5, h6 {
+        padding: 0;
+        margin: 0;
+        line-height: 1;
+        position: relative;
+        &::before,
+        &::after {
+            display: none !important;
+        }
+
+        .qubely-text-has-bgcolor {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    .qubely-mediacard-media {
+        display: inline-block;
+        line-height: 1;
+        text-align: center;
+        overflow: hidden;
+        i,
+        span,
+        img {
+            font-style: normal;
+            position: relative;
+            display: block;
+            transition: 400ms;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    
+        &.qubely-media-has-bg {
+            i,
+            .qubely-mediacard-number {
+                min-width: 1em;
+                height: 1em;
+                white-space: nowrap;
+                &:before {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
+
+    .qubely-mediacard-title {
+        margin: 0;
+    }
+
+    .qubely-mediacard-media,
+    .qubely-mediacard-title,
+    .qubely-mediacard-text {
+        transition: color 400ms, border-color 400ms, background-color 400ms, box-shadow 400ms;
+    }
+    
+    &.qubely-mediacard-layout-2,
+    &.qubely-mediacard-layout-3 {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: start;
+        align-items: flex-start;
+
+        .qubely-mediacard-body {
+            -ms-flex: 1;
+            flex: 1;
+        }
+    }
+
+    &.qubely-mediacard-layout-3 {
+        flex-direction: row-reverse;
+        .qubely-mediacard-body {
+            text-align: right;
+        }
+    }
+
+    .qubely-separator {
+        font-size: 0;
+        .qubely-separator-type-css,
+        .qubely-separator-type-svg {
+            display: inline-block;
+        }
+    }
+
+    .qubely-separator-position-left,
+    .qubely-separator-position-right,
+    .qubely-separator-position-leftright {
+        .qubely-mediacard-title-inner {
+            display: inline-flex;
+            align-items: center;
+
+            .qubely-mediacard-title,
+            .qubely-separator {
+                display: inline-flex;
+            }
+        }
+    }
+}
