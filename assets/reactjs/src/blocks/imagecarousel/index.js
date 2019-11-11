@@ -201,7 +201,7 @@ registerBlockType('qubely/imagecarousel', {
 		// },
 
 		avatarHeight: {
-			type: 'string',
+			type: 'object',
 			default: { md: 500, unit: 'px' },
 			style: [
 				{
