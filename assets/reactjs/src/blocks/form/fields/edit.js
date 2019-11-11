@@ -355,22 +355,6 @@ export default function Edit(props) {
                             }
                         </Fragment>
                     }
-                    {/*Text-area */}
-                    {
-                        name === 'qubely/formfield-textarea' &&
-                        <Fragment>
-                            <Range
-                                min={50}
-                                max={600}
-                                responsive
-                                value={height}
-                                device={device}
-                                label={__('Height')}
-                                unit={['px', 'em', '%']}
-                                onChange={value => setAttributes({ height: value })}
-                                onDeviceChange={value => changeDevice(value)} />
-                        </Fragment>
-                    }
 
                     {/*radio */}
 
