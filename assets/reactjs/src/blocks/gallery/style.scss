@@ -280,6 +280,15 @@
   }
 }
 
+.mfp-image-holder .mfp-close:hover {
+    box-shadow: none !important;
+    background: none;
+}
+.mfp-arrow:hover, 
+.mfp-arrow:focus {
+    background: none;
+}
+
 //qubely column grid
 .qubely-column-grid {
   display: grid;
