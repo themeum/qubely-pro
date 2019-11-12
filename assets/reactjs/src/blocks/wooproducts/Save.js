@@ -13,7 +13,9 @@ export default function Save(props) {
 
 	return (
 		<div className={`qubely-block-${uniqueId}`}>
-			<p>Init woo prodructs block</p>
+			<div className={`qubely-woo__product_wrapper`}>
+				<p>Init woo prodructs block</p>
+			</div>
 		</div>
 	)
 
