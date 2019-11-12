@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, SelectControl, TextControl, Toolbar } = wp.components
 const { RichText, InspectorControls, BlockControls } = wp.blockEditor
-const { QubelyButtonEdit, Media, Tabs, Tab, Range, BoxShadow, ContextMenu: { ContextMenu, handleContextMenu }, RadioAdvanced, Typography, Toggle, Styles, Alignment, IconList, ColorAdvanced, Color, Headings, Border, BorderRadius, Padding, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, Inline: { InlineToolbar }, CssGenerator: { CssGenerator }, QubelyButton: { buttonSettings } } = wp.qubelyComponents
+const { QubelyButtonEdit, Media, Tabs, Tab, Range, BoxShadow, Select, Separator, ContextMenu: { ContextMenu, handleContextMenu }, RadioAdvanced, Typography, Toggle, Styles, Alignment, IconList, ColorAdvanced, Color, Headings, Border, BorderRadius, Padding, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, Inline: { InlineToolbar }, CssGenerator: { CssGenerator }, QubelyButton: { buttonSettings } } = wp.qubelyComponents
 import icons from '../../helpers/icons';
 // import svg from '../heading/separators';
 class Edit extends Component {
@@ -31,6 +31,14 @@ class Edit extends Component {
         const {
             uniqueId,
             layout,
+
+            videoSource,
+            vimeoId,
+            youtubeId,
+            autoplay,
+            videoWidth,
+
+
             mediaType,
             alignment,
             titleLevel,
@@ -65,32 +73,18 @@ class Edit extends Component {
             contentPadding,
             contentSpacing,
 
-            iconName,
-            iconSize,
-            iconSizeCustom,
-            iconColor,
-            iconHoverColor,
+            
+            
+            
+            
+            
             useMediaBg,
-            mediaBg,
-            mediaBgHover,
             mediaBorderRadius,
-            mediaBackgroundSize,
-            mediaBorder,
-            mediaBorderColorHover,
-            mediaShadow,
-            mediaShadowHover,
             mediaSpacing,
-
             image,
             image2x,
             imgAlt,
             imageWidth,
-
-            number,
-            numberColor,
-            numberColorHover,
-            numberTypography,
-
             bgColor,
             bgColorHover,
             bgBorder,
@@ -109,7 +103,7 @@ class Edit extends Component {
             buttonIconPosition,
             buttonUrl,
 
-            animation,
+
             enablePosition, 
             selectPosition, 
             positionXaxis, 
@@ -118,8 +112,10 @@ class Edit extends Component {
             hideTablet,
             hideMobile,
             globalCss,
-            interaction
+            
         } = this.props.attributes
+
+        let autoPlay = (autoplay == true) ? '1' : '0';
 
         const { name, clientId, attributes, isSelected, setAttributes } = this.props
         const { openPanelSetting, device } = this.state
@@ -128,10 +124,6 @@ class Edit extends Component {
             double: { type: 'css', separator: 'double', width: 300, stroke: 10 },
             dotted: { type: 'css', separator: 'dotted', width: 300, stroke: 10 },
             dashed: { type: 'css', separator: 'dashed', width: 300, stroke: 10 },
-            // pin: { type: 'svg', separator: 'pin', svg: svg['pin'], width: 100, stroke: 0 },
-            // pin_filled: { type: 'svg', separator: 'pin_filled', svg: svg['pin_filled'], width: 100, stroke: 0 },
-            // zigzag: { type: 'svg', separator: 'zigzag', svg: svg['zigzag'], style: 'fill', width: 88, stroke: 5 },
-            // zigzag_large: { type: 'svg', separator: 'zigzag_large', svg: svg['zigzag_large'], style: 'fill', width: 161, stroke: 5 },
         }
 
         const titleTagName = 'h' + titleLevel;
@@ -173,30 +165,13 @@ class Edit extends Component {
                         <PanelBody title={__('Media')} opened={'Media' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Media' ? 'Media' : '')}>
                             <RadioAdvanced label={__('Type')} value={mediaType} onChange={val => setAttributes({ mediaType: val })}
                                 options={[
-                                    { label: __('Icon'), value: 'icon', title: __('Icon') },
+                                    { label: __('Video'), value: 'video', title: __('Video') },
                                     { label: __('Image'), value: 'image', title: __('Image') },
-                                    { label: __('Number'), value: 'number', title: __('Number') }
                                 ]}
                             />
+
                             {mediaType &&
                                 <Fragment>
-                                    {mediaType == 'icon' &&
-                                        <Fragment>
-                                            <IconList label={__('Icon')} value={iconName} onChange={val => setAttributes({ iconName: val })} disableToggle />
-                                            <RadioAdvanced label={__('Icon Size')} value={iconSize} onChange={(value) => setAttributes({ iconSize: value })}
-                                                options={[
-                                                    { label: 'S', value: '36px', title: 'Small' },
-                                                    { label: 'M', value: '64px', title: 'Medium' },
-                                                    { label: 'L', value: '128px', title: 'Large' },
-                                                    { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                                                ]}
-                                            />
-                                            {iconSize == 'custom' &&
-                                                <Range label={__('Custom Size')} value={iconSizeCustom} onChange={val => setAttributes({ iconSizeCustom: val })} min={12} max={300} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                            }
-                                        </Fragment>
-                                    }
-
                                     {mediaType == 'image' &&
                                         <Fragment>
                                             <Media label={__('Image')} multiple={false} type={['image']} panel={true} value={image} onChange={val => setAttributes({ image: val })} />
@@ -206,53 +181,35 @@ class Edit extends Component {
                                         </Fragment>
                                     }
 
-                                    {mediaType == 'number' &&
+                                    { mediaType == 'video' &&
                                         <Fragment>
-                                            <TextControl label={__('Number')} type="number" value={number} onChange={val => setAttributes({ number: parseInt(val) })} />
-                                            <Typography value={numberTypography} onChange={(value) => setAttributes({ numberTypography: value })} disableLineHeight device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                        </Fragment>
-                                    }
-
-                                    {mediaType != 'image' &&
-                                        <Fragment>
-                                            <Toggle label={__('Use Background')} value={useMediaBg} onChange={val => setAttributes({ useMediaBg: val })} />
-                                            {useMediaBg == 1 &&
-                                                <Range label={__('Background Size')} value={mediaBackgroundSize} onChange={val => setAttributes({ mediaBackgroundSize: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                            <Select 
+                                                label={__('Video Type')} 
+                                                value={videoSource} 
+                                                options={ [['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]] } 
+                                                onChange={value => setAttributes({ videoSource: value })} 
+                                            />
+                                           
+                                            { (videoSource === 'vimeo') ?
+                                                <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
+                                                : 
+                                                <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
                                             }
-                                            <Tabs>
-                                                <Tab tabTitle={__('Normal')}>
-                                                    {mediaType == 'icon' &&
-                                                        <Color label={__('Color')} value={iconColor} onChange={val => setAttributes({ iconColor: val })} />
-                                                    }
-                                                    {mediaType == 'number' &&
-                                                        <Color label={__('Color')} value={numberColor} onChange={(value) => setAttributes({ numberColor: value })} />
-                                                    }
-                                                    {useMediaBg == 1 &&
-                                                        <Fragment>
-                                                            <ColorAdvanced label={__('Background Color')} value={mediaBg} onChange={val => setAttributes({ mediaBg: val })} />
-                                                            <Border label={__('Border')} value={mediaBorder} onChange={val => setAttributes({ mediaBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                                            <BoxShadow label={__('Box-Shadow')} value={mediaShadow} onChange={(value) => setAttributes({ mediaShadow: value })} />
-                                                        </Fragment>
-                                                    }
-                                                </Tab>
-                                                <Tab tabTitle={__('Hover')}>
-                                                    {mediaType == 'icon' &&
-                                                        <Color label={__('Color')} value={iconHoverColor} onChange={val => setAttributes({ iconHoverColor: val })} />
-                                                    }
-                                                    {mediaType == 'number' &&
-                                                        <Color label={__('Color')} value={numberColorHover} onChange={(value) => setAttributes({ numberColorHover: value })} />
-                                                    }
-                                                    {useMediaBg == 1 &&
-                                                        <Fragment>
-                                                            <ColorAdvanced label={__('Background Color')} value={mediaBgHover} onChange={val => setAttributes({ mediaBgHover: val })} />
-                                                            <Color label={__('Border Color')} value={mediaBorderColorHover} onChange={(value) => setAttributes({ mediaBorderColorHover: value })} />
-                                                            <BoxShadow label={__('Box-Shadow')} value={mediaShadowHover} onChange={(value) => setAttributes({ mediaShadowHover: value })} />
-                                                        </Fragment>
-                                                    }
-                                                </Tab>
-                                            </Tabs>
+                                            
+                                            <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
+                                            
+                                            <Range 
+                                                label={__('Video Width')} 
+                                                value={videoWidth} 
+                                                onChange={val => setAttributes({ videoWidth: val })} 
+                                                min={1} max={500} 
+                                                responsive device={device} unit={['px', 'em', '%']}
+                                                onDeviceChange={value => this.setState({ device: value })} 
+                                            />
+                                            
                                         </Fragment>
                                     }
+                                    <Separator />
 
                                     <BorderRadius label={__('Radius')} value={mediaBorderRadius} onChange={val => setAttributes({ mediaBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                     <Range label={__('Spacing')} value={mediaSpacing} onChange={val => setAttributes({ mediaSpacing: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -273,71 +230,6 @@ class Edit extends Component {
                                 <Color label={__('Color')} value={titleColorHover} onChange={(value) => setAttributes({ titleColorHover: value })} />
                             </Tab>
                         </Tabs>
-
-                        <SelectControl
-                            label={__('Separator')}
-                            value={separatorStyle}
-                            options={[
-                                { label: '--Select--', value: '' },
-                                { label: 'Line', value: 'solid' },
-                                { label: 'Line Doubled', value: 'double' },
-                                { label: 'Dashed', value: 'dashed' },
-                                { label: 'Dotted', value: 'dotted' },
-                                { label: 'Pin', value: 'pin' },
-                                { label: 'Pin Filled', value: 'pin_filled' },
-                                { label: 'Zigzag', value: 'zigzag' },
-                                { label: 'Zigzag Large', value: 'zigzag_large' }
-                            ]}
-                            onChange={val => setAttributes({ separatorStyle: val })}
-                        />
-                        {separatorStyle &&
-                            <Fragment>
-                                <Tabs>
-                                    <Tab tabTitle={__('Normal')}>
-                                        <Color label={__('Separator Color')} value={separatorColor} onChange={val => setAttributes({ separatorColor: val })} />
-                                    </Tab>
-                                    <Tab tabTitle={__('Hover')}>
-                                        <Color label={__('Separator Color')} value={separatorColorHover} onChange={val => setAttributes({ separatorColorHover: val })} />
-                                    </Tab>
-                                </Tabs>
-                                {(separatorStyle != 'pin' && separatorStyle != 'pin_filled') &&
-                                    <Range label={__('Stroke')} value={separatorStroke} onChange={val => setAttributes({ separatorStroke: val })} min={1} max={separators[separatorStyle].stroke} />
-                                }
-                                <Range label={__('Width')} value={separatorWidth} onChange={val => setAttributes({ separatorWidth: val })} min={20} max={separators[separatorStyle].width} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Range label={__('Spacing')} value={separatorSpacing} onChange={val => setAttributes({ separatorSpacing: val })} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <SelectControl
-                                    label="Position"
-                                    value={separatorPosition}
-                                    options={[
-                                        { label: 'Top', value: 'top' },
-                                        { label: 'Bottom', value: 'bottom' },
-                                        { label: 'Left', value: 'left' },
-                                        { label: 'Right', value: 'right' },
-                                        { label: 'Left & Right', value: 'leftright' }
-                                    ]}
-                                    onChange={val => setAttributes({ separatorPosition: val })}
-                                />
-                            </Fragment>
-                        }
-                    </PanelBody>
-
-                    <PanelBody title={__('Sub Title')} opened={'Sub Title' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Sub Title' ? 'Sub Title' : '')}>
-                        <Toggle label={__('Enable')} value={subTitle} onChange={val => setAttributes({ subTitle: val })} />
-                        {subTitle == 1 &&
-                            <Fragment>
-                                <Headings label={__('Sub Title Tag')} selectedLevel={subTitleLevel} onChange={(value) => setAttributes({ subTitleLevel: value })} />
-                                <Typography label={__('Typography')} value={subTitleTypography} onChange={val => setAttributes({ subTitleTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Tabs>
-                                    <Tab tabTitle={__('Normal')}>
-                                        <Color label={__('Color')} value={subTitleColor} onChange={val => setAttributes({ subTitleColor: val })} />
-                                    </Tab>
-                                    <Tab tabTitle={__('Hover')}>
-                                        <Color label={__('Color')} value={subTitleColorHover} onChange={val => setAttributes({ subTitleColorHover: val })} />
-                                    </Tab>
-                                </Tabs>
-                                <Range label={__('Spacing')} value={subTitleSpacing} onChange={(value) => setAttributes({ subTitleSpacing: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                            </Fragment>
-                        }
                     </PanelBody>
 
 
@@ -380,10 +272,6 @@ class Edit extends Component {
                             </Tab>
                         </Tabs>
                     </PanelBody>
-
-                    {buttonSettings(this.props.attributes, device, (key, value) => { setAttributes({ [key]: value }) }, (key, value) => { this.setState({ [key]: value }) })}
-                    {animationSettings(uniqueId, animation, setAttributes)}
-                    {interactionSettings(uniqueId, interaction, setAttributes)}
                 </InspectorControls>
 
                 <BlockControls>
@@ -399,12 +287,21 @@ class Edit extends Component {
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
                 <div className={`qubely-block-${uniqueId}`}>
-                    <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+                    <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} media-type-${mediaType}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         {(layout != 4 && mediaType) &&
                             <div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`} onClick={() => this.handlePanelOpenings('Media')}>
-                                {(mediaType == 'icon' && iconName) &&
-                                    <i className={"qubely-mediacard-icon " + iconName} />
+                                {mediaType == 'video'  &&
+
+                                    <Fragment>
+                                        { (videoSource == 'vimeo') ? 
+                                            <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                            : 
+                                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
+                                        }
+                                    </Fragment>
+                                    
                                 }
+
                                 {(mediaType == 'image') &&
                                     <Fragment>
                                         {image.url != undefined ?
@@ -414,9 +311,7 @@ class Edit extends Component {
                                         }
                                     </Fragment>
                                 }
-                                {(mediaType == 'number' && number) &&
-                                    <span className="qubely-mediacard-number">{number}</span>
-                                }
+                                
                             </div>
                         }
 
