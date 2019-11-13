@@ -51,7 +51,11 @@ export default class InstagramEdit extends Component {
 
 		.then( res => res.json() )
 		.then( json => {
-			console.log( json );
+			console.log('Json', json.pagination );
+
+			// if( json.pagination ) {
+
+			// }
 
 			if ( json.meta ) {
 				this.setState( {
@@ -273,18 +277,6 @@ export default class InstagramEdit extends Component {
 							label={__('Column number')} 
 							value={column} min={0} max={6}
 							onChange={value => setAttributes({ column: parseInt(value) })} />
-
-						{/* <Range 
-							label={__('Number of Images')} 
-							value={numberimages} 
-							min={ 1 } max={ 60 } step={ 1 }
-							onChange={value => setAttributes({ numberimages: parseInt(value) })} 
-						/> */}
-
-						{/* <Range 
-							label={__('Number of Images')} 
-							value={numberimages} min={0} max={60}
-							onChange={value => setAttributes({ numberimages: parseInt(value) })} /> */}
 
 						<RangeControl
 							value={ numberimages }
