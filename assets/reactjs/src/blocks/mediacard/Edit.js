@@ -117,30 +117,9 @@ class Edit extends Component {
 
         let autoPlay = (autoplay == true) ? '1' : '0';
 
-        const { name, clientId, attributes, isSelected, setAttributes } = this.props
+        const { setAttributes } = this.props
         const { openPanelSetting, device } = this.state
-        const separators = {
-            solid: { type: 'css', separator: 'solid', width: 300, stroke: 10 },
-            double: { type: 'css', separator: 'double', width: 300, stroke: 10 },
-            dotted: { type: 'css', separator: 'dotted', width: 300, stroke: 10 },
-            dashed: { type: 'css', separator: 'dashed', width: 300, stroke: 10 },
-        }
-
         const titleTagName = 'h' + titleLevel;
-        const subTitleTagName = 'h' + subTitleLevel;
-
-        const renderSeparators = <Fragment>
-            {separatorStyle &&
-                <Fragment>
-                    {separators[separatorStyle].type == 'css' &&
-                        <span className={`qubely-separator-type-css qubely-separator-${separatorStyle}`}></span>
-                    }
-                    {separators[separatorStyle].type == 'svg' &&
-                        <span className={`qubely-separator-type-svg qubely-separator-${separatorStyle}`}>{separators[separatorStyle].svg}</span>
-                    }
-                </Fragment>
-            }
-        </Fragment>
 
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
 
@@ -153,7 +132,6 @@ class Edit extends Component {
                                 { value: 1, svg: icons.mediacard_1, label: __('Layout 1') },
                                 { value: 2, svg: icons.mediacard_2, label: __('Layout 2') },
                                 { value: 3, svg: icons.mediacard_3, label: __('Layout 3') },
-                                { value: 4, svg: icons.mediacard_4, label: __('Layout 4') },
                             ]}
                         />
                         {(layout == 1 || layout == 4) &&
@@ -161,62 +139,65 @@ class Edit extends Component {
                         }
                     </PanelBody>
 
-                    {layout != 4 &&
-                        <PanelBody title={__('Media')} opened={'Media' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Media' ? 'Media' : '')}>
-                            <RadioAdvanced label={__('Type')} value={mediaType} onChange={val => setAttributes({ mediaType: val })}
-                                options={[
-                                    { label: __('Video'), value: 'video', title: __('Video') },
-                                    { label: __('Image'), value: 'image', title: __('Image') },
-                                ]}
-                            />
+                    
+                    <PanelBody title={__('Media')} opened={'Media' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Media' ? 'Media' : '')}>
+                        <RadioAdvanced label={__('Type')} value={mediaType} onChange={val => setAttributes({ mediaType: val })}
+                            options={[
+                                { label: __('Video'), value: 'video', title: __('Video') },
+                                { label: __('Image'), value: 'image', title: __('Image') },
+                            ]}
+                        />
 
-                            {mediaType &&
-                                <Fragment>
-                                    {mediaType == 'image' &&
-                                        <Fragment>
-                                            <Media label={__('Image')} multiple={false} type={['image']} panel={true} value={image} onChange={val => setAttributes({ image: val })} />
-                                            <Media label={__('Retina Image')} multiple={false} type={['image']} panel={true} value={image2x} onChange={val => setAttributes({ image2x: val })} />
-                                            {image.url && <TextControl label={__('Alt Text')} value={imgAlt} onChange={val => setAttributes({ imgAlt: val })} />}
-                                            <Range label={__('Image Width')} value={imageWidth} onChange={val => setAttributes({ imageWidth: val })} min={0} max={2000} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                        </Fragment>
-                                    }
+                        {mediaType &&
+                            <Fragment>
+                                {mediaType == 'image' &&
+                                    <Fragment>
+                                        <Media label={__('Image')} multiple={false} type={['image']} panel={true} value={image} onChange={val => setAttributes({ image: val })} />
+                                        <Media label={__('Retina Image')} multiple={false} type={['image']} panel={true} value={image2x} onChange={val => setAttributes({ image2x: val })} />
+                                        {image.url && <TextControl label={__('Alt Text')} value={imgAlt} onChange={val => setAttributes({ imgAlt: val })} />}
+                                        <Range label={__('Image Width')} value={imageWidth} onChange={val => setAttributes({ imageWidth: val })} min={0} max={2000} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    </Fragment>
+                                }
 
-                                    { mediaType == 'video' &&
-                                        <Fragment>
-                                            <Select 
-                                                label={__('Video Type')} 
-                                                value={videoSource} 
-                                                options={ [['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]] } 
-                                                onChange={value => setAttributes({ videoSource: value })} 
-                                            />
-                                           
-                                            { (videoSource === 'vimeo') ?
-                                                <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
-                                                : 
-                                                <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
-                                            }
-                                            
-                                            <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
-                                            
-                                            <Range 
-                                                label={__('Video Width')} 
-                                                value={videoWidth} 
-                                                onChange={val => setAttributes({ videoWidth: val })} 
-                                                min={1} max={500} 
-                                                responsive device={device} unit={['px', 'em', '%']}
-                                                onDeviceChange={value => this.setState({ device: value })} 
-                                            />
-                                            
-                                        </Fragment>
-                                    }
-                                    <Separator />
-
-                                    <BorderRadius label={__('Radius')} value={mediaBorderRadius} onChange={val => setAttributes({ mediaBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                    <Range label={__('Spacing')} value={mediaSpacing} onChange={val => setAttributes({ mediaSpacing: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                </Fragment>
-                            }
-                        </PanelBody>
-                    }
+                                { mediaType == 'video' &&
+                                    <Fragment>
+                                        <Select 
+                                            label={__('Video Type')} 
+                                            value={videoSource} 
+                                            options={ [['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]] } 
+                                            onChange={value => setAttributes({ videoSource: value })} 
+                                        />
+                                        
+                                        { (videoSource === 'vimeo') ?
+                                            <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
+                                            : 
+                                            <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
+                                        }
+                                        
+                                        <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
+                                        
+                                        <Range 
+                                            label={__('Video Width')} 
+                                            value={videoWidth} 
+                                            onChange={val => setAttributes({ videoWidth: val })} 
+                                            min={1} max={500} 
+                                            responsive device={device} unit={['px', 'em', '%']}
+                                            onDeviceChange={value => this.setState({ device: value })} 
+                                        />
+                                        
+                                    </Fragment>
+                                }
+                                <Separator />
+                                {mediaType == 'image' &&
+                                    <Fragment>
+                                        <BorderRadius label={__('Radius')} value={mediaBorderRadius} onChange={val => setAttributes({ mediaBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                        <Range label={__('Spacing')} value={mediaSpacing} onChange={val => setAttributes({ mediaSpacing: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    </Fragment>
+                                }
+                            </Fragment>
+                        }
+                    </PanelBody>
+                    
 
                     <PanelBody title={__('Title')} opened={'Title' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Title' ? 'Title' : '')}>
                         <Headings label={__('Title Tag')} selectedLevel={titleLevel} onChange={(value) => setAttributes({ titleLevel: value })} />
@@ -288,37 +269,31 @@ class Edit extends Component {
 
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} media-type-${mediaType}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
-                        {(layout != 4 && mediaType) &&
-                            <div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`} onClick={() => this.handlePanelOpenings('Media')}>
-                                {mediaType == 'video'  &&
-
-                                    <Fragment>
-                                        { (videoSource == 'vimeo') ? 
-                                            <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                            : 
-                                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
-                                        }
-                                    </Fragment>
-                                    
-                                }
-
-                                {(mediaType == 'image') &&
-                                    <Fragment>
-                                        {image.url != undefined ?
-                                            <img className="qubely-mediacard-image" src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''} alt={imgAlt && imgAlt} />
-                                            :
-                                            <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image"/></div>
-                                        }
-                                    </Fragment>
-                                }
-                                
-                            </div>
-                        }
-
+                        
+                        <div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`} onClick={() => this.handlePanelOpenings('Media')}> 
+                            {mediaType == 'video'  &&
+                                <Fragment>
+                                    { (videoSource == 'vimeo') ? 
+                                        <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                        : 
+                                        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
+                                    }
+                                </Fragment> 
+                            }
+                            {(mediaType == 'image') &&
+                                <Fragment>
+                                    {image.url != undefined ?
+                                        <img className="qubely-mediacard-image" src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''} alt={imgAlt && imgAlt} />
+                                        :
+                                        <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image"/></div>
+                                    }
+                                </Fragment>
+                            }
+                        </div>
+                        
                         <div className="qubely-mediacard-body">
-                            <div className={`qubely-mediacard-title-container ${separatorStyle ? 'qubely-has-separator' : ''} ${separatorPosition ? 'qubely-separator-position-' + separatorPosition : ''}`} >
+                            <div className={`qubely-mediacard-title-container`} >
                                 <div className="qubely-mediacard-title-inner">
-                                    {separatorStyle && (separatorPosition == 'left' || separatorPosition == 'top' || separatorPosition == 'leftright') ? <div className="qubely-separator qubely-separator-before">{renderSeparators}</div> : ''}
                                     <div onClick={() => this.handlePanelOpenings('Title')}>
                                         <RichText
                                             key="editable"
@@ -329,25 +304,10 @@ class Edit extends Component {
                                             onChange={value => setAttributes({ title: value })}
                                             value={title} />
                                     </div>
-                                    {separatorStyle != '' && (separatorPosition == 'right' || separatorPosition == 'bottom' || separatorPosition == 'leftright') ? <div className="qubely-separator qubely-separator-after">{renderSeparators}</div> : ''}
                                 </div>
-
-                                {subTitle == 1 &&
-                                    <div className="qubely-mediacard-sub-title-container" onClick={() => this.handlePanelOpenings('Sub Title')}>
-                                        <RichText
-                                            key="editable"
-                                            tagName={subTitleTagName}
-                                            className="qubely-mediacard-sub-title"
-                                            keepPlaceholderOnFocus
-                                            placeholder={__('Add Text...')}
-                                            onChange={value => setAttributes({ subTitleContent: value })}
-                                            value={subTitleContent} />
-                                    </div>
-                                }
                             </div>
 
-                            {
-                                enableContent &&
+                            { enableContent &&
                                 <div className="qubely-mediacard-content" onClick={() => this.handlePanelOpenings('Content')}>
                                     <RichText
                                         key="editable"
@@ -360,28 +320,8 @@ class Edit extends Component {
                                     />
                                 </div>
                             }
-                            {enableButton &&
-                                <QubelyButtonEdit
-                                    enableButton={enableButton}
-                                    buttonFillType={buttonFillType}
-                                    buttonSize={buttonSize}
-                                    buttonText={buttonText}
-                                    buttonIconName={buttonIconName}
-                                    buttonIconPosition={buttonIconPosition}
-                                    buttonUrl={buttonUrl}
-                                    onTextChange={value => setAttributes({ buttonText: value })}
-                                />
-                            }
                         </div>
-                        <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
-                            <ContextMenu
-                                name={name}
-                                clientId={clientId}
-                                attributes={attributes}
-                                setAttributes={setAttributes}
-                                qubelyContextMenu={this.refs.qubelyContextMenu}
-                            />
-                        </div>
+                    
                     </div>
                 </div>
             </Fragment>

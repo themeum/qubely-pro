@@ -104,12 +104,19 @@
 }
 
 .qubely-block-mediacard.media-type-video{
-    .qubely-mediacard-media.qubely-media-has-bg {
+    .qubely-mediacard-media {
         position: relative;
         padding-bottom: 56%;
         padding-top: 0;
         height: 0;
         width: 100%;
+    }
+}
+
+.qubely-block-mediacard.media-type-video.qubely-mediacard-layout-2,
+.qubely-block-mediacard.media-type-video.qubely-mediacard-layout-3{
+    .qubely-mediacard-media {
+        padding-bottom: 34%;
     }
 }
 
@@ -120,18 +127,74 @@
     width: 100%;
     height: 100%;
 }
-.qubely-block-mediacard.qubely-mediacard-layout-2 {
+.qubely-mediacard-layout-2.media-type-image,
+.qubely-mediacard-layout-3.media-type-image {
     .qubely-mediacard-body {
         position: absolute;
         z-index: 99999;
         background: #fff;
-        width: 60%;
+        width: 54%;
         right: 0;
-        top: 18%;
+        top: 50%;
         padding: 60px;
-        -webkit-box-shadow: 0 1.5vw 3vw -0.7vw rgba(0,0,0,0.125);
-        box-shadow: 0 1.5vw 3vw -0.7vw rgba(0,0,0,0.125);
+        -webkit-box-shadow: 0 1.5vw 3vw -0.7vw rgba(0,0,0,.125);
+        box-shadow: 0 1.5vw 3vw -0.7vw rgba(0,0,0,.125);
+        transform: translate(0%, -50%);
+    
+    }
+}
+
+.qubely-mediacard-layout-3.media-type-image {
+    .qubely-mediacard-body {
+        left: 0;
+        right: auto;
+    
     }
 }
 
 
+
+.qubely-mediacard-layout-2.media-type-video,
+.qubely-mediacard-layout-3.media-type-video {
+    .qubely-mediacard-body {
+        position: absolute;
+        z-index: 99999;
+        background: #fff;
+        width: 50%;
+        right: 0;
+        top: 50%;
+        padding: 60px;
+        -webkit-box-shadow: 0 1.5vw 3vw -0.7vw rgba(0,0,0,.125);
+        box-shadow: 0 1.5vw 3vw -0.7vw rgba(0,0,0,.125);
+        -webkit-transform: translate(0,-50%);
+        transform: translate(0,-50%);
+    }
+} 
+.qubely-mediacard-layout-2.media-type-video{
+    .qubely-mediacard-media {
+        position: relative;
+        padding-bottom: 34%;
+        padding-top: 0;
+        height: 0;
+        width: 50%;
+    }
+} 
+
+.qubely-mediacard-layout-3.media-type-video {
+    .qubely-mediacard-body {
+        right: auto;
+        left: 0;
+    }
+} 
+.qubely-mediacard-layout-2.media-type-image,
+.qubely-mediacard-layout-3.media-type-image {
+    .qubely-mediacard-media {
+        width: 55%;
+    }
+}
+
+.qubely-mediacard-layout-1.media-type-image {
+    .qubely-mediacard-media {
+        width: 100%;
+    }
+}

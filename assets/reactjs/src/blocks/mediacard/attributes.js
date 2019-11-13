@@ -13,26 +13,12 @@ export const attributes = {
     vimeoId: { type: 'string', default: '368867301' },
     youtubeId: { type: 'string', default: 'HY3sut8LTSw' },
     autoplay: { type: 'boolean', default: false },
-    // videoWidth: {
-    //     type: 'object',
-    //     default: {},
-    //     style: [
-    //         {
-    //             condition: [
-    //                 { key: 'layout', relation: '!=', value: 4 },
-    //                 { key: 'mediaType', relation: '==', value: 'video' }
-    //             ],
-    //             selector: '{{QUBELY}} .qubely-mediacard-media {width: {{imageWidth}};}'
-    //         }
-    //     ]
-    // },
-
     videoWidth: { 
         type: 'object', 
         default: { md: 100, unit: '%' }, 
         style: [
             { 
-                selector: '{{QUBELY}} .qubely-mediacard-media { width: {{videoWidth}}; }' 
+                selector: '{{QUBELY}} .qubely-mediacard-layout-2.media-type-video .qubely-mediacard-media { width: {{videoWidth}}; } {{QUBELY}} .qubely-mediacard-layout-3.media-type-video .qubely-mediacard-media { width: {{videoWidth}}; }' 
             }
         ] 
     },
