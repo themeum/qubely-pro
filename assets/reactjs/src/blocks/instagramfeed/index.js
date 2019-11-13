@@ -11,44 +11,6 @@ registerBlockType('qubely/instagramfeed', {
     category: 'qubely',
 	keywords: [__('Instagram'), __('Instagram Feed')],
 	
-
-	// Attribute
-	// attributes: {
-		// token: {
-		// 	type: 'string',
-		// 	default: '',
-		// },
-		
-		// column: {
-		// 	type: 'number',
-		// 	default: 3,
-		// },
-		// numberimages: {
-		// 	type: 'number',
-		// 	default: 9,
-		// },
-	// 	hasEqualImages: {
-	// 		type: 'boolean',
-	// 		default: false,
-	// 	},
-	// 	thumbs: {
-	// 		type: 'array',
-	// 		default: [],
-	// 	},
-	// 	gridGap: {
-	// 		type: 'number',
-	// 		default: 0,
-	// 	},
-	// 	showProfile: {
-	// 		type: 'boolean',
-	// 		default: false,
-	// 	},
-	// 	profile: {
-	// 		type: 'array',
-	// 		default: [],
-	// 	},
-	// },
-
 	edit: Edit,
 	save: function( props ) {
 		return null;
