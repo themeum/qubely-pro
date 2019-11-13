@@ -23,13 +23,6 @@ export const attributes = {
         ] 
     },
 
-
-
-
-    bgVideo: { type: 'object', default: {} },
-    url: { type: 'string', default: 'https://www.youtube.com/watch?v=HY3sut8LTSw' },
-
-
     alignment: {
         type: 'object', default: { md: 'left' },
         style: [
@@ -78,8 +71,6 @@ export const attributes = {
    // Media background
    useMediaBg: { type: 'boolean', default: 1 },
    
-
-
    mediaBorderRadius: {
        type: 'object',
        default: {
@@ -101,9 +92,6 @@ export const attributes = {
    },
 
   
-
-   
-
    // Media Spacing
    mediaSpacing: {
        type: 'object', default: { md: 20, unit: 'px' },
@@ -141,147 +129,6 @@ export const attributes = {
     titleColor: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-mediacard-title {color: {{titleColor}};}' }] },
     titleColorHover: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-block-mediacard:hover .qubely-mediacard-title {color: {{titleColorHover}};}' }] },
     titleSpacing: { type: 'object', default: { md: 10, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-mediacard-title-inner {margin-bottom: {{titleSpacing}};}' }] },
-
-    subTitle: { type: 'boolean', default: 0 },
-    subTitleLevel: { type: 'number', default: 3 },
-    subTitleContent: {
-        type: 'string',
-        source: 'html',
-        selector: '.qubely-mediacard-sub-title',
-        default: 'Sub Title'
-    },
-    subTitleTypography: { type: 'object', default: { openTypography: 1, size: { md: 16, unit: 'px' } }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-sub-title' }] },
-    subTitleColor: {
-        type: 'string', default: '#333',
-        style: [
-            {
-                condition: [
-                    { key: 'subTitle', relation: '==', value: 1 }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-sub-title {color: {{subTitleColor}};}'
-            },
-        ]
-    },
-    subTitleColorHover: {
-        type: 'string', default: '',
-        style: [
-            {
-                condition: [
-                    { key: 'subTitle', relation: '==', value: 1 }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard:hover .qubely-mediacard-sub-title {color: {{subTitleColorHover}};}'
-            },
-        ]
-    },
-    subTitleSpacing: {
-        type: 'object', default: { md: 15, unit: 'px' },
-        style: [
-            {
-                condition: [
-                    { key: 'subTitle', relation: '==', value: 1 }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-sub-title {margin-bottom: {{subTitleSpacing}};}'
-            },
-        ]
-    },
-
-   // Title separator
-   separatorStyle: {
-       type: 'string', default: '',
-       style: [
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' }
-               ],
-               selector: '{{QUBELY}} .qubely-block-mediacard .qubely-separator-type-css {border-top-style: {{separatorStyle}};}'
-           },
-       ]
-   },
-   separatorPosition: { type: 'string', default: 'top' },
-   separatorColor: {
-       type: 'string', default: '#5D7FEB',
-       style: [
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' }
-               ],
-               selector: '{{QUBELY}} .qubely-block-mediacard .qubely-separator-type-svg svg .qubely-separator-stroke {stroke: {{separatorColor}};} {{QUBELY}} .qubely-block-mediacard svg .qubely-separator-fill {fill: {{separatorColor}};} {{QUBELY}} .qubely-block-mediacard .qubely-separator-type-css {border-top-color: {{separatorColor}};}'
-           },
-       ]
-   },
-   separatorColorHover: {
-       type: 'string', default: '',
-       style: [
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' }
-               ],
-               selector: '{{QUBELY}} .qubely-block-mediacard:hover .qubely-separator-type-svg svg .qubely-separator-stroke {stroke: {{separatorColorHover}};} {{QUBELY}} .qubely-block-mediacard:hover svg .qubely-separator-fill {fill: {{separatorColorHover}};} {{QUBELY}} .qubely-block-mediacard:hover .qubely-separator-type-css {border-top-color: {{separatorColorHover}};}'
-           },
-       ]
-   },
-   separatorStroke: {
-       type: 'number', default: 3,
-       style: [
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' }
-               ],
-               selector: '{{QUBELY}} .qubely-block-mediacard .qubely-separator-type-svg svg .qubely-separator-stroke {stroke-width: {{separatorStroke}}px;} {{QUBELY}} .qubely-block-mediacard .qubely-separator-type-css {border-top-width: {{separatorStroke}}px;}'
-           },
-       ]
-   },
-   separatorWidth: {
-       type: 'object', default: { md: 60 },
-       style: [
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' }
-               ],
-               selector: '{{QUBELY}} .qubely-block-mediacard .qubely-separator-type-css {width: {{separatorWidth}}px;} {{QUBELY}} .qubely-block-mediacard .qubely-separator-type-svg svg {width: {{separatorWidth}}px;}'
-           },
-       ]
-   },
-   separatorSpacing: {
-       type: 'object', default: { md: 10 },
-       style: [
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' },
-                   { key: 'separatorPosition', relation: '==', value: 'left' },
-               ],
-               selector: '{{QUBELY}} .qubely-separator {margin-right: {{separatorSpacing}}px;}'
-           },
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' },
-                   { key: 'separatorPosition', relation: '==', value: 'right' },
-               ],
-               selector: '{{QUBELY}} .qubely-separator {margin-left: {{separatorSpacing}}px;}'
-           },
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' },
-                   { key: 'separatorPosition', relation: '==', value: 'leftright' },
-               ],
-               selector: '{{QUBELY}} .qubely-separator-before {margin-right: {{separatorSpacing}}px;} {{QUBELY}} .qubely-separator-after {margin-left: {{separatorSpacing}}px;}'
-           },
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' },
-                   { key: 'separatorPosition', relation: '==', value: 'top' },
-               ],
-               selector: '{{QUBELY}} .qubely-separator {margin-bottom: {{separatorSpacing}}px;}'
-           },
-           {
-               condition: [
-                   { key: 'separatorStyle', relation: '!=', value: '' },
-                   { key: 'separatorPosition', relation: '==', value: 'bottom' },
-               ],
-               selector: '{{QUBELY}} .qubely-separator {margin-top: {{separatorSpacing}}px;}'
-           },
-       ]
-   },
 
    //Content
    enableContent: { type: 'boolean', default: true },
@@ -344,6 +191,6 @@ export const attributes = {
     bgShadow: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
     bgShadowHover: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard:hover' }] },
 
-    sourceOfCopiedStyle: { type: 'boolean', default: false }
+   
 
 };

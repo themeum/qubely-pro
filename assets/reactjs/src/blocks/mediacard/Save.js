@@ -9,7 +9,6 @@ class Save extends Component {
 			uniqueId, 
 			layout, 
 			mediaType,
-
 			videoSource,
             vimeoId,
             youtubeId,
@@ -29,26 +28,26 @@ class Save extends Component {
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
 				<div className={`qubely-block-mediacard ${interactionClass} qubely-mediacard-layout-${layout} media-type-${mediaType}`}>
 					
-						<div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`}>
-							{mediaType == 'video'  &&
-                                <Fragment>
-                                    { (videoSource == 'vimeo') ? 
-                                        <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                        : 
-                                        <iframe src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`} frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html"></iframe>
-                                    }
-                                </Fragment> 
-                            }
-							{(mediaType == 'image') &&
-								<Fragment>
-									{image.url != undefined ?
-										<img src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : '' } alt={imgAlt && imgAlt} />
-										:
-										<div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image"/></div>
-									}
-								</Fragment>
-							}
-						</div>
+					<div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`}>
+						{mediaType == 'video'  &&
+							<Fragment>
+								{ (videoSource == 'vimeo') ? 
+									<iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+									: 
+									<iframe src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`} frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html"></iframe>
+								}
+							</Fragment> 
+						}
+						{(mediaType == 'image') &&
+							<Fragment>
+								{image.url != undefined ?
+									<img src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : '' } alt={imgAlt && imgAlt} />
+									:
+									<div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image"/></div>
+								}
+							</Fragment>
+						}
+					</div>
 
 					<div className="qubely-mediacard-body">
 						<div className={`qubely-mediacard-title-container ${separatorStyle ? 'qubely-has-separator' : ''} ${separatorPosition ? 'qubely-separator-position-' + separatorPosition : ''}`}>
@@ -62,6 +61,7 @@ class Save extends Component {
 								<RichText.Content tagName='div' className="qubely-mediacard-text" value={content} />
 							</div>
 						}
+
 					</div>
 				</div>
 			</div>

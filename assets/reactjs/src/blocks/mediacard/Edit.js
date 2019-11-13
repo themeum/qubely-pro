@@ -1,8 +1,8 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
-const { PanelBody, SelectControl, TextControl, Toolbar } = wp.components
+const { PanelBody, TextControl, Toolbar } = wp.components
 const { RichText, InspectorControls, BlockControls } = wp.blockEditor
-const { QubelyButtonEdit, Media, Tabs, Tab, Range, BoxShadow, Select, Separator, ContextMenu: { ContextMenu, handleContextMenu }, RadioAdvanced, Typography, Toggle, Styles, Alignment, IconList, ColorAdvanced, Color, Headings, Border, BorderRadius, Padding, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, Inline: { InlineToolbar }, CssGenerator: { CssGenerator }, QubelyButton: { buttonSettings } } = wp.qubelyComponents
+const { Media, Tabs, Tab, Range, BoxShadow, Select, Separator, ContextMenu: { handleContextMenu }, RadioAdvanced, Typography, Toggle, Styles, Alignment, ColorAdvanced, Color, Headings, Border, BorderRadius, Padding, gloalSettings: { globalSettingsPanel }, Inline: { InlineToolbar }, CssGenerator: { CssGenerator } } = wp.qubelyComponents
 import icons from '../../helpers/icons';
 // import svg from '../heading/separators';
 class Edit extends Component {
@@ -38,7 +38,6 @@ class Edit extends Component {
             autoplay,
             videoWidth,
 
-
             mediaType,
             alignment,
             titleLevel,
@@ -47,22 +46,6 @@ class Edit extends Component {
             titleColor,
             titleColorHover,
             titleSpacing,
-
-            subTitle,
-            subTitleLevel,
-            subTitleContent,
-            subTitleTypography,
-            subTitleColor,
-            subTitleColorHover,
-            subTitleSpacing,
-
-            separatorStyle,
-            separatorColor,
-            separatorColorHover,
-            separatorStroke,
-            separatorPosition,
-            separatorWidth,
-            separatorSpacing,
 
             //content
             enableContent,
@@ -73,11 +56,6 @@ class Edit extends Component {
             contentPadding,
             contentSpacing,
 
-            
-            
-            
-            
-            
             useMediaBg,
             mediaBorderRadius,
             mediaSpacing,
@@ -94,15 +72,6 @@ class Edit extends Component {
             bgShadow,
             bgShadowHover,
             enableButton,
-
-            // Button
-            buttonSize,
-            buttonFillType,
-            buttonText,
-            buttonIconName,
-            buttonIconPosition,
-            buttonUrl,
-
 
             enablePosition, 
             selectPosition, 
@@ -197,7 +166,6 @@ class Edit extends Component {
                             </Fragment>
                         }
                     </PanelBody>
-                    
 
                     <PanelBody title={__('Title')} opened={'Title' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Title' ? 'Title' : '')}>
                         <Headings label={__('Title Tag')} selectedLevel={titleLevel} onChange={(value) => setAttributes({ titleLevel: value })} />
