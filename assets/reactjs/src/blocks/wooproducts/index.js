@@ -8,9 +8,18 @@ import Edit from './Edit'
 import Save from './Save'
 
 const attributes = {
-    uniqueId: { type: 'string', default: '' },
-
-
+    uniqueId: {
+        type: 'string',
+        default: ''
+    },
+    selectedCatagories: {
+        type: 'number',
+        default: null
+    },
+    orderby: {
+        type: 'string',
+        default: 'date',
+    },
     //global
     showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
     showContextMenu: { type: 'boolean', default: true },

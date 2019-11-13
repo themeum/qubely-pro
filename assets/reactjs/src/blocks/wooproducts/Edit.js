@@ -45,11 +45,13 @@ const {
 
 import icons from '../../helpers/icons'
 import getProducts from './getProducts'
+import test from './test'
 
 
 export default function Edit(props) {
     const [mounting, changeMountFlag] = useState(true)
     const [products, setProducts] = useState(null)
+    const [categories, setCategories] = useState(null)
     const [totalProducts, setTotalProducts] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -61,6 +63,8 @@ export default function Edit(props) {
         setAttributes,
         attributes: {
             uniqueId,
+            orderby,
+            selectedCatagories,
         }
     } = props
 
@@ -75,6 +79,7 @@ export default function Edit(props) {
         if (mounting) {
             loadProducts()
             changeMountFlag(false)
+
         }
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
@@ -84,14 +89,41 @@ export default function Edit(props) {
 
     })
 
+    const getSortArgs = (orderName) => {
+        switch (orderName) {
+            case 'menu_order':
+            case 'popularity':
+            case 'rating':
+            case 'date':
+            case 'price':
+                return {
+                    orderby: 'price',
+                    order: 'asc',
+                };
+            case 'price-desc':
+                return {
+                    orderby: 'price',
+                    order: 'desc',
+                };
+        }
+    }
     const loadProducts = () => {
         setProducts([])
         setLoading(true)
+
+        test()
+            .then((productsData) => {
+                console.log('productsData : ', productsData)
+                setCategories(productsData)
+            })
+            .catch(async (e) => {
+                console.log('eerrrr')
+            });
+
         const args = {
-            // ...this.getSortArgs(sortValue),
+            ...getSortArgs(orderby),
             // per_page: attributes.columns * attributes.rows,
             // page: currentPage,
-            per_page: 10,
         };
 
         getProducts(args)
@@ -111,12 +143,86 @@ export default function Edit(props) {
 
 
     if (uniqueId) { CssGenerator(attributes, 'wooproducts', uniqueId) }
-   
+
     return (
         <Fragment>
 
             <InspectorControls>
 
+                <PanelBody title={__('Query')} initialOpen={true}>
+
+                    {
+                        categories &&
+
+                        <SelectControl
+                            label={__("Products by Categories")}
+                            value={selectedCatagories}
+                            options={
+                                categories.map(({ name, id }) => {
+                                    return (
+                                        {
+                                            label: __(name),
+                                            value: id
+                                        }
+                                    )
+                                })
+                            }
+                            onChange={value => setAttributes({ selectedCatagories: value })}
+                        />
+                    }
+                    <SelectControl
+                        label={__(
+                            'Order Products By',
+                            'woo-gutenberg-products-block'
+                        )}
+                        value={attributes.orderby}
+                        options={[
+                            {
+                                label: __(
+                                    'Newness - newest first',
+                                    'woo-gutenberg-products-block'
+                                ),
+                                value: 'date',
+                            },
+                            {
+                                label: __(
+                                    'Price - low to high',
+                                    'woo-gutenberg-products-block'
+                                ),
+                                value: 'price',
+                            },
+                            {
+                                label: __(
+                                    'Price - high to low',
+                                    'woo-gutenberg-products-block'
+                                ),
+                                value: 'price-desc',
+                            },
+                            {
+                                label: __(
+                                    'Rating - highest first',
+                                    'woo-gutenberg-products-block'
+                                ),
+                                value: 'rating',
+                            },
+                            {
+                                label: __(
+                                    'Sales - most first',
+                                    'woo-gutenberg-products-block'
+                                ),
+                                value: 'popularity',
+                            },
+                            {
+                                label: __(
+                                    'Menu Order',
+                                    'woo-gutenberg-products-block'
+                                ),
+                                value: 'menu_order',
+                            },
+                        ]}
+                        onChange={(orderby) => setAttributes({ orderby })}
+                    />
+                </PanelBody>
 
 
             </InspectorControls>
