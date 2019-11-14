@@ -66,6 +66,7 @@ export default function Edit(props) {
             uniqueId,
             orderby,
             productsPerPage,
+            productsStatus,
             selectedCatagories,
         }
     } = props
@@ -112,7 +113,7 @@ export default function Edit(props) {
     useEffect(() => {
         setLoading(true)
         loadProducts()
-    }, [productsPerPage, orderby, selectedCatagories])
+    }, [productsStatus, productsPerPage, orderby, selectedCatagories])
 
 
     const loadProducts = () => {
@@ -141,6 +142,12 @@ export default function Edit(props) {
                                 order: 'desc',
                                 orderby: orderby
                             },
+
+            ...productsStatus === 'on_sale' ? {
+                on_sale: 1
+            } : productsStatus === 'featured' ? {
+                featured: 1
+            } : {},
             category: selectedCatagories,
             per_page: productsPerPage,
             // page: currentPage,
@@ -171,6 +178,26 @@ export default function Edit(props) {
             <InspectorControls>
 
                 <PanelBody title={__('Query')} initialOpen={true}>
+
+                    <SelectControl
+                        label={__("Products Status")}
+                        value={productsStatus}
+                        options={[
+                            {
+                                label: __('All'),
+                                value: 'all',
+                            },
+                            {
+                                label: __('Featured'),
+                                value: 'featured',
+                            },
+                            {
+                                label: __('On Sale'),
+                                value: 'on_sale',
+                            },
+                        ]}
+                        onChange={value => setAttributes({ productsStatus: value })}
+                    />
 
                     {
                         totalProducts &&

@@ -24,6 +24,10 @@ const attributes = {
         type: 'string',
         default: 'date',
     },
+    productsStatus: {
+        type: 'string',
+        default: null,
+    },
     //global
     showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
     showContextMenu: { type: 'boolean', default: true },
