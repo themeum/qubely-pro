@@ -15,7 +15,7 @@ export const attributes = {
     autoplay: { type: 'boolean', default: false },
     videoWidth: { 
         type: 'object', 
-        default: { md: 100, unit: '%' }, 
+        default: { md: 50, unit: '%' }, 
         style: [
             { 
                 selector: '{{QUBELY}} .qubely-mediacard-layout-2.media-type-video .qubely-mediacard-media { width: {{videoWidth}}; } {{QUBELY}} .qubely-mediacard-layout-3.media-type-video .qubely-mediacard-media { width: {{videoWidth}}; }' 
@@ -190,6 +190,40 @@ export const attributes = {
     bgBorderColorHover: { type: 'string', default: '#e5e5e5', style: [{ selector: '{{QUBELY}} .qubely-block-mediacard:hover { border-color: {{bgBorderColorHover}};}' }] },
     bgShadow: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
     bgShadowHover: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard:hover' }] },
+
+
+   
+    
+   
+    
+    // Card
+    cardBackgroundColor: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-body' }] },
+    cardBgPadding: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-body' }] },
+    cardBgBorder: {
+        type: 'object',
+        default: {
+            paddingType: 'global'
+        },
+        style: [
+           {
+               selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-body'
+           }
+       ]
+    },
+    cardBgBorderRadius: {
+       type: 'object',
+       default: {
+           openBorderRadius: 1,
+           radiusType: 'global',
+
+       },
+       style: [
+           {
+               selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-body'
+           },
+       ]
+    },
+    cardBgShadow: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-body' }] },
 
    
 

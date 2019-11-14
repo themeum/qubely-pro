@@ -81,6 +81,19 @@ class Edit extends Component {
             hideTablet,
             hideMobile,
             globalCss,
+
+            // Card.
+            cardBackgroundColor,
+            cardBgPadding,
+            cardBgBorder,
+            cardBgShadow,
+            cardBgBorderRadius,
+            
+            // Card Hover
+            // cardBgColorHover,
+            // cardBgShadowHover,
+            // cardBgBorderColorHover
+
             
         } = this.props.attributes
 
@@ -145,14 +158,16 @@ class Edit extends Component {
                                         
                                         <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
                                         
-                                        <Range 
-                                            label={__('Video Width')} 
-                                            value={videoWidth} 
-                                            onChange={val => setAttributes({ videoWidth: val })} 
-                                            min={1} max={500} 
-                                            responsive device={device} unit={['px', 'em', '%']}
-                                            onDeviceChange={value => this.setState({ device: value })} 
-                                        />
+                                        {(layout == 2 || layout == 3)  &&
+                                            <Range 
+                                                label={__('Video Width')} 
+                                                value={videoWidth} 
+                                                onChange={val => setAttributes({ videoWidth: val })} 
+                                                min={1} max={100} 
+                                                responsive device={device} unit={['px', 'em', '%']}
+                                                onDeviceChange={value => this.setState({ device: value })} 
+                                            />
+                                        }
                                         
                                     </Fragment>
                                 }
@@ -204,6 +219,17 @@ class Edit extends Component {
                             </Fragment>
                         }
                     </PanelBody>
+
+
+                    <PanelBody title={__('Card Style')} initialOpen={true}>
+                        <ColorAdvanced label={__('Background Color')} value={cardBackgroundColor} onChange={val => setAttributes({ cardBackgroundColor: val })} />
+                        <Padding label={__('Padding')} value={cardBgPadding} onChange={val => setAttributes({ cardBgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <Border label={__('Border')} value={cardBgBorder} onChange={val => setAttributes({ cardBgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <BoxShadow label={__('Box-Shadow')} value={cardBgShadow} onChange={(value) => setAttributes({ cardBgShadow: value })} />
+                        <BorderRadius label={__('Radius')} value={cardBgBorderRadius} onChange={(value) => setAttributes({ cardBgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                    </PanelBody>
+
+
 
                     <PanelBody title={__('Background')} initialOpen={false}>
                         <Tabs>
