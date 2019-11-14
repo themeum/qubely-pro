@@ -2,21 +2,10 @@
 const { apiFetch } = wp
 
 export default function getProducts(queryArgs ) {
-    const args = {
-        catalog_visibility: 'visible',
-        status: 'publish',
-        ...queryArgs,
-    };
-    
-    console.log('/wc/blocks/products?' +
-    Object.entries(args)
-        .map((arg) => arg.join('='))
-        .join('&'))
-
     return apiFetch({
         path:
             '/wc/blocks/products?' +
-            Object.entries(args)
+            Object.entries(queryArgs)
                 .map((arg) => arg.join('='))
                 .join('&'),
         parse: false,

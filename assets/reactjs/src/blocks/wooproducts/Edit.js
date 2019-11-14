@@ -1,5 +1,5 @@
 const { __ } = wp.i18n
-
+const { apiFetch } = wp
 const {
     useState,
     useEffect,
@@ -12,7 +12,8 @@ const {
     Toolbar,
     SelectControl,
     IconButton,
-    Spinner
+    Spinner,
+    RangeControl
 } = wp.components
 
 const {
@@ -45,7 +46,7 @@ const {
 
 import icons from '../../helpers/icons'
 import getProducts from './getProducts'
-import test from './test'
+
 
 
 export default function Edit(props) {
@@ -64,6 +65,7 @@ export default function Edit(props) {
         attributes: {
             uniqueId,
             orderby,
+            productsPerPage,
             selectedCatagories,
         }
     } = props
@@ -77,6 +79,24 @@ export default function Edit(props) {
         const _client = clientId.substr(0, 6)
 
         if (mounting) {
+            apiFetch({
+                path: '/wc/blocks/products/categories',
+            }).then((response) => {
+                return response.map(({ count, id, name }) => {
+                    return (
+                        {
+                            count,
+                            id,
+                            name
+                        }
+                    )
+                })
+            }).then((productsData) => {
+                setCategories([{ id: null, name: "All" }, ...productsData])
+            })
+                .catch(async (e) => {
+                    console.log('could not retrieve product categories')
+                });
             loadProducts()
             changeMountFlag(false)
 
@@ -89,49 +109,49 @@ export default function Edit(props) {
 
     })
 
-    const getSortArgs = (orderName) => {
-        switch (orderName) {
-            case 'menu_order':
-            case 'popularity':
-            case 'rating':
-            case 'date':
-            case 'price':
-                return {
-                    orderby: 'price',
-                    order: 'asc',
-                };
-            case 'price-desc':
-                return {
-                    orderby: 'price',
-                    order: 'desc',
-                };
-        }
-    }
+    useEffect(() => {
+        setLoading(true)
+        loadProducts()
+    }, [productsPerPage, orderby, selectedCatagories])
+
+
     const loadProducts = () => {
         setProducts([])
-        setLoading(true)
-
-        test()
-            .then((productsData) => {
-                console.log('productsData : ', productsData)
-                setCategories(productsData)
-            })
-            .catch(async (e) => {
-                console.log('eerrrr')
-            });
-
         const args = {
-            ...getSortArgs(orderby),
-            // per_page: attributes.columns * attributes.rows,
+            ...orderby === 'price' ?
+                {
+                    order: 'asc',
+                    orderby: 'price',
+                } : orderby === 'price-desc' ?
+                    {
+                        order: 'desc',
+                        orderby: 'price',
+                    } :
+                    orderby === 'title' ?
+                        {
+                            order: 'asc',
+                            orderby: orderby
+                        } :
+                        orderby === 'title-desc' ?
+                            {
+                                order: 'desc',
+                                orderby: 'title',
+                            } :
+                            {
+                                order: 'desc',
+                                orderby: orderby
+                            },
+            category: selectedCatagories,
+            per_page: productsPerPage,
             // page: currentPage,
         };
 
         getProducts(args)
             .then((productsData) => {
-                setProducts(productsData.products)
-                setTotalProducts(productsData.totalProducts)
                 setLoading(false)
                 setError(null)
+                setProducts(productsData.products)
+                setTotalProducts(productsData.totalProducts)
             })
             .catch(async (e) => {
                 setProducts([])
@@ -144,12 +164,24 @@ export default function Edit(props) {
 
     if (uniqueId) { CssGenerator(attributes, 'wooproducts', uniqueId) }
 
+
     return (
         <Fragment>
 
             <InspectorControls>
 
                 <PanelBody title={__('Query')} initialOpen={true}>
+
+                    {
+                        totalProducts &&
+                        <RangeControl
+                            label={__('Number of Products')}
+                            value={productsPerPage}
+                            min='1'
+                            max={totalProducts}
+                            onChange={val => setAttributes({ productsPerPage: val })} />
+
+                    }
 
                     {
                         categories &&
@@ -167,57 +199,44 @@ export default function Edit(props) {
                                     )
                                 })
                             }
-                            onChange={value => setAttributes({ selectedCatagories: value })}
+                            onChange={value => setAttributes({ selectedCatagories: value !== 'All' ? value : null })}
                         />
                     }
                     <SelectControl
-                        label={__(
-                            'Order Products By',
-                            'woo-gutenberg-products-block'
-                        )}
-                        value={attributes.orderby}
+                        label={__('Order Products By')}
+                        value={orderby}
                         options={[
                             {
-                                label: __(
-                                    'Newness - newest first',
-                                    'woo-gutenberg-products-block'
-                                ),
+                                label: __('Newness - newest first'),
                                 value: 'date',
                             },
                             {
-                                label: __(
-                                    'Price - low to high',
-                                    'woo-gutenberg-products-block'
-                                ),
+                                label: __('Price - low to high'),
                                 value: 'price',
                             },
                             {
-                                label: __(
-                                    'Price - high to low',
-                                    'woo-gutenberg-products-block'
-                                ),
+                                label: __('Price - high to low'),
                                 value: 'price-desc',
                             },
                             {
-                                label: __(
-                                    'Rating - highest first',
-                                    'woo-gutenberg-products-block'
-                                ),
+                                label: __('Rating - highest first'),
                                 value: 'rating',
                             },
                             {
-                                label: __(
-                                    'Sales - most first',
-                                    'woo-gutenberg-products-block'
-                                ),
+                                label: __('Sales - most first'),
                                 value: 'popularity',
                             },
                             {
-                                label: __(
-                                    'Menu Order',
-                                    'woo-gutenberg-products-block'
-                                ),
+                                label: __('Menu Order'),
                                 value: 'menu_order',
+                            },
+                            {
+                                label: __('Title: Alphabetical'),
+                                value: 'title',
+                            },
+                            {
+                                label: __('Title: Alphabetical reversed'),
+                                value: 'title-desc',
                             },
                         ]}
                         onChange={(orderby) => setAttributes({ orderby })}
@@ -230,27 +249,28 @@ export default function Edit(props) {
             <div className={`qubely-block-${uniqueId}`}>
                 <div className={`qubely-woo__product_wrapper`}>
                     {
-                        totalProducts ? products.map(({ name, id, price, description, image }, index) => {
-                            return (
-                                <div className={`qubely-woo__product`}>
-
-                                    <span className={`qubely-woo__product-name`}>{name}</span>
-                                    <span className={`qubely-woo__product-id`}>{id}</span>
-                                    <span className={`qubely-woo__product-price`}>{price}</span>
-                                    <span
-                                        className={`qubely-woo__product-description`}
-                                        dangerouslySetInnerHTML={{
-                                            __html: description,
-                                        }}
-                                    />
-                                </div>
-
-                            )
-                        })
-                            :
+                        loading ?
                             <div className={`qubely-woo__product_loading`}>
                                 <Spinner />
                             </div>
+                            :
+                            totalProducts && products.map(({ name, id, price, description, image }, index) => {
+                                return (
+                                    <div className={`qubely-woo__product`}>
+
+                                        <span className={`qubely-woo__product-name`}>name : {name}</span>
+                                        <span className={`qubely-woo__product-id`}>id : {id}</span>
+                                        <span className={`qubely-woo__product-price`}>price {price}</span>
+                                        <span
+                                            className={`qubely-woo__product-description`}
+                                            dangerouslySetInnerHTML={{
+                                                __html: description,
+                                            }}
+                                        />
+                                    </div>
+
+                                )
+                            })
                     }
                 </div>
             </div>

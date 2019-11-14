@@ -12,6 +12,10 @@ const attributes = {
         type: 'string',
         default: ''
     },
+    productsPerPage: {
+        type: 'number',
+        default: 2
+    },
     selectedCatagories: {
         type: 'number',
         default: null
