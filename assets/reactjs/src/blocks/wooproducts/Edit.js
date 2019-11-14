@@ -171,7 +171,6 @@ export default function Edit(props) {
 
     if (uniqueId) { CssGenerator(attributes, 'wooproducts', uniqueId) }
 
-
     return (
         <Fragment>
 
@@ -281,7 +280,7 @@ export default function Edit(props) {
                                 <Spinner />
                             </div>
                             :
-                            totalProducts ? products.map(({ name, id, price, description, image }, index) => {
+                            totalProducts ? products.map(({ name, id, price, description, images }, index) => {
                                 return (
                                     <div className={`qubely-woo__product`}>
 
@@ -294,6 +293,15 @@ export default function Edit(props) {
                                                 __html: description,
                                             }}
                                         />
+                                        <span className={`qubely-woo__product-image-wrapper`}>
+                                            {images.map(({ src, alt }) => {
+                                                return (
+                                                    <span className={`qubely-woo__product-image`}>
+                                                        <img src={src} alt={alt} />
+                                                    </span>
+                                                )
+                                            })}
+                                        </span>
                                     </div>
 
                                 )
