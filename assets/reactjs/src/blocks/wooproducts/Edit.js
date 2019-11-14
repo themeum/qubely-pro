@@ -281,7 +281,7 @@ export default function Edit(props) {
                                 <Spinner />
                             </div>
                             :
-                            totalProducts && products.map(({ name, id, price, description, image }, index) => {
+                            totalProducts ? products.map(({ name, id, price, description, image }, index) => {
                                 return (
                                     <div className={`qubely-woo__product`}>
 
@@ -298,6 +298,10 @@ export default function Edit(props) {
 
                                 )
                             })
+                                :
+                                <div className={`qubely-woo__product-not-found`}>
+                                    {__('No products found')}
+                                </div>
                     }
                 </div>
             </div>
