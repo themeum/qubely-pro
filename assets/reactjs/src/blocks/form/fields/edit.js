@@ -6,7 +6,7 @@ const { __ } = wp.i18n
 const {
     InspectorControls,
     RichText
-} = wp.editor
+} = wp.blockEditor
 
 const {
     useState,

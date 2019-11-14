@@ -1,7 +1,7 @@
 import icons from '../../../../helpers/icons';
 const { __ } = wp.i18n
 const { Component, Fragment } = wp.element
-const { InnerBlocks, InspectorControls } = wp.editor
+const { InnerBlocks, InspectorControls } = wp.blockEditor
 const { compose } = wp.compose
 const { createBlock } = wp.blocks
 const { Dropdown, PanelBody } = wp.components

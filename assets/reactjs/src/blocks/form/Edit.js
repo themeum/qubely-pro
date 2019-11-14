@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { createBlock } = wp.blocks
 const { compose } = wp.compose
 const { select, dispatch, withSelect, withDispatch } = wp.data
-const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.editor
+const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.blockEditor
 const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
 const { Component, Fragment } = wp.element
 const {

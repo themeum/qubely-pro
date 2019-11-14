@@ -4,7 +4,7 @@ const { withSelect } = wp.data
 const { dateI18n, __experimentalGetSettings } = wp.date
 const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
-const { InspectorControls, BlockControls } = wp.editor
+const { InspectorControls, BlockControls } = wp.blockEditor
 const {
 	Range,
 	ButtonGroup,

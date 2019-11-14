@@ -1,7 +1,7 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, TextControl, Tooltip, Toolbar } = wp.components
-const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.editor
+const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.blockEditor
 import icons from '../../helpers/icons'
 const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } } = wp.qubelyComponents
 

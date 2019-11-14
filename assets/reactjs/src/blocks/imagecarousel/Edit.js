@@ -1,7 +1,7 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
-const { InspectorControls, RichText, MediaUpload, BlockControls, MediaPlaceholder } = wp.editor
+const { InspectorControls, RichText, MediaUpload, BlockControls, MediaPlaceholder } = wp.blockEditor
 import icons from '../../helpers/icons'
 const {
 	Range,

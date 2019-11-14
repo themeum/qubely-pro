@@ -14,7 +14,7 @@ const {
     BlockControls,
     MediaUpload,
     MediaPlaceholder
-} = wp.editor
+} = wp.blockEditor
 
 const {
     RadioAdvanced,
