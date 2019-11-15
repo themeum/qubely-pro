@@ -64,10 +64,17 @@ export default function Edit(props) {
         setAttributes,
         attributes: {
             uniqueId,
+
+            //query
             orderby,
             productsPerPage,
             productsStatus,
             selectedCatagories,
+
+            //layout attributes
+            layout,
+            style,
+            columns,
         }
     } = props
 
@@ -80,24 +87,6 @@ export default function Edit(props) {
         const _client = clientId.substr(0, 6)
 
         if (mounting) {
-            apiFetch({
-                path: '/wc/blocks/products/categories',
-            }).then((response) => {
-                return response.map(({ count, id, name }) => {
-                    return (
-                        {
-                            count,
-                            id,
-                            name
-                        }
-                    )
-                })
-            }).then((productsData) => {
-                setCategories([{ id: null, name: "All" }, ...productsData])
-            })
-                .catch(async (e) => {
-                    console.log('could not retrieve product categories')
-                });
             loadProducts()
             changeMountFlag(false)
 
@@ -115,9 +104,27 @@ export default function Edit(props) {
         loadProducts()
     }, [productsStatus, productsPerPage, orderby, selectedCatagories])
 
-
+    const getCategoris = () => {
+        apiFetch({
+            path: '/wc/blocks/products/categories',
+        }).then((response) => {
+            return response.map(({ count, id, name }) => {
+                return (
+                    {
+                        count,
+                        id,
+                        name
+                    }
+                )
+            })
+        }).then((productsData) => {
+            setCategories([{ id: null, name: "All" }, ...productsData])
+        })
+            .catch(async (e) => {
+                console.log('could not retrieve product categories')
+            });
+    }
     const loadProducts = () => {
-        setProducts([])
         const args = {
             ...orderby === 'price' ?
                 {
@@ -168,15 +175,40 @@ export default function Edit(props) {
             });
     }
 
+    const renderImages = (images) => {
+        return (
+            <span className={`qubely-woo__product-image-wrapper`}>
+                {images.map(({ src, alt }) => {
+                    return (
+                        <span className={`qubely-woo__product-image`}>
+                            <img src={src} alt={alt} />
+                        </span>
+                    )
+                })}
+            </span>
+        )
+    }
 
     if (uniqueId) { CssGenerator(attributes, 'wooproducts', uniqueId) }
+
 
     return (
         <Fragment>
 
             <InspectorControls>
+                <PanelBody title='' initialOpen={true}>
+                    <Styles
+                        options={[
+                            { value: 1, svg: icons.postgrid_1, label: __('') },
+                            { value: 2, svg: icons.postgrid_2, label: __('') },
+                        ]}
+                        value={layout}
+                        onChange={val => setAttributes({ layout: val })}
+                    />
+                </PanelBody>
 
-                <PanelBody title={__('Query')} initialOpen={true}>
+
+                <PanelBody title={__('Query')} initialOpen={false} onToggle={() => !categories && getCategoris()}>
 
                     <SelectControl
                         label={__("Products Status")}
@@ -209,9 +241,7 @@ export default function Edit(props) {
 
                     }
 
-                    {
-                        categories &&
-
+                    {categories &&
                         <SelectControl
                             label={__("Products by Categories")}
                             value={selectedCatagories}
@@ -229,7 +259,7 @@ export default function Edit(props) {
                         />
                     }
                     <SelectControl
-                        label={__('Order Products By')}
+                        label={__('Order By')}
                         value={orderby}
                         options={[
                             {
@@ -269,11 +299,32 @@ export default function Edit(props) {
                     />
                 </PanelBody>
 
+                <PanelBody title={__('Content')} initialOpen={false}>
+                    <Styles
+                        columns={2}
+                        value={style}
+                        options={[
+                            { value: 1, svg: icons.postgrid_design_1 },
+                            { value: 2, svg: icons.postgrid_design_4 },
+                        ]}
+                        onChange={value => setAttributes({ style: value })}
+                    />
 
+                    {
+                        layout === 2 &&
+                        <RangeControl
+                            label={__('Columns')}
+                            value={columns}
+                            min='1'
+                            max={10}
+                            onChange={val => setAttributes({ columns: val })} />
+                    }
+
+                </PanelBody>
             </InspectorControls>
 
             <div className={`qubely-block-${uniqueId}`}>
-                <div className={`qubely-woo__product_wrapper`}>
+                <div className={`qubely-woo__products_wrapper${layout === 2 ? ' qubely_woo__products_grid_layout' : ''}${layout === 2 ? ` qubely_${columns}columns` : ''}`}>
                     {
                         loading ?
                             <div className={`qubely-woo__product_loading`}>
@@ -284,6 +335,8 @@ export default function Edit(props) {
                                 return (
                                     <div className={`qubely-woo__product`}>
 
+                                        {style === 1 && renderImages(images)}
+
                                         <span className={`qubely-woo__product-name`}>name : {name}</span>
                                         <span className={`qubely-woo__product-id`}>id : {id}</span>
                                         <span className={`qubely-woo__product-price`}>price {price}</span>
@@ -293,15 +346,7 @@ export default function Edit(props) {
                                                 __html: description,
                                             }}
                                         />
-                                        <span className={`qubely-woo__product-image-wrapper`}>
-                                            {images.map(({ src, alt }) => {
-                                                return (
-                                                    <span className={`qubely-woo__product-image`}>
-                                                        <img src={src} alt={alt} />
-                                                    </span>
-                                                )
-                                            })}
-                                        </span>
+                                        {style === 2 && renderImages(images)}
                                     </div>
 
                                 )
@@ -314,7 +359,7 @@ export default function Edit(props) {
                 </div>
             </div>
 
-        </Fragment>
+        </Fragment >
     )
 
 }

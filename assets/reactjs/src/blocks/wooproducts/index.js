@@ -28,6 +28,20 @@ const attributes = {
         type: 'string',
         default: null,
     },
+    //layout attributes 
+    columns: {
+        type: 'number',
+        default: 3
+    },
+    layout:{
+        type: 'number',
+        default: 2,
+    },
+    style:{
+        type: 'number',
+        default: 2,
+    },
+
     //global
     showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
     showContextMenu: { type: 'boolean', default: true },
