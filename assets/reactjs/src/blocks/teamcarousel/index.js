@@ -81,7 +81,7 @@ registerBlockType('qubely/teamcarousel', {
 			type: 'object',
 			default: { md: 'left' },
 			style: [
-				{ selector: '{{QUBELY}} .qubely-team-author-info {text-align: {{alignment}};} {{QUBELY}} .qubely-single-img {text-align: {{alignment}};}' }
+				{ selector: '{{QUBELY}} .qubely-team-author-info {text-align: {{alignment}};} {{QUBELY}} .qubely-team-author {text-align: {{alignment}};}' }
 			]
 		},
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
@@ -90,14 +90,6 @@ registerBlockType('qubely/teamcarousel', {
 		sliderNumber: { type: 'number', default: 5 },
 		// Item per Slider  
 		itemPerSlides: { type: 'string', default: '2' },
-		// Space Between Two item.
-		// sliderItemsSpace: {
-		// 	type: 'objext',
-		// 	default: {},
-		// 	style: [{
-		// 		selector: '{{QUBELY}} .qubely-carousel .qubely-carousel-extended-list .qubely-carousel-item { padding: 0 {{sliderItemsSpace}}; }'
-		// 	}]
-		// },
 		sliderMargin: {
 			type: 'number',
 			default: 30,
