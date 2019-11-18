@@ -103,11 +103,23 @@ function render_block_qubely_wooproducts($att)
     $layout                 = isset($att['layout']) ? $att['layout'] : 2;
     $style                  = isset($att['style']) ? $att['style'] : 1;
     $orderBy                = isset($att['orderBy']) ? $att['orderBy'] : 'date';
-    $selectedCatagories     = isset($att['selectedCatagories']) ? $att['selectedCatagories']:[];
+    $selectedCatagories     = isset($att['selectedCatagories']) ? $att['selectedCatagories'] : [];
     $animation              = isset($att['animation']) ? (count((array) $att['animation']) > 0 && $att['animation']['animation']  ? 'data-qubelyanimation="' . htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8') . '"' : '') : '';
 
 
     $cat_ids = array_column($selectedCatagories, 'value');
+    $tax_query = array();
+    if (!empty($cat_ids)) {
+        array_push(
+            $tax_query,
+            array(
+                'taxonomy'    => 'product_cat',
+                'field'     => 'term_id',
+                'terms'   =>  $cat_ids,
+            )
+        );
+    }
+
 
     $interaction = '';
     if (isset($att['interaction'])) {
@@ -124,18 +136,11 @@ function render_block_qubely_wooproducts($att)
             }
         }
     }
-
     $args = array(
         'orderby'  => esc_attr($orderBy),
         'post_type' => 'product',
         'post_status'    => 'publish',
-        'tax_query'     => array(
-            array(
-                'taxonomy'    => 'product_cat',
-                'field'     => 'term_id',
-                'terms'   => $cat_ids,
-            )
-        )
+        'tax_query'     => $tax_query
     );
     $query = new WP_Query($args);
 
