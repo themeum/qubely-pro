@@ -15,7 +15,7 @@ export default function Save(props) {
 	async function asyncfunction() {
 		let prodructs
 		await wp.apiFetch({ path: '/wc/blocks/products/categories' }).then(Response => prodructs = Response)
-		console.log('prodructs : ', prodructs)
+		// console.log('prodructs : ', prodructs)
 		return (
 			<div>
 				{

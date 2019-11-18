@@ -1,7 +1,7 @@
 
 const { apiFetch } = wp
 
-export default function getProducts(queryArgs ) {
+export default function getProducts(queryArgs) {
     return apiFetch({
         path:
             '/wc/blocks/products?' +
@@ -11,10 +11,7 @@ export default function getProducts(queryArgs ) {
         parse: false,
     }).then((response) => {
         return response.json().then((products) => {
-            const totalProducts = parseInt(
-                response.headers.get('x-wp-total'),
-                10
-            );
+            const totalProducts = parseInt(response.headers.get('x-wp-total'), 10)
             return { products, totalProducts };
         });
     });

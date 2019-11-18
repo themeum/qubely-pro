@@ -14,11 +14,11 @@ const attributes = {
     },
     productsPerPage: {
         type: 'number',
-        default: 2
+        default: 4
     },
     selectedCatagories: {
-        type: 'number',
-        default: null
+        type: 'array',
+        default: []
     },
     orderby: {
         type: 'string',
@@ -33,11 +33,11 @@ const attributes = {
         type: 'number',
         default: 3
     },
-    layout:{
+    layout: {
         type: 'number',
         default: 2,
     },
-    style:{
+    style: {
         type: 'number',
         default: 2,
     },

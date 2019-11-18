@@ -35,6 +35,7 @@ const {
     Styles,
     Typography,
     Toggle,
+    Dropdown,
     BorderRadius,
     BoxShadow,
     Alignment,
@@ -155,7 +156,7 @@ export default function Edit(props) {
             } : productsStatus === 'featured' ? {
                 featured: 1
             } : {},
-            category: selectedCatagories,
+            category: selectedCatagories.map(({ value }) => value).join(),
             per_page: productsPerPage,
             // page: currentPage,
         };
@@ -241,23 +242,27 @@ export default function Edit(props) {
 
                     }
 
-                    {categories &&
-                        <SelectControl
-                            label={__("Products by Categories")}
-                            value={selectedCatagories}
-                            options={
-                                categories.map(({ name, id }) => {
+
+                    {
+                        categories &&
+                        <Dropdown
+                            label={__('Products by Categories')}
+                            enableSearch
+                            defaultOptionsLabel="All"
+                            options={[
+                                ...categories.map(({ name, id }) => {
                                     return (
                                         {
                                             label: __(name),
                                             value: id
                                         }
                                     )
-                                })
-                            }
-                            onChange={value => setAttributes({ selectedCatagories: value !== 'All' ? value : null })}
+                                })]}
+                            value={selectedCatagories}
+                            onChange={value => setAttributes({ selectedCatagories: value.length && value[value.length - 1].label === 'All' ? [] : value })}
                         />
                     }
+
                     <SelectControl
                         label={__('Order By')}
                         value={orderby}
