@@ -3,7 +3,7 @@ const { __ } = wp.i18n
 const { RichText } = wp.editor
 const { Fragment } = wp.element
 
-export default function Save(props) {
+export default  function Save(props) {
 
 	const {
 		attributes: {
@@ -11,11 +11,10 @@ export default function Save(props) {
 		}
 	} = props
 
+	let prodructs
+	 function asyncfunction() {
+		 wp.apiFetch({ path: '/wc/blocks/products/categories' }).then(Response => prodructs = Response)
 
-	async function asyncfunction() {
-		let prodructs
-		await wp.apiFetch({ path: '/wc/blocks/products/categories' }).then(Response => prodructs = Response)
-		// console.log('prodructs : ', prodructs)
 		return (
 			<div>
 				{
@@ -26,16 +25,14 @@ export default function Save(props) {
 		)
 
 	}
-
+	 asyncfunction()
 
 	return (
 		<div className={`qubely-block-${uniqueId}`}>
-			{
-				asyncfunction()
-			}
+			{test}
 			<div className={`qubely-woo__product_wrapper`}>
 				<p>Init woo prodructs block</p>
-				<p>test</p>
+				<p>tesds t</p>
 			</div>
 
 		</div>

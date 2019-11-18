@@ -60,5 +60,8 @@ registerBlockType('qubely/wooproducts', {
     ],
     attributes,
     edit: Edit,
-    save: Save,
+    // save: Save,
+    save: function (props) {
+        return null;
+    }
 });
