@@ -1,5 +1,5 @@
 const { Fragment, Component } = wp.element;
-const { RichText } = wp.blockEditor
+const { RichText, InnerBlocks } = wp.blockEditor
 // const { QubelyButtonSave } = wp.qubelyComponents
 const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents;
 
@@ -61,6 +61,10 @@ class Save extends Component {
 								<RichText.Content tagName='div' className="qubely-mediacard-text" value={content} />
 							</div>
 						}
+
+						<div className={`content`}>
+							<InnerBlocks.Content />
+						</div>
 
 					</div>
 				</div>

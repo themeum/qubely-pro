@@ -1,10 +1,17 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, TextControl, Toolbar } = wp.components
-const { RichText, InspectorControls, BlockControls } = wp.blockEditor
+const { RichText, InspectorControls, BlockControls, InnerBlocks } = wp.blockEditor
 const { Media, Tabs, Tab, Range, BoxShadow, Select, Separator, ContextMenu: { handleContextMenu }, RadioAdvanced, Typography, Toggle, Styles, Alignment, ColorAdvanced, Color, Headings, Border, BorderRadius, Padding, gloalSettings: { globalSettingsPanel }, Inline: { InlineToolbar }, CssGenerator: { CssGenerator } } = wp.qubelyComponents
 import icons from '../../helpers/icons';
-// import svg from '../heading/separators';
+
+
+const TEMPLATE = [
+	[
+		'qubely/column',
+	],
+];
+
 class Edit extends Component {
 
     constructor(props) {
@@ -106,14 +113,18 @@ class Edit extends Component {
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
 
         return (
-            <Fragment>
+            <Fragment> 
                 <InspectorControls key="inspector">
                     <PanelBody title=''>
-                        <Styles value={layout} onChange={val => setAttributes({ layout: val })}
+                        <Styles columns={3} value={layout} onChange={val => setAttributes({ layout: val })}
                             options={[
-                                { value: 1, svg: icons.mediacard_1, label: __('Layout 1') },
-                                { value: 2, svg: icons.mediacard_2, label: __('Layout 2') },
-                                { value: 3, svg: icons.mediacard_3, label: __('Layout 3') },
+                                { value: 1, svg: icons.mediacard_1, label: __('') },
+                                { value: 2, svg: icons.mediacard_2, label: __('') },
+                                { value: 3, svg: icons.mediacard_3, label: __('') },
+                                { value: 4, svg: icons.mediacard_4, label: __('') },
+                                { value: 5, svg: icons.mediacard_5, label: __('') },
+                                { value: 6, svg: icons.mediacard_5, label: __('') },
+
                             ]}
                         />
                         {(layout == 1 || layout == 4) &&
@@ -314,6 +325,14 @@ class Edit extends Component {
                                     />
                                 </div>
                             }
+
+                            { ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+                                <InnerBlocks
+                                    template={ TEMPLATE }
+                                    templateLock={ true }
+                                    templateInsertUpdatesSelection={ false }
+                                />
+                            ) }
                         </div>
                     
                     </div>
