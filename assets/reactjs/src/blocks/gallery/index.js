@@ -364,6 +364,23 @@ registerBlockType('qubely/gallery', {
         __('Gallery'),
         __('Image')
     ],
+
+
+    example: {
+		attributes: {
+			images: {
+                query: [
+				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/St_Pancras_Railway_Station_2012-06-23.jpg/711px-St_Pancras_Railway_Station_2012-06-23.jpg' },
+				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Beautiful_river_landscape_in_the_fall.jpg/640px-Beautiful_river_landscape_in_the_fall.jpg' },
+				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Landscape_of_Jackson_Hole%2C_October_2010.jpg/640px-Landscape_of_Jackson_Hole%2C_October_2010.jpg' },
+				    { url: 'https://upload.wikimedia.org/wikipedia/commons/8/82/California_Drought_Dry_Riverbed_2009.jpg' },
+				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Taiga_Landscape_in_Canada.jpg/640px-Taiga_Landscape_in_Canada.jpg' },
+				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Lesotho_Landscape.jpg/640px-Lesotho_Landscape.jpg' },
+                ]
+            },
+		},
+	},
+
     attributes: {
         enablePopup: {
             type: 'boolean',

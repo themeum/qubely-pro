@@ -13,7 +13,17 @@ registerBlockType('qubely/teamcarousel', {
 	keywords: [
 		__('Team'),
 		__('Carousel')
-	],
+    ],
+    example: {
+        attributes: {
+            // layout: 2,
+            // column: {
+            //     md: 1
+            // },
+            // showExcerpt: false,
+            // postsToShow: 1
+        },
+    },
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
 		items: { type: 'object', default: { md: '2', sm: '2', xs: '1' } },
@@ -259,14 +269,14 @@ registerBlockType('qubely/teamcarousel', {
 						{ key: 'avatarSize', relation: '==', value: 'custom' },
 						{ key: 'layout', relation: '!=', value: '3' },
 					],
-					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img {width: {{avatarWidth}};}'
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img {width: {{avatarWidth}};} {{QUBELY}} .qubely-block-team-carousel .qubely-single-img .qubely-team-avatar {width: 100%;}'
 				},
 				{
 					condition: [
                         { key: 'avatarSize', relation: '==', value: 'custom' },
                         { key: 'layout', relation: '==', value: '3' },
 					],
-					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img {width: {{avatarWidth}};}'
+					selector: '{{QUBELY}} .qubely-block-team-carousel .qubely-single-img {width: {{avatarWidth}};} {{QUBELY}} .qubely-block-team-carousel .qubely-single-img .qubely-team-avatar {width: 100%;}'
 				}
 			]
 		},
