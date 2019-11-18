@@ -12,7 +12,7 @@ registerBlockType('qubely/mediacard', {
     icon: 'index-card',
     category: 'qubely',
     supports: { align: false },
-    keywords: [__('media'), __('card')],
+    keywords: [__('Media Card'), __('Card'), __('Feature Box')],
     attributes,
     edit: Edit,
     save: Save,
