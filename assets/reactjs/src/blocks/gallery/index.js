@@ -367,19 +367,23 @@ registerBlockType('qubely/gallery', {
 
 
     example: {
-		attributes: {
-			images: {
-                query: [
-				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/St_Pancras_Railway_Station_2012-06-23.jpg/711px-St_Pancras_Railway_Station_2012-06-23.jpg' },
-				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Beautiful_river_landscape_in_the_fall.jpg/640px-Beautiful_river_landscape_in_the_fall.jpg' },
-				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Landscape_of_Jackson_Hole%2C_October_2010.jpg/640px-Landscape_of_Jackson_Hole%2C_October_2010.jpg' },
-				    { url: 'https://upload.wikimedia.org/wikipedia/commons/8/82/California_Drought_Dry_Riverbed_2009.jpg' },
-				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Taiga_Landscape_in_Canada.jpg/640px-Taiga_Landscape_in_Canada.jpg' },
-				    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Lesotho_Landscape.jpg/640px-Lesotho_Landscape.jpg' },
-                ]
-            },
-		},
-	},
+        attributes: {
+            galleryContents: [
+                {
+                    image: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/St_Pancras_Railway_Station_2012-06-23.jpg/711px-St_Pancras_Railway_Station_2012-06-23.jpg' }
+                },
+                {
+                    image: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Beautiful_river_landscape_in_the_fall.jpg/640px-Beautiful_river_landscape_in_the_fall.jpg' }
+                },
+                {
+                    image: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Landscape_of_Jackson_Hole%2C_October_2010.jpg/640px-Landscape_of_Jackson_Hole%2C_October_2010.jpg' }
+                },
+                {
+                    image: { url: 'https://upload.wikimedia.org/wikipedia/commons/8/82/California_Drought_Dry_Riverbed_2009.jpg' }
+                },
+            ],
+        },
+    },
 
     attributes: {
         enablePopup: {
@@ -395,17 +399,17 @@ registerBlockType('qubely/gallery', {
     edit: Edit,
     save: Save,
     deprecated: [
-		{
-			attributes: {
-				...attr
-			},
-            save( props ) {
+        {
+            attributes: {
+                ...attr
+            },
+            save(props) {
                 const { uniqueId, animation, style, column, interaction, galleryContents, imageAnimation, showCaption, enableCaption, linkTo, enableOverlay } = props
-                
+
                 const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 
-				return (
-					<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
+                return (
+                    <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
                         <div className={`qubely-block-gallery ${interactionClass} qubely-gallery-item-${style}`}>
                             <div className={`qubely-gallery-items ${'qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs}`}>
                                 {
@@ -425,9 +429,9 @@ registerBlockType('qubely/gallery', {
                                                     {(image != undefined && image.url != undefined) &&
                                                         <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
                                                             <div className={`qubely-gallery-content-image qubely-gallery-image-${imageAnimation}`}>
-                            
+
                                                                 {(!enableOverlay && typeof (href) !== 'undefined') ? <a href={href}><img src={image.url} alt={title} /></a> : <img src={image.url} alt={title} />}
-                            
+
                                                             </div>
                                                             {enableCaption == 1 &&
                                                                 <div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>
@@ -436,7 +440,7 @@ registerBlockType('qubely/gallery', {
                                                             }
                                                         </div>
                                                     }
-                            
+
                                                 </div>
                                             </div>
                                         )
@@ -445,7 +449,7 @@ registerBlockType('qubely/gallery', {
                             </div >
                         </div >
                     </div>
-				);
+                );
             }
         }
     ]

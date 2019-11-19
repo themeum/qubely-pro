@@ -38,9 +38,11 @@ registerBlockType('qubely/form', {
     supports: {
         align: ['full'],
     },
-    example: {
-        attributes: {},
-    },
+    // example: {
+    //     attributes: {
+    //         formItems: defaultFormItems,
+    //     },
+    // },
     attributes: {
         uniqueId: { type: 'string', default: '' },
         ...globalAttributes,

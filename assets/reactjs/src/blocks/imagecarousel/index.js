@@ -13,10 +13,28 @@ registerBlockType('qubely/imagecarousel', {
 	keywords: [
 		__('Image'),
 		__('Carousel')
-    ],
-    example: {
-        attributes: {},
-    },
+	],
+	example: {
+		attributes: {
+			carouselItems: [
+				{
+					sliderimage: {
+						url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/St_Pancras_Railway_Station_2012-06-23.jpg/711px-St_Pancras_Railway_Station_2012-06-23.jpg'
+					}
+				},
+				{
+					sliderimage: {
+						url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Beautiful_river_landscape_in_the_fall.jpg/640px-Beautiful_river_landscape_in_the_fall.jpg'
+					}
+				},
+				{
+					sliderimage: {
+						url: 'https://upload.wikimedia.org/wikipedia/commons/8/82/California_Drought_Dry_Riverbed_2009.jpg'
+					}
+				},
+			]
+		},
+	},
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
 		layout: { type: 'number', default: 1 },
@@ -53,7 +71,7 @@ registerBlockType('qubely/imagecarousel', {
 		/*---------------------------------------------------
 		* 	Image Layouts:  common/style attributes
 		* --------------------------------------------------- */
-	
+
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
 		sliderNumber: { type: 'number', default: 5 },
 		itemPerSlides: { type: 'string', default: '2' },
