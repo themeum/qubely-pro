@@ -5,12 +5,7 @@ const { RichText, InspectorControls, BlockControls, InnerBlocks } = wp.blockEdit
 const { Media, Tabs, Tab, Range, BoxShadow, Select, Separator, ContextMenu: { handleContextMenu }, RadioAdvanced, Typography, Toggle, Styles, Alignment, ColorAdvanced, Color, Headings, Border, BorderRadius, Padding, gloalSettings: { globalSettingsPanel }, Inline: { InlineToolbar }, CssGenerator: { CssGenerator } } = wp.qubelyComponents
 import icons from '../../helpers/icons';
 
-
-const TEMPLATE = [
-	[
-		'qubely/column',
-	],
-];
+const TEMPLATE = [ [ 'qubely/column', ] ];
 
 class Edit extends Component {
 
@@ -44,6 +39,8 @@ class Edit extends Component {
             youtubeId,
             autoplay,
             videoWidth,
+
+            contentAlign,
 
             mediaType,
             alignment,
@@ -101,7 +98,6 @@ class Edit extends Component {
             // cardBgShadowHover,
             // cardBgBorderColorHover
 
-            
         } = this.props.attributes
 
         let autoPlay = (autoplay == true) ? '1' : '0';
@@ -127,13 +123,35 @@ class Edit extends Component {
 
                             ]}
                         />
-                        {(layout == 1 || layout == 4) &&
-                            <Alignment label={__('Alignment')} value={alignment} alignmentType="content" onChange={val => setAttributes({ alignment: val })} alignmentType="content" disableJustify responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        }
+        
+                        <RadioAdvanced label={__('Content Align')} value={contentAlign} onChange={val => setAttributes({ contentAlign: val })}
+                            options={[
+                                { label: __('Top'), value: 'top', title: __('Top') },
+                                { label: __('Middle'), value: 'middle', title: __('Middle') },
+                                { label: __('Bottom'), value: 'bottom', title: __('Bottom') },
+                            ]}
+                        />
+
+                        <Padding 
+                            label={__('Content Padding')} 
+                            value={contentPadding} 
+                            onChange={val => setAttributes({ contentPadding: val })} 
+                            min={0} max={100} unit={['px', 'em', '%']} 
+                            responsive device={device} 
+                            onDeviceChange={value => this.setState({ device: value })} 
+                        />
                     </PanelBody>
 
-                    
-                    <PanelBody title={__('Media')} opened={'Media' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Media' ? 'Media' : '')}>
+                    <PanelBody title={__('Card Settings')} initialOpen={false}>
+                        <ColorAdvanced label={__('Background')} value={bgColor} onChange={val => setAttributes({ bgColor: val })} />
+                        <Border label={__('Border')} value={bgBorder} onChange={val => setAttributes({ bgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <BorderRadius label={__('Card Corner')} value={bgBorderRadius} onChange={(value) => setAttributes({ bgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <Padding label={__('Card Padding')} value={bgPadding} onChange={val => setAttributes({ bgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <BoxShadow label={__('Card Shadow')} value={bgShadow} onChange={(value) => setAttributes({ bgShadow: value })} />
+                    </PanelBody>
+
+                    <PanelBody title={__('Image Settings')} opened={'Media' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Media' ? 'Media' : '')}>
+                        
                         <RadioAdvanced label={__('Type')} value={mediaType} onChange={val => setAttributes({ mediaType: val })}
                             options={[
                                 { label: __('Video'), value: 'video', title: __('Video') },
@@ -141,9 +159,9 @@ class Edit extends Component {
                             ]}
                         />
 
-                        {mediaType &&
+                        { mediaType &&
                             <Fragment>
-                                {mediaType == 'image' &&
+                                { mediaType == 'image' &&
                                     <Fragment>
                                         <Media label={__('Image')} multiple={false} type={['image']} panel={true} value={image} onChange={val => setAttributes({ image: val })} />
                                         <Media label={__('Retina Image')} multiple={false} type={['image']} panel={true} value={image2x} onChange={val => setAttributes({ image2x: val })} />
@@ -166,7 +184,7 @@ class Edit extends Component {
                                             : 
                                             <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
                                         }
-                                        
+
                                         <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
                                         
                                         {(layout == 2 || layout == 3)  &&
@@ -179,10 +197,11 @@ class Edit extends Component {
                                                 onDeviceChange={value => this.setState({ device: value })} 
                                             />
                                         }
-                                        
                                     </Fragment>
                                 }
+
                                 <Separator />
+
                                 {mediaType == 'image' &&
                                     <Fragment>
                                         <BorderRadius label={__('Radius')} value={mediaBorderRadius} onChange={val => setAttributes({ mediaBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -207,14 +226,12 @@ class Edit extends Component {
                         </Tabs>
                     </PanelBody>
 
-
                     <PanelBody title={__('Content')} opened={'Content' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Content' ? 'Content' : '')}>
                         <Toggle label={__('Show Content')} value={enableContent} onChange={val => setAttributes({ enableContent: val })} />
-                        {
-                            enableContent &&
+                        { enableContent &&
                             <Fragment>
-
                                 <Typography label={__('Typography')} value={contentTypography} onChange={(value) => setAttributes({ contentTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                
                                 <Tabs>
                                     <Tab tabTitle={__('Normal')}>
                                         <Color label={__('Color')} value={contentColor} onChange={(value) => setAttributes({ contentColor: value })} />
@@ -223,41 +240,22 @@ class Edit extends Component {
                                         <Color label={__('Color')} value={contentColorHover} onChange={(value) => setAttributes({ contentColorHover: value })} />
                                     </Tab>
                                 </Tabs>
-                                <Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                {enableButton &&
+                                
+                                { enableButton &&
                                     <Range label={__('Spacing')} value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 }
                             </Fragment>
                         }
                     </PanelBody>
 
-
                     <PanelBody title={__('Card Style')} initialOpen={true}>
                         <ColorAdvanced label={__('Background Color')} value={cardBackgroundColor} onChange={val => setAttributes({ cardBackgroundColor: val })} />
-                        <Padding label={__('Padding')} value={cardBgPadding} onChange={val => setAttributes({ cardBgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        {/* <Padding label={__('Padding')} value={cardBgPadding} onChange={val => setAttributes({ cardBgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} /> */}
                         <Border label={__('Border')} value={cardBgBorder} onChange={val => setAttributes({ cardBgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Box-Shadow')} value={cardBgShadow} onChange={(value) => setAttributes({ cardBgShadow: value })} />
                         <BorderRadius label={__('Radius')} value={cardBgBorderRadius} onChange={(value) => setAttributes({ cardBgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                     </PanelBody>
 
-
-
-                    <PanelBody title={__('Background')} initialOpen={false}>
-                        <Tabs>
-                            <Tab tabTitle={__('Normal')}>
-                                <ColorAdvanced label={__('Background Color')} value={bgColor} onChange={val => setAttributes({ bgColor: val })} />
-                                <Padding label={__('Padding')} value={bgPadding} onChange={val => setAttributes({ bgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Border label={__('Border')} value={bgBorder} onChange={val => setAttributes({ bgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <BoxShadow label={__('Box-Shadow')} value={bgShadow} onChange={(value) => setAttributes({ bgShadow: value })} />
-                                <BorderRadius label={__('Radius')} value={bgBorderRadius} onChange={(value) => setAttributes({ bgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                            </Tab>
-                            <Tab tabTitle={__('Hover')}>
-                                <ColorAdvanced label={__('Background Color')} value={bgColorHover} onChange={val => setAttributes({ bgColorHover: val })} />
-                                <BoxShadow label={__('Box-Shadow')} value={bgShadowHover} onChange={(value) => setAttributes({ bgShadowHover: value })} />
-                                <Color label={__('Border Color')} value={bgBorderColorHover} onChange={(value) => setAttributes({ bgBorderColorHover: value })} />
-                            </Tab>
-                        </Tabs>
-                    </PanelBody>
                 </InspectorControls>
 
                 <BlockControls>
@@ -327,18 +325,21 @@ class Edit extends Component {
                             }
 
                             { ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-                                <InnerBlocks
-                                    template={ TEMPLATE }
-                                    templateLock={ true }
-                                    templateInsertUpdatesSelection={ false }
-                                />
+                                <div className={`innerBlock-content`}>
+                                    <InnerBlocks
+                                        template={ TEMPLATE }
+                                        templateLock={ true }
+                                        templateInsertUpdatesSelection={ false }
+                                    />
+                                </div>
                             ) }
+                            
                         </div>
-                    
                     </div>
                 </div>
             </Fragment>
         )
     }
 }
+
 export default Edit

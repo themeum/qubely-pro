@@ -1,4 +1,11 @@
+// .wp-block-qubely-mediacard {
+//     margin: 0 !important;
+//     padding: 0 !important;
+// }
+
 .qubely-block-mediacard {
+    position: relative;
+    display: inline-block;
     transition: border-color 400ms, background-color 400ms, box-shadow 400ms;
     h1, h2, h3, h4, h5, h6 {
         padding: 0;
@@ -182,53 +189,88 @@
 }
 .qubely-mediacard-layout-1.media-type-image {
     .qubely-mediacard-media {
-        width: 100%;
+        width: 24%;
+        display: inline-block;
+        float: left;
+    }
+    .qubely-mediacard-body  {
+        width: 76%;
+        display: inline-block;
+        padding-left: 30px;
     }
 }
 
-div[data-type="qubely/column"]{
-    .editor-inserter.block-editor-inserter {
-        width: 100%;
-        margin-top: 20px;
-    }
-    .editor-inserter {
-        .components-button {
-            background: rgba(139,139,150,0.1);
-            border: 1px dashed #8d96a0;
-            border-radius: 0;
-            -webkit-box-shadow: none !important;
-            box-shadow: none !important;
-            color: #555d66;
-            display: block;
-            font-size: 14px;
-            height: 40px !important;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            line-height: 31px;
-            margin-top: 0;
-            opacity: 1;
-            padding: 8px;
-            position: relative;
-            text-align: center;
-            width: 100%;
-        }
-    }
-} 
 
 
-div[data-type="qubely/column"] .qubely-column {
-    textarea.editor-default-block-appender__content {
-        display: none;
-    }
-}
+
+// Media card body.
 .qubely-mediacard-body  {
     .wp-block, .qubely-column-front {
         width: 100% !important;
         max-width: 100% !important;
     }
-    .block-editor-block-list__layout {
-        margin-left: 0;
-        margin-right: 0;
+    .editor-block-list__block-edit.block-editor-block-list__block-edit {
+        margin: 0;
+    }
+    .block-editor-block-list__layout{
+        margin: 0;
+    }
+    div[data-type="qubely/column"] {
+        padding: 0;
+        margin: 0;
+
+        .block-editor-default-block-appender {
+            .block-editor-inserter {
+                position: inherit;
+                width: 100%;
+                margin-top: 12px;
+                right: 0 !important;
+            }
+            .components-icon-button:hover {
+                background-color: rgba(33, 132, 249, 0.1);
+                color: #fff;
+            }
+
+            .components-icon-button {
+                svg {
+                    border-radius: 50%;
+                    padding: 1px;
+                    background-color: rgb(33, 132, 249);
+                    color: #fff;
+                }
+            } 
+        } 
+
+        .editor-block-list__insertion-point.block-editor-block-list__insertion-point {
+            display: none;
+        }
+        .qubely-column {
+            textarea.editor-default-block-appender__content {
+                display: none;
+            }
+        }
+       
+        .block-editor-block-list__layout {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .editor-inserter {
+            .components-button {
+                background: rgba(255, 255, 255, 0);
+                border: 2px dashed #2184F9;
+                box-shadow: none;
+                color: #555d66;
+                display: block;
+                font-size: 14px;
+                height: 50px;
+                margin-top: 0;
+                opacity: 1;
+                padding: 8px;
+                position: relative;
+                text-align: center;
+                width: 100%;
+                border-radius: 6px;
+            }
+        }
     }
 }

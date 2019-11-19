@@ -62,9 +62,13 @@ class Save extends Component {
 							</div>
 						}
 
-						<div className={`content`}>
-							<InnerBlocks.Content />
-						</div>
+						
+							
+								<div className={`innerBlock-content`}>
+                                	<InnerBlocks.Content/>
+								</div>
+                            
+						
 
 					</div>
 				</div>
