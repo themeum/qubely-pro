@@ -15,14 +15,7 @@ registerBlockType('qubely/teamcarousel', {
 		__('Carousel')
     ],
     example: {
-        attributes: {
-            // layout: 2,
-            // column: {
-            //     md: 1
-            // },
-            // showExcerpt: false,
-            // postsToShow: 1
-        },
+        attributes: {},
     },
 	attributes: {
 		uniqueId: { type: 'string', default: '' },

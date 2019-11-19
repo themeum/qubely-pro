@@ -13,7 +13,10 @@ registerBlockType('qubely/imagecarousel', {
 	keywords: [
 		__('Image'),
 		__('Carousel')
-	],
+    ],
+    example: {
+        attributes: {},
+    },
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
 		layout: { type: 'number', default: 1 },
