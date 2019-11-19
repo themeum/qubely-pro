@@ -137,12 +137,23 @@ function render_block_qubely_wooproducts($att)
             }
         }
     }
+
     $args = array(
         'orderby'        => esc_attr($orderBy),
         'post_type'      => 'product',
         'post_status'    => 'publish',
-        'posts_per_page'       =>  $productsPerPage,
-        'tax_query'      => $tax_query
+        'posts_per_page' =>  $productsPerPage,
+        // 'tax_query'      => $tax_query,
+        // 'tax_query'      =>  array(
+        //     // 'relation' => 'AND',
+        //     // $tax_query,
+        //     array(
+        //         'taxonomy' => 'product_visibility',
+        //         'field'    => 'name',
+        //         'terms'    => 'featured',
+        //         'operator' => 'IN', 
+        //     ),
+        // ),
     );
     $query = new WP_Query($args);
 

@@ -160,7 +160,7 @@ export default function Edit(props) {
             per_page: productsPerPage,
             // page: currentPage,
         };
-
+      
         getProducts(args)
             .then((productsData) => {
                 setLoading(false)
