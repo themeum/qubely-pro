@@ -48,7 +48,7 @@ class Edit extends Component {
 	}
 
 	componentDidMount() {
-		const { setAttributes, clientId, attributes: { uniqueId } } = this.props
+		const { setAttributes, clientId, posts, attributes: { uniqueId } } = this.props
 		this.isStillMounted = true;
 		this.fetchRequest = wp.apiFetch({
 			path: addQueryArgs(`/wp/v2/categories`, CATEGORIES_LIST_QUERY),
@@ -66,10 +66,14 @@ class Edit extends Component {
 			}
 		);
 		const _client = clientId.substr(0, 6)
+
 		if (!uniqueId) {
 			setAttributes({ uniqueId: _client });
 		} else if (uniqueId && uniqueId != _client) {
 			setAttributes({ uniqueId: _client });
+		}
+		if (posts.length < 2) {
+			setAttributes({ postitems: { 'md': posts.length, 'sm': posts.length, 'xs': posts.length } });
 		}
 	}
 	componentWillUnmount() {
