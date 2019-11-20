@@ -370,16 +370,19 @@ registerBlockType('qubely/gallery', {
         attributes: {
             galleryContents: [
                 {
-                    image: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/St_Pancras_Railway_Station_2012-06-23.jpg/711px-St_Pancras_Railway_Station_2012-06-23.jpg' }
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image1.jpg' }
                 },
                 {
-                    image: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Beautiful_river_landscape_in_the_fall.jpg/640px-Beautiful_river_landscape_in_the_fall.jpg' }
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image2.jpg' }
                 },
                 {
-                    image: { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Landscape_of_Jackson_Hole%2C_October_2010.jpg/640px-Landscape_of_Jackson_Hole%2C_October_2010.jpg' }
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image3.jpg' }
                 },
                 {
-                    image: { url: 'https://upload.wikimedia.org/wikipedia/commons/8/82/California_Drought_Dry_Riverbed_2009.jpg' }
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image4.jpg' }
+                },
+                {
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image5.jpg' }
                 },
             ],
         },

@@ -46,7 +46,7 @@ registerBlockType('qubely/form', {
             {
                 name: 'qubely/image',
                 attributes: {
-                    image: { url: 'http://10.0.1.45:8888/wordpress/wp-content/uploads/2019/11/form-builder-2.png' },
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/form-builder.png' },
                 },
             },
         ]
