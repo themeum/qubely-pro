@@ -5,27 +5,28 @@ const { dateI18n, __experimentalGetSettings } = wp.date
 const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
 const { InspectorControls, BlockControls } = wp.blockEditor
-const { 
-	Range, 
-	ButtonGroup, 
-	Toggle, 
-	Dropdown, 
-	Select, 
-	Separator, 
-	ColorAdvanced, 
-	Typography, 
-	Color, 
-	Border, 
-	BorderRadius, 
-	Padding, 
-	BoxShadow, 
-	Styles, 
-	Tabs, 
-	Tab, 
-	RadioAdvanced, 
-	CssGenerator: { CssGenerator }, 
-	gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, 
-	Inline: { InlineToolbar } 
+const {
+	Range,
+	ButtonGroup,
+	Toggle,
+	Dropdown,
+	Select,
+	Separator,
+	ColorAdvanced,
+	Typography,
+	Color,
+	Border,
+	BorderRadius,
+	Padding,
+	BoxShadow,
+	Styles,
+	Tabs,
+	Tab,
+	RadioAdvanced,
+	CssGenerator: { CssGenerator },
+	gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
+	Inline: { InlineToolbar },
+	ContextMenu: { ContextMenu, handleContextMenu }
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
@@ -77,24 +78,24 @@ class Edit extends Component {
 	renderFeaturedImage = (post) => {
 		const { attributes: { layout, style, imgSize, imageAnimation, showCategory, categoryPosition } } = this.props
 		return (
-            <Fragment>
-                {
-                    (showCategory == 'badge' && style === 4) &&
-                    <div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
-                        <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
-                    </div>
-                }
-                <div className={`${layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img'} qubely-post-img qubely-post-img-${imageAnimation}`}>
+			<Fragment>
+				{
+					(showCategory == 'badge' && style === 4) &&
+					<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
+						<span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+					</div>
+				}
+				<div className={`${layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img'} qubely-post-img qubely-post-img-${imageAnimation}`}>
 
-                    <img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
-                    {
-                        (showCategory == 'badge' && style != 4) &&
-                        <div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
-                            <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
-                        </div>
-                    }
-                </div>
-            </Fragment>
+					<img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
+					{
+						(showCategory == 'badge' && style != 4) &&
+						<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
+							<span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+						</div>
+					}
+				</div>
+			</Fragment>
 		)
 	}
 
@@ -108,13 +109,13 @@ class Edit extends Component {
 				{
 					(showAuthor || showDates || showComment) &&
 					<div className="qubely-postgrid-meta">
-						{showAuthor && <span><i className="fas fa-user"/> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
-						{showDates && <span><i className="far fa-calendar-alt"/> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
-						{showComment && <span><i className="fas fa-comment"/> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
+						{showAuthor && <span><i className="fas fa-user" /> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
+						{showDates && <span><i className="far fa-calendar-alt" /> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
+						{showComment && <span><i className="fas fa-comment" /> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
 					</div>
 				}
 				{showTitle && (titlePosition == false) && title}
-				{showExcerpt && ( (index==0) && (layout === 5) ) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
+				{showExcerpt && ((index == 0) && (layout === 5)) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
 				{showExcerpt && (layout != 5) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
 				{showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
 			</div>
@@ -123,6 +124,9 @@ class Edit extends Component {
 
 	render() {
 		const {
+			name,
+			clientId,
+			attributes,
 			posts,
 			taxonomyList,
 			setAttributes,
@@ -137,8 +141,8 @@ class Edit extends Component {
 				showImages,
 				imgSize,
 				enableFixedHeight,
-                fixedHeight,
-                fixedSmallHeight,
+				fixedHeight,
+				fixedSmallHeight,
 				imageRadius,
 				imageAnimation,
 				cardBackground,
@@ -214,8 +218,8 @@ class Edit extends Component {
 				overlayBg,
 				overlayHoverBg,
 				overlayBlend,
-                overlayHeight,
-                overlaySmallHeight,
+				overlayHeight,
+				overlaySmallHeight,
 				overlaySpace,
 				overlayBorderRadius,
 				columnGap,
@@ -225,11 +229,11 @@ class Edit extends Component {
 				categorySpace,
 				metaSpace,
 				excerptSpace,
-                globalZindex,
-                enablePosition, 
-                selectPosition, 
-                positionXaxis, 
-                positionYaxis,
+				globalZindex,
+				enablePosition,
+				selectPosition,
+				positionXaxis,
+				positionYaxis,
 				hideTablet,
 				hideMobile,
 				globalCss,
@@ -238,7 +242,7 @@ class Edit extends Component {
 			}
 		} = this.props
 		const { device } = this.state
-		
+
 		if (uniqueId) { CssGenerator(this.props.attributes, 'postgrid', uniqueId) }
 		return (
 			<Fragment>
@@ -266,10 +270,10 @@ class Edit extends Component {
 								{ value: 4, svg: icons.postgrid_design_6 },
 							]}
 						/>
-						{ ( (layout === 2) || (layout === 3) || (layout === 4) ) && 
+						{((layout === 2) || (layout === 3) || (layout === 4)) &&
 							<Range label={__('Select Column')} value={column} onChange={(value) => setAttributes({ column: value })} min={1} step={1} max={6} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						}
-						{((layout === 1) || ( (layout != 1)  && ((style === 3) || (style === 4)))) &&
+						{((layout === 1) || ((layout != 1) && ((style === 3) || (style === 4)))) &&
 							<ButtonGroup
 								label={__('Content Align')}
 								options={
@@ -312,11 +316,11 @@ class Edit extends Component {
 						{/* Overlay */}
 						{(style === 4) &&
 							<Fragment>
-                                { ( (layout === 5) || (layout === 3) ) &&
-								<Range label={__('large Height')} value={overlayHeight} onChange={value => setAttributes({ overlayHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                }
-                                <Range label={__('Overlay Height')} value={overlaySmallHeight} onChange={value => setAttributes({ overlaySmallHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                
+								{((layout === 5) || (layout === 3)) &&
+									<Range label={__('large Height')} value={overlayHeight} onChange={value => setAttributes({ overlayHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+								}
+								<Range label={__('Overlay Height')} value={overlaySmallHeight} onChange={value => setAttributes({ overlaySmallHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+
 								{(layout === 1) &&
 									<Range label={__('Overlay Space')} value={overlaySpace} onChange={value => setAttributes({ overlaySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 								}
@@ -406,13 +410,13 @@ class Edit extends Component {
 
 					<PanelBody title={__('Image Settings')} initialOpen={false}>
 						<Toggle label={__('Show Featured Image')} value={showImages} onChange={value => setAttributes({ showImages: value })} />
-                        {( style != 4 ) &&
-                        <Fragment> 
-                            <Toggle label={__('Fixed Image Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
-						    {enableFixedHeight && <Range label={__('large Image')} value={fixedHeight} onChange={value => setAttributes({ fixedHeight: value })} unit={['px', 'em', '%']} min={10} max={1000} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
-                            {enableFixedHeight && ((layout === 5) || (layout === 3)) && <Range label={__('Small Image')} value={fixedSmallHeight} onChange={value => setAttributes({ fixedSmallHeight: value })} unit={['px', 'em', '%']} min={10} max={400} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
-                        </Fragment> 
-                        }
+						{(style != 4) &&
+							<Fragment>
+								<Toggle label={__('Fixed Image Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
+								{enableFixedHeight && <Range label={__('large Image')} value={fixedHeight} onChange={value => setAttributes({ fixedHeight: value })} unit={['px', 'em', '%']} min={10} max={1000} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+								{enableFixedHeight && ((layout === 5) || (layout === 3)) && <Range label={__('Small Image')} value={fixedSmallHeight} onChange={value => setAttributes({ fixedSmallHeight: value })} unit={['px', 'em', '%']} min={10} max={400} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+							</Fragment>
+						}
 						<SelectControl
 							label={__("Image Sizes")}
 							value={imgSize}
@@ -429,9 +433,9 @@ class Edit extends Component {
 							unit={['px', 'em', '%']}
 							onChange={value => setAttributes({ imageRadius: value })}
 							onDeviceChange={value => this.setState({ device: value })} />
-                        {(style === 4) &&
-						    <Select label={__('Hover Effect')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />
-                        }
+						{(style === 4) &&
+							<Select label={__('Hover Effect')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />
+						}
 					</PanelBody>
 
 					<PanelBody title='Content' initialOpen={false}>
@@ -595,15 +599,15 @@ class Edit extends Component {
 					</PanelBody>
 
 					<PanelBody title={__('Spacing')} initialOpen={false}>
-						{( layout != 1 ) &&
+						{(layout != 1) &&
 							<Range label={__('Column Gap')} value={columnGap} onChange={value => setAttributes({ columnGap: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						}
 						{(showCategory == 'default') &&
 							<Range label={__('Category')} value={categorySpace} onChange={value => setAttributes({ categorySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						}
-                        {( (layout != 1) && (style === 1) || (style === 2) ) &&
-						    <Range label={__('Image')} value={imageSpace} onChange={value => setAttributes({ imageSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        }
+						{((layout != 1) && (style === 1) || (style === 2)) &&
+							<Range label={__('Image')} value={imageSpace} onChange={value => setAttributes({ imageSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+						}
 						<Range label={__('Title')} value={titleSpace} onChange={value => setAttributes({ titleSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Range label={__('Meta')} value={metaSpace} onChange={value => setAttributes({ metaSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<Range label={__('Excerpt')} value={excerptSpace} onChange={value => setAttributes({ excerptSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -627,7 +631,7 @@ class Edit extends Component {
 					{animationSettings(uniqueId, animation, setAttributes)}
 
 					{interactionSettings(uniqueId, interaction, setAttributes)}
-					
+
 				</InspectorControls>
 
 				<BlockControls>
@@ -645,22 +649,32 @@ class Edit extends Component {
 				<div className={`qubely-block-${uniqueId}`}>
 					{
 						(posts && posts.length) ?
-                        <div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${( (layout === 2) || (layout === 3) || (layout === 4) ) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`}>
-                            { posts && posts.map( (post,index) => {	
-                                return (
-                                    <div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style} ${( (layout == 5) && (index == 0) || (layout == 3) && (index == 0) ) ? 'qubely-post-large-view': 'qubely-post-small-view'}`}>
-                                        <div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
-                                            {showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
-                                            {this.renderCardContent(post, index)}
-                                        </div>
-                                    </div>
-                                )
-                            }) }
-                        </div>
-                        :
-                        <div className="qubely-postgrid-is-loading">
-                            <Spinner />
-                        </div>
+							<div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${((layout === 2) || (layout === 3) || (layout === 4)) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+								{posts && posts.map((post, index) => {
+									return (
+										<div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style} ${((layout == 5) && (index == 0) || (layout == 3) && (index == 0)) ? 'qubely-post-large-view' : 'qubely-post-small-view'}`}>
+											<div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
+												{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
+												{this.renderCardContent(post, index)}
+											</div>
+										</div>
+									)
+								})}
+
+								<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+									<ContextMenu
+										name={name}
+										clientId={clientId}
+										attributes={attributes}
+										setAttributes={setAttributes}
+										qubelyContextMenu={this.refs.qubelyContextMenu}
+									/>
+								</div>
+							</div>
+							:
+							<div className="qubely-postgrid-is-loading">
+								<Spinner />
+							</div>
 					}
 				</div>
 			</Fragment>

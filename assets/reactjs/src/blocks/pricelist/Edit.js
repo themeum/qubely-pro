@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, BlockControls, MediaUpload } = wp.blockEditor
-const { Inline: { InlineToolbar }, Background, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings } } = wp.qubelyComponents
+const { Inline: { InlineToolbar }, Background, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, ContextMenu: { ContextMenu, handleContextMenu } } = wp.qubelyComponents
 import icons from '../../helpers/icons'
 
 class Edit extends Component {
@@ -193,76 +193,81 @@ class Edit extends Component {
         }))
     }
     render() {
-        const { setAttributes, attributes: {
-            uniqueId,
-            pricelistItems,
-            style,
-            column,
-            columnGap,
-            headingLevel,
-            priceAfterTitle,
-            headingTypography,
-            headingColor,
-            headingWhiteColor,
-            headingSpacing,
-            contentBg,
-            enableContentBorder,
-            contentBorderWidth,
-            contentBorderColor,
-            contentPadding,
-            contentBorderRadius,
-            contentBoxShadow,
-            contentSpacing,
-            contentAlign,
-            overlayContentBg,
-            overlayHoverBg,
-            overlayBg,
-            height,
-            enableLine,
-            lineBorderWidth,
-            lineBorderColor,
-            lineBorderStyle,
-            badgePosition,
-            enableMedia,
-            mediaType,
-            imagePosition,
-            imageBorderRadius,
-            imageSize,
-            imageSpacing,
-            enableBadge,
-            badgePadding,
-            badgeBorderRadius,
-            badgeBg,
-            badgeColor,
-            digitColor,
-            digitBg,
-            digitSize,
-            digitBorderRadius,
-            digitSpacing,
-            digitTypography,
-            enablePrice,
-            priceTypography,
-            priceColor,
-            priceWhiteColor,
-            enableDescription,
-            descriptionTypography,
-            descriptionColor,
-            descriptionWhiteColor,
-            enableDiscount,
-            discountTypography,
-            discountColor,
-            discountWhiteColor,
-            globalZindex,
-            enablePosition,
-            selectPosition,
-            positionXaxis,
-            positionYaxis,
-            hideTablet,
-            hideMobile,
-            globalCss,
-            animation,
-            interaction
-        } } = this.props
+        const {
+            name,
+            clientId,
+            attributes,
+            setAttributes,
+            attributes: {
+                uniqueId,
+                pricelistItems,
+                style,
+                column,
+                columnGap,
+                headingLevel,
+                priceAfterTitle,
+                headingTypography,
+                headingColor,
+                headingWhiteColor,
+                headingSpacing,
+                contentBg,
+                enableContentBorder,
+                contentBorderWidth,
+                contentBorderColor,
+                contentPadding,
+                contentBorderRadius,
+                contentBoxShadow,
+                contentSpacing,
+                contentAlign,
+                overlayContentBg,
+                overlayHoverBg,
+                overlayBg,
+                height,
+                enableLine,
+                lineBorderWidth,
+                lineBorderColor,
+                lineBorderStyle,
+                badgePosition,
+                enableMedia,
+                mediaType,
+                imagePosition,
+                imageBorderRadius,
+                imageSize,
+                imageSpacing,
+                enableBadge,
+                badgePadding,
+                badgeBorderRadius,
+                badgeBg,
+                badgeColor,
+                digitColor,
+                digitBg,
+                digitSize,
+                digitBorderRadius,
+                digitSpacing,
+                digitTypography,
+                enablePrice,
+                priceTypography,
+                priceColor,
+                priceWhiteColor,
+                enableDescription,
+                descriptionTypography,
+                descriptionColor,
+                descriptionWhiteColor,
+                enableDiscount,
+                discountTypography,
+                discountColor,
+                discountWhiteColor,
+                globalZindex,
+                enablePosition,
+                selectPosition,
+                positionXaxis,
+                positionYaxis,
+                hideTablet,
+                hideMobile,
+                globalCss,
+                animation,
+                interaction
+            } } = this.props
 
         const { device } = this.state
 
@@ -484,9 +489,18 @@ class Edit extends Component {
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
                 <div className={`qubely-block-${uniqueId}`}>
-                    <div className={`qubely-block-pricelist qubely-pricelist-item-${style}`}>
+                    <div className={`qubely-block-pricelist qubely-pricelist-item-${style}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         <div className={`qubely-pricelist-items`}>
                             {this.renderPricelist()}
+                        </div>
+                        <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+                            <ContextMenu
+                                name={name}
+                                clientId={clientId}
+                                attributes={attributes}
+                                setAttributes={setAttributes}
+                                qubelyContextMenu={this.refs.qubelyContextMenu}
+                            />
                         </div>
                     </div>
                 </div>
