@@ -50,26 +50,22 @@ class Save extends Component {
 					</div>
 
 					<div className="qubely-mediacard-body">
-						<div className={`qubely-mediacard-title-container ${separatorStyle ? 'qubely-has-separator' : ''} ${separatorPosition ? 'qubely-separator-position-' + separatorPosition : ''}`}>
-							<div className="qubely-mediacard-title-inner">
-								<RichText.Content tagName={titleTagName} className="qubely-mediacard-title" value={title} />
+						<div className="qubely-mediacard-wrap">
+							<div className={`qubely-mediacard-title-container ${separatorStyle ? 'qubely-has-separator' : ''} ${separatorPosition ? 'qubely-separator-position-' + separatorPosition : ''}`}>
+								<div className="qubely-mediacard-title-inner">
+									<RichText.Content tagName={titleTagName} className="qubely-mediacard-title" value={title} />
+								</div>
+							</div>
+
+							{ enableContent &&
+								<div className="qubely-mediacard-content">
+									<RichText.Content tagName='div' className="qubely-mediacard-text" value={content} />
+								</div>
+							}
+							<div className={`innerBlock-content`}>
+								<InnerBlocks.Content/>
 							</div>
 						</div>
-
-						{ enableContent &&
-							<div className="qubely-mediacard-content">
-								<RichText.Content tagName='div' className="qubely-mediacard-text" value={content} />
-							</div>
-						}
-
-						
-							
-								<div className={`innerBlock-content`}>
-                                	<InnerBlocks.Content/>
-								</div>
-                            
-						
-
 					</div>
 				</div>
 			</div>

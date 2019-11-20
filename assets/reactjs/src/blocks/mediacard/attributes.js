@@ -7,7 +7,7 @@ export const attributes = {
     ...globalAttributes,
     ...buttonAttributes,
     layout: { type: 'number', default: 1 },
-    mediaType: { type: 'string', default: 'video' },
+    mediaType: { type: 'string', default: 'image' },
 
     videoSource: { type: 'string', default: 'vimeo' },
     vimeoId: { type: 'string', default: '368867301' },

@@ -250,7 +250,7 @@ class Edit extends Component {
 
                     <PanelBody title={__('Card Style')} initialOpen={true}>
                         <ColorAdvanced label={__('Background Color')} value={cardBackgroundColor} onChange={val => setAttributes({ cardBackgroundColor: val })} />
-                        {/* <Padding label={__('Padding')} value={cardBgPadding} onChange={val => setAttributes({ cardBgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} /> */}
+                        <Padding label={__('Padding')} value={cardBgPadding} onChange={val => setAttributes({ cardBgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Border label={__('Border')} value={cardBgBorder} onChange={val => setAttributes({ cardBgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Box-Shadow')} value={cardBgShadow} onChange={(value) => setAttributes({ cardBgShadow: value })} />
                         <BorderRadius label={__('Radius')} value={cardBgBorderRadius} onChange={(value) => setAttributes({ cardBgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -283,6 +283,7 @@ class Edit extends Component {
                                     }
                                 </Fragment> 
                             }
+
                             {(mediaType == 'image') &&
                                 <Fragment>
                                     {image.url != undefined ?
@@ -295,45 +296,46 @@ class Edit extends Component {
                         </div>
                         
                         <div className="qubely-mediacard-body">
-                            <div className={`qubely-mediacard-title-container`} >
-                                <div className="qubely-mediacard-title-inner">
-                                    <div onClick={() => this.handlePanelOpenings('Title')}>
-                                        <RichText
-                                            key="editable"
-                                            tagName={titleTagName}
-                                            className="qubely-mediacard-title"
-                                            keepPlaceholderOnFocus
-                                            placeholder={__('Add Text...')}
-                                            onChange={value => setAttributes({ title: value })}
-                                            value={title} />
+                            <div className="qubely-mediacard-wrap">
+                                <div className={`qubely-mediacard-title-container`} >
+                                    <div className="qubely-mediacard-title-inner">
+                                        <div onClick={() => this.handlePanelOpenings('Title')}>
+                                            <RichText
+                                                key="editable"
+                                                tagName={titleTagName}
+                                                className="qubely-mediacard-title"
+                                                keepPlaceholderOnFocus
+                                                placeholder={__('Add Text...')}
+                                                onChange={value => setAttributes({ title: value })}
+                                                value={title} />
+                                        </div>
                                     </div>
                                 </div>
+
+                                { enableContent &&
+                                    <div className="qubely-mediacard-content" onClick={() => this.handlePanelOpenings('Content')}>
+                                        <RichText
+                                            key="editable"
+                                            tagName='div'
+                                            className="qubely-mediacard-text"
+                                            keepPlaceholderOnFocus
+                                            placeholder={__('Add Text...')}
+                                            onChange={value => setAttributes({ content: value })}
+                                            value={content}
+                                        />
+                                    </div>
+                                }
+
+                                { ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+                                    <div className={`innerBlock-content`}>
+                                        <InnerBlocks
+                                            template={ TEMPLATE }
+                                            templateLock={ true }
+                                            templateInsertUpdatesSelection={ false }
+                                        />
+                                    </div>
+                                ) }
                             </div>
-
-                            { enableContent &&
-                                <div className="qubely-mediacard-content" onClick={() => this.handlePanelOpenings('Content')}>
-                                    <RichText
-                                        key="editable"
-                                        tagName='div'
-                                        className="qubely-mediacard-text"
-                                        keepPlaceholderOnFocus
-                                        placeholder={__('Add Text...')}
-                                        onChange={value => setAttributes({ content: value })}
-                                        value={content}
-                                    />
-                                </div>
-                            }
-
-                            { ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
-                                <div className={`innerBlock-content`}>
-                                    <InnerBlocks
-                                        template={ TEMPLATE }
-                                        templateLock={ true }
-                                        templateInsertUpdatesSelection={ false }
-                                    />
-                                </div>
-                            ) }
-                            
                         </div>
                     </div>
                 </div>
