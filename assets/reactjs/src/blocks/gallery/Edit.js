@@ -34,6 +34,7 @@ const {
     Inline: { InlineToolbar },
     CssGenerator: { CssGenerator },
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
+    ContextMenu: { ContextMenu, handleContextMenu }
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
@@ -136,7 +137,7 @@ class Edit extends Component {
                             />
                         </div>
                     }
-                    
+
                     <div className={`qubely-gallery-content ${enablePopup ? 'qubely-gallery-pupup' : ''}`}>
                         <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
                             <div className={`qubely-gallery-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'} qubely-gallery-image-${imageAnimation}`}>
@@ -229,6 +230,9 @@ class Edit extends Component {
 
     render() {
         const {
+            name,
+            clientId,
+            attributes,
             setAttributes,
             attributes: {
                 uniqueId,
@@ -309,10 +313,10 @@ class Edit extends Component {
                         />
                         <Range label={__('Gutter')} value={gutter} onChange={val => setAttributes({ gutter: val })} min={0} max={50} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Toggle label={__('Enable Popup')} value={enablePopup} onChange={value => setAttributes({ enablePopup: value })} />
-                        { enablePopup && 
-                        <Toggle label={__('Enable Popup Icon')} value={enablePopupIcon} onChange={value => setAttributes({ enablePopupIcon: value })} />
+                        {enablePopup &&
+                            <Toggle label={__('Enable Popup Icon')} value={enablePopupIcon} onChange={value => setAttributes({ enablePopupIcon: value })} />
                         }
-                        { !enablePopup &&
+                        {!enablePopup &&
                             <SelectControl
                                 label={__('Link To')}
                                 value={linkTo}
@@ -397,9 +401,18 @@ class Edit extends Component {
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
                 <div className={`qubely-block-${uniqueId}`}>
-                    <div className={`qubely-block-gallery qubely-gallery-item-${style}`}>
+                    <div className={`qubely-block-gallery qubely-gallery-item-${style}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         <div className={`qubely-gallery-items ${'qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs}`}>
                             {this.renderGalleryItem()}
+                        </div>
+                        <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+                            <ContextMenu
+                                name={name}
+                                clientId={clientId}
+                                attributes={attributes}
+                                setAttributes={setAttributes}
+                                qubelyContextMenu={this.refs.qubelyContextMenu}
+                            />
                         </div>
                     </div>
                 </div>

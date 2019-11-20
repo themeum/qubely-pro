@@ -3,7 +3,7 @@ const { Fragment, Component } = wp.element;
 const { PanelBody, TextControl, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.blockEditor
 import icons from '../../helpers/icons'
-const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } } = wp.qubelyComponents
+const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar }, ContextMenu: { ContextMenu, handleContextMenu } } = wp.qubelyComponents
 
 class Edit extends Component {
 	constructor(props) {
@@ -82,9 +82,9 @@ class Edit extends Component {
 							<div className="qubely-single-img qubely-backend">
 								{(avatar && avatar.url) ?
 									<img onClick={open} className="qubely-team-avatar" src={avatar.url} />
-                                    :
-                                    <div className="qubely-image-placeholder">
-									    <div className="qubely-team-avatar">
+									:
+									<div className="qubely-image-placeholder">
+										<div className="qubely-team-avatar">
 											<a className="qubely-insert-image" href="#" onClick={open}>
 												<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
 												<span>{__('Insert')}</span>
@@ -180,9 +180,12 @@ class Edit extends Component {
 		setAttributes({ carouselItems: newCarouselItems })
 
 	}
-	
+
 	render() {
 		const {
+			name,
+			clientId,
+			attributes,
 			setAttributes,
 			attributes: {
 				uniqueId,
@@ -194,8 +197,8 @@ class Edit extends Component {
 				dragable,
 				layout,
 				nameColor,
-                alignment,
-                enableDesignation,
+				alignment,
+				enableDesignation,
 				designationColor,
 				showAvatar,
 				avatarBorderRadius,
@@ -207,8 +210,8 @@ class Edit extends Component {
 				avatarHorizontalSpacing,
 				nameTypo,
 				nameSpacing,
-                designationTypo,
-                designationSpacing,
+				designationTypo,
+				designationSpacing,
 				bgPadding,
 				textColor,
 				bgColor,
@@ -604,21 +607,21 @@ class Edit extends Component {
 							label={__('Typography')}
 							value={nameTypo}
 							onChange={(value) => setAttributes({ nameTypo: value })}
-							device={device} onDeviceChange={value => this.setState({ device: value })} 
-                        />
-                        <Range
+							device={device} onDeviceChange={value => this.setState({ device: value })}
+						/>
+						<Range
 							label={__('Spacing')}
 							value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
 							unit={['px', 'em', '%']} max={300}
 							min={0}
 							responsive
 							device={device}
-							onDeviceChange={value => this.setState({ device: value })} 
-                        />
+							onDeviceChange={value => this.setState({ device: value })}
+						/>
 					</PanelBody>
 
 					<PanelBody title={__('Designation')} initialOpen={false}>
-                        <Toggle label={__('Enable Designation')} value={enableDesignation} onChange={value => setAttributes({ enableDesignation: value })} />
+						<Toggle label={__('Enable Designation')} value={enableDesignation} onChange={value => setAttributes({ enableDesignation: value })} />
 						<Color
 							label={__('Color')}
 							value={designationColor} onChange={(value) => setAttributes({ designationColor: value })}
@@ -627,17 +630,17 @@ class Edit extends Component {
 							label={__('Typography')}
 							value={designationTypo}
 							onChange={(value) => setAttributes({ designationTypo: value })}
-							device={device} onDeviceChange={value => this.setState({ device: value })} 
-                        />
-                        <Range
+							device={device} onDeviceChange={value => this.setState({ device: value })}
+						/>
+						<Range
 							label={__('Spacing')}
 							value={designationSpacing} onChange={(value) => setAttributes({ designationSpacing: value })}
 							unit={['px', 'em', '%']} max={300}
 							min={0}
 							responsive
 							device={device}
-							onDeviceChange={value => this.setState({ device: value })} 
-                        />
+							onDeviceChange={value => this.setState({ device: value })}
+						/>
 					</PanelBody>
 
 					<PanelBody title={__('Social')} initialOpen={false}>
@@ -794,10 +797,19 @@ class Edit extends Component {
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
-					<div className={`qubely-block-team-carousel qubely-layout-style`}>
+					<div className={`qubely-block-team-carousel qubely-layout-style`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 						<Carousel options={carouselSettings}>
 							{this.renderTeams()}
 						</Carousel>
+						<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+							<ContextMenu
+								name={name}
+								clientId={clientId}
+								attributes={attributes}
+								setAttributes={setAttributes}
+								qubelyContextMenu={this.refs.qubelyContextMenu}
+							/>
+						</div>
 					</div>
 				</div>
 			</Fragment>

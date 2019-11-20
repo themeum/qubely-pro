@@ -24,6 +24,7 @@ const {
     CssGenerator: { CssGenerator },
     QubelyButton: { buttonSettings },
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
+    ContextMenu: { ContextMenu, handleContextMenu }
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons';
@@ -241,6 +242,8 @@ class Edit extends Component {
 
     render() {
         const {
+            name,
+            clientId,
             attributes,
             setAttributes,
             attributes: {
@@ -558,7 +561,7 @@ class Edit extends Component {
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
                 <div className={`qubely-block-${uniqueId}`}>
-                    <div className={`qubely-block-form qubely-layout-${layout}`}>
+                    <div className={`qubely-block-form qubely-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
                                 allowedBlocks={['qubely/formfield-row', 'qubely/formfield-column',]}
@@ -609,6 +612,16 @@ class Edit extends Component {
                                 renderContent={() => this.renderFormFieldTypes()}
                             />
                         </div>
+                        <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+                            <ContextMenu
+                                name={name}
+                                clientId={clientId}
+                                attributes={attributes}
+                                setAttributes={setAttributes}
+                                qubelyContextMenu={this.refs.qubelyContextMenu}
+                            />
+                        </div>
+                   
                     </div>
 
 
