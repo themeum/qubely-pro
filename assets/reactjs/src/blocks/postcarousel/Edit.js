@@ -72,8 +72,10 @@ class Edit extends Component {
 		} else if (uniqueId && uniqueId != _client) {
 			setAttributes({ uniqueId: _client });
 		}
-		if (posts.length < 2) {
+		if (posts && posts.length < 2) {
 			setAttributes({ postitems: { 'md': posts.length, 'sm': posts.length, 'xs': posts.length } });
+		} else if (!posts) {
+			setAttributes({ postitems: { 'md': 0, 'sm': 0, 'xs': 0 } });
 		}
 	}
 	componentWillUnmount() {
