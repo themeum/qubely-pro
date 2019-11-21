@@ -12,7 +12,6 @@ class Save extends Component {
 			vimeoId,
 			youtubeId,
 			autoplay,
-			titleLevel,
 			title,
 			separatorStyle,
 			separatorPosition,
@@ -34,7 +33,6 @@ class Save extends Component {
 
 		let autoPlay = autoplay ? '1' : '0';
 
-		const titleTagName = 'h' + titleLevel;
 		const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 
 		return (
@@ -65,9 +63,7 @@ class Save extends Component {
 					<div className="qubely-mediacard-body">
 						<div className="qubely-mediacard-wrap">
 							<div className={`qubely-mediacard-title-container ${separatorStyle ? 'qubely-has-separator' : ''} ${separatorPosition ? 'qubely-separator-position-' + separatorPosition : ''}`}>
-								<div className="qubely-mediacard-title-inner">
-									<RichText.Content tagName={titleTagName} className="qubely-mediacard-title" value={title} />
-								</div>
+								<RichText.Content tagName={'span'} className="qubely-mediacard-title" value={title} />
 							</div>
 
 							{enableContent &&
