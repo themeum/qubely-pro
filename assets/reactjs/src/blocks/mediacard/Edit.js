@@ -49,7 +49,6 @@ const {
 } = wp.qubelyComponents
 import icons from '../../helpers/icons';
 
-const TEMPLATE = [['qubely/column',]];
 
 class Edit extends Component {
 
@@ -66,10 +65,6 @@ class Edit extends Component {
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
         }
-    }
-
-    handlePanelOpenings = (panelName) => {
-        this.setState({ ...this.state, openPanelSetting: panelName })
     }
 
     render() {
@@ -150,7 +145,7 @@ class Edit extends Component {
 
         let autoPlay = (autoplay == true) ? '1' : '0';
 
-        const { openPanelSetting, device } = this.state
+        const { device } = this.state
         const titleTagName = 'h' + titleLevel;
 
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
@@ -197,7 +192,7 @@ class Edit extends Component {
                         <BoxShadow label={__('Card Shadow')} value={bgShadow} onChange={(value) => setAttributes({ bgShadow: value })} />
                     </PanelBody>
 
-                    <PanelBody title={__('Image Settings')} opened={'Media' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Media' ? 'Media' : '')}>
+                    <PanelBody title={__('Image Settings')} initialOpen={false} >
 
                         <RadioAdvanced label={__('Type')} value={mediaType} onChange={val => setAttributes({ mediaType: val })}
                             options={[
@@ -259,7 +254,7 @@ class Edit extends Component {
                         }
                     </PanelBody>
 
-                    <PanelBody title={__('Title')} opened={'Title' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Title' ? 'Title' : '')}>
+                    <PanelBody title={__('Title')} initialOpen={false} >
                         <Headings label={__('Title Tag')} selectedLevel={titleLevel} onChange={(value) => setAttributes({ titleLevel: value })} />
                         <Typography label={__('Typography')} value={titleTypography} onChange={(value) => setAttributes({ titleTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Range label={<span>Spacing <span className="dashicons dashicons-sort" title="Y Spacing" /></span>} value={titleSpacing} onChange={val => setAttributes({ titleSpacing: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -273,7 +268,7 @@ class Edit extends Component {
                         </Tabs>
                     </PanelBody>
 
-                    <PanelBody title={__('Content')} opened={'Content' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Content' ? 'Content' : '')}>
+                    <PanelBody title={__('Content')} initialOpen={false} >
                         <Toggle label={__('Show Content')} value={enableContent} onChange={val => setAttributes({ enableContent: val })} />
                         {enableContent &&
                             <Fragment>
@@ -320,7 +315,7 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} media-type-${mediaType}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 
-                        <div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`} onClick={() => this.handlePanelOpenings('Media')}>
+                        <div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`} >
                             {mediaType == 'video' &&
                                 <Fragment>
                                     {(videoSource == 'vimeo') ?
@@ -346,21 +341,19 @@ class Edit extends Component {
                             <div className="qubely-mediacard-wrap">
                                 <div className={`qubely-mediacard-title-container`} >
                                     <div className="qubely-mediacard-title-inner">
-                                        <div onClick={() => this.handlePanelOpenings('Title')}>
-                                            <RichText
-                                                key="editable"
-                                                tagName={titleTagName}
-                                                className="qubely-mediacard-title"
-                                                keepPlaceholderOnFocus
-                                                placeholder={__('Add Text...')}
-                                                onChange={value => setAttributes({ title: value })}
-                                                value={title} />
-                                        </div>
+                                        <RichText
+                                            key="editable"
+                                            tagName={titleTagName}
+                                            className="qubely-mediacard-title"
+                                            keepPlaceholderOnFocus
+                                            placeholder={__('Add Text...')}
+                                            onChange={value => setAttributes({ title: value })}
+                                            value={title} />
                                     </div>
                                 </div>
 
                                 {enableContent &&
-                                    <div className="qubely-mediacard-content" onClick={() => this.handlePanelOpenings('Content')}>
+                                    <div className="qubely-mediacard-content" >
                                         <RichText
                                             key="editable"
                                             tagName='div'
@@ -374,11 +367,13 @@ class Edit extends Component {
                                 }
 
                                 {(typeof this.props.insertBlocksAfter !== 'undefined') && (
-                                    <div className={`innerBlock-content`}>
+                                    <div className={`qubely-mediacard-innerBlocks`}>
                                         <InnerBlocks
-                                            template={TEMPLATE}
-                                            templateLock={true}
+                                            templateLock={false}
                                             templateInsertUpdatesSelection={false}
+                                            renderAppender={() => (
+                                                <InnerBlocks.ButtonBlockAppender />
+                                            )}
                                         />
                                     </div>
                                 )}

@@ -1,299 +1,305 @@
-// .wp-block-qubely-mediacard {
-//     margin: 0 !important;
-//     padding: 0 !important;
-// }
-
 .qubely-block-mediacard {
+  position: relative;
+  display: inline-block;
+  transition: border-color 400ms, background-color 400ms, box-shadow 400ms;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding: 0;
+    margin: 0;
+    line-height: 1;
     position: relative;
+    &::before,
+    &::after {
+      display: none !important;
+    }
+
+    .qubely-text-has-bgcolor {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  .qubely-mediacard-media {
     display: inline-block;
-    transition: border-color 400ms, background-color 400ms, box-shadow 400ms;
-    h1, h2, h3, h4, h5, h6 {
-        padding: 0;
-        margin: 0;
-        line-height: 1;
+    line-height: 1;
+    text-align: center;
+    overflow: hidden;
+    i,
+    span,
+    img {
+      font-style: normal;
+      position: relative;
+      display: block;
+      transition: 400ms;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    &.qubely-media-has-bg {
+      i,
+      .qubely-mediacard-number {
+        min-width: 1em;
+        height: 1em;
+        white-space: nowrap;
+        &:before {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+
+  .qubely-mediacard-title {
+    margin: 0;
+  }
+
+  .qubely-mediacard-media,
+  .qubely-mediacard-title,
+  .qubely-mediacard-text {
+    transition: color 400ms, border-color 400ms, background-color 400ms, box-shadow 400ms;
+  }
+
+  &.qubely-mediacard-layout-2,
+  &.qubely-mediacard-layout-3 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+
+    .qubely-mediacard-body {
+      -ms-flex: 1;
+      flex: 1;
+    }
+  }
+
+  &.qubely-mediacard-layout-3 {
+    flex-direction: row-reverse;
+    .qubely-mediacard-body {
+      text-align: center;
+      .qubely-mediacard-wrap {
         position: relative;
-        &::before,
-        &::after {
-            display: none !important;
-        }
-
-        .qubely-text-has-bgcolor {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-    }
-    .qubely-mediacard-media {
-        display: inline-block;
-        line-height: 1;
-        text-align: center;
-        overflow: hidden;
-        i,
-        span,
-        img {
-            font-style: normal;
-            position: relative;
-            display: block;
-            transition: 400ms;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    
-        &.qubely-media-has-bg {
-            i,
-            .qubely-mediacard-number {
-                min-width: 1em;
-                height: 1em;
-                white-space: nowrap;
-                &:before {
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-            }
-        }
-    }
-
-    .qubely-mediacard-title {
-        margin: 0;
-    }
-
-    .qubely-mediacard-media,
-    .qubely-mediacard-title,
-    .qubely-mediacard-text {
-        transition: color 400ms, border-color 400ms, background-color 400ms, box-shadow 400ms;
-    }
-    
-    &.qubely-mediacard-layout-2,
-    &.qubely-mediacard-layout-3 {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: start;
-        align-items: flex-start;
-
-        .qubely-mediacard-body {
-            -ms-flex: 1;
-            flex: 1;
-        }
-    }
-
-    &.qubely-mediacard-layout-3 {
-        flex-direction: row-reverse;
-        .qubely-mediacard-body {
-            text-align: center;
-            .qubely-mediacard-wrap {
-                position: relative;
-                width: 100%;
-                transform: translate(0px, -50%);
-                top: 50%;
-            }
-        }
-    }
-
-    .qubely-separator {
-        font-size: 0;
-        .qubely-separator-type-css,
-        .qubely-separator-type-svg {
-            display: inline-block;
-        }
-    }
-
-    .qubely-separator-position-left,
-    .qubely-separator-position-right,
-    .qubely-separator-position-leftright {
-        .qubely-mediacard-title-inner {
-            display: inline-flex;
-            align-items: center;
-
-            .qubely-mediacard-title,
-            .qubely-separator {
-                display: inline-flex;
-            }
-        }
-    }
-}
-.qubely-block-mediacard.media-type-video{
-    .qubely-mediacard-media {
-        position: relative;
-        padding-bottom: 56%;
-        padding-top: 0;
-        height: 0;
         width: 100%;
+        transform: translate(0px, -50%);
+        top: 50%;
+      }
     }
+  }
+
+  .qubely-separator {
+    font-size: 0;
+    .qubely-separator-type-css,
+    .qubely-separator-type-svg {
+      display: inline-block;
+    }
+  }
+
+  .qubely-separator-position-left,
+  .qubely-separator-position-right,
+  .qubely-separator-position-leftright {
+    .qubely-mediacard-title-inner {
+      display: inline-flex;
+      align-items: center;
+
+      .qubely-mediacard-title,
+      .qubely-separator {
+        display: inline-flex;
+      }
+    }
+  }
+
+  .qubely-mediacard-innerBlocks .block-list-appender {
+    margin-top: 30px;
+    .block-editor-button-block-appender{
+        outline: 1px dashed #2184f9;
+    }
+  }
+}
+.qubely-block-mediacard.media-type-video {
+  .qubely-mediacard-media {
+    position: relative;
+    padding-bottom: 56%;
+    padding-top: 0;
+    height: 0;
+    width: 100%;
+  }
 }
 .qubely-block-mediacard.media-type-video.qubely-mediacard-layout-2,
-.qubely-block-mediacard.media-type-video.qubely-mediacard-layout-3{
-    .qubely-mediacard-media {
-        padding-bottom: 34%;
-    }
+.qubely-block-mediacard.media-type-video.qubely-mediacard-layout-3 {
+  .qubely-mediacard-media {
+    padding-bottom: 34%;
+  }
 }
 .qubely-mediacard-media.qubely-media-has-bg iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .qubely-mediacard-layout-2.media-type-image {
-    .qubely-mediacard-body {
-        position: absolute;
-        z-index: 99999;
-        background: #fff;
-        width: 54%;
-        right: 0;
-        top: 50%;
-        padding: 60px;
-        -webkit-box-shadow: 0 1.5vw 3vw -0.7vw rgba(0,0,0,.125);
-        box-shadow: 0 1.5vw 3vw -0.7vw rgba(0,0,0,.125);
-        transform: translate(0%, -50%);
-    }
+  .qubely-mediacard-body {
+    position: absolute;
+    z-index: 99999;
+    background: #fff;
+    width: 54%;
+    right: 0;
+    top: 50%;
+    padding: 60px;
+    -webkit-box-shadow: 0 1.5vw 3vw -0.7vw rgba(0, 0, 0, 0.125);
+    box-shadow: 0 1.5vw 3vw -0.7vw rgba(0, 0, 0, 0.125);
+    transform: translate(0%, -50%);
+  }
 }
 
 .qubely-mediacard-layout-3.media-type-image {
-    .qubely-mediacard-body {
-        position: absolute;
-        z-index: 99999;
-        background: rgba(0, 0, 0, 0.25);
-        width: 100%;
-        right: 0;
-        top: 0;
-        padding: 60px;
-        -webkit-box-shadow: 0 1.5vw 3vw -0.7vw rgba(0, 0, 0, 0.125);
-        box-shadow: 0 1.5vw 3vw -0.7vw rgba(0, 0, 0, 0.125);
-        transform: translate(0%, 0%);
-        height: 100%;
-    }
+  .qubely-mediacard-body {
+    position: absolute;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.25);
+    width: 100%;
+    right: 0;
+    top: 0;
+    padding: 60px;
+    -webkit-box-shadow: 0 1.5vw 3vw -0.7vw rgba(0, 0, 0, 0.125);
+    box-shadow: 0 1.5vw 3vw -0.7vw rgba(0, 0, 0, 0.125);
+    transform: translate(0%, 0%);
+    height: 100%;
+  }
 }
 
 .qubely-mediacard-layout-3.media-type-image {
-    .qubely-mediacard-body {
-        left: 0;
-        right: auto;
-    
-    }
+  .qubely-mediacard-body {
+    left: 0;
+    right: auto;
+  }
 }
 .qubely-mediacard-layout-2.media-type-video,
 .qubely-mediacard-layout-3.media-type-video {
-    .qubely-mediacard-body {
-        position: absolute;
-        z-index: 99999;
-        background: #fff;
-        width: 50%;
-        right: 0;
-        top: 50%;
-        padding: 60px;
-        transform: translate(0,-50%);
-    }
-} 
+  .qubely-mediacard-body {
+    position: absolute;
+    z-index: 99999;
+    background: #fff;
+    width: 50%;
+    right: 0;
+    top: 50%;
+    padding: 60px;
+    transform: translate(0, -50%);
+  }
+}
 .qubely-mediacard-layout-3.media-type-video {
-    .qubely-mediacard-body {
-        right: auto;
-        left: 0;
-    }
-} 
-.qubely-mediacard-layout-2.media-type-video{
-    .qubely-mediacard-media {
-        position: relative;
-        padding-bottom: 34%;
-        padding-top: 0;
-        height: 0;
-        width: 50%;
-    }
-} 
+  .qubely-mediacard-body {
+    right: auto;
+    left: 0;
+  }
+}
+.qubely-mediacard-layout-2.media-type-video {
+  .qubely-mediacard-media {
+    position: relative;
+    padding-bottom: 34%;
+    padding-top: 0;
+    height: 0;
+    width: 50%;
+  }
+}
 .qubely-mediacard-layout-2.media-type-image {
-    .qubely-mediacard-media {
-        width: 55%;
-    }
+  .qubely-mediacard-media {
+    width: 55%;
+  }
 }
 .qubely-mediacard-layout-3.media-type-image {
-    .qubely-mediacard-media {
-        width: 100%;
-    }
+  .qubely-mediacard-media {
+    width: 100%;
+  }
 }
 .qubely-mediacard-layout-1.media-type-image {
-    .qubely-mediacard-media {
-        width: 24%;
-        display: inline-block;
-        float: left;
-    }
-    .qubely-mediacard-body  {
-        width: 76%;
-        display: inline-block;
-        padding-left: 30px;
-    }
+  .qubely-mediacard-media {
+    width: 24%;
+    display: inline-block;
+    float: left;
+  }
+  .qubely-mediacard-body {
+    width: 76%;
+    display: inline-block;
+    padding-left: 30px;
+  }
 }
 
-
 // Media card body.
-.qubely-mediacard-body  {
-    .wp-block, .qubely-column-front {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    .editor-block-list__block-edit.block-editor-block-list__block-edit {
-        margin: 0;
-    }
-    .block-editor-block-list__layout{
-        margin: 0;
-    }
-    div[data-type="qubely/column"] {
-        padding: 0;
-        margin: 0;
+.qubely-mediacard-body {
+  .wp-block,
+  .qubely-column-front {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .editor-block-list__block-edit.block-editor-block-list__block-edit {
+    margin: 0;
+  }
+  .block-editor-block-list__layout {
+    margin: 0;
+  }
+  div[data-type="qubely/column"] {
+    padding: 0;
+    margin: 0;
 
-        .block-editor-default-block-appender {
-            .block-editor-inserter {
-                position: inherit;
-                width: 100%;
-                margin-top: 12px;
-                right: 0 !important;
-            }
-            .components-icon-button:hover {
-                background-color: rgba(33, 132, 249, 0.1);
-                color: #fff;
-            }
+    .block-editor-default-block-appender {
+      .block-editor-inserter {
+        position: inherit;
+        width: 100%;
+        margin-top: 12px;
+        right: 0 !important;
+      }
+      .components-icon-button:hover {
+        background-color: rgba(33, 132, 249, 0.1);
+        color: #fff;
+      }
 
-            .components-icon-button {
-                svg {
-                    border-radius: 50%;
-                    padding: 1px;
-                    background-color: rgb(33, 132, 249);
-                    color: #fff;
-                }
-            } 
-        } 
-
-        .editor-block-list__insertion-point.block-editor-block-list__insertion-point {
-            display: none;
+      .components-icon-button {
+        svg {
+          border-radius: 50%;
+          padding: 1px;
+          background-color: rgb(33, 132, 249);
+          color: #fff;
         }
-        .qubely-column {
-            textarea.editor-default-block-appender__content {
-                display: none;
-            }
-        }
-       
-        .block-editor-block-list__layout {
-            margin-left: 0;
-            margin-right: 0;
-        }
-        .editor-inserter {
-            .components-button {
-                background: rgba(255, 255, 255, 0);
-                border: 2px dashed #2184F9;
-                box-shadow: none;
-                color: #555d66;
-                display: block;
-                font-size: 14px;
-                height: 50px;
-                margin-top: 0;
-                opacity: 1;
-                padding: 8px;
-                position: relative;
-                text-align: center;
-                width: 100%;
-                border-radius: 6px;
-            }
-        }
+      }
     }
+
+    .editor-block-list__insertion-point.block-editor-block-list__insertion-point {
+      display: none;
+    }
+    .qubely-column {
+      textarea.editor-default-block-appender__content {
+        display: none;
+      }
+    }
+
+    .block-editor-block-list__layout {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .editor-inserter {
+      .components-button {
+        background: rgba(255, 255, 255, 0);
+        border: 2px dashed #2184f9;
+        box-shadow: none;
+        color: #555d66;
+        display: block;
+        font-size: 14px;
+        height: 50px;
+        margin-top: 0;
+        opacity: 1;
+        padding: 8px;
+        position: relative;
+        text-align: center;
+        width: 100%;
+        border-radius: 6px;
+      }
+    }
+  }
 }
