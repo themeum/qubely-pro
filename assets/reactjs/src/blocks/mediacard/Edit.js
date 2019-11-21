@@ -47,6 +47,9 @@ const {
         handleContextMenu
     }
 } = wp.qubelyComponents
+const {
+    withSelect
+} = wp.data
 import icons from '../../helpers/icons';
 
 
@@ -54,17 +57,32 @@ class Edit extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { device: 'md', selector: true, spacer: true, openPanelSetting: '' };
+        this.state = {
+            device: 'md',
+            selector: true,
+            spacer: true,
+            qubelyBlocks: []
+        }
     }
 
     componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId } } = this.props
+        const {
+            blockTypes,
+            setAttributes,
+            clientId,
+            attributes: {
+                uniqueId
+            }
+        } = this.props
         const _client = clientId.substr(0, 6)
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
         }
+
+        this.setState({ qubelyBlocks: blockTypes.filter(block => block.category === 'qubely').map(block => block.name) })
+
     }
 
     render() {
@@ -72,6 +90,8 @@ class Edit extends Component {
             name,
             clientId,
             attributes,
+            blockTypes,
+            categories,
             setAttributes,
             attributes: {
                 uniqueId,
@@ -145,7 +165,7 @@ class Edit extends Component {
 
         let autoPlay = (autoplay == true) ? '1' : '0';
 
-        const { device } = this.state
+        const { device, qubelyBlocks } = this.state
         const titleTagName = 'h' + titleLevel;
 
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
@@ -370,6 +390,7 @@ class Edit extends Component {
                                     <div className={`qubely-mediacard-innerBlocks`}>
                                         <InnerBlocks
                                             templateLock={false}
+                                            allowedBlocks={qubelyBlocks}
                                             templateInsertUpdatesSelection={false}
                                             renderAppender={() => (
                                                 <InnerBlocks.ButtonBlockAppender />
@@ -396,4 +417,12 @@ class Edit extends Component {
     }
 }
 
-export default Edit
+export default withSelect((select, props) => {
+    const {
+        getBlockTypes,
+    } = select('core/blocks');
+    return {
+        blockTypes: getBlockTypes(),
+    }
+})
+    (Edit)
