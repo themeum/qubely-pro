@@ -1,18 +1,62 @@
 const { __ } = wp.i18n
-const { Fragment, Component } = wp.element;
-const { PanelBody, TextControl, Toolbar } = wp.components
-const { RichText, InspectorControls, BlockControls, InnerBlocks } = wp.blockEditor
-const { Media, Tabs, Tab, Range, BoxShadow, Select, Separator, ContextMenu: { handleContextMenu }, RadioAdvanced, Typography, Toggle, Styles, Alignment, ColorAdvanced, Color, Headings, Border, BorderRadius, Padding, gloalSettings: { globalSettingsPanel }, Inline: { InlineToolbar }, CssGenerator: { CssGenerator } } = wp.qubelyComponents
+const {
+    Fragment,
+    Component
+} = wp.element;
+const {
+    PanelBody,
+    TextControl,
+    Toolbar
+} = wp.components
+const {
+    RichText,
+    InspectorControls,
+    BlockControls,
+    InnerBlocks
+} = wp.blockEditor
+const {
+    Media,
+    Tabs,
+    Tab,
+    Range,
+    BoxShadow,
+    Select,
+    Separator,
+    RadioAdvanced,
+    Typography,
+    Toggle,
+    Styles,
+    Alignment,
+    ColorAdvanced,
+    Color,
+    Headings,
+    Border,
+    BorderRadius,
+    Padding,
+    gloalSettings: {
+        globalSettingsPanel
+    },
+    Inline: {
+        InlineToolbar
+    },
+    CssGenerator: {
+        CssGenerator
+    },
+    ContextMenu: {
+        ContextMenu,
+        handleContextMenu
+    }
+} = wp.qubelyComponents
 import icons from '../../helpers/icons';
 
-const TEMPLATE = [ [ 'qubely/column', ] ];
+const TEMPLATE = [['qubely/column',]];
 
 class Edit extends Component {
 
     constructor(props) {
         super(props)
         this.state = { device: 'md', selector: true, spacer: true, openPanelSetting: '' };
-    } 
+    }
 
     componentDidMount() {
         const { setAttributes, clientId, attributes: { uniqueId } } = this.props
@@ -21,7 +65,6 @@ class Edit extends Component {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
-
         }
     }
 
@@ -31,85 +74,89 @@ class Edit extends Component {
 
     render() {
         const {
-            uniqueId,
-            layout,
+            name,
+            clientId,
+            attributes,
+            setAttributes,
+            attributes: {
+                uniqueId,
+                layout,
 
-            videoSource,
-            vimeoId,
-            youtubeId,
-            autoplay,
-            videoWidth,
+                videoSource,
+                vimeoId,
+                youtubeId,
+                autoplay,
+                videoWidth,
 
-            contentAlign,
+                contentAlign,
 
-            mediaType,
-            alignment,
-            titleLevel,
-            title,
-            titleTypography,
-            titleColor,
-            titleColorHover,
-            titleSpacing,
+                mediaType,
+                alignment,
+                titleLevel,
+                title,
+                titleTypography,
+                titleColor,
+                titleColorHover,
+                titleSpacing,
 
-            //content
-            enableContent,
-            content,
-            contentTypography,
-            contentColor,
-            contentColorHover,
-            contentPadding,
-            contentSpacing,
+                //content
+                enableContent,
+                content,
+                contentTypography,
+                contentColor,
+                contentColorHover,
+                contentPadding,
+                contentSpacing,
 
-            useMediaBg,
-            mediaBorderRadius,
-            mediaSpacing,
-            image,
-            image2x,
-            imgAlt,
-            imageWidth,
-            bgColor,
-            bgColorHover,
-            bgBorder,
-            bgBorderColorHover,
-            bgPadding,
-            bgBorderRadius,
-            bgShadow,
-            bgShadowHover,
-            enableButton,
+                useMediaBg,
+                mediaBorderRadius,
+                mediaSpacing,
+                image,
+                image2x,
+                imgAlt,
+                imageWidth,
+                bgColor,
+                bgColorHover,
+                bgBorder,
+                bgBorderColorHover,
+                bgPadding,
+                bgBorderRadius,
+                bgShadow,
+                bgShadowHover,
+                enableButton,
 
-            enablePosition, 
-            selectPosition, 
-            positionXaxis, 
-            positionYaxis,
-            globalZindex,
-            hideTablet,
-            hideMobile,
-            globalCss,
+                enablePosition,
+                selectPosition,
+                positionXaxis,
+                positionYaxis,
+                globalZindex,
+                hideTablet,
+                hideMobile,
+                globalCss,
 
-            // Card.
-            cardBackgroundColor,
-            cardBgPadding,
-            cardBgBorder,
-            cardBgShadow,
-            cardBgBorderRadius,
-            
-            // Card Hover
-            // cardBgColorHover,
-            // cardBgShadowHover,
-            // cardBgBorderColorHover
+                // Card.
+                cardBackgroundColor,
+                cardBgPadding,
+                cardBgBorder,
+                cardBgShadow,
+                cardBgBorderRadius,
 
-        } = this.props.attributes
+                // Card Hover
+                // cardBgColorHover,
+                // cardBgShadowHover,
+                // cardBgBorderColorHover
+            }
+        } = this.props
 
         let autoPlay = (autoplay == true) ? '1' : '0';
 
-        const { setAttributes } = this.props
         const { openPanelSetting, device } = this.state
         const titleTagName = 'h' + titleLevel;
 
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
 
         return (
-            <Fragment> 
+            <Fragment>
                 <InspectorControls key="inspector">
                     <PanelBody title=''>
                         <Styles columns={3} value={layout} onChange={val => setAttributes({ layout: val })}
@@ -123,7 +170,7 @@ class Edit extends Component {
 
                             ]}
                         />
-        
+
                         <RadioAdvanced label={__('Content Align')} value={contentAlign} onChange={val => setAttributes({ contentAlign: val })}
                             options={[
                                 { label: __('Top'), value: 'top', title: __('Top') },
@@ -132,13 +179,13 @@ class Edit extends Component {
                             ]}
                         />
 
-                        <Padding 
-                            label={__('Content Padding')} 
-                            value={contentPadding} 
-                            onChange={val => setAttributes({ contentPadding: val })} 
-                            min={0} max={100} unit={['px', 'em', '%']} 
-                            responsive device={device} 
-                            onDeviceChange={value => this.setState({ device: value })} 
+                        <Padding
+                            label={__('Content Padding')}
+                            value={contentPadding}
+                            onChange={val => setAttributes({ contentPadding: val })}
+                            min={0} max={100} unit={['px', 'em', '%']}
+                            responsive device={device}
+                            onDeviceChange={value => this.setState({ device: value })}
                         />
                     </PanelBody>
 
@@ -151,7 +198,7 @@ class Edit extends Component {
                     </PanelBody>
 
                     <PanelBody title={__('Image Settings')} opened={'Media' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Media' ? 'Media' : '')}>
-                        
+
                         <RadioAdvanced label={__('Type')} value={mediaType} onChange={val => setAttributes({ mediaType: val })}
                             options={[
                                 { label: __('Video'), value: 'video', title: __('Video') },
@@ -159,9 +206,9 @@ class Edit extends Component {
                             ]}
                         />
 
-                        { mediaType &&
+                        {mediaType &&
                             <Fragment>
-                                { mediaType == 'image' &&
+                                {mediaType == 'image' &&
                                     <Fragment>
                                         <Media label={__('Image')} multiple={false} type={['image']} panel={true} value={image} onChange={val => setAttributes({ image: val })} />
                                         <Media label={__('Retina Image')} multiple={false} type={['image']} panel={true} value={image2x} onChange={val => setAttributes({ image2x: val })} />
@@ -170,31 +217,31 @@ class Edit extends Component {
                                     </Fragment>
                                 }
 
-                                { mediaType == 'video' &&
+                                {mediaType == 'video' &&
                                     <Fragment>
-                                        <Select 
-                                            label={__('Video Type')} 
-                                            value={videoSource} 
-                                            options={ [['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]] } 
-                                            onChange={value => setAttributes({ videoSource: value })} 
+                                        <Select
+                                            label={__('Video Type')}
+                                            value={videoSource}
+                                            options={[['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]]}
+                                            onChange={value => setAttributes({ videoSource: value })}
                                         />
-                                        
-                                        { (videoSource === 'vimeo') ?
+
+                                        {(videoSource === 'vimeo') ?
                                             <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
-                                            : 
+                                            :
                                             <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
                                         }
 
                                         <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
-                                        
-                                        {(layout == 2 || layout == 3)  &&
-                                            <Range 
-                                                label={__('Video Width')} 
-                                                value={videoWidth} 
-                                                onChange={val => setAttributes({ videoWidth: val })} 
-                                                min={1} max={100} 
+
+                                        {(layout == 2 || layout == 3) &&
+                                            <Range
+                                                label={__('Video Width')}
+                                                value={videoWidth}
+                                                onChange={val => setAttributes({ videoWidth: val })}
+                                                min={1} max={100}
                                                 responsive device={device} unit={['px', 'em', '%']}
-                                                onDeviceChange={value => this.setState({ device: value })} 
+                                                onDeviceChange={value => this.setState({ device: value })}
                                             />
                                         }
                                     </Fragment>
@@ -228,10 +275,10 @@ class Edit extends Component {
 
                     <PanelBody title={__('Content')} opened={'Content' === openPanelSetting} onToggle={() => this.handlePanelOpenings(openPanelSetting !== 'Content' ? 'Content' : '')}>
                         <Toggle label={__('Show Content')} value={enableContent} onChange={val => setAttributes({ enableContent: val })} />
-                        { enableContent &&
+                        {enableContent &&
                             <Fragment>
                                 <Typography label={__('Typography')} value={contentTypography} onChange={(value) => setAttributes({ contentTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                
+
                                 <Tabs>
                                     <Tab tabTitle={__('Normal')}>
                                         <Color label={__('Color')} value={contentColor} onChange={(value) => setAttributes({ contentColor: value })} />
@@ -240,8 +287,8 @@ class Edit extends Component {
                                         <Color label={__('Color')} value={contentColorHover} onChange={(value) => setAttributes({ contentColorHover: value })} />
                                     </Tab>
                                 </Tabs>
-                                
-                                { enableButton &&
+
+                                {enableButton &&
                                     <Range label={__('Spacing')} value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 }
                             </Fragment>
@@ -272,16 +319,16 @@ class Edit extends Component {
 
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} media-type-${mediaType}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
-                        
-                        <div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`} onClick={() => this.handlePanelOpenings('Media')}> 
-                            {mediaType == 'video'  &&
+
+                        <div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`} onClick={() => this.handlePanelOpenings('Media')}>
+                            {mediaType == 'video' &&
                                 <Fragment>
-                                    { (videoSource == 'vimeo') ? 
+                                    {(videoSource == 'vimeo') ?
                                         <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                        : 
+                                        :
                                         <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
                                     }
-                                </Fragment> 
+                                </Fragment>
                             }
 
                             {(mediaType == 'image') &&
@@ -289,12 +336,12 @@ class Edit extends Component {
                                     {image.url != undefined ?
                                         <img className="qubely-mediacard-image" src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''} alt={imgAlt && imgAlt} />
                                         :
-                                        <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image"/></div>
+                                        <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
                                     }
                                 </Fragment>
                             }
                         </div>
-                        
+
                         <div className="qubely-mediacard-body">
                             <div className="qubely-mediacard-wrap">
                                 <div className={`qubely-mediacard-title-container`} >
@@ -312,7 +359,7 @@ class Edit extends Component {
                                     </div>
                                 </div>
 
-                                { enableContent &&
+                                {enableContent &&
                                     <div className="qubely-mediacard-content" onClick={() => this.handlePanelOpenings('Content')}>
                                         <RichText
                                             key="editable"
@@ -326,16 +373,26 @@ class Edit extends Component {
                                     </div>
                                 }
 
-                                { ( typeof this.props.insertBlocksAfter !== 'undefined' ) && (
+                                {(typeof this.props.insertBlocksAfter !== 'undefined') && (
                                     <div className={`innerBlock-content`}>
                                         <InnerBlocks
-                                            template={ TEMPLATE }
-                                            templateLock={ true }
-                                            templateInsertUpdatesSelection={ false }
+                                            template={TEMPLATE}
+                                            templateLock={true}
+                                            templateInsertUpdatesSelection={false}
                                         />
                                     </div>
-                                ) }
+                                )}
                             </div>
+                        </div>
+
+                        <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+                            <ContextMenu
+                                name={name}
+                                clientId={clientId}
+                                attributes={attributes}
+                                setAttributes={setAttributes}
+                                qubelyContextMenu={this.refs.qubelyContextMenu}
+                            />
                         </div>
                     </div>
                 </div>
