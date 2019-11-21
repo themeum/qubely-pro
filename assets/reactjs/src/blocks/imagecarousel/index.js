@@ -14,6 +14,27 @@ registerBlockType('qubely/imagecarousel', {
 		__('Image'),
 		__('Carousel')
 	],
+	example: {
+		attributes: {
+			carouselItems: [
+				{
+					sliderimage: {
+						url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image1.jpg'
+					}
+				},
+				{
+					sliderimage: {
+						url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image2.jpg'
+					}
+				},
+				{
+					sliderimage: {
+						url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image3.jpg'
+					}
+				},
+			]
+		},
+	},
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
 		layout: { type: 'number', default: 1 },
@@ -50,7 +71,7 @@ registerBlockType('qubely/imagecarousel', {
 		/*---------------------------------------------------
 		* 	Image Layouts:  common/style attributes
 		* --------------------------------------------------- */
-	
+
 		spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
 		sliderNumber: { type: 'number', default: 5 },
 		itemPerSlides: { type: 'string', default: '2' },

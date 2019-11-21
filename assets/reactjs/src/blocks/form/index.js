@@ -38,6 +38,19 @@ registerBlockType('qubely/form', {
     supports: {
         align: ['full'],
     },
+    example: {
+        attributes: {
+            formItems: defaultFormItems,
+        },
+        innerBlocks: [
+            {
+                name: 'qubely/image',
+                attributes: {
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/form-builder.png' },
+                },
+            },
+        ]
+    },
     attributes: {
         uniqueId: { type: 'string', default: '' },
         ...globalAttributes,

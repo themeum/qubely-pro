@@ -10,6 +10,16 @@ registerBlockType('qubely/postgrid', {
 	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-post-grid.svg'} alt={__('Post Grid Block')} />,
     category: 'qubely',
     keywords: [__('Post'), __('Post Grid')],
+    example: {
+        attributes: {
+            layout: 2,
+            column: {
+                md: 1
+            },
+            showExcerpt: false,
+            postsToShow: 1
+        },
+    },
 	edit: Edit,
 	save: function( props ) {
 		return null;

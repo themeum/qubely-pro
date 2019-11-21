@@ -1,7 +1,7 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
-const { InspectorControls, RichText, MediaUpload, BlockControls, MediaPlaceholder } = wp.editor
+const { InspectorControls, RichText, MediaUpload, BlockControls, MediaPlaceholder } = wp.blockEditor
 import icons from '../../helpers/icons'
 const {
 	Range,
@@ -25,6 +25,10 @@ const {
 	gloalSettings: {
 		globalSettingsPanel,
 		animationSettings
+	},
+	ContextMenu: {
+		ContextMenu,
+		handleContextMenu
 	}
 } = wp.qubelyComponents
 
@@ -216,6 +220,9 @@ class Edit extends Component {
 
 	render() {
 		const {
+			name,
+			clientId,
+			attributes,
 			setAttributes,
 			attributes: {
 				uniqueId,
@@ -671,10 +678,19 @@ class Edit extends Component {
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
-					<div className={`qubely-block-image-carousel qubely-layout-${layout}`}>
+					<div className={`qubely-block-image-carousel qubely-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 						<Carousel options={carouselSettings}>
 							{this.renderImages()}
 						</Carousel>
+						<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+                            <ContextMenu
+                                name={name}
+                                clientId={clientId}
+                                attributes={attributes}
+                                setAttributes={setAttributes}
+                                qubelyContextMenu={this.refs.qubelyContextMenu}
+                            />
+                        </div>
 					</div>
 				</div>
 			</Fragment>

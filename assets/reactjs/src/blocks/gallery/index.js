@@ -364,6 +364,30 @@ registerBlockType('qubely/gallery', {
         __('Gallery'),
         __('Image')
     ],
+
+
+    example: {
+        attributes: {
+            galleryContents: [
+                {
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image1.jpg' }
+                },
+                {
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image2.jpg' }
+                },
+                {
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image3.jpg' }
+                },
+                {
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image4.jpg' }
+                },
+                {
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image5.jpg' }
+                },
+            ],
+        },
+    },
+
     attributes: {
         enablePopup: {
             type: 'boolean',
@@ -378,17 +402,17 @@ registerBlockType('qubely/gallery', {
     edit: Edit,
     save: Save,
     deprecated: [
-		{
-			attributes: {
-				...attr
-			},
-            save( props ) {
+        {
+            attributes: {
+                ...attr
+            },
+            save(props) {
                 const { uniqueId, animation, style, column, interaction, galleryContents, imageAnimation, showCaption, enableCaption, linkTo, enableOverlay } = props
-                
+
                 const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 
-				return (
-					<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
+                return (
+                    <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
                         <div className={`qubely-block-gallery ${interactionClass} qubely-gallery-item-${style}`}>
                             <div className={`qubely-gallery-items ${'qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs}`}>
                                 {
@@ -408,9 +432,9 @@ registerBlockType('qubely/gallery', {
                                                     {(image != undefined && image.url != undefined) &&
                                                         <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
                                                             <div className={`qubely-gallery-content-image qubely-gallery-image-${imageAnimation}`}>
-                            
+
                                                                 {(!enableOverlay && typeof (href) !== 'undefined') ? <a href={href}><img src={image.url} alt={title} /></a> : <img src={image.url} alt={title} />}
-                            
+
                                                             </div>
                                                             {enableCaption == 1 &&
                                                                 <div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>
@@ -419,7 +443,7 @@ registerBlockType('qubely/gallery', {
                                                             }
                                                         </div>
                                                     }
-                            
+
                                                 </div>
                                             </div>
                                         )
@@ -428,7 +452,7 @@ registerBlockType('qubely/gallery', {
                             </div >
                         </div >
                     </div>
-				);
+                );
             }
         }
     ]

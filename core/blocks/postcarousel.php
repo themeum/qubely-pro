@@ -549,7 +549,7 @@ function register_block_qubely_postcarousel_pro()
 					'default' => (object) [
 						'openColor' => 1,
 						'type' => 'color',
-						'color' => '#101a3b',
+						'color' => 'rgba(0,0,0,0.7)',
 						'gradient' => (object) [
 							'color1' => '#071b0b',
 							'color2' => '#101a3b',

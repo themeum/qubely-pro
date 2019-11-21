@@ -1,6 +1,6 @@
 const { __ } = wp.i18n
 const { Component, Fragment } = wp.element
-const { InnerBlocks, InspectorControls } = wp.editor
+const { InnerBlocks, InspectorControls } = wp.blockEditor
 const { PanelBody } = wp.components
 
 const {

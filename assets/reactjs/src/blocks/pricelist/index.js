@@ -13,7 +13,36 @@ registerBlockType('qubely/pricelist', {
 	keywords: [
 		__('Price List'),
 		__('Pricing')
-	],
+    ],
+
+    example: {
+        attributes: {
+            pricelistItems: 2,
+            headingTypography: {
+                openTypography: 1,
+                size: {
+                    md: 16,
+                    unit: 'px'
+                }
+            },
+            column: {
+                md: 1
+            },
+            pricelistContents: [
+                {
+                    title: __( 'Qubely Blocks', 'qubely' ),
+                    description: __( 'Qubely offers a rich collection of highly customizable.', 'qubely' ),
+                    price: '$20.00'
+                },
+                {
+                    title: __( 'Pre-made Sections', 'qubely' ),
+                    description: __( 'Get a rich collection of blocks that are highly.', 'qubely' ),
+                    price: '$30.00'
+                }
+            ]
+        },
+    },
+
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
 		spacer: {
