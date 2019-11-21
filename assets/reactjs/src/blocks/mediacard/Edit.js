@@ -45,7 +45,8 @@ const {
     ContextMenu: {
         ContextMenu,
         handleContextMenu
-    }
+    },
+    QubelyFreeIcons
 } = wp.qubelyComponents
 const {
     withSelect
@@ -160,6 +161,20 @@ class Edit extends Component {
                 // cardBgColorHover,
                 // cardBgShadowHover,
                 // cardBgBorderColorHover
+
+                //Badge
+                enableBadge,
+
+                badge,
+                badgeStyle,
+                badgeSize,
+                badgePosition,
+                badgeSpacing,
+                badgeSpacingTop,
+                badgeColor,
+                badgeBg,
+                badgeTypography,
+                badgeRadius,
             }
         } = this.props
 
@@ -310,12 +325,122 @@ class Edit extends Component {
                         }
                     </PanelBody>
 
-                    <PanelBody title={__('Card Style')} initialOpen={true}>
+                    <PanelBody title={__('Card Style')} initialOpen={false}>
                         <ColorAdvanced label={__('Background Color')} value={cardBackgroundColor} onChange={val => setAttributes({ cardBackgroundColor: val })} />
                         <Padding label={__('Padding')} value={cardBgPadding} onChange={val => setAttributes({ cardBgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Border label={__('Border')} value={cardBgBorder} onChange={val => setAttributes({ cardBgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Box-Shadow')} value={cardBgShadow} onChange={(value) => setAttributes({ cardBgShadow: value })} />
                         <BorderRadius label={__('Radius')} value={cardBgBorderRadius} onChange={(value) => setAttributes({ cardBgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                    </PanelBody>
+
+                    <PanelBody title={__('Badge')} initialOpen={false} >
+                        <Toggle
+                            value={enableBadge}
+                            label={__('Enable')}
+                            onChange={val => setAttributes({ enableBadge: val })}
+                        />
+
+                        {enableBadge &&
+                            <Fragment>
+                                <Styles value={badgeStyle} onChange={val => setAttributes({ badgeStyle: val })}
+                                    options={[
+                                        { value: 1, svg: QubelyFreeIcons.pricing.badge[1], label: __('Style 1') },
+                                        { value: 2, svg: QubelyFreeIcons.pricing.badge[2], label: __('Style 2') },
+                                        { value: 3, svg: QubelyFreeIcons.pricing.badge[3], label: __('Style 3') },
+                                        { value: 4, svg: QubelyFreeIcons.pricing.badge[4], label: __('Style 4') },
+                                        { value: 5, svg: QubelyFreeIcons.pricing.badge[5], label: __('Style 5') },
+                                        { value: 6, svg: QubelyFreeIcons.pricing.badge[6], label: __('Style 6') },
+                                    ]}
+                                />
+
+                                <RadioAdvanced
+                                    label={__('Size')}
+                                    options={[
+                                        { label: __('Small'), value: 'small', title: __('Small') },
+                                        { label: __('Regular'), value: 'regular', title: __('Regular') },
+                                        { label: __('Large'), value: 'large', title: __('Large') },
+                                    ]}
+                                    value={badgeSize}
+                                    onChange={val => setAttributes({ badgeSize: val })}
+                                />
+
+                                {(badgeStyle == 1 || badgeStyle == 2 || badgeStyle == 5 || badgeStyle == 6) &&
+                                    <RadioAdvanced
+                                        label={__('Position')}
+                                        options={[
+                                            { label: __('Left'), value: 'left', title: __('Left') },
+                                            { label: __('Right'), value: 'right', title: __('Right') },
+                                        ]}
+                                        value={badgePosition}
+                                        onChange={val => setAttributes({ badgePosition: val })}
+                                    />
+                                }
+
+                                <Color
+                                    label={__('Background color')}
+                                    value={badgeBg}
+                                    onChange={val => setAttributes({ badgeBg: val })}
+                                />
+
+                                <Color
+                                    label={__('Text color')}
+                                    value={badgeColor}
+                                    onChange={val => setAttributes({ badgeColor: val })}
+                                />
+
+                                {badgeStyle == 5 &&
+                                    <BorderRadius
+                                        label={__('Radius')}
+                                        value={badgeRadius}
+                                        onChange={(value) => setAttributes({ badgeRadius: value })}
+                                        min={0}
+                                        max={100}
+                                        unit={['px', 'em', '%']}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                }
+
+                                {(badgeStyle == 3 || badgeStyle == 5 || badgeStyle == 6) &&
+                                    <Range
+                                        label={badgeStyle == 5 ? __('Side Spacing') : __('Spacing')}
+                                        value={badgeSpacing}
+                                        onChange={(value) => setAttributes({ badgeSpacing: value })}
+                                        min={0}
+                                        max={100}
+                                        unit={['px', 'em', '%']}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                }
+
+                                {badgeStyle == 5 &&
+                                    <Range
+                                        label={__('Top Spacing')}
+                                        value={badgeSpacingTop}
+                                        onChange={(value) => setAttributes({ badgeSpacingTop: value })}
+                                        min={0}
+                                        max={100}
+                                        unit={['px', 'em', '%']}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                }
+
+                                <Separator />
+
+                                <Typography
+                                    value={badgeTypography}
+                                    disableLineHeight
+                                    onChange={val => setAttributes({ badgeTypography: val })}
+                                    device={device}
+                                    onDeviceChange={value => this.setState({ device: value })} />
+                            </Fragment>
+                        }
+
                     </PanelBody>
 
                 </InspectorControls>
@@ -334,7 +459,7 @@ class Edit extends Component {
 
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} media-type-${mediaType}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
-
+                    {enableBadge && <span className={`qubely-mediacard-badge qubely-badge-style-${badgeStyle} qubely-badge-size-${badgeSize}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}><span>{badge}</span></span>}
                         <div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`} >
                             {mediaType == 'video' &&
                                 <Fragment>

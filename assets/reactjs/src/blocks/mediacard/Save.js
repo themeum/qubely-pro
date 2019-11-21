@@ -20,6 +20,13 @@ class Save extends Component {
 			content,
 			image,
 			image2x,
+
+			//Badge
+			enableBadge,
+			badge,
+			badgeStyle,
+			badgeSize,
+
 			animation,
 			useMediaBg,
 			interaction
@@ -33,7 +40,7 @@ class Save extends Component {
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
 				<div className={`qubely-block-mediacard ${interactionClass} qubely-mediacard-layout-${layout} media-type-${mediaType}`}>
-
+					{enableBadge && <span className={`qubely-mediacard-badge qubely-badge-style-${badgeStyle} qubely-badge-size-${badgeSize}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}><span>{badge}</span></span>}
 					<div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`}>
 						{mediaType == 'video' &&
 							<Fragment>
