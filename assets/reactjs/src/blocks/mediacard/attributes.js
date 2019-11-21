@@ -230,7 +230,7 @@ export const attributes = {
 
     // Badge__
     enableBadge: { type: 'boolean', default: false },
-    badge: { type: 'string', default: 'New' },
+    badge: { type: 'string', default: 'Sale' },
     badgeStyle: {
         type: 'number',
         default: 1,
