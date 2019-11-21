@@ -13,7 +13,10 @@ registerBlockType('qubely/testimonialcarousel', {
 	keywords: [
 		__('Testimonial'),
 		__('Carousel')
-	],
+    ],
+    example: {
+        attributes: {},
+    },
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
 		items: { type: 'object', default: { md: '2', sm: '2', xs: '1' } },

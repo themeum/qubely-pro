@@ -1,9 +1,9 @@
 const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar, Popover } = wp.components
-const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.editor
+const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.blockEditor
 import icons from '../../helpers/icons'
-const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } } = wp.qubelyComponents
+const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } , ContextMenu: { ContextMenu, handleContextMenu }} = wp.qubelyComponents
 
 
 class Edit extends Component {
@@ -239,6 +239,9 @@ class Edit extends Component {
 
 	render() {
 		const {
+			name, 
+			clientId,
+			attributes,
 			setAttributes,
 			attributes: {
 				uniqueId,
@@ -839,10 +842,19 @@ class Edit extends Component {
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
-					<div className={`qubely-block-testimonial-carousel qubely-testimonial-carousel-layout-${layout}`}>
+					<div className={`qubely-block-testimonial-carousel qubely-testimonial-carousel-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 						<Carousel options={carouselSettings}>
 							{this.renderTestimonials()}
 						</Carousel>
+						<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+                            <ContextMenu
+                                name={name}
+                                clientId={clientId}
+                                attributes={attributes}
+                                setAttributes={setAttributes}
+                                qubelyContextMenu={this.refs.qubelyContextMenu}
+                            />
+                        </div>
 					</div>
 				</div>
 			</Fragment>

@@ -1,7 +1,15 @@
 ===  Qubely Pro ===
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 == Changelog ==
+
+= 1.0.3 - 20 November, 2019 =
+New: Block preview option added  
+New: Context menu (block style copy/paste option)  
+Fix: Team Carousel block - Image width issue   
+Fix: Team Carousel block - Animation issue   
+Update: Post Carousel block - Overlay background default color  
+
 
 = 1.0.2 - 11 November, 2019 =
 New: Gallery block - Image popup option  

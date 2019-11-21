@@ -4,7 +4,7 @@ const { withSelect } = wp.data
 const { dateI18n, __experimentalGetSettings } = wp.date
 const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
-const { InspectorControls, BlockControls } = wp.editor
+const { InspectorControls, BlockControls } = wp.blockEditor
 const {
 	Range,
 	ButtonGroup,
@@ -26,7 +26,11 @@ const {
 	RadioAdvanced,
 	Inline: { InlineToolbar },
 	gloalSettings: { globalSettingsPanel, animationSettings },
-	CssGenerator: { CssGenerator }
+	CssGenerator: { CssGenerator },
+	ContextMenu: {
+		ContextMenu,
+		handleContextMenu
+	}
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
@@ -44,7 +48,7 @@ class Edit extends Component {
 	}
 
 	componentDidMount() {
-		const { setAttributes, clientId, attributes: { uniqueId } } = this.props
+		const { setAttributes, clientId, posts, attributes: { uniqueId } } = this.props
 		this.isStillMounted = true;
 		this.fetchRequest = wp.apiFetch({
 			path: addQueryArgs(`/wp/v2/categories`, CATEGORIES_LIST_QUERY),
@@ -62,10 +66,16 @@ class Edit extends Component {
 			}
 		);
 		const _client = clientId.substr(0, 6)
+
 		if (!uniqueId) {
 			setAttributes({ uniqueId: _client });
 		} else if (uniqueId && uniqueId != _client) {
 			setAttributes({ uniqueId: _client });
+		}
+		if (posts && posts.length < 2) {
+			setAttributes({ postitems: { 'md': posts.length, 'sm': posts.length, 'xs': posts.length } });
+		} else if (!posts) {
+			setAttributes({ postitems: { 'md': 0, 'sm': 0, 'xs': 0 } });
 		}
 	}
 	componentWillUnmount() {
@@ -136,6 +146,9 @@ class Edit extends Component {
 
 	render() {
 		const {
+			name,
+			clientId,
+			attributes,
 			posts,
 			taxonomyList,
 			setAttributes,
@@ -155,8 +168,8 @@ class Edit extends Component {
 				cardBackground,
 				cardBorder,
 				cardBorderRadius,
-                cardPadding,
-                cardBoxShadow,
+				cardPadding,
+				cardBoxShadow,
 				cardSpace,
 				stackBg,
 				stackBorderRadius,
@@ -386,8 +399,8 @@ class Edit extends Component {
 								{/* <Range label={__('Card Space')} value={cardSpace} onChange={value => setAttributes({ cardSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} /> */}
 
 								<Padding label={__('Padding')} value={cardPadding} onChange={val => setAttributes({ cardPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <BoxShadow label={__('Box-Shadow')} value={cardBoxShadow} onChange={(value) => setAttributes({ cardBoxShadow: value })} />
-                            </Fragment>
+								<BoxShadow label={__('Box-Shadow')} value={cardBoxShadow} onChange={(value) => setAttributes({ cardBoxShadow: value })} />
+							</Fragment>
 						}
 
 						{/* Overlay */}
@@ -412,8 +425,8 @@ class Edit extends Component {
 							<BoxShadow
 								label={__('Box-Shadow')}
 								value={style === 3 ? stackBoxShadow : boxShadow}
-								onChange={(value) => setAttributes(style === 3 ? { stackBoxShadow: value } : { boxShadow: value })} 
-                            />
+								onChange={(value) => setAttributes(style === 3 ? { stackBoxShadow: value } : { boxShadow: value })}
+							/>
 						}
 
 					</PanelBody>
@@ -850,7 +863,7 @@ class Edit extends Component {
 
 				<div className={`qubely-block-${uniqueId}`}>
 					{(posts && posts.length) ?
-						<div className={`qubely-block-image-carousel qubely-postcarousel-wrapper`}>
+						<div className={`qubely-block-image-carousel qubely-postcarousel-wrapper`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 							<Carousel options={carouselSettings}>
 								{posts && posts.map(post => {
 									return (
@@ -865,6 +878,15 @@ class Edit extends Component {
 									)
 								})}
 							</Carousel>
+							<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+								<ContextMenu
+									name={name}
+									clientId={clientId}
+									attributes={attributes}
+									setAttributes={setAttributes}
+									qubelyContextMenu={this.refs.qubelyContextMenu}
+								/>
+							</div>
 						</div>
 						:
 						<div className="qubely-postcarousel-is-loading">

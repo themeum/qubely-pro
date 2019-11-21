@@ -26,7 +26,7 @@ const defaultFormItems = [
 ]
 
 registerBlockType('qubely/form', {
-    title: __('Form'),
+    title: __('Form Builder'),
     category: 'qubely',
     icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-form.svg'} alt={__('Form')} />,
     description: 'Create functional Form using Qubely Form block.',
@@ -37,6 +37,19 @@ registerBlockType('qubely/form', {
     ],
     supports: {
         align: ['full'],
+    },
+    example: {
+        attributes: {
+            formItems: defaultFormItems,
+        },
+        innerBlocks: [
+            {
+                name: 'qubely/image',
+                attributes: {
+                    image: { url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/form-builder.png' },
+                },
+            },
+        ]
     },
     attributes: {
         uniqueId: { type: 'string', default: '' },
