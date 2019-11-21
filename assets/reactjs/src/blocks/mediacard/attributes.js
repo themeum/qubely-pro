@@ -146,7 +146,7 @@ export const attributes = {
                 unit: 'px'
             },
             height: {
-                md: '40',
+                md: '45',
                 unit: 'px'
             }
         },
