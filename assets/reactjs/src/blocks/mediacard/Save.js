@@ -37,9 +37,9 @@ class Save extends Component {
 
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-				<div className={`qubely-block-mediacard ${interactionClass} qubely-mediacard-layout-${layout} media-type-${mediaType}`}>
+				<div className={`qubely-block-mediacard ${interactionClass} qubely-mediacard-layout-${layout}`}>
 					{enableBadge && <span className={`qubely-mediacard-badge qubely-badge-style-${badgeStyle} qubely-badge-size-${badgeSize}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}><span>{badge}</span></span>}
-					<div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`}>
+					<div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
 						{mediaType == 'video' &&
 							<Fragment>
 								{(videoSource == 'vimeo') ?
@@ -60,20 +60,19 @@ class Save extends Component {
 						}
 					</div>
 
-					<div className="qubely-mediacard-body">
-						<div className="qubely-mediacard-wrap">
-							<div className={`qubely-mediacard-title-container ${separatorStyle ? 'qubely-has-separator' : ''} ${separatorPosition ? 'qubely-separator-position-' + separatorPosition : ''}`}>
-								<RichText.Content tagName={'span'} className="qubely-mediacard-title" value={title} />
-							</div>
+					<div className="qubely-mediacard-content-wrapper">
+						<div className={`qubely-mediacard-title-container ${separatorStyle ? 'qubely-has-separator' : ''} ${separatorPosition ? 'qubely-separator-position-' + separatorPosition : ''}`}>
+							<RichText.Content tagName={'span'} className="qubely-mediacard-title" value={title} />
+						</div>
 
-							{enableContent &&
-								<div className="qubely-mediacard-content">
-									<RichText.Content tagName='div' className="qubely-mediacard-text" value={content} />
-								</div>
-							}
-							<div className={`qubely-mediacard-innerBlocks`}>
-								<InnerBlocks.Content />
+						{
+							enableContent &&
+							<div className="qubely-mediacard-content">
+								<RichText.Content tagName='div' className="qubely-mediacard-text" value={content} />
 							</div>
+						}
+						<div className={`qubely-mediacard-innerBlocks`}>
+							<InnerBlocks.Content />
 						</div>
 					</div>
 				</div>

@@ -6,13 +6,15 @@ const {
 const {
     PanelBody,
     TextControl,
-    Toolbar
+    Toolbar,
+    Tooltip
 } = wp.components
 const {
     RichText,
     InspectorControls,
     BlockControls,
-    InnerBlocks
+    InnerBlocks,
+    MediaUpload
 } = wp.blockEditor
 const {
     Media,
@@ -53,7 +55,10 @@ const {
 } = wp.data
 import icons from '../../helpers/icons';
 
-
+const mediaOptions = [
+    { label: __('Image'), value: 'image', title: __('Image') },
+    { label: __('Video'), value: 'video', title: __('Video') }
+]
 class Edit extends Component {
 
     constructor(props) {
@@ -104,7 +109,6 @@ class Edit extends Component {
                 autoplay,
                 videoWidth,
 
-                contentAlign,
 
                 mediaType,
                 alignment,
@@ -127,7 +131,7 @@ class Edit extends Component {
                 contentSpacing,
 
                 useMediaBg,
-                mediaBorderRadius,
+                imageBorderRadius,
                 mediaSpacing,
                 image,
                 image2x,
@@ -201,23 +205,19 @@ class Edit extends Component {
 
                             ]}
                         />
-
-                        <RadioAdvanced label={__('Content Align')} value={contentAlign} onChange={val => setAttributes({ contentAlign: val })}
-                            options={[
-                                { label: __('Top'), value: 'top', title: __('Top') },
-                                { label: __('Middle'), value: 'middle', title: __('Middle') },
-                                { label: __('Bottom'), value: 'bottom', title: __('Bottom') },
-                            ]}
-                        />
-
-                        <Padding
-                            label={__('Content Padding')}
-                            value={contentPadding}
-                            onChange={val => setAttributes({ contentPadding: val })}
-                            min={0} max={100} unit={['px', 'em', '%']}
-                            responsive device={device}
-                            onDeviceChange={value => this.setState({ device: value })}
-                        />
+                        {
+                            layout == 1 &&
+                            <Alignment
+                                responsive
+                                disableJustify
+                                device={device}
+                                value={alignment}
+                                label={__('Alignment')}
+                                alignmentType="content"
+                                onChange={val => setAttributes({ alignment: val })}
+                                onDeviceChange={value => this.setState({ device: value })}
+                            />
+                        }
                     </PanelBody>
 
                     <PanelBody title={__('Card Settings')} initialOpen={false}>
@@ -228,78 +228,152 @@ class Edit extends Component {
                         <BoxShadow label={__('Card Shadow')} value={bgShadow} onChange={(value) => setAttributes({ bgShadow: value })} />
                     </PanelBody>
 
-                    <PanelBody title={__('Image Settings')} initialOpen={false} >
+                    <PanelBody title={__('Media Settings')} initialOpen={true} >
 
-                        <RadioAdvanced label={__('Type')} value={mediaType} onChange={val => setAttributes({ mediaType: val })}
-                            options={[
-                                { label: __('Video'), value: 'video', title: __('Video') },
-                                { label: __('Image'), value: 'image', title: __('Image') },
-                            ]}
+                        <RadioAdvanced
+                            label={__('Type')}
+                            value={mediaType}
+                            options={mediaOptions}
+                            onChange={val => setAttributes({ mediaType: val })}
                         />
 
-                        {mediaType &&
-                            <Fragment>
-                                {mediaType == 'image' &&
-                                    <Fragment>
-                                        <Media label={__('Image')} multiple={false} type={['image']} panel={true} value={image} onChange={val => setAttributes({ image: val })} />
-                                        <Media label={__('Retina Image')} multiple={false} type={['image']} panel={true} value={image2x} onChange={val => setAttributes({ image2x: val })} />
-                                        {image.url && <TextControl label={__('Alt Text')} value={imgAlt} onChange={val => setAttributes({ imgAlt: val })} />}
-                                        <Range label={__('Image Width')} value={imageWidth} onChange={val => setAttributes({ imageWidth: val })} min={0} max={2000} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                    </Fragment>
-                                }
-
-                                {mediaType == 'video' &&
-                                    <Fragment>
-                                        <Select
-                                            label={__('Video Type')}
-                                            value={videoSource}
-                                            options={[['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]]}
-                                            onChange={value => setAttributes({ videoSource: value })}
+                        {
+                            mediaType == 'image' ?
+                                <Fragment>
+                                    <Media
+                                        panel
+                                        value={image}
+                                        multiple={false}
+                                        type={['image']}
+                                        label={__('Image')}
+                                        onChange={val => setAttributes({ image: val })} />
+                                    <Media
+                                        panel
+                                        value={image2x}
+                                        multiple={false}
+                                        type={['image']}
+                                        label={__('Retina Image')}
+                                        onChange={val => setAttributes({ image2x: val })} />
+                                    {
+                                        image.url &&
+                                        <TextControl
+                                            value={imgAlt}
+                                            label={__('Alt Text')}
+                                            onChange={val => setAttributes({ imgAlt: val })}
                                         />
+                                    }
+                                    <Range
+                                        min={0}
+                                        max={2000}
+                                        responsive
+                                        device={device}
+                                        value={imageWidth}
+                                        unit={['px', 'em', '%']}
+                                        label={__('Image Width')}
+                                        onChange={val => setAttributes({ imageWidth: val })}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                    <BorderRadius
+                                        min={0}
+                                        max={100}
+                                        responsive
+                                        device={device}
+                                        label={__('Radius')}
+                                        unit={['px', 'em', '%']}
+                                        value={imageBorderRadius}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                        onChange={val => setAttributes({ imageBorderRadius: val })}
+                                    />
+                                    {
+                                        (layout === 1 || layout === 2) &&
+                                        <Range
+                                            min={0}
+                                            max={200}
+                                            responsive
+                                            device={device}
+                                            value={mediaSpacing}
+                                            label={__('Spacing')}
+                                            unit={['px', 'em', '%']}
+                                            onChange={val => setAttributes({ mediaSpacing: val })}
+                                            onDeviceChange={value => this.setState({ device: value })}
+                                        />
+                                    }
+                                </Fragment>
+                                :
+                                <Fragment>
+                                    <Select
+                                        label={__('Video Type')}
+                                        value={videoSource}
+                                        options={[['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]]}
+                                        onChange={value => setAttributes({ videoSource: value })}
+                                    />
 
-                                        {(videoSource === 'vimeo') ?
-                                            <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
-                                            :
-                                            <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
-                                        }
+                                    {(videoSource === 'vimeo') ?
+                                        <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
+                                        :
+                                        <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
+                                    }
 
-                                        <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
+                                    <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
 
-                                        {(layout == 2 || layout == 3) &&
-                                            <Range
-                                                label={__('Video Width')}
-                                                value={videoWidth}
-                                                onChange={val => setAttributes({ videoWidth: val })}
-                                                min={1} max={100}
-                                                responsive device={device} unit={['px', 'em', '%']}
-                                                onDeviceChange={value => this.setState({ device: value })}
-                                            />
-                                        }
-                                    </Fragment>
-                                }
-
-                                <Separator />
-
-                                {mediaType == 'image' &&
-                                    <Fragment>
-                                        <BorderRadius label={__('Radius')} value={mediaBorderRadius} onChange={val => setAttributes({ mediaBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                        <Range label={__('Spacing')} value={mediaSpacing} onChange={val => setAttributes({ mediaSpacing: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                    </Fragment>
-                                }
-                            </Fragment>
+                                    {(layout == 2 || layout == 3) &&
+                                        <Range
+                                            label={__('Video Width')}
+                                            value={videoWidth}
+                                            onChange={val => setAttributes({ videoWidth: val })}
+                                            min={1} max={100}
+                                            responsive device={device} unit={['px', 'em', '%']}
+                                            onDeviceChange={value => this.setState({ device: value })}
+                                        />
+                                    }
+                                </Fragment>
                         }
                     </PanelBody>
 
                     <PanelBody title={__('Title')} initialOpen={false} >
-                    <Alignment label={__('Alignment')} value={titleAlignment} onChange={val => setAttributes({ titleAlignment: val })} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <Typography label={__('Typography')} value={titleTypography} onChange={(value) => setAttributes({ titleTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <Range label={<span>Spacing <span className="dashicons dashicons-sort" title="Y Spacing" /></span>} value={titleSpacing} onChange={val => setAttributes({ titleSpacing: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        {
+                            layout !== 1 &&
+                            <Alignment
+                                responsive
+                                device={device}
+                                label={__('Alignment')}
+                                value={titleAlignment}
+                                onChange={val => setAttributes({ titleAlignment: val })}
+                                onDeviceChange={value => this.setState({ device: value })}
+                            />
+                        }
+                        <Typography
+                            device={device}
+                            label={__('Typography')}
+                            value={titleTypography}
+                            onChange={(value) => setAttributes({ titleTypography: value })}
+                            onDeviceChange={value => this.setState({ device: value })}
+                        />
+                        <Range
+                            label={<span>Spacing <span className="dashicons dashicons-sort" title="Y Spacing" /></span>}
+                            min={0}
+                            max={200}
+                            responsive
+                            device={device}
+                            value={titleSpacing}
+                            unit={['px', 'em', '%']}
+                            onChange={val => setAttributes({ titleSpacing: val })}
+                            onDeviceChange={value => this.setState({ device: value })}
+                        />
                         <Tabs>
                             <Tab tabTitle={__('Normal')}>
-                                <Color label={__('Color')} value={titleColor} onChange={(value) => setAttributes({ titleColor: value })} />
+                                <Color
+                                    label={__('Color')}
+                                    value={titleColor}
+                                    onChange={(value) => setAttributes({ titleColor: value })}
+                                />
                             </Tab>
                             <Tab tabTitle={__('Hover')}>
-                                <Color label={__('Color')} value={titleColorHover} onChange={(value) => setAttributes({ titleColorHover: value })} />
+                                <Color
+                                    label={__('Color')}
+                                    value={titleColorHover}
+                                    onChange={(value) => setAttributes({ titleColorHover: value })}
+                                />
                             </Tab>
                         </Tabs>
                     </PanelBody>
@@ -308,31 +382,102 @@ class Edit extends Component {
                         <Toggle label={__('Show Content')} value={enableContent} onChange={val => setAttributes({ enableContent: val })} />
                         {enableContent &&
                             <Fragment>
-                                <Alignment label={__('Alignment')} value={contentAlignment} onChange={val => setAttributes({ contentAlignment: val })} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Typography label={__('Typography')} value={contentTypography} onChange={(value) => setAttributes({ contentTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                {
+                                    layout !== 1 && <Alignment
+                                        responsive
+                                        device={device}
+                                        label={__('Alignment')}
+                                        value={contentAlignment}
+                                        onChange={val => setAttributes({ contentAlignment: val })}
+                                        onDeviceChange={value => this.setState({ device: value })} />
+                                }
 
+
+                                <Typography
+                                    device={device}
+                                    label={__('Typography')}
+                                    value={contentTypography}
+                                    onChange={(value) => setAttributes({ contentTypography: value })}
+                                    onDeviceChange={value => this.setState({ device: value })} />
+
+                                <Padding
+                                    min={0}
+                                    max={300}
+                                    responsive
+                                    device={device}
+                                    label={__('Padding')}
+                                    value={contentPadding}
+                                    unit={['px', 'em', '%']}
+                                    onChange={val => setAttributes({ contentPadding: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
                                 <Tabs>
                                     <Tab tabTitle={__('Normal')}>
-                                        <Color label={__('Color')} value={contentColor} onChange={(value) => setAttributes({ contentColor: value })} />
+                                        <Color
+                                            label={__('Color')}
+                                            value={contentColor}
+                                            onChange={(value) => setAttributes({ contentColor: value })} />
                                     </Tab>
+
                                     <Tab tabTitle={__('Hover')}>
-                                        <Color label={__('Color')} value={contentColorHover} onChange={(value) => setAttributes({ contentColorHover: value })} />
+                                        <Color
+                                            label={__('Color')}
+                                            value={contentColorHover}
+                                            onChange={(value) => setAttributes({ contentColorHover: value })} />
                                     </Tab>
                                 </Tabs>
 
                                 {enableButton &&
-                                    <Range label={__('Spacing')} value={contentSpacing} onChange={(value) => setAttributes({ contentSpacing: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    <Range
+                                        min={0}
+                                        max={100}
+                                        responsive
+                                        device={device}
+                                        label={__('Spacing')}
+                                        value={contentSpacing}
+                                        unit={['px', 'em', '%']}
+                                        onChange={(value) => setAttributes({ contentSpacing: value })}
+                                        onDeviceChange={value => this.setState({ device: value })} />
                                 }
                             </Fragment>
                         }
                     </PanelBody>
 
                     <PanelBody title={__('Card Style')} initialOpen={false}>
-                        <ColorAdvanced label={__('Background Color')} value={cardBackgroundColor} onChange={val => setAttributes({ cardBackgroundColor: val })} />
-                        <Padding label={__('Padding')} value={cardBgPadding} onChange={val => setAttributes({ cardBgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <Border label={__('Border')} value={cardBgBorder} onChange={val => setAttributes({ cardBgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <BoxShadow label={__('Box-Shadow')} value={cardBgShadow} onChange={(value) => setAttributes({ cardBgShadow: value })} />
-                        <BorderRadius label={__('Radius')} value={cardBgBorderRadius} onChange={(value) => setAttributes({ cardBgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <ColorAdvanced
+                            label={__('Background Color')}
+                            value={cardBackgroundColor}
+                            onChange={val => setAttributes({ cardBackgroundColor: val })} />
+                        <Padding
+                            label={__('Padding')}
+                            value={cardBgPadding}
+                            onChange={val => setAttributes({ cardBgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                        <Border
+                            min={0}
+                            max={10}
+                            responsive
+                            device={device}
+                            label={__('Border')}
+                            value={cardBgBorder}
+                            unit={['px', 'em', '%']}
+                            onChange={val => setAttributes({ cardBgBorder: val })}
+                            onDeviceChange={value => this.setState({ device: value })}
+                        />
+                        <BoxShadow
+                            value={cardBgShadow}
+                            label={__('Box-Shadow')}
+                            onChange={(value) => setAttributes({ cardBgShadow: value })} />
+                        <BorderRadius
+                            min={0}
+                            max={100}
+                            responsive
+                            device={device}
+                            label={__('Radius')}
+                            unit={['px', 'em', '%']}
+                            value={cardBgBorderRadius}
+                            onDeviceChange={value => this.setState({ device: value })}
+                            onChange={(value) => setAttributes({ cardBgBorderRadius: value })}
+                        />
                     </PanelBody>
 
                     <PanelBody title={__('Badge')} initialOpen={false} >
@@ -460,9 +605,9 @@ class Edit extends Component {
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
                 <div className={`qubely-block-${uniqueId}`}>
-                    <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} media-type-${mediaType}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+                    <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         {enableBadge && <span className={`qubely-mediacard-badge qubely-badge-style-${badgeStyle} qubely-badge-size-${badgeSize}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}><span>{badge}</span></span>}
-                        <div className={`qubely-mediacard-media${useMediaBg ? ' qubely-media-has-bg' : ''}`} >
+                        <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
                             {mediaType == 'video' &&
                                 <Fragment>
                                     {(videoSource == 'vimeo') ?
@@ -473,53 +618,88 @@ class Edit extends Component {
                                 </Fragment>
                             }
 
-                            {(mediaType == 'image') &&
+                            {mediaType == 'image' &&
                                 <Fragment>
-                                    {image.url != undefined ?
+                                    <MediaUpload
+                                        onSelect={value => setAttributes({ image: value })}
+                                        allowedTypes={['image']}
+                                        multiple={false}
+                                        value={image}
+                                        render={({ open }) => (
+                                            <Fragment>
+                                                {(image && image.url) ?
+                                                    <div className="qubely-mediacard-image-wrapper qubely-backend">
+                                                        <img className="qubely-mediacard-image" src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''} alt={imgAlt && imgAlt} />
+                                                        <div className="qubely-media-actions qubely-field-button-list">
+                                                            <Tooltip text={__('Edit')}>
+                                                                <button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
+                                                                    <span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw" />
+                                                                </button>
+                                                            </Tooltip>
+                                                            <Tooltip text={__('Remove')}>
+                                                                <button className="qubely-button" aria-label={__('Remove')} onClick={() => setAttributes({ image: {} })} role="button">
+                                                                    <span aria-label={__('Close')} className="far fa-trash-alt fa-fw" />
+                                                                </button>
+                                                            </Tooltip>
+                                                        </div>
+                                                    </div>
+                                                    :
+                                                    <div className="qubely-mediacard-image-picker">
+                                                        <a className="qubely-insert-image" href="#" onClick={open}>
+                                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                                                <path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
+                                                            <span>{__('Insert')}</span>
+                                                        </a>
+                                                    </div>
+
+                                                }
+                                            </Fragment>
+                                        )}
+                                    />
+                                    {/* {image.url != undefined ?
                                         <img className="qubely-mediacard-image" src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''} alt={imgAlt && imgAlt} />
                                         :
-                                        <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
-                                    }
+                                        <div className="qubely-image-placeholder"><i className="far fa-image" /></div>
+                                    } */}
                                 </Fragment>
                             }
                         </div>
 
-                        <div className="qubely-mediacard-body">
-                            <div className="qubely-mediacard-wrap">
-                                <div className={`qubely-mediacard-title-container`} >
+
+                        <div className="qubely-mediacard-content-wrapper">
+                            <div className={`qubely-mediacard-title-container`} >
+                                <RichText
+                                    key="editable"
+                                    keepPlaceholderOnFocus
+                                    placeholder={__('Add Text...')}
+                                    className="qubely-mediacard-title"
+                                    onChange={value => setAttributes({ title: value })}
+                                    value={title} />
+                            </div>
+
+                            {enableContent &&
+                                <div className="qubely-mediacard-content" >
                                     <RichText
                                         key="editable"
+                                        tagName='div'
+                                        className="qubely-mediacard-text"
                                         keepPlaceholderOnFocus
                                         placeholder={__('Add Text...')}
-                                        className="qubely-mediacard-title"
-                                        onChange={value => setAttributes({ title: value })}
-                                        value={title} />
-                                </div>
-
-                                {enableContent &&
-                                    <div className="qubely-mediacard-content" >
-                                        <RichText
-                                            key="editable"
-                                            tagName='div'
-                                            className="qubely-mediacard-text"
-                                            keepPlaceholderOnFocus
-                                            placeholder={__('Add Text...')}
-                                            onChange={value => setAttributes({ content: value })}
-                                            value={content}
-                                        />
-                                    </div>
-                                }
-
-                                <div className={`qubely-mediacard-innerBlocks`}>
-                                    <InnerBlocks
-                                        templateLock={false}
-                                        allowedBlocks={qubelyBlocks}
-                                        templateInsertUpdatesSelection={false}
-                                        renderAppender={() => (
-                                            <InnerBlocks.ButtonBlockAppender />
-                                        )}
+                                        onChange={value => setAttributes({ content: value })}
+                                        value={content}
                                     />
                                 </div>
+                            }
+
+                            <div className={`qubely-mediacard-innerBlocks`}>
+                                <InnerBlocks
+                                    templateLock={false}
+                                    allowedBlocks={qubelyBlocks}
+                                    templateInsertUpdatesSelection={false}
+                                    renderAppender={() => (
+                                        <InnerBlocks.ButtonBlockAppender />
+                                    )}
+                                />
                             </div>
                         </div>
 
