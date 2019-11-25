@@ -52,17 +52,17 @@ export const attributes = {
     imageWidth: {
         type: 'object',
         default: {
-            md: '220',
-            unit: 'px'
+
         },
         style: [
             {
                 condition: [
                     { key: 'layout', relation: '!=', value: 3 },
+                    { key: 'layout', relation: '!=', value: 4 },
                     { key: 'mediaType', relation: '==', value: 'image' }
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-image {width: {{imageWidth}};} {{QUBELY}} .qubely-mediacard-image img {width: 100%;} {{QUBELY}} .qubely-mediacard-image .qubely-image-placeholder {height: {{imageWidth}}; width: {{imageWidth}};}'
-            }
+            },
         ]
     },
 
@@ -227,6 +227,115 @@ export const attributes = {
                     { key: 'enableContent', relation: '==', value: true }
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-body .qubely-mediacard-text {margin-bottom: 0;}'
+            },
+        ]
+    },
+
+    //stack
+    stackBg: {
+        type: 'object',
+        default: {},
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 3 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 4 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+            },
+        ]
+    },
+    stackBorderRadius: {
+        type: 'object',
+        default: {
+            unit: 'px',
+            openBorderRadius: true,
+            radiusType: 'global',
+            global: {
+                md: 10,
+            },
+        },
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 3 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 4 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+            },
+        ]
+    },
+    stackWidth: {
+        type: 'object',
+        default: {},
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 4 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+            }
+        ]
+    },
+    // stackSpace,
+    stackPadding: {
+        type: 'object',
+        default: {
+            'openPadding': 1,
+            'paddingType': 'global',
+            'unit': 'px',
+            'global': {
+                'md': 30
+            },
+        },
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 4 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+            },
+        ]
+    },
+    stackBoxShadow: {
+        type: 'object',
+        default: {
+            'blur': 28,
+            'color': '#566372',
+            'horizontal': 0,
+            'inset': 0,
+            'openShadow': true,
+            'spread': -20,
+            'vertical': 34
+        },
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 4 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
             },
         ]
     },

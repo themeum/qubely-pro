@@ -163,10 +163,19 @@ class Edit extends Component {
                 cardBgShadow,
                 cardBgBorderRadius,
 
+
                 // Card Hover
                 // cardBgColorHover,
                 // cardBgShadowHover,
                 // cardBgBorderColorHover
+
+                //stack
+                stackBg,
+                stackWidth,
+                stackSpace,
+                stackBorderRadius,
+                stackPadding,
+                stackBoxShadow,
 
                 //Badge
                 enableBadge,
@@ -228,7 +237,7 @@ class Edit extends Component {
                         <BoxShadow label={__('Card Shadow')} value={bgShadow} onChange={(value) => setAttributes({ bgShadow: value })} />
                     </PanelBody>
 
-                    <PanelBody title={__('Media Settings')} initialOpen={true} >
+                    <PanelBody title={__('Media Settings')} initialOpen={false} >
 
                         <RadioAdvanced
                             label={__('Type')}
@@ -262,17 +271,22 @@ class Edit extends Component {
                                             onChange={val => setAttributes({ imgAlt: val })}
                                         />
                                     }
-                                    <Range
-                                        min={0}
-                                        max={2000}
-                                        responsive
-                                        device={device}
-                                        value={imageWidth}
-                                        unit={['px', 'em', '%']}
-                                        label={__('Image Width')}
-                                        onChange={val => setAttributes({ imageWidth: val })}
-                                        onDeviceChange={value => this.setState({ device: value })}
-                                    />
+                                    {
+                                        (layout !== 3 && layout !== 4) &&
+                                        <Range
+                                            min={0}
+                                            max={2000}
+                                            responsive
+                                            device={device}
+                                            value={imageWidth}
+                                            unit={['px', 'em', '%']}
+                                            label={__('Image Width')}
+                                            onChange={val => setAttributes({ imageWidth: val })}
+                                            onDeviceChange={value => this.setState({ device: value })}
+                                        />
+
+                                    }
+
                                     <BorderRadius
                                         min={0}
                                         max={100}
@@ -443,6 +457,55 @@ class Edit extends Component {
                         }
                     </PanelBody>
 
+                    {
+                        (layout === 4 || layout === 5) &&
+                        <PanelBody title={__('Stack Style')} initialOpen={true}>
+
+                            <ColorAdvanced
+                                value={stackBg}
+                                label={__('Stack Background')}
+                                onChange={(value) => setAttributes({ stackBg: value })}
+                            />
+                            <Range
+                                min={50}
+                                max={600}
+                                responsive
+                                device={device}
+                                value={stackWidth}
+                                label={__('Stack Size')}
+                                unit={['px', 'em', '%']}
+                                onChange={value => setAttributes({ stackWidth: value })}
+                                onDeviceChange={value => this.setState({ device: value })}
+                            />
+                            <BorderRadius
+                                min={0}
+                                max={100}
+                                responsive
+                                device={device}
+                                unit={['px', 'em', '%']}
+                                value={stackBorderRadius}
+                                label={__('Stack Corner')}
+                                onDeviceChange={value => this.setState({ device: value })}
+                                onChange={value => setAttributes({ stackBorderRadius: value })}
+                            />
+                            <Padding
+                                min={0}
+                                max={60}
+                                responsive
+                                device={device}
+                                value={stackPadding}
+                                unit={['px', 'em', '%']}
+                                label={__('Stack Padding')}
+                                onChange={val => setAttributes({ stackPadding: val })}
+                                onDeviceChange={value => this.setState({ device: value })}
+                            />
+                            <BoxShadow
+                                value={stackBoxShadow}
+                                label={__('Stack Box Shadow')}
+                                onChange={(value) => setAttributes({ stackBoxShadow: value })}
+                            />
+                        </PanelBody>
+                    }
                     <PanelBody title={__('Card Style')} initialOpen={false}>
                         <ColorAdvanced
                             label={__('Background Color')}
@@ -607,98 +670,100 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         {enableBadge && <span className={`qubely-mediacard-badge qubely-badge-style-${badgeStyle} qubely-badge-size-${badgeSize}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}><span>{badge}</span></span>}
-                        <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
-                            {mediaType == 'video' &&
-                                <Fragment>
-                                    {
-                                        videoSource == 'vimeo' ?
-                                            <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                            :
-                                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
-                                    }
-                                </Fragment>
-                            }
+                        <div className={`qubely-block-mediacard-wrapper`}>
+                            <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType} qubely-backend`}>
+                                {mediaType == 'video' &&
+                                    <Fragment>
+                                        {
+                                            videoSource == 'vimeo' ?
+                                                <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                                :
+                                                <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
+                                        }
+                                    </Fragment>
+                                }
 
-                            {mediaType == 'image' &&
-                                <Fragment>
-                                    <MediaUpload
-                                        onSelect={value => setAttributes({ image: value })}
-                                        allowedTypes={['image']}
-                                        multiple={false}
-                                        value={image}
-                                        render={({ open }) => (
-                                            <Fragment>
-                                                {(image && image.url) ?
-                                                    <div className="qubely-mediacard-image-wrapper qubely-backend">
-                                                        <img className="qubely-mediacard-image" src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''} alt={imgAlt && imgAlt} />
-                                                        <div className="qubely-media-actions qubely-field-button-list">
-                                                            <Tooltip text={__('Edit')}>
-                                                                <button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
-                                                                    <span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw" />
-                                                                </button>
-                                                            </Tooltip>
-                                                            <Tooltip text={__('Remove')}>
-                                                                <button className="qubely-button" aria-label={__('Remove')} onClick={() => setAttributes({ image: {} })} role="button">
-                                                                    <span aria-label={__('Close')} className="far fa-trash-alt fa-fw" />
-                                                                </button>
-                                                            </Tooltip>
+                                {mediaType == 'image' &&
+                                    <Fragment>
+                                        <MediaUpload
+                                            onSelect={value => setAttributes({ image: value })}
+                                            allowedTypes={['image']}
+                                            multiple={false}
+                                            value={image}
+                                            render={({ open }) => (
+                                                <Fragment>
+                                                    {(image && image.url) ?
+                                                        <Fragment>
+                                                            <img className="qubely-mediacard-image" src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''} alt={imgAlt && imgAlt} />
+                                                            <div className="qubely-media-actions qubely-field-button-list">
+                                                                <Tooltip text={__('Edit')}>
+                                                                    <button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
+                                                                        <span aria-label={__('Edit')} className="fas fa-pencil-alt fa-fw" />
+                                                                    </button>
+                                                                </Tooltip>
+                                                                <Tooltip text={__('Remove')}>
+                                                                    <button className="qubely-button" aria-label={__('Remove')} onClick={() => setAttributes({ image: {} })} role="button">
+                                                                        <span aria-label={__('Close')} className="far fa-trash-alt fa-fw" />
+                                                                    </button>
+                                                                </Tooltip>
+                                                            </div>
+                                                        </Fragment>
+                                                        :
+                                                        <div className="qubely-mediacard-image-picker">
+                                                            <a className="qubely-insert-image" href="#" onClick={open}>
+                                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                                                    <path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
+                                                                <span>{__('Insert')}</span>
+                                                            </a>
                                                         </div>
-                                                    </div>
-                                                    :
-                                                    <div className="qubely-mediacard-image-picker">
-                                                        <a className="qubely-insert-image" href="#" onClick={open}>
-                                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                                                                <path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
-                                                            <span>{__('Insert')}</span>
-                                                        </a>
-                                                    </div>
 
-                                                }
-                                            </Fragment>
-                                        )}
-                                    />
-                                </Fragment>
-                            }
-                        </div>
-
-
-                        <div className="qubely-mediacard-content-wrapper">
-                            <div className={`qubely-mediacard-title-container`} >
-                                <RichText
-                                    key="editable"
-                                    keepPlaceholderOnFocus
-                                    placeholder={__('Add Text...')}
-                                    className="qubely-mediacard-title"
-                                    onChange={value => setAttributes({ title: value })}
-                                    value={title} />
+                                                    }
+                                                </Fragment>
+                                            )}
+                                        />
+                                    </Fragment>
+                                }
                             </div>
 
-                            {enableContent &&
-                                <div className="qubely-mediacard-content" >
+
+                            <div className="qubely-mediacard-content-wrapper">
+                                <div className={`qubely-mediacard-title-container`} >
                                     <RichText
                                         key="editable"
-                                        tagName='div'
-                                        className="qubely-mediacard-text"
                                         keepPlaceholderOnFocus
                                         placeholder={__('Add Text...')}
-                                        onChange={value => setAttributes({ content: value })}
-                                        value={content}
+                                        className="qubely-mediacard-title"
+                                        onChange={value => setAttributes({ title: value })}
+                                        value={title} />
+                                </div>
+
+                                {enableContent &&
+                                    <div className="qubely-mediacard-content" >
+                                        <RichText
+                                            key="editable"
+                                            tagName='div'
+                                            className="qubely-mediacard-text"
+                                            keepPlaceholderOnFocus
+                                            placeholder={__('Add Text...')}
+                                            onChange={value => setAttributes({ content: value })}
+                                            value={content}
+                                        />
+                                    </div>
+                                }
+
+                                <div className={`qubely-mediacard-innerBlocks`}>
+                                    <InnerBlocks
+                                        templateLock={false}
+                                        allowedBlocks={qubelyBlocks}
+                                        templateInsertUpdatesSelection={false}
+                                        renderAppender={() => (
+                                            <InnerBlocks.ButtonBlockAppender />
+                                        )}
                                     />
                                 </div>
-                            }
-
-                            <div className={`qubely-mediacard-innerBlocks`}>
-                                <InnerBlocks
-                                    templateLock={false}
-                                    allowedBlocks={qubelyBlocks}
-                                    templateInsertUpdatesSelection={false}
-                                    renderAppender={() => (
-                                        <InnerBlocks.ButtonBlockAppender />
-                                    )}
-                                />
                             </div>
-                        </div>
 
+                        </div>
                         <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
                             <ContextMenu
                                 name={name}
