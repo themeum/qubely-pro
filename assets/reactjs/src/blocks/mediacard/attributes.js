@@ -12,6 +12,10 @@ export const attributes = {
     videoSource: { type: 'string', default: 'vimeo' },
     vimeoId: { type: 'string', default: '368867301' },
     youtubeId: { type: 'string', default: 'HY3sut8LTSw' },
+    videoUrl: {
+        type: 'string',
+        default: null
+    },
     autoplay: { type: 'boolean', default: false },
     videoWidth: {
         type: 'object',

@@ -104,6 +104,7 @@ class Edit extends Component {
                 layout,
 
                 videoSource,
+                videoUrl,
                 vimeoId,
                 youtubeId,
                 autoplay,
@@ -315,6 +316,8 @@ class Edit extends Component {
                                 </Fragment>
                                 :
                                 <Fragment>
+                                    <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
+                                   
                                     <Select
                                         label={__('Video Type')}
                                         value={videoSource}
@@ -673,14 +676,15 @@ class Edit extends Component {
                         <div className={`qubely-block-mediacard-wrapper`}>
                             <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType} qubely-backend`}>
                                 {mediaType == 'video' &&
-                                    <Fragment>
-                                        {
-                                            videoSource == 'vimeo' ?
-                                                <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                                :
-                                                <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
-                                        }
-                                    </Fragment>
+                                    <video controls  src={videoUrl} />
+                                    // <Fragment>
+                                    //     {
+                                    //         videoSource == 'vimeo' ?
+                                    //             <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                    //             :
+                                    //             <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
+                                    //     }
+                                    // </Fragment>
                                 }
 
                                 {mediaType == 'image' &&
