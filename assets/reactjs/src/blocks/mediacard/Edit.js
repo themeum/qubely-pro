@@ -59,6 +59,10 @@ const mediaOptions = [
     { label: __('Image'), value: 'image', title: __('Image') },
     { label: __('Video'), value: 'video', title: __('Video') }
 ]
+const videoSources = [
+    { label: __('Local'), value: 'local', title: __('Local') },
+    { label: __('External'), value: 'external', title: __('External') }
+]
 class Edit extends Component {
 
     constructor(props) {
@@ -104,6 +108,7 @@ class Edit extends Component {
                 layout,
 
                 videoSource,
+                localVideo,
                 videoUrl,
                 vimeoId,
                 youtubeId,
@@ -316,20 +321,42 @@ class Edit extends Component {
                                 </Fragment>
                                 :
                                 <Fragment>
-                                    <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
-                                   
-                                    <Select
-                                        label={__('Video Type')}
-                                        value={videoSource}
-                                        options={[['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]]}
-                                        onChange={value => setAttributes({ videoSource: value })}
-                                    />
 
-                                    {(videoSource === 'vimeo') ?
-                                        <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
-                                        :
-                                        <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
+                                    <RadioAdvanced
+                                        label={__('Video Source')}
+                                        value={videoSource}
+                                        options={videoSources}
+                                        onChange={val => setAttributes({ videoSource: val })}
+                                    />
+                                    {
+                                        videoSource === 'external' ?
+                                            <Fragment>
+                                                <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
+
+                                                <Select
+                                                    label={__('Video Type')}
+                                                    value={videoSource}
+                                                    options={[['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]]}
+                                                    onChange={value => setAttributes({ videoSource: value })}
+                                                />
+
+                                                {(videoSource === 'vimeo') ?
+                                                    <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
+                                                    :
+                                                    <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
+                                                }
+                                            </Fragment>
+                                            :
+                                            <Media
+                                                panel={true}
+                                                multiple={false}
+                                                type={['video']}
+                                                value={localVideo}
+                                                label={__('Local Video')}
+                                                onChange={value => setAttributes({ localVideo: value })}
+                                            />
                                     }
+
 
                                     <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
 
@@ -675,16 +702,25 @@ class Edit extends Component {
                         {enableBadge && <span className={`qubely-mediacard-badge qubely-badge-style-${badgeStyle} qubely-badge-size-${badgeSize}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}><span>{badge}</span></span>}
                         <div className={`qubely-block-mediacard-wrapper`}>
                             <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType} qubely-backend`}>
-                                {mediaType == 'video' &&
-                                    <video controls  src={videoUrl} />
-                                    // <Fragment>
-                                    //     {
-                                    //         videoSource == 'vimeo' ?
-                                    //             <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                    //             :
-                                    //             <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
-                                    //     }
-                                    // </Fragment>
+                                {
+                                    mediaType == 'video' &&
+                                    <Fragment>
+                                        {
+                                            videoSource === 'external' ?
+                                                <Fragment>
+                                                    {videoSource == 'vimeo' ?
+                                                        <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                                        :
+                                                        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
+                                                    }
+                                                </Fragment>
+                                                :
+                                                <div className={`qubely-mediacard-video qubely-local-video`}>
+                                                    <video controls src={localVideo.url} />
+                                                </div>
+
+                                        }
+                                    </Fragment>
                                 }
 
                                 {mediaType == 'image' &&

@@ -9,9 +9,13 @@ export const attributes = {
     layout: { type: 'number', default: 1 },
     mediaType: { type: 'string', default: 'image' },
 
-    videoSource: { type: 'string', default: 'vimeo' },
+    videoSource: { type: 'string', default: 'local' },
     vimeoId: { type: 'string', default: '368867301' },
     youtubeId: { type: 'string', default: 'HY3sut8LTSw' },
+    localVideo: {
+        type: 'object',
+        default: {}
+    },
     videoUrl: {
         type: 'string',
         default: null

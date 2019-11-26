@@ -8,6 +8,7 @@ class Save extends Component {
 			uniqueId,
 			layout,
 			mediaType,
+			videoUrl,
 			videoSource,
 			vimeoId,
 			youtubeId,
@@ -43,6 +44,7 @@ class Save extends Component {
 					<div className={`qubely-block-mediacard-wrapper`}>
 						<div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
 							{mediaType == 'video' &&
+								// <video controls src={videoUrl} />
 								<Fragment>
 									{(videoSource == 'vimeo') ?
 										<iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
