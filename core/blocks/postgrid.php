@@ -304,7 +304,6 @@ function register_block_qubely_postgrid_pro()
 						],
 						(object) [
 							'condition' => [
-								(object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
 								(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
 							],
 							'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
