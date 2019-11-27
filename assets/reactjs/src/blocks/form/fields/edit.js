@@ -437,12 +437,14 @@ export default function Edit(props) {
                                             <i className={`fa fa-bars`} />
                                         </span>
 
-                                        <RichText
-                                            placeholder={__('option')}
+                                        <input
+                                            type="text"
                                             className={`qubely-option`}
+                                            placeholder={__('option')}
                                             value={option}
-                                            onChange={value => updateOptions('update', index, value)}
+                                            onChange={event => updateOptions('update', index, event.target.value)}
                                         />
+
                                     </div>
                                 )
                             })}
