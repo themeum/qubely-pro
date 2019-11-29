@@ -1,6 +1,15 @@
 const { __ } = wp.i18n
-const { Component, Fragment } = wp.element
-const { InnerBlocks, InspectorControls } = wp.blockEditor
+const {
+    Fragment,
+    useState,
+    useEffect
+} = wp.element
+
+const {
+    InnerBlocks,
+    InspectorControls
+} = wp.blockEditor
+
 const { PanelBody } = wp.components
 
 const {
@@ -10,61 +19,53 @@ const {
     }
 } = wp.qubelyComponents
 
-class Edit extends Component {
-    constructor(props) {
-        super(props)
-        this.state = { device: 'md' }
-    }
+export default function Edit(props) {
+    const [device, setDevice] = useState('md')
+    const {
+        clientId,
+        attributes,
+        setAttributes,
+        attributes: {
+            uniqueId,
+            gutter,
+        }
+    } = props
 
-    componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId } } = this.props
+    useEffect(() => {
         const _client = clientId.substr(0, 6)
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client });
+            setAttributes({ uniqueId: _client })
         }
-    }
-    render() {
-        const {
-            attributes,
-            setAttributes,
-            attributes: {
-                uniqueId,
-                gutter,
-                spacer
-            }
-        } = this.props
+    })
 
-        const { device } = this.state
 
-        if (uniqueId) { CssGenerator(attributes, 'form-row', uniqueId) }
-        
-        return (
-            <Fragment>
-                <InspectorControls key="inspector">
+    if (uniqueId) { CssGenerator(attributes, 'form-row', uniqueId) }
 
-                    <PanelBody title={__('')} opened={true}>
-                        <Range
-                            min={0}
-                            max={100}
-                            responsive
-                            value={gutter}
-                            label={__('Gutter')}
-                            unit={['px', 'em', '%']}
-                            device={device}
-                            onDeviceChange={value => this.setState({ device: value })}
-                            onChange={value => setAttributes({ gutter: value })}
-                        />
-                    </PanelBody>
-                </InspectorControls>
-                <div className={`qubely-block-${uniqueId}`}>
-                    <div className={`qubely-form-row qubely-backend`}>
-                        <InnerBlocks allowedBlocks={['qubely/formfield-column']} />
-                    </div>
+    return (
+        <Fragment>
+            <InspectorControls key="inspector">
+
+                <PanelBody title={__('')} opened={true}>
+                    <Range
+                        min={0}
+                        max={100}
+                        responsive
+                        value={gutter}
+                        label={__('Gutter')}
+                        unit={['px', 'em', '%']}
+                        device={device}
+                        onDeviceChange={value => setDevice(value)}
+                        onChange={value => setAttributes({ gutter: value })}
+                    />
+                </PanelBody>
+            </InspectorControls>
+            <div className={`qubely-block-${uniqueId}`}>
+                <div className={`qubely-form-row qubely-backend`}>
+                    <InnerBlocks allowedBlocks={['qubely/formfield-column']} />
                 </div>
-            </Fragment>
-        )
-    }
+            </div>
+        </Fragment>
+    )
 }
-export default Edit

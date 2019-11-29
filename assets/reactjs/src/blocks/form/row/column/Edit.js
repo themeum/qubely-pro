@@ -1,6 +1,11 @@
 import icons from '../../../../helpers/icons';
 const { __ } = wp.i18n
-const { Component, Fragment } = wp.element
+const {
+    Fragment,
+    useState,
+    useEffect
+} = wp.element
+
 const { InnerBlocks, InspectorControls } = wp.blockEditor
 const { compose } = wp.compose
 const { createBlock } = wp.blocks
@@ -15,65 +20,54 @@ const {
     }
 } = wp.qubelyComponents
 
-class Edit extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            hideDropdown: null,
-            device: 'md'
+
+function Edit(props) {
+    const [device, setDevice] = useState('md')
+    const [hideDropdown, setDropdown] = useState(null)
+    const {
+        hasInnerBlocks,
+        setAttributes,
+        attributes,
+        clientId,
+        insertBlock,
+        rowIndex,
+        columnIndex,
+        attributes: {
+            uniqueId,
+            fieldSize,
+            width,
+            parentClientId
         }
-    }
-    componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId, fieldSize, width } } = this.props
+    } = props
+
+    const currentField = $(`#block-${clientId}`)
+    let currentDevice = window.innerWidth <= 1199 ? window.innerWidth <= 991 ? 'xs' : 'sm' : 'md'
+
+    useEffect(() => {
         const _client = clientId.substr(0, 6)
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client });
+            setAttributes({ uniqueId: _client })
         }
-        const currentField = $(`#block-${clientId}`)
 
-        let device = window.innerWidth <= 1199 ? window.innerWidth <= 991 ? 'xs' : 'sm' : 'md'
+        currentField.css(
+            {
+                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[currentDevice] + '%',
+            }
+        )
+    })
 
+    useEffect(() => {
         currentField.css(
             {
                 width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[device] + '%',
             }
         )
-    }
+    }, [attributes])
 
-    componentDidUpdate(prevProps, prevState) {
-        const {
-            clientId,
-            attributes: {
-                fieldSize,
-                width,
-            }
-        } = this.props
 
-        const currentField = $(`#block-${clientId}`)
-        let device = window.innerWidth <= 1199 ? window.innerWidth <= 991 ? 'xs' : 'sm' : 'md'
-        currentField.css(
-            {
-                width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[device] + '%',
-            }
-        )
-
-    }
-
-    renderFormFieldTypes = () => {
-
-        const {
-            clientId,
-            insertBlock,
-            rowIndex,
-            columnIndex,
-            attributes: {
-                parentClientId
-            }
-        } = this.props
-
-        const { hideDropdown } = this.state
+    const renderFormFieldTypes = () => {
 
         const formFields = [
             [__('Text'), 'text'],
@@ -106,99 +100,86 @@ class Edit extends Component {
 
     }
 
-    render() {
-        const {
-            hasInnerBlocks,
-            setAttributes,
-            attributes,
-            attributes: {
-                uniqueId,
-                fieldSize,
-                width,
-            }
-        } = this.props
-        const { device } = this.state;
-        
-        if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
+    if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
 
-        return (
-            <Fragment>
-                <InspectorControls key="inspector">
+    return (
+        <Fragment>
+            <InspectorControls key="inspector">
 
-                    <PanelBody title={__('')} opened={true}>
+                <PanelBody title={__('')} opened={true}>
 
-                        <RadioAdvanced
-                            label={__('Field Size')}
-                            options={[
-                                { label: 'S', value: 'small', title: 'Small' },
-                                { label: 'M', value: 'medium', title: 'Medium' },
-                                { label: 'L', value: 'large', title: 'Large' },
-                                { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                            ]}
-                            value={fieldSize}
-                            onChange={value => setAttributes({ fieldSize: value })} />
-                        {
-                            fieldSize === 'custom' &&
-                            <Range
-                                min={20}
-                                max={100}
-                                responsive
-                                value={width}
-                                device={device}
-                                label={__('Width')}
-                                onChange={value => setAttributes({ width: value })}
-                                onDeviceChange={value => this.setState({ device: value })}
+                    <RadioAdvanced
+                        label={__('Field Size')}
+                        options={[
+                            { label: 'S', value: 'small', title: 'Small' },
+                            { label: 'M', value: 'medium', title: 'Medium' },
+                            { label: 'L', value: 'large', title: 'Large' },
+                            { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                        ]}
+                        value={fieldSize}
+                        onChange={value => setAttributes({ fieldSize: value })} />
+                    {
+                        fieldSize === 'custom' &&
+                        <Range
+                            min={20}
+                            max={100}
+                            responsive
+                            value={width}
+                            device={device}
+                            label={__('Width')}
+                            onChange={value => setAttributes({ width: value })}
+                            onDeviceChange={value => setDevice(value)}
+                        />
+                    }
+
+                </PanelBody>
+            </InspectorControls>
+
+            <div className={`qubely-block-${uniqueId}  qubely-${fieldSize}`}>
+                <div className={`qubely-form-column`}>
+
+                    {
+                        hasInnerBlocks ?
+                            <InnerBlocks
+                                allowedBlocks={
+                                    [
+                                        'qubely/formfield-text',
+                                        'qubely/formfield-number',
+                                        'qubely/formfield-email',
+                                        'qubely/formfield-textarea',
+                                        'qubely/formfield-radio',
+                                        'qubely/formfield-dropdown',
+                                        'qubely/formfield-checkbox',
+                                        'qubely/formfield-date',
+                                        'qubely/formfield-time',
+                                    ]
+                                }
                             />
-                        }
-
-                    </PanelBody>
-                </InspectorControls>
-
-                <div className={`qubely-block-${uniqueId}  qubely-${fieldSize}`}>
-                    <div className={`qubely-form-column`}>
-
-                        {
-                            hasInnerBlocks ?
-                                <InnerBlocks
-                                    allowedBlocks={
-                                        [
-                                            'qubely/formfield-text',
-                                            'qubely/formfield-number',
-                                            'qubely/formfield-email',
-                                            'qubely/formfield-textarea',
-                                            'qubely/formfield-radio',
-                                            'qubely/formfield-dropdown',
-                                            'qubely/formfield-checkbox',
-                                            'qubely/formfield-date',
-                                            'qubely/formfield-time',
-                                        ]
-                                    }
-                                />
-                                :
-                                <Dropdown
-                                    className={"qubely-action-add-form-field"}
-                                    contentClassName={"qubely-form-field-picker"}
-                                    position="bottom center"
-                                    renderToggle={({ isOpen, onToggle }) =>
-                                        <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
-                                            <div className="qubely-action-add-form-empty" onClick={() => this.setState({ hideDropdown: onToggle })}>
-                                                <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
-                                            </div>
+                            :
+                            <Dropdown
+                                className={"qubely-action-add-form-field"}
+                                contentClassName={"qubely-form-field-picker"}
+                                position="bottom center"
+                                renderToggle={({ isOpen, onToggle }) =>
+                                    <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
+                                        <div className="qubely-action-add-form-empty" onClick={() => setDropdown(onToggle)}>
+                                            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
                                         </div>
-                                    }
-                                    renderContent={() => this.renderFormFieldTypes()}
-                                />
+                                    </div>
+                                }
+                                renderContent={() => renderFormFieldTypes()}
+                            />
 
-                        }
+                    }
 
-
-                    </div>
 
                 </div>
-            </Fragment>
-        )
-    }
+
+            </div>
+        </Fragment>
+    )
 }
+
 export default compose([
     withSelect((select, { clientId }) => {
         const {
