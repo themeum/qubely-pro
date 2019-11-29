@@ -3,7 +3,7 @@ Stable tag: 1.0.4
 
 == Changelog ==
 
-= 1.0.4 - 28 November, 2019 =
+= 1.0.4 - 29 November, 2019 =
 Fix: Dropdown field - Search  
 Fix: Post Grid block - Stack background in style 3   
 Fix: Form Builder block - Dropdown field option changing issue    
