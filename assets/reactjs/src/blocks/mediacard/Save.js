@@ -53,29 +53,26 @@ class Save extends Component {
 									}
 								</Fragment>
 							}
-							{
-								mediaType === 'image' &&
+
+							{mediaType === 'image' &&
 								<Fragment>
 									{
 										(image && image.url) ?
-											<img className="qubely-mediacard-image" src={image.url} srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''} alt={imgAlt && imgAlt} />
+											<img
+												src={image.url}
+												{...(imgAlt && { alt: imgAlt })}
+												className="qubely-mediacard-image"
+												srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
+											/>
 											:
-											<div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
+											<div className="qubely-mediacard-image-picker">
+												<div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
+											</div>
 									}
 								</Fragment>
 							}
 						</div>
 						<div className="qubely-mediacard-content-wrapper">
-							<div className={`qubely-mediacard-title-container ${separatorStyle ? 'qubely-has-separator' : ''} ${separatorPosition ? 'qubely-separator-position-' + separatorPosition : ''}`}>
-								<RichText.Content tagName={'span'} className="qubely-mediacard-title" value={title} />
-							</div>
-
-							{
-								enableContent &&
-								<div className="qubely-mediacard-content">
-									<RichText.Content tagName='div' className="qubely-mediacard-text" value={content} />
-								</div>
-							}
 							<div className={`qubely-mediacard-innerBlocks`}>
 								<InnerBlocks.Content />
 							</div>

@@ -433,15 +433,15 @@ export const attributes = {
             unit: 'px'
         },
         style:
-        [
-            {
-                condition: [
-                    { key: 'badgeStyle', relation: '!=', value: 'none' },
-                    { key: 'badgeStyle', relation: '==', value: 5 }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {top: {{badgeSpacingTop}};}'
-            }
-        ]
+            [
+                {
+                    condition: [
+                        { key: 'badgeStyle', relation: '!=', value: 'none' },
+                        { key: 'badgeStyle', relation: '==', value: 5 }
+                    ],
+                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {top: {{badgeSpacingTop}};}'
+                }
+            ]
     },
     badgeBg: {
         type: 'string',
@@ -592,6 +592,10 @@ export const attributes = {
     },
     cardBgShadow: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-content-wrapper' }] },
 
+    showContextMenu: {
+        type: 'boolean',
+        default: false
+    },
 
 
 };
