@@ -114,7 +114,7 @@ class Edit extends Component {
         setAttributes({ formItems })
 
         let innerBlocks = [...getBlocks(clientId)]
-        innerBlocks.push(createBlock('qubely/form-row', {}, [createBlock(`qubely/form-column`, {}, [createBlock(`qubely/formfield-${newFieldType}`, { fieldName: `${newFieldType}-${innerBlocks.length + 1}1` })])]))
+        innerBlocks.push(createBlock('qubely/form-row', { uniqueId: '' }, [createBlock(`qubely/form-column`, { uniqueId: 'test2' }, [createBlock(`qubely/formfield-${newFieldType}`, { fieldName: `${newFieldType}-${innerBlocks.length + 1}1` })])]))
         replaceInnerBlocks(clientId, innerBlocks, false);
 
     }
@@ -621,7 +621,7 @@ class Edit extends Component {
                                 qubelyContextMenu={this.refs.qubelyContextMenu}
                             />
                         </div>
-                   
+
                     </div>
 
 
