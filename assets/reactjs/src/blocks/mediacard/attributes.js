@@ -411,43 +411,19 @@ export const attributes = {
             [
                 {
                     condition: [
-                        { key: 'enableBadge', relation: '==', value: true },
+                        { key: 'badgeStyle', relation: '!=', value: 'none' },
                         { key: 'badgeStyle', relation: '==', value: 3 },
                     ],
                     selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {margin-top: {{badgeSpacing}};}'
                 },
                 {
                     condition: [
-                        { key: 'enableBadge', relation: '==', value: true },
-                        { key: 'badgeStyle', relation: '==', value: 5 },
-                        { key: 'badgePosition', relation: '==', value: 'left' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {left: {{badgeSpacing}};}'
-                },
-                {
-                    condition: [
-                        { key: 'enableBadge', relation: '==', value: true },
-                        { key: 'badgeStyle', relation: '==', value: 5 },
-                        { key: 'badgePosition', relation: '==', value: 'right' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {right: {{badgeSpacing}};}'
-                },
-                {
-                    condition: [
-                        { key: 'enableBadge', relation: '==', value: true },
+                        { key: 'badgeStyle', relation: '!=', value: 'none' },
                         { key: 'badgeStyle', relation: '==', value: 6 },
                         { key: 'badgePosition', relation: '==', value: 'left' }
                     ],
                     selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {left: {{badgeSpacing}};}'
                 },
-                {
-                    condition: [
-                        { key: 'enableBadge', relation: '==', value: true },
-                        { key: 'badgeStyle', relation: '==', value: 6 },
-                        { key: 'badgePosition', relation: '==', value: 'right' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {right: {{badgeSpacing}};}'
-                }
             ]
     },
     badgeSpacingTop: {
@@ -457,15 +433,15 @@ export const attributes = {
             unit: 'px'
         },
         style:
-            [
-                {
-                    condition: [
-                        { key: 'enableBadge', relation: '==', value: true },
-                        { key: 'badgeStyle', relation: '==', value: 5 }
-                    ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {top: {{badgeSpacingTop}};}'
-                }
-            ]
+        [
+            {
+                condition: [
+                    { key: 'badgeStyle', relation: '!=', value: 'none' },
+                    { key: 'badgeStyle', relation: '==', value: 5 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {top: {{badgeSpacingTop}};}'
+            }
+        ]
     },
     badgeBg: {
         type: 'string',
@@ -474,24 +450,17 @@ export const attributes = {
             [
                 {
                     condition: [
-                        { key: 'enableBadge', relation: '==', value: true }
+                        { key: 'badgeStyle', relation: '!=', value: 'none' },
                     ],
                     selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {background-color: {{badgeBg}};}'
                 },
                 {
                     condition: [
-                        { key: 'enableBadge', relation: '==', value: true },
+                        { key: 'badgeStyle', relation: '!=', value: 'none' },
                         { key: 'badgeStyle', relation: '==', value: 3 }
                     ],
                     selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge::before {border-color: {{badgeBg}} {{badgeBg}} transparent transparent;} {{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge::after {border-color: {{badgeBg}} transparent transparent {{badgeBg}};}'
                 },
-                {
-                    condition: [
-                        { key: 'enableBadge', relation: '==', value: true },
-                        { key: 'badgeStyle', relation: '==', value: 6 }
-                    ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge::before {border-color: {{badgeBg}} {{badgeBg}} transparent {{badgeBg}};}'
-                }
             ]
     },
 
@@ -503,7 +472,7 @@ export const attributes = {
                 {
                     condition:
                         [
-                            { key: 'enableBadge', relation: '==', value: true }
+                            { key: 'badgeStyle', relation: '!=', value: 'none' },
                         ],
                     selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {color: {{badgeColor}};}'
                 }
@@ -524,7 +493,7 @@ export const attributes = {
                 {
                     condition:
                         [
-                            { key: 'enableBadge', relation: '==', value: true }
+                            { key: 'badgeStyle', relation: '!=', value: 'none' },
                         ],
                     selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge'
                 }
@@ -540,7 +509,7 @@ export const attributes = {
             {
                 condition:
                     [
-                        { key: 'enableBadge', relation: '==', value: true },
+                        { key: 'badgeStyle', relation: '!=', value: 'none' },
                         { key: 'badgeStyle', relation: '==', value: 5 }
                     ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge'
