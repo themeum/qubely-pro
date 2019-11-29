@@ -217,11 +217,11 @@ class Edit extends Component {
                                 { value: 4, svg: icons.mediacard_4, label: __('') },
                                 { value: 5, svg: icons.mediacard_5, label: __('') },
                                 { value: 6, svg: icons.mediacard_5, label: __('') },
-
+                                { value: 7, svg: icons.mediacard_5, label: __('') },
                             ]}
                         />
                         {
-                            layout == 1 &&
+                            layout == 2 &&
                             <Alignment
                                 responsive
                                 disableJustify
@@ -722,7 +722,6 @@ class Edit extends Component {
                                         }
                                     </Fragment>
                                 }
-
                                 {mediaType == 'image' &&
                                     <Fragment>
                                         <MediaUpload
@@ -765,7 +764,6 @@ class Edit extends Component {
                                 }
                             </div>
 
-
                             <div className="qubely-mediacard-content-wrapper">
                                 <div className={`qubely-mediacard-title-container`} >
                                     <RichText
@@ -776,7 +774,6 @@ class Edit extends Component {
                                         onChange={value => setAttributes({ title: value })}
                                         value={title} />
                                 </div>
-
                                 {enableContent &&
                                     <div className="qubely-mediacard-content" >
                                         <RichText
@@ -790,7 +787,6 @@ class Edit extends Component {
                                         />
                                     </div>
                                 }
-
                                 <div className={`qubely-mediacard-innerBlocks`}>
                                     <InnerBlocks
                                         templateLock={false}
@@ -802,9 +798,8 @@ class Edit extends Component {
                                     />
                                 </div>
                             </div>
-
                         </div>
-                        <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+                        {/* <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
                             <ContextMenu
                                 name={name}
                                 clientId={clientId}
@@ -812,7 +807,7 @@ class Edit extends Component {
                                 setAttributes={setAttributes}
                                 qubelyContextMenu={this.refs.qubelyContextMenu}
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </Fragment>
