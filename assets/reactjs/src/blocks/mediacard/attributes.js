@@ -8,7 +8,8 @@ export const attributes = {
     ...buttonAttributes,
     layout: { type: 'number', default: 1 },
     mediaType: { type: 'string', default: 'image' },
-
+    imagePosition: { type: 'string', default: 'bottom' },
+    imagePositionHorizontal: { type: 'string', default: 'left' },
     videoSource: { type: 'string', default: 'local' },
     vimeoId: { type: 'string', default: '368867301' },
     youtubeId: { type: 'string', default: 'HY3sut8LTSw' },
@@ -352,8 +353,8 @@ export const attributes = {
     enableBadge: { type: 'boolean', default: false },
     badge: { type: 'string', default: 'Sale' },
     badgeStyle: {
-        type: 'number',
-        default: 1,
+        type: 'string',
+        default: 'default',
         style: [
             {
                 condition: [
@@ -518,6 +519,7 @@ export const attributes = {
     },
 
     // Body
+    bgImage: { type: 'object', default: { bgimgPosition: 'center center', bgimgSize: 'cover', bgimgRepeat: 'no-repeat', bgDefaultColor: '#f5f5f5' }, style: [{ selector: '{{QUBELY}}' }] },
     bgColor: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
     bgColorHover: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard:hover' }] },
     bgPadding: {

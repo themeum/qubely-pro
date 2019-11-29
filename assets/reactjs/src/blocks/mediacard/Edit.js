@@ -30,6 +30,7 @@ const {
     Styles,
     Alignment,
     ColorAdvanced,
+    Background,
     Color,
     Headings,
     Border,
@@ -117,6 +118,8 @@ class Edit extends Component {
 
 
                 mediaType,
+                imagePosition,
+                imagePositionHorizontal,
                 alignment,
 
                 title,
@@ -144,6 +147,7 @@ class Edit extends Component {
                 imgAlt,
                 imageWidth,
                 bgColor,
+                bgImage,
                 bgColorHover,
                 bgBorder,
                 bgBorderColorHover,
@@ -236,14 +240,41 @@ class Edit extends Component {
                                 onDeviceChange={value => this.setState({ device: value })}
                             />
                         }
-                        <ColorAdvanced label={__('Background')} value={bgColor} onChange={val => setAttributes({ bgColor: val })} />
+                        {(layout=='3') &&
+                            <Background label={__('Background')} sources={['image', 'gradient', 'video']} parallax value={bgImage} onChange={val => setAttributes({ bgImage: val })} />
+                        }
+                        {(layout!='3') &&
+                            <ColorAdvanced label={__('Background')} value={bgColor} onChange={val => setAttributes({ bgColor: val })} />
+                        }
                         <Border label={__('Border')} value={bgBorder} onChange={val => setAttributes({ bgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BorderRadius label={__('Card Corner')} value={bgBorderRadius} onChange={(value) => setAttributes({ bgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Padding label={__('Card Padding')} value={bgPadding} onChange={val => setAttributes({ bgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Card Shadow')} value={bgShadow} onChange={(value) => setAttributes({ bgShadow: value })} />
                     </PanelBody>
-
-                    <PanelBody title={__('Media Settings')} initialOpen={false} >
+                    {(layout!='3') &&
+                        <PanelBody title={__('Media Settings')} initialOpen={false} >
+                        {(layout=='1') &&
+                        <RadioAdvanced
+                            label={__('Image Position')}
+                            options={[
+                                { value: 'top', label: __('Top'), },
+                                { value: 'bottom', label: __('Bottom'), },
+                            ]}
+                            value={imagePosition}
+                            onChange={val => setAttributes({ imagePosition: val })}
+                        />
+                        }
+                        {(layout=='2') &&
+                        <RadioAdvanced
+                            label={__('Image Position')}
+                            options={[
+                                { value: 'left', label: __('Left'), },
+                                { value: 'right', label: __('Right'), },
+                            ]}
+                            value={imagePositionHorizontal}
+                            onChange={val => setAttributes({ imagePositionHorizontal: val })}
+                        />
+                        }
                         <RadioAdvanced
                             label={__('Type')}
                             value={mediaType}
@@ -371,7 +402,7 @@ class Edit extends Component {
                                 </Fragment>
                         }
                     </PanelBody>
-
+                    }
                     {
                         (layout === 4 || layout === 5) &&
                         <PanelBody title={__('Stack Style')} initialOpen={true}>
@@ -499,7 +530,8 @@ class Edit extends Component {
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         {(badgeStyle !='none') && <span className={`qubely-mediacard-badge qubely-badge-style-${badgeStyle} qubely-badge-size-${badgeSize}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}><span>{badge}</span></span>}
                         <div className={`qubely-block-mediacard-wrapper`}>
-                            <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType} qubely-backend`}>
+                            {(layout!=3) &&
+                                <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType} qubely-backend`}>
                                 {
                                     mediaType == 'video' &&
                                     <Fragment>
@@ -561,6 +593,7 @@ class Edit extends Component {
                                     </Fragment>
                                 }
                             </div>
+                            }
                             <div className="qubely-mediacard-content-wrapper">
                                 <div className={`qubely-mediacard-title-container`} >
                                     <RichText
