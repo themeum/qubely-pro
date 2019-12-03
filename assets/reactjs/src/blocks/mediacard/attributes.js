@@ -1,15 +1,62 @@
 const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes }, } = wp.qubelyComponents
 
 export const attributes = {
-
     uniqueId: { type: 'string', default: '' },
     // Global
     ...globalAttributes,
     ...buttonAttributes,
     layout: { type: 'number', default: 1 },
+    spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
+
+    // Media
     mediaType: { type: 'string', default: 'image' },
-    imagePosition: { type: 'string', default: 'bottom' },
-    imagePositionHorizontal: { type: 'string', default: 'left' },
+    imagePosition: { 
+        type: 'string', 
+        default: 'top',
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: '1' },
+                    { key: 'imagePosition', relation: '==', value: 'bottom' },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-1 .qubely-block-mediacard-wrapper {display:flex;flex-wrap: wrap;flex-direction: column-reverse;}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: '4' },
+                    { key: 'imagePosition', relation: '==', value: 'bottom' },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-4 .qubely-block-mediacard-wrapper {display:flex;flex-wrap: wrap;flex-direction: column-reverse;}'
+            }
+        ] 
+    },
+    imagePositionHorizontal: { 
+        type: 'string', 
+        default: 'left',
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: '2' },
+                    { key: 'imagePositionHorizontal', relation: '==', value: 'left' },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-block-mediacard-wrapper {display:flex;}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: '2' },
+                    { key: 'imagePositionHorizontal', relation: '==', value: 'right' },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-block-mediacard-wrapper {display:flex;flex-direction: row-reverse;}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: '5' },
+                    { key: 'imagePositionHorizontal', relation: '==', value: 'right' },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-5 .qubely-block-mediacard-wrapper {display:flex;flex-direction: row-reverse;}'
+            }
+        ] 
+    },
     videoSource: { type: 'string', default: 'local' },
     vimeoId: { type: 'string', default: '368867301' },
     youtubeId: { type: 'string', default: 'HY3sut8LTSw' },
@@ -31,30 +78,6 @@ export const attributes = {
             }
         ]
     },
-
-    alignment: {
-        type: 'object',
-        default: {
-            md: 'left'
-        },
-        style: [
-            {
-                condition: [
-                    { key: 'layout', relation: '==', value: 1 }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard {text-align: {{alignment}};}'
-            }
-        ]
-    },
-
-    spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
-
-    enableButton: { type: 'boolean', default: false },
-    buttonToggleOption: { type: 'boolean', default: true },
-
-
-
-    // Image
     image: { type: 'object', default: {} },
     image2x: { type: 'object', default: {} },
     imgAlt: { type: 'string', default: '' },
@@ -74,12 +97,6 @@ export const attributes = {
             },
         ]
     },
-
-
-
-    // Media background
-    useMediaBg: { type: 'boolean', default: 1 },
-
     imageBorderRadius: {
         type: 'object',
         default: {
@@ -98,9 +115,6 @@ export const attributes = {
             }
         ]
     },
-
-
-    // Media Spacing
     mediaSpacing: {
         type: 'object', default: { md: 20, unit: 'px' },
         style: [
@@ -126,118 +140,13 @@ export const attributes = {
         selector: '.qubely-mediacard-title',
         default: 'Qubely Gutenberg Plugin'
     },
-    titleAlignment: {
-        type: 'object', default: { md: 'left' },
-        style: [
-            {
-                condition: [
-                    { key: 'enableContent', relation: '==', value: true },
-                    { key: 'layout', relation: '!=', value: 1 },
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-title {text-align: {{titleAlignment}};}'
-            }
-        ]
-    },
-    titleTypography: {
-        type: 'object',
-        default: {
-            openTypography: 1,
-            family: 'Helvetica',
-            type: 'sans-serif',
-            size: {
-                md: 32,
-                unit: 'px'
-            },
-            height: {
-                md: '45',
-                unit: 'px'
-            }
-        },
-        style: [{ selector: '{{QUBELY}} .qubely-mediacard-title' }]
-    },
-    titleColor: {
-        type: 'string',
-        default: '#1B1B1B',
-        style: [
-            {
-                selector: '{{QUBELY}} .qubely-mediacard-title {color: {{titleColor}};}'
-            }
-        ]
-    },
-    titleColorHover: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-block-mediacard:hover .qubely-mediacard-title {color: {{titleColorHover}};}' }] },
-    titleSpacing: { type: 'object', default: { md: 10, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-mediacard-title {margin-bottom: {{titleSpacing}};}' }] },
 
     //Content
-    enableContent: { type: 'boolean', default: true },
     content: {
         type: 'string',
         source: 'html',
         selector: '.qubely-mediacard-text',
         default: 'There’s no easier way to add innovative Gutenberg blocks than using Qubely Gutenberg Blocks Toolkit. Instantly raise your website appearance with this stylish new plugin.'
-    },
-    contentAlignment: {
-        type: 'object', default: { md: 'left' },
-        style: [
-            {
-                condition: [
-                    { key: 'enableContent', relation: '==', value: true },
-                    { key: 'layout', relation: '!=', value: 1 }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-text {text-align: {{contentAlignment}};}'
-            }
-        ]
-    },
-    contentTypography: {
-        type: 'object',
-        default: {
-            openTypography: 1,
-            family: 'Helvetica',
-            type: 'sans-serif',
-            size: {
-                md: 16,
-                unit: 'px'
-            },
-            height: {
-                md: '24',
-                unit: 'px'
-            }
-        },
-        style: [{ condition: [{ key: 'enableContent', relation: '==', value: true }], selector: '{{QUBELY}} .qubely-mediacard-text' }]
-    },
-    contentColor: {
-        type: 'string',
-        default: '#9B9B9B',
-        style: [
-            {
-                condition: [{ key: 'enableContent', relation: '==', value: true }],
-                selector: '{{QUBELY}} .qubely-mediacard-text {color: {{contentColor}};}'
-            }]
-    },
-    contentColorHover: { type: 'string', default: '', style: [{ condition: [{ key: 'enableContent', relation: '==', value: true }], selector: '{{QUBELY}} .qubely-block-mediacard:hover .qubely-mediacard-text {color: {{contentColorHover}};}' }] },
-    contentPadding: {
-        type: 'object',
-        default: {},
-        style: [
-            {
-                condition: [{ key: 'enableContent', relation: '==', value: true }],
-                selector: '{{QUBELY}} .qubely-mediacard-content-wrapper'
-            }]
-    },
-    contentSpacing: {
-        type: 'object', default: { md: 10, unit: 'px' },
-        style: [
-            {
-                condition: [{ key: 'enableButton', relation: '==', value: true }, { key: 'enableContent', relation: '==', value: true }],
-                selector: '{{QUBELY}} .qubely-mediacard-body .qubely-mediacard-text {margin-bottom: {{contentSpacing}};}'
-            },
-            {
-                condition: [
-                    { key: 'enableButton', relation: '==', value: false },
-                    { key: 'enableContent', relation: '==', value: true }
-                ],
-                selector: '{{QUBELY}} .qubely-mediacard-body .qubely-mediacard-text {margin-bottom: 0;}'
-            },
-        ]
     },
 
     //stack
@@ -247,16 +156,22 @@ export const attributes = {
         style: [
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: 3 },
+                    { key: 'layout', relation: '==', value: 4 },
                 ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+                selector: '{{QUBELY}} .qubely-mediacard-layout-4 .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
             },
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: 4 },
+                    { key: 'layout', relation: '==', value: 6 },
                 ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+                selector: '{{QUBELY}} .qubely-mediacard-layout-6 .qubely-mediacard-content-wrapper'
             },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-7 .qubely-mediacard-content-wrapper'
+            }
         ]
     },
     stackBorderRadius: {
@@ -272,16 +187,22 @@ export const attributes = {
         style: [
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: 3 },
+                    { key: 'layout', relation: '==', value: 4 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
             },
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: 4 },
+                    { key: 'layout', relation: '==', value: 6 },
                 ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+                selector: '{{QUBELY}} .qubely-mediacard-layout-6 .qubely-mediacard-content-wrapper'
             },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-7 .qubely-mediacard-content-wrapper'
+            }
         ]
     },
     stackWidth: {
@@ -292,11 +213,23 @@ export const attributes = {
                 condition: [
                     { key: 'layout', relation: '==', value: 4 },
                 ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper {width: {{stackWidth}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-6 .qubely-mediacard-content-wrapper {width: {{stackWidth}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-7 .qubely-mediacard-content-wrapper {width: {{stackWidth}};}'
             }
         ]
     },
-    // stackSpace,
+
     stackPadding: {
         type: 'object',
         default: {
@@ -320,6 +253,18 @@ export const attributes = {
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
             },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-6 .qubely-mediacard-content-wrapper'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-7 .qubely-mediacard-content-wrapper'
+            }
         ]
     },
     stackBoxShadow: {
@@ -346,23 +291,26 @@ export const attributes = {
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper'
             },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-6 .qubely-mediacard-content-wrapper'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-7 .qubely-mediacard-content-wrapper'
+            },
         ]
     },
 
     // Badge__
-    enableBadge: { type: 'boolean', default: false },
     badge: { type: 'string', default: 'Sale' },
     badgeStyle: {
         type: 'string',
-        default: 'default',
-        style: [
-            {
-                condition: [
-                    { key: 'badgeStyle', relation: '!=', value: 3 }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard {overflow: hidden;}'
-            }
-        ]
+        default: 'default'
     },
     badgePosition: {
         type: 'string',
@@ -370,79 +318,45 @@ export const attributes = {
         style: [
             {
                 condition: [
-                    { key: 'badgeStyle', relation: '==', value: 1 },
-                    { key: 'badgePosition', relation: '==', value: 'left' }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {left: -73px; transform: rotate(-45deg);}'
-            },
-            {
-                condition: [
-                    { key: 'badgeStyle', relation: '==', value: 1 },
-                    { key: 'badgePosition', relation: '==', value: 'right' }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {right: -73px; transform: rotate(45deg);}'
-            },
-            {
-                condition: [
-                    { key: 'badgeStyle', relation: '==', value: 2 },
-                    { key: 'badgePosition', relation: '==', value: 'left' }
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {left: -50px; transform: rotate(-45deg);}'
-            },
-            {
-                condition: [
-                    { key: 'badgeStyle', relation: '==', value: 2 },
-                    { key: 'badgePosition', relation: '==', value: 'right' }
+                    { key: 'badgeStyle', relation: '==', value: 'none' }
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {right: -50px; transform: rotate(45deg);}'
             },
         ]
     },
-    badgeSize: {
+    badgeColor: {
         type: 'string',
-        default: 'regular'
+        default: '#FFFFFF',
+        style:
+        [
+            {
+                condition:
+                    [
+                        { key: 'badgeStyle', relation: '!=', value: 'none' },
+                    ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {color: {{badgeColor}};}'
+            }
+        ]
     },
-    badgeSpacing: {
+    badgeTypography: {
         type: 'object',
         default: {
-            md: 20,
-            unit: 'px'
+            openTypography: 1,
+            size: {
+                md: 14,
+                unit: 'px'
+            }
         },
         style:
-            [
-                {
-                    condition: [
+        [
+            {
+                condition:
+                    [
                         { key: 'badgeStyle', relation: '!=', value: 'none' },
-                        { key: 'badgeStyle', relation: '==', value: 3 },
                     ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {margin-top: {{badgeSpacing}};}'
-                },
-                {
-                    condition: [
-                        { key: 'badgeStyle', relation: '!=', value: 'none' },
-                        { key: 'badgeStyle', relation: '==', value: 6 },
-                        { key: 'badgePosition', relation: '==', value: 'left' }
-                    ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {left: {{badgeSpacing}};}'
-                },
-            ]
-    },
-    badgeSpacingTop: {
-        type: 'object',
-        default: {
-            md: 20,
-            unit: 'px'
-        },
-        style:
-            [
-                {
-                    condition: [
-                        { key: 'badgeStyle', relation: '!=', value: 'none' },
-                        { key: 'badgeStyle', relation: '==', value: 5 }
-                    ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {top: {{badgeSpacingTop}};}'
-                }
-            ]
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge'
+            }
+        ]
     },
     badgeBg: {
         type: 'string',
@@ -454,74 +368,121 @@ export const attributes = {
                         { key: 'badgeStyle', relation: '!=', value: 'none' },
                     ],
                     selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {background-color: {{badgeBg}};}'
-                },
-                {
-                    condition: [
-                        { key: 'badgeStyle', relation: '!=', value: 'none' },
-                        { key: 'badgeStyle', relation: '==', value: 3 }
-                    ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge::before {border-color: {{badgeBg}} {{badgeBg}} transparent transparent;} {{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge::after {border-color: {{badgeBg}} transparent transparent {{badgeBg}};}'
-                },
-            ]
-    },
-
-    badgeColor: {
-        type: 'string',
-        default: '#FFFFFF',
-        style:
-            [
-                {
-                    condition:
-                        [
-                            { key: 'badgeStyle', relation: '!=', value: 'none' },
-                        ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {color: {{badgeColor}};}'
                 }
             ]
     },
-
-    badgeTypography: {
+    badgePadding: {
         type: 'object',
         default: {
-            openTypography: 1,
-            size: {
-                md: 14,
-                unit: 'px'
-            }
-        },
-        style:
-            [
-                {
-                    condition:
-                        [
-                            { key: 'badgeStyle', relation: '!=', value: 'none' },
-                        ],
-                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge'
-                }
-            ]
-    },
-
-    badgeRadius: {
-        type: 'object',
-        default: {
-            paddingType: 'global',
+            'openPadding': 1,
+            'paddingType': 'global',
+            'unit': 'px',
+            'global': {
+                'md': ''
+            },
         },
         style: [
             {
-                condition:
-                    [
-                        { key: 'badgeStyle', relation: '!=', value: 'none' },
-                        { key: 'badgeStyle', relation: '==', value: 5 }
-                    ],
+                condition: [
+                    { key: 'badgeStyle', relation: '!=', value: 'none' },
+                ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge'
-            }
+            },
+        ]
+    },
+    badgeBorderRadius: {
+        type: 'object',
+        default: {
+            unit: 'px',
+            openBorderRadius: true,
+            radiusType: 'global',
+            global: {
+                md: 10,
+            },
+        },
+        style: [
+            {
+                condition: [
+                    { key: 'badgeStyle', relation: '!=', value: 'none' },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge'
+            },
         ]
     },
 
-    // Body
-    bgImage: { type: 'object', default: { bgimgPosition: 'center center', bgimgSize: 'cover', bgimgRepeat: 'no-repeat', bgDefaultColor: '#f5f5f5' }, style: [{ selector: '{{QUBELY}}' }] },
-    bgColor: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
-    bgColorHover: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard:hover' }] },
+    // Card
+    alignment: {
+        type: 'object',
+        default: {
+            md: 'left'
+        },
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 1 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard {text-align: {{alignment}};}'
+            }
+        ]
+    },
+    contentPosition: {
+        type: 'string',
+        default: 'middle',
+        style: [
+            {
+                condition: [
+                    { key: 'contentPosition', relation: '==', value: 'top' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {align-content: flex-start;}'
+            },
+            {
+                condition: [
+                    { key: 'contentPosition', relation: '==', value: 'middle' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {align-content: center;}'
+            },
+            {
+                condition: [
+                    { key: 'contentPosition', relation: '==', value: 'bottom' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {align-content: flex-end;}'
+            }
+        ]
+    },
+    contentHorizontalPosition: {
+        type: 'string',
+        default: 'left',
+        style: [
+            {
+                condition: [
+                    { key: 'contentHorizontalPosition', relation: '==', value: 'left' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {justify-content: flex-start;}'
+            },
+            {
+                condition: [
+                    { key: 'contentHorizontalPosition', relation: '==', value: 'middle' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {justify-content: center;}'
+            },
+            {
+                condition: [
+                    { key: 'contentHorizontalPosition', relation: '==', value: 'right' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {justify-content: flex-end;}'
+            }
+        ]
+    },
+    bgColor: { 
+        type: 'object', 
+        default: {}, 
+        style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] 
+    },
+    bgImage: { 
+        type: 'object', 
+        default: { bgimgPosition: 'center center', bgimgSize: 'cover', bgimgRepeat: 'no-repeat', bgDefaultColor: '#f5f5f5' }, 
+        style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] 
+    },
     bgPadding: {
         type: 'object',
         default: {
@@ -547,57 +508,109 @@ export const attributes = {
         ]
     },
     bgBorder: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
-    bgBorderColorHover: { type: 'string', default: '#e5e5e5', style: [{ selector: '{{QUBELY}} .qubely-block-mediacard:hover { border-color: {{bgBorderColorHover}};}' }] },
     bgShadow: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
-    bgShadowHover: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard:hover' }] },
-
-
-
-
-
-
-    // Card
-    cardBackgroundColor: {
-        type: 'object',
-        default: {}, style: [
-            { selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-content-wrapper' }]
+    enableFixedHeight: { 
+        type: 'boolean', 
+        default: true 
     },
-    cardBgPadding: {
-        type: 'object',
-        default: {},
-        style: [
-            { selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-content-wrapper' }]
-    },
-    cardBgBorder: {
-        type: 'object',
+    fixedHeight: { 
+        type: 'object', 
         default: {
-            paddingType: 'global'
+            md: 450,
+            unit: 'px'
         },
         style: [
             {
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-content-wrapper'
+                condition: [
+                    { key: 'layout', relation: '==', value: 3 },
+                    { key: 'enableFixedHeight', relation: '==', value: true },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {height: {{fixedHeight}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 },
+                    { key: 'enableFixedHeight', relation: '==', value: true },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {height: {{fixedHeight}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 },
+                    { key: 'enableFixedHeight', relation: '==', value: true },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {height: {{fixedHeight}};}'
+            }
+        ] 
+    },
+
+    // Overlay
+    enableOverlay: {
+        type: 'boolean',
+        default: true,
+    },
+    overlayBg: {
+        type: 'object',
+        default: {
+            openColor: 1,
+            type: 'color',
+            color: 'rgba(0, 0, 0, 0.8)',
+            gradient: {
+                color1: 'rgba(0, 0, 0, 0.5)',
+                color2: 'rgba(6, 1, 14, 0.6)',
+                direction: 25,
+                start: 0,
+                stop: 100,
+                type: 'linear'
+            },
+        },
+        style: [
+            {
+                condition: [
+                    { key: 'enableOverlay', relation: '==', value: true }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-3 .qubely-block-mediacard-wrapper:before'
             }
         ]
     },
-    cardBgBorderRadius: {
+    overlayHoverBg: {
         type: 'object',
         default: {
-            openBorderRadius: 1,
-            radiusType: 'global',
-
+            type: 'gradient',
+            openColor: 0,
+            color: 'rgba(6, 80, 183, 0.85)',
+            gradient: {
+                color1: 'rgba(6, 80, 183, 0.85)',
+                color2: 'rgba(96, 10, 255, 0.85)',
+                direction: 45,
+                start: 0,
+                stop: 100,
+                type: 'linear'
+            }
         },
         style: [
             {
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-content-wrapper'
-            },
+                condition: [
+                    { key: 'enableOverlay', relation: '==', value: true }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-3:hover .qubely-block-mediacard-wrapper:before'
+            }
         ]
     },
-    cardBgShadow: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-content-wrapper' }] },
-
+    overlayBlend: {
+        type: 'string',
+        default: '',
+        style: [
+            {
+                condition: [
+                    { key: 'enableOverlay', relation: '==', value: true }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-3 .qubely-block-mediacard-wrapper:before {mix-blend-mode: {{overlayBlend}};}'
+            }
+        ]
+    },
     showContextMenu: {
         type: 'boolean',
         default: false
     },
-
-
 };

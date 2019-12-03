@@ -1,97 +1,60 @@
 .qubely-block-mediacard {
     position: relative;
     transition: border-color 400ms, background-color 400ms, box-shadow 400ms;
-    &.qubely-mediacard-layout-2 {
-        .qubely-block-mediacard-wrapper {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-align: start;
-            align-items: flex-start;
-        }
-    }
-    &.qubely-mediacard-layout-1,
-    &.qubely-mediacard-layout-2 {
-        .qubely-mediacard-innerBlocks .block-list-appender {
-            margin: 15px;
-        }
-    }
-    &.qubely-mediacard-layout-3{
-        position: relative;
-        overflow: hidden;
-    .qubely-block-mediacard-wrapper {
-        .qubely-mediacard-image-wrapper {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            -webkit-background-size: cover;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            overflow: hidden;
-        img {
-            position: absolute;
-            width: auto;
-            height: auto;
-            min-width: 100%;
-            max-width: none;
-            left: 50%;
-            top: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            min-height: 100%;
-        }
-      }
-      .qubely-mediacard-content-wrapper {
-        top: 0;
-        height: 100%;
-        position: absolute;
-        display: grid;
-        align-content: flex-end;
-        opacity: 1;
-        z-index: 10;
-        overflow: hidden;
-        width: 100%;
-        max-width: 100%;
-        padding: 20px;
-      }
-      &:before {
-        position: absolute;
-        content: "";
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        z-index: 3;
-        transition: 400ms;
-        background-image: none;
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-    }
-  }
+    &.qubely-mediacard-layout-3,
     &.qubely-mediacard-layout-6,
     &.qubely-mediacard-layout-7 {
         position: relative;
         overflow: hidden;
         .qubely-block-mediacard-wrapper {
-            .qubely-mediacard-content-wrapper {
-                top: 0;
-                height: 100%;
+            display: flex;
+            z-index: 10;
+            overflow: hidden;
+            padding: 20px;
+        }
+    }
+    &.qubely-mediacard-layout-3,
+    &.qubely-mediacard-layout-6 {
+        .qubely-block-mediacard-wrapper {
+            flex-wrap: wrap;
+        }
+    }
+    .qubely-mediacard-layout-3{
+        .qubely-block-mediacard-wrapper {
+            &:before {
                 position: absolute;
-                display: grid;
-                align-content: flex-end;
-                opacity: 1;
-                z-index: 10;
-                overflow: hidden;
-                width: 100%;
-                max-width: 100%;
-                padding: 20px;
+                content: "";
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 3;
+                transition: 400ms;
+                background-image: none;
+                transition: 400ms;
             }
         }
     }
+    // &.qubely-mediacard-layout-6,
+    // &.qubely-mediacard-layout-7 {
+    //     position: relative;
+    //     overflow: hidden;
+    //     .qubely-block-mediacard-wrapper {
+    //         .qubely-mediacard-content-wrapper {
+    //             top: 0;
+    //             height: 100%;
+    //             position: absolute;
+    //             display: grid;
+    //             align-content: flex-end;
+    //             opacity: 1;
+    //             z-index: 10;
+    //             overflow: hidden;
+    //             width: 100%;
+    //             max-width: 100%;
+    //             padding: 20px;
+    //         }
+    //     }
+    // }
 
   &.qubely-mediacard-layout-4 .qubely-block-mediacard-wrapper {
     .qubely-mediacard-media_wrapper {
@@ -102,14 +65,10 @@
         display: block;
         width: 100%;
       }
-      .qubely-mediacard-image-picker {
-        width: 100%;
-      }
     }
     .qubely-mediacard-content-wrapper {
       margin: -80px auto 0;
       width: 90%;
-
       background: #fff;
       position: relative;
       z-index: 1;
@@ -144,266 +103,37 @@
   .qubely-mediacard-media_wrapper {
     display: inline-block;
     line-height: 1;
-    text-align: center;
-    &.qubely-backend {
-      position: relative;
-    }
-    .qubely-mediacard-image-picker {
-      width: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f5f5f5;
-      border: 2px dashed #e5e5e5;
-      padding: 30px;
-      border-radius: 5px;
-      min-height: 200px;
-      .qubely-insert-image {
-        text-align: center;
-        display: inline-block;
-        color: #000;
-        text-decoration: none;
-        line-height: 1;
-        position: relative;
-        z-index: 4;
-      }
-    }
-    .qubely-media-actions {
-      bottom: 10px;
-      right: 10px;
-      position: absolute;
-      z-index: 4;
-    }
-  }
-
-  .qubely-mediacard-innerBlocks .block-list-appender {
-    margin-top: 30px;
-    .block-editor-button-block-appender {
-      outline: 1px dashed #2184f9;
-      background: none;
-    }
-  }
-
-  .qubely-mediacard-badge {
-    background-color: #333;
-    z-index: 10;
-    &.qubely-badge-style-1 {
-      text-align: center;
-      position: absolute;
-      display: block;
-      line-height: 1;
-      &.qubely-badge-size-small {
-        top: -15px;
-        height: 60px;
-        padding-top: 35px;
-        width: 180px;
-      }
-      &.qubely-badge-size-regular {
-        top: -17px;
-        height: 70px;
-        padding-top: 40px;
-        width: 180px;
-      }
-      &.qubely-badge-size-large {
-        top: -17px;
-        height: 80px;
-        padding-top: 46px;
-        width: 200px;
-      }
-    }
-
-    &.qubely-badge-style-2 {
-      text-align: center;
-      position: absolute;
-      display: block;
-      &.qubely-badge-size-small {
-        top: 13px;
-        height: 27px;
-        line-height: 27px;
-        width: 160px;
-      }
-      &.qubely-badge-size-regular {
-        top: 18px;
-        height: 34px;
-        line-height: 34px;
-        width: 170px;
-      }
-      &.qubely-badge-size-large {
-        top: 22px;
-        height: 42px;
-        line-height: 42px;
-        width: 180px;
-      }
-    }
-
-    &.qubely-badge-style-3 {
-      text-align: center;
-      display: block;
-      position: relative;
-
-      > span:before,
-      > span:after,
-      &:before,
-      &:after {
-        content: " ";
-        position: absolute;
-        border-style: solid;
-      }
-
-      &.qubely-badge-size-small {
-        height: 27px;
-        line-height: 27px;
-        margin-left: -10px;
-        margin-right: -10px;
-        > span:before,
-        > span:after,
-        &:before,
-        &:after {
-          bottom: -10px;
-          border-width: 5px;
-        }
-      }
-
-      &.qubely-badge-size-regular {
-        height: 37px;
-        line-height: 37px;
-        margin-left: -15px;
-        margin-right: -15px;
-        > span:before,
-        > span:after,
-        &:before,
-        &:after {
-          bottom: -15px;
-          border-width: 7.5px;
-        }
-      }
-
-      &.qubely-badge-size-large {
-        height: 46px;
-        line-height: 46px;
-        margin-left: -20px;
-        margin-right: -20px;
-        > span:before,
-        > span:after,
-        &:before,
-        &:after {
-          bottom: -20px;
-          border-width: 10px;
-        }
-      }
-
-      > span:before,
-      &:before {
-        left: 0;
-      }
-
-      > span:after,
-      &:after {
-        right: 0;
-      }
-
-      > span:before,
-      > span:after {
-        z-index: 1;
-      }
-
-      > span:before {
-        border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) transparent transparent;
-      }
-
-      > span:after {
-        border-color: rgba(0, 0, 0, 0.15) transparent transparent rgba(0, 0, 0, 0.15);
-      }
-    }
-
-    &.qubely-badge-style-4 {
-      text-align: center;
-      display: block;
-      height: 40px;
-      line-height: 40px;
-
-      &.qubely-badge-size-small {
-        height: 27px;
-        line-height: 27px;
-      }
-
-      &.qubely-badge-size-regular {
-        height: 37px;
-        line-height: 37px;
-      }
-
-      &.qubely-badge-size-large {
-        height: 46px;
-        line-height: 46px;
-      }
-    }
-
-    &.qubely-badge-style-5 {
-      text-align: center;
-      display: inline-block;
-      padding: 0 20px;
-      position: absolute;
-      &.qubely-badge-size-small {
-        height: 27px;
-        line-height: 27px;
-      }
-
-      &.qubely-badge-size-regular {
-        height: 37px;
-        line-height: 37px;
-      }
-
-      &.qubely-badge-size-large {
-        height: 46px;
-        line-height: 46px;
-      }
-    }
-
-    &.qubely-badge-style-6 {
-      text-align: center;
-      position: absolute;
-      top: 0;
-      display: block;
-      line-height: 1;
-
-      > span {
-        display: inline-block;
-        transform: rotate(90deg);
-      }
-
-      &::before {
-        content: " ";
-        position: absolute;
-        left: 0;
-        border-style: solid;
-      }
-
-      &.qubely-badge-size-small {
-        width: 27px;
-        padding: 15px 0;
-        &::before {
-          bottom: -15px;
-          border-width: 13.5px;
-        }
-      }
-
-      &.qubely-badge-size-regular {
-        width: 37px;
-        padding: 18px 0;
-        &::before {
-          bottom: -18px;
-          border-width: 18.5px;
-        }
-      }
-
-      &.qubely-badge-size-large {
-        width: 46px;
-        padding: 23px 0;
-        &::before {
-          bottom: -23px;
-          border-width: 23px;
-        }
-      }
-    }
   }
 }
+
+//editor
+.qubely-mediacard-innerBlocks .block-list-appender {
+    margin-top: 30px;
+    .block-editor-button-block-appender {
+        outline: 1px dashed #2184f9;
+        background: none;
+    }
+}
+.qubely-mediacard-layout-1,
+.qubely-mediacard-layout-2 {
+    .qubely-mediacard-innerBlocks .block-list-appender {
+        margin: 15px;
+    }
+}
+
+.editor-styles-wrapper .qubely-mediacard-innerBlocks [data-block] {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.qubely-mediacard-innerBlocks .block-list-appender>.block-editor-inserter {
+    margin-top: 30px;
+}
+
+// .block-editor-block-list__block .qubely-mediacard-innerBlocks .block-editor-block-contextual-toolbar {
+//     margin-left: 0;
+//     margin-right: 0;
+// }
+// .block-editor-block-list__block .qubely-mediacard-innerBlocks .block-editor-block-list__layout {
+//     margin-left: 0;
+//     margin-right: 0;
+// }
