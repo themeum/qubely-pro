@@ -327,13 +327,13 @@ export const attributes = {
     stackBoxShadow: {
         type: 'object',
         default: {
-            'blur': 28,
-            'color': '#566372',
+            'blur': 20,
+            'color': 'rgba(0,0,0,0.3)',
             'horizontal': 0,
             'inset': 0,
             'openShadow': true,
             'spread': -20,
-            'vertical': 34
+            'vertical': 20
         },
         style: [
             {
@@ -553,7 +553,7 @@ export const attributes = {
     },
     contentHorizontalPosition: {
         type: 'string',
-        default: 'left',
+        default: 'middle',
         style: [
             {
                 condition: [
