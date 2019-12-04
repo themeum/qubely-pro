@@ -16,14 +16,14 @@ export const attributes = {
         style: [
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: '1' },
+                    { key: 'layout', relation: '==', value: 1 },
                     { key: 'imagePosition', relation: '==', value: 'bottom' },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-1 .qubely-block-mediacard-wrapper {display:flex;flex-wrap: wrap;flex-direction: column-reverse;}'
             },
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: '4' },
+                    { key: 'layout', relation: '==', value: 4 },
                     { key: 'imagePosition', relation: '==', value: 'bottom' },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-4 .qubely-block-mediacard-wrapper {display:flex;flex-wrap: wrap;flex-direction: column-reverse;}'
@@ -36,21 +36,21 @@ export const attributes = {
         style: [
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: '2' },
+                    { key: 'layout', relation: '==', value: 2 },
                     { key: 'imagePositionHorizontal', relation: '==', value: 'left' },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-block-mediacard-wrapper {display:flex;}'
             },
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: '2' },
+                    { key: 'layout', relation: '==', value: 2 },
                     { key: 'imagePositionHorizontal', relation: '==', value: 'right' },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-block-mediacard-wrapper {display:flex;flex-direction: row-reverse;}'
             },
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: '5' },
+                    { key: 'layout', relation: '==', value: 5 },
                     { key: 'imagePositionHorizontal', relation: '==', value: 'right' },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-5 .qubely-block-mediacard-wrapper {display:flex;flex-direction: row-reverse;}'
@@ -69,31 +69,36 @@ export const attributes = {
         default: null
     },
     autoplay: { type: 'boolean', default: false },
-    videoWidth: {
-        type: 'object',
-        default: { md: 50, unit: '%' },
-        style: [
-            {
-                selector: '{{QUBELY}} .qubely-mediacard-layout-2.media-type-video .qubely-mediacard-media { width: {{videoWidth}}; } {{QUBELY}} .qubely-mediacard-layout-3.media-type-video .qubely-mediacard-media { width: {{videoWidth}}; }'
-            }
-        ]
+    // videoWidth: {
+    //     type: 'object',
+    //     default: { md: 50, unit: '%' },
+    //     style: [
+    //         {
+    //             selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-2 .qubely-mediacard-video { width: {{videoWidth}}; } {{QUBELY}} .qubely-mediacard-layout-3.media-type-video .qubely-mediacard-media { width: {{videoWidth}}; }'
+    //         }
+    //     ]
+    // },
+    image: { 
+        type: 'object', 
+        default: {
+            url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
+        } 
     },
-    image: { type: 'object', default: {} },
-    image2x: { type: 'object', default: {} },
+    image2x: { 
+        type: 'object', 
+        default: {} 
+    },
     imgAlt: { type: 'string', default: '' },
     imageWidth: {
         type: 'object',
-        default: {
-
-        },
+        default: {},
         style: [
             {
                 condition: [
                     { key: 'layout', relation: '!=', value: 3 },
-                    { key: 'layout', relation: '!=', value: 4 },
-                    { key: 'mediaType', relation: '==', value: 'image' }
+                    { key: 'layout', relation: '!=', value: 4 }
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-image {width: {{imageWidth}};} {{QUBELY}} .qubely-mediacard-image img {width: 100%;} {{QUBELY}} .qubely-mediacard-image .qubely-image-placeholder {height: {{imageWidth}}; width: {{imageWidth}};}'
+                selector: '{{QUBELY}} .qubely-mediacard-media_wrapper {width: {{imageWidth}};} {{QUBELY}} .qubely-mediacard-image .qubely-image-placeholder {height: {{imageWidth}}; width: {{imageWidth}};}'
             },
         ]
     },
@@ -116,19 +121,65 @@ export const attributes = {
         ]
     },
     mediaSpacing: {
-        type: 'object', default: { md: 20, unit: 'px' },
+        type: 'object', default: { md: '', unit: 'px' },
         style: [
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: 1 }
+                    { key: 'layout', relation: '==', value: 1 },
+                    { key: 'imagePosition', relation: '==', value: 'top' },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-media_wrapper {margin-bottom: {{mediaSpacing}};}'
             },
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: 2 }
+                    { key: 'layout', relation: '==', value: 1 },
+                    { key: 'imagePosition', relation: '==', value: 'bottom' },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-media_wrapper {margin-top: {{mediaSpacing}};}'
+            },
+
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 },
+                    { key: 'imagePositionHorizontal', relation: '==', value: 'left' }
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-media_wrapper {margin-right: {{mediaSpacing}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 },
+                    { key: 'imagePositionHorizontal', relation: '==', value: 'right' }
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-media_wrapper {margin-left: {{mediaSpacing}};}'
+            },
+
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 4 },
+                    { key: 'imagePosition', relation: '==', value: 'top' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-4 .qubely-mediacard-content-wrapper {margin-top: -{{mediaSpacing}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 4 },
+                    { key: 'imagePosition', relation: '==', value: 'bottom' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-4 .qubely-mediacard-content-wrapper {margin-top:0;margin-bottom: -{{mediaSpacing}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 },
+                    { key: 'imagePositionHorizontal', relation: '==', value: 'left' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-5 .qubely-mediacard-content-wrapper {margin-left: -{{mediaSpacing}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 },
+                    { key: 'imagePositionHorizontal', relation: '==', value: 'right' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-5 .qubely-mediacard-content-wrapper {margin-right: -{{mediaSpacing}};}'
             }
         ]
     },
@@ -214,6 +265,12 @@ export const attributes = {
                     { key: 'layout', relation: '==', value: 4 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper {width: {{stackWidth}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper .qubely-mediacard-content-wrapper {height: {{stackWidth}};}'
             },
             {
                 condition: [
@@ -360,7 +417,7 @@ export const attributes = {
     },
     badgeBg: {
         type: 'string',
-        default: '#50E3C2',
+        default: '#4592FF',
         style:
             [
                 {
@@ -375,7 +432,27 @@ export const attributes = {
         type: 'object',
         default: {
             'openPadding': 1,
-            'paddingType': 'global',
+            'paddingType': 'custom',
+            'unit': 'px',
+            'custom': {
+                'md': '3 7 3 7'
+            },
+        },
+        style: [
+            {
+                condition: [
+                    { key: 'badgeStyle', relation: '!=', value: 'none' },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge'
+            },
+        ]
+    },
+    
+    badgeMargin: {
+        type: 'object',
+        default: {
+            'openMargin': 1,
+            'marginType': 'global',
             'unit': 'px',
             'global': {
                 'md': ''
@@ -397,7 +474,7 @@ export const attributes = {
             openBorderRadius: true,
             radiusType: 'global',
             global: {
-                md: 10,
+                md: '2',
             },
         },
         style: [
@@ -431,19 +508,44 @@ export const attributes = {
         style: [
             {
                 condition: [
-                    { key: 'contentPosition', relation: '==', value: 'top' }
+                    { key: 'contentPosition', relation: '==', value: 'top' },
+                    { key: 'layout', relation: '==', value: 3 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {align-content: flex-start;}'
             },
             {
                 condition: [
-                    { key: 'contentPosition', relation: '==', value: 'middle' }
+                    { key: 'contentPosition', relation: '==', value: 'middle' },
+                    { key: 'layout', relation: '==', value: 3 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {align-content: center;}'
             },
             {
                 condition: [
-                    { key: 'contentPosition', relation: '==', value: 'bottom' }
+                    { key: 'contentPosition', relation: '==', value: 'bottom' },
+                    { key: 'layout', relation: '==', value: 3 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {align-content: flex-end;}'
+            },
+
+            {
+                condition: [
+                    { key: 'contentPosition', relation: '==', value: 'top' },
+                    { key: 'layout', relation: '==', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {align-content: flex-start;}'
+            },
+            {
+                condition: [
+                    { key: 'contentPosition', relation: '==', value: 'middle' },
+                    { key: 'layout', relation: '==', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {align-content: center;}'
+            },
+            {
+                condition: [
+                    { key: 'contentPosition', relation: '==', value: 'bottom' },
+                    { key: 'layout', relation: '==', value: 6 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {align-content: flex-end;}'
             }
@@ -455,19 +557,43 @@ export const attributes = {
         style: [
             {
                 condition: [
-                    { key: 'contentHorizontalPosition', relation: '==', value: 'left' }
+                    { key: 'contentHorizontalPosition', relation: '==', value: 'left' },
+                    { key: 'layout', relation: '==', value: 4 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-4 .qubely-block-mediacard-wrapper {justify-content:flex-start; align-items: flex-start;}'
+            },
+            {
+                condition: [
+                    { key: 'contentHorizontalPosition', relation: '==', value: 'middle' },
+                    { key: 'layout', relation: '==', value: 4 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-4 .qubely-block-mediacard-wrapper {justify-content: center;align-items: center;}'
+            },
+            {
+                condition: [
+                    { key: 'contentHorizontalPosition', relation: '==', value: 'right' },
+                    { key: 'layout', relation: '==', value: 4 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-4 .qubely-block-mediacard-wrapper {justify-content:flex-end; align-items: flex-end;}'
+            },
+            {
+                condition: [
+                    { key: 'contentHorizontalPosition', relation: '==', value: 'left' },
+                    { key: 'layout', relation: '==', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {justify-content: flex-start;}'
             },
             {
                 condition: [
-                    { key: 'contentHorizontalPosition', relation: '==', value: 'middle' }
+                    { key: 'contentHorizontalPosition', relation: '==', value: 'middle' },
+                    { key: 'layout', relation: '==', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {justify-content: center;}'
             },
             {
                 condition: [
-                    { key: 'contentHorizontalPosition', relation: '==', value: 'right' }
+                    { key: 'contentHorizontalPosition', relation: '==', value: 'right' },
+                    { key: 'layout', relation: '==', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {justify-content: flex-end;}'
             }
@@ -475,13 +601,64 @@ export const attributes = {
     },
     bgColor: { 
         type: 'object', 
-        default: {}, 
-        style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] 
+        default: {
+
+        }, 
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 1 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 4 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            }
+        ] 
     },
     bgImage: { 
         type: 'object', 
-        default: { bgimgPosition: 'center center', bgimgSize: 'cover', bgimgRepeat: 'no-repeat', bgDefaultColor: '#f5f5f5' }, 
-        style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] 
+        default: { 
+            bgimgPosition: 'center center', 
+            bgimgSize: 'cover', 
+            bgimgRepeat: 'no-repeat', 
+            bgDefaultColor: '#f5f5f5' 
+        }, 
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 3 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            }
+        ] 
     },
     bgPadding: {
         type: 'object',
@@ -569,7 +746,7 @@ export const attributes = {
                 condition: [
                     { key: 'enableOverlay', relation: '==', value: true }
                 ],
-                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-3 .qubely-block-mediacard-wrapper:before'
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-3:before'
             }
         ]
     },
@@ -593,7 +770,7 @@ export const attributes = {
                 condition: [
                     { key: 'enableOverlay', relation: '==', value: true }
                 ],
-                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-3:hover .qubely-block-mediacard-wrapper:before'
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-3:hover:before'
             }
         ]
     },
@@ -605,7 +782,7 @@ export const attributes = {
                 condition: [
                     { key: 'enableOverlay', relation: '==', value: true }
                 ],
-                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-3 .qubely-block-mediacard-wrapper:before {mix-blend-mode: {{overlayBlend}};}'
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-3:before {mix-blend-mode: {{overlayBlend}};}'
             }
         ]
     },

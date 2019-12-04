@@ -79,6 +79,8 @@ const icons = {
     mediacard_3: <img src={`${img_path}/mediacard/3.svg`} alt={__('Design 3')} />,
     mediacard_4: <img src={`${img_path}/mediacard/4.svg`} alt={__('Design 4')} />,
     mediacard_5: <img src={`${img_path}/mediacard/5.svg`} alt={__('Design 5')} />,
+    mediacard_6: <img src={`${img_path}/mediacard/6.svg`} alt={__('Design 6')} />,
+    mediacard_7: <img src={`${img_path}/mediacard/7.svg`} alt={__('Design 7')} />,
 
 
     leftArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">

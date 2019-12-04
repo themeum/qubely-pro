@@ -31,6 +31,7 @@ const {
     Border,
     BorderRadius,
     Padding,
+    Margin,
     gloalSettings: {
         globalSettingsPanel
     },
@@ -170,6 +171,7 @@ class Edit extends Component {
                 badgeBg,
                 badgeTypography,
                 badgePadding,
+                badgeMargin,
                 badgeBorderRadius,
 
                 //Context
@@ -194,8 +196,8 @@ class Edit extends Component {
                                 { value: 3, svg: icons.mediacard_3, label: __('') },
                                 { value: 4, svg: icons.mediacard_4, label: __('') },
                                 { value: 5, svg: icons.mediacard_5, label: __('') },
-                                { value: 6, svg: icons.mediacard_5, label: __('') },
-                                { value: 7, svg: icons.mediacard_5, label: __('') },
+                                { value: 6, svg: icons.mediacard_6, label: __('') },
+                                { value: 7, svg: icons.mediacard_7, label: __('') },
                             ]}
                         />
 
@@ -214,23 +216,7 @@ class Edit extends Component {
                                 onDeviceChange={value => this.setState({ device: value })}
                             />
                         }
-                        {((layout=='3') || (layout=='6')) &&
-                            <Fragment>
-                                <RadioAdvanced
-                                    label={__('Content Position')}
-                                    options={[
-                                        { value: 'top', label: __('Top'), },
-                                        { value: 'middle', label: __('Middle'), },
-                                        { value: 'bottom', label: __('Bottom'), },
-                                    ]}
-                                    value={contentPosition}
-                                    onChange={val => setAttributes({ contentPosition: val })}
-                                />
-                                <Background label={__('Background')} sources={['image', 'gradient', 'video']} parallax value={bgImage} onChange={val => setAttributes({ bgImage: val })} />
-                            </Fragment>
-                        }
-                        {(layout=='7') &&
-                            <Fragment>
+                        { ( (layout=='4') || (layout=='7') ) &&
                                 <RadioAdvanced
                                     label={__('Content Position')}
                                     options={[
@@ -241,8 +227,18 @@ class Edit extends Component {
                                     value={contentHorizontalPosition}
                                     onChange={val => setAttributes({ contentHorizontalPosition: val })}
                                 />
-                                <Background label={__('Background')} sources={['image', 'gradient', 'video']} parallax value={bgImage} onChange={val => setAttributes({ bgImage: val })} />
-                            </Fragment>
+                        }
+                        {((layout=='3') || (layout=='6')) &&
+                            <RadioAdvanced
+                                label={__('Content Position')}
+                                options={[
+                                    { value: 'top', label: __('Top'), },
+                                    { value: 'middle', label: __('Middle'), },
+                                    { value: 'bottom', label: __('Bottom'), },
+                                ]}
+                                value={contentPosition}
+                                onChange={val => setAttributes({ contentPosition: val })}
+                            />
                         }
                         { ((layout=='1') || (layout=='4')) &&
                         <RadioAdvanced
@@ -255,7 +251,7 @@ class Edit extends Component {
                             onChange={val => setAttributes({ imagePosition: val })}
                         />
                         }
-                        { ((layout=='2') || (layout=='5') || (layout=='7')) &&
+                        { ((layout=='2') || (layout=='5')) &&
                         <RadioAdvanced
                             label={__('Image Position')}
                             options={[
@@ -266,8 +262,10 @@ class Edit extends Component {
                             onChange={val => setAttributes({ imagePositionHorizontal: val })}
                         />
                         }
-
-                        {(layout!='3') &&
+                        {( (layout == '3') || (layout == '6') || (layout == '7') ) &&
+                            <Background label={__('Background')} sources={['image', 'gradient', 'video']} parallax value={bgImage} onChange={val => setAttributes({ bgImage: val })} />
+                        }
+                        {( (layout == '1') || (layout == '2') || (layout == '4') || (layout == '5') ) &&
                             <ColorAdvanced label={__('Background')} value={bgColor} onChange={val => setAttributes({ bgColor: val })} />
                         }
                         <Border label={__('Border')} value={bgBorder} onChange={val => setAttributes({ bgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -334,7 +332,7 @@ class Edit extends Component {
                                         />
                                     }
                                     {
-                                        (layout !== 3 && layout !== 4) &&
+                                        (layout !== 3 && layout !== 4 && layout !== 5) &&
                                         <Range
                                             min={0}
                                             max={2000}
@@ -361,7 +359,7 @@ class Edit extends Component {
                                         onChange={val => setAttributes({ imageBorderRadius: val })}
                                     />
                                     {
-                                        (layout === 1 || layout === 2) &&
+                                        ( layout === 1 || layout === 2 || layout === 4 || layout === 5 ) &&
                                         <Range
                                             min={0}
                                             max={200}
@@ -416,7 +414,7 @@ class Edit extends Component {
 
                                     <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
 
-                                    {(layout == 2 || layout == 3) &&
+                                    {/* {(layout == 2 || layout == 3) &&
                                         <Range
                                             label={__('Video Width')}
                                             value={videoWidth}
@@ -425,6 +423,21 @@ class Edit extends Component {
                                             responsive device={device} unit={['px', 'em', '%']}
                                             onDeviceChange={value => this.setState({ device: value })}
                                         />
+                                    } */}
+                                                                       {
+                                        (layout !== 3 && layout !== 4) &&
+                                        <Range
+                                            min={0}
+                                            max={2000}
+                                            responsive
+                                            device={device}
+                                            value={imageWidth}
+                                            unit={['px', 'em', '%']}
+                                            label={__('Image Width')}
+                                            onChange={val => setAttributes({ imageWidth: val })}
+                                            onDeviceChange={value => this.setState({ device: value })}
+                                        />
+
                                     }
                                 </Fragment>
                         }
@@ -483,22 +496,32 @@ class Edit extends Component {
                         <Fragment>
                             <RadioAdvanced
                                 label={__('Badge')}
-                                options={[
-                                    { icon: 'fas fa-ban', value: 'none', label: __('None'), },
-                                    { value: 'default', label: __('Default'), },
-                                    { value: 'badge', label: __('Badge'), }
-                                ]}
+                                options={
+                                    ((layout=='3') || (layout=='6') || (layout=='7')) ?
+                                    [
+                                        { icon: 'fas fa-ban', value: 'none', label: __('None'), },
+                                        { value: 'default', label: __('Default'), },
+                                        { value: 'badge', label: __('Badge'), }
+                                    ]
+                                    :
+                                    [
+                                        { icon: 'fas fa-ban', value: 'none', label: __('None'), },
+                                        { value: 'default', label: __('Default'), },
+                                    ]
+                                }
                                 value={badgeStyle}
                                 onChange={val => setAttributes({ badgeStyle: val })}
                             />
                             {(badgeStyle != 'none') &&
                                 <Fragment>
-                                    <Select
-                                        label={__("Badge Position")}
-                                        options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
-                                        value={badgePosition}
-                                        onChange={value => setAttributes({ badgePosition: value })}
-                                    />
+                                    {( (layout=='3') || (layout=='6') || (layout=='7') ) &&
+                                        <Select
+                                            label={__("Badge Position")}
+                                            options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
+                                            value={badgePosition}
+                                            onChange={value => setAttributes({ badgePosition: value })}
+                                        />
+                                    }
                                     <Color
                                         label={__('Background color')}
                                         value={badgeBg}
@@ -525,6 +548,17 @@ class Edit extends Component {
                                         unit={['px', 'em', '%']}
                                         label={__('Padding')}
                                         onChange={val => setAttributes({ badgePadding: val })}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                    <Margin
+                                        min={-200}
+                                        max={300}
+                                        responsive
+                                        device={device}
+                                        value={badgeMargin}
+                                        unit={['px', 'em', '%']}
+                                        label={__('Margin')}
+                                        onChange={val => setAttributes({ badgeMargin: val })}
                                         onDeviceChange={value => this.setState({ device: value })}
                                     />
                                     <BorderRadius
@@ -584,21 +618,21 @@ class Edit extends Component {
                                     <Fragment>
                                         {
                                             (image && image.url) ?
-                                                <img
-                                                    src={image.url}
-                                                    {...(imgAlt && { alt: imgAlt })}
-                                                    className="qubely-mediacard-image"
-                                                    srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
-                                                />
-                                                :
-                                                <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
+                                            <img
+                                                src={image.url}
+                                                {...(imgAlt && { alt: imgAlt })}
+                                                className="qubely-mediacard-image"
+                                                srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
+                                            />
+                                            :
+                                            <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
                                         }
                                     </Fragment>
                                 }
                             </div>
                             }
                             <div className="qubely-mediacard-content-wrapper">
-                                {(badgeStyle != 'none') && <span className={`qubely-mediacard-badge qubely-badge-style-${badgeStyle}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}><span>{badge}</span></span>}
+                                { (badgeStyle != 'none') && <span className={`${(badgeStyle == 'badge') ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                                 <div className={`qubely-mediacard-innerBlocks`}>
                                     <InnerBlocks
                                         allowedBlocks={qubelyBlocks}
