@@ -189,7 +189,9 @@ class Edit extends Component {
             <Fragment>
                 <InspectorControls key="inspector">
                     <PanelBody title=''>
-                        <Styles columns={3} value={layout} onChange={val => setAttributes({ layout: val })}
+                        <Styles
+                            columns={3}
+                            value={layout}
                             options={[
                                 { value: 1, svg: icons.mediacard_1, label: __('') },
                                 { value: 2, svg: icons.mediacard_2, label: __('') },
@@ -199,6 +201,21 @@ class Edit extends Component {
                                 { value: 6, svg: icons.mediacard_6, label: __('') },
                                 { value: 7, svg: icons.mediacard_7, label: __('') },
                             ]}
+                            onChange={val => setAttributes(
+                                val === 3 ?
+                                    {
+                                        layout: val,
+                                        bgImage: {
+                                            ...bgImage,
+                                            bgType: 'image',
+                                            openBg: 1,
+                                            bgImage: {
+                                                url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
+                                            }
+                                        }
+                                    }
+                                    : { layout: val })
+                            }
                         />
 
                     </PanelBody>
@@ -216,19 +233,19 @@ class Edit extends Component {
                                 onDeviceChange={value => this.setState({ device: value })}
                             />
                         }
-                        { ( (layout=='4') || (layout=='7') ) &&
-                                <RadioAdvanced
-                                    label={__('Content Position')}
-                                    options={[
-                                        { value: 'left', label: __('Left'), },
-                                        { value: 'middle', label: __('Middle'), },
-                                        { value: 'right', label: __('Right'), },
-                                    ]}
-                                    value={contentHorizontalPosition}
-                                    onChange={val => setAttributes({ contentHorizontalPosition: val })}
-                                />
+                        {((layout == '4') || (layout == '7')) &&
+                            <RadioAdvanced
+                                label={__('Content Position')}
+                                options={[
+                                    { value: 'left', label: __('Left'), },
+                                    { value: 'middle', label: __('Middle'), },
+                                    { value: 'right', label: __('Right'), },
+                                ]}
+                                value={contentHorizontalPosition}
+                                onChange={val => setAttributes({ contentHorizontalPosition: val })}
+                            />
                         }
-                        {((layout=='3') || (layout=='6')) &&
+                        {((layout == '3') || (layout == '6')) &&
                             <RadioAdvanced
                                 label={__('Content Position')}
                                 options={[
@@ -240,45 +257,45 @@ class Edit extends Component {
                                 onChange={val => setAttributes({ contentPosition: val })}
                             />
                         }
-                        { ((layout=='1') || (layout=='4')) &&
-                        <RadioAdvanced
-                            label={__('Image Position')}
-                            options={[
-                                { value: 'top', label: __('Top'), },
-                                { value: 'bottom', label: __('Bottom'), },
-                            ]}
-                            value={imagePosition}
-                            onChange={val => setAttributes({ imagePosition: val })}
-                        />
+                        {((layout == '1') || (layout == '4')) &&
+                            <RadioAdvanced
+                                label={__('Image Position')}
+                                options={[
+                                    { value: 'top', label: __('Top'), },
+                                    { value: 'bottom', label: __('Bottom'), },
+                                ]}
+                                value={imagePosition}
+                                onChange={val => setAttributes({ imagePosition: val })}
+                            />
                         }
-                        { ((layout=='2') || (layout=='5')) &&
-                        <RadioAdvanced
-                            label={__('Image Position')}
-                            options={[
-                                { value: 'left', label: __('Left'), },
-                                { value: 'right', label: __('Right'), },
-                            ]}
-                            value={imagePositionHorizontal}
-                            onChange={val => setAttributes({ imagePositionHorizontal: val })}
-                        />
+                        {((layout == '2') || (layout == '5')) &&
+                            <RadioAdvanced
+                                label={__('Image Position')}
+                                options={[
+                                    { value: 'left', label: __('Left'), },
+                                    { value: 'right', label: __('Right'), },
+                                ]}
+                                value={imagePositionHorizontal}
+                                onChange={val => setAttributes({ imagePositionHorizontal: val })}
+                            />
                         }
-                        {( (layout == '3') || (layout == '6') || (layout == '7') ) &&
+                        {((layout == '3') || (layout == '6') || (layout == '7')) &&
                             <Background label={__('Background')} sources={['image', 'gradient', 'video']} parallax value={bgImage} onChange={val => setAttributes({ bgImage: val })} />
                         }
-                        {( (layout == '1') || (layout == '2') || (layout == '4') || (layout == '5') ) &&
+                        {((layout == '1') || (layout == '2') || (layout == '4') || (layout == '5')) &&
                             <ColorAdvanced label={__('Background')} value={bgColor} onChange={val => setAttributes({ bgColor: val })} />
                         }
                         <Border label={__('Border')} value={bgBorder} onChange={val => setAttributes({ bgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BorderRadius label={__('Card Corner')} value={bgBorderRadius} onChange={(value) => setAttributes({ bgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <Padding label={__('Card Padding')} value={bgPadding} onChange={val => setAttributes({ bgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                         <BoxShadow label={__('Card Shadow')} value={bgShadow} onChange={(value) => setAttributes({ bgShadow: value })} />
-                        {((layout=='3') || (layout=='6') || (layout=='7')) &&
+                        {((layout == '3') || (layout == '6') || (layout == '7')) &&
                             <Fragment>
                                 <Toggle label={__('Fixed Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
                                 {enableFixedHeight && <Range label={__('Height')} value={fixedHeight} onChange={value => setAttributes({ fixedHeight: value })} unit={['px', 'em', '%']} min={10} max={1000} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
                             </Fragment>
                         }
-                        {(layout=='3') &&
+                        {(layout == '3') &&
                             <Fragment>
                                 <Toggle label={__('Enable Overlay')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
                                 {enableOverlay == 1 &&
@@ -298,123 +315,123 @@ class Edit extends Component {
                             </Fragment>
                         }
                     </PanelBody>
-                    {( (layout === 1) || (layout === 2) || (layout === 4) || (layout === 5) ) &&
+                    {((layout === 1) || (layout === 2) || (layout === 4) || (layout === 5)) &&
                         <PanelBody title={__('Media Settings')} initialOpen={false}>
-                        <RadioAdvanced
-                            label={__('Type')}
-                            value={mediaType}
-                            options={mediaOptions}
-                            onChange={val => setAttributes({ mediaType: val })}
-                        />
-                        {
-                            mediaType == 'image' ?
-                                <Fragment>
-                                    <Media
-                                        panel
-                                        value={image}
-                                        multiple={false}
-                                        type={['image']}
-                                        label={__('Image')}
-                                        onChange={val => setAttributes({ image: val })} />
-                                    <Media
-                                        panel
-                                        value={image2x}
-                                        multiple={false}
-                                        type={['image']}
-                                        label={__('Retina Image')}
-                                        onChange={val => setAttributes({ image2x: val })} />
-                                    {
-                                        image.url &&
-                                        <TextControl
-                                            value={imgAlt}
-                                            label={__('Alt Text')}
-                                            onChange={val => setAttributes({ imgAlt: val })}
-                                        />
-                                    }
-                                    {
-                                        (layout !== 3 && layout !== 4 && layout !== 5) &&
-                                        <Range
-                                            min={0}
-                                            max={2000}
-                                            responsive
-                                            device={device}
-                                            value={imageWidth}
-                                            unit={['px', 'em', '%']}
-                                            label={__('Image Width')}
-                                            onChange={val => setAttributes({ imageWidth: val })}
-                                            onDeviceChange={value => this.setState({ device: value })}
-                                        />
-
-                                    }
-
-                                    <BorderRadius
-                                        min={0}
-                                        max={100}
-                                        responsive
-                                        device={device}
-                                        label={__('Radius')}
-                                        unit={['px', 'em', '%']}
-                                        value={imageBorderRadius}
-                                        onDeviceChange={value => this.setState({ device: value })}
-                                        onChange={val => setAttributes({ imageBorderRadius: val })}
-                                    />
-                                    {
-                                        ( layout === 1 || layout === 2 || layout === 4 || layout === 5 ) &&
-                                        <Range
-                                            min={0}
-                                            max={200}
-                                            responsive
-                                            device={device}
-                                            value={mediaSpacing}
-                                            label={__('Spacing')}
-                                            unit={['px', 'em', '%']}
-                                            onChange={val => setAttributes({ mediaSpacing: val })}
-                                            onDeviceChange={value => this.setState({ device: value })}
-                                        />
-                                    }
-                                </Fragment>
-                                :
-                                <Fragment>
-
-                                    <RadioAdvanced
-                                        label={__('Video Source')}
-                                        value={videoSource}
-                                        options={videoSources}
-                                        onChange={val => setAttributes({ videoSource: val })}
-                                    />
-                                    {
-                                        videoSource === 'external' ?
-                                            <Fragment>
-                                                <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
-
-                                                <Select
-                                                    label={__('Video Type')}
-                                                    value={videoSource}
-                                                    options={[['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]]}
-                                                    onChange={value => setAttributes({ videoSource: value })}
-                                                />
-
-                                                {(videoSource === 'vimeo') ?
-                                                    <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
-                                                    :
-                                                    <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
-                                                }
-                                            </Fragment>
-                                            :
-                                            <Media
-                                                panel={true}
-                                                multiple={false}
-                                                type={['video']}
-                                                value={localVideo}
-                                                label={__('Local Video')}
-                                                onChange={value => setAttributes({ localVideo: value })}
+                            <RadioAdvanced
+                                label={__('Type')}
+                                value={mediaType}
+                                options={mediaOptions}
+                                onChange={val => setAttributes({ mediaType: val })}
+                            />
+                            {
+                                mediaType == 'image' ?
+                                    <Fragment>
+                                        <Media
+                                            panel
+                                            value={image}
+                                            multiple={false}
+                                            type={['image']}
+                                            label={__('Image')}
+                                            onChange={val => setAttributes({ image: val })} />
+                                        <Media
+                                            panel
+                                            value={image2x}
+                                            multiple={false}
+                                            type={['image']}
+                                            label={__('Retina Image')}
+                                            onChange={val => setAttributes({ image2x: val })} />
+                                        {
+                                            image.url &&
+                                            <TextControl
+                                                value={imgAlt}
+                                                label={__('Alt Text')}
+                                                onChange={val => setAttributes({ imgAlt: val })}
                                             />
-                                    }
+                                        }
+                                        {
+                                            (layout !== 3 && layout !== 4 && layout !== 5) &&
+                                            <Range
+                                                min={0}
+                                                max={2000}
+                                                responsive
+                                                device={device}
+                                                value={imageWidth}
+                                                unit={['px', 'em', '%']}
+                                                label={__('Image Width')}
+                                                onChange={val => setAttributes({ imageWidth: val })}
+                                                onDeviceChange={value => this.setState({ device: value })}
+                                            />
+
+                                        }
+
+                                        <BorderRadius
+                                            min={0}
+                                            max={100}
+                                            responsive
+                                            device={device}
+                                            label={__('Radius')}
+                                            unit={['px', 'em', '%']}
+                                            value={imageBorderRadius}
+                                            onDeviceChange={value => this.setState({ device: value })}
+                                            onChange={val => setAttributes({ imageBorderRadius: val })}
+                                        />
+                                        {
+                                            (layout === 1 || layout === 2 || layout === 4 || layout === 5) &&
+                                            <Range
+                                                min={0}
+                                                max={200}
+                                                responsive
+                                                device={device}
+                                                value={mediaSpacing}
+                                                label={__('Spacing')}
+                                                unit={['px', 'em', '%']}
+                                                onChange={val => setAttributes({ mediaSpacing: val })}
+                                                onDeviceChange={value => this.setState({ device: value })}
+                                            />
+                                        }
+                                    </Fragment>
+                                    :
+                                    <Fragment>
+
+                                        <RadioAdvanced
+                                            label={__('Video Source')}
+                                            value={videoSource}
+                                            options={videoSources}
+                                            onChange={val => setAttributes({ videoSource: val })}
+                                        />
+                                        {
+                                            videoSource === 'external' ?
+                                                <Fragment>
+                                                    <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
+
+                                                    <Select
+                                                        label={__('Video Type')}
+                                                        value={videoSource}
+                                                        options={[['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]]}
+                                                        onChange={value => setAttributes({ videoSource: value })}
+                                                    />
+
+                                                    {(videoSource === 'vimeo') ?
+                                                        <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
+                                                        :
+                                                        <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
+                                                    }
+                                                </Fragment>
+                                                :
+                                                <Media
+                                                    panel={true}
+                                                    multiple={false}
+                                                    type={['video']}
+                                                    value={localVideo}
+                                                    label={__('Local Video')}
+                                                    onChange={value => setAttributes({ localVideo: value })}
+                                                />
+                                        }
 
 
-                                    <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
+                                        <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
 
-                                    {/* {(layout == 2 || layout == 3) &&
+                                        {/* {(layout == 2 || layout == 3) &&
                                         <Range
                                             label={__('Video Width')}
                                             value={videoWidth}
@@ -424,27 +441,27 @@ class Edit extends Component {
                                             onDeviceChange={value => this.setState({ device: value })}
                                         />
                                     } */}
-                                                                       {
-                                        (layout !== 3 && layout !== 4) &&
-                                        <Range
-                                            min={0}
-                                            max={2000}
-                                            responsive
-                                            device={device}
-                                            value={imageWidth}
-                                            unit={['px', 'em', '%']}
-                                            label={__('Image Width')}
-                                            onChange={val => setAttributes({ imageWidth: val })}
-                                            onDeviceChange={value => this.setState({ device: value })}
-                                        />
+                                        {
+                                            (layout !== 3 && layout !== 4) &&
+                                            <Range
+                                                min={0}
+                                                max={2000}
+                                                responsive
+                                                device={device}
+                                                value={imageWidth}
+                                                unit={['px', 'em', '%']}
+                                                label={__('Image Width')}
+                                                onChange={val => setAttributes({ imageWidth: val })}
+                                                onDeviceChange={value => this.setState({ device: value })}
+                                            />
 
-                                    }
-                                </Fragment>
-                        }
-                    </PanelBody>
+                                        }
+                                    </Fragment>
+                            }
+                        </PanelBody>
                     }
                     {
-                        (layout === 4 || layout === 5 || layout === 6 || layout === 7 ) &&
+                        (layout === 4 || layout === 5 || layout === 6 || layout === 7) &&
                         <PanelBody title={__('Stack Style')} initialOpen={true}>
 
                             <ColorAdvanced
@@ -497,24 +514,24 @@ class Edit extends Component {
                             <RadioAdvanced
                                 label={__('Badge')}
                                 options={
-                                    ((layout=='3') || (layout=='6') || (layout=='7')) ?
-                                    [
-                                        { icon: 'fas fa-ban', value: 'none', label: __('None'), },
-                                        { value: 'default', label: __('Default'), },
-                                        { value: 'badge', label: __('Badge'), }
-                                    ]
-                                    :
-                                    [
-                                        { icon: 'fas fa-ban', value: 'none', label: __('None'), },
-                                        { value: 'default', label: __('Default'), },
-                                    ]
+                                    ((layout == '3') || (layout == '6') || (layout == '7')) ?
+                                        [
+                                            { icon: 'fas fa-ban', value: 'none', label: __('None'), },
+                                            { value: 'default', label: __('Default'), },
+                                            { value: 'badge', label: __('Badge'), }
+                                        ]
+                                        :
+                                        [
+                                            { icon: 'fas fa-ban', value: 'none', label: __('None'), },
+                                            { value: 'default', label: __('Default'), },
+                                        ]
                                 }
                                 value={badgeStyle}
                                 onChange={val => setAttributes({ badgeStyle: val })}
                             />
                             {(badgeStyle != 'none') &&
                                 <Fragment>
-                                    {( (layout=='3') || (layout=='6') || (layout=='7') ) &&
+                                    {((layout == '3') || (layout == '6') || (layout == '7')) &&
                                         <Select
                                             label={__("Badge Position")}
                                             options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
@@ -537,7 +554,7 @@ class Edit extends Component {
                                         disableLineHeight
                                         onChange={val => setAttributes({ badgeTypography: val })}
                                         device={device}
-                                        onDeviceChange={value => this.setState({ device: value })} 
+                                        onDeviceChange={value => this.setState({ device: value })}
                                     />
                                     <Padding
                                         min={0}
@@ -592,47 +609,47 @@ class Edit extends Component {
                     {/* <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}> */}
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`}>
                         <div className={`qubely-block-mediacard-wrapper`}>
-                            {( (layout === 1) || (layout === 2) || (layout === 4) || (layout === 5) ) &&
+                            {((layout === 1) || (layout === 2) || (layout === 4) || (layout === 5)) &&
                                 <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
-                                {
-                                    mediaType == 'video' &&
-                                    <Fragment>
-                                        {
-                                            videoSource === 'external' ?
-                                            <Fragment>
-                                                {videoSource == 'vimeo' ?
-                                                    <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                    {
+                                        mediaType == 'video' &&
+                                        <Fragment>
+                                            {
+                                                videoSource === 'external' ?
+                                                    <Fragment>
+                                                        {videoSource == 'vimeo' ?
+                                                            <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                                            :
+                                                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
+                                                        }
+                                                    </Fragment>
                                                     :
-                                                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
-                                                }
-                                            </Fragment>
-                                            :
-                                            <div className={`qubely-mediacard-video qubely-local-video`}>
-                                                <video controls src={localVideo.url} />
-                                            </div>
-                                        }
-                                    </Fragment>
-                                }
+                                                    <div className={`qubely-mediacard-video qubely-local-video`}>
+                                                        <video controls src={localVideo.url} />
+                                                    </div>
+                                            }
+                                        </Fragment>
+                                    }
 
-                                {mediaType === 'image' &&
-                                    <Fragment>
-                                        {
-                                            (image && image.url) ?
-                                            <img
-                                                src={image.url}
-                                                {...(imgAlt && { alt: imgAlt })}
-                                                className="qubely-mediacard-image"
-                                                srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
-                                            />
-                                            :
-                                            <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
-                                        }
-                                    </Fragment>
-                                }
-                            </div>
+                                    {mediaType === 'image' &&
+                                        <Fragment>
+                                            {
+                                                (image && image.url) ?
+                                                    <img
+                                                        src={image.url}
+                                                        {...(imgAlt && { alt: imgAlt })}
+                                                        className="qubely-mediacard-image"
+                                                        srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
+                                                    />
+                                                    :
+                                                    <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
+                                            }
+                                        </Fragment>
+                                    }
+                                </div>
                             }
                             <div className="qubely-mediacard-content-wrapper">
-                                { (badgeStyle != 'none') && <span className={`${(badgeStyle == 'badge') ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
+                                {(badgeStyle != 'none') && <span className={`${(badgeStyle == 'badge') ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                                 <div className={`qubely-mediacard-innerBlocks`}>
                                     <InnerBlocks
                                         allowedBlocks={qubelyBlocks}
@@ -680,4 +697,4 @@ export default withSelect((select, props) => {
         blockTypes: getBlockTypes(),
     }
 })
-(Edit)
+    (Edit)
