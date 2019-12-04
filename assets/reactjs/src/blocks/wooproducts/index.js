@@ -58,6 +58,9 @@ registerBlockType('qubely/wooproducts', {
         __('woocommerce'),
         __('products')
     ],
+    supports: {
+        align: ['center', 'wide', 'full'],
+    },
     attributes,
     edit: Edit,
     // save: Save,
