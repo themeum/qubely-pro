@@ -36,7 +36,7 @@ registerBlockType('qubely/form', {
         __('Builder')
     ],
     supports: {
-        align: ['full'],
+        align: ['center', 'wide', 'full'],
     },
     example: {
         attributes: {

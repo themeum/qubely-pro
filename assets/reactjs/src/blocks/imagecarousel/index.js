@@ -14,6 +14,9 @@ registerBlockType('qubely/imagecarousel', {
 		__('Image'),
 		__('Carousel')
 	],
+	supports: {
+        align: ['center', 'wide', 'full'],
+    },
 	example: {
 		attributes: {
 			carouselItems: [

@@ -14,7 +14,9 @@ registerBlockType('qubely/pricelist', {
 		__('Price List'),
 		__('Pricing')
     ],
-
+    supports: {
+        align: ['center', 'wide', 'full'],
+    },
     example: {
         attributes: {
             pricelistItems: 2,

@@ -5,12 +5,19 @@ const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 
 registerBlockType('qubely/postcarousel', {
-	title: __('Post Carousel'),
-	description: 'Blog post carousel',
+    title: __('Post Carousel'),
+    description: 'Blog post carousel',
     icon: 'image-flip-horizontal',
     icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-post-carousel.svg'} alt={__('Post Carousel Block')} />,
     category: 'qubely',
-    keywords: [__('Post'), __('Blog Post Carousel')],
+    keywords: [
+        __('Post'),
+        __('Carousel'),
+        __('Blog Post Carousel'),
+    ],
+    supports: {
+        align: ['center', 'wide', 'full'],
+    },
     example: {
         attributes: {
             showExcerpt: false,
@@ -18,7 +25,7 @@ registerBlockType('qubely/postcarousel', {
             style: 4,
             overlayBorderRadius: {
                 openBorderRadius: true,
-                unit : 'px',
+                unit: 'px',
                 radiusType: 'global',
                 global: {
                     md: 10
@@ -34,10 +41,10 @@ registerBlockType('qubely/postcarousel', {
         },
     },
 
-	edit: Edit,
-	
-	save: function( props ) {
-		return null;
-	}
+    edit: Edit,
+
+    save: function (props) {
+        return null;
+    }
 
 });

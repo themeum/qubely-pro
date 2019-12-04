@@ -13,7 +13,10 @@ registerBlockType('qubely/teamcarousel', {
 	keywords: [
 		__('Team'),
 		__('Carousel')
-    ],
+	],
+	supports: {
+        align: ['center', 'wide', 'full'],
+    },
     example: {
         attributes: {},
     },

@@ -364,7 +364,9 @@ registerBlockType('qubely/gallery', {
         __('Gallery'),
         __('Image')
     ],
-
+    supports: {
+        align: ['center', 'wide', 'full'],
+    },
 
     example: {
         attributes: {

@@ -13,7 +13,10 @@ registerBlockType('qubely/testimonialcarousel', {
 	keywords: [
 		__('Testimonial'),
 		__('Carousel')
-    ],
+	],
+	supports: {
+        align: ['center', 'wide', 'full'],
+    },
     example: {
         attributes: {},
     },
