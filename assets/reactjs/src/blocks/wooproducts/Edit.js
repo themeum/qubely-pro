@@ -125,6 +125,23 @@ export default function Edit(props) {
                 console.log('could not retrieve product categories')
             });
     }
+    // const setOderingQueryArgs = () => {
+    //     let args = []
+    //     if ('price_desc' === orderby) {
+    //         $query_args['orderby'] = 'price';
+    //         $query_args['order'] = 'DESC';
+    //     } else if ('price_asc' === orderby) {
+    //         $query_args['orderby'] = 'price';
+    //         $query_args['order'] = 'ASC';
+    //     } else if ('date' === orderby) {
+    //         $query_args['orderby'] = 'date';
+    //         $query_args['order'] = 'DESC';
+    //     } else {
+    //         $query_args['orderby'] = orderby;
+    //     }
+    //     return (args)
+    // }
+
     const loadProducts = () => {
         const args = {
             ...orderby === 'price' ?
@@ -160,7 +177,7 @@ export default function Edit(props) {
             per_page: productsPerPage,
             // page: currentPage,
         };
-      
+
         getProducts(args)
             .then((productsData) => {
                 setLoading(false)

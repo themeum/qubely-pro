@@ -37,7 +37,7 @@ function register_block_qubely_wooproducts()
                 ),
                 'orderby' => array(
                     'type'    => 'string',
-                    'default' => 'date',
+                    'default' => 'price',
                 ),
                 'productsStatus' => array(
                     'type'    => 'string',
@@ -96,6 +96,8 @@ function register_block_qubely_wooproducts()
     );
 }
 
+
+
 function render_block_qubely_wooproducts($att)
 {
 
@@ -103,7 +105,7 @@ function render_block_qubely_wooproducts($att)
     $layout                 = isset($att['layout']) ? $att['layout'] : 2;
     $style                  = isset($att['style']) ? $att['style'] : 1;
     $productsPerPage        = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
-    $orderBy                = isset($att['orderBy']) ? $att['orderBy'] : 'date';
+    $orderBy                = isset($att['orderby']) ? $att['orderby'] : 'date';
     $selectedCatagories     = isset($att['selectedCatagories']) ? $att['selectedCatagories'] : [];
     $animation              = isset($att['animation']) ? (count((array) $att['animation']) > 0 && $att['animation']['animation']  ? 'data-qubelyanimation="' . htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8') . '"' : '') : '';
 
@@ -121,25 +123,34 @@ function render_block_qubely_wooproducts($att)
         );
     }
 
-    $args = array(
-        'orderby'        => esc_attr($orderBy),
+
+
+    $query_args = array(
+        'order'          => '',
+        'orderby'        => '',
         'post_type'      => 'product',
         'post_status'    => 'publish',
         'posts_per_page' =>  $productsPerPage,
         'tax_query'      => $tax_query,
-        // 'tax_query'      =>  array(
-        //     // 'relation' => 'AND',
-        //     // $tax_query,
-        //     array(
-        //         'taxonomy' => 'product_visibility',
-        //         'field'    => 'name',
-        //         'terms'    => 'featured',
-        //         'operator' => 'IN', 
-        //     ),
-        // ),
     );
-  
-    $query = new WP_Query($args);
+
+    if (isset($att['orderby'])) {
+        if ('price_desc' === $att['orderby']) {
+            $query_args['orderby'] = 'price';
+            $query_args['order']   = 'DESC';
+        } elseif ('price_asc' === $att['orderby']) {
+            $query_args['orderby'] = 'price';
+            $query_args['order']   = 'ASC';
+        } elseif ('date' === $att['orderby']) {
+            $query_args['orderby'] = 'date';
+            $query_args['order']   = 'DESC';
+        } else {
+            $query_args['orderby'] = $att['orderby'];
+        }
+    }
+
+
+    $query = new WP_Query($query_args);
 
 
 
