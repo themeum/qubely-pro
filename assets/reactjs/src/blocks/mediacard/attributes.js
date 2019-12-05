@@ -270,7 +270,10 @@ export const attributes = {
     },
     stackWidth: {
         type: 'object',
-        default: {},
+        default: { 
+            md: 500, 
+            unit: 'px' 
+        },
         style: [
             {
                 condition: [
@@ -286,15 +289,22 @@ export const attributes = {
             },
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: 6 },
-                ],
-                selector: '{{QUBELY}} .qubely-mediacard-layout-6 .qubely-mediacard-content-wrapper {width: {{stackWidth}};}'
-            },
-            {
-                condition: [
                     { key: 'layout', relation: '==', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-7 .qubely-mediacard-content-wrapper {width: {{stackWidth}};}'
+            }
+        ]
+    },
+
+    stackWidth6: {
+        type: 'object',
+        default: {},
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-6 .qubely-mediacard-content-wrapper {width: {{stackWidth6}};}'
             }
         ]
     },
@@ -339,13 +349,13 @@ export const attributes = {
     stackBoxShadow: {
         type: 'object',
         default: {
-            'blur': 20,
-            'color': 'rgba(0,0,0,0.3)',
+            'blur': 8,
+            'color': 'rgba(0,0,0,0.10)',
             'horizontal': 0,
             'inset': 0,
             'openShadow': true,
-            'spread': -20,
-            'vertical': 20
+            'spread': 0,
+            'vertical': 4
         },
         style: [
             {
@@ -379,7 +389,7 @@ export const attributes = {
     badge: { type: 'string', default: 'Sale' },
     badgeStyle: {
         type: 'string',
-        default: 'default'
+        default: 'none'
     },
     badgePosition: {
         type: 'string',
@@ -516,7 +526,7 @@ export const attributes = {
     },
     contentPosition: {
         type: 'string',
-        default: 'middle',
+        default: 'bottom',
         style: [
             {
                 condition: [
@@ -587,31 +597,37 @@ export const attributes = {
                     { key: 'layout', relation: '==', value: 4 },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-4 .qubely-block-mediacard-wrapper {justify-content:flex-end; align-items: flex-end;}'
-            },
+            }
+        ]
+    },
+    contentHorizontalPosition7: {
+        type: 'string',
+        default: 'right',
+        style: [
             {
                 condition: [
-                    { key: 'contentHorizontalPosition', relation: '==', value: 'left' },
+                    { key: 'contentHorizontalPosition7', relation: '==', value: 'left' },
                     { key: 'layout', relation: '==', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {justify-content: flex-start;}'
             },
             {
                 condition: [
-                    { key: 'contentHorizontalPosition', relation: '==', value: 'middle' },
+                    { key: 'contentHorizontalPosition7', relation: '==', value: 'middle' },
                     { key: 'layout', relation: '==', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {justify-content: center;}'
             },
             {
                 condition: [
-                    { key: 'contentHorizontalPosition', relation: '==', value: 'right' },
+                    { key: 'contentHorizontalPosition7', relation: '==', value: 'right' },
                     { key: 'layout', relation: '==', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {justify-content: flex-end;}'
             }
         ]
     },
-    bgColor: {
+    cardBgColor: {
         type: 'object',
         default: {
 
@@ -628,18 +644,6 @@ export const attributes = {
                     { key: 'layout', relation: '==', value: 2 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard'
-            },
-            {
-                condition: [
-                    { key: 'layout', relation: '==', value: 4 },
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard'
-            },
-            {
-                condition: [
-                    { key: 'layout', relation: '==', value: 5 },
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard'
             }
         ]
     },
@@ -649,8 +653,7 @@ export const attributes = {
         style: [
             {
                 condition: [
-                    { key: 'layout', relation: '!=', value: 3 },
-                    { key: 'layout', relation: '!=', value: 6 },
+                    { key: 'layout', relation: '!=', value: 3 }
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper{ color:{{textColor}}; }'
             }
@@ -665,13 +668,7 @@ export const attributes = {
                     { key: 'layout', relation: '==', value: 3 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper{ color:{{overlayTextColor}}; }'
-            },
-            {
-                condition: [
-                    { key: 'layout', relation: '==', value: 6 },
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper { color:{{overlayTextColor}}; }'
-            },
+            }
         ]
     },
     bgImage: {
@@ -703,32 +700,171 @@ export const attributes = {
             }
         ]
     },
-    bgPadding: {
+    cardBgPadding: {
         type: 'object',
         default: {
-            paddingType: 'global'
+            openPadding: 1,
+            paddingType: 'global',
+            global: {
+                md: 30,
+            },
+            unit: 'px'
         },
         style: [
             {
+                condition: [
+                    { key: 'layout', relation: '==', value: 1 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 3 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 }
+                ],
                 selector: '{{QUBELY}} .qubely-block-mediacard'
             }
         ]
     },
-    bgBorderRadius: {
+    cardBgBorderRadius: {
         type: 'object',
         default: {
             openBorderRadius: 1,
             radiusType: 'global',
-
+            global: {
+                md: 10
+            },
+            unit: 'px'
         },
         style: [
             {
+                condition: [
+                    { key: 'layout', relation: '==', value: 1 }
+                ],
                 selector: '{{QUBELY}} .qubely-block-mediacard'
             },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 3 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            }
         ]
     },
-    bgBorder: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
-    bgShadow: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
+    cardBgBorder: { 
+        type: 'object', 
+        default: {}, 
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 1 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 3 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            }
+        ]
+    },
+    cardBgShadow: { 
+        type: 'object', 
+        default: {
+            openShadow: true,
+            vertical: 3,
+            horizontal: 0,
+            blur: 6,
+            spread: 0,
+            color: 'rgba(0,0,0,0.1)',
+        },
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 1 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 3 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard'
+            }
+        ]
+    },
     enableFixedHeight: {
         type: 'boolean',
         default: true
@@ -736,7 +872,7 @@ export const attributes = {
     fixedHeight: {
         type: 'object',
         default: {
-            md: 450,
+            md: 600,
             unit: 'px'
         },
         style: [
@@ -774,7 +910,7 @@ export const attributes = {
         default: {
             openColor: 1,
             type: 'color',
-            color: 'rgba(0, 0, 0, 0.8)',
+            color: 'rgba(0, 0, 0, 0.7)',
             gradient: {
                 color1: 'rgba(0, 0, 0, 0.5)',
                 color2: 'rgba(6, 1, 14, 0.6)',

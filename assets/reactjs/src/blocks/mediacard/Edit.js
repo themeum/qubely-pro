@@ -133,22 +133,23 @@ class Edit extends Component {
                 image2x,
                 imgAlt,
                 imageWidth,
-                bgColor,
-                textColor,
-                overlayTextColor,
-                bgImage,
 
                 //content
                 title,
                 content,
 
                 //Card
-                bgBorder,
-                bgPadding,
-                bgBorderRadius,
-                bgShadow,
+                cardBgColor,
+                textColor,
+                overlayTextColor,
+                bgImage,
+                cardBgBorder,
+                cardBgPadding,
+                cardBgBorderRadius,
+                cardBgShadow,
                 contentPosition,
                 contentHorizontalPosition,
+                contentHorizontalPosition7,
 
                 //Global
                 enablePosition,
@@ -163,6 +164,7 @@ class Edit extends Component {
                 //Stack
                 stackBg,
                 stackWidth,
+                stackWidth6,
                 stackBorderRadius,
                 stackPadding,
                 stackBoxShadow,
@@ -206,26 +208,26 @@ class Edit extends Component {
                                 { value: 7, svg: icons.mediacard_7, label: __('') },
                             ]}
                             onChange={newLayout =>
-                                setAttributes(
-                                    newLayout === 3 ?
-                                        {
-                                            layout: newLayout,
-                                            bgImage: {
-                                                ...bgImage,
-                                                ...(bgImage.bgImage && bgImage.bgImage.url) ? {
+                            setAttributes(
+                                newLayout === 3 ?
+                                    {
+                                        layout: newLayout,
+                                        bgImage: {
+                                            ...bgImage,
+                                            ...(bgImage.bgImage && bgImage.bgImage.url) ? {
+                                                bgType: 'image',
+                                                openBg: 1,
+                                            } : {
                                                     bgType: 'image',
                                                     openBg: 1,
-                                                } : {
-                                                        bgType: 'image',
-                                                        openBg: 1,
-                                                        bgImage: {
-                                                            url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
-                                                        }
-                                                    },
-                                            }
+                                                    bgImage: {
+                                                        url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
+                                                    }
+                                                },
                                         }
-                                        : { layout: newLayout })}
-                        />
+                                    }
+                                    : { layout: newLayout })}
+                            />
 
                     </PanelBody>
                     <PanelBody title={__('Card Settings')} initialOpen={false}>
@@ -242,7 +244,7 @@ class Edit extends Component {
                                 onDeviceChange={value => this.setState({ device: value })}
                             />
                         }
-                        {((layout == '4') || (layout == '7')) &&
+                        {(layout == '4') &&
                             <RadioAdvanced
                                 label={__('Content Position')}
                                 options={[
@@ -252,6 +254,18 @@ class Edit extends Component {
                                 ]}
                                 value={contentHorizontalPosition}
                                 onChange={val => setAttributes({ contentHorizontalPosition: val })}
+                            />
+                        }
+                        {(layout == '7') &&
+                            <RadioAdvanced
+                                label={__('Content Position')}
+                                options={[
+                                    { value: 'left', label: __('Left'), },
+                                    { value: 'middle', label: __('Middle'), },
+                                    { value: 'right', label: __('Right'), },
+                                ]}
+                                value={contentHorizontalPosition7}
+                                onChange={val => setAttributes({ contentHorizontalPosition7: val })}
                             />
                         }
                         {((layout == '3') || (layout == '6')) &&
@@ -297,13 +311,19 @@ class Edit extends Component {
                         {((layout == '3') || (layout == '6') || (layout == '7')) &&
                             <Background label={__('Background')} sources={['image', 'gradient', 'video']} parallax value={bgImage} onChange={val => setAttributes({ bgImage: val })} />
                         }
-                        {((layout == '1') || (layout == '2') || (layout == '4') || (layout == '5')) &&
-                            <ColorAdvanced label={__('Background')} value={bgColor} onChange={val => setAttributes({ bgColor: val })} />
+                        {((layout == '1') || (layout == '2')) &&
+                            <ColorAdvanced label={__('Background')} value={cardBgColor} onChange={val => setAttributes({ cardBgColor: val })} />
                         }
-                        <Border label={__('Border')} value={bgBorder} onChange={val => setAttributes({ bgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <BorderRadius label={__('Card Corner')} value={bgBorderRadius} onChange={(value) => setAttributes({ bgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <Padding label={__('Card Padding')} value={bgPadding} onChange={val => setAttributes({ bgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <BoxShadow label={__('Card Shadow')} value={bgShadow} onChange={(value) => setAttributes({ bgShadow: value })} />
+                        
+                        {((layout == '1') || (layout == '2') || (layout == '3') || (layout == '6') || (layout == '7') ) &&
+                            <Fragment>
+                                <Border label={__('Border')} value={cardBgBorder} onChange={val => setAttributes({ cardBgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <BorderRadius label={__('Card Corner')} value={cardBgBorderRadius} onChange={(value) => setAttributes({ cardBgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <Padding label={__('Card Padding')} value={cardBgPadding} onChange={val => setAttributes({ cardBgPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <BoxShadow label={__('Card Shadow')} value={cardBgShadow} onChange={(value) => setAttributes({ cardBgShadow: value })} />
+                            </Fragment>
+                        }
+                        
                         {((layout == '3') || (layout == '6') || (layout == '7')) &&
                             <Fragment>
                                 <Toggle label={__('Fixed Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
@@ -376,9 +396,7 @@ class Edit extends Component {
                                                 onChange={val => setAttributes({ imageWidth: val })}
                                                 onDeviceChange={value => this.setState({ device: value })}
                                             />
-
                                         }
-
                                         <BorderRadius
                                             min={0}
                                             max={100}
@@ -407,7 +425,6 @@ class Edit extends Component {
                                     </Fragment>
                                     :
                                     <Fragment>
-
                                         <RadioAdvanced
                                             label={__('Video Source')}
                                             value={videoSource}
@@ -489,10 +506,10 @@ class Edit extends Component {
                                 max={600}
                                 responsive
                                 device={device}
-                                value={stackWidth}
+                                value={ (layout != '6') ? stackWidth : stackWidth6 }
                                 label={__('Stack Size')}
                                 unit={['px', 'em', '%']}
-                                onChange={value => setAttributes({ stackWidth: value })}
+                                onChange={value => setAttributes((layout != '6') ? { stackWidth: value } : { stackWidth6: value })}
                                 onDeviceChange={value => this.setState({ device: value })}
                             />
                             <BorderRadius
