@@ -10,8 +10,8 @@ export const attributes = {
 
     // Media
     mediaType: { type: 'string', default: 'image' },
-    imagePosition: { 
-        type: 'string', 
+    imagePosition: {
+        type: 'string',
         default: 'top',
         style: [
             {
@@ -28,10 +28,10 @@ export const attributes = {
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-4 .qubely-block-mediacard-wrapper {display:flex;flex-wrap: wrap;flex-direction: column-reverse;}'
             }
-        ] 
+        ]
     },
-    imagePositionHorizontal: { 
-        type: 'string', 
+    imagePositionHorizontal: {
+        type: 'string',
         default: 'left',
         style: [
             {
@@ -55,7 +55,7 @@ export const attributes = {
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-5 .qubely-block-mediacard-wrapper {display:flex;flex-direction: row-reverse;}'
             }
-        ] 
+        ]
     },
     videoSource: { type: 'string', default: 'local' },
     vimeoId: { type: 'string', default: '368867301' },
@@ -78,15 +78,15 @@ export const attributes = {
     //         }
     //     ]
     // },
-    image: { 
-        type: 'object', 
+    image: {
+        type: 'object',
         default: {
             url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
-        } 
+        }
     },
-    image2x: { 
-        type: 'object', 
-        default: {} 
+    image2x: {
+        type: 'object',
+        default: {}
     },
     imgAlt: { type: 'string', default: '' },
     imageWidth: {
@@ -397,15 +397,15 @@ export const attributes = {
         type: 'string',
         default: '#FFFFFF',
         style:
-        [
-            {
-                condition:
-                    [
-                        { key: 'badgeStyle', relation: '!=', value: 'none' },
-                    ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {color: {{badgeColor}};}'
-            }
-        ]
+            [
+                {
+                    condition:
+                        [
+                            { key: 'badgeStyle', relation: '!=', value: 'none' },
+                        ],
+                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge {color: {{badgeColor}};}'
+                }
+            ]
     },
     badgeTypography: {
         type: 'object',
@@ -417,15 +417,15 @@ export const attributes = {
             }
         },
         style:
-        [
-            {
-                condition:
-                    [
-                        { key: 'badgeStyle', relation: '!=', value: 'none' },
-                    ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge'
-            }
-        ]
+            [
+                {
+                    condition:
+                        [
+                            { key: 'badgeStyle', relation: '!=', value: 'none' },
+                        ],
+                    selector: '{{QUBELY}} .qubely-block-mediacard .qubely-mediacard-badge'
+                }
+            ]
     },
     badgeBg: {
         type: 'string',
@@ -459,7 +459,7 @@ export const attributes = {
             },
         ]
     },
-    
+
     badgeMargin: {
         type: 'object',
         default: {
@@ -611,11 +611,11 @@ export const attributes = {
             }
         ]
     },
-    bgColor: { 
-        type: 'object', 
+    bgColor: {
+        type: 'object',
         default: {
 
-        }, 
+        },
         style: [
             {
                 condition: [
@@ -641,16 +641,47 @@ export const attributes = {
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard'
             }
-        ] 
+        ]
     },
-    bgImage: { 
-        type: 'object', 
-        default: { 
-            bgimgPosition: 'center center', 
-            bgimgSize: 'cover', 
-            bgimgRepeat: 'no-repeat', 
-            bgDefaultColor: '#f5f5f5' 
-        }, 
+    textColor: {
+        type: 'string',
+        default: '#000',
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '!=', value: 3 },
+                    { key: 'layout', relation: '!=', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper{ color:{{textColor}}; }'
+            }
+        ]
+    },
+    overlayTextColor: {
+        type: 'string',
+        default: '#fff',
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 3 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper{ color:{{overlayTextColor}}; }'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper { color:{{overlayTextColor}}; }'
+            },
+        ]
+    },
+    bgImage: {
+        type: 'object',
+        default: {
+            bgimgPosition: 'center center',
+            bgimgSize: 'cover',
+            bgimgRepeat: 'no-repeat',
+            bgDefaultColor: '#f5f5f5'
+        },
         style: [
             {
                 condition: [
@@ -670,7 +701,7 @@ export const attributes = {
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard'
             }
-        ] 
+        ]
     },
     bgPadding: {
         type: 'object',
@@ -698,12 +729,12 @@ export const attributes = {
     },
     bgBorder: { type: 'object', default: {}, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
     bgShadow: { type: 'object', default: { color: '' }, style: [{ selector: '{{QUBELY}} .qubely-block-mediacard' }] },
-    enableFixedHeight: { 
-        type: 'boolean', 
-        default: true 
+    enableFixedHeight: {
+        type: 'boolean',
+        default: true
     },
-    fixedHeight: { 
-        type: 'object', 
+    fixedHeight: {
+        type: 'object',
         default: {
             md: 450,
             unit: 'px'
@@ -730,7 +761,7 @@ export const attributes = {
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard-wrapper {height: {{fixedHeight}};}'
             }
-        ] 
+        ]
     },
 
     // Overlay
