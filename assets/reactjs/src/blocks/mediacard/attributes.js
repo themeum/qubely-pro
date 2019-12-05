@@ -651,6 +651,7 @@ export const attributes = {
                 condition: [
                     { key: 'layout', relation: '!=', value: 3 },
                     { key: 'layout', relation: '!=', value: 6 },
+                    { key: 'layout', relation: '!=', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper{ color:{{textColor}}; }'
             }
@@ -669,6 +670,12 @@ export const attributes = {
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 6 },
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper { color:{{overlayTextColor}}; }'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper { color:{{overlayTextColor}}; }'
             },

@@ -207,7 +207,7 @@ class Edit extends Component {
                             ]}
                             onChange={newLayout =>
                                 setAttributes(
-                                    newLayout === 3 ?
+                                    (newLayout === 3 || newLayout === 6 || newLayout === 7) ?
                                         {
                                             layout: newLayout,
                                             bgImage: {
@@ -291,7 +291,7 @@ class Edit extends Component {
                         <Color
                             label={__('Text Color')}
                             value={(layout === 3 || layout === 6) ? overlayTextColor : textColor}
-                            onChange={value => setAttributes((layout === 3 || layout === 6)? { overlayTextColor: value } : { textColor: value })}
+                            onChange={value => setAttributes((layout === 3 || layout === 6) ? { overlayTextColor: value } : { textColor: value })}
                         />
 
                         {((layout == '3') || (layout == '6') || (layout == '7')) &&
