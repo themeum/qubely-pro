@@ -866,7 +866,7 @@ class Edit extends Component {
 
 				<div className={`qubely-block-${uniqueId}`}>
 					{(posts && posts.length) ?
-						<div className={`qubely-block-image-carousel qubely-postcarousel-wrapper`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+						<div className={`qubely-block-post-carousel qubely-postcarousel-wrapper`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 							<Carousel options={carouselSettings}>
 								{posts && posts.map(post => {
 									return (

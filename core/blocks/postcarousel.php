@@ -368,7 +368,7 @@ function register_block_qubely_postcarousel_pro()
 					),
 					'style' 	=> [
 						(object) [
-							'selector' => '{{QUBELY}} .qubely-block-image-carousel.layout-1 .qubely-carousel .qubely-carousel-item {padding: {{gutterspace}};} {{QUBELY}} .qubely-block-image-carousel.layout-3 .qubely-carousel .qubely-carousel-item {padding: {{gutterspace}};} {{QUBELY}} .qubely-block-image-carousel.layout-4 .qubely-carousel .qubely-carousel-item {padding: {{gutterspace}};}'
+							'selector' => '{{QUBELY}} .qubely-block-post-carousel.layout-1 .qubely-carousel .qubely-carousel-item {padding: {{gutterspace}};} {{QUBELY}} .qubely-block-post-carousel.layout-3 .qubely-carousel .qubely-carousel-item {padding: {{gutterspace}};} {{QUBELY}} .qubely-block-post-carousel.layout-4 .qubely-carousel .qubely-carousel-item {padding: {{gutterspace}};}'
 						]
 					]
 				),
@@ -1397,7 +1397,7 @@ function render_block_qubely_postcarousel_pro($att)
 	# The Loop. 
 	if ($query->have_posts()) {
 		$html .= '<div class="qubely-block-' . esc_attr($uniqueId) . '">';
-		$html .= '<div class="qubely-block-image-carousel qubely-postcarousel-wrapper" ' . $animation . '>';
+		$html .= '<div class="qubely-block-post-carousel qubely-postcarousel-wrapper" ' . $animation . '>';
 
 		# Carousel Class.
 		$html .= '<div class="qubely-carousel qubely-carousel-wrapper" data-options="' . htmlspecialchars(json_encode($data_options), ENT_QUOTES, 'UTF-8') . '">';
@@ -1508,7 +1508,7 @@ function render_block_qubely_postcarousel_pro($att)
 		}
 
 		$html .= '</div>'; # qubely-carousel :- carousel class 
-		$html .= '</div>'; # qubely-block-image-carousel
+		$html .= '</div>'; # qubely-block-post-carousel
 		$html .= '</div>'; # qubely-block-ID
 		wp_reset_postdata();
 	}
