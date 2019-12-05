@@ -49,6 +49,7 @@ const {
 const {
     withSelect
 } = wp.data
+
 import icons from '../../helpers/icons';
 
 const mediaOptions = [
@@ -91,6 +92,7 @@ class Edit extends Component {
 
     }
 
+
     render() {
         const {
             name,
@@ -132,6 +134,8 @@ class Edit extends Component {
                 imgAlt,
                 imageWidth,
                 bgColor,
+                textColor,
+                overlayTextColor,
                 bgImage,
 
                 //content
@@ -201,21 +205,26 @@ class Edit extends Component {
                                 { value: 6, svg: icons.mediacard_6, label: __('') },
                                 { value: 7, svg: icons.mediacard_7, label: __('') },
                             ]}
-                            onChange={val => setAttributes(
-                                val === 3 ?
-                                    {
-                                        layout: val,
-                                        bgImage: {
-                                            ...bgImage,
-                                            bgType: 'image',
-                                            openBg: 1,
+                            onChange={newLayout =>
+                                setAttributes(
+                                    newLayout === 3 ?
+                                        {
+                                            layout: newLayout,
                                             bgImage: {
-                                                url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
+                                                ...bgImage,
+                                                ...(bgImage.bgImage && bgImage.bgImage.url) ? {
+                                                    bgType: 'image',
+                                                    openBg: 1,
+                                                } : {
+                                                        bgType: 'image',
+                                                        openBg: 1,
+                                                        bgImage: {
+                                                            url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
+                                                        }
+                                                    },
                                             }
                                         }
-                                    }
-                                    : { layout: val })
-                            }
+                                        : { layout: newLayout })}
                         />
 
                     </PanelBody>
@@ -279,6 +288,12 @@ class Edit extends Component {
                                 onChange={val => setAttributes({ imagePositionHorizontal: val })}
                             />
                         }
+                        <Color
+                            label={__('Text Color')}
+                            value={(layout === 3 || layout === 6) ? overlayTextColor : textColor}
+                            onChange={value => setAttributes((layout === 3 || layout === 6)? { overlayTextColor: value } : { textColor: value })}
+                        />
+
                         {((layout == '3') || (layout == '6') || (layout == '7')) &&
                             <Background label={__('Background')} sources={['image', 'gradient', 'video']} parallax value={bgImage} onChange={val => setAttributes({ bgImage: val })} />
                         }
