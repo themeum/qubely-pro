@@ -252,11 +252,11 @@
 
             this.nextNavIcon = document.createElement('span')
 
-            this.nextNavIcon.setAttribute('class', this.options.arrowStyle == 'arrowright2' ? `dashicons dashicons-arrow-right-alt2` : `dashicons dashicons-arrow-right-alt`)
+            this.nextNavIcon.setAttribute('class', this.options.arrowStyle == 'arrowright2' ? `fas fa-angle-right` : `fas fa-arrow-right`)
             this.nextBtn.append(this.nextNavIcon);
 
             this.prevNavIcon = document.createElement('span')
-            this.prevNavIcon.setAttribute('class', this.options.arrowStyle == 'arrowright2' ? `dashicons dashicons-arrow-left-alt2` : `dashicons dashicons-arrow-left-alt`)
+            this.prevNavIcon.setAttribute('class', this.options.arrowStyle == 'arrowright2' ? `fas fa-angle-left` : `fas fa-arrow-left`)
             this.prevBtn.append(this.prevNavIcon);
 
 

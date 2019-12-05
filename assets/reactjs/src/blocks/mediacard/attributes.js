@@ -203,7 +203,19 @@ export const attributes = {
     //stack
     stackBg: {
         type: 'object',
-        default: {},
+        default: {
+            openColor: 1,
+            type: 'color',
+            color: '#fff',
+            gradient: {
+                color1: 'rgba(0, 0, 0, 0.5)',
+                color2: 'rgba(6, 1, 14, 0.6)',
+                direction: 45,
+                start: 0,
+                stop: 100,
+                type: 'linear'
+            },
+        },
         style: [
             {
                 condition: [
