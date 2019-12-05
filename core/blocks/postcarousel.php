@@ -243,7 +243,7 @@ function register_block_qubely_postcarousel_pro()
 						'md' 	=> 20, 'unit' => 'px'
 					),
 					'style' 	=> [(object) [
-						'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control .fas { width: {{sizeWidth}}; height: {{sizeWidth}}; line-height: {{sizeWidth}}; }'
+						'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control .fas { width: {{shapeWidth}}; height: {{shapeWidth}}; line-height: {{shapeWidth}}; }'
 					]]
 				),
 				'navSize' 		=> array(
