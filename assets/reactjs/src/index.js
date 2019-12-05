@@ -11,3 +11,5 @@ import './blocks/pricelist'      // Pricelist
 import './blocks/imagecarousel'  // Image Carousel
 import './blocks/postcarousel'  // Post Carousel
 import './blocks/gallery'  // Gallery
+
+// import './blocks/mediacard'  // Instagram Feed

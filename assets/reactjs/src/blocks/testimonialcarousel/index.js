@@ -142,23 +142,23 @@ registerBlockType('qubely/testimonialcarousel', {
 		},
 		sizeWidth: {
 			type: 'string',
-			default: { md: 14, unit: 'px' },
+			default: { md: 20, unit: 'px' },
 			style: [
-				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { padding: {{sizeWidth}}; } ' }
+				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control .fas { width: {{sizeWidth}}; height: {{sizeWidth}}; line-height: {{sizeWidth}}; }' }
 			]
 		},
 		arrowSize: {
 			type: 'object',
 			default: { md: 20, unit: 'px' },
 			style: [
-				{ selector: '{{QUBELY}} .qubely-carousel-nav-control .nav-control .dashicons { font-size: {{arrowSize}}; } ' }
+				{ selector: '{{QUBELY}} .qubely-carousel-nav-control .nav-control .fas { font-size: {{arrowSize}}; } ' }
 			]
 		},
 		// Section Arrow 
 		arrowColor: {
 			type: 'string',
 			default: '#1066CC',
-			style: [{ selector: '{{QUBELY}} .qubely-block-testimonial-carousel .nav-control .dashicons { color:{{arrowColor}}; }' }]
+			style: [{ selector: '{{QUBELY}} .qubely-block-testimonial-carousel .nav-control .fas { color:{{arrowColor}}; }' }]
 		},
 		// Arrow background color
 		arrowShapeColor: {
@@ -176,7 +176,7 @@ registerBlockType('qubely/testimonialcarousel', {
 		// Arrow Hover Color.
 		arrowHoverColor: {
 			type: 'string', default: '#ffffff',
-			style: [{ selector: '{{QUBELY}} .qubely-carousel-nav-control .nav-control:hover .dashicons { color:{{arrowHoverColor}}; }' }]
+			style: [{ selector: '{{QUBELY}} .qubely-carousel-nav-control .nav-control:hover .fas { color:{{arrowHoverColor}}; }' }]
 		},
 		// Arrow background Hover Color.
 		arrowShapeHoverColor: {

@@ -240,10 +240,10 @@ function register_block_qubely_postcarousel_pro()
 				'shapeWidth' 	=> array(
 					'type' 		=> 'object',
 					'default' 	=> (object) array(
-						'md' 	=> 14, 'unit' => 'px'
+						'md' 	=> 20, 'unit' => 'px'
 					),
 					'style' 	=> [(object) [
-						'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {padding: {{shapeWidth}};}'
+						'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control .fas { width: {{sizeWidth}}; height: {{sizeWidth}}; line-height: {{sizeWidth}}; }'
 					]]
 				),
 				'navSize' 		=> array(
@@ -254,7 +254,7 @@ function register_block_qubely_postcarousel_pro()
 					),
 					'style' 	=> [
 						(object) [
-							'selector' => '{{QUBELY}} .qubely-carousel-nav-control .nav-control .dashicons { font-size: {{navSize}}; }'
+							'selector' => '{{QUBELY}} .qubely-carousel-nav-control .nav-control .fas { font-size: {{navSize}}; }'
 						],
 					],
 				),

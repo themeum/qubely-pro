@@ -73,12 +73,21 @@ const icons = {
     btn_fill: <img src={`${free_img_path}/button/fill.svg`} alt={__('Fill')} />,
     btn_outline: <img src={`${free_img_path}/button/outline.svg`} alt={__('Outline')} />,
 
+    // Media Card.
+    mediacard_1: <img src={`${img_path}/mediacard/1.svg`} alt={__('Design 1')} />,
+    mediacard_2: <img src={`${img_path}/mediacard/2.svg`} alt={__('Design 2')} />,
+    mediacard_3: <img src={`${img_path}/mediacard/3.svg`} alt={__('Design 3')} />,
+    mediacard_4: <img src={`${img_path}/mediacard/4.svg`} alt={__('Design 4')} />,
+    mediacard_5: <img src={`${img_path}/mediacard/5.svg`} alt={__('Design 5')} />,
+    mediacard_6: <img src={`${img_path}/mediacard/6.svg`} alt={__('Design 6')} />,
+    mediacard_7: <img src={`${img_path}/mediacard/7.svg`} alt={__('Design 7')} />,
+
+
     leftArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
         <path d="M5 8.70002L10.6 14.4L12 12.9L7.8 8.70002L12 4.50002L10.6 3.00002L5 8.70002Z" />
     </svg>,
 
-    rightArrow:
-        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+    rightArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 8.7L7.4 3L6 4.5L10.2 8.7L6 12.9L7.4 14.4L13 8.7Z" />
         </svg>
 

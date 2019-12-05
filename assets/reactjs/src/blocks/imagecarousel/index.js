@@ -121,9 +121,9 @@ registerBlockType('qubely/imagecarousel', {
 		},
 		sizeWidth: {
 			type: 'object',
-			default: { md: 14, unit: 'px' },
+			default: { md: 20, unit: 'px' },
 			style: [
-				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { padding: {{sizeWidth}}; } ' }
+				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control .fas { width: {{sizeWidth}}; height: {{sizeWidth}}; line-height: {{sizeWidth}}; }' }
 			]
 		},
 		arrowSize: {
