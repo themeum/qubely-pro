@@ -68,13 +68,13 @@ class Edit extends Component {
             device: 'md',
             selector: true,
             spacer: true,
-            qubelyBlocks: []
+            // qubelyBlocks: []
         }
     }
 
     componentDidMount() {
         const {
-            blockTypes,
+            // blockTypes,
             setAttributes,
             clientId,
             attributes: {
@@ -88,7 +88,7 @@ class Edit extends Component {
             setAttributes({ uniqueId: _client });
         }
 
-        this.setState({ qubelyBlocks: blockTypes.filter(block => block.category === 'qubely').map(block => block.name) })
+        // this.setState({ qubelyBlocks: blockTypes.filter(block => block.category === 'qubely').map(block => block.name) })
 
     }
 
@@ -98,7 +98,7 @@ class Edit extends Component {
             name,
             clientId,
             attributes,
-            blockTypes,
+            // blockTypes,
             setAttributes,
             attributes: {
 
@@ -185,7 +185,7 @@ class Edit extends Component {
 
         let autoPlay = autoplay ? '1' : '0';
 
-        const { device, qubelyBlocks } = this.state
+        const { device } = this.state
 
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
 
@@ -667,7 +667,7 @@ class Edit extends Component {
                                 {(badgeStyle != 'none') && <span className={`${(badgeStyle == 'badge') ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                                 <div className={`qubely-mediacard-innerBlocks`}>
                                     <InnerBlocks
-                                        allowedBlocks={qubelyBlocks}
+                                        // allowedBlocks={qubelyBlocks}
                                         templateInsertUpdatesSelection={false}
                                         template={
                                             [[
@@ -704,12 +704,13 @@ class Edit extends Component {
     }
 }
 
-export default withSelect((select, props) => {
-    const {
-        getBlockTypes,
-    } = select('core/blocks');
-    return {
-        blockTypes: getBlockTypes(),
-    }
-})
-    (Edit)
+export default Edit
+// export default withSelect((select, props) => {
+//     const {
+//         getBlockTypes,
+//     } = select('core/blocks');
+//     return {
+//         blockTypes: getBlockTypes(),
+//     }
+// })
+//     (Edit)
