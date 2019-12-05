@@ -1394,9 +1394,13 @@ function render_block_qubely_postcarousel_pro($att)
 	endif;
 
 	$html = '';
+	$class = 'wp-block-qubely-postcarousel qubely-block-'.$uniqueId;
+	if ( isset( $att['align'] ) ) {
+		$class .= ' align' . $att['align'];
+	}
 	# The Loop. 
 	if ($query->have_posts()) {
-		$html .= '<div class="qubely-block-' . esc_attr($uniqueId) . '">';
+		$html .= '<div class="' . $class . '">';
 		$html .= '<div class="qubely-block-post-carousel qubely-postcarousel-wrapper" ' . $animation . '>';
 
 		# Carousel Class.

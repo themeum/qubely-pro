@@ -1220,9 +1220,13 @@ function render_block_qubely_postgrid_pro($att)
 	} else {
 		$col = "";
 	}
-    $count = 0;
+	$count = 0;
+	$class = 'wp-block-qubely-postgrid qubely-block-'.$uniqueId;
+	if ( isset( $att['align'] ) ) {
+		$class .= ' align' . $att['align'];
+	}
 	if ($query->have_posts()) {
-		$html .= '<div class="qubely-block-' . $uniqueId . '">';
+		$html .= '<div class="' . $class . '">';
 		$html .= '<div class="qubely-postgrid-wrapper '.$interaction.' qubely-postgrid-layout-' . esc_attr($layout) . esc_attr($col) . '" '.$animation.'>';
 		while ($query->have_posts()) {
 			$query->the_post();
@@ -1384,6 +1388,7 @@ function render_block_qubely_postgrid_pro($att)
 			}
 
 		}
+		$html .= '</div>';
 		$html .= '</div>';
 		wp_reset_postdata();
 	}
