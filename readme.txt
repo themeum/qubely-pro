@@ -3,6 +3,11 @@ Stable tag: 1.0.4
 
 == Changelog ==
 
+= 1.0.5 - 05 December, 2019 =
+New: Full Width, Wide Width alignment option in all blocks  
+Update: Navigation icons in all carousels  
+Update: Improvement in Interaction  
+
 = 1.0.4 - 29 November, 2019 =
 Fix: Dropdown field - Search  
 Fix: Post Grid block - Stack background in style 3   
