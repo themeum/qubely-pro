@@ -673,7 +673,8 @@ export const attributes = {
             bgimgPosition: 'center center',
             bgimgSize: 'cover',
             bgimgRepeat: 'no-repeat',
-            bgDefaultColor: '#f5f5f5'
+            bgDefaultColor: '#f5f5f5',
+            bgimgParallax: 'none'
         },
         style: [
             {
