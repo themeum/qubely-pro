@@ -3,7 +3,7 @@ const { Component, Fragment } = wp.element
 const { withSelect } = wp.data
 const { dateI18n, __experimentalGetSettings } = wp.date
 const { addQueryArgs } = wp.url
-const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
+const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl, Placeholder } = wp.components;
 const { InspectorControls, BlockControls } = wp.blockEditor
 const {
 	Range,
@@ -48,7 +48,7 @@ class Edit extends Component {
 	}
 
 	componentDidMount() {
-		const { setAttributes, clientId, posts, attributes: { uniqueId } } = this.props
+		const { setAttributes, clientId, attributes: { uniqueId } } = this.props
 		this.isStillMounted = true;
 		this.fetchRequest = wp.apiFetch({
 			path: addQueryArgs(`/wp/v2/categories`, CATEGORIES_LIST_QUERY),
@@ -71,13 +71,6 @@ class Edit extends Component {
 			setAttributes({ uniqueId: _client });
 		} else if (uniqueId && uniqueId != _client) {
 			setAttributes({ uniqueId: _client });
-		}
-		if (posts) {
-			if (posts.length > 0 && posts.length < 2) {
-				setAttributes({ postitems: { 'md': posts.length, 'sm': posts.length, 'xs': posts.length } });
-			} else if (posts.length === 0) {
-				setAttributes({ postitems: { 'md': 0, 'sm': 0, 'xs': 0 } });
-			}
 		}
 
 	}
@@ -153,6 +146,7 @@ class Edit extends Component {
 			clientId,
 			attributes,
 			posts,
+			numberofPosts,
 			taxonomyList,
 			setAttributes,
 			attributes: {
@@ -282,6 +276,33 @@ class Edit extends Component {
 		} = this.props
 		const { device } = this.state
 
+		const hasPosts = Array.isArray(posts) && posts.length;
+		if (!hasPosts) {
+			return (
+				<Fragment>
+					<Placeholder
+						icon="admin-post"
+						label={__('Post Carousel')}
+					>
+						{!Array.isArray(posts) ?
+							<Spinner /> :
+							__('No posts found.')
+						}
+					</Placeholder>
+				</Fragment>
+			);
+		} else if (numberofPosts && ((numberofPosts < postitems.md) || (numberofPosts < postitems.sm) || (numberofPosts < postitems.xs))) {
+
+			let newPostItems = {
+				...postitems,
+				...numberofPosts < postitems.md && { md: numberofPosts },
+				...numberofPosts < postitems.sm && { sm: numberofPosts },
+				...numberofPosts < postitems.xs && { xs: numberofPosts },
+			}
+			setAttributes({ postitems: newPostItems })
+		}
+
+
 		if (uniqueId) { CssGenerator(this.props.attributes, 'postcarousel', uniqueId) }
 
 		const carouselSettings = {
@@ -289,7 +310,12 @@ class Edit extends Component {
 			dots: dots,
 			margin: sliderItemMargin,
 			speed: speed,
-			items: postitems,
+			items: {
+				...postitems,
+				...(numberofPosts && numberofPosts < postitems.md) && { md: numberofPosts },
+				...(numberofPosts && numberofPosts < postitems.sm) && { sm: numberofPosts },
+				...(numberofPosts && numberofPosts < postitems.xs) && { xs: numberofPosts },
+			},
 			autoplay: autoPlay,
 			interval: interval,
 			center: isCentered,
@@ -298,18 +324,18 @@ class Edit extends Component {
 			responsive: [
 				{
 					viewport: 1170,
-					items: postitems.md
+					items: (numberofPosts && numberofPosts < postitems.md) ? numberofPosts : postitems.md
 				},
 				{
 					viewport: 980,
-					items: postitems.sm
+					items: (numberofPosts && numberofPosts < postitems.sm) ? numberofPosts : postitems.sm
 				},
 				{
 					viewport: 580,
-					items: postitems.xs
+					items: (numberofPosts && numberofPosts < postitems.xs) ? numberofPosts : postitems.xs
 				},
 			],
-		};
+		}
 
 		return (
 			<Fragment>
@@ -916,9 +942,10 @@ export default withSelect((select, props) => {
 		per_page: postsToShow,
 		[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
 	}
-
+	const posts = getEntityRecords('postType', 'post', query)
 	return {
-		posts: getEntityRecords('postType', 'post', query),
+		posts,
+		...(Array.isArray(posts) && posts.length) && { numberofPosts: posts.length },
 		taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
 	};
 })
