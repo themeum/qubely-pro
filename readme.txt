@@ -1,9 +1,9 @@
 ===  Qubely Pro ===
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 
 == Changelog ==
 
-= 1.0.5 - 05 December, 2019 =
+= 1.0.5 - 06 December, 2019 =
 New: Full Width, Wide Width alignment option in all blocks  
 Update: Navigation icons in all carousels  
 Update: Improvement in Interaction  
