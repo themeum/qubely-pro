@@ -690,7 +690,6 @@ class Edit extends Component {
                                                     <img
                                                         src={image.url}
                                                         {...(imgAlt && { alt: imgAlt })}
-                                                        className="qubely-mediacard-image"
                                                         srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
                                                     />
                                                     :

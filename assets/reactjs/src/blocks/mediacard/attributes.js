@@ -206,14 +206,14 @@ export const attributes = {
                     { key: 'layout', relation: '==', value: 2 },
                     { key: 'imagePositionHorizontal', relation: '==', value: 'left' }
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-right: {{mediaSpacing}};}'
+                selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-right: {{mediaSpacing}};} {{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-left: 0;}'
             },
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 2 },
                     { key: 'imagePositionHorizontal', relation: '==', value: 'right' }
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-left: {{mediaSpacing}};}'
+                selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-left: {{mediaSpacing}};} {{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-right: 0;}'
             },
 
             {
