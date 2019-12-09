@@ -125,49 +125,44 @@ export default function Edit(props) {
                 console.log('could not retrieve product categories')
             });
     }
-    // const setOderingQueryArgs = () => {
-    //     let args = []
-    //     if ('price_desc' === orderby) {
-    //         $query_args['orderby'] = 'price';
-    //         $query_args['order'] = 'DESC';
-    //     } else if ('price_asc' === orderby) {
-    //         $query_args['orderby'] = 'price';
-    //         $query_args['order'] = 'ASC';
-    //     } else if ('date' === orderby) {
-    //         $query_args['orderby'] = 'date';
-    //         $query_args['order'] = 'DESC';
-    //     } else {
-    //         $query_args['orderby'] = orderby;
-    //     }
-    //     return (args)
-    // }
+    const setOderingQueryArgs = () => {
+        let orderbyArgs = {}
+        switch (orderby) {
+            case 'price':
+                orderbyArgs.orderby = 'price';
+                orderbyArgs.order = 'asc';
+                break;
+            case 'price_desc':
+                orderbyArgs.orderby = 'price';
+                orderbyArgs.order = 'desc';
+                break;
+            case 'title':
+                orderbyArgs.orderby = 'title';
+                orderbyArgs.order = 'asc';
+                break;
+            case 'title':
+                orderbyArgs.orderby = 'title';
+                orderbyArgs.order = 'desc';
+                break;
+            case 'date':
+                orderbyArgs.orderby = 'date';
+                orderbyArgs.order = 'asc';
+                break;
+            case 'date-desc':
+                orderbyArgs.orderby = 'date';
+                orderbyArgs.order = 'desc';
+                break;
+            default:
+                orderbyArgs.orderby = orderby;
+
+        }
+        return (orderbyArgs)
+    }
 
     const loadProducts = () => {
-        const args = {
-            ...orderby === 'price' ?
-                {
-                    order: 'asc',
-                    orderby: 'price',
-                } : orderby === 'price-desc' ?
-                    {
-                        order: 'desc',
-                        orderby: 'price',
-                    } :
-                    orderby === 'title' ?
-                        {
-                            order: 'asc',
-                            orderby: orderby
-                        } :
-                        orderby === 'title-desc' ?
-                            {
-                                order: 'desc',
-                                orderby: 'title',
-                            } :
-                            {
-                                order: 'desc',
-                                orderby: orderby
-                            },
 
+        const args = {
+            ...setOderingQueryArgs(),
             ...productsStatus === 'on_sale' ? {
                 on_sale: 1
             } : productsStatus === 'featured' ? {
@@ -286,6 +281,10 @@ export default function Edit(props) {
                         options={[
                             {
                                 label: __('Newness - newest first'),
+                                value: 'date-desc',
+                            },
+                            {
+                                label: __('Newness - oldest first'),
                                 value: 'date',
                             },
                             {

@@ -124,7 +124,6 @@ function render_block_qubely_wooproducts($att)
     }
 
 
-
     $query_args = array(
         'order'          => '',
         'orderby'        => '',
@@ -135,17 +134,35 @@ function render_block_qubely_wooproducts($att)
     );
 
     if (isset($att['orderby'])) {
-        if ('price_desc' === $att['orderby']) {
-            $query_args['orderby'] = 'price';
-            $query_args['order']   = 'DESC';
-        } elseif ('price_asc' === $att['orderby']) {
-            $query_args['orderby'] = 'price';
-            $query_args['order']   = 'ASC';
-        } elseif ('date' === $att['orderby']) {
-            $query_args['orderby'] = 'date';
-            $query_args['order']   = 'DESC';
-        } else {
-            $query_args['orderby'] = $att['orderby'];
+        switch ($orderBy) {
+            case 'price':
+                $query_args['orderby'] = 'meta_value_num';
+                $query_args['meta_key'] = '_price';
+                $query_args['order']   = 'asc';
+                break;
+            case 'price_desc':
+                $query_args['orderby'] = 'meta_value_num';
+                $query_args['meta_key'] = '_price';
+                $query_args['order']   = 'desc';
+                break;
+            case 'title':
+                $query_args['orderby'] = 'title';
+                $query_args['order']   = 'asc';
+                break;
+            case 'title-desc':
+                $query_args['orderby'] = 'title';
+                $query_args['order']   = 'asc';
+                break;
+            case 'date':
+                $query_args['orderby'] = 'date';
+                $query_args['order']   = 'asc';
+                break;
+            case 'date-desc':
+                $query_args['orderby'] = 'date';
+                $query_args['order']   = 'desc';
+                break;
+            default:
+                $query_args['orderby'] = $att['orderby'];
         }
     }
 
