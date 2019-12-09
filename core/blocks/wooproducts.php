@@ -105,6 +105,7 @@ function render_block_qubely_wooproducts($att)
     $layout                 = isset($att['layout']) ? $att['layout'] : 2;
     $style                  = isset($att['style']) ? $att['style'] : 1;
     $productsPerPage        = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
+    $productsStatus         = isset($att['productsStatus']) ? $att['productsStatus'] : 'all';
     $orderBy                = isset($att['orderby']) ? $att['orderby'] : 'date';
     $selectedCatagories     = isset($att['selectedCatagories']) ? $att['selectedCatagories'] : [];
     $animation              = isset($att['animation']) ? (count((array) $att['animation']) > 0 && $att['animation']['animation']  ? 'data-qubelyanimation="' . htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8') . '"' : '') : '';
@@ -164,6 +165,15 @@ function render_block_qubely_wooproducts($att)
             default:
                 $query_args['orderby'] = $att['orderby'];
         }
+    }
+
+    if ($productsStatus === 'on_sale' || $productsStatus === 'featured') {
+        $on_sale_key = $productsStatus === 'on_sale' ? 'post__in' : 'post__not_in';
+        $on_sale_ids = wc_get_product_ids_on_sale();
+
+        $on_sale_ids = empty($on_sale_ids) ? array(0) : $on_sale_ids;
+        $query_args[$on_sale_key] = [];
+        $query_args[$on_sale_key] += $on_sale_ids;
     }
 
 

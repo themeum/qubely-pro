@@ -163,15 +163,16 @@ export default function Edit(props) {
 
         const args = {
             ...setOderingQueryArgs(),
-            ...productsStatus === 'on_sale' ? {
-                on_sale: 1
-            } : productsStatus === 'featured' ? {
-                featured: 1
-            } : {},
             category: selectedCatagories.map(({ value }) => value).join(),
             per_page: productsPerPage,
             // page: currentPage,
         };
+
+        if (productsStatus === 'on_sale') {
+            args.on_sale = true
+        } else if (productsStatus === 'featured') {
+            args.featured = true
+        }
 
         getProducts(args)
             .then((productsData) => {
