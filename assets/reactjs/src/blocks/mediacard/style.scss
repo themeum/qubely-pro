@@ -103,8 +103,8 @@
     .qubely-block-mediacard-wrapper {
       display: -ms-flexbox;
       display: flex;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+    //   -ms-flex-wrap: wrap;
+    //   flex-wrap: wrap;
       align-items: center;
       .qubely-mediacard-media_wrapper {
         -ms-flex: 0 0 50%;
@@ -117,9 +117,9 @@
         padding: 20px;
         position: relative;
         z-index: 2;
-        -ms-flex: 0 0 50%;
-        flex: 0 0 50%;
-        max-width: 50%;
+        // -ms-flex: 0 0 50%;
+        // flex: 0 0 50%;
+        // max-width: 50%;
       }
     }
   }
@@ -191,3 +191,29 @@
 //     margin-left: 0;
 //     margin-right: 0;
 // }
+@media (max-width: 768px) {
+    .qubely-block-mediacard {
+        &.qubely-mediacard-layout-5 {
+            .qubely-block-mediacard-wrapper {
+                .qubely-mediacard-media_wrapper {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+                .qubely-mediacard-content-wrapper {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    margin: 0;
+                }
+                flex-wrap: wrap;
+            }
+        }
+        &.qubely-mediacard-layout-2 {
+            .qubely-block-mediacard-wrapper {
+                flex-wrap: wrap;
+            }
+            .qubely-mediacard-image {
+                margin-right: 0;
+            }
+        }
+    }
+}

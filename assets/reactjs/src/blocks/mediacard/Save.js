@@ -8,7 +8,6 @@ class Save extends Component {
 			uniqueId,
 			layout,
 			mediaType,
-			videoUrl,
 			videoSource,
 			vimeoId,
 			youtubeId,
@@ -20,10 +19,13 @@ class Save extends Component {
 			content,
 			image,
 			image2x,
-			imgAlt,
+            imgAlt,
+            imagePosition,
+            imagePositionHorizontal,
 
 			//Badge
-			enableBadge,
+            enableBadge,
+            badgePosition,
 			badge,
 			badgeStyle,
 			badgeSize,
@@ -39,12 +41,11 @@ class Save extends Component {
 
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-				<div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${interactionClass}`}>
-					{enableBadge && <span className={`qubely-mediacard-badge qubely-badge-style-${badgeStyle} qubely-badge-size-${badgeSize}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}><span>{badge}</span></span>}
+                <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`}>
 					<div className={`qubely-block-mediacard-wrapper`}>
+                    {((layout === 1) || (layout === 2) || (layout === 4) || (layout === 5)) &&
 						<div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
 							{mediaType == 'video' &&
-								// <video controls src={videoUrl} />
 								<Fragment>
 									{(videoSource == 'vimeo') ?
 										<iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -53,26 +54,27 @@ class Save extends Component {
 									}
 								</Fragment>
 							}
-
 							{mediaType === 'image' &&
 								<Fragment>
 									{
 										(image && image.url) ?
-											<img
-												src={image.url}
-												{...(imgAlt && { alt: imgAlt })}
-												className="qubely-mediacard-image"
-												srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
-											/>
-											:
-											<div className="qubely-mediacard-image-picker">
-												<div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
-											</div>
+                                        <img
+                                            src={image.url}
+                                            {...(imgAlt && { alt: imgAlt })}
+                                            className="qubely-mediacard-image"
+                                            srcset={image2x.url != undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
+                                        />
+                                        :
+                                        <div className="qubely-mediacard-image-picker">
+                                            <div className="qubely-mediacard-image qubely-image-placeholder"><i className="far fa-image" /></div>
+                                        </div>
 									}
 								</Fragment>
 							}
 						</div>
-						<div className="qubely-mediacard-content-wrapper">
+                    }
+                    <div className="qubely-mediacard-content-wrapper">
+                        {(badgeStyle != 'none') && <span className={`${(badgeStyle == 'badge') ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
 							<div className={`qubely-mediacard-innerBlocks`}>
 								<InnerBlocks.Content />
 							</div>

@@ -96,12 +96,51 @@ export const attributes = {
             {
                 condition: [
                     { key: 'layout', relation: '!=', value: 3 },
+                    { key: 'layout', relation: '!=', value: 2 },
+                    { key: 'layout', relation: '!=', value: 5 },
                     { key: 'layout', relation: '!=', value: 4 }
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-media_wrapper {width: {{imageWidth}};} {{QUBELY}} .qubely-mediacard-image .qubely-image-placeholder {height: {{imageWidth}}; width: {{imageWidth}};}'
             },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 }
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-media_wrapper {flex: 0 0 {{imageWidth}};} {{QUBELY}} .qubely-mediacard-media_wrapper {max-width: {{imageWidth}};} {{QUBELY}} .qubely-mediacard-image .qubely-image-placeholder {height: {{imageWidth}}; width: {{imageWidth}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 }
+                ],
+                selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-5 .qubely-mediacard-media_wrapper {flex: 0 0 {{imageWidth}};} {{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-5 .qubely-mediacard-media_wrapper {max-width: {{imageWidth}};} {{QUBELY}} .qubely-mediacard-image .qubely-image-placeholder {height: {{imageWidth}}; width: {{imageWidth}};}'
+            }
         ]
     },
+    imagePositionX: {
+        type: 'object',
+        default: {},
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 1 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateX({{imagePositionX}});}'
+            }
+        ]
+    },
+    imagePositionY: {
+        type: 'object',
+        default: {},
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 1 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateY({{imagePositionY}});}'
+            }
+        ]
+    },
+
     imageBorderRadius: {
         type: 'object',
         default: {
@@ -143,14 +182,14 @@ export const attributes = {
                     { key: 'layout', relation: '==', value: 2 },
                     { key: 'imagePositionHorizontal', relation: '==', value: 'left' }
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-media_wrapper {margin-right: {{mediaSpacing}};}'
+                selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-right: {{mediaSpacing}};}'
             },
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 2 },
                     { key: 'imagePositionHorizontal', relation: '==', value: 'right' }
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-media_wrapper {margin-left: {{mediaSpacing}};}'
+                selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-left: {{mediaSpacing}};}'
             },
 
             {
@@ -262,6 +301,12 @@ export const attributes = {
             },
             {
                 condition: [
+                    { key: 'layout', relation: '==', value: 5 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-layout-5 .qubely-mediacard-content-wrapper'
+            },
+            {
+                condition: [
                     { key: 'layout', relation: '==', value: 7 },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-7 .qubely-mediacard-content-wrapper'
@@ -271,8 +316,8 @@ export const attributes = {
     stackWidth: {
         type: 'object',
         default: { 
-            md: 500, 
-            unit: 'px' 
+            md: 60, 
+            unit: '%' 
         },
         style: [
             {

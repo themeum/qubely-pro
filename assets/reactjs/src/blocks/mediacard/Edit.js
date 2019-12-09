@@ -127,6 +127,8 @@ class Edit extends Component {
                 youtubeId,
                 autoplay,
                 videoWidth,
+                imagePositionX,
+                imagePositionY,
                 imageBorderRadius,
                 mediaSpacing,
                 image,
@@ -209,7 +211,7 @@ class Edit extends Component {
                             ]}
                             onChange={newLayout =>
                             setAttributes(
-                                newLayout === 3 ?
+                                (newLayout === 3 || newLayout === 6 || newLayout === 7) ?
                                     {
                                         layout: newLayout,
                                         bgImage: {
@@ -305,7 +307,7 @@ class Edit extends Component {
                         <Color
                             label={__('Text Color')}
                             value={(layout === 3 || layout === 6) ? overlayTextColor : textColor}
-                            onChange={value => setAttributes((layout === 3 || layout === 6)? { overlayTextColor: value } : { textColor: value })}
+                            onChange={value => setAttributes((layout === 3 || layout === 6) ? { overlayTextColor: value } : { textColor: value })}
                         />
 
                         {((layout == '3') || (layout == '6') || (layout == '7')) &&
@@ -374,7 +376,8 @@ class Edit extends Component {
                                             multiple={false}
                                             type={['image']}
                                             label={__('Retina Image')}
-                                            onChange={val => setAttributes({ image2x: val })} />
+                                            onChange={val => setAttributes({ image2x: val })} 
+                                        />
                                         {
                                             image.url &&
                                             <TextControl
@@ -384,7 +387,7 @@ class Edit extends Component {
                                             />
                                         }
                                         {
-                                            (layout !== 3 && layout !== 4 && layout !== 5) &&
+                                            (layout !== 3 && layout !== 4) &&
                                             <Range
                                                 min={0}
                                                 max={2000}
@@ -397,6 +400,24 @@ class Edit extends Component {
                                                 onDeviceChange={value => this.setState({ device: value })}
                                             />
                                         }
+                                        <Range 
+                                            label={__('Image Position X')} 
+                                            value={imagePositionX} 
+                                            onChange={value => setAttributes({ imagePositionX: value })} 
+                                            unit={['px', 'em', '%']} 
+                                            min={-500} 
+                                            max={500} 
+                                            responsive device={device} 
+                                            onDeviceChange={value => this.setState({ device: value })} 
+                                        />
+                                        <Range 
+                                            label={__('Image Position Y')} 
+                                            value={imagePositionY} 
+                                            onChange={value => setAttributes({ imagePositionY: value })} 
+                                            unit={['px', 'em', '%']} min={-500} max={500} 
+                                            responsive device={device} 
+                                            onDeviceChange={value => this.setState({ device: value })} 
+                                        />
                                         <BorderRadius
                                             min={0}
                                             max={100}
@@ -638,7 +659,6 @@ class Edit extends Component {
                 </BlockControls>
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
                 <div className={`qubely-block-${uniqueId}`}>
-                    {/* <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}> */}
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`}>
                         <div className={`qubely-block-mediacard-wrapper`}>
                             {((layout === 1) || (layout === 2) || (layout === 4) || (layout === 5)) &&
