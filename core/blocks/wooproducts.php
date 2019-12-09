@@ -124,7 +124,6 @@ function render_block_qubely_wooproducts($att)
         );
     }
 
-
     $query_args = array(
         'order'          => '',
         'orderby'        => '',
@@ -167,15 +166,12 @@ function render_block_qubely_wooproducts($att)
         }
     }
 
-    if ($productsStatus === 'on_sale' || $productsStatus === 'featured') {
-        $on_sale_key = $productsStatus === 'on_sale' ? 'post__in' : 'post__not_in';
-        $on_sale_ids = wc_get_product_ids_on_sale();
-
-        $on_sale_ids = empty($on_sale_ids) ? array(0) : $on_sale_ids;
-        $query_args[$on_sale_key] = [];
-        $query_args[$on_sale_key] += $on_sale_ids;
+    if ($productsStatus !== 'all') {
+        $ids = $productsStatus === 'on_sale' ? wc_get_product_ids_on_sale() : wc_get_featured_product_ids();
+        $on_sale_ids = empty($ids) ? array(0) : $ids;
+        $query_args['post__in'] = [];
+        $query_args['post__in'] += $ids;
     }
-
 
     $query = new WP_Query($query_args);
 
