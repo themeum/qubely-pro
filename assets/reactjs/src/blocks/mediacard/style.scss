@@ -2,7 +2,9 @@
     position: relative;
     transition: border-color 400ms, background-color 400ms, box-shadow 400ms;
     .qubely-mediacard-image {
+        img {
         width: 100%;
+        }
     }
     &.qubely-mediacard-layout-2 {
         .qubely-mediacard-image {
@@ -18,7 +20,6 @@
         .qubely-block-mediacard-wrapper {
             display: flex;
             z-index: 10;
-            padding: 20px;
         }
     }
     &.qubely-mediacard-layout-3,
@@ -104,6 +105,7 @@
         padding-bottom: 56.25%;
         padding-top: 25px;
         height: 0;
+        overflow: hidden;
         iframe,
         video {
             position: absolute;
@@ -121,22 +123,25 @@
 .qubely-mediacard-media_wrapper {
     position: relative;
     .qubely-mediacard-badge-position {
-        position: absolute;
         &.qubely-badge-style-leftTop {
             left: 20px;
             top: 20px;
+            position: absolute;
         }
         &.qubely-badge-style-rightTop {
             right: 20px;
             top: 20px;
+            position: absolute;
         }
         &.qubely-badge-style-leftBottom {
             left: 20px;
             bottom: 20px;
+            position: absolute;
         }
         &.qubely-badge-style-rightBottom {
             right: 20px;
             bottom: 20px;
+            position: absolute;
         }
     }
 }

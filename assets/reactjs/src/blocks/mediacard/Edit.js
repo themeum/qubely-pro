@@ -87,9 +87,6 @@ class Edit extends Component {
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
         }
-
-        // this.setState({ qubelyBlocks: blockTypes.filter(block => block.category === 'qubely').map(block => block.name) })
-
     }
 
 
@@ -199,38 +196,38 @@ class Edit extends Component {
                 <InspectorControls key="inspector">
                     <PanelBody title=''>
                         <Styles
-                            columns={3}
-                            value={layout}
-                            options={[
-                                { value: 1, svg: icons.mediacard_1, label: __('') },
-                                { value: 2, svg: icons.mediacard_2, label: __('') },
-                                { value: 3, svg: icons.mediacard_3, label: __('') },
-                                { value: 4, svg: icons.mediacard_4, label: __('') },
-                                { value: 5, svg: icons.mediacard_5, label: __('') },
-                                { value: 6, svg: icons.mediacard_6, label: __('') },
-                                { value: 7, svg: icons.mediacard_7, label: __('') },
-                            ]}
-                            onChange={newLayout =>
-                            setAttributes(
-                                (newLayout === 3 || newLayout === 6 || newLayout === 7) ?
-                                    {
-                                        layout: newLayout,
-                                        bgImage: {
-                                            ...bgImage,
-                                            ...(bgImage.bgImage && bgImage.bgImage.url) ? {
-                                                bgType: 'image',
-                                                openBg: 1,
-                                            } : {
-                                                    bgType: 'image',
-                                                    openBg: 1,
-                                                    bgImage: {
-                                                        url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
-                                                    }
-                                                },
-                                        }
-                                    }
-                                    : { layout: newLayout })}
-                            />
+                        columns={3}
+                        value={layout}
+                        options={[
+                            { value: 1, svg: icons.mediacard_1, label: __('') },
+                            { value: 2, svg: icons.mediacard_2, label: __('') },
+                            { value: 3, svg: icons.mediacard_3, label: __('') },
+                            { value: 4, svg: icons.mediacard_4, label: __('') },
+                            { value: 5, svg: icons.mediacard_5, label: __('') },
+                            { value: 6, svg: icons.mediacard_6, label: __('') },
+                            { value: 7, svg: icons.mediacard_7, label: __('') },
+                        ]}
+                        onChange={newLayout =>
+                        setAttributes(
+                            (newLayout === 3 || newLayout === 6 || newLayout === 7) ?
+                            {
+                                layout: newLayout,
+                                bgImage: {
+                                    ...bgImage,
+                                    ...(bgImage.bgImage && bgImage.bgImage.url) ? {
+                                        bgType: 'image',
+                                        openBg: 1,
+                                    } : {
+                                            bgType: 'image',
+                                            openBg: 1,
+                                            bgImage: {
+                                                url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
+                                            }
+                                        },
+                                }
+                            }
+                            : { layout: newLayout })}
+                        />
 
                     </PanelBody>
                     <PanelBody title={__('Card Settings')} initialOpen={false}>
@@ -455,46 +452,34 @@ class Edit extends Component {
                                         />
                                         {
                                             videoSource == 'external' ?
-                                                <Fragment>
-                                                    <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
+                                            <Fragment>
+                                                {/* <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} /> */}
 
-                                                    <Select
-                                                        label={__('Video Type')}
-                                                        value={videoType}
-                                                        options={[['youtube', __('YouTube Video')],['vimeo', __('Vimeo Video')]]}
-                                                        onChange={value => setAttributes({ videoType: value })}
-                                                    />
-
-                                                    {(videoType == 'vimeo') ?
-                                                        <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
-                                                        :
-                                                        <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
-                                                    }
-                                                </Fragment>
-                                                :
-                                                <Media
-                                                    panel={true}
-                                                    multiple={false}
-                                                    type={['video']}
-                                                    value={localVideo}
-                                                    label={__('Local Video')}
-                                                    onChange={value => setAttributes({ localVideo: value })}
+                                                <Select
+                                                    label={__('Video Type')}
+                                                    value={videoType}
+                                                    options={[['youtube', __('YouTube Video')],['vimeo', __('Vimeo Video')]]}
+                                                    onChange={value => setAttributes({ videoType: value })}
                                                 />
+
+                                                {(videoType == 'vimeo') ?
+                                                    <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
+                                                    :
+                                                    <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
+                                                }
+                                            </Fragment>
+                                            :
+                                            <Media
+                                                panel={true}
+                                                multiple={false}
+                                                type={['video']}
+                                                value={localVideo}
+                                                label={__('Local Video')}
+                                                onChange={value => setAttributes({ localVideo: value })}
+                                            />
                                         }
 
-
                                         <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
-
-                                        {/* {(layout == 2 || layout == 3) &&
-                                        <Range
-                                            label={__('Video Width')}
-                                            value={videoWidth}
-                                            onChange={val => setAttributes({ videoWidth: val })}
-                                            min={1} max={100}
-                                            responsive device={device} unit={['px', 'em', '%']}
-                                            onDeviceChange={value => this.setState({ device: value })}
-                                        />
-                                    } */}
                                         {
                                             (layout !== 3 && layout !== 4) &&
                                             <Range
@@ -565,34 +550,35 @@ class Edit extends Component {
                     }
                     <PanelBody title={__('Badge')} initialOpen={false} >
                         <Fragment>
-                            <RadioAdvanced
-                                label={__('Badge')}
+                            {/* <RadioAdvanced
+                                label={__('State')}
                                 options={
                                     ((layout == '3') || (layout == '6') || (layout == '7')) ?
-                                        [
-                                            { icon: 'fas fa-ban', value: 'none', label: __('None'), },
-                                            { value: 'default', label: __('Default'), },
-                                            { value: 'badge', label: __('Badge'), }
-                                        ]
-                                        :
-                                        [
-                                            { icon: 'fas fa-ban', value: 'none', label: __('None'), },
-                                            { value: 'default', label: __('Default'), },
-                                        ]
+                                    [
+                                        { icon: 'fas fa-ban', value: 'none', label: __('None'), },
+                                        { value: 'default', label: __('Default'), },
+                                        // { value: 'badge', label: __('Badge'), }
+                                    ]
+                                    :
+                                    [
+                                        { icon: 'fas fa-ban', value: 'none', label: __('None'), },
+                                        { value: 'default', label: __('Default'), },
+                                    ]
                                 }
                                 value={badgeStyle}
                                 onChange={val => setAttributes({ badgeStyle: val })}
-                            />
-                            {(badgeStyle != 'none') &&
+                            /> */}
+                            <Toggle label={__('State')} value={badgeStyle} onChange={value => setAttributes({ badgeStyle: value })} />
+                            {(badgeStyle == 1) &&
                                 <Fragment>
-                                    {((layout == '3') || (layout == '6') || (layout == '7')) &&
-                                        <Select
-                                            label={__("Badge Position")}
-                                            options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
-                                            value={badgePosition}
-                                            onChange={value => setAttributes({ badgePosition: value })}
-                                        />
-                                    }
+
+                                    <Select
+                                        label={__("Badge Position")}
+                                        options={[['aboveTitle', __('Above Title')],['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
+                                        value={badgePosition}
+                                        onChange={value => setAttributes({ badgePosition: value })}
+                                    />
+                                    
                                     <Color
                                         label={__('Background color')}
                                         value={badgeBg}
@@ -700,8 +686,9 @@ class Edit extends Component {
                                     }
                                 </div>
                             }
+                            {badgeStyle && (badgePosition!='aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                             <div className="qubely-mediacard-content-wrapper">
-                                {(badgeStyle != 'none') && <span className={`${(badgeStyle == 'badge') ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
+                                {badgeStyle && (badgePosition=='aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                                 <div className={`qubely-mediacard-innerBlocks`}>
                                     <InnerBlocks
                                         // allowedBlocks={qubelyBlocks}
@@ -740,14 +727,4 @@ class Edit extends Component {
         )
     }
 }
-
 export default Edit
-// export default withSelect((select, props) => {
-//     const {
-//         getBlockTypes,
-//     } = select('core/blocks');
-//     return {
-//         blockTypes: getBlockTypes(),
-//     }
-// })
-//     (Edit)

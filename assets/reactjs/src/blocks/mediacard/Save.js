@@ -12,8 +12,6 @@ class Save extends Component {
 			vimeoId,
 			youtubeId,
 			autoplay,
-			title,
-			content,
 			image,
 			image2x,
             imgAlt,
@@ -30,9 +28,7 @@ class Save extends Component {
 		} = this.props.attributes
 
 		let autoPlay = autoplay ? '1' : '0';
-
 		const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
-
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
                 <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`}>
@@ -66,8 +62,9 @@ class Save extends Component {
 							}
 						</div>
                     }
+                    {badgeStyle && (badgePosition!='aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                     <div className="qubely-mediacard-content-wrapper">
-                        {(badgeStyle != 'none') && <span className={`${(badgeStyle == 'badge') ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
+                        {badgeStyle && (badgePosition=='aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
 							<div className={`qubely-mediacard-innerBlocks`}>
 								<InnerBlocks.Content />
 							</div>

@@ -70,15 +70,6 @@ export const attributes = {
         default: null
     },
     autoplay: { type: 'boolean', default: false },
-    // videoWidth: {
-    //     type: 'object',
-    //     default: { md: 50, unit: '%' },
-    //     style: [
-    //         {
-    //             selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-2 .qubely-mediacard-video { width: {{videoWidth}}; } {{QUBELY}} .qubely-mediacard-layout-3.media-type-video .qubely-mediacard-media { width: {{videoWidth}}; }'
-    //         }
-    //     ]
-    // },
     image: {
         type: 'object',
         default: {
@@ -458,12 +449,12 @@ export const attributes = {
     // Badge__
     badge: { type: 'string', default: 'Sale' },
     badgeStyle: {
-        type: 'string',
-        default: 'none'
+        type: 'boolean',
+        default: false
     },
     badgePosition: {
         type: 'string',
-        default: 'left',
+        default: 'aboveTitle',
         style: [
             {
                 condition: [
