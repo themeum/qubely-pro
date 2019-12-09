@@ -698,7 +698,7 @@ export const attributes = {
         style: [
             {
                 condition: [
-                    { key: 'layout', relation: '!=', value: 3 }
+                    { key: 'layout', relation: '!=', value: 3 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper{ color:{{textColor}}; }'
             }
@@ -713,7 +713,7 @@ export const attributes = {
                     { key: 'layout', relation: '==', value: 3 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper{ color:{{overlayTextColor}}; }'
-            }
+            },
         ]
     },
     bgImage: {
@@ -722,7 +722,8 @@ export const attributes = {
             bgimgPosition: 'center center',
             bgimgSize: 'cover',
             bgimgRepeat: 'no-repeat',
-            bgDefaultColor: '#f5f5f5'
+            bgDefaultColor: '#f5f5f5',
+            bgimgParallax: 'none'
         },
         style: [
             {
