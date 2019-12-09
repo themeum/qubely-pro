@@ -125,6 +125,18 @@ export const attributes = {
                     { key: 'layout', relation: '==', value: 1 },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateX({{imagePositionX}});}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateX({{imagePositionX}});}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateX({{imagePositionX}});}'
             }
         ]
     },
@@ -135,6 +147,18 @@ export const attributes = {
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 1 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateY({{imagePositionY}});}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateY({{imagePositionY}});}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 },
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateY({{imagePositionY}});}'
             }
