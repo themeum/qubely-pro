@@ -121,6 +121,7 @@ class Edit extends Component {
                 imagePositionHorizontal,
                 alignment,
                 videoSource,
+                videoType,
                 localVideo,
                 videoUrl,
                 vimeoId,
@@ -311,7 +312,7 @@ class Edit extends Component {
                         />
 
                         {((layout == '3') || (layout == '6') || (layout == '7')) &&
-                            <Background label={__('Background')} sources={['image', 'gradient', 'video']} parallax value={bgImage} onChange={val => setAttributes({ bgImage: val })} />
+                            <Background label={__('Background')} sources={['image', 'gradient']} parallax value={bgImage} onChange={val => setAttributes({ bgImage: val })} />
                         }
                         {((layout == '1') || (layout == '2')) &&
                             <ColorAdvanced label={__('Background')} value={cardBgColor} onChange={val => setAttributes({ cardBgColor: val })} />
@@ -453,18 +454,18 @@ class Edit extends Component {
                                             onChange={val => setAttributes({ videoSource: val })}
                                         />
                                         {
-                                            videoSource === 'external' ?
+                                            videoSource == 'external' ?
                                                 <Fragment>
                                                     <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
 
                                                     <Select
                                                         label={__('Video Type')}
-                                                        value={videoSource}
-                                                        options={[['vimeo', __('Vimeo Video')], ['youtube', __('YouTube Video')]]}
-                                                        onChange={value => setAttributes({ videoSource: value })}
+                                                        value={videoType}
+                                                        options={[['youtube', __('YouTube Video')],['vimeo', __('Vimeo Video')]]}
+                                                        onChange={value => setAttributes({ videoType: value })}
                                                     />
 
-                                                    {(videoSource === 'vimeo') ?
+                                                    {(videoType == 'vimeo') ?
                                                         <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
                                                         :
                                                         <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
@@ -503,7 +504,7 @@ class Edit extends Component {
                                                 device={device}
                                                 value={imageWidth}
                                                 unit={['px', 'em', '%']}
-                                                label={__('Image Width')}
+                                                label={__('Media Width')}
                                                 onChange={val => setAttributes({ imageWidth: val })}
                                                 onDeviceChange={value => this.setState({ device: value })}
                                             />
@@ -664,12 +665,12 @@ class Edit extends Component {
                             {((layout === 1) || (layout === 2) || (layout === 4) || (layout === 5)) &&
                                 <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
                                     {
-                                        mediaType == 'video' &&
+                                        (mediaType == 'video') &&
                                         <Fragment>
                                             {
-                                                videoSource === 'external' ?
+                                                (videoSource === 'external') ?
                                                     <Fragment>
-                                                        {videoSource == 'vimeo' ?
+                                                        { (videoType == 'vimeo') ?
                                                             <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                                                             :
                                                             <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
@@ -683,7 +684,7 @@ class Edit extends Component {
                                         </Fragment>
                                     }
 
-                                    {mediaType === 'image' &&
+                                    { (mediaType === 'image') &&
                                         <Fragment>
                                             {
                                                 (image && image.url) ?

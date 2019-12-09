@@ -57,9 +57,10 @@ export const attributes = {
             }
         ]
     },
-    videoSource: { type: 'string', default: 'local' },
+    videoSource: { type: 'string', default: 'external' },
+    videoType: { type: 'string', default: 'youtube' },
     vimeoId: { type: 'string', default: '368867301' },
-    youtubeId: { type: 'string', default: 'HY3sut8LTSw' },
+    youtubeId: { type: 'string', default: 'nh2aYrGMrIE' },
     localVideo: {
         type: 'object',
         default: {}

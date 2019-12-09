@@ -8,14 +8,11 @@ class Save extends Component {
 			uniqueId,
 			layout,
 			mediaType,
-			videoSource,
+            videoType,
 			vimeoId,
 			youtubeId,
 			autoplay,
 			title,
-			separatorStyle,
-			separatorPosition,
-			enableContent,
 			content,
 			image,
 			image2x,
@@ -24,14 +21,11 @@ class Save extends Component {
             imagePositionHorizontal,
 
 			//Badge
-            enableBadge,
             badgePosition,
 			badge,
 			badgeStyle,
-			badgeSize,
 
 			animation,
-			useMediaBg,
 			interaction
 		} = this.props.attributes
 
@@ -45,16 +39,16 @@ class Save extends Component {
 					<div className={`qubely-block-mediacard-wrapper`}>
                     {((layout === 1) || (layout === 2) || (layout === 4) || (layout === 5)) &&
 						<div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
-							{mediaType == 'video' &&
+							{ (mediaType == 'video') &&
 								<Fragment>
-									{(videoSource == 'vimeo') ?
+									{(videoType == 'vimeo') ?
 										<iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 										:
 										<iframe src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`} frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html"></iframe>
 									}
 								</Fragment>
 							}
-							{mediaType === 'image' &&
+							{ (mediaType === 'image') &&
 								<Fragment>
 									{
 										(image && image.url) ?
