@@ -34,7 +34,7 @@ const {
     Margin,
     gloalSettings: {
         globalSettingsPanel,
-        animationSettings, 
+        animationSettings,
         interactionSettings
     },
     Inline: {
@@ -126,14 +126,9 @@ class Edit extends Component {
                 localVideo,
                 videoUrl,
                 autoplay,
-<<<<<<< HEAD
                 videoWidth,
-                customImagePosition,
-=======
                 videoFallback,
-                imagePositionX,
-                imagePositionY,
->>>>>>> 7c31211c7e167dcda6471a0d3615d7aaf4d9d412
+                customImagePosition,
                 imageBorderRadius,
                 mediaSpacing,
                 image,
@@ -237,7 +232,7 @@ class Edit extends Component {
                         />
 
                     </PanelBody>
-                    
+
                     {(layout != 5) &&
                         <PanelBody title={__('Card Settings')} initialOpen={false}>
                             {
@@ -289,7 +284,7 @@ class Edit extends Component {
                                     onChange={val => setAttributes({ contentPosition: val })}
                                 />
                             }
-                            {(layout === 3) && 
+                            {(layout === 3) &&
                                 <Color
                                     label={__('Text Color')}
                                     value={overlayTextColor}
@@ -510,33 +505,32 @@ class Edit extends Component {
                                         />
                                         {
                                             videoSource == 'external' ?
-                                            <Fragment>
-                                                <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
-                                                <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
-                                            </Fragment>
-                                            :
-                                            <Fragment>
-                                            <Media
-                                                panel={true}
-                                                multiple={false}
-                                                type={['video']}
-                                                value={localVideo}
-                                                label={__('Local Video')}
-                                                onChange={value => setAttributes({ localVideo: value })}
-                                            />
-                                            <Media 
-                                                label={__('Fallback Image (Poster)')} 
-                                                multiple={false} 
-                                                type={['image']} 
-                                                panel={true} 
-                                                value={videoFallback} 
-                                                onChange={ val => setAttributes( {videoFallback: val} ) } 
-                                            />
-                                            </Fragment>
+                                                <Fragment>
+                                                    <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
+                                                    <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
+                                                </Fragment>
+                                                :
+                                                <Fragment>
+                                                    <Media
+                                                        panel={true}
+                                                        multiple={false}
+                                                        type={['video']}
+                                                        value={localVideo}
+                                                        label={__('Local Video')}
+                                                        onChange={value => setAttributes({ localVideo: value })}
+                                                    />
+                                                    <Media
+                                                        label={__('Fallback Image (Poster)')}
+                                                        multiple={false}
+                                                        type={['image']}
+                                                        panel={true}
+                                                        value={videoFallback}
+                                                        onChange={val => setAttributes({ videoFallback: val })}
+                                                    />
+                                                </Fragment>
                                         }
 
-<<<<<<< HEAD
-                                        <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
+
                                         {(layout === 1 || layout === 2 || layout === 4 || layout === 5) &&
                                             <Range
                                                 min={0}
@@ -549,21 +543,6 @@ class Edit extends Component {
                                                 onChange={val => setAttributes({ mediaSpacing: val })}
                                                 onDeviceChange={value => this.setState({ device: value })}
                                             />
-=======
-                                        
-                                        { (layout === 1 || layout === 2 || layout === 4 || layout === 5) &&
-                                        <Range
-                                            min={0}
-                                            max={200}
-                                            responsive
-                                            device={device}
-                                            value={mediaSpacing}
-                                            label={__('Spacing')}
-                                            unit={['px', 'em', '%']}
-                                            onChange={val => setAttributes({ mediaSpacing: val })}
-                                            onDeviceChange={value => this.setState({ device: value })}
-                                        />
->>>>>>> 7c31211c7e167dcda6471a0d3615d7aaf4d9d412
                                         }
                                         {
                                             (layout !== 3 && layout !== 4) &&
@@ -739,15 +718,15 @@ class Edit extends Component {
                                                     <ExternalVideo videoUrl={videoUrl} autoPlay={autoplay} />
                                                     :
                                                     (localVideo.url) ?
-                                                    <div className={`qubely-mediacard-video qubely-local-video`}>
-                                                        {
-                                                        localVideo.url ? 
-                                                        localVideo.url && <video controls src={localVideo.url} autoPlay muted loop />
-                                                        :
-                                                        videoFallback.url && <img src={videoFallback.url} title={_('Your browser does not support the <video> tag')}/>
-                                                        }
-                                                    </div>
-                                                    : ''
+                                                        <div className={`qubely-mediacard-video qubely-local-video`}>
+                                                            {
+                                                                localVideo.url ?
+                                                                    localVideo.url && <video controls src={localVideo.url} autoPlay muted loop />
+                                                                    :
+                                                                    videoFallback.url && <img src={videoFallback.url} title={_('Your browser does not support the <video> tag')} />
+                                                            }
+                                                        </div>
+                                                        : ''
                                             }
                                         </Fragment>
                                     }
@@ -766,10 +745,10 @@ class Edit extends Component {
                                             }
                                         </Fragment>
                                     }
-                                    {badgeStyle && (badgePosition != 'aboveTitle') && ( (layout==1) || (layout==2) || (layout==4) || (layout==5) ) && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
+                                    {badgeStyle && (badgePosition != 'aboveTitle') && ((layout == 1) || (layout == 2) || (layout == 4) || (layout == 5)) && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                                 </div>
                             }
-                            {badgeStyle && (badgePosition != 'aboveTitle') && ( (layout==3) || (layout==6) || (layout==7) ) && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
+                            {badgeStyle && (badgePosition != 'aboveTitle') && ((layout == 3) || (layout == 6) || (layout == 7)) && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                             <div className="qubely-mediacard-content-wrapper">
                                 {badgeStyle && (badgePosition == 'aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                                 <div className={`qubely-mediacard-innerBlocks`}>
