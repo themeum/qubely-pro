@@ -67,7 +67,7 @@ export const attributes = {
     },
     videoUrl: {
         type: 'string',
-        default: null
+        default: 'https://www.youtube.com/watch?v=nh2aYrGMrIE'
     },
     autoplay: { type: 'boolean', default: false },
     image: {
