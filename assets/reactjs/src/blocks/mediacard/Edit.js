@@ -164,7 +164,7 @@ class Edit extends Component {
                 //Stack
                 stackBg,
                 stackWidth,
-                stackWidth6,
+                stackWidth7,
                 stackBorderRadius,
                 stackPadding,
                 stackBoxShadow,
@@ -386,17 +386,30 @@ class Edit extends Component {
                                         }
                                         {
                                             (layout !== 3 && layout !== 4) &&
-                                            <Range
-                                                min={0}
-                                                max={2000}
-                                                responsive
-                                                device={device}
-                                                value={imageWidth}
-                                                unit={['px', 'em', '%']}
-                                                label={__('Image Width')}
-                                                onChange={val => setAttributes({ imageWidth: val })}
-                                                onDeviceChange={value => this.setState({ device: value })}
-                                            />
+                                            <Fragment>
+                                                <Range
+                                                    min={0}
+                                                    max={2000}
+                                                    responsive
+                                                    device={device}
+                                                    value={imageWidth}
+                                                    unit={['px', 'em', '%']}
+                                                    label={__('Image Width')}
+                                                    onChange={val => setAttributes({ imageWidth: val })}
+                                                    onDeviceChange={value => this.setState({ device: value })}
+                                                />
+                                                <BorderRadius
+                                                    min={0}
+                                                    max={100}
+                                                    responsive
+                                                    device={device}
+                                                    label={__('Radius')}
+                                                    unit={['px', 'em', '%']}
+                                                    value={imageBorderRadius}
+                                                    onDeviceChange={value => this.setState({ device: value })}
+                                                    onChange={val => setAttributes({ imageBorderRadius: val })}
+                                                />
+                                            </Fragment>
                                         }
                                         <Range 
                                             label={__('Image Position X')} 
@@ -415,17 +428,6 @@ class Edit extends Component {
                                             unit={['px', 'em', '%']} min={-500} max={500} 
                                             responsive device={device} 
                                             onDeviceChange={value => this.setState({ device: value })} 
-                                        />
-                                        <BorderRadius
-                                            min={0}
-                                            max={100}
-                                            responsive
-                                            device={device}
-                                            label={__('Radius')}
-                                            unit={['px', 'em', '%']}
-                                            value={imageBorderRadius}
-                                            onDeviceChange={value => this.setState({ device: value })}
-                                            onChange={val => setAttributes({ imageBorderRadius: val })}
                                         />
                                         {
                                             (layout === 1 || layout === 2 || layout === 4 || layout === 5) &&
@@ -480,20 +482,45 @@ class Edit extends Component {
                                         }
 
                                         <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
+                                        { (layout === 1 || layout === 2 || layout === 4 || layout === 5) &&
+                                        <Range
+                                            min={0}
+                                            max={200}
+                                            responsive
+                                            device={device}
+                                            value={mediaSpacing}
+                                            label={__('Spacing')}
+                                            unit={['px', 'em', '%']}
+                                            onChange={val => setAttributes({ mediaSpacing: val })}
+                                            onDeviceChange={value => this.setState({ device: value })}
+                                        />
+                                        }
                                         {
                                             (layout !== 3 && layout !== 4) &&
-                                            <Range
-                                                min={0}
-                                                max={2000}
-                                                responsive
-                                                device={device}
-                                                value={imageWidth}
-                                                unit={['px', 'em', '%']}
-                                                label={__('Media Width')}
-                                                onChange={val => setAttributes({ imageWidth: val })}
-                                                onDeviceChange={value => this.setState({ device: value })}
-                                            />
-
+                                            <Fragment>
+                                                <Range
+                                                    min={0}
+                                                    max={2000}
+                                                    responsive
+                                                    device={device}
+                                                    value={imageWidth}
+                                                    unit={['px', 'em', '%']}
+                                                    label={__('Media Width')}
+                                                    onChange={val => setAttributes({ imageWidth: val })}
+                                                    onDeviceChange={value => this.setState({ device: value })}
+                                                />
+                                                <BorderRadius
+                                                    min={0}
+                                                    max={100}
+                                                    responsive
+                                                    device={device}
+                                                    label={__('Radius')}
+                                                    unit={['px', 'em', '%']}
+                                                    value={imageBorderRadius}
+                                                    onDeviceChange={value => this.setState({ device: value })}
+                                                    onChange={val => setAttributes({ imageBorderRadius: val })}
+                                                />
+                                            </Fragment>
                                         }
                                     </Fragment>
                             }
@@ -510,13 +537,13 @@ class Edit extends Component {
                             />
                             <Range
                                 min={50}
-                                max={600}
+                                max={1000}
                                 responsive
                                 device={device}
-                                value={ (layout != '6') ? stackWidth : stackWidth6 }
+                                value={ (layout != '7') ? stackWidth : stackWidth7 }
                                 label={__('Stack Size')}
                                 unit={['px', 'em', '%']}
-                                onChange={value => setAttributes((layout != '6') ? { stackWidth: value } : { stackWidth6: value })}
+                                onChange={value => setAttributes((layout != '7') ? { stackWidth: value } : { stackWidth7: value })}
                                 onDeviceChange={value => this.setState({ device: value })}
                             />
                             <BorderRadius

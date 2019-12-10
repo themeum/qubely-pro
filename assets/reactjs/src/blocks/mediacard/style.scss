@@ -7,7 +7,8 @@
         }
     }
     &.qubely-mediacard-layout-2 {
-        .qubely-mediacard-image {
+        .qubely-mediacard-image,
+        .qubely-mediacard-video {
             margin-right: 20px;
             line-height: 0;
         }
@@ -145,6 +146,12 @@
         }
     }
 }
+.qubely-mediacard-layout-2 {
+    .qubely-mediacard-video {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+}
 
 //editor
 .qubely-mediacard-innerBlocks .block-list-appender {
@@ -176,7 +183,7 @@
                 .qubely-mediacard-content-wrapper {
                     flex: 0 0 100%;
                     max-width: 100%;
-                    margin: 0;
+                    margin: 0 !important;
                 }
                 flex-wrap: wrap;
             }
@@ -185,7 +192,8 @@
             .qubely-block-mediacard-wrapper {
                 flex-wrap: wrap;
             }
-            .qubely-mediacard-image {
+            .qubely-mediacard-image,
+            .qubely-mediacard-video {
                 margin-right: 0;
             }
         }

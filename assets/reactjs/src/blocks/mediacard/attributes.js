@@ -171,7 +171,7 @@ export const attributes = {
                 condition: [
                     { key: 'layout', relation: '!=', value: 3 },
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-image, {{QUBELY}} .qubely-mediacard-image img'
+                selector: '{{QUBELY}} .qubely-mediacard-image, {{QUBELY}} .qubely-mediacard-image img, {{QUBELY}} .qubely-mediacard-video'
             }
         ]
     },
@@ -207,7 +207,6 @@ export const attributes = {
                 ],
                 selector: '{{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-left: {{mediaSpacing}};} {{QUBELY}} .qubely-mediacard-layout-2 .qubely-mediacard-media_wrapper {margin-right: 0;}'
             },
-
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 4 },
@@ -235,7 +234,7 @@ export const attributes = {
                     { key: 'imagePositionHorizontal', relation: '==', value: 'right' }
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard.qubely-mediacard-layout-5 .qubely-mediacard-content-wrapper {margin-right: -{{mediaSpacing}};}'
-            }
+            },
         ]
     },
 
@@ -332,8 +331,7 @@ export const attributes = {
     stackWidth: {
         type: 'object',
         default: { 
-            md: 60, 
-            unit: '%' 
+            md: ''
         },
         style: [
             {
@@ -350,22 +348,25 @@ export const attributes = {
             },
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: 7 },
+                    { key: 'layout', relation: '==', value: 6 },
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-layout-7 .qubely-mediacard-content-wrapper {width: {{stackWidth}};}'
+                selector: '{{QUBELY}} .qubely-mediacard-layout-6 .qubely-mediacard-content-wrapper {width: {{stackWidth}};}'
             }
         ]
     },
 
-    stackWidth6: {
+    stackWidth7: {
         type: 'object',
-        default: {},
+        default: {
+            md: '60',
+            unit: '%'
+        },
         style: [
             {
                 condition: [
-                    { key: 'layout', relation: '==', value: 6 },
+                    { key: 'layout', relation: '==', value: 7 },
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-layout-6 .qubely-mediacard-content-wrapper {width: {{stackWidth6}};}'
+                selector: '{{QUBELY}} .qubely-mediacard-layout-7 .qubely-mediacard-content-wrapper {width: {{stackWidth7}};}'
             }
         ]
     },
