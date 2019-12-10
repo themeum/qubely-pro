@@ -8,12 +8,10 @@ class Save extends Component {
 			uniqueId,
 			layout,
 			mediaType,
-			videoType,
 			videoSource,
 			videoUrl,
-			localVideo,
-			vimeoId,
-			youtubeId,
+            localVideo,
+            videoFallback,
 			autoplay,
 			image,
 			image2x,
@@ -25,15 +23,14 @@ class Save extends Component {
 			badgePosition,
 			badge,
 			badgeStyle,
-
 			animation,
 			interaction
 		} = this.props.attributes
 
-		const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
+        const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-				<div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`}>
+				<div className={`qubely-block-mediacard ${interactionClass} qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`}>
 					<div className={`qubely-block-mediacard-wrapper`}>
 						{((layout === 1) || (layout === 2) || (layout === 4) || (layout === 5)) &&
 							<div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
@@ -45,7 +42,12 @@ class Save extends Component {
 												<ExternalVideo videoUrl={videoUrl} autoPlay={autoplay} />
 												:
 												<div className={`qubely-mediacard-video qubely-local-video`}>
-													<video controls src={localVideo.url} autoPlay={autoplay}/>
+                                                    {
+                                                        localVideo.url ? 
+                                                        localVideo.url && <video controls src={localVideo.url} autoPlay muted loop />
+                                                        :
+                                                        videoFallback.url && <img src={videoFallback.url} title={_('Your browser does not support the <video> tag')}/>
+                                                    }
 												</div>
 										}
 									</Fragment>
@@ -67,9 +69,10 @@ class Save extends Component {
 										}
 									</Fragment>
 								}
+                                {badgeStyle && ( (layout==1) || (layout==2) || (layout==4) || (layout==5) ) && (badgePosition != 'aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
 							</div>
 						}
-						{badgeStyle && (badgePosition != 'aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
+						{badgeStyle && ( (layout==3) || (layout==6) || (layout==7) ) && (badgePosition != 'aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
 						<div className="qubely-mediacard-content-wrapper">
 							{badgeStyle && (badgePosition == 'aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
 							<div className={`qubely-mediacard-innerBlocks`}>
