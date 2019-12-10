@@ -233,7 +233,7 @@ class Edit extends Component {
 
                     </PanelBody>
 
-                    {(layout != 5) &&
+                    {( (layout != 5) && (layout != 4) )  &&
                         <PanelBody title={__('Card Settings')} initialOpen={false}>
                             {
                                 (layout == 1) &&
@@ -246,18 +246,6 @@ class Edit extends Component {
                                     alignmentType="content"
                                     onChange={val => setAttributes({ alignment: val })}
                                     onDeviceChange={value => this.setState({ device: value })}
-                                />
-                            }
-                            {(layout == '4') &&
-                                <RadioAdvanced
-                                    label={__('Stack Position')}
-                                    options={[
-                                        { value: 'left', label: __('Left'), },
-                                        { value: 'middle', label: __('Middle'), },
-                                        { value: 'right', label: __('Right'), },
-                                    ]}
-                                    value={contentHorizontalPosition}
-                                    onChange={val => setAttributes({ contentHorizontalPosition: val })}
                                 />
                             }
                             {(layout == '7') &&
@@ -578,7 +566,18 @@ class Edit extends Component {
                     {
                         (layout === 4 || layout === 5 || layout === 6 || layout === 7) &&
                         <PanelBody title={__('Stack Style')} initialOpen={true}>
-
+                            {(layout == '4') &&
+                                <RadioAdvanced
+                                    label={__('Stack Position')}
+                                    options={[
+                                        { value: 'left', label: __('Left'), },
+                                        { value: 'middle', label: __('Middle'), },
+                                        { value: 'right', label: __('Right'), },
+                                    ]}
+                                    value={contentHorizontalPosition}
+                                    onChange={val => setAttributes({ contentHorizontalPosition: val })}
+                                />
+                            }
                             <ColorAdvanced
                                 value={stackBg}
                                 label={__('Stack Background')}
