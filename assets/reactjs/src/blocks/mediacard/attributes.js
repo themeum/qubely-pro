@@ -58,10 +58,11 @@ export const attributes = {
         ]
     },
     videoSource: { type: 'string', default: 'external' },
-    videoType: { type: 'string', default: 'youtube' },
-    vimeoId: { type: 'string', default: '368867301' },
-    youtubeId: { type: 'string', default: 'nh2aYrGMrIE' },
     localVideo: {
+        type: 'object',
+        default: {}
+    },
+    videoFallback: {
         type: 'object',
         default: {}
     },
@@ -519,7 +520,7 @@ export const attributes = {
             'paddingType': 'custom',
             'unit': 'px',
             'custom': {
-                'md': '3 7 3 7'
+                'md': '3 8 3 8'
             },
         },
         style: [
@@ -706,18 +707,6 @@ export const attributes = {
                     { key: 'layout', relation: '==', value: 2 },
                 ],
                 selector: '{{QUBELY}} .qubely-block-mediacard'
-            }
-        ]
-    },
-    textColor: {
-        type: 'string',
-        default: '#000',
-        style: [
-            {
-                condition: [
-                    { key: 'layout', relation: '!=', value: 3 },
-                ],
-                selector: '{{QUBELY}} .qubely-block-mediacard .qubely-block-mediacard-wrapper{ color:{{textColor}}; }'
             }
         ]
     },
@@ -1028,8 +1017,12 @@ export const attributes = {
             }
         ]
     },
+    showGlobalSettings: { 
+        type: 'boolean', 
+        default: true 
+    },
     showContextMenu: {
         type: 'boolean',
-        default: false
+        default: true
     },
 };

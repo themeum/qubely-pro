@@ -128,21 +128,25 @@
             left: 20px;
             top: 20px;
             position: absolute;
+            line-height: 1;
         }
         &.qubely-badge-style-rightTop {
             right: 20px;
             top: 20px;
             position: absolute;
+            line-height: 1;
         }
         &.qubely-badge-style-leftBottom {
             left: 20px;
             bottom: 20px;
             position: absolute;
+            line-height: 1;
         }
         &.qubely-badge-style-rightBottom {
             right: 20px;
             bottom: 20px;
             position: absolute;
+            line-height: 1;
         }
     }
 }

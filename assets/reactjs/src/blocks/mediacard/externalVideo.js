@@ -14,7 +14,5 @@ export default function ({ videoUrl, autoPlay }) {
             <div className="qubely-video-bg-wrap"><iframe src={src} frameBorder="0" allowFullScreen></iframe></div>
         )
     }
-
     return null
-
 }
