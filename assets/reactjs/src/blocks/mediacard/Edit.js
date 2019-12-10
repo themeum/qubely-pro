@@ -51,6 +51,7 @@ const {
 } = wp.data
 
 import icons from '../../helpers/icons';
+import ExternalVideo from './externalVideo'
 
 const mediaOptions = [
     { label: __('Image'), value: 'image', title: __('Image') },
@@ -88,7 +89,6 @@ class Edit extends Component {
             setAttributes({ uniqueId: _client });
         }
     }
-
 
     render() {
         const {
@@ -185,7 +185,6 @@ class Edit extends Component {
             }
         } = this.props
 
-        let autoPlay = autoplay ? '1' : '0';
 
         const { device } = this.state
 
@@ -196,37 +195,37 @@ class Edit extends Component {
                 <InspectorControls key="inspector">
                     <PanelBody title=''>
                         <Styles
-                        columns={3}
-                        value={layout}
-                        options={[
-                            { value: 1, svg: icons.mediacard_1, label: __('') },
-                            { value: 2, svg: icons.mediacard_2, label: __('') },
-                            { value: 3, svg: icons.mediacard_3, label: __('') },
-                            { value: 4, svg: icons.mediacard_4, label: __('') },
-                            { value: 5, svg: icons.mediacard_5, label: __('') },
-                            { value: 6, svg: icons.mediacard_6, label: __('') },
-                            { value: 7, svg: icons.mediacard_7, label: __('') },
-                        ]}
-                        onChange={newLayout =>
-                        setAttributes(
-                            (newLayout === 3 || newLayout === 6 || newLayout === 7) ?
-                            {
-                                layout: newLayout,
-                                bgImage: {
-                                    ...bgImage,
-                                    ...(bgImage.bgImage && bgImage.bgImage.url) ? {
-                                        bgType: 'image',
-                                        openBg: 1,
-                                    } : {
-                                            bgType: 'image',
-                                            openBg: 1,
+                            columns={3}
+                            value={layout}
+                            options={[
+                                { value: 1, svg: icons.mediacard_1, label: __('') },
+                                { value: 2, svg: icons.mediacard_2, label: __('') },
+                                { value: 3, svg: icons.mediacard_3, label: __('') },
+                                { value: 4, svg: icons.mediacard_4, label: __('') },
+                                { value: 5, svg: icons.mediacard_5, label: __('') },
+                                { value: 6, svg: icons.mediacard_6, label: __('') },
+                                { value: 7, svg: icons.mediacard_7, label: __('') },
+                            ]}
+                            onChange={newLayout =>
+                                setAttributes(
+                                    (newLayout === 3 || newLayout === 6 || newLayout === 7) ?
+                                        {
+                                            layout: newLayout,
                                             bgImage: {
-                                                url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
+                                                ...bgImage,
+                                                ...(bgImage.bgImage && bgImage.bgImage.url) ? {
+                                                    bgType: 'image',
+                                                    openBg: 1,
+                                                } : {
+                                                        bgType: 'image',
+                                                        openBg: 1,
+                                                        bgImage: {
+                                                            url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
+                                                        }
+                                                    },
                                             }
-                                        },
-                                }
-                            }
-                            : { layout: newLayout })}
+                                        }
+                                        : { layout: newLayout })}
                         />
 
                     </PanelBody>
@@ -314,8 +313,8 @@ class Edit extends Component {
                         {((layout == '1') || (layout == '2')) &&
                             <ColorAdvanced label={__('Background')} value={cardBgColor} onChange={val => setAttributes({ cardBgColor: val })} />
                         }
-                        
-                        {((layout == '1') || (layout == '2') || (layout == '3') || (layout == '6') || (layout == '7') ) &&
+
+                        {((layout == '1') || (layout == '2') || (layout == '3') || (layout == '6') || (layout == '7')) &&
                             <Fragment>
                                 <Border label={__('Border')} value={cardBgBorder} onChange={val => setAttributes({ cardBgBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                                 <BorderRadius label={__('Card Corner')} value={cardBgBorderRadius} onChange={(value) => setAttributes({ cardBgBorderRadius: value })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
@@ -323,7 +322,7 @@ class Edit extends Component {
                                 <BoxShadow label={__('Card Shadow')} value={cardBgShadow} onChange={(value) => setAttributes({ cardBgShadow: value })} />
                             </Fragment>
                         }
-                        
+
                         {((layout == '3') || (layout == '6') || (layout == '7')) &&
                             <Fragment>
                                 <Toggle label={__('Fixed Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
@@ -374,7 +373,7 @@ class Edit extends Component {
                                             multiple={false}
                                             type={['image']}
                                             label={__('Retina Image')}
-                                            onChange={val => setAttributes({ image2x: val })} 
+                                            onChange={val => setAttributes({ image2x: val })}
                                         />
                                         {
                                             image.url &&
@@ -411,23 +410,23 @@ class Edit extends Component {
                                                 />
                                             </Fragment>
                                         }
-                                        <Range 
-                                            label={__('Image Position X')} 
-                                            value={imagePositionX} 
-                                            onChange={value => setAttributes({ imagePositionX: value })} 
-                                            unit={['px', 'em', '%']} 
-                                            min={-500} 
-                                            max={500} 
-                                            responsive device={device} 
-                                            onDeviceChange={value => this.setState({ device: value })} 
+                                        <Range
+                                            label={__('Image Position X')}
+                                            value={imagePositionX}
+                                            onChange={value => setAttributes({ imagePositionX: value })}
+                                            unit={['px', 'em', '%']}
+                                            min={-500}
+                                            max={500}
+                                            responsive device={device}
+                                            onDeviceChange={value => this.setState({ device: value })}
                                         />
-                                        <Range 
-                                            label={__('Image Position Y')} 
-                                            value={imagePositionY} 
-                                            onChange={value => setAttributes({ imagePositionY: value })} 
-                                            unit={['px', 'em', '%']} min={-500} max={500} 
-                                            responsive device={device} 
-                                            onDeviceChange={value => this.setState({ device: value })} 
+                                        <Range
+                                            label={__('Image Position Y')}
+                                            value={imagePositionY}
+                                            onChange={value => setAttributes({ imagePositionY: value })}
+                                            unit={['px', 'em', '%']} min={-500} max={500}
+                                            responsive device={device}
+                                            onDeviceChange={value => this.setState({ device: value })}
                                         />
                                         {
                                             (layout === 1 || layout === 2 || layout === 4 || layout === 5) &&
@@ -454,9 +453,9 @@ class Edit extends Component {
                                         />
                                         {
                                             videoSource == 'external' ?
-                                            <Fragment>
-                                                {/* <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} /> */}
-
+                                                <Fragment>
+                                                    <TextControl label={__('Url')} value={videoUrl} onChange={val => setAttributes({ videoUrl: val })} />
+                                                    {/* 
                                                 <Select
                                                     label={__('Video Type')}
                                                     value={videoType}
@@ -468,17 +467,17 @@ class Edit extends Component {
                                                     <TextControl label={__('Vimeo Video ID')} value={vimeoId} onChange={val => setAttributes({ vimeoId: val })} />
                                                     :
                                                     <TextControl label={__('YouTube Video ID')} value={youtubeId} onChange={val => setAttributes({ youtubeId: val })} />
-                                                }
-                                            </Fragment>
-                                            :
-                                            <Media
-                                                panel={true}
-                                                multiple={false}
-                                                type={['video']}
-                                                value={localVideo}
-                                                label={__('Local Video')}
-                                                onChange={value => setAttributes({ localVideo: value })}
-                                            />
+                                                } */}
+                                                </Fragment>
+                                                :
+                                                <Media
+                                                    panel={true}
+                                                    multiple={false}
+                                                    type={['video']}
+                                                    value={localVideo}
+                                                    label={__('Local Video')}
+                                                    onChange={value => setAttributes({ localVideo: value })}
+                                                />
                                         }
 
                                         <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
@@ -601,11 +600,11 @@ class Edit extends Component {
 
                                     <Select
                                         label={__("Badge Position")}
-                                        options={[['aboveTitle', __('Above Title')],['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
+                                        options={[['aboveTitle', __('Above Title')], ['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
                                         value={badgePosition}
                                         onChange={value => setAttributes({ badgePosition: value })}
                                     />
-                                    
+
                                     <Color
                                         label={__('Background color')}
                                         value={badgeBg}
@@ -682,22 +681,16 @@ class Edit extends Component {
                                         <Fragment>
                                             {
                                                 (videoSource === 'external') ?
-                                                    <Fragment>
-                                                        { (videoType == 'vimeo') ?
-                                                            <iframe src={`https://player.vimeo.com/video/${vimeoId}?autoplay=${autoPlay}&loop=1&autopause=0`} frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                                            :
-                                                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={`https://www.youtube.com/embed/${youtubeId}?autoplay=${autoPlay}&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com`}></iframe>
-                                                        }
-                                                    </Fragment>
+                                                    <ExternalVideo videoUrl={videoUrl} autoPlay={autoplay} />
                                                     :
                                                     <div className={`qubely-mediacard-video qubely-local-video`}>
-                                                        <video controls src={localVideo.url} />
+                                                        <video controls src={localVideo.url} autoPlay={autoplay} />
                                                     </div>
                                             }
                                         </Fragment>
                                     }
 
-                                    { (mediaType === 'image') &&
+                                    {(mediaType === 'image') &&
                                         <Fragment>
                                             {
                                                 (image && image.url) ?
@@ -713,9 +706,9 @@ class Edit extends Component {
                                     }
                                 </div>
                             }
-                            {badgeStyle && (badgePosition!='aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
+                            {badgeStyle && (badgePosition != 'aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                             <div className="qubely-mediacard-content-wrapper">
-                                {badgeStyle && (badgePosition=='aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
+                                {badgeStyle && (badgePosition == 'aboveTitle') && <span className={`${(badgeStyle == 1) ? 'qubely-mediacard-badge qubely-mediacard-badge-position qubely-badge-style-' + badgePosition : 'qubely-mediacard-badge'}`} contenteditable="true" onBlur={(e) => setAttributes({ 'badge': e.target.innerText })}>{badge}</span>}
                                 <div className={`qubely-mediacard-innerBlocks`}>
                                     <InnerBlocks
                                         // allowedBlocks={qubelyBlocks}
