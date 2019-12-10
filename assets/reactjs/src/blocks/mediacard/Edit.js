@@ -90,6 +90,9 @@ class Edit extends Component {
         }
     }
 
+    changeImagePosition = () => {
+
+    }
     render() {
         const {
             name,
@@ -125,8 +128,7 @@ class Edit extends Component {
                 youtubeId,
                 autoplay,
                 videoWidth,
-                imagePositionX,
-                imagePositionY,
+                customImagePosition,
                 imageBorderRadius,
                 mediaSpacing,
                 image,
@@ -411,21 +413,65 @@ class Edit extends Component {
                                             </Fragment>
                                         }
                                         <Range
-                                            label={__('Image Position X')}
-                                            value={imagePositionX}
-                                            onChange={value => setAttributes({ imagePositionX: value })}
-                                            unit={['px', 'em', '%']}
-                                            min={-500}
                                             max={500}
-                                            responsive device={device}
+                                            min={-500}
+                                            responsive
+                                            value={customImagePosition.translateX}
+                                            device={device}
+                                            label={__('Image Position X')}
+                                            unit={['px', 'em', '%']}
+                                            onChange={value => {
+                                                let newObject = { ...customImagePosition.translateX }
+                                                if (value.md)
+                                                    newObject.md = value.md
+                                                if (value.sm)
+                                                    newObject.sm = value.sm
+                                                if (value.xs)
+                                                    newObject.xs = value.xs
+                                                setAttributes(
+                                                    {
+                                                        customImagePosition: {
+                                                            openTransfrom: true,
+                                                            unit: value.unit,
+                                                            translateY: { ...customImagePosition.translateY ? customImagePosition.translateY : {} },
+                                                            translateX: {
+                                                                ...newObject
+                                                            }
+                                                        }
+                                                    }
+                                                )
+                                            }}
                                             onDeviceChange={value => this.setState({ device: value })}
                                         />
                                         <Range
+                                            max={500}
+                                            min={-500}
+                                            responsive
+                                            value={customImagePosition.translateY}
+                                            device={device}
                                             label={__('Image Position Y')}
-                                            value={imagePositionY}
-                                            onChange={value => setAttributes({ imagePositionY: value })}
-                                            unit={['px', 'em', '%']} min={-500} max={500}
-                                            responsive device={device}
+                                            unit={['px', 'em', '%']}
+                                            onChange={value => {
+                                                let newObject = { ...customImagePosition.translateY }
+                                                if (value.md)
+                                                    newObject.md = value.md
+                                                if (value.sm)
+                                                    newObject.sm = value.sm
+                                                if (value.xs)
+                                                    newObject.xs = value.xs
+                                                setAttributes(
+                                                    {
+                                                        customImagePosition: {
+                                                            openTransfrom: true,
+                                                            unit: value.unit,
+                                                            translateX: { ...customImagePosition.translateX ? customImagePosition.translateX : {} },
+                                                            translateY: {
+                                                                ...newObject
+                                                            }
+                                                        }
+                                                    }
+                                                )
+                                            }}
                                             onDeviceChange={value => this.setState({ device: value })}
                                         />
                                         {
@@ -481,18 +527,18 @@ class Edit extends Component {
                                         }
 
                                         <Toggle label={__('Autoplay')} value={autoplay} onChange={val => setAttributes({ autoplay: val })} />
-                                        { (layout === 1 || layout === 2 || layout === 4 || layout === 5) &&
-                                        <Range
-                                            min={0}
-                                            max={200}
-                                            responsive
-                                            device={device}
-                                            value={mediaSpacing}
-                                            label={__('Spacing')}
-                                            unit={['px', 'em', '%']}
-                                            onChange={val => setAttributes({ mediaSpacing: val })}
-                                            onDeviceChange={value => this.setState({ device: value })}
-                                        />
+                                        {(layout === 1 || layout === 2 || layout === 4 || layout === 5) &&
+                                            <Range
+                                                min={0}
+                                                max={200}
+                                                responsive
+                                                device={device}
+                                                value={mediaSpacing}
+                                                label={__('Spacing')}
+                                                unit={['px', 'em', '%']}
+                                                onChange={val => setAttributes({ mediaSpacing: val })}
+                                                onDeviceChange={value => this.setState({ device: value })}
+                                            />
                                         }
                                         {
                                             (layout !== 3 && layout !== 4) &&
@@ -539,7 +585,7 @@ class Edit extends Component {
                                 max={1000}
                                 responsive
                                 device={device}
-                                value={ (layout != '7') ? stackWidth : stackWidth7 }
+                                value={(layout != '7') ? stackWidth : stackWidth7}
                                 label={__('Stack Size')}
                                 unit={['px', 'em', '%']}
                                 onChange={value => setAttributes((layout != '7') ? { stackWidth: value } : { stackWidth7: value })}

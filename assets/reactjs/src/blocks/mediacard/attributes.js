@@ -108,51 +108,29 @@ export const attributes = {
             }
         ]
     },
-    imagePositionX: {
+    customImagePosition: {
         type: 'object',
-        default: {},
+        default: {
+            unit: "px",
+        },
         style: [
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 1 },
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateX({{imagePositionX}});}'
+                selector: '{{QUBELY}} .qubely-mediacard-image'
             },
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 2 },
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateX({{imagePositionX}});}'
+                selector: '{{QUBELY}} .qubely-mediacard-image'
             },
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 5 },
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateX({{imagePositionX}});}'
-            }
-        ]
-    },
-    imagePositionY: {
-        type: 'object',
-        default: {},
-        style: [
-            {
-                condition: [
-                    { key: 'layout', relation: '==', value: 1 },
-                ],
-                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateY({{imagePositionY}});}'
-            },
-            {
-                condition: [
-                    { key: 'layout', relation: '==', value: 2 },
-                ],
-                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateY({{imagePositionY}});}'
-            },
-            {
-                condition: [
-                    { key: 'layout', relation: '==', value: 5 },
-                ],
-                selector: '{{QUBELY}} .qubely-mediacard-image {transform: translateY({{imagePositionY}});}'
+                selector: '{{QUBELY}} .qubely-mediacard-image'
             }
         ]
     },
@@ -330,7 +308,7 @@ export const attributes = {
     },
     stackWidth: {
         type: 'object',
-        default: { 
+        default: {
             md: ''
         },
         style: [
@@ -849,9 +827,9 @@ export const attributes = {
             }
         ]
     },
-    cardBgBorder: { 
-        type: 'object', 
-        default: {}, 
+    cardBgBorder: {
+        type: 'object',
+        default: {},
         style: [
             {
                 condition: [
@@ -885,8 +863,8 @@ export const attributes = {
             }
         ]
     },
-    cardBgShadow: { 
-        type: 'object', 
+    cardBgShadow: {
+        type: 'object',
         default: {
             openShadow: true,
             vertical: 3,
