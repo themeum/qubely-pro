@@ -2,11 +2,15 @@
     position: relative;
     transition: border-color 400ms, background-color 400ms, box-shadow 400ms;
     .qubely-mediacard-image {
+        img {
         width: 100%;
+        }
     }
     &.qubely-mediacard-layout-2 {
-        .qubely-mediacard-image {
+        .qubely-mediacard-image,
+        .qubely-mediacard-video {
             margin-right: 20px;
+            line-height: 0;
         }
     }
     &.qubely-mediacard-layout-3,
@@ -17,8 +21,6 @@
         .qubely-block-mediacard-wrapper {
             display: flex;
             z-index: 10;
-            overflow: hidden;
-            padding: 20px;
         }
     }
     &.qubely-mediacard-layout-3,
@@ -30,6 +32,9 @@
     &.qubely-mediacard-layout-6 {
         .qubely-mediacard-content-wrapper {
             width: 100%;
+        }
+        .qubely-block-mediacard-wrapper {
+            justify-content: center;
         }
     }
     &.qubely-mediacard-layout-7 {
@@ -51,27 +56,6 @@
             transition: 400ms;
         }
     }
-    // &.qubely-mediacard-layout-6,
-    // &.qubely-mediacard-layout-7 {
-    //     position: relative;
-    //     overflow: hidden;
-    //     .qubely-block-mediacard-wrapper {
-    //         .qubely-mediacard-content-wrapper {
-    //             top: 0;
-    //             height: 100%;
-    //             position: absolute;
-    //             display: grid;
-    //             align-content: flex-end;
-    //             opacity: 1;
-    //             z-index: 10;
-    //             overflow: hidden;
-    //             width: 100%;
-    //             max-width: 100%;
-    //             padding: 20px;
-    //         }
-    //     }
-    // }
-
   &.qubely-mediacard-layout-4 {
     .qubely-block-mediacard-wrapper {
         display: flex;
@@ -91,7 +75,6 @@
       width: 90%;
       background: #fff;
       position: relative;
-      z-index: 2;
       padding: 20px;
     }
   }
@@ -100,8 +83,6 @@
     .qubely-block-mediacard-wrapper {
       display: -ms-flexbox;
       display: flex;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
       align-items: center;
       .qubely-mediacard-media_wrapper {
         -ms-flex: 0 0 50%;
@@ -113,16 +94,28 @@
         background: #fff;
         padding: 20px;
         position: relative;
-        z-index: 2;
-        -ms-flex: 0 0 50%;
-        flex: 0 0 50%;
-        max-width: 50%;
       }
     }
   }
   .qubely-mediacard-media_wrapper {
     display: inline-block;
     line-height: 1;
+    &.qubely-mediacard-video {
+        display: block;
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 25px;
+        height: 0;
+        overflow: hidden;
+        iframe,
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
   }
 }
 
@@ -130,30 +123,37 @@
 .qubely-block-mediacard-wrapper,
 .qubely-mediacard-media_wrapper {
     position: relative;
-    z-index: 2;
     .qubely-mediacard-badge-position {
-        position: absolute;
         &.qubely-badge-style-leftTop {
             left: 20px;
             top: 20px;
+            position: absolute;
+            line-height: 1;
         }
         &.qubely-badge-style-rightTop {
             right: 20px;
             top: 20px;
+            position: absolute;
+            line-height: 1;
         }
         &.qubely-badge-style-leftBottom {
             left: 20px;
             bottom: 20px;
+            position: absolute;
+            line-height: 1;
         }
         &.qubely-badge-style-rightBottom {
             right: 20px;
             bottom: 20px;
+            position: absolute;
+            line-height: 1;
         }
     }
-    iframe,
-    video {
-        width: 100%;
-        max-width: 100%;
+}
+.qubely-mediacard-layout-2 {
+    .qubely-mediacard-video {
+        max-width: 50%;
+        flex: 0 0 50%;
     }
 }
 
@@ -172,19 +172,34 @@
     }
 }
 
-// .editor-styles-wrapper .qubely-mediacard-innerBlocks [data-block] {
-//     margin-top: 0;
-//     margin-bottom: 0;
-// }
 .qubely-mediacard-innerBlocks .block-list-appender>.block-editor-inserter {
     margin-top: 30px;
 }
 
-// .block-editor-block-list__block .qubely-mediacard-innerBlocks .block-editor-block-contextual-toolbar {
-//     margin-left: 0;
-//     margin-right: 0;
-// }
-// .block-editor-block-list__block .qubely-mediacard-innerBlocks .block-editor-block-list__layout {
-//     margin-left: 0;
-//     margin-right: 0;
-// }
+@media (max-width: 768px) {
+    .qubely-block-mediacard {
+        &.qubely-mediacard-layout-5 {
+            .qubely-block-mediacard-wrapper {
+                .qubely-mediacard-media_wrapper {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+                .qubely-mediacard-content-wrapper {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    margin: 0 !important;
+                }
+                flex-wrap: wrap;
+            }
+        }
+        &.qubely-mediacard-layout-2 {
+            .qubely-block-mediacard-wrapper {
+                flex-wrap: wrap;
+            }
+            .qubely-mediacard-image,
+            .qubely-mediacard-video {
+                margin-right: 0;
+            }
+        }
+    }
+}
