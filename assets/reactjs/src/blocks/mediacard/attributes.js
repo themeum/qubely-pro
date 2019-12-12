@@ -112,33 +112,82 @@ export const attributes = {
             }
         ]
     },
-    customImagePosition: {
+    // customImagePosition: {
+    //     type: 'object',
+    //     default: {
+    //         unit: "px",
+    //     },
+    //     style: [
+    //         {
+    //             condition: [
+    //                 { key: 'layout', relation: '==', value: 1 },
+    //             ],
+    //             selector: '{{QUBELY}} .qubely-mediacard-image'
+    //         },
+    //         {
+    //             condition: [
+    //                 { key: 'layout', relation: '==', value: 2 },
+    //             ],
+    //             selector: '{{QUBELY}} .qubely-mediacard-image'
+    //         },
+    //         {
+    //             condition: [
+    //                 { key: 'layout', relation: '==', value: 5 },
+    //             ],
+    //             selector: '{{QUBELY}} .qubely-mediacard-image'
+    //         }
+    //     ]
+    // },
+
+    imagePositionX: {
         type: 'object',
-        default: {
-            unit: "px",
-        },
+        default: {},
         style: [
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 1 },
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-image'
+                selector: '{{QUBELY}} .qubely-mediacard-image {position:relative;left: {{imagePositionX}};}'
             },
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 2 },
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-image'
+                selector: '{{QUBELY}} .qubely-mediacard-image {position:relative;left: {{imagePositionX}};}'
             },
             {
                 condition: [
                     { key: 'layout', relation: '==', value: 5 },
                 ],
-                selector: '{{QUBELY}} .qubely-mediacard-image'
+                selector: '{{QUBELY}} .qubely-mediacard-image {position:relative;left: {{imagePositionX}};}'
             }
         ]
     },
-
+    imagePositionY: {
+        type: 'object',
+        default: {},
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 1 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-image {position:relative;top: {{imagePositionY}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 2 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-image {position:relative;top: {{imagePositionY}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 5 },
+                ],
+                selector: '{{QUBELY}} .qubely-mediacard-image {position:relative;top: {{imagePositionY}};}'
+            }
+        ]
+    },
+    
     imageBorderRadius: {
         type: 'object',
         default: {
