@@ -5,48 +5,6 @@ const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
 import './style.scss'
 
 import Edit from './Edit'
-import Save from './Save'
-
-const attributes = {
-    uniqueId: {
-        type: 'string',
-        default: ''
-    },
-    productsPerPage: {
-        type: 'number',
-        default: 4
-    },
-    selectedCatagories: {
-        type: 'array',
-        default: []
-    },
-    orderby: {
-        type: 'string',
-        default: 'date',
-    },
-    productsStatus: {
-        type: 'string',
-        default: null,
-    },
-    //layout attributes 
-    columns: {
-        type: 'number',
-        default: 3
-    },
-    layout: {
-        type: 'number',
-        default: 2,
-    },
-    style: {
-        type: 'number',
-        default: 2,
-    },
-
-    //global
-    showGlobalSettings: { type: 'boolean', default: true }, // Global Settings
-    showContextMenu: { type: 'boolean', default: true },
-    ...globalAttributes,
-}
 
 registerBlockType('qubely/wooproducts', {
     title: __('woo Products'),
@@ -61,7 +19,6 @@ registerBlockType('qubely/wooproducts', {
     supports: {
         align: ['center', 'wide', 'full'],
     },
-    attributes,
     edit: Edit,
     // save: Save,
     save: function (props) {

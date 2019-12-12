@@ -25,7 +25,7 @@ function register_block_qubely_wooproducts()
                 ),
                 'style' => array(
                     'type' => 'number',
-                    'default' => 2
+                    'default' => 1
                 ),
                 'productsPerPage' => array(
                     'type' => 'number',
