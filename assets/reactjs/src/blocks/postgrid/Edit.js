@@ -385,7 +385,7 @@ class Edit extends Component {
 							value={taxonomy === 'categories' ? categories : tags}
 							onChange={value => setAttributes(taxonomy === 'categories' ? { categories: value.length && value[value.length - 1].label === 'All' ? [] : value } : { tags: value.length && value[value.length - 1].label === 'All' ? [] : value })}
 						/>
-						<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={0} max={15} />
+						<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={0} max={50} />
 
 						<SelectControl
 							label={__("Order By")}
