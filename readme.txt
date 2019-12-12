@@ -3,6 +3,9 @@ Stable tag: 1.0.6
 
 == Changelog ==
 
+= 1.0.6 - 12 December, 2019 =
+New: Media Card block  
+
 = 1.0.5 - 06 December, 2019 =
 New: Full Width, Wide Width alignment option in all blocks  
 Update: Navigation icons in all carousels  

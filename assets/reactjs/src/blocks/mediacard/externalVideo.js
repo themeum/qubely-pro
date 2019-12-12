@@ -1,4 +1,4 @@
-export default function ({ videoUrl, autoPlay }) {
+ function ExternalVideo ({ videoUrl, autoPlay }) {
     if (videoUrl) {
         let src = '', autoplay = autoPlay ? '1' : '0';
         if (videoUrl.match('youtube|youtu\.be')) {
@@ -16,3 +16,4 @@ export default function ({ videoUrl, autoPlay }) {
     }
     return null
 }
+export default ExternalVideo;
