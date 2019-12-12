@@ -126,6 +126,8 @@ class Edit extends Component {
                 videoWidth,
                 videoFallback,
                 customImagePosition,
+                imagePositionX,
+                imagePositionY,
                 imageBorderRadius,
                 mediaSpacing,
                 image,
@@ -389,6 +391,24 @@ class Edit extends Component {
                                                     label={__('Image Width')}
                                                     onChange={val => setAttributes({ imageWidth: val })}
                                                     onDeviceChange={value => this.setState({ device: value })}
+                                                />
+                                                <Range 
+                                                    label={__('Image Position X')} 
+                                                    value={imagePositionX} 
+                                                    onChange={value => setAttributes({ imagePositionX: value })} 
+                                                    unit={['px', 'em', '%']} 
+                                                    min={-500} 
+                                                    max={500} 
+                                                    responsive device={device} 
+                                                    onDeviceChange={value => this.setState({ device: value })} 
+                                                />
+                                                <Range 
+                                                    label={__('Image Position Y')} 
+                                                    value={imagePositionY} 
+                                                    onChange={value => setAttributes({ imagePositionY: value })} 
+                                                    unit={['px', 'em', '%']} min={-500} max={500} 
+                                                    responsive device={device} 
+                                                    onDeviceChange={value => this.setState({ device: value })} 
                                                 />
                                                 <BorderRadius
                                                     min={0}
