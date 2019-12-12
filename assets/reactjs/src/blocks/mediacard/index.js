@@ -12,7 +12,9 @@ registerBlockType('qubely/mediacard', {
     icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/media-card.svg'} alt={__('Media Card')} />,
     category: 'qubely',
     keywords: [__('Media Card'), __('Card'), __('Feature Box')],
-    example: {},
+    example: {
+        
+    },
     supports: {
         align: ['center', 'wide', 'full'],
     },

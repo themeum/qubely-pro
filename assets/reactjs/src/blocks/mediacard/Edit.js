@@ -92,9 +92,6 @@ class Edit extends Component {
         }
     }
 
-    changeImagePosition = () => {
-
-    }
     render() {
         const {
             name,
@@ -406,7 +403,10 @@ class Edit extends Component {
                                                 />
                                             </Fragment>
                                         }
-                                        <Range
+
+                                        {/* commented waiting for free plugin update */}
+
+                                        {/* <Range
                                             max={500}
                                             min={-500}
                                             responsive
@@ -467,7 +467,7 @@ class Edit extends Component {
                                                 )
                                             }}
                                             onDeviceChange={value => this.setState({ device: value })}
-                                        />
+                                        /> */}
                                         {
                                             (layout === 1 || layout === 2 || layout === 4 || layout === 5) &&
                                             <Range
