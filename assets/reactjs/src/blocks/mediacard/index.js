@@ -13,7 +13,17 @@ registerBlockType('qubely/mediacard', {
     category: 'qubely',
     keywords: [__('Media Card'), __('Card'), __('Feature Box')],
     example: {
-        
+        attributes: {},
+        innerBlocks: [
+            {
+                name: 'qubely/text',
+                attributes: {
+                    title:'Qubely Gutenberg Plugin',
+                    content:'There’s no easier way to add innovative Gutenberg blocks than using Qubely Blocks.'
+                },
+            },
+        ],
+
     },
     supports: {
         align: ['center', 'wide', 'full'],
