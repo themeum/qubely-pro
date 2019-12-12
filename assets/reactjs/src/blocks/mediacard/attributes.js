@@ -1,10 +1,13 @@
-const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes }, } = wp.qubelyComponents
+const {
+    gloalSettings: {
+        globalAttributes
+    }
+} = wp.qubelyComponents
 
 export const attributes = {
     uniqueId: { type: 'string', default: '' },
     // Global
     ...globalAttributes,
-    ...buttonAttributes,
     layout: { type: 'number', default: 1 },
     spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
 
@@ -995,9 +998,9 @@ export const attributes = {
             }
         ]
     },
-    showGlobalSettings: { 
-        type: 'boolean', 
-        default: true 
+    showGlobalSettings: {
+        type: 'boolean',
+        default: true
     },
     showContextMenu: {
         type: 'boolean',

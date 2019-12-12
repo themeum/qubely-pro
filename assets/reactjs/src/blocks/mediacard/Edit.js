@@ -187,7 +187,6 @@ class Edit extends Component {
 
 
         const { device } = this.state
-
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
 
         return (
@@ -230,7 +229,7 @@ class Edit extends Component {
 
                     </PanelBody>
 
-                    {( (layout != 5) && (layout != 4) )  &&
+                    {((layout != 5) && (layout != 4)) &&
                         <PanelBody title={__('Card Settings')} initialOpen={false}>
                             {
                                 (layout == 1) &&
