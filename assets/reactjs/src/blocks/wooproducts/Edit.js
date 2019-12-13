@@ -22,7 +22,7 @@ const {
     BlockControls,
     MediaUpload,
     MediaPlaceholder
-} = wp.editor
+} = wp.blockEditor
 
 const {
     RadioAdvanced,
@@ -76,6 +76,9 @@ export default function Edit(props) {
             layout,
             style,
             columns,
+
+            //other
+            addToCartButtonText,
         }
     } = props
 
@@ -359,16 +362,25 @@ export default function Edit(props) {
 
                                         {style === 1 && renderImages(images)}
 
-                                        <span className={`qubely-woo__product-name`}>name : {name}</span>
-                                        <span className={`qubely-woo__product-id`}>id : {id}</span>
-                                        <span className={`qubely-woo__product-price`}>price {price}</span>
-                                        <span
-                                            className={`qubely-woo__product-description`}
+                                        <div className={`qubely-woo-product-name`}>name : {name}</div>
+                                        <div className={`qubely-woo-product-id`}>id : {id}</div>
+                                        <div className={`qubely-woo-product-price`}>price {price}</div>
+                                        <div
+                                            className={`qubely-woo-product-description`}
                                             dangerouslySetInnerHTML={{
                                                 __html: description,
                                             }}
                                         />
                                         {style === 2 && renderImages(images)}
+                                        <div className={`qubely-woo-product-add-to-cart`}>
+                                            <RichText
+                                                keepPlaceholderOnFocus
+                                                value={addToCartButtonText}
+                                                placeholder={__('Add Text...')}
+                                                className={'qubely_cart_button'}
+                                                onChange={value => setAttributes({ addToCartButtonText: value })}
+                                            />
+                                        </div>
                                     </div>
 
                                 )

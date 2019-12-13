@@ -50,6 +50,10 @@ function register_block_qubely_wooproducts()
                         'type' => 'object'
                     ],
                 ),
+                'addToCartButtonText' => array(
+                    'type'    => 'string',
+                    'default' => 'Add to cart',
+                ),
                 'showGlobalSettings' => array(
                     'type' => 'boolean',
                     'default' => true
