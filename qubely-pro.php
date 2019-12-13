@@ -22,6 +22,7 @@ define('QUBELY_PRO_DIR_URL', plugin_dir_url(QUBELY_PRO_FILE));
 define('QUBELY_PRO_DIR_PATH', plugin_dir_path(QUBELY_PRO_FILE));
 
 define('QUBELY_FREE_BASENAME', 'qubely/qubely.php');
+define('QUBELY_PRO_BASENAME', 'qubely-pro/qubely-pro.php');
 
 add_action('init', 'qubely_pro_language_load');
 function qubely_pro_language_load() {

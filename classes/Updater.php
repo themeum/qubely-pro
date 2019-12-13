@@ -81,7 +81,7 @@ class Updater {
 					);
 
 					$license_info_serialize = serialize($license_info);
-					update_option(QUBELY_FREE_BASENAME.'_license_info', $license_info);
+					update_option(QUBELY_PRO_BASENAME.'_license_info', $license_info);
 				} else {
 					//License is invalid
 					$license_info = array(
@@ -93,7 +93,7 @@ class Updater {
 					);
 
 					$license_info_serialize = serialize($license_info);
-					update_option(QUBELY_FREE_BASENAME.'_license_info', $license_info);
+					update_option(QUBELY_PRO_BASENAME.'_license_info', $license_info);
 				}
 			}
 		}
@@ -104,7 +104,7 @@ class Updater {
 		$license_to = '';
 		$license_activated = false;
 
-		$getLicenses = maybe_unserialize(get_option(QUBELY_FREE_BASENAME.'_license_info'));
+		$getLicenses = maybe_unserialize(get_option(QUBELY_PRO_BASENAME.'_license_info'));
 
 		$license_info = array('activated' => false);
         if ( is_array($getLicenses) && count($getLicenses)){
@@ -223,7 +223,7 @@ class Updater {
      * Get the plugin info from server
 	 */
 	function plugin_info( $res, $action, $args ){
-		$plugin_slug = QUBELY_FREE_BASENAME;
+		$plugin_slug = QUBELY_PRO_BASENAME;
 
 		// do nothing if this is not about getting plugin information
 		if( $action !== 'plugin_information' )
@@ -258,7 +258,7 @@ class Updater {
 	 */
 	public function check_for_update_api($request_from = ''){
 		// Plugin update
-		$getLicenses = maybe_unserialize(get_option(QUBELY_FREE_BASENAME.'_license_info'));
+		$getLicenses = maybe_unserialize(get_option(QUBELY_PRO_BASENAME.'_license_info'));
 		$license_info = array('activated' => false);
         if ( is_array($getLicenses) && count($getLicenses)){
             $license_info = $getLicenses;
@@ -301,7 +301,7 @@ class Updater {
 	 * @return mixed
 	 */
 	public function check_for_update($transient){
-		$plugin_slug = QUBELY_FREE_BASENAME;
+		$plugin_slug = QUBELY_PRO_BASENAME;
 		$request_body = $this->check_for_update_api('update_check');
 		if ($request_body && $request_body->success){
 			if ( version_compare( QUBELY_PRO_VERSION, $request_body->data->version, '<' ) ) {
@@ -328,7 +328,7 @@ class Updater {
 	 * @return bool
 	 */
     public function is_valid() {
-		$getLicenses = maybe_unserialize(get_option(QUBELY_FREE_BASENAME.'_license_info'));
+		$getLicenses = maybe_unserialize(get_option(QUBELY_PRO_BASENAME.'_license_info'));
         $license_info = (object) array('activated' => false);
         if ( is_array($getLicenses) && count($getLicenses)){
             $license_info = (object) $getLicenses;
