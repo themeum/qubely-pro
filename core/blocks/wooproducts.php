@@ -54,6 +54,27 @@ function register_block_qubely_wooproducts()
                     'type'    => 'string',
                     'default' => 'Add to cart',
                 ),
+                'buttonBgColor' => array(
+					'type' => 'object',
+					'default' => (object) array(),
+					'style' => [(object) [
+						'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
+					]]
+                ),
+                'buttonBorder' => array(
+					'type' => 'object',
+					'default' => (object) array(),
+					'style' => [(object) [
+						'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
+					]]
+				),
+				'buttonBorderRadius' => array(
+					'type' => 'object',
+					'default' => (object) array(),
+					'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
+					]]
+				),
                 'showGlobalSettings' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -200,7 +221,7 @@ function render_block_qubely_wooproducts($att)
 
     if ($query->have_posts()) {
         $html .= '<div class="qubely-block-' . $uniqueId . '">';
-        $html .= '<div class="qubely-woo__products_wrapper ' . $interaction . ' qubely-layout-' . esc_attr($layout) . '" ' . $animation . '>';
+        $html .= '<div class="qubely-woo_products_wrapper ' . $interaction . ' qubely-layout-' . esc_attr($layout) . '" ' . $animation . '>';
 
         while ($query->have_posts()) {
             $query->the_post();

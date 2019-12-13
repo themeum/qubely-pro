@@ -1,4 +1,4 @@
-.qubely-woo__products_wrapper {
+.qubely-woo_products_wrapper {
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
@@ -6,7 +6,7 @@
   padding: 0;
   margin: 0 -8px 16px;
   background-clip: padding-box;
-  .qubely-woo__product {
+  .qubely-woo_product {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -18,18 +18,18 @@
     border-right: 8px solid transparent;
     border-bottom: 16px solid transparent;
   }
-  &.qubely_woo__products_grid_layout {
-    &.qubely_2columns .qubely-woo__product {
+  &.qubely_woo_products_grid_layout {
+    &.qubely_2columns .qubely-woo_product {
         -webkit-box-flex: 1;
         flex: 1 0 50%;
         max-width: 50%;
       }
-    &.qubely_3columns .qubely-woo__product {
+    &.qubely_3columns .qubely-woo_product {
       -webkit-box-flex: 1;
       flex: 1 0 33.33333%;
       max-width: 33.33333%;
     }
-    &.qubely_4columns .qubely-woo__product {
+    &.qubely_4columns .qubely-woo_product {
       -webkit-box-flex: 1;
       flex: 1 0 25%;
       max-width: 25%;

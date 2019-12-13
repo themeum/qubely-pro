@@ -40,9 +40,17 @@ const {
     BoxShadow,
     Alignment,
     Padding,
-    Inline: { InlineToolbar },
-    CssGenerator: { CssGenerator },
-    gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
+    Inline: {
+        InlineToolbar
+    },
+    CssGenerator: {
+        CssGenerator
+    },
+    gloalSettings: {
+        globalSettingsPanel,
+        animationSettings,
+        interactionSettings
+    },
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
@@ -52,6 +60,7 @@ import getProducts from './getProducts'
 
 export default function Edit(props) {
     const [mounting, changeMountFlag] = useState(true)
+    const [device, setDevice] = useState('md')
     const [products, setProducts] = useState(null)
     const [categories, setCategories] = useState(null)
     const [totalProducts, setTotalProducts] = useState(null)
@@ -79,6 +88,9 @@ export default function Edit(props) {
 
             //other
             addToCartButtonText,
+            buttonBgColor,
+            buttonBorder,
+            buttonBorderRadius,
         }
     } = props
 
@@ -194,10 +206,10 @@ export default function Edit(props) {
 
     const renderImages = (images) => {
         return (
-            <span className={`qubely-woo__product-image-wrapper`}>
+            <span className={`qubely-woo_product-image-wrapper`}>
                 {images.map(({ src, alt }) => {
                     return (
-                        <span className={`qubely-woo__product-image`}>
+                        <span className={`qubely-woo_product-image`}>
                             <img src={src} alt={alt} />
                         </span>
                     )
@@ -346,19 +358,51 @@ export default function Edit(props) {
                     }
 
                 </PanelBody>
+                <PanelBody title={__('Button')} initialOpen={false}>
+                    <ColorAdvanced
+                        label={__('Background')}
+                        value={buttonBgColor}
+                        onChange={value => setAttributes({ buttonBgColor: value })}
+                    />
+                    <Border
+                        min={0}
+                        max={10}
+                        responsive
+                        device={device}
+                        label={__('Border')}
+                        value={buttonBorder}
+                        unit={['px', 'em', '%']}
+                        onDeviceChange={value => setDevice(value)}
+                        onChange={val => setAttributes({ buttonBorder: val })}
+                    />
+                    <BorderRadius
+                        min={0}
+                        max={100}
+                        responsive
+                        device={device}
+                        label={__('Corner')}
+                        unit={['px', 'em', '%']}
+                        value={buttonBorderRadius}
+                        onDeviceChange={value => setDevice(value)}
+                        onChange={value => setAttributes({ buttonBorderRadius: value })}
+                    />
+                    {/* <Padding label={__('Padding')} value={padding} onChange={val => setAttributes({ padding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                    <BoxShadow label={__('Box-Shadow')} value={boxShadow} onChange={(value) => setAttributes({ boxShadow: value })} /> */}
+                </PanelBody>
+
             </InspectorControls>
 
             <div className={`qubely-block-${uniqueId}`}>
-                <div className={`qubely-woo__products_wrapper${layout === 2 ? ' qubely_woo__products_grid_layout' : ''}${layout === 2 ? ` qubely_${columns}columns` : ''}`}>
+                <div className={`qubely-woo_products_wrapper${layout === 2 ? ' qubely_woo_products_grid_layout' : ''}${layout === 2 ? ` qubely_${columns}columns` : ''}`}>
                     {
                         loading ?
-                            <div className={`qubely-woo__product_loading`}>
+                            <div className={`qubely-woo_product_loading`}>
                                 <Spinner />
                             </div>
                             :
                             totalProducts ? products.map(({ name, id, price, description, images }, index) => {
                                 return (
-                                    <div className={`qubely-woo__product`}>
+                                    <div className={`qubely-woo_product`}>
 
                                         {style === 1 && renderImages(images)}
 
@@ -386,7 +430,7 @@ export default function Edit(props) {
                                 )
                             })
                                 :
-                                <div className={`qubely-woo__product-not-found`}>
+                                <div className={`qubely-woo_product-not-found`}>
                                     {__('No products found')}
                                 </div>
                     }
