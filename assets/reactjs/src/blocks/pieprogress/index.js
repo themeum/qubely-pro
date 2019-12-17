@@ -8,7 +8,7 @@ const { registerBlockType } = wp.blocks
 
 registerBlockType('qubely/pieprogress', {
     title: __('Pie Progress'),
-    description: '',
+    description: 'Animated circular progress bar',
     category: 'qubely',
     icon: 'universal-access-alt',
     keywords: [__('progress'), __('bar'), __('bar progress')],
