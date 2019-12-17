@@ -23,6 +23,7 @@ const {
     RadioAdvanced,
     Typography,
     Toggle,
+    Templates,
     Styles,
     Alignment,
     ColorAdvanced,
@@ -48,12 +49,12 @@ const {
         handleContextMenu
     }
 } = wp.qubelyComponents
-const {
-    withSelect
-} = wp.data
 
-import icons from '../../helpers/icons';
+
+import icons from '../../helpers/icons'
 import ExternalVideo from './externalVideo'
+import templates from './templates.json';
+
 
 const mediaOptions = [
     { icon: 'fas fa-image', label: __('Image'), value: 'image', title: __('Image') },
@@ -91,6 +92,7 @@ class Edit extends Component {
             setAttributes({ uniqueId: _client });
         }
     }
+
 
     render() {
         const {
@@ -187,7 +189,7 @@ class Edit extends Component {
             }
         } = this.props
 
-
+        // console.log('templates : ', templates)
         const { device } = this.state
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
 
@@ -228,7 +230,12 @@ class Edit extends Component {
                                         }
                                         : { layout: newLayout })}
                         />
-
+                        <Templates
+                            // endPoint={'users'}
+                            updateStyle={setAttributes}
+                            attributes={attributes}
+                            templates={templates}
+                        />
                     </PanelBody>
 
                     {((layout != 5) && (layout != 4)) &&
@@ -391,23 +398,23 @@ class Edit extends Component {
                                                     onChange={val => setAttributes({ imageWidth: val })}
                                                     onDeviceChange={value => this.setState({ device: value })}
                                                 />
-                                                <Range 
-                                                    label={__('Image Position X')} 
-                                                    value={imagePositionX} 
-                                                    onChange={value => setAttributes({ imagePositionX: value })} 
-                                                    unit={['px', 'em', '%']} 
-                                                    min={-500} 
-                                                    max={500} 
-                                                    responsive device={device} 
-                                                    onDeviceChange={value => this.setState({ device: value })} 
+                                                <Range
+                                                    label={__('Image Position X')}
+                                                    value={imagePositionX}
+                                                    onChange={value => setAttributes({ imagePositionX: value })}
+                                                    unit={['px', 'em', '%']}
+                                                    min={-500}
+                                                    max={500}
+                                                    responsive device={device}
+                                                    onDeviceChange={value => this.setState({ device: value })}
                                                 />
-                                                <Range 
-                                                    label={__('Image Position Y')} 
-                                                    value={imagePositionY} 
-                                                    onChange={value => setAttributes({ imagePositionY: value })} 
-                                                    unit={['px', 'em', '%']} min={-500} max={500} 
-                                                    responsive device={device} 
-                                                    onDeviceChange={value => this.setState({ device: value })} 
+                                                <Range
+                                                    label={__('Image Position Y')}
+                                                    value={imagePositionY}
+                                                    onChange={value => setAttributes({ imagePositionY: value })}
+                                                    unit={['px', 'em', '%']} min={-500} max={500}
+                                                    responsive device={device}
+                                                    onDeviceChange={value => this.setState({ device: value })}
                                                 />
                                                 <BorderRadius
                                                     min={0}

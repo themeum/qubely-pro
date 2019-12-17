@@ -1,0 +1,40 @@
+{
+    "template1": {
+        "layout": 1
+    },
+    "template2": {
+        "layout": 2,
+        "cardBgColor": {
+            "openColor": 1,
+            "type": "color",
+            "color": "#d1aaaa",
+            "gradient": {
+                "direction": 45,
+                "start": 0,
+                "stop": 100,
+                "type": "linear",
+                "color1": "rgba(0, 0, 0, 0.5)",
+                "color2": "rgba(6, 1, 14, 0.6)"
+            }
+        }
+    },
+    "template3": {
+        "layout": 3
+    },
+    "template4": {
+        "layout": 6,
+        "stackBg": {
+            "openColor": 1,
+            "type": "color",
+            "color": "#99bcc1",
+            "gradient": {
+                "direction": 45,
+                "start": 0,
+                "stop": 100,
+                "type": "linear",
+                "color1": "rgba(0, 0, 0, 0.5)",
+                "color2": "rgba(6, 1, 14, 0.6)"
+            }
+        }
+    } 
+}
