@@ -187,7 +187,7 @@ export const attributes = {
             }
         ]
     },
-    
+
     imageBorderRadius: {
         type: 'object',
         default: {
@@ -1055,4 +1055,10 @@ export const attributes = {
         type: 'boolean',
         default: true
     },
+    qubelyStyleAttributes: {
+        type: 'array',
+        default: [
+            'layout', 'spacer', 'cardBgColor', 'badge'
+        ]
+    }
 };

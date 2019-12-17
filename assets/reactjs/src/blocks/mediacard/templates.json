@@ -36,5 +36,20 @@
                 "color2": "rgba(6, 1, 14, 0.6)"
             }
         }
-    } 
+    },
+    "template5": {
+        "layout": 6,
+        "spacer": {
+            "spaceTop": {
+                "md": "10",
+                "unit": "px"
+            },
+            "spaceBottom": {
+                "md": "10",
+                "unit": "px"
+            }
+        },
+        "cardBgColor": {},
+        "badge": "Sale"
+    }
 }

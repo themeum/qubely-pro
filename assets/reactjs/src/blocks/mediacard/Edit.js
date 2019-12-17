@@ -93,6 +93,23 @@ class Edit extends Component {
         }
     }
 
+    copyAttributes = () => {
+        const {
+            setAttributes,
+            attributes,
+            attributes: {
+                qubelyStyleAttributes
+            }
+        } = this.props
+
+        let template = {}
+
+        qubelyStyleAttributes.forEach(key => {
+            template[key] = attributes[key]
+        })
+
+        console.log('template : ',JSON.stringify(template))
+    }
 
     render() {
         const {
@@ -189,7 +206,6 @@ class Edit extends Component {
             }
         } = this.props
 
-        // console.log('templates : ', templates)
         const { device } = this.state
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
 
@@ -236,6 +252,8 @@ class Edit extends Component {
                             attributes={attributes}
                             templates={templates}
                         />
+
+                        <button onClick={() => this.copyAttributes()}>Copy Attribute</button>
                     </PanelBody>
 
                     {((layout != 5) && (layout != 4)) &&
