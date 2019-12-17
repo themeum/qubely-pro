@@ -83,6 +83,11 @@ const icons = {
     mediacard_7: <img src={`${img_path}/mediacard/7.svg`} alt={__('Design 7')} />,
 
 
+    pie_fill: <img src={`${img_path}/pieprogress/fill.svg`} alt={__('Fill')} />,
+    pie_outline: <img src={`${img_path}/pieprogress/outline.svg`} alt={__('Outline')} />,
+    pie_outline_fill: <img src={`${img_path}/pieprogress/outline-fill.svg`} alt={__('Outline Fill')} />,
+
+
     leftArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
         <path d="M5 8.70002L10.6 14.4L12 12.9L7.8 8.70002L12 4.50002L10.6 3.00002L5 8.70002Z" />
     </svg>,
