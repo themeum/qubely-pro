@@ -254,8 +254,6 @@ class Edit extends Component {
                             attributes={attributes}
                             templates={templates}
                         />
-
-                        <button onClick={() => this.copyAttributes()}>Copy Attribute</button>
                     </PanelBody>
 
                     {((layout != 5) && (layout != 4)) &&
@@ -750,9 +748,9 @@ class Edit extends Component {
                     </Toolbar>
                 </BlockControls>
                 <PluginBlockSettingsMenuItem
-					icon={ 'plus' }
+					icon={ 'editor-code' }
 					label={ __( 'Copy Attributes') }
-					onClick={ ()=>console.log('test') }
+					onClick={ ()=> this.copyAttributes() }
 				/>
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
                 <div className={`qubely-block-${uniqueId}`}>
