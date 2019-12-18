@@ -1,5 +1,6 @@
 import Progress from './Progress'
 const { __ } = wp.i18n
+const { Fragment } = wp.element;
 const { RichText } = wp.blockEditor;
 const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
 
