@@ -95,12 +95,13 @@ class Edit extends Component {
 
     copyAttributes = () => {
         const {
-            setAttributes,
             attributes,
             attributes: {
                 qubelyStyleAttributes
             }
         } = this.props
+
+        const {copyToClipboard} = wp.qubelyComponents.HelperFunction
 
         let template = {}
 
@@ -108,7 +109,8 @@ class Edit extends Component {
             template[key] = attributes[key]
         })
 
-        console.log('template : ',JSON.stringify(template))
+        copyToClipboard(JSON.stringify(template))
+
     }
 
     render() {

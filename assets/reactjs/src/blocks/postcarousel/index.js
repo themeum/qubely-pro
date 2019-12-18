@@ -7,7 +7,6 @@ const { registerBlockType } = wp.blocks
 registerBlockType('qubely/postcarousel', {
     title: __('Post Carousel'),
     description: 'Blog post carousel',
-    icon: 'image-flip-horizontal',
     icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-post-carousel.svg'} alt={__('Post Carousel Block')} />,
     category: 'qubely',
     keywords: [
