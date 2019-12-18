@@ -325,17 +325,12 @@ class Edit extends Component {
                             prevState={this.state}
                         />
                     </Toolbar>
+                    <PluginBlockSettingsMenuItem
+                        icon={ 'editor-code' }
+                        label={ __( 'Copy Attributes') }
+                        onClick={ ()=> this.copyAttributes() }
+                    />
                 </BlockControls>
-
-                {
-                    this.props.name === 'qubely/pieprogress' && (
-                        <PluginBlockSettingsMenuItem
-                            icon={ 'editor-code' }
-                            label={ __( 'Copy Attributes') }
-                            onClick={ ()=> this.copyAttributes() }
-                        />
-                    )
-                }
 
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
