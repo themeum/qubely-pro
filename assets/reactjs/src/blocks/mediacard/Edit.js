@@ -6,7 +6,7 @@ const {
 const {
     PanelBody,
     TextControl,
-    Toolbar
+    Toolbar,
 } = wp.components
 const {
     InspectorControls,
@@ -54,7 +54,7 @@ const {
 import icons from '../../helpers/icons'
 import ExternalVideo from './externalVideo'
 import templates from './templates.json';
-
+const { PluginBlockSettingsMenuItem } = wp.editPost;
 
 const mediaOptions = [
     { icon: 'fas fa-image', label: __('Image'), value: 'image', title: __('Image') },
@@ -749,6 +749,11 @@ class Edit extends Component {
                         />
                     </Toolbar>
                 </BlockControls>
+                <PluginBlockSettingsMenuItem
+					icon={ 'plus' }
+					label={ __( 'Copy Attributes') }
+					onClick={ ()=>console.log('test') }
+				/>
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
