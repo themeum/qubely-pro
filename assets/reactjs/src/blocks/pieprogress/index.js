@@ -126,8 +126,6 @@ registerBlockType('qubely/pieprogress', {
                 }
             ]
         },
-
-
         enableHeading: {type: 'boolean', default: true},
         heading: {type: 'string', default: 'Updated' },
         headingColor: {
@@ -203,7 +201,26 @@ registerBlockType('qubely/pieprogress', {
             source: 'html',
             selector: 'h2'
         },
-        sourceOfCopiedStyle: { type: 'boolean', default: false }
+        sourceOfCopiedStyle: { type: 'boolean', default: false },
+        qubelyStyleAttributes: {
+            type: 'array',
+            default: [
+                'layout',
+                'corner',
+                'thickness',
+                'circleShrink',
+                'thicknessBg',
+                'fillColor',
+                'background',
+                'iconTextColor',
+                'headingColor',
+                'headingPosition',
+                'headingSpacing',
+                'headingAlignment',
+                'progressShadow',
+                'circleShadow'
+            ]
+        }
     },
     edit : Edit,
     save: Save

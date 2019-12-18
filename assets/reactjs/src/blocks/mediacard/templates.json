@@ -1,8 +1,10 @@
 {
     "template1": {
+        "thumbnail": "https://i.ibb.co/qshhscC/circle1.png",
         "layout": 1
     },
     "template2": {
+        "thumbnail": "https://i.ibb.co/ss6Jq2z/circle2.png",
         "layout": 2,
         "cardBgColor": {
             "openColor": 1,
@@ -19,9 +21,11 @@
         }
     },
     "template3": {
+        "thumbnail": "https://i.ibb.co/TcvwHWq/circle3.png",
         "layout": 3
     },
     "template4": {
+        "thumbnail": "https://i.ibb.co/CVwJffx/circle4.png",
         "layout": 6,
         "stackBg": {
             "openColor": 1,
@@ -38,6 +42,7 @@
         }
     },
     "template5": {
+        "thumbnail": "https://i.ibb.co/CVwJffx/circle4.png",
         "layout": 6,
         "spacer": {
             "spaceTop": {

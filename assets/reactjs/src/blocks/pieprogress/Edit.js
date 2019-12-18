@@ -1,9 +1,11 @@
 
 import Progress from './Progress'
 import icons from '../../helpers/icons';
+import templates from '../mediacard/templates';
 const { Fragment, Component } = wp.element;
 const { PanelBody, Toolbar, TextControl } = wp.components
 const { InspectorControls, BlockControls, RichText } = wp.blockEditor
+const { PluginBlockSettingsMenuItem } = wp.editPost;
 const { __ } = wp.i18n
 const {
     Styles,
@@ -17,6 +19,7 @@ const {
     Media,
     BoxShadow,
     Alignment,
+    Templates,
     Inline: { InlineToolbar },
     CssGenerator: { CssGenerator },
     ContextMenu: {
@@ -51,6 +54,24 @@ class Edit extends Component {
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
         }
+    }
+
+
+    copyAttributes = () => {
+        const {
+            attributes,
+            attributes: {
+                qubelyStyleAttributes
+            }
+        } = this.props
+        const {copyToClipboard} = wp.qubelyComponents.HelperFunction
+        let template = {}
+        qubelyStyleAttributes.forEach(key => {
+            template[key] = attributes[key]
+        })
+
+        copyToClipboard(JSON.stringify(template))
+
     }
 
     render() {
@@ -155,6 +176,13 @@ class Edit extends Component {
                             ]}
                             value={alignment}
                             onChange={(alignment) => setAttributes({ alignment })} />
+
+                        <Templates
+                            // endPoint={'users'}
+                            updateStyle={setAttributes}
+                            attributes={attributes}
+                            templates={templates}
+                        />
 
                     </PanelBody>
                     <PanelBody title={__('Progress')} initialOpen={false}>
@@ -298,6 +326,17 @@ class Edit extends Component {
                         />
                     </Toolbar>
                 </BlockControls>
+
+                {
+                    this.props.name === 'qubely/pieprogress' && (
+                        <PluginBlockSettingsMenuItem
+                            icon={ 'editor-code' }
+                            label={ __( 'Copy Attributes') }
+                            onClick={ ()=> this.copyAttributes() }
+                        />
+                    )
+                }
+
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
                 <div className={`qubely-block-${uniqueId} qubely-block-pie-progress`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>

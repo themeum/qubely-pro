@@ -747,11 +747,18 @@ class Edit extends Component {
                         />
                     </Toolbar>
                 </BlockControls>
-                <PluginBlockSettingsMenuItem
-					icon={ 'editor-code' }
-					label={ __( 'Copy Attributes') }
-					onClick={ ()=> this.copyAttributes() }
-				/>
+
+                {
+                    this.props.name === 'qubely/mediacard' && (
+                        <PluginBlockSettingsMenuItem
+                            icon={ 'editor-code' }
+                            label={ __( 'Copy Attributes') }
+                            onClick={ ()=> this.copyAttributes() }
+                        />
+                    )
+                }
+
+
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
