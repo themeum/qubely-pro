@@ -6,12 +6,12 @@ const minifyCSS = require('gulp-csso');
 const minifyJS = require('gulp-minify');
 
 function cleanBuild() {
-    return src('./build', {read: false, allowEmpty: true})
+    return src('./build', { read: false, allowEmpty: true })
         .pipe(clean());
 }
 
 function cleanZip() {
-    return src('./qubely.zip', {read: false, allowEmpty: true})
+    return src('./qubely-pro.zip', { read: false, allowEmpty: true })
         .pipe(clean());
 }
 
@@ -20,8 +20,8 @@ function makeBuild() {
         './**/*.*',
         '!./build/**/*.*',
         '!./assets/reactjs/**/*.*',
-        '!./assets/js/qubely.dev.js.map',
-        '!./assets/js/qubely.dev.js',
+        '!./assets/js/qubely.pro.dev.js.map',
+        '!./assets/js/qubely.pro.dev.js',
         '!./assets/js/jquery.magnific-popup.js',
         '!./node_modules/**/*.*',
         '!./**/*.zip',
@@ -30,43 +30,60 @@ function makeBuild() {
         '!./LICENSE.txt',
         '!./package.json',
         '!./package-lock.json',
-    ]).pipe(dest('build/qubely/'));
+    ]).pipe(dest('build/qubely-pro/'));
 }
 
 function productionMode() {
-    return src(['./build/qubely/core/QUBELY.php'])
-      .pipe(replace(/qubely.dev.js/g, 'qubely.min.js'))
-      .pipe(replace(/common-script.js/g, 'common-script.min.js'))
-      .pipe(dest('./build/qubely/core/'));
+    return src(['./build/qubely-pro/core/QUBELY-PRO.php'])
+        .pipe(replace(/qubely.pro.dev.js/g, 'qubely.min.js'))
+        .pipe(replace(/frontend.js/g, 'frontend.min.js'))
+        .pipe(replace(/form.js/g, 'form.min.js'))
+        .pipe(replace(/slider-script.js/g, 'slider-script.min.js'))
+        .pipe(replace(/qubely-carousel.js/g, 'qubely-carousel.min.js'))
+        .pipe(replace(/installer.js/g, 'installer.min.js'))
+        .pipe(dest('./build/qubely-pro/core/'));
+}
+function productionAssets() {
+    return src(['./build/qubely-pro/classes/Assets.php'])
+        .pipe(replace(/qubely.pro.dev.js/g, 'qubely.min.js'))
+        .pipe(dest('./build/qubely-pro/classes/'));
 }
 
 function minify_css() {
-    return src(['./build/qubely/assets/css/*.css'])
+    return src(['./build/qubely-pro/assets/css/*.css'])
         .pipe(minifyCSS())
-        .pipe(dest('./build/qubely/assets/css/'));
+        .pipe(dest('./build/qubely-pro/assets/css/'));
 }
 
 function minify_js() {
-    return src(['./build/qubely/assets/js/*.js'])
+    return src(['./build/qubely-pro/assets/js/*.js'])
         .pipe(minifyJS({
-            ext:{
-                src:'.js',
-                min:'.min.js'
+            ext: {
+                src: '.js',
+                min: '.min.js'
             },
             exclude: ['tasks'],
             ignoreFiles: ['qubely.min.js', '*-min.js', '*.min.js']
         }))
-        .pipe(dest('./build/qubely/assets/js/'));
+        .pipe(dest('./build/qubely-pro/assets/js/'));
 }
 
 function removeJsFiles() {
-    return src(['./build/qubely/assets/js/common-script.js'], {read: false, allowEmpty: true})
+    return src(
+        ['./build/qubely-pro/assets/js/common-script.js',
+            './build/qubely-pro/assets/js/frontend.js',
+            './build/qubely-pro/assets/js/form.js',
+            './build/qubely-pro/assets/js/slider-script.js',
+            './build/qubely-pro/assets/js/qubely-carousel.js',
+            './build/qubely-pro/assets/js/installer.js',
+        ],
+        { read: false, allowEmpty: true })
         .pipe(clean());
 }
 
 function makeZip() {
     return src('./build/**/*.*')
-        .pipe(zip('qubely.zip'))
+        .pipe(zip('qubely-pro.zip'))
         .pipe(dest('./'))
 }
 
@@ -78,4 +95,4 @@ exports.cleanBuild = cleanBuild;
 exports.cleanZip = cleanZip;
 exports.removeJsFiles = removeJsFiles;
 exports.makeZip = makeZip;
-exports.default = series(cleanBuild, cleanZip, makeBuild, productionMode, minify_css, minify_js, removeJsFiles, makeZip, cleanBuild);
+exports.default = series(cleanBuild, cleanZip, makeBuild, productionMode, productionAssets, minify_css, minify_js, removeJsFiles, makeZip, cleanBuild);
