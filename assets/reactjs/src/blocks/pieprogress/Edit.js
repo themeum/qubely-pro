@@ -303,33 +303,37 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId} qubely-block-pie-progress`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                     <div className="qubely-progress-parent">
                         <Progress {...progressAttr} />
-                        {enableIcon && (
+                        {(enableIcon || enableHeading) && (
                             <div className="qubely-progress-inner-text">
-                                {iconStyle === 'text' && (
-                                    <RichText
-                                        value={ iconText }
-                                        placeholder={__('Text Here')}
-                                        onChange={ iconText  => setAttributes( { iconText } ) }
-                                    />
-                                )}
-                                {iconStyle === 'icon' && (
-                                    <span className={`qubely-pie-icon ${iconName}`} />
-                                )}
-                                {iconStyle === 'image' && (
-                                    <div className={'icon-image ' + (image.url === undefined && 'pie-placeholder')}>
-                                        {
-                                            image.url !== undefined ? (
-                                                <img
-                                                    className="qubely-pie-image"
-                                                    src={image.url}
-                                                    alt={imageAlt && imageAlt}
-                                                    srcSet={image2x.url !== undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
-                                                />
-                                            ) : (
-                                                <span className="qubely-pie-placeholder far fa-image" />
-                                            )
-                                        }
-                                    </div>
+                                {enableIcon && (
+                                    <Fragment>
+                                        {iconStyle === 'text' && (
+                                            <RichText
+                                                value={ iconText }
+                                                placeholder={__('Text Here')}
+                                                onChange={ iconText  => setAttributes( { iconText } ) }
+                                            />
+                                        )}
+                                        {iconStyle === 'icon' && (
+                                            <span className={`qubely-pie-icon ${iconName}`} />
+                                        )}
+                                        {iconStyle === 'image' && (
+                                            <div className={'icon-image ' + (image.url === undefined && 'pie-placeholder')}>
+                                                {
+                                                    image.url !== undefined ? (
+                                                        <img
+                                                            className="qubely-pie-image"
+                                                            src={image.url}
+                                                            alt={imageAlt && imageAlt}
+                                                            srcSet={image2x.url !== undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
+                                                        />
+                                                    ) : (
+                                                        <span className="qubely-pie-placeholder far fa-image" />
+                                                    )
+                                                }
+                                            </div>
+                                        )}
+                                    </Fragment>
                                 )}
 
                                 {(enableHeading && headingPosition === 'inside') && (
