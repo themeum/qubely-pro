@@ -1,5 +1,6 @@
 {
   "template1":{
+    "thumbnail": "https://i.ibb.co/qshhscC/circle1.png",
     "layout":"outline",
     "corner":"round",
     "thickness":11,
@@ -40,6 +41,7 @@
     }
   },
   "template2":{
+    "thumbnail": "https://i.ibb.co/ss6Jq2z/circle2.png",
     "layout":"outline",
     "corner":"round",
     "thickness":11,
@@ -88,6 +90,7 @@
     }
   },
   "template3":{
+    "thumbnail": "https://i.ibb.co/TcvwHWq/circle3.png",
     "layout":"outline",
     "corner":"round",
     "thickness":11,
@@ -128,6 +131,7 @@
     }
   },
   "template4":{
+    "thumbnail": "https://i.ibb.co/CVwJffx/circle4.png",
     "layout":"outline",
     "corner":"round",
     "thickness":11,

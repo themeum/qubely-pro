@@ -205,6 +205,7 @@ registerBlockType('qubely/pieprogress', {
         qubelyStyleAttributes: {
             type: 'array',
             default: [
+                'size',
                 'layout',
                 'corner',
                 'thickness',

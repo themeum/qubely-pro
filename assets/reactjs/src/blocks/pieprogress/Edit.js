@@ -1,7 +1,7 @@
 
 import Progress from './Progress'
 import icons from '../../helpers/icons';
-import templates from '../mediacard/templates';
+import templates from './templates';
 const { Fragment, Component } = wp.element;
 const { PanelBody, Toolbar, TextControl } = wp.components
 const { InspectorControls, BlockControls, RichText } = wp.blockEditor
