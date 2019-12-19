@@ -23,7 +23,6 @@ const {
     RadioAdvanced,
     Typography,
     Toggle,
-    Templates,
     Styles,
     Alignment,
     ColorAdvanced,
@@ -53,8 +52,7 @@ const {
 
 import icons from '../../helpers/icons'
 import ExternalVideo from './externalVideo'
-import templates from './templates.json';
-const { PluginBlockSettingsMenuItem } = wp.editPost;
+// import templates from './templates.json';
 
 const mediaOptions = [
     { icon: 'fas fa-image', label: __('Image'), value: 'image', title: __('Image') },
@@ -91,26 +89,6 @@ class Edit extends Component {
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
         }
-    }
-
-    copyAttributes = () => {
-        const {
-            attributes,
-            attributes: {
-                qubelyStyleAttributes
-            }
-        } = this.props
-
-        const {copyToClipboard} = wp.qubelyComponents.HelperFunction
-
-        let template = {}
-
-        qubelyStyleAttributes.forEach(key => {
-            template[key] = attributes[key]
-        })
-
-        copyToClipboard(JSON.stringify(template))
-
     }
 
     render() {
@@ -247,12 +225,6 @@ class Edit extends Component {
                                             }
                                         }
                                         : { layout: newLayout })}
-                        />
-                        <Templates
-                            // endPoint={'users'}
-                            updateStyle={setAttributes}
-                            attributes={attributes}
-                            templates={templates}
                         />
                     </PanelBody>
 
@@ -746,12 +718,6 @@ class Edit extends Component {
                             prevState={this.state}
                         />
                     </Toolbar>
-
-                    <PluginBlockSettingsMenuItem
-                        icon={ 'editor-code' }
-                        label={ __( 'Copy Attributes') }
-                        onClick={ ()=> this.copyAttributes() }
-                    />
                 </BlockControls>
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}

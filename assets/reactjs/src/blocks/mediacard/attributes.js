@@ -1054,11 +1054,5 @@ export const attributes = {
     showContextMenu: {
         type: 'boolean',
         default: true
-    },
-    qubelyStyleAttributes: {
-        type: 'array',
-        default: [
-            'layout', 'spacer', 'cardBgColor', 'badge'
-        ]
     }
 };
