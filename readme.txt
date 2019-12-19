@@ -1,7 +1,11 @@
 ===  Qubely Pro ===
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 
 == Changelog ==
+
+= 1.0.7 - 19 December, 2019 =
+New: Pie Progress Block Added
+New: Template/Preset Field Added
 
 = 1.0.6 - 12 December, 2019 =
 New: Media Card block  

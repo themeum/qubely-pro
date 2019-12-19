@@ -1,6 +1,6 @@
 {
   "name": "qubely-pro",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Contributors: **themeum**",
   "main": "gulpfile.js",
   "dependencies": {
