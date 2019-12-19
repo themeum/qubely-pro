@@ -31,7 +31,7 @@ registerBlockType('qubely/pieprogress', {
         speed: {type: 'string', default: 1000 },
         corner: {type: 'string', default: 'round' },
         enableIcon: {type: 'boolean', default: true },
-        iconStyle: {type: 'string', default: 'text' },
+        iconStyle: {type: 'string', default: 'percent' },
         thickness: {type: 'string', default: 11 },
         circleShrink: {type: 'string', default: 0 },
         thicknessBg: {type: 'string', default: 21 },
@@ -60,7 +60,7 @@ registerBlockType('qubely/pieprogress', {
                 }
             ]
         },
-        iconText: { type: 'string', default: '60%' },
+        iconText: { type: 'string', default: 'Text' },
         background: {type: 'string', default: '#eff4f8' },
         iconName: { type: 'string', default: 'fas fa-rocket' },
         image: { type: 'object', default: {} },
