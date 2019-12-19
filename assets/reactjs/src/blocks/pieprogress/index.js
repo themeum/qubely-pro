@@ -214,10 +214,12 @@ registerBlockType('qubely/pieprogress', {
                 'fillColor',
                 'background',
                 'iconTextColor',
+                'iconTypography',
                 'headingColor',
                 'headingPosition',
                 'headingSpacing',
                 'headingAlignment',
+                'headingTypography',
                 'progressShadow',
                 'circleShadow'
             ]
