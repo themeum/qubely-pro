@@ -1,18 +1,22 @@
 {
   "template1": {
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle1.svg"
+    },
     "size": 280,
     "layout": "outline",
     "corner": "round",
     "thickness": "12",
     "circleShrink": 0,
-    "thicknessBg": "28",
+    "thicknessBg": "24",
     "fillColor": {
       "openColor": 1,
       "type": "gradient",
       "color": "#25b5e1",
       "gradient": {
-        "color1": "#f72d60",
-        "color2": "#8a5fd8",
+        "color1": "#efcfb4",
+        "color2": "#f88d24",
         "type": "linear",
         "direction": "174",
         "start": "0",
@@ -49,7 +53,11 @@
     }
   },
   "template2": {
-    "size": 280,
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle2.svg"
+    },
+    "size": "280",
     "layout": "outline_fill",
     "corner": "round",
     "thickness": "20",
@@ -96,7 +104,11 @@
     }
   },
   "template3": {
-    "size": 280,
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle3.svg"
+    },
+    "size": "300",
     "layout": "outline_fill",
     "corner": "round",
     "thickness": "4",
@@ -135,7 +147,11 @@
     }
   },
   "template4": {
-    "size": 280,
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle4.svg"
+    },
+    "size": "280",
     "layout": "fill",
     "corner": "round",
     "thickness": 11,
@@ -176,7 +192,11 @@
     }
   },
   "template5": {
-    "size": 280,
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle5.svg"
+    },
+    "size": "300",
     "layout": "outline_fill",
     "corner": "unset",
     "thickness": "15",
@@ -217,7 +237,11 @@
     }
   },
   "template6": {
-    "size": 280,
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle6.svg"
+    },
+    "size": "280",
     "layout": "outline",
     "corner": "unset",
     "thickness": "50",
@@ -238,12 +262,14 @@
         "clip": false
       }
     },
-    "background": "#ffd74c",
+    "background": "#5dd8d7",
     "iconTextColor": "#062040",
     "headingColor": "#566372",
-    "headingPosition": "inside",
-    "headingSpacing": 10,
-    "headingAlignment": {},
+    "headingPosition": "outside",
+    "headingSpacing": "42",
+    "headingAlignment": {
+      "md": "center"
+    },
     "progressShadow": {},
     "circleShadow": {
       "openShadow": 0,
@@ -256,6 +282,10 @@
     }
   },
   "template7": {
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle7.svg"
+    },
     "size": "320",
     "layout": "outline_fill",
     "corner": "unset",
@@ -278,10 +308,10 @@
       }
     },
     "background": "#1738bb",
-    "iconTextColor": "#062040",
+    "iconTextColor": "#ffffff",
     "headingColor": "#566372",
     "headingPosition": "outside",
-    "headingSpacing": "15",
+    "headingSpacing": "42",
     "headingAlignment": {
       "md": "center"
     },
@@ -297,6 +327,10 @@
     }
   },
   "template8": {
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle8.svg"
+    },
     "size": "400",
     "layout": "outline",
     "corner": "unset",
@@ -308,8 +342,8 @@
       "type": "gradient",
       "color": "#0d333e",
       "gradient": {
-        "color1": "#f583cb",
-        "color2": "#c11ec9",
+        "color1": "#83a4f5",
+        "color2": "#1e40c9",
         "type": "linear",
         "direction": "156",
         "start": "0",
@@ -318,12 +352,14 @@
         "clip": false
       }
     },
-    "background": "#f8e5ff",
+    "background": "#d7eefc",
     "iconTextColor": "#062040",
     "headingColor": "#566372",
-    "headingPosition": "inside",
-    "headingSpacing": 10,
-    "headingAlignment": {},
+    "headingPosition": "outside",
+    "headingSpacing": "42",
+    "headingAlignment": {
+      "md": "center"
+    },
     "progressShadow": {
       "openShadow": true,
       "inset": "",
@@ -341,6 +377,59 @@
       "blur": 3,
       "spread": 0,
       "color": "rgba(100,121,130,0.43)"
+    }
+  },
+  "template9": {
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle9.svg"
+    },
+    "size": "300",
+    "layout": "outline",
+    "corner": "round",
+    "thickness": "13",
+    "circleShrink": "25",
+    "thicknessBg": "100",
+    "fillColor": {
+      "openColor": 1,
+      "type": "gradient",
+      "color": "#25b5e1",
+      "gradient": {
+        "color1": "#70f7f5",
+        "color2": "#418af0",
+        "type": "linear",
+        "direction": "178",
+        "start": "59",
+        "stop": "100",
+        "radial": "center",
+        "clip": false
+      }
+    },
+    "background": "#273bd9",
+    "iconTextColor": "#ffffff",
+    "headingColor": "#5c338c",
+    "headingPosition": "outside",
+    "headingSpacing": "25",
+    "headingAlignment": {
+      "md": "center"
+    },
+    "progressShadow": {
+      "openShadow": true,
+      "inset": "",
+      "horizontal": "0",
+      "vertical": 2,
+      "blur": "5",
+      "spread": 0,
+      "color": "rgba(0,0,0,0.36)"
+    },
+    "circleShadow": {
+      "openShadow": true,
+      "inset": 0,
+      "horizontal": "0",
+      "vertical": "11",
+      "blur": "15",
+      "spread": "5",
+      "color": "rgba(0,0,0,0.47)"
     }
   }
 }

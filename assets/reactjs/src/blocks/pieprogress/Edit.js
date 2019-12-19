@@ -382,7 +382,7 @@ class Edit extends Component {
                                     <RichText
                                         value={ heading }
                                         className="qubely-pie-progress-heading"
-                                        placeholder={__('Heading Here (Use [%] progress)')}
+                                        placeholder={__('Heading Here')}
                                         onChange={ heading  => setAttributes( { heading } ) }
                                     />
                                 )}

@@ -132,7 +132,7 @@ class Templates extends Component {
                                         {
                                             Object.keys(templates).map((key, _index) => {
                                                 const thumbnail = templates[key].thumbnail
-                                                let thumbnail_src = 'https://i.ibb.co/ss6Jq2z/circle2.png';
+                                                let thumbnail_src = `${qubely_pro_admin.plugin}assets/img/templates/placeholder.svg`;
                                                 if(thumbnail !== undefined){
                                                     if(thumbnail.type === 'local') {
                                                         if(thumbnail.src !== undefined && thumbnail.src !== ''){
