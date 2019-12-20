@@ -218,7 +218,7 @@ class Updater {
 	 * @param $action
 	 * @param $args
 	 *
-	 * @return bool|stdClass
+	 * @return bool|\stdClass
      *
      * Get the plugin info from server
 	 */
@@ -237,7 +237,7 @@ class Updater {
 
 		if(! is_wp_error($remote) ) {
 
-			$res = new stdClass();
+			$res = new \stdClass();
 			$res->name = $remote->data->plugin_name;
 			$res->slug = $plugin_slug;
 			$res->version = $remote->data->version;
