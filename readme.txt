@@ -3,7 +3,7 @@ Stable tag: 1.0.7
 
 == Changelog ==
 
-= 1.0.7 - 19 December, 2019 =
+= 1.0.7 - 20 December, 2019 =
 New: Pie Progress Block Added
 New: Template/Preset Field Added
 
