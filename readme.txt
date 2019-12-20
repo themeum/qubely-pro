@@ -6,6 +6,7 @@ Stable tag: 1.0.7
 = 1.0.7 - 20 December, 2019 =
 New: Pie Progress Block Added
 New: Template/Preset Field Added
+Fix: Post Grid block - Excerpt issue  
 
 = 1.0.6 - 12 December, 2019 =
 New: Media Card block  
