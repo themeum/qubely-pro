@@ -6,7 +6,7 @@ const {
 const {
     PanelBody,
     TextControl,
-    Toolbar
+    Toolbar,
 } = wp.components
 const {
     InspectorControls,
@@ -48,12 +48,11 @@ const {
         handleContextMenu
     }
 } = wp.qubelyComponents
-const {
-    withSelect
-} = wp.data
 
-import icons from '../../helpers/icons';
+
+import icons from '../../helpers/icons'
 import ExternalVideo from './externalVideo'
+// import templates from './templates.json';
 
 const mediaOptions = [
     { icon: 'fas fa-image', label: __('Image'), value: 'image', title: __('Image') },
@@ -187,7 +186,6 @@ class Edit extends Component {
             }
         } = this.props
 
-
         const { device } = this.state
         if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
 
@@ -228,7 +226,6 @@ class Edit extends Component {
                                         }
                                         : { layout: newLayout })}
                         />
-
                     </PanelBody>
 
                     {((layout != 5) && (layout != 4)) &&
@@ -391,23 +388,23 @@ class Edit extends Component {
                                                     onChange={val => setAttributes({ imageWidth: val })}
                                                     onDeviceChange={value => this.setState({ device: value })}
                                                 />
-                                                <Range 
-                                                    label={__('Image Position X')} 
-                                                    value={imagePositionX} 
-                                                    onChange={value => setAttributes({ imagePositionX: value })} 
-                                                    unit={['px', 'em', '%']} 
-                                                    min={-500} 
-                                                    max={500} 
-                                                    responsive device={device} 
-                                                    onDeviceChange={value => this.setState({ device: value })} 
+                                                <Range
+                                                    label={__('Image Position X')}
+                                                    value={imagePositionX}
+                                                    onChange={value => setAttributes({ imagePositionX: value })}
+                                                    unit={['px', 'em', '%']}
+                                                    min={-500}
+                                                    max={500}
+                                                    responsive device={device}
+                                                    onDeviceChange={value => this.setState({ device: value })}
                                                 />
-                                                <Range 
-                                                    label={__('Image Position Y')} 
-                                                    value={imagePositionY} 
-                                                    onChange={value => setAttributes({ imagePositionY: value })} 
-                                                    unit={['px', 'em', '%']} min={-500} max={500} 
-                                                    responsive device={device} 
-                                                    onDeviceChange={value => this.setState({ device: value })} 
+                                                <Range
+                                                    label={__('Image Position Y')}
+                                                    value={imagePositionY}
+                                                    onChange={value => setAttributes({ imagePositionY: value })}
+                                                    unit={['px', 'em', '%']} min={-500} max={500}
+                                                    responsive device={device}
+                                                    onDeviceChange={value => this.setState({ device: value })}
                                                 />
                                                 <BorderRadius
                                                     min={0}
@@ -722,6 +719,7 @@ class Edit extends Component {
                         />
                     </Toolbar>
                 </BlockControls>
+
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
                 <div className={`qubely-block-${uniqueId}`}>
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>

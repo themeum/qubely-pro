@@ -1,0 +1,60 @@
+{
+    "template1": {
+        "thumbnail": "https://i.ibb.co/qshhscC/circle1.png",
+        "layout": 1
+    },
+    "template2": {
+        "thumbnail": "https://i.ibb.co/ss6Jq2z/circle2.png",
+        "layout": 2,
+        "cardBgColor": {
+            "openColor": 1,
+            "type": "color",
+            "color": "#d1aaaa",
+            "gradient": {
+                "direction": 45,
+                "start": 0,
+                "stop": 100,
+                "type": "linear",
+                "color1": "rgba(0, 0, 0, 0.5)",
+                "color2": "rgba(6, 1, 14, 0.6)"
+            }
+        }
+    },
+    "template3": {
+        "thumbnail": "https://i.ibb.co/TcvwHWq/circle3.png",
+        "layout": 3
+    },
+    "template4": {
+        "thumbnail": "https://i.ibb.co/CVwJffx/circle4.png",
+        "layout": 6,
+        "stackBg": {
+            "openColor": 1,
+            "type": "color",
+            "color": "#99bcc1",
+            "gradient": {
+                "direction": 45,
+                "start": 0,
+                "stop": 100,
+                "type": "linear",
+                "color1": "rgba(0, 0, 0, 0.5)",
+                "color2": "rgba(6, 1, 14, 0.6)"
+            }
+        }
+    },
+    "template5": {
+        "thumbnail": "https://i.ibb.co/CVwJffx/circle4.png",
+        "layout": 6,
+        "spacer": {
+            "spaceTop": {
+                "md": "10",
+                "unit": "px"
+            },
+            "spaceBottom": {
+                "md": "10",
+                "unit": "px"
+            }
+        },
+        "cardBgColor": {},
+        "badge": "Sale"
+    }
+}

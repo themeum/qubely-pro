@@ -187,7 +187,7 @@ export const attributes = {
             }
         ]
     },
-    
+
     imageBorderRadius: {
         type: 'object',
         default: {
@@ -1054,5 +1054,5 @@ export const attributes = {
     showContextMenu: {
         type: 'boolean',
         default: true
-    },
+    }
 };

@@ -1,10 +1,16 @@
 ===  Qubely Pro ===
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 
 == Changelog ==
 
+= 1.0.7 - 23 December, 2019 =
+New: Pie Progress block added
+New: Predesigned block template feature
+Fix: Post Grid block - Excerpt issue
+
 = 1.0.6 - 12 December, 2019 =
 New: Media Card block  
+Update: Post Grid block - Number of items limit    
 
 = 1.0.5 - 06 December, 2019 =
 New: Full Width, Wide Width alignment option in all blocks  

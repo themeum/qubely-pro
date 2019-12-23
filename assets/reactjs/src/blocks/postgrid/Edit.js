@@ -72,7 +72,10 @@ class Edit extends Component {
 		this.isStillMounted = false;
 	}
 	truncate(value, limit) {
-		return value.split(' ').splice(0, limit).join(' ');
+		if (value.split(' ').length > limit) {
+			return value.split(' ').splice(0, limit).join(' ');
+		}
+		return value;
 	}
 
 	renderFeaturedImage = (post) => {
@@ -385,7 +388,7 @@ class Edit extends Component {
 							value={taxonomy === 'categories' ? categories : tags}
 							onChange={value => setAttributes(taxonomy === 'categories' ? { categories: value.length && value[value.length - 1].label === 'All' ? [] : value } : { tags: value.length && value[value.length - 1].label === 'All' ? [] : value })}
 						/>
-						<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={0} max={15} />
+						<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={0} max={50} />
 
 						<SelectControl
 							label={__("Order By")}
