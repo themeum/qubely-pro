@@ -4,9 +4,9 @@ Stable tag: 1.0.7
 == Changelog ==
 
 = 1.0.7 - 23 December, 2019 =
-New: Pie Progress Block Added
-New: Template/Preset Field Added
-Fix: Post Grid block - Excerpt issue  
+New: Pie Progress block added
+New: Predesigned block template feature
+Fix: Post Grid block - Excerpt issue
 
 = 1.0.6 - 12 December, 2019 =
 New: Media Card block  
