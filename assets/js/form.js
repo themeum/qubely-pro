@@ -167,28 +167,13 @@ jQuery(document).ready(function ($) {
 
     //FORM BLOCK
     $('.qubely-block-form form.qubely-form:not(.qubely-form-ready)').each(function () {
-
         const $form = $(this);
         $form.addClass('qubely-form-ready');
         $form.find('input.qubely-form-field').on('keydown', (e) => {
             if (e.which === 13) { e.preventDefault(); return false; };
         });
         checkFormValidation($form, true); //add validation
-        const reCaptcha = $form.find('input[name="recaptcha"]').val();
-        const reCaptchaSiteKey = $form.find('input[name="recaptcha-site-key"]').val();
-        if (reCaptcha == 'true') {
-            const apiURL = 'https://www.google.com/recaptcha/api.js?onload=initGoogleReChaptcha&render=explicit';
-            loadScriptAsync(apiURL).then(() => {
-                window.initGoogleReChaptcha = () => {
-                    const qubelyContactForms = document.querySelectorAll('.qubely-block-form form .qubely-form.qubely-google-recaptcha');
-                    qubelyContactForms.forEach((form) => {
-                        grecaptcha.render(form, {
-                            sitekey: reCaptchaSiteKey
-                        });
-                    });
-                };
-            });
-        }
+     
         // FORM SUBMIT EVENT
         $form.submit((e) => {
             e.preventDefault();
