@@ -189,6 +189,7 @@ class Edit extends Component {
 			setAttributes,
 			attributes: {
 				uniqueId,
+				className,
 				items,
 				autoPlay,
 				interval,
@@ -796,7 +797,7 @@ class Edit extends Component {
 
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-				<div className={`qubely-block-${uniqueId}`}>
+				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
 					<div className={`qubely-block-team-carousel qubely-layout-style`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 						<Carousel options={carouselSettings}>
 							{this.renderTeams()}

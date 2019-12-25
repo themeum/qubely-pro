@@ -27,6 +27,7 @@ export default function Edit(props) {
         setAttributes,
         attributes: {
             uniqueId,
+            className,
             gutter,
         }
     } = props
@@ -61,7 +62,7 @@ export default function Edit(props) {
                     />
                 </PanelBody>
             </InspectorControls>
-            <div className={`qubely-block-${uniqueId}`}>
+            <div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
                 <div className={`qubely-form-row qubely-backend`}>
                     <InnerBlocks allowedBlocks={['qubely/formfield-column']} />
                 </div>

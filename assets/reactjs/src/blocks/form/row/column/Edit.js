@@ -34,6 +34,7 @@ function Edit(props) {
         columnIndex,
         attributes: {
             uniqueId,
+            className,
             fieldSize,
             width,
             parentClientId
@@ -135,7 +136,7 @@ function Edit(props) {
                 </PanelBody>
             </InspectorControls>
 
-            <div className={`qubely-block-${uniqueId}  qubely-${fieldSize}`}>
+            <div className={`qubely-block-${uniqueId}  qubely-${fieldSize}${className ? ` ${className}` : ''}`}>
                 <div className={`qubely-form-column`}>
 
                     {

@@ -151,6 +151,7 @@ class Edit extends Component {
 			setAttributes,
 			attributes: {
 				uniqueId,
+				className,
 				taxonomy,
 				categories,
 				tags,
@@ -890,7 +891,7 @@ class Edit extends Component {
 
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-				<div className={`qubely-block-${uniqueId}`}>
+				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
 					{(posts && posts.length) ?
 						<div className={`qubely-block-post-carousel qubely-postcarousel-wrapper`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 							<Carousel options={carouselSettings}>

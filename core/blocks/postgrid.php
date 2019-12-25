@@ -1226,6 +1226,9 @@ function render_block_qubely_postgrid_pro($att)
 	if ( isset( $att['align'] ) ) {
 		$class .= ' align' . $att['align'];
 	}
+	if ( isset( $att['className'] ) ) {
+		$class .=' '. $att['className'];
+	}
 	if ($query->have_posts()) {
 		$html .= '<div class="' . $class . '">';
 		$html .= '<div class="qubely-postgrid-wrapper '.$interaction.' qubely-postgrid-layout-' . esc_attr($layout) . esc_attr($col) . '" '.$animation.'>';

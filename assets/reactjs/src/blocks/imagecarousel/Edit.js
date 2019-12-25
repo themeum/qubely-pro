@@ -226,6 +226,7 @@ class Edit extends Component {
 			setAttributes,
 			attributes: {
 				uniqueId,
+				className,
 				layout,
 				alignment,
 				carouselItems,
@@ -677,7 +678,7 @@ class Edit extends Component {
 
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-				<div className={`qubely-block-${uniqueId}`}>
+				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
 					<div className={`qubely-block-image-carousel qubely-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 						<Carousel options={carouselSettings}>
 							{this.renderImages()}

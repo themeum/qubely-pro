@@ -135,6 +135,7 @@ class Edit extends Component {
 			setAttributes,
 			attributes: {
 				uniqueId,
+				className,
 				taxonomy,
 				categories,
 				tags,
@@ -649,7 +650,7 @@ class Edit extends Component {
 
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-				<div className={`qubely-block-${uniqueId}`}>
+				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
 					{
 						(posts && posts.length) ?
 							<div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${((layout === 2) || (layout === 3) || (layout === 4)) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>

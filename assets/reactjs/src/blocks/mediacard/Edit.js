@@ -101,6 +101,7 @@ class Edit extends Component {
             attributes: {
 
                 uniqueId,
+                className,
                 layout,
 
                 //fixed height
@@ -721,7 +722,7 @@ class Edit extends Component {
                 </BlockControls>
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
-                <div className={`qubely-block-${uniqueId}`}>
+                <div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
                     <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         <div className={`qubely-block-mediacard-wrapper`}>
                             {((layout === 1) || (layout === 2) || (layout === 4) || (layout === 5)) &&

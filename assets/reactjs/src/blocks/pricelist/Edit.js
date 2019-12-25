@@ -200,6 +200,7 @@ class Edit extends Component {
             setAttributes,
             attributes: {
                 uniqueId,
+                className,
                 pricelistItems,
                 style,
                 column,
@@ -488,7 +489,7 @@ class Edit extends Component {
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-                <div className={`qubely-block-${uniqueId}`}>
+                <div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
                     <div className={`qubely-block-pricelist qubely-pricelist-item-${style}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         <div className={`qubely-pricelist-items`}>
                             {this.renderPricelist()}

@@ -1398,6 +1398,9 @@ function render_block_qubely_postcarousel_pro($att)
 	if ( isset( $att['align'] ) ) {
 		$class .= ' align' . $att['align'];
 	}
+	if ( isset( $att['className'] ) ) {
+		$class .=' '. $att['className'];
+	}
 	# The Loop. 
 	if ($query->have_posts()) {
 		$html .= '<div class="' . $class . '">';

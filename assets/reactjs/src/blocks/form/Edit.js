@@ -248,6 +248,7 @@ class Edit extends Component {
             setAttributes,
             attributes: {
                 uniqueId,
+                className,
                 layout,
                 labelColor,
                 labelSpacing,
@@ -560,7 +561,7 @@ class Edit extends Component {
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-                <div className={`qubely-block-${uniqueId}`}>
+                <div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
                     <div className={`qubely-block-form qubely-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
