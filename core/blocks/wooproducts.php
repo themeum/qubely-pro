@@ -55,26 +55,26 @@ function register_block_qubely_wooproducts()
                     'default' => 'Add to cart',
                 ),
                 'buttonBgColor' => array(
-					'type' => 'object',
-					'default' => (object) array(),
-					'style' => [(object) [
-						'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
-					]]
+                    'type' => 'object',
+                    'default' => (object) array(),
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
+                    ]]
                 ),
                 'buttonBorder' => array(
-					'type' => 'object',
-					'default' => (object) array(),
-					'style' => [(object) [
-						'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
-					]]
-				),
-				'buttonBorderRadius' => array(
-					'type' => 'object',
-					'default' => (object) array(),
-					'style' => [(object) [
+                    'type' => 'object',
+                    'default' => (object) array(),
+                    'style' => [(object) [
                         'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
-					]]
-				),
+                    ]]
+                ),
+                'buttonBorderRadius' => array(
+                    'type' => 'object',
+                    'default' => (object) array(),
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
+                    ]]
+                ),
                 'showGlobalSettings' => array(
                     'type' => 'boolean',
                     'default' => true
@@ -129,7 +129,7 @@ function render_block_qubely_wooproducts($att)
     $uniqueId               = isset($att['uniqueId']) ? $att['uniqueId'] : '';
     $layout                 = isset($att['layout']) ? $att['layout'] : 2;
     $style                  = isset($att['style']) ? $att['style'] : 1;
-    $name                  = isset($att['name']) ? $att['name']:'product name';
+    $name                  = isset($att['name']) ? $att['name'] : 'product name';
     $productsPerPage        = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
     $productsStatus         = isset($att['productsStatus']) ? $att['productsStatus'] : 'all';
     $orderBy                = isset($att['orderby']) ? $att['orderby'] : 'date';
@@ -226,16 +226,18 @@ function render_block_qubely_wooproducts($att)
 
         while ($query->have_posts()) {
             $query->the_post();
+            $post_id = get_the_ID();
+            $product = wc_get_product($post_id);
             $id = get_post_thumbnail_id();
             $src = wp_get_attachment_image_src($id);
-            $image = '<img class="qubely-post-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/>';
+            $html .= '<div class="qubely-woo_product">';
+            $image = '<div class="qubely-woo_product-image-wrapper"><img class="qubely-woo_product-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/></div>';
             $html .= $image;
-
-            $html .= '<div class="qubely-postgrid-meta">';
-            $html .= get_the_title();
+            $html .= '<div class="qubely-woo-product-name">' . get_the_title() . '</div>';
+            $html .= '<div class="qubely-woo-product-regular-price">' .  $product->get_regular_price() . '</div>';
+            $html .= '<div class="qubely-woo-product-sale-price">' .  $product->get_sale_price() . '</div>';
+            $html .= '<div class="qubely-woo-product-price">' .  $product->get_price() . '</div>';
             $html .= '</div>';
-            // $html .= $test;
-            
         }
         $html .= '</div>';
         wp_reset_postdata();

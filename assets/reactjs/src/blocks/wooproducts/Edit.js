@@ -210,9 +210,7 @@ export default function Edit(props) {
             <span className={`qubely-woo_product-image-wrapper`}>
                 {images.map(({ src, alt }) => {
                     return (
-                        <span className={`qubely-woo_product-image`}>
-                            <img src={src} alt={alt} />
-                        </span>
+                        <img className={`qubely-woo_product-image`} src={src} alt={alt} />
                     )
                 })}
             </span>
@@ -220,8 +218,7 @@ export default function Edit(props) {
     }
 
     if (uniqueId) { CssGenerator(attributes, 'wooproducts', uniqueId) }
-    console.log('products : ', products)
-    console.log('test  : ')
+
 
     return (
         <Fragment>
