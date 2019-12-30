@@ -36,6 +36,7 @@ const {
     Typography,
     Toggle,
     Dropdown,
+    Border,
     BorderRadius,
     BoxShadow,
     Alignment,
@@ -219,7 +220,8 @@ export default function Edit(props) {
     }
 
     if (uniqueId) { CssGenerator(attributes, 'wooproducts', uniqueId) }
-
+    console.log('products : ', products)
+    console.log('test  : ')
 
     return (
         <Fragment>
@@ -406,7 +408,7 @@ export default function Edit(props) {
 
                                         {style === 1 && renderImages(images)}
 
-                                        <div className={`qubely-woo-product-name`}>name : {name}</div>
+                                        <div className={`qubely-woo-product-name`}>{name}</div>
                                         <div className={`qubely-woo-product-id`}>id : {id}</div>
                                         <div className={`qubely-woo-product-price`}>price {price}</div>
                                         <div

@@ -129,6 +129,7 @@ function render_block_qubely_wooproducts($att)
     $uniqueId               = isset($att['uniqueId']) ? $att['uniqueId'] : '';
     $layout                 = isset($att['layout']) ? $att['layout'] : 2;
     $style                  = isset($att['style']) ? $att['style'] : 1;
+    $name                  = isset($att['name']) ? $att['name']:'product name';
     $productsPerPage        = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
     $productsStatus         = isset($att['productsStatus']) ? $att['productsStatus'] : 'all';
     $orderBy                = isset($att['orderby']) ? $att['orderby'] : 'date';
@@ -229,6 +230,12 @@ function render_block_qubely_wooproducts($att)
             $src = wp_get_attachment_image_src($id);
             $image = '<img class="qubely-post-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/>';
             $html .= $image;
+
+            $html .= '<div class="qubely-postgrid-meta">';
+            $html .= get_the_title();
+            $html .= '</div>';
+            // $html .= $test;
+            
         }
         $html .= '</div>';
         wp_reset_postdata();
