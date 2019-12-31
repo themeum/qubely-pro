@@ -3,6 +3,11 @@ Stable tag: 1.0.7
 
 == Changelog ==
 
+= 1.0.8 - 02 January, 2020 =
+Fix: Additional CSS class in backend   
+Fix: Carousel blocks - Active item dot indicator issue  
+Update: Block specific script loading in Front-end     
+
 = 1.0.7 - 23 December, 2019 =
 New: Pie Progress block added
 New: Predesigned block template feature
