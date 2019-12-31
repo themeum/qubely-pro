@@ -52,14 +52,37 @@ class QUBELY_PRO
 	 */
 	public function qubely_pro_enqueue_style()
 	{
-        if (get_post_meta(get_the_ID(), '_qubely_css', true) != '') {
-            wp_enqueue_script('qubely-carousel', QUBELY_PRO_DIR_URL . 'assets/js/qubely-carousel.js', array('jquery'), QUBELY_PRO_VERSION);
-            wp_enqueue_script('qubely-slider-script', QUBELY_PRO_DIR_URL . 'assets/js/slider-script.js', array('jquery'), QUBELY_PRO_VERSION);
-            wp_enqueue_script('form-script', QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
-            wp_enqueue_script('form-script', QUBELY_PRO_DIR_URL . 'assets/js/frontend.js', array('jquery'), QUBELY_PRO_VERSION);
-            wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
-            wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
-        }
+		if (get_post_meta(get_the_ID(), '_qubely_css', true) != '') {
+			$this->load_scripts();
+		}
+	}
+
+
+	public function load_scripts($post = null)
+	{
+		if (!has_blocks($post)) {
+			return false;
+		}
+
+		if (!is_string($post)) {
+			$wp_post = get_post($post);
+			if ($wp_post instanceof WP_Post) {
+				$post = $wp_post->post_content;
+			}
+		}
+
+		if (false !== strpos($post, '<!-- wp:' . 'qubely/form' . ' ')) {
+			wp_enqueue_script('form-script', QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
+			wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
+			wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+		}
+		if (false !== strpos($post, '<!-- wp:' . 'qubely/gallery' . ' ')) {
+			wp_enqueue_script('form-script', QUBELY_PRO_DIR_URL . 'assets/js/frontend.js', array('jquery'), QUBELY_PRO_VERSION);
+		}
+		if ((false !== strpos($post, '<!-- wp:' . 'qubely/imagecarousel' . ' '))||(false !== strpos($post, '<!-- wp:' . 'qubely/postcarousel' . ' '))||(false !== strpos($post, '<!-- wp:' . 'qubely/teamcarousel' . ' '))||(false !== strpos($post, '<!-- wp:' . 'qubely/testimonialcarousel' . ' '))) {
+			wp_enqueue_script('qubely-carousel', QUBELY_PRO_DIR_URL . 'assets/js/qubely-carousel.js', array('jquery'), QUBELY_PRO_VERSION);
+			wp_enqueue_script('qubely-slider-script', QUBELY_PRO_DIR_URL . 'assets/js/slider-script.js', array('jquery'), QUBELY_PRO_VERSION);
+		}
 	}
 	/**
 	 * Frontend Style & Script
