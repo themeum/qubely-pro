@@ -1,10 +1,10 @@
 ===  Qubely Pro ===
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 
 == Changelog ==
 
 = 1.0.8 - 02 January, 2020 =
-Fix: Additional CSS class in backend   
+Fix: Additional CSS class issue in Back-end    
 Fix: Carousel blocks - Active item dot indicator issue  
 Update: Block specific script loading in Front-end     
 
