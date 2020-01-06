@@ -503,7 +503,7 @@ class Edit extends Component {
                                             placeholder={__('Enter Google Secret Key')}
                                         />
                                         <span className="qubely-recaptcha-help">
-                                            Get reCAPTCHA(v2) keys from <a href='www.google.com/recaptcha/admin/' >{__('www.google.com/recaptcha/admin/')} </a>
+                                            Get reCAPTCHA(v2) keys from <a href='//www.google.com/recaptcha/admin/' >{__('www.google.com/recaptcha/admin/')} </a>
                                         </span>
                                     </div>
                                 }
