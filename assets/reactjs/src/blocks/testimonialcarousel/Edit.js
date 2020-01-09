@@ -430,12 +430,9 @@ class Edit extends Component {
 
 						<Toggle label={__('Autoplay')} value={autoPlay} onChange={value => setAttributes({ autoPlay: value })} />
 						{autoPlay &&
-							<Fragment>
-								<Range label={__('Speed (ms)')} value={speed} onChange={value => setAttributes({ speed: parseInt(value) })} min={500} max={5000} />
-								<Range label={__('Interval (ms)')} value={interval} onChange={value => setAttributes({ interval: parseInt(value) })} min={500} max={5000} />
-							</Fragment>
+							<Range label={__('Interval (ms)')} value={interval} onChange={value => setAttributes({ interval: parseInt(value) })} min={300} max={5000} />
 						}
-
+						<Range label={__('Speed (ms)')} value={speed} onChange={value => setAttributes({ speed: parseInt(value) })} min={200} max={5000} />
 						<Toggle label={__('Centered Slides')} value={isCentered} onChange={value => setAttributes({ isCentered: value })} />
 						{isCentered &&
 							<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
@@ -810,20 +807,29 @@ class Edit extends Component {
 							responsive
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })} />
-						<Tabs>
-							<Tab tabTitle={__('Normal')}>
-								<BoxShadow
-									label={__('Box Shadow')}
-									value={boxShadow} onChange={val => setAttributes({ boxShadow: val })}
-								/>
-							</Tab>
-							<Tab tabTitle={__('Hover')}>
-								<BoxShadow
-									label={__('Box Shadow')}
-									value={boxShadowHover} onChange={val => setAttributes({ boxShadowHover: val })}
-								/>
-							</Tab>
-						</Tabs>
+						{ 
+							/**
+							 * @since 1.0.8
+							 * BoxShadow & boxShadowHover is depricated
+							 */
+
+							boxShadow.openShadow === true && (
+								<Tabs>
+									<Tab tabTitle={__('Normal')}>
+										<BoxShadow
+											label={__('Box Shadow')}
+											value={boxShadow} onChange={val => setAttributes({ boxShadow: val })}
+										/>
+									</Tab>
+									<Tab tabTitle={__('Hover')}>
+										<BoxShadow
+											label={__('Box Shadow')}
+											value={boxShadowHover} onChange={val => setAttributes({ boxShadowHover: val })}
+										/>
+									</Tab>
+								</Tabs>
+							)
+						}
 					</PanelBody>
 
 					{animationSettings(uniqueId, animation, setAttributes)}

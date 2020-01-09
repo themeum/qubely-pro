@@ -24,7 +24,9 @@
     cursor: pointer;
   }
   .qubely-testimonial-avatar {
-    display: inline;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
     &.qubely-image-placeholder i {
       font-size: 0.5em;
     }
@@ -475,13 +477,11 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 .qubely-block-testimonial-carousel {
 	.qubely-testimonial-avatar.qubely-image-placeholder {
         svg {
-            margin-top: 3px;
+			display: block;
         }
-        text-align: center;
 		i {
-            font-size: 30px;
-			transform: translate(0px, 45%);
-			display: inline-block;
+			font-size: 30px;
+			display: block;
 		}
 	}
 }
