@@ -3,6 +3,10 @@ Stable tag: 1.0.8
 
 == Changelog ==
 
+= 1.0.9 - 13 January, 2020 =
+Fix: Form Builder block add new item issue on empty column    
+
+
 = 1.0.8 - 06 January, 2020 =
 Fix: Additional CSS class issue in Back-end    
 Fix: Carousel blocks - Active item dot indicator issue  
