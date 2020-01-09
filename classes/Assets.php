@@ -23,10 +23,7 @@ class Assets {
 	}
 
 	public function qubely_editor_assets(){
-		//dev
 		wp_enqueue_script( 'qubely-pro-blocks-js', QUBELY_PRO_DIR_URL . 'assets/js/qubely.pro.dev.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'qubely-blocks-js' ), QUBELY_PRO_VERSION, true );
-		// production
-		// wp_enqueue_script( 'qubely-pro-blocks-js', QUBELY_PRO_DIR_URL . 'assets/js/qubely.min.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'qubely-blocks-js' ), QUBELY_PRO_VERSION, true );
 		wp_localize_script( 'qubely-pro-blocks-js', 'qubely_pro', array(
 			'plugin' => QUBELY_PRO_DIR_URL,
 			'ajax' => admin_url( 'admin-ajax.php' ),

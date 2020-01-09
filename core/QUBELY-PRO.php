@@ -37,10 +37,7 @@ class QUBELY_PRO
 	 */
 	public function qubely_pro_editor_assets()
 	{
-		//dev
 		wp_enqueue_script('qubely-pro-blocks-js', QUBELY_PRO_DIR_URL . 'assets/js/qubely.pro.dev.js', array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), QUBELY_PRO_VERSION, true);
-		// production
-		// wp_enqueue_script('qubely-pro-blocks-js', QUBELY_PRO_DIR_URL . 'assets/js/qubely.min.js', array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), QUBELY_PRO_VERSION, true);
 		wp_localize_script('qubely-pro-blocks-js', 'qubely_pro_admin', array(
 			'plugin' => QUBELY_PRO_DIR_URL
 		));
@@ -79,7 +76,7 @@ class QUBELY_PRO
 		if (false !== strpos($post, '<!-- wp:' . 'qubely/gallery' . ' ')) {
 			wp_enqueue_script('form-script', QUBELY_PRO_DIR_URL . 'assets/js/frontend.js', array('jquery'), QUBELY_PRO_VERSION);
 		}
-		if ((false !== strpos($post, '<!-- wp:' . 'qubely/imagecarousel' . ' '))||(false !== strpos($post, '<!-- wp:' . 'qubely/postcarousel' . ' '))||(false !== strpos($post, '<!-- wp:' . 'qubely/teamcarousel' . ' '))||(false !== strpos($post, '<!-- wp:' . 'qubely/testimonialcarousel' . ' '))) {
+		if ((false !== strpos($post, '<!-- wp:' . 'qubely/imagecarousel' . ' ')) || (false !== strpos($post, '<!-- wp:' . 'qubely/postcarousel' . ' ')) || (false !== strpos($post, '<!-- wp:' . 'qubely/teamcarousel' . ' ')) || (false !== strpos($post, '<!-- wp:' . 'qubely/testimonialcarousel' . ' '))) {
 			wp_enqueue_script('qubely-carousel', QUBELY_PRO_DIR_URL . 'assets/js/qubely-carousel.js', array('jquery'), QUBELY_PRO_VERSION);
 			wp_enqueue_script('qubely-slider-script', QUBELY_PRO_DIR_URL . 'assets/js/slider-script.js', array('jquery'), QUBELY_PRO_VERSION);
 		}

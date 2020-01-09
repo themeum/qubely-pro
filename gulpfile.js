@@ -88,11 +88,16 @@ function makeZip() {
 }
 
 function updateVersion() {
-    let args = process.argv.slice(2)
-    let oldVerion = args[1], newVersion = args[3]
-    return src(['./build/qubely-pro/qubely-pro.php'])
-        .pipe(replace(new RegExp(oldVerion, 'g'), `${newVersion}`))
-        .pipe(dest('./build/qubely-pro/'));
+    if (process.argv.length > 2) {
+        let args = process.argv.slice(2)
+        let oldVerion = args[1], newVersion = args[3]
+        return src(['./build/qubely-pro/qubely-pro.php'])
+            .pipe(replace(new RegExp(oldVerion, 'g'), `${newVersion}`))
+            .pipe(dest('./build/qubely-pro/'));
+    } else {
+        console.log('Versions not given, please update version manullay or try again "gulp --old oldversion --new newversion"');
+    }
+
 }
 
 exports.makeBuild = makeBuild;
