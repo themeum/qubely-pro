@@ -27,6 +27,11 @@ const icons = {
     testimonial_2: <img src={`${img_path}/testimonial/2.svg`} alt={__('Testimonial 2')} />,
     testimonial_3: <img src={`${img_path}/testimonial/3.svg`} alt={__('Testimonial 3')} />,
 
+    // Vertical Tabs
+    verticaltabs_1: <img src={`${img_path}/verticaltabs/layout-1.svg`} alt={__('Layout 1')} />,
+    verticaltabs_2: <img src={`${img_path}/verticaltabs/layout-2.svg`} alt={__('Layout 2')} />,
+    verticaltabs_3: <img src={`${img_path}/verticaltabs/layout-3.svg`} alt={__('Layout 3')} />,
+
     // Team Carousel Icon
     teamcarousel_1: <img src={`${img_path}/teamcarousel/1.svg`} alt={__('Team Carousel 1')} />,
     teamcarousel_2: <img src={`${img_path}/teamcarousel/2.svg`} alt={__('Team Carousel 2')} />,
