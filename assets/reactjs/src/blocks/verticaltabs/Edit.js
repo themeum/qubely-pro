@@ -311,7 +311,7 @@ class Edit extends Component {
 							]}
 						/>
 						<Separator />
-						<Range label={__('Menu Width')} value={navWidth} onChange={navWidth => setAttributes({ navWidth })} max={600} min={30} />
+						<Range label={__('Menu Width')} value={navWidth} onChange={navWidth => setAttributes({ navWidth })} max={700} min={30} />
 						<RadioAdvanced
 							label={__('Type')}
 							options={[
