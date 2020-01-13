@@ -117,7 +117,7 @@ registerBlockType('qubely/verticaltabs', {
         },
         
         navWidth: {
-            type: 'number',
+            type: 'string',
             default: 260,
             style: [{
                 selector: '{{QUBELY}} {--qubely-vertical-tab-nav-width: {{navWidth}}px;}'
