@@ -4,6 +4,9 @@ const { compose } = wp.compose
 const { withSelect, withDispatch } = wp.data
 const { Component, Fragment } = wp.element;
 const { InnerBlocks, RichText, InspectorControls, BlockControls } = wp.blockEditor
+const { PluginBlockSettingsMenuItem } = wp.editPost
+import templates from './templates';
+import Templates from '../../fields/Templates'
 const { Color,ColorAdvanced,Media, IconList, Styles, Typography, Range, RadioAdvanced, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, Inline: { InlineToolbar }, BoxShadow, Alignment, Tabs, Tab, Separator, Border, Padding, BorderRadius, CssGenerator: { CssGenerator }, Toggle } = wp.qubelyComponents
 import icons from '../../helpers/icons';
 
@@ -61,6 +64,23 @@ class Edit extends Component {
 		$('.qubely-vertical-tab-content', currentTabBlock).removeClass('qubely-vertical-active').fadeOut(0);
 		activeTab.addClass('qubely-vertical-active').fadeIn();
 		this.setState({ activeTab: index + 1, initialRender: false, showIconPicker: !showIconPicker })
+	}
+
+	copyAttributes = () => {
+		const {
+			attributes,
+			attributes: {
+				qubelyStyleAttributes
+			}
+		} = this.props
+		const {copyToClipboard} = wp.qubelyComponents.HelperFunction
+		let template = {}
+		qubelyStyleAttributes.forEach(key => {
+			template[key] = attributes[key]
+		})
+
+		copyToClipboard(JSON.stringify(template))
+
 	}
 
 	renderTabTitles = () => {
@@ -329,6 +349,13 @@ class Edit extends Component {
 							]}
 							value={tabVerticalAlign}
 							onChange={(tabVerticalAlign) => setAttributes({ tabVerticalAlign })} />
+
+							<Templates
+								// endPoint={'users'}
+								updateStyle={setAttributes}
+								attributes={this.props.attributes}
+								templates={templates}
+							/>
 					</PanelBody>
 
 					<PanelBody title={__('Tabs Menu')} initialOpen={false}>
@@ -634,6 +661,12 @@ class Edit extends Component {
 							prevState={this.state}
 						/>
 					</Toolbar>
+
+					<PluginBlockSettingsMenuItem
+						icon={ 'editor-code' }
+						label={ __( 'Copy Attributes') }
+						onClick={ ()=> this.copyAttributes() }
+					/>
 				</BlockControls>
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}

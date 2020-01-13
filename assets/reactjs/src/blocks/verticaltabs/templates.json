@@ -1,0 +1,26 @@
+{
+  "template1": {
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle1.svg"
+    }
+  },
+  "template2": {
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle1.svg"
+    }
+  },
+  "template3": {
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle1.svg"
+    }
+  },
+  "template4": {
+    "thumbnail": {
+      "type": "local",
+      "src": "pieprogress/circle1.svg"
+    }
+  }
+}

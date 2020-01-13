@@ -147,7 +147,7 @@ class Templates extends Component {
                                                 return (
                                                     <div className="qubely-template-slide" style={{width: `${this.state.slideWidth}px`}}>
                                                         <div className="qubely-template-slide-inner">
-                                                            <img src={thumbnail_src} alt={key} height="240" width="210"/>
+                                                            <img width="120" height="135" src={thumbnail_src} alt={key} height="240" width="210"/>
                                                             <button onClick={() => this.handleTemplateSelection(templates[key])}>{__('Apply')}</button>
                                                         </div>
                                                     </div>
