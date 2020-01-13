@@ -97,7 +97,7 @@ function updateVersion() {
     } else {
         console.log('Versions not given, please update version manullay or try again "gulp --old oldversion --new newversion"');
     }
-
+    return true;
 }
 
 exports.makeBuild = makeBuild;

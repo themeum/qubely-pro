@@ -1,11 +1,14 @@
 ===  Qubely Pro ===
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 
 == Changelog ==
 
 = 1.0.9 - 13 January, 2020 =
-Fix: Form Builder block add new item issue on empty column    
-
+New: Vertical Tab Block
+Fix: Form Builder block add new item issue on empty column
+Fix: Testimonial Carousel block avatar height issue
+Fix: Testimonial Carousel block Box-Shadow issue
+Fix: Testimonial Carousel Block slider speed option issue
 
 = 1.0.8 - 06 January, 2020 =
 Fix: Additional CSS class issue in Back-end    
