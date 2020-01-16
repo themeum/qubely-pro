@@ -117,7 +117,7 @@ registerBlockType('qubely/verticaltabs', {
         },
         
         navWidth: {
-            type: 'number',
+            type: 'string',
             default: 260,
             style: [{
                 selector: '{{QUBELY}} {--qubely-vertical-tab-nav-width: {{navWidth}}px;}'
@@ -304,14 +304,6 @@ registerBlockType('qubely/verticaltabs', {
         // textColorActive: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-block-vertical-tab .qubely-vertical-tab-item.qubely-vertical-active .qubely-vertical-tab-item-button .qubely-vertical-tab-nav-text{ color:{{textColorActive}}; }' }] },
         textColorHover: { type: 'string', default: '', style: [{ selector: '{{QUBELY}} .qubely-block-vertical-tab .qubely-vertical-tab-item-button:hover .qubely-vertical-tab-nav-text, {{QUBELY}} .qubely-block-vertical-tab .qubely-vertical-tab-item.qubely-vertical-active .qubely-vertical-tab-item-button:hover .qubely-vertical-tab-nav-text{ color:{{textColorHover}}; }' }] },
 
-        bodyBg2: {
-            type: 'string',
-            default: '#f7f7f7',
-            style: [{
-                condition: [{key: 'tabStyle', relation: '==', value: 'layout2'}],
-                selector: '{{QUBELY}} .qubely-block-vertical-tab .qubely-vertical-tab-body {background-color: {{bodyBg2}};}'
-            }]
-        },
 
         navBg: {
             type: 'object',
@@ -732,6 +724,7 @@ registerBlockType('qubely/verticaltabs', {
                 }
             ]
         },
+
         bodyBg2: {
             type: 'string',
             default: '#f7f7f7',
@@ -820,6 +813,95 @@ registerBlockType('qubely/verticaltabs', {
                     condition: [{key: 'tabStyle', 'relation': '==', value: 'layout3'}],
                     selector: '{{QUBELY}} .qubely-block-vertical-tab.qubely-alignment-left .qubely-vertical-tab-body {margin-left: {{bodySpacing3}};} {{QUBELY}} .qubely-block-vertical-tab.qubely-alignment-right .qubely-vertical-tab-body {margin-right: {{bodySpacing3}};}'
                 }
+            ]
+        },
+        qubelyStyleAttributes: {
+            type: 'array',
+            default: [
+                'navAlignment',
+                'navTextAlignment',
+                'tabVerticalAlign',
+                'tabStyle',
+                'typography',
+                'textTypography',
+                'navSubHeadingTypography',
+                'iconPosition',
+                'iconSize',
+                'iconGap',
+                'navLayout',
+                'iconType',
+                'textSpacing',
+                'navSubHeadingSpacing',
+                'navSpacing',
+                'navSpacing3',
+                'navWidth',
+                'navPaddingX',
+                'navPaddingY',
+                'arrowWidth',
+                'arrowHeight',
+                'arrowColor',
+                'arrowColorHover',
+                'navColor',
+                'navColor3',
+                'navColorActive',
+                'navColorActive3',
+                'iconColor',
+                'iconColor2',
+                'iconColor3',
+                'iconColorActive',
+                'iconColorActive2',
+                'iconColorActive3',
+                'iconColorHover',
+                'iconColorHover2',
+                'iconColorHover3',
+                'navSubHeadingColor',
+                'navSubHeadingColorActive',
+                'navSubHeadingColorHover',
+                'textColor',
+                'textColorHover',
+                'navBg',
+                'navBg2',
+                'navBg3',
+                'navBgActive',
+                'navBgActive2',
+                'navBgActive3',
+                'navColorHover',
+                'navBgHover',
+                'navBorder',
+                'navBorder2',
+                'navBorder3',
+                'navBorderColorActive',
+                'navBorderColorActive2',
+                'navBorderColorActive3',
+                'navBorderColorHover',
+                'navBorderColorHover2',
+                'navBorderColorHover3',
+                'navBorderRadiusTabs',
+                'navBorderRadiusTabsActive',
+                'navBorderRadiusTabsHover',
+                'navText',
+                'enableArrow',
+                'navSubHeading',
+                'enableIcon',
+                'navShadow',
+                'navShadowActive',
+                'navShadowHover',
+                'navShadow2',
+                'navShadowActive2',
+                'navShadowHover2',
+                'bodyColor',
+                'bodyColor2',
+                'bodyColor3',
+                'bodyBg',
+                'bodyBg2',
+                'bodyBg3',
+                'bodyPadding',
+                'bodyBorder',
+                'bodyShadow',
+                'bodyBorderRadius',
+                'bodySpacing',
+                'bodySpacing2',
+                'bodySpacing3'
             ]
         }
     },
