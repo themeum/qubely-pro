@@ -40,8 +40,12 @@ function productionMode() {
         .pipe(replace(/form.js/g, 'form.min.js'))
         .pipe(replace(/slider-script.js/g, 'slider-script.min.js'))
         .pipe(replace(/qubely-carousel.js/g, 'qubely-carousel.min.js'))
-        .pipe(replace(/installer.js/g, 'installer.min.js'))
         .pipe(dest('./build/qubely-pro/core/'));
+}
+function installer() {
+    return src(['./build/qubely-pro/classes/installer.php'])
+        .pipe(replace(/installer.js/g, 'installer.min.js'))
+        .pipe(dest('./build/qubely-pro/classes/'));
 }
 function productionAssets() {
     return src(['./build/qubely-pro/classes/Assets.php'])
@@ -117,6 +121,7 @@ exports.default = series(
     minify_js,
     removeJsFiles,
     productionMode,
+    installer,
     updateVersion,
     makeZip,
     cleanBuild);

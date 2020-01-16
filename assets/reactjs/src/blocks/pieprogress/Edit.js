@@ -2,7 +2,6 @@
 import Progress from './Progress'
 import icons from '../../helpers/icons';
 import templates from './templates';
-import Templates from '../../fields/Templates'
 const { Fragment, Component } = wp.element;
 const { PanelBody, Toolbar, TextControl } = wp.components
 const { InspectorControls, BlockControls, RichText } = wp.blockEditor
@@ -20,6 +19,7 @@ const {
     Media,
     BoxShadow,
     Alignment,
+    Templates,
     Inline: { InlineToolbar },
     CssGenerator: { CssGenerator },
     ContextMenu: {
