@@ -6,8 +6,7 @@ const { Component, Fragment } = wp.element;
 const { InnerBlocks, RichText, InspectorControls, BlockControls } = wp.blockEditor
 const { PluginBlockSettingsMenuItem } = wp.editPost
 import templates from './templates';
-import Templates from '../../fields/Templates'
-const { Color,ColorAdvanced,Media, IconList, Styles, Typography, Range, RadioAdvanced, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, Inline: { InlineToolbar }, BoxShadow, Alignment, Tabs, Tab, Separator, Border, Padding, BorderRadius, CssGenerator: { CssGenerator }, Toggle } = wp.qubelyComponents
+const { Color, ColorAdvanced, Media, IconList, Styles, Typography, Templates, Range, RadioAdvanced, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, Inline: { InlineToolbar }, BoxShadow, Alignment, Tabs, Tab, Separator, Border, Padding, BorderRadius, CssGenerator: { CssGenerator }, Toggle } = wp.qubelyComponents
 import icons from '../../helpers/icons';
 
 class Edit extends Component {
@@ -56,7 +55,7 @@ class Edit extends Component {
 	}
 
 	_handleTabChange = (e, index) => {
-		const {block, clientId} = this.props
+		const { block, clientId } = this.props
 		let currentTabBlock = $(`#block-${clientId}`)
 		const { showIconPicker } = this.state
 		let activeTab = $(`#block-${block.innerBlocks[index].clientId}`, currentTabBlock)
@@ -73,7 +72,7 @@ class Edit extends Component {
 				qubelyStyleAttributes
 			}
 		} = this.props
-		const {copyToClipboard} = wp.qubelyComponents.HelperFunction
+		const { copyToClipboard } = wp.qubelyComponents.HelperFunction
 		let template = {}
 		qubelyStyleAttributes.forEach(key => {
 			template[key] = attributes[key]
@@ -99,8 +98,8 @@ class Edit extends Component {
 								srcSet={title.image2x !== undefined && title.image2x.url ? title.image.url + ' 1x, ' + title.image2x.url + ' 2x' : ''}
 							/>
 						) : (
-							<span className="far fa-image"/>
-						)
+								<span className="far fa-image" />
+							)
 					}
 				</div>
 			}
@@ -115,7 +114,7 @@ class Edit extends Component {
 						<div className={`qubely-vertical-tab-item-content ${navTextAlignment === 'right' ? 'qubely-text-right' : ''}`}>
 							<h5 className='qubely-vertical-tab-title'>
 								{
-									( navLayout === 1 && iconPosition === 'left') && <Icon />
+									(navLayout === 1 && iconPosition === 'left') && <Icon />
 								}
 								<RichText
 									keepPlaceholderOnFocus
@@ -124,7 +123,7 @@ class Edit extends Component {
 									onChange={value => this.updateTitles({ title: value }, index)}
 								/>
 								{
-									( navLayout === 1 && iconPosition === 'right') &&  <Icon />
+									(navLayout === 1 && iconPosition === 'right') && <Icon />
 								}
 							</h5>
 							{navSubHeading && (
@@ -139,7 +138,7 @@ class Edit extends Component {
 							)}
 							{navText && (
 								<RichText
-									style={{display: ((this.state.activeTab === index + 1) ? '' : 'none')}}
+									style={{ display: ((this.state.activeTab === index + 1) ? '' : 'none') }}
 									tagName="p"
 									className="qubely-vertical-tab-nav-text"
 									keepPlaceholderOnFocus
@@ -150,7 +149,7 @@ class Edit extends Component {
 							)}
 						</div>
 						{
-							(navLayout === 2 && iconPosition === 'right') &&  <Icon />
+							(navLayout === 2 && iconPosition === 'right') && <Icon />
 						}
 					</div>
 					<Tooltip text={__('Delete this tab')}>
@@ -299,11 +298,11 @@ class Edit extends Component {
 			//animation
 			animation,
 			//global
-            globalZindex,
-            enablePosition, 
-            selectPosition, 
-            positionXaxis, 
-            positionYaxis,
+			globalZindex,
+			enablePosition,
+			selectPosition,
+			positionXaxis,
+			positionYaxis,
 			hideTablet,
 			hideMobile,
 			globalCss,
@@ -317,7 +316,7 @@ class Edit extends Component {
 			iterator.push(index)
 			index++
 		}
- 
+
 
 		return (
 			<Fragment>
@@ -343,102 +342,102 @@ class Edit extends Component {
 						<RadioAdvanced
 							label={__('Vertical Alignmet')}
 							options={[
-								{ label: <span style={{padding: '0 5px', transform: 'rotate(90deg)'}} className='fas fa-outdent'/>, value: 'flex-start', title: 'Top' },
-								{ label: <span style={{padding: '0 5px', transform: 'rotate(90deg)'}} className='fas fa-align-center'/>, value: 'center', title: 'Center' },
-								{ label: <span style={{padding: '0 5px', transform: 'rotate(90deg)'}} className='fas fa-indent'/>, value: 'flex-end', title: 'Bottom' },
+								{ label: <span style={{ padding: '0 5px', transform: 'rotate(90deg)' }} className='fas fa-outdent' />, value: 'flex-start', title: 'Top' },
+								{ label: <span style={{ padding: '0 5px', transform: 'rotate(90deg)' }} className='fas fa-align-center' />, value: 'center', title: 'Center' },
+								{ label: <span style={{ padding: '0 5px', transform: 'rotate(90deg)' }} className='fas fa-indent' />, value: 'flex-end', title: 'Bottom' },
 							]}
 							value={tabVerticalAlign}
 							onChange={(tabVerticalAlign) => setAttributes({ tabVerticalAlign })} />
 
-							<Templates
-								// endPoint={'users'}
-								updateStyle={setAttributes}
-								attributes={this.props.attributes}
-								templates={templates}
-							/>
+						<Templates
+							// endPoint={'users'}
+							updateStyle={setAttributes}
+							attributes={this.props.attributes}
+							templates={templates}
+						/>
 					</PanelBody>
 
 					<PanelBody title={__('Tabs Menu')} initialOpen={false}>
 						<Tabs>
 							<Tab tabTitle={__('Normal')}>
-								<ColorAdvanced 
-									label = {__('Background')} 
-									value = { tabStyle === 'layout1' ? navBg : (tabStyle === 'layout2' ? navBg2 : navBg3) } 
-									onChange = { value => setAttributes(tabStyle === 'layout1' ? {navBg: value} : (tabStyle === 'layout2' ? {navBg2: value} : {navBg3: value}))} 
+								<ColorAdvanced
+									label={__('Background')}
+									value={tabStyle === 'layout1' ? navBg : (tabStyle === 'layout2' ? navBg2 : navBg3)}
+									onChange={value => setAttributes(tabStyle === 'layout1' ? { navBg: value } : (tabStyle === 'layout2' ? { navBg2: value } : { navBg3: value }))}
 								/>
 								<Separator />
 								<Range label={__('Padding Y')} value={navPaddingY} onChange={navPaddingY => setAttributes({ navPaddingY })} max={100} min={0} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 								<Range label={__('Padding X')} value={navPaddingX} onChange={navPaddingX => setAttributes({ navPaddingX })} max={100} min={0} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 								<Separator />
-								<Range 
-									label={__('Gap / Spacing')} 
-									value={tabStyle === 'layout3' ? navSpacing3 : navSpacing} 
-									onChange={value => setAttributes(tabStyle === 'layout3' ? {navSpacing3: value} : {navSpacing: value})} 
-									max={100} min={0} unit={['px', 'em', '%']} 
-									responsive device={device} 
-									onDeviceChange={value => this.setState({ device: value })} 
+								<Range
+									label={__('Gap / Spacing')}
+									value={tabStyle === 'layout3' ? navSpacing3 : navSpacing}
+									onChange={value => setAttributes(tabStyle === 'layout3' ? { navSpacing3: value } : { navSpacing: value })}
+									max={100} min={0} unit={['px', 'em', '%']}
+									responsive device={device}
+									onDeviceChange={value => this.setState({ device: value })}
 								/>
-								<BorderRadius label={__('Corner')} value={navBorderRadiusTabs} onChange={(navBorderRadiusTabs) => setAttributes({ navBorderRadiusTabs })} min={0} max={100} unit={['px', 'em', '%']}/> 
-								<Border 
-									label={__('Border')} 
-									value={tabStyle === 'layout1' ? navBorder : (tabStyle === 'layout2' ? navBorder2 : navBorder3 )} 
-									onChange={value => setAttributes(tabStyle === 'layout1' ? {navBorder: value} : (tabStyle === 'layout2' ? {navBorder2: value} : {navBorder3: value} ))} 
-									min={0} max={100} 
+								<BorderRadius label={__('Corner')} value={navBorderRadiusTabs} onChange={(navBorderRadiusTabs) => setAttributes({ navBorderRadiusTabs })} min={0} max={100} unit={['px', 'em', '%']} />
+								<Border
+									label={__('Border')}
+									value={tabStyle === 'layout1' ? navBorder : (tabStyle === 'layout2' ? navBorder2 : navBorder3)}
+									onChange={value => setAttributes(tabStyle === 'layout1' ? { navBorder: value } : (tabStyle === 'layout2' ? { navBorder2: value } : { navBorder3: value }))}
+									min={0} max={100}
 									onDeviceChange={value => this.setState({ device: value })}
 									unit={['px', 'em', '%']} responsive device={device}
 								/>
-								<BoxShadow label={__('Shadow')} value={navShadow} onChange={navShadow => setAttributes({ navShadow})} />
-								<BoxShadow label={__('Shadow 2')} value={navShadow2} onChange={navShadow2 => setAttributes({ navShadow2})} />
+								<BoxShadow label={__('Shadow')} value={navShadow} onChange={navShadow => setAttributes({ navShadow })} />
+								<BoxShadow label={__('Shadow 2')} value={navShadow2} onChange={navShadow2 => setAttributes({ navShadow2 })} />
 
 								<Toggle label={__('Enable Arrow')} value={enableArrow} onChange={enableArrow => setAttributes({ enableArrow })} />
 								{enableArrow && (
 									<Fragment>
 										<Range label={__('Arrow Height')} value={arrowHeight} onChange={arrowHeight => setAttributes({ arrowHeight })} max={90} min={10} />
 										<Range label={__('Arrow Width')} value={arrowWidth} onChange={arrowWidth => setAttributes({ arrowWidth })} max={90} min={10} />
-										<Color 
-											label={__('Arrow Color')} 
-											value={arrowColor} 
-											onChange = { arrowColor => setAttributes({arrowColor})}
+										<Color
+											label={__('Arrow Color')}
+											value={arrowColor}
+											onChange={arrowColor => setAttributes({ arrowColor })}
 										/>
 									</Fragment>
 								)}
-								
+
 							</Tab>
 							<Tab tabTitle={__('Active')}>
-								<ColorAdvanced 
-									label={__('Background')} 
-									value = {tabStyle === 'layout1' ? navBgActive : (tabStyle === 'layout2' ? navBgActive2 : navBgActive3)}
-									onChange = { value => setAttributes(tabStyle === 'layout1' ? {navBgActive: value} : (tabStyle === 'layout2' ? {navBgActive2: value} : {navBgActive3: value}))}
+								<ColorAdvanced
+									label={__('Background')}
+									value={tabStyle === 'layout1' ? navBgActive : (tabStyle === 'layout2' ? navBgActive2 : navBgActive3)}
+									onChange={value => setAttributes(tabStyle === 'layout1' ? { navBgActive: value } : (tabStyle === 'layout2' ? { navBgActive2: value } : { navBgActive3: value }))}
 								/>
 								<Separator />
-								<Color 
-									label={__('Border Color')} 
-									value={tabStyle === 'layout1' ? navBorderColorActive : (tabStyle === 'layout2' ? navBorderColorActive2 : navBorderColorActive3)} 
-									onChange = { value => setAttributes(tabStyle === 'layout1' ? {navBorderColorActive: value} : (tabStyle === 'layout2' ? {navBorderColorActive2: value} : {navBorderColorActive3: value}))}
+								<Color
+									label={__('Border Color')}
+									value={tabStyle === 'layout1' ? navBorderColorActive : (tabStyle === 'layout2' ? navBorderColorActive2 : navBorderColorActive3)}
+									onChange={value => setAttributes(tabStyle === 'layout1' ? { navBorderColorActive: value } : (tabStyle === 'layout2' ? { navBorderColorActive2: value } : { navBorderColorActive3: value }))}
 								/>
 								<BorderRadius label={__('Corner')} value={navBorderRadiusTabsActive} onChange={(navBorderRadiusTabsActive) => setAttributes({ navBorderRadiusTabsActive })} min={0} max={100} unit={['px', 'em', '%']} />
-								<BoxShadow label={__('Shadow')} value={navShadowActive} onChange={navShadowActive => setAttributes({ navShadowActive})} />
-								<BoxShadow label={__('Shadow 2')} value={navShadowActive2} onChange={navShadowActive2 => setAttributes({ navShadowActive2})} />
+								<BoxShadow label={__('Shadow')} value={navShadowActive} onChange={navShadowActive => setAttributes({ navShadowActive })} />
+								<BoxShadow label={__('Shadow 2')} value={navShadowActive2} onChange={navShadowActive2 => setAttributes({ navShadowActive2 })} />
 							</Tab>
 							<Tab tabTitle={__('Hover')}>
-								<ColorAdvanced 
-									label={__('Background')} 
-									value = {tabStyle === 'layout1' ? navBgHover : (tabStyle === 'layout2' ? navBgHover2 : navBgHover3)}
-									onChange = { value => setAttributes(tabStyle === 'layout1' ? {navBgHover: value} : (tabStyle === 'layout2' ? {navBgHover2: value} : {navBgHover3: value}))}
+								<ColorAdvanced
+									label={__('Background')}
+									value={tabStyle === 'layout1' ? navBgHover : (tabStyle === 'layout2' ? navBgHover2 : navBgHover3)}
+									onChange={value => setAttributes(tabStyle === 'layout1' ? { navBgHover: value } : (tabStyle === 'layout2' ? { navBgHover2: value } : { navBgHover3: value }))}
 								/>
 								<Separator />
-								<Color 
-									label={__('Border Color')} 
-									value={tabStyle === 'layout1' ? navBorderColorHover : (tabStyle === 'layout2' ? navBorderColorHover2 : navBorderColorHover3)} 
-									onChange = { value => setAttributes(tabStyle === 'layout1' ? {navBorderColorHover: value} : (tabStyle === 'layout2' ? {navBorderColorHover2: value} : {navBorderColorHover3: value}))}
+								<Color
+									label={__('Border Color')}
+									value={tabStyle === 'layout1' ? navBorderColorHover : (tabStyle === 'layout2' ? navBorderColorHover2 : navBorderColorHover3)}
+									onChange={value => setAttributes(tabStyle === 'layout1' ? { navBorderColorHover: value } : (tabStyle === 'layout2' ? { navBorderColorHover2: value } : { navBorderColorHover3: value }))}
 								/>
 								<BorderRadius label={__('Corner')} value={navBorderRadiusTabsHover} onChange={(navBorderRadiusTabsHover) => setAttributes({ navBorderRadiusTabsHover })} min={0} max={100} unit={['px', 'em', '%']} />
-								<BoxShadow label={__('Shadow')} value={navShadowHover} onChange={navShadowHover => setAttributes({ navShadowHover})} />
-								<BoxShadow label={__('Shadow 2')} value={navShadowHover2} onChange={navShadowHover2 => setAttributes({ navShadowHover2})} />
-								<Color 
-									label={__('Arrow Color')} 
-									value={arrowColorHover} 
-									onChange = { arrowColorHover => setAttributes({arrowColorHover})}
+								<BoxShadow label={__('Shadow')} value={navShadowHover} onChange={navShadowHover => setAttributes({ navShadowHover })} />
+								<BoxShadow label={__('Shadow 2')} value={navShadowHover2} onChange={navShadowHover2 => setAttributes({ navShadowHover2 })} />
+								<Color
+									label={__('Arrow Color')}
+									value={arrowColorHover}
+									onChange={arrowColorHover => setAttributes({ arrowColorHover })}
 								/>
 							</Tab>
 						</Tabs>
@@ -447,33 +446,33 @@ class Edit extends Component {
 					<PanelBody title={__('Text Label')} initialOpen={false}>
 						<Tabs>
 							<Tab tabTitle={__('Normal')}>
-								<Color 
-									label={__('Color')} 
-									value={tabStyle === 'layout3' ? navColor3 : navColor } 
-									onChange={(value) => setAttributes(tabStyle === 'layout3' ? {navColor3: value} : {navColor: value})} 
+								<Color
+									label={__('Color')}
+									value={tabStyle === 'layout3' ? navColor3 : navColor}
+									onChange={(value) => setAttributes(tabStyle === 'layout3' ? { navColor3: value } : { navColor: value })}
 								/>
 								<RadioAdvanced
 									label={__('Alignment')}
 									options={[
-										{ label: <span style={{padding: '0 5px'}} className='fas fa-align-left'/>, value: 'left', title: 'Left' },
-										{ label: <span style={{padding: '0 5px'}} className='fas fa-align-right'/>, value: 'right', title: 'Right' },
+										{ label: <span style={{ padding: '0 5px' }} className='fas fa-align-left' />, value: 'left', title: 'Left' },
+										{ label: <span style={{ padding: '0 5px' }} className='fas fa-align-right' />, value: 'right', title: 'Right' },
 									]}
 									value={navTextAlignment}
 									onChange={(navTextAlignment) => setAttributes({ navTextAlignment })} />
 								<Typography label={__('Typography')} value={typography} onChange={(value) => setAttributes({ typography: value })} disableLineHeight device={device} onDeviceChange={value => this.setState({ device: value })} />
 							</Tab>
 							<Tab tabTitle={__('Active')}>
-								<Color 
-									label={__('Color')} 
-									value={tabStyle === 'layout3' ? navColorActive3 : navColorActive } 
-									onChange={(value) => setAttributes(tabStyle === 'layout3' ? {navColorActive3: value} : {navColorActive: value})} 
+								<Color
+									label={__('Color')}
+									value={tabStyle === 'layout3' ? navColorActive3 : navColorActive}
+									onChange={(value) => setAttributes(tabStyle === 'layout3' ? { navColorActive3: value } : { navColorActive: value })}
 								/>
 							</Tab>
 							<Tab tabTitle={__('Hover')}>
-								<Color 
-									label={__('Color')} 
-									value={tabStyle === 'layout3' ? navColorHover3 : navColorHover } 
-									onChange={(value) => setAttributes(tabStyle === 'layout3' ? {navColorHover3: value} : {navColorHover: value})} 
+								<Color
+									label={__('Color')}
+									value={tabStyle === 'layout3' ? navColorHover3 : navColorHover}
+									onChange={(value) => setAttributes(tabStyle === 'layout3' ? { navColorHover3: value } : { navColorHover: value })}
 								/>
 							</Tab>
 						</Tabs>
@@ -510,50 +509,50 @@ class Edit extends Component {
 													type={['image']}
 													panel
 													value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].image}
-													onChange={image => this.updateTitles({ image }, activeTab -1)} />
+													onChange={image => this.updateTitles({ image }, activeTab - 1)} />
 												<Media
 													panel
 													value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].image2x}
 													multiple={false}
 													type={['image']}
 													label={__('Retina Image')}
-													onChange={image2x => this.updateTitles({ image2x }, activeTab -1)} />
+													onChange={image2x => this.updateTitles({ image2x }, activeTab - 1)} />
 
 												{(tabTitles[activeTab - 1].image && tabTitles[activeTab - 1].image.url !== undefined) && (
-													<TextControl label={__('Alt Text')} value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].imageAlt} onChange={imageAlt => this.updateTitles({ imageAlt }, activeTab -1)} />
+													<TextControl label={__('Alt Text')} value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].imageAlt} onChange={imageAlt => this.updateTitles({ imageAlt }, activeTab - 1)} />
 												)}
 
 											</Fragment>
 										) : (
-											<Fragment>
-												<IconList
-													disableToggle
-													label={__('Icon')}
-													value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].iconName}
-													onChange={(value) => this.updateTitles({ iconName: value }, activeTab - 1)} />
-												<Tabs>
-													<Tab tabTitle={__('Normal')}>
-														<Color label={__('Color')} 
-														value={tabStyle === 'layout1' ? iconColor : (tabStyle === 'layout2' ? iconColor2 : iconColor3 )} 
-														onChange={value => setAttributes(tabStyle === 'layout1' ? {iconColor: value} : (tabStyle === 'layout2' ? {iconColor2: value} : {iconColor3: value} ))} 
-													/>
-													</Tab>
-													<Tab tabTitle={__('Active')}>
-														<Color 
-															label={__('Color')} 
-															value={tabStyle === 'layout1' ? iconColorActive : (tabStyle === 'layout2' ? iconColorActive2 : iconColorActive3 )} 
-															onChange={value => setAttributes(tabStyle === 'layout1' ? {iconColorActive: value} : (tabStyle === 'layout2' ? {iconColorActive2: value} : {iconColorActive3: value} ))} 
-														/>
-													</Tab>
-													<Tab tabTitle={__('Hover')}>
-														<Color label={__('Color')} 
-															value={tabStyle === 'layout1' ? iconColorHover : (tabStyle === 'layout2' ? iconColorHover2 : iconColorHover3 )} 
-															onChange={value => setAttributes(tabStyle === 'layout1' ? {iconColorHover: value} : (tabStyle === 'layout2' ? {iconColorHover2: value} : {iconColorHover3: value} ))} 
-														/>
-													</Tab>
-												</Tabs>
-											</Fragment>
-										)
+												<Fragment>
+													<IconList
+														disableToggle
+														label={__('Icon')}
+														value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].iconName}
+														onChange={(value) => this.updateTitles({ iconName: value }, activeTab - 1)} />
+													<Tabs>
+														<Tab tabTitle={__('Normal')}>
+															<Color label={__('Color')}
+																value={tabStyle === 'layout1' ? iconColor : (tabStyle === 'layout2' ? iconColor2 : iconColor3)}
+																onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColor: value } : (tabStyle === 'layout2' ? { iconColor2: value } : { iconColor3: value }))}
+															/>
+														</Tab>
+														<Tab tabTitle={__('Active')}>
+															<Color
+																label={__('Color')}
+																value={tabStyle === 'layout1' ? iconColorActive : (tabStyle === 'layout2' ? iconColorActive2 : iconColorActive3)}
+																onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorActive: value } : (tabStyle === 'layout2' ? { iconColorActive2: value } : { iconColorActive3: value }))}
+															/>
+														</Tab>
+														<Tab tabTitle={__('Hover')}>
+															<Color label={__('Color')}
+																value={tabStyle === 'layout1' ? iconColorHover : (tabStyle === 'layout2' ? iconColorHover2 : iconColorHover3)}
+																onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorHover: value } : (tabStyle === 'layout2' ? { iconColorHover2: value } : { iconColorHover3: value }))}
+															/>
+														</Tab>
+													</Tabs>
+												</Fragment>
+											)
 									}
 									<RadioAdvanced
 										label={iconType === 2 ? __('Image Position') : __('Icon Position')}
@@ -624,29 +623,29 @@ class Edit extends Component {
 						)}
 					</PanelBody>
 					<PanelBody title={__('Tab Body')} initialOpen={false}>
-						<Color 
-							label={__('Color')} 
-							value = { tabStyle === 'layout1' ? bodyColor : (tabStyle === 'layout2' ? bodyColor2 : bodyColor3) } 
-							onChange = { value => setAttributes(tabStyle === 'layout1' ? {bodyColor: value} : (tabStyle === 'layout2' ? {bodyColor2: value} : {bodyColor3: value}))} 
+						<Color
+							label={__('Color')}
+							value={tabStyle === 'layout1' ? bodyColor : (tabStyle === 'layout2' ? bodyColor2 : bodyColor3)}
+							onChange={value => setAttributes(tabStyle === 'layout1' ? { bodyColor: value } : (tabStyle === 'layout2' ? { bodyColor2: value } : { bodyColor3: value }))}
 						/>
-						<Color 
-							label={__('Background Color')} 
-							value = { tabStyle === 'layout1' ? bodyBg : (tabStyle === 'layout2' ? bodyBg2 : bodyBg3) } 
-							onChange = { value => setAttributes(tabStyle === 'layout1' ? {bodyBg: value} : (tabStyle === 'layout2' ? {bodyBg2: value} : {bodyBg3: value}))} 
+						<Color
+							label={__('Background Color')}
+							value={tabStyle === 'layout1' ? bodyBg : (tabStyle === 'layout2' ? bodyBg2 : bodyBg3)}
+							onChange={value => setAttributes(tabStyle === 'layout1' ? { bodyBg: value } : (tabStyle === 'layout2' ? { bodyBg2: value } : { bodyBg3: value }))}
 						/>
 						<Padding label={__('Padding')} value={bodyPadding} onChange={(value) => setAttributes({ bodyPadding: value })} unit={['px', 'em', '%']} max={100} min={0} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-						<Range 
-							label={__('Spacing')} 
-							value = { tabStyle === 'layout1' ? bodySpacing : (tabStyle === 'layout2' ? bodySpacing2 : bodySpacing3) } 
-							onChange = { value => setAttributes(tabStyle === 'layout1' ? {bodySpacing: value} : (tabStyle === 'layout2' ? {bodySpacing2: value} : {bodySpacing3: value}))}  
-							unit={['px', 'em', '%']} max={100} min={0} responsive device={device} 
+						<Range
+							label={__('Spacing')}
+							value={tabStyle === 'layout1' ? bodySpacing : (tabStyle === 'layout2' ? bodySpacing2 : bodySpacing3)}
+							onChange={value => setAttributes(tabStyle === 'layout1' ? { bodySpacing: value } : (tabStyle === 'layout2' ? { bodySpacing2: value } : { bodySpacing3: value }))}
+							unit={['px', 'em', '%']} max={100} min={0} responsive device={device}
 						/>
 						<Border label={__('Border')} separator value={bodyBorder} onChange={(value) => setAttributes({ bodyBorder: value })} unit={['px', 'em', '%']} max={100} min={0} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 						<BoxShadow label={__('Box-Shadow')} value={bodyShadow} onChange={(value) => setAttributes({ bodyShadow: value })} />
 						<BorderRadius label={__('Radius')} separator value={bodyBorderRadius} onChange={(value) => setAttributes({ bodyBorderRadius: value })} unit={['px', 'em', '%']} max={100} min={0} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 
 					</PanelBody>
-					
+
 					{animationSettings(uniqueId, animation, setAttributes)}
 
 					{interactionSettings(uniqueId, interaction, setAttributes)}
@@ -663,13 +662,13 @@ class Edit extends Component {
 					</Toolbar>
 
 					<PluginBlockSettingsMenuItem
-						icon={ 'editor-code' }
-						label={ __( 'Copy Attributes') }
-						onClick={ ()=> this.copyAttributes() }
+						icon={'editor-code'}
+						label={__('Copy Attributes')}
+						onClick={() => this.copyAttributes()}
 					/>
 				</BlockControls>
 
-                {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
+				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}`}>
 					<div className={`qubely-block-vertical-tab qubely-vertical-tab-style-${tabStyle} qubely-alignment-${navAlignment} ${enableArrow === true ? 'qubely-block-has-arrow' : ''}`}>
