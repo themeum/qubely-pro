@@ -11,7 +11,6 @@ class QUBELY_PRO
 	 */
 	public function __construct()
 	{
-		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
 		// dynamic blocks
 		add_action('init', array($this, 'init_blocks'));
 	}
