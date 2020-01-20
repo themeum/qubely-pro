@@ -35,13 +35,13 @@ function makeBuild() {
 }
 
 function productionMode() {
-    const assets =  src(['./build/qubely-pro/core/classes/Assets.php'])
+    const assets =  src(['./build/qubely-pro/classes/Assets.php'])
         .pipe(replace(/qubely.pro.dev.js/g, 'qubely.min.js'))
         .pipe(replace(/form.js/g, 'form.min.js'))
         .pipe(replace(/qubely-carousel.js/g, 'qubely-carousel.min.js'))
         .pipe(dest('./build/qubely-pro/core/classes/'));
 
-    const installer = src(['./build/qubely-pro/core/classes/installer.php'])
+    const installer = src(['./build/qubely-pro/classes/installer.php'])
         .pipe(replace(/installer.js/g, 'installer.min.js'));
 
     return merge(assets, installer)
