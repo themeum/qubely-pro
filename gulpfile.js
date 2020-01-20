@@ -4,6 +4,7 @@ const replace = require('gulp-replace');
 const clean = require('gulp-clean');
 const minifyCSS = require('gulp-csso');
 const minifyJS = require('gulp-minify');
+const merge = require('merge-stream');
 
 function cleanBuild() {
     return src('./build', { read: false, allowEmpty: true })
@@ -34,19 +35,16 @@ function makeBuild() {
 }
 
 function productionMode() {
-    return src(['./build/qubely-pro/core/QUBELY-PRO.php'])
+    const assets =  src(['./build/qubely-pro/core/classes/Assets.php'])
         .pipe(replace(/qubely.pro.dev.js/g, 'qubely.min.js'))
-        .pipe(replace(/frontend.js/g, 'frontend.min.js'))
         .pipe(replace(/form.js/g, 'form.min.js'))
-        .pipe(replace(/slider-script.js/g, 'slider-script.min.js'))
         .pipe(replace(/qubely-carousel.js/g, 'qubely-carousel.min.js'))
-        .pipe(replace(/installer.js/g, 'installer.min.js'))
-        .pipe(dest('./build/qubely-pro/core/'));
-}
-function productionAssets() {
-    return src(['./build/qubely-pro/classes/Assets.php'])
-        .pipe(replace(/qubely.pro.dev.js/g, 'qubely.min.js'))
-        .pipe(dest('./build/qubely-pro/classes/'));
+        .pipe(dest('./build/qubely-pro/core/classes/'));
+
+    const installer = src(['./build/qubely-pro/core/classes/installer.php'])
+        .pipe(replace(/installer.js/g, 'installer.min.js'));
+
+    return merge(assets, installer)
 }
 
 function minify_css() {
@@ -111,7 +109,6 @@ exports.default = series(
     cleanBuild,
     cleanZip,
     makeBuild,
-    productionAssets,
     minify_css,
     minify_js,
     removeJsFiles,
