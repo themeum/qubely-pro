@@ -319,7 +319,7 @@ class Updater {
 	public function show_invalid_license_notice(){
 		if( !$this->is_valid() ) {
 			$class = 'notice notice-error';
-			$message = sprintf(__( 'Without setting up Qubely licence automatic update will not work, %s Please check %s', 'qubely-pro' ), " <a href='".admin_url('admin.php?page=wp-qubely-license')."'>", '</a>');
+			$message = sprintf(__( 'To receive automatic updates and get premium support for Qubely Pro, %s please confirm your license key. %s', 'qubely-pro' ), " <a href='".admin_url('admin.php?page=wp-qubely-license')."'>", '</a>');
 			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
 		}
     }
