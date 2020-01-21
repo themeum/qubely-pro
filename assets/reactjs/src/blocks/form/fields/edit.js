@@ -289,7 +289,7 @@ export default function Edit(props) {
                     label={__('Name')}
                     value={fieldName}
                     onChange={value => setAttributes({ fieldName: value })}
-                    help={__('You must write field name with hyphen(-) with lowercase. No space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')}
+                    help={__('You must write field name with hyphen(-) with lowercase. Space, UPPERCASE, Capitalize is not allowed. This name should match with Form template value. Never keep empty this name.')}
                 />
 
                 <Separator />
