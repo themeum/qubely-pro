@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Qubely Pro\n"
-"POT-Creation-Date: 2020-01-21 11:55+0600\n"
-"PO-Revision-Date: 2020-01-21 11:55+0600\n"
+"POT-Creation-Date: 2020-01-21 17:01+0600\n"
+"PO-Revision-Date: 2020-01-21 17:00+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -105,8 +105,8 @@ msgstr ""
 #: classes/Updater.php:322
 #, php-format
 msgid ""
-"To receive automatic updates and get premium support for Qubely Pro, %s "
-"please confirm your license key. %s"
+"To receive automatic update and premium support for Qubely Pro, %s please "
+"confirm your license key. %s"
 msgstr ""
 
 #: core/blocks/postcarousel.php:1311

@@ -3,6 +3,10 @@ Stable tag: 1.1.0
 
 == Changelog ==
 
+= 1.1.0 - 21 January, 2020 =
+Update: Block specific script loading on the frontend
+Fix: Qubely Free version installer issue
+
 = 1.0.9 - 13 January, 2020 =
 New: Vertical Tab Block
 Fix: Form Builder block add new item issue on empty column
