@@ -114,7 +114,6 @@ exports.default = series(
     minify_js,
     removeJsFiles,
     productionMode,
-    installer,
     // updateVersion,
     makeZip,
     cleanBuild);
