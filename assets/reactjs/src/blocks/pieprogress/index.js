@@ -20,7 +20,7 @@ registerBlockType('qubely/pieprogress', {
         layout: { type: 'string', default: 'outline' },
         alignment: {
             type: 'string',
-            value: 'flex-start',
+            default: 'flex-start',
             style: [
                 {
                     selector: '{{QUBELY}} {align-items: {{alignment}}}'
@@ -31,10 +31,10 @@ registerBlockType('qubely/pieprogress', {
         speed: {type: 'string', default: 1000 },
         corner: {type: 'string', default: 'round' },
         enableIcon: {type: 'boolean', default: true },
-        iconStyle: {type: 'string', default: 'percent' },
-        thickness: {type: 'string', default: 11 },
+        iconStyle: {type: 'string', default: 'percent', style: [] },
+        thickness: {type: 'string', default: 11,style: [] },
         circleShrink: {type: 'string', default: 0 },
-        thicknessBg: {type: 'string', default: 21 },
+        thicknessBg: {type: 'string', default: 21,style: [] },
         fillColor: {
             type: 'object',
             default: {
@@ -49,7 +49,8 @@ registerBlockType('qubely/pieprogress', {
                     start: '0',
                     stop: '100'
                 }
-            }
+            },
+            style: []
         },
         size: {
             type: 'string',
@@ -182,7 +183,7 @@ registerBlockType('qubely/pieprogress', {
             ]
          },
         progressShadow: {
-            type: 'object', default: {},
+            type: 'object', default: {}, style: []
         },
         circleShadow: {
             type: 'object', default: {
@@ -194,6 +195,7 @@ registerBlockType('qubely/pieprogress', {
                 spread: 0,
                 vertical: 2
             },
+            style: []
         },
         spacer: { type: 'object', default:{spaceTop: { md: '10', unit: 'px'}, spaceBottom: { md: '10', unit: 'px'}}, style: [{ selector: '{{QUBELY}}' }] },
         ...globalAttributes,
