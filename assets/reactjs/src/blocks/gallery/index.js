@@ -1,6 +1,6 @@
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
+const { gloalSettings: { globalAttributes }, HelperFunction: {IsInteraction} } = wp.qubelyComponents
 
 import './style.scss'
 
