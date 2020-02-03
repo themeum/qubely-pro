@@ -99,7 +99,6 @@ const attr = {
     },
     column: {
         type: 'object',
-        default: 3,
         default: { md: 3, sm: 1, xs: 1, unit: 'px' },
     },
     imgSize: {
