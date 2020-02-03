@@ -14,5 +14,5 @@ import './blocks/gallery'                   // Gallery
 import './blocks/pieprogress'               // Pie Progress
 import './blocks/verticaltabs'              // Vertical Tabs
 import './blocks/verticaltabs/verticaltab'  // Vertical Tab
-
 import './blocks/mediacard'                 // Instagram Feed
+import './blocks/countdown'                 // Countdown Block

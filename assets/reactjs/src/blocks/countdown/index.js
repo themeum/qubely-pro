@@ -5,6 +5,7 @@ const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
 
+
 registerBlockType('qubely/countdown', {
     title: __('Countdown'),
     description: __('Create stylish countdown blocks with Qubely Buttons.'),
