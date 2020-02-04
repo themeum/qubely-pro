@@ -7,11 +7,9 @@ const {
 
 const {
     PanelBody,
-    Tooltip,
-    Toolbar,
-    DatePicker,
-    TimePicker,
-    DateTimePicker
+    CheckboxControl,
+    DateTimePicker,
+    TextControl,
 } = wp.components
 
 const {
@@ -114,6 +112,14 @@ class Edit extends Component {
                 //LABEL
                 labelView,
                 labelPosition,
+                enableDay,
+                enableHour,
+                enableMinute,
+                enableSecond,
+                dayText,
+                hourText,
+                minuteText,
+                secondText,
                 labelColor,
                 labelTypo,
 
@@ -143,7 +149,6 @@ class Edit extends Component {
         return (
             <Fragment>
                 <InspectorControls key={'inspector'}>
-
                     <PanelBody opened={true}>
                         <Styles
                             value={layout}
@@ -154,6 +159,7 @@ class Edit extends Component {
                             onChange={val => setAttributes({ layout: val })}
                         />
                         <DateTimePicker
+                            label={__('Date & Time')}
                             currentDate={date}
                             onChange={newDate => this._setDate(newDate)}
                         />
@@ -241,6 +247,57 @@ class Edit extends Component {
                             value={labelPosition}
                             onChange={value => setAttributes({ labelPosition: value })}
                         />
+
+                        <div className="qubely-countdown-label-control-text">
+                            <div className="qubely-coutdown-label-left">
+                                <CheckboxControl
+                                    checked={enableDay}
+                                />
+                            </div>
+                            <div className="qubely-coutdown-label-right">
+                                <TextControl
+                                    value={dayText}
+                                />
+                            </div>
+                        </div>
+                        <div className="qubely-countdown-label-control-text">
+                            <div className="qubely-coutdown-label-left">
+                                <CheckboxControl
+                                    checked={enableHour}
+                                />
+                            </div>
+                            <div className="qubely-coutdown-label-right">
+                                <TextControl
+                                    value={hourText}
+                                />
+                            </div>
+                        </div>
+                        <div className="qubely-countdown-label-control-text">
+                            <div className="qubely-coutdown-label-left">
+                                <CheckboxControl
+                                    checked={enableMinute}
+                                />
+                            </div>
+                            <div className="qubely-coutdown-label-right">
+                                <TextControl
+                                    value={minuteText}
+                                />
+                            </div>
+                        </div>
+                        <div className="qubely-countdown-label-control-text">
+                            <div className="qubely-coutdown-label-left">
+                                <CheckboxControl
+                                    checked={enableSecond}
+                                />
+                            </div>
+                            <div className="qubely-coutdown-label-right">
+                                <TextControl
+                                    value={secondText}
+                                />
+                            </div>
+                        </div>
+
+
                         <Color
                             label={__('Color')}
                             value={labelColor}

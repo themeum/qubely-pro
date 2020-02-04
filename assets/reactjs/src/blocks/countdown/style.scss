@@ -11,3 +11,17 @@
     }
   }
 }
+
+.qubely-countdown-label-control-text{
+  display: flex;
+  ailgn-items: center;
+  .qubely-coutdown-label-right{
+    flex-grow: 1;
+  }
+  .qubely-coutdown-label-left{
+    .components-base-control,
+    .components-base-control__field{
+      margin-bottom: 0;
+    }
+  }
+}

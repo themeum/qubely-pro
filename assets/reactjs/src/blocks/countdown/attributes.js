@@ -115,13 +115,14 @@ const attributes = {
     numberTypo: {
         type: 'object',
         default: {
-            openTypography: 0,
+            openTypography: 1,
             size: {
+                md: 60,
                 unit: 'px'
             }
         },
         style: [{
-            selector: '{{QUBELY}} '
+            selector: '{{QUBELY}} .qubely-countdown-item'
         }]
     },
 
@@ -133,6 +134,38 @@ const attributes = {
     labelPosition: {
         type: 'string',
         default: 'top'
+    },
+    enableDay: {
+        type: 'boolean',
+        default: true
+    },
+    enableHour: {
+        type: 'boolean',
+        default: true
+    },
+    enableMinute: {
+        type: 'boolean',
+        default: true
+    },
+    enableSecond: {
+        type: 'boolean',
+        default: true
+    },
+    dayText: {
+        type: 'string',
+        default: 'Days'
+    },
+    hourText: {
+        type: 'string',
+        default: 'Hours'
+    },
+    minuteText: {
+        type: 'string',
+        default: 'Minutes'
+    },
+    secondText: {
+        type: 'string',
+        default: 'Seconds'
     },
     labelColor: {
         type: 'string',
