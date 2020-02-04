@@ -199,17 +199,17 @@ registerBlockType('qubely/teamcarousel', {
 		},
 		// Dot Navigation.
 		dotwidth: {
-			type: 'string',
+			type: 'object',
 			default: { md: 30, unit: 'px' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { width: {{dotwidth}} }' }]
 		},
 		dotHeight: {
-			type: 'string',
+			type: 'object',
 			default: { md: 4, unit: 'px' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { height: {{dotHeight}} }' }]
 		},
 		dotBorderRadius: {
-			type: 'string',
+			type: 'object',
 			default: { md: 4, unit: 'px' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { border-radius: {{dotBorderRadius}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator { border-radius: {{dotBorderRadius}} }' }]
 		},

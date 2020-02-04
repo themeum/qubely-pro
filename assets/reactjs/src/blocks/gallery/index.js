@@ -1,6 +1,15 @@
-const { __ } = wp.i18n
-const { registerBlockType } = wp.blocks
-const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
+const { RichText } = wp.blockEditor
+const {
+    gloalSettings: {
+        globalAttributes
+    },
+    HelperFunction: {
+        animationAttr,
+        IsInteraction
+    }
+} = wp.qubelyComponents;
 
 import './style.scss'
 
@@ -409,7 +418,7 @@ registerBlockType('qubely/gallery', {
                 ...attr
             },
             save(props) {
-                const { uniqueId, animation, style, column, interaction, galleryContents, imageAnimation, showCaption, enableCaption, linkTo, enableOverlay } = props
+                const { uniqueId, animation, style, column, interaction, galleryContents, imageAnimation, showCaption, enableCaption, linkTo, enableOverlay } = props.attributes
 
                 const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
 
