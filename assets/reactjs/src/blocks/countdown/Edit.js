@@ -18,11 +18,15 @@ const {
 } = wp.blockEditor
 
 const {
+    Range,
+    Color,
     Border,
     Padding,
     BoxShadow,
     Background,
+    ButtonGroup,
     BorderRadius,
+    Typography,
     Inline: {
         InlineToolbar
     },
@@ -69,13 +73,13 @@ class Edit extends Component {
     _runQubelyTimer() {
         if (this.qubelyTimer) {
             this.qubelyTimer.reboot();
-        }else{
+        } else {
             this.qubelyTimer = new window.qubelyTimer(this.qubely_timer.current);
         }
     }
 
     _setDate(date) {
-        this.props.setAttributes({date})
+        this.props.setAttributes({ date })
         this._runQubelyTimer()
     }
 
@@ -96,8 +100,14 @@ class Edit extends Component {
                 background,
                 padding,
                 border,
+                spaceBetween,
                 borderRadius,
                 boxShadow,
+
+                //separator
+                separatorType,
+                separatorTypo,
+                separatorColor,
 
                 // global
                 animation,
@@ -146,6 +156,19 @@ class Edit extends Component {
                             onChange={val => setAttributes({ padding: val })}
                             onDeviceChange={value => this.setState({ device: value })}
                         />
+
+                        <Range
+                            min={5}
+                            max={300}
+                            responsive
+                            device={device}
+                            value={spaceBetween}
+                            label={__('Space Between')}
+                            unit={['px', 'em', '%']}
+                            onChange={value => setAttributes({ spaceBetween: value })}
+                            onDeviceChange={value => this.setState({ device: value })}
+                        />
+
                         <Border
                             responsive
                             value={border}
@@ -170,6 +193,37 @@ class Edit extends Component {
                             label={__('Box-Shadow')}
                             onChange={(value) => setAttributes({ boxShadow: value })}
                         />
+                    </PanelBody>
+
+                    <PanelBody title={__('Separator')} initialOpen={false}>
+
+                        <ButtonGroup
+                            label={__('Separator Type')}
+                            options={
+                                [
+                                    [__(' : '), ':'],
+                                    [__(' | '), '|']
+                                ]
+                            }
+                            value={separatorType}
+                            additionalClass="extra-padding"
+                            onChange={value => setAttributes({ separatorType: value })}
+                        />
+
+                        <Color
+                            label={__('Color')}
+                            value={separatorColor}
+                            onChange={val => setAttributes({ separatorColor: val })}
+                        />
+
+                        <Typography
+                            device={device}
+                            label={__('Typography')}
+                            value={separatorTypo}
+                            onChange={val => setAttributes({ separatorTypo: val })}
+                            onDeviceChange={value => this.setState({ device: value })}
+                        />
+
                     </PanelBody>
                     {animationSettings(uniqueId, animation, setAttributes)}
                     {interactionSettings(uniqueId, interaction, setAttributes)}

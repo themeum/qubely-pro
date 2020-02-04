@@ -37,6 +37,13 @@ const attributes = {
         },
         style: [{ selector: '{{QUBELY}} ' }]
     },
+    spaceBetween: {
+        type: 'object',
+        default: {
+
+        },
+        style: [{ selector: '{{QUBELY}} ' }]
+    },
     borderRadius: {
         type: 'object',
         default: {
@@ -61,6 +68,32 @@ const attributes = {
     boxShadow: {
         type: 'object',
         default: { openShadow: 1, horizontal: 1, vertical: 1, blur: 2, color: 'rgba(0, 0, 0, .2)', spread: 0 }, style: [{ selector: '{{QUBELY}} .qubely-block-wrapper-block' }]
+    },
+
+
+    //SEPARATOR 
+    separatorType: {
+        type: 'string',
+        default: ':'
+    },
+    separatorTypo: {
+        type: 'object',
+        default: {
+            openTypography: 0,
+            size: {
+                unit: 'px'
+            }
+        },
+        style: [{
+            selector: '{{QUBELY}} '
+        }]
+    },
+    separatorColor: {
+        type: 'string',
+        default: '#000',
+        style: [{
+            selector: '{{QUBELY}}  {color: {{separatorColor}};}'
+        }]
     },
 
 }
