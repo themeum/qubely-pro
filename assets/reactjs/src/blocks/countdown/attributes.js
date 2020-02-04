@@ -7,6 +7,10 @@ const attributes = {
         type: 'string',
         default: ''
     },
+    layout: {
+        type: 'number',
+        default: 1
+    },
     // Global
     ...globalAttributes,
     date: {
@@ -103,7 +107,48 @@ const attributes = {
             selector: '{{QUBELY}}  {color: {{separatorColor}};}'
         }]
     },
+    //NUMBER
+    numberTypo: {
+        type: 'object',
+        default: {
+            openTypography: 0,
+            size: {
+                unit: 'px'
+            }
+        },
+        style: [{
+            selector: '{{QUBELY}} '
+        }]
+    },
 
+    //LABEL
+    labelView: {
+        type: 'string',
+        default: 'inside'
+    },
+    labelPosition: {
+        type: 'string',
+        default: 'top'
+    },
+    labelColor: {
+        type: 'string',
+        default: '#000',
+        style: [{
+            selector: '{{QUBELY}}  {color: {{labelColor}};}'
+        }]
+    },
+    labelTypo: {
+        type: 'object',
+        default: {
+            openTypography: 0,
+            size: {
+                unit: 'px'
+            }
+        },
+        style: [{
+            selector: '{{QUBELY}} '
+        }]
+    },
 }
 
 export default attributes;
