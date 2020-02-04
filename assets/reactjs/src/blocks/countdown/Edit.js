@@ -18,10 +18,25 @@ const {
 } = wp.blockEditor
 
 const {
-    Inline: { InlineToolbar },
-    CssGenerator: { CssGenerator },
-    gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
-    ContextMenu: { ContextMenu, handleContextMenu }
+    Border,
+    Padding,
+    BoxShadow,
+    Background,
+    BorderRadius,
+    Inline: {
+        InlineToolbar
+    },
+    CssGenerator: {
+        CssGenerator },
+    gloalSettings: {
+        globalSettingsPanel,
+        animationSettings,
+        interactionSettings
+    },
+    ContextMenu: {
+        ContextMenu,
+        handleContextMenu
+    }
 } = wp.qubelyComponents
 
 class Edit extends Component {
@@ -73,6 +88,13 @@ class Edit extends Component {
 
                 date,
 
+                //container
+                background,
+                padding,
+                border,
+                borderRadius,
+                boxShadow,
+
                 // global
                 animation,
                 interaction,
@@ -85,7 +107,9 @@ class Edit extends Component {
                 hideMobile,
                 globalCss
             }
-        } = this.props
+        } = this.props;
+
+        const { device } = this.state;
 
         if (uniqueId) { CssGenerator(this.props.attributes, 'countdown', uniqueId) }
 
@@ -100,10 +124,51 @@ class Edit extends Component {
                             />
                         </PanelBody>
                     }
+                    <PanelBody title={__('Container')} initialOpen={false}>
+                        <Background
+                            value={background}
+                            label={__('Background')}
+                            sources={['image', 'gradient']}
+                            onChange={val => setAttributes({ background: val })}
+                        />
+                        <Padding
+                            min={0}
+                            max={300}
+                            responsive
+                            value={padding}
+                            device={device}
+                            label={__('Padding')}
+                            unit={['px', 'em', '%']}
+                            onChange={val => setAttributes({ padding: val })}
+                            onDeviceChange={value => this.setState({ device: value })}
+                        />
+                        <Border
+                            responsive
+                            value={border}
+                            device={device}
+                            label={__('Border')}
+                            onChange={val => setAttributes({ border: val })}
+                            onDeviceChange={value => this.setState({ device: value })}
+                        />
 
+                        <BorderRadius
+                            min={0}
+                            max={100}
+                            label={__('Radius')}
+                            value={borderRadius}
+                            unit={['px', 'em', '%']}
+                            responsive device={device}
+                            onDeviceChange={value => this.setState({ device: value })}
+                            onChange={(value) => setAttributes({ borderRadius: value })}
+                        />
+                        <BoxShadow
+                            value={boxShadow}
+                            label={__('Box-Shadow')}
+                            onChange={(value) => setAttributes({ boxShadow: value })}
+                        />
+                    </PanelBody>
                     {animationSettings(uniqueId, animation, setAttributes)}
                     {interactionSettings(uniqueId, interaction, setAttributes)}
-
                 </InspectorControls>
 
                 <BlockControls>

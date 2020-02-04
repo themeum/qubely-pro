@@ -1,12 +1,10 @@
 import './style.scss'
 import Edit from './Edit'
 import Save from './Save';
+import attributes from './attributes';
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
 
-const defaultDate = new Date();
-defaultDate.setDate(defaultDate.getDate() + (1 + 7 - defaultDate.getDay()) % 7)
 
 registerBlockType('qubely/countdown', {
     title: __('Countdown'),
@@ -20,16 +18,7 @@ registerBlockType('qubely/countdown', {
     example: {
         attributes: {},
     },
-    attributes: {
-        uniqueId: { type: 'string', default: '' },
-        // Global
-        ...globalAttributes,
-        date: {
-            type: 'string',
-            default: defaultDate
-        },
-        sourceOfCopiedStyle: { type: 'boolean', default: false }
-    },
+    attributes,
     edit: Edit,
     save: Save,
 });
