@@ -1,18 +1,19 @@
 
 const QubelyTimer = function(elem) {
     this.elem = elem;
-    this.date = elem.getAttribute('data-date') || '2020-05-10';
-    this.children = {
-        day: elem.querySelector('.day'),
-        hour: elem.querySelector('.hour'),
-        minute: elem.querySelector('.minute'),
-        second: elem.querySelector('.second')
-    };
-
     this.init();
 };
 
 QubelyTimer.prototype.init = function() {
+    this.defaultDate = new Date();
+    this.defaultDate.setDate(this.defaultDate.getDate() + (12 - this.defaultDate.getDay()))
+    this.date = this.elem.getAttribute('data-date') || this.defaultDate;
+    this.children = {
+        day: this.elem.querySelector('.day'),
+        hour: this.elem.querySelector('.hour'),
+        minute: this.elem.querySelector('.minute'),
+        second: this.elem.querySelector('.second')
+    };
     this.getDistanceDate();
     this.runInterval();
 };
@@ -25,18 +26,24 @@ QubelyTimer.prototype.runInterval = function() {
 };
 
 QubelyTimer.prototype.clearInterval = function() {
+    this.getDistanceDate();
     this.displayTime();
     clearInterval(this.interval);
 };
 
 QubelyTimer.prototype.destroy = function () {
-    this.clearInterval();
+    clearInterval(this.interval);
+};
+
+QubelyTimer.prototype.reboot = function() {
+    clearInterval(this.interval);
+    this.init();
 };
 
 QubelyTimer.prototype.getDistanceDate = function() {
-    const start = new Date(this.date + 'T00:00:00');
-    const end = new Date(Date.now());
-    const diff = new Date(start - end);
+    const start = new Date(Date.now());
+    const end = new Date(this.date);
+    const diff = new Date(end - start);
     const time = diff / 1000 / 60 / 60 / 24;
     const day = parseInt(time);
     const hour = parseInt((diff / 1000 / 60 / 60) % 24);
@@ -51,7 +58,7 @@ QubelyTimer.prototype.getDistanceDate = function() {
             second: '00'
         };
         this.displayTime();
-        this.destroy();
+        this.clearInterval();
         return;
     }
     this.distanceDate = {

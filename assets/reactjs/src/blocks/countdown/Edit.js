@@ -68,12 +68,16 @@ class Edit extends Component {
 
     _runQubelyTimer() {
         if (this.qubelyTimer) {
-            this.qubelyTimer.destroy();
+            this.qubelyTimer.reboot();
+        }else{
+            this.qubelyTimer = new window.qubelyTimer(this.qubely_timer.current);
         }
-        this.qubelyTimer = new window.qubelyTimer(this.qubely_timer.current);
     }
 
-    // _setDate()
+    _setDate(date) {
+        this.props.setAttributes({date})
+        this._runQubelyTimer()
+    }
 
     render() {
 
@@ -118,9 +122,9 @@ class Edit extends Component {
                 <InspectorControls key={'inspector'}>
                     {
                         <PanelBody title={__('Date')} >
-                            <DatePicker
+                            <DateTimePicker
                                 currentDate={date}
-                                onChange={newDate => setAttributes({ date: newDate })}
+                                onChange={newDate => this._setDate(newDate)}
                             />
                         </PanelBody>
                     }
@@ -171,15 +175,6 @@ class Edit extends Component {
                     {interactionSettings(uniqueId, interaction, setAttributes)}
                 </InspectorControls>
 
-                <BlockControls>
-                    <Toolbar>
-                        <InlineToolbar
-                            data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
-                            {...this.props}
-                            prevState={this.state}
-                        />
-                    </Toolbar>
-                </BlockControls>
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
@@ -187,7 +182,7 @@ class Edit extends Component {
                     <div className='qubely-block-countdown' onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 
 
-                        <div ref={this.qubely_timer} className="qubely-timer" data-date="2020-03-10">
+                        <div ref={this.qubely_timer} className="qubely-timer" data-date={date}>
                             <span className="day"></span>:
                             <span className="hour"></span>:
                             <span className="minute"></span>:
