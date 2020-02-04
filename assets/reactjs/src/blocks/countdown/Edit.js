@@ -9,6 +9,7 @@ const {
     Tooltip,
     Toolbar,
     DatePicker,
+    TimePicker,
     DateTimePicker
 } = wp.components
 
@@ -83,6 +84,7 @@ class Edit extends Component {
         this._runQubelyTimer()
     }
 
+
     render() {
 
         const {
@@ -132,7 +134,8 @@ class Edit extends Component {
                 <InspectorControls key={'inspector'}>
                     {
                         <PanelBody title={__('Date')} >
-                            <DateTimePicker
+                            <TimePicker/>
+                            <DatePicker
                                 currentDate={date}
                                 onChange={newDate => this._setDate(newDate)}
                             />
@@ -158,7 +161,7 @@ class Edit extends Component {
                         />
 
                         <Range
-                            min={5}
+                            min={0}
                             max={300}
                             responsive
                             device={device}

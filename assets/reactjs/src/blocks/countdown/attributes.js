@@ -40,9 +40,13 @@ const attributes = {
     spaceBetween: {
         type: 'object',
         default: {
-
+            md: 10,
+            unit: 'px'
         },
-        style: [{ selector: '{{QUBELY}} ' }]
+        style: [{
+            selector: '{{QUBELY}} .qubely-countdown-item{margin-left: {{spaceBetween}}} ' +
+                '{{QUBELY}} .qubely-countdown{margin-left: -{{spaceBetween}}}'
+        }]
     },
     borderRadius: {
         type: 'object',
@@ -79,7 +83,7 @@ const attributes = {
     },
 
 
-    //SEPARATOR 
+    //SEPARATOR
     separatorType: {
         type: 'string',
         default: ':'
