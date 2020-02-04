@@ -1,0 +1,13 @@
+.qubely-countdown{
+  display: flex;
+  flex-wrap: wrap;
+  .qubely-countdown-item{
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    h5,
+    p{
+      margin: 0;
+    }
+  }
+}

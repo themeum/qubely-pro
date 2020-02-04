@@ -24,7 +24,7 @@ const attributes = {
             type: "color",
             color: "#f5f5f5"
         },
-        style: [{ selector: '{{QUBELY}} ' }]
+        style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
     },
     padding: {
         type: 'object',
@@ -35,7 +35,7 @@ const attributes = {
             custom: { md: '30 30 30 30' },
             unit: 'px'
         },
-        style: [{ selector: '{{QUBELY}} ' }]
+        style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
     },
     borderRadius: {
         type: 'object',
@@ -48,19 +48,27 @@ const attributes = {
             unit: 'px'
         },
         style: [
-            { selector: '{{QUBELY}} ' }
+            { selector: '{{QUBELY}} .qubely-countdown-item' }
         ]
     },
     border: {
         type: 'object',
         default: {},
         style: [
-            { selector: '{{QUBELY}} ' }
+            { selector: '{{QUBELY}} .qubely-countdown-item' }
         ]
     },
     boxShadow: {
         type: 'object',
-        default: { openShadow: 1, horizontal: 1, vertical: 1, blur: 2, color: 'rgba(0, 0, 0, .2)', spread: 0 }, style: [{ selector: '{{QUBELY}} .qubely-block-wrapper-block' }]
+        default: {
+            openShadow: 1,
+            horizontal: 1,
+            vertical: 1,
+            blur: 2,
+            color: 'rgba(0, 0, 0, .2)',
+            spread: 0
+        },
+        style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
     },
 
 }

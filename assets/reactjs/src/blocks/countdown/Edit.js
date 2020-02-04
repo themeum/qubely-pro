@@ -182,11 +182,23 @@ class Edit extends Component {
                     <div className='qubely-block-countdown' onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 
 
-                        <div ref={this.qubely_timer} className="qubely-timer" data-date={date}>
-                            <span className="day"></span>:
-                            <span className="hour"></span>:
-                            <span className="minute"></span>:
-                            <span className="second"></span>
+                        <div ref={this.qubely_timer} className="qubely-countdown" data-date={date}>
+                            <div className="qubely-countdown-item">
+                                <h5 className="day"></h5>
+                                <p>Days</p>
+                            </div>
+                            <div className="qubely-countdown-item">
+                                <h5 className="hour"></h5>
+                                <p>Hours</p>
+                            </div>
+                            <div className="qubely-countdown-item">
+                                <h5 className="minute"></h5>
+                                <p>Minutes</p>
+                            </div>
+                            <div className="qubely-countdown-item">
+                                <h5 className="second"></h5>
+                                <p>Seconds</p>
+                            </div>
                         </div>
 
                         <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
