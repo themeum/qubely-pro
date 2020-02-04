@@ -96,7 +96,10 @@ class Edit extends Component {
                         <PanelBody title={__('Date')} >
                             <DatePicker
                                 currentDate={date}
-                                onChange={newDate => setAttributes({ date: newDate })}
+                                onChange={newDate => {
+                                    console.log(newDate)
+                                    return setAttributes({ date: newDate })
+                                }}
                             />
                         </PanelBody>
                     }
@@ -105,16 +108,7 @@ class Edit extends Component {
                     {interactionSettings(uniqueId, interaction, setAttributes)}
 
                 </InspectorControls>
-
-                <BlockControls>
-                    <Toolbar>
-                        <InlineToolbar
-                            data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
-                            {...this.props}
-                            prevState={this.state}
-                        />
-                    </Toolbar>
-                </BlockControls>
+                
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
