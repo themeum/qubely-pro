@@ -1,7 +1,11 @@
 ===  Qubely Pro ===
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 
 == Changelog ==
+
+= 1.1.1 - 31 January, 2020 =
+Update: Performance Improvement
+Fix: Image Block deprecated issue
 
 = 1.1.0 - 21 January, 2020 =
 Update: Block specific script loading on the frontend

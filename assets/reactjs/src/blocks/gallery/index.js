@@ -1,6 +1,11 @@
+
+import './style.scss';
+
+import Edit from './Edit';
+import Save from './Save';
 const { __ } = wp.i18n;
+const { RichText } = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.blockEditor
 const {
     gloalSettings: {
         globalAttributes
@@ -11,10 +16,6 @@ const {
     }
 } = wp.qubelyComponents;
 
-import './style.scss'
-
-import Edit from './Edit'
-import Save from './Save'
 
 const attr = {
     uniqueId: { type: 'string', default: '' },
