@@ -3,6 +3,10 @@ Stable tag: 1.1.1
 
 == Changelog ==
 
+= 1.1.2 - 06 February, 2020 =
+Fix: Carousel blocks - Dot settings
+Fix: Gallery Block - deprecated issue
+
 = 1.1.1 - 31 January, 2020 =
 Update: Performance Improvement
 Fix: Image Block deprecated issue
