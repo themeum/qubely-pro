@@ -37,6 +37,13 @@ const attributes = {
         },
         style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
     },
+    spaceBetween: {
+        type: 'object',
+        default: {
+
+        },
+        style: [{ selector: '{{QUBELY}} ' }]
+    },
     borderRadius: {
         type: 'object',
         default: {
@@ -69,6 +76,32 @@ const attributes = {
             spread: 0
         },
         style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
+    },
+
+
+    //SEPARATOR 
+    separatorType: {
+        type: 'string',
+        default: ':'
+    },
+    separatorTypo: {
+        type: 'object',
+        default: {
+            openTypography: 0,
+            size: {
+                unit: 'px'
+            }
+        },
+        style: [{
+            selector: '{{QUBELY}} '
+        }]
+    },
+    separatorColor: {
+        type: 'string',
+        default: '#000',
+        style: [{
+            selector: '{{QUBELY}}  {color: {{separatorColor}};}'
+        }]
     },
 
 }
