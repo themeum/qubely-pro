@@ -1,4 +1,5 @@
-const { __ } = wp.i18n
+import icons from '../../helpers/icons';
+const { __ } = wp.i18n;
 const {
     Component,
     Fragment
@@ -21,6 +22,7 @@ const {
 const {
     Range,
     Color,
+    Styles,
     Border,
     Padding,
     BoxShadow,
@@ -95,7 +97,7 @@ class Edit extends Component {
             attributes: {
                 uniqueId,
                 className,
-
+                layout,
                 date,
 
                 //container
@@ -105,6 +107,15 @@ class Edit extends Component {
                 spaceBetween,
                 borderRadius,
                 boxShadow,
+
+                //Number
+                numberTypo,
+
+                //LABEL
+                labelView,
+                labelPosition,
+                labelColor,
+                labelTypo,
 
                 //separator
                 separatorType,
@@ -132,15 +143,21 @@ class Edit extends Component {
         return (
             <Fragment>
                 <InspectorControls key={'inspector'}>
-                    {
-                        <PanelBody title={__('Date')} >
-                            <TimePicker/>
-                            <DatePicker
-                                currentDate={date}
-                                onChange={newDate => this._setDate(newDate)}
-                            />
-                        </PanelBody>
-                    }
+
+                    <PanelBody opened={true}>
+                        <Styles
+                            value={layout}
+                            options={[
+                                { value: 1, img: icons.form_classic },
+                                { value: 2, img: icons.form_material },
+                            ]}
+                            onChange={val => setAttributes({ layout: val })}
+                        />
+                        <DateTimePicker
+                            currentDate={date}
+                            onChange={newDate => this._setDate(newDate)}
+                        />
+                    </PanelBody>
                     <PanelBody title={__('Container')} initialOpen={false}>
                         <Background
                             value={background}
@@ -198,36 +215,90 @@ class Edit extends Component {
                         />
                     </PanelBody>
 
-                    <PanelBody title={__('Separator')} initialOpen={false}>
+                    <PanelBody title={__('Label Text')} initialOpen={false}>
 
                         <ButtonGroup
-                            label={__('Separator Type')}
+                            label={__('View')}
                             options={
                                 [
-                                    [__(' : '), ':'],
-                                    [__(' | '), '|']
+                                    [__('Inside'), 'inside'],
+                                    [__('Outside'), 'outside']
                                 ]
                             }
-                            value={separatorType}
-                            additionalClass="extra-padding"
-                            onChange={value => setAttributes({ separatorType: value })}
+                            value={labelView}
+                            onChange={value => setAttributes({ labelView: value })}
                         />
-
+                        <ButtonGroup
+                            label={__('Position')}
+                            options={
+                                [
+                                    [__('Top'), 'top'],
+                                    [__('Right'), 'right'],
+                                    [__('Bottom'), 'bottom'],
+                                    [__('Left'), 'left']
+                                ]
+                            }
+                            value={labelPosition}
+                            onChange={value => setAttributes({ labelPosition: value })}
+                        />
                         <Color
                             label={__('Color')}
-                            value={separatorColor}
-                            onChange={val => setAttributes({ separatorColor: val })}
+                            value={labelColor}
+                            onChange={val => setAttributes({ labelColor: val })}
                         />
-
                         <Typography
                             device={device}
                             label={__('Typography')}
-                            value={separatorTypo}
-                            onChange={val => setAttributes({ separatorTypo: val })}
+                            value={labelTypo}
+                            onChange={val => setAttributes({ labelTypo: val })}
                             onDeviceChange={value => this.setState({ device: value })}
                         />
-
                     </PanelBody>
+
+                    <PanelBody title={__('Number Text')} initialOpen={false}>
+                        <Typography
+                            device={device}
+                            label={__('Typography')}
+                            value={numberTypo}
+                            onChange={val => setAttributes({ numberTypo: val })}
+                            onDeviceChange={value => this.setState({ device: value })}
+                        />
+                    </PanelBody>
+
+                    {
+                        layout === 1 &&
+                        <PanelBody title={__('Separator')} initialOpen={false}>
+
+                            <ButtonGroup
+                                label={__('Separator Type')}
+                                options={
+                                    [
+                                        [__(' : '), ':'],
+                                        [__(' | '), '|']
+                                    ]
+                                }
+                                value={separatorType}
+                                additionalClass="extra-padding"
+                                onChange={value => setAttributes({ separatorType: value })}
+                            />
+
+                            <Color
+                                label={__('Color')}
+                                value={separatorColor}
+                                onChange={val => setAttributes({ separatorColor: val })}
+                            />
+
+                            <Typography
+                                device={device}
+                                label={__('Typography')}
+                                value={separatorTypo}
+                                onChange={val => setAttributes({ separatorTypo: val })}
+                                onDeviceChange={value => this.setState({ device: value })}
+                            />
+
+                        </PanelBody>
+                    }
+
                     {animationSettings(uniqueId, animation, setAttributes)}
                     {interactionSettings(uniqueId, interaction, setAttributes)}
                 </InspectorControls>
