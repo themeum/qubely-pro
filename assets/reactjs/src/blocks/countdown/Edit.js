@@ -1,3 +1,4 @@
+const {__} = wp.i18n
 const {
     Component,
     Fragment
@@ -6,7 +7,9 @@ const {
 const {
     PanelBody,
     Tooltip,
-    Toolbar
+    Toolbar,
+    DatePicker,
+    DateTimePicker
 } = wp.components
 
 const {
@@ -27,6 +30,7 @@ class Edit extends Component {
         this.state = {
             device: 'md',
             spacer: true,
+            date: new Date()
         }
 
         this._runQubelyTimer = this._runQubelyTimer.bind(this)
@@ -44,7 +48,6 @@ class Edit extends Component {
         }
 
         this._runQubelyTimer();
-        this._runQubelyTimer();
 
     }
 
@@ -54,6 +57,8 @@ class Edit extends Component {
         }
         this.qubelyTimer = new window.qubelyTimer(this.qubely_timer.current);
     }
+
+    // _setDate()
 
     render() {
 
@@ -65,6 +70,8 @@ class Edit extends Component {
             attributes: {
                 uniqueId,
                 className,
+
+                date,
 
                 // global
                 animation,
@@ -86,7 +93,12 @@ class Edit extends Component {
             <Fragment>
                 <InspectorControls key={'inspector'}>
                     {
-                        /* Code Here */
+                        <PanelBody title={__('Date')} >
+                            <DatePicker
+                                currentDate={date}
+                                onChange={setAttributes(date => ({date}))}
+                            />
+                        </PanelBody>
                     }
 
                     {animationSettings(uniqueId, animation, setAttributes)}
@@ -111,10 +123,10 @@ class Edit extends Component {
 
 
                         <div ref={this.qubely_timer} className="qubely-timer" data-date="2020-03-10">
-                            <span className="day"></span> days
-                            <span className="hour"></span> hours
-                            <span className="minute"></span> minutes
-                            <span className="second"></span> seconds
+                            <span className="day"></span>:
+                            <span className="hour"></span>:
+                            <span className="minute"></span>:
+                            <span className="second"></span>
                         </div>
 
                         <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
