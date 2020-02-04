@@ -1,4 +1,4 @@
-const {__} = wp.i18n
+const { __ } = wp.i18n
 const {
     Component,
     Fragment
@@ -52,7 +52,7 @@ class Edit extends Component {
     }
 
     _runQubelyTimer() {
-        if(this.qubelyTimer){
+        if (this.qubelyTimer) {
             this.qubelyTimer.destroy();
         }
         this.qubelyTimer = new window.qubelyTimer(this.qubely_timer.current);
@@ -96,7 +96,7 @@ class Edit extends Component {
                         <PanelBody title={__('Date')} >
                             <DatePicker
                                 currentDate={date}
-                                onChange={setAttributes(date => ({date}))}
+                                onChange={newDate => setAttributes({ date: newDate })}
                             />
                         </PanelBody>
                     }
