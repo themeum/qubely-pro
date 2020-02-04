@@ -252,11 +252,13 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableDay}
+                                    onChange={enableDay => setAttributes({enableDay})}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
                                 <TextControl
                                     value={dayText}
+                                    onChange={dayText => setAttributes({dayText})}
                                 />
                             </div>
                         </div>
@@ -264,11 +266,13 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableHour}
+                                    onChange={enableHour => setAttributes({enableHour})}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
                                 <TextControl
                                     value={hourText}
+                                    onChange={hourText => setAttributes({hourText})}
                                 />
                             </div>
                         </div>
@@ -276,11 +280,13 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableMinute}
+                                    onChange={enableMinute => setAttributes({enableMinute})}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
                                 <TextControl
                                     value={minuteText}
+                                    onChange={minuteText => setAttributes({minuteText})}
                                 />
                             </div>
                         </div>
@@ -288,11 +294,13 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableSecond}
+                                    onChange={enableSecond => setAttributes({enableSecond})}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
                                 <TextControl
                                     value={secondText}
+                                    onChange={secondText => setAttributes({secondText})}
                                 />
                             </div>
                         </div>
@@ -368,22 +376,39 @@ class Edit extends Component {
 
 
                         <div ref={this.qubely_timer} className="qubely-countdown" data-date={date}>
-                            <div className="qubely-countdown-item">
-                                <h5 className="day"></h5>
-                                <p>Days</p>
-                            </div>
-                            <div className="qubely-countdown-item">
-                                <h5 className="hour"></h5>
-                                <p>Hours</p>
-                            </div>
-                            <div className="qubely-countdown-item">
-                                <h5 className="minute"></h5>
-                                <p>Minutes</p>
-                            </div>
-                            <div className="qubely-countdown-item">
-                                <h5 className="second"></h5>
-                                <p>Seconds</p>
-                            </div>
+                            {
+                                enableDay && (
+                                    <div className="qubely-countdown-item">
+                                        <h5 className="day"></h5>
+                                        <p>{dayText}</p>
+                                    </div>
+                                )
+                            }
+                            {
+                                enableDay && (
+                                    <div className="qubely-countdown-item">
+                                        <h5 className="hour"></h5>
+                                        <p>{hourText}</p>
+                                    </div>
+                                )
+                            }
+                            {
+                                enableDay && (
+
+                                    <div className="qubely-countdown-item">
+                                        <h5 className="minute"></h5>
+                                        <p>{minuteText}</p>
+                                    </div>
+                                )
+                            }
+                            {
+                                enableDay && (
+                                    <div className="qubely-countdown-item">
+                                        <h5 className="second"></h5>
+                                        <p>{secondText}</p>
+                                    </div>
+                                )
+                            }
                         </div>
 
                         <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
