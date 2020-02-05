@@ -274,6 +274,7 @@ class Edit extends Component {
 				messageSpacingTop,
 				messageSpacingBottom,
 				contentPadding,
+				responsiveCenterPadding,
 				contentVerticalAlign,
 				contentAlignment,
 				enableOverlay,
@@ -400,13 +401,28 @@ class Edit extends Component {
 
 						{
 							(layout !== 6 && layout !== 1) &&
-							<Range
-								min={0}
-								max={80}
-								label={__('Gutter')}
-								value={sliderMargin}
-								onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
-							/>
+							<Fragment>
+								<Range
+									min={0}
+									max={80}
+									label={__('Gutter')}
+									value={sliderMargin}
+									onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
+								/>
+
+								<Range
+									min={0}
+									max={300}
+									responsive
+									device={device}
+									device={this.state.device}
+									label={__('Center Padding')}
+									value={responsiveCenterPadding}
+									onChange={value => setAttributes({ responsiveCenterPadding: value })}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+							</Fragment>
+
 						}
 
 						<Range
@@ -684,14 +700,14 @@ class Edit extends Component {
 							{this.renderImages()}
 						</Carousel>
 						<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
-                            <ContextMenu
-                                name={name}
-                                clientId={clientId}
-                                attributes={attributes}
-                                setAttributes={setAttributes}
-                                qubelyContextMenu={this.refs.qubelyContextMenu}
-                            />
-                        </div>
+							<ContextMenu
+								name={name}
+								clientId={clientId}
+								attributes={attributes}
+								setAttributes={setAttributes}
+								qubelyContextMenu={this.refs.qubelyContextMenu}
+							/>
+						</div>
 					</div>
 				</div>
 			</Fragment>

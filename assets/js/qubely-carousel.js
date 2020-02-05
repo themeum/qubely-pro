@@ -47,7 +47,6 @@
         */
         this.options = $.extend({}, this._defaults, options);
 
-
         //Check if speed is bigger than interval then make they both equal
         if (this.options.speed > this.options.interval) {
             this.options.speed = this.options.interval
@@ -160,17 +159,22 @@
          * @_minL = minimum length of items
          */
         itemProfessor: function () {
-            this._numberOfItems = this.$element.find('.qubely-carousel-item').length
-            let viewPort = null
-            if (typeof this.options.responsive !== 'undefined')
-                viewPort = this.parseResponsiveViewPort()
+            this._numberOfItems = this.$element.find('.qubely-carousel-item').length;
+            let centerPadding = this.options.centerPadding;
+            let viewPort = null;
+            if (typeof this.options.responsive !== 'undefined') {
+                viewPort = this.parseResponsiveViewPort();
+            }
+            if (viewPort !== null) {
+                centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
+            }
 
             this.options.items = viewPort === null ? this.options.items : typeof viewPort.items === 'undefined' ? this.options.items : viewPort.items
             this.elementWidth = this.$element.outerWidth() + this.options.margin
-            this.itemWidth = this.options.center ? Math.abs((this.elementWidth - this.options.centerPadding) / this.options.items) : Math.abs(this.elementWidth / this.options.items)
+            this.itemWidth = this.options.center ? Math.abs((this.elementWidth - centerPadding) / this.options.items) : Math.abs(this.elementWidth / this.options.items)
             this._clones = this._numberOfItems > this.options.items ? Math.ceil(this._numberOfItems / 2) : this.options.items
             this._maxL = this.itemWidth * (this._numberOfItems + (this._clones - 1))
-            this._minL = this.options.center === false ? this.itemWidth * this._clones : (this.itemWidth * this._clones) - (this.options.centerPadding / 2)
+            this._minL = this.options.center === false ? this.itemWidth * this._clones : (this.itemWidth * this._clones) - (centerPadding / 2)
         },
 
         /**
@@ -326,7 +330,14 @@
             this._currentPosition = this._clones * this.itemWidth
 
             if (this.options.center === true) {
-                this._currentPosition = this._clones * this.itemWidth - (this.options.centerPadding / 2) //(this.itemWidth/2)-(this.options.centerPadding/2)
+                let viewPort = null, centerPadding = this.options.centerPadding;
+                if (typeof this.options.responsive !== 'undefined') {
+                    viewPort = this.parseResponsiveViewPort();
+                }
+                if (viewPort !== null) {
+                    centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
+                }
+                this._currentPosition = this._clones * this.itemWidth - (centerPadding / 2)
             }
             this.$outerStage.css({
                 '-webkit-transition-duration': '0s',
@@ -492,10 +503,16 @@
 
             if (this.isDragging) {
                 let itemCoordinate = this._itemCoordinate
-                let found = false
+                let found = false, viewPort = null, centerPadding = this.options.centerPadding;
+                if (typeof this.options.responsive !== 'undefined') {
+                    viewPort = this.parseResponsiveViewPort();
+                }
+                if (viewPort !== null) {
+                    centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
+                }
                 for (var i = 0; i < itemCoordinate.length; i++) {
                     if (itemCoordinate[i] > newPosition) {
-                        newPosition = this.options.center === true ? itemCoordinate[i] - (this.options.centerPadding / 2) : itemCoordinate[i]
+                        newPosition = this.options.center === true ? itemCoordinate[i] - (centerPadding / 2) : itemCoordinate[i]
                         found = true
                     }
                     if (found === true)
@@ -528,7 +545,7 @@
             startIndex = this.options.center ? startIndex + 1 : startIndex
             let endIndex = Math.floor(Math.abs(parseInt(this.options.items) + parseInt(startIndex)))
             this.$outerStage.find('.active').removeClass('active')
-    
+
             for (let i = startIndex; i < endIndex; i++) {
                 this.$outerStage.children(':eq(' + i + ')').addClass('active')
             }

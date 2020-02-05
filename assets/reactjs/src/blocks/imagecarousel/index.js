@@ -15,8 +15,8 @@ registerBlockType('qubely/imagecarousel', {
 		__('Carousel')
 	],
 	supports: {
-        align: ['center', 'wide', 'full'],
-    },
+		align: ['center', 'wide', 'full'],
+	},
 	example: {
 		attributes: {
 			carouselItems: [
@@ -65,6 +65,7 @@ registerBlockType('qubely/imagecarousel', {
 		nav: { type: 'boolean', default: true },
 		dots: { type: 'boolean', default: false },
 		centerPadding: { type: 'number', default: 210 },
+		responsiveCenterPadding: { type: 'object', default: {} },
 
 		carouselItems: {
 			type: 'array',
