@@ -412,7 +412,7 @@ class Edit extends Component {
 
 								<Range
 									min={0}
-									max={300}
+									max={500}
 									responsive
 									device={device}
 									device={this.state.device}
