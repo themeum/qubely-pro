@@ -371,10 +371,10 @@ class Edit extends Component {
                             hourText={hourText}
                             minuteText={minuteText}
                             secondText={secondText}
-                            enableDay
-                            enableHour
-                            enableMinute
-                            enableSecond
+                            enableDay={enableDay}
+                            enableHour={enableHour}
+                            enableMinute={enableMinute}
+                            enableSecond={enableSecond}
                         />
 
 

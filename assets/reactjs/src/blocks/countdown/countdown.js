@@ -1,4 +1,5 @@
-const {useState, useEffect} = wp.element
+const {useState, useRef, useEffect} = wp.element
+
 const Countdown = (props) => {
     const {
         date,
@@ -11,6 +12,9 @@ const Countdown = (props) => {
         minuteText,
         secondText
     } = props
+
+    const couterRef = useRef(null)
+
 
     const [day, setDay] = useState('00');
     const [hour, setHour] = useState('00');
@@ -34,7 +38,7 @@ const Countdown = (props) => {
             setMinute('00');
             setSecond('00');
 
-            counterInterval && clearInterval(counterInterval)
+            couterRef.current && clearInterval(couterRef.current)
 
             return;
         }
@@ -46,7 +50,16 @@ const Countdown = (props) => {
 
     }
 
-    const counterInterval = setInterval(_updateDateState, 1000);
+    useEffect(() => {
+        if (couterRef.current !== null ) {
+            clearInterval(couterRef.current)
+        }
+        couterRef.current = setInterval(() => {
+            _updateDateState()
+        }, 1000);
+
+    }, [date]);
+
 
     return (
         <div className="qubely-countdown" data-date={date}>
