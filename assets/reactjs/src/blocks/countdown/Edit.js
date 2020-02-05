@@ -1,5 +1,6 @@
 import icons from '../../helpers/icons';
 import Countdown from './countdown';
+import classnames from 'classnames'
 const { __ } = wp.i18n;
 const {
     Component,
@@ -113,11 +114,13 @@ class Edit extends Component {
                 secondText,
                 labelColor,
                 labelTypo,
+                labelSpacing,
 
                 //separator
                 separatorType,
                 separatorTypo,
                 separatorColor,
+                separatorSize,
 
                 // global
                 animation,
@@ -296,6 +299,14 @@ class Edit extends Component {
                             </div>
                         </div>
 
+                        <Range
+                            min={0}
+                            max={100}
+                            label={__('Spacing')}
+                            value={labelSpacing}
+                            onChange={labelSpacing => setAttributes({labelSpacing})}
+                        />
+
 
                         <Color
                             label={__('Color')}
@@ -312,6 +323,14 @@ class Edit extends Component {
                     </PanelBody>
 
                     <PanelBody title={__('Number Text')} initialOpen={false}>
+                        {  /* Note: Label Spacing & Number Spacing are same */ }
+                        <Range
+                            min={0}
+                            max={100}
+                            label={__('Spacing')}
+                            value={labelSpacing}
+                            onChange={labelSpacing => setAttributes({labelSpacing})}
+                        />
                         <Typography
                             device={device}
                             label={__('Typography')}
@@ -329,12 +348,13 @@ class Edit extends Component {
                                 label={__('Separator Type')}
                                 options={
                                     [
-                                        [__(' : '), ':'],
-                                        [__(' | '), '|']
+                                        [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/ban.svg'} alt={__('None')}/>, 'none'],
+                                        [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/colon.svg'} alt={__('Colon')}/>, 'colon'],
+                                        [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/pipe.svg'} alt={__('Pipe')}/>, 'line']
                                     ]
                                 }
                                 value={separatorType}
-                                additionalClass="extra-padding"
+                                additionalClass="qubely-countdown-separator-control extra-padding"
                                 onChange={value => setAttributes({ separatorType: value })}
                             />
 
@@ -342,6 +362,15 @@ class Edit extends Component {
                                 label={__('Color')}
                                 value={separatorColor}
                                 onChange={val => setAttributes({ separatorColor: val })}
+                            />
+
+                            <Range
+                                device={device}
+                                label={__('Size')}
+                                value={separatorSize}
+                                onChange={separatorSize => setAttributes({ separatorSize })}
+                                onDeviceChange={value => this.setState({ device: value })}
+                                unit={['px', 'em', '%']}
                             />
 
                             <Typography
@@ -363,8 +392,13 @@ class Edit extends Component {
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
                 <div className={`qubely-block-${uniqueId} ${className ? className : ''}`}>
-                    <div className='qubely-block-countdown' onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
-
+                    <div
+                        className='qubely-block-countdown'
+                        onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}
+                        style={{
+                            '--label-spacing': labelSpacing + 'px'
+                        }}
+                    >
                         <Countdown
                             date={date}
                             dayText={dayText}
@@ -375,9 +409,12 @@ class Edit extends Component {
                             enableHour={enableHour}
                             enableMinute={enableMinute}
                             enableSecond={enableSecond}
+                            className={classnames(
+                                'qubely-countdown',
+                                'qubely-countdown-label-' + labelPosition,
+                                'qubely-item-separator-' + separatorType
+                            )}
                         />
-
-
 
                         <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
                             <ContextMenu

@@ -25,8 +25,8 @@ const attributes = {
         type: 'object',
         default: {
             openColor: 1,
-            type: "color",
-            color: "#f5f5f5"
+            type: 'color',
+            color: '#f5f5f5'
         },
         style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
     },
@@ -48,8 +48,10 @@ const attributes = {
             unit: 'px'
         },
         style: [{
-            selector: '{{QUBELY}} .qubely-countdown-item{margin-left: {{spaceBetween}}} ' +
-                '{{QUBELY}} .qubely-countdown{margin-left: -{{spaceBetween}}}'
+            selector:
+                '{{QUBELY}} .qubely-countdown-item{margin-left: {{spaceBetween}}; margin-bottom: {{spaceBetween}}} ' +
+                '{{QUBELY}} .qubely-countdown{margin-left: -{{spaceBetween}}}' +
+                '{{QUBELY}} .qubely-countdown .qubely-countdown-item::after{right: calc(-{{spaceBetween}} / 2) !important}'
         }]
     },
     borderRadius: {
@@ -90,7 +92,7 @@ const attributes = {
     //SEPARATOR
     separatorType: {
         type: 'string',
-        default: ':'
+        default: 'colon'
     },
     separatorTypo: {
         type: 'object',
@@ -103,6 +105,13 @@ const attributes = {
         style: [{
             selector: '{{QUBELY}} '
         }]
+    },
+    separatorSize: {
+        type: 'object',
+        default: {
+            md: 40,
+            unit: 'px'
+        }
     },
     separatorColor: {
         type: 'string',
@@ -122,7 +131,7 @@ const attributes = {
             }
         },
         style: [{
-            selector: '{{QUBELY}} .qubely-countdown-item'
+            selector: '{{QUBELY}} .qubely-countdown-item h5'
         }]
     },
 
@@ -167,11 +176,15 @@ const attributes = {
         type: 'string',
         default: 'Seconds'
     },
+    labelSpacing: {
+        type: 'number',
+        default: 10
+    },
     labelColor: {
         type: 'string',
         default: '#000',
         style: [{
-            selector: '{{QUBELY}}  {color: {{labelColor}};}'
+            selector: '{{QUBELY}} .qubely-countdown-item p  {color: {{labelColor}};}'
         }]
     },
     labelTypo: {
@@ -183,7 +196,7 @@ const attributes = {
             }
         },
         style: [{
-            selector: '{{QUBELY}} '
+            selector: '{{QUBELY}} .qubely-countdown-item p'
         }]
     },
 }

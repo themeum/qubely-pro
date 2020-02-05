@@ -1,4 +1,4 @@
-const {useState, useRef, useEffect} = wp.element
+const {useState, useRef, useEffect} = wp.element;
 
 const Countdown = (props) => {
     const {
@@ -10,7 +10,8 @@ const Countdown = (props) => {
         dayText,
         hourText,
         minuteText,
-        secondText
+        secondText,
+        className
     } = props
 
     const couterRef = useRef(null)
@@ -62,20 +63,20 @@ const Countdown = (props) => {
 
 
     return (
-        <div className="qubely-countdown" data-date={date}>
+        <div className={className} data-date={date}>
             {
                 enableDay && (
                     <div className="qubely-countdown-item">
                         <h5 className="day">{day}</h5>
-                        <p>{dayText}</p>
+                        {dayText && <p>{dayText}</p>}
                     </div>
                 )
             }
             {
                 enableHour && (
                     <div className="qubely-countdown-item">
-                        <h5 className="hour">{hour}</h5>
-                        <p>{hourText}</p>
+                        <h5 className="hour">{('0' + hour).slice(-2)}</h5>
+                        {hourText && <p>{hourText}</p>}
                     </div>
                 )
             }
@@ -83,16 +84,16 @@ const Countdown = (props) => {
                 enableMinute && (
 
                     <div className="qubely-countdown-item">
-                        <h5 className="minute">{minute}</h5>
-                        <p>{minuteText}</p>
+                        <h5 className="minute">{('0' + minute).slice(-2)}</h5>
+                        {minuteText && <p>{minuteText}</p>}
                     </div>
                 )
             }
             {
                 enableSecond && (
                     <div className="qubely-countdown-item">
-                        <h5 className="second">{second}</h5>
-                        <p>{secondText}</p>
+                        <h5 className="second">{('0' + second).slice(-2)}</h5>
+                        {secondText && <p>{secondText}</p>}
                     </div>
                 )
             }
