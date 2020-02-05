@@ -1,7 +1,9 @@
 
 const QubelyTimer = function(elem) {
     this.elem = elem;
-    this.init();
+    if(this.elem){
+        this.init();
+    }
 };
 
 QubelyTimer.prototype.init = function() {
@@ -33,6 +35,7 @@ QubelyTimer.prototype.clearInterval = function() {
 
 QubelyTimer.prototype.destroy = function () {
     clearInterval(this.interval);
+    this.elem = null
 };
 
 QubelyTimer.prototype.reboot = function() {
@@ -70,10 +73,18 @@ QubelyTimer.prototype.getDistanceDate = function() {
 };
 
 QubelyTimer.prototype.displayTime = function() {
-    this.children.day.innerHTML = this.distanceDate.day;
-    this.children.hour.innerHTML = this.distanceDate.hour;
-    this.children.minute.innerHTML = this.distanceDate.minute;
-    this.children.second.innerHTML = this.distanceDate.second;
+    if(this.children.day){
+        this.children.day.innerHTML = this.distanceDate.day;
+    }
+    if(this.children.hour){
+        this.children.hour.innerHTML = this.distanceDate.hour;
+    }
+    if(this.children.minute){
+        this.children.minute.innerHTML = this.distanceDate.minute;
+    }
+    if(this.children.second){
+        this.children.second.innerHTML = this.distanceDate.second;
+    }
 };
 
 window.qubelyTimer = QubelyTimer

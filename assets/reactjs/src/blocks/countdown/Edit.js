@@ -1,4 +1,5 @@
 import icons from '../../helpers/icons';
+import Countdown from './countdown';
 const { __ } = wp.i18n;
 const {
     Component,
@@ -50,11 +51,9 @@ class Edit extends Component {
         this.state = {
             device: 'md',
             spacer: true,
-            date: new Date()
         }
 
-        this._runQubelyTimer = this._runQubelyTimer.bind(this)
-
+        this._setAttributes = this._setAttributes.bind(this);
         this.qubely_timer = React.createRef()
     }
 
@@ -67,22 +66,14 @@ class Edit extends Component {
             setAttributes({ uniqueId: _client });
         }
 
-        this._runQubelyTimer();
-
     }
 
-    _runQubelyTimer() {
-        if (this.qubelyTimer) {
-            this.qubelyTimer.reboot();
-        } else {
-            this.qubelyTimer = new window.qubelyTimer(this.qubely_timer.current);
-        }
-    }
 
-    _setDate(date) {
-        this.props.setAttributes({ date })
-        this._runQubelyTimer()
-    }
+    _setAttributes(attribute, value) {
+        this.props.setAttributes({
+            [attribute]: value
+        });
+    };
 
 
     render() {
@@ -161,7 +152,7 @@ class Edit extends Component {
                         <DateTimePicker
                             label={__('Date & Time')}
                             currentDate={date}
-                            onChange={newDate => this._setDate(newDate)}
+                            onChange={newDate => this._setAttributes('date', newDate)}
                         />
                     </PanelBody>
                     <PanelBody title={__('Container')} initialOpen={false}>
@@ -252,7 +243,7 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableDay}
-                                    onChange={enableDay => setAttributes({enableDay})}
+                                    onChange={value => this._setAttributes('enableDay', value)}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
@@ -266,7 +257,7 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableHour}
-                                    onChange={enableHour => setAttributes({enableHour})}
+                                    onChange={value => this._setAttributes('enableHour', value)}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
@@ -280,7 +271,7 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableMinute}
-                                    onChange={enableMinute => setAttributes({enableMinute})}
+                                    onChange={value => this._setAttributes('enableMinute', value)}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
@@ -294,7 +285,7 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableSecond}
-                                    onChange={enableSecond => setAttributes({enableSecond})}
+                                    onChange={value => this._setAttributes('enableSecond', value)}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
@@ -374,42 +365,19 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId} ${className ? className : ''}`}>
                     <div className='qubely-block-countdown' onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 
+                        <Countdown
+                            date={date}
+                            dayText={dayText}
+                            hourText={hourText}
+                            minuteText={minuteText}
+                            secondText={secondText}
+                            enableDay
+                            enableHour
+                            enableMinute
+                            enableSecond
+                        />
 
-                        <div ref={this.qubely_timer} className="qubely-countdown" data-date={date}>
-                            {
-                                enableDay && (
-                                    <div className="qubely-countdown-item">
-                                        <h5 className="day"></h5>
-                                        <p>{dayText}</p>
-                                    </div>
-                                )
-                            }
-                            {
-                                enableDay && (
-                                    <div className="qubely-countdown-item">
-                                        <h5 className="hour"></h5>
-                                        <p>{hourText}</p>
-                                    </div>
-                                )
-                            }
-                            {
-                                enableDay && (
 
-                                    <div className="qubely-countdown-item">
-                                        <h5 className="minute"></h5>
-                                        <p>{minuteText}</p>
-                                    </div>
-                                )
-                            }
-                            {
-                                enableDay && (
-                                    <div className="qubely-countdown-item">
-                                        <h5 className="second"></h5>
-                                        <p>{secondText}</p>
-                                    </div>
-                                )
-                            }
-                        </div>
 
                         <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
                             <ContextMenu
