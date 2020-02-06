@@ -65,7 +65,10 @@ registerBlockType('qubely/imagecarousel', {
 		nav: { type: 'boolean', default: true },
 		dots: { type: 'boolean', default: false },
 		centerPadding: { type: 'number', default: 210 },
-		responsiveCenterPadding: { type: 'object', default: {} },
+		responsiveCenterPadding: {
+			type: 'object',
+			default: {}
+		},
 
 		carouselItems: {
 			type: 'array',

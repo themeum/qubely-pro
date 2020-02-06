@@ -310,19 +310,23 @@ class Edit extends Component {
 			arrowStyle: arrowStyle,
 			dot_indicator: dotIndicator,
 			centerPadding: (layout === 3 || layout === 4) ? centerPadding : 0,
+			centerPaddingMode: layout === 3 || layout === 4,
 			arrowPosition: arrowPosition,
 			responsive: [
 				{
 					viewport: 1170,
-					items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md
+					items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md,
+					centerPadding: typeof responsiveCenterPadding['md'] === 'undefined' ? centerPadding : responsiveCenterPadding['md']
 				},
 				{
 					viewport: 980,
-					items: layout != 2 ? ((layout == 5) ? itemfive.sm : items.sm) : itemthree.sm
+					items: layout != 2 ? ((layout == 5) ? itemfive.sm : items.sm) : itemthree.sm,
+					centerPadding: typeof responsiveCenterPadding['sm'] === 'undefined' ? centerPadding : responsiveCenterPadding['sm']
 				},
 				{
 					viewport: 580,
-					items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs
+					items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs,
+					centerPadding: typeof responsiveCenterPadding['xs'] === 'undefined' ? 0 : responsiveCenterPadding['xs']
 				}
 			],
 		}

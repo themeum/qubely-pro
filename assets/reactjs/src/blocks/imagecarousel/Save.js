@@ -103,7 +103,7 @@ class Save extends Component {
 			center: (layout === 3 || layout === 4) ? true : false,
 			dots: dots,
 			dot_indicator: dotIndicator,
-			centerPadding: (layout === 3 || layout === 4) ? responsiveCenterPadding : 0,
+			centerPadding: (layout === 3 || layout === 4) ? centerPadding : 0,
 			centerPaddingMode: layout === 3 || layout === 4,
 			nav: nav,
 			speed: speed,
@@ -116,12 +116,12 @@ class Save extends Component {
 				{
 					viewport: 1170,
 					items: layout != 2 ? (layout == 5 ? itemfive.md : items.md) : itemthree.md,
-					centerPadding: typeof responsiveCenterPadding['md'] === 'undefined' ? 0 : responsiveCenterPadding['md']
+					centerPadding: typeof responsiveCenterPadding['md'] === 'undefined' ? centerPadding : responsiveCenterPadding['md']
 				},
 				{
 					viewport: 980,
 					items: layout != 2 ? (layout == 5 ? itemfive.sm : items.sm) : itemthree.sm,
-					centerPadding: typeof responsiveCenterPadding['sm'] === 'undefined' ? 0 : responsiveCenterPadding['sm']
+					centerPadding: typeof responsiveCenterPadding['sm'] === 'undefined' ? centerPadding : responsiveCenterPadding['sm']
 				},
 				{
 					viewport: 580,
