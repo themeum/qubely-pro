@@ -22,7 +22,11 @@ const attributes = {
     speed: { type: 'number', default: 800 },
     sliderMargin: {
         type: 'number',
-        default: 30,
+        default: 30
+    },
+    sliderResponsiveMargin: {
+        type: 'object',
+        default: {}
     },
     nav: { type: 'boolean', default: true },
     dots: { type: 'boolean', default: false },

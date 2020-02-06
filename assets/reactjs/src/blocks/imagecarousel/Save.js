@@ -78,6 +78,7 @@ class Save extends Component {
 				itemthree,
 				itemfive,
 				sliderMargin,
+				sliderResponsiveMargin,
 				autoPlay,
 				speed,
 				interval,
@@ -116,17 +117,20 @@ class Save extends Component {
 				{
 					viewport: 1170,
 					items: layout != 2 ? (layout == 5 ? itemfive.md : items.md) : itemthree.md,
-					centerPadding: typeof responsiveCenterPadding['md'] === 'undefined' ? centerPadding : responsiveCenterPadding['md']
+					centerPadding: typeof responsiveCenterPadding['md'] === 'undefined' ? centerPadding : responsiveCenterPadding['md'],
+					margin: typeof sliderResponsiveMargin['md'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['md']
 				},
 				{
 					viewport: 980,
 					items: layout != 2 ? (layout == 5 ? itemfive.sm : items.sm) : itemthree.sm,
-					centerPadding: typeof responsiveCenterPadding['sm'] === 'undefined' ? centerPadding : responsiveCenterPadding['sm']
+					centerPadding: typeof responsiveCenterPadding['sm'] === 'undefined' ? centerPadding : responsiveCenterPadding['sm'],
+					margin: typeof sliderResponsiveMargin['sm'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['sm']
 				},
 				{
 					viewport: 580,
 					items: layout != 2 ? (layout == 5 ? itemfive.xs : items.xs) : itemthree.xs,
-					centerPadding: typeof responsiveCenterPadding['xs'] === 'undefined' ? 0 : responsiveCenterPadding['xs']
+					centerPadding: typeof responsiveCenterPadding['xs'] === 'undefined' ? 0 : responsiveCenterPadding['xs'],
+					margin: typeof sliderResponsiveMargin['xs'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['xs']
 				}
 			]
 		});

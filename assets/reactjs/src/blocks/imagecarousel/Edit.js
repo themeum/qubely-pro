@@ -1,7 +1,7 @@
-const { __ } = wp.i18n
+const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { PanelBody, Tooltip, Toolbar } = wp.components
-const { InspectorControls, RichText, MediaUpload, BlockControls, MediaPlaceholder } = wp.blockEditor
+const { PanelBody, Tooltip, Toolbar } = wp.components;
+const { InspectorControls, RichText, MediaUpload, BlockControls, MediaPlaceholder } = wp.blockEditor;
 import icons from '../../helpers/icons'
 const {
 	Range,
@@ -282,6 +282,7 @@ class Edit extends Component {
 				overlayHoverBg,
 				overlayBlend,
 				sliderMargin,
+				sliderResponsiveMargin,
 				dotsposition,
 				avatarHeight,
 				globalZindex,
@@ -316,17 +317,20 @@ class Edit extends Component {
 				{
 					viewport: 1170,
 					items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md,
-					centerPadding: typeof responsiveCenterPadding['md'] === 'undefined' ? centerPadding : responsiveCenterPadding['md']
+					centerPadding: typeof responsiveCenterPadding['md'] === 'undefined' ? centerPadding : responsiveCenterPadding['md'],
+					margin: typeof sliderResponsiveMargin['md'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['md']
 				},
 				{
 					viewport: 980,
 					items: layout != 2 ? ((layout == 5) ? itemfive.sm : items.sm) : itemthree.sm,
-					centerPadding: typeof responsiveCenterPadding['sm'] === 'undefined' ? centerPadding : responsiveCenterPadding['sm']
+					centerPadding: typeof responsiveCenterPadding['sm'] === 'undefined' ? centerPadding : responsiveCenterPadding['sm'],
+					margin: typeof sliderResponsiveMargin['sm'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['sm']
 				},
 				{
 					viewport: 580,
 					items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs,
-					centerPadding: typeof responsiveCenterPadding['xs'] === 'undefined' ? 0 : responsiveCenterPadding['xs']
+					centerPadding: typeof responsiveCenterPadding['xs'] === 'undefined' ? 0 : responsiveCenterPadding['xs'],
+					margin: typeof sliderResponsiveMargin['xs'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['xs']
 				}
 			],
 		}
@@ -407,12 +411,15 @@ class Edit extends Component {
 							(layout !== 6 && layout !== 1) &&
 							<Range
 								min={0}
-								max={80}
+								max={200}
+								responsive
+								device={device}
 								label={__('Gutter')}
-								value={sliderMargin}
-								onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
+								unit={['px', 'em', '%']}
+								value={sliderResponsiveMargin}
+								onDeviceChange={value => this.setState({ device: value })}
+								onChange={value => setAttributes({ sliderResponsiveMargin: value })}
 							/>
-
 						}
 
 						<Range
@@ -444,7 +451,6 @@ class Edit extends Component {
 						{
 							(layout === 3 || layout === 4) &&
 							<Fragment>
-								<Range label={__('Center Padding')} value={centerPadding} onChange={value => setAttributes({ centerPadding: parseInt(value) })} min={10} max={500} />
 								<Range
 									min={0}
 									max={500}

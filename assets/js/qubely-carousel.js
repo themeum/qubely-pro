@@ -160,18 +160,23 @@
          */
         itemProfessor: function () {
             this._numberOfItems = this.$element.find('.qubely-carousel-item').length;
-            let centerPadding = this.options.centerPadding;
+            let centerPadding = this.options.centerPadding, margin = this.options.margin;
             let viewPort = null;
             if (typeof this.options.responsive !== 'undefined') {
                 viewPort = this.parseResponsiveViewPort();
             }
-            if (viewPort !== null && this.options.centerPaddingMode) {
-                console.log('view port : ', viewPort)
-                centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
+            if (viewPort !== null) {
+                if (this.options.centerPaddingMode) {
+                    centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
+                }
+                if (viewPort.margin) {
+                    margin = parseInt(viewPort.margin);
+                }
             }
 
+
             this.options.items = viewPort === null ? this.options.items : typeof viewPort.items === 'undefined' ? this.options.items : viewPort.items
-            this.elementWidth = this.$element.outerWidth() + this.options.margin
+            this.elementWidth = this.$element.outerWidth() + margin
             this.itemWidth = this.options.center ? Math.abs((this.elementWidth - centerPadding) / this.options.items) : Math.abs(this.elementWidth / this.options.items)
             this._clones = this._numberOfItems > this.options.items ? Math.ceil(this._numberOfItems / 2) : this.options.items
             this._maxL = this.itemWidth * (this._numberOfItems + (this._clones - 1))
@@ -316,11 +321,28 @@
          * Apply base css property on initial hook 
          */
         applyBasicStyle: function () {
-            let totalItems = 0;
-            let cssPropety = {}
-            cssPropety.width = this.itemWidth - (this.options.margin) + 'px'
-            if (this.options.margin > 0) {
-                cssPropety.marginRight = this.options.margin + 'px'
+
+            let totalItems = 0,
+            cssPropety = {},
+            margin = this.options.margin,
+            viewPort = null,
+            centerPadding = this.options.centerPadding;
+
+            if (typeof this.options.responsive !== 'undefined') {
+                viewPort = this.parseResponsiveViewPort();
+            }
+            if (viewPort !== null) {
+                if (this.options.centerPaddingMode) {
+                    centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
+                }
+                if (viewPort.margin) {
+                    margin = parseInt(viewPort.margin);
+                }
+            }
+
+            cssPropety.width = this.itemWidth - margin + 'px'
+            if (margin > 0) {
+                cssPropety.marginRight = margin + 'px'
             }
 
             this.$element.find('.qubely-carousel-item').each(function () {
@@ -328,17 +350,10 @@
                 $(this).css(cssPropety)
             })
 
-            this._currentPosition = this._clones * this.itemWidth
+            this._currentPosition = this._clones * this.itemWidth;
 
             if (this.options.center === true) {
-                let viewPort = null, centerPadding = this.options.centerPadding;
-                if (typeof this.options.responsive !== 'undefined') {
-                    viewPort = this.parseResponsiveViewPort();
-                }
-                if (viewPort !== null && this.options.centerPaddingMode) {
-                    centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
-                }
-                this._currentPosition = this._clones * this.itemWidth - (centerPadding / 2)
+                this._currentPosition = this._clones * this.itemWidth - (centerPadding / 2);
             }
             this.$outerStage.css({
                 '-webkit-transition-duration': '0s',
