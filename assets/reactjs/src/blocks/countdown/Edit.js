@@ -118,9 +118,10 @@ class Edit extends Component {
 
                 //separator
                 separatorType,
-                separatorTypo,
                 separatorColor,
                 separatorSize,
+                separatorSizeX,
+                separatorOffset,
 
                 // global
                 animation,
@@ -307,7 +308,6 @@ class Edit extends Component {
                             onChange={labelSpacing => setAttributes({labelSpacing})}
                         />
 
-
                         <Color
                             label={__('Color')}
                             value={labelColor}
@@ -358,29 +358,49 @@ class Edit extends Component {
                                 onChange={value => setAttributes({ separatorType: value })}
                             />
 
-                            <Color
-                                label={__('Color')}
-                                value={separatorColor}
-                                onChange={val => setAttributes({ separatorColor: val })}
-                            />
-
-                            <Range
-                                device={device}
-                                label={__('Size')}
-                                value={separatorSize}
-                                onChange={separatorSize => setAttributes({ separatorSize })}
-                                onDeviceChange={value => this.setState({ device: value })}
-                                unit={['px', 'em', '%']}
-                            />
-
-                            <Typography
-                                device={device}
-                                label={__('Typography')}
-                                value={separatorTypo}
-                                onChange={val => setAttributes({ separatorTypo: val })}
-                                onDeviceChange={value => this.setState({ device: value })}
-                            />
-
+                            { separatorType !== 'none' && (
+                                <Fragment>
+                                    <Color
+                                        label={__('Color')}
+                                        value={separatorColor}
+                                        onChange={val => setAttributes({ separatorColor: val })}
+                                    />
+                                    {
+                                        separatorType === 'line' && (
+                                            <Range
+                                                device={device}
+                                                label={__('Width')}
+                                                value={separatorSizeX}
+                                                onChange={value => setAttributes({ separatorSizeX: value })}
+                                                onDeviceChange={value => this.setState({ device: value })}
+                                                min={1}
+                                                max={20}
+                                                responsive
+                                            />
+                                        )
+                                    }
+                                    <Range
+                                        device={device}
+                                        label={separatorType === 'line' ? __('Height') : __('Size')}
+                                        value={separatorSize}
+                                        onChange={value => setAttributes({ separatorSize: value })}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                        min={10}
+                                        max={200}
+                                        responsive
+                                    />
+                                    <Range
+                                        device={device}
+                                        label={__('Offset')}
+                                        value={separatorOffset}
+                                        onChange={value => setAttributes({ separatorOffset: value })}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                        min={-20}
+                                        max={120}
+                                        responsive
+                                    />
+                                </Fragment>
+                            )}
                         </PanelBody>
                     }
 

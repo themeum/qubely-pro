@@ -14,6 +14,13 @@
     }
   }
 
+  &.qubely-item-separator-line .qubely-countdown-item:not(:last-child)::after{
+    content: '';
+    width: 2px;
+    height: 50%;
+    background: #000000;
+  }
+
   .qubely-countdown-item{
     display: inline-flex;
     align-items: center;

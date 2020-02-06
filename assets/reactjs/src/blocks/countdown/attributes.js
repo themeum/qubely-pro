@@ -94,30 +94,43 @@ const attributes = {
         type: 'string',
         default: 'colon'
     },
-    separatorTypo: {
-        type: 'object',
-        default: {
-            openTypography: 0,
-            size: {
-                unit: 'px'
-            }
-        },
-        style: [{
-            selector: '{{QUBELY}} '
-        }]
-    },
+
     separatorSize: {
         type: 'object',
         default: {
-            md: 40,
-            unit: 'px'
-        }
+            md: 30
+        },
+        style: [{
+            selector:
+                '{{QUBELY}} .qubely-countdown.qubely-item-separator-colon .qubely-countdown-item::after{font-size: {{separatorSize}}px}' +
+                '{{QUBELY}} .qubely-countdown.qubely-item-separator-line .qubely-countdown-item::after{height: {{separatorSize}}%}'
+        }]
+    },
+    separatorSizeX: {
+        type: 'object',
+        default: {
+            md: 2
+        },
+        style: [{
+            selector: '{{QUBELY}} .qubely-countdown.qubely-item-separator-line .qubely-countdown-item::after{width: {{separatorSizeX}}px}'
+        }]
+    },
+    separatorOffset: {
+        type: 'object',
+        default: {
+            md: 50
+        },
+        style: [{
+            selector: '{{QUBELY}} .qubely-countdown .qubely-countdown-item::after{top: {{separatorOffset}}% !important}'
+        }]
     },
     separatorColor: {
         type: 'string',
         default: '#000',
         style: [{
-            selector: '{{QUBELY}}  {color: {{separatorColor}};}'
+            selector:
+                '{{QUBELY}} .qubely-countdown.qubely-item-separator-colon .qubely-countdown-item::after{color: {{separatorColor}}}' +
+                '{{QUBELY}} .qubely-countdown.qubely-item-separator-line .qubely-countdown-item::after{background-color: {{separatorColor}}}'
         }]
     },
     //NUMBER
