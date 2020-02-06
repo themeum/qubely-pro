@@ -401,27 +401,13 @@ class Edit extends Component {
 
 						{
 							(layout !== 6 && layout !== 1) &&
-							<Fragment>
-								<Range
-									min={0}
-									max={80}
-									label={__('Gutter')}
-									value={sliderMargin}
-									onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
-								/>
-
-								<Range
-									min={0}
-									max={500}
-									responsive
-									device={device}
-									device={this.state.device}
-									label={__('Center Padding')}
-									value={responsiveCenterPadding}
-									onChange={value => setAttributes({ responsiveCenterPadding: value })}
-									onDeviceChange={value => this.setState({ device: value })}
-								/>
-							</Fragment>
+							<Range
+								min={0}
+								max={80}
+								label={__('Gutter')}
+								value={sliderMargin}
+								onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
+							/>
 
 						}
 
@@ -455,6 +441,17 @@ class Edit extends Component {
 							(layout === 3 || layout === 4) &&
 							<Fragment>
 								<Range label={__('Center Padding')} value={centerPadding} onChange={value => setAttributes({ centerPadding: parseInt(value) })} min={10} max={500} />
+								<Range
+									min={0}
+									max={500}
+									responsive
+									device={device}
+									device={this.state.device}
+									label={__('Center Padding')}
+									value={responsiveCenterPadding}
+									onChange={value => setAttributes({ responsiveCenterPadding: value })}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
 								<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
 							</Fragment>
 						}

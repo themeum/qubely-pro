@@ -165,7 +165,8 @@
             if (typeof this.options.responsive !== 'undefined') {
                 viewPort = this.parseResponsiveViewPort();
             }
-            if (viewPort !== null) {
+            if (viewPort !== null && this.options.centerPaddingMode) {
+                console.log('view port : ', viewPort)
                 centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
             }
 
@@ -334,7 +335,7 @@
                 if (typeof this.options.responsive !== 'undefined') {
                     viewPort = this.parseResponsiveViewPort();
                 }
-                if (viewPort !== null) {
+                if (viewPort !== null && this.options.centerPaddingMode) {
                     centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
                 }
                 this._currentPosition = this._clones * this.itemWidth - (centerPadding / 2)
@@ -507,7 +508,7 @@
                 if (typeof this.options.responsive !== 'undefined') {
                     viewPort = this.parseResponsiveViewPort();
                 }
-                if (viewPort !== null) {
+                if (viewPort !== null && this.options.centerPaddingMode) {
                     centerPadding = typeof viewPort.centerPadding === 'undefined' ? this.options.centerPadding : viewPort.centerPadding;
                 }
                 for (var i = 0; i < itemCoordinate.length; i++) {
@@ -904,6 +905,7 @@
         center: false,
 
         centerPadding: 150,
+        centerPaddingMode: false,
 
         // Margin between items 
         margin: 10,
@@ -961,6 +963,7 @@ jQuery(document).ready(function ($) {
                     infiniteLoop,
                     dot_indicator,
                     centerPadding,
+                    centerPaddingMode,
                 } = JSON.parse(currentElement.dataset.options)
 
 
@@ -976,7 +979,8 @@ jQuery(document).ready(function ($) {
                     arrowStyle: arrowStyle,
                     infiniteLoop: infiniteLoop,
                     responsive: [...responsive],
-                    centerPadding: centerPadding,
+                    centerPadding: centerPaddingMode ? centerPadding : 0,
+                    centerPaddingMode: centerPaddingMode,
                     dot_indicator: dot_indicator,
                     onChange: function (item) {
                     }
