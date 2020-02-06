@@ -1,3 +1,6 @@
+const {Fragment} = wp.element;
+import Pie from './pie';
+
 const {useState, useRef, useEffect} = wp.element;
 
 const Countdown = (props) => {
@@ -22,6 +25,8 @@ const Countdown = (props) => {
     const [minute, setMinute] = useState('00');
     const [second, setSecond] = useState('00');
 
+    const [secondPercent, setSecondPercent] = useState(0);
+
 
     const _updateDateState = () => {
         const start = new Date(Date.now());
@@ -38,6 +43,7 @@ const Countdown = (props) => {
             setHour('00');
             setMinute('00');
             setSecond('00');
+            setSecondPercent(0);
 
             couterRef.current && clearInterval(couterRef.current)
 
@@ -48,6 +54,9 @@ const Countdown = (props) => {
         setHour(hour);
         setMinute(minute);
         setSecond(second);
+
+        setSecondPercent((second * 100) / 60);
+
 
     }
 
@@ -63,41 +72,83 @@ const Countdown = (props) => {
 
 
     return (
-        <div className={className} data-date={date}>
-            {
-                enableDay && (
-                    <div className="qubely-countdown-item">
-                        <h5 className="day">{day}</h5>
-                        {dayText && <p>{dayText}</p>}
-                    </div>
-                )
-            }
-            {
-                enableHour && (
-                    <div className="qubely-countdown-item">
-                        <h5 className="hour">{('0' + hour).slice(-2)}</h5>
-                        {hourText && <p>{hourText}</p>}
-                    </div>
-                )
-            }
-            {
-                enableMinute && (
+        <Fragment>
+            <div className={className} data-date={date}>
+                {
+                    enableDay && (
+                        <div className="qubely-countdown-item">
+                            <h5 className="day">{day}</h5>
+                            {dayText && <p>{dayText}</p>}
+                        </div>
+                    )
+                }
+                {
+                    enableHour && (
+                        <div className="qubely-countdown-item">
+                            <h5 className="hour">{('0' + hour).slice(-2)}</h5>
+                            {hourText && <p>{hourText}</p>}
+                        </div>
+                    )
+                }
+                {
+                    enableMinute && (
 
-                    <div className="qubely-countdown-item">
-                        <h5 className="minute">{('0' + minute).slice(-2)}</h5>
-                        {minuteText && <p>{minuteText}</p>}
-                    </div>
-                )
-            }
-            {
-                enableSecond && (
-                    <div className="qubely-countdown-item">
-                        <h5 className="second">{('0' + second).slice(-2)}</h5>
-                        {secondText && <p>{secondText}</p>}
-                    </div>
-                )
-            }
-        </div>
+                        <div className="qubely-countdown-item">
+                            <h5 className="minute">{('0' + minute).slice(-2)}</h5>
+                            {minuteText && <p>{minuteText}</p>}
+                        </div>
+                    )
+                }
+                {
+                    enableSecond && (
+                        <div className="qubely-countdown-item">
+                            <h5 className="second">{('0' + second).slice(-2)}</h5>
+                            {secondText && <p>{secondText}</p>}
+                        </div>
+                    )
+                }
+            </div>
+
+            <div className={className} data-date={date}>
+                {
+                    enableDay && (
+                        <div className="qubely-countdown-item">
+                            <h5 className="day">{day}</h5>
+                            {dayText && <p>{dayText}</p>}
+                            <Pie />
+                        </div>
+                    )
+                }
+                {
+                    enableHour && (
+                        <div className="qubely-countdown-item">
+                            <h5 className="hour">{('0' + hour).slice(-2)}</h5>
+                            {hourText && <p>{hourText}</p>}
+                            <Pie />
+                        </div>
+                    )
+                }
+                {
+                    enableMinute && (
+
+                        <div className="qubely-countdown-item">
+                            <h5 className="minute">{('0' + minute).slice(-2)}</h5>
+                            {minuteText && <p>{minuteText}</p>}
+                            <Pie />
+                        </div>
+                    )
+                }
+                {
+                    enableSecond && (
+                        <div className="qubely-countdown-item">
+                            <h5 className="second">{('0' + second).slice(-2)}</h5>
+                            {secondText && <p>{secondText}</p>}
+                            <Pie percent={secondPercent} />
+                        </div>
+                    )
+                }
+            </div>
+        </Fragment>
     )
 }
 
