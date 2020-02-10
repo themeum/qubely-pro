@@ -1,10 +1,12 @@
-const { __ } = wp.i18n
-const { Component, Fragment } = wp.element
-const { withSelect } = wp.data
-const { dateI18n, __experimentalGetSettings } = wp.date
-const { addQueryArgs } = wp.url
-const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl, Placeholder } = wp.components;
+const { __ } = wp.i18n;
+const { compose } = wp.compose;
+const { withSelect } = wp.data;
+const { addQueryArgs } = wp.url;
+const { Component, Fragment } = wp.element;
+const { dateI18n, __experimentalGetSettings } = wp.date;
 const { InspectorControls, BlockControls } = wp.blockEditor
+const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl, Placeholder } = wp.components;
+
 const {
 	Range,
 	ButtonGroup,
@@ -26,7 +28,7 @@ const {
 	RadioAdvanced,
 	Inline: { InlineToolbar },
 	gloalSettings: { globalSettingsPanel, animationSettings },
-	CssGenerator: { CssGenerator },
+	withCSSGenerator,
 	ContextMenu: {
 		ContextMenu,
 		handleContextMenu
@@ -303,8 +305,6 @@ class Edit extends Component {
 			setAttributes({ postitems: newPostItems })
 		}
 
-
-		if (uniqueId) { CssGenerator(this.props.attributes, 'postcarousel', uniqueId) }
 
 		const carouselSettings = {
 			nav: nav,
@@ -929,26 +929,27 @@ class Edit extends Component {
 	}
 }
 
-export default withSelect((select, props) => {
-	const { getEntityRecords } = select('core')
-	const { attributes: { taxonomy, order, orderBy, categories, tags, postsToShow } } = props
+export default compose([
+	withSelect((select, props) => {
+		const { getEntityRecords } = select('core')
+		const { attributes: { taxonomy, order, orderBy, categories, tags, postsToShow } } = props
 
-	let allTaxonomy = qubely_admin.all_taxonomy
-	let seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags'
-	let activeTaxes = taxonomy === 'categories' ? categories : tags
+		let allTaxonomy = qubely_admin.all_taxonomy
+		let seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags'
+		let activeTaxes = taxonomy === 'categories' ? categories : tags
 
-	let query = {
-		order: order,
-		orderby: orderBy,
-		per_page: postsToShow,
-		[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
-	}
-	const posts = getEntityRecords('postType', 'post', query)
-	return {
-		posts,
-		...(Array.isArray(posts) && posts.length) && { numberofPosts: posts.length },
-		taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
-	};
-})
-
-	(Edit)
+		let query = {
+			order: order,
+			orderby: orderBy,
+			per_page: postsToShow,
+			[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
+		}
+		const posts = getEntityRecords('postType', 'post', query)
+		return {
+			posts,
+			...(Array.isArray(posts) && posts.length) && { numberofPosts: posts.length },
+			taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
+		};
+	}),
+	withCSSGenerator()
+])(Edit)

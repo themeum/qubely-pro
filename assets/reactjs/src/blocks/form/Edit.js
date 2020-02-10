@@ -21,7 +21,7 @@ const {
     RadioAdvanced,
     QubelyButtonEdit,
     Inline: { InlineToolbar },
-    CssGenerator: { CssGenerator },
+    withCSSGenerator,
     QubelyButton: { buttonSettings },
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
     ContextMenu: { ContextMenu, handleContextMenu }
@@ -308,9 +308,6 @@ class Edit extends Component {
         } = this.props
 
         const { device } = this.state
-
-
-        if (uniqueId) { CssGenerator(attributes, 'form', uniqueId); }
 
 
         return (
@@ -655,4 +652,5 @@ export default compose([
             toggleSelection
         }
     }),
+    withCSSGenerator()
 ])(Edit)

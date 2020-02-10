@@ -3,7 +3,37 @@ const { Fragment, Component } = wp.element;
 const { PanelBody, TextControl, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.blockEditor
 import icons from '../../helpers/icons'
-const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar }, ContextMenu: { ContextMenu, handleContextMenu } } = wp.qubelyComponents
+const {
+	RadioAdvanced,
+	Range,
+	Color,
+	Typography,
+	Toggle,
+	Separator,
+	ColorAdvanced,
+	Border,
+	BorderRadius,
+	BoxShadow,
+	Styles,
+	Alignment,
+	Padding,
+	Tabs,
+	Tab,
+	Carousel,
+	ButtonGroup,
+	gloalSettings: {
+		globalSettingsPanel,
+		animationSettings
+	},
+	Inline: {
+		InlineToolbar
+	},
+	ContextMenu: {
+		ContextMenu,
+		handleContextMenu
+	},
+	withCSSGenerator
+} = wp.qubelyComponents
 
 class Edit extends Component {
 	constructor(props) {
@@ -316,8 +346,6 @@ class Edit extends Component {
 				}
 			],
 		};
-
-		if (uniqueId) { CssGenerator(this.props.attributes, 'teamcarousel', uniqueId) }
 
 		return (
 			<Fragment>
@@ -818,4 +846,4 @@ class Edit extends Component {
 	}
 }
 
-export default Edit
+export default withCSSGenerator() (Edit);

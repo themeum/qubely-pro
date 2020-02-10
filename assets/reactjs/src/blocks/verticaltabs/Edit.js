@@ -1,3 +1,5 @@
+import icons from '../../helpers/icons';
+import templates from './templates';
 const { __ } = wp.i18n
 const { Tooltip, PanelBody, Toolbar, TextControl } = wp.components;
 const { compose } = wp.compose
@@ -5,9 +7,34 @@ const { withSelect, withDispatch } = wp.data
 const { Component, Fragment } = wp.element;
 const { InnerBlocks, RichText, InspectorControls, BlockControls } = wp.blockEditor
 const { PluginBlockSettingsMenuItem } = wp.editPost
-import templates from './templates';
-const { Color, ColorAdvanced, Media, IconList, Styles, Typography, Templates, Range, RadioAdvanced, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, Inline: { InlineToolbar }, BoxShadow, Alignment, Tabs, Tab, Separator, Border, Padding, BorderRadius, CssGenerator: { CssGenerator }, Toggle } = wp.qubelyComponents
-import icons from '../../helpers/icons';
+const {
+	Color,
+	ColorAdvanced,
+	Media,
+	IconList,
+	Styles,
+	Typography,
+	Templates,
+	Range,
+	RadioAdvanced,
+	gloalSettings: {
+		globalSettingsPanel,
+		animationSettings,
+		interactionSettings
+	},
+	Inline: {
+		InlineToolbar
+	},
+	BoxShadow,
+	Tabs,
+	Tab,
+	Separator,
+	Border,
+	Padding,
+	BorderRadius,
+	Toggle,
+	withCSSGenerator
+} = wp.qubelyComponents
 
 class Edit extends Component {
 
@@ -308,9 +335,8 @@ class Edit extends Component {
 			globalCss,
 			interaction
 		} = this.props.attributes
-		const { name, setAttributes, isSelected } = this.props
+		const { setAttributes } = this.props
 		const { activeTab, device } = this.state
-		if (uniqueId) { CssGenerator(this.props.attributes, 'verticaltabs', uniqueId); }
 		let iterator = [], index = 0
 		while (index < tabs) {
 			iterator.push(index)
@@ -725,4 +751,5 @@ export default compose([
 			updateBlockAttributes
 		};
 	}),
+	withCSSGenerator()
 ])(Edit)

@@ -1,6 +1,7 @@
 const { __ } = wp.i18n
 const { Component, Fragment } = wp.element
 const { withSelect } = wp.data
+const { compose } = wp.compose;
 const { dateI18n, __experimentalGetSettings } = wp.date
 const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
@@ -23,7 +24,7 @@ const {
 	Tabs,
 	Tab,
 	RadioAdvanced,
-	CssGenerator: { CssGenerator },
+	withCSSGenerator,
 	gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
 	Inline: { InlineToolbar },
 	ContextMenu: { ContextMenu, handleContextMenu }
@@ -245,9 +246,7 @@ class Edit extends Component {
 				interaction
 			}
 		} = this.props
-		const { device } = this.state
-
-		if (uniqueId) { CssGenerator(this.props.attributes, 'postgrid', uniqueId) }
+		const { device } = this.state;
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
@@ -686,24 +685,27 @@ class Edit extends Component {
 	}
 }
 
-export default withSelect((select, props) => {
-	const { getEntityRecords } = select('core')
-	const { attributes: { taxonomy, order, orderBy, categories, tags, postsToShow } } = props
+export default compose([
+	withSelect((select, props) => {
+		const { getEntityRecords } = select('core')
+		const { attributes: { taxonomy, order, orderBy, categories, tags, postsToShow } } = props
 
-	let allTaxonomy = qubely_admin.all_taxonomy
+		let allTaxonomy = qubely_admin.all_taxonomy
 
-	let seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags'
-	let activeTaxes = taxonomy === 'categories' ? categories : tags
+		let seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags'
+		let activeTaxes = taxonomy === 'categories' ? categories : tags
 
-	let query = {
-		order: order,
-		orderby: orderBy,
-		per_page: postsToShow,
-		[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
-	}
-	return {
-		posts: getEntityRecords('postType', 'post', query),
-		taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
-	};
-})
-	(Edit)
+		let query = {
+			order: order,
+			orderby: orderBy,
+			per_page: postsToShow,
+			[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
+		}
+		return {
+			posts: getEntityRecords('postType', 'post', query),
+			taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
+		};
+	}),
+	withCSSGenerator()
+])(Edit)
+

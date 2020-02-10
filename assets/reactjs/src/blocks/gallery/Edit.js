@@ -32,7 +32,7 @@ const {
     Alignment,
     Padding,
     Inline: { InlineToolbar },
-    CssGenerator: { CssGenerator },
+    withCSSGenerator,
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
     ContextMenu: { ContextMenu, handleContextMenu }
 } = wp.qubelyComponents
@@ -275,7 +275,6 @@ class Edit extends Component {
         } = this.props
         const { device } = this.state
 
-        if (uniqueId) { CssGenerator(this.props.attributes, 'gallery', uniqueId) }
 
         if (galleryContents.length === 0) {
             return (
@@ -422,4 +421,4 @@ class Edit extends Component {
     }
 }
 
-export default Edit
+export default withCSSGenerator()(Edit);

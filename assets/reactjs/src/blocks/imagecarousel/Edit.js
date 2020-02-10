@@ -20,7 +20,7 @@ const {
 	Tab,
 	Carousel,
 	ButtonGroup,
-	CssGenerator: { CssGenerator },
+	withCSSGenerator,
 	Inline: { InlineToolbar },
 	gloalSettings: {
 		globalSettingsPanel,
@@ -334,9 +334,6 @@ class Edit extends Component {
 				}
 			],
 		}
-
-		if (uniqueId) { CssGenerator(this.props.attributes, 'imagecarousel', uniqueId) }
-
 
 		if (carouselItems.length === 0) {
 			return (
@@ -722,4 +719,4 @@ class Edit extends Component {
 	}
 }
 
-export default Edit
+export default 	withCSSGenerator()(Edit);
