@@ -56,16 +56,14 @@ class Edit extends Component {
             device: 'md',
             spacer: true,
             showStartDate: false,
-            showEndDate: false,
-            date: props.date,
-            time: props.time
+            showEndDate: false
         }
 
         this.qubely_timer = React.createRef()
     }
 
     componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId } } = this.props
+        const { setAttributes, clientId, attributes: { uniqueId } } = this.props;
         const _client = clientId.substr(0, 6)
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
@@ -75,8 +73,25 @@ class Edit extends Component {
 
     }
 
-    _setDate = () => {
-        const {date, time} = this.state
+    _setDate = (type, newDate) => {
+        if(typeof type === 'undefined' || typeof newDate === 'undefined'){
+            return;
+        }
+
+        const prevDate = this.props.attributes.date;
+
+        let date = prevDate.split('T')[0];
+        let time = prevDate.split('T')[1];
+
+        if(type === 'date'){
+            date = newDate.split('T')[0]
+        }else{
+            time = newDate.split('T')[1]
+        }
+
+        this.props.setAttributes({
+            date: date + 'T' + time
+        })
     }
 
     render() {
@@ -91,6 +106,7 @@ class Edit extends Component {
                 className,
                 layout,
                 date,
+                startDate,
 
                 //container
                 background,
@@ -155,8 +171,8 @@ class Edit extends Component {
                         <Styles
                             value={layout}
                             options={[
-                                { value: 1, img: icons.form_classic },
-                                { value: 2, img: icons.form_material },
+                                { value: 1, img: icons.countdown.layout1 },
+                                { value: 2, img: icons.countdown.layout2 },
                             ]}
                             onChange={val => setAttributes({ layout: val })}
                         />
@@ -167,7 +183,7 @@ class Edit extends Component {
                                 renderToggle={ ( { isOpen, onToggle } ) => (
                                     <TextControl
                                         label={__('Starting Date')}
-                                        value={date.substr(0, 10)}
+                                        value={startDate.split('T')[0]}
                                         onClick={onToggle}
                                         aria-expanded={ isOpen }
                                         readOnly
@@ -177,8 +193,8 @@ class Edit extends Component {
                                     <div className='qubely-countdown-control-dropdown'>
                                         <DatePicker
                                             label={__('Date & Time')}
-                                            currentDate={date}
-                                            onChange={date => setAttributes({date})}
+                                            currentDate={startDate}
+                                            onChange={startDate => setAttributes({startDate})}
                                         />
                                     </div>
                                 ) }
@@ -189,7 +205,7 @@ class Edit extends Component {
                                 renderToggle={ ( { isOpen, onToggle } ) => (
                                     <TextControl
                                         label={__('Ending Date')}
-                                        value={date.substr(0, 10)}
+                                        value={date.split('T')[0]}
                                         onClick={onToggle}
                                         aria-expanded={ isOpen }
                                         readOnly
@@ -200,7 +216,7 @@ class Edit extends Component {
                                         <DatePicker
                                             label={__('Date & Time')}
                                             currentDate={date}
-                                            onChange={date => setAttributes({date})}
+                                            onChange={newDate => this._setDate('date', newDate)}
                                         />
                                     </div>
                                 ) }
@@ -211,8 +227,8 @@ class Edit extends Component {
                             <label>{__('Ending Time')}</label>
                             <TimePicker
                                 currentDate={date}
-                                onChange={date => setAttributes({date})}
-                                is12Hour={true}
+                                onChange={newDate => this._setDate('time', newDate)}
+                                // is12Hour={true}
                             />
                         </div>
                     </PanelBody>
@@ -512,6 +528,7 @@ class Edit extends Component {
                     >
                         <Countdown
                             date={date}
+                            startDate={startDate}
                             dayText={dayText}
                             hourText={hourText}
                             minuteText={minuteText}

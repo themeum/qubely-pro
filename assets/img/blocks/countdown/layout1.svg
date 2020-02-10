@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="113px" height="79px" viewBox="0 0 113 79" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>layout1</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-1449.000000, -100.000000)">
+            <g id="Group" transform="translate(1449.000000, 100.000000)">
+                <g id="layout1">
+                    <g id="Group-35" transform="translate(7.000000, 25.000000)">
+                        <rect id="Rectangle" fill="#F2F3F7" transform="translate(49.000000, 14.500000) scale(-1, 1) translate(-49.000000, -14.500000) " x="35" y="0" width="28" height="29" rx="2"></rect>
+                        <rect id="Rectangle" fill="#F2F3F7" transform="translate(84.500000, 14.500000) scale(-1, 1) translate(-84.500000, -14.500000) " x="70" y="0" width="29" height="29" rx="2"></rect>
+                        <rect id="Rectangle" fill="#F2F3F7" transform="translate(14.000000, 14.500000) scale(-1, 1) translate(-14.000000, -14.500000) " x="0" y="0" width="28" height="29" rx="2"></rect>
+                        <g id="Group-26" transform="translate(31.000000, 11.000000)" fill="#D8D8D8">
+                            <ellipse id="Oval" cx="1" cy="1.125" rx="1" ry="1.125"></ellipse>
+                            <ellipse id="Oval" cx="1" cy="7.875" rx="1" ry="1.125"></ellipse>
+                        </g>
+                        <g id="Group-26" transform="translate(65.000000, 11.000000)" fill="#D8D8D8">
+                            <ellipse id="Oval" cx="1" cy="1.125" rx="1" ry="1.125"></ellipse>
+                            <ellipse id="Oval" cx="1" cy="7.875" rx="1" ry="1.125"></ellipse>
+                        </g>
+                        <g id="Group-32" transform="translate(6.000000, 11.000000)" fill="#D6D9DD">
+                            <rect id="Rectangle-Copy-8" x="2.26666667" y="0" width="12.4666667" height="3.42857143" rx="1.71428571"></rect>
+                            <rect id="Rectangle" x="0" y="6.85714286" width="17" height="1.14285714" rx="0.571428571"></rect>
+                        </g>
+                        <g id="Group-32" transform="translate(41.000000, 11.000000)" fill="#D6D9DD">
+                            <rect id="Rectangle-Copy-8" x="2.26666667" y="0" width="12.4666667" height="3.42857143" rx="1.71428571"></rect>
+                            <rect id="Rectangle" x="0" y="6.85714286" width="17" height="1.14285714" rx="0.571428571"></rect>
+                        </g>
+                        <g id="Group-32" transform="translate(76.000000, 11.000000)" fill="#D6D9DD">
+                            <rect id="Rectangle-Copy-8" x="2.26666667" y="0" width="12.4666667" height="3.42857143" rx="1.71428571"></rect>
+                            <rect id="Rectangle" x="0" y="6.85714286" width="17" height="1.14285714" rx="0.571428571"></rect>
+                        </g>
+                    </g>
+                    <rect id="Rectangle" stroke-opacity="0.01" stroke="#FFFFFF" x="0.5" y="0.5" width="112" height="78" rx="3"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -4,6 +4,12 @@ const free_img_path = qubely_admin.plugin + 'assets/img/blocks'
 
 const icons = {
 
+    // Countdown
+    countdown: {
+        layout1: <img src={`${img_path}/countdown/layout1.svg`} alt={__('Layout 1')} />,
+        layout2: <img src={`${img_path}/countdown/layout2.svg`} alt={__('Layout 2')} />
+    },
+
     //form 
     form_classic: <img src={`${img_path}/form/classic.svg`} alt={__('Classic')} />,
     form_material: <img src={`${img_path}/form/material.svg`} alt={__('Material')} />,

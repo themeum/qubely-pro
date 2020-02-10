@@ -1,8 +1,14 @@
 
 const { gloalSettings: { globalAttributes } } = wp.qubelyComponents;
-let defaultDate = new Date();
-defaultDate.setDate(defaultDate.getDate() + (1 + 7 - defaultDate.getDay()) % 7);
-defaultDate = defaultDate.toISOString()
+
+const today = new Date();
+let defaultDate = today;
+defaultDate.setDate(defaultDate.getDate() + (1 + 7 - defaultDate.getDay()));
+defaultDate = defaultDate.toISOString();
+
+const startDate = today.toISOString();
+
+
 const attributes = {
     uniqueId: {
         type: 'string',
@@ -17,6 +23,10 @@ const attributes = {
     date: {
         type: 'string',
         default: defaultDate
+    },
+    startDate: {
+        type: 'string',
+        default: startDate
     },
     sourceOfCopiedStyle: {
         type: 'boolean',
@@ -113,9 +123,14 @@ const attributes = {
     border: {
         type: 'object',
         default: {},
-        style: [
-            { selector: '{{QUBELY}} .qubely-countdown-item' }
-        ]
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 1
+            }],
+            selector: '{{QUBELY}} .qubely-countdown-item'
+        }]
     },
     boxShadow: {
         type: 'object',
@@ -127,7 +142,14 @@ const attributes = {
             color: 'rgba(0, 0, 0, .2)',
             spread: 0
         },
-        style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 1
+            }],
+            selector: '{{QUBELY}} .qubely-countdown-item'
+        }]
     },
 
     size: {
