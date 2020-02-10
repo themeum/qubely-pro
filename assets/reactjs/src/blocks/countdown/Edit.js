@@ -10,8 +10,10 @@ const {
 const {
     PanelBody,
     CheckboxControl,
-    DateTimePicker,
+    TimePicker,
+    DatePicker,
     TextControl,
+    Dropdown
 } = wp.components
 
 const {
@@ -30,6 +32,7 @@ const {
     ButtonGroup,
     BorderRadius,
     Typography,
+    ColorAdvanced,
     Inline: {
         InlineToolbar
     },
@@ -52,9 +55,12 @@ class Edit extends Component {
         this.state = {
             device: 'md',
             spacer: true,
+            showStartDate: false,
+            showEndDate: false,
+            date: props.date,
+            time: props.time
         }
 
-        this._setAttributes = this._setAttributes.bind(this);
         this.qubely_timer = React.createRef()
     }
 
@@ -69,13 +75,9 @@ class Edit extends Component {
 
     }
 
-
-    _setAttributes(attribute, value) {
-        this.props.setAttributes({
-            [attribute]: value
-        });
-    };
-
+    _setDate = () => {
+        const {date, time} = this.state
+    }
 
     render() {
 
@@ -97,6 +99,11 @@ class Edit extends Component {
                 spaceBetween,
                 borderRadius,
                 boxShadow,
+
+                //circle
+                size,
+                fill,
+                emptyFill,
 
                 //Number
                 numberTypo,
@@ -153,30 +160,109 @@ class Edit extends Component {
                             ]}
                             onChange={val => setAttributes({ layout: val })}
                         />
-                        <DateTimePicker
-                            label={__('Date & Time')}
-                            currentDate={date}
-                            onChange={newDate => this._setAttributes('date', newDate)}
-                        />
+                        <div className='qubely-countdown-control-date-picker'>
+                            <Dropdown
+                                className="qubely-countdown-control-dropdown-parent"
+                                position="bottom center"
+                                renderToggle={ ( { isOpen, onToggle } ) => (
+                                    <TextControl
+                                        label={__('Starting Date')}
+                                        value={date.substr(0, 10)}
+                                        onClick={onToggle}
+                                        aria-expanded={ isOpen }
+                                        readOnly
+                                    />
+                                ) }
+                                renderContent={ () => (
+                                    <div className='qubely-countdown-control-dropdown'>
+                                        <DatePicker
+                                            label={__('Date & Time')}
+                                            currentDate={date}
+                                            onChange={date => setAttributes({date})}
+                                        />
+                                    </div>
+                                ) }
+                            />
+                            <Dropdown
+                                className="qubely-countdown-control-dropdown-parent"
+                                position="bottom center"
+                                renderToggle={ ( { isOpen, onToggle } ) => (
+                                    <TextControl
+                                        label={__('Ending Date')}
+                                        value={date.substr(0, 10)}
+                                        onClick={onToggle}
+                                        aria-expanded={ isOpen }
+                                        readOnly
+                                    />
+                                ) }
+                                renderContent={ () => (
+                                    <div className='qubely-countdown-control-dropdown' style={{display: 'flex'}}>
+                                        <DatePicker
+                                            label={__('Date & Time')}
+                                            currentDate={date}
+                                            onChange={date => setAttributes({date})}
+                                        />
+                                    </div>
+                                ) }
+                            />
+                        </div>
+
+                        <div className="qubely-countdown-control-time-picker">
+                            <label>{__('Ending Time')}</label>
+                            <TimePicker
+                                currentDate={date}
+                                onChange={date => setAttributes({date})}
+                                is12Hour={true}
+                            />
+                        </div>
                     </PanelBody>
-                    <PanelBody title={__('Container')} initialOpen={false}>
-                        <Background
-                            value={background}
-                            label={__('Background')}
-                            sources={['image', 'gradient']}
-                            onChange={val => setAttributes({ background: val })}
-                        />
-                        <Padding
-                            min={0}
-                            max={300}
-                            responsive
-                            value={padding}
-                            device={device}
-                            label={__('Padding')}
-                            unit={['px', 'em', '%']}
-                            onChange={val => setAttributes({ padding: val })}
-                            onDeviceChange={value => this.setState({ device: value })}
-                        />
+                    <PanelBody title={layout === 1 ? __('Container'): __('Circle')} initialOpen={false}>
+                        {
+                            layout === 1 ? (
+                                <Fragment>
+                                    <Background
+                                        value={background}
+                                        label={__('Background')}
+                                        sources={['image', 'gradient']}
+                                        onChange={val => setAttributes({ background: val })}
+                                    />
+                                    <Padding
+                                        min={0}
+                                        max={300}
+                                        responsive
+                                        value={padding}
+                                        device={device}
+                                        label={__('Padding')}
+                                        unit={['px', 'em', '%']}
+                                        onChange={val => setAttributes({ padding: val })}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                </Fragment>
+                            ) : (
+                                <Fragment>
+                                    <ColorAdvanced
+                                        label={__('Fill')}
+                                        value={fill}
+                                        onChange={fill => setAttributes({ fill})}
+                                    />
+                                    <Color
+                                        label={__('Empty Fill')}
+                                        value={emptyFill}
+                                        onChange={emptyFill => setAttributes({ emptyFill })}
+                                    />
+                                    <Range
+                                        min={40}
+                                        max={500}
+                                        responsive
+                                        value={size}
+                                        device={device}
+                                        label={__('Size')}
+                                        onChange={size => setAttributes({size})}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                </Fragment>
+                            )
+                        }
 
                         <Range
                             min={0}
@@ -199,25 +285,31 @@ class Edit extends Component {
                             onDeviceChange={value => this.setState({ device: value })}
                         />
 
-                        <BorderRadius
-                            min={0}
-                            max={100}
-                            label={__('Radius')}
-                            value={borderRadius}
-                            unit={['px', 'em', '%']}
-                            responsive device={device}
-                            onDeviceChange={value => this.setState({ device: value })}
-                            onChange={(value) => setAttributes({ borderRadius: value })}
-                        />
-                        <BoxShadow
-                            value={boxShadow}
-                            label={__('Box-Shadow')}
-                            onChange={(value) => setAttributes({ boxShadow: value })}
-                        />
+                        {
+                            layout === 1 && (
+                                <Fragment>
+                                    <BorderRadius
+                                        min={0}
+                                        max={100}
+                                        label={__('Radius')}
+                                        value={borderRadius}
+                                        unit={['px', 'em', '%']}
+                                        responsive device={device}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                        onChange={(value) => setAttributes({ borderRadius: value })}
+                                    />
+                                    <BoxShadow
+                                        value={boxShadow}
+                                        label={__('Box-Shadow')}
+                                        onChange={(value) => setAttributes({ boxShadow: value })}
+                                    />
+                                </Fragment>
+                            )
+                        }
+
                     </PanelBody>
 
                     <PanelBody title={__('Label Text')} initialOpen={false}>
-
                         <ButtonGroup
                             label={__('View')}
                             options={
@@ -247,7 +339,7 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableDay}
-                                    onChange={value => this._setAttributes('enableDay', value)}
+                                    onChange={enableDay => setAttributes({enableDay})}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
@@ -261,7 +353,7 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableHour}
-                                    onChange={value => this._setAttributes('enableHour', value)}
+                                    onChange={enableHour => setAttributes({enableHour})}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
@@ -275,7 +367,7 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableMinute}
-                                    onChange={value => this._setAttributes('enableMinute', value)}
+                                    onChange={enableMinute => setAttributes({enableMinute})}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
@@ -289,7 +381,7 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableSecond}
-                                    onChange={value => this._setAttributes('enableSecond', value)}
+                                    onChange={value => setAttributes({enableSecond})}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
@@ -343,7 +435,6 @@ class Edit extends Component {
                     {
                         layout === 1 &&
                         <PanelBody title={__('Separator')} initialOpen={false}>
-
                             <ButtonGroup
                                 label={__('Separator Type')}
                                 options={
@@ -432,8 +523,14 @@ class Edit extends Component {
                             className={classnames(
                                 'qubely-countdown',
                                 'qubely-countdown-label-' + labelPosition,
-                                'qubely-item-separator-' + separatorType
+                                'qubely-item-separator-' + ( layout === 2 ? 'none' : separatorType)
                             )}
+                            layout={layout}
+                            pie={{
+                                fill,
+                                emptyFill,
+                                size: size.md
+                            }}
                         />
 
                         <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >

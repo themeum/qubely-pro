@@ -12,13 +12,31 @@ const Pie = (props) => {
     const radius = (size - thickness) * .5
     const circumference = 2 * Math.PI * radius
     const offset = circumference * percent / 100
+    const radialPercent = (size /2 * thickness / 100) * .5
+    const uniqueId = 'pie_' + Math.random().toString(36).substr(2, 8) + '_' + Math.random().toString(36).substr(2, 8)
 
     return (
         <div className={className} style={{width: size, height: size}}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox={`${size / 2} ${size / 2} ${size} ${size}`}
-                style={{transform: 'rotate(-90deg)', overflow: 'visible'}}>
+                style={{transform: 'rotate(-90deg)'}}>
+
+                {
+                    fill.bgType !== 'color' && (
+                        fill.gradient.type == 'radial' ? (
+                            <radialGradient id={uniqueId} fx="50%" fy="50%" cx="50%" cy="50%" r={`${radialPercent}%`} spreadMethod="reflect">
+                                <stop offset={`${fill.gradient.start || 0}%`} stop-color={fill.gradient.color1} />
+                                <stop offset={`${fill.gradient.stop || 100}%`} stop-color={fill.gradient.color2} />
+                            </radialGradient>
+                        ) : (
+                            <linearGradient id={uniqueId} x1="0%" y1="0%" x2="0%" y2="100%" gradientTransform={`rotate(${fill.gradient.direction - 90 || 0}, .5, .5)`}>
+                                <stop offset={`${fill.gradient.start || 0}%`} stop-color={fill.gradient.color1} />
+                                <stop offset={`${fill.gradient.stop || 100}%`} stop-color={fill.gradient.color2} />
+                            </linearGradient>
+                        )
+                    )
+                }
 
                 {/* Circle / Background */}
                 <circle
@@ -32,7 +50,6 @@ const Pie = (props) => {
 
                 {/* Progress / Forground */}
                 <circle
-                    className='qubely-pie-circle-fg'
                     cx={size}
                     cy={size}
                     r={radius}
@@ -41,10 +58,7 @@ const Pie = (props) => {
                     stroke-width={thickness}
                     stroke-linecap={corner}
                     fill="none"
-                    stroke={fill}
-                    style={{
-                        transition: '1s'
-                    }}
+                    stroke={(fill.type === 'gradient' && fill.openColor === 1) ? `url(#${uniqueId})` : fill.color}
                 />
 
             </svg>
@@ -53,13 +67,25 @@ const Pie = (props) => {
 };
 
 Pie.defaultProps = {
-    size: 150,
+    size: 200,
     thickness: 15,
     percent: 40,
     corner: '',
-    fill: '#288feb',
     emptyFill: '#ffffff',
-    className: ''
+    className: '',
+    fill: {
+        color: '#25b5e1',
+        openColor: 1,
+        type: 'gradient',
+        gradient: {
+            type: 'linear',
+            color1: '#25b5e1',
+            color2: '#45dbca',
+            direction: '47',
+            start: '0',
+            stop: '100'
+        }
+    },
 }
 
 export default Pie;

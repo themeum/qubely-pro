@@ -26,12 +26,23 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    .qubely-countdown-item-content{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      align-items: center;
+      flex-direction: column;
+    }
     h5,
     p{
       margin: 0;
       line-height: 1;
     }
   }
+
+  &.qubely-countdown-label-top .qubely-countdown-item .qubely-countdown-item-content,
   &.qubely-countdown-label-top .qubely-countdown-item{
     flex-direction: column-reverse;
     p{
@@ -39,6 +50,7 @@
     }
   }
 
+  &.qubely-countdown-label-bottom .qubely-countdown-item .qubely-countdown-item-content,
   &.qubely-countdown-label-bottom .qubely-countdown-item{
     flex-direction: column;
     p{
@@ -46,6 +58,7 @@
     }
   }
 
+  &.qubely-countdown-label-right .qubely-countdown-item .qubely-countdown-item-content,
   &.qubely-countdown-label-right .qubely-countdown-item{
     flex-direction: row;
     p{
@@ -53,6 +66,7 @@
     }
   }
 
+  &.qubely-countdown-label-left .qubely-countdown-item .qubely-countdown-item-content,
   &.qubely-countdown-label-left .qubely-countdown-item{
     flex-direction: row-reverse;
     p{
@@ -81,5 +95,30 @@
   img{
     max-width: 16px;
     height: 12px;
+  }
+}
+
+
+
+.qubely-countdown-control-date-picker{
+  display: flex;
+  .qubely-countdown-control-dropdown-parent {
+    margin-right: 8px;
+    .components-base-control{
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+.qubely-countdown-control-dropdown{
+  .components-datetime__date{
+    margin: 0 !important;
+  }
+}
+
+
+.qubely-countdown-control-time-picker{
+  .components-datetime__time > fieldset:first-child{
+    display: none;
   }
 }

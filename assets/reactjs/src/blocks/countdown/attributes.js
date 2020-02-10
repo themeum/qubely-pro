@@ -1,7 +1,8 @@
 
 const { gloalSettings: { globalAttributes } } = wp.qubelyComponents;
-const defaultDate = new Date();
+let defaultDate = new Date();
 defaultDate.setDate(defaultDate.getDate() + (1 + 7 - defaultDate.getDay()) % 7);
+defaultDate = defaultDate.toISOString()
 const attributes = {
     uniqueId: {
         type: 'string',
@@ -21,6 +22,8 @@ const attributes = {
         type: 'boolean',
         default: false
     },
+
+    // Container or Circle
     background: {
         type: 'object',
         default: {
@@ -28,7 +31,34 @@ const attributes = {
             type: 'color',
             color: '#f5f5f5'
         },
-        style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 1
+            }],
+            selector: '{{QUBELY}} .qubely-countdown-item'
+        }]
+    },
+    fill: {
+        type: 'object',
+        default: {
+            openColor: 1,
+            type: 'color',
+            color: '#007bff',
+            gradient: {
+                type: 'linear',
+                color1: '#25b5e1',
+                color2: '#45dbca',
+                direction: '47',
+                start: '0',
+                stop: '100'
+            }
+        }
+    },
+    emptyFill: {
+        type: 'string',
+        default: '#f7f7f7'
     },
     padding: {
         type: 'object',
@@ -39,7 +69,14 @@ const attributes = {
             custom: { md: '30 30 30 30' },
             unit: 'px'
         },
-        style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 1
+            }],
+            selector: '{{QUBELY}} .qubely-countdown-item'
+        }]
     },
     spaceBetween: {
         type: 'object',
@@ -64,9 +101,14 @@ const attributes = {
             },
             unit: 'px'
         },
-        style: [
-            { selector: '{{QUBELY}} .qubely-countdown-item' }
-        ]
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 1
+            }],
+            selector: '{{QUBELY}} .qubely-countdown-item'
+        }]
     },
     border: {
         type: 'object',
@@ -88,6 +130,12 @@ const attributes = {
         style: [{ selector: '{{QUBELY}} .qubely-countdown-item' }]
     },
 
+    size: {
+        type: 'object',
+        default: {
+            md: 180
+        }
+    },
 
     //SEPARATOR
     separatorType: {
