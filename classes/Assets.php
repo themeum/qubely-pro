@@ -35,6 +35,9 @@ class Assets {
                 ) {
                     wp_enqueue_script('qubely-carousel', QUBELY_PRO_DIR_URL . 'assets/js/qubely-carousel.js', array('jquery'), QUBELY_PRO_VERSION);
                 }
+                if(in_array('qubely/countdown', $available_blocks)){
+                    wp_enqueue_script('qubely-countdown', QUBELY_PRO_DIR_URL . 'assets/js/qubely-countdown.js', array(), QUBELY_PRO_VERSION);
+                }
 
             } else {
                 $this->frontend_scripts_old_style();
@@ -63,6 +66,9 @@ class Assets {
         }
         if ((false !== strpos($post, '<!-- wp:' . 'qubely/imagecarousel' . ' ')) || (false !== strpos($post, '<!-- wp:' . 'qubely/postcarousel' . ' ')) || (false !== strpos($post, '<!-- wp:' . 'qubely/teamcarousel' . ' ')) || (false !== strpos($post, '<!-- wp:' . 'qubely/testimonialcarousel' . ' '))) {
             wp_enqueue_script('qubely-carousel', QUBELY_PRO_DIR_URL . 'assets/js/qubely-carousel.js', array('jquery'), QUBELY_PRO_VERSION);
+        }
+        if(false !== strpos($post, '<!-- wp:' . 'qubely/countdown' . ' ')){
+            wp_enqueue_script('qubely-countdown', QUBELY_PRO_DIR_URL . 'assets/js/qubely-countdown.js', array(), QUBELY_PRO_VERSION);
         }
 
     }

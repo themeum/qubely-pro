@@ -1,6 +1,7 @@
 import icons from '../../helpers/icons';
 import Countdown from './countdown';
 import classnames from 'classnames'
+
 const { __ } = wp.i18n;
 const {
     Component,
@@ -13,7 +14,8 @@ const {
     TimePicker,
     DatePicker,
     TextControl,
-    Dropdown
+    Dropdown,
+    AlignmentControl
 } = wp.components
 
 const {
@@ -33,6 +35,8 @@ const {
     BorderRadius,
     Typography,
     ColorAdvanced,
+    RadioAdvanced,
+    Toggle,
     Inline: {
         InlineToolbar
     },
@@ -115,13 +119,17 @@ class Edit extends Component {
                 spaceBetween,
                 borderRadius,
                 boxShadow,
+                minWidth,
 
                 //circle
                 size,
                 fill,
                 emptyFill,
+                strokeLinecap,
+                circleTransition,
 
                 //Number
+                numberColor,
                 numberTypo,
 
                 //LABEL
@@ -224,15 +232,28 @@ class Edit extends Component {
                         </div>
 
                         <div className="qubely-countdown-control-time-picker">
-                            <label>{__('Ending Time')}</label>
+                            <label>{__('Ending Time (24 Hour Format)')}</label>
                             <TimePicker
                                 currentDate={date}
                                 onChange={newDate => this._setDate('time', newDate)}
-                                // is12Hour={true}
                             />
                         </div>
                     </PanelBody>
                     <PanelBody title={layout === 1 ? __('Container'): __('Circle')} initialOpen={false}>
+                        {
+                            layout === 2 && (
+                                <Range
+                                    min={40}
+                                    max={500}
+                                    responsive
+                                    value={size}
+                                    device={device}
+                                    label={__('Size')}
+                                    onChange={size => setAttributes({size})}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
+                            )
+                        }
                         {
                             layout === 1 ? (
                                 <Fragment>
@@ -241,6 +262,16 @@ class Edit extends Component {
                                         label={__('Background')}
                                         sources={['image', 'gradient']}
                                         onChange={val => setAttributes({ background: val })}
+                                    />
+                                    <Range
+                                        min={0}
+                                        max={500}
+                                        responsive
+                                        value={minWidth}
+                                        device={device}
+                                        label={__('Minimum Width')}
+                                        onChange={minWidth => setAttributes({minWidth})}
+                                        onDeviceChange={value => this.setState({ device: value })}
                                     />
                                     <Padding
                                         min={0}
@@ -256,25 +287,24 @@ class Edit extends Component {
                                 </Fragment>
                             ) : (
                                 <Fragment>
+                                    <RadioAdvanced
+                                        label={__('Border Style')}
+                                        value={strokeLinecap}
+                                        options={[
+                                            {value: 'round', label: __('Round')},
+                                            {value: '', label: __('Square')}
+                                        ]}
+                                        onChange={strokeLinecap => setAttributes({strokeLinecap})}
+                                    />
                                     <ColorAdvanced
-                                        label={__('Fill')}
+                                        label={__('Border Fill')}
                                         value={fill}
                                         onChange={fill => setAttributes({ fill})}
                                     />
                                     <Color
-                                        label={__('Empty Fill')}
+                                        label={__('Border Empty Fill')}
                                         value={emptyFill}
                                         onChange={emptyFill => setAttributes({ emptyFill })}
-                                    />
-                                    <Range
-                                        min={40}
-                                        max={500}
-                                        responsive
-                                        value={size}
-                                        device={device}
-                                        label={__('Size')}
-                                        onChange={size => setAttributes({size})}
-                                        onDeviceChange={value => this.setState({ device: value })}
                                     />
                                 </Fragment>
                             )
@@ -292,14 +322,24 @@ class Edit extends Component {
                             onDeviceChange={value => this.setState({ device: value })}
                         />
 
-                        <Border
-                            responsive
-                            value={border}
-                            device={device}
-                            label={__('Border')}
-                            onChange={val => setAttributes({ border: val })}
-                            onDeviceChange={value => this.setState({ device: value })}
-                        />
+                        {
+                            layout === 1 ? (
+                                <Border
+                                    responsive
+                                    value={border}
+                                    device={device}
+                                    label={__('Border')}
+                                    onChange={val => setAttributes({ border: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
+                            ) : (
+                                <Toggle
+                                    label={__('Change Circle Smoothly')}
+                                    value={circleTransition}
+                                    onChange={circleTransition => setAttributes({circleTransition})}
+                                />
+                            )
+                        }
 
                         {
                             layout === 1 && (
@@ -322,34 +362,51 @@ class Edit extends Component {
                                 </Fragment>
                             )
                         }
-
                     </PanelBody>
 
                     <PanelBody title={__('Label Text')} initialOpen={false}>
-                        <ButtonGroup
-                            label={__('View')}
-                            options={
-                                [
-                                    [__('Inside'), 'inside'],
-                                    [__('Outside'), 'outside']
-                                ]
-                            }
-                            value={labelView}
-                            onChange={value => setAttributes({ labelView: value })}
-                        />
-                        <ButtonGroup
-                            label={__('Position')}
-                            options={
-                                [
-                                    [__('Top'), 'top'],
-                                    [__('Right'), 'right'],
-                                    [__('Bottom'), 'bottom'],
-                                    [__('Left'), 'left']
-                                ]
-                            }
-                            value={labelPosition}
-                            onChange={value => setAttributes({ labelPosition: value })}
-                        />
+                        {
+                            layout === 1 ? (
+                                <Fragment>
+                                    <ButtonGroup
+                                        label={__('View')}
+                                        options={
+                                            [
+                                                [__('Inside'), 'inside'],
+                                                [__('Outside'), 'outside']
+                                            ]
+                                        }
+                                        value={labelView}
+                                        onChange={value => setAttributes({ labelView: value })}
+                                    />
+                                    <ButtonGroup
+                                        label={__('Position')}
+                                        options={
+                                            [
+                                                [__('Top'), 'top'],
+                                                [__('Right'), 'right'],
+                                                [__('Bottom'), 'bottom'],
+                                                [__('Left'), 'left']
+                                            ]
+                                        }
+                                        value={labelPosition}
+                                        onChange={value => setAttributes({ labelPosition: value })}
+                                    />
+                                </Fragment>
+                            ) : (
+                                <ButtonGroup
+                                    label={__('Position')}
+                                    options={
+                                        [
+                                            [__('Top'), 'top'],
+                                            [__('Bottom'), 'bottom'],
+                                        ]
+                                    }
+                                    value={labelPosition}
+                                    onChange={value => setAttributes({ labelPosition: value })}
+                                />
+                            )
+                        }
 
                         <div className="qubely-countdown-label-control-text">
                             <div className="qubely-coutdown-label-left">
@@ -432,6 +489,11 @@ class Edit extends Component {
 
                     <PanelBody title={__('Number Text')} initialOpen={false}>
                         {  /* Note: Label Spacing & Number Spacing are same */ }
+                        <Color
+                            label={__('Color')}
+                            value={numberColor}
+                            onChange={numberColor => setAttributes({ numberColor })}
+                        />
                         <Range
                             min={0}
                             max={100}

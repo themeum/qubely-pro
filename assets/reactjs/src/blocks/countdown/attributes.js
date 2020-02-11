@@ -34,6 +34,30 @@ const attributes = {
     },
 
     // Container or Circle
+    strokeLinecap: {
+        type: 'string',
+        default: 'round',
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 2
+            }],
+            selector: '{{QUBELY}} .qubely-countdown-cirlce-forground{stroke-linecap: {{strokeLinecap}}}'
+        }]
+    },
+    circleTransition: {
+        type: 'boolean',
+        default: true,
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 2
+            }],
+            selector: '{{QUBELY}} .qubely-countdown-cirlce-forground{transition: 300ms}'
+        }]
+    },
     background: {
         type: 'object',
         default: {
@@ -86,6 +110,18 @@ const attributes = {
                 value: 1
             }],
             selector: '{{QUBELY}} .qubely-countdown-item'
+        }]
+    },
+
+    minWidth: {
+        type: 'object',
+        default: {
+            md: 0,
+            unit: 'px'
+        },
+        style: [{
+            selector:
+                '{{QUBELY}} .qubely-countdown-item{min-width: {{minWidth}};} '
         }]
     },
     spaceBetween: {
@@ -156,7 +192,15 @@ const attributes = {
         type: 'object',
         default: {
             md: 180
-        }
+        },
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 2
+            }],
+            selector: '{{QUBELY}} .qubely-countdown-svg-wrap{height: {{size}}px; width: {{size}}px}'
+        }]
     },
 
     //SEPARATOR
@@ -204,6 +248,13 @@ const attributes = {
         }]
     },
     //NUMBER
+    numberColor: {
+        type: 'string',
+        default: '#000',
+        style: [{
+            selector: '{{QUBELY}} .qubely-countdown-item h5  {color: {{numberColor}};}'
+        }]
+    },
     numberTypo: {
         type: 'object',
         default: {

@@ -1,9 +1,9 @@
 const Pie = (props) => {
     const {
-        corner,
         fill,
         emptyFill,
-        className
+        className,
+        startDate
     } = props;
 
     const size = parseInt(props.size);
@@ -12,11 +12,11 @@ const Pie = (props) => {
     const radius = (size - thickness) * .5
     const circumference = 2 * Math.PI * radius
     const offset = circumference * percent / 100
-    const radialPercent = (size /2 * thickness / 100) * .5
+    const radialPercent = (size / 2 * thickness / 100) * .5
     const uniqueId = 'pie_' + Math.random().toString(36).substr(2, 8) + '_' + Math.random().toString(36).substr(2, 8)
 
     return (
-        <div className={className} style={{width: size, height: size}}>
+        <div className={`qubely-countdown-svg-wrap ${className}`} data-circumference={circumference} data-size={size} date-startdate={startDate}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox={`${size / 2} ${size / 2} ${size} ${size}`}
@@ -40,6 +40,7 @@ const Pie = (props) => {
 
                 {/* Circle / Background */}
                 <circle
+                    className='qubely-countdown-cirlce-background'
                     cx={size}
                     cy={size}
                     r={radius}
@@ -50,13 +51,13 @@ const Pie = (props) => {
 
                 {/* Progress / Forground */}
                 <circle
+                    className='qubely-countdown-cirlce-forground'
                     cx={size}
                     cy={size}
                     r={radius}
                     stroke-dasharray={circumference}
                     stroke-dashoffset={circumference - offset}
                     stroke-width={thickness}
-                    stroke-linecap={corner}
                     fill="none"
                     stroke={(fill.type === 'gradient' && fill.openColor === 1) ? `url(#${uniqueId})` : fill.color}
                 />
@@ -69,7 +70,7 @@ const Pie = (props) => {
 Pie.defaultProps = {
     size: 200,
     thickness: 15,
-    percent: 40,
+    percent: 100,
     corner: '',
     emptyFill: '#ffffff',
     className: '',

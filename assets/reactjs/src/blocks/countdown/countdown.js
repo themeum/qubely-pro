@@ -19,6 +19,8 @@ const Countdown = (props) => {
         pie
     } = props
 
+    pie.startDate = startDate
+
     const couterRef = useRef(null)
 
 
@@ -49,10 +51,10 @@ const Countdown = (props) => {
             setMinute('00');
             setSecond('00');
 
-            setSecondPercent(0);
-            setMinutePercent(0);
-            setHourPercent(0);
-            setDayPercent(0);
+            setSecondPercent(100);
+            setMinutePercent(100);
+            setHourPercent(100);
+            setDayPercent(100);
 
             couterRef.current && clearInterval(couterRef.current)
             return;
@@ -63,10 +65,16 @@ const Countdown = (props) => {
         setMinute(minute);
         setSecond(second);
 
-        setSecondPercent((second * 100) / 60);
-        setMinutePercent((minute * 100) / 60);
-        setHourPercent((hour * 100) / 24);
-        setDayPercent(100 - _getDayPercent());
+        const secondPercent = (second * 100) / 60;
+        const minutePercent = (minute * 100) / 60;
+        const hourPercent = (hour * 100) / 24;
+        const dayPercent = 100 - _getDayPercent();
+
+        setSecondPercent(secondPercent ? secondPercent : 100);
+        setMinutePercent(minutePercent ? minutePercent : 100);
+        setHourPercent(hourPercent ? hourPercent : 100);
+        setDayPercent(dayPercent ? dayPercent : 100);
+
 
     }
 
@@ -80,8 +88,7 @@ const Countdown = (props) => {
 
         const diff = parseInt((date > startDate ? date - startDate : 0) / 1000 / 60 / 60 / 24);
         const passed = parseInt((today > startDate ? today - startDate : 0) / 1000 / 60 / 60 / 24);
-        const dayPercent =  parseInt(passed * 100 / diff);
-        return dayPercent < 1 ? 100 : dayPercent;
+        return parseInt(passed * 100 / diff);
     }
 
     useEffect(() => {
@@ -91,9 +98,7 @@ const Countdown = (props) => {
         couterRef.current = setInterval(() => {
             _updateDateState()
         }, 1000);
-
     }, [date, startDate]);
-
 
     return (
 
