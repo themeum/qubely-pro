@@ -77,10 +77,17 @@ class Edit extends Component {
         }
         if (date === null && startDate === null) {
             const today = new Date();
-            let defaultDate = today;
-            defaultDate.setDate(defaultDate.getDate() + (1 + 7 - defaultDate.getDay()));
+
+            // Default Date
+            let defaultDate = today.getTime() + (7 * 24 * 60 * 60 * 1000);
+            defaultDate = new Date(defaultDate);
             defaultDate = defaultDate.toISOString();
-            const startDate = today.toISOString();
+
+            // Start Date
+            let startDate = today.getTime() - (7 * 24 * 60 * 60 * 1000);
+            startDate = new Date(startDate);
+            startDate = startDate.toISOString();
+
             setAttributes({
                 date: defaultDate,
                 startDate: startDate
