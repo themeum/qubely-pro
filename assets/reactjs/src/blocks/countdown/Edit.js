@@ -67,18 +67,31 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId } } = this.props;
-        const _client = clientId.substr(0, 6)
+        const { setAttributes, clientId, attributes: { uniqueId, date, startDate } } = this.props;
+        const _client = clientId.substr(0, 6);
+
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client });
         }
+        if (date === null && startDate === null) {
+            const today = new Date();
+            let defaultDate = today;
+            defaultDate.setDate(defaultDate.getDate() + (1 + 7 - defaultDate.getDay()));
+            defaultDate = defaultDate.toISOString();
+            const startDate = today.toISOString();
+            setAttributes({
+                date: defaultDate,
+                startDate: startDate
+            });
+
+        }
 
     }
 
     _setDate = (type, newDate) => {
-        if(typeof type === 'undefined' || typeof newDate === 'undefined'){
+        if (typeof type === 'undefined' || typeof newDate === 'undefined') {
             return;
         }
 
@@ -87,9 +100,9 @@ class Edit extends Component {
         let date = prevDate.split('T')[0];
         let time = prevDate.split('T')[1];
 
-        if(type === 'date'){
+        if (type === 'date') {
             date = newDate.split('T')[0]
-        }else{
+        } else {
             time = newDate.split('T')[1]
         }
 
@@ -167,7 +180,6 @@ class Edit extends Component {
                 globalCss
             }
         } = this.props;
-
         const { device } = this.state;
 
         if (uniqueId) { CssGenerator(this.props.attributes, 'countdown', uniqueId) }
@@ -188,46 +200,46 @@ class Edit extends Component {
                             <Dropdown
                                 className="qubely-countdown-control-dropdown-parent"
                                 position="bottom center"
-                                renderToggle={ ( { isOpen, onToggle } ) => (
+                                renderToggle={({ isOpen, onToggle }) => (
                                     <TextControl
                                         label={__('Starting Date')}
-                                        value={startDate.split('T')[0]}
+                                        value={startDate && startDate.split('T')[0]}
                                         onClick={onToggle}
-                                        aria-expanded={ isOpen }
+                                        aria-expanded={isOpen}
                                         readOnly
                                     />
-                                ) }
-                                renderContent={ () => (
+                                )}
+                                renderContent={() => (
                                     <div className='qubely-countdown-control-dropdown'>
                                         <DatePicker
                                             label={__('Date & Time')}
                                             currentDate={startDate}
-                                            onChange={startDate => setAttributes({startDate})}
+                                            onChange={startDate => setAttributes({ startDate })}
                                         />
                                     </div>
-                                ) }
+                                )}
                             />
                             <Dropdown
                                 className="qubely-countdown-control-dropdown-parent"
                                 position="bottom center"
-                                renderToggle={ ( { isOpen, onToggle } ) => (
+                                renderToggle={({ isOpen, onToggle }) => (
                                     <TextControl
                                         label={__('Ending Date')}
-                                        value={date.split('T')[0]}
+                                        value={date && date.split('T')[0]}
                                         onClick={onToggle}
-                                        aria-expanded={ isOpen }
+                                        aria-expanded={isOpen}
                                         readOnly
                                     />
-                                ) }
-                                renderContent={ () => (
-                                    <div className='qubely-countdown-control-dropdown' style={{display: 'flex'}}>
+                                )}
+                                renderContent={() => (
+                                    <div className='qubely-countdown-control-dropdown' style={{ display: 'flex' }}>
                                         <DatePicker
                                             label={__('Date & Time')}
                                             currentDate={date}
                                             onChange={newDate => this._setDate('date', newDate)}
                                         />
                                     </div>
-                                ) }
+                                )}
                             />
                         </div>
 
@@ -239,7 +251,7 @@ class Edit extends Component {
                             />
                         </div>
                     </PanelBody>
-                    <PanelBody title={layout === 1 ? __('Container'): __('Circle')} initialOpen={false}>
+                    <PanelBody title={layout === 1 ? __('Container') : __('Circle')} initialOpen={false}>
                         {
                             layout === 2 && (
                                 <Range
@@ -249,7 +261,7 @@ class Edit extends Component {
                                     value={size}
                                     device={device}
                                     label={__('Size')}
-                                    onChange={size => setAttributes({size})}
+                                    onChange={size => setAttributes({ size })}
                                     onDeviceChange={value => this.setState({ device: value })}
                                 />
                             )
@@ -270,7 +282,7 @@ class Edit extends Component {
                                         value={minWidth}
                                         device={device}
                                         label={__('Minimum Width')}
-                                        onChange={minWidth => setAttributes({minWidth})}
+                                        onChange={minWidth => setAttributes({ minWidth })}
                                         onDeviceChange={value => this.setState({ device: value })}
                                     />
                                     <Padding
@@ -286,28 +298,28 @@ class Edit extends Component {
                                     />
                                 </Fragment>
                             ) : (
-                                <Fragment>
-                                    <RadioAdvanced
-                                        label={__('Border Style')}
-                                        value={strokeLinecap}
-                                        options={[
-                                            {value: 'round', label: __('Round')},
-                                            {value: '', label: __('Square')}
-                                        ]}
-                                        onChange={strokeLinecap => setAttributes({strokeLinecap})}
-                                    />
-                                    <ColorAdvanced
-                                        label={__('Border Fill')}
-                                        value={fill}
-                                        onChange={fill => setAttributes({ fill})}
-                                    />
-                                    <Color
-                                        label={__('Border Empty Fill')}
-                                        value={emptyFill}
-                                        onChange={emptyFill => setAttributes({ emptyFill })}
-                                    />
-                                </Fragment>
-                            )
+                                    <Fragment>
+                                        <RadioAdvanced
+                                            label={__('Border Style')}
+                                            value={strokeLinecap}
+                                            options={[
+                                                { value: 'round', label: __('Round') },
+                                                { value: '', label: __('Square') }
+                                            ]}
+                                            onChange={strokeLinecap => setAttributes({ strokeLinecap })}
+                                        />
+                                        <ColorAdvanced
+                                            label={__('Border Fill')}
+                                            value={fill}
+                                            onChange={fill => setAttributes({ fill })}
+                                        />
+                                        <Color
+                                            label={__('Border Empty Fill')}
+                                            value={emptyFill}
+                                            onChange={emptyFill => setAttributes({ emptyFill })}
+                                        />
+                                    </Fragment>
+                                )
                         }
 
                         <Range
@@ -333,12 +345,12 @@ class Edit extends Component {
                                     onDeviceChange={value => this.setState({ device: value })}
                                 />
                             ) : (
-                                <Toggle
-                                    label={__('Change Circle Smoothly')}
-                                    value={circleTransition}
-                                    onChange={circleTransition => setAttributes({circleTransition})}
-                                />
-                            )
+                                    <Toggle
+                                        label={__('Change Circle Smoothly')}
+                                        value={circleTransition}
+                                        onChange={circleTransition => setAttributes({ circleTransition })}
+                                    />
+                                )
                         }
 
                         {
@@ -394,31 +406,31 @@ class Edit extends Component {
                                     />
                                 </Fragment>
                             ) : (
-                                <ButtonGroup
-                                    label={__('Position')}
-                                    options={
-                                        [
-                                            [__('Top'), 'top'],
-                                            [__('Bottom'), 'bottom'],
-                                        ]
-                                    }
-                                    value={labelPosition}
-                                    onChange={value => setAttributes({ labelPosition: value })}
-                                />
-                            )
+                                    <ButtonGroup
+                                        label={__('Position')}
+                                        options={
+                                            [
+                                                [__('Top'), 'top'],
+                                                [__('Bottom'), 'bottom'],
+                                            ]
+                                        }
+                                        value={labelPosition}
+                                        onChange={value => setAttributes({ labelPosition: value })}
+                                    />
+                                )
                         }
 
                         <div className="qubely-countdown-label-control-text">
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableDay}
-                                    onChange={enableDay => setAttributes({enableDay})}
+                                    onChange={enableDay => setAttributes({ enableDay })}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
                                 <TextControl
                                     value={dayText}
-                                    onChange={dayText => setAttributes({dayText})}
+                                    onChange={dayText => setAttributes({ dayText })}
                                 />
                             </div>
                         </div>
@@ -426,13 +438,13 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableHour}
-                                    onChange={enableHour => setAttributes({enableHour})}
+                                    onChange={enableHour => setAttributes({ enableHour })}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
                                 <TextControl
                                     value={hourText}
-                                    onChange={hourText => setAttributes({hourText})}
+                                    onChange={hourText => setAttributes({ hourText })}
                                 />
                             </div>
                         </div>
@@ -440,13 +452,13 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableMinute}
-                                    onChange={enableMinute => setAttributes({enableMinute})}
+                                    onChange={enableMinute => setAttributes({ enableMinute })}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
                                 <TextControl
                                     value={minuteText}
-                                    onChange={minuteText => setAttributes({minuteText})}
+                                    onChange={minuteText => setAttributes({ minuteText })}
                                 />
                             </div>
                         </div>
@@ -454,13 +466,13 @@ class Edit extends Component {
                             <div className="qubely-coutdown-label-left">
                                 <CheckboxControl
                                     checked={enableSecond}
-                                    onChange={value => setAttributes({enableSecond})}
+                                    onChange={value => setAttributes({ enableSecond })}
                                 />
                             </div>
                             <div className="qubely-coutdown-label-right">
                                 <TextControl
                                     value={secondText}
-                                    onChange={secondText => setAttributes({secondText})}
+                                    onChange={secondText => setAttributes({ secondText })}
                                 />
                             </div>
                         </div>
@@ -470,7 +482,7 @@ class Edit extends Component {
                             max={100}
                             label={__('Spacing')}
                             value={labelSpacing}
-                            onChange={labelSpacing => setAttributes({labelSpacing})}
+                            onChange={labelSpacing => setAttributes({ labelSpacing })}
                         />
 
                         <Color
@@ -488,7 +500,7 @@ class Edit extends Component {
                     </PanelBody>
 
                     <PanelBody title={__('Number Text')} initialOpen={false}>
-                        {  /* Note: Label Spacing & Number Spacing are same */ }
+                        {  /* Note: Label Spacing & Number Spacing are same */}
                         <Color
                             label={__('Color')}
                             value={numberColor}
@@ -499,7 +511,7 @@ class Edit extends Component {
                             max={100}
                             label={__('Spacing')}
                             value={labelSpacing}
-                            onChange={labelSpacing => setAttributes({labelSpacing})}
+                            onChange={labelSpacing => setAttributes({ labelSpacing })}
                         />
                         <Typography
                             device={device}
@@ -517,9 +529,9 @@ class Edit extends Component {
                                 label={__('Separator Type')}
                                 options={
                                     [
-                                        [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/ban.svg'} alt={__('None')}/>, 'none'],
-                                        [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/colon.svg'} alt={__('Colon')}/>, 'colon'],
-                                        [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/pipe.svg'} alt={__('Pipe')}/>, 'line']
+                                        [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/ban.svg'} alt={__('None')} />, 'none'],
+                                        [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/colon.svg'} alt={__('Colon')} />, 'colon'],
+                                        [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/pipe.svg'} alt={__('Pipe')} />, 'line']
                                     ]
                                 }
                                 value={separatorType}
@@ -527,7 +539,7 @@ class Edit extends Component {
                                 onChange={value => setAttributes({ separatorType: value })}
                             />
 
-                            { separatorType !== 'none' && (
+                            {separatorType !== 'none' && (
                                 <Fragment>
                                     <Color
                                         label={__('Color')}
@@ -602,7 +614,7 @@ class Edit extends Component {
                             className={classnames(
                                 'qubely-countdown',
                                 'qubely-countdown-label-' + labelPosition,
-                                'qubely-item-separator-' + ( layout === 2 ? 'none' : separatorType)
+                                'qubely-item-separator-' + (layout === 2 ? 'none' : separatorType)
                             )}
                             layout={layout}
                             pie={{
@@ -610,6 +622,7 @@ class Edit extends Component {
                                 emptyFill,
                                 size: size.md
                             }}
+                            id={uniqueId}
                         />
 
                         <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >

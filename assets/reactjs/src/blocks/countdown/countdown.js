@@ -1,6 +1,6 @@
 import Pie from './pie';
 
-const {useState, useRef, useEffect} = wp.element;
+const { useState, useRef, useEffect } = wp.element;
 
 const Countdown = (props) => {
     const {
@@ -16,7 +16,8 @@ const Countdown = (props) => {
         secondText,
         className,
         layout,
-        pie
+        pie,
+        id
     } = props
 
     pie.startDate = startDate
@@ -45,7 +46,7 @@ const Countdown = (props) => {
         const minute = parseInt((diff / 1000 / 60) % 60);
         const second = parseInt((diff / 1000) % 60);
 
-        if(diff < 0) {
+        if (diff < 0) {
             setDay('00');
             setHour('00');
             setMinute('00');
@@ -79,7 +80,7 @@ const Countdown = (props) => {
     }
 
     const _getDayPercent = () => {
-        let {date, startDate} = props;
+        let { date, startDate } = props;
         let today = new Date();
         // convert to time stamp
         date = Date.parse(date);
@@ -92,7 +93,7 @@ const Countdown = (props) => {
     }
 
     useEffect(() => {
-        if (couterRef.current !== null ) {
+        if (couterRef.current !== null) {
             clearInterval(couterRef.current)
         }
         couterRef.current = setInterval(() => {
@@ -139,53 +140,53 @@ const Countdown = (props) => {
                 }
             </div>
         ) : (
-            <div className={className} data-date={date}>
-                {
-                    enableDay && (
-                        <div className="qubely-countdown-item">
-                            <Pie percent={dayPercent} {...pie}/>
-                            <div className="qubely-countdown-item-content">
-                                <h5 className="day">{day}</h5>
-                                {dayText && <p>{dayText}</p>}
+                <div className={className} data-date={date}>
+                    {
+                        enableDay && (
+                            <div className="qubely-countdown-item">
+                                <Pie percent={dayPercent} {...pie} id={`${id}0`} />
+                                <div className="qubely-countdown-item-content">
+                                    <h5 className="day">{day}</h5>
+                                    {dayText && <p>{dayText}</p>}
+                                </div>
                             </div>
-                        </div>
-                    )
-                }
-                {
-                    enableHour && (
-                        <div className="qubely-countdown-item">
-                            <Pie percent={hourPercent} {...pie}/>
-                            <div className="qubely-countdown-item-content">
-                                <h5 className="hour">{('0' + hour).slice(-2)}</h5>
-                                {hourText && <p>{hourText}</p>}
+                        )
+                    }
+                    {
+                        enableHour && (
+                            <div className="qubely-countdown-item">
+                                <Pie percent={hourPercent} {...pie} id={`${id}1`} />
+                                <div className="qubely-countdown-item-content">
+                                    <h5 className="hour">{('0' + hour).slice(-2)}</h5>
+                                    {hourText && <p>{hourText}</p>}
+                                </div>
                             </div>
-                        </div>
-                    )
-                }
-                {
-                    enableMinute && (
-                        <div className="qubely-countdown-item">
-                            <Pie percent={minutePercent} {...pie}/>
-                            <div className="qubely-countdown-item-content">
-                                <h5 className="minute">{('0' + minute).slice(-2)}</h5>
-                                {minuteText && <p>{minuteText}</p>}
+                        )
+                    }
+                    {
+                        enableMinute && (
+                            <div className="qubely-countdown-item">
+                                <Pie percent={minutePercent} {...pie} id={`${id}2`} />
+                                <div className="qubely-countdown-item-content">
+                                    <h5 className="minute">{('0' + minute).slice(-2)}</h5>
+                                    {minuteText && <p>{minuteText}</p>}
+                                </div>
                             </div>
-                        </div>
-                    )
-                }
-                {
-                    enableSecond && (
-                        <div className="qubely-countdown-item">
-                            <Pie percent={secondPercent} {...(pie)}/>
-                            <div className='qubely-countdown-item-content'>
-                                <h5 className="second">{('0' + second).slice(-2)}</h5>
-                                {secondText && <p>{secondText}</p>}
+                        )
+                    }
+                    {
+                        enableSecond && (
+                            <div className="qubely-countdown-item">
+                                <Pie percent={secondPercent} {...pie} id={`${id}3`} />
+                                <div className='qubely-countdown-item-content'>
+                                    <h5 className="second">{('0' + second).slice(-2)}</h5>
+                                    {secondText && <p>{secondText}</p>}
+                                </div>
                             </div>
-                        </div>
-                    )
-                }
-            </div>
-        )
+                        )
+                    }
+                </div>
+            )
     )
 }
 

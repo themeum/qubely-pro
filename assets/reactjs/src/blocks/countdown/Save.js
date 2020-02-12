@@ -66,28 +66,28 @@ class Save extends Component {
                             ) : (
                                 <Fragment>
                                     <div className="qubely-countdown-item">
-                                        <Pie className={'qubely-countdown-item-day'} percent={dayPercent} {...pie}/>
+                                        <Pie className={'qubely-countdown-item-day'} percent={dayPercent} {...pie} id={`${uniqueId}0`} />
                                         <div className="qubely-countdown-item-content">
                                             <h5 className="day">{day}</h5>
                                             {dayText && <p>{dayText}</p>}
                                         </div>
                                     </div>
                                     <div className="qubely-countdown-item">
-                                        <Pie className={'qubely-countdown-item-hour'} percent={hourPercent} {...pie}/>
+                                        <Pie className={'qubely-countdown-item-hour'} percent={hourPercent} {...pie} id={`${uniqueId}1`}/>
                                         <div className="qubely-countdown-item-content">
                                             <h5 className="hour">{hour}</h5>
                                             {hourText && <p>{hourText}</p>}
                                         </div>
                                     </div>
                                     <div className="qubely-countdown-item">
-                                        <Pie className={'qubely-countdown-item-minute'} percent={minutePercent} {...pie}/>
+                                        <Pie className={'qubely-countdown-item-minute'} percent={minutePercent} {...pie} id={`${uniqueId}2`}/>
                                         <div className="qubely-countdown-item-content">
                                             <h5 className="minute">{minute}</h5>
                                             {minuteText && <p>{minuteText}</p>}
                                         </div>
                                     </div>
                                     <div className="qubely-countdown-item">
-                                        <Pie className={'qubely-countdown-item-second'} percent={secondPercent} {...pie}/>
+                                        <Pie className={'qubely-countdown-item-second'} percent={secondPercent} {...pie} id={`${uniqueId}3`}/>
                                         <div className="qubely-countdown-item-content">
                                             <h5 className="second">{second}</h5>
                                             {secondText && <p>{secondText}</p>}

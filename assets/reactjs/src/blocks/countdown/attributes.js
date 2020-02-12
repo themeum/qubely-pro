@@ -1,14 +1,6 @@
 
 const { gloalSettings: { globalAttributes } } = wp.qubelyComponents;
 
-const today = new Date();
-let defaultDate = today;
-defaultDate.setDate(defaultDate.getDate() + (1 + 7 - defaultDate.getDay()));
-defaultDate = defaultDate.toISOString();
-
-const startDate = today.toISOString();
-
-
 const attributes = {
     uniqueId: {
         type: 'string',
@@ -22,11 +14,11 @@ const attributes = {
     ...globalAttributes,
     date: {
         type: 'string',
-        default: defaultDate
+        default: null
     },
     startDate: {
         type: 'string',
-        default: startDate
+        default: null
     },
     sourceOfCopiedStyle: {
         type: 'boolean',
@@ -78,12 +70,12 @@ const attributes = {
         type: 'object',
         default: {
             openColor: 1,
-            type: 'color',
+            type: 'gradient',
             color: '#007bff',
             gradient: {
                 type: 'linear',
                 color1: '#25b5e1',
-                color2: '#45dbca',
+                color2: '#1f8493',
                 direction: '47',
                 start: '0',
                 stop: '100'
