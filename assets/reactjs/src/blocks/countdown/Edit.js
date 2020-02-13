@@ -2,26 +2,6 @@ import icons from '../../helpers/icons';
 import Countdown from './countdown';
 import classnames from 'classnames'
 
-const { alignLeft, alignRight, alignCenter, alignJustify }  = wp.icons;
-
-const DEFAULT_ALIGNMENT_CONTROLS = [
-    {
-        icon: alignLeft,
-        title: __( 'Justify Start' ),
-        align: 'left',
-    },
-    {
-        icon: alignCenter,
-        title: __( 'Justify center' ),
-        align: 'center',
-    },
-    {
-        icon: alignRight,
-        title: __( 'Align text right' ),
-        align: 'right',
-    },
-];
-
 const { __ } = wp.i18n;
 const {
     Component,
@@ -73,6 +53,24 @@ const {
         handleContextMenu
     }
 } = wp.qubelyComponents
+
+const DEFAULT_ALIGNMENT_CONTROLS = [
+    {
+        icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-left'} />,
+        title: __( 'Justify Start' ),
+        align: 'left',
+    },
+    {
+        icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-left'} />,
+        title: __( 'Justify center' ),
+        align: 'center',
+    },
+    {
+        icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-left'} />,
+        title: __( 'Align text right' ),
+        align: 'right',
+    },
+];
 
 class Edit extends Component {
     constructor(props) {
