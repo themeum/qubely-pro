@@ -3,7 +3,35 @@ const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar, Popover } = wp.components
 const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.blockEditor
 import icons from '../../helpers/icons'
-const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar } , ContextMenu: { ContextMenu, handleContextMenu }} = wp.qubelyComponents
+const {
+	RadioAdvanced,
+	Range,
+	Color,
+	Typography,
+	Toggle,
+	Separator,
+	ColorAdvanced,
+	Border,
+	BorderRadius,
+	BoxShadow,
+	Styles,
+	Alignment,
+	Padding,
+	Tabs,
+	Tab,
+	Carousel,
+	ButtonGroup,
+	gloalSettings: {
+		globalSettingsPanel,
+		animationSettings },
+	Inline: {
+		InlineToolbar
+	}, ContextMenu: {
+		ContextMenu,
+		handleContextMenu
+	},
+	withCSSGenerator
+} = wp.qubelyComponents
 
 
 class Edit extends Component {
@@ -130,7 +158,7 @@ class Edit extends Component {
 					<Popover
 						position="top center"
 						className="qubely-testimonial-ratings-popover"
-						// onClickOutside={event => event.target.value === undefined && this.setState({ showRatingsPicker: -1 })}
+					// onClickOutside={event => event.target.value === undefined && this.setState({ showRatingsPicker: -1 })}
 					>
 						<Range
 							min={0}
@@ -239,7 +267,7 @@ class Edit extends Component {
 
 	render() {
 		const {
-			name, 
+			name,
 			clientId,
 			attributes,
 			setAttributes,
@@ -360,7 +388,6 @@ class Edit extends Component {
 			],
 		}
 
-		if (uniqueId) { CssGenerator(this.props.attributes, 'testimonialcarousel', uniqueId) }
 
 		return (
 			<Fragment>
@@ -807,7 +834,7 @@ class Edit extends Component {
 							responsive
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })} />
-						{ 
+						{
 							/**
 							 * @since 1.0.8
 							 * BoxShadow & boxShadowHover is depricated
@@ -854,14 +881,14 @@ class Edit extends Component {
 							{this.renderTestimonials()}
 						</Carousel>
 						<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
-                            <ContextMenu
-                                name={name}
-                                clientId={clientId}
-                                attributes={attributes}
-                                setAttributes={setAttributes}
-                                qubelyContextMenu={this.refs.qubelyContextMenu}
-                            />
-                        </div>
+							<ContextMenu
+								name={name}
+								clientId={clientId}
+								attributes={attributes}
+								setAttributes={setAttributes}
+								qubelyContextMenu={this.refs.qubelyContextMenu}
+							/>
+						</div>
 					</div>
 				</div>
 			</Fragment>
@@ -869,4 +896,4 @@ class Edit extends Component {
 	}
 }
 
-export default Edit
+export default withCSSGenerator()(Edit);

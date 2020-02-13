@@ -98,8 +98,8 @@ class Edit extends Component {
 								srcSet={title.image2x !== undefined && title.image2x.url ? title.image.url + ' 1x, ' + title.image2x.url + ' 2x' : ''}
 							/>
 						) : (
-								<span className="far fa-image" />
-							)
+							<span className="far fa-image" />
+						)
 					}
 				</div>
 			}
@@ -323,11 +323,11 @@ class Edit extends Component {
 				<InspectorControls key="inspector">
 					<PanelBody title={__('Styles')} initialOpen={true}>
 						<Styles value={tabStyle} onChange={val => setAttributes({ tabStyle: val })}
-							options={[
-								{ value: 'layout1', svg: icons.verticaltabs_1, label: __('Layout 1') },
-								{ value: 'layout2', svg: icons.verticaltabs_2, label: __('Layout 2') },
-								{ value: 'layout3', svg: icons.verticaltabs_3, label: __('Layout 3') },
-							]}
+								options={[
+									{ value: 'layout1', svg: icons.verticaltabs_1, label: __('Layout 1') },
+									{ value: 'layout2', svg: icons.verticaltabs_2, label: __('Layout 2') },
+									{ value: 'layout3', svg: icons.verticaltabs_3, label: __('Layout 3') },
+								]}
 						/>
 						<Separator />
 						<Range label={__('Menu Width')} value={navWidth} onChange={navWidth => setAttributes({ navWidth })} max={700} min={30} />
@@ -524,35 +524,35 @@ class Edit extends Component {
 
 											</Fragment>
 										) : (
-												<Fragment>
-													<IconList
-														disableToggle
-														label={__('Icon')}
-														value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].iconName}
-														onChange={(value) => this.updateTitles({ iconName: value }, activeTab - 1)} />
-													<Tabs>
-														<Tab tabTitle={__('Normal')}>
-															<Color label={__('Color')}
-																value={tabStyle === 'layout1' ? iconColor : (tabStyle === 'layout2' ? iconColor2 : iconColor3)}
-																onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColor: value } : (tabStyle === 'layout2' ? { iconColor2: value } : { iconColor3: value }))}
-															/>
-														</Tab>
-														<Tab tabTitle={__('Active')}>
-															<Color
-																label={__('Color')}
-																value={tabStyle === 'layout1' ? iconColorActive : (tabStyle === 'layout2' ? iconColorActive2 : iconColorActive3)}
-																onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorActive: value } : (tabStyle === 'layout2' ? { iconColorActive2: value } : { iconColorActive3: value }))}
-															/>
-														</Tab>
-														<Tab tabTitle={__('Hover')}>
-															<Color label={__('Color')}
-																value={tabStyle === 'layout1' ? iconColorHover : (tabStyle === 'layout2' ? iconColorHover2 : iconColorHover3)}
-																onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorHover: value } : (tabStyle === 'layout2' ? { iconColorHover2: value } : { iconColorHover3: value }))}
-															/>
-														</Tab>
-													</Tabs>
-												</Fragment>
-											)
+											<Fragment>
+												<IconList
+													disableToggle
+													label={__('Icon')}
+													value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].iconName}
+													onChange={(value) => this.updateTitles({ iconName: value }, activeTab - 1)} />
+												<Tabs>
+													<Tab tabTitle={__('Normal')}>
+														<Color label={__('Color')}
+															   value={tabStyle === 'layout1' ? iconColor : (tabStyle === 'layout2' ? iconColor2 : iconColor3)}
+															   onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColor: value } : (tabStyle === 'layout2' ? { iconColor2: value } : { iconColor3: value }))}
+														/>
+													</Tab>
+													<Tab tabTitle={__('Active')}>
+														<Color
+															label={__('Color')}
+															value={tabStyle === 'layout1' ? iconColorActive : (tabStyle === 'layout2' ? iconColorActive2 : iconColorActive3)}
+															onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorActive: value } : (tabStyle === 'layout2' ? { iconColorActive2: value } : { iconColorActive3: value }))}
+														/>
+													</Tab>
+													<Tab tabTitle={__('Hover')}>
+														<Color label={__('Color')}
+															   value={tabStyle === 'layout1' ? iconColorHover : (tabStyle === 'layout2' ? iconColorHover2 : iconColorHover3)}
+															   onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorHover: value } : (tabStyle === 'layout2' ? { iconColorHover2: value } : { iconColorHover3: value }))}
+														/>
+													</Tab>
+												</Tabs>
+											</Fragment>
+										)
 									}
 									<RadioAdvanced
 										label={iconType === 2 ? __('Image Position') : __('Icon Position')}

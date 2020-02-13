@@ -1,7 +1,7 @@
-const { __ } = wp.i18n
+const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
-const { PanelBody, Tooltip, Toolbar } = wp.components
-const { InspectorControls, RichText, MediaUpload, BlockControls, MediaPlaceholder } = wp.blockEditor
+const { PanelBody, Tooltip, Toolbar } = wp.components;
+const { InspectorControls, RichText, MediaUpload, BlockControls, MediaPlaceholder } = wp.blockEditor;
 import icons from '../../helpers/icons'
 const {
 	Range,
@@ -20,7 +20,7 @@ const {
 	Tab,
 	Carousel,
 	ButtonGroup,
-	CssGenerator: { CssGenerator },
+	withCSSGenerator,
 	Inline: { InlineToolbar },
 	gloalSettings: {
 		globalSettingsPanel,
@@ -274,6 +274,7 @@ class Edit extends Component {
 				messageSpacingTop,
 				messageSpacingBottom,
 				contentPadding,
+				responsiveCenterPadding,
 				contentVerticalAlign,
 				contentAlignment,
 				enableOverlay,
@@ -281,6 +282,7 @@ class Edit extends Component {
 				overlayHoverBg,
 				overlayBlend,
 				sliderMargin,
+				sliderResponsiveMargin,
 				dotsposition,
 				avatarHeight,
 				globalZindex,
@@ -309,25 +311,29 @@ class Edit extends Component {
 			arrowStyle: arrowStyle,
 			dot_indicator: dotIndicator,
 			centerPadding: (layout === 3 || layout === 4) ? centerPadding : 0,
+			centerPaddingMode: layout === 3 || layout === 4,
 			arrowPosition: arrowPosition,
 			responsive: [
 				{
 					viewport: 1170,
-					items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md
+					items: layout != 2 ? ((layout == 5) ? itemfive.md : items.md) : itemthree.md,
+					centerPadding: typeof responsiveCenterPadding['md'] === 'undefined' ? centerPadding : responsiveCenterPadding['md'],
+					margin: typeof sliderResponsiveMargin['md'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['md']
 				},
 				{
 					viewport: 980,
-					items: layout != 2 ? ((layout == 5) ? itemfive.sm : items.sm) : itemthree.sm
+					items: layout != 2 ? ((layout == 5) ? itemfive.sm : items.sm) : itemthree.sm,
+					centerPadding: typeof responsiveCenterPadding['sm'] === 'undefined' ? centerPadding : responsiveCenterPadding['sm'],
+					margin: typeof sliderResponsiveMargin['sm'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['sm']
 				},
 				{
 					viewport: 580,
-					items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs
+					items: layout != 2 ? ((layout == 5) ? itemfive.xs : items.xs) : itemthree.xs,
+					centerPadding: typeof responsiveCenterPadding['xs'] === 'undefined' ? 0 : responsiveCenterPadding['xs'],
+					margin: typeof sliderResponsiveMargin['xs'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['xs']
 				}
 			],
 		}
-
-		if (uniqueId) { CssGenerator(this.props.attributes, 'imagecarousel', uniqueId) }
-
 
 		if (carouselItems.length === 0) {
 			return (
@@ -402,10 +408,14 @@ class Edit extends Component {
 							(layout !== 6 && layout !== 1) &&
 							<Range
 								min={0}
-								max={80}
+								max={200}
+								responsive
+								device={device}
 								label={__('Gutter')}
-								value={sliderMargin}
-								onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
+								unit={['px', 'em', '%']}
+								value={sliderResponsiveMargin}
+								onDeviceChange={value => this.setState({ device: value })}
+								onChange={value => setAttributes({ sliderResponsiveMargin: value })}
 							/>
 						}
 
@@ -438,7 +448,17 @@ class Edit extends Component {
 						{
 							(layout === 3 || layout === 4) &&
 							<Fragment>
-								<Range label={__('Center Padding')} value={centerPadding} onChange={value => setAttributes({ centerPadding: parseInt(value) })} min={10} max={500} />
+								<Range
+									min={0}
+									max={500}
+									responsive
+									device={device}
+									device={this.state.device}
+									label={__('Center Padding')}
+									value={responsiveCenterPadding}
+									onChange={value => setAttributes({ responsiveCenterPadding: value })}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
 								<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
 							</Fragment>
 						}
@@ -684,14 +704,14 @@ class Edit extends Component {
 							{this.renderImages()}
 						</Carousel>
 						<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
-                            <ContextMenu
-                                name={name}
-                                clientId={clientId}
-                                attributes={attributes}
-                                setAttributes={setAttributes}
-                                qubelyContextMenu={this.refs.qubelyContextMenu}
-                            />
-                        </div>
+							<ContextMenu
+								name={name}
+								clientId={clientId}
+								attributes={attributes}
+								setAttributes={setAttributes}
+								qubelyContextMenu={this.refs.qubelyContextMenu}
+							/>
+						</div>
 					</div>
 				</div>
 			</Fragment>
@@ -699,4 +719,4 @@ class Edit extends Component {
 	}
 }
 
-export default Edit
+export default 	withCSSGenerator()(Edit);

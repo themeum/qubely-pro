@@ -40,9 +40,7 @@ const {
     Inline: {
         InlineToolbar
     },
-    CssGenerator: {
-        CssGenerator
-    },
+    withCSSGenerator,
     ContextMenu: {
         ContextMenu,
         handleContextMenu
@@ -185,10 +183,9 @@ class Edit extends Component {
                 //Context
                 showContextMenu,
             }
-        } = this.props
+        } = this.props;
 
-        const { device } = this.state
-        if (uniqueId) { CssGenerator(this.props.attributes, 'mediacard', uniqueId); }
+        const { device } = this.state;
 
         return (
             <Fragment>
@@ -806,4 +803,4 @@ class Edit extends Component {
         )
     }
 }
-export default Edit
+export default withCSSGenerator()(Edit);

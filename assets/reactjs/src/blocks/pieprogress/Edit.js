@@ -21,7 +21,7 @@ const {
     Alignment,
     Templates,
     Inline: { InlineToolbar },
-    CssGenerator: { CssGenerator },
+    withCSSGenerator,
     ContextMenu: {
         ContextMenu,
         handleContextMenu
@@ -150,9 +150,6 @@ class Edit extends Component {
             circleShrink: ((size - thickness) * .5) * circleShrink / 100,
             duration: speed
         };
-
-
-        if (uniqueId) { CssGenerator(this.props.attributes, 'pieprogress', uniqueId); }
 
         return (
             <Fragment>
@@ -417,4 +414,4 @@ class Edit extends Component {
     }
 }
 
-export default Edit
+export default 	withCSSGenerator() (Edit);

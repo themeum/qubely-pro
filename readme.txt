@@ -3,6 +3,13 @@ Stable tag: 1.1.1
 
 == Changelog ==
 
+= 1.1.2 - 06 February, 2020 =
+Update: Carousel responsive gutter added
+Fix: Carousel dot issue
+Fix: Gallery block deprecated issue
+Fix: Carousel center padding
+Fix: Form builder input border issue
+
 = 1.1.1 - 31 January, 2020 =
 Update: Performance Improvement
 Fix: Image Block deprecated issue

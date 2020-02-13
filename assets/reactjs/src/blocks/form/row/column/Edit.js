@@ -15,9 +15,7 @@ const { withSelect, withDispatch } = wp.data
 const {
     Range,
     RadioAdvanced,
-    CssGenerator: {
-        CssGenerator
-    }
+    withCSSGenerator
 } = wp.qubelyComponents
 
 
@@ -87,7 +85,6 @@ function Edit(props) {
                     return (
                         <div className="qubely-form-field-type"
                             onClick={() => {
-                                // hideDropdown && hideDropdown()
                                 insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId, fieldName: `${type}-${rowIndex + 1}${columnIndex + 1}` }), undefined, clientId)
                             }}
                         >
@@ -100,8 +97,6 @@ function Edit(props) {
 
 
     }
-
-    if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
 
     return (
         <Fragment>
@@ -208,4 +203,5 @@ export default compose([
             toggleSelection
         }
     }),
+    withCSSGenerator()
 ])(Edit)

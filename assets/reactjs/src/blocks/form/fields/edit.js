@@ -28,12 +28,12 @@ const {
     Select,
     Separator,
     Toggle,
-    CssGenerator: { CssGenerator }
+    withCSSGenerator
 } = wp.qubelyComponents
 
 const { select } = wp.data
 
-export default function Edit(props) {
+ function Edit(props) {
 
     const [hour, setHour] = useState(12)
     const [minute, setMinute] = useState(0)
@@ -82,7 +82,7 @@ export default function Edit(props) {
             minuteInterval,
             timeFormatType,
         }
-    } = props
+    } = props;
 
     useEffect(() => {
         const _client = clientId.substr(0, 6)
@@ -322,7 +322,6 @@ export default function Edit(props) {
     const blockname = name.split('/')[1]
     const rootClientId = getParentClientId(clientId)
     const { showLabel, labelAlignment } = getBlockAttributes(rootClientId)
-    if (uniqueId) { CssGenerator(attributes, blockname, uniqueId) }
 
 
     return (
@@ -559,4 +558,6 @@ export default function Edit(props) {
     )
 
 }
+
+export default withCSSGenerator()(Edit);
 

@@ -14,12 +14,10 @@ const { PanelBody } = wp.components
 
 const {
     Range,
-    CssGenerator: {
-        CssGenerator
-    }
+    withCSSGenerator
 } = wp.qubelyComponents
 
-export default function Edit(props) {
+ function Edit(props) {
     const [device, setDevice] = useState('md')
     const {
         clientId,
@@ -41,8 +39,6 @@ export default function Edit(props) {
         }
     })
 
-
-    if (uniqueId) { CssGenerator(attributes, 'form-row', uniqueId) }
 
     return (
         <Fragment>
@@ -70,3 +66,5 @@ export default function Edit(props) {
         </Fragment>
     )
 }
+
+export default withCSSGenerator()(Edit);

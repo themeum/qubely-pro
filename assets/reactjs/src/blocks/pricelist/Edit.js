@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { Fragment, Component } = wp.element;
 const { PanelBody, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, BlockControls, MediaUpload } = wp.blockEditor
-const { Inline: { InlineToolbar }, Background, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, BorderRadius, BoxShadow, Alignment, Padding, Headings, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, ContextMenu: { ContextMenu, handleContextMenu } } = wp.qubelyComponents
+const { Inline: { InlineToolbar }, Background, RadioAdvanced, ColorAdvanced, Select, Tabs, Tab, Range, Color, Styles, Typography, Toggle, Separator, BorderRadius, BoxShadow, Alignment, Padding, Headings, withCSSGenerator, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, ContextMenu: { ContextMenu, handleContextMenu } } = wp.qubelyComponents
 import icons from '../../helpers/icons'
 
 class Edit extends Component {
@@ -270,9 +270,7 @@ class Edit extends Component {
                 interaction
             } } = this.props
 
-        const { device } = this.state
-
-        if (uniqueId) { CssGenerator(this.props.attributes, 'pricelist', uniqueId) }
+        const { device } = this.state;
 
         return (
             <Fragment>
@@ -510,4 +508,4 @@ class Edit extends Component {
     }
 }
 
-export default Edit
+export default withCSSGenerator()(Edit);

@@ -14,7 +14,7 @@ const settings = {
         inserter: false,
         reusable: false,
     },
-    edit: props => Edit(props),
+    edit: Edit,
     save: props => Save(props)
 }
 

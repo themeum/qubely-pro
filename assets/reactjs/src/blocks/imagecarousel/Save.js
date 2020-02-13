@@ -78,6 +78,7 @@ class Save extends Component {
 				itemthree,
 				itemfive,
 				sliderMargin,
+				sliderResponsiveMargin,
 				autoPlay,
 				speed,
 				interval,
@@ -86,6 +87,7 @@ class Save extends Component {
 				isCentered,
 				notCentered,
 				centerPadding,
+				responsiveCenterPadding,
 				nav,
 				arrowStyle,
 				infiniteLoop,
@@ -103,6 +105,7 @@ class Save extends Component {
 			dots: dots,
 			dot_indicator: dotIndicator,
 			centerPadding: (layout === 3 || layout === 4) ? centerPadding : 0,
+			centerPaddingMode: layout === 3 || layout === 4,
 			nav: nav,
 			speed: speed,
 			interval: interval,
@@ -113,15 +116,21 @@ class Save extends Component {
 			responsive: [
 				{
 					viewport: 1170,
-					items: layout != 2 ? (layout == 5 ? itemfive.md : items.md) : itemthree.md
+					items: layout != 2 ? (layout == 5 ? itemfive.md : items.md) : itemthree.md,
+					centerPadding: typeof responsiveCenterPadding['md'] === 'undefined' ? centerPadding : responsiveCenterPadding['md'],
+					margin: typeof sliderResponsiveMargin['md'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['md']
 				},
 				{
 					viewport: 980,
-					items: layout != 2 ? (layout == 5 ? itemfive.sm : items.sm) : itemthree.sm
+					items: layout != 2 ? (layout == 5 ? itemfive.sm : items.sm) : itemthree.sm,
+					centerPadding: typeof responsiveCenterPadding['sm'] === 'undefined' ? centerPadding : responsiveCenterPadding['sm'],
+					margin: typeof sliderResponsiveMargin['sm'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['sm']
 				},
 				{
 					viewport: 580,
-					items: layout != 2 ? (layout == 5 ? itemfive.xs : items.xs) : itemthree.xs
+					items: layout != 2 ? (layout == 5 ? itemfive.xs : items.xs) : itemthree.xs,
+					centerPadding: typeof responsiveCenterPadding['xs'] === 'undefined' ? 0 : responsiveCenterPadding['xs'],
+					margin: typeof sliderResponsiveMargin['xs'] === 'undefined' ? sliderMargin : sliderResponsiveMargin['xs']
 				}
 			]
 		});
