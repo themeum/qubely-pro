@@ -1,9 +1,9 @@
 ===  Qubely Pro ===
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 
 == Changelog ==
 
-= 1.1.2 - 06 February, 2020 =
+= 1.1.2 - 12 February, 2020 =
 Update: Carousel responsive gutter added
 Fix: Carousel dot issue
 Fix: Gallery block deprecated issue
