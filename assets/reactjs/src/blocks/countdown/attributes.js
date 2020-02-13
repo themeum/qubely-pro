@@ -6,6 +6,20 @@ const attributes = {
         type: 'string',
         default: ''
     },
+    spacer: {
+        type: 'object',
+        default: {
+            spaceTop: {
+                md: '10',
+                unit: "px"
+            },
+            spaceBottom: {
+                md: '10',
+                unit: "px"
+            }
+        },
+        style: [{ selector: '{{QUBELY}}' }]
+    },
     layout: {
         type: 'number',
         default: 1
@@ -47,7 +61,7 @@ const attributes = {
                 relation: '==',
                 value: 2
             }],
-            selector: '{{QUBELY}} .qubely-countdown-cirlce-forground{transition: 300ms}'
+            selector: '{{QUBELY}} .qubely-countdown-cirlce-forground{transition: stroke-dashoffset 300ms}'
         }]
     },
     background: {
@@ -192,6 +206,36 @@ const attributes = {
                 value: 2
             }],
             selector: '{{QUBELY}} .qubely-countdown-svg-wrap{height: {{size}}px; width: {{size}}px}'
+        }]
+    },
+
+    thickness: {
+        type: 'object',
+        default: {
+            md: 15
+        },
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 2
+            }],
+            selector: '{{QUBELY}} .hello'
+        }]
+    },
+
+    thicknessBg: {
+        type: 'object',
+        default: {
+            md: 15
+        },
+        style: [{
+            condition: [{
+                key: 'layout',
+                relation: '==',
+                value: 2
+            }],
+            selector: '{{QUBELY}} .hello'
         }]
     },
 

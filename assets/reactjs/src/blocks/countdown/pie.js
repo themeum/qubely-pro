@@ -4,16 +4,28 @@ const Pie = (props) => {
         emptyFill,
         className,
         startDate,
-        id
+        id,
     } = props;
 
     const size = parseInt(props.size),
         thickness = parseInt(props.thickness),
-        percent = parseInt(props.percent),
-        radius = (size - thickness) * .5,
-        circumference = 2 * Math.PI * radius,
-        offset = circumference * percent / 100,
-        radialPercent = (size / 2 * thickness / 100) * .5
+        thicknessBg = parseInt(props.thicknessBg),
+        percent = parseInt(props.percent)
+
+    let circleRadiusBg = (size - thicknessBg) * .5
+    let circleRadiusFg = (size - thickness) * .5
+
+    if(thickness > thicknessBg) {
+        circleRadiusBg -= (thickness - thicknessBg) * .5
+    }
+
+    if(thicknessBg > thickness) {
+        circleRadiusFg -= (thicknessBg - thickness) * .5
+    }
+
+    const circumference = 2 * Math.PI * circleRadiusFg
+    const offset = circumference * percent / 100
+    const radialPercent = (size /2 * thickness / 100) * .5
 
     return (
         <div className={`qubely-countdown-svg-wrap ${className}`} data-circumference={circumference} data-size={size} date-startdate={startDate}>
@@ -44,9 +56,9 @@ const Pie = (props) => {
                     className='qubely-countdown-cirlce-background'
                     cx={size}
                     cy={size}
-                    r={radius}
+                    r={circleRadiusBg}
                     stroke={emptyFill}
-                    stroke-width={thickness}
+                    stroke-width={thicknessBg}
                     fill='none'
                 />
 
@@ -55,7 +67,7 @@ const Pie = (props) => {
                     className='qubely-countdown-cirlce-forground'
                     cx={size}
                     cy={size}
-                    r={radius}
+                    r={circleRadiusFg}
                     stroke-dasharray={circumference}
                     stroke-dashoffset={circumference - offset}
                     stroke-width={thickness}

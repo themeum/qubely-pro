@@ -2,6 +2,26 @@ import icons from '../../helpers/icons';
 import Countdown from './countdown';
 import classnames from 'classnames'
 
+const { alignLeft, alignRight, alignCenter, alignJustify }  = wp.icons;
+
+const DEFAULT_ALIGNMENT_CONTROLS = [
+    {
+        icon: alignLeft,
+        title: __( 'Justify Start' ),
+        align: 'left',
+    },
+    {
+        icon: alignCenter,
+        title: __( 'Justify center' ),
+        align: 'center',
+    },
+    {
+        icon: alignRight,
+        title: __( 'Align text right' ),
+        align: 'right',
+    },
+];
+
 const { __ } = wp.i18n;
 const {
     Component,
@@ -15,12 +35,13 @@ const {
     DatePicker,
     TextControl,
     Dropdown,
-    AlignmentControl
+    Toolbar
 } = wp.components
 
 const {
     BlockControls,
-    InspectorControls
+    InspectorControls,
+    AlignmentToolbar
 } = wp.blockEditor
 
 const {
@@ -143,6 +164,8 @@ class Edit extends Component {
 
                 //circle
                 size,
+                thickness,
+                thicknessBg,
                 fill,
                 emptyFill,
                 strokeLinecap,
@@ -261,16 +284,38 @@ class Edit extends Component {
                     <PanelBody title={layout === 1 ? __('Container') : __('Circle')} initialOpen={false}>
                         {
                             layout === 2 && (
-                                <Range
-                                    min={40}
-                                    max={500}
-                                    responsive
-                                    value={size}
-                                    device={device}
-                                    label={__('Size')}
-                                    onChange={size => setAttributes({ size })}
-                                    onDeviceChange={value => this.setState({ device: value })}
-                                />
+                                <Fragment>
+                                    <Range
+                                        min={40}
+                                        max={500}
+                                        responsive
+                                        value={size}
+                                        device={device}
+                                        label={__('Size')}
+                                        onChange={size => setAttributes({ size })}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                    <Range
+                                        min={1}
+                                        max={50}
+                                        responsive
+                                        value={thickness}
+                                        device={device}
+                                        label={__('Border Width')}
+                                        onChange={thickness => setAttributes({ thickness })}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                    <Range
+                                        min={1}
+                                        max={50}
+                                        responsive
+                                        value={thicknessBg}
+                                        device={device}
+                                        label={__('BG Border Width')}
+                                        onChange={thicknessBg => setAttributes({ thicknessBg })}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                </Fragment>
                             )
                         }
                         {
@@ -596,6 +641,20 @@ class Edit extends Component {
                     {interactionSettings(uniqueId, interaction, setAttributes)}
                 </InspectorControls>
 
+                <BlockControls>
+                    <Toolbar>
+                        <InlineToolbar
+                            data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
+                            {...this.props}
+                            prevState={this.state}
+                        />
+                    </Toolbar>
+                    <AlignmentToolbar
+                        value={'left'}
+                        alignmentControls={DEFAULT_ALIGNMENT_CONTROLS}
+                        onChange={() => false}
+                    />
+                </BlockControls>
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
@@ -627,7 +686,9 @@ class Edit extends Component {
                             pie={{
                                 fill,
                                 emptyFill,
-                                size: size.md
+                                size: size.md,
+                                thickness: thickness.md,
+                                thicknessBg: thicknessBg.md
                             }}
                             id={uniqueId}
                         />
