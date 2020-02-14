@@ -4,7 +4,7 @@
 
   &.qubely-item-separator-colon,
   &.qubely-item-separator-line{
-    .qubely-countdown-item:not(:last-child)::after{
+    .qubely-countdown-item-outer:not(:last-child)::after{
       content: ':';
       position: absolute;
       top: 50%;
@@ -14,13 +14,17 @@
     }
   }
 
-  &.qubely-item-separator-line .qubely-countdown-item:not(:last-child)::after{
+  &.qubely-item-separator-line .qubely-countdown-item-outer:not(:last-child)::after{
     content: '';
     width: 2px;
     height: 50%;
     background: #000000;
   }
 
+  .qubely-countdown-item-outer{
+    position: relative;
+  }
+  .qubely-countdown-item-outer,
   .qubely-countdown-item{
     display: inline-flex;
     align-items: center;
@@ -42,38 +46,58 @@
     }
   }
 
-  &.qubely-countdown-label-top .qubely-countdown-item .qubely-countdown-item-content,
-  &.qubely-countdown-label-top .qubely-countdown-item{
-    flex-direction: column-reverse;
-    p{
-      margin-bottom: var(--label-spacing);
+  &.qubely-countdown-label-top{
+    .qubely-countdown-item-outer{
+      flex-direction: column-reverse;
+      .qubely-countdown-item-content,
+      .qubely-countdown-item{
+        flex-direction: column-reverse;
+      }
+      p{
+        margin-bottom: var(--label-spacing);
+      }
     }
   }
 
-  &.qubely-countdown-label-bottom .qubely-countdown-item .qubely-countdown-item-content,
-  &.qubely-countdown-label-bottom .qubely-countdown-item{
-    flex-direction: column;
-    p{
-      margin-top: var(--label-spacing);
+
+  &.qubely-countdown-label-bottom{
+    .qubely-countdown-item-outer{
+      flex-direction: column;
+      .qubely-countdown-item-content,
+      .qubely-countdown-item{
+        flex-direction: column;
+      }
+      p{
+        margin-top: var(--label-spacing);
+      }
     }
   }
 
-  &.qubely-countdown-label-right .qubely-countdown-item .qubely-countdown-item-content,
-  &.qubely-countdown-label-right .qubely-countdown-item{
-    flex-direction: row;
-    p{
-      margin-left: var(--label-spacing);
+  &.qubely-countdown-label-right{
+    .qubely-countdown-item-outer{
+      flex-direction: row;
+      .qubely-countdown-item-content,
+      .qubely-countdown-item{
+        flex-direction: row;
+      }
+      p{
+        margin-left: var(--label-spacing);
+      }
     }
   }
 
-  &.qubely-countdown-label-left .qubely-countdown-item .qubely-countdown-item-content,
-  &.qubely-countdown-label-left .qubely-countdown-item{
-    flex-direction: row-reverse;
-    p{
-      margin-right: var(--label-spacing);
+  &.qubely-countdown-label-right{
+    .qubely-countdown-item-outer{
+      flex-direction: row-reverse;
+      .qubely-countdown-item-content,
+      .qubely-countdown-item{
+        flex-direction: row-reverse;
+      }
+      p{
+        margin-right: var(--label-spacing);
+      }
     }
   }
-
 
 }
 

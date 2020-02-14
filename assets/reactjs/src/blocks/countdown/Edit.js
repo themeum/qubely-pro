@@ -441,34 +441,22 @@ class Edit extends Component {
                         />
                         {
                             enableLabel && (
-                                layout === 1 ? (
-                                    <Fragment>
-                                        <ButtonGroup
-                                            label={__('View')}
-                                            options={
-                                                [
-                                                    [__('Inside'), 'inside'],
-                                                    [__('Outside'), 'outside']
-                                                ]
-                                            }
-                                            value={labelView}
-                                            onChange={value => setAttributes({ labelView: value })}
-                                        />
-                                        <ButtonGroup
-                                            label={__('Position')}
-                                            options={
-                                                [
-                                                    [__('Top'), 'top'],
-                                                    [__('Right'), 'right'],
-                                                    [__('Bottom'), 'bottom'],
-                                                    [__('Left'), 'left']
-                                                ]
-                                            }
-                                            value={labelPosition}
-                                            onChange={value => setAttributes({ labelPosition: value })}
-                                        />
-                                    </Fragment>
-                                ) : (
+                                <Fragment>
+                                    {
+                                        layout === 1 && (
+                                            <ButtonGroup
+                                                label={__('View')}
+                                                options={
+                                                    [
+                                                        [__('Inside'), 'inside'],
+                                                        [__('Outside'), 'outside']
+                                                    ]
+                                                }
+                                                value={labelView}
+                                                onChange={value => setAttributes({ labelView: value })}
+                                            />
+                                        )
+                                    }
                                     <ButtonGroup
                                         label={__('Position')}
                                         options={
@@ -480,7 +468,7 @@ class Edit extends Component {
                                         value={labelPosition}
                                         onChange={value => setAttributes({ labelPosition: value })}
                                     />
-                                )
+                                </Fragment>
                             )
                         }
 
@@ -694,6 +682,7 @@ class Edit extends Component {
                             enableMinute={enableMinute}
                             enableSecond={enableSecond}
                             enableLabel={enableLabel}
+                            labelView={labelView}
                             className={classnames(
                                 'qubely-countdown',
                                 'qubely-countdown-label-' + labelPosition,

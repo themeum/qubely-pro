@@ -146,9 +146,9 @@ const attributes = {
         },
         style: [{
             selector:
-                '{{QUBELY}} .qubely-countdown-item{margin-left: {{spaceBetween}}; margin-bottom: {{spaceBetween}}} ' +
+                '{{QUBELY}} .qubely-countdown-item-outer{margin-left: {{spaceBetween}}; margin-bottom: {{spaceBetween}}} ' +
                 '{{QUBELY}} .qubely-countdown{margin-left: -{{spaceBetween}}}' +
-                '{{QUBELY}} .qubely-countdown .qubely-countdown-item::after{right: calc(-{{spaceBetween}} / 2) !important}'
+                '{{QUBELY}} .qubely-countdown .qubely-countdown-item-outer::after{right: calc(-{{spaceBetween}} / 2) !important}'
         }]
     },
     borderRadius: {
@@ -221,30 +221,14 @@ const attributes = {
         type: 'object',
         default: {
             md: 15
-        },
-        style: [{
-            condition: [{
-                key: 'layout',
-                relation: '==',
-                value: 2
-            }],
-            selector: '{{QUBELY}} .hello'
-        }]
+        }
     },
 
     thicknessBg: {
         type: 'object',
         default: {
             md: 15
-        },
-        style: [{
-            condition: [{
-                key: 'layout',
-                relation: '==',
-                value: 2
-            }],
-            selector: '{{QUBELY}} .hello'
-        }]
+        }
     },
 
     //SEPARATOR
@@ -260,8 +244,8 @@ const attributes = {
         },
         style: [{
             selector:
-                '{{QUBELY}} .qubely-countdown.qubely-item-separator-colon .qubely-countdown-item::after{font-size: {{separatorSize}}px}' +
-                '{{QUBELY}} .qubely-countdown.qubely-item-separator-line .qubely-countdown-item::after{height: {{separatorSize}}%}'
+                '{{QUBELY}} .qubely-countdown.qubely-item-separator-colon .qubely-countdown-item-outer::after{font-size: {{separatorSize}}px}' +
+                '{{QUBELY}} .qubely-countdown.qubely-item-separator-line .qubely-countdown-item-outer::after{height: {{separatorSize}}%}'
         }]
     },
     separatorSizeX: {
@@ -270,7 +254,7 @@ const attributes = {
             md: 2
         },
         style: [{
-            selector: '{{QUBELY}} .qubely-countdown.qubely-item-separator-line .qubely-countdown-item::after{width: {{separatorSizeX}}px}'
+            selector: '{{QUBELY}} .qubely-countdown.qubely-item-separator-line .qubely-countdown-item-outer::after{width: {{separatorSizeX}}px}'
         }]
     },
     separatorOffset: {
@@ -279,7 +263,7 @@ const attributes = {
             md: 50
         },
         style: [{
-            selector: '{{QUBELY}} .qubely-countdown .qubely-countdown-item::after{top: {{separatorOffset}}% !important}'
+            selector: '{{QUBELY}} .qubely-countdown .qubely-countdown-item-outer::after{top: {{separatorOffset}}% !important}'
         }]
     },
     separatorColor: {
@@ -287,8 +271,8 @@ const attributes = {
         default: '#000',
         style: [{
             selector:
-                '{{QUBELY}} .qubely-countdown.qubely-item-separator-colon .qubely-countdown-item::after{color: {{separatorColor}}}' +
-                '{{QUBELY}} .qubely-countdown.qubely-item-separator-line .qubely-countdown-item::after{background-color: {{separatorColor}}}'
+                '{{QUBELY}} .qubely-countdown.qubely-item-separator-colon .qubely-countdown-item-outer::after{color: {{separatorColor}}}' +
+                '{{QUBELY}} .qubely-countdown.qubely-item-separator-line .qubely-countdown-item-outer::after{background-color: {{separatorColor}}}'
         }]
     },
     //NUMBER
