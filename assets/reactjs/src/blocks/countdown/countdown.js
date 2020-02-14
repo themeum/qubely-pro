@@ -17,7 +17,8 @@ const Countdown = (props) => {
         className,
         layout,
         pie,
-        id
+        id,
+        enableLabel
     } = props
 
     pie.startDate = startDate
@@ -25,10 +26,10 @@ const Countdown = (props) => {
     const couterRef = useRef(null)
 
 
-    const [day, setDay] = useState('00');
-    const [hour, setHour] = useState('00');
-    const [minute, setMinute] = useState('00');
-    const [second, setSecond] = useState('00');
+    const [day, setDay] = useState(0);
+    const [hour, setHour] = useState(0);
+    const [minute, setMinute] = useState(0);
+    const [second, setSecond] = useState(0);
 
     const [secondPercent, setSecondPercent] = useState(0);
     const [minutePercent, setMinutePercent] = useState(0);
@@ -47,10 +48,10 @@ const Countdown = (props) => {
         const second = parseInt((diff / 1000) % 60);
 
         if (diff < 0) {
-            setDay('00');
-            setHour('00');
-            setMinute('00');
-            setSecond('00');
+            setDay(0);
+            setHour(0);
+            setMinute(0);
+            setSecond(0);
 
             setSecondPercent(100);
             setMinutePercent(100);
@@ -111,7 +112,7 @@ const Countdown = (props) => {
                     enableDay && (
                         <div className="qubely-countdown-item">
                             <h5 className="day">{_formatNumber(day)}</h5>
-                            {dayText && <p>{dayText}</p>}
+                            {enableLabel && <p>{dayText}</p>}
                         </div>
                     )
                 }
@@ -119,7 +120,7 @@ const Countdown = (props) => {
                     enableHour && (
                         <div className="qubely-countdown-item">
                             <h5 className="hour">{_formatNumber(hour)}</h5>
-                            {hourText && <p>{hourText}</p>}
+                            {enableLabel && <p>{hourText}</p>}
                         </div>
                     )
                 }
@@ -128,7 +129,7 @@ const Countdown = (props) => {
 
                         <div className="qubely-countdown-item">
                             <h5 className="minute">{_formatNumber(minute)}</h5>
-                            {minuteText && <p>{minuteText}</p>}
+                            {enableLabel && <p>{minuteText}</p>}
                         </div>
                     )
                 }
@@ -136,7 +137,7 @@ const Countdown = (props) => {
                     enableSecond && (
                         <div className="qubely-countdown-item">
                             <h5 className="second">{_formatNumber(second)}</h5>
-                            {secondText && <p>{secondText}</p>}
+                            {enableLabel && <p>{secondText}</p>}
                         </div>
                     )
                 }
@@ -149,7 +150,7 @@ const Countdown = (props) => {
                                 <Pie percent={dayPercent} {...pie} id={`${id}0`} />
                                 <div className="qubely-countdown-item-content">
                                     <h5 className="day">{_formatNumber(day)}</h5>
-                                    {dayText && <p>{dayText}</p>}
+                                    {enableLabel && <p>{dayText}</p>}
                                 </div>
                             </div>
                         )
@@ -160,7 +161,7 @@ const Countdown = (props) => {
                                 <Pie percent={hourPercent} {...pie} id={`${id}1`} />
                                 <div className="qubely-countdown-item-content">
                                     <h5 className="hour">{_formatNumber(hour)}</h5>
-                                    {hourText && <p>{hourText}</p>}
+                                    {enableLabel && <p>{hourText}</p>}
                                 </div>
                             </div>
                         )
@@ -171,7 +172,7 @@ const Countdown = (props) => {
                                 <Pie percent={minutePercent} {...pie} id={`${id}2`} />
                                 <div className="qubely-countdown-item-content">
                                     <h5 className="minute">{_formatNumber(minute)}</h5>
-                                    {minuteText && <p>{minuteText}</p>}
+                                    {enableLabel && <p>{minuteText}</p>}
                                 </div>
                             </div>
                         )
@@ -182,7 +183,7 @@ const Countdown = (props) => {
                                 <Pie percent={secondPercent} {...pie} id={`${id}3`} />
                                 <div className='qubely-countdown-item-content'>
                                     <h5 className="second">{_formatNumber(second)}</h5>
-                                    {secondText && <p>{secondText}</p>}
+                                    {enableLabel && <p>{secondText}</p>}
                                 </div>
                             </div>
                         )

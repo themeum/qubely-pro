@@ -180,6 +180,7 @@ class Edit extends Component {
                 numberTypo,
 
                 //LABEL
+                enableLabel,
                 labelView,
                 labelPosition,
                 enableDay,
@@ -432,128 +433,139 @@ class Edit extends Component {
                         }
                     </PanelBody>
 
-                    <PanelBody title={__('Label Text')} initialOpen={false}>
-                        {
-                            layout === 1 ? (
-                                <Fragment>
-                                    <ButtonGroup
-                                        label={__('View')}
-                                        options={
-                                            [
-                                                [__('Inside'), 'inside'],
-                                                [__('Outside'), 'outside']
-                                            ]
-                                        }
-                                        value={labelView}
-                                        onChange={value => setAttributes({ labelView: value })}
-                                    />
-                                    <ButtonGroup
-                                        label={__('Position')}
-                                        options={
-                                            [
-                                                [__('Top'), 'top'],
-                                                [__('Right'), 'right'],
-                                                [__('Bottom'), 'bottom'],
-                                                [__('Left'), 'left']
-                                            ]
-                                        }
-                                        value={labelPosition}
-                                        onChange={value => setAttributes({ labelPosition: value })}
-                                    />
-                                </Fragment>
-                            ) : (
-                                    <ButtonGroup
-                                        label={__('Position')}
-                                        options={
-                                            [
-                                                [__('Top'), 'top'],
-                                                [__('Bottom'), 'bottom'],
-                                            ]
-                                        }
-                                        value={labelPosition}
-                                        onChange={value => setAttributes({ labelPosition: value })}
-                                    />
-                                )
-                        }
+                    { layout === 1 && (
+                        <PanelBody title={__('Label Text')} initialOpen={false}>
+                            <Toggle
+                                label={'Enable Label'}
+                                value={enableLabel}
+                                onChange={(enableLabel) => setAttributes({enableLabel})}
+                            />
+                            {
+                                enableLabel === 1 ? (
+                                    <Fragment>
+                                        <ButtonGroup
+                                            label={__('View')}
+                                            options={
+                                                [
+                                                    [__('Inside'), 'inside'],
+                                                    [__('Outside'), 'outside']
+                                                ]
+                                            }
+                                            value={labelView}
+                                            onChange={value => setAttributes({ labelView: value })}
+                                        />
+                                        <ButtonGroup
+                                            label={__('Position')}
+                                            options={
+                                                [
+                                                    [__('Top'), 'top'],
+                                                    [__('Right'), 'right'],
+                                                    [__('Bottom'), 'bottom'],
+                                                    [__('Left'), 'left']
+                                                ]
+                                            }
+                                            value={labelPosition}
+                                            onChange={value => setAttributes({ labelPosition: value })}
+                                        />
+                                    </Fragment>
+                                ) : (
+                                        <ButtonGroup
+                                            label={__('Position')}
+                                            options={
+                                                [
+                                                    [__('Top'), 'top'],
+                                                    [__('Bottom'), 'bottom'],
+                                                ]
+                                            }
+                                            value={labelPosition}
+                                            onChange={value => setAttributes({ labelPosition: value })}
+                                        />
+                                    )
+                            }
 
-                        <div className="qubely-countdown-label-control-text">
-                            <div className="qubely-coutdown-label-left">
-                                <CheckboxControl
-                                    checked={enableDay}
-                                    onChange={enableDay => setAttributes({ enableDay })}
-                                />
+                            <div className="qubely-countdown-label-control-text">
+                                <div className="qubely-coutdown-label-left">
+                                    <CheckboxControl
+                                        checked={enableDay}
+                                        onChange={enableDay => setAttributes({ enableDay })}
+                                    />
+                                </div>
+                                <div className="qubely-coutdown-label-right">
+                                    <TextControl
+                                        placeholder={__('Day')}
+                                        value={dayText}
+                                        onChange={dayText => setAttributes({ dayText })}
+                                    />
+                                </div>
                             </div>
-                            <div className="qubely-coutdown-label-right">
-                                <TextControl
-                                    value={dayText}
-                                    onChange={dayText => setAttributes({ dayText })}
-                                />
+                            <div className="qubely-countdown-label-control-text">
+                                <div className="qubely-coutdown-label-left">
+                                    <CheckboxControl
+                                        checked={enableHour}
+                                        onChange={enableHour => setAttributes({ enableHour })}
+                                    />
+                                </div>
+                                <div className="qubely-coutdown-label-right">
+                                    <TextControl
+                                        placeholder={__('Hour')}
+                                        value={hourText}
+                                        onChange={hourText => setAttributes({ hourText })}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="qubely-countdown-label-control-text">
-                            <div className="qubely-coutdown-label-left">
-                                <CheckboxControl
-                                    checked={enableHour}
-                                    onChange={enableHour => setAttributes({ enableHour })}
-                                />
+                            <div className="qubely-countdown-label-control-text">
+                                <div className="qubely-coutdown-label-left">
+                                    <CheckboxControl
+                                        checked={enableMinute}
+                                        onChange={enableMinute => setAttributes({ enableMinute })}
+                                    />
+                                </div>
+                                <div className="qubely-coutdown-label-right">
+                                    <TextControl
+                                        placeholder={__('Minute')}
+                                        value={minuteText}
+                                        onChange={minuteText => setAttributes({ minuteText })}
+                                    />
+                                </div>
                             </div>
-                            <div className="qubely-coutdown-label-right">
-                                <TextControl
-                                    value={hourText}
-                                    onChange={hourText => setAttributes({ hourText })}
-                                />
+                            <div className="qubely-countdown-label-control-text">
+                                <div className="qubely-coutdown-label-left">
+                                    <CheckboxControl
+                                        checked={enableSecond}
+                                        onChange={enableSecond => setAttributes({ enableSecond })}
+                                    />
+                                </div>
+                                <div className="qubely-coutdown-label-right">
+                                    <TextControl
+                                        placeholder={__('Second')}
+                                        value={secondText}
+                                        onChange={secondText => setAttributes({ secondText })}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="qubely-countdown-label-control-text">
-                            <div className="qubely-coutdown-label-left">
-                                <CheckboxControl
-                                    checked={enableMinute}
-                                    onChange={enableMinute => setAttributes({ enableMinute })}
-                                />
-                            </div>
-                            <div className="qubely-coutdown-label-right">
-                                <TextControl
-                                    value={minuteText}
-                                    onChange={minuteText => setAttributes({ minuteText })}
-                                />
-                            </div>
-                        </div>
-                        <div className="qubely-countdown-label-control-text">
-                            <div className="qubely-coutdown-label-left">
-                                <CheckboxControl
-                                    checked={enableSecond}
-                                    onChange={value => setAttributes({ enableSecond })}
-                                />
-                            </div>
-                            <div className="qubely-coutdown-label-right">
-                                <TextControl
-                                    value={secondText}
-                                    onChange={secondText => setAttributes({ secondText })}
-                                />
-                            </div>
-                        </div>
 
-                        <Range
-                            min={0}
-                            max={100}
-                            label={__('Spacing')}
-                            value={labelSpacing}
-                            onChange={labelSpacing => setAttributes({ labelSpacing })}
-                        />
+                            <Range
+                                min={0}
+                                max={100}
+                                label={__('Spacing')}
+                                value={labelSpacing}
+                                onChange={labelSpacing => setAttributes({ labelSpacing })}
+                            />
 
-                        <Color
-                            label={__('Color')}
-                            value={labelColor}
-                            onChange={val => setAttributes({ labelColor: val })}
-                        />
-                        <Typography
-                            device={device}
-                            label={__('Typography')}
-                            value={labelTypo}
-                            onChange={val => setAttributes({ labelTypo: val })}
-                            onDeviceChange={value => this.setState({ device: value })}
-                        />
-                    </PanelBody>
+                            <Color
+                                label={__('Color')}
+                                value={labelColor}
+                                onChange={val => setAttributes({ labelColor: val })}
+                            />
+                            <Typography
+                                device={device}
+                                label={__('Typography')}
+                                value={labelTypo}
+                                onChange={val => setAttributes({ labelTypo: val })}
+                                onDeviceChange={value => this.setState({ device: value })}
+                            />
+                        </PanelBody>
+                    )}
 
                     <PanelBody title={__('Number Text')} initialOpen={false}>
                         {  /* Note: Label Spacing & Number Spacing are same */}
@@ -673,14 +685,15 @@ class Edit extends Component {
                         <Countdown
                             date={date}
                             startDate={startDate}
-                            dayText={dayText}
-                            hourText={hourText}
-                            minuteText={minuteText}
-                            secondText={secondText}
+                            dayText={dayText  || 'Day'}
+                            hourText={hourText || 'Hour'}
+                            minuteText={minuteText || 'Minute'}
+                            secondText={secondText || 'Second'}
                             enableDay={enableDay}
                             enableHour={enableHour}
                             enableMinute={enableMinute}
                             enableSecond={enableSecond}
+                            enableLabel={enableLabel}
                             className={classnames(
                                 'qubely-countdown',
                                 'qubely-countdown-label-' + labelPosition,

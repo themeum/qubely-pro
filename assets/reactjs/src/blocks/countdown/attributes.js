@@ -314,6 +314,10 @@ const attributes = {
     },
 
     //LABEL
+    enableLabel: {
+        type: 'boolean',
+        default: true
+    },
     labelView: {
         type: 'string',
         default: 'inside'
