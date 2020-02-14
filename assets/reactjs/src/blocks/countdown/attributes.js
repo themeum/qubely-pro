@@ -250,7 +250,7 @@ const attributes = {
     //SEPARATOR
     separatorType: {
         type: 'string',
-        default: 'colon'
+        default: 'none'
     },
 
     separatorSize: {

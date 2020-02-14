@@ -26,6 +26,7 @@ QubelyTimer.prototype.init = function() {
     this.hourPercent = 100;
     this.minutePercent = 100;
     this.secondPercent = 100;
+
     this.getDistanceDate();
     this.runInterval();
 };
