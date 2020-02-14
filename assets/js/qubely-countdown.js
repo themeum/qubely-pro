@@ -83,18 +83,22 @@ QubelyTimer.prototype.getDistanceDate = function() {
     };
 };
 
+QubelyTimer.prototype.formatNumber = function (number) {
+    return number < 10 ? '0' + number.toString() : number;
+}
+
 QubelyTimer.prototype.displayTime = function() {
     if(this.children.day){
-        this.children.day.innerHTML = this.distanceDate.day;
+        this.children.day.innerHTML = this.formatNumber(this.distanceDate.day);
     }
     if(this.children.hour){
-        this.children.hour.innerHTML = this.distanceDate.hour;
+        this.children.hour.innerHTML = this.formatNumber(this.distanceDate.hour);
     }
     if(this.children.minute){
-        this.children.minute.innerHTML = this.distanceDate.minute;
+        this.children.minute.innerHTML = this.formatNumber(this.distanceDate.minute);
     }
     if(this.children.second){
-        this.children.second.innerHTML = this.distanceDate.second;
+        this.children.second.innerHTML = this.formatNumber(this.distanceDate.second);
     }
 };
 

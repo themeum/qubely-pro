@@ -39,6 +39,14 @@ const attributes = {
         default: false
     },
 
+    justifyAlign: {
+        type: 'string',
+        default: 'flex-start',
+        style: [{
+            selector: '{{QUBELY}} .qubely-countdown{justify-content: {{justifyAlign}}}'
+        }]
+    },
+
     // Container or Circle
     strokeLinecap: {
         type: 'string',

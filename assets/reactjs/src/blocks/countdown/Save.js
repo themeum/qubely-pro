@@ -1,4 +1,5 @@
 import Pie from './pie';
+import classnames from "classnames";
 
 const { Component, Fragment } = wp.element;
 const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
@@ -28,7 +29,12 @@ class Save extends Component {
                 dayText,
                 layout,
                 date,
-                startDate
+                startDate,
+                thickness,
+                thicknessBg,
+                labelPosition,
+                justifyAlign,
+                separatorType
             }
         } = this.props
         const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
@@ -36,30 +42,39 @@ class Save extends Component {
             fill,
             emptyFill,
             size: size.md,
-            startDate
+            startDate,
+            thickness: thickness.md,
+            thicknessBg: thicknessBg.md
         }
+
+        const countdownClass = classnames(
+            'qubely-countdown',
+            'qubely-countdown-label-' + labelPosition,
+            'qubely-item-separator-' + ((layout === 2 || justifyAlign === 'space-between') ? 'none' : separatorType)
+        )
+
         return (
 
             <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
                 <div className={`qubely-block-countdown ${interactionClass}`} style={{'--label-spacing': labelSpacing + 'px'}}>
-                    <div className="qubely-countdown" data-date={date}>
+                    <div className={countdownClass} data-date={date}>
                         {
                             layout === 1 ? (
                                 <Fragment>
                                     <div className="qubely-countdown-item">
-                                        <h5 className="day">{day}</h5>
+                                        <h5 className="day">{day || '00'}</h5>
                                         {dayText && <p>{dayText}</p>}
                                     </div>
                                     <div className="qubely-countdown-item">
-                                        <h5 className="hour">{hour}</h5>
+                                        <h5 className="hour">{hour || '00'}</h5>
                                         {hourText && <p>{hourText}</p>}
                                     </div>
                                     <div className="qubely-countdown-item">
-                                        <h5 className="minute">{minute}</h5>
+                                        <h5 className="minute">{minute || '00'}</h5>
                                         {minuteText && <p>{minuteText}</p>}
                                     </div>
                                     <div className="qubely-countdown-item">
-                                        <h5 className="second">{second}</h5>
+                                        <h5 className="second">{second || '00'}</h5>
                                         {secondText && <p>{secondText}</p>}
                                     </div>
                                 </Fragment>
@@ -68,28 +83,28 @@ class Save extends Component {
                                     <div className="qubely-countdown-item">
                                         <Pie className={'qubely-countdown-item-day'} percent={dayPercent} {...pie} id={`${uniqueId}0`} />
                                         <div className="qubely-countdown-item-content">
-                                            <h5 className="day">{day}</h5>
+                                            <h5 className="day">{day || '00'}</h5>
                                             {dayText && <p>{dayText}</p>}
                                         </div>
                                     </div>
                                     <div className="qubely-countdown-item">
                                         <Pie className={'qubely-countdown-item-hour'} percent={hourPercent} {...pie} id={`${uniqueId}1`}/>
                                         <div className="qubely-countdown-item-content">
-                                            <h5 className="hour">{hour}</h5>
+                                            <h5 className="hour">{hour || '00'}</h5>
                                             {hourText && <p>{hourText}</p>}
                                         </div>
                                     </div>
                                     <div className="qubely-countdown-item">
                                         <Pie className={'qubely-countdown-item-minute'} percent={minutePercent} {...pie} id={`${uniqueId}2`}/>
                                         <div className="qubely-countdown-item-content">
-                                            <h5 className="minute">{minute}</h5>
+                                            <h5 className="minute">{minute || '00'}</h5>
                                             {minuteText && <p>{minuteText}</p>}
                                         </div>
                                     </div>
                                     <div className="qubely-countdown-item">
                                         <Pie className={'qubely-countdown-item-second'} percent={secondPercent} {...pie} id={`${uniqueId}3`}/>
                                         <div className="qubely-countdown-item-content">
-                                            <h5 className="second">{second}</h5>
+                                            <h5 className="second">{second || '00'}</h5>
                                             {secondText && <p>{secondText}</p>}
                                         </div>
                                     </div>

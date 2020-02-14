@@ -138,10 +138,16 @@
   margin-bottom: 12px;
 }
 
+.components-popover__content{
+  .qubely-countdown-block-control-icon-style{
+    margin-right: 4px;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+  }
+}
+
 .qubely-countdown-block-control-icon-style{
   margin-right: 4px;
-  display: block;
-  height: 24px;
   width: 24px;
-  line-height: 24px;
 }

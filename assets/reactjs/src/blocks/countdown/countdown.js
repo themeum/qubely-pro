@@ -101,6 +101,8 @@ const Countdown = (props) => {
         }, 1000);
     }, [date, startDate]);
 
+    const _formatNumber = (number) => number < 10 ? '0' + number.toString() : number;
+
     return (
 
         layout === 1 ? (
@@ -108,7 +110,7 @@ const Countdown = (props) => {
                 {
                     enableDay && (
                         <div className="qubely-countdown-item">
-                            <h5 className="day">{day}</h5>
+                            <h5 className="day">{_formatNumber(day)}</h5>
                             {dayText && <p>{dayText}</p>}
                         </div>
                     )
@@ -116,7 +118,7 @@ const Countdown = (props) => {
                 {
                     enableHour && (
                         <div className="qubely-countdown-item">
-                            <h5 className="hour">{('0' + hour).slice(-2)}</h5>
+                            <h5 className="hour">{_formatNumber(hour)}</h5>
                             {hourText && <p>{hourText}</p>}
                         </div>
                     )
@@ -125,7 +127,7 @@ const Countdown = (props) => {
                     enableMinute && (
 
                         <div className="qubely-countdown-item">
-                            <h5 className="minute">{('0' + minute).slice(-2)}</h5>
+                            <h5 className="minute">{_formatNumber(minute)}</h5>
                             {minuteText && <p>{minuteText}</p>}
                         </div>
                     )
@@ -133,7 +135,7 @@ const Countdown = (props) => {
                 {
                     enableSecond && (
                         <div className="qubely-countdown-item">
-                            <h5 className="second">{('0' + second).slice(-2)}</h5>
+                            <h5 className="second">{_formatNumber(second)}</h5>
                             {secondText && <p>{secondText}</p>}
                         </div>
                     )
@@ -146,7 +148,7 @@ const Countdown = (props) => {
                             <div className="qubely-countdown-item">
                                 <Pie percent={dayPercent} {...pie} id={`${id}0`} />
                                 <div className="qubely-countdown-item-content">
-                                    <h5 className="day">{day}</h5>
+                                    <h5 className="day">{_formatNumber(day)}</h5>
                                     {dayText && <p>{dayText}</p>}
                                 </div>
                             </div>
@@ -157,7 +159,7 @@ const Countdown = (props) => {
                             <div className="qubely-countdown-item">
                                 <Pie percent={hourPercent} {...pie} id={`${id}1`} />
                                 <div className="qubely-countdown-item-content">
-                                    <h5 className="hour">{('0' + hour).slice(-2)}</h5>
+                                    <h5 className="hour">{_formatNumber(hour)}</h5>
                                     {hourText && <p>{hourText}</p>}
                                 </div>
                             </div>
@@ -168,7 +170,7 @@ const Countdown = (props) => {
                             <div className="qubely-countdown-item">
                                 <Pie percent={minutePercent} {...pie} id={`${id}2`} />
                                 <div className="qubely-countdown-item-content">
-                                    <h5 className="minute">{('0' + minute).slice(-2)}</h5>
+                                    <h5 className="minute">{_formatNumber(minute)}</h5>
                                     {minuteText && <p>{minuteText}</p>}
                                 </div>
                             </div>
@@ -179,7 +181,7 @@ const Countdown = (props) => {
                             <div className="qubely-countdown-item">
                                 <Pie percent={secondPercent} {...pie} id={`${id}3`} />
                                 <div className='qubely-countdown-item-content'>
-                                    <h5 className="second">{('0' + second).slice(-2)}</h5>
+                                    <h5 className="second">{_formatNumber(second)}</h5>
                                     {secondText && <p>{secondText}</p>}
                                 </div>
                             </div>

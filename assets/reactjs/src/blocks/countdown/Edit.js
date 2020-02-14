@@ -57,19 +57,24 @@ const {
 const DEFAULT_ALIGNMENT_CONTROLS = [
     {
         icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-left'} />,
-        title: __( 'Justify Start' ),
-        align: 'left',
+        title: __( 'Justify Left' ),
+        align: 'flex-start',
     },
     {
-        icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-left'} />,
+        icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-center'} />,
         title: __( 'Justify center' ),
         align: 'center',
     },
     {
-        icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-left'} />,
-        title: __( 'Align text right' ),
-        align: 'right',
+        icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-right'} />,
+        title: __( 'Justify Right' ),
+        align: 'flex-end',
     },
+    {
+        icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-justify'} />,
+        title: __( 'Space Between' ),
+        align: 'space-between',
+    }
 ];
 
 class Edit extends Component {
@@ -150,6 +155,7 @@ class Edit extends Component {
                 layout,
                 date,
                 startDate,
+                justifyAlign,
 
                 //container
                 background,
@@ -573,7 +579,7 @@ class Edit extends Component {
                     </PanelBody>
 
                     {
-                        layout === 1 &&
+                        (layout === 1 && justifyAlign !== 'space-between') &&
                         <PanelBody title={__('Separator')} initialOpen={false}>
                             <ButtonGroup
                                 label={__('Separator Type')}
@@ -584,12 +590,12 @@ class Edit extends Component {
                                         [<img src={qubely_pro_admin.plugin + 'assets/img/blocks/countdown/pipe.svg'} alt={__('Pipe')} />, 'line']
                                     ]
                                 }
-                                value={separatorType}
+                                value={(layout === 2 || justifyAlign === 'space-between') ? 'none' : separatorType}
                                 additionalClass="qubely-countdown-separator-control extra-padding"
                                 onChange={value => setAttributes({ separatorType: value })}
                             />
 
-                            {separatorType !== 'none' && (
+                            {(separatorType !== 'none') && (
                                 <Fragment>
                                     <Color
                                         label={__('Color')}
@@ -648,9 +654,9 @@ class Edit extends Component {
                         />
                     </Toolbar>
                     <AlignmentToolbar
-                        value={'left'}
+                        value={justifyAlign}
                         alignmentControls={DEFAULT_ALIGNMENT_CONTROLS}
-                        onChange={() => false}
+                        onChange={(justifyAlign) => setAttributes({justifyAlign})}
                     />
                 </BlockControls>
 
@@ -678,7 +684,7 @@ class Edit extends Component {
                             className={classnames(
                                 'qubely-countdown',
                                 'qubely-countdown-label-' + labelPosition,
-                                'qubely-item-separator-' + (layout === 2 ? 'none' : separatorType)
+                                'qubely-item-separator-' + ((layout === 2 || justifyAlign === 'space-between') ? 'none' : separatorType)
                             )}
                             layout={layout}
                             pie={{
