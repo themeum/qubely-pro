@@ -1339,7 +1339,7 @@
     "navAlignment": "left",
     "navTextAlignment": "left",
     "tabVerticalAlign": "flex-start",
-    "tabStyle": "layout1",
+    "tabStyle": "layout3",
     "typography": {
       "openTypography": true,
       "size": {
