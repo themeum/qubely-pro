@@ -5,6 +5,7 @@ Stable tag: 1.1.3
 
 = 1.1.3 - 18 February, 2020 =
 New: Countdown Block 
+Fix: Post Grid block - Translation issue of the dates    
 Fix: CSS issue on template selection  
 
 
