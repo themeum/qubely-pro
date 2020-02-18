@@ -98,7 +98,7 @@ const attributes = {
             gradient: {
                 type: 'linear',
                 color1: '#25b5e1',
-                color2: '#1f8493',
+                color2: '#45dbca',
                 direction: '47',
                 start: '0',
                 stop: '100'
@@ -108,7 +108,7 @@ const attributes = {
     },
     emptyFill: {
         type: 'string',
-        default: '#f7f7f7',
+        default: '#e1f2ff',
         style: []
     },
     padding: {
@@ -208,7 +208,7 @@ const attributes = {
     size: {
         type: 'object',
         default: {
-            md: 180
+            md: 190
         },
         style: [{
             condition: [{
@@ -223,7 +223,7 @@ const attributes = {
     thickness: {
         type: 'object',
         default: {
-            md: 15
+            md: 10
         },
         style: []
     },
@@ -231,7 +231,7 @@ const attributes = {
     thicknessBg: {
         type: 'object',
         default: {
-            md: 15
+            md: 25
         },
         style: []
     },
@@ -316,7 +316,7 @@ const attributes = {
     },
     labelPosition: {
         type: 'string',
-        default: 'top',
+        default: 'bottom',
         style: []
     },
     enableDay: {
