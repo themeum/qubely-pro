@@ -43,9 +43,6 @@ const {
     Inline: {
         InlineToolbar
     },
-    // CssGenerator: {
-    //     CssGenerator
-    // },
     withCSSGenerator,
     gloalSettings: {
         globalSettingsPanel,
@@ -239,8 +236,6 @@ class Edit extends Component {
             }
         } = this.props;
         const { device } = this.state;
-
-        // if (uniqueId) { CssGenerator(this.props.attributes, 'countdown', uniqueId) }
 
         return (
             <Fragment>
