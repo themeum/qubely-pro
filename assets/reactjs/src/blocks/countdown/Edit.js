@@ -303,7 +303,7 @@ class Edit extends Component {
                             )}
                         </div>
                         <div className="qubely-countdown-control-time-picker">
-                            <label>{__('Event Time (24 Hour Format)')}</label>
+                            <label>{__('Event Time (24 Hour Clock)')}</label>
                             <TimePicker
                                 currentDate={date}
                                 onChange={newDate => this._setDate('time', newDate)}

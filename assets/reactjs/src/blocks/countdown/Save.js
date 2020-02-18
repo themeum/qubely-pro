@@ -36,7 +36,11 @@ class Save extends Component {
                 justifyAlign,
                 separatorType,
                 enableLabel,
-                labelView
+                labelView,
+                enableDay,
+                enableHour,
+                enableMinute,
+                enableSecond
             }
         } = this.props
         const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
@@ -63,77 +67,93 @@ class Save extends Component {
                         {
                             layout === 1 ? (
                                 <Fragment>
-                                    <div className="qubely-countdown-item-outer">
-                                        <div className="qubely-countdown-item">
-                                            <h5 className="day">{day || '00'}</h5>
-                                            {(enableLabel && labelView !== 'outside') && <p>{dayText}</p>}
-                                        </div>
-                                        {(enableLabel && labelView === 'outside') && <p>{dayText}</p>}
-                                    </div>
-                                    <div className="qubely-countdown-item-outer">
-                                        <div className="qubely-countdown-item">
-                                            <h5 className="hour">{hour || '00'}</h5>
-                                            {(enableLabel && labelView !== 'outside') && <p>{hourText}</p>}
-                                        </div>
-                                        {(enableLabel && labelView === 'outside') && <p>{hourText}</p>}
-                                    </div>
-                                    <div className="qubely-countdown-item-outer">
-                                        <div className="qubely-countdown-item">
-                                            <h5 className="minute">{minute || '00'}</h5>
-                                            {(enableLabel && labelView !== 'outside') && <p>{minuteText}</p>}
-                                        </div>
-                                        {(enableLabel && labelView === 'outside') && <p>{minuteText}</p>}
-                                    </div>
-                                    <div className="qubely-countdown-item-outer">
-                                        <div className="qubely-countdown-item">
-                                            <h5 className="second">{second || '00'}</h5>
-                                            {(enableLabel && labelView !== 'outside') && <p>{secondText}</p>}
-                                        </div>
-                                        {(enableLabel && labelView === 'outside') && <p>{secondText}</p>}
-                                    </div>
-                                </Fragment>
-                            ) : (
-                                <Fragment>
-                                    <div className="qubely-countdown-item-outer">
-                                        <div className="qubely-countdown-item">
-                                            <Pie className={'qubely-countdown-item-day'} percent={dayPercent} {...pie} id={`${uniqueId}0`} />
-                                            <div className="qubely-countdown-item-content">
+                                    {enableDay && (
+                                        <div className="qubely-countdown-item-outer">
+                                            <div className="qubely-countdown-item">
                                                 <h5 className="day">{day || '00'}</h5>
                                                 {(enableLabel && labelView !== 'outside') && <p>{dayText}</p>}
                                             </div>
+                                            {(enableLabel && labelView === 'outside') && <p>{dayText}</p>}
                                         </div>
-                                        {(enableLabel && labelView === 'outside') && <p>{dayText}</p>}
-                                    </div>
-                                    <div className="qubely-countdown-item-outer">
-                                        <div className="qubely-countdown-item">
-                                            <Pie className={'qubely-countdown-item-hour'} percent={hourPercent} {...pie} id={`${uniqueId}1`}/>
-                                            <div className="qubely-countdown-item-content">
+                                    )}
+                                    {enableHour && (
+                                        <div className="qubely-countdown-item-outer">
+                                            <div className="qubely-countdown-item">
                                                 <h5 className="hour">{hour || '00'}</h5>
                                                 {(enableLabel && labelView !== 'outside') && <p>{hourText}</p>}
                                             </div>
+                                            {(enableLabel && labelView === 'outside') && <p>{hourText}</p>}
                                         </div>
-                                        {(enableLabel && labelView === 'outside') && <p>{hourText}</p>}
-                                    </div>
-                                    <div className="qubely-countdown-item-outer">
-                                        <div className="qubely-countdown-item">
-                                            <Pie className={'qubely-countdown-item-minute'} percent={minutePercent} {...pie} id={`${uniqueId}2`}/>
-                                            <div className="qubely-countdown-item-content">
+                                    )}
+                                    {enableMinute && (
+                                        <div className="qubely-countdown-item-outer">
+                                            <div className="qubely-countdown-item">
                                                 <h5 className="minute">{minute || '00'}</h5>
                                                 {(enableLabel && labelView !== 'outside') && <p>{minuteText}</p>}
                                             </div>
+                                            {(enableLabel && labelView === 'outside') && <p>{minuteText}</p>}
                                         </div>
-                                        {(enableLabel && labelView === 'outside') && <p>{minuteText}</p>}
-                                    </div>
-                                    <div className="qubely-countdown-item-outer">
-                                        <div className="qubely-countdown-item">
-                                            <Pie className={'qubely-countdown-item-second'} percent={secondPercent} {...pie} id={`${uniqueId}3`}/>
-                                            <div className="qubely-countdown-item-content">
+                                    )}
+                                    {enableSecond && (
+                                        <div className="qubely-countdown-item-outer">
+                                            <div className="qubely-countdown-item">
                                                 <h5 className="second">{second || '00'}</h5>
                                                 {(enableLabel && labelView !== 'outside') && <p>{secondText}</p>}
                                             </div>
+                                            {(enableLabel && labelView === 'outside') && <p>{secondText}</p>}
                                         </div>
-                                        {(enableLabel && labelView === 'outside') && <p>{secondText}</p>}
-                                    </div>
+                                    )}
+                                </Fragment>
+                            ) : (
+                                <Fragment>
+                                    {enableDay && (
+                                        <div className="qubely-countdown-item-outer">
+                                            <div className="qubely-countdown-item">
+                                                <Pie className={'qubely-countdown-item-day'} percent={dayPercent} {...pie} id={`${uniqueId}0`} />
+                                                <div className="qubely-countdown-item-content">
+                                                    <h5 className="day">{day || '00'}</h5>
+                                                    {(enableLabel && labelView !== 'outside') && <p>{dayText}</p>}
+                                                </div>
+                                            </div>
+                                            {(enableLabel && labelView === 'outside') && <p>{dayText}</p>}
+                                        </div>
+                                    )}
+                                    {enableHour && (
+                                        <div className="qubely-countdown-item-outer">
+                                            <div className="qubely-countdown-item">
+                                                <Pie className={'qubely-countdown-item-hour'} percent={hourPercent} {...pie} id={`${uniqueId}1`}/>
+                                                <div className="qubely-countdown-item-content">
+                                                    <h5 className="hour">{hour || '00'}</h5>
+                                                    {(enableLabel && labelView !== 'outside') && <p>{hourText}</p>}
+                                                </div>
+                                            </div>
+                                            {(enableLabel && labelView === 'outside') && <p>{hourText}</p>}
+                                        </div>
+                                    )}
+                                    {enableMinute && (
+                                        <div className="qubely-countdown-item-outer">
+                                            <div className="qubely-countdown-item">
+                                                <Pie className={'qubely-countdown-item-minute'} percent={minutePercent} {...pie} id={`${uniqueId}2`}/>
+                                                <div className="qubely-countdown-item-content">
+                                                    <h5 className="minute">{minute || '00'}</h5>
+                                                    {(enableLabel && labelView !== 'outside') && <p>{minuteText}</p>}
+                                                </div>
+                                            </div>
+                                            {(enableLabel && labelView === 'outside') && <p>{minuteText}</p>}
+                                        </div>
+                                    )}
+                                    {enableSecond && (
+                                        <div className="qubely-countdown-item-outer">
+                                            <div className="qubely-countdown-item">
+                                                <Pie className={'qubely-countdown-item-second'} percent={secondPercent} {...pie} id={`${uniqueId}3`}/>
+                                                <div className="qubely-countdown-item-content">
+                                                    <h5 className="second">{second || '00'}</h5>
+                                                    {(enableLabel && labelView !== 'outside') && <p>{secondText}</p>}
+                                                </div>
+                                            </div>
+                                            {(enableLabel && labelView === 'outside') && <p>{secondText}</p>}
+                                        </div>
+                                    )}
                                 </Fragment>
                             )
                         }

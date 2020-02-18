@@ -10,7 +10,7 @@ registerBlockType('qubely/countdown', {
     title: __('Countdown'),
     description: __('Create stylish countdown blocks with Qubely Buttons.'),
     category: 'qubely',
-    icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-button.svg'} alt={__('Button Block')} />,
+    icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-countdown.svg'} alt={__('Countdown Block')} />,
     supports: {
         align: ['center', 'wide', 'full'],
     },
