@@ -2,13 +2,37 @@
   "template1": {
     "thumbnail": {
       "type": "local",
-      "src": "countdown/layout1.jpg"
+      "src": "countdown/1.jpg"
     }
   },
   "template2": {
     "thumbnail": {
       "type": "local",
-      "src": "countdown/layout2.jpg"
+      "src": "countdown/2.jpg"
+    }
+  },
+  "template3": {
+    "thumbnail": {
+      "type": "local",
+      "src": "countdown/3.jpg"
+    }
+  },
+  "template4": {
+    "thumbnail": {
+      "type": "local",
+      "src": "countdown/4.jpg"
+    }
+  },
+  "template5": {
+    "thumbnail": {
+      "type": "local",
+      "src": "countdown/5.jpg"
+    }
+  },
+  "template6": {
+    "thumbnail": {
+      "type": "local",
+      "src": "countdown/6.jpg"
     }
   }
 }
