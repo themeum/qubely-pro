@@ -1,6 +1,8 @@
 import icons from '../../helpers/icons';
 import Countdown from './countdown';
 import classnames from 'classnames'
+import templates from './templates'
+const {PluginBlockSettingsMenuItem} = wp.editPost
 
 const { __ } = wp.i18n;
 const {
@@ -41,8 +43,10 @@ const {
     Inline: {
         InlineToolbar
     },
-    CssGenerator: {
-        CssGenerator },
+    // CssGenerator: {
+    //     CssGenerator
+    // },
+    withCSSGenerator,
     gloalSettings: {
         globalSettingsPanel,
         animationSettings,
@@ -51,7 +55,8 @@ const {
     ContextMenu: {
         ContextMenu,
         handleContextMenu
-    }
+    },
+    Templates
 } = wp.qubelyComponents
 
 const DEFAULT_ALIGNMENT_CONTROLS = [
@@ -118,6 +123,24 @@ class Edit extends Component {
             });
 
         }
+
+    }
+
+
+    copyAttributes = () => {
+        const {
+            attributes,
+            attributes: {
+                qubelyStyleAttributes
+            }
+        } = this.props
+        const {copyToClipboard} = wp.qubelyComponents.HelperFunction
+        let template = {}
+        qubelyStyleAttributes.forEach(key => {
+            template[key] = attributes[key]
+        })
+
+        copyToClipboard(JSON.stringify(template))
 
     }
 
@@ -217,7 +240,7 @@ class Edit extends Component {
         } = this.props;
         const { device } = this.state;
 
-        if (uniqueId) { CssGenerator(this.props.attributes, 'countdown', uniqueId) }
+        // if (uniqueId) { CssGenerator(this.props.attributes, 'countdown', uniqueId) }
 
         return (
             <Fragment>
@@ -237,29 +260,7 @@ class Edit extends Component {
                                 position="bottom center"
                                 renderToggle={({ isOpen, onToggle }) => (
                                     <TextControl
-                                        label={__('Starting Date')}
-                                        value={startDate && startDate.split('T')[0]}
-                                        onClick={onToggle}
-                                        aria-expanded={isOpen}
-                                        readOnly
-                                    />
-                                )}
-                                renderContent={() => (
-                                    <div className='qubely-countdown-control-dropdown'>
-                                        <DatePicker
-                                            label={__('Date & Time')}
-                                            currentDate={startDate}
-                                            onChange={startDate => setAttributes({ startDate })}
-                                        />
-                                    </div>
-                                )}
-                            />
-                            <Dropdown
-                                className="qubely-countdown-control-dropdown-parent"
-                                position="bottom center"
-                                renderToggle={({ isOpen, onToggle }) => (
-                                    <TextControl
-                                        label={__('Ending Date')}
+                                        label={__('Event Date')}
                                         value={date && date.split('T')[0]}
                                         onClick={onToggle}
                                         aria-expanded={isOpen}
@@ -276,15 +277,43 @@ class Edit extends Component {
                                     </div>
                                 )}
                             />
+                            {layout === 2 && (
+                                <Dropdown
+                                    className="qubely-countdown-control-dropdown-parent"
+                                    position="bottom center"
+                                    renderToggle={({ isOpen, onToggle }) => (
+                                        <TextControl
+                                            label={__('Starting Date')}
+                                            value={startDate && startDate.split('T')[0]}
+                                            onClick={onToggle}
+                                            aria-expanded={isOpen}
+                                            readOnly
+                                        />
+                                    )}
+                                    renderContent={() => (
+                                        <div className='qubely-countdown-control-dropdown'>
+                                            <DatePicker
+                                                label={__('Date & Time')}
+                                                currentDate={startDate}
+                                                onChange={startDate => setAttributes({ startDate })}
+                                            />
+                                        </div>
+                                    )}
+                                />
+                            )}
                         </div>
-
                         <div className="qubely-countdown-control-time-picker">
-                            <label>{__('Ending Time (24 Hour Format)')}</label>
+                            <label>{__('Event Time (24 Hour Format)')}</label>
                             <TimePicker
                                 currentDate={date}
                                 onChange={newDate => this._setDate('time', newDate)}
                             />
                         </div>
+                        <Templates
+                            updateStyle={setAttributes}
+                            attributes={this.props.attributes}
+                            templates={templates}
+                        />
                     </PanelBody>
                     <PanelBody title={layout === 1 ? __('Container') : __('Circle')} initialOpen={false}>
                         {
@@ -361,7 +390,7 @@ class Edit extends Component {
                                             value={strokeLinecap}
                                             options={[
                                                 { value: 'round', label: __('Round') },
-                                                { value: '', label: __('Square') }
+                                                { value: 'square', label: __('Square') }
                                             ]}
                                             onChange={strokeLinecap => setAttributes({ strokeLinecap })}
                                         />
@@ -442,21 +471,17 @@ class Edit extends Component {
                         {
                             enableLabel && (
                                 <Fragment>
-                                    {
-                                        layout === 1 && (
-                                            <ButtonGroup
-                                                label={__('View')}
-                                                options={
-                                                    [
-                                                        [__('Inside'), 'inside'],
-                                                        [__('Outside'), 'outside']
-                                                    ]
-                                                }
-                                                value={labelView}
-                                                onChange={value => setAttributes({ labelView: value })}
-                                            />
-                                        )
-                                    }
+                                    <ButtonGroup
+                                        label={__('View')}
+                                        options={
+                                            [
+                                                [__('Inside'), 'inside'],
+                                                [__('Outside'), 'outside']
+                                            ]
+                                        }
+                                        value={labelView}
+                                        onChange={value => setAttributes({ labelView: value })}
+                                    />
                                     <ButtonGroup
                                         label={__('Position')}
                                         options={
@@ -658,6 +683,11 @@ class Edit extends Component {
                         alignmentControls={DEFAULT_ALIGNMENT_CONTROLS}
                         onChange={(justifyAlign) => setAttributes({justifyAlign})}
                     />
+                    <PluginBlockSettingsMenuItem
+                        icon={'editor-code'}
+                        label={__('Copy Attributes')}
+                        onClick={() => this.copyAttributes()}
+                    />
                 </BlockControls>
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
@@ -716,4 +746,4 @@ class Edit extends Component {
     }
 }
 
-export default Edit;
+export default withCSSGenerator()(Edit);

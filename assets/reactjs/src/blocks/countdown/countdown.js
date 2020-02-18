@@ -163,9 +163,10 @@ const Countdown = (props) => {
                                 <Pie percent={dayPercent} {...pie} id={`${id}0`} />
                                 <div className="qubely-countdown-item-content">
                                     <h5 className="day">{_formatNumber(day)}</h5>
-                                    {enableLabel && <p>{dayText}</p>}
+                                    {(enableLabel && labelView !== 'outside') && <p>{dayText}</p>}
                                 </div>
                             </div>
+                            {(enableLabel && labelView === 'outside') && <p>{dayText}</p>}
                         </div>
                     )
                 }
@@ -176,9 +177,10 @@ const Countdown = (props) => {
                                 <Pie percent={hourPercent} {...pie} id={`${id}1`} />
                                 <div className="qubely-countdown-item-content">
                                     <h5 className="hour">{_formatNumber(hour)}</h5>
-                                    {enableLabel && <p>{hourText}</p>}
+                                    {(enableLabel && labelView !== 'outside') && <p>{hourText}</p>}
                                 </div>
                             </div>
+                            {(enableLabel && labelView === 'outside') && <p>{hourText}</p>}
                         </div>
                     )
                 }
@@ -189,9 +191,10 @@ const Countdown = (props) => {
                                 <Pie percent={minutePercent} {...pie} id={`${id}2`} />
                                 <div className="qubely-countdown-item-content">
                                     <h5 className="minute">{_formatNumber(minute)}</h5>
-                                    {enableLabel && <p>{minuteText}</p>}
+                                    {(enableLabel && labelView !== 'outside') && <p>{minuteText}</p>}
                                 </div>
                             </div>
+                            {(enableLabel && labelView === 'outside') && <p>{minuteText}</p>}
                         </div>
                     )
                 }
@@ -202,9 +205,10 @@ const Countdown = (props) => {
                                 <Pie percent={secondPercent} {...pie} id={`${id}3`} />
                                 <div className='qubely-countdown-item-content'>
                                     <h5 className="second">{_formatNumber(second)}</h5>
-                                    {enableLabel && <p>{secondText}</p>}
+                                    {(enableLabel && labelView !== 'outside') && <p>{secondText}</p>}
                                 </div>
                             </div>
+                            {(enableLabel && labelView === 'outside') && <p>{secondText}</p>}
                         </div>
                     )
                 }

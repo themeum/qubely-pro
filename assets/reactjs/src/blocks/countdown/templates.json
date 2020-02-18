@@ -1,0 +1,14 @@
+{
+  "template1": {
+    "thumbnail": {
+      "type": "local",
+      "src": "verticaltabs/layout1.jpg"
+    }
+  },
+  "template2": {
+    "thumbnail": {
+      "type": "local",
+      "src": "verticaltabs/layout2.jpg"
+    }
+  }
+}

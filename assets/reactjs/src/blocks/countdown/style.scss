@@ -127,6 +127,7 @@
 .qubely-countdown-control-date-picker{
   display: flex;
   .qubely-countdown-control-dropdown-parent {
+    flex-grow: 1;
     margin-right: 8px;
     .components-base-control{
       margin-bottom: 0 !important;

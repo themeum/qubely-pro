@@ -22,7 +22,8 @@ const attributes = {
     },
     layout: {
         type: 'number',
-        default: 1
+        default: 1,
+        style: []
     },
     // Global
     ...globalAttributes,
@@ -75,9 +76,9 @@ const attributes = {
     background: {
         type: 'object',
         default: {
-            openColor: 1,
-            type: 'color',
-            color: '#f5f5f5'
+            openBg: 1,
+            bgType: 'color',
+            bgDefaultColor: '#f5f5f5'
         },
         style: [{
             condition: [{
@@ -102,11 +103,13 @@ const attributes = {
                 start: '0',
                 stop: '100'
             }
-        }
+        },
+        style: []
     },
     emptyFill: {
         type: 'string',
-        default: '#f7f7f7'
+        default: '#f7f7f7',
+        style: []
     },
     padding: {
         type: 'object',
@@ -221,20 +224,23 @@ const attributes = {
         type: 'object',
         default: {
             md: 15
-        }
+        },
+        style: []
     },
 
     thicknessBg: {
         type: 'object',
         default: {
             md: 15
-        }
+        },
+        style: []
     },
 
     //SEPARATOR
     separatorType: {
         type: 'string',
-        default: 'none'
+        default: 'none',
+        style: []
     },
 
     separatorSize: {
@@ -300,31 +306,38 @@ const attributes = {
     //LABEL
     enableLabel: {
         type: 'boolean',
-        default: true
+        default: true,
+        style: []
     },
     labelView: {
         type: 'string',
-        default: 'inside'
+        default: 'inside',
+        style: []
     },
     labelPosition: {
         type: 'string',
-        default: 'top'
+        default: 'top',
+        style: []
     },
     enableDay: {
         type: 'boolean',
-        default: true
+        default: true,
+        style: []
     },
     enableHour: {
         type: 'boolean',
-        default: true
+        default: true,
+        style: []
     },
     enableMinute: {
         type: 'boolean',
-        default: true
+        default: true,
+        style: []
     },
     enableSecond: {
         type: 'boolean',
-        default: true
+        default: true,
+        style: []
     },
     dayText: {
         type: 'string',
@@ -344,13 +357,14 @@ const attributes = {
     },
     labelSpacing: {
         type: 'number',
-        default: 10
+        default: 10,
+        style: []
     },
     labelColor: {
         type: 'string',
         default: '#000',
         style: [{
-            selector: '{{QUBELY}} .qubely-countdown-item p  {color: {{labelColor}};}'
+            selector: '{{QUBELY}} .qubely-countdown-item-outer p  {color: {{labelColor}};}'
         }]
     },
     labelTypo: {
@@ -362,9 +376,47 @@ const attributes = {
             }
         },
         style: [{
-            selector: '{{QUBELY}} .qubely-countdown-item p'
+            selector: '{{QUBELY}} .qubely-countdown-item-outer p'
         }]
     },
+    qubelyStyleAttributes: {
+        type: 'array',
+        default: [
+            'layout',
+            'justifyAlign',
+            'strokeLinecap',
+            'circleTransition',
+            'background',
+            'fill',
+            'emptyFill',
+            'padding',
+            'minWidth',
+            'spaceBetween',
+            'borderRadius',
+            'border',
+            'boxShadow',
+            'size',
+            'thickness',
+            'thicknessBg',
+            'separatorSize',
+            'separatorType',
+            'separatorSizeX',
+            'separatorOffset',
+            'separatorColor',
+            'numberColor',
+            'numberTypo',
+            'enableLabel',
+            'labelView',
+            'labelPosition',
+            'enableDay',
+            'enableHour',
+            'enableMinute',
+            'enableSecond',
+            'labelSpacing',
+            'labelColor',
+            'labelTypo'
+        ]
+    }
 }
 
 export default attributes;

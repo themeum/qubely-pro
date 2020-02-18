@@ -35,6 +35,25 @@ const Pie = (props) => {
                 style={{ transform: 'rotate(-90deg)' }}
             >
 
+                {/*{
+                    circleShadow.openShadow === true && (
+                        circleShadow.inset !== 'inset' ? (
+                            <filter id={`circle-shadow-${uniqueId}`} width="500%" height="500%" x="-250%" y="-250%">
+                                <feDropShadow dx={circleShadow.vertical * -1} dy={circleShadow.horizontal} stdDeviation={circleShadow.blur} flood-color={circleShadow.color} flood-opacity="1" />
+                            </filter>
+                        ) : (
+                            <filter id={`circle-shadow-${uniqueId}`} width="500%" height="500%" x="-250%" y="-250%">
+                                <feOffset dx={circleShadow.vertical * -1} dy={circleShadow.horizontal} />
+                                <feGaussianBlur stdDeviation={circleShadow.blur} />
+                                <feComposite operator="out" in="SourceGraphic" result="inverse"/>
+                                <feFlood flood-color={circleShadow.color} flood-opacity="1" result="color"/>
+                                <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+                                <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+                            </filter>
+                        )
+                    )
+                }*/}
+
                 {
                     fill.bgType !== 'color' && (
                         fill.gradient.type == 'radial' ? (
