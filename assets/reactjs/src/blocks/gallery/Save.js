@@ -30,7 +30,7 @@ class Save extends Component {
             const renderContent = <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
                     <div className={`qubely-gallery-content-image qubely-gallery-image-${imageAnimation}`}>
                         {enablePopup && <div className={'qubely-gallery-pupup-icon'}>{enablePopupIcon &&<i class="fas fa-plus"></i>}</div>}
-                        <img src={image.url} alt={title} />
+                        <img src={image.url} alt={image.alt} />
                     </div>
                     {enableCaption == 1 &&
                         <div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>
