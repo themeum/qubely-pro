@@ -169,7 +169,7 @@ class Edit extends Component {
                                         <Fragment>
                                             {(image != undefined && image.url != undefined) ?
                                                 <div className="qubely-gallery-content-image-editor">
-                                                    <img src={image.url} alt={__('image')} />
+                                                    <img src={image.url} alt={__(image.alt)} />
                                                     <div className="qubely-media-actions qubely-field-button-list">
                                                         <Tooltip text={__('Edit')}>
                                                             <button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
