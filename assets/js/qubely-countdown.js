@@ -65,7 +65,7 @@ QubelyTimer.prototype.getDistanceDate = function() {
     const minute = parseInt((diff / 1000 / 60) % 60);
     const second = parseInt((diff / 1000) % 60);
 
-    if(diff < 0) {
+    if(diff.getTime() <= 0) {
         this.distanceDate = {
             day: 0,
             hour: 0,
@@ -73,7 +73,7 @@ QubelyTimer.prototype.getDistanceDate = function() {
             second: 0
         };
         this.displayTime();
-        this.clearInterval();
+        this.destroy();
         return;
     }
     this.distanceDate = {
