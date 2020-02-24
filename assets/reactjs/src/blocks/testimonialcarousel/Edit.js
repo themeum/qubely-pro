@@ -316,6 +316,7 @@ class Edit extends Component {
 				bgColor,
 				bgBorderRadius,
 				border,
+				dotBorder,
 				boxShadow,
 				boxShadowHover,
 				sliderNumber,
@@ -557,6 +558,17 @@ class Edit extends Component {
 								min={1} max={100}
 								responsive unit={['px', 'em', '%']}
 								device={device}
+								onDeviceChange={value => this.setState({ device: value })}
+							/>
+							<Border
+								min={0}
+								max={10}
+								responsive
+								value={dotBorder}
+								device={device}
+								unit={['px', 'em']}
+								label={__('Border')}
+								onChange={val => setAttributes({ dotBorder: val })}
 								onDeviceChange={value => this.setState({ device: value })}
 							/>
 							<Range

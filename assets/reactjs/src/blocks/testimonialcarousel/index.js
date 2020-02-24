@@ -3,7 +3,7 @@ const { registerBlockType } = wp.blocks
 import './style.scss'
 import Edit from './Edit'
 import Save from './Save'
-const { gloalSettings: { globalAttributes }} = wp.qubelyComponents
+const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
 
 registerBlockType('qubely/testimonialcarousel', {
 	title: __('Testimonial Carousel'),
@@ -15,11 +15,11 @@ registerBlockType('qubely/testimonialcarousel', {
 		__('Carousel')
 	],
 	supports: {
-        align: ['center', 'wide', 'full'],
-    },
-    example: {
-        attributes: {},
-    },
+		align: ['center', 'wide', 'full'],
+	},
+	example: {
+		attributes: {},
+	},
 	attributes: {
 		uniqueId: { type: 'string', default: '' },
 		items: { type: 'object', default: { md: '2', sm: '2', xs: '1' } },
@@ -202,6 +202,15 @@ registerBlockType('qubely/testimonialcarousel', {
 			default: { md: 4, unit: 'px' },
 			style: [{ selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots ul li { height: {{dotHeight}} }' }]
 		},
+		dotBorder: {
+			type: 'object',
+			default: {},
+			style: [
+				{
+					selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots ul li , {{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator '
+				}
+			]
+		},
 		dotBorderRadius: {
 			type: 'object',
 			default: { md: 4, unit: 'px' },
@@ -211,8 +220,8 @@ registerBlockType('qubely/testimonialcarousel', {
 			type: 'object',
 			default: { md: 0, unit: 'px' },
 			style: [
-				{ 
-					selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots { margin-top: {{dotsPosition}}; } ' 
+				{
+					selector: '{{QUBELY}} .qubely-block-testimonial-carousel .qubely-carousel-wrapper .qubely-carousel-dots { margin-top: {{dotsPosition}}; } '
 				}
 			]
 		},
@@ -250,29 +259,29 @@ registerBlockType('qubely/testimonialcarousel', {
 			style: [{ selector: '{{QUBELY}} .qubely-testimonial-content' }]
 		},
 		messageSpacingTop: { type: 'object', default: { md: 0, unit: 'px' }, style: [{ selector: '{{QUBELY}} .qubely-testimonial-content {margin-top: {{messageSpacingTop}};}' }] },
-		messageSpacingBottom: { 
-			type: 'object', 
-			default: { md: 20, unit: 'px' }, 
+		messageSpacingBottom: {
+			type: 'object',
+			default: { md: 20, unit: 'px' },
 			style: [
-				{ 
+				{
 					condition: [
 						{ key: 'layout', relation: '==', value: '1' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-1 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}' 
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-1 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}'
 				},
-				{ 
+				{
 					condition: [
 						{ key: 'layout', relation: '==', value: '2' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-2 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}' 
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-2 .qubely-testimonial-carousel-content-wrapper .qubely-testimonial-content {margin-bottom: {{messageSpacingBottom}};}'
 				},
-				{ 
+				{
 					condition: [
 						{ key: 'layout', relation: '==', value: '3' }
 					],
-					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-3 .qubely-testimonial-carousel-content-wrapper {margin-bottom: {{messageSpacingBottom}};}' 
+					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-3 .qubely-testimonial-carousel-content-wrapper {margin-bottom: {{messageSpacingBottom}};}'
 				}
-			] 
+			]
 		},
 
 		/*------------------------------------
@@ -285,7 +294,7 @@ registerBlockType('qubely/testimonialcarousel', {
 			type: 'string',
 			default: '64px',
 			style: [
-				{ 
+				{
 					condition: [
 						{ key: 'avatarSize', relation: '!=', value: 'custom' }
 					],
@@ -332,7 +341,7 @@ registerBlockType('qubely/testimonialcarousel', {
 					],
 					selector: '{{QUBELY}} .qubely-tesitmonial-item.qubely-tesitmonial-item-layout-3 .qubely-testimonial-avatar-wrapper { margin-bottom: {{avatarSpacing}} }'
 				}
-				
+
 			]
 		},
 		avatarBorderRadius: {
