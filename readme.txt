@@ -1,7 +1,13 @@
 ===  Qubely Pro ===
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 
 == Changelog ==
+
+= 1.1.4 - 27 February, 2020 =
+New: Testimonial Carousel block - Border option in Dot Settings
+Fix: Gallery block - Image alt text
+Fix: Countdown block - Infinite looping issue for past events
+
 
 = 1.1.3 - 18 February, 2020 =
 New: Countdown Block 
