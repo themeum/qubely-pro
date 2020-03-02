@@ -778,7 +778,7 @@ class Edit extends Component {
 							}
 						</PanelBody>
 					}
-					<PanelBody title={__('Ratings')} initialOpen={false}>
+					{/*<PanelBody title={__('Ratings')} initialOpen={false}>
 						<Toggle label={__('Show Ratings')} value={showRatings} onChange={val => setAttributes({ showRatings: val })} />
 						{showRatings &&
 							<Fragment>
@@ -811,7 +811,7 @@ class Edit extends Component {
 								}
 							</Fragment>
 						}
-					</PanelBody>
+					</PanelBody>*/}
 
 					<PanelBody title={__('Design')} initialOpen={false}>
 						<Color
