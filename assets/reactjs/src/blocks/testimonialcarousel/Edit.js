@@ -161,7 +161,7 @@ class Edit extends Component {
 					// onClickOutside={event => event.target.value === undefined && this.setState({ showRatingsPicker: -1 })}
 					>
 						<Range
-							min={0}
+							min={0.5}
 							max={5}
 							step={.5}
 							value={ratings}
