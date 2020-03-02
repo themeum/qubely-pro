@@ -246,12 +246,14 @@ class Edit extends Component {
 
                     <InspectorTabs>
                         <InspectorTab key={"layout"} opened={true   }>
-                            <PanelBody title={__('Sections')}>
+                            <PanelBody title={__('Design Templates')}>
                                 <Templates
                                     updateStyle={setAttributes}
                                     attributes={this.props.attributes}
                                     templates={templates}
                                 />
+                            </PanelBody>
+                            <PanelBody title={__('Related Sections')}>
                                 <InspectorSections block={'countdown'}/>
                             </PanelBody>
                         </InspectorTab>
