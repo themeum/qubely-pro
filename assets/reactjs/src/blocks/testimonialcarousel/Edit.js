@@ -163,7 +163,7 @@ class Edit extends Component {
 						<Range
 							min={0.1}
 							max={5}
-							step={.1}
+							step={0.1}
 							value={ratings}
 							label={__('Ratings')}
 							onChange={(value) => this.updateAtrributes('ratings', value, index)}
@@ -782,7 +782,7 @@ class Edit extends Component {
 						<Toggle label={__('Show Ratings')} value={showRatings} onChange={val => setAttributes({ showRatings: val })} />
 						{showRatings &&
 							<Fragment>
-								<Range label={__('Ratings')} value={ratings} onChange={(value) => setAttributes({ ratings: value })} min={0} max={5} step={.5} />
+								<Range label={__('Ratings')} value={ratings} onChange={(value) => setAttributes({ ratings: value })} min={0.1} max={5} step={0.1} />
 								{(ratings != 0) &&
 									<Fragment>
 										<Color
