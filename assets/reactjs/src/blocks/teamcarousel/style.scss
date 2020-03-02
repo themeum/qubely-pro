@@ -88,6 +88,10 @@
     &:after {
       z-index: 0;
     }
+	  &[data-qubelyrating=".5"]:before,
+	  &[data-qubelyrating="0.5"]:before {
+		  width: 10%;
+	  }
     &[data-qubelyrating="1"]:before {
       width: 20%;
     }

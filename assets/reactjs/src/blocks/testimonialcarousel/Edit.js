@@ -149,7 +149,7 @@ class Edit extends Component {
 				<Tooltip text={__('Change ratings')}>
 					<div
 						className="qubely-testimonial-ratings qubely-backend"
-						data-qubelyrating={ratings}
+						style={{'--qubely-testimonial-rating': `${ratings * 20}%`}}
 						onClick={() => this.setState({ showRatingsPicker: showRatingsPicker === index ? -1 : index })}>
 					</div>
 				</Tooltip>
@@ -161,9 +161,9 @@ class Edit extends Component {
 					// onClickOutside={event => event.target.value === undefined && this.setState({ showRatingsPicker: -1 })}
 					>
 						<Range
-							min={0.5}
+							min={0.1}
 							max={5}
-							step={.5}
+							step={.1}
 							value={ratings}
 							label={__('Ratings')}
 							onChange={(value) => this.updateAtrributes('ratings', value, index)}
