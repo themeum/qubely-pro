@@ -149,7 +149,7 @@ class Edit extends Component {
 				<Tooltip text={__('Change ratings')}>
 					<div
 						className="qubely-testimonial-ratings qubely-backend"
-						data-qubelyrating={ratings}
+						style={{'--qubely-testimonial-rating': `${ratings * 20}%`}}
 						onClick={() => this.setState({ showRatingsPicker: showRatingsPicker === index ? -1 : index })}>
 					</div>
 				</Tooltip>
@@ -161,9 +161,9 @@ class Edit extends Component {
 					// onClickOutside={event => event.target.value === undefined && this.setState({ showRatingsPicker: -1 })}
 					>
 						<Range
-							min={0.5}
+							min={0.1}
 							max={5}
-							step={.5}
+							step={0.1}
 							value={ratings}
 							label={__('Ratings')}
 							onChange={(value) => this.updateAtrributes('ratings', value, index)}
@@ -778,11 +778,11 @@ class Edit extends Component {
 							}
 						</PanelBody>
 					}
-					<PanelBody title={__('Ratings')} initialOpen={false}>
+					{/*<PanelBody title={__('Ratings')} initialOpen={false}>
 						<Toggle label={__('Show Ratings')} value={showRatings} onChange={val => setAttributes({ showRatings: val })} />
 						{showRatings &&
 							<Fragment>
-								<Range label={__('Ratings')} value={ratings} onChange={(value) => setAttributes({ ratings: value })} min={0} max={5} step={.5} />
+								<Range label={__('Ratings')} value={ratings} onChange={(value) => setAttributes({ ratings: value })} min={0.1} max={5} step={0.1} />
 								{(ratings != 0) &&
 									<Fragment>
 										<Color
@@ -811,7 +811,7 @@ class Edit extends Component {
 								}
 							</Fragment>
 						}
-					</PanelBody>
+					</PanelBody>*/}
 
 					<PanelBody title={__('Design')} initialOpen={false}>
 						<Color

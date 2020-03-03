@@ -47,10 +47,10 @@ class Save extends Component {
             }
             <div className={`qubely-testimonial-carousel-content-wrapper`}>
               {(showRatings && ratings > 0 && layout !== 1) &&
-                <div className="qubely-testimonial-ratings" data-qubelyrating={ratings}></div>
+                <div className="qubely-testimonial-ratings" style={{'--qubely-testimonial-rating': `${ratings * 20}%`}}></div>
               }
               <div className="qubely-testimonial-content"><RichText.Content value={message} /></div>
-              {(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings" data-qubelyrating={ratings} />}
+              {(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings" style={{'--qubely-testimonial-rating': `${ratings * 20}%`}}/>}
             </div>
             {layout !== 2 && this.renderAuthorInfo(item)}
             {(quoteIcon && layout == 2) &&
