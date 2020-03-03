@@ -243,7 +243,6 @@ class Edit extends Component {
         return (
             <Fragment>
                 <InspectorControls key={'inspector'}>
-
                     <InspectorTabs>
                         <InspectorTab key={"layout"} opened={true   }>
                             <PanelBody title={__('Design Templates')}>
