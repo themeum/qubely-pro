@@ -149,7 +149,7 @@ class Edit extends Component {
 				<Tooltip text={__('Change ratings')}>
 					<div
 						className="qubely-testimonial-ratings qubely-backend"
-						style={{'--qubely-testimonial-rating': `${ratings * 20}%`}}
+						style={{ '--qubely-testimonial-rating': `${ratings * 20}%` }}
 						onClick={() => this.setState({ showRatingsPicker: showRatingsPicker === index ? -1 : index })}>
 					</div>
 				</Tooltip>
@@ -778,17 +778,22 @@ class Edit extends Component {
 							}
 						</PanelBody>
 					}
-					{/*<PanelBody title={__('Ratings')} initialOpen={false}>
-						<Toggle label={__('Show Ratings')} value={showRatings} onChange={val => setAttributes({ showRatings: val })} />
+					<PanelBody title={__('Ratings')} initialOpen={false}>
+						<Toggle
+							label={__('Show Ratings')}
+							value={showRatings}
+							onChange={val => setAttributes({ showRatings: val })}
+						/>
+
 						{showRatings &&
 							<Fragment>
-								<Range label={__('Ratings')} value={ratings} onChange={(value) => setAttributes({ ratings: value })} min={0.1} max={5} step={0.1} />
 								{(ratings != 0) &&
 									<Fragment>
 										<Color
 											label={__('Color')}
 											value={ratingsColor}
-											onChange={(value) => setAttributes({ ratingsColor: value })} />
+											onChange={(value) => setAttributes({ ratingsColor: value })}
+										/>
 										<Range
 											label={__('Stars Size')}
 											value={starsSize} onChange={(value) => setAttributes({ starsSize: value })}
@@ -797,7 +802,8 @@ class Edit extends Component {
 											max={48}
 											responsive
 											device={device}
-											onDeviceChange={value => this.setState({ device: value })} />
+											onDeviceChange={value => this.setState({ device: value })}
+										/>
 										<Range
 											label={__('Spacing')}
 											value={ratingsSpacing} onChange={(value) => setAttributes({ ratingsSpacing: value })}
@@ -806,12 +812,13 @@ class Edit extends Component {
 											max={200}
 											responsive
 											device={device}
-											onDeviceChange={value => this.setState({ device: value })} />
+											onDeviceChange={value => this.setState({ device: value })}
+										/>
 									</Fragment>
 								}
 							</Fragment>
 						}
-					</PanelBody>*/}
+					</PanelBody>
 
 					<PanelBody title={__('Design')} initialOpen={false}>
 						<Color
