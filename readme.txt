@@ -1,7 +1,12 @@
 ===  Qubely Pro ===
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 
 == Changelog ==
+
+= 1.1.5 - 13 March, 2020 =
+New: Support for WordPress 5.4  
+Fix: Testimonial Carousel block – Rating CSS issue  
+
 
 = 1.1.4 - 27 February, 2020 =
 New: Testimonial Carousel block - Border option in Dot Settings
