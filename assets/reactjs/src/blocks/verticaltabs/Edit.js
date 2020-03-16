@@ -6,7 +6,37 @@ const { Component, Fragment } = wp.element;
 const { InnerBlocks, RichText, InspectorControls, BlockControls } = wp.blockEditor
 const { PluginBlockSettingsMenuItem } = wp.editPost
 import templates from './templates';
-const { Color, ColorAdvanced, Media, IconList, Styles, Typography, Templates, Range, RadioAdvanced, gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings }, Inline: { InlineToolbar }, BoxShadow, Alignment, Tabs, Tab, Separator, Border, Padding, BorderRadius, withCSSGenerator, Toggle } = wp.qubelyComponents
+const {
+	Color,
+	ColorAdvanced,
+	Media,
+	IconList,
+	Styles,
+	Typography,
+	Templates,
+	Range,
+	RadioAdvanced,
+	gloalSettings: {
+		globalSettingsPanel,
+		animationSettings,
+		interactionSettings
+	},
+	Inline:
+		{
+			InlineToolbar
+		},
+	BoxShadow,
+	Alignment,
+	Tabs,
+	Tab,
+	Separator,
+	Border,
+	Padding,
+	BorderRadius,
+	withCSSGenerator,
+	Toggle
+} = wp.qubelyComponents
+
 import icons from '../../helpers/icons';
 
 class Edit extends Component {
