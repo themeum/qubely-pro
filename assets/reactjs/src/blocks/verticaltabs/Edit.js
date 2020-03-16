@@ -651,8 +651,8 @@ class Edit extends Component {
 											<Typography label={__('Text Typography')} value={textTypography} onChange={textTypography => setAttributes({ textTypography })} device={device} onDeviceChange={value => this.setState({ device: value })} />
 										</Tab>
 										{/* <Tab tabTitle={__('Active')}>
-									<Color label={__('Color')} value={textColorActive} onChange={(textColorActive) => setAttributes({ textColorActive })} />
-								</Tab> */}
+											<Color label={__('Color')} value={textColorActive} onChange={(textColorActive) => setAttributes({ textColorActive })} />
+										</Tab> */}
 										<Tab tabTitle={__('Hover')}>
 											<Color label={__('Color')} value={textColorHover} onChange={(textColorHover) => setAttributes({ textColorHover })} />
 										</Tab>
