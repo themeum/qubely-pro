@@ -3,7 +3,7 @@ Stable tag: 1.1.5
 
 == Changelog ==
 
-= 1.1.5 - 13 March, 2020 =
+= 1.1.5 - 16 March, 2020 =
 New: Support for WordPress 5.4  
 Fix: Testimonial Carousel block – Rating CSS issue  
 
