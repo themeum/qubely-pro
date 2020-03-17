@@ -1,6 +1,15 @@
-const { Component } = wp.element
-const { RichText } = wp.blockEditor
-const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
+const {
+	Component,
+	Fragment
+} = wp.element;
+const { RichText } = wp.blockEditor;
+import classnames from 'classnames';
+const {
+	HelperFunction: {
+		animationAttr,
+		IsInteraction
+	}
+} = wp.qubelyComponents;
 class Save extends Component {
 
 	renderGallery = () => {
@@ -11,42 +20,71 @@ class Save extends Component {
 				showCaption,
 				enableCaption,
 				linkTo,
-                enableOverlay,
-                enablePopup,
-                enablePopupIcon
+				enableOverlay,
+				enablePopup,
+				enablePopupIcon
 			}
-		} = this.props
+		} = this.props;
 
-		return (galleryContents.map(({ title, image }, index) => {
-			let href;
-			switch (linkTo) {
-				case 'media':
-					href = image.fullUrl || image.url;
-					break;
-				case 'attachment':
-					href = image.link;
-					break;
-			}
-            const renderContent = <div className={`qubely-gallery-image-container${enableOverlay ? ' qubely-gallery-overlay' : ''}`}>
-                    <div className={`qubely-gallery-content-image qubely-gallery-image-${imageAnimation}`}>
-                        {enablePopup && <div className={'qubely-gallery-pupup-icon'}>{enablePopupIcon &&<i class="fas fa-plus"></i>}</div>}
-                        <img src={image.url} alt={image.alt} />
-                    </div>
-                    {enableCaption == 1 &&
-                        <div className={`qubely-gallery-caption-wrapper ${(showCaption === 'onHover') ? 'qubely-gallery-caption-onHover' : ''}`}>
-                            <RichText.Content tagName='div' className="qubely-gallery-caption" value={title} />
-                        </div>
-                    }
-                </div>
+		const contentClassName = classnames(
+			'qubely-gallery-image-container',
+			{ 'qubely-gallery-overlay': enableOverlay }
+		);
+		const captionClassName = classnames(
+			'qubely-gallery-caption-wrapper',
+			{ 'qubely-gallery-caption-onHover': showCaption === 'onHover' }
+		);
 
-			return (
-				<div key={index} className={`qubely-gallery-item`}>
-					<div className={`qubely-gallery-content  ${enablePopup ? 'qubely-gallery-pupup' : ''}`}>
-                        {(!enablePopup && typeof (href) !== 'undefined') ? <a href={href}>{renderContent}</a> : renderContent}
-					</div>
-				</div>
-			)
-		}))
+		return (
+			<Fragment>
+				{
+					galleryContents.map(({ title, image }, index) => {
+						let href;
+						switch (linkTo) {
+							case 'media':
+								href = image.fullUrl || image.url;
+								break;
+							case 'attachment':
+								href = image.link;
+								break;
+						}
+						const renderContent = <div className={contentClassName}>
+							<div className={`qubely-gallery-content-image qubely-gallery-image-${imageAnimation}`}>
+								{
+									enablePopup &&
+									<div className={'qubely-gallery-pupup-icon'}>
+										{enablePopupIcon && <i class="fas fa-plus"></i>}
+									</div>
+								}
+								<img src={image.url} alt={image.alt} />
+							</div>
+							{
+								enableCaption == 1 &&
+								<div className={captionClassName}>
+									<RichText.Content
+										tagName='div'
+										value={title}
+										className="qubely-gallery-caption"
+									/>
+								</div>
+							}
+						</div>
+
+						return (
+							<div key={index} className={`qubely-gallery-item`}>
+								<div className={`qubely-gallery-content  ${enablePopup ? 'qubely-gallery-pupup' : ''}`}>
+									{
+										(!enablePopup && typeof (href) !== 'undefined') ?
+											<a href={href}>{renderContent}</a>
+											:
+											renderContent
+									}
+								</div>
+							</div>
+						)
+					})}
+			</Fragment>
+		)
 	}
 
 	render() {
@@ -58,18 +96,20 @@ class Save extends Component {
 				column,
 				interaction
 			}
-		} = this.props
+		} = this.props;
+
 		const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
+
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
 				<div className={`qubely-block-gallery ${interactionClass} qubely-gallery-item-${style}`}>
 					<div className={`qubely-gallery-items ${'qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs}`}>
 						{this.renderGallery()}
-					</div >
-				</div >
+					</div>
+				</div>
 			</div>
 		)
 	}
 }
 
-export default Save
+export default Save;
