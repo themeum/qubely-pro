@@ -28,12 +28,14 @@ const {
     Select,
     Separator,
     Toggle,
-    withCSSGenerator
+    withCSSGenerator,
+    InspectorTabs,
+    InspectorTab
 } = wp.qubelyComponents
 
 const { select } = wp.data
 
- function Edit(props) {
+function Edit(props) {
 
     const [hour, setHour] = useState(12)
     const [minute, setMinute] = useState(0)
@@ -328,182 +330,188 @@ const { select } = wp.data
         <Fragment>
 
             <InspectorControls>
+                <InspectorTabs tabs={['style', 'advance']}>
+                    <InspectorTab key={'style'}>
+                        {CommonSettings(rootClientId)}
 
-                {CommonSettings(rootClientId)}
-
-                <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} initialOpen={true}>
+                        <PanelBody title={__(type[0].toUpperCase() + type.slice(1))} initialOpen={true}>
 
 
-                    {renderCommonSettings(blockname)}
-                    {/**email */}
-                    {
-                        name === 'qubely/formfield-email' &&
-                        <Fragment>
-                            <Toggle
-                                label={__('Email Input Confirmation')}
-                                value={emailConformation}
-                                onChange={value => setAttributes({ emailConformation: value })}
-                            />
+                            {renderCommonSettings(blockname)}
+                            {/**email */}
                             {
-                                emailConformation &&
-                                <TextControl
-                                    label={__('')}
-                                    value={conformationEmailLabel}
-                                    onChange={value => setAttributes({ conformationEmailLabel: value })}
-                                />
+                                name === 'qubely/formfield-email' &&
+                                <Fragment>
+                                    <Toggle
+                                        label={__('Email Input Confirmation')}
+                                        value={emailConformation}
+                                        onChange={value => setAttributes({ emailConformation: value })}
+                                    />
+                                    {
+                                        emailConformation &&
+                                        <TextControl
+                                            label={__('')}
+                                            value={conformationEmailLabel}
+                                            onChange={value => setAttributes({ conformationEmailLabel: value })}
+                                        />
+                                    }
+                                </Fragment>
                             }
-                        </Fragment>
-                    }
 
-                    {/*radio */}
+                            {/*radio */}
 
-                    {
-                        (name === 'qubely/formfield-radio' || name === 'qubely/formfield-checkbox') &&
-                        <Fragment>
+                            {
+                                (name === 'qubely/formfield-radio' || name === 'qubely/formfield-checkbox') &&
+                                <Fragment>
 
-                            <Select
-                                label={__('Show Data in')}
-                                value={columns}
-                                options={[
-                                    ['auto', __('Auto')],
-                                    ['1-column', __('1 Column')],
-                                    ['2-column', __('2 Column')],
-                                    ['3-column', __('3 Column')],
-                                ]}
-                                onChange={val => setAttributes({ columns: val })} />
-
-                            <Toggle
-                                label={__('Display Other Option')}
-                                value={enableOtherOption}
-                                onChange={value => {
-                                    let newOptions = [...options]
-                                    value ? newOptions.push('Other') : newOptions.pop()
-                                    setAttributes({ enableOtherOption: value, options: newOptions })
-                                }}
-                            />
-
-                        </Fragment>
-                    }
-
-
-                    {/*Date */}
-
-                    {
-                        name === 'qubely/formfield-date' &&
-                        <Fragment>
-                            <div className="qubely-form-date-picker-format">
-                                <ButtonGroup
-                                    label={__('Date Format')}
-                                    options={
-                                        [
-                                            [__('01-JAN-2000'), `dd${dateSeparator}M${dateSeparator}yy`],
-                                            [__('JAN-01-2000'), `M${dateSeparator}dd${dateSeparator}yy`],
-                                            [__('2000-JAN-01'), `yy${dateSeparator}M${dateSeparator}dd`],
+                                    <Select
+                                        label={__('Show Data in')}
+                                        value={columns}
+                                        options={[
+                                            ['auto', __('Auto')],
+                                            ['1-column', __('1 Column')],
+                                            ['2-column', __('2 Column')],
+                                            ['3-column', __('3 Column')],
                                         ]}
-                                    value={dateFormat}
-                                    onChange={value => setAttributes({ dateFormat: value })}
-                                />
-                            </div>
-                            <ButtonGroup
-                                label={__('Separator')}
-                                options={
-                                    [
-                                        [__('-'), '-'],
-                                        [__('/'), '/'],
-                                        [__('.'), '.'],
-                                    ]}
-                                value={dateSeparator}
-                                onChange={value => setAttributes({ dateSeparator: value })}
-                            />
-                        </Fragment>
-                    }
-                    {/*Dropdown */}
+                                        onChange={val => setAttributes({ columns: val })} />
 
-                    {
-                        name === 'qubely/formfield-dropdown' &&
-                        <Fragment>
-                            <label className={`qubely-form-field`}>Dropdown Options</label>
-                            {options.map((option, index) => {
-                                return (
-                                    <div
-                                        draggable
-                                        onDragEnd={() => handleDragEnd()}
-                                        onDragOver={() => setDraggedOverItem(index)}
-                                        onDragqubely-form-date={() => setDraggedItem(index)}
-                                        className={`qubely-dropdown-field-option qubely-option-${index}`}
-                                    >
+                                    <Toggle
+                                        label={__('Display Other Option')}
+                                        value={enableOtherOption}
+                                        onChange={value => {
+                                            let newOptions = [...options]
+                                            value ? newOptions.push('Other') : newOptions.pop()
+                                            setAttributes({ enableOtherOption: value, options: newOptions })
+                                        }}
+                                    />
+
+                                </Fragment>
+                            }
+
+
+                            {/*Date */}
+
+                            {
+                                name === 'qubely/formfield-date' &&
+                                <Fragment>
+                                    <div className="qubely-form-date-picker-format">
+                                        <ButtonGroup
+                                            label={__('Date Format')}
+                                            options={
+                                                [
+                                                    [__('01-JAN-2000'), `dd${dateSeparator}M${dateSeparator}yy`],
+                                                    [__('JAN-01-2000'), `M${dateSeparator}dd${dateSeparator}yy`],
+                                                    [__('2000-JAN-01'), `yy${dateSeparator}M${dateSeparator}dd`],
+                                                ]}
+                                            value={dateFormat}
+                                            onChange={value => setAttributes({ dateFormat: value })}
+                                        />
+                                    </div>
+                                    <ButtonGroup
+                                        label={__('Separator')}
+                                        options={
+                                            [
+                                                [__('-'), '-'],
+                                                [__('/'), '/'],
+                                                [__('.'), '.'],
+                                            ]}
+                                        value={dateSeparator}
+                                        onChange={value => setAttributes({ dateSeparator: value })}
+                                    />
+                                </Fragment>
+                            }
+                            {/*Dropdown */}
+
+                            {
+                                name === 'qubely/formfield-dropdown' &&
+                                <Fragment>
+                                    <label className={`qubely-form-field`}>Dropdown Options</label>
+                                    {options.map((option, index) => {
+                                        return (
+                                            <div
+                                                draggable
+                                                onDragEnd={() => handleDragEnd()}
+                                                onDragOver={() => setDraggedOverItem(index)}
+                                                onDragqubely-form-date={() => setDraggedItem(index)}
+                                                className={`qubely-dropdown-field-option qubely-option-${index}`}
+                                            >
+                                                <span className={`qubely-option-move-icon`}>
+                                                    <i className={`fa fa-bars`} />
+                                                </span>
+
+                                                <input
+                                                    type="text"
+                                                    className={`qubely-option`}
+                                                    placeholder={__('option')}
+                                                    value={option}
+                                                    onChange={event => updateOptions('update', index, event.target.value)}
+                                                />
+
+                                            </div>
+                                        )
+                                    })}
+                                    <div className={`qubely-dropdown-add-field-option`}  >
                                         <span className={`qubely-option-move-icon`}>
-                                            <i className={`fa fa-bars`} />
+                                            <i className="fas fa-plus-circle" />
                                         </span>
 
-                                        <input
-                                            type="text"
-                                            className={`qubely-option`}
-                                            placeholder={__('option')}
-                                            value={option}
-                                            onChange={event => updateOptions('update', index, event.target.value)}
-                                        />
-
+                                        <span className={`qubely-action-add-option`} onClick={() => updateOptions('add')}>  Add new item </span>
                                     </div>
-                                )
-                            })}
-                            <div className={`qubely-dropdown-add-field-option`}  >
-                                <span className={`qubely-option-move-icon`}>
-                                    <i className="fas fa-plus-circle" />
-                                </span>
 
-                                <span className={`qubely-action-add-option`} onClick={() => updateOptions('add')}>  Add new item </span>
-                            </div>
+                                </Fragment>
+                            }
 
-                        </Fragment>
-                    }
+                            {/* time */}
+                            {
+                                name === 'qubely/formfield-time' &&
+                                <Fragment>
+                                    <div className="qubely-form-time-picker-format">
+                                        <ButtonGroup
+                                            label={__('Time Format')}
+                                            options={
+                                                [
+                                                    [__('24 Hours'), 23],
+                                                    [__('AM/PM'), 12],
+                                                ]}
+                                            value={timeFormatType}
+                                            onChange={value => {
+                                                setHour(timeFormatType === 12 ? (seletedTimeFormat === 'PM' ? 12 + hour : hour) : hour < 13 ? hour : hour % 12)
+                                                timeFormatType === 23 && changeseletedTimeFormat(hour >= 12 ? 'PM' : 'AM')
+                                                setAttributes({ timeFormatType: value })
+                                            }}
+                                        />
+                                    </div>
 
-                    {/* time */}
-                    {
-                        name === 'qubely/formfield-time' &&
-                        <Fragment>
-                            <div className="qubely-form-time-picker-format">
-                                <ButtonGroup
-                                    label={__('Time Format')}
-                                    options={
-                                        [
-                                            [__('24 Hours'), 23],
-                                            [__('AM/PM'), 12],
-                                        ]}
-                                    value={timeFormatType}
-                                    onChange={value => {
-                                        setHour(timeFormatType === 12 ? (seletedTimeFormat === 'PM' ? 12 + hour : hour) : hour < 13 ? hour : hour % 12)
-                                        timeFormatType === 23 && changeseletedTimeFormat(hour >= 12 ? 'PM' : 'AM')
-                                        setAttributes({ timeFormatType: value })
-                                    }}
-                                />
-                            </div>
+                                    <div className="qubely-form-time-picker-minute-interval">
+                                        <ButtonGroup
+                                            label={__('Minute Interval')}
+                                            options={
+                                                [
+                                                    [__('1'), 1],
+                                                    [__('5'), 5],
+                                                    [__('10'), 10],
+                                                    [__('15'), 15],
+                                                    [__('20'), 20],
+                                                    [__('30'), 30],
+                                                ]}
+                                            value={minuteInterval}
+                                            onChange={value => setAttributes({ minuteInterval: value })}
+                                        />
+                                    </div>
+                                </Fragment>
+                            }
 
-                            <div className="qubely-form-time-picker-minute-interval">
-                                <ButtonGroup
-                                    label={__('Minute Interval')}
-                                    options={
-                                        [
-                                            [__('1'), 1],
-                                            [__('5'), 5],
-                                            [__('10'), 10],
-                                            [__('15'), 15],
-                                            [__('20'), 20],
-                                            [__('30'), 30],
-                                        ]}
-                                    value={minuteInterval}
-                                    onChange={value => setAttributes({ minuteInterval: value })}
-                                />
-                            </div>
-                        </Fragment>
-                    }
+                            <Toggle
+                                label={__('Required')}
+                                value={required}
+                                onChange={value => setAttributes({ required: value })}
+                            />
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={'advance'}>
+                    </InspectorTab>
+                </InspectorTabs>
 
-                    <Toggle
-                        label={__('Required')}
-                        value={required}
-                        onChange={value => setAttributes({ required: value })}
-                    />
-                </PanelBody>
 
             </InspectorControls>
 

@@ -15,7 +15,9 @@ const { withSelect, withDispatch } = wp.data
 const {
     Range,
     RadioAdvanced,
-    withCSSGenerator
+    withCSSGenerator,
+    InspectorTabs,
+    InspectorTab
 } = wp.qubelyComponents
 
 
@@ -101,34 +103,38 @@ function Edit(props) {
     return (
         <Fragment>
             <InspectorControls key="inspector">
+                <InspectorTabs tabs={['style', 'advance']}>
+                    <InspectorTab key={'style'}>
+                        <PanelBody title={__('')} opened={true}>
+                            <RadioAdvanced
+                                label={__('Field Size')}
+                                options={[
+                                    { label: 'S', value: 'small', title: 'Small' },
+                                    { label: 'M', value: 'medium', title: 'Medium' },
+                                    { label: 'L', value: 'large', title: 'Large' },
+                                    { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                                ]}
+                                value={fieldSize}
+                                onChange={value => setAttributes({ fieldSize: value })} />
+                            {
+                                fieldSize === 'custom' &&
+                                <Range
+                                    min={20}
+                                    max={100}
+                                    responsive
+                                    value={width}
+                                    device={device}
+                                    label={__('Width')}
+                                    onChange={value => setAttributes({ width: value })}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                            }
 
-                <PanelBody title={__('')} opened={true}>
-
-                    <RadioAdvanced
-                        label={__('Field Size')}
-                        options={[
-                            { label: 'S', value: 'small', title: 'Small' },
-                            { label: 'M', value: 'medium', title: 'Medium' },
-                            { label: 'L', value: 'large', title: 'Large' },
-                            { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                        ]}
-                        value={fieldSize}
-                        onChange={value => setAttributes({ fieldSize: value })} />
-                    {
-                        fieldSize === 'custom' &&
-                        <Range
-                            min={20}
-                            max={100}
-                            responsive
-                            value={width}
-                            device={device}
-                            label={__('Width')}
-                            onChange={value => setAttributes({ width: value })}
-                            onDeviceChange={value => setDevice(value)}
-                        />
-                    }
-
-                </PanelBody>
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={'advance'}>
+                    </InspectorTab>
+                </InspectorTabs>
             </InspectorControls>
 
             <div className={`qubely-block-${uniqueId}  qubely-${fieldSize}${className ? ` ${className}` : ''}`}>

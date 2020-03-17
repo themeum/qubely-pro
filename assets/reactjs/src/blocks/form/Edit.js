@@ -24,7 +24,12 @@ const {
     withCSSGenerator,
     QubelyButton: { buttonSettings },
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
-    ContextMenu: { ContextMenu, handleContextMenu }
+    ContextMenu: {
+        ContextMenu,
+        handleContextMenu
+    },
+    InspectorTabs,
+    InspectorTab
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons';
@@ -313,240 +318,242 @@ class Edit extends Component {
         return (
             <Fragment>
                 <InspectorControls key="inspector">
-
-                    <PanelBody title={__('')} opened={true}>
-                        <Styles
-                            value={layout}
-                            onChange={val => setAttributes({ layout: val })}
-                            options={[
-                                { value: 'classic', img: icons.form_classic },
-                                { value: 'material', img: icons.form_material },
-                                { value: 'materialdark', img: icons.form_material_dark },
-                            ]}
-                        />
-                    </PanelBody>
-
-                    <PanelBody title={__('Label')} initialOpen={false}>
-                        <Typography
-                            value={labelTypography}
-                            onChange={val => setAttributes({ labelTypography: val })}
-                        />
-                        <Range
-                            min={0}
-                            max={100}
-                            responsive
-                            value={labelSpacing}
-                            label={__('Spacing')}
-                            unit={['px', 'em', '%']}
-                            onChange={(value) => setAttributes({ labelSpacing: value })}
-                        />
-                        <Color
-                            label={__('Color')}
-                            value={labelColor}
-                            onChange={val => setAttributes({ labelColor: val })}
-                        />
-                    </PanelBody>
-
-
-                    <PanelBody title={__('Input')} initialOpen={false}>
-                        {(layout != 'material') &&
-                            <Fragment>
-                                <RadioAdvanced
-                                    label={__('Input Size')}
+                    <InspectorTabs tabs={['style', 'advance']}>
+                        <InspectorTab key={'style'}>
+                            <PanelBody title={__('')} opened={true}>
+                                <Styles
+                                    value={layout}
+                                    onChange={val => setAttributes({ layout: val })}
                                     options={[
-                                        { label: 'S', value: 'small', title: 'Small' },
-                                        { label: 'M', value: 'medium', title: 'Medium' },
-                                        { label: 'L', value: 'large', title: 'Large' },
-                                        { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                                        { value: 'classic', img: icons.form_classic },
+                                        { value: 'material', img: icons.form_material },
+                                        { value: 'materialdark', img: icons.form_material_dark },
                                     ]}
-                                    value={inputSize}
-                                    onChange={(value) => setAttributes({ inputSize: value })} />
+                                />
+                            </PanelBody>
 
-                                {inputSize == 'custom' &&
-                                    <Padding
-                                        max={50}
+                            <PanelBody title={__('Label')} initialOpen={false}>
+                                <Typography
+                                    value={labelTypography}
+                                    onChange={val => setAttributes({ labelTypography: val })}
+                                />
+                                <Range
+                                    min={0}
+                                    max={100}
+                                    responsive
+                                    value={labelSpacing}
+                                    label={__('Spacing')}
+                                    unit={['px', 'em', '%']}
+                                    onChange={(value) => setAttributes({ labelSpacing: value })}
+                                />
+                                <Color
+                                    label={__('Color')}
+                                    value={labelColor}
+                                    onChange={val => setAttributes({ labelColor: val })}
+                                />
+                            </PanelBody>
+
+
+                            <PanelBody title={__('Input')} initialOpen={false}>
+                                {(layout != 'material') &&
+                                    <Fragment>
+                                        <RadioAdvanced
+                                            label={__('Input Size')}
+                                            options={[
+                                                { label: 'S', value: 'small', title: 'Small' },
+                                                { label: 'M', value: 'medium', title: 'Medium' },
+                                                { label: 'L', value: 'large', title: 'Large' },
+                                                { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                                            ]}
+                                            value={inputSize}
+                                            onChange={(value) => setAttributes({ inputSize: value })} />
+
+                                        {inputSize == 'custom' &&
+                                            <Padding
+                                                max={50}
+                                                min={0}
+                                                responsive
+                                                value={inputCustomSize}
+                                                label={__('Custom Size')}
+                                                unit={['px', 'em', '%']}
+                                                onChange={value => setAttributes({ inputCustomSize: value })}
+                                            />
+                                        }
+                                    </Fragment>
+                                }
+                                <Range
+                                    min={100}
+                                    max={500}
+                                    responsive
+                                    value={textareaHeight}
+                                    unit={['px', 'em', '%']}
+                                    label={__('Textarea Height')}
+                                    onChange={(value) => setAttributes({ textareaHeight: value })}
+                                />
+
+                                <Range
+                                    min={10}
+                                    max={300}
+                                    responsive
+                                    value={spacing}
+                                    label={__('Spacing')}
+                                    unit={['px', 'em', '%']}
+                                    onChange={(value) => setAttributes({ spacing: value })}
+                                />
+
+                                <Border
+                                    min={0}
+                                    max={10}
+                                    responsive
+                                    value={layout === 'classic' ? inputBorder : inputBorderMaterial}
+                                    label={__('Border')}
+                                    unit={['px', 'em', '%']}
+                                    onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })}
+                                />
+
+                                {(layout != 'material') &&
+                                    <BorderRadius
                                         min={0}
+                                        max={100}
                                         responsive
-                                        value={inputCustomSize}
-                                        label={__('Custom Size')}
+                                        label={__('Radius')}
+                                        value={inputBorderRadius}
                                         unit={['px', 'em', '%']}
-                                        onChange={value => setAttributes({ inputCustomSize: value })}
+                                        onChange={(value) => setAttributes({ inputBorderRadius: value })}
                                     />
                                 }
-                            </Fragment>
-                        }
-                        <Range
-                            min={100}
-                            max={500}
-                            responsive
-                            value={textareaHeight}
-                            unit={['px', 'em', '%']}
-                            label={__('Textarea Height')}
-                            onChange={(value) => setAttributes({ textareaHeight: value })}
-                        />
 
-                        <Range
-                            min={10}
-                            max={300}
-                            responsive
-                            value={spacing}
-                            label={__('Spacing')}
-                            unit={['px', 'em', '%']}
-                            onChange={(value) => setAttributes({ spacing: value })}
-                        />
+                                <Tabs>
+                                    <Tab tabTitle={__('Normal')}>
+                                        <Color label={__('Input Text Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
+                                        <Color
+                                            label={__('Background Color')}
+                                            value={layout !== 'materialdark' ? inputBg : materialDarkInputBg}
+                                            onChange={val => setAttributes(layout !== 'materialdark' ? { inputBg: val } : { materialDarkInputBg: val })}
+                                        />
+                                        <Color label={__('Placeholder Color')} value={placeholderColor} onChange={val => setAttributes({ placeholderColor: val })} />
+                                    </Tab>
 
-                        <Border
-                            min={0}
-                            max={10}
-                            responsive
-                            value={layout === 'classic' ? inputBorder : inputBorderMaterial}
-                            label={__('Border')}
-                            unit={['px', 'em', '%']}
-                            onChange={val => setAttributes(layout === 'classic' ? { inputBorder: val } : { inputBorderMaterial: val })}
-                        />
+                                    <Tab tabTitle={__('Focus')}>
+                                        <Color label={__('Text Color')} value={inputColorFocus} onChange={val => setAttributes({ inputColorFocus: val })} />
+                                        <Color label={__('Background Color')} value={inputBgFocus} onChange={val => setAttributes({ inputBgFocus: val })} />
+                                        <Color label={__('Border Color')} value={inputBorderColorFocus} onChange={(value) => setAttributes({ inputBorderColorFocus: value })} />
+                                        <Color label={__('Placeholder Color')} value={placeholderColorFocus} onChange={val => setAttributes({ placeholderColorFocus: val })} />
+                                    </Tab>
 
-                        {(layout != 'material') &&
-                            <BorderRadius
-                                min={0}
-                                max={100}
-                                responsive
-                                label={__('Radius')}
-                                value={inputBorderRadius}
-                                unit={['px', 'em', '%']}
-                                onChange={(value) => setAttributes({ inputBorderRadius: value })}
-                            />
-                        }
-
-                        <Tabs>
-                            <Tab tabTitle={__('Normal')}>
-                                <Color label={__('Input Text Color')} value={inputColor} onChange={val => setAttributes({ inputColor: val })} />
-                                <Color
-                                    label={__('Background Color')}
-                                    value={layout !== 'materialdark' ? inputBg : materialDarkInputBg}
-                                    onChange={val => setAttributes(layout !== 'materialdark' ? { inputBg: val } : { materialDarkInputBg: val })}
-                                />
-                                <Color label={__('Placeholder Color')} value={placeholderColor} onChange={val => setAttributes({ placeholderColor: val })} />
-                            </Tab>
-
-                            <Tab tabTitle={__('Focus')}>
-                                <Color label={__('Text Color')} value={inputColorFocus} onChange={val => setAttributes({ inputColorFocus: val })} />
-                                <Color label={__('Background Color')} value={inputBgFocus} onChange={val => setAttributes({ inputBgFocus: val })} />
-                                <Color label={__('Border Color')} value={inputBorderColorFocus} onChange={(value) => setAttributes({ inputBorderColorFocus: value })} />
-                                <Color label={__('Placeholder Color')} value={placeholderColorFocus} onChange={val => setAttributes({ placeholderColorFocus: val })} />
-                            </Tab>
-
-                            <Tab tabTitle={__('Hover')}>
-                                <Color label={__('Text Color')} value={inputColorHover} onChange={val => setAttributes({ inputColorHover: val })} />
-                                <Color label={__('Background Color')} value={inputBgHover} onChange={val => setAttributes({ inputBgHover: val })} />
-                                <Color label={__('Border Color')} value={inputBorderColorHover} onChange={(value) => setAttributes({ inputBorderColorHover: value })} />
-                                <Color label={__('Placeholder Color')} value={placeholderColorHover} onChange={val => setAttributes({ placeholderColorHover: val })} />
-                            </Tab>
-                        </Tabs>
+                                    <Tab tabTitle={__('Hover')}>
+                                        <Color label={__('Text Color')} value={inputColorHover} onChange={val => setAttributes({ inputColorHover: val })} />
+                                        <Color label={__('Background Color')} value={inputBgHover} onChange={val => setAttributes({ inputBgHover: val })} />
+                                        <Color label={__('Border Color')} value={inputBorderColorHover} onChange={(value) => setAttributes({ inputBorderColorHover: value })} />
+                                        <Color label={__('Placeholder Color')} value={placeholderColorHover} onChange={val => setAttributes({ placeholderColorHover: val })} />
+                                    </Tab>
+                                </Tabs>
 
 
-                        <Typography value={inputTypography} onChange={val => setAttributes({ inputTypography: val })} />
+                                <Typography value={inputTypography} onChange={val => setAttributes({ inputTypography: val })} />
 
-                        <Separator />
+                                <Separator />
 
-                        <BoxShadow
-                            disableInset
-                            label={__('Box-Shadow')}
-                            value={inputBoxShadow}
-                            onChange={value => setAttributes({ inputBoxShadow: value })}
-                        />
-
-                        <Separator />
-                    </PanelBody>
-
-
-
-                    <PanelBody title={__('Settings')} initialOpen={false}>
-
-                        <Tabs>
-                            <Tab tabTitle={__('Form')}>
-                                <TextControl
-                                    label={__('Required Field Error Message')}
-                                    value={fieldErrorMessage}
-                                    onChange={val => setAttributes({ fieldErrorMessage: val })}
-                                />
-                                <TextareaControl
-                                    label={__('Form Submit Success Message')}
-                                    value={formSuccessMessage}
-                                    onChange={val => setAttributes({ formSuccessMessage: val })}
-                                    help={__('Set your desired message after successful form submission. Leave blank for default.')}
-                                />
-                                <TextareaControl
-                                    label={__('Form Submit Failed Message')}
-                                    value={formErrorMessage}
-                                    onChange={val => setAttributes({ formErrorMessage: val })}
-                                    help={__('Set your desired message for form submission error. Leave blank for default.')}
+                                <BoxShadow
+                                    disableInset
+                                    label={__('Box-Shadow')}
+                                    value={inputBoxShadow}
+                                    onChange={value => setAttributes({ inputBoxShadow: value })}
                                 />
 
-                                <Toggle label={__('Enable Policy Checkbox')} value={policyCheckbox} onChange={val => setAttributes({ policyCheckbox: val })} />
-                                <Toggle label={__('Enable reCAPTCHA')} value={reCaptcha} onChange={val => setAttributes({ reCaptcha: val })} />
+                                <Separator />
+                            </PanelBody>
 
-                                {reCaptcha &&
-                                    <div>
+
+
+                            <PanelBody title={__('Settings')} initialOpen={false}>
+
+                                <Tabs>
+                                    <Tab tabTitle={__('Form')}>
                                         <TextControl
-                                            label={__('Site Key ')}
-                                            value={reCaptchaSiteKey}
-                                            onChange={val => setAttributes({ reCaptchaSiteKey: val })}
-                                            placeholder={__('Enter Google Site Key')}
+                                            label={__('Required Field Error Message')}
+                                            value={fieldErrorMessage}
+                                            onChange={val => setAttributes({ fieldErrorMessage: val })}
+                                        />
+                                        <TextareaControl
+                                            label={__('Form Submit Success Message')}
+                                            value={formSuccessMessage}
+                                            onChange={val => setAttributes({ formSuccessMessage: val })}
+                                            help={__('Set your desired message after successful form submission. Leave blank for default.')}
+                                        />
+                                        <TextareaControl
+                                            label={__('Form Submit Failed Message')}
+                                            value={formErrorMessage}
+                                            onChange={val => setAttributes({ formErrorMessage: val })}
+                                            help={__('Set your desired message for form submission error. Leave blank for default.')}
+                                        />
+
+                                        <Toggle label={__('Enable Policy Checkbox')} value={policyCheckbox} onChange={val => setAttributes({ policyCheckbox: val })} />
+                                        <Toggle label={__('Enable reCAPTCHA')} value={reCaptcha} onChange={val => setAttributes({ reCaptcha: val })} />
+
+                                        {reCaptcha &&
+                                            <div>
+                                                <TextControl
+                                                    label={__('Site Key ')}
+                                                    value={reCaptchaSiteKey}
+                                                    onChange={val => setAttributes({ reCaptchaSiteKey: val })}
+                                                    placeholder={__('Enter Google Site Key')}
+                                                />
+                                                <TextControl
+                                                    label={__('Secret Key ')}
+                                                    value={reCaptchaSecretKey}
+                                                    onChange={val => setAttributes({ reCaptchaSecretKey: val })}
+                                                    placeholder={__('Enter Google Secret Key')}
+                                                />
+                                                <span className="qubely-recaptcha-help">
+                                                    Get reCAPTCHA(v2) keys from <a href='//www.google.com/recaptcha/admin/' >{__('www.google.com/recaptcha/admin/')} </a>
+                                                </span>
+                                            </div>
+                                        }
+
+                                    </Tab>
+                                    <Tab tabTitle={__('Email')}>
+                                        <TextControl
+                                            label={__('Recipient Email')}
+                                            value={emailReceiver}
+                                            onChange={val => setAttributes({ emailReceiver: val })}
+                                            placeholder={__('Enter Recipient Email')}
+                                            help={__('Enter the recipient email address. This field is mandatory. Without a recipient email, contact form will not work.')}
+                                        />
+                                        <TextareaControl
+                                            label={__('Email Headers')}
+                                            value={emailHeaders}
+                                            onChange={val => setAttributes({ emailHeaders: val })}
                                         />
                                         <TextControl
-                                            label={__('Secret Key ')}
-                                            value={reCaptchaSecretKey}
-                                            onChange={val => setAttributes({ reCaptchaSecretKey: val })}
-                                            placeholder={__('Enter Google Secret Key')}
+                                            label={__('From Email')}
+                                            value={emailFrom}
+                                            onChange={val => setAttributes({ emailFrom: val })}
+                                            placeholder={__('Your Name: admin@example.com')}
                                         />
-                                        <span className="qubely-recaptcha-help">
-                                            Get reCAPTCHA(v2) keys from <a href='//www.google.com/recaptcha/admin/' >{__('www.google.com/recaptcha/admin/')} </a>
-                                        </span>
-                                    </div>
-                                }
+                                        <TextControl
+                                            label={__('Subject')}
+                                            value={emailSubject}
+                                            onChange={val => setAttributes({ emailSubject: val })}
+                                            placeholder={__('Enter Subject')}
+                                        />
+                                        <TextareaControl
+                                            label={__('Email Body')}
+                                            value={emailBody}
+                                            onChange={val => setAttributes({ emailBody: val })}
+                                            help={__("Set your form email body here. In editor don't add any CSS style or others option just add your form field name between double curly braces {{field-name}} as you set in 'Field Name'.")}
+                                        />
+                                    </Tab>
+                                </Tabs>
+                            </PanelBody>
+                            {buttonSettings(this.props.attributes, device, (key, value) => setAttributes({ [key]: value }), (key, value) => { this.setState({ [key]: value }) })}
+                        </InspectorTab>
 
-                            </Tab>
-                            <Tab tabTitle={__('Email')}>
-                                <TextControl
-                                    label={__('Recipient Email')}
-                                    value={emailReceiver}
-                                    onChange={val => setAttributes({ emailReceiver: val })}
-                                    placeholder={__('Enter Recipient Email')}
-                                    help={__('Enter the recipient email address. This field is mandatory. Without a recipient email, contact form will not work.')}
-                                />
-                                <TextareaControl
-                                    label={__('Email Headers')}
-                                    value={emailHeaders}
-                                    onChange={val => setAttributes({ emailHeaders: val })}
-                                />
-                                <TextControl
-                                    label={__('From Email')}
-                                    value={emailFrom}
-                                    onChange={val => setAttributes({ emailFrom: val })}
-                                    placeholder={__('Your Name: admin@example.com')}
-                                />
-                                <TextControl
-                                    label={__('Subject')}
-                                    value={emailSubject}
-                                    onChange={val => setAttributes({ emailSubject: val })}
-                                    placeholder={__('Enter Subject')}
-                                />
-                                <TextareaControl
-                                    label={__('Email Body')}
-                                    value={emailBody}
-                                    onChange={val => setAttributes({ emailBody: val })}
-                                    help={__("Set your form email body here. In editor don't add any CSS style or others option just add your form field name between double curly braces {{field-name}} as you set in 'Field Name'.")}
-                                />
-                            </Tab>
-                        </Tabs>
-                    </PanelBody>
-
-                    {buttonSettings(this.props.attributes, device, (key, value) => setAttributes({ [key]: value }), (key, value) => { this.setState({ [key]: value }) })}
-
-                    {animationSettings(uniqueId, animation, setAttributes)}
-
-                    {interactionSettings(uniqueId, interaction, setAttributes)}
-
+                        <InspectorTab key={'advance'}>
+                            {animationSettings(uniqueId, animation, setAttributes)}
+                            {interactionSettings(uniqueId, interaction, setAttributes)}
+                        </InspectorTab>
+                    </InspectorTabs>
                 </InspectorControls>
 
                 <BlockControls>
