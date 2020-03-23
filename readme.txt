@@ -6,7 +6,7 @@ Stable tag: 1.1.6
 
 = 1.1.6 - 24 March, 2020 =
 Update: All blocks - Major improvement in Panel UI & UX 
-Fix: Global Settings - Hide Tablet/ Hide Mobile issue  
+Fix: Advanced Settings - Hide Tablet/ Hide Mobile issue  
 
 = 1.1.5 - 16 March, 2020 =
 New: Support for WordPress 5.4  
