@@ -235,8 +235,9 @@ export default function (clientId) {
                             onChange={val => updateAttributes('formErrorMessage', val)}
                             help={__('Set your desired message for form submission error. Leave blank for default.')}
                         />
-
-                        <Toggle label={__('Enable Captcha')} value={reCaptcha} onChange={val => updateAttributes('reCaptcha', val)} />
+                        
+                        <Toggle label={__('Enable Policy Checkbox')} value={policyCheckbox} onChange={val => updateAttributes('policyCheckbox', val)} />
+                        <Toggle label={__('Enable reCAPTCHA')} value={reCaptcha} onChange={val => updateAttributes('reCaptcha', val)} />
 
                         {reCaptcha &&
                             <div>
@@ -252,9 +253,11 @@ export default function (clientId) {
                                     onChange={val => updateAttributes('reCaptchaSecretKey', val)}
                                     placeholder={__('Enter Google Secret Key')}
                                 />
+                                <span className="qubely-recaptcha-help">
+                                    Get reCAPTCHA(v2) keys from <a href='//www.google.com/recaptcha/admin/' >{__('www.google.com/recaptcha/admin/')} </a>
+                                </span>
                             </div>
                         }
-                        <Toggle label={__('Enable Policy Checkbox')} value={policyCheckbox} onChange={val => updateAttributes('policyCheckbox', val)} />
 
                     </Tab>
                     <Tab tabTitle={__('Email')}>

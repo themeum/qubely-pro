@@ -1,6 +1,6 @@
 {
   "name": "qubely",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "Gutenberg Blocks with Layout Packs & Readymade Blocks Collection - Qubely",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,10 @@
   },
   "author": "themeum",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "deep-object-diff": "^1.1.0"
+  },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "babel-core": "^6.26.0",

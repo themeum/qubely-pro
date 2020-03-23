@@ -10,6 +10,9 @@ registerBlockType('qubely/postgrid', {
 	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-post-grid.svg'} alt={__('Post Grid Block')} />,
     category: 'qubely',
     keywords: [__('Post'), __('Post Grid')],
+    supports: {
+        align: ['center', 'wide', 'full'],
+    },
     example: {
         attributes: {
             layout: 2,

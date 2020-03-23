@@ -1211,6 +1211,7 @@ function render_block_qubely_postgrid_pro($att)
 				$text = substr($excerpt, 0, $pos[$limit]);
 				return $text;
 			}
+			return $excerpt;
 		}
 	endif;
 
@@ -1220,9 +1221,16 @@ function render_block_qubely_postgrid_pro($att)
 	} else {
 		$col = "";
 	}
-    $count = 0;
+	$count = 0;
+	$class = 'wp-block-qubely-postgrid qubely-block-'.$uniqueId;
+	if ( isset( $att['align'] ) ) {
+		$class .= ' align' . $att['align'];
+	}
+	if ( isset( $att['className'] ) ) {
+		$class .=' '. $att['className'];
+	}
 	if ($query->have_posts()) {
-		$html .= '<div class="qubely-block-' . $uniqueId . '">';
+		$html .= '<div class="' . $class . '">';
 		$html .= '<div class="qubely-postgrid-wrapper '.$interaction.' qubely-postgrid-layout-' . esc_attr($layout) . esc_attr($col) . '" '.$animation.'>';
 		while ($query->have_posts()) {
 			$query->the_post();
@@ -1232,7 +1240,7 @@ function render_block_qubely_postgrid_pro($att)
 			$title = '<h3 class="qubely-postgrid-title"><a href="' . esc_url(get_the_permalink()) . '">' . get_the_title() . '</a></h3>';
 			$category = '<span class="qubely-postgrid-category">' . get_the_category_list(' ') . '</span>';
 			$meta = ($showAuthor == 1) ? '<span><i class="fas fa-user"></i> ' . __('By ', 'qubely') . get_the_author_posts_link() . '</span>' : '';
-			$meta .= ($showDates == 1) ? '<span><i class="far fa-calendar-alt"></i> ' . date_i18n(get_option('date_format'), strtotime(get_the_date())) . '</span>' : '';
+			$meta .= ($showDates == 1) ? '<span><i class="far fa-calendar-alt"></i> ' . get_the_date() . '</span>' : '';
 			$meta .= ($showComment == 1) ? '<span><i class="fas fa-comment"></i> ' . get_comments_number('0', '1', '%') . '</span>' : '';
 			$btn = '<div class="qubely-postgrid-btn-wrapper"><a class="qubely-postgrid-btn qubely-button-' . esc_attr($readmoreStyle) . ' is-' . esc_attr($readmoreSize) . '" href="' . esc_url(get_the_permalink()) . '">' . esc_attr($buttonText) . '</a></div>';
 			$excerpt = '<div class="qubely-postgrid-intro">' . qubely_excerpt_max_charlength(esc_attr($limit)) . '</div>';
@@ -1384,6 +1392,7 @@ function render_block_qubely_postgrid_pro($att)
 			}
 
 		}
+		$html .= '</div>';
 		$html .= '</div>';
 		wp_reset_postdata();
 	}

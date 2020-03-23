@@ -13,7 +13,10 @@ registerBlockType('qubely/teamcarousel', {
 	keywords: [
 		__('Team'),
 		__('Carousel')
-    ],
+	],
+	supports: {
+        align: ['center', 'wide', 'full'],
+    },
     example: {
         attributes: {},
     },
@@ -145,23 +148,23 @@ registerBlockType('qubely/teamcarousel', {
 		},
 		sizeWidth: {
 			type: 'string',
-			default: { md: 14, unit: 'px' },
+			default: { md: 20, unit: 'px' },
 			style: [
-				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control { padding: {{sizeWidth}}; } ' }
+				{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control .fas { width: {{sizeWidth}}; height: {{sizeWidth}}; line-height: {{sizeWidth}}; } ' }
 			]
 		},
 		arrowSize: {
 			type: 'object',
 			default: { md: 20, unit: 'px' },
 			style: [
-				{ selector: '{{QUBELY}} .qubely-carousel-nav-control .nav-control .dashicons { font-size: {{arrowSize}}; } ' }
+				{ selector: '{{QUBELY}} .qubely-carousel-nav-control .nav-control .fas { font-size: {{arrowSize}}; } ' }
 			]
 		},
 		// Section Arrow 
 		arrowColor: {
 			type: 'string',
 			default: '#1066CC',
-			style: [{ selector: '{{QUBELY}} .qubely-block-team-carousel .nav-control .dashicons { color:{{arrowColor}}; }' }]
+			style: [{ selector: '{{QUBELY}} .qubely-block-team-carousel .nav-control .fas { color:{{arrowColor}}; }' }]
 		},
 		// Arrow background color
 		arrowShapeColor: {
@@ -179,7 +182,7 @@ registerBlockType('qubely/teamcarousel', {
 		// Arrow Hover Color.
 		arrowHoverColor: {
 			type: 'string', default: '#ffffff',
-			style: [{ selector: '{{QUBELY}} .qubely-carousel-nav-control .nav-control:hover .dashicons { color:{{arrowHoverColor}}; }' }]
+			style: [{ selector: '{{QUBELY}} .qubely-carousel-nav-control .nav-control:hover .fas { color:{{arrowHoverColor}}; }' }]
 		},
 		// Arrow background Hover Color.
 		arrowShapeHoverColor: {
@@ -196,17 +199,17 @@ registerBlockType('qubely/teamcarousel', {
 		},
 		// Dot Navigation.
 		dotwidth: {
-			type: 'string',
+			type: 'object',
 			default: { md: 30, unit: 'px' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { width: {{dotwidth}} }' }]
 		},
 		dotHeight: {
-			type: 'string',
+			type: 'object',
 			default: { md: 4, unit: 'px' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { height: {{dotHeight}} }' }]
 		},
 		dotBorderRadius: {
-			type: 'string',
+			type: 'object',
 			default: { md: 4, unit: 'px' },
 			style: [{ selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li { border-radius: {{dotBorderRadius}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active span.dot-indicator { border-radius: {{dotBorderRadius}} }' }]
 		},

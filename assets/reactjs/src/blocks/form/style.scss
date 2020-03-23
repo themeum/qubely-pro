@@ -3,8 +3,8 @@
     .qubely-form-column .qubely-form-field-wrapper .qubely-form-field:focus {
       outline: none;
     }
-    .editor-inner-blocks.block-editor-inner-blocks {
-      > .editor-block-list__layout.block-editor-block-list__layout {
+    .block-editor-inner-blocks {
+      > .block-editor-block-list__layout {
         > div:last-child {
           display: none;
         }

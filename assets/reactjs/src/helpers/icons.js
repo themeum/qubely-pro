@@ -4,6 +4,12 @@ const free_img_path = qubely_admin.plugin + 'assets/img/blocks'
 
 const icons = {
 
+    // Countdown
+    countdown: {
+        layout1: <img src={`${img_path}/countdown/layout1.svg`} alt={__('Layout 1')} />,
+        layout2: <img src={`${img_path}/countdown/layout2.svg`} alt={__('Layout 2')} />
+    },
+
     //form 
     form_classic: <img src={`${img_path}/form/classic.svg`} alt={__('Classic')} />,
     form_material: <img src={`${img_path}/form/material.svg`} alt={__('Material')} />,
@@ -26,6 +32,11 @@ const icons = {
     testimonial_1: <img src={`${img_path}/testimonial/1.svg`} alt={__('Testimonial 1')} />,
     testimonial_2: <img src={`${img_path}/testimonial/2.svg`} alt={__('Testimonial 2')} />,
     testimonial_3: <img src={`${img_path}/testimonial/3.svg`} alt={__('Testimonial 3')} />,
+
+    // Vertical Tabs
+    verticaltabs_1: <img src={`${img_path}/verticaltabs/layout-1.svg`} alt={__('Layout 1')} />,
+    verticaltabs_2: <img src={`${img_path}/verticaltabs/layout-2.svg`} alt={__('Layout 2')} />,
+    verticaltabs_3: <img src={`${img_path}/verticaltabs/layout-3.svg`} alt={__('Layout 3')} />,
 
     // Team Carousel Icon
     teamcarousel_1: <img src={`${img_path}/teamcarousel/1.svg`} alt={__('Team Carousel 1')} />,
@@ -73,17 +84,23 @@ const icons = {
     btn_fill: <img src={`${free_img_path}/button/fill.svg`} alt={__('Fill')} />,
     btn_outline: <img src={`${free_img_path}/button/outline.svg`} alt={__('Outline')} />,
 
-    leftArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 8.70002L10.6 14.4L12 12.9L7.8 8.70002L12 4.50002L10.6 3.00002L5 8.70002Z" />
-    </svg>,
+    // Media Card.
+    mediacard_1: <img src={`${img_path}/mediacard/1.svg`} alt={__('Design 1')} />,
+    mediacard_2: <img src={`${img_path}/mediacard/2.svg`} alt={__('Design 2')} />,
+    mediacard_3: <img src={`${img_path}/mediacard/3.svg`} alt={__('Design 3')} />,
+    mediacard_4: <img src={`${img_path}/mediacard/4.svg`} alt={__('Design 4')} />,
+    mediacard_5: <img src={`${img_path}/mediacard/5.svg`} alt={__('Design 5')} />,
+    mediacard_6: <img src={`${img_path}/mediacard/6.svg`} alt={__('Design 6')} />,
+    mediacard_7: <img src={`${img_path}/mediacard/7.svg`} alt={__('Design 7')} />,
 
-    rightArrow:
-        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 8.7L7.4 3L6 4.5L10.2 8.7L6 12.9L7.4 14.4L13 8.7Z" />
-        </svg>
+
+    pie_fill: <img src={`${img_path}/pieprogress/fill.svg`} alt={__('Fill')} />,
+    pie_outline: <img src={`${img_path}/pieprogress/outline.svg`} alt={__('Outline')} />,
+    pie_outline_fill: <img src={`${img_path}/pieprogress/outline-fill.svg`} alt={__('Outline Fill')} />,
 
 
-
+    leftArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M5 8.70002L10.6 14.4L12 12.9L7.8 8.70002L12 4.50002L10.6 3.00002L5 8.70002Z" /></svg>,
+    rightArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M13 8.7L7.4 3L6 4.5L10.2 8.7L6 12.9L7.4 14.4L13 8.7Z" /></svg>,
 }
 
 

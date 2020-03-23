@@ -3,7 +3,39 @@ const { Fragment, Component } = wp.element;
 const { PanelBody, TextControl, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.blockEditor
 import icons from '../../helpers/icons'
-const { RadioAdvanced, Range, Color, Typography, Toggle, Separator, ColorAdvanced, Border, BorderRadius, BoxShadow, Styles, Alignment, Padding, Tabs, Tab, Carousel, ButtonGroup, CssGenerator: { CssGenerator }, gloalSettings: { globalSettingsPanel, animationSettings }, Inline: { InlineToolbar }, ContextMenu: { ContextMenu, handleContextMenu } } = wp.qubelyComponents
+const {
+	RadioAdvanced,
+	Range,
+	Color,
+	Typography,
+	Toggle,
+	Separator,
+	ColorAdvanced,
+	Border,
+	BorderRadius,
+	BoxShadow,
+	Styles,
+	Alignment,
+	Padding,
+	Tabs,
+	Tab,
+	Carousel,
+	ButtonGroup,
+	gloalSettings: {
+		globalSettingsPanel,
+		animationSettings
+	},
+	Inline: {
+		InlineToolbar
+	},
+	ContextMenu: {
+		ContextMenu,
+		handleContextMenu
+	},
+	withCSSGenerator,
+	InspectorTabs,
+	InspectorTab
+} = wp.qubelyComponents
 
 class Edit extends Component {
 	constructor(props) {
@@ -189,6 +221,7 @@ class Edit extends Component {
 			setAttributes,
 			attributes: {
 				uniqueId,
+				className,
 				items,
 				autoPlay,
 				interval,
@@ -316,49 +349,48 @@ class Edit extends Component {
 			],
 		};
 
-		if (uniqueId) { CssGenerator(this.props.attributes, 'teamcarousel', uniqueId) }
-
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
+					<InspectorTabs tabs={['style', 'advance']}>
+						<InspectorTab key={'style'}>
+							<PanelBody title={__('')} opened={true}>
+								<Styles value={layout} onChange={val => setAttributes({ layout: val })}
+									options={[
+										{ value: 1, svg: icons.teamcarousel_1, label: __('Layout 1') },
+										{ value: 2, svg: icons.teamcarousel_2, label: __('Layout 2') },
+										{ value: 3, svg: icons.teamcarousel_3, label: __('Layout 3') }
+									]}
+								/>
+								<Alignment
+									label={__('Alignment')}
+									value={alignment}
+									alignmentType="content"
+									onChange={val => setAttributes({ alignment: val })}
+									alignmentType="content" disableJustify responsive device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
 
-					<PanelBody title={__('')} opened={true}>
-						<Styles value={layout} onChange={val => setAttributes({ layout: val })}
-							options={[
-								{ value: 1, svg: icons.teamcarousel_1, label: __('Layout 1') },
-								{ value: 2, svg: icons.teamcarousel_2, label: __('Layout 2') },
-								{ value: 3, svg: icons.teamcarousel_3, label: __('Layout 3') }
-							]}
-						/>
-						<Alignment
-							label={__('Alignment')}
-							value={alignment}
-							alignmentType="content"
-							onChange={val => setAttributes({ alignment: val })}
-							alignmentType="content" disableJustify responsive device={device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/>
+								<Range
+									label={__('Number of Carousels')}
+									min={1}
+									max={20}
+									value={carouselItems.length}
+									onChange={val => this.setCarouselLength(val)}
+								/>
 
-						<Range
-							label={__('Number of Carousels')}
-							min={1}
-							max={20}
-							value={carouselItems.length}
-							onChange={val => this.setCarouselLength(val)}
-						/>
-
-						<Range
-							label={__('Number of Columns')}
-							min={1}
-							max={20}
-							device={device}
-							responsive
-							value={items}
-							onChange={val => setAttributes({ items: val })}
-							device={this.state.device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/>
-						{/* <Range
+								<Range
+									label={__('Number of Columns')}
+									min={1}
+									max={20}
+									device={device}
+									responsive
+									value={items}
+									onChange={val => setAttributes({ items: val })}
+									device={this.state.device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+								{/* <Range
 							label={__('Padding')}
 							min={1}
 							max={80}
@@ -369,418 +401,421 @@ class Edit extends Component {
 							device={device}
 							onDeviceChange={value => this.setState({ device: value })}
 						/> */}
-						<Range
-							label={__('Gutter')}
-							min={0}
-							max={80}
-							value={sliderMargin}
-							onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
-						/>
-					</PanelBody>
-
-					<PanelBody title={__('Carousel Settings')} initialOpen={false}>
-						<Toggle label={__('Show Arrow Navigation')} value={nav} onChange={value => setAttributes({ nav: value })} />
-						<Toggle label={__('Show Dot Navigation')} value={dots} onChange={value => setAttributes({ dots: value })} />
-						<Toggle label={__('Draggable')} value={dragable} onChange={value => setAttributes({ dragable: value })} />
-
-						<Toggle label={__('Autoplay')} value={autoPlay} onChange={value => setAttributes({ autoPlay: value })} />
-						{autoPlay &&
-							<Fragment>
-								<Range label={__('Speed (ms)')} value={speed} onChange={value => setAttributes({ speed: parseInt(value) })} min={500} max={5000} />
-								<Range label={__('Interval (ms)')} value={interval} onChange={value => setAttributes({ interval: parseInt(value) })} min={500} max={5000} />
-							</Fragment>
-						}
-
-						<Toggle label={__('Centered Slides')} value={isCentered} onChange={value => setAttributes({ isCentered: value })} />
-						{
-							isCentered &&
-							<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
-						}
-					</PanelBody>
-
-					{nav &&
-						<PanelBody title={__('Arrow Settings')} initialOpen={false}>
-
-							<ButtonGroup
-								label={__('Arrow Style')}
-								options={[[<span className="dashicons dashicons-arrow-right-alt" />, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2" />, 'arrowright2']]}
-								value={arrowStyle}
-								onChange={value => setAttributes({ arrowStyle: value })}
-							/>
-							<Range
-								label={__('Horizontal Position')}
-								value={horizontalScroll} onChange={(value) => setAttributes({ horizontalScroll: value })}
-								min={-200} max={200}
-								responsive unit={['px', 'em', '%']}
-								device={device}
-								onDeviceChange={value => this.setState({ device: value })}
-							/>
-							<Range
-								label={__('Vertical Position')}
-								value={arrowPosition} onChange={(value) => setAttributes({ arrowPosition: value })}
-								min={1} max={200}
-								responsive unit={['px', 'em', '%']}
-								device={device}
-								onDeviceChange={value => this.setState({ device: value })}
-							/>
-							<Range
-								label={__('Shape Size')}
-								value={sizeWidth} onChange={(value) => setAttributes({ sizeWidth: value })}
-								min={1} max={100}
-								responsive unit={['px', 'em', '%']}
-								device={device}
-								onDeviceChange={value => this.setState({ device: value })}
-							/>
-							<Range
-								label={__('Arrow Size')}
-								value={arrowSize} onChange={(value) => setAttributes({ arrowSize: value })}
-								min={0} max={100}
-								responsive unit={['px', 'em', '%']}
-								device={device}
-								onDeviceChange={value => this.setState({ device: value })}
-							/>
-							<Tabs>
-								<Tab tabTitle={__('Normal')}>
-									<Color label={__('Arrow Color')} value={arrowColor} onChange={(value) => setAttributes({ arrowColor: value })} />
-									<ColorAdvanced label={__('Shape Color')} value={arrowShapeColor} onChange={val => setAttributes({ arrowShapeColor: val })} />
-									<Border label={__('Border')} value={arrowBorderColor} onChange={val => setAttributes({ arrowBorderColor: val })} />
-									<Range
-										label={__('Corner Radius')}
-										value={cornerRadius} onChange={(value) => setAttributes({ cornerRadius: value })}
-										min={1} max={100}
-										responsive unit={['px', 'em', '%']}
-										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
-									/>
-								</Tab>
-								<Tab tabTitle={__('Hover')}>
-									<Color label={__('Arrow Color')} value={arrowHoverColor} onChange={(value) => setAttributes({ arrowHoverColor: value })} />
-									<ColorAdvanced label={__('Shape Color')} value={arrowShapeHoverColor} onChange={val => setAttributes({ arrowShapeHoverColor: val })} />
-									<Border label={__('Border')} value={arrowBorderHover} onChange={val => setAttributes({ arrowBorderHover: val })} />
-									<Range
-										label={__('Corner Radius')}
-										value={cornerHoverRadius} onChange={(value) => setAttributes({ cornerHoverRadius: value })}
-										min={1} max={100}
-										responsive unit={['px', 'em', '%']}
-										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
-									/>
-								</Tab>
-							</Tabs>
-
-
-						</PanelBody>
-					}
-
-					{dots &&
-						<PanelBody title={__('Dot Settings')} initialOpen={false}>
-
-							<Range
-								label={__('Dot Width')}
-								value={dotwidth} onChange={(value) => setAttributes({ dotwidth: value })}
-								min={1} max={100}
-								responsive unit={['px', 'em', '%']}
-								device={device}
-								onDeviceChange={value => this.setState({ device: value })}
-							/>
-							<Range
-								label={__('Dot Height')}
-								value={dotHeight} onChange={(value) => setAttributes({ dotHeight: value })}
-								min={1} max={100}
-								responsive unit={['px', 'em', '%']}
-								device={device}
-								onDeviceChange={value => this.setState({ device: value })}
-							/>
-							<Range
-								label={__('Dot Border Radius')}
-								value={dotBorderRadius} onChange={(value) => setAttributes({ dotBorderRadius: value })}
-								min={1} max={100}
-								responsive unit={['px', 'em', '%']}
-								device={device}
-								onDeviceChange={value => this.setState({ device: value })}
-							/>
-							<Range
-								label={__('Vertical Position')}
-								value={dotsPosition} onChange={(value) => setAttributes({ dotsPosition: value })}
-								min={-200} max={200}
-								responsive unit={['px', 'em', '%']}
-								device={device}
-								onDeviceChange={value => this.setState({ device: value })}
-							/>
-							<Tabs>
-								<Tab tabTitle={__('Normal')}>
-									<ColorAdvanced label={__('Dot Color')} value={dotColor} onChange={val => setAttributes({ dotColor: val })} />
-								</Tab>
-								<Tab tabTitle={__('Active')}>
-									<ColorAdvanced label={__('Dot Active Color')} value={dotActiveColor} onChange={val => setAttributes({ dotActiveColor: val })} />
-								</Tab>
-							</Tabs>
-
-						</PanelBody>
-					}
-					<PanelBody title={__('Image')} initialOpen={false}>
-						<Toggle label={__('Show Image')} value={showAvatar} onChange={val => setAttributes({ showAvatar: val })} />
-
-						{showAvatar &&
-							<Fragment>
-
-								<RadioAdvanced
-									label={__('Image Size')}
-									options={[
-										{ label: 'S', value: '60px', title: 'Small' },
-										{ label: 'M', value: '100px', title: 'Medium' },
-										{ label: 'L', value: '140px', title: 'Large' },
-										{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-									]}
-									value={avatarSize}
-									onChange={(value) => setAttributes({ avatarSize: value })}
+								<Range
+									label={__('Gutter')}
+									min={0}
+									max={80}
+									value={sliderMargin}
+									onChange={(value) => setAttributes({ sliderMargin: parseInt(value) })}
 								/>
-								{avatarSize == 'custom' &&
+							</PanelBody>
+
+							<PanelBody title={__('Carousel Settings')} initialOpen={false}>
+								<Toggle label={__('Show Arrow Navigation')} value={nav} onChange={value => setAttributes({ nav: value })} />
+								<Toggle label={__('Show Dot Navigation')} value={dots} onChange={value => setAttributes({ dots: value })} />
+								<Toggle label={__('Draggable')} value={dragable} onChange={value => setAttributes({ dragable: value })} />
+
+								<Toggle label={__('Autoplay')} value={autoPlay} onChange={value => setAttributes({ autoPlay: value })} />
+								{autoPlay &&
 									<Fragment>
-										<Range
-											label={__('Image Width')}
-											value={avatarWidth}
-											onChange={(value) => setAttributes({ avatarWidth: value })}
-											unit={['px', 'em', '%']}
-											max={avatarWidth.unit === '%' ? 100 : 300}
-											min={0}
-											responsive
-											device={device}
-											onDeviceChange={value => this.setState({ device: value })}
-										/>
-										<Range
-											min={0}
-											responsive
-											device={device}
-											value={avatarHeight}
-											unit={['px', 'em', '%']}
-											label={__('Image Height')}
-											max={avatarHeight.unit === '%' ? 100 : 300}
-											onDeviceChange={value => this.setState({ device: value })}
-											onChange={(value) => setAttributes({ avatarHeight: value })}
-										/>
+										<Range label={__('Speed (ms)')} value={speed} onChange={value => setAttributes({ speed: parseInt(value) })} min={500} max={5000} />
+										<Range label={__('Interval (ms)')} value={interval} onChange={value => setAttributes({ interval: parseInt(value) })} min={500} max={5000} />
 									</Fragment>
 								}
+
+								<Toggle label={__('Centered Slides')} value={isCentered} onChange={value => setAttributes({ isCentered: value })} />
+								{
+									isCentered &&
+									<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
+								}
+							</PanelBody>
+
+							{nav &&
+								<PanelBody title={__('Arrow Settings')} initialOpen={false}>
+
+									<ButtonGroup
+										label={__('Arrow Style')}
+										options={[[<span className="dashicons dashicons-arrow-right-alt" />, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2" />, 'arrowright2']]}
+										value={arrowStyle}
+										onChange={value => setAttributes({ arrowStyle: value })}
+									/>
+									<Range
+										label={__('Horizontal Position')}
+										value={horizontalScroll} onChange={(value) => setAttributes({ horizontalScroll: value })}
+										min={-200} max={200}
+										responsive unit={['px', 'em', '%']}
+										device={device}
+										onDeviceChange={value => this.setState({ device: value })}
+									/>
+									<Range
+										label={__('Vertical Position')}
+										value={arrowPosition} onChange={(value) => setAttributes({ arrowPosition: value })}
+										min={1} max={200}
+										responsive unit={['px', 'em', '%']}
+										device={device}
+										onDeviceChange={value => this.setState({ device: value })}
+									/>
+									<Range
+										label={__('Shape Size')}
+										value={sizeWidth} onChange={(value) => setAttributes({ sizeWidth: value })}
+										min={1} max={100}
+										responsive unit={['px', 'em', '%']}
+										device={device}
+										onDeviceChange={value => this.setState({ device: value })}
+									/>
+									<Range
+										label={__('Arrow Size')}
+										value={arrowSize} onChange={(value) => setAttributes({ arrowSize: value })}
+										min={0} max={100}
+										responsive unit={['px', 'em', '%']}
+										device={device}
+										onDeviceChange={value => this.setState({ device: value })}
+									/>
+									<Tabs>
+										<Tab tabTitle={__('Normal')}>
+											<Color label={__('Arrow Color')} value={arrowColor} onChange={(value) => setAttributes({ arrowColor: value })} />
+											<ColorAdvanced label={__('Shape Color')} value={arrowShapeColor} onChange={val => setAttributes({ arrowShapeColor: val })} />
+											<Border label={__('Border')} value={arrowBorderColor} onChange={val => setAttributes({ arrowBorderColor: val })} />
+											<Range
+												label={__('Corner Radius')}
+												value={cornerRadius} onChange={(value) => setAttributes({ cornerRadius: value })}
+												min={1} max={100}
+												responsive unit={['px', 'em', '%']}
+												device={device}
+												onDeviceChange={value => this.setState({ device: value })}
+											/>
+										</Tab>
+										<Tab tabTitle={__('Hover')}>
+											<Color label={__('Arrow Color')} value={arrowHoverColor} onChange={(value) => setAttributes({ arrowHoverColor: value })} />
+											<ColorAdvanced label={__('Shape Color')} value={arrowShapeHoverColor} onChange={val => setAttributes({ arrowShapeHoverColor: val })} />
+											<Border label={__('Border')} value={arrowBorderHover} onChange={val => setAttributes({ arrowBorderHover: val })} />
+											<Range
+												label={__('Corner Radius')}
+												value={cornerHoverRadius} onChange={(value) => setAttributes({ cornerHoverRadius: value })}
+												min={1} max={100}
+												responsive unit={['px', 'em', '%']}
+												device={device}
+												onDeviceChange={value => this.setState({ device: value })}
+											/>
+										</Tab>
+									</Tabs>
+
+
+								</PanelBody>
+							}
+
+							{dots &&
+								<PanelBody title={__('Dot Settings')} initialOpen={false}>
+
+									<Range
+										label={__('Dot Width')}
+										value={dotwidth} onChange={(value) => setAttributes({ dotwidth: value })}
+										min={1} max={100}
+										responsive unit={['px', 'em', '%']}
+										device={device}
+										onDeviceChange={value => this.setState({ device: value })}
+									/>
+									<Range
+										label={__('Dot Height')}
+										value={dotHeight} onChange={(value) => setAttributes({ dotHeight: value })}
+										min={1} max={100}
+										responsive unit={['px', 'em', '%']}
+										device={device}
+										onDeviceChange={value => this.setState({ device: value })}
+									/>
+									<Range
+										label={__('Dot Border Radius')}
+										value={dotBorderRadius} onChange={(value) => setAttributes({ dotBorderRadius: value })}
+										min={1} max={100}
+										responsive unit={['px', 'em', '%']}
+										device={device}
+										onDeviceChange={value => this.setState({ device: value })}
+									/>
+									<Range
+										label={__('Vertical Position')}
+										value={dotsPosition} onChange={(value) => setAttributes({ dotsPosition: value })}
+										min={-200} max={200}
+										responsive unit={['px', 'em', '%']}
+										device={device}
+										onDeviceChange={value => this.setState({ device: value })}
+									/>
+									<Tabs>
+										<Tab tabTitle={__('Normal')}>
+											<ColorAdvanced label={__('Dot Color')} value={dotColor} onChange={val => setAttributes({ dotColor: val })} />
+										</Tab>
+										<Tab tabTitle={__('Active')}>
+											<ColorAdvanced label={__('Dot Active Color')} value={dotActiveColor} onChange={val => setAttributes({ dotActiveColor: val })} />
+										</Tab>
+									</Tabs>
+
+								</PanelBody>
+							}
+							<PanelBody title={__('Image')} initialOpen={false}>
+								<Toggle label={__('Show Image')} value={showAvatar} onChange={val => setAttributes({ showAvatar: val })} />
+
+								{showAvatar &&
+									<Fragment>
+
+										<RadioAdvanced
+											label={__('Image Size')}
+											options={[
+												{ label: 'S', value: '60px', title: 'Small' },
+												{ label: 'M', value: '100px', title: 'Medium' },
+												{ label: 'L', value: '140px', title: 'Large' },
+												{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+											]}
+											value={avatarSize}
+											onChange={(value) => setAttributes({ avatarSize: value })}
+										/>
+										{avatarSize == 'custom' &&
+											<Fragment>
+												<Range
+													label={__('Image Width')}
+													value={avatarWidth}
+													onChange={(value) => setAttributes({ avatarWidth: value })}
+													unit={['px', 'em', '%']}
+													max={avatarWidth.unit === '%' ? 100 : 300}
+													min={0}
+													responsive
+													device={device}
+													onDeviceChange={value => this.setState({ device: value })}
+												/>
+												<Range
+													min={0}
+													responsive
+													device={device}
+													value={avatarHeight}
+													unit={['px', 'em', '%']}
+													label={__('Image Height')}
+													max={avatarHeight.unit === '%' ? 100 : 300}
+													onDeviceChange={value => this.setState({ device: value })}
+													onChange={(value) => setAttributes({ avatarHeight: value })}
+												/>
+											</Fragment>
+										}
+										<BorderRadius
+											label={__('Radius')}
+											value={avatarBorderRadius} onChange={(value) => setAttributes({ avatarBorderRadius: value })}
+											min={0}
+											max={100}
+											unit={['px', 'em', '%']}
+											responsive
+											device={device}
+											onDeviceChange={value => this.setState({ device: value })} />
+										<Border
+											label={__('Border')}
+											value={avatarBorder}
+											onChange={(value) => setAttributes({ avatarBorder: value })}
+											unit={['px', 'em', '%']}
+											responsive
+											device={device}
+											onDeviceChange={value => this.setState({ device: value })}
+										/>
+										{
+											layout !== 2 &&
+											<Range
+												label={__('Spacing')}
+												min={0}
+												max={200}
+												unit={['px', 'em', '%']}
+												responsive
+												device={device}
+												onDeviceChange={value => this.setState({ device: value })}
+												value={layout === 1 ? avatarVerticalSpacing : avatarHorizontalSpacing}
+												onChange={(value) => setAttributes(layout === 1 ? { avatarVerticalSpacing: value } : { avatarHorizontalSpacing: value })}
+											/>
+										}
+									</Fragment>
+								}
+							</PanelBody>
+
+							<PanelBody title={__('Name')} initialOpen={false}>
+								<Toggle label={__('Enable Name')} value={enablename} onChange={value => setAttributes({ enablename: value })} />
+								<Color
+									label={__('Color')}
+									value={nameColor} onChange={(value) => setAttributes({ nameColor: value })}
+								/>
+								<Typography
+									label={__('Typography')}
+									value={nameTypo}
+									onChange={(value) => setAttributes({ nameTypo: value })}
+									device={device} onDeviceChange={value => this.setState({ device: value })}
+								/>
+								<Range
+									label={__('Spacing')}
+									value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
+									unit={['px', 'em', '%']} max={300}
+									min={0}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+							</PanelBody>
+
+							<PanelBody title={__('Designation')} initialOpen={false}>
+								<Toggle label={__('Enable Designation')} value={enableDesignation} onChange={value => setAttributes({ enableDesignation: value })} />
+								<Color
+									label={__('Color')}
+									value={designationColor} onChange={(value) => setAttributes({ designationColor: value })}
+								/>
+								<Typography
+									label={__('Typography')}
+									value={designationTypo}
+									onChange={(value) => setAttributes({ designationTypo: value })}
+									device={device} onDeviceChange={value => this.setState({ device: value })}
+								/>
+								<Range
+									label={__('Spacing')}
+									value={designationSpacing} onChange={(value) => setAttributes({ designationSpacing: value })}
+									unit={['px', 'em', '%']} max={300}
+									min={0}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })}
+								/>
+							</PanelBody>
+
+							<PanelBody title={__('Social')} initialOpen={false}>
+								<Toggle label={__('Show Social-links')} value={showSociallinks} onChange={val => setAttributes({ showSociallinks: val })} />
+								{
+									showSociallinks &&
+									<Fragment>
+										<TextControl label={__('Facebook')} value={facebook} onChange={val => setAttributes({ facebook: val })} />
+										<TextControl label={__('Twitter')} value={twitter} onChange={val => setAttributes({ twitter: val })} />
+										<TextControl label={__('Instagram')} value={instagram} onChange={val => setAttributes({ instagram: val })} />
+										<TextControl label={__('Linkedin')} value={linkedin} onChange={val => setAttributes({ linkedin: val })} />
+										<TextControl label={__('Youtube')} value={youtube} onChange={val => setAttributes({ youtube: val })} />
+										<TextControl label={__('Github')} value={github} onChange={val => setAttributes({ github: val })} />
+										<TextControl label={__('Flickr')} value={flickr} onChange={val => setAttributes({ flickr: val })} />
+										<TextControl label={__('Pinterest')} value={pinterest} onChange={val => setAttributes({ pinterest: val })} />
+										<TextControl label={__('Dribbble')} value={dribbble} onChange={val => setAttributes({ dribbble: val })} />
+										<TextControl label={__('Behance')} value={behance} onChange={val => setAttributes({ behance: val })} />
+										<Separator />
+										<Styles label={__('Icon Style')} value={iconStyle} onChange={val => setAttributes({ iconStyle: val })}
+											options={[
+												{ value: 'fill', svg: icons.social_fill, label: __('Fill') },
+												{ value: 'normal', svg: icons.social_normal, label: __('Normal') },
+											]}
+										/>
+										<RadioAdvanced label={__('Icon Size')} value={iconSize} onChange={(value) => setAttributes({ iconSize: value })}
+											options={[
+												{ label: 'S', value: '14px', title: 'Small' },
+												{ label: 'M', value: '18px', title: 'Medium' },
+												{ label: 'L', value: '24px', title: 'Large' },
+												{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+											]}
+										/>
+										{iconSize == 'custom' &&
+											<Range label={__('Custom Size')} value={iconSizeCustom} onChange={val => setAttributes({ iconSizeCustom: val })} min={12} max={300} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+										}
+										{iconStyle == 'fill' &&
+											<BorderRadius
+												label={__('Corner Radius')}
+												value={iconBorderRadius}
+												onChange={(value) => setAttributes({ iconBorderRadius: value })}
+												min={0}
+												max={100} unit={['px', 'em', '%']}
+												responsive
+												device={device}
+												onDeviceChange={value => this.setState({ device: value })} />
+										}
+
+										<Range label={__('Gutter')} value={iconGutter} onChange={val => setAttributes({ iconGutter: val })} min={0} max={40} unit={['px', 'em']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+										<Range label={__('Spacing')} value={iconSpacing} onChange={val => setAttributes({ iconSpacing: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+										<Toggle label={__('Default Styles')} value={iconUseDefaultStyle} onChange={val => setAttributes({ iconUseDefaultStyle: val })} />
+
+										{!iconUseDefaultStyle &&
+											<Tabs>
+												<Tab tabTitle={__('Normal')}>
+													<Color label={__('Color')} value={iconColor} onChange={(value) => setAttributes({ iconColor: value })} />
+													{iconStyle == 'fill' &&
+														<Fragment>
+															<Color label={__('Background Color')} value={iconBackground} onChange={(value) => setAttributes({ iconBackground: value })} />
+															<Border label={__('Border')} value={iconBorder} onChange={(value) => setAttributes({ iconBorder: value })} />
+														</Fragment>
+													}
+												</Tab>
+												<Tab tabTitle={__('Hover')}>
+													<Color label={__('Color')} value={iconColorHover} onChange={(value) => setAttributes({ iconColorHover: value })} />
+													{iconStyle == 'fill' &&
+														<Fragment>
+															<Color label={__('Background Color')} value={iconBackgroundHover} onChange={(value) => setAttributes({ iconBackgroundHover: value })} />
+															<Color label={__('Border Color')} value={iconBorderColorHover} onChange={(value) => setAttributes({ iconBorderColorHover: value })} />
+														</Fragment>
+													}
+												</Tab>
+											</Tabs>
+										}
+									</Fragment>
+								}
+							</PanelBody>
+
+
+							<PanelBody title={__('Design')} initialOpen={false}>
+								<Color
+									label={__('Text Color')}
+									value={textColor}
+									onChange={val => setAttributes({ textColor: val })} />
+								<Color
+									label={__('Background')}
+									value={bgColor}
+									onChange={val => setAttributes({ bgColor: val })} />
+								<Separator />
+								<Border
+									label={__('Border')}
+									value={border}
+									onChange={val => setAttributes({ border: val })} />
+								<Padding
+									label={__('Padding')}
+									value={bgPadding}
+									onChange={(value) => setAttributes({ bgPadding: value })}
+									unit={['px', 'em', '%']}
+									min={0}
+									max={100}
+									responsive
+									device={device}
+									onDeviceChange={value => this.setState({ device: value })} />
 								<BorderRadius
-									label={__('Radius')}
-									value={avatarBorderRadius} onChange={(value) => setAttributes({ avatarBorderRadius: value })}
+									label={__('Border Radius')}
+									value={bgBorderRadius}
+									onChange={val => setAttributes({ bgBorderRadius: val })}
 									min={0}
 									max={100}
 									unit={['px', 'em', '%']}
 									responsive
 									device={device}
 									onDeviceChange={value => this.setState({ device: value })} />
-								<Border
-									label={__('Border')}
-									value={avatarBorder}
-									onChange={(value) => setAttributes({ avatarBorder: value })}
-									unit={['px', 'em', '%']}
-									responsive
-									device={device}
-									onDeviceChange={value => this.setState({ device: value })}
-								/>
-								{
-									layout !== 2 &&
+								{layout == 3 &&
 									<Range
-										label={__('Spacing')}
+										label={__('Content Spacing')}
+										value={contentSpacing}
+										onChange={(value) => setAttributes({ contentSpacing: value })}
+										unit={['px', 'em', '%']} max={300}
 										min={0}
-										max={200}
-										unit={['px', 'em', '%']}
-										responsive
-										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
-										value={layout === 1 ? avatarVerticalSpacing : avatarHorizontalSpacing}
-										onChange={(value) => setAttributes(layout === 1 ? { avatarVerticalSpacing: value } : { avatarHorizontalSpacing: value })}
-									/>
-								}
-							</Fragment>
-						}
-					</PanelBody>
-
-					<PanelBody title={__('Name')} initialOpen={false}>
-						<Toggle label={__('Enable Name')} value={enablename} onChange={value => setAttributes({ enablename: value })} />
-						<Color
-							label={__('Color')}
-							value={nameColor} onChange={(value) => setAttributes({ nameColor: value })}
-						/>
-						<Typography
-							label={__('Typography')}
-							value={nameTypo}
-							onChange={(value) => setAttributes({ nameTypo: value })}
-							device={device} onDeviceChange={value => this.setState({ device: value })}
-						/>
-						<Range
-							label={__('Spacing')}
-							value={nameSpacing} onChange={(value) => setAttributes({ nameSpacing: value })}
-							unit={['px', 'em', '%']} max={300}
-							min={0}
-							responsive
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/>
-					</PanelBody>
-
-					<PanelBody title={__('Designation')} initialOpen={false}>
-						<Toggle label={__('Enable Designation')} value={enableDesignation} onChange={value => setAttributes({ enableDesignation: value })} />
-						<Color
-							label={__('Color')}
-							value={designationColor} onChange={(value) => setAttributes({ designationColor: value })}
-						/>
-						<Typography
-							label={__('Typography')}
-							value={designationTypo}
-							onChange={(value) => setAttributes({ designationTypo: value })}
-							device={device} onDeviceChange={value => this.setState({ device: value })}
-						/>
-						<Range
-							label={__('Spacing')}
-							value={designationSpacing} onChange={(value) => setAttributes({ designationSpacing: value })}
-							unit={['px', 'em', '%']} max={300}
-							min={0}
-							responsive
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })}
-						/>
-					</PanelBody>
-
-					<PanelBody title={__('Social')} initialOpen={false}>
-						<Toggle label={__('Show Social-links')} value={showSociallinks} onChange={val => setAttributes({ showSociallinks: val })} />
-						{
-							showSociallinks &&
-							<Fragment>
-								<TextControl label={__('Facebook')} value={facebook} onChange={val => setAttributes({ facebook: val })} />
-								<TextControl label={__('Twitter')} value={twitter} onChange={val => setAttributes({ twitter: val })} />
-								<TextControl label={__('Instagram')} value={instagram} onChange={val => setAttributes({ instagram: val })} />
-								<TextControl label={__('Linkedin')} value={linkedin} onChange={val => setAttributes({ linkedin: val })} />
-								<TextControl label={__('Youtube')} value={youtube} onChange={val => setAttributes({ youtube: val })} />
-								<TextControl label={__('Github')} value={github} onChange={val => setAttributes({ github: val })} />
-								<TextControl label={__('Flickr')} value={flickr} onChange={val => setAttributes({ flickr: val })} />
-								<TextControl label={__('Pinterest')} value={pinterest} onChange={val => setAttributes({ pinterest: val })} />
-								<TextControl label={__('Dribbble')} value={dribbble} onChange={val => setAttributes({ dribbble: val })} />
-								<TextControl label={__('Behance')} value={behance} onChange={val => setAttributes({ behance: val })} />
-								<Separator />
-								<Styles label={__('Icon Style')} value={iconStyle} onChange={val => setAttributes({ iconStyle: val })}
-									options={[
-										{ value: 'fill', svg: icons.social_fill, label: __('Fill') },
-										{ value: 'normal', svg: icons.social_normal, label: __('Normal') },
-									]}
-								/>
-								<RadioAdvanced label={__('Icon Size')} value={iconSize} onChange={(value) => setAttributes({ iconSize: value })}
-									options={[
-										{ label: 'S', value: '14px', title: 'Small' },
-										{ label: 'M', value: '18px', title: 'Medium' },
-										{ label: 'L', value: '24px', title: 'Large' },
-										{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-									]}
-								/>
-								{iconSize == 'custom' &&
-									<Range label={__('Custom Size')} value={iconSizeCustom} onChange={val => setAttributes({ iconSizeCustom: val })} min={12} max={300} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								}
-								{iconStyle == 'fill' &&
-									<BorderRadius
-										label={__('Corner Radius')}
-										value={iconBorderRadius}
-										onChange={(value) => setAttributes({ iconBorderRadius: value })}
-										min={0}
-										max={100} unit={['px', 'em', '%']}
 										responsive
 										device={device}
 										onDeviceChange={value => this.setState({ device: value })} />
 								}
-
-								<Range label={__('Gutter')} value={iconGutter} onChange={val => setAttributes({ iconGutter: val })} min={0} max={40} unit={['px', 'em']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Range label={__('Spacing')} value={iconSpacing} onChange={val => setAttributes({ iconSpacing: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Toggle label={__('Default Styles')} value={iconUseDefaultStyle} onChange={val => setAttributes({ iconUseDefaultStyle: val })} />
-
-								{!iconUseDefaultStyle &&
-									<Tabs>
-										<Tab tabTitle={__('Normal')}>
-											<Color label={__('Color')} value={iconColor} onChange={(value) => setAttributes({ iconColor: value })} />
-											{iconStyle == 'fill' &&
-												<Fragment>
-													<Color label={__('Background Color')} value={iconBackground} onChange={(value) => setAttributes({ iconBackground: value })} />
-													<Border label={__('Border')} value={iconBorder} onChange={(value) => setAttributes({ iconBorder: value })} />
-												</Fragment>
-											}
-										</Tab>
-										<Tab tabTitle={__('Hover')}>
-											<Color label={__('Color')} value={iconColorHover} onChange={(value) => setAttributes({ iconColorHover: value })} />
-											{iconStyle == 'fill' &&
-												<Fragment>
-													<Color label={__('Background Color')} value={iconBackgroundHover} onChange={(value) => setAttributes({ iconBackgroundHover: value })} />
-													<Color label={__('Border Color')} value={iconBorderColorHover} onChange={(value) => setAttributes({ iconBorderColorHover: value })} />
-												</Fragment>
-											}
-										</Tab>
-									</Tabs>
-								}
-							</Fragment>
-						}
-					</PanelBody>
-
-
-					<PanelBody title={__('Design')} initialOpen={false}>
-						<Color
-							label={__('Text Color')}
-							value={textColor}
-							onChange={val => setAttributes({ textColor: val })} />
-						<Color
-							label={__('Background')}
-							value={bgColor}
-							onChange={val => setAttributes({ bgColor: val })} />
-						<Separator />
-						<Border
-							label={__('Border')}
-							value={border}
-							onChange={val => setAttributes({ border: val })} />
-						<Padding
-							label={__('Padding')}
-							value={bgPadding}
-							onChange={(value) => setAttributes({ bgPadding: value })}
-							unit={['px', 'em', '%']}
-							min={0}
-							max={100}
-							responsive
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })} />
-						<BorderRadius
-							label={__('Border Radius')}
-							value={bgBorderRadius}
-							onChange={val => setAttributes({ bgBorderRadius: val })}
-							min={0}
-							max={100}
-							unit={['px', 'em', '%']}
-							responsive
-							device={device}
-							onDeviceChange={value => this.setState({ device: value })} />
-						{layout == 3 &&
-							<Range
-								label={__('Content Spacing')}
-								value={contentSpacing}
-								onChange={(value) => setAttributes({ contentSpacing: value })}
-								unit={['px', 'em', '%']} max={300}
-								min={0}
-								responsive
-								device={device}
-								onDeviceChange={value => this.setState({ device: value })} />
-						}
-						<Tabs>
-							<Tab tabTitle={__('Normal')}>
-								<BoxShadow
-									label={__('Box Shadow')}
-									value={boxShadow} onChange={val => setAttributes({ boxShadow: val })}
-								/>
-							</Tab>
-							<Tab tabTitle={__('Hover')}>
-								<BoxShadow
-									label={__('Box Shadow')}
-									value={boxShadowHover} onChange={val => setAttributes({ boxShadowHover: val })}
-								/>
-							</Tab>
-						</Tabs>
-					</PanelBody>
-
-					{animationSettings(uniqueId, animation, setAttributes)}
+								<Tabs>
+									<Tab tabTitle={__('Normal')}>
+										<BoxShadow
+											label={__('Box Shadow')}
+											value={boxShadow} onChange={val => setAttributes({ boxShadow: val })}
+										/>
+									</Tab>
+									<Tab tabTitle={__('Hover')}>
+										<BoxShadow
+											label={__('Box Shadow')}
+											value={boxShadowHover} onChange={val => setAttributes({ boxShadowHover: val })}
+										/>
+									</Tab>
+								</Tabs>
+							</PanelBody>
+						</InspectorTab>
+						<InspectorTab key={'advance'}>
+							{animationSettings(uniqueId, animation, setAttributes)}
+						</InspectorTab>
+					</InspectorTabs>
 
 				</InspectorControls>
 
@@ -796,7 +831,7 @@ class Edit extends Component {
 
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-				<div className={`qubely-block-${uniqueId}`}>
+				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
 					<div className={`qubely-block-team-carousel qubely-layout-style`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 						<Carousel options={carouselSettings}>
 							{this.renderTeams()}
@@ -817,4 +852,4 @@ class Edit extends Component {
 	}
 }
 
-export default Edit
+export default withCSSGenerator()(Edit);

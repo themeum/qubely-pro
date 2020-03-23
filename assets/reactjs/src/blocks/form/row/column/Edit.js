@@ -15,9 +15,9 @@ const { withSelect, withDispatch } = wp.data
 const {
     Range,
     RadioAdvanced,
-    CssGenerator: {
-        CssGenerator
-    }
+    withCSSGenerator,
+    InspectorTabs,
+    InspectorTab
 } = wp.qubelyComponents
 
 
@@ -34,6 +34,7 @@ function Edit(props) {
         columnIndex,
         attributes: {
             uniqueId,
+            className,
             fieldSize,
             width,
             parentClientId
@@ -86,7 +87,6 @@ function Edit(props) {
                     return (
                         <div className="qubely-form-field-type"
                             onClick={() => {
-                                hideDropdown && hideDropdown()
                                 insertBlock(createBlock(`qubely/formfield-${type}`, { parentClientId, fieldName: `${type}-${rowIndex + 1}${columnIndex + 1}` }), undefined, clientId)
                             }}
                         >
@@ -100,42 +100,44 @@ function Edit(props) {
 
     }
 
-    if (uniqueId) { CssGenerator(attributes, 'form-column', uniqueId); }
-
     return (
         <Fragment>
             <InspectorControls key="inspector">
+                <InspectorTabs tabs={['style', 'advance']}>
+                    <InspectorTab key={'style'}>
+                        <PanelBody title={__('')} opened={true}>
+                            <RadioAdvanced
+                                label={__('Field Size')}
+                                options={[
+                                    { label: 'S', value: 'small', title: 'Small' },
+                                    { label: 'M', value: 'medium', title: 'Medium' },
+                                    { label: 'L', value: 'large', title: 'Large' },
+                                    { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                                ]}
+                                value={fieldSize}
+                                onChange={value => setAttributes({ fieldSize: value })} />
+                            {
+                                fieldSize === 'custom' &&
+                                <Range
+                                    min={20}
+                                    max={100}
+                                    responsive
+                                    value={width}
+                                    device={device}
+                                    label={__('Width')}
+                                    onChange={value => setAttributes({ width: value })}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                            }
 
-                <PanelBody title={__('')} opened={true}>
-
-                    <RadioAdvanced
-                        label={__('Field Size')}
-                        options={[
-                            { label: 'S', value: 'small', title: 'Small' },
-                            { label: 'M', value: 'medium', title: 'Medium' },
-                            { label: 'L', value: 'large', title: 'Large' },
-                            { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
-                        ]}
-                        value={fieldSize}
-                        onChange={value => setAttributes({ fieldSize: value })} />
-                    {
-                        fieldSize === 'custom' &&
-                        <Range
-                            min={20}
-                            max={100}
-                            responsive
-                            value={width}
-                            device={device}
-                            label={__('Width')}
-                            onChange={value => setAttributes({ width: value })}
-                            onDeviceChange={value => setDevice(value)}
-                        />
-                    }
-
-                </PanelBody>
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={'advance'}>
+                    </InspectorTab>
+                </InspectorTabs>
             </InspectorControls>
 
-            <div className={`qubely-block-${uniqueId}  qubely-${fieldSize}`}>
+            <div className={`qubely-block-${uniqueId}  qubely-${fieldSize}${className ? ` ${className}` : ''}`}>
                 <div className={`qubely-form-column`}>
 
                     {
@@ -162,7 +164,7 @@ function Edit(props) {
                                 position="bottom center"
                                 renderToggle={({ isOpen, onToggle }) =>
                                     <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
-                                        <div className="qubely-action-add-form-empty" onClick={() => setDropdown(onToggle)}>
+                                        <div className="qubely-action-add-form-empty">
                                             <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-insert" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11H9v3H6v2h3v3h2v-3h3V9h-3V6z"></path></svg>
                                         </div>
                                     </div>
@@ -207,4 +209,5 @@ export default compose([
             toggleSelection
         }
     }),
+    withCSSGenerator()
 ])(Edit)

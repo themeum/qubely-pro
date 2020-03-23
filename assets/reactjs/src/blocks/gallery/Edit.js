@@ -32,9 +32,11 @@ const {
     Alignment,
     Padding,
     Inline: { InlineToolbar },
-    CssGenerator: { CssGenerator },
+    withCSSGenerator,
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
-    ContextMenu: { ContextMenu, handleContextMenu }
+    ContextMenu: { ContextMenu, handleContextMenu },
+    InspectorTabs,
+    InspectorTab
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
@@ -169,7 +171,7 @@ class Edit extends Component {
                                         <Fragment>
                                             {(image != undefined && image.url != undefined) ?
                                                 <div className="qubely-gallery-content-image-editor">
-                                                    <img src={image.url} alt={__('image')} />
+                                                    <img src={image.url} alt={__(image.alt)} />
                                                     <div className="qubely-media-actions qubely-field-button-list">
                                                         <Tooltip text={__('Edit')}>
                                                             <button className="qubely-button" aria-label={__('Edit')} onClick={open} role="button">
@@ -236,6 +238,7 @@ class Edit extends Component {
             setAttributes,
             attributes: {
                 uniqueId,
+                className,
                 galleryItems,
                 galleryContents,
                 linkTo,
@@ -274,7 +277,6 @@ class Edit extends Component {
         } = this.props
         const { device } = this.state
 
-        if (uniqueId) { CssGenerator(this.props.attributes, 'gallery', uniqueId) }
 
         if (galleryContents.length === 0) {
             return (
@@ -295,97 +297,101 @@ class Edit extends Component {
         return (
             <Fragment>
                 <InspectorControls key="inspector">
-                    <PanelBody title={__('General Settings')}>
-                        <Styles columns={2} value={style} onChange={val => setAttributes({ style: val })}
-                            options={[
-                                { value: 1, svg: icons.gallery_1 },
-                                { value: 2, svg: icons.gallery_2 },
-                            ]}
-                        />
-
-                        <Range
-                            label={__('Select Column')}
-                            value={column}
-                            onChange={(value) => setAttributes({ column: value })}
-                            min={1} step={1} max={6}
-                            responsive device={device}
-                            onDeviceChange={value => this.setState({ device: value })}
-                        />
-                        <Range label={__('Gutter')} value={gutter} onChange={val => setAttributes({ gutter: val })} min={0} max={50} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <Toggle label={__('Enable Popup')} value={enablePopup} onChange={value => setAttributes({ enablePopup: value })} />
-                        {enablePopup &&
-                            <Toggle label={__('Enable Popup Icon')} value={enablePopupIcon} onChange={value => setAttributes({ enablePopupIcon: value })} />
-                        }
-                        {!enablePopup &&
-                            <SelectControl
-                                label={__('Link To')}
-                                value={linkTo}
-                                onChange={value => setAttributes({ linkTo: value })}
-                                options={linkOptions}
-                            />
-                        }
-                    </PanelBody>
-                    <PanelBody title={__('Image')} initialOpen={false}>
-
-                        {(style === 1) &&
-                            <Fragment>
-                                <Toggle label={__('Fixed Image Height')} value={enableImgFixedHeight} onChange={value => setAttributes({ enableImgFixedHeight: value })} />
-                                {enableImgFixedHeight && <Range label={__('')} value={imgFixedHeight} onChange={value => setAttributes({ imgFixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
-                            </Fragment>
-                        }
-                        <BorderRadius label={__('Radius')} value={imgBorderRadius} onChange={val => setAttributes({ imgBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                        <BoxShadow label={__('Box-Shadow')} value={imgBoxShadow} onChange={val => setAttributes({ imgBoxShadow: val })} disableInset />
-                        <Select label={__('Image Animation')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')], ['scale', __('Scale')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />
-                    </PanelBody>
-
-                    {/* caption     */}
-                    <PanelBody title={__('Caption')} initialOpen={false}>
-                        <Toggle label={__('Enable Caption')} value={enableCaption} onChange={val => setAttributes({ enableCaption: val })} />
-                        {enableCaption == 1 &&
-                            <Fragment>
-                                <Padding label={__('Padding')} value={captionPadding} onChange={val => setAttributes({ captionPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <RadioAdvanced label={__('Show')} value={showCaption} onChange={(value) => setAttributes({ showCaption: value })}
+                    <InspectorTabs tabs={['style', 'advance']}>
+                        <InspectorTab key={'style'}>
+                            <PanelBody title={__('General Settings')}>
+                                <Styles columns={2} value={style} onChange={val => setAttributes({ style: val })}
                                     options={[
-                                        { label: __('On Hover'), value: 'onHover', title: __('On Hover') },
-                                        { label: __('Always'), value: 'always', title: __('Always') }
+                                        { value: 1, svg: icons.gallery_1 },
+                                        { value: 2, svg: icons.gallery_2 },
                                     ]}
                                 />
-                                <RadioAdvanced label={__('Vertical Align')} value={captionVerticalAlign} onChange={(value) => setAttributes({ captionVerticalAlign: value })}
-                                    options={[
-                                        { label: __('Top'), value: 'top', title: __('Top') },
-                                        { label: __('Middle'), value: 'center', title: __('Middle') },
-                                        { label: __('Bottom'), value: 'bottom', title: __('Bottom') },
-                                    ]}
+
+                                <Range
+                                    label={__('Select Column')}
+                                    value={column}
+                                    onChange={(value) => setAttributes({ column: value })}
+                                    min={1} step={1} max={6}
+                                    responsive device={device}
+                                    onDeviceChange={value => this.setState({ device: value })}
                                 />
-                                <Alignment label={__('Horizontal Alignment')} value={captionAlignment} alignmentType="content" onChange={val => setAttributes({ captionAlignment: val })} alignmentType="content" disableJustify />
-                                <Typography label={__('Caption Typography')} value={captionTypography} onChange={val => setAttributes({ captionTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-                                <Color label={__('Caption Color')} value={captionColor} onChange={(value) => setAttributes({ captionColor: value })} />
-                            </Fragment>
-                        }
-                    </PanelBody>
+                                <Range label={__('Gutter')} value={gutter} onChange={val => setAttributes({ gutter: val })} min={0} max={50} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <Toggle label={__('Enable Popup')} value={enablePopup} onChange={value => setAttributes({ enablePopup: value })} />
+                                {enablePopup &&
+                                    <Toggle label={__('Enable Popup Icon')} value={enablePopupIcon} onChange={value => setAttributes({ enablePopupIcon: value })} />
+                                }
+                                {!enablePopup &&
+                                    <SelectControl
+                                        label={__('Link To')}
+                                        value={linkTo}
+                                        onChange={value => setAttributes({ linkTo: value })}
+                                        options={linkOptions}
+                                    />
+                                }
+                            </PanelBody>
+                            <PanelBody title={__('Image')} initialOpen={false}>
 
-                    <PanelBody title={__('Overlay')} initialOpen={false}>
-                        <Toggle label={__('Enable')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
-                        {enableOverlay == 1 &&
-                            <Fragment>
-                                <Tabs>
-                                    <Tab tabTitle={__('Normal')}>
-                                        <ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
-                                    </Tab>
-                                    <Tab tabTitle={__('Hover')}>
-                                        <ColorAdvanced label={__('Background')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
-                                    </Tab>
-                                </Tabs>
+                                {(style === 1) &&
+                                    <Fragment>
+                                        <Toggle label={__('Fixed Image Height')} value={enableImgFixedHeight} onChange={value => setAttributes({ enableImgFixedHeight: value })} />
+                                        {enableImgFixedHeight && <Range label={__('')} value={imgFixedHeight} onChange={value => setAttributes({ imgFixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+                                    </Fragment>
+                                }
+                                <BorderRadius label={__('Radius')} value={imgBorderRadius} onChange={val => setAttributes({ imgBorderRadius: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                <BoxShadow label={__('Box-Shadow')} value={imgBoxShadow} onChange={val => setAttributes({ imgBoxShadow: val })} disableInset />
+                                <Select label={__('Image Animation')} options={[['none', __('No Animation')], ['slide-top', __('Slide From Top')], ['slide-right', __('Slide From Right')], ['slide-bottom', __('Slide From Bottom')], ['slide-left', __('Slide From Left')], ['zoom-in', __('Zoom In')], ['zoom-out', __('Zoom Out')], ['scale', __('Scale')]]} value={imageAnimation} onChange={val => setAttributes({ imageAnimation: val })} />
+                            </PanelBody>
 
-                                <Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
-                            </Fragment>
-                        }
-                    </PanelBody>
+                            {/* caption     */}
+                            <PanelBody title={__('Caption')} initialOpen={false}>
+                                <Toggle label={__('Enable Caption')} value={enableCaption} onChange={val => setAttributes({ enableCaption: val })} />
+                                {enableCaption == 1 &&
+                                    <Fragment>
+                                        <Padding label={__('Padding')} value={captionPadding} onChange={val => setAttributes({ captionPadding: val })} min={0} max={200} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                        <RadioAdvanced label={__('Show')} value={showCaption} onChange={(value) => setAttributes({ showCaption: value })}
+                                            options={[
+                                                { label: __('On Hover'), value: 'onHover', title: __('On Hover') },
+                                                { label: __('Always'), value: 'always', title: __('Always') }
+                                            ]}
+                                        />
+                                        <RadioAdvanced label={__('Vertical Align')} value={captionVerticalAlign} onChange={(value) => setAttributes({ captionVerticalAlign: value })}
+                                            options={[
+                                                { label: __('Top'), value: 'top', title: __('Top') },
+                                                { label: __('Middle'), value: 'center', title: __('Middle') },
+                                                { label: __('Bottom'), value: 'bottom', title: __('Bottom') },
+                                            ]}
+                                        />
+                                        <Alignment label={__('Horizontal Alignment')} value={captionAlignment} alignmentType="content" onChange={val => setAttributes({ captionAlignment: val })} alignmentType="content" disableJustify />
+                                        <Typography label={__('Caption Typography')} value={captionTypography} onChange={val => setAttributes({ captionTypography: val })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                        <Color label={__('Caption Color')} value={captionColor} onChange={(value) => setAttributes({ captionColor: value })} />
+                                    </Fragment>
+                                }
+                            </PanelBody>
 
-                    {animationSettings(uniqueId, animation, setAttributes)}
+                            <PanelBody title={__('Overlay')} initialOpen={false}>
+                                <Toggle label={__('Enable')} value={enableOverlay} onChange={val => setAttributes({ enableOverlay: val })} />
+                                {enableOverlay == 1 &&
+                                    <Fragment>
+                                        <Tabs>
+                                            <Tab tabTitle={__('Normal')}>
+                                                <ColorAdvanced label={__('Background')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
+                                            </Tab>
+                                            <Tab tabTitle={__('Hover')}>
+                                                <ColorAdvanced label={__('Background')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
+                                            </Tab>
+                                        </Tabs>
 
-                    {interactionSettings(uniqueId, interaction, setAttributes)}
+                                        <Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
+                                    </Fragment>
+                                }
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={'advance'}>
+                            {animationSettings(uniqueId, animation, setAttributes)}
 
+                            {interactionSettings(uniqueId, interaction, setAttributes)}
+                        </InspectorTab>
+                    </InspectorTabs>
                 </InspectorControls>
 
                 <BlockControls>
@@ -400,7 +406,7 @@ class Edit extends Component {
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-                <div className={`qubely-block-${uniqueId}`}>
+                <div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
                     <div className={`qubely-block-gallery qubely-gallery-item-${style}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
                         <div className={`qubely-gallery-items ${'qubely-column-grid qubely-column-grid-md' + column.md + ' ' + 'qubely-column-grid-sm' + column.sm + ' ' + 'qubely-column-grid-xs' + column.xs}`}>
                             {this.renderGalleryItem()}
@@ -421,4 +427,4 @@ class Edit extends Component {
     }
 }
 
-export default Edit
+export default withCSSGenerator()(Edit);

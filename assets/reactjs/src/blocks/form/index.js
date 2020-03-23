@@ -36,7 +36,7 @@ registerBlockType('qubely/form', {
         __('Builder')
     ],
     supports: {
-        align: ['full'],
+        align: ['center', 'wide', 'full'],
     },
     example: {
         attributes: {
@@ -328,7 +328,7 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '!=', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover {border-bottom-color: {{inputBorderColorHover}};}'
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover {border-color: {{inputBorderColorHover}};}'
                 }
             ]
         },
@@ -340,13 +340,13 @@ registerBlockType('qubely/form', {
                     condition: [
                         { key: 'layout', relation: '==', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-color: {{inputBorderColorFocus}}; box-shadow: 0 0 0 2px {{inputBorderColorFocus}};}'
+                    selector: '{{QUBELY}} .qubely-block-form.qubely-layout-classic .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {border-color: {{inputBorderColorFocus}};}'
                 },
                 {
                     condition: [
                         { key: 'layout', relation: '!=', value: 'classic' },
                     ],
-                    selector: '{{QUBELY}} input.qubely-form-field:focus, textarea.qubely-form-field:focus {border-bottom-color: {{inputBorderColorFocus}};}'
+                    selector: '{{QUBELY}} .qubely-block-form .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {border-color: {{inputBorderColorFocus}};}'
                 }
             ]
         },
