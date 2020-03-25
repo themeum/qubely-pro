@@ -137,6 +137,10 @@ function register_block_qubely_postgrid_pro()
 					'type' => 'number',
 					'default' => 45,
 				),
+				'page' => array(
+					'type' => 'number',
+					'default' => 1,
+				),
 				'postsToShow' => array(
 					'type' => 'number',
 					'default' => 4,

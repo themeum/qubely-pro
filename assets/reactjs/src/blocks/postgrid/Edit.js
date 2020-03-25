@@ -147,6 +147,7 @@ class Edit extends Component {
 				tags,
 				order,
 				orderBy,
+				page,
 				postsToShow,
 				showImages,
 				imgSize,
@@ -395,6 +396,7 @@ class Edit extends Component {
 									value={taxonomy === 'categories' ? categories : tags}
 									onChange={value => setAttributes(taxonomy === 'categories' ? { categories: value.length && value[value.length - 1].label === 'All' ? [] : value } : { tags: value.length && value[value.length - 1].label === 'All' ? [] : value })}
 								/>
+								<Range label={__('Page')} value={page} onChange={value => setAttributes({ page: parseInt(value) })} min={1} max={50} />
 								<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={0} max={50} />
 
 								<SelectControl
@@ -696,8 +698,18 @@ class Edit extends Component {
 
 export default compose([
 	withSelect((select, props) => {
-		const { getEntityRecords } = select('core')
-		const { attributes: { taxonomy, order, orderBy, categories, tags, postsToShow } } = props
+		const { getEntityRecords } = select('core');
+		const {
+			attributes: {
+				taxonomy,
+				order,
+				orderBy,
+				categories,
+				tags,
+				page,
+				postsToShow
+			}
+		} = props;
 
 		let allTaxonomy = qubely_admin.all_taxonomy
 
@@ -707,6 +719,7 @@ export default compose([
 		let query = {
 			order: order,
 			orderby: orderBy,
+			page: page,
 			per_page: postsToShow,
 			[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
 		}
