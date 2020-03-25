@@ -1,3 +1,4 @@
+const diff = require("deep-object-diff").diff;
 const { __ } = wp.i18n
 const { Component, Fragment } = wp.element
 const { withSelect } = wp.data
@@ -46,12 +47,20 @@ class Edit extends Component {
 			device: 'md',
 			spacer: true,
 			categoriesList: [],
+			numberOfPosts: 0
 		};
 	}
 
 	componentDidMount() {
-		const { setAttributes, clientId, attributes: { uniqueId } } = this.props
+		const {
+			clientId,
+			setAttributes,
+			attributes: {
+				uniqueId
+			}
+		} = this.props;
 		this.isStillMounted = true;
+
 		this.fetchRequest = wp.apiFetch({
 			path: addQueryArgs(`/wp/v2/categories`, CATEGORIES_LIST_QUERY),
 		}).then(
@@ -67,11 +76,21 @@ class Edit extends Component {
 				}
 			}
 		);
-		const _client = clientId.substr(0, 6)
+		const _client = clientId.substr(0, 6);
 		if (!uniqueId) {
 			setAttributes({ uniqueId: _client });
 		} else if (uniqueId && uniqueId != _client) {
 			setAttributes({ uniqueId: _client });
+		}
+	}
+	componentDidUpdate(prevProps, prevState) {
+		const {
+			allPosts,
+		} = this.props;
+		if (diff(prevProps.allPosts, allPosts).length > 0) {
+			this.setState({
+				numberOfPosts: allPosts.length
+			})
 		}
 	}
 	componentWillUnmount() {
@@ -251,8 +270,16 @@ class Edit extends Component {
 				animation,
 				interaction
 			}
-		} = this.props
-		const { device } = this.state;
+		} = this.props;
+
+		const {
+			device,
+			numberOfPosts
+		} = this.state;
+		console.log('numberOfPosts: ', numberOfPosts);
+		console.log('postsToShow: ', postsToShow);
+		let pages = Math.ceil(numberOfPosts / postsToShow);
+		console.log('pages : ', pages);
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
@@ -396,7 +423,6 @@ class Edit extends Component {
 									value={taxonomy === 'categories' ? categories : tags}
 									onChange={value => setAttributes(taxonomy === 'categories' ? { categories: value.length && value[value.length - 1].label === 'All' ? [] : value } : { tags: value.length && value[value.length - 1].label === 'All' ? [] : value })}
 								/>
-								<Range label={__('Page')} value={page} onChange={value => setAttributes({ page: parseInt(value) })} min={1} max={50} />
 								<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={0} max={50} />
 
 								<SelectControl
@@ -684,6 +710,19 @@ class Edit extends Component {
 										qubelyContextMenu={this.refs.qubelyContextMenu}
 									/>
 								</div>
+								{
+									pages > 1 &&
+									<div className="qubely-pagination-wrapper">
+										<div className="pagination">
+											{
+												Array(pages).fill(0).map((_, index) => (
+													<div key={index} className={`pages${page === index + 1 ? ' active' : ''}`} onClick={() => setAttributes({ page: index + 1 })}>{index + 1}</div>
+												))
+											}
+										</div>
+									</div>
+
+								}
 							</div>
 							:
 							<div className="qubely-postgrid-is-loading">
@@ -723,8 +762,14 @@ export default compose([
 			per_page: postsToShow,
 			[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
 		}
+		let allPosts = {
+			order: order,
+			orderby: orderBy,
+			[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
+		}
 		return {
 			posts: getEntityRecords('postType', 'post', query),
+			allPosts: getEntityRecords('postType', 'post', allPosts),
 			taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
 		};
 	}),
