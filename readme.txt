@@ -4,9 +4,10 @@ Stable tag: 1.1.6
 == Changelog ==
 
 
-= 1.1.6 - 24 March, 2020 =
+= 1.1.6 - 25 March, 2020 =
 Update: All blocks - Major improvement in Panel UI & UX 
 Fix: Advanced Settings - Hide Tablet/ Hide Mobile issue  
+Fix: Row block - Full width option not working in Twenty Twenty Theme  
 
 = 1.1.5 - 16 March, 2020 =
 New: Support for WordPress 5.4  
