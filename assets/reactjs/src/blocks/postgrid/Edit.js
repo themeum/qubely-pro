@@ -87,6 +87,7 @@ class Edit extends Component {
 		const {
 			allPosts,
 		} = this.props;
+
 		if (diff(prevProps.allPosts, allPosts).length > 0) {
 			this.setState({
 				numberOfPosts: allPosts.length
@@ -276,10 +277,9 @@ class Edit extends Component {
 			device,
 			numberOfPosts
 		} = this.state;
-		console.log('numberOfPosts: ', numberOfPosts);
-		console.log('postsToShow: ', postsToShow);
+
 		let pages = Math.ceil(numberOfPosts / postsToShow);
-		console.log('pages : ', pages);
+
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
@@ -765,6 +765,7 @@ export default compose([
 		let allPosts = {
 			order: order,
 			orderby: orderBy,
+			per_page: -1,
 			[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
 		}
 		return {
