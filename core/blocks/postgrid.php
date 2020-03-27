@@ -1243,7 +1243,8 @@ function render_block_qubely_postgrid_pro($att)
 
 	function pagination($index)
 	{
-		return '<div class="pages" onclick="changePage()">' . $index . '</div>';
+		$temp = $index + 1;
+		return '<div class="pages" onclick="changePage()">' . $temp  . '</div>';
 	}
 
 	if ($query->have_posts()) {
@@ -1409,9 +1410,8 @@ function render_block_qubely_postgrid_pro($att)
 			}
 		}
 		$html .= '</div>';
-		$html .= '<div class="qubely-pagination-wrapper">	<div class="pagination">';
-		// $html .= '<div class="pages" onclick="echoHello()">hello</div>';
-		$html .= join('', array_map('pagination', $pages));
+		$html .= '<div class="qubely-pagination-wrapper"><div class="pagination">';
+		$html .= join('', array_map('pagination', array_keys($pages)));
 		$html .= '</div> </div>';
 		$html .= '</div>';
 		wp_reset_postdata();
