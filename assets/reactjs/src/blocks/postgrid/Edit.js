@@ -7,6 +7,7 @@ const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
 const { InspectorControls, BlockControls } = wp.blockEditor
 const {
+	Alignment,
 	Range,
 	ButtonGroup,
 	Toggle,
@@ -253,6 +254,21 @@ class Edit extends Component {
 				selectPosition,
 				positionXaxis,
 				positionYaxis,
+
+				//pagination
+				paginationType,
+				pageAlignment,
+				paginationTypography,
+				pagesColor,
+				pagesHoverColor,
+				pagesbgColor,
+				pagesbgHoverColor,
+				pagesBorder,
+				pagesHoverBorder,
+				pagesShadow,
+				pagesHoverShadow,
+				pagesBorderRadius,
+				
 				hideTablet,
 				hideMobile,
 				globalCss,
@@ -265,7 +281,7 @@ class Edit extends Component {
 			device,
 		} = this.state;
 
-		let  pages= Math.ceil(qubely_pro_admin.publishedPosts / postsToShow);
+		let pages = Math.ceil(qubely_pro_admin.publishedPosts / postsToShow);
 
 		return (
 			<Fragment>
@@ -395,7 +411,7 @@ class Edit extends Component {
 							</PanelBody>
 
 
-							<PanelBody title={__('Query')} initialOpen={true}>
+							<PanelBody title={__('Query')} initialOpen={false}>
 								<ButtonGroup
 									label={__('Taxonomy')}
 									options={[[__('Categories'), 'categories'], [__('Tags'), 'tags']]}
@@ -431,6 +447,112 @@ class Edit extends Component {
 								/>
 							</PanelBody>
 
+							<PanelBody title={__('Pagination', 'qubely')} initialOpen={true}>
+								<ButtonGroup
+									label={__('Type')}
+									options={
+										[
+											[__('Pagination'), 'pagition'],
+											[__('Load More'), 'loadmore'],
+											[<span className="fas fa-ban" />, 'disable']
+										]
+									}
+									value={paginationType}
+									onChange={value => setAttributes({ paginationType: value })}
+								/>
+
+								{
+									paginationType !== 'disable' &&
+									<Fragment>
+										<Alignment
+											flex
+											value={pageAlignment}
+											label={__('Alignment')}
+											alignmentType="content"
+											onChange={val => setAttributes({ pageAlignment: val })}
+										/>
+										<Typography
+											device={device}
+											label={__('Typography', 'qubely')}
+											value={paginationTypography}
+											onChange={value => setAttributes({ paginationTypography: value })}
+											onDeviceChange={value => this.setState({ device: value })}
+										/>
+										<Tabs>
+											<Tab tabTitle={__('Normal', 'qubely')}>
+												<Color
+													label={__('Text Color', 'qubely')}
+													value={pagesColor}
+													onChange={value => setAttributes({ pagesColor: value })}
+												/>
+												<ColorAdvanced
+													label={__('Background', 'qubely')}
+													value={pagesbgColor}
+													onChange={newColor => setAttributes({ pagesbgColor: newColor })}
+												/>
+
+												<Border
+													min={0}
+													max={10}
+													responsive
+													device={device}
+													label={__('Border', 'qubely')}
+													value={pagesBorder}
+													unit={['px', 'em', '%']}
+													onChange={val => setAttributes({ pagesBorder: val })}
+													onDeviceChange={value => this.setState({ device: value })}
+												/>
+												<BoxShadow
+													label={__('Box-Shadow')}
+													value={pagesShadow}
+													onChange={value => setAttributes({ buttonShadow: value })}
+												/>
+											</Tab>
+											<Tab tabTitle={__('Hover')}>
+												<Color
+													label={__('Text Color', 'qubely')}
+													value={pagesHoverColor}
+													onChange={value => setAttributes({ pagesHoverColor: value })}
+												/>
+												<ColorAdvanced
+													label={__('Background', 'qubely')}
+													value={pagesbgHoverColor}
+													onChange={newColor => setAttributes({ pagesbgHoverColor: newColor })}
+												/>
+
+												<Border
+													min={0}
+													max={10}
+													responsive
+													device={device}
+													label={__('Border', 'qubely')}
+													value={pagesHoverBorder}
+													unit={['px', 'em', '%']}
+													onChange={val => setAttributes({ pagesHoverBorder: val })}
+													onDeviceChange={value => this.setState({ device: value })}
+												/>
+												<BoxShadow
+													label={__('Box-Shadow')}
+													value={pagesHoverShadow}
+													onChange={value => setAttributes({ pagesHoverShadow: value })}
+												/>
+											</Tab>
+										</Tabs>
+										<BorderRadius
+											min={0}
+											max={100}
+											responsive
+											device={device}
+											label={__('Radius')}
+											unit={['px', 'em', '%']}
+											value={pagesBorderRadius}
+											onDeviceChange={value => this.setState({ device: value })} 
+											onChange={(value) => setAttributes({ pagesBorderRadius: value })}
+											/>
+									</Fragment>
+								}
+
+							</PanelBody>
 							{/* Global */}
 
 							<PanelBody title={__('Image Settings')} initialOpen={false}>
