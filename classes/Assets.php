@@ -84,6 +84,7 @@ class Assets {
 		wp_enqueue_script( 'qubely-pro-blocks-js', QUBELY_PRO_DIR_URL . 'assets/js/qubely.pro.dev.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'qubely-blocks-js' ), QUBELY_PRO_VERSION, true );
         wp_localize_script('qubely-pro-blocks-js', 'qubely_pro_admin', array(
             'plugin' => QUBELY_PRO_DIR_URL,
+            'publishedPosts'=>wp_count_posts()->publish,
             'ajax' => admin_url( 'admin-ajax.php' )
         ));
 	}

@@ -1134,6 +1134,11 @@ function register_block_qubely_postgrid_pro()
 	);
 }
 
+function pagination($index)
+{
+	$temp = $index + 1;
+	return '<div class="pages" onclick="changePage()">' . $temp  . '</div>';
+}
 
 function render_block_qubely_postgrid_pro($att)
 {
@@ -1240,12 +1245,6 @@ function render_block_qubely_postgrid_pro($att)
 		$class .= ' ' . $att['className'];
 	}
 
-
-	function pagination($index)
-	{
-		$temp = $index + 1;
-		return '<div class="pages" onclick="changePage()">' . $temp  . '</div>';
-	}
 
 	if ($query->have_posts()) {
 		$html .= '<div class="' . $class . '">';

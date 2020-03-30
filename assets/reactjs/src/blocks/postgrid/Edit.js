@@ -1,4 +1,3 @@
-const diff = require("deep-object-diff").diff;
 const { __ } = wp.i18n
 const { Component, Fragment } = wp.element
 const { withSelect } = wp.data
@@ -46,8 +45,7 @@ class Edit extends Component {
 		this.state = {
 			device: 'md',
 			spacer: true,
-			categoriesList: [],
-			numberOfPosts: 0
+			categoriesList: []
 		};
 	}
 
@@ -83,17 +81,7 @@ class Edit extends Component {
 			setAttributes({ uniqueId: _client });
 		}
 	}
-	componentDidUpdate(prevProps, prevState) {
-		const {
-			allPosts,
-		} = this.props;
 
-		if (diff(prevProps.allPosts, allPosts).length > 0) {
-			this.setState({
-				numberOfPosts: allPosts.length
-			})
-		}
-	}
 	componentWillUnmount() {
 		this.isStillMounted = false;
 	}
@@ -275,17 +263,16 @@ class Edit extends Component {
 
 		const {
 			device,
-			numberOfPosts
 		} = this.state;
 
-		let pages = Math.ceil(numberOfPosts / postsToShow);
+		let  pages= Math.ceil(qubely_pro_admin.publishedPosts / postsToShow);
 
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
 					<InspectorTabs tabs={['style', 'advance']}>
 						<InspectorTab key={'style'}>
-							<PanelBody title='' initialOpen={true}>
+							<PanelBody title='' initialOpen={false}>
 								<Styles
 									options={[
 										{ value: 1, svg: icons.postgrid_1, label: __('') },
@@ -299,7 +286,7 @@ class Edit extends Component {
 								/>
 							</PanelBody>
 
-							<PanelBody title={__('Post Design')} initialOpen={true}>
+							<PanelBody title={__('Post Design')} initialOpen={false}>
 								<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
 									options={[
 										{ value: 1, svg: icons.postgrid_design_1 },
@@ -408,7 +395,7 @@ class Edit extends Component {
 							</PanelBody>
 
 
-							<PanelBody title={__('Query')} initialOpen={false}>
+							<PanelBody title={__('Query')} initialOpen={true}>
 								<ButtonGroup
 									label={__('Taxonomy')}
 									options={[[__('Categories'), 'categories'], [__('Tags'), 'tags']]}
@@ -423,7 +410,7 @@ class Edit extends Component {
 									value={taxonomy === 'categories' ? categories : tags}
 									onChange={value => setAttributes(taxonomy === 'categories' ? { categories: value.length && value[value.length - 1].label === 'All' ? [] : value } : { tags: value.length && value[value.length - 1].label === 'All' ? [] : value })}
 								/>
-								<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={0} max={50} />
+								<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={1} max={50} />
 
 								<SelectControl
 									label={__("Order By")}
@@ -690,7 +677,7 @@ class Edit extends Component {
 					{
 						(posts && posts.length) ?
 							<div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${((layout === 2) || (layout === 3) || (layout === 4)) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
-								{posts && posts.map((post, index) => {
+								{posts.map((post, index) => {
 									return (
 										<div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style} ${((layout == 5) && (index == 0) || (layout == 3) && (index == 0)) ? 'qubely-post-large-view' : 'qubely-post-small-view'}`}>
 											<div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
@@ -762,15 +749,8 @@ export default compose([
 			per_page: postsToShow,
 			[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
 		}
-		let allPosts = {
-			order: order,
-			orderby: orderBy,
-			per_page: -1,
-			[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
-		}
 		return {
 			posts: getEntityRecords('postType', 'post', query),
-			allPosts: getEntityRecords('postType', 'post', allPosts),
 			taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
 		};
 	}),
