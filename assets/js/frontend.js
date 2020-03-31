@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
             url: `${qubely_pro_urls.plugin}core/blocks/postgrid.php`,
             data: { action: 'change_qurey_args' },
             success: function (html) {
-                alert(html);
+                console.log('success');
             }
         });
     })

@@ -430,7 +430,7 @@ class Edit extends Component {
 									enableSearch
 									defaultOptionsLabel="All"
 									options={[{ value: 'all', label: __('All') }, ...taxonomyList]}
-									value={taxonomy === 'categories' ? categories : tags}
+									value={taxonomy ?taxonomy === 'categories' ? categories : tags:[]}
 									onChange={value => setAttributes(taxonomy === 'categories' ? { categories: value.length && value[value.length - 1].label === 'All' ? [] : value } : { tags: value.length && value[value.length - 1].label === 'All' ? [] : value })}
 								/>
 								<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={1} max={50} />
@@ -826,13 +826,13 @@ class Edit extends Component {
 
 				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
 					{
-						(posts && posts.length) ?
+						( posts  && posts.length) ?
 							<div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${((layout === 2) || (layout === 3) || (layout === 4)) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 								{posts.map((post, index) => {
 									return (
 										<div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style} ${((layout == 5) && (index == 0) || (layout == 3) && (index == 0)) ? 'qubely-post-large-view' : 'qubely-post-small-view'}`}>
 											<div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
-												{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
+												{post && showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
 												{this.renderCardContent(post, index)}
 											</div>
 										</div>
