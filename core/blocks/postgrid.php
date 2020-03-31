@@ -9,6 +9,8 @@ class POSTGRID
 	{
 		$this->page = 1;
 		add_action('init', [$this, 'register_block_qubely_postgrid_pro'], 100);
+		add_action('wp_ajax_process_reservation', array($this, 'change_page'));
+		add_action('wp_ajax_nopriv_process_reservation', array($this, 'change_page'));
 	}
 
 	/**
@@ -1281,15 +1283,25 @@ class POSTGRID
 		);
 	}
 
-	public function change_qurey_args()
-	{
-		$this->page = 2;
-	}
 
+	public function change_page()
+	{
+		check_ajax_referer('postgrid_pagination_nonce', 'nonce');
+
+		if (true) {
+			$this->page = 2;
+			wp_send_json_success("ajax here new page id : ".$this->page."");
+		} else
+			wp_send_json_error(array('error' => $custom_error));
+	}
 	public function pagination($index)
 	{
 		$temp = $index + 1;
-		return '<div class="pages">' . $temp  . '</div>';
+		$className = 'pages';
+		if ($temp == $this->page) {
+			$className .= ' active';
+		}
+		return '<div class="' . $className . '" data-page="' .$temp .'">' . $temp  . '</div>';
 	}
 
 	public	function render_block_qubely_postgrid_pro($att, $content)
@@ -1341,8 +1353,6 @@ class POSTGRID
 				}
 			}
 		}
-
-		// echo ($this->page);
 
 		$args = array(
 			'post_type' 		=> 'post',

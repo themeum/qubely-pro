@@ -20,7 +20,17 @@ class Assets {
                 'plugin' => QUBELY_PRO_DIR_URL,
             ));
             wp_enqueue_script('qubely_pro_local_script');
-            wp_enqueue_script('qubely-pro-frontned',  QUBELY_PRO_DIR_URL . 'assets/js/frontend.js', array('jquery'), QUBELY_PRO_VERSION);
+
+            wp_enqueue_script('postgrid_ajax_script',  QUBELY_PRO_DIR_URL . 'assets/js/frontend.js', array('jquery'), QUBELY_PRO_VERSION);
+            wp_localize_script( 
+                'postgrid_ajax_script', 
+                'postgrid_ajax', 
+                array(
+                    'plugin' => QUBELY_PRO_DIR_URL,
+                    'url'   => admin_url( 'admin-ajax.php' ),
+                    'nonce' => wp_create_nonce( "postgrid_pagination_nonce" ),
+                )
+            );
             if(is_array($blocks_meta_data) && count($blocks_meta_data)){
                 $available_blocks = $blocks_meta_data['available_blocks'];
 
