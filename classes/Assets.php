@@ -21,16 +21,7 @@ class Assets {
             ));
             wp_enqueue_script('qubely_pro_local_script');
 
-            wp_enqueue_script('postgrid_ajax_script',  QUBELY_PRO_DIR_URL . 'assets/js/frontend.js', array('jquery'), QUBELY_PRO_VERSION);
-            wp_localize_script( 
-                'postgrid_ajax_script', 
-                'postgrid_ajax', 
-                array(
-                    'plugin' => QUBELY_PRO_DIR_URL,
-                    'url'   => admin_url( 'admin-ajax.php' ),
-                    'nonce' => wp_create_nonce( "postgrid_pagination_nonce" ),
-                )
-            );
+
             if(is_array($blocks_meta_data) && count($blocks_meta_data)){
                 $available_blocks = $blocks_meta_data['available_blocks'];
 
@@ -41,7 +32,18 @@ class Assets {
                     wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
                     wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
                 }
-
+                if ( in_array('qubely/postgrid', $available_blocks)) {
+                    wp_enqueue_script('postgrid_ajax_script',  QUBELY_PRO_DIR_URL . 'assets/js/frontend.js', array('jquery'), QUBELY_PRO_VERSION);
+                    wp_localize_script( 
+                        'postgrid_ajax_script', 
+                        'postgrid_ajax', 
+                        array(
+                            'plugin' => QUBELY_PRO_DIR_URL,
+                            'url'   => admin_url( 'admin-ajax.php' ),
+                            'nonce' => wp_create_nonce( "postgrid_pagination_nonce" ),
+                        )
+                    );
+                }
                 if (
                     in_array('qubely/imagecarousel', $available_blocks) ||
                     in_array('qubely/postcarousel', $available_blocks) ||
