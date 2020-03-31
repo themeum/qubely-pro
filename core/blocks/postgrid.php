@@ -1,4 +1,20 @@
 <?php
+$test = 3;
+
+if (isset($_POST['action'])) {
+	switch ($_POST['action']) {
+		case 'change_page':
+			change_qurey_args();
+			break;
+	}
+}
+
+function change_qurey_args()
+{
+	echo "The select function is called.";
+	exit;
+}
+
 
 /**
  * Registers the `qubely/postgrid` block on server.
@@ -255,6 +271,26 @@ function register_block_qubely_postgrid_pro()
 					]]
 				),
 				'pagesBorderRadius' => array(
+					'type' => 'object',
+					'default' => (object) [],
+					'style' => [(object) [
+						'condition' => [
+							(object) ['key' => 'paginationType', 'relation' => '!=', 'value' => 'disable']
+						],
+						'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages'
+					]]
+				),
+				'pagePadding' => array(
+					'type' => 'object',
+					'default' => (object) [],
+					'style' => [(object) [
+						'condition' => [
+							(object) ['key' => 'paginationType', 'relation' => '!=', 'value' => 'disable']
+						],
+						'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages'
+					]]
+				),
+				'pageMargin' => array(
 					'type' => 'object',
 					'default' => (object) [],
 					'style' => [(object) [
@@ -1253,7 +1289,7 @@ function register_block_qubely_postgrid_pro()
 function pagination($index)
 {
 	$temp = $index + 1;
-	return '<div class="pages" onclick="changePage()">' . $temp  . '</div>';
+	return '<div class="pages">' . $temp  . '</div>';
 }
 
 function render_block_qubely_postgrid_pro($att)
@@ -1287,7 +1323,6 @@ function render_block_qubely_postgrid_pro($att)
 	$categories             = $att['categories'];
 	$tags                   = $att['tags'];
 	$taxonomy               = $att['taxonomy'];
-	$page             		= isset($att['page']) ? $att['page'] : 1;;
 	$animation 		        = isset($att['animation']) ? (count((array) $att['animation']) > 0 && $att['animation']['animation']  ? 'data-qubelyanimation="' . htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8') . '"' : '') : '';
 
 
@@ -1307,10 +1342,10 @@ function render_block_qubely_postgrid_pro($att)
 		}
 	}
 
-
+	echo ($GLOBALS['test']);
 	$args = array(
 		'post_type' 		=> 'post',
-		'page' 				=> $page,
+		// 'page' 				=> $GLOBALS['page'],
 		'posts_per_page' 	=> esc_attr($numbers),
 		'order' 			=> esc_attr($order),
 		'orderby' 			=> esc_attr($orderBy),
@@ -1360,7 +1395,6 @@ function render_block_qubely_postgrid_pro($att)
 	if (isset($att['className'])) {
 		$class .= ' ' . $att['className'];
 	}
-
 
 	if ($query->have_posts()) {
 		$html .= '<div class="' . $class . '">';
@@ -1524,11 +1558,10 @@ function render_block_qubely_postgrid_pro($att)
 				$count++;
 			}
 		}
-		$html .= '</div>';
 		$html .= '<div class="qubely-pagination-wrapper"><div class="pagination">';
 		$html .= join('', array_map('pagination', array_keys($pages)));
 		$html .= '</div> </div>';
-		$html .= '</div>';
+		$html .= '</div> </div>';
 		wp_reset_postdata();
 	}
 	return $html;

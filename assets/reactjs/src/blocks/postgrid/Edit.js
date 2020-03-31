@@ -24,9 +24,14 @@ const {
 	Styles,
 	Tabs,
 	Tab,
+	Margin,
 	RadioAdvanced,
 	withCSSGenerator,
-	gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
+	gloalSettings: {
+		globalSettingsPanel,
+		animationSettings,
+		interactionSettings
+	},
 	Inline: { InlineToolbar },
 	ContextMenu: {
 		ContextMenu,
@@ -268,7 +273,9 @@ class Edit extends Component {
 				pagesShadow,
 				pagesHoverShadow,
 				pagesBorderRadius,
-				
+				pagePadding,
+				pageMargin,
+
 				hideTablet,
 				hideMobile,
 				globalCss,
@@ -505,7 +512,7 @@ class Edit extends Component {
 												<BoxShadow
 													label={__('Box-Shadow')}
 													value={pagesShadow}
-													onChange={value => setAttributes({ buttonShadow: value })}
+													onChange={value => setAttributes({ pagesShadow: value })}
 												/>
 											</Tab>
 											<Tab tabTitle={__('Hover')}>
@@ -546,9 +553,31 @@ class Edit extends Component {
 											label={__('Radius')}
 											unit={['px', 'em', '%']}
 											value={pagesBorderRadius}
-											onDeviceChange={value => this.setState({ device: value })} 
+											onDeviceChange={value => this.setState({ device: value })}
 											onChange={(value) => setAttributes({ pagesBorderRadius: value })}
-											/>
+										/>
+										<Padding
+											min={0}
+											max={300}
+											responsive
+											device={device}
+											value={pagePadding}
+											label={__('Padding')}
+											unit={['px', 'em', '%']}
+											onChange={val => setAttributes({ pagePadding: val })}
+											onDeviceChange={value => this.setState({ device: value })}
+										/>
+										<Margin
+											max={150}
+											min={0}
+											responsive
+											device={device}
+											value={pageMargin}
+											label={__('Margin')}
+											unit={['px', 'em', '%']}
+											onChange={value => setAttributes({ pageMargin: value })}
+											onDeviceChange={value => this.setState({ device: value })}
+										/>
 									</Fragment>
 								}
 
