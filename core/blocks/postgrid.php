@@ -1297,7 +1297,6 @@ class POSTGRID
 
     public function pagination_bar($max_pages, $current_page) {
         if ($max_pages > 1){
-            $current_page = max(1, get_query_var('paged'));
             return paginate_links(array(
                 'base' => get_pagenum_link(1) . '%_%',
                 'format' => 'page/%#%',
