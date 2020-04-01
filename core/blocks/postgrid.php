@@ -1297,9 +1297,11 @@ class POSTGRID
 
     public function pagination_bar($max_pages, $current_page) {
         if ($max_pages > 1){
+            $big = 9999999;
             return paginate_links(array(
-                'base' => get_pagenum_link(1) . '%_%',
-                'format' => 'page/%#%',
+                'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+//                'format' => 'page/%#%',
+                'format'        => '?paged=%#%',
                 'current' => $current_page,
                 'total' => $max_pages,
             ));
