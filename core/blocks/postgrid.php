@@ -1300,7 +1300,7 @@ class POSTGRID
             $current_page = max(1, get_query_var('paged'));
             return paginate_links(array(
                 'base' => get_pagenum_link(1) . '%_%',
-                'format' => '/page/%#%',
+                'format' => 'page/%#%',
                 'current' => $current_page,
                 'total' => $max_pages,
             ));
