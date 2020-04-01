@@ -5,12 +5,12 @@ if (!defined('ABSPATH')) {
 
 class POSTGRID
 {
+    protected $page = 1;
 	function __construct()
 	{
-		$this->page = 1;
 		add_action('init', [$this, 'register_block_qubely_postgrid_pro'], 100);
-		add_action('wp_ajax_process_reservation', array($this, 'change_page'));
-		add_action('wp_ajax_nopriv_process_reservation', array($this, 'change_page'));
+//		add_action('wp_ajax_process_reservation', array($this, 'change_page'));
+//		add_action('wp_ajax_nopriv_process_reservation', array($this, 'change_page'));
 	}
 
 	/**
@@ -1284,27 +1284,30 @@ class POSTGRID
 	}
 
 
-	public function change_page()
-	{
-		check_ajax_referer('postgrid_pagination_nonce', 'nonce');
+//	public function change_page()
+//	{
+//		check_ajax_referer('postgrid_pagination_nonce', 'nonce');
+//
+//		if (true) {
+//			$this->page = 2;
+//			wp_send_json_success("ajax here new page id : ".$this->page."");
+//		} else
+//			wp_send_json_error(array('error' => $custom_error));
+//	}
 
-		if (true) {
-			$this->page = 2;
-			wp_send_json_success("ajax here new page id : ".$this->page."");
-		} else
-			wp_send_json_error(array('error' => $custom_error));
-	}
-	public function pagination($index)
-	{
-		$temp = $index + 1;
-		$className = 'pages';
-		if ($temp == $this->page) {
-			$className .= ' active';
-		}
-		return '<div class="' . $className . '" data-page="' .$temp .'">' . $temp  . '</div>';
-	}
+    public function pagination_bar($max_pages, $current_page) {
+        if ($max_pages > 1){
+            $current_page = max(1, get_query_var('paged'));
+            return paginate_links(array(
+                'base' => get_pagenum_link(1) . '%_%',
+                'format' => '/page/%#%',
+                'current' => $current_page,
+                'total' => $max_pages,
+            ));
+        }
+    }
 
-	public	function render_block_qubely_postgrid_pro($att, $content)
+	public function render_block_qubely_postgrid_pro($att, $content)
 	{
 		$layout 		        = isset($att['layout']) ? $att['layout'] : 3;
 		$uniqueId 		        = isset($att['uniqueId']) ? $att['uniqueId'] : '';
@@ -1353,6 +1356,11 @@ class POSTGRID
 				}
 			}
 		}
+
+		if(!empty(get_query_var('page')) || !empty(get_query_var('paged'))){
+            $this->page = is_front_page() ? get_query_var('page') : get_query_var('paged');
+        }
+
 
 		$args = array(
 			'post_type' 		=> 'post',
@@ -1569,10 +1577,11 @@ class POSTGRID
 					$count++;
 				}
 			}
-			$html .= '<div class="qubely-pagination-wrapper"><div class="pagination">';
-			$html .= join('', array_map([$this, 'pagination'], array_keys($pages)));
-			$html .= '</div> </div>';
-			$html .= '</div> </div>';
+//			$html .= '<div class="qubely-pagination-wrapper"><div class="pagination">';
+//			$html .= join('', array_map([$this, 'pagination'], array_keys($pages)));
+//			$html .= '</div> </div>';
+//			$html .= '</div> </div>';
+            $html .= $this->pagination_bar($query->max_num_pages, $this->page);
 			wp_reset_postdata();
 		}
 		return $html;
