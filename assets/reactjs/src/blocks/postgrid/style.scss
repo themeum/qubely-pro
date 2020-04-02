@@ -554,25 +554,41 @@
   }
 }
 
+.qubely-postgrid-pagination,
 .qubely-pagination-wrapper {
-  display: flex;
-  .pagination {
-    display: flex;
-    .pages {
-      cursor: pointer;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px 20px;
-      border-radius: 20px;
-      border: 1px solid gainsboro;
-      &.active{
-        color: #2184f9;
-        border-color: #2184f9;
-      }
-      &:not(:last-child) {
-        margin-right: 10px;
-      }
+  a,
+  > span,
+  button{
+    font-size: 16px;
+    line-height: 48px;
+    min-width: 50px;
+    text-align: center;
+    background: white;
+    margin-left: 4.5px;
+    margin-right: 4.5px;
+    border: 1px solid #BBC0D4;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline-block;
+    text-decoration: none;
+    color: #363636;
+    font-weight: 600;
+    &:hover{
+      color: #348EF8;
+    }
+    &.current,
+    &.active{
+      color: #fff;
+      background: #348EF8;
+      border-color: #348EF8;
+    }
+    &.qubely-pagination-prev span{
+      margin-right: 4px;
+    }
+    &.qubely-pagination-next span{
+      margin-left: 4px;
     }
   }
 }

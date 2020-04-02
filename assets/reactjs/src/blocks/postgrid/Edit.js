@@ -261,6 +261,7 @@ class Edit extends Component {
 				positionYaxis,
 
 				//pagination
+				enablePagination,
 				paginationType,
 				pageAlignment,
 				paginationTypography,
@@ -455,7 +456,7 @@ class Edit extends Component {
 							</PanelBody>
 
 							<PanelBody title={__('Pagination', 'qubely')} initialOpen={true}>
-								<ButtonGroup
+								{/*<ButtonGroup
 									label={__('Type')}
 									options={
 										[
@@ -466,10 +467,12 @@ class Edit extends Component {
 									}
 									value={paginationType}
 									onChange={value => setAttributes({ paginationType: value })}
-								/>
+								/>*/}
+
+								<Toggle label={__('Enable Pagination')} value={enablePagination} onChange={value => setAttributes({ enablePagination: value })} />
 
 								{
-									paginationType !== 'disable' &&
+									enablePagination &&
 									<Fragment>
 										<Alignment
 											flex
@@ -848,16 +851,21 @@ class Edit extends Component {
 										qubelyContextMenu={this.refs.qubelyContextMenu}
 									/>
 								</div>
+
 								{
-									pages > 1 &&
+									(pages > 1 && enablePagination) &&
 									<div className="qubely-pagination-wrapper">
-										<div className="pagination">
-											{
-												Array(pages).fill(0).map((_, index) => (
-													<div key={index} className={`pages${page === index + 1 ? ' active' : ''}`} onClick={() => setAttributes({ page: index + 1 })}>{index + 1}</div>
-												))
-											}
-										</div>
+										{
+											page > 1 && <button className={'qubely-pagination-prev'} onClick={() => setAttributes({ page: page -1 })}> <span className="fas fa-angle-left" /> {__('Prev')}</button>
+										}
+										{
+											Array(pages).fill(0).map((_, index) => (
+												<button key={index} className={`pages${page === index + 1 ? ' active' : ''}`} onClick={() => setAttributes({ page: index + 1 })}>{index + 1}</button>
+											))
+										}
+										{
+											(page !== pages) && <button className={'qubely-pagination-next'} onClick={() => setAttributes({ page: page + 1 })}>{__('Next')} <span className="fas fa-angle-right" /></button>
+										}
 									</div>
 
 								}
