@@ -178,7 +178,7 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper {justify-content: {{pageAlignment}};}'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination {text-align: {{pageAlignment}};}'
 						]]
 					),
 					'paginationTypography' => array(
@@ -188,7 +188,7 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *'
 						]]
 					),
 					'pagesColor' => array(
@@ -196,9 +196,9 @@ class POSTGRID
 						'default' => 'center',
 						'style' => [(object) [
 							'condition' => [
-								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => 'true']
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages{color: {{pagesColor}};}'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *{color: {{pagesColor}};}'
 						]]
 					),
 					'pagesHoverColor' => array(
@@ -208,9 +208,21 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages:hover{color: {{pagesHoverColor}};}'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > a:hover, ' .
+                                '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > button:hover{color: {{pagesHoverColor}};}'
 						]]
 					),
+                    'pagesActiveColor' => array(
+                        'type' => 'string',
+                        'default' => 'center',
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *.current{color: {{pagesActiveColor}};}'
+                        ]]
+                    ),
+
 					'pagesbgColor' => array(
 						'type' => 'object',
 						'default' => (object) [],
@@ -218,7 +230,7 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *'
 						]]
 					),
 					'pagesbgHoverColor' => array(
@@ -228,9 +240,21 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages:hover'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination a:hover, ' .
+                                '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination button:hover'
 						]]
 					),
+                    'pagesbgActiveColor' => array(
+                        'type' => 'object',
+                        'default' => (object) [],
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > .current'
+                        ]]
+                    ),
+
 					'pagesBorder' => array(
 						'type' => 'object',
 						'default' => (object) [],
@@ -238,7 +262,7 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *'
 						]]
 					),
 					'pagesHoverBorder' => array(
@@ -248,9 +272,20 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages:hover'
+                            'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > a:hover, ' .
+                                '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > button:hover'
 						]]
 					),
+                    'pagesActiveBorder' => array(
+                        'type' => 'object',
+                        'default' => (object) [],
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *.current '
+                        ]]
+                    ),
 					'pagesShadow' => array(
 						'type' => 'object',
 						'default' => (object) [],
@@ -258,7 +293,7 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *'
 						]]
 					),
 					'pagesHoverShadow' => array(
@@ -268,9 +303,20 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages:hover'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > a:hover, ' .
+                                '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > button:hover'
 						]]
 					),
+                    'pagesActiveShadow' => array(
+                        'type' => 'object',
+                        'default' => (object) [],
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *.current'
+                        ]]
+                    ),
 					'pagesBorderRadius' => array(
 						'type' => 'object',
 						'default' => (object) [],
@@ -278,27 +324,41 @@ class POSTGRID
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *'
 						]]
 					),
 					'pagePadding' => array(
 						'type' => 'object',
-						'default' => (object) [],
+						'default' => (object) [
+                            'openPadding' => 1,
+						    'paddingType' =>'custom',
+						    'custom' => [
+						        'md' => '0 20 0 20',
+                            ],
+                            'unit' => 'px'
+                        ],
 						'style' => [(object) [
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *'
 						]]
 					),
 					'pageMargin' => array(
 						'type' => 'object',
-						'default' => (object) [],
+                        'default' => (object) [
+                            'openMargin' => 1,
+                            'marginType' =>'custom',
+                            'custom' => [
+                                'md' => '0 7 12 7',
+                            ],
+                            'unit' => 'px'
+                        ],
 						'style' => [(object) [
 							'condition' => [
 								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
 							],
-							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-pagination-wrapper .pagination .pages'
+							'selector' => '{{QUBELY}} .qubely-postgrid-wrapper .qubely-postgrid-pagination > *'
 						]]
 					),
 

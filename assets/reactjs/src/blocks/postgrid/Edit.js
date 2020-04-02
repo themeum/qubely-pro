@@ -267,12 +267,16 @@ class Edit extends Component {
 				paginationTypography,
 				pagesColor,
 				pagesHoverColor,
+				pagesActiveColor,
 				pagesbgColor,
 				pagesbgHoverColor,
+				pagesbgActiveColor,
 				pagesBorder,
 				pagesHoverBorder,
+				pagesActiveBorder,
 				pagesShadow,
 				pagesHoverShadow,
+				pagesActiveShadow,
 				pagesBorderRadius,
 				pagePadding,
 				pageMargin,
@@ -475,10 +479,9 @@ class Edit extends Component {
 									enablePagination &&
 									<Fragment>
 										<Alignment
-											flex
+											disableJustify
 											value={pageAlignment}
 											label={__('Alignment')}
-											alignmentType="content"
 											onChange={val => setAttributes({ pageAlignment: val })}
 										/>
 										<Typography
@@ -516,6 +519,35 @@ class Edit extends Component {
 													label={__('Box-Shadow')}
 													value={pagesShadow}
 													onChange={value => setAttributes({ pagesShadow: value })}
+												/>
+											</Tab>
+											<Tab tabTitle={__('Active')}>
+												<Color
+													label={__('Text Color', 'qubely')}
+													value={pagesActiveColor}
+													onChange={value => setAttributes({ pagesActiveColor: value })}
+												/>
+												<ColorAdvanced
+													label={__('Background', 'qubely')}
+													value={pagesbgActiveColor}
+													onChange={newColor => setAttributes({ pagesbgActiveColor: newColor })}
+												/>
+
+												<Border
+													min={0}
+													max={10}
+													responsive
+													device={device}
+													label={__('Border', 'qubely')}
+													value={pagesActiveBorder}
+													unit={['px', 'em', '%']}
+													onChange={val => setAttributes({ pagesActiveBorder: val })}
+													onDeviceChange={value => this.setState({ device: value })}
+												/>
+												<BoxShadow
+													label={__('Box-Shadow')}
+													value={pagesActiveShadow}
+													onChange={value => setAttributes({ pagesActiveShadow: value })}
 												/>
 											</Tab>
 											<Tab tabTitle={__('Hover')}>
@@ -854,13 +886,13 @@ class Edit extends Component {
 
 								{
 									(pages > 1 && enablePagination) &&
-									<div className="qubely-pagination-wrapper">
+									<div className="qubely-postgrid-pagination">
 										{
 											page > 1 && <button className={'qubely-pagination-prev'} onClick={() => setAttributes({ page: page -1 })}> <span className="fas fa-angle-left" /> {__('Prev')}</button>
 										}
 										{
 											Array(pages).fill(0).map((_, index) => (
-												<button key={index} className={`pages${page === index + 1 ? ' active' : ''}`} onClick={() => setAttributes({ page: index + 1 })}>{index + 1}</button>
+												<button key={index} className={`pages${page === index + 1 ? ' current' : ''}`} onClick={() => setAttributes({ page: index + 1 })}>{index + 1}</button>
 											))
 										}
 										{
