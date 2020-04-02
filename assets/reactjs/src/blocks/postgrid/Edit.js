@@ -300,7 +300,7 @@ class Edit extends Component {
 				<InspectorControls key="inspector">
 					<InspectorTabs tabs={['style', 'advance']}>
 						<InspectorTab key={'style'}>
-							<PanelBody title='' initialOpen={false}>
+							<PanelBody title='' initialOpen={true}>
 								<Styles
 									options={[
 										{ value: 1, svg: icons.postgrid_1, label: __('') },
@@ -459,7 +459,7 @@ class Edit extends Component {
 								/>
 							</PanelBody>
 
-							<PanelBody title={__('Pagination', 'qubely')} initialOpen={true}>
+							<PanelBody title={__('Pagination', 'qubely')} initialOpen={false}>
 								{/*<ButtonGroup
 									label={__('Type')}
 									options={
