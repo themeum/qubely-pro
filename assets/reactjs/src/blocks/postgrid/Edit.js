@@ -300,7 +300,7 @@ class Edit extends Component {
 				<InspectorControls key="inspector">
 					<InspectorTabs tabs={['style', 'advance']}>
 						<InspectorTab key={'style'}>
-							<PanelBody title='' initialOpen={false}>
+							<PanelBody title="" opened={true}>
 								<Styles
 									options={[
 										{ value: 1, svg: icons.postgrid_1, label: __('') },
@@ -313,7 +313,6 @@ class Edit extends Component {
 									onChange={val => setAttributes({ layout: val })}
 								/>
 							</PanelBody>
-
 							<PanelBody title={__('Post Design')} initialOpen={false}>
 								<Styles columns={4} value={style} onChange={val => setAttributes({ style: val })}
 									options={[

@@ -1,8 +1,11 @@
 ===  Qubely Pro ===
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 
 == Changelog ==
 
+= 1.1.7 - 03 April, 2020 =
+New: Post grid  block pagination
+Fix: WordPress 5.4 Sidebar sticky tab issue
 
 = 1.1.6 - 25 March, 2020 =
 Update: All blocks - Major improvement in Panel UI & UX 
