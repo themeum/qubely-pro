@@ -70,7 +70,6 @@ function minify_js() {
 function removeJsFiles() {
     return src(
         ['./build/qubely-pro/assets/js/common-script.js',
-            './build/qubely-pro/assets/js/frontend.js',
             './build/qubely-pro/assets/js/form.js',
             './build/qubely-pro/assets/js/qubely-carousel.js',
             './build/qubely-pro/assets/js/installer.js',
