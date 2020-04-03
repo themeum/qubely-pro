@@ -6,6 +6,7 @@ Stable tag: 1.1.7
 = 1.1.7 - 03 April, 2020 =
 New: Post Grid block pagination
 Fix: Panel Sticky tab conflict with WordPress 5.4
+Fix: Post Grid block - Orderby issue with Random, Menu Order
 
 = 1.1.6 - 25 March, 2020 =
 Update: All blocks - Major improvement in Panel UI & UX 
