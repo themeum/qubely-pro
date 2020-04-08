@@ -458,7 +458,7 @@ class Edit extends Component {
 								/>
 							</PanelBody>
 
-							<PanelBody title={__('Pagination', 'qubely')} initialOpen={true}>
+							<PanelBody title={__('Pagination', 'qubely')} initialOpen={false}>
 								{/*<ButtonGroup
 									label={__('Type')}
 									options={
