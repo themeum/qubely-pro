@@ -1642,7 +1642,7 @@ class POSTGRID
                 $html .= $this->pagination_bar($query->max_num_pages, $this->page);
                 $html .= "</div>";
             }
-
+            $html .= '</div>';
 			wp_reset_postdata();
 		}
 		return $html;
