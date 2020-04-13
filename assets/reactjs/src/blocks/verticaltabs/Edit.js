@@ -22,9 +22,9 @@ const {
 		interactionSettings
 	},
 	Inline:
-		{
-			InlineToolbar
-		},
+	{
+		InlineToolbar
+	},
 	BoxShadow,
 	Alignment,
 	Tabs,
@@ -55,12 +55,28 @@ class Edit extends Component {
 	}
 
 	componentDidMount() {
-		const { setAttributes, clientId, attributes: { uniqueId } } = this.props
-		const _client = clientId.substr(0, 6)
+		const {
+			block,
+			clientId,
+			setAttributes,
+			updateBlockAttributes,
+			attributes: {
+				uniqueId
+			}
+		} = this.props;
+		const _client = clientId.substr(0, 6);
+
 		if (!uniqueId) {
 			setAttributes({ uniqueId: _client });
 		} else if (uniqueId && uniqueId != _client) {
 			setAttributes({ uniqueId: _client });
+		}
+
+		if (block.innerBlocks.length > 0 && block.innerBlocks[0].attributes.customClassName !== 'qubely-vertical-active') {
+			updateBlockAttributes(block.innerBlocks[0].clientId,
+				Object.assign(block.innerBlocks[0].attributes, {
+					customClassName: 'qubely-vertical-active'
+				}));
 		}
 	}
 
@@ -70,7 +86,7 @@ class Edit extends Component {
 		if (!this.state.initialRender && prevProps.block.innerBlocks.length < block.innerBlocks.length) {
 			let currentTabBlock = $(`#block-${clientId}`)
 			let activeTab = $(`#block-${block.innerBlocks[tabs - 1].clientId}`, currentTabBlock)
-			$('.qubely-vertical-active', currentTabBlock).removeClass('qubely-vertical-active');
+			$('.qubely-vertical-tab-body .qubely-vertical-active', currentTabBlock).removeClass('qubely-vertical-active');
 			activeTab.addClass('qubely-vertical-active');
 		}
 	}
@@ -194,7 +210,7 @@ class Edit extends Component {
 
 	deleteTab = (tabIndex) => {
 		const { activeTab } = this.state
-		const { attributes: { tabTitles, tabs }, setAttributes, block, removeBlock, updateBlockAttributes, clientId } = this.props;
+		const { attributes: { tabTitles, tabs }, setAttributes, block, removeBlock, replaceInnerBlocks, updateBlockAttributes, clientId } = this.props;
 		const newItems = tabTitles.filter((item, index) => index != tabIndex)
 		setAttributes({ tabTitles: newItems, tabs: tabs - 1 })
 		let i = tabIndex + 1
@@ -203,7 +219,7 @@ class Edit extends Component {
 			i++
 		}
 
-		removeBlock(block.innerBlocks[tabIndex].clientId)
+		// removeBlock(block.innerBlocks[tabIndex].clientId)
 
 		if (tabIndex + 1 === activeTab) {
 			let currentTabBlock = $(`#block-${clientId}`)
@@ -212,7 +228,11 @@ class Edit extends Component {
 			nextActiveTab.addClass('qubely-vertical-active')
 			this.setState({ activeTab: tabIndex == 0 ? 1 : tabIndex + 1 < tabs ? tabIndex + 1 : tabIndex, initialRender: false })
 		}
-		tabIndex + 1 < activeTab && this.setState({ activeTab: activeTab - 1, initialRender: false })
+		tabIndex + 1 < activeTab && this.setState({ activeTab: activeTab - 1, initialRender: false });
+
+		let innerBlocks = JSON.parse(JSON.stringify(block.innerBlocks));
+		innerBlocks.splice(tabIndex, 1);
+		replaceInnerBlocks(clientId, innerBlocks, false);
 	}
 
 	newTitles = () => {
@@ -342,7 +362,7 @@ class Edit extends Component {
 		} = this.props.attributes
 		const { name, setAttributes, isSelected } = this.props
 		const { activeTab, device } = this.state
-	
+
 		let iterator = [], index = 0;
 		while (index < tabs) {
 			iterator.push(index)
@@ -367,11 +387,11 @@ class Edit extends Component {
 						<InspectorTab key={'style'}>
 							<PanelBody title={__('Styles')} initialOpen={true}>
 								<Styles value={tabStyle} onChange={val => setAttributes({ tabStyle: val })}
-										options={[
-											{ value: 'layout1', svg: icons.verticaltabs_1, label: __('Layout 1') },
-											{ value: 'layout2', svg: icons.verticaltabs_2, label: __('Layout 2') },
-											{ value: 'layout3', svg: icons.verticaltabs_3, label: __('Layout 3') },
-										]}
+									options={[
+										{ value: 'layout1', svg: icons.verticaltabs_1, label: __('Layout 1') },
+										{ value: 'layout2', svg: icons.verticaltabs_2, label: __('Layout 2') },
+										{ value: 'layout3', svg: icons.verticaltabs_3, label: __('Layout 3') },
+									]}
 								/>
 								<Separator />
 								<Range label={__('Menu Width')} value={navWidth} onChange={navWidth => setAttributes({ navWidth })} max={700} min={30} />
@@ -561,35 +581,35 @@ class Edit extends Component {
 
 													</Fragment>
 												) : (
-													<Fragment>
-														<IconList
-															disableToggle
-															label={__('Icon')}
-															value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].iconName}
-															onChange={(value) => this.updateTitles({ iconName: value }, activeTab - 1)} />
-														<Tabs>
-															<Tab tabTitle={__('Normal')}>
-																<Color label={__('Color')}
-																	   value={tabStyle === 'layout1' ? iconColor : (tabStyle === 'layout2' ? iconColor2 : iconColor3)}
-																	   onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColor: value } : (tabStyle === 'layout2' ? { iconColor2: value } : { iconColor3: value }))}
-																/>
-															</Tab>
-															<Tab tabTitle={__('Active')}>
-																<Color
-																	label={__('Color')}
-																	value={tabStyle === 'layout1' ? iconColorActive : (tabStyle === 'layout2' ? iconColorActive2 : iconColorActive3)}
-																	onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorActive: value } : (tabStyle === 'layout2' ? { iconColorActive2: value } : { iconColorActive3: value }))}
-																/>
-															</Tab>
-															<Tab tabTitle={__('Hover')}>
-																<Color label={__('Color')}
-																	   value={tabStyle === 'layout1' ? iconColorHover : (tabStyle === 'layout2' ? iconColorHover2 : iconColorHover3)}
-																	   onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorHover: value } : (tabStyle === 'layout2' ? { iconColorHover2: value } : { iconColorHover3: value }))}
-																/>
-															</Tab>
-														</Tabs>
-													</Fragment>
-												)
+														<Fragment>
+															<IconList
+																disableToggle
+																label={__('Icon')}
+																value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].iconName}
+																onChange={(value) => this.updateTitles({ iconName: value }, activeTab - 1)} />
+															<Tabs>
+																<Tab tabTitle={__('Normal')}>
+																	<Color label={__('Color')}
+																		value={tabStyle === 'layout1' ? iconColor : (tabStyle === 'layout2' ? iconColor2 : iconColor3)}
+																		onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColor: value } : (tabStyle === 'layout2' ? { iconColor2: value } : { iconColor3: value }))}
+																	/>
+																</Tab>
+																<Tab tabTitle={__('Active')}>
+																	<Color
+																		label={__('Color')}
+																		value={tabStyle === 'layout1' ? iconColorActive : (tabStyle === 'layout2' ? iconColorActive2 : iconColorActive3)}
+																		onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorActive: value } : (tabStyle === 'layout2' ? { iconColorActive2: value } : { iconColorActive3: value }))}
+																	/>
+																</Tab>
+																<Tab tabTitle={__('Hover')}>
+																	<Color label={__('Color')}
+																		value={tabStyle === 'layout1' ? iconColorHover : (tabStyle === 'layout2' ? iconColorHover2 : iconColorHover3)}
+																		onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorHover: value } : (tabStyle === 'layout2' ? { iconColorHover2: value } : { iconColorHover3: value }))}
+																	/>
+																</Tab>
+															</Tabs>
+														</Fragment>
+													)
 											}
 											<RadioAdvanced
 												label={iconType === 2 ? __('Image Position') : __('Icon Position')}
@@ -756,10 +776,16 @@ export default compose([
 		};
 	}),
 	withDispatch((dispatch) => {
-		const { insertBlock, removeBlock, updateBlockAttributes } = dispatch('core/block-editor');
+		const {
+			insertBlock,
+			removeBlock,
+			replaceInnerBlocks,
+			updateBlockAttributes
+		} = dispatch('core/block-editor');
 		return {
 			insertBlock,
 			removeBlock,
+			replaceInnerBlocks,
 			updateBlockAttributes
 		};
 	}),
