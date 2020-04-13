@@ -1,3 +1,31 @@
+/**
+ * Table cell generator
+ */
+
+.qubely-tcg-container{
+  background: #ffffff;
+  padding: 30px;
+  .qubely-tcg-row{
+    display: flex;
+    span{
+      flex-grow: 1;
+      background: #F2F3F7;
+      border: 1px solid #CED6E0;
+      border-radius: 3px;
+      margin: 2.5px;
+      min-height: 30px;
+      font-size: 12px;
+      text-align: center;
+      line-height: 28px;
+      &:hover,
+      &.active{
+        background: #D2E7FF;
+        border-color: #A9D0FF;
+      }
+    }
+  }
+}
+
 table {
   td{
     border: 1px solid #ddd;

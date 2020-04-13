@@ -20,7 +20,7 @@ const {
     CssGenerator: { CssGenerator },
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
     ContextMenu: { ContextMenu, handleContextMenu }
-} = wp.qubelyComponents
+} = wp.qubelyComponents;
 
 import classnames from 'classnames';
 
@@ -31,7 +31,12 @@ class Edit extends Component {
         this.state = {
             device: 'md',
             spacer: true,
-            cellLocation: {}
+            cellLocation: {},
+            default: [],
+            currentGeneratorCell: {
+                row: -1,
+                column: -1
+            }
         }
     }
 
@@ -111,6 +116,72 @@ class Edit extends Component {
         setAttributes({[cellLocation.sectionName]: data});
     }
 
+    renderTableContent = () => {
+        const Section = this.renderSections;
+        const CellGenerator = this.renderCellGenerator;
+
+        if(!this.state.default.length) {
+            return <CellGenerator />
+        }
+
+        return (
+            <figure className={'class="wp-block-table is-style-regular"'}>
+                <table style={{width: '100%', tableLayout: 'fixed'}}>
+                    <Section name='body' rows={this.props.attributes.body}/>
+                </table>
+            </figure>
+        );
+    }
+
+    renderCellGenerator = () => {
+        const { currentGeneratorCell } = this.state;
+        const Row = ({cell, row}) => {
+            return (
+                <div className='qubely-tcg-container' onMouseLeave={() => this.currentGeneratorCell(-1, -1)} >
+                    {
+                        Array(row).fill(0).map((_, row_index) => {
+                            const rowclass = classnames('qubely-tcg-row', `qubely-tcg-row-${row_index}`);
+                            return (
+                                <div className={rowclass}>
+                                    {
+                                        Array(cell).fill(0).map((_, index) => {
+                                            const columnclass = classnames(
+                                                'qubley-tcg-col',
+                                                'qubely-tcg-col-' + index,
+                                                {'active': (currentGeneratorCell.row >= row_index && currentGeneratorCell.column >= index)}
+                                            );
+                                            const columnprops = {
+                                                className: columnclass,
+                                                onMouseEnter: () => this.currentGeneratorCell(row_index, index),
+                                            }
+                                            return <span {...columnprops}> {row_index}+{index}</span>
+                                        })
+                                    }
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            )
+        }
+
+        return <Row cell={8} row={8}/>
+    }
+
+    generateCells = ({row, column}) => {
+        const { body } = this.props.attributes.body
+    }
+
+    currentGeneratorCell = (row, column) => {
+        this.setState({
+            currentGeneratorCell: {
+                row,
+                column
+            }
+        });
+    }
+
+
     render() {
 
         const {
@@ -139,8 +210,6 @@ class Edit extends Component {
 
         if (uniqueId) { CssGenerator(this.props.attributes, 'table', uniqueId) }
 
-        const Section = this.renderSections;
-
         return (
             <Fragment>
                 <InspectorControls key={'inspector'}>
@@ -167,20 +236,24 @@ class Edit extends Component {
 
                 <div className={`qubely-block-${uniqueId} ${className ? className : ''}`}>
                     <div className='qubely-block-table' onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
-                        <figure className={'class="wp-block-table is-style-regular"'}>
-                            <table style={{width: '100%', tableLayout: 'fixed'}}>
-                                <Section name='body' rows={body}/>
-                            </table>
-                        </figure>
-                        <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
-                            <ContextMenu
-                                name={name}
-                                clientId={clientId}
-                                attributes={attributes}
-                                setAttributes={setAttributes}
-                                qubelyContextMenu={this.refs.qubelyContextMenu}
-                            />
-                        </div>
+
+                        {
+                            this.renderTableContent()
+                        }
+
+                        {
+                            this.state.default.length !== 0 && (
+                                <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
+                                    <ContextMenu
+                                        name={name}
+                                        clientId={clientId}
+                                        attributes={attributes}
+                                        setAttributes={setAttributes}
+                                        qubelyContextMenu={this.refs.qubelyContextMenu}
+                                    />
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
 
