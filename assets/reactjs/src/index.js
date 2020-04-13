@@ -16,3 +16,4 @@ import './blocks/verticaltabs'              // Vertical Tabs
 import './blocks/verticaltabs/verticaltab'  // Vertical Tab
 import './blocks/mediacard'                 // Instagram Feed
 import './blocks/countdown'                 // Countdown Block
+import './blocks/table'                     // Table Block
