@@ -1,21 +1,58 @@
-const { __ } = wp.i18n
-const { Tooltip, PanelBody, Toolbar, TextControl } = wp.components;
-const { compose } = wp.compose
-const { withSelect, withDispatch } = wp.data
-const { Component, Fragment } = wp.element;
-const { InnerBlocks, RichText, InspectorControls, BlockControls } = wp.blockEditor
-const { PluginBlockSettingsMenuItem } = wp.editPost
+import classnames from 'classnames';
 import templates from './templates';
+import icons from '../../helpers/icons';
+
+const { __ } = wp.i18n;
 const {
+	Toolbar,
+	Tooltip,
+	PanelBody,
+	TextControl
+} = wp.components;
+
+const { compose } = wp.compose;
+
+const {
+	withSelect,
+	withDispatch
+} = wp.data;
+
+const {
+	Fragment,
+	Component
+} = wp.element;
+
+const {
+	RichText,
+	InnerBlocks,
+	BlockControls,
+	InspectorControls
+} = wp.blockEditor;
+
+const { PluginBlockSettingsMenuItem } = wp.editPost;
+
+const {
+	Tabs,
+	Tab,
 	Color,
-	ColorAdvanced,
 	Media,
-	IconList,
+	Range,
 	Styles,
+	Toggle,
+	Border,
+	Padding,
+	IconList,
 	Typography,
 	Templates,
-	Range,
+	Separator,
+	Alignment,
+	BoxShadow,
 	RadioAdvanced,
+	ColorAdvanced,
+	BorderRadius,
+	InspectorTab,
+	InspectorTabs,
+	withCSSGenerator,
 	gloalSettings: {
 		globalSettingsPanel,
 		animationSettings,
@@ -25,21 +62,8 @@ const {
 	{
 		InlineToolbar
 	},
-	BoxShadow,
-	Alignment,
-	Tabs,
-	Tab,
-	Separator,
-	Border,
-	Padding,
-	BorderRadius,
-	withCSSGenerator,
-	Toggle,
-	InspectorTabs,
-	InspectorTab
-} = wp.qubelyComponents
+} = wp.qubelyComponents;
 
-import icons from '../../helpers/icons';
 
 class Edit extends Component {
 
@@ -47,9 +71,9 @@ class Edit extends Component {
 		super(props)
 		this.state = {
 			device: 'md',
-			initialRender: true,
 			activeTab: 1,
 			spacer: true,
+			initialRender: true,
 			showIconPicker: false,
 		}
 	}
@@ -64,6 +88,7 @@ class Edit extends Component {
 				uniqueId
 			}
 		} = this.props;
+
 		const _client = clientId.substr(0, 6);
 
 		if (!uniqueId) {
@@ -107,7 +132,7 @@ class Edit extends Component {
 		let currentTabBlock = $(`#block-${clientId}`)
 		const { showIconPicker } = this.state
 		let activeTab = $(`#block-${block.innerBlocks[index].clientId}`, currentTabBlock)
-		$('.qubely-vertical-hidden', currentTabBlock).removeClass('qubely-vertical-hidden');
+		// $('.qubely-vertical-hidden', currentTabBlock).removeClass('qubely-vertical-hidden');
 		$('.qubely-vertical-tab-content', currentTabBlock).removeClass('qubely-vertical-active').fadeOut(0);
 		activeTab.addClass('qubely-vertical-active').fadeIn();
 		this.setState({ activeTab: index + 1, initialRender: false, showIconPicker: !showIconPicker })
@@ -153,8 +178,18 @@ class Edit extends Component {
 			}
 			const IconFont = () => hasIcon ? <span className={`qubely-vertical-tab-icon ${title.iconName}`} /> : ''
 			const Icon = () => enableIcon ? (iconType === 1 ? <IconFont /> : <IconImage />) : ''
+
+			let isActiveTab = false;
+			if (this.state.activeTab === index + 1) {
+				isActiveTab = true;
+			}
+			const wrapperClasses = classnames(
+				'qubely-vertical-tab-item',
+				{ ['qubely-vertical-active']: isActiveTab }
+			);
+
 			return (
-				<div class={`qubely-vertical-tab-item ${(this.state.activeTab == index + 1) ? 'qubely-vertical-active' : ''}`}>
+				<div class={wrapperClasses}>
 					<div onClick={(e) => this._handleTabChange(e, index)} className={buttonClass}>
 						{
 							(navLayout === 2 && iconPosition === 'left') && <Icon />
@@ -165,9 +200,9 @@ class Edit extends Component {
 									(navLayout === 1 && iconPosition === 'left') && <Icon />
 								}
 								<RichText
+									value={title.title}
 									keepPlaceholderOnFocus
 									placeholder={__('Add Tab Title')}
-									value={title.title}
 									onChange={value => this.updateTitles({ title: value }, index)}
 								/>
 								{
@@ -207,168 +242,207 @@ class Edit extends Component {
 			)
 		})
 	}
+	removeActiveClass = (currentBlock) => {
+		return new Promise((resolve, reject) => {
+			if ($('.qubely-vertical-tab-content.qubely-vertical-active', currentBlock)) {
+				$('.qubely-vertical-tab-content.qubely-vertical-active', currentBlock).removeClass('qubely-vertical-active');
+				resolve();
+			} else {
+				reject();
+			}
 
+		});
+	}
 	deleteTab = (tabIndex) => {
 		const { activeTab } = this.state
 		const { attributes: { tabTitles, tabs }, setAttributes, block, removeBlock, replaceInnerBlocks, updateBlockAttributes, clientId } = this.props;
 		const newItems = tabTitles.filter((item, index) => index != tabIndex)
 		setAttributes({ tabTitles: newItems, tabs: tabs - 1 })
-		let i = tabIndex + 1
+		let i = tabIndex + 1, currentTabBlock = $(`#block-${clientId}`);
+
 		while (i < tabs) {
-			updateBlockAttributes(block.innerBlocks[i].clientId, Object.assign(block.innerBlocks[i].attributes, { id: block.innerBlocks[i].attributes.id - 1 }))
+			updateBlockAttributes(block.innerBlocks[i].clientId,
+				Object.assign(block.innerBlocks[i].attributes,
+					{
+						id: block.innerBlocks[i].attributes.id - 1
+					}));
 			i++
 		}
 
-		// removeBlock(block.innerBlocks[tabIndex].clientId)
 
+		let nextActiveTab = $(`#block-${block.innerBlocks[activeTab - 1].clientId}`, currentTabBlock);
 		if (tabIndex + 1 === activeTab) {
-			let currentTabBlock = $(`#block-${clientId}`)
-			let nextActiveTab = $(`#block-${block.innerBlocks[tabIndex + 1 < tabs ? tabIndex + 1 : tabs >= 2 ? tabIndex - 1 : tabIndex].clientId}`, currentTabBlock)
-			$('.qubely-vertical-active', currentTabBlock).removeClass('qubely-vertical-active')
-			nextActiveTab.addClass('qubely-vertical-active')
-			this.setState({ activeTab: tabIndex == 0 ? 1 : tabIndex + 1 < tabs ? tabIndex + 1 : tabIndex, initialRender: false })
+			nextActiveTab = $(`#block-${block.innerBlocks[tabIndex + 1 < tabs ? tabIndex + 1 : tabs >= 2 ? tabIndex - 1 : tabIndex].clientId}`, currentTabBlock)
 		}
-		tabIndex + 1 < activeTab && this.setState({ activeTab: activeTab - 1, initialRender: false });
+
+		this.removeActiveClass(currentTabBlock).
+			then(() => {
+				nextActiveTab.addClass("qubely-vertical-active");
+			}).catch(() => {
+				console.log('tab switching not possible');
+			});
 
 		let innerBlocks = JSON.parse(JSON.stringify(block.innerBlocks));
 		innerBlocks.splice(tabIndex, 1);
 		replaceInnerBlocks(clientId, innerBlocks, false);
+
+
+		this.setState(state => {
+			let newActiveTab = state.activeTab - 1;
+			if (tabIndex + 1 === activeTab) {
+				newActiveTab = tabIndex == 0 ? 1 : tabIndex + 1 < tabs ? tabIndex + 1 : tabIndex
+			}
+			return {
+				activeTab: newActiveTab,
+				initialRender: false
+			}
+		});
 	}
 
-	newTitles = () => {
-		const { attributes: { tabs, tabTitles } } = this.props
-		let newTitles = JSON.parse(JSON.stringify(tabTitles));
-		newTitles[tabs] = {
-			title: __(`Tab ${tabs + 1}`),
-			icon: {},
-		}
-		return newTitles
-	}
 	render() {
 		const {
-			uniqueId,
-			tabs,
-			tabTitles,
-			tabStyle,
-			navLayout,
-			tabVerticalAlign,
-			iconType,
-			enableIcon,
-			navWidth,
-			navSpacing,
-			navSpacing3,
-			// navSize,
-			navPaddingX,
-			navPaddingY,
-			// navPadding,
-			navAlignment,
-			navTextAlignment,
-			typography,
-			navColor,
-			navColor3,
-			navColorActive,
-			navColorActive3,
-			navColorHover,
-			navColorHover3,
-			navBg,
-			navBg2,
-			navBg3,
-			navBgHover,
-			navBgHover2,
-			navBgHover3,
-			navBgActive,
-			navBgActive2,
-			navBgActive3,
-			navBorder,
-			navBorder2,
-			navBorder3,
-			navBorderColorActive,
-			navBorderColorActive2,
-			navBorderColorActive3,
-			navBorderColorHover,
-			navBorderColorHover2,
-			navBorderColorHover3,
-			navBorderRadiusTabs,
-			navBorderRadiusTabsActive,
-			navBorderRadiusTabsHover,
-			navShadow,
-			navShadowActive,
-			navShadowHover,
-			navShadow2,
-			navShadowActive2,
-			navShadowHover2,
+			setAttributes,
+			attributes: {
+				uniqueId,
+				tabs,
+				tabTitles,
+				tabStyle,
+				navLayout,
+				tabVerticalAlign,
+				iconType,
+				enableIcon,
+				navWidth,
+				navSpacing,
+				navSpacing3,
+				// navSize,
+				navPaddingX,
+				navPaddingY,
+				// navPadding,
+				navAlignment,
+				navTextAlignment,
+				typography,
+				navColor,
+				navColor3,
+				navColorActive,
+				navColorActive3,
+				navColorHover,
+				navColorHover3,
+				navBg,
+				navBg2,
+				navBg3,
+				navBgHover,
+				navBgHover2,
+				navBgHover3,
+				navBgActive,
+				navBgActive2,
+				navBgActive3,
+				navBorder,
+				navBorder2,
+				navBorder3,
+				navBorderColorActive,
+				navBorderColorActive2,
+				navBorderColorActive3,
+				navBorderColorHover,
+				navBorderColorHover2,
+				navBorderColorHover3,
+				navBorderRadiusTabs,
+				navBorderRadiusTabsActive,
+				navBorderRadiusTabsHover,
+				navShadow,
+				navShadowActive,
+				navShadowHover,
+				navShadow2,
+				navShadowActive2,
+				navShadowHover2,
 
-			enableArrow,
-			arrowHeight,
-			arrowWidth,
-			arrowColor,
-			arrowColorHover,
+				enableArrow,
+				arrowHeight,
+				arrowWidth,
+				arrowColor,
+				arrowColorHover,
 
-			navSubHeading,
-			navSubHeadingTypography,
-			navSubHeadingSpacing,
-			navSubHeadingColor,
-			navSubHeadingColorActive,
-			navSubHeadingColorHover,
+				navSubHeading,
+				navSubHeadingTypography,
+				navSubHeadingSpacing,
+				navSubHeadingColor,
+				navSubHeadingColorActive,
+				navSubHeadingColorHover,
 
-			navText,
-			textTypography,
-			textSpacing,
-			iconSize,
-			iconGap,
-			iconPosition,
-			iconColor,
-			iconColor2,
-			iconColor3,
-			iconColorActive,
-			iconColorActive2,
-			iconColorActive3,
-			iconColorHover,
-			iconColorHover2,
-			iconColorHover3,
+				navText,
+				textTypography,
+				textSpacing,
+				iconSize,
+				iconGap,
+				iconPosition,
+				iconColor,
+				iconColor2,
+				iconColor3,
+				iconColorActive,
+				iconColorActive2,
+				iconColorActive3,
+				iconColorHover,
+				iconColorHover2,
+				iconColorHover3,
 
-			textColor,
-			// textColorActive,
-			textColorHover,
+				textColor,
+				// textColorActive,
+				textColorHover,
 
-			bodyBg,
-			bodyBg2,
-			bodyBg3,
-			bodyColor,
-			bodyColor2,
-			bodyColor3,
-			bodyPadding,
-			bodyBorder,
-			bodyShadow,
-			bodyBorderRadius,
-			// bodySeparatorHeight,
-			// bodySeparatorColor,
-			bodySpacing,
-			bodySpacing2,
-			bodySpacing3,
+				bodyBg,
+				bodyBg2,
+				bodyBg3,
+				bodyColor,
+				bodyColor2,
+				bodyColor3,
+				bodyPadding,
+				bodyBorder,
+				bodyShadow,
+				bodyBorderRadius,
+				// bodySeparatorHeight,
+				// bodySeparatorColor,
+				bodySpacing,
+				bodySpacing2,
+				bodySpacing3,
 
-			//animation
-			animation,
-			//global
-			globalZindex,
-			enablePosition,
-			selectPosition,
-			positionXaxis,
-			positionYaxis,
-			hideTablet,
-			hideMobile,
-			globalCss,
-			interaction
-		} = this.props.attributes
-		const { name, setAttributes, isSelected } = this.props
-		const { activeTab, device } = this.state
+				//animation
+				animation,
+				//global
+				globalZindex,
+				enablePosition,
+				selectPosition,
+				positionXaxis,
+				positionYaxis,
+				hideTablet,
+				hideMobile,
+				globalCss,
+				interaction
+			}
+		} = this.props;
 
-		let iterator = [], index = 0;
-		while (index < tabs) {
-			iterator.push(index)
-			index++
+		const {
+			device,
+			activeTab,
+		} = this.state;
+
+		const newTitles = () => {
+			let newTitles = JSON.parse(JSON.stringify(tabTitles));
+			newTitles[tabs] = {
+				icon: {},
+				title: __(`Tab ${tabs + 1}`),
+			}
+			return newTitles;
 		}
 
+		const addNewTab = () => {
+			this.setState({
+				activeTab: tabs + 1,
+				initialRender: false
+			})
+			setAttributes({
+				tabs: tabs + 1,
+				tabTitles: newTitles()
+			})
+		}
 
 		return (
 			<Fragment>
@@ -733,13 +807,12 @@ class Edit extends Component {
 						<div className={`qubely-vertical-tab-nav`}>
 							{this.renderTabTitles()}
 							<Tooltip text={__('Add new tab')}>
-								<button className="qubely-add-new-vertical-tab" onClick={() => {
-									this.setState({ activeTab: tabs + 1, initialRender: false })
-									setAttributes({
-										tabs: tabs + 1,
-										tabTitles: this.newTitles()
-									})
-								}} role="button" areaLabel={__('Add new tab')}>
+								<button
+									role="button"
+									areaLabel={__('Add new tab')}
+									className="qubely-add-new-vertical-tab"
+									onClick={() => addNewTab()}
+								>
 									<i className="fas fa-plus-circle" />
 								</button>
 							</Tooltip>
@@ -747,15 +820,15 @@ class Edit extends Component {
 						<div className='qubely-vertical-tab-body'>
 							<InnerBlocks
 								tagName="div"
-								template={iterator.map(tabIndex => {
-									return [
+								template={Array(tabs).fill(0).map((_, tabIndex) => (
+									[
 										'qubely/verticaltab',
 										{
 											id: tabIndex + 1,
-											customClassName: tabIndex === 0 ? 'qubely-vertical-tab-content qubely-vertical-active' : 'qubely-vertical-tab-content qubely-vertical-hidden',
+											...(tabIndex === 0 && { customClassName: 'qubely-vertical-active' }),
 										}
 									]
-								})}
+								))}
 								templateLock="all"
 								allowedBlocks={['qubely/verticaltab']}
 							/>
@@ -771,6 +844,7 @@ export default compose([
 	withSelect((select, ownProps) => {
 		const { clientId } = ownProps
 		const { getBlock } = select('core/block-editor');
+
 		return {
 			block: getBlock(clientId)
 		};
@@ -782,6 +856,7 @@ export default compose([
 			replaceInnerBlocks,
 			updateBlockAttributes
 		} = dispatch('core/block-editor');
+
 		return {
 			insertBlock,
 			removeBlock,
