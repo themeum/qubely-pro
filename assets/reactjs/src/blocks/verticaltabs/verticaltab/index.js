@@ -29,7 +29,7 @@ registerBlockType('qubely/verticaltab', {
         }
     },
     getEditWrapperProps(attributes) {
-        return { 'data-tab': attributes.id, className: `wp-block editor-block-list__block block-editor-block-list__block qubely-vertical-tab-content ${attributes.customClassName}` }
+        return { 'data-tab': attributes.id, className: `wp-block editor-block-list__block block-editor-block-list__block qubely-vertical-tab-content` }
     },
     edit: Edit,
     save: Save

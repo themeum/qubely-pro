@@ -159,10 +159,10 @@
 			padding-left: 36px;
 			padding-right: 36px;
 		}
-		.qubely-tab-content > div:first-child {
+		.qubely-vertical-tab-content > div:first-child {
 			padding-top: 0;
 		}
-		.qubely-tab-content > div:last-child {
+		.qubely-vertical-tab-content > div:last-child {
 			padding-bottom: 0;
 		}
 		h1,
@@ -174,26 +174,143 @@
 		.editor-block-list__block {
 			color: inherit;
 		}
+		.wp-block.qubely-vertical-tab-content {
+			position: absolute;
+			visibility: hidden;
+			opacity: 0;
+			transition: opacity 400ms ease-in;
+			&.qubely-vertical-active {
+				position: relative;
+				opacity: 1;
+				display: block !important;
+				visibility: visible;
+				transition: opacity 400ms;
+			}
+		}
+
+		&.qubely-active-tab-1 {
+			.wp-block.qubely-vertical-tab-content[data-tab="1"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-2 {
+			.wp-block.qubely-vertical-tab-content[data-tab="2"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-3 {
+			.wp-block.qubely-vertical-tab-content[data-tab="3"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-4 {
+			.wp-block.qubely-vertical-tab-content[data-tab="4"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-5 {
+			.wp-block.qubely-vertical-tab-content[data-tab="5"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-6 {
+			.wp-block.qubely-vertical-tab-content[data-tab="6"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-7 {
+			.wp-block.qubely-vertical-tab-content[data-tab="7"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-8 {
+			.wp-block.qubely-vertical-tab-content[data-tab="8"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-9 {
+			.wp-block.qubely-vertical-tab-content[data-tab="9"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-10 {
+			.wp-block.qubely-vertical-tab-content[data-tab="10"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-11 {
+			.wp-block.qubely-vertical-tab-content[data-tab="11"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-12 {
+			.wp-block.qubely-vertical-tab-content[data-tab="12"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-13 {
+			.wp-block.qubely-vertical-tab-content[data-tab="13"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-14 {
+			.wp-block.qubely-vertical-tab-content[data-tab="14"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
+		&.qubely-active-tab-15 {
+			.wp-block.qubely-vertical-tab-content[data-tab="15"] {
+				opacity: 1;
+				position: relative;
+				visibility: visible;
+				display: block !important;
+			}
+		}
 	}
 }
 
-.wp-block.qubely-vertical-tab-content {
-	position: absolute;
-	visibility: hidden;
-	opacity: 0;
-	transition: opacity 400ms ease-in;
-	&.qubely-vertical-active,
-	&.has-child-selected {
-		position: relative;
-		opacity: 1;
-		display: block !important;
-		visibility: visible;
-		transition: opacity 400ms;
-	}
-}
-//   .qubely-vertical-hidden{
-// 	display: none;
-//   }
 
 .qubely-add-new-vertical-tab {
 	width: 100%;
