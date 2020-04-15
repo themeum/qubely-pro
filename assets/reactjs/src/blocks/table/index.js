@@ -64,31 +64,7 @@ registerBlockType('qubely/table', {
                     ]
                 }*/
             ],
-            selector: 'tbody tr',
-            query: {
-                cells: {
-                    type: 'array',
-                    default: [],
-                    source: 'query',
-                    selector: 'td,th',
-                    query: {
-                        content: {
-                            type: 'string',
-                            source: 'html',
-                        },
-                        tag: {
-                            type: 'string',
-                            default: 'td',
-                            source: 'tag',
-                        },
-                        scope: {
-                            type: 'string',
-                            source: 'attribute',
-                            attribute: 'scope',
-                        },
-                    },
-                },
-            },
+            selector: 'tbody tr'
         },
         // Global
         ...globalAttributes,

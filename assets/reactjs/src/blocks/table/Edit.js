@@ -138,11 +138,24 @@ class Edit extends Component {
     }
 
     onInsertRowBefore = () => {
-        console.log(this.state.selectedCell)
+        const { rowIndex } = this.state.selectedCell
+        this.inserRowAtIndex(rowIndex);
     }
 
     onInsertRowAfter = () => {
-        console.log(this.state.selectedCell)
+        const { rowIndex } = this.state.selectedCell
+        this.inserRowAtIndex(rowIndex + 1);
+    }
+
+    inserRowAtIndex = (index) => {
+        const { setAttributes, attributes: { body } } = this.props;
+        const columnCount = body.length ? body[0].cells.length : 0;
+        if(columnCount) {
+            const newBody = body;
+            newBody.splice(index, 0, this.generateEmptyRow(1, columnCount)[0]);
+            setAttributes({body: newBody});
+            this.resetSelectedCell();
+        }
     }
 
     onDeleteRow = () => {
@@ -150,7 +163,7 @@ class Edit extends Component {
         const { setAttributes, attributes: { body } }    = this.props;
         const newBody = body.filter((_, index) => index !== rowIndex);
         setAttributes({body: newBody});
-        this.setState({selectedCell: null});
+        this.resetSelectedCell();
     }
 
     onInsertColumnBefore = () => {
@@ -164,8 +177,10 @@ class Edit extends Component {
     onDeleteColumn= () => {
         const { setAttributes } = this.props;
         setAttributes(this.deleteColumnByIndex());
-        this.setState({selectedCell: null});
+        this.resetSelectedCell();
     }
+
+    resetSelectedCell = () => this.setState({selectedCell: null});
 
     deleteColumnByIndex = () => {
         const { body } = this.props.attributes;
@@ -271,7 +286,7 @@ class Edit extends Component {
         const { currentGeneratorCell } = this.state;
         const Row = ({cell, row}) => {
             return (
-                <div className='qubely-tcg-container' onMouseLeave={() => this.currentGeneratorCell(-1, -1)} >
+                <div className='qubely-tcg-container' onMouseLeave={() => this.setCurrentGeneratorCell(-1, -1)} >
                     {
                         Array(row).fill(0).map((_, row_index) => {
                             const rowclass = classnames('qubely-tcg-row', `qubely-tcg-row-${row_index}`);
@@ -286,7 +301,7 @@ class Edit extends Component {
                                             );
                                             const columnprops = {
                                                 className: columnclass,
-                                                onMouseEnter: () => this.currentGeneratorCell(row_index, index),
+                                                onMouseEnter: () => this.setCurrentGeneratorCell(row_index, index),
                                                 onClick: () => this.generateCells(row_index, index)
                                             }
                                             return <span {...columnprops} />
@@ -304,36 +319,29 @@ class Edit extends Component {
     }
 
     generateCells = (row, column) => {
-        // const { body } = this.props.attributes.body;
-
-        const newBody = [];
-
-        const defaultRow = {
-            cells: []
-        };
-        const defaultCell = {
-            content: '',
-            tag: 'td',
-            scope: undefined,
-            align: undefined
-        };
-
-        for (let i = 0; i <= column; i++) {
-            defaultRow.cells.push(defaultCell);
-            console.log('hello')
-        }
-
-        for (let i = 0; i <= row; i++) {
-            newBody.push(defaultRow);
-        }
-
-        this.props.setAttributes({body: newBody});
-
-        console.log(row, column);
-
+        this.props.setAttributes({body: this.generateEmptyRow(row, column)});
     }
 
-    currentGeneratorCell = (row, column) => {
+    generateEmptyRow = (count, columnCount) => (
+        Array(count).fill(0).map(_ => ({cells: this.generateEmptyColumn(columnCount)}))
+    )
+
+    generateEmptyColumn = (count) => (
+        Array(count).fill(0).map(_ => {
+            return {
+                content: '',
+                tag: 'td',
+                scope: undefined,
+                align: undefined
+            }
+        })
+    )
+
+    /**
+     * set current generator cell to state
+     */
+
+    setCurrentGeneratorCell = (row, column) => {
         this.setState({
             currentGeneratorCell: {
                 row,
