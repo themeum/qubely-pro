@@ -11,6 +11,7 @@
   "author": "themeum",
   "license": "ISC",
   "dependencies": {
+    "@wordpress/icons": "^1.2.0",
     "classnames": "^2.2.6",
     "deep-object-diff": "^1.1.0"
   },

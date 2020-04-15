@@ -3,10 +3,14 @@ const {
     Fragment
 } = wp.element;
 
+const {__} = wp.i18n
+
 const {
     PanelBody,
     Tooltip,
-    Toolbar
+    Toolbar,
+    DropdownMenu,
+    ToolbarGroup
 } = wp.components
 
 const {
@@ -22,6 +26,39 @@ const {
     ContextMenu: { ContextMenu, handleContextMenu }
 } = wp.qubelyComponents;
 
+import {
+    alignLeft,
+    alignRight,
+    alignCenter,
+    blockTable as icon,
+    tableColumnAfter,
+    tableColumnBefore,
+    tableColumnDelete,
+    tableRowAfter,
+    tableRowBefore,
+    tableRowDelete,
+    table as tableIcon,
+} from '@wordpress/icons';
+
+//
+// const ALIGNMENT_CONTROLS = [
+//     {
+//         icon: alignLeft,
+//         title: __( 'Align Column Left' ),
+//         align: 'left',
+//     },
+//     {
+//         icon: alignCenter,
+//         title: __( 'Align Column Center' ),
+//         align: 'center',
+//     },
+//     {
+//         icon: alignRight,
+//         title: __( 'Align Column Right' ),
+//         align: 'right',
+//     },
+// ];
+
 import classnames from 'classnames';
 
 
@@ -33,6 +70,7 @@ class Edit extends Component {
             spacer: true,
             cellLocation: {},
             default: [],
+            selectedCell: null,
             currentGeneratorCell: {
                 row: -1,
                 column: -1
@@ -50,6 +88,95 @@ class Edit extends Component {
         }
     }
 
+
+    /**
+     * Gets the table controls to display in the block toolbar.
+     *
+     * @return {Array} Table controls.
+     */
+    getTableControls = () => {
+        const { selectedCell } = this.state;
+        const { body }  = this.props.attributes;
+        return [
+            {
+                icon: tableRowBefore,
+                title: __( 'Add Row Before' ),
+                isDisabled: ! selectedCell,
+                onClick: this.onInsertRowBefore,
+            },
+            {
+                icon: tableRowAfter,
+                title: __( 'Add Row After' ),
+                isDisabled: ! selectedCell,
+                onClick: this.onInsertRowAfter,
+            },
+            {
+                icon: tableRowDelete,
+                title: __( 'Delete Row' ),
+                isDisabled: ! selectedCell || body.length < 2,
+                onClick: this.onDeleteRow,
+            },
+            {
+                icon: tableColumnBefore,
+                title: __( 'Add Column Before' ),
+                isDisabled: ! selectedCell,
+                onClick: this.onInsertColumnBefore,
+            },
+            {
+                icon: tableColumnAfter,
+                title: __( 'Add Column After' ),
+                isDisabled: ! selectedCell,
+                onClick: this.onInsertColumnAfter,
+            },
+            {
+                icon: tableColumnDelete,
+                title: __( 'Delete Column' ),
+                isDisabled: ! selectedCell || !body.length || ( body.length && body[0].cells.length < 2),
+                onClick: this.onDeleteColumn,
+            },
+        ];
+    }
+
+    onInsertRowBefore = () => {
+        console.log(this.state.selectedCell)
+    }
+
+    onInsertRowAfter = () => {
+        console.log(this.state.selectedCell)
+    }
+
+    onDeleteRow = () => {
+        const { rowIndex } = this.state.selectedCell;
+        const { setAttributes, attributes: { body } }    = this.props;
+        const newBody = body.filter((_, index) => index !== rowIndex);
+        setAttributes({body: newBody});
+        this.setState({selectedCell: null});
+    }
+
+    onInsertColumnBefore = () => {
+        console.log(this.state.selectedCell)
+    }
+
+    onInsertColumnAfter= () => {
+        console.log(this.state.selectedCell)
+    }
+
+    onDeleteColumn= () => {
+        const { setAttributes } = this.props;
+        setAttributes(this.deleteColumnByIndex());
+        this.setState({selectedCell: null});
+    }
+
+    deleteColumnByIndex = () => {
+        const { body } = this.props.attributes;
+        const { columnIndex } = this.state.selectedCell;
+        return body.reduce((acc, obj) => {
+            obj['cells'] = obj['cells'].filter((_, index) => index !== columnIndex);
+            acc.push(obj);
+            return acc;
+        }, []);
+    }
+
     renderSections = ({name, rows}) => {
         const Tag = `t${ name }`;
         return (
@@ -63,7 +190,8 @@ class Edit extends Component {
         );
     }
 
-    renderData = ({cells}, name, rowIndex) => {
+    renderData = ( {cells} , name, rowIndex) => {
+        const { selectedCell } = this.state;
         return cells.map(({content, tag: CellTag, scope, align}, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
@@ -74,8 +202,9 @@ class Edit extends Component {
             const className = classnames(
                 {
                     [ `has-text-align-${ align }` ]: align,
+                    'is-qubely-active' : selectedCell && (selectedCell.rowIndex === rowIndex && selectedCell.columnIndex === columnIndex)
                 },
-                'qubely-block-table_cell-content'
+                'qubely-block-table_cell-content',
             );
 
             let placeholder = '';
@@ -99,6 +228,11 @@ class Edit extends Component {
                     onClick={() => {
                         this.setState({cellLocation})
                     }}
+                    unstableOnFocus={() => {
+                        this.setState({
+                            selectedCell: cellLocation
+                        })
+                    }}
                 />
             )
         })
@@ -112,7 +246,7 @@ class Edit extends Component {
         const { setAttributes, attributes } = this.props;
         const data = attributes[cellLocation.sectionName];
 
-        data[cellLocation.rowIndex].cells[field] = content;
+        data[cellLocation.rowIndex].cells[cellLocation.columnIndex][field] = content;
         setAttributes({[cellLocation.sectionName]: data});
     }
 
@@ -120,7 +254,7 @@ class Edit extends Component {
         const Section = this.renderSections;
         const CellGenerator = this.renderCellGenerator;
 
-        if(!this.state.default.length) {
+        if(!this.props.attributes.body.length) {
             return <CellGenerator />
         }
 
@@ -153,8 +287,9 @@ class Edit extends Component {
                                             const columnprops = {
                                                 className: columnclass,
                                                 onMouseEnter: () => this.currentGeneratorCell(row_index, index),
+                                                onClick: () => this.generateCells(row_index, index)
                                             }
-                                            return <span {...columnprops}> {row_index}+{index}</span>
+                                            return <span {...columnprops} />
                                         })
                                     }
                                 </div>
@@ -168,8 +303,34 @@ class Edit extends Component {
         return <Row cell={8} row={8}/>
     }
 
-    generateCells = ({row, column}) => {
-        const { body } = this.props.attributes.body
+    generateCells = (row, column) => {
+        // const { body } = this.props.attributes.body;
+
+        const newBody = [];
+
+        const defaultRow = {
+            cells: []
+        };
+        const defaultCell = {
+            content: '',
+            tag: 'td',
+            scope: undefined,
+            align: undefined
+        };
+
+        for (let i = 0; i <= column; i++) {
+            defaultRow.cells.push(defaultCell);
+            console.log('hello')
+        }
+
+        for (let i = 0; i <= row; i++) {
+            newBody.push(defaultRow);
+        }
+
+        this.props.setAttributes({body: newBody});
+
+        console.log(row, column);
+
     }
 
     currentGeneratorCell = (row, column) => {
@@ -210,6 +371,8 @@ class Edit extends Component {
 
         if (uniqueId) { CssGenerator(this.props.attributes, 'table', uniqueId) }
 
+        const TableContent = this.renderTableContent;
+
         return (
             <Fragment>
                 <InspectorControls key={'inspector'}>
@@ -223,13 +386,18 @@ class Edit extends Component {
                 </InspectorControls>
 
                 <BlockControls>
-                    <Toolbar>
+                    <ToolbarGroup>
+                        <DropdownMenu
+                            hasArrowIndicator
+                            icon={ <span className={'fas fa-table'} /> }
+                            label={ __( 'Edit table' ) }
+                            controls={ this.getTableControls() }
+                        />
                         <InlineToolbar
                             data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
                             {...this.props}
                             prevState={this.state} />
-
-                    </Toolbar>
+                    </ToolbarGroup>
                 </BlockControls>
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
@@ -237,12 +405,10 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId} ${className ? className : ''}`}>
                     <div className='qubely-block-table' onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
 
-                        {
-                            this.renderTableContent()
-                        }
+                        <TableContent />
 
                         {
-                            this.state.default.length !== 0 && (
+                            this.props.attributes.body.length !== 0 && (
                                 <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
                                     <ContextMenu
                                         name={name}

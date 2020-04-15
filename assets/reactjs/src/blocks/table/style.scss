@@ -29,5 +29,8 @@
 table {
   td{
     border: 1px solid #ddd;
+    &.is-qubely-active{
+      border-color: red;
+    }
   }
 }

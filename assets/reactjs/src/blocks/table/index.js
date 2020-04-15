@@ -31,7 +31,7 @@ registerBlockType('qubely/table', {
         body: {
             type: 'array',
             default: [
-                {
+                /*{
                     cells: [
                         {
                             content: 'Table 1',
@@ -62,7 +62,7 @@ registerBlockType('qubely/table', {
                             align: undefined
                         }
                     ]
-                }
+                }*/
             ],
             selector: 'tbody tr',
             query: {
