@@ -26,41 +26,7 @@ const {
     ContextMenu: { ContextMenu, handleContextMenu }
 } = wp.qubelyComponents;
 
-import {
-    alignLeft,
-    alignRight,
-    alignCenter,
-    blockTable as icon,
-    tableColumnAfter,
-    tableColumnBefore,
-    tableColumnDelete,
-    tableRowAfter,
-    tableRowBefore,
-    tableRowDelete,
-    table as tableIcon,
-} from '@wordpress/icons';
-
-//
-// const ALIGNMENT_CONTROLS = [
-//     {
-//         icon: alignLeft,
-//         title: __( 'Align Column Left' ),
-//         align: 'left',
-//     },
-//     {
-//         icon: alignCenter,
-//         title: __( 'Align Column Center' ),
-//         align: 'center',
-//     },
-//     {
-//         icon: alignRight,
-//         title: __( 'Align Column Right' ),
-//         align: 'right',
-//     },
-// ];
-
 import classnames from 'classnames';
-
 
 class Edit extends Component {
     constructor(props) {
@@ -99,55 +65,55 @@ class Edit extends Component {
         const { body }  = this.props.attributes;
         return [
             {
-                icon: tableRowBefore,
+                icon: <span className={'fas fa-table'}/>,
                 title: __( 'Add Row Before' ),
                 isDisabled: ! selectedCell,
-                onClick: this.onInsertRowBefore,
+                onClick: this.onInsertRowBefore.bind(this),
             },
             {
-                icon: tableRowAfter,
+                icon:  <span className={'fas fa-table'}/>,
                 title: __( 'Add Row After' ),
                 isDisabled: ! selectedCell,
-                onClick: this.onInsertRowAfter,
+                onClick: this.onInsertRowAfter.bind(this),
             },
             {
-                icon: tableRowDelete,
+                icon:  <span className={'fas fa-table'}/>,
                 title: __( 'Delete Row' ),
                 isDisabled: ! selectedCell || body.length < 2,
-                onClick: this.onDeleteRow,
+                onClick: this.onDeleteRow.bind(this),
             },
             {
-                icon: tableColumnBefore,
+                icon:  <span className={'fas fa-table'}/>,
                 title: __( 'Add Column Before' ),
                 isDisabled: ! selectedCell,
-                onClick: this.onInsertColumnBefore,
+                onClick: this.onInsertColumnBefore.bind(this),
             },
             {
-                icon: tableColumnAfter,
+                icon:  <span className={'fas fa-table'}/>,
                 title: __( 'Add Column After' ),
                 isDisabled: ! selectedCell,
-                onClick: this.onInsertColumnAfter,
+                onClick: this.onInsertColumnAfter.bind(this),
             },
             {
-                icon: tableColumnDelete,
+                icon:  <span className={'fas fa-table'}/>,
                 title: __( 'Delete Column' ),
                 isDisabled: ! selectedCell || !body.length || ( body.length && body[0].cells.length < 2),
-                onClick: this.onDeleteColumn,
+                onClick: this.onDeleteColumn.bind(this),
             },
         ];
     }
 
-    onInsertRowBefore = () => {
+    async onInsertRowBefore () {
         const { rowIndex } = this.state.selectedCell
-        this.inserRowAtIndex(rowIndex);
+        await this.insertRowAtIndex(rowIndex);
     }
 
-    onInsertRowAfter = () => {
+    async onInsertRowAfter () {
         const { rowIndex } = this.state.selectedCell
-        this.inserRowAtIndex(rowIndex + 1);
+        await this.insertRowAtIndex(rowIndex + 1);
     }
 
-    inserRowAtIndex = (index) => {
+    insertRowAtIndex = (index) => {
         const { setAttributes, attributes: { body } } = this.props;
         const columnCount = body.length ? body[0].cells.length : 0;
         if(columnCount) {
@@ -158,29 +124,37 @@ class Edit extends Component {
         }
     }
 
-    onDeleteRow = () => {
+    async onDeleteRow () {
         const { rowIndex } = this.state.selectedCell;
-        const { setAttributes, attributes: { body } }    = this.props;
-        const newBody = body.filter((_, index) => index !== rowIndex);
-        setAttributes({body: newBody});
+        const { setAttributes, attributes }    = this.props;
+        const body = await attributes.body.filter((_, index) => index !== rowIndex);
+        setAttributes({body});
         this.resetSelectedCell();
     }
 
-    onInsertColumnBefore = () => {
-        console.log(this.state.selectedCell)
+    async onInsertColumnBefore () {
+        const { columnIndex } = this.state.selectedCell;
+        await this.insertColumnAtIndex(columnIndex);
     }
 
-    onInsertColumnAfter= () => {
-        console.log(this.state.selectedCell)
+    async onInsertColumnAfter () {
+        const { columnIndex } = this.state.selectedCell;
+        await this.insertColumnAtIndex(columnIndex + 1);
     }
 
-    onDeleteColumn= () => {
+     insertColumnAtIndex = (index) => {
+        const { setAttributes, attributes: { body } } = this.props;
+        body.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1)[0])}));
+        setAttributes({body});
+        this.resetSelectedCell();
+    }
+
+    async onDeleteColumn () {
         const { setAttributes } = this.props;
-        setAttributes(this.deleteColumnByIndex());
+        const deleted = await this.deleteColumnByIndex();
+        setAttributes(deleted);
         this.resetSelectedCell();
     }
-
-    resetSelectedCell = () => this.setState({selectedCell: null});
 
     deleteColumnByIndex = () => {
         const { body } = this.props.attributes;
@@ -191,6 +165,8 @@ class Edit extends Component {
             return acc;
         }, []);
     }
+
+    resetSelectedCell = () => this.setState({selectedCell: null});
 
     renderSections = ({name, rows}) => {
         const Tag = `t${ name }`;
@@ -311,6 +287,9 @@ class Edit extends Component {
                             )
                         })
                     }
+                    <div className="qubely-tcg-info">
+                        <span>{`${currentGeneratorCell.row + 1}x${currentGeneratorCell.column + 1}`}</span>
+                    </div>
                 </div>
             )
         }
@@ -319,7 +298,7 @@ class Edit extends Component {
     }
 
     generateCells = (row, column) => {
-        this.props.setAttributes({body: this.generateEmptyRow(row, column)});
+        this.props.setAttributes({body: this.generateEmptyRow(row + 1, column + 1)});
     }
 
     generateEmptyRow = (count, columnCount) => (

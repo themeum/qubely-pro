@@ -4,7 +4,7 @@
 
 .qubely-tcg-container{
   background: #ffffff;
-  padding: 30px;
+  padding: 30px 30px 20px;
   .qubely-tcg-row{
     display: flex;
     span{
@@ -23,6 +23,11 @@
         border-color: #A9D0FF;
       }
     }
+  }
+  .qubely-tcg-info {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
   }
 }
 
