@@ -4,7 +4,9 @@
 
 .qubely-tcg-container{
   background: #ffffff;
-  padding: 30px 30px 20px;
+  &:not(.qubely-tcg-toolbar){
+    padding: 30px 30px 20px;
+  }
   .qubely-tcg-row{
     display: flex;
     span{

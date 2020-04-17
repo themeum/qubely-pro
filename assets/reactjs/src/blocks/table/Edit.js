@@ -1,3 +1,5 @@
+import Range from "../../../../../../qubely/assets/reactjs/src/components/fields/Range";
+
 const {
     Component,
     Fragment
@@ -10,7 +12,8 @@ const {
     Tooltip,
     Toolbar,
     DropdownMenu,
-    ToolbarGroup
+    ToolbarGroup,
+    Dropdown
 } = wp.components
 
 const {
@@ -230,23 +233,19 @@ class Edit extends Component {
     }
 
     onChangeCell = (cellLocation, content, field) => {
-        if( (Object.keys(cellLocation).length === 0 && cellLocation.constructor === Object) ||  (typeof field === 'undefined' || field === '')) {
-            return;
-        }
-
+        if( (Object.keys(cellLocation).length === 0 && cellLocation.constructor === Object) ||  (typeof field === 'undefined' || field === '')) return;
         const { setAttributes, attributes } = this.props;
         const data = attributes[cellLocation.sectionName];
-
         data[cellLocation.rowIndex].cells[cellLocation.columnIndex][field] = content;
         setAttributes({[cellLocation.sectionName]: data});
     }
 
     renderTableContent = () => {
         const Section = this.renderSections;
-        const CellGenerator = this.renderCellGenerator;
+        const Row = this.renderCellGenerator;
 
         if(!this.props.attributes.body.length) {
-            return <CellGenerator />
+            return <Row cell={8} row={8}/>
         }
 
         return (
@@ -258,43 +257,40 @@ class Edit extends Component {
         );
     }
 
-    renderCellGenerator = () => {
+    renderCellGenerator = ({cell, row, className = ''}) => {
         const { currentGeneratorCell } = this.state;
-        const Row = ({cell, row}) => {
-            return (
-                <div className='qubely-tcg-container' onMouseLeave={() => this.setCurrentGeneratorCell(-1, -1)} >
-                    {
-                        Array(row).fill(0).map((_, row_index) => {
-                            const rowclass = classnames('qubely-tcg-row', `qubely-tcg-row-${row_index}`);
-                            return (
-                                <div className={rowclass}>
-                                    {
-                                        Array(cell).fill(0).map((_, index) => {
-                                            const columnclass = classnames(
-                                                'qubley-tcg-col',
-                                                'qubely-tcg-col-' + index,
-                                                {'active': (currentGeneratorCell.row >= row_index && currentGeneratorCell.column >= index)}
-                                            );
-                                            const columnprops = {
-                                                className: columnclass,
-                                                onMouseEnter: () => this.setCurrentGeneratorCell(row_index, index),
-                                                onClick: () => this.generateCells(row_index, index)
-                                            }
-                                            return <span {...columnprops} />
-                                        })
-                                    }
-                                </div>
-                            )
-                        })
-                    }
-                    <div className="qubely-tcg-info">
-                        <span>{`${currentGeneratorCell.row + 1}x${currentGeneratorCell.column + 1}`}</span>
-                    </div>
+        const containerClass = classnames('qubely-tcg-container', className);
+        return (
+            <div className={containerClass} onMouseLeave={() => this.setCurrentGeneratorCell(-1, -1)} >
+                {
+                    Array(row).fill(0).map((_, row_index) => {
+                        const rowclass = classnames('qubely-tcg-row', `qubely-tcg-row-${row_index}`);
+                        return (
+                            <div className={rowclass}>
+                                {
+                                    Array(cell).fill(0).map((_, index) => {
+                                        const columnclass = classnames(
+                                            'qubley-tcg-col',
+                                            'qubely-tcg-col-' + index,
+                                            {'active': (currentGeneratorCell.row >= row_index && currentGeneratorCell.column >= index)}
+                                        );
+                                        const columnprops = {
+                                            className: columnclass,
+                                            onMouseEnter: () => this.setCurrentGeneratorCell(row_index, index),
+                                            onClick: () => this.generateCells(row_index, index)
+                                        }
+                                        return <span {...columnprops} />
+                                    })
+                                }
+                            </div>
+                        )
+                    })
+                }
+                <div className="qubely-tcg-info">
+                    <span>{`${currentGeneratorCell.row + 1}x${currentGeneratorCell.column + 1}`}</span>
                 </div>
-            )
-        }
-
-        return <Row cell={8} row={8}/>
+            </div>
+        )
     }
 
     generateCells = (row, column) => {
@@ -359,6 +355,7 @@ class Edit extends Component {
         if (uniqueId) { CssGenerator(this.props.attributes, 'table', uniqueId) }
 
         const TableContent = this.renderTableContent;
+        const Row =  this.renderCellGenerator;
 
         return (
             <Fragment>
@@ -384,6 +381,24 @@ class Edit extends Component {
                             data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
                             {...this.props}
                             prevState={this.state} />
+
+                        <Dropdown
+                            position="bottom right"
+                            renderToggle={({ isOpen, onToggle }) => (
+                                <Tooltip text={__('Table Generator')}>
+                                    <button type='button' className='components-button' onClick={onToggle} aria-expanded={isOpen}>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><path d="M20 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 2v3H5V5h15zm-5 14h-5v-9h5v9zM5 10h3v9H5v-9zm12 9v-9h3v9h-3z"></path></svg>
+                                        <span className="components-dropdown-menu__indicator"></span>
+                                    </button>
+                                </Tooltip>
+                            )}
+                            renderContent={() =>
+                                <div className="qubely-toolber-popup">
+                                    <Row cell={6} row={6} className={'qubely-tcg-toolbar'}/>
+                                </div>
+                            }
+                        >
+                        </Dropdown>
                     </ToolbarGroup>
                 </BlockControls>
 
