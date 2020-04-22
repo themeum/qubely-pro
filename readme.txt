@@ -3,7 +3,7 @@ Stable tag: 1.1.7
 
 == Changelog ==
 
-= 1.1.8 - 20 April, 2020 =
+= 1.1.8 - 20 April, 2020 = 
 Update: Vertical Tabs inner blocks new structure support
 Fix: Vertical Tabs Block contents is not displaying
 
