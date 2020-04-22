@@ -339,7 +339,7 @@ class Edit extends Component {
 									/>
 								}
 								{(((layout === 1) && (style != 3)) || ((layout === 2) && (style != 3)) || ((layout === 4) && (style != 3))) &&
-									<Padding label={__('Content Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+									<Padding label={__('Padding')} value={contentPadding} onChange={val => setAttributes({ contentPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
 								}
 								<Separator />
 								{(((layout === 1) && (style === 1)) || ((layout === 2) && (style === 1))) &&
@@ -458,7 +458,7 @@ class Edit extends Component {
 								/>
 							</PanelBody>
 
-							<PanelBody title={__('Pagination', 'qubely')} initialOpen={true}>
+							<PanelBody title={__('Pagination', 'qubely')} initialOpen={false}>
 								{/*<ButtonGroup
 									label={__('Type')}
 									options={
@@ -480,6 +480,7 @@ class Edit extends Component {
 										<Alignment
 											disableJustify
 											value={pageAlignment}
+											alignmentType="content"
 											label={__('Alignment')}
 											onChange={val => setAttributes({ pageAlignment: val })}
 										/>
