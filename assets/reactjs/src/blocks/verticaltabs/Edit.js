@@ -1,45 +1,68 @@
-const { __ } = wp.i18n
-const { Tooltip, PanelBody, Toolbar, TextControl } = wp.components;
-const { compose } = wp.compose
-const { withSelect, withDispatch } = wp.data
-const { Component, Fragment } = wp.element;
-const { InnerBlocks, RichText, InspectorControls, BlockControls } = wp.blockEditor
-const { PluginBlockSettingsMenuItem } = wp.editPost
+import classnames from 'classnames';
 import templates from './templates';
+import icons from '../../helpers/icons';
+
+const { __ } = wp.i18n;
 const {
+	Toolbar,
+	Tooltip,
+	PanelBody,
+	TextControl
+} = wp.components;
+
+const { compose } = wp.compose;
+
+const {
+	withSelect,
+	withDispatch
+} = wp.data;
+
+const {
+	Fragment,
+	Component
+} = wp.element;
+
+const {
+	RichText,
+	InnerBlocks,
+	BlockControls,
+	InspectorControls
+} = wp.blockEditor;
+
+const { PluginBlockSettingsMenuItem } = wp.editPost;
+
+const {
+	Tabs,
+	Tab,
 	Color,
-	ColorAdvanced,
 	Media,
-	IconList,
+	Range,
 	Styles,
+	Toggle,
+	Border,
+	Padding,
+	IconList,
 	Typography,
 	Templates,
-	Range,
+	Separator,
+	Alignment,
+	BoxShadow,
 	RadioAdvanced,
+	ColorAdvanced,
+	BorderRadius,
+	InspectorTab,
+	InspectorTabs,
+	withCSSGenerator,
 	gloalSettings: {
 		globalSettingsPanel,
 		animationSettings,
 		interactionSettings
 	},
-	Inline:
-		{
-			InlineToolbar
-		},
-	BoxShadow,
-	Alignment,
-	Tabs,
-	Tab,
-	Separator,
-	Border,
-	Padding,
-	BorderRadius,
-	withCSSGenerator,
-	Toggle,
-	InspectorTabs,
-	InspectorTab
-} = wp.qubelyComponents
+	Inline: {
+		InlineToolbar
+	},
+} = wp.qubelyComponents;
 
-import icons from '../../helpers/icons';
 
 class Edit extends Component {
 
@@ -47,31 +70,28 @@ class Edit extends Component {
 		super(props)
 		this.state = {
 			device: 'md',
-			initialRender: true,
 			activeTab: 1,
 			spacer: true,
+			initialRender: true,
 			showIconPicker: false,
 		}
 	}
 
 	componentDidMount() {
-		const { setAttributes, clientId, attributes: { uniqueId } } = this.props
-		const _client = clientId.substr(0, 6)
+		const {
+			clientId,
+			setAttributes,
+			attributes: {
+				uniqueId
+			}
+		} = this.props;
+
+		const _client = clientId.substr(0, 6);
+
 		if (!uniqueId) {
 			setAttributes({ uniqueId: _client });
 		} else if (uniqueId && uniqueId != _client) {
 			setAttributes({ uniqueId: _client });
-		}
-	}
-
-	componentDidUpdate(prevProps, prevState) {
-		const { attributes: { tabs }, clientId, block } = this.props
-
-		if (!this.state.initialRender && prevProps.block.innerBlocks.length < block.innerBlocks.length) {
-			let currentTabBlock = $(`#block-${clientId}`)
-			let activeTab = $(`#block-${block.innerBlocks[tabs - 1].clientId}`, currentTabBlock)
-			$('.qubely-vertical-active', currentTabBlock).removeClass('qubely-vertical-active');
-			activeTab.addClass('qubely-vertical-active');
 		}
 	}
 
@@ -86,16 +106,7 @@ class Edit extends Component {
 		setAttributes({ tabTitles: modifiedTitles })
 	}
 
-	_handleTabChange = (e, index) => {
-		const { block, clientId } = this.props
-		let currentTabBlock = $(`#block-${clientId}`)
-		const { showIconPicker } = this.state
-		let activeTab = $(`#block-${block.innerBlocks[index].clientId}`, currentTabBlock)
-		$('.qubely-vertical-hidden', currentTabBlock).removeClass('qubely-vertical-hidden');
-		$('.qubely-vertical-tab-content', currentTabBlock).removeClass('qubely-vertical-active').fadeOut(0);
-		activeTab.addClass('qubely-vertical-active').fadeIn();
-		this.setState({ activeTab: index + 1, initialRender: false, showIconPicker: !showIconPicker })
-	}
+
 
 	copyAttributes = () => {
 		const {
@@ -103,29 +114,45 @@ class Edit extends Component {
 			attributes: {
 				qubelyStyleAttributes
 			}
-		} = this.props
-		const { copyToClipboard } = wp.qubelyComponents.HelperFunction
+		} = this.props;
+		const { copyToClipboard } = wp.qubelyComponents.HelperFunction;
 		let template = {}
 		qubelyStyleAttributes.forEach(key => {
 			template[key] = attributes[key]
 		})
 
-		copyToClipboard(JSON.stringify(template))
+		copyToClipboard(JSON.stringify(template));
 
 	}
 
 	renderTabTitles = () => {
-		const { tabTitles, iconPosition, navText, navLayout, navSubHeading, iconType, enableIcon, navTextAlignment } = this.props.attributes
+		const {
+			attributes: {
+				tabTitles,
+				iconPosition,
+				navText,
+				navLayout,
+				navSubHeading,
+				iconType,
+				enableIcon,
+				navTextAlignment
+			}
+		} = this.props;
+
+
 		return tabTitles.map((title, index) => {
-			const buttonClass = `qubely-vertical-tab-item-button ${enableIcon ? 'qubely-has-icon-' + iconPosition : ''}`
+			let isActiveTab = false;
+			if (this.state.activeTab === index + 1) {
+				isActiveTab = true;
+			}
 			const hasIcon = title.iconName !== 0 && title.iconName !== undefined && title.iconName.toString().trim() !== ''
 			const IconImage = () => {
 				return <div className={'qubely-icon-image qubely-vertical-tab-icon ' + ((title.image !== undefined && title.image.url) ? '' : 'qubely-vertical-placeholder')}>
 					{
 						title.image !== undefined && title.image.url ? (
 							<img
-								className="qubely-vertical-tab-image"
 								src={title.image.url}
+								className="qubely-vertical-tab-image"
 								alt={title.imageAlt && title.imageAlt}
 								srcSet={title.image2x !== undefined && title.image2x.url ? title.image.url + ' 1x, ' + title.image2x.url + ' 2x' : ''}
 							/>
@@ -137,9 +164,28 @@ class Edit extends Component {
 			}
 			const IconFont = () => hasIcon ? <span className={`qubely-vertical-tab-icon ${title.iconName}`} /> : ''
 			const Icon = () => enableIcon ? (iconType === 1 ? <IconFont /> : <IconImage />) : ''
+
+			const _handleTabChange = (index) => {
+				this.setState(state => (
+					{
+						activeTab: index + 1,
+						initialRender: false,
+						showIconPicker: !state.showIconPicker
+					})
+				)
+			}
+			const wrapperClasses = classnames(
+				'qubely-vertical-tab-item',
+				{ ['qubely-vertical-active']: isActiveTab }
+			);
+			const buttonClass = classnames(
+				'qubely-vertical-tab-item-button',
+				{ [`qubely-has-icon-${iconPosition}`]: enableIcon }
+			);
+
 			return (
-				<div class={`qubely-vertical-tab-item ${(this.state.activeTab == index + 1) ? 'qubely-vertical-active' : ''}`}>
-					<div onClick={(e) => this._handleTabChange(e, index)} className={buttonClass}>
+				<div class={wrapperClasses}>
+					<div onClick={() => _handleTabChange(index)} className={buttonClass}>
 						{
 							(navLayout === 2 && iconPosition === 'left') && <Icon />
 						}
@@ -149,9 +195,9 @@ class Edit extends Component {
 									(navLayout === 1 && iconPosition === 'left') && <Icon />
 								}
 								<RichText
+									value={title.title}
 									keepPlaceholderOnFocus
 									placeholder={__('Add Tab Title')}
-									value={title.title}
 									onChange={value => this.updateTitles({ title: value }, index)}
 								/>
 								{
@@ -161,22 +207,22 @@ class Edit extends Component {
 							{navSubHeading && (
 								<RichText
 									tagName="h6"
-									className="qubely-vertical-tab-nav-sub-heading"
 									keepPlaceholderOnFocus
-									placeholder={__('Add Subheading')}
 									value={title.navSubHeading}
+									placeholder={__('Add Subheading')}
+									className="qubely-vertical-tab-nav-sub-heading"
 									onChange={navSubHeading => this.updateTitles({ navSubHeading }, index)}
 								/>
 							)}
 							{navText && (
 								<RichText
-									style={{ display: ((this.state.activeTab === index + 1) ? '' : 'none') }}
 									tagName="p"
-									className="qubely-vertical-tab-nav-text"
 									keepPlaceholderOnFocus
-									placeholder={__('Add Nav Text')}
 									value={title.navText}
+									placeholder={__('Add Nav Text')}
+									className="qubely-vertical-tab-nav-text"
 									onChange={navText => this.updateTitles({ navText }, index)}
+									style={{ display: ((this.state.activeTab === index + 1) ? '' : 'none') }}
 								/>
 							)}
 						</div>
@@ -194,161 +240,180 @@ class Edit extends Component {
 
 	deleteTab = (tabIndex) => {
 		const { activeTab } = this.state
-		const { attributes: { tabTitles, tabs }, setAttributes, block, removeBlock, updateBlockAttributes, clientId } = this.props;
-		const newItems = tabTitles.filter((item, index) => index != tabIndex)
-		setAttributes({ tabTitles: newItems, tabs: tabs - 1 })
-		let i = tabIndex + 1
+		const { attributes: { tabTitles, tabs }, setAttributes, block, removeBlock, replaceInnerBlocks, updateBlockAttributes, clientId } = this.props;
+		const newItems = tabTitles.filter((item, index) => index != tabIndex);
+		setAttributes({ tabTitles: newItems, tabs: tabs - 1 });
+		let i = tabIndex + 1;
+
 		while (i < tabs) {
-			updateBlockAttributes(block.innerBlocks[i].clientId, Object.assign(block.innerBlocks[i].attributes, { id: block.innerBlocks[i].attributes.id - 1 }))
+			updateBlockAttributes(block.innerBlocks[i].clientId,
+				Object.assign(block.innerBlocks[i].attributes,
+					{
+						id: block.innerBlocks[i].attributes.id - 1
+					}));
 			i++
 		}
 
-		removeBlock(block.innerBlocks[tabIndex].clientId)
+		let innerBlocks = JSON.parse(JSON.stringify(block.innerBlocks));
+		innerBlocks.splice(tabIndex, 1);
+		replaceInnerBlocks(clientId, innerBlocks, false);
 
-		if (tabIndex + 1 === activeTab) {
-			let currentTabBlock = $(`#block-${clientId}`)
-			let nextActiveTab = $(`#block-${block.innerBlocks[tabIndex + 1 < tabs ? tabIndex + 1 : tabs >= 2 ? tabIndex - 1 : tabIndex].clientId}`, currentTabBlock)
-			$('.qubely-vertical-active', currentTabBlock).removeClass('qubely-vertical-active')
-			nextActiveTab.addClass('qubely-vertical-active')
-			this.setState({ activeTab: tabIndex == 0 ? 1 : tabIndex + 1 < tabs ? tabIndex + 1 : tabIndex, initialRender: false })
-		}
-		tabIndex + 1 < activeTab && this.setState({ activeTab: activeTab - 1, initialRender: false })
+		this.setState(state => {
+			let newActiveTab = state.activeTab - 1;
+			if (tabIndex + 1 === activeTab) {
+				newActiveTab = tabIndex == 0 ? 1 : tabIndex + 1 < tabs ? tabIndex + 1 : tabIndex
+			}
+			return {
+				activeTab: newActiveTab,
+				initialRender: false
+			}
+		});
 	}
 
-	newTitles = () => {
-		const { attributes: { tabs, tabTitles } } = this.props
-		let newTitles = JSON.parse(JSON.stringify(tabTitles));
-		newTitles[tabs] = {
-			title: __(`Tab ${tabs + 1}`),
-			icon: {},
-		}
-		return newTitles
-	}
 	render() {
 		const {
-			uniqueId,
-			tabs,
-			tabTitles,
-			tabStyle,
-			navLayout,
-			tabVerticalAlign,
-			iconType,
-			enableIcon,
-			navWidth,
-			navSpacing,
-			navSpacing3,
-			// navSize,
-			navPaddingX,
-			navPaddingY,
-			// navPadding,
-			navAlignment,
-			navTextAlignment,
-			typography,
-			navColor,
-			navColor3,
-			navColorActive,
-			navColorActive3,
-			navColorHover,
-			navColorHover3,
-			navBg,
-			navBg2,
-			navBg3,
-			navBgHover,
-			navBgHover2,
-			navBgHover3,
-			navBgActive,
-			navBgActive2,
-			navBgActive3,
-			navBorder,
-			navBorder2,
-			navBorder3,
-			navBorderColorActive,
-			navBorderColorActive2,
-			navBorderColorActive3,
-			navBorderColorHover,
-			navBorderColorHover2,
-			navBorderColorHover3,
-			navBorderRadiusTabs,
-			navBorderRadiusTabsActive,
-			navBorderRadiusTabsHover,
-			navShadow,
-			navShadowActive,
-			navShadowHover,
-			navShadow2,
-			navShadowActive2,
-			navShadowHover2,
+			setAttributes,
+			attributes: {
+				uniqueId,
+				tabs,
+				tabTitles,
+				tabStyle,
+				navLayout,
+				tabVerticalAlign,
+				iconType,
+				enableIcon,
+				navWidth,
+				navSpacing,
+				navSpacing3,
+				// navSize,
+				navPaddingX,
+				navPaddingY,
+				// navPadding,
+				navAlignment,
+				navTextAlignment,
+				typography,
+				navColor,
+				navColor3,
+				navColorActive,
+				navColorActive3,
+				navColorHover,
+				navColorHover3,
+				navBg,
+				navBg2,
+				navBg3,
+				navBgHover,
+				navBgHover2,
+				navBgHover3,
+				navBgActive,
+				navBgActive2,
+				navBgActive3,
+				navBorder,
+				navBorder2,
+				navBorder3,
+				navBorderColorHover,
+				navBorderRadiusTabs,
+				navBorderColorHover2,
+				navBorderColorActive,
+				navBorderColorHover3,
+				navBorderColorActive2,
+				navBorderColorActive3,
+				navBorderRadiusTabsHover,
+				navBorderRadiusTabsActive,
+				navShadow,
+				navShadowActive,
+				navShadowHover,
+				navShadow2,
+				navShadowActive2,
+				navShadowHover2,
 
-			enableArrow,
-			arrowHeight,
-			arrowWidth,
-			arrowColor,
-			arrowColorHover,
+				enableArrow,
+				arrowHeight,
+				arrowWidth,
+				arrowColor,
+				arrowColorHover,
 
-			navSubHeading,
-			navSubHeadingTypography,
-			navSubHeadingSpacing,
-			navSubHeadingColor,
-			navSubHeadingColorActive,
-			navSubHeadingColorHover,
+				navSubHeading,
+				navSubHeadingTypography,
+				navSubHeadingSpacing,
+				navSubHeadingColor,
+				navSubHeadingColorActive,
+				navSubHeadingColorHover,
 
-			navText,
-			textTypography,
-			textSpacing,
-			iconSize,
-			iconGap,
-			iconPosition,
-			iconColor,
-			iconColor2,
-			iconColor3,
-			iconColorActive,
-			iconColorActive2,
-			iconColorActive3,
-			iconColorHover,
-			iconColorHover2,
-			iconColorHover3,
+				navText,
+				textTypography,
+				textSpacing,
+				iconSize,
+				iconGap,
+				iconPosition,
+				iconColor,
+				iconColor2,
+				iconColor3,
+				iconColorActive,
+				iconColorActive2,
+				iconColorActive3,
+				iconColorHover,
+				iconColorHover2,
+				iconColorHover3,
 
-			textColor,
-			// textColorActive,
-			textColorHover,
+				textColor,
+				// textColorActive,
+				textColorHover,
 
-			bodyBg,
-			bodyBg2,
-			bodyBg3,
-			bodyColor,
-			bodyColor2,
-			bodyColor3,
-			bodyPadding,
-			bodyBorder,
-			bodyShadow,
-			bodyBorderRadius,
-			// bodySeparatorHeight,
-			// bodySeparatorColor,
-			bodySpacing,
-			bodySpacing2,
-			bodySpacing3,
+				bodyBg,
+				bodyBg2,
+				bodyBg3,
+				bodyColor,
+				bodyColor2,
+				bodyColor3,
+				bodyPadding,
+				bodyBorder,
+				bodyShadow,
+				bodyBorderRadius,
+				// bodySeparatorHeight,
+				// bodySeparatorColor,
+				bodySpacing,
+				bodySpacing2,
+				bodySpacing3,
 
-			//animation
-			animation,
-			//global
-			globalZindex,
-			enablePosition,
-			selectPosition,
-			positionXaxis,
-			positionYaxis,
-			hideTablet,
-			hideMobile,
-			globalCss,
-			interaction
-		} = this.props.attributes
-		const { name, setAttributes, isSelected } = this.props
-		const { activeTab, device } = this.state
-	
-		let iterator = [], index = 0;
-		while (index < tabs) {
-			iterator.push(index)
-			index++
+				//animation
+				animation,
+				//global
+				globalZindex,
+				enablePosition,
+				selectPosition,
+				positionXaxis,
+				positionYaxis,
+				hideTablet,
+				hideMobile,
+				globalCss,
+				interaction
+			}
+		} = this.props;
+
+		const {
+			device,
+			activeTab,
+		} = this.state;
+
+		const newTitles = () => {
+			let newTitles = JSON.parse(JSON.stringify(tabTitles));
+			newTitles[tabs] = {
+				icon: {},
+				title: __(`Tab ${tabs + 1}`),
+			}
+			return newTitles;
 		}
 
+		const addNewTab = () => {
+			this.setState({
+				activeTab: tabs + 1,
+				initialRender: false
+			})
+			setAttributes({
+				tabs: tabs + 1,
+				tabTitles: newTitles()
+			})
+		}
 
 		return (
 			<Fragment>
@@ -367,11 +432,11 @@ class Edit extends Component {
 						<InspectorTab key={'style'}>
 							<PanelBody title={__('Styles')} initialOpen={true}>
 								<Styles value={tabStyle} onChange={val => setAttributes({ tabStyle: val })}
-										options={[
-											{ value: 'layout1', svg: icons.verticaltabs_1, label: __('Layout 1') },
-											{ value: 'layout2', svg: icons.verticaltabs_2, label: __('Layout 2') },
-											{ value: 'layout3', svg: icons.verticaltabs_3, label: __('Layout 3') },
-										]}
+									options={[
+										{ value: 'layout1', svg: icons.verticaltabs_1, label: __('Layout 1') },
+										{ value: 'layout2', svg: icons.verticaltabs_2, label: __('Layout 2') },
+										{ value: 'layout3', svg: icons.verticaltabs_3, label: __('Layout 3') },
+									]}
 								/>
 								<Separator />
 								<Range label={__('Menu Width')} value={navWidth} onChange={navWidth => setAttributes({ navWidth })} max={700} min={30} />
@@ -561,35 +626,35 @@ class Edit extends Component {
 
 													</Fragment>
 												) : (
-													<Fragment>
-														<IconList
-															disableToggle
-															label={__('Icon')}
-															value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].iconName}
-															onChange={(value) => this.updateTitles({ iconName: value }, activeTab - 1)} />
-														<Tabs>
-															<Tab tabTitle={__('Normal')}>
-																<Color label={__('Color')}
-																	   value={tabStyle === 'layout1' ? iconColor : (tabStyle === 'layout2' ? iconColor2 : iconColor3)}
-																	   onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColor: value } : (tabStyle === 'layout2' ? { iconColor2: value } : { iconColor3: value }))}
-																/>
-															</Tab>
-															<Tab tabTitle={__('Active')}>
-																<Color
-																	label={__('Color')}
-																	value={tabStyle === 'layout1' ? iconColorActive : (tabStyle === 'layout2' ? iconColorActive2 : iconColorActive3)}
-																	onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorActive: value } : (tabStyle === 'layout2' ? { iconColorActive2: value } : { iconColorActive3: value }))}
-																/>
-															</Tab>
-															<Tab tabTitle={__('Hover')}>
-																<Color label={__('Color')}
-																	   value={tabStyle === 'layout1' ? iconColorHover : (tabStyle === 'layout2' ? iconColorHover2 : iconColorHover3)}
-																	   onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorHover: value } : (tabStyle === 'layout2' ? { iconColorHover2: value } : { iconColorHover3: value }))}
-																/>
-															</Tab>
-														</Tabs>
-													</Fragment>
-												)
+														<Fragment>
+															<IconList
+																disableToggle
+																label={__('Icon')}
+																value={tabTitles[activeTab - 1] && tabTitles[activeTab - 1].iconName}
+																onChange={(value) => this.updateTitles({ iconName: value }, activeTab - 1)} />
+															<Tabs>
+																<Tab tabTitle={__('Normal')}>
+																	<Color label={__('Color')}
+																		value={tabStyle === 'layout1' ? iconColor : (tabStyle === 'layout2' ? iconColor2 : iconColor3)}
+																		onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColor: value } : (tabStyle === 'layout2' ? { iconColor2: value } : { iconColor3: value }))}
+																	/>
+																</Tab>
+																<Tab tabTitle={__('Active')}>
+																	<Color
+																		label={__('Color')}
+																		value={tabStyle === 'layout1' ? iconColorActive : (tabStyle === 'layout2' ? iconColorActive2 : iconColorActive3)}
+																		onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorActive: value } : (tabStyle === 'layout2' ? { iconColorActive2: value } : { iconColorActive3: value }))}
+																	/>
+																</Tab>
+																<Tab tabTitle={__('Hover')}>
+																	<Color label={__('Color')}
+																		value={tabStyle === 'layout1' ? iconColorHover : (tabStyle === 'layout2' ? iconColorHover2 : iconColorHover3)}
+																		onChange={value => setAttributes(tabStyle === 'layout1' ? { iconColorHover: value } : (tabStyle === 'layout2' ? { iconColorHover2: value } : { iconColorHover3: value }))}
+																	/>
+																</Tab>
+															</Tabs>
+														</Fragment>
+													)
 											}
 											<RadioAdvanced
 												label={iconType === 2 ? __('Image Position') : __('Icon Position')}
@@ -713,29 +778,28 @@ class Edit extends Component {
 						<div className={`qubely-vertical-tab-nav`}>
 							{this.renderTabTitles()}
 							<Tooltip text={__('Add new tab')}>
-								<button className="qubely-add-new-vertical-tab" onClick={() => {
-									this.setState({ activeTab: tabs + 1, initialRender: false })
-									setAttributes({
-										tabs: tabs + 1,
-										tabTitles: this.newTitles()
-									})
-								}} role="button" areaLabel={__('Add new tab')}>
+								<button
+									role="button"
+									areaLabel={__('Add new tab')}
+									className="qubely-add-new-vertical-tab"
+									onClick={() => addNewTab()}
+								>
 									<i className="fas fa-plus-circle" />
 								</button>
 							</Tooltip>
 						</div>
-						<div className='qubely-vertical-tab-body'>
+						<div className={`qubely-vertical-tab-body qubely-active-tab-${activeTab}`}>
 							<InnerBlocks
 								tagName="div"
-								template={iterator.map(tabIndex => {
-									return [
+								template={Array(tabs).fill(0).map((_, tabIndex) => (
+									[
 										'qubely/verticaltab',
 										{
 											id: tabIndex + 1,
-											customClassName: tabIndex === 0 ? 'qubely-vertical-tab-content qubely-vertical-active' : 'qubely-vertical-tab-content qubely-vertical-hidden',
+											...(tabIndex === 0 && { customClassName: 'qubely-vertical-active' }),
 										}
 									]
-								})}
+								))}
 								templateLock="all"
 								allowedBlocks={['qubely/verticaltab']}
 							/>
@@ -751,15 +815,23 @@ export default compose([
 	withSelect((select, ownProps) => {
 		const { clientId } = ownProps
 		const { getBlock } = select('core/block-editor');
+
 		return {
 			block: getBlock(clientId)
 		};
 	}),
 	withDispatch((dispatch) => {
-		const { insertBlock, removeBlock, updateBlockAttributes } = dispatch('core/block-editor');
+		const {
+			insertBlock,
+			removeBlock,
+			replaceInnerBlocks,
+			updateBlockAttributes
+		} = dispatch('core/block-editor');
+
 		return {
 			insertBlock,
 			removeBlock,
+			replaceInnerBlocks,
 			updateBlockAttributes
 		};
 	}),

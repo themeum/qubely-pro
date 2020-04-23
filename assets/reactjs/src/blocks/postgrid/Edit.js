@@ -862,50 +862,51 @@ class Edit extends Component {
 				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
 					{
 						(posts && posts.length) ?
-							<div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${((layout === 2) || (layout === 3) || (layout === 4)) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
-								{posts.map((post, index) => {
-									if(post){
-										return (
-											<div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style} ${((layout == 5) && (index == 0) || (layout == 3) && (index == 0)) ? 'qubely-post-large-view' : 'qubely-post-small-view'}`}>
-												<div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
-													{post && showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
-													{this.renderCardContent(post, index)}
-												</div>
-											</div>
-										)
-									}else return null
-				
-								})}
+							(
+								<Fragment>
+									<div className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${((layout === 2) || (layout === 3) || (layout === 4)) ? 'qubely-postgrid-column qubely-postgrid-column-md' + column.md + ' ' + 'qubely-postgrid-column-sm' + column.sm + ' ' + 'qubely-postgrid-column-xs' + column.xs : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+										{posts.map((post, index) => {
+											if(post){
+												return (
+													<div className={`qubely-postgrid ${layout === 1 ? 'qubely-post-list-view' : 'qubely-post-grid-view'} qubely-postgrid-style-${style} ${((layout == 5) && (index == 0) || (layout == 3) && (index == 0)) ? 'qubely-post-large-view' : 'qubely-post-small-view'}`}>
+														<div className={`${layout === 1 ? `qubely-post-list-wrapper qubely-post-list-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}` : `qubely-post-grid-wrapper qubely-post-grid-${((layout != 1) && (style === 3)) ? contentPosition : girdContentPosition}`}`}>
+															{post && showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
+															{this.renderCardContent(post, index)}
+														</div>
+													</div>
+												)
+											}else return null
 
-								<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
-									<ContextMenu
-										name={name}
-										clientId={clientId}
-										attributes={attributes}
-										setAttributes={setAttributes}
-										qubelyContextMenu={this.refs.qubelyContextMenu}
-									/>
-								</div>
+										})}
 
-								{
-									(pages > 1 && enablePagination) &&
-									<div className="qubely-postgrid-pagination">
-										{
-											page > 1 && <button className={'qubely-pagination-prev'} onClick={() => setAttributes({ page: page - 1 })}> <span className="fas fa-angle-left" /> {__('Prev')}</button>
-										}
-										{
-											Array(pages).fill(0).map((_, index) => (
-												<button key={index} className={`pages${page === index + 1 ? ' current' : ''}`} onClick={() => setAttributes({ page: index + 1 })}>{index + 1}</button>
-											))
-										}
-										{
-											(page !== pages) && <button className={'qubely-pagination-next'} onClick={() => setAttributes({ page: page + 1 })}>{__('Next')} <span className="fas fa-angle-right" /></button>
-										}
+										<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+											<ContextMenu
+												name={name}
+												clientId={clientId}
+												attributes={attributes}
+												setAttributes={setAttributes}
+												qubelyContextMenu={this.refs.qubelyContextMenu}
+											/>
+										</div>
 									</div>
-
-								}
-							</div>
-							:
+									{
+										(pages > 1 && enablePagination) &&
+										<div className="qubely-postgrid-pagination">
+											{
+												page > 1 && <button className={'qubely-pagination-prev'} onClick={() => setAttributes({ page: page - 1 })}> <span className="fas fa-angle-left" /> {__('Prev')}</button>
+											}
+											{
+												Array(pages).fill(0).map((_, index) => (
+													<button key={index} className={`pages${page === index + 1 ? ' current' : ''}`} onClick={() => setAttributes({ page: index + 1 })}>{index + 1}</button>
+												))
+											}
+											{
+												(page !== pages) && <button className={'qubely-pagination-next'} onClick={() => setAttributes({ page: page + 1 })}>{__('Next')} <span className="fas fa-angle-right" /></button>
+											}
+										</div>
+									}
+								</Fragment>
+							):
 							<div className="qubely-postgrid-is-loading">
 								<Spinner />
 							</div>
