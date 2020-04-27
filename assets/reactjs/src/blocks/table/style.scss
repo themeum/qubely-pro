@@ -41,3 +41,62 @@ table {
     }
   }
 }
+
+/**
+ * Editor css
+ */
+
+.qubely-table-cell-edit{
+  position: relative;
+  .qubely-tc-type-changer-wrap{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    z-index: 2;
+    > button{
+      padding: 0px;
+      border: 1px solid #D6D9DD;
+      width: 13px;
+      text-align: center;
+      color: #9B9B9B;
+      span{
+        font-size: 8px;
+        line-height: 10px;
+        display: block;
+      }
+    }
+    .qubely-tc-type-changer{
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background: white;
+      width: 370px;
+      display: grid;
+      grid-template-columns: calc(50% - 10px) 50%;
+      padding: 20px;
+      border: 1px solid #DBDFE4;
+      grid-gap: 10px;
+      button{
+        height: 48px;
+        line-height: 46px;
+        padding: 0 12px;
+        border: 1px solid #CED6E0;
+        background: #F2F3F7;
+        border-radius: 4px;
+        text-align: left;
+        color: #535F6A;
+        i{
+          margin-right: 10px;
+          font-size: 20px;
+          line-height: 48px;
+        }
+        &:hover{
+          background: #D2E7FF;
+          border-color: #A9D0FF;
+          color: #2184F9;
+        }
+      }
+    }
+  }
+}

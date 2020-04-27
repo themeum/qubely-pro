@@ -19,14 +19,16 @@ const {
 const {
     BlockControls,
     InspectorControls,
-    RichText
+    RichText,
+    InnerBlocks
 } = wp.blockEditor
 
 const {
     Inline: { InlineToolbar },
     CssGenerator: { CssGenerator },
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
-    ContextMenu: { ContextMenu, handleContextMenu }
+    ContextMenu: { ContextMenu, handleContextMenu },
+    QubelyButtonEdit
 } = wp.qubelyComponents;
 
 import classnames from 'classnames';
@@ -43,7 +45,8 @@ class Edit extends Component {
             currentGeneratorCell: {
                 row: -1,
                 column: -1
-            }
+            },
+            showCellTypeChange: false
         }
     }
 
@@ -120,9 +123,8 @@ class Edit extends Component {
         const { setAttributes, attributes: { body } } = this.props;
         const columnCount = body.length ? body[0].cells.length : 0;
         if(columnCount) {
-            const newBody = body;
-            newBody.splice(index, 0, this.generateEmptyRow(1, columnCount)[0]);
-            setAttributes({body: newBody});
+            body.splice(index, 0, this.generateEmptyRow(1, columnCount)[0]);
+            setAttributes({body});
             this.resetSelectedCell();
         }
     }
@@ -186,19 +188,22 @@ class Edit extends Component {
 
     renderData = ( {cells} , name, rowIndex) => {
         const { selectedCell } = this.state;
-        return cells.map(({content, tag: CellTag, scope, align}, columnIndex) => {
+        return cells.map(({content, tag: Tag, scope, align, type}, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
                 columnIndex,
             };
 
+            const isSelectedCell = selectedCell && (selectedCell.rowIndex === rowIndex && selectedCell.columnIndex === columnIndex);
+
             const className = classnames(
                 {
                     [ `has-text-align-${ align }` ]: align,
-                    'is-qubely-active' : selectedCell && (selectedCell.rowIndex === rowIndex && selectedCell.columnIndex === columnIndex)
+                    'is-qubely-active' : isSelectedCell
                 },
                 'qubely-block-table_cell-content',
+                'qubely-table-cell-edit'
             );
 
             let placeholder = '';
@@ -209,25 +214,46 @@ class Edit extends Component {
             }
 
             return (
-                <RichText
-                    key={columnIndex}
-                    tagName={CellTag}
-                    scope={ CellTag === 'th' ? scope : undefined }
-                    value={ content }
-                    className={className}
-                    placeholder={ placeholder }
-                    onChange={(content) => {
-                        this.onChangeCell(cellLocation, content, 'content')
-                    }}
-                    onClick={() => {
-                        this.setState({cellLocation})
-                    }}
-                    unstableOnFocus={() => {
-                        this.setState({
-                            selectedCell: cellLocation
-                        })
-                    }}
-                />
+                <Tag className={className}>
+                    <RichText
+                        key={columnIndex}
+                        scope={ Tag === 'th' ? scope : undefined }
+                        value={ content }
+                        placeholder={ placeholder }
+                        onChange={(content) => {
+                            this.onChangeCell(cellLocation, content, 'content')
+                        }}
+                        onClick={() => {
+                            this.setState({cellLocation})
+                        }}
+                        unstableOnFocus={() => {
+                            this.setState({
+                                selectedCell: cellLocation,
+                                showCellTypeChange: false
+                            })
+                        }}
+                        />
+
+                    { isSelectedCell && (
+                        <div className={'qubely-tc-type-changer-wrap'}>
+                            <button onClick={() => {
+                                this.setState({
+                                    showCellTypeChange: !this.state.showCellTypeChange
+                                })
+                            }}><span className="fas fa-angle-down"></span></button>
+                            {this.state.showCellTypeChange && (
+                                <div className="qubely-tc-type-changer">
+                                    <button> <i className="fas fa-font"></i> Text</button>
+                                    <button><i className="fas fa-image"></i> Image</button>
+                                    <button><i className="fas fa-mouse-pointer"></i> Button</button>
+                                    <button><i className="fas fa-star"></i> Rating</button>
+                                    <button><i className="fas fa-rocket"></i> Icon</button>
+                                    <button><i className="fas fa-list"></i> List</button>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </Tag>
             )
         })
     }
@@ -307,7 +333,8 @@ class Edit extends Component {
                 content: '',
                 tag: 'td',
                 scope: undefined,
-                align: undefined
+                align: undefined,
+                type: 'text'
             }
         })
     )
@@ -317,6 +344,7 @@ class Edit extends Component {
      */
 
     setCurrentGeneratorCell = (row, column) => {
+
         this.setState({
             currentGeneratorCell: {
                 row,
@@ -405,12 +433,13 @@ class Edit extends Component {
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
                 <div className={`qubely-block-${uniqueId} ${className ? className : ''}`}>
-                    <div className='qubely-block-table' onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+                    <div className='qubely-block-table'>
+                    {/*<div className='qubely-block-table' onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>*/}
 
                         <TableContent />
 
                         {
-                            this.props.attributes.body.length !== 0 && (
+                            /*this.props.attributes.body.length !== 0 && (
                                 <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
                                     <ContextMenu
                                         name={name}
@@ -420,7 +449,7 @@ class Edit extends Component {
                                         qubelyContextMenu={this.refs.qubelyContextMenu}
                                     />
                                 </div>
-                            )
+                            )*/
                         }
                     </div>
                 </div>
