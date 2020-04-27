@@ -4,7 +4,7 @@ Stable tag: 1.1.9
 == Changelog ==
 
 = 1.1.9 - 27 April, 2020 =
-Fix: Testimonial Carousel rating backward compability issue
+Fix: Testimonial block - ratings backward compatibility issue
 
 = 1.1.8 - 20 April, 2020 = 
 Update: Vertical Tabs inner blocks new structure support
