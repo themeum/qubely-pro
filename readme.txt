@@ -1,5 +1,5 @@
 ===  Qubely Pro ===
-Stable tag: 1.1.7
+Stable tag: 1.1.9
 
 == Changelog ==
 
