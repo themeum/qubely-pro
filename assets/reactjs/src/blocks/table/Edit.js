@@ -218,7 +218,7 @@ class Edit extends Component {
                     <RichText
                         key={columnIndex}
                         scope={ Tag === 'th' ? scope : undefined }
-                        value={ content }
+                        value={ content + type }
                         placeholder={ placeholder }
                         onChange={(content) => {
                             this.onChangeCell(cellLocation, content, 'content')
@@ -236,19 +236,29 @@ class Edit extends Component {
 
                     { isSelectedCell && (
                         <div className={'qubely-tc-type-changer-wrap'}>
-                            <button onClick={() => {
-                                this.setState({
-                                    showCellTypeChange: !this.state.showCellTypeChange
-                                })
-                            }}><span className="fas fa-angle-down"></span></button>
+                            <button onClick={() => {this.setState({showCellTypeChange: !this.state.showCellTypeChange})}}>
+                                <span className="fas fa-angle-down" />
+                            </button>
                             {this.state.showCellTypeChange && (
                                 <div className="qubely-tc-type-changer">
-                                    <button> <i className="fas fa-font"></i> Text</button>
-                                    <button><i className="fas fa-image"></i> Image</button>
-                                    <button><i className="fas fa-mouse-pointer"></i> Button</button>
-                                    <button><i className="fas fa-star"></i> Rating</button>
-                                    <button><i className="fas fa-rocket"></i> Icon</button>
-                                    <button><i className="fas fa-list"></i> List</button>
+                                    <button onClick={() => { this.onChangeCell(cellLocation, 'text', 'type') }}>
+                                        <i className="fas fa-font" /> Text
+                                    </button>
+                                    <button onClick={() => { this.onChangeCell(cellLocation, 'image', 'type')}}>
+                                        <i className="fas fa-image" /> Image
+                                    </button>
+                                    <button onClick={() => { this.onChangeCell(cellLocation, 'button', 'type') }}>
+                                        <i className="fas fa-mouse-pointer"/> Button
+                                    </button>
+                                    <button onClick={() => { this.onChangeCell(cellLocation, 'rating', 'type') }}>
+                                        <i className="fas fa-star"/> Rating
+                                    </button>
+                                    <button onClick={() => { this.onChangeCell(cellLocation, 'icon', 'type') }}>
+                                        <i className="fas fa-rocket"/> Icon
+                                    </button>
+                                    <button onClick={() => { this.onChangeCell(cellLocation, 'list', 'type') }}>
+                                        <i className="fas fa-list"/> List
+                                    </button>
                                 </div>
                             )}
                         </div>
@@ -264,6 +274,7 @@ class Edit extends Component {
         const data = attributes[cellLocation.sectionName];
         data[cellLocation.rowIndex].cells[cellLocation.columnIndex][field] = content;
         setAttributes({[cellLocation.sectionName]: data});
+        console.log(data);
     }
 
     renderTableContent = () => {
