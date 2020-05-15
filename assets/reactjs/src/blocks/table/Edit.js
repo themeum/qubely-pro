@@ -1,11 +1,9 @@
-import Range from "../../../../../../qubely/assets/reactjs/src/components/fields/Range";
-
 const {
     Component,
     Fragment
 } = wp.element;
 
-const {__} = wp.i18n
+const {__} = wp.i18n;
 
 const {
     PanelBody,
@@ -14,28 +12,29 @@ const {
     DropdownMenu,
     ToolbarGroup,
     Dropdown
-} = wp.components
+} = wp.components;
 
 const {
     BlockControls,
     InspectorControls,
     RichText,
     InnerBlocks
-} = wp.blockEditor
+} = wp.blockEditor;
 
 const {
     Inline: { InlineToolbar },
     CssGenerator: { CssGenerator },
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
     ContextMenu: { ContextMenu, handleContextMenu },
-    QubelyButtonEdit
+    QubelyButtonEdit,
+    Range
 } = wp.qubelyComponents;
 
 import classnames from 'classnames';
 
 class Edit extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             device: 'md',
             spacer: true,
@@ -51,8 +50,8 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId } } = this.props
-        const _client = clientId.substr(0, 6)
+        const { setAttributes, clientId, attributes: { uniqueId } } = this.props;
+        const _client = clientId.substr(0, 6);
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
@@ -107,18 +106,33 @@ class Edit extends Component {
                 onClick: this.onDeleteColumn.bind(this),
             },
         ];
-    }
+    };
 
+    /**
+     * Handle insert row before selected index
+     * helper method
+     * @returns {Promise<void>}
+     */
     async onInsertRowBefore () {
-        const { rowIndex } = this.state.selectedCell
+        const { rowIndex } = this.state.selectedCell;
         await this.insertRowAtIndex(rowIndex);
     }
 
+    /**
+     * Handle insert row after selected index
+     * helper method
+     * @returns {Promise<void>}
+     */
     async onInsertRowAfter () {
-        const { rowIndex } = this.state.selectedCell
+        const { rowIndex } = this.state.selectedCell;
         await this.insertRowAtIndex(rowIndex + 1);
     }
 
+    /**
+     * Insert row at specific index
+     * helper method
+     * @param index
+     */
     insertRowAtIndex = (index) => {
         const { setAttributes, attributes: { body } } = this.props;
         const columnCount = body.length ? body[0].cells.length : 0;
@@ -127,8 +141,13 @@ class Edit extends Component {
             setAttributes({body});
             this.resetSelectedCell();
         }
-    }
+    };
 
+    /**
+     * Delete row by index
+     * helper method
+     * @returns {Promise<void>}
+     */
     async onDeleteRow () {
         const { rowIndex } = this.state.selectedCell;
         const { setAttributes, attributes }    = this.props;
@@ -137,23 +156,42 @@ class Edit extends Component {
         this.resetSelectedCell();
     }
 
+    /**
+     * Handle insert column before selected index
+     * helper method
+     * @returns {Promise<void>}
+     */
     async onInsertColumnBefore () {
         const { columnIndex } = this.state.selectedCell;
         await this.insertColumnAtIndex(columnIndex);
     }
 
+    /**
+     * Handle insert column after selected index
+     * helper method
+     * @returns {Promise<void>}
+     */
     async onInsertColumnAfter () {
         const { columnIndex } = this.state.selectedCell;
         await this.insertColumnAtIndex(columnIndex + 1);
     }
 
+    /**
+     * Insert new column at specific index
+     * helper method
+     * @param index
+     */
      insertColumnAtIndex = (index) => {
         const { setAttributes, attributes: { body } } = this.props;
         body.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1)[0])}));
         setAttributes({body});
         this.resetSelectedCell();
-    }
+    };
 
+    /**
+     * Handle delete column
+     * @returns {Promise<void>}
+     */
     async onDeleteColumn () {
         const { setAttributes } = this.props;
         const deleted = await this.deleteColumnByIndex();
@@ -161,6 +199,11 @@ class Edit extends Component {
         this.resetSelectedCell();
     }
 
+    /**
+     * Delete table column by index
+     * helper method
+     * @returns {*}
+     */
     deleteColumnByIndex = () => {
         const { body } = this.props.attributes;
         const { columnIndex } = this.state.selectedCell;
@@ -169,10 +212,21 @@ class Edit extends Component {
             acc.push(obj);
             return acc;
         }, []);
-    }
+    };
 
+    /**
+     * Reset selected cell
+     * helper method
+     * @returns {*}
+     */
     resetSelectedCell = () => this.setState({selectedCell: null});
 
+    /**
+     * Render table section (table body, table head & table footer)
+     * @param name
+     * @param rows
+     * @returns {*}
+     */
     renderSections = ({name, rows}) => {
         const Tag = `t${ name }`;
         return (
@@ -184,8 +238,15 @@ class Edit extends Component {
                 }
             </Tag>
         );
-    }
+    };
 
+    /**
+     * Render table data
+     * @param cells
+     * @param name
+     * @param rowIndex
+     * @returns {*}
+     */
     renderData = ( {cells} , name, rowIndex) => {
         const { selectedCell } = this.state;
         return cells.map(({content, tag: Tag, scope, align, type}, columnIndex) => {
@@ -266,17 +327,32 @@ class Edit extends Component {
                 </Tag>
             )
         })
-    }
+    };
 
+    /**
+     * Handle cell value changes
+     * @param cellLocation
+     * @param content
+     * @param field
+     */
     onChangeCell = (cellLocation, content, field) => {
-        if( (Object.keys(cellLocation).length === 0 && cellLocation.constructor === Object) ||  (typeof field === 'undefined' || field === '')) return;
+        if(
+            (Object.keys(cellLocation).length === 0 && cellLocation.constructor === Object) ||
+            (typeof field === 'undefined' || field === '')
+        ) {
+            return;
+        }
         const { setAttributes, attributes } = this.props;
         const data = attributes[cellLocation.sectionName];
         data[cellLocation.rowIndex].cells[cellLocation.columnIndex][field] = content;
         setAttributes({[cellLocation.sectionName]: data});
-        console.log(data);
-    }
+        this.setState({cellLocation});
+    };
 
+    /**
+     * Render table content
+     * @returns {*}
+     */
     renderTableContent = () => {
         const Section = this.renderSections;
         const Row = this.renderCellGenerator;
@@ -292,8 +368,15 @@ class Edit extends Component {
                 </table>
             </figure>
         );
-    }
+    };
 
+    /**
+     * Render empty cell generator
+     * @param cell
+     * @param row
+     * @param className
+     * @returns {*}
+     */
     renderCellGenerator = ({cell, row, className = ''}) => {
         const { currentGeneratorCell } = this.state;
         const containerClass = classnames('qubely-tcg-container', className);
@@ -315,7 +398,7 @@ class Edit extends Component {
                                             className: columnclass,
                                             onMouseEnter: () => this.setCurrentGeneratorCell(row_index, index),
                                             onClick: () => this.generateCells(row_index, index)
-                                        }
+                                        };
                                         return <span {...columnprops} />
                                     })
                                 }
@@ -328,16 +411,32 @@ class Edit extends Component {
                 </div>
             </div>
         )
-    }
+    };
 
+    /**
+     * Finally generate cells using `generateEmptyRow` & `generateEmptyColumn`
+     * @param row
+     * @param column
+     */
     generateCells = (row, column) => {
         this.props.setAttributes({body: this.generateEmptyRow(row + 1, column + 1)});
-    }
+    };
 
+    /**
+     * Generate Empty Column
+     * @param count
+     * @param columnCount
+     * @returns {{cells: {scope: undefined, tag: string, align: undefined, type: string, content: string}[]}[]}
+     */
     generateEmptyRow = (count, columnCount) => (
         Array(count).fill(0).map(_ => ({cells: this.generateEmptyColumn(columnCount)}))
-    )
+    );
 
+    /**
+     * Generate Empty Column
+     * @param count
+     * @returns {{scope: undefined, tag: string, align: undefined, type: string, content: string}[]}
+     */
     generateEmptyColumn = (count) => (
         Array(count).fill(0).map(_ => {
             return {
@@ -348,21 +447,20 @@ class Edit extends Component {
                 type: 'text'
             }
         })
-    )
+    );
 
     /**
-     * set current generator cell to state
+     * Select/Update current generator cell
+     * @params row, column
      */
-
     setCurrentGeneratorCell = (row, column) => {
-
         this.setState({
             currentGeneratorCell: {
                 row,
                 column
             }
         });
-    }
+    };
 
 
     render() {
