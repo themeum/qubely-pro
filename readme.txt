@@ -3,6 +3,8 @@ Stable tag: 1.1.9
 
 == Changelog ==
 
+= 1.2.0 - 18 May, 2020 =
+
 = 1.1.9 - 27 April, 2020 =
 Fix: Testimonial block - ratings backward compatibility issue
 
