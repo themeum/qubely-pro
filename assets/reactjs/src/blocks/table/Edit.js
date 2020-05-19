@@ -477,15 +477,13 @@ class Edit extends Component {
      * @returns {{scope: undefined, tag: string, align: undefined, type: string, content: string}[]}
      */
     generateEmptyColumn = (count) => (
-        Array(count).fill(0).map(_ => {
-            return {
-                content: '',
-                tag: 'td',
-                scope: undefined,
-                align: undefined,
-                type: 'text'
-            }
-        })
+        Array(count).fill(0).map(_ => ({
+            content: '',
+            tag: 'td',
+            scope: undefined,
+            align: undefined,
+            type: 'text'
+        }))
     );
 
     /**
