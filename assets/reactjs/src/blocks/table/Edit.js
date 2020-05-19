@@ -642,23 +642,7 @@ class Edit extends Component {
 
                 <div className={`qubely-block-${uniqueId} ${className ? className : ''}`}>
                     <div className='qubely-block-table'>
-                    {/*<div className='qubely-block-table' onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>*/}
-
                         <TableContent />
-
-                        {
-                            /*this.props.attributes.body.length !== 0 && (
-                                <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
-                                    <ContextMenu
-                                        name={name}
-                                        clientId={clientId}
-                                        attributes={attributes}
-                                        setAttributes={setAttributes}
-                                        qubelyContextMenu={this.refs.qubelyContextMenu}
-                                    />
-                                </div>
-                            )*/
-                        }
                     </div>
                 </div>
 
