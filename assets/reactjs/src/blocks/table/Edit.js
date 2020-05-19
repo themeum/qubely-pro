@@ -305,6 +305,7 @@ class Edit extends Component {
     /**
      * Render cell type changer
      * @param location
+     * @return mixed
      */
     renderCellChanger = ({location = false}) => {
         if(!location) return null;
