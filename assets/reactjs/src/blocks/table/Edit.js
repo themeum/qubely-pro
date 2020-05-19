@@ -265,7 +265,7 @@ class Edit extends Component {
                 'qubely-table-cell-edit'
             );
 
-            let placeholder = '';
+            let placeholder = 'cell content';
             if ( name === 'head' ) {
                 placeholder = __( 'Header label' );
             } else if ( name === 'foot' ) {
@@ -277,20 +277,61 @@ class Edit extends Component {
                     className={className}
                     onClick={(event) => this.handleOnCellClick(event, cellLocation)}
                 >
+                    {this.renderCellContent({type, content, columnIndex, Tag, scope, placeholder, cellLocation})}
+                    { isSelectedCell && this.renderCellChanger({location: cellLocation}) }
+                </Tag>
+            )
+        })
+    };
+
+    /**
+     * Render cell content
+     * @param type
+     * @param content
+     * @param columnIndex
+     * @param Tag
+     * @param scope
+     * @param placeholder
+     * @param cellLocation
+     * @returns {*}
+     */
+    renderCellContent = ({type, content, columnIndex, Tag, scope, placeholder, cellLocation}) => {
+        const {
+            enableButton,
+            buttonFillType,
+            buttonSize,
+            buttonText,
+            buttonIconName,
+            buttonIconPosition,
+            buttonTag
+        } = this.props.attributes;
+
+        switch (type) {
+            case 'button':
+                return  (
+                    <QubelyButtonEdit
+                        enableButton={enableButton}
+                        buttonFillType={buttonFillType}
+                        buttonSize={buttonSize}
+                        buttonText={buttonText}
+                        buttonIconName={buttonIconName}
+                        buttonIconPosition={buttonIconPosition}
+                        buttonTag={buttonTag}
+                        onTextChange={content => this.onChangeCell(cellLocation, content, 'content') } />
+                )
+            default:
+                return (
                     <RichText
                         key={columnIndex}
                         scope={ Tag === 'th' ? scope : undefined }
-                        value={ content + type }
+                        value={ content }
                         placeholder={ placeholder }
                         onChange={(content) => {
                             this.onChangeCell(cellLocation, content, 'content')
                         }}
                     />
-
-                    { isSelectedCell && this.renderCellChanger({location: cellLocation}) }
-                </Tag>
-            )
-        })
+                )
+        }
     };
 
     /**

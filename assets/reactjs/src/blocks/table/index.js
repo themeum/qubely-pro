@@ -3,7 +3,7 @@ import Edit from './Edit'
 import Save from './Save';
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
+const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes } } = wp.qubelyComponents
 
 
 registerBlockType('qubely/table', {
@@ -68,7 +68,7 @@ registerBlockType('qubely/table', {
         },
         // Global
         ...globalAttributes,
-
+        ...buttonAttributes,
         sourceOfCopiedStyle: { type: 'boolean', default: false }
     },
     edit: Edit,
