@@ -249,7 +249,6 @@ class Edit extends Component {
      */
     renderData = ( {cells} , name, rowIndex) => {
         const { selectedCell } = this.state;
-        const CellChanger = this.renderCellChanger;
         return cells.map(({content, tag: Tag, scope, align, type}, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
@@ -260,10 +259,8 @@ class Edit extends Component {
             const isSelectedCell = selectedCell && (selectedCell.rowIndex === rowIndex && selectedCell.columnIndex === columnIndex);
 
             const className = classnames(
-                {
-                    [ `has-text-align-${ align }` ]: align,
-                    'is-qubely-active' : isSelectedCell
-                },
+                { 'is-qubely-active' : isSelectedCell },
+                `has-text-align-${ align }`,
                 'qubely-block-table_cell-content',
                 'qubely-table-cell-edit'
             );
@@ -276,7 +273,10 @@ class Edit extends Component {
             }
 
             return (
-                <Tag className={className}>
+                <Tag
+                    className={className}
+                    onClick={(event) => this.handleOnCellClick(event, cellLocation)}
+                >
                     <RichText
                         key={columnIndex}
                         scope={ Tag === 'th' ? scope : undefined }
@@ -285,21 +285,38 @@ class Edit extends Component {
                         onChange={(content) => {
                             this.onChangeCell(cellLocation, content, 'content')
                         }}
-                        onClick={() => {
-                            this.setState({cellLocation})
-                        }}
-                        unstableOnFocus={() => {
-                            this.setState({
-                                selectedCell: cellLocation,
-                                showCellTypeChange: false
-                            })
-                        }}
-                        />
+                    />
 
-                    { isSelectedCell && <CellChanger location={cellLocation} /> }
+                    { isSelectedCell && this.renderCellChanger({location: cellLocation}) }
                 </Tag>
             )
         })
+    };
+
+    /**
+     * cell click event handler
+     * @param event
+     * @param cellLocation
+     */
+    handleOnCellClick = (event, cellLocation) => {
+        if(!location) return;
+        const { selectedCell } = this.state;
+        if(
+            cellLocation && selectedCell &&
+            !(
+                cellLocation.sectionName === selectedCell.sectionName &&
+                cellLocation.columnIndex === selectedCell.columnIndex &&
+                cellLocation.rowIndex === selectedCell.rowIndex
+            )
+        ) {
+            this.setState({showCellTypeChange: false});
+        }
+
+        this.setState({
+            cellLocation,
+            selectedCell: cellLocation
+        });
+
     };
 
     /**
@@ -344,11 +361,15 @@ class Edit extends Component {
                 icon: 'fas fa-list',
                 type: 'list'
             }
-        ]
+        ];
 
         return (
             <div className={'qubely-tc-type-changer-wrap'}>
-                <button onClick={() => this.setState((prevState) => ({showCellTypeChange: ! prevState.showCellTypeChange}))}>
+                <button onClick={() => {
+                    this.setState((prevState) => {
+                        return { showCellTypeChange: ! prevState.showCellTypeChange }
+                    })
+                }}>
                     <span className="fas fa-angle-down" />
                 </button>
                 {
@@ -366,7 +387,7 @@ class Edit extends Component {
                 }
             </div>
         )
-    }
+    };
 
     /**
      * Handle cell value changes
