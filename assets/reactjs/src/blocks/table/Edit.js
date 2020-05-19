@@ -249,6 +249,7 @@ class Edit extends Component {
      */
     renderData = ( {cells} , name, rowIndex) => {
         const { selectedCell } = this.state;
+        const CellChanger = this.renderCellChanger;
         return cells.map(({content, tag: Tag, scope, align, type}, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
@@ -295,39 +296,76 @@ class Edit extends Component {
                         }}
                         />
 
-                    { isSelectedCell && (
-                        <div className={'qubely-tc-type-changer-wrap'}>
-                            <button onClick={() => {this.setState({showCellTypeChange: !this.state.showCellTypeChange})}}>
-                                <span className="fas fa-angle-down" />
-                            </button>
-                            {this.state.showCellTypeChange && (
-                                <div className="qubely-tc-type-changer">
-                                    <button onClick={() => { this.onChangeCell(cellLocation, 'text', 'type') }}>
-                                        <i className="fas fa-font" /> Text
-                                    </button>
-                                    <button onClick={() => { this.onChangeCell(cellLocation, 'image', 'type')}}>
-                                        <i className="fas fa-image" /> Image
-                                    </button>
-                                    <button onClick={() => { this.onChangeCell(cellLocation, 'button', 'type') }}>
-                                        <i className="fas fa-mouse-pointer"/> Button
-                                    </button>
-                                    <button onClick={() => { this.onChangeCell(cellLocation, 'rating', 'type') }}>
-                                        <i className="fas fa-star"/> Rating
-                                    </button>
-                                    <button onClick={() => { this.onChangeCell(cellLocation, 'icon', 'type') }}>
-                                        <i className="fas fa-rocket"/> Icon
-                                    </button>
-                                    <button onClick={() => { this.onChangeCell(cellLocation, 'list', 'type') }}>
-                                        <i className="fas fa-list"/> List
-                                    </button>
-                                </div>
-                            )}
-                        </div>
-                    )}
+                    { isSelectedCell && <CellChanger location={cellLocation} /> }
                 </Tag>
             )
         })
     };
+
+    /**
+     * Render cell type changer
+     * @param location
+     */
+    renderCellChanger = ({location = false}) => {
+        if(!location) return null;
+        /**
+         * Available cell types
+         * @type {({icon: string, text: *, type: string})[]}
+         */
+        const AVAILABLE_CELL_TYPES = [
+            {
+                text: __('Text'),
+                icon: 'fas fa-font',
+                type: 'text'
+            },
+            {
+                text: __('Image'),
+                icon: 'fas fa-image',
+                type: 'image'
+            },
+            {
+                text: __('Button'),
+                icon: 'fas fa-mouse-pointer',
+                type: 'button'
+            },
+            {
+                text: __('Rating'),
+                icon: 'fas fa-star',
+                type: 'rating'
+            },
+            {
+                text: __('Icon'),
+                icon: 'fas fa-rocket',
+                type: 'icon'
+            },
+            {
+                text: __('list'),
+                icon: 'fas fa-list',
+                type: 'list'
+            }
+        ]
+
+        return (
+            <div className={'qubely-tc-type-changer-wrap'}>
+                <button onClick={() => this.setState((prevState) => ({showCellTypeChange: ! prevState.showCellTypeChange}))}>
+                    <span className="fas fa-angle-down" />
+                </button>
+                {
+                    this.state.showCellTypeChange && (
+                        <div className="qubely-tc-type-changer">
+                            {
+                                AVAILABLE_CELL_TYPES.map(({text, icon, type}) => (
+                                    <button onClick={() => this.onChangeCell(location, type, 'type')}>
+                                        <i className={icon} /> {text}
+                                    </button>
+                                ))
+                            }
+                        </div>
+                    )
+                }
+            </div>
+        )
+    }
 
     /**
      * Handle cell value changes
