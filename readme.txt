@@ -1,7 +1,12 @@
 ===  Qubely Pro ===
-Stable tag: 1.1.7
+Stable tag: 1.1.9
 
 == Changelog ==
+
+= 1.2.0 - 18 May, 2020 =
+
+= 1.1.9 - 27 April, 2020 =
+Fix: Testimonial block - ratings backward compatibility issue
 
 = 1.1.8 - 20 April, 2020 = 
 Update: Vertical Tabs inner blocks new structure support
