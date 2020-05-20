@@ -20,6 +20,17 @@ registerBlockType('qubely/table', {
     },
     attributes: {
         uniqueId: { type: 'string', default: '' },
+        // Global
+        ...globalAttributes,
+        ...buttonAttributes,
+        buttonToggleOption: {
+            type: 'boolean',
+            default: false
+        },
+        enableButton: {
+            type: 'boolean',
+            default: true
+        },
         spacer: {
             type: 'object',
             default: {
@@ -66,9 +77,7 @@ registerBlockType('qubely/table', {
             ],
             selector: 'tbody tr'
         },
-        // Global
-        ...globalAttributes,
-        ...buttonAttributes,
+
         sourceOfCopiedStyle: { type: 'boolean', default: false }
     },
     edit: Edit,
