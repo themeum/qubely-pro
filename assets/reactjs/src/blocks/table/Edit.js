@@ -27,7 +27,10 @@ const {
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
     ContextMenu: { ContextMenu, handleContextMenu },
     QubelyButtonEdit,
-    Range
+    Range,
+    QubelyButton: {
+        buttonSettings
+    }
 } = wp.qubelyComponents;
 
 import classnames from 'classnames';
@@ -300,7 +303,6 @@ class Edit extends Component {
             enableButton,
             buttonFillType,
             buttonSize,
-            buttonText,
             buttonIconName,
             buttonIconPosition,
             buttonTag
@@ -313,7 +315,7 @@ class Edit extends Component {
                         enableButton={enableButton}
                         buttonFillType={buttonFillType}
                         buttonSize={buttonSize}
-                        buttonText={buttonText}
+                        buttonText={content}
                         buttonIconName={buttonIconName}
                         buttonIconPosition={buttonIconPosition}
                         buttonTag={buttonTag}
@@ -447,7 +449,7 @@ class Edit extends Component {
         const data = attributes[cellLocation.sectionName];
         data[cellLocation.rowIndex].cells[cellLocation.columnIndex][field] = content;
         setAttributes({[cellLocation.sectionName]: data});
-        this.setState({cellLocation});
+        // this.setState({cellLocation});
     };
 
     /**
@@ -593,13 +595,15 @@ class Edit extends Component {
         const TableContent = this.renderTableContent;
         const Row =  this.renderCellGenerator;
 
+        const { device, openPanelSetting, showPostTextTypography } = this.state;
+
         return (
             <Fragment>
                 <InspectorControls key={'inspector'}>
                     {
                         /* Code Here */
                     }
-
+                    {buttonSettings(this.props.attributes, device, (key, value) => { setAttributes({ [key]: value }) }, (key, value) => { this.setState({ [key]: value }) }, showPostTextTypography)}
                     {animationSettings(uniqueId, animation, setAttributes)}
                     {interactionSettings(uniqueId, interaction, setAttributes)}
 
