@@ -24,6 +24,7 @@ const {
 const {
     Inline: { InlineToolbar },
     CssGenerator: { CssGenerator },
+    withCSSGenerator,
     gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
     ContextMenu: { ContextMenu, handleContextMenu },
     QubelyButtonEdit,
@@ -590,8 +591,6 @@ class Edit extends Component {
             }
         } = this.props;
 
-        if (uniqueId) { CssGenerator(this.props.attributes, 'table', uniqueId) }
-
         const TableContent = this.renderTableContent;
         const Row =  this.renderCellGenerator;
 
@@ -655,4 +654,4 @@ class Edit extends Component {
     }
 }
 
-export default Edit;
+export default withCSSGenerator()(Edit);
