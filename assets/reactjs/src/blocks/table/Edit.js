@@ -28,8 +28,12 @@ const {
     ContextMenu: { ContextMenu, handleContextMenu },
     QubelyButtonEdit,
     Range,
+    QubelyIconListEdit,
     QubelyButton: {
         buttonSettings
+    },
+    QubelyList: {
+        listSettings
     },
     InspectorTab,
     InspectorTabs
@@ -256,7 +260,7 @@ class Edit extends Component {
      */
     renderData = ( {cells} , name, rowIndex) => {
         const { selectedCell } = this.state;
-        return cells.map(({content, tag: Tag, scope, align, type}, columnIndex) => {
+        return cells.map(({content, tag: Tag, scope, align, type, listItems}, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
@@ -284,7 +288,7 @@ class Edit extends Component {
                     className={className}
                     onClick={(event) => this.handleOnCellClick(event, cellLocation)}
                 >
-                    {this.renderCellContent({type, content, columnIndex, Tag, scope, placeholder, cellLocation})}
+                    {this.renderCellContent({type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems})}
                     { isSelectedCell && this.renderCellChanger({location: cellLocation}) }
                 </Tag>
             )
@@ -300,17 +304,29 @@ class Edit extends Component {
      * @param scope
      * @param placeholder
      * @param cellLocation
+     * @param listItems
      * @returns {*}
      */
-    renderCellContent = ({type, content, columnIndex, Tag, scope, placeholder, cellLocation}) => {
+    renderCellContent = ({type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems = [{
+        icon: 'far fa-star',
+        text: 'Example list item'
+    }]}) => {
         const {
-            enableButton,
-            buttonFillType,
-            buttonSize,
-            buttonIconName,
-            buttonIconPosition,
-            buttonTag
-        } = this.props.attributes;
+            setAttributes,
+            attributes: {
+                uniqueId,
+                enableButton,
+                buttonFillType,
+                buttonSize,
+                buttonIconName,
+                buttonIconPosition,
+                buttonTag,
+                // listItems,
+                enableListIcons,
+                iconColor,
+                iconPosition
+            }
+        } = this.props;
 
         switch (type) {
             case 'button':
@@ -324,6 +340,26 @@ class Edit extends Component {
                         buttonIconPosition={buttonIconPosition}
                         buttonTag={buttonTag}
                         onTextChange={content => this.onChangeCell(cellLocation, content, 'content') } />
+                )
+            case 'list':
+                return (
+                    <QubelyIconListEdit
+                        parentBlock={`qubely-block-${uniqueId}`}
+                        disableButton={listItems.length > 0}
+                        buttonText={__('Add New Feature')}
+                        enableListIcons={enableListIcons}
+                        listItems={listItems}
+                        iconColor={iconColor}
+                        iconPosition={iconPosition}
+                        listWrapperClassName={`qubely-list icon-position-${iconPosition}`}
+                        newListItemPlaceHolder={__('Add New Feature')}
+                        onListItemModification={newValues => {
+                            // setAttributes({ listItems: newValues })
+                            this.onChangeCell(cellLocation, listItems, 'listItems');
+                        }}
+                        onChange={(key, value) => setAttributes({ [key]: value })}
+                        onIconColorChange={(color, currentListItemIndex) => setAttributes({ iconColor: color })}
+                    />
                 )
             default:
                 return (
@@ -550,7 +586,13 @@ class Edit extends Component {
             tag: 'td',
             scope: undefined,
             align: undefined,
-            type: 'text'
+            type: 'text',
+            listItems: [
+                {
+                    icon: 'far fa-star',
+                    text: 'Example list item'
+                }
+            ]
         }))
     );
 
@@ -613,6 +655,7 @@ class Edit extends Component {
                                 (key, value) => { this.setState({ [key]: value }) },
                                 showPostTextTypography
                             )}
+                            {listSettings(attributes, device, setAttributes)}
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
                             {animationSettings(uniqueId, animation, setAttributes)}
