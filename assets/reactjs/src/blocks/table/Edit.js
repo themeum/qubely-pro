@@ -31,7 +31,9 @@ const {
     Range,
     QubelyButton: {
         buttonSettings
-    }
+    },
+    InspectorTab,
+    InspectorTabs
 } = wp.qubelyComponents;
 
 import classnames from 'classnames';
@@ -45,6 +47,8 @@ class Edit extends Component {
             cellLocation: {},
             default: [],
             selectedCell: null,
+            showPostTextTypography: false,
+            openPanelSetting: true,
             currentGeneratorCell: {
                 row: -1,
                 column: -1
@@ -594,18 +598,26 @@ class Edit extends Component {
         const TableContent = this.renderTableContent;
         const Row =  this.renderCellGenerator;
 
-        const { device, openPanelSetting, showPostTextTypography } = this.state;
+        const { device, showPostTextTypography } = this.state;
 
         return (
             <Fragment>
                 <InspectorControls key={'inspector'}>
-                    {
-                        /* Code Here */
-                    }
-                    {buttonSettings(this.props.attributes, device, (key, value) => { setAttributes({ [key]: value }) }, (key, value) => { this.setState({ [key]: value }) }, showPostTextTypography)}
-                    {animationSettings(uniqueId, animation, setAttributes)}
-                    {interactionSettings(uniqueId, interaction, setAttributes)}
-
+                    <InspectorTabs tabs={['style', 'advance']}>
+                        <InspectorTab key={'style'}>
+                            {buttonSettings(
+                                attributes,
+                                device,
+                                (key, value) => { setAttributes({ [key]: value }) },
+                                (key, value) => { this.setState({ [key]: value }) },
+                                showPostTextTypography
+                            )}
+                        </InspectorTab>
+                        <InspectorTab key={'advance'}>
+                            {animationSettings(uniqueId, animation, setAttributes)}
+                            {interactionSettings(uniqueId, interaction, setAttributes)}
+                        </InspectorTab>
+                    </InspectorTabs>
                 </InspectorControls>
 
                 <BlockControls>
