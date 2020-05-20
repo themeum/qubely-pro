@@ -504,7 +504,7 @@ class Edit extends Component {
 
         return (
             <figure className={'class="wp-block-table is-style-regular"'}>
-                <table style={{ width: '100%', tableLayout: 'fixed' }}>
+                <table style={{ width: '100%'}}>
                     <Section name='body' rows={this.props.attributes.body} />
                 </table>
             </figure>
