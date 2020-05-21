@@ -1,9 +1,12 @@
 ===  Qubely Pro ===
-Stable tag: 1.1.9
+Stable tag: 1.2.0
 
 == Changelog ==
 
-= 1.2.0 - 18 May, 2020 =
+= 1.2.0 - 21 May, 2020 =
+New: Global Settings  
+New: Qubely Settings page - reCAPTCHA key storage 
+Fix: Form Builder block - Form Submit issue   
 
 = 1.1.9 - 27 April, 2020 =
 Fix: Testimonial block - ratings backward compatibility issue
