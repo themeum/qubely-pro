@@ -40,15 +40,21 @@ table {
       border-color: red;
     }
   }
-}
 
-.qubely-block-table_cell-content {
-  ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  .qubely-block-table_cell-content {
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        .qubely-list-item {
+          display: flex;
+        }
+      }
+    }
   }
 }
+
 
 /**
  * Editor css
