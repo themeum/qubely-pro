@@ -3,7 +3,7 @@ const { createBlock } = wp.blocks
 const { compose } = wp.compose
 const { select, dispatch, withSelect, withDispatch } = wp.data
 const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.blockEditor
-const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl } = wp.components
+const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl, Button } = wp.components
 const { Component, Fragment } = wp.element
 const {
     BoxShadow,
@@ -33,8 +33,6 @@ const {
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons';
-
-
 
 
 class Edit extends Component {
@@ -344,6 +342,7 @@ class Edit extends Component {
 
         const { device } = this.state
 
+        const setting_url = qubely_admin.admin_url + 'admin.php?page=qubely-settings';
 
         return (
             <Fragment>

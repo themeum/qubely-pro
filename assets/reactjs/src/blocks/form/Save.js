@@ -48,7 +48,7 @@ class Save extends Component {
 
                         <InnerBlocks.Content />
 
-                        {reCaptcha && <div className="qubely-form qubely-google-recaptcha" />}
+                        {(reCaptcha && reCaptchaSiteKey && reCaptchaSecretKey) && <div className="qubely-form qubely-google-recaptcha" />}
 
                         {policyCheckbox &&
                             <div className={`qubely-form-policy-checkbox-wrapper`}>
@@ -70,7 +70,7 @@ class Save extends Component {
                             <input type="hidden" name="field-error-message" value={_encrypt(fieldErrorMessage)} />
                             <input type="hidden" name="form-success-message" value={_encrypt(formSuccessMessage)} />
                             <input type="hidden" name="form-error-message" value={_encrypt(formErrorMessage)} />
-                            <input type="hidden" name="recaptcha" value={reCaptcha ? 'true' : 'false'} />
+                            <input type="hidden" name="recaptcha" value={(reCaptcha && reCaptchaSiteKey && reCaptchaSecretKey) ? 'true' : 'false'} />
                             <input type="hidden" name="recaptcha-site-key" value={reCaptchaSiteKey} />
                             <input type="hidden" name="recaptcha-secret-key" value={reCaptchaSecretKey} />
                             <input type="hidden" name="email-receiver" value={_encrypt(emailReceiver)} />
