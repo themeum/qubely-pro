@@ -41,7 +41,7 @@ const {
 } = wp.qubelyComponents;
 
 import classnames from 'classnames';
-
+import { List } from './components';
 class Edit extends Component {
     constructor(props) {
         super(props);
@@ -261,7 +261,7 @@ class Edit extends Component {
      */
     renderData = ({ cells }, name, rowIndex) => {
         const { selectedCell } = this.state;
-        return cells.map(({content, tag: Tag, scope, align, type, listItems}, columnIndex) => {
+        return cells.map(({ content, tag: Tag, scope, align, type, listItems, ordered }, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
@@ -289,8 +289,8 @@ class Edit extends Component {
                     className={className}
                     onClick={(event) => this.handleOnCellClick(event, cellLocation)}
                 >
-                    {this.renderCellContent({type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems})}
-                    { isSelectedCell && this.renderCellChanger({location: cellLocation}) }
+                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, ordered })}
+                    {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
                 </Tag>
             )
         })
@@ -306,9 +306,10 @@ class Edit extends Component {
      * @param placeholder
      * @param cellLocation
      * @param listItems
+     * @param ordered
      * @returns {*}
      */
-    renderCellContent = ({type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems: listItemsVal = []}) => {
+    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, ordered, listItems }) => {
         const {
             setAttributes,
             attributes: {
@@ -319,13 +320,11 @@ class Edit extends Component {
                 buttonIconName,
                 buttonIconPosition,
                 buttonTag,
-                listItems = listItemsVal,
                 enableListIcons,
                 iconColor,
                 iconPosition
             }
         } = this.props;
-
         switch (type) {
             case 'button':
                 return (
@@ -337,27 +336,36 @@ class Edit extends Component {
                         buttonIconName={buttonIconName}
                         buttonIconPosition={buttonIconPosition}
                         buttonTag={buttonTag}
-                        onTextChange={content => this.onChangeCell(cellLocation, content, 'button')} />
+                        onTextChange={content => this.onChangeCell(cellLocation, content, 'content')} />
                 )
             case 'list':
                 return (
-                    <QubelyIconListEdit
-                        parentBlock={`qubely-block-${uniqueId}`}
-                        disableButton={listItems.length > 0}
-                        buttonText={__('Add New Feature')}
-                        enableListIcons={enableListIcons}
-                        listItems={listItems}
-                        iconColor={iconColor}
-                        iconPosition={iconPosition}
-                        listWrapperClassName={`qubely-list icon-position-${iconPosition}`}
-                        newListItemPlaceHolder={__('Add New Feature')}
-                        onListItemModification={newValues => {
-                            setAttributes({ listItems: newValues })
-                            this.onChangeCell(cellLocation, listItems, 'listItems');
-                        }}
-                        onChange={(key, value) => setAttributes({ [key]: value })}
-                        onIconColorChange={(color, currentListItemIndex) => setAttributes({ iconColor: color })}
-                    />
+                    <Fragment>
+                        <List
+                            ordered={ordered}
+                            values={listItems}
+                            identifier={`list-${cellLocation.rowIndex}${columnIndex}`}
+                            onChange={nextValues => this.onChangeCell(cellLocation, nextValues, 'listItems')}
+                        />
+                        {/* <QubelyIconListEdit
+                            parentBlock={`qubely-block-${uniqueId}`}
+                            disableButton={listItems.length > 0}
+                            buttonText={__('Add New Feature')}
+                            enableListIcons={enableListIcons}
+                            listItems={listItems}
+                            iconColor={iconColor}
+                            iconPosition={iconPosition}
+                            listWrapperClassName={`qubely-list icon-position-${iconPosition}`}
+                            newListItemPlaceHolder={__('Add New Feature')}
+                            onListItemModification={newValues => {
+                                console.log('hello : ', newValues);
+                                setAttributes({ listItems: newValues })
+                                this.onChangeCell(cellLocation, newValues, 'listItems');
+                            }}
+                            onChange={(key, value) => { console.log('world : ', key, value); setAttributes({ [key]: value }) }}
+                            onIconColorChange={(color, currentListItemIndex) => setAttributes({ iconColor: color })}
+                        /> */}
+                    </Fragment>
                 )
             default:
                 return (
@@ -504,7 +512,7 @@ class Edit extends Component {
 
         return (
             <figure className={'class="wp-block-table is-style-regular"'}>
-                <table style={{ width: '100%'}}>
+                <table style={{ width: '100%' }}>
                     <Section name='body' rows={this.props.attributes.body} />
                 </table>
             </figure>
@@ -585,12 +593,8 @@ class Edit extends Component {
             scope: undefined,
             align: undefined,
             type: 'text',
-            listItems: [
-                {
-                    icon: 'far fa-star',
-                    text: 'Example list item'
-                }
-            ]
+            ordered: true,
+            listItems: "<li>one </li><li>two </li>"
         }))
     );
 
