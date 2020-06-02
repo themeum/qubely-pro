@@ -29,8 +29,12 @@ const {
     ContextMenu: { ContextMenu, handleContextMenu },
     QubelyButtonEdit,
     Range,
+    QubelyIconListEdit,
     QubelyButton: {
         buttonSettings
+    },
+    QubelyList: {
+        listSettings
     },
     InspectorTab,
     InspectorTabs
@@ -257,7 +261,7 @@ class Edit extends Component {
      */
     renderData = ({ cells }, name, rowIndex) => {
         const { selectedCell } = this.state;
-        return cells.map(({ content, tag: Tag, scope, align, type }, columnIndex) => {
+        return cells.map(({content, tag: Tag, scope, align, type, listItems}, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
@@ -285,8 +289,8 @@ class Edit extends Component {
                     className={className}
                     onClick={(event) => this.handleOnCellClick(event, cellLocation)}
                 >
-                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation })}
-                    {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
+                    {this.renderCellContent({type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems})}
+                    { isSelectedCell && this.renderCellChanger({location: cellLocation}) }
                 </Tag>
             )
         })
@@ -301,17 +305,26 @@ class Edit extends Component {
      * @param scope
      * @param placeholder
      * @param cellLocation
+     * @param listItems
      * @returns {*}
      */
-    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation }) => {
+    renderCellContent = ({type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems: listItemsVal = []}) => {
         const {
-            enableButton,
-            buttonFillType,
-            buttonSize,
-            buttonIconName,
-            buttonIconPosition,
-            buttonTag
-        } = this.props.attributes;
+            setAttributes,
+            attributes: {
+                uniqueId,
+                enableButton,
+                buttonFillType,
+                buttonSize,
+                buttonIconName,
+                buttonIconPosition,
+                buttonTag,
+                listItems = listItemsVal,
+                enableListIcons,
+                iconColor,
+                iconPosition
+            }
+        } = this.props;
 
         switch (type) {
             case 'button':
@@ -324,7 +337,27 @@ class Edit extends Component {
                         buttonIconName={buttonIconName}
                         buttonIconPosition={buttonIconPosition}
                         buttonTag={buttonTag}
-                        onTextChange={content => this.onChangeCell(cellLocation, content, 'content')} />
+                        onTextChange={content => this.onChangeCell(cellLocation, content, 'button')} />
+                )
+            case 'list':
+                return (
+                    <QubelyIconListEdit
+                        parentBlock={`qubely-block-${uniqueId}`}
+                        disableButton={listItems.length > 0}
+                        buttonText={__('Add New Feature')}
+                        enableListIcons={enableListIcons}
+                        listItems={listItems}
+                        iconColor={iconColor}
+                        iconPosition={iconPosition}
+                        listWrapperClassName={`qubely-list icon-position-${iconPosition}`}
+                        newListItemPlaceHolder={__('Add New Feature')}
+                        onListItemModification={newValues => {
+                            setAttributes({ listItems: newValues })
+                            this.onChangeCell(cellLocation, listItems, 'listItems');
+                        }}
+                        onChange={(key, value) => setAttributes({ [key]: value })}
+                        onIconColorChange={(color, currentListItemIndex) => setAttributes({ iconColor: color })}
+                    />
                 )
             default:
                 return (
@@ -471,7 +504,7 @@ class Edit extends Component {
 
         return (
             <figure className={'class="wp-block-table is-style-regular"'}>
-                <table style={{ width: '100%', tableLayout: 'fixed' }}>
+                <table style={{ width: '100%'}}>
                     <Section name='body' rows={this.props.attributes.body} />
                 </table>
             </figure>
@@ -551,7 +584,13 @@ class Edit extends Component {
             tag: 'td',
             scope: undefined,
             align: undefined,
-            type: 'text'
+            type: 'text',
+            listItems: [
+                {
+                    icon: 'far fa-star',
+                    text: 'Example list item'
+                }
+            ]
         }))
     );
 
@@ -611,6 +650,7 @@ class Edit extends Component {
                                 (key, value) => { setAttributes({ [key]: value }) },
                                 (key, value) => { this.setState({ [key]: value }) }
                             )}
+                            {listSettings(attributes, device, setAttributes)}
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
                             {animationSettings(uniqueId, animation, setAttributes)}

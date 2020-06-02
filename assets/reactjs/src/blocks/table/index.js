@@ -3,12 +3,12 @@ import Edit from './Edit'
 import Save from './Save';
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes } } = wp.qubelyComponents
+const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes }, QubelyList: { listAttributes }  } = wp.qubelyComponents
 
 
 registerBlockType('qubely/table', {
     title: __('Table'),
-    description: __('Create stylish countdown blocks with Qubely Buttons.'),
+    description: __('Advance table blocks.'),
     category: 'qubely',
     icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-button.svg'} alt={__('Button Block')} />,
     supports: {
@@ -77,8 +77,10 @@ registerBlockType('qubely/table', {
             ],
             selector: 'tbody tr'
         },
-
-        sourceOfCopiedStyle: { type: 'boolean', default: false }
+        // Global
+        ...globalAttributes,
+        ...buttonAttributes,
+        ...listAttributes,
     },
     edit: Edit,
     save: Save,
