@@ -266,7 +266,7 @@ class Edit extends Component {
      */
     renderData = ({ cells }, name, rowIndex) => {
         const { selectedCell } = this.state;
-        return cells.map(({ content, tag: Tag, scope, align, type, listItems, iconName, ratings, ordered }, columnIndex) => {
+        return cells.map(({ content, tag: Tag, scope, align, type, listItems, iconName, ratings, image, ordered }, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
@@ -294,7 +294,7 @@ class Edit extends Component {
                     className={className}
                     onClick={(event) => this.handleOnCellClick(event, cellLocation)}
                 >
-                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, iconName, ratings, ordered })}
+                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, iconName, ratings, image, ordered })}
                     {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
                 </Tag>
             )
@@ -313,13 +313,16 @@ class Edit extends Component {
      * @param listItems
      * @param iconName
      * @param ratings
+     * @param image
      * @param ordered
      * @returns {*}
      */
-    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, iconName, ratings, ordered, listItems }) => {
+    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, iconName, ratings, image, ordered, listItems }) => {
         const {
             setAttributes,
             isSelected,
+            noticeUI,
+            noticeOperations,
             attributes: {
                 uniqueId,
                 enableButton,
@@ -365,7 +368,14 @@ class Edit extends Component {
                     />
                 )
             case 'image':
-                return (<Image />)
+                return (
+                    <Image
+                        image={image}
+                        noticeUI={noticeUI}
+                        noticeOperations={noticeOperations}
+                        isSelected={isSelected}
+                        onChange={newImage => this.onChangeCell(cellLocation, newImage, 'image')}
+                    />)
             case 'rating':
                 return (
                     <Ratings
@@ -498,10 +508,9 @@ class Edit extends Component {
             return;
         }
         const { setAttributes, attributes } = this.props;
-        const data = attributes[cellLocation.sectionName];
+        const data = JSON.parse(JSON.stringify(attributes[cellLocation.sectionName]));
         data[cellLocation.rowIndex].cells[cellLocation.columnIndex][field] = content;
         setAttributes({ [cellLocation.sectionName]: data });
-        // this.setState({cellLocation});
     };
 
     /**
@@ -600,6 +609,7 @@ class Edit extends Component {
             align: undefined,
             type: 'text',
             ordered: true,
+            image: {},
             iconName: undefined,
             listItems: "<li>one </li><li>two </li>"
         }))
