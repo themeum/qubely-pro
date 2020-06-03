@@ -41,7 +41,12 @@ const {
 } = wp.qubelyComponents;
 
 import classnames from 'classnames';
-import { List } from './components';
+import {
+    Icon,
+    Image,
+    List,
+    Ratings
+} from './components';
 class Edit extends Component {
     constructor(props) {
         super(props);
@@ -261,7 +266,7 @@ class Edit extends Component {
      */
     renderData = ({ cells }, name, rowIndex) => {
         const { selectedCell } = this.state;
-        return cells.map(({ content, tag: Tag, scope, align, type, listItems, ordered }, columnIndex) => {
+        return cells.map(({ content, tag: Tag, scope, align, type, listItems, iconName, ordered }, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
@@ -289,7 +294,7 @@ class Edit extends Component {
                     className={className}
                     onClick={(event) => this.handleOnCellClick(event, cellLocation)}
                 >
-                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, ordered })}
+                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, iconName, ordered })}
                     {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
                 </Tag>
             )
@@ -306,12 +311,14 @@ class Edit extends Component {
      * @param placeholder
      * @param cellLocation
      * @param listItems
+     * @param iconName
      * @param ordered
      * @returns {*}
      */
-    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, ordered, listItems }) => {
+    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, iconName, ordered, listItems }) => {
         const {
             setAttributes,
+            isSelected,
             attributes: {
                 uniqueId,
                 enableButton,
@@ -340,33 +347,26 @@ class Edit extends Component {
                 )
             case 'list':
                 return (
-                    <Fragment>
-                        <List
-                            ordered={ordered}
-                            values={listItems}
-                            identifier={`list-${cellLocation.rowIndex}${columnIndex}`}
-                            onChange={nextValues => this.onChangeCell(cellLocation, nextValues, 'listItems')}
-                        />
-                        {/* <QubelyIconListEdit
-                            parentBlock={`qubely-block-${uniqueId}`}
-                            disableButton={listItems.length > 0}
-                            buttonText={__('Add New Feature')}
-                            enableListIcons={enableListIcons}
-                            listItems={listItems}
-                            iconColor={iconColor}
-                            iconPosition={iconPosition}
-                            listWrapperClassName={`qubely-list icon-position-${iconPosition}`}
-                            newListItemPlaceHolder={__('Add New Feature')}
-                            onListItemModification={newValues => {
-                                console.log('hello : ', newValues);
-                                setAttributes({ listItems: newValues })
-                                this.onChangeCell(cellLocation, newValues, 'listItems');
-                            }}
-                            onChange={(key, value) => { console.log('world : ', key, value); setAttributes({ [key]: value }) }}
-                            onIconColorChange={(color, currentListItemIndex) => setAttributes({ iconColor: color })}
-                        /> */}
-                    </Fragment>
+                    <List
+                        ordered={ordered}
+                        values={listItems}
+                        identifier={`list-${cellLocation.rowIndex}${columnIndex}`}
+                        onChange={nextValues => this.onChangeCell(cellLocation, nextValues, 'listItems')}
+                    />
+
                 )
+            case 'icon':
+                return (
+                    <Icon
+                        isSelected={isSelected}
+                        iconName={iconName}
+                        onChange={nextIcon => this.onChangeCell(cellLocation, nextIcon, 'iconName')}
+                    />
+                )
+            case 'image':
+                return (<Image />)
+            case 'rating':
+                return (<Ratings />)
             default:
                 return (
                     <RichText
@@ -594,6 +594,7 @@ class Edit extends Component {
             align: undefined,
             type: 'text',
             ordered: true,
+            iconName: 9,
             listItems: "<li>one </li><li>two </li>"
         }))
     );
