@@ -266,7 +266,7 @@ class Edit extends Component {
      */
     renderData = ({ cells }, name, rowIndex) => {
         const { selectedCell } = this.state;
-        return cells.map(({ content, tag: Tag, scope, align, type, listItems, iconName, ordered }, columnIndex) => {
+        return cells.map(({ content, tag: Tag, scope, align, type, listItems, iconName, ratings, ordered }, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
@@ -294,7 +294,7 @@ class Edit extends Component {
                     className={className}
                     onClick={(event) => this.handleOnCellClick(event, cellLocation)}
                 >
-                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, iconName, ordered })}
+                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, iconName, ratings, ordered })}
                     {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
                 </Tag>
             )
@@ -312,10 +312,11 @@ class Edit extends Component {
      * @param cellLocation
      * @param listItems
      * @param iconName
+     * @param ratings
      * @param ordered
      * @returns {*}
      */
-    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, iconName, ordered, listItems }) => {
+    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, iconName, ratings, ordered, listItems }) => {
         const {
             setAttributes,
             isSelected,
@@ -366,7 +367,12 @@ class Edit extends Component {
             case 'image':
                 return (<Image />)
             case 'rating':
-                return (<Ratings />)
+                return (
+                    <Ratings
+                        ratings={ratings}
+                        isSelected={isSelected}
+                        onChange={newRatings => this.onChangeCell(cellLocation, newRatings, 'ratings')}
+                    />)
             default:
                 return (
                     <RichText
@@ -594,7 +600,7 @@ class Edit extends Component {
             align: undefined,
             type: 'text',
             ordered: true,
-            iconName: 9,
+            iconName: undefined,
             listItems: "<li>one </li><li>two </li>"
         }))
     );

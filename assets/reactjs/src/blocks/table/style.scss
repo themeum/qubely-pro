@@ -2,17 +2,17 @@
  * Table cell generator
  */
 
-.qubely-tcg-container{
+.qubely-tcg-container {
   background: #ffffff;
-  &:not(.qubely-tcg-toolbar){
+  &:not(.qubely-tcg-toolbar) {
     padding: 30px 30px 20px;
   }
-  .qubely-tcg-row{
+  .qubely-tcg-row {
     display: flex;
-    span{
+    span {
       flex-grow: 1;
-      background: #F2F3F7;
-      border: 1px solid #CED6E0;
+      background: #f2f3f7;
+      border: 1px solid #ced6e0;
       border-radius: 3px;
       margin: 2.5px;
       min-height: 30px;
@@ -20,9 +20,9 @@
       text-align: center;
       line-height: 28px;
       &:hover,
-      &.active{
-        background: #D2E7FF;
-        border-color: #A9D0FF;
+      &.active {
+        background: #d2e7ff;
+        border-color: #a9d0ff;
       }
     }
   }
@@ -34,9 +34,9 @@
 }
 
 table {
-  td{
+  td {
     border: 1px solid #ddd;
-    &.is-qubely-active{
+    &.is-qubely-active {
       border-color: red;
     }
   }
@@ -55,32 +55,31 @@ table {
   }
 }
 
-
 /**
  * Editor css
  */
 
-.qubely-table-cell-edit{
+.qubely-table-cell-edit {
   position: relative;
-  .qubely-tc-type-changer-wrap{
+  .qubely-tc-type-changer-wrap {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 5px;
     z-index: 2;
-    > button{
+    > button {
       padding: 0px;
-      border: 1px solid #D6D9DD;
+      border: 1px solid #d6d9dd;
       width: 13px;
       text-align: center;
-      color: #9B9B9B;
-      span{
+      color: #9b9b9b;
+      span {
         font-size: 8px;
         line-height: 10px;
         display: block;
       }
     }
-    .qubely-tc-type-changer{
+    .qubely-tc-type-changer {
       position: absolute;
       left: 0;
       top: 100%;
@@ -89,28 +88,55 @@ table {
       display: grid;
       grid-template-columns: calc(50% - 10px) 50%;
       padding: 20px;
-      border: 1px solid #DBDFE4;
+      border: 1px solid #dbdfe4;
       grid-gap: 10px;
-      button{
+      button {
         height: 48px;
         line-height: 46px;
         padding: 0 12px;
-        border: 1px solid #CED6E0;
-        background: #F2F3F7;
+        border: 1px solid #ced6e0;
+        background: #f2f3f7;
         border-radius: 4px;
         text-align: left;
-        color: #535F6A;
-        i{
+        color: #535f6a;
+        i {
           margin-right: 10px;
           font-size: 20px;
           line-height: 48px;
         }
-        &:hover{
-          background: #D2E7FF;
-          border-color: #A9D0FF;
-          color: #2184F9;
+        &:hover {
+          background: #d2e7ff;
+          border-color: #a9d0ff;
+          color: #2184f9;
         }
       }
     }
+  }
+}
+
+.table-ratings {
+  unicode-bidi: bidi-override;
+  display: inline-block;
+  position: relative;
+  letter-spacing: 5px;
+  &:before,
+  &:after {
+    content: "\f005\f005\f005\f005\f005";
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 400;
+    display: block;
+    white-space: nowrap;
+    z-index: 0;
+  }
+
+  &:before {
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    overflow: hidden;
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f005\f005\f005\f005\f005";
+    width: var(--qubely-rating);
   }
 }
