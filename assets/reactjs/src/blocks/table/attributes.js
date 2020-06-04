@@ -122,6 +122,78 @@ const attributes = {
             { selector: '{{QUBELY}} .ratings-cell.ratings-wrapper' }
         ]
     },
-
+    iconColor: {
+        type: 'string',
+        default: '#000',
+        style: [
+            {
+                selector: '{{QUBELY}}  .icon-cell.icon-wrapper .icon {color: {{iconColor}};}'
+            }
+        ]
+    },
+    iconAlignment: {
+        type: 'object',
+        default: {
+            md: 'left'
+        },
+        style: [
+            { selector: '{{QUBELY}} .icon-cell.icon-wrapper {text-align: {{iconAlignment}};}' }
+        ]
+    },
+    iconSize: {
+        type: 'string',
+        default: '64px',
+        style: [
+            {
+                condition: [{ key: 'iconSize', relation: '!=', value: 'custom' }],
+                selector: '{{QUBELY}} .icon-cell.icon-wrapper .icon {font-size:{{iconSize}};}'
+            }
+        ]
+    },
+    iconCustomSize: {
+        type: 'object',
+        default: {
+            md: 64,
+            unit: 'px'
+        },
+        style: [
+            {
+                condition: [{ key: 'iconSize', relation: '==', value: 'custom' }],
+                selector: '{{QUBELY}} .icon-cell.icon-wrapper .icon {font-size: {{iconCustomSize}};}'
+            }]
+    },
+    listColor: {
+        type: 'string',
+        default: '#000',
+        style: [
+            {
+                selector: '{{QUBELY}}  .list-cell.list-wrapper {color: {{listColor}};}'
+            }
+        ]
+    },
+    listIcon: {
+        type: 'object',
+        default: {
+            name: 'check-circle-outline',
+            value: 'far fa-check-circle'
+        }
+    },
+    listAlignment: {
+        type: 'object',
+        default: {
+            md: 'left'
+        },
+        style: [
+            { selector: '{{QUBELY}} .list-cell.list-wrapper {text-align: {{listAlignment}};}' }
+        ]
+    },
+    listPadding: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .list-cell.list-wrapper' }
+        ]
+    },
 }
 export default attributes;
