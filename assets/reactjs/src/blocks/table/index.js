@@ -1,87 +1,28 @@
-import './style.scss'
-import Edit from './Edit'
+import './style.scss';
+import Edit from './Edit';
 import Save from './Save';
-const { __ } = wp.i18n
-const { registerBlockType } = wp.blocks
-const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes }, QubelyList: { listAttributes }  } = wp.qubelyComponents
+import attributes from './attributes';
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
 
 
 registerBlockType('qubely/table', {
     title: __('Table'),
-    description: __('Advance table blocks.'),
+    description: __('Organize/focus data with Qubely table blocks.'),
     category: 'qubely',
     icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-button.svg'} alt={__('Button Block')} />,
     supports: {
         align: ['center', 'wide', 'full'],
     },
-    keywords: [__('countdown'), __('count'), __('timer')],
+    keywords: [
+        __('Table'),
+        __('Builder'),
+        __('table builder')
+    ],
     example: {
         attributes: {},
     },
-    attributes: {
-        uniqueId: { type: 'string', default: '' },
-        // Global
-        ...globalAttributes,
-        ...buttonAttributes,
-        buttonToggleOption: {
-            type: 'boolean',
-            default: false
-        },
-        enableButton: {
-            type: 'boolean',
-            default: true
-        },
-        spacer: {
-            type: 'object',
-            default: {
-                spaceTop: { md: '10', unit: 'px' },
-                spaceBottom: { md: '10', unit: 'px' }
-            },
-            style: [{ selector: '{{QUBELY}}' }]
-        },
-        body: {
-            type: 'array',
-            default: [
-                /*{
-                    cells: [
-                        {
-                            content: 'Table 1',
-                            tag: 'td',
-                            scope: undefined,
-                            align: undefined
-                        },
-                        {
-                            content: 'Table 1',
-                            tag: 'td',
-                            scope: undefined,
-                            align: undefined
-                        }
-                    ]
-                },
-                {
-                    cells: [
-                        {
-                            content: 'Table 1',
-                            tag: 'td',
-                            scope: undefined,
-                            align: undefined
-                        },
-                        {
-                            content: 'Table 1',
-                            tag: 'td',
-                            scope: undefined,
-                            align: undefined
-                        }
-                    ]
-                }*/
-            ],
-            selector: 'tbody tr'
-        },
-        // Global
-        ...globalAttributes,
-        ...buttonAttributes,
-        ...listAttributes,
-    },
+    attributes,
     edit: Edit,
     save: Save,
 });

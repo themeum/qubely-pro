@@ -22,22 +22,33 @@ const {
 } = wp.blockEditor;
 
 const {
-    Inline: { InlineToolbar },
-    CssGenerator: { CssGenerator },
-    withCSSGenerator,
-    gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
-    ContextMenu: { ContextMenu, handleContextMenu },
-    QubelyButtonEdit,
+    Color,
     Range,
-    QubelyIconListEdit,
+    Padding,
+    Alignment,
+    InspectorTab,
+    InspectorTabs,
+    RadioAdvanced,
+    withCSSGenerator,
+    QubelyButtonEdit,
+    Inline: {
+        InlineToolbar
+    },
     QubelyButton: {
         buttonSettings
     },
     QubelyList: {
         listSettings
     },
-    InspectorTab,
-    InspectorTabs
+    gloalSettings: {
+        globalSettingsPanel,
+        animationSettings,
+        interactionSettings
+    },
+    ContextMenu: {
+        ContextMenu,
+        handleContextMenu
+    },
 } = wp.qubelyComponents;
 
 import classnames from 'classnames';
@@ -641,6 +652,13 @@ class Edit extends Component {
                 className,
                 body,
 
+
+                //Ratings common attributes
+                ratingsColor,
+                ratingsSize,
+                ratingsCustomSize,
+                ratingsAlignment,
+                ratingsPadding,
                 // global
                 animation,
                 interaction,
@@ -672,6 +690,59 @@ class Edit extends Component {
                                 (key, value) => { this.setState({ [key]: value }) }
                             )}
                             {listSettings(attributes, device, setAttributes)}
+                            <PanelBody title={__('Ratings')} initialOpen={false}>
+                                <RadioAdvanced
+                                    label={__('Size')}
+                                    options={[
+                                        { label: 'S', value: '20px', title: 'Small' },
+                                        { label: 'M', value: '40px', title: 'Medium' },
+                                        { label: 'L', value: '60px', title: 'Large' },
+                                        { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                                    ]}
+                                    value={ratingsSize}
+                                    onChange={(value) => setAttributes({ ratingsSize: value })} />
+                                {ratingsSize == 'custom' &&
+                                    <Range
+                                        min={10}
+                                        max={100}
+                                        responsive
+                                        device={device}
+                                        value={ratingsCustomSize}
+                                        label={__('Size')}
+                                        unit={['px', 'em', '%']}
+                                        onChange={(value) => setAttributes({ ratingsCustomSize: value })}
+                                        onDeviceChange={value => this.setState({ device: value })}
+                                    />
+                                }
+
+                                <Color
+                                    label={__('Color')}
+                                    value={ratingsColor}
+                                    onChange={(value) => setAttributes({ ratingsColor: value })}
+                                />
+                                <Alignment
+                                    responsive
+                                    disableJustify
+                                    value={ratingsAlignment}
+                                    label={__('Alignment')}
+                                    alignmentType="content"
+                                    device={device}
+                                    onChange={val => setAttributes({ ratingsAlignment: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
+                                <Padding
+                                    min={0}
+                                    max={300}
+                                    responsive
+                                    value={ratingsPadding}
+                                    device={device}
+                                    label={__('Padding')}
+                                    unit={['px', 'em', '%']}
+                                    onChange={val => setAttributes({ ratingsPadding: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />˝
+                            </PanelBody>
+
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
                             {animationSettings(uniqueId, animation, setAttributes)}

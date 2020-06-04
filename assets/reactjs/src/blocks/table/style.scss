@@ -61,6 +61,7 @@ table {
 
 .qubely-table-cell-edit {
   position: relative;
+  padding: 0px;
   .qubely-tc-type-changer-wrap {
     position: absolute;
     top: 50%;
@@ -115,6 +116,7 @@ table {
 }
 
 .table-ratings {
+  cursor: pointer;
   unicode-bidi: bidi-override;
   display: inline-block;
   position: relative;
@@ -138,5 +140,12 @@ table {
     font-weight: 900;
     content: "\f005\f005\f005\f005\f005";
     width: var(--qubely-rating);
+  }
+}
+.qubely-table-ratings-popover {
+  .components-popover__content {
+    padding: 20px;
+    min-width: 280px;
+    border-radius: 5px;
   }
 }
