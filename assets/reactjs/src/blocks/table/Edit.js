@@ -622,7 +622,7 @@ class Edit extends Component {
             scope: undefined,
             align: undefined,
             type: 'text',
-            ordered: true,
+            ordered: false,
             image: {},
             iconName: undefined,
             listItems: "<li>one </li><li>two </li>"

@@ -45,16 +45,169 @@ table {
     ul {
       margin: 0;
       padding: 0;
-      li {
-        list-style: none;
-        .qubely-list-item {
-          display: flex;
+    }
+  }
+}
+.list-cell.list-wrapper {
+  .list-item {
+    > li {
+      text-align: left;
+    }
+    &.qubely-unordered-list {
+      &.custom-style {
+        > li {
+          list-style: none;
+          &:before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            transition: color 400ms, background-color 400ms;
+          }
+        }
+      }
+      &.qubely-list-bullet-check {
+        > li::before{
+          content: "\f00c";
+        }
+      }
+
+      &.qubely-list-bullet-check-square {
+        > li::before{
+          content: "\f14a";
+        }
+      }
+
+      &.qubely-list-bullet-check-square-outline {
+        > li::before{
+          content: "\f14a";
+          font-weight: 400;
+        }
+      }
+
+      &.qubely-list-bullet-check-double {
+        > li::before{
+          content: "\f560";
+        }
+      }
+
+      &.qubely-list-bullet-check-circle {
+        > li::before{
+          content: "\f058";
+        }
+      }
+
+      &.qubely-list-bullet-check-circle-outline {
+        > li::before{
+          content: "\f058";
+          font-weight: 400;
+        }
+      }
+
+      &.qubely-list-bullet-square {
+        > li::before{
+          content: "\f0c8";
+        }
+      }
+
+      &.qubely-list-bullet-square-outline {
+        > li::before{
+          content: "\f0c8";
+          font-weight: 400;
+        }
+      }
+
+      &.qubely-list-bullet-circle {
+        > li::before{
+          content: "\f111";
+        }
+      }
+
+      &.qubely-list-bullet-circle-outline {
+        > li::before{
+          content: "\f111";
+          font-weight: 400;
+        }
+      }
+
+      &.qubely-list-bullet-arrow-right {
+        > li::before{
+          content: "\f061";
+        }
+      }
+
+      &.qubely-list-bullet-arrow-left {
+        > li::before{
+          content: "\f060";
+        }
+      }
+
+      &.qubely-list-bullet-arrow-circle-right {
+        > li::before{
+          content: "\f0a9";
+        }
+      }
+
+      &.qubely-list-bullet-arrow-circle-left {
+        > li::before{
+          content: "\f0a8";
+        }
+      }
+
+      &.qubely-list-bullet-arrow-alt-circle-right {
+        > li::before{
+          content: "\f35a";
+          font-weight: 400;
+        }
+      }
+      &.qubely-list-bullet-arrow-alt-circle-left {
+        > li::before{
+          content: "\f359";
+          font-weight: 400;
+        }
+      }
+      &.qubely-list-bullet-long-arrow-alt-right {
+        > li::before{
+          content: "\f30b";
+        }
+      }
+      &.qubely-list-bullet-long-arrow-alt-left {
+        > li::before{
+          content: "\f30a";
+        }
+      }
+      &.qubely-list-bullet-chevron-right {
+        > li::before{
+          content: "\f054";
+        }
+      }
+      &.qubely-list-bullet-chevron-left {
+        > li::before{
+          content: "\f053";
+        }
+      }
+      &.qubely-list-bullet-angle-right {
+        > li::before{
+          content: "\f105";
+        }
+      }
+      &.qubely-list-bullet-angle-left {
+        > li::before{
+          content: "\f104";
+        }
+      }
+      &.qubely-list-bullet-star {
+        > li::before{
+          content: "\f005";
+        }
+      }
+      &.qubely-list-bullet-star-outline {
+        > li::before{
+          content: "\f005";
+          font-weight: 400;
         }
       }
     }
   }
 }
-
 /**
  * Editor css
  */
