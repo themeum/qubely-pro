@@ -20,7 +20,8 @@ const Icon = (props) => {
         iconName = undefined,
         classes,
         onChange,
-        isSelected
+        isSelected,
+        isSelectedCell
     } = props;
 
     const classNames = classnames(
@@ -44,7 +45,7 @@ const Icon = (props) => {
                 }
             </Tooltip>
             {
-                (isSelected && showIconPicker) &&
+                (isSelected && isSelectedCell && showIconPicker) &&
                 <Popover
                     position="bottom center"
                     className="qubely-socialicon-picker-popover"
@@ -59,5 +60,32 @@ const Icon = (props) => {
         </div>
     );
 }
+const IconSave = (props) => {
 
-export default Icon;
+    const {
+        iconName = undefined,
+        classes
+    } = props;
+
+    const classNames = classnames(
+        'icon-cell',
+        'icon-wrapper',
+        classes
+    )
+    return (
+        <div className={classNames}>
+            {
+                iconName === undefined ?
+                    <span className="table-icon-picker" role="button" >
+                        <i className="qubely-table fas fa-plus" />
+                    </span>
+                    :
+                    <div className="icon">
+                        <i className={iconName} />
+                    </div>
+            }
+        </div>
+    );
+}
+
+export { Icon, IconSave };

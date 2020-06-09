@@ -19,6 +19,10 @@ const attributes = {
     ...globalAttributes,
     ...buttonAttributes,
     ...listAttributes,
+    recreateStyles: {
+        type: 'boolean',
+        default: true
+    },
     buttonToggleOption: {
         type: 'boolean',
         default: false
@@ -122,6 +126,56 @@ const attributes = {
             { selector: '{{QUBELY}} .ratings-cell.ratings-wrapper' }
         ]
     },
+
+    imageAlignment: {
+        type: 'object',
+        default: {
+            md: 'left'
+        },
+        style: [
+            { selector: '{{QUBELY}} .image-cell.image-wrapper {text-align: {{imageAlignment}};}' }
+        ]
+    },
+    imageSize: {
+        type: 'string',
+        default: '64px',
+        // style: [
+        //     {
+        //         condition: [{ key: 'imageSize', relation: '!=', value: 'custom' }],
+        //         // selector: '{{QUBELY}} .icon-cell.icon-wrapper .icon {font-size:{{imageSize}};}'
+        //     }
+        // ]
+    },
+    imageCustomSize: {
+        type: 'object',
+        default: {
+            md: 64,
+            unit: 'px'
+        },
+        // style: [
+        //     {
+        //         condition: [{ key: 'iconSize', relation: '==', value: 'custom' }],
+        //         // selector: '{{QUBELY}} .icon-cell.icon-wrapper .icon {font-size: {{iconCustomSize}};}'
+        //     }]
+    },
+    imagePadding: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .image-cell.image-wrapper' }
+        ]
+    },
+    imageRadius: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .image-cell.image-wrapper .image-wrapper,{{QUBELY}} .image-cell.image-wrapper .qubely-image' }
+        ]
+    },
+
+
     iconColor: {
         type: 'string',
         default: '#000',
@@ -140,6 +194,7 @@ const attributes = {
             { selector: '{{QUBELY}} .icon-cell.icon-wrapper {text-align: {{iconAlignment}};}' }
         ]
     },
+
     iconSize: {
         type: 'string',
         default: '64px',
@@ -178,6 +233,19 @@ const attributes = {
             value: 'far fa-check-circle'
         }
     },
+    listIconSpacing: {
+        type: 'object',
+        default: {
+            md: 10,
+            unit: 'px'
+        },
+        style: [
+            {
+                selector: '{{QUBELY}} .list-cell.list-wrapper li::before { margin-right: {{listIconSpacing}};}'
+            }
+        ]
+    },
+
     listAlignment: {
         type: 'object',
         default: {

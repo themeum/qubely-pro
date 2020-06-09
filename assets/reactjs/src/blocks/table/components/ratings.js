@@ -51,4 +51,22 @@ const Ratings = (props) => {
     );
 }
 
-export default Ratings;
+const RatingSave = (props) => {
+    const {
+        ratings = 5,
+        classes,
+    } = props;
+
+    const classNames = classnames(
+        'ratings-cell',
+        'ratings-wrapper',
+        classes
+    )
+    return (
+        <div className={classNames}>
+            <div className="table-ratings" style={{ '--qubely-rating': `${ratings * 20}%` }} />
+        </div>
+    );
+}
+
+export { Ratings, RatingSave };

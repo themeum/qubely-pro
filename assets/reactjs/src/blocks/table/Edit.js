@@ -27,6 +27,7 @@ const {
     Padding,
     Alignment,
     IconSelector,
+    BorderRadius,
     InspectorTab,
     InspectorTabs,
     RadioAdvanced,
@@ -278,7 +279,7 @@ class Edit extends Component {
      */
     renderData = ({ cells }, name, rowIndex) => {
         const { selectedCell } = this.state;
-        return cells.map(({ content, tag: Tag, scope, align, type, listItems, iconName, ratings, image, ordered }, columnIndex) => {
+        return cells.map(({ content, tag: Tag, scope, align, type, listItems, iconName, ratings, image, ordered, imageSize }, columnIndex) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
@@ -304,9 +305,9 @@ class Edit extends Component {
             return (
                 <Tag
                     className={className}
-                    onClick={(event) => this.handleOnCellClick(event, cellLocation)}
+                    onClick={(event) => this.handleOnCellClick(event, cellLocation, Tag)}
                 >
-                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, iconName, ratings, image, ordered })}
+                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, iconName, ratings, image, ordered, isSelectedCell, imageSize })}
                     {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
                 </Tag>
             )
@@ -329,7 +330,7 @@ class Edit extends Component {
      * @param ordered
      * @returns {*}
      */
-    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, iconName, ratings, image, ordered, listItems }) => {
+    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, iconName, ratings, image, ordered, listItems, isSelectedCell, imageSize }) => {
         const {
             setAttributes,
             isSelected,
@@ -347,8 +348,10 @@ class Edit extends Component {
                 iconColor,
                 iconPosition,
                 listIcon,
+                imageAlignment
             }
         } = this.props;
+
         switch (type) {
             case 'button':
                 return (
@@ -369,7 +372,8 @@ class Edit extends Component {
                         ordered={ordered}
                         values={listItems}
                         identifier={`list-${cellLocation.rowIndex}${columnIndex}`}
-                        onChange={nextValues => this.onChangeCell(cellLocation, nextValues, 'listItems')}
+                        onChange={nextValues => console.log('nextValues : ', nextValues)}
+                    // onChange={nextValues => this.onChangeCell(cellLocation, nextValues, 'listItems')}
                     />
 
                 )
@@ -378,16 +382,23 @@ class Edit extends Component {
                     <Icon
                         isSelected={isSelected}
                         iconName={iconName}
+                        isSelectedCell={isSelectedCell}
                         onChange={nextIcon => this.onChangeCell(cellLocation, nextIcon, 'iconName')}
                     />
                 )
             case 'image':
                 return (
                     <Image
+                        device={this.state.device}
+                        imageAlignment={imageAlignment}
+                        imageSize={imageSize}
+                        isSelected={isSelected}
+                        isSelectedCell={isSelectedCell}
                         image={image}
                         noticeUI={noticeUI}
                         noticeOperations={noticeOperations}
                         isSelected={isSelected}
+                        onResize={value => this.onChangeCell(cellLocation, value, 'imageSize')}
                         onChange={newImage => this.onChangeCell(cellLocation, newImage, 'image')}
                     />)
             case 'rating':
@@ -416,10 +427,11 @@ class Edit extends Component {
      * cell click event handler
      * @param event
      * @param cellLocation
+     * @param Tag
      */
-    handleOnCellClick = (event, cellLocation) => {
+    handleOnCellClick = (event, cellLocation, Tag) => {
         if (!location) return;
-        const { selectedCell } = this.state;
+        const { selectedCell, selectedCellType } = this.state;
         if (
             cellLocation && selectedCell &&
             !(
@@ -431,9 +443,27 @@ class Edit extends Component {
             this.setState({ showCellTypeChange: false });
         }
 
+        const {
+            sectionName,
+            rowIndex,
+            columnIndex
+        } = cellLocation;
+
+        const {
+            attributes
+        } = this.props;
+
+        const currentCellDetails = attributes[cellLocation.sectionName][rowIndex].cells[columnIndex];
+
         this.setState({
             cellLocation,
-            selectedCell: cellLocation
+            selectedCell: cellLocation,
+            cellType: currentCellDetails.type,
+            ...(
+                currentCellDetails.type === 'list' && {
+                    isOrdered: currentCellDetails.ordered
+                }
+            )
         });
 
     };
@@ -624,6 +654,10 @@ class Edit extends Component {
             type: 'text',
             ordered: false,
             image: {},
+            imageSize: {
+                width: 50,
+                height: 50,
+            },
             iconName: undefined,
             listItems: "<li>one </li><li>two </li>"
         }))
@@ -653,7 +687,15 @@ class Edit extends Component {
             attributes: {
                 uniqueId,
                 className,
+                recreateStyles,
                 body,
+                //icon
+                imageAlignment,
+                imageSize,
+                imageCustomSize,
+                imagePadding,
+                imageRadius,
+
                 //icon
                 iconColor,
                 iconAlignment,
@@ -662,6 +704,7 @@ class Edit extends Component {
 
                 //list common attributes
                 listColor,
+                listIconSpacing,
                 listAlignment,
                 listPadding,
                 listIcon,
@@ -689,7 +732,13 @@ class Edit extends Component {
         const TableContent = this.renderTableContent;
         const Row = this.renderCellGenerator;
 
-        const { device, showPostTextTypography } = this.state;
+        const {
+            device,
+            cellType,
+            isOrdered,
+            cellLocation: activeCellLocation,
+            showPostTextTypography
+        } = this.state;
 
         return (
             <Fragment>
@@ -702,6 +751,79 @@ class Edit extends Component {
                                 (key, value) => { setAttributes({ [key]: value }) },
                                 (key, value) => { this.setState({ [key]: value }) }
                             )}
+                            <PanelBody title={__('Image')} initialOpen={false}>
+                                <RadioAdvanced
+                                    label={__('Size')}
+                                    options={[
+                                        { label: 'S', value: '20px', title: 'Small' },
+                                        { label: 'M', value: '40px', title: 'Medium' },
+                                        { label: 'L', value: '60px', title: 'Large' },
+                                        { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+                                    ]}
+                                    value={imageSize}
+                                    onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
+                                />
+                                {/* {imageSize == 'custom' &&
+                                    <Fragment>
+                                        <Range
+                                            min={10}
+                                            max={100}
+                                            responsive
+                                            device={device}
+                                            value={imageCustomSize}
+                                            label={__('Size')}
+                                            unit={['px', 'em', '%']}
+                                            onChange={(value) => setAttributes({ imageCustomSize: value, recreateStyles: !recreateStyles })}
+                                            onDeviceChange={value => this.setState({ device: value })}
+                                        />
+                                        <Range
+                                            min={10}
+                                            max={100}
+                                            responsive
+                                            device={device}
+                                            value={imageCustomHeight}
+                                            label={__('Size')}
+                                            unit={['px', 'em', '%']}
+                                            onChange={(value) => setAttributes({ imageCustomHeight: value, recreateStyles: !recreateStyles })}
+                                            onDeviceChange={value => this.setState({ device: value })}
+                                        />
+                                    </Fragment>
+
+                                } */}
+
+                                <Alignment
+                                    responsive
+                                    disableJustify
+                                    value={imageAlignment}
+                                    label={__('Alignment')}
+                                    alignmentType="content"
+                                    device={device}
+                                    onChange={val => setAttributes({ imageAlignment: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
+                                <Padding
+                                    min={0}
+                                    max={300}
+                                    responsive
+                                    value={imagePadding}
+                                    device={device}
+                                    label={__('Padding')}
+                                    unit={['px', 'em', '%']}
+                                    onChange={val => setAttributes({ imagePadding: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
+                                <BorderRadius
+                                    min={0}
+                                    max={100}
+                                    label={__('Radius')}
+                                    value={imageRadius}
+                                    unit={['px', 'em', '%']}
+                                    responsive
+                                    device={device}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                    onChange={(value) => setAttributes({ imageRadius: value })}
+                                />
+                            </PanelBody>
                             <PanelBody title={__('Icon')} initialOpen={false}>
                                 <RadioAdvanced
                                     label={__('Size')}
@@ -712,7 +834,8 @@ class Edit extends Component {
                                         { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
                                     ]}
                                     value={iconSize}
-                                    onChange={(value) => setAttributes({ iconSize: value })} />
+                                    onChange={(value) => setAttributes({ iconSize: value, recreateStyles: !recreateStyles })}
+                                />
                                 {iconSize == 'custom' &&
                                     <Range
                                         min={10}
@@ -722,7 +845,7 @@ class Edit extends Component {
                                         value={iconCustomSize}
                                         label={__('Size')}
                                         unit={['px', 'em', '%']}
-                                        onChange={(value) => setAttributes({ iconCustomSize: value })}
+                                        onChange={(value) => setAttributes({ iconCustomSize: value, recreateStyles: !recreateStyles })}
                                         onDeviceChange={value => this.setState({ device: value })}
                                     />
                                 }
@@ -781,6 +904,17 @@ class Edit extends Component {
                                     ]}
                                     onChange={val => setAttributes({ listIcon: val })}
                                 />
+                                <Range
+                                    min={0}
+                                    max={60}
+                                    responsive
+                                    device={device}
+                                    value={listIconSpacing}
+                                    unit={['px', 'em', '%']}
+                                    label={__('Icon Spacing')}
+                                    onChange={val => setAttributes({ listIconSpacing: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
                                 <Alignment
                                     responsive
                                     disableJustify
@@ -813,7 +947,7 @@ class Edit extends Component {
                                         { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
                                     ]}
                                     value={ratingsSize}
-                                    onChange={(value) => setAttributes({ ratingsSize: value })} />
+                                    onChange={(value) => setAttributes({ ratingsSize: value, recreateStyles: !recreateStyles })} />
                                 {ratingsSize == 'custom' &&
                                     <Range
                                         min={10}
@@ -865,6 +999,34 @@ class Edit extends Component {
                 </InspectorControls>
 
                 <BlockControls>
+                    {
+                        cellType === 'list' &&
+                        <Toolbar
+                            controls={
+                                [
+                                    {
+                                        icon: 'editor-ul',
+                                        title: 'Convert to unordered list',
+                                        onClick: () => {
+                                            this.setState({ isOrdered: false });
+                                            this.onChangeCell(activeCellLocation, false, 'ordered')
+                                        },
+                                        className: `qubely-action-change-listype ${!isOrdered ? 'is-active' : ''}`,
+                                    },
+                                    {
+                                        icon: 'editor-ol',
+                                        title: 'Convert to ordered list',
+                                        onClick: () => {
+                                            this.setState({ isOrdered: true });
+                                            this.onChangeCell(activeCellLocation, true, 'ordered')
+                                        },
+                                        className: `qubely-action-change-listype ${isOrdered ? 'is-active' : ''}`,
+                                    }
+                                ]
+                            }
+                        />
+                    }
+
                     <ToolbarGroup>
                         <DropdownMenu
                             hasArrowIndicator
