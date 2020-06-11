@@ -67,6 +67,10 @@ const attributes = {
     cellPadding: {
         type: 'object',
         default: {
+            custom: { md: "10 0 10 15" },
+            openPadding: 1,
+            paddingType: "custom",
+            unit: "px",
         },
         style: [
             { selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content' }
@@ -75,7 +79,7 @@ const attributes = {
     cellAlignment: {
         type: 'object',
         default: {
-            md: 'left'
+            md: 'center'
         },
         style: [
             { selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content {text-align: {{cellAlignment}}; }' }

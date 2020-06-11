@@ -481,6 +481,7 @@ class Edit extends Component {
      */
     renderCellChanger = ({ location = false }) => {
         if (!location) return null;
+
         /**
          * Available cell types
          * @type {({icon: string, text: *, type: string})[]}
@@ -519,28 +520,30 @@ class Edit extends Component {
         ];
 
         return (
-            <div className={'qubely-tc-type-changer-wrap'}>
-                <button onClick={() => {
-                    this.setState((prevState) => {
-                        return { showCellTypeChange: !prevState.showCellTypeChange }
-                    })
-                }}>
-                    <span className="fas fa-angle-down" />
-                </button>
-                {
-                    this.state.showCellTypeChange && (
-                        <div className="qubely-tc-type-changer">
-                            {
-                                AVAILABLE_CELL_TYPES.map(({ text, icon, type }) => (
-                                    <button onClick={() => this.onChangeCell(location, type, 'type')}>
-                                        <i className={icon} /> {text}
-                                    </button>
-                                ))
-                            }
-                        </div>
-                    )
-                }
-            </div>
+            <Tooltip text={__('Change cell type')}>
+                <div className={'qubely-tc-type-changer-wrap'}>
+                    <button onClick={() => {
+                        this.setState((prevState) => {
+                            return { showCellTypeChange: !prevState.showCellTypeChange }
+                        })
+                    }}>
+                        <span className="fas fa-angle-down" />
+                    </button>
+                    {
+                        this.state.showCellTypeChange && this.props.isSelected && (
+                            <div className="qubely-tc-type-changer">
+                                {
+                                    AVAILABLE_CELL_TYPES.map(({ text, icon, type }) => (
+                                        <button onClick={() => this.onChangeCell(location, type, 'type')}>
+                                            <i className={icon} /> {text}
+                                        </button>
+                                    ))
+                                }
+                            </div>
+                        )
+                    }
+                </div>
+            </Tooltip>
         )
     };
 
