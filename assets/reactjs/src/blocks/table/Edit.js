@@ -1,3 +1,12 @@
+
+import icons from '../../helpers/icons';
+import classnames from 'classnames';
+import {
+    Icon,
+    Image,
+    List,
+    Ratings
+} from './components';
 const {
     Component,
     Fragment
@@ -22,12 +31,16 @@ const {
 } = wp.blockEditor;
 
 const {
+    Styles,
     Color,
     Range,
     Padding,
+    Toggle,
     Alignment,
     IconSelector,
+    Border,
     BorderRadius,
+    ColorAdvanced,
     InspectorTab,
     InspectorTabs,
     RadioAdvanced,
@@ -53,13 +66,6 @@ const {
     },
 } = wp.qubelyComponents;
 
-import classnames from 'classnames';
-import {
-    Icon,
-    Image,
-    List,
-    Ratings
-} from './components';
 class Edit extends Component {
     constructor(props) {
         super(props);
@@ -372,8 +378,7 @@ class Edit extends Component {
                         ordered={ordered}
                         values={listItems}
                         identifier={`list-${cellLocation.rowIndex}${columnIndex}`}
-                        onChange={nextValues => console.log('nextValues : ', nextValues)}
-                    // onChange={nextValues => this.onChangeCell(cellLocation, nextValues, 'listItems')}
+                        onChange={nextValues => this.onChangeCell(cellLocation, nextValues, 'listItems')}
                     />
 
                 )
@@ -415,6 +420,7 @@ class Edit extends Component {
                         scope={Tag === 'th' ? scope : undefined}
                         value={content}
                         placeholder={placeholder}
+                        className="cell-text"
                         onChange={(content) => {
                             this.onChangeCell(cellLocation, content, 'content')
                         }}
@@ -570,7 +576,7 @@ class Edit extends Component {
         }
 
         return (
-            <figure className={'class="wp-block-table is-style-regular"'}>
+            <figure className={'qubely-table-figure'}>
                 <table style={{ width: '100%' }}>
                     <Section name='body' rows={this.props.attributes.body} />
                 </table>
@@ -687,8 +693,20 @@ class Edit extends Component {
             attributes: {
                 uniqueId,
                 className,
+                layout,
                 recreateStyles,
                 body,
+                tableMaxWdith,
+                fixedWithCells,
+                collapsableBorder,
+                tableRadius,
+
+                //cell
+                cellBg,
+                cellTextColor,
+                cellPadding,
+                cellAlignment,
+                cellBorder,
                 //icon
                 imageAlignment,
                 imageSize,
@@ -740,11 +758,104 @@ class Edit extends Component {
             showPostTextTypography
         } = this.state;
 
+        const wrapperClasses = classnames(
+            `qubely-block-${uniqueId}`,
+            className
+        )
+        const classes = classnames(
+            'qubely-block-table',
+            layout,
+            { ['fixed-width']: fixedWithCells }
+        )
         return (
             <Fragment>
                 <InspectorControls key={'inspector'}>
                     <InspectorTabs tabs={['style', 'advance']}>
                         <InspectorTab key={'style'}>
+                            <PanelBody title="" opened={true}>
+                                <Styles
+                                    options={[
+                                        { value: 'bordered', svg: icons.postgrid_1, label: __('') },
+                                        { value: 'row-stripe', svg: icons.postgrid_2, label: __('') },
+                                        { value: 'column-stripe', svg: icons.postgrid_3, label: __('') },
+                                    ]}
+                                    value={layout}
+                                    onChange={val => setAttributes({ layout: val })}
+                                />
+                            </PanelBody>
+                            <PanelBody title={__('Table Settings')} initialOpen={false}>
+                                <Range
+                                    min={50}
+                                    max={1000}
+                                    responsive
+                                    device={device}
+                                    value={tableMaxWdith}
+                                    label={__('Max Width')}
+                                    unit={['px', 'em', '%']}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                    onChange={(value) => setAttributes({ tableMaxWdith: value })}
+                                />
+                                <Toggle
+                                    label={__('Fixed width cells')}
+                                    value={fixedWithCells}
+                                    onChange={newValue => setAttributes({ fixedWithCells: newValue })}
+                                />
+                                <Toggle
+                                    label={__('Collapse border')}
+                                    value={collapsableBorder}
+                                    onChange={nextValue => setAttributes({ collapsableBorder: nextValue })}
+                                />
+                                <BorderRadius
+                                    min={0}
+                                    max={100}
+                                    responsive
+                                    device={device}
+                                    value={tableRadius}
+                                    label={__('Radius')}
+                                    unit={['px', 'em', '%']}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                    onChange={(value) => setAttributes({ tableRadius: value })}
+                                />
+                            </PanelBody>
+                            <PanelBody title={__('Cell Settings')} initialOpen={false}>
+                                <ColorAdvanced
+                                    label={__('Background')}
+                                    value={cellBg}
+                                    onChange={nextValue => setAttributes({ cellBg: nextValue })}
+                                />
+                                <Color
+                                    label={__('Color')}
+                                    value={cellTextColor}
+                                    onChange={(value) => setAttributes({ cellTextColor: value })}
+                                />
+                                <Padding
+                                    min={0}
+                                    max={300}
+                                    responsive
+                                    value={cellPadding}
+                                    device={device}
+                                    label={__('Padding')}
+                                    unit={['px', 'em', '%']}
+                                    onChange={val => setAttributes({ cellPadding: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
+                                <Alignment
+                                    responsive
+                                    device={device}
+                                    value={cellAlignment}
+                                    label={__('Alignment')}
+                                    onChange={val => setAttributes({ cellAlignment: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
+                                <Border
+                                    responsive
+                                    value={cellBorder}
+                                    device={device}
+                                    label={__('Border')}
+                                    onChange={val => setAttributes({ cellBorder: val })}
+                                    onDeviceChange={value => this.setState({ device: value })}
+                                />
+                            </PanelBody>
                             {buttonSettings(
                                 attributes,
                                 device,
@@ -1061,8 +1172,8 @@ class Edit extends Component {
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
-                <div className={`qubely-block-${uniqueId} ${className ? className : ''}`}>
-                    <div className='qubely-block-table'>
+                <div className={wrapperClasses}>
+                    <div className={classes}>
                         <TableContent />
                     </div>
                 </div>

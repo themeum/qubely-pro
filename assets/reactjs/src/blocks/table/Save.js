@@ -49,8 +49,7 @@ class Save extends Component {
 
             const className = classnames(
                 `has-text-align-${align}`,
-                'qubely-block-table_cell-content',
-                'qubely-table-cell-edit'
+                'qubely-block-table_cell-content'
             );
 
             let placeholder = 'cell content';
@@ -124,7 +123,6 @@ class Save extends Component {
                         ordered={ordered}
                         values={listItems}
                         identifier={`list-${cellLocation.rowIndex}${columnIndex}`}
-                        onChange={nextValues => console.log('nextValues : ', nextValues)}
                     />
 
                 )
@@ -153,6 +151,7 @@ class Save extends Component {
                         key={columnIndex}
                         scope={Tag === 'th' ? scope : undefined}
                         value={content}
+                        className="cell-text"
                     />
                 )
         }
@@ -170,7 +169,7 @@ class Save extends Component {
         }
 
         return (
-            <figure className={'class="wp-block-table is-style-regular"'}>
+            <figure className={'qubely-table-figure'}>
                 <table style={{ width: '100%' }}>
                     <Section name='body' rows={this.props.attributes.body} />
                 </table>
@@ -218,16 +217,24 @@ class Save extends Component {
     render() {
         const {
             attributes: {
+                layout,
                 uniqueId,
                 animation,
-                interaction
+                interaction,
+                fixedWithCells
             }
         } = this.props
         const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
         const TableContent = this.renderTableContent;
+        const classes = classnames(
+            'qubely-block-table',
+            layout,
+            interactionClass,
+            { ['fixed-width']: fixedWithCells }
+        )
         return (
             <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-                <div className={`qubely-block-table ${interactionClass}`} >
+                <div className={classes} >
                     <TableContent />
                 </div>
             </div>

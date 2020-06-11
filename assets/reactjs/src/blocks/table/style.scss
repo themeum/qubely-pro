@@ -33,18 +33,36 @@
   }
 }
 
-table {
-  td {
-    border: 1px solid #ddd;
-    &.is-qubely-active {
-      border-color: red;
+.qubely-block-table {
+  &.row-stripe {
+    tr:nth-child(odd) {
+      background: rgba(0, 0, 0, 0.1);
     }
   }
+  &.column-stripe {
+    tr td:nth-child(odd) {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+  table {
+    td {
+      border: 1px solid #ddd;
+      &.is-qubely-active {
+        border-color: red;
+      }
+    }
 
-  .qubely-block-table_cell-content {
-    ul {
-      margin: 0;
-      padding: 0;
+    .qubely-block-table_cell-content {
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  &.fixed-width {
+    table {
+      table-layout: fixed;
+      white-space: nowrap;
     }
   }
 }

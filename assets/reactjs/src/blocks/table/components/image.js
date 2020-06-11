@@ -125,7 +125,6 @@ const Image = (props) => {
     }
     return (
         <div className={classNames}>
-            <div className="image-wrapper">
                 {
                     validImage ?
                         renderImage()
@@ -149,8 +148,6 @@ const Image = (props) => {
                             value={{ id: image.id, src: image.src }}
                         />
                 }
-            </div>
-
         </div>
     );
 }
@@ -187,15 +184,12 @@ const ImageSave = (props) => {
 
     return (
         <div className={classNames}>
-            <div className="image-wrapper">
                 {
                     validImage ?
                         img
                         :
                         <div>add image </div>
                 }
-            </div>
-
         </div>
     );
 }

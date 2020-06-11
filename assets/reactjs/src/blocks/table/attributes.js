@@ -19,6 +19,76 @@ const attributes = {
     ...globalAttributes,
     ...buttonAttributes,
     ...listAttributes,
+    layout: {
+        type: 'string',
+        default: 'bordered'
+    },
+    tableMaxWdith: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table {width: {{tableMaxWdith}};}' }
+        ]
+    },
+    fixedWithCells: {
+        type: 'boolean',
+        default: true
+    },
+    collapsableBorder: {
+        type: 'boolean',
+        default: true
+    },
+    tableRadius: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table' }
+        ]
+    },
+    cellBg: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content' }
+        ]
+    },
+    cellTextColor: {
+        type: 'string',
+        default: '#000',
+        style: [
+            {
+                selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content {color: {{cellTextColor}};}'
+            }
+        ]
+    },
+    cellPadding: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content' }
+        ]
+    },
+    cellAlignment: {
+        type: 'object',
+        default: {
+            md: 'left'
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content {text-align: {{cellAlignment}}; }' }
+        ]
+    },
+    cellBorder: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content' }
+        ]
+    },
     recreateStyles: {
         type: 'boolean',
         default: true
@@ -88,7 +158,7 @@ const attributes = {
     },
     ratingsSize: {
         type: 'string',
-        default: '64px',
+        default: '40px',
         style: [
             {
                 condition: [{ key: 'ratingsSize', relation: '!=', value: 'custom' }],
@@ -171,7 +241,7 @@ const attributes = {
         default: {
         },
         style: [
-            { selector: '{{QUBELY}} .image-cell.image-wrapper .image-wrapper,{{QUBELY}} .image-cell.image-wrapper .qubely-image' }
+            { selector: '{{QUBELY}} .image-cell.image-wrapper .qubely-image' }
         ]
     },
 
