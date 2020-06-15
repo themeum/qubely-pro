@@ -301,7 +301,7 @@ class Edit extends Component {
                 'qubely-table-cell-edit'
             );
 
-            let placeholder = 'cell content';
+            let placeholder = 'add content';
             if (name === 'head') {
                 placeholder = __('Header label');
             } else if (name === 'foot') {
