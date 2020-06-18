@@ -305,9 +305,9 @@
     }
   }
   .block-editor-rich-text__editable [data-rich-text-placeholder] {
-    text-transform: capitalize;
-    font-size: 18px;
-    font-weight: normal;
+    //text-transform: capitalize;
+    font-size: inherit;
+    font-weight: inherit;
     word-spacing: 5px;
   }
 }
