@@ -23,6 +23,14 @@ const attributes = {
         type: 'string',
         default: 'bordered'
     },
+    tableHeader: {
+        type: 'boolean',
+        default: false
+    },
+    tableFooter: {
+        type: 'boolean',
+        default: false
+    },
     tableMaxWdith: {
         type: 'object',
         default: {
@@ -150,6 +158,16 @@ const attributes = {
             }*/
         ],
         selector: 'tbody tr'
+    },
+    head: {
+        type: 'array',
+        default: [],
+        selector: 'thead tr'
+    },
+    foot: {
+        type: 'array',
+        default: [],
+        selector: 'tfoot tr'
     },
     ratingsColor: {
         type: 'string',

@@ -285,14 +285,36 @@ class Edit extends Component {
      */
     renderData = ({ cells }, name, rowIndex) => {
         const { selectedCell } = this.state;
-        return cells.map(({ content, tag: Tag, scope, align, type, listItems, iconName, ratings, image, ordered, imageSize }, columnIndex) => {
+        return cells.map((
+           {
+               content,
+               tag: Tag,
+               scope,
+               align,
+               type,
+               listItems,
+               iconName,
+               ratings,
+               image,
+               ordered,
+               imageSize
+           },
+           columnIndex
+        ) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
                 columnIndex,
             };
 
-            const isSelectedCell = selectedCell && (selectedCell.rowIndex === rowIndex && selectedCell.columnIndex === columnIndex);
+            const isSelectedCell = (
+              selectedCell &&
+                (
+                  selectedCell.rowIndex === rowIndex &&
+                  selectedCell.columnIndex === columnIndex &&
+                  selectedCell.sectionName === name
+                )
+            );
 
             const className = classnames(
                 { 'is-qubely-active': isSelectedCell },
@@ -313,7 +335,24 @@ class Edit extends Component {
                     className={className}
                     onClick={(event) => this.handleOnCellClick(event, cellLocation, Tag)}
                 >
-                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, iconName, ratings, image, ordered, isSelectedCell, imageSize })}
+                    {
+                        this.renderCellContent({
+                            type,
+                            content,
+                            columnIndex,
+                            Tag,
+                            scope,
+                            placeholder,
+                            cellLocation,
+                            listItems,
+                            iconName,
+                            ratings,
+                            image,
+                            ordered,
+                            isSelectedCell,
+                            imageSize
+                        })
+                    }
                     {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
                 </Tag>
             )
@@ -336,7 +375,22 @@ class Edit extends Component {
      * @param ordered
      * @returns {*}
      */
-    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, iconName, ratings, image, ordered, listItems, isSelectedCell, imageSize }) => {
+    renderCellContent = ({
+         type,
+         content,
+         columnIndex,
+         Tag,
+         scope,
+         placeholder,
+         cellLocation,
+         iconName,
+         ratings,
+         image,
+         ordered,
+         listItems,
+         isSelectedCell,
+         imageSize
+    }) => {
         const {
             setAttributes,
             isSelected,
@@ -581,7 +635,17 @@ class Edit extends Component {
         return (
             <figure className={'qubely-table-figure'}>
                 <table style={{ width: '100%' }}>
+                    {
+                        this.props.attributes.tableHeader && (
+                          <Section name='head' rows={this.props.attributes.head} />
+                        )
+                    }
                     <Section name='body' rows={this.props.attributes.body} />
+                    {
+                        this.props.attributes.tableFooter && (
+                          <Section name='foot' rows={this.props.attributes.foot} />
+                        )
+                    }
                 </table>
             </figure>
         );
@@ -636,29 +700,35 @@ class Edit extends Component {
      * @param column
      */
     generateCells = (row, column) => {
+        this.props.setAttributes({ head: this.generateEmptyRow(1, column + 1, 'th', 'head') });
         this.props.setAttributes({ body: this.generateEmptyRow(row + 1, column + 1) });
+        this.props.setAttributes({ foot: this.generateEmptyRow(1, column + 1, 'td', 'foot') });
     };
 
     /**
      * Generate Empty Column
      * @param count
      * @param columnCount
+     * @param tag
+     * @param scope
      * @returns {{cells: {scope: undefined, tag: string, align: undefined, type: string, content: string}[]}[]}
      */
-    generateEmptyRow = (count, columnCount) => (
-        Array(count).fill(0).map(_ => ({ cells: this.generateEmptyColumn(columnCount) }))
+    generateEmptyRow = (count, columnCount, tag = 'td', scope = 'body') => (
+        Array(count).fill(0).map(_ => ({ cells: this.generateEmptyColumn(columnCount, tag, scope) }))
     );
 
     /**
      * Generate Empty Column
      * @param count
-     * @returns {{scope: undefined, tag: string, align: undefined, type: string, content: string}[]}
+     * @param tag
+     * @param scope
+     * @returns {{ordered: boolean, image: {}, listItems: string, iconName: undefined, scope: string, tag: string, imageSize: {width: number, height: number}, align: undefined, type: string, content: string}[]}
      */
-    generateEmptyColumn = (count) => (
+    generateEmptyColumn = (count, tag = 'td', scope = 'body') => (
         Array(count).fill(0).map(_ => ({
             content: '',
-            tag: 'td',
-            scope: undefined,
+            tag,
+            scope,
             align: undefined,
             type: 'text',
             ordered: false,
@@ -685,7 +755,6 @@ class Edit extends Component {
         });
     };
 
-
     render() {
 
         const {
@@ -698,6 +767,8 @@ class Edit extends Component {
                 className,
                 layout,
                 recreateStyles,
+                tableHeader,
+                tableFooter,
                 body,
                 tableMaxWdith,
                 fixedWithCells,
@@ -784,6 +855,16 @@ class Edit extends Component {
                                     ]}
                                     value={layout}
                                     onChange={val => setAttributes({ layout: val })}
+                                />
+                                <Toggle
+                                    label={__("Table Header")}
+                                    value={tableHeader}
+                                    onChange={tableHeader => setAttributes({tableHeader})}
+                                />
+                                <Toggle
+                                  label={__("Table Footer")}
+                                  value={tableFooter}
+                                  onChange={tableFooter => setAttributes({tableFooter})}
                                 />
                             </PanelBody>
                             <PanelBody title={__('Table Settings')} initialOpen={false}>

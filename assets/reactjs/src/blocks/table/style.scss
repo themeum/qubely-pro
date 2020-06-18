@@ -45,7 +45,8 @@
     }
   }
   table {
-    td {
+    td,
+    th {
       border: 1px inset #ddd;
       &.is-qubely-active {
         border: 1px solid #2184f9;
