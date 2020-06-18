@@ -108,19 +108,19 @@ class Edit extends Component {
             {
                 icon: <span className={'fas fa-table'} />,
                 title: __('Add Row Before'),
-                isDisabled: !selectedCell,
+                isDisabled: !selectedCell || ( selectedCell.sectionName !== "body"),
                 onClick: this.onInsertRowBefore.bind(this),
             },
             {
                 icon: <span className={'fas fa-table'} />,
                 title: __('Add Row After'),
-                isDisabled: !selectedCell,
+                isDisabled: !selectedCell || ( selectedCell.sectionName !== "body"),
                 onClick: this.onInsertRowAfter.bind(this),
             },
             {
                 icon: <span className={'fas fa-table'} />,
                 title: __('Delete Row'),
-                isDisabled: !selectedCell || body.length < 2,
+                isDisabled: !selectedCell || ( selectedCell.sectionName !== "body") || body.length < 2,
                 onClick: this.onDeleteRow.bind(this),
             },
             {
@@ -185,7 +185,10 @@ class Edit extends Component {
      * @returns {Promise<void>}
      */
     async onDeleteRow() {
-        const { rowIndex } = this.state.selectedCell;
+        const { rowIndex, sectionName } = this.state.selectedCell;
+        if( sectionName !== "body" ) {
+            return;
+        }
         const { setAttributes, attributes } = this.props;
         const body = await attributes.body.filter((_, index) => index !== rowIndex);
         setAttributes({ body });
@@ -218,9 +221,11 @@ class Edit extends Component {
      * @param index
      */
     insertColumnAtIndex = (index) => {
-        const { setAttributes, attributes: { body } } = this.props;
+        const { setAttributes, attributes: { body, head, foot } } = this.props;
         body.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1)[0]) }));
-        setAttributes({ body });
+        head.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1)[0]) }));
+        foot.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1)[0]) }));
+        setAttributes({ body, head, foot });
         this.resetSelectedCell();
     };
 
@@ -241,13 +246,24 @@ class Edit extends Component {
      * @returns {*}
      */
     deleteColumnByIndex = () => {
-        const { body } = this.props.attributes;
+        const { body, head, foot } = this.props.attributes;
         const { columnIndex } = this.state.selectedCell;
-        return body.reduce((acc, obj) => {
+        head.reduce((acc, obj) => {
             obj['cells'] = obj['cells'].filter((_, index) => index !== columnIndex);
             acc.push(obj);
             return acc;
         }, []);
+        foot.reduce((acc, obj) => {
+            obj['cells'] = obj['cells'].filter((_, index) => index !== columnIndex);
+            acc.push(obj);
+            return acc;
+        }, [])
+        body.reduce((acc, obj) => {
+            obj['cells'] = obj['cells'].filter((_, index) => index !== columnIndex);
+            acc.push(obj);
+            return acc;
+        }, []);
+        return true;
     };
 
     /**
