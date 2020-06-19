@@ -1152,9 +1152,9 @@ class Edit extends Component {
                                 <RadioAdvanced
                                     label={__('Size')}
                                     options={[
-                                        { label: 'S', value: '20px', title: 'Small' },
-                                        { label: 'M', value: '40px', title: 'Medium' },
-                                        { label: 'L', value: '60px', title: 'Large' },
+                                        { label: 'S', value: '60%', title: 'Small' },
+                                        { label: 'M', value: '90%', title: 'Medium' },
+                                        { label: 'L', value: '140%', title: 'Large' },
                                         { icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
                                     ]}
                                     value={ratingsSize}

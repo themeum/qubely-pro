@@ -180,7 +180,7 @@ const attributes = {
     },
     ratingsSize: {
         type: 'string',
-        default: '40px',
+        default: '90%',
         style: [
             {
                 condition: [{ key: 'ratingsSize', relation: '!=', value: 'custom' }],
