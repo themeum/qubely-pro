@@ -10,6 +10,7 @@ const {QubelyButtonSave, HelperFunction: { animationAttr, IsInteraction } } = wp
 const {
     RichText
 } = wp.blockEditor;
+const {__} = wp.i18n;
 class Save extends Component {
 
     /**
@@ -39,7 +40,22 @@ class Save extends Component {
      * @returns {*}
      */
     renderData = ({ cells }, name, rowIndex) => {
-        return cells.map(({ content, tag: Tag, scope, align, type, listItems, iconName, ratings, image, ordered, imageSize }, columnIndex) => {
+        return cells.map((
+            {
+                content,
+                tag: Tag,
+                scope,
+                align,
+                type,
+                listItems,
+                iconName,
+                ratings,
+                image,
+                ordered,
+                imageSize
+            },
+            columnIndex
+        ) => {
             const cellLocation = {
                 sectionName: name,
                 rowIndex,
@@ -61,7 +77,23 @@ class Save extends Component {
 
             return (
                 <Tag className={className} >
-                    {this.renderCellContent({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, listItems, iconName, ratings, image, ordered, imageSize })}
+                    {
+                        this.renderCellContent({
+                            type,
+                            content,
+                            columnIndex,
+                            Tag,
+                            scope,
+                            placeholder,
+                            cellLocation,
+                            listItems,
+                            iconName,
+                            ratings,
+                            image,
+                            ordered,
+                            imageSize
+                        })
+                    }
                 </Tag>
             )
         })
@@ -82,7 +114,21 @@ class Save extends Component {
         * @param ordered
         * @returns {*}
         */
-    renderCellContent = ({ type, content, columnIndex, Tag, scope, placeholder, cellLocation, iconName, ratings, image, ordered, listItems, imageSize }) => {
+    renderCellContent = ({
+         type,
+         content,
+         columnIndex,
+         Tag,
+         scope,
+         placeholder,
+         cellLocation,
+         iconName,
+         ratings,
+         image,
+         ordered,
+         listItems,
+         imageSize
+    }) => {
         const {
             setAttributes,
             isSelected,
@@ -162,58 +208,25 @@ class Save extends Component {
  */
     renderTableContent = () => {
         const Section = this.renderSections;
-        const Row = this.renderCellGenerator;
-
-        if (!this.props.attributes.body.length) {
-            return <Row cell={8} row={8} />
-        }
-
         return (
             <figure className={'qubely-table-figure'}>
                 <table style={{ width: '100%' }}>
+                    {
+                      this.props.attributes.tableHeader && (
+                        <Section name='head' rows={this.props.attributes.head} />
+                      )
+                    }
                     <Section name='body' rows={this.props.attributes.body} />
+                  {
+                    this.props.attributes.tableFooter && (
+                      <Section name='foot' rows={this.props.attributes.foot} />
+                    )
+                  }
                 </table>
             </figure>
         );
     };
-    /**
-         * Render empty cell generator
-         * @param cell
-         * @param row
-         * @param className
-         * @returns {*}
-         */
-    renderCellGenerator = ({ cell, row, className = '' }) => {
-        const containerClass = classnames('qubely-tcg-container', className);
-        return (
-            <div className={containerClass} >
-                {
-                    Array(row).fill(0).map((_, row_index) => {
-                        const rowclass = classnames('qubely-tcg-row', `qubely-tcg-row-${row_index}`);
-                        return (
-                            <div className={rowclass}>
-                                {
-                                    Array(cell).fill(0).map((_, index) => {
-                                        const columnclass = classnames(
-                                            'qubley-tcg-col',
-                                            'qubely-tcg-col-' + index
-                                        );
-                                        const columnprops = {
-                                            className: columnclass
-                                        };
-                                        return <span {...columnprops} />
-                                    })
-                                }
-                            </div>
-                        )
-                    })
-                }
-                <div className="qubely-tcg-info">
-                    <span>{`${currentGeneratorCell.row + 1}x${currentGeneratorCell.column + 1}`}</span>
-                </div>
-            </div>
-        )
-    };
+
     render() {
         const {
             attributes: {
