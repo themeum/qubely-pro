@@ -123,40 +123,7 @@ const attributes = {
     },
     body: {
         type: 'array',
-        default: [
-            /*{
-                cells: [
-                    {
-                        content: 'Table 1',
-                        tag: 'td',
-                        scope: undefined,
-                        align: undefined
-                    },
-                    {
-                        content: 'Table 1',
-                        tag: 'td',
-                        scope: undefined,
-                        align: undefined
-                    }
-                ]
-            },
-            {
-                cells: [
-                    {
-                        content: 'Table 1',
-                        tag: 'td',
-                        scope: undefined,
-                        align: undefined
-                    },
-                    {
-                        content: 'Table 1',
-                        tag: 'td',
-                        scope: undefined,
-                        align: undefined
-                    }
-                ]
-            }*/
-        ],
+        default: [],
         selector: 'tbody tr'
     },
     head: {
