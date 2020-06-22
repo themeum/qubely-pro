@@ -312,6 +312,12 @@
   }
 }
 
+
+ .qubely-block-table .qubely-table-cell-edit:last-child .qubely-tc-type-changer-wrap .qubely-tc-type-changer {
+   left: auto;
+   right: 0;
+ }
+
 .table-ratings {
   cursor: pointer;
   unicode-bidi: bidi-override;

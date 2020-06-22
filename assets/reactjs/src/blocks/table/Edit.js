@@ -675,7 +675,7 @@ class Edit extends Component {
      * @param className
      * @returns {*}
      */
-    renderCellGenerator = ({ cell, row, className = '' }) => {
+    renderCellGenerator = ({ cell, row, className = '', onClick }) => {
         const { currentGeneratorCell } = this.state;
         const containerClass = classnames('qubely-tcg-container', className);
         return (
@@ -695,7 +695,13 @@ class Edit extends Component {
                                         const columnprops = {
                                             className: columnclass,
                                             onMouseEnter: () => this.setCurrentGeneratorCell(row_index, index),
-                                            onClick: () => this.generateCells(row_index, index)
+                                            onClick: () => {
+                                                if (onClick) {
+                                                    onClick(row_index, index);
+                                                    return;
+                                                }
+                                                this.generateCells(row_index, index)
+                                            }
                                         };
                                         return <span {...columnprops} />
                                     })
@@ -721,6 +727,55 @@ class Edit extends Component {
         this.props.setAttributes({ body: this.generateEmptyRow(row + 1, column + 1) });
         this.props.setAttributes({ foot: this.generateEmptyRow(1, column + 1, 'td', 'foot') });
     };
+
+    /**
+     * Regenerate Cells
+     * @param {*} row 
+     * @param {*} column 
+     */
+    reGenerateCells = (row, column) => {
+        column = column + 1;
+        row = row + 1;
+        const { setAttributes, attributes: { body, head, foot }} = this.props;
+        const prevRow = body.length;
+        const prevCol = body[0].cells.length;
+
+        // append rows
+        if ( row > prevRow ) {
+            const diff = row - prevRow;
+            const newRows = this.generateEmptyRow(diff, prevCol);
+            body.push(...newRows);
+        }
+
+        // delete rows
+        if( prevRow > row ) {
+            // delete row
+        }
+
+        // if: append columns
+        if ( column > prevCol) {
+            const diff = column - prevCol;
+            const headCells = this.generateEmptyColumn(diff, 'th', 'head');
+            const bodyCells = this.generateEmptyColumn(diff);
+            const footCells = this.generateEmptyColumn(diff, 'td', 'foot');
+
+            // @TODO: improve performance
+            head[0].cells.push(...headCells);
+            for(let i = 0; i < body.length; i++) {
+                body[i].cells.push(...bodyCells);
+            }
+            foot[0].cells.push(...footCells);
+
+        }
+        // else: delete columns
+        if(prevCol > column) {
+            // delete columns
+        }
+
+        this.props.setAttributes({ head });
+        this.props.setAttributes({ body });
+        this.props.setAttributes({ foot });
+    }
 
     /**
      * Generate Empty Column
@@ -1263,7 +1318,12 @@ class Edit extends Component {
                             )}
                             renderContent={() =>
                                 <div className="qubely-toolber-popup">
-                                    <Row cell={6} row={6} className={'qubely-tcg-toolbar'} />
+                                    <Row 
+                                        cell={6} 
+                                        row={6} 
+                                        className={'qubely-tcg-toolbar'} 
+                                        onClick={(row, column) => this.reGenerateCells(row, column)}
+                                    />
                                 </div>
                             }
                         >
