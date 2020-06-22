@@ -942,7 +942,7 @@ class Edit extends Component {
                             <PanelBody title={__('Table Settings')} initialOpen={false}>
                                 <Range
                                     min={50}
-                                    max={1000}
+                                    max={1500}
                                     responsive
                                     device={device}
                                     value={tableMaxWdith}
