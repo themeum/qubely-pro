@@ -72,6 +72,7 @@ class Edit extends Component {
         super(props);
         this.state = {
             device: 'md',
+            toggle: false,
             spacer: true,
             cellLocation: {},
             default: [],
@@ -679,7 +680,7 @@ class Edit extends Component {
         const { currentGeneratorCell } = this.state;
         const containerClass = classnames('qubely-tcg-container', className);
         return (
-            <div className={containerClass} onMouseLeave={() => this.setCurrentGeneratorCell(-1, -1)} >
+            <div className={containerClass} >
                 {
                     Array(row).fill(0).map((_, row_index) => {
                         const rowclass = classnames('qubely-tcg-row', `qubely-tcg-row-${row_index}`);
@@ -694,10 +695,26 @@ class Edit extends Component {
                                         );
                                         const columnprops = {
                                             className: columnclass,
-                                            onMouseEnter: () => this.setCurrentGeneratorCell(row_index, index),
+                                            onMouseEnter: () => {
+                                                this.setState(prevState => ({
+                                                    currentGeneratorCell: {
+                                                        ...prevState,
+                                                        row: row_index,
+                                                        column: index
+                                                    }
+                                                }));
+                                            },
                                             onClick: () => {
                                                 if (onClick) {
-                                                    onClick(row_index, index);
+                                                    this.setState(state => ({
+                                                        ...state,
+                                                        toggle: !state.toggle,
+                                                        currentGeneratorCell: {
+                                                            row: row_index,
+                                                            column: index
+                                                        }
+                                                    }))
+                                                    this.reGenerateCells(row_index, index)
                                                     return;
                                                 }
                                                 this.generateCells(row_index, index)
@@ -723,9 +740,12 @@ class Edit extends Component {
      * @param column
      */
     generateCells = (row, column) => {
-        this.props.setAttributes({ head: this.generateEmptyRow(1, column + 1, 'th', 'head') });
-        this.props.setAttributes({ body: this.generateEmptyRow(row + 1, column + 1) });
-        this.props.setAttributes({ foot: this.generateEmptyRow(1, column + 1, 'td', 'foot') });
+        this.props.setAttributes({
+            head: this.generateEmptyRow(1, column + 1, 'th', 'head'),
+            body: this.generateEmptyRow(row + 1, column + 1),
+            foot: this.generateEmptyRow(1, column + 1, 'td', 'foot')
+        });
+
     };
 
     /**
@@ -736,7 +756,19 @@ class Edit extends Component {
     reGenerateCells = (row, column) => {
         column = column + 1;
         row = row + 1;
-        const { setAttributes, attributes: { body, head, foot } } = this.props;
+        const {
+            setAttributes,
+            attributes: {
+                body,
+                head,
+                foot
+            }
+        } = this.props;
+
+        let tempHead = JSON.parse(JSON.stringify(head));
+        let tempBody = JSON.parse(JSON.stringify(body));
+        let tempFoot = JSON.parse(JSON.stringify(foot));
+
         const prevRow = body.length;
         const prevCol = body[0].cells.length;
 
@@ -744,7 +776,7 @@ class Edit extends Component {
         if (row > prevRow) {
             const diff = row - prevRow;
             const newRows = this.generateEmptyRow(diff, prevCol);
-            body.push(...newRows);
+            tempBody.push(...newRows);
         }
 
         // delete rows
@@ -760,11 +792,11 @@ class Edit extends Component {
             const footCells = this.generateEmptyColumn(diff, 'td', 'foot');
 
             // @TODO: improve performance
-            head[0].cells.push(...headCells);
+            tempHead[0].cells.push(...headCells);
             for (let i = 0; i < body.length; i++) {
-                body[i].cells.push(...bodyCells);
+                tempBody[i].cells.push(...bodyCells);
             }
-            foot[0].cells.push(...footCells);
+            tempFoot[0].cells.push(...footCells);
 
         }
         // else: delete columns
@@ -772,9 +804,11 @@ class Edit extends Component {
             // delete columns
         }
 
-        setAttributes({ head });
-        setAttributes({ body });
-        setAttributes({ foot });
+        setAttributes({
+            head: tempHead,
+            body: tempBody,
+            foot: tempFoot
+        });
     }
 
     /**
@@ -813,19 +847,6 @@ class Edit extends Component {
             listItems: '<li>one </li><li>two </li>'
         }))
     );
-
-    /**
-     * Select/Update current generator cell
-     * @params row, column
-     */
-    setCurrentGeneratorCell = (row, column) => {
-        this.setState({
-            currentGeneratorCell: {
-                row,
-                column
-            }
-        });
-    };
 
     render() {
 
@@ -1322,7 +1343,6 @@ class Edit extends Component {
                                         cell={6}
                                         row={6}
                                         className={'qubely-tcg-toolbar'}
-                                        onClick={(row, column) => this.reGenerateCells(row, column)}
                                     />
                                 </div>
                             }
