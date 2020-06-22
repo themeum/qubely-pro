@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import classnames from 'classnames';
 const { __ } = wp.i18n;
 const {

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 
 import icons from '../../helpers/icons';
 import classnames from 'classnames';
@@ -108,19 +109,19 @@ class Edit extends Component {
             {
                 icon: <span className={'fas fa-table'} />,
                 title: __('Add Row Before'),
-                isDisabled: !selectedCell || ( selectedCell.sectionName !== "body"),
+                isDisabled: !selectedCell || ( selectedCell.sectionName !== 'body'),
                 onClick: this.onInsertRowBefore.bind(this),
             },
             {
                 icon: <span className={'fas fa-table'} />,
                 title: __('Add Row After'),
-                isDisabled: !selectedCell || ( selectedCell.sectionName !== "body"),
+                isDisabled: !selectedCell || ( selectedCell.sectionName !== 'body'),
                 onClick: this.onInsertRowAfter.bind(this),
             },
             {
                 icon: <span className={'fas fa-table'} />,
                 title: __('Delete Row'),
-                isDisabled: !selectedCell || ( selectedCell.sectionName !== "body") || body.length < 2,
+                isDisabled: !selectedCell || ( selectedCell.sectionName !== 'body') || body.length < 2,
                 onClick: this.onDeleteRow.bind(this),
             },
             {
@@ -186,7 +187,7 @@ class Edit extends Component {
      */
     async onDeleteRow() {
         const { rowIndex, sectionName } = this.state.selectedCell;
-        if( sectionName !== "body" ) {
+        if( sectionName !== 'body' ) {
             return;
         }
         const { setAttributes, attributes } = this.props;
@@ -754,7 +755,7 @@ class Edit extends Component {
                 height: 50,
             },
             iconName: undefined,
-            listItems: "<li>one </li><li>two </li>"
+            listItems: '<li>one </li><li>two </li>'
         }))
     );
 
@@ -873,12 +874,12 @@ class Edit extends Component {
                                     onChange={val => setAttributes({ layout: val })}
                                 />
                                 <Toggle
-                                    label={__("Table Header")}
+                                    label={__('Table Header')}
                                     value={tableHeader}
                                     onChange={tableHeader => setAttributes({tableHeader})}
                                 />
                                 <Toggle
-                                  label={__("Table Footer")}
+                                  label={__('Table Footer')}
                                   value={tableFooter}
                                   onChange={tableFooter => setAttributes({tableFooter})}
                                 />

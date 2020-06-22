@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 const { __ } = wp.i18n;
 const { RichText } = wp.blockEditor;
 import classnames from 'classnames';
@@ -8,7 +9,7 @@ const List = (props) => {
         classes,
         listIcon,
         ordered = false,
-        values = "<li>item one</li><li>item two</li>",
+        values = '<li>item one</li><li>item two</li>',
         onChange,
         identifier
     } = props;
@@ -22,7 +23,7 @@ const List = (props) => {
     const listClasses = classnames(
         'list-item',
         { [`custom-style qubely-list-bullet-${listIcon.name}`]: typeof listIcon.name !== 'undefined' },
-        { [`default-style}`]: typeof listIcon.name === 'undefined' },
+        { ['default-style}']: typeof listIcon.name === 'undefined' },
         { ['qubely-unordered-list']: tagName === 'ul' },
     )
     return (

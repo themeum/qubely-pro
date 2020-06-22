@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {
     IconSave as Icon,
     ImageSave as Image,
