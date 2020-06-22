@@ -109,19 +109,19 @@ class Edit extends Component {
             {
                 icon: <span className={'fas fa-table'} />,
                 title: __('Add Row Before'),
-                isDisabled: !selectedCell || ( selectedCell.sectionName !== 'body'),
+                isDisabled: !selectedCell || (selectedCell.sectionName !== 'body'),
                 onClick: this.onInsertRowBefore.bind(this),
             },
             {
                 icon: <span className={'fas fa-table'} />,
                 title: __('Add Row After'),
-                isDisabled: !selectedCell || ( selectedCell.sectionName !== 'body'),
+                isDisabled: !selectedCell || (selectedCell.sectionName !== 'body'),
                 onClick: this.onInsertRowAfter.bind(this),
             },
             {
                 icon: <span className={'fas fa-table'} />,
                 title: __('Delete Row'),
-                isDisabled: !selectedCell || ( selectedCell.sectionName !== 'body') || body.length < 2,
+                isDisabled: !selectedCell || (selectedCell.sectionName !== 'body') || body.length < 2,
                 onClick: this.onDeleteRow.bind(this),
             },
             {
@@ -187,7 +187,7 @@ class Edit extends Component {
      */
     async onDeleteRow() {
         const { rowIndex, sectionName } = this.state.selectedCell;
-        if( sectionName !== 'body' ) {
+        if (sectionName !== 'body') {
             return;
         }
         const { setAttributes, attributes } = this.props;
@@ -303,20 +303,20 @@ class Edit extends Component {
     renderData = ({ cells }, name, rowIndex) => {
         const { selectedCell } = this.state;
         return cells.map((
-           {
-               content,
-               tag: Tag,
-               scope,
-               align,
-               type,
-               listItems,
-               iconName,
-               ratings,
-               image,
-               ordered,
-               imageSize
-           },
-           columnIndex
+            {
+                content,
+                tag: Tag,
+                scope,
+                align,
+                type,
+                listItems,
+                iconName,
+                ratings,
+                image,
+                ordered,
+                imageSize
+            },
+            columnIndex
         ) => {
             const cellLocation = {
                 sectionName: name,
@@ -325,11 +325,11 @@ class Edit extends Component {
             };
 
             const isSelectedCell = (
-              selectedCell &&
+                selectedCell &&
                 (
-                  selectedCell.rowIndex === rowIndex &&
-                  selectedCell.columnIndex === columnIndex &&
-                  selectedCell.sectionName === name
+                    selectedCell.rowIndex === rowIndex &&
+                    selectedCell.columnIndex === columnIndex &&
+                    selectedCell.sectionName === name
                 )
             );
 
@@ -393,20 +393,20 @@ class Edit extends Component {
      * @returns {*}
      */
     renderCellContent = ({
-         type,
-         content,
-         columnIndex,
-         Tag,
-         scope,
-         placeholder,
-         cellLocation,
-         iconName,
-         ratings,
-         image,
-         ordered,
-         listItems,
-         isSelectedCell,
-         imageSize
+        type,
+        content,
+        columnIndex,
+        Tag,
+        scope,
+        placeholder,
+        cellLocation,
+        iconName,
+        ratings,
+        image,
+        ordered,
+        listItems,
+        isSelectedCell,
+        imageSize
     }) => {
         const {
             setAttributes,
@@ -654,13 +654,13 @@ class Edit extends Component {
                 <table style={{ width: '100%' }}>
                     {
                         this.props.attributes.tableHeader && (
-                          <Section name='head' rows={this.props.attributes.head} />
+                            <Section name='head' rows={this.props.attributes.head} />
                         )
                     }
                     <Section name='body' rows={this.props.attributes.body} />
                     {
                         this.props.attributes.tableFooter && (
-                          <Section name='foot' rows={this.props.attributes.foot} />
+                            <Section name='foot' rows={this.props.attributes.foot} />
                         )
                     }
                 </table>
@@ -736,24 +736,24 @@ class Edit extends Component {
     reGenerateCells = (row, column) => {
         column = column + 1;
         row = row + 1;
-        const { setAttributes, attributes: { body, head, foot }} = this.props;
+        const { setAttributes, attributes: { body, head, foot } } = this.props;
         const prevRow = body.length;
         const prevCol = body[0].cells.length;
 
         // append rows
-        if ( row > prevRow ) {
+        if (row > prevRow) {
             const diff = row - prevRow;
             const newRows = this.generateEmptyRow(diff, prevCol);
             body.push(...newRows);
         }
 
         // delete rows
-        if( prevRow > row ) {
+        if (prevRow > row) {
             // delete row
         }
 
         // if: append columns
-        if ( column > prevCol) {
+        if (column > prevCol) {
             const diff = column - prevCol;
             const headCells = this.generateEmptyColumn(diff, 'th', 'head');
             const bodyCells = this.generateEmptyColumn(diff);
@@ -761,14 +761,14 @@ class Edit extends Component {
 
             // @TODO: improve performance
             head[0].cells.push(...headCells);
-            for(let i = 0; i < body.length; i++) {
+            for (let i = 0; i < body.length; i++) {
                 body[i].cells.push(...bodyCells);
             }
             foot[0].cells.push(...footCells);
 
         }
         // else: delete columns
-        if(prevCol > column) {
+        if (prevCol > column) {
             // delete columns
         }
 
@@ -931,12 +931,12 @@ class Edit extends Component {
                                 <Toggle
                                     label={__('Table Header')}
                                     value={tableHeader}
-                                    onChange={tableHeader => setAttributes({tableHeader})}
+                                    onChange={tableHeader => setAttributes({ tableHeader })}
                                 />
                                 <Toggle
-                                  label={__('Table Footer')}
-                                  value={tableFooter}
-                                  onChange={tableFooter => setAttributes({tableFooter})}
+                                    label={__('Table Footer')}
+                                    value={tableFooter}
+                                    onChange={tableFooter => setAttributes({ tableFooter })}
                                 />
                             </PanelBody>
                             <PanelBody title={__('Table Settings')} initialOpen={false}>
@@ -1318,10 +1318,10 @@ class Edit extends Component {
                             )}
                             renderContent={() =>
                                 <div className="qubely-toolber-popup">
-                                    <Row 
-                                        cell={6} 
-                                        row={6} 
-                                        className={'qubely-tcg-toolbar'} 
+                                    <Row
+                                        cell={6}
+                                        row={6}
+                                        className={'qubely-tcg-toolbar'}
                                         onClick={(row, column) => this.reGenerateCells(row, column)}
                                     />
                                 </div>
