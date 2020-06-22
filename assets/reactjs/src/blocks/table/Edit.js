@@ -772,9 +772,9 @@ class Edit extends Component {
             // delete columns
         }
 
-        this.props.setAttributes({ head });
-        this.props.setAttributes({ body });
-        this.props.setAttributes({ foot });
+        setAttributes({ head });
+        setAttributes({ body });
+        setAttributes({ foot });
     }
 
     /**
