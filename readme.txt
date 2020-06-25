@@ -1,7 +1,11 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 
 == Changelog ==
+
+= 1.2.1 - 29 Jun, 2020
+Update: Post Grid pagination default margin added
+Fix: Post Grid pagination backend spacing issue
 
 = 1.2.0 - 21 May, 2020 =
 New: Global Settings  
