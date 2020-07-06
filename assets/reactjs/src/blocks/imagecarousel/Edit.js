@@ -171,8 +171,7 @@ class Edit extends Component {
 									{
 										activeDescription &&
 										<div className="qubely-slider-description" >
-											<RichText
-												key="editable"
+											<RichText 
 												placeholder={__('Add description...')}
 												formattingControls={['bold', 'italic', 'link', 'strikethrough']}
 												keepPlaceholderOnFocus

@@ -132,8 +132,7 @@ class Edit extends Component {
 					<div className={`qubely-team-info-layout-${layout}`}>
 						{enablename &&
 							<div className="qubely-team-author-name" >
-								<RichText
-									key="editable"
+								<RichText 
 									keepPlaceholderOnFocus
 									placeholder={__('Add Name...')}
 									formattingControls={['bold', 'italic', 'link', 'strikethrough']}
@@ -144,8 +143,7 @@ class Edit extends Component {
 						}
 						{enableDesignation &&
 							<div className="qubely-team-author-designation" >
-								<RichText
-									key="editable"
+								<RichText 
 									placeholder={__('Add designation...')}
 									formattingControls={['bold', 'italic', 'link', 'strikethrough']}
 									keepPlaceholderOnFocus

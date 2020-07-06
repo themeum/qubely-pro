@@ -108,22 +108,20 @@ class Edit extends Component {
 					<div className="qubely-testimonial-author-info">
 						<div className="qubely-testimonial-author-name" >
 							<RichText
-								key="editable"
+								value={author}
 								keepPlaceholderOnFocus
 								placeholder={__('Add Name...')}
 								formattingControls={['bold', 'italic', 'link', 'strikethrough']}
 								onChange={value => this.updateAtrributes('author', value, index)}
-								value={author}
 							/>
 						</div>
 						<div className="qubely-testimonial-author-designation" >
 							<RichText
-								key="editable"
+								value={designation}
+								keepPlaceholderOnFocus
 								placeholder={__('Add designation...')}
 								formattingControls={['bold', 'italic', 'link', 'strikethrough']}
-								keepPlaceholderOnFocus
 								onChange={value => this.updateAtrributes('designation', value, index)}
-								value={designation}
 							/>
 						</div>
 					</div>
@@ -224,7 +222,6 @@ class Edit extends Component {
 
 								<div className="qubely-testimonial-content" >
 									<RichText
-										key="editable"
 										placeholder={__('Add Message...')}
 										formattingControls={['bold', 'italic', 'link', 'strikethrough']}
 										keepPlaceholderOnFocus
