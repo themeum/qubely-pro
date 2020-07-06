@@ -514,17 +514,17 @@ class POSTGRID
 						'style' => [
 							(object) [
 								'condition' => [
+									(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+								],
+								'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
+							],
+							(object) [
+								'condition' => [
 									(object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
 									(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
 								],
 								'selector' => '{{QUBELY}} .qubely-post-list-view.qubely-postgrid-style-3 .qubely-post-list-wrapper .qubely-post-list-content'
 							],
-							(object) [
-								'condition' => [
-									(object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-								],
-								'selector' => '{{QUBELY}} .qubely-post-grid-view.qubely-postgrid-style-3 .qubely-post-grid-content'
-							]
 						]
 					),
 					'stackBorderRadius' => array(
