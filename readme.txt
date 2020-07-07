@@ -3,7 +3,7 @@ Stable tag: 1.2.1
 
 == Changelog ==
 
-= 1.2.1 - 6 July, 2020
+= 1.2.1 - 07 July, 2020
 Update: Post Grid pagination default margin added
 Fix: Post Grid pagination backend spacing issue
 
