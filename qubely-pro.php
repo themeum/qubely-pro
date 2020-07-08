@@ -2,7 +2,7 @@
 /*
  * Plugin Name:       Qubely Pro
  * Plugin URI:        https://www.themeum.com/product/qubely/
- * Description:       This plugins is a pro version of Qubely regular version
+ * Description:       This is the pro version of Qubely free plugin
  * Version:           1.2.1
  * Author:            Themeum
  * Author URI:        https://themeum.com
