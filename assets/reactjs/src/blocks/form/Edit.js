@@ -555,7 +555,7 @@ class Edit extends Component {
                                             value={emailReceiver}
                                             onChange={val => setAttributes({ emailReceiver: val })}
                                             placeholder={__('Enter Recipient Email')}
-                                            help={__('Enter the recipient email address. This field is mandatory. Without a recipient email, contact form will not work.')}
+                                            help={__('Enter the recipient email address. This field is mandatory. Without a recipient email, form will not work.')}
                                         />
                                         <TextareaControl
                                             label={__('Email Headers')}
