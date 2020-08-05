@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 const { __ } = wp.i18n
-const { Component, Fragment } = wp.element
+const { Component, Fragment, createRef } = wp.element
 const { withSelect } = wp.data
 const { compose } = wp.compose;
 const { dateI18n, __experimentalGetSettings } = wp.date
@@ -8,38 +8,38 @@ const { addQueryArgs } = wp.url
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
 const { InspectorControls, BlockControls } = wp.blockEditor
 const {
-	Alignment,
-	Range,
-	ButtonGroup,
-	Toggle,
-	Dropdown,
-	Select,
-	Separator,
-	ColorAdvanced,
-	Typography,
-	Color,
-	Border,
-	BorderRadius,
-	Padding,
-	BoxShadow,
-	Styles,
-	Tabs,
-	Tab,
-	Margin,
-	RadioAdvanced,
-	withCSSGenerator,
-	gloalSettings: {
-		globalSettingsPanel,
-		animationSettings,
-		interactionSettings
-	},
-	Inline: { InlineToolbar },
-	ContextMenu: {
-		ContextMenu,
-		handleContextMenu
-	},
-	InspectorTabs,
-	InspectorTab
+  Alignment,
+  Range,
+  ButtonGroup,
+  Toggle,
+  Dropdown,
+  Select,
+  Separator,
+  ColorAdvanced,
+  Typography,
+  Color,
+  Border,
+  BorderRadius,
+  Padding,
+  BoxShadow,
+  Styles,
+  Tabs,
+  Tab,
+  Margin,
+  RadioAdvanced,
+  withCSSGenerator,
+  gloalSettings: {
+    globalSettingsPanel,
+    animationSettings,
+    interactionSettings
+  },
+  Inline: { InlineToolbar },
+  ContextMenu: {
+    ContextMenu,
+    handleContextMenu
+  },
+  InspectorTabs,
+  InspectorTab
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
@@ -47,256 +47,257 @@ import icons from '../../helpers/icons'
 const CATEGORIES_LIST_QUERY = { per_page: -1 };
 
 class Edit extends Component {
-	constructor() {
-		super(...arguments);
-		this.state = {
-			device: 'md',
-			spacer: true,
-			categoriesList: []
-		};
-	}
+  constructor() {
+    super(...arguments);
+    this.state = {
+      device: 'md',
+      spacer: true,
+      categoriesList: []
+    };
+    this.qubelyContextMenu = createRef();
+  }
 
-	componentDidMount() {
-		const {
-			clientId,
-			setAttributes,
-			attributes: {
-				uniqueId
-			}
-		} = this.props;
-		this.isStillMounted = true;
+  componentDidMount() {
+    const {
+      clientId,
+      setAttributes,
+      attributes: {
+        uniqueId
+      }
+    } = this.props;
+    this.isStillMounted = true;
 
-		this.fetchRequest = wp.apiFetch({
-			path: addQueryArgs('/wp/v2/categories', CATEGORIES_LIST_QUERY),
-		}).then(
-			(categoriesList) => {
-				if (this.isStillMounted) {
-					this.setState({ categoriesList });
-				}
-			}
-		).catch(
-			() => {
-				if (this.isStillMounted) {
-					this.setState({ categoriesList: [] });
-				}
-			}
-		);
-		const _client = clientId.substr(0, 6);
-		if (!uniqueId) {
-			setAttributes({ uniqueId: _client, });
-		} else if (uniqueId && uniqueId != _client) {
-			setAttributes({ uniqueId: _client });
-		}
-	}
+    this.fetchRequest = wp.apiFetch({
+      path: addQueryArgs('/wp/v2/categories', CATEGORIES_LIST_QUERY),
+    }).then(
+      (categoriesList) => {
+        if (this.isStillMounted) {
+          this.setState({ categoriesList });
+        }
+      }
+    ).catch(
+      () => {
+        if (this.isStillMounted) {
+          this.setState({ categoriesList: [] });
+        }
+      }
+    );
+    const _client = clientId.substr(0, 6);
+    if (!uniqueId) {
+      setAttributes({ uniqueId: _client, });
+    } else if (uniqueId && uniqueId != _client) {
+      setAttributes({ uniqueId: _client });
+    }
+  }
 
-	componentWillUnmount() {
-		this.isStillMounted = false;
-	}
-	truncate(value, limit) {
-		if (value.split(' ').length > limit) {
-			return value.split(' ').splice(0, limit).join(' ');
-		}
-		return value;
-	}
+  componentWillUnmount() {
+    this.isStillMounted = false;
+  }
+  truncate(value, limit) {
+    if (value.split(' ').length > limit) {
+      return value.split(' ').splice(0, limit).join(' ');
+    }
+    return value;
+  }
 
-	renderFeaturedImage = (post) => {
-		const { attributes: { layout, style, imgSize, imageAnimation, showCategory, categoryPosition } } = this.props
-		return (
-			<Fragment>
-				{
-					(showCategory == 'badge' && style === 4) &&
-					<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
-						<span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
-					</div>
-				}
-				<div className={`${layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img'} qubely-post-img qubely-post-img-${imageAnimation}`}>
+  renderFeaturedImage = (post) => {
+    const { attributes: { layout, style, imgSize, imageAnimation, showCategory, categoryPosition } } = this.props
+    return (
+      <Fragment>
+        {
+          (showCategory == 'badge' && style === 4) &&
+          <div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
+            <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+          </div>
+        }
+        <div className={`${layout === 1 ? 'qubely-post-list-img' : 'qubely-post-grid-img'} qubely-post-img qubely-post-img-${imageAnimation}`}>
 
-					<img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
-					{
-						(showCategory == 'badge' && style != 4) &&
-						<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
-							<span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
-						</div>
-					}
-				</div>
-			</Fragment>
-		)
-	}
+          <img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
+          {
+            (showCategory == 'badge' && style != 4) &&
+            <div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
+              <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+            </div>
+          }
+        </div>
+      </Fragment>
+    )
+  }
 
-	renderCardContent = (post, index) => {
-		const { attributes: { layout, readmoreStyle, showCategory, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
-		let title = <h3 className="qubely-postgrid-title"><a>{post.title.rendered}</a></h3>
-		return (
-			<div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
-				{(showCategory === 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
-				{showTitle && (titlePosition == true) && title}
-				{
-					(showAuthor || showDates || showComment) &&
-					<div className="qubely-postgrid-meta">
-						{showAuthor && <span><i className="fas fa-user" /> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
-						{showDates && <span><i className="far fa-calendar-alt" /> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
-						{showComment && <span><i className="fas fa-comment" /> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
-					</div>
-				}
-				{showTitle && (titlePosition == false) && title}
-				{showExcerpt && ((index == 0) && (layout === 5)) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
-				{showExcerpt && (layout != 5) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
-				{showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
-			</div>
-		)
-	}
+  renderCardContent = (post, index) => {
+    const { attributes: { layout, readmoreStyle, showCategory, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
+    let title = <h3 className="qubely-postgrid-title"><a>{post.title.rendered}</a></h3>
+    return (
+      <div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
+        {(showCategory === 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
+        {showTitle && (titlePosition == true) && title}
+        {
+          (showAuthor || showDates || showComment) &&
+          <div className="qubely-postgrid-meta">
+            {showAuthor && <span><i className="fas fa-user" /> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
+            {showDates && <span><i className="far fa-calendar-alt" /> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
+            {showComment && <span><i className="fas fa-comment" /> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
+          </div>
+        }
+        {showTitle && (titlePosition == false) && title}
+        {showExcerpt && ((index == 0) && (layout === 5)) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
+        {showExcerpt && (layout != 5) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
+        {showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
+      </div>
+    )
+  }
 
-	render() {
-		const {
-			name,
-			clientId,
-			attributes,
-			posts,
-			taxonomyList,
-			setAttributes,
-			attributes: {
-				uniqueId,
-				className,
-				taxonomy,
-				categories,
-				tags,
-				order,
-				orderBy,
-				page,
-				postsToShow,
-				showImages,
-				imgSize,
-				enableFixedHeight,
-				fixedHeight,
-				fixedSmallHeight,
-				imageRadius,
-				imageAnimation,
-				cardBackground,
-				cardBorder,
-				cardBorderRadius,
-				cardPadding,
-				cardBoxShadow,
-				cardSpace,
-				stackBg,
-				stackWidth,
-				stackSpace,
-				stackBorderRadius,
-				stackPadding,
-				stackBoxShadow,
-				readmoreStyle,
-				buttonText,
-				readmoreSize,
-				readmoreCustomSize,
-				readmoreTypography,
-				readmoreBg,
-				readmoreHoverBg,
-				readmoreBorder,
-				readmoreBorderRadius,
-				readmoreBoxShadow,
-				readmoreColor,
-				readmoreColor2,
-				readmoreHoverColor,
-				layout,
-				style,
-				column,
-				showDates,
-				showComment,
-				showAuthor,
-				showCategory,
-				categoryPosition,
-				showExcerpt,
-				excerptLimit,
-				showReadMore,
-				showTitle,
-				titlePosition,
-				showSeparator,
-				separatorColor,
-				separatorHeight,
-				separatorSpace,
-				titleTypography,
-				metaTypography,
-				excerptTypography,
-				categoryTypography,
-				titleColor,
-				titleOverlayColor,
-				metaColor,
-				metaOverlayColor,
-				titleHoverColor,
-				excerptColor,
-				excerptColor2,
-				categoryColor,
-				categoryColor2,
-				categoryHoverColor,
-				categoryHoverColor2,
-				categoryBackground,
-				categoryHoverBackground,
-				categoryRadius,
-				categoryPadding,
-				badgePosition,
-				badgePadding,
-				bgColor,
-				border,
-				borderRadius,
-				padding,
-				boxShadow,
-				contentPosition,
-				girdContentPosition,
-				overlayBg,
-				overlayHoverBg,
-				overlayBlend,
-				overlayHeight,
-				overlaySmallHeight,
-				overlaySpace,
-				overlayBorderRadius,
-				columnGap,
-				contentPadding,
-				titleSpace,
-				imageSpace,
-				categorySpace,
-				metaSpace,
-				excerptSpace,
-				globalZindex,
-				enablePosition,
-				selectPosition,
-				positionXaxis,
-				positionYaxis,
+  render() {
+    const {
+      name,
+      clientId,
+      attributes,
+      posts,
+      taxonomyList,
+      setAttributes,
+      attributes: {
+        uniqueId,
+        className,
+        taxonomy,
+        categories,
+        tags,
+        order,
+        orderBy,
+        page,
+        postsToShow,
+        showImages,
+        imgSize,
+        enableFixedHeight,
+        fixedHeight,
+        fixedSmallHeight,
+        imageRadius,
+        imageAnimation,
+        cardBackground,
+        cardBorder,
+        cardBorderRadius,
+        cardPadding,
+        cardBoxShadow,
+        cardSpace,
+        stackBg,
+        stackWidth,
+        stackSpace,
+        stackBorderRadius,
+        stackPadding,
+        stackBoxShadow,
+        readmoreStyle,
+        buttonText,
+        readmoreSize,
+        readmoreCustomSize,
+        readmoreTypography,
+        readmoreBg,
+        readmoreHoverBg,
+        readmoreBorder,
+        readmoreBorderRadius,
+        readmoreBoxShadow,
+        readmoreColor,
+        readmoreColor2,
+        readmoreHoverColor,
+        layout,
+        style,
+        column,
+        showDates,
+        showComment,
+        showAuthor,
+        showCategory,
+        categoryPosition,
+        showExcerpt,
+        excerptLimit,
+        showReadMore,
+        showTitle,
+        titlePosition,
+        showSeparator,
+        separatorColor,
+        separatorHeight,
+        separatorSpace,
+        titleTypography,
+        metaTypography,
+        excerptTypography,
+        categoryTypography,
+        titleColor,
+        titleOverlayColor,
+        metaColor,
+        metaOverlayColor,
+        titleHoverColor,
+        excerptColor,
+        excerptColor2,
+        categoryColor,
+        categoryColor2,
+        categoryHoverColor,
+        categoryHoverColor2,
+        categoryBackground,
+        categoryHoverBackground,
+        categoryRadius,
+        categoryPadding,
+        badgePosition,
+        badgePadding,
+        bgColor,
+        border,
+        borderRadius,
+        padding,
+        boxShadow,
+        contentPosition,
+        girdContentPosition,
+        overlayBg,
+        overlayHoverBg,
+        overlayBlend,
+        overlayHeight,
+        overlaySmallHeight,
+        overlaySpace,
+        overlayBorderRadius,
+        columnGap,
+        contentPadding,
+        titleSpace,
+        imageSpace,
+        categorySpace,
+        metaSpace,
+        excerptSpace,
+        globalZindex,
+        enablePosition,
+        selectPosition,
+        positionXaxis,
+        positionYaxis,
 
-				//pagination
-				enablePagination,
-				paginationType,
-				pageAlignment,
-				paginationTypography,
-				pagesColor,
-				pagesHoverColor,
-				pagesActiveColor,
-				pagesbgColor,
-				pagesbgHoverColor,
-				pagesbgActiveColor,
-				pagesBorder,
-				pagesHoverBorder,
-				pagesActiveBorder,
-				pagesShadow,
-				pagesHoverShadow,
-				pagesActiveShadow,
-				pagesBorderRadius,
-				pagePadding,
-				pageMargin,
+        //pagination
+        enablePagination,
+        paginationType,
+        pageAlignment,
+        paginationTypography,
+        pagesColor,
+        pagesHoverColor,
+        pagesActiveColor,
+        pagesbgColor,
+        pagesbgHoverColor,
+        pagesbgActiveColor,
+        pagesBorder,
+        pagesHoverBorder,
+        pagesActiveBorder,
+        pagesShadow,
+        pagesHoverShadow,
+        pagesActiveShadow,
+        pagesBorderRadius,
+        pagePadding,
+        pageMargin,
 
-				hideTablet,
-				hideMobile,
-				globalCss,
-				animation,
-				interaction
-			}
-		} = this.props;
+        hideTablet,
+        hideMobile,
+        globalCss,
+        animation,
+        interaction
+      }
+    } = this.props;
 
-		const {
-			device,
-		} = this.state;
+    const {
+      device,
+    } = this.state;
 
-		let pages = Math.ceil(qubely_pro_admin.publishedPosts / postsToShow);
+    let pages = Math.ceil(qubely_pro_admin.publishedPosts / postsToShow);
 
-		return (
+    return (
       <Fragment>
         <InspectorControls key="inspector">
           <InspectorTabs tabs={["style", "advance"]}>
@@ -353,107 +354,107 @@ class Edit extends Component {
                 )}
                 {(layout === 1 ||
                   (layout != 1 && (style === 3 || style === 4))) && (
-                  <ButtonGroup
-                    label={__("Content Align")}
-                    options={
-                      layout != 1 && style === 3
-                        ? [
+                    <ButtonGroup
+                      label={__("Content Align")}
+                      options={
+                        layout != 1 && style === 3
+                          ? [
                             [__("Left"), "left"],
                             [__("Middle"), "center"],
                             [__("Right"), "right"],
                           ]
-                        : [
+                          : [
                             [__("Top"), "top"],
                             [__("Middle"), "center"],
                             [__("Bottom"), "bottom"],
                           ]
-                    }
-                    value={
-                      layout != 1 && style === 3
-                        ? contentPosition
-                        : girdContentPosition
-                    }
-                    onChange={(value) =>
-                      setAttributes(
+                      }
+                      value={
                         layout != 1 && style === 3
-                          ? { contentPosition: value }
-                          : { girdContentPosition: value }
-                      )
-                    }
-                  />
-                )}
+                          ? contentPosition
+                          : girdContentPosition
+                      }
+                      onChange={(value) =>
+                        setAttributes(
+                          layout != 1 && style === 3
+                            ? { contentPosition: value }
+                            : { girdContentPosition: value }
+                        )
+                      }
+                    />
+                  )}
                 {((layout === 1 && style != 3) ||
                   (layout === 2 && style != 3) ||
                   (layout === 4 && style != 3)) && (
-                  <Padding
-                    label={__("Padding")}
-                    value={contentPadding}
-                    onChange={(val) => setAttributes({ contentPadding: val })}
-                    min={0}
-                    max={100}
-                    unit={["px", "em", "%"]}
-                    responsive
-                    device={device}
-                    onDeviceChange={(value) => this.setState({ device: value })}
-                  />
-                )}
+                    <Padding
+                      label={__("Padding")}
+                      value={contentPadding}
+                      onChange={(val) => setAttributes({ contentPadding: val })}
+                      min={0}
+                      max={100}
+                      unit={["px", "em", "%"]}
+                      responsive
+                      device={device}
+                      onDeviceChange={(value) => this.setState({ device: value })}
+                    />
+                  )}
                 <Separator />
                 {((layout === 1 && style === 1) ||
                   (layout === 2 && style === 1)) && (
-                  <Fragment>
-                    <ColorAdvanced
-                      label={__("Background")}
-                      value={bgColor}
-                      onChange={(value) => setAttributes({ bgColor: value })}
-                    />
-                    <Border
-                      label={__("Border")}
-                      value={border}
-                      onChange={(val) => setAttributes({ border: val })}
-                      min={0}
-                      max={10}
-                      unit={["px", "em", "%"]}
-                      responsive
-                      device={device}
-                      onDeviceChange={(value) =>
-                        this.setState({ device: value })
-                      }
-                    />
-                    <BorderRadius
-                      min={0}
-                      max={100}
-                      responsive
-                      device={device}
-                      label={__("Corner")}
-                      value={borderRadius}
-                      unit={["px", "em", "%"]}
-                      onChange={(value) =>
-                        setAttributes({ borderRadius: value })
-                      }
-                      onDeviceChange={(value) =>
-                        this.setState({ device: value })
-                      }
-                    />
-                    <Padding
-                      label={__("Padding")}
-                      value={padding}
-                      onChange={(val) => setAttributes({ padding: val })}
-                      min={0}
-                      max={60}
-                      unit={["px", "em", "%"]}
-                      responsive
-                      device={device}
-                      onDeviceChange={(value) =>
-                        this.setState({ device: value })
-                      }
-                    />
-                    <BoxShadow
-                      label={__("Box-Shadow")}
-                      value={boxShadow}
-                      onChange={(value) => setAttributes({ boxShadow: value })}
-                    />
-                  </Fragment>
-                )}
+                    <Fragment>
+                      <ColorAdvanced
+                        label={__("Background")}
+                        value={bgColor}
+                        onChange={(value) => setAttributes({ bgColor: value })}
+                      />
+                      <Border
+                        label={__("Border")}
+                        value={border}
+                        onChange={(val) => setAttributes({ border: val })}
+                        min={0}
+                        max={10}
+                        unit={["px", "em", "%"]}
+                        responsive
+                        device={device}
+                        onDeviceChange={(value) =>
+                          this.setState({ device: value })
+                        }
+                      />
+                      <BorderRadius
+                        min={0}
+                        max={100}
+                        responsive
+                        device={device}
+                        label={__("Corner")}
+                        value={borderRadius}
+                        unit={["px", "em", "%"]}
+                        onChange={(value) =>
+                          setAttributes({ borderRadius: value })
+                        }
+                        onDeviceChange={(value) =>
+                          this.setState({ device: value })
+                        }
+                      />
+                      <Padding
+                        label={__("Padding")}
+                        value={padding}
+                        onChange={(val) => setAttributes({ padding: val })}
+                        min={0}
+                        max={60}
+                        unit={["px", "em", "%"]}
+                        responsive
+                        device={device}
+                        onDeviceChange={(value) =>
+                          this.setState({ device: value })
+                        }
+                      />
+                      <BoxShadow
+                        label={__("Box-Shadow")}
+                        value={boxShadow}
+                        onChange={(value) => setAttributes({ boxShadow: value })}
+                      />
+                    </Fragment>
+                  )}
                 {/* card  settings*/}
                 {style === 2 && (
                   <Fragment>
@@ -810,19 +811,19 @@ class Edit extends Component {
                     setAttributes(
                       taxonomy === "categories"
                         ? {
-                            categories:
-                              value.length &&
+                          categories:
+                            value.length &&
                               value[value.length - 1].label === "All"
-                                ? []
-                                : value,
-                          }
+                              ? []
+                              : value,
+                        }
                         : {
-                            tags:
-                              value.length &&
+                          tags:
+                            value.length &&
                               value[value.length - 1].label === "All"
-                                ? []
-                                : value,
-                          }
+                              ? []
+                              : value,
+                        }
                     )
                   }
                 />
@@ -1257,22 +1258,22 @@ class Edit extends Component {
                             }
                           />
                         ) : (
-                          <Padding
-                            label={__("Advanced")}
-                            value={badgePadding}
-                            onChange={(val) =>
-                              setAttributes({ badgePadding: val })
-                            }
-                            min={0}
-                            max={60}
-                            unit={["px", "em", "%"]}
-                            responsive
-                            device={device}
-                            onDeviceChange={(value) =>
-                              this.setState({ device: value })
-                            }
-                          />
-                        )}
+                            <Padding
+                              label={__("Advanced")}
+                              value={badgePadding}
+                              onChange={(val) =>
+                                setAttributes({ badgePadding: val })
+                              }
+                              min={0}
+                              max={60}
+                              unit={["px", "em", "%"]}
+                              responsive
+                              device={device}
+                              onDeviceChange={(value) =>
+                                this.setState({ device: value })
+                              }
+                            />
+                          )}
                         <Separator />
                       </Fragment>
                     )}
@@ -1472,22 +1473,22 @@ class Edit extends Component {
                         />
                         {(readmoreBorder.openBorder ||
                           readmoreStyle === "fill") && (
-                          <BorderRadius
-                            min={0}
-                            max={100}
-                            responsive
-                            device={device}
-                            label={__("Corner")}
-                            value={readmoreBorderRadius}
-                            unit={["px", "em", "%"]}
-                            onChange={(value) =>
-                              setAttributes({ readmoreBorderRadius: value })
-                            }
-                            onDeviceChange={(value) =>
-                              this.setState({ device: value })
-                            }
-                          />
-                        )}
+                            <BorderRadius
+                              min={0}
+                              max={100}
+                              responsive
+                              device={device}
+                              label={__("Corner")}
+                              value={readmoreBorderRadius}
+                              unit={["px", "em", "%"]}
+                              onChange={(value) =>
+                                setAttributes({ readmoreBorderRadius: value })
+                              }
+                              onDeviceChange={(value) =>
+                                this.setState({ device: value })
+                              }
+                            />
+                          )}
                         <BoxShadow
                           label={__("Box-Shadow")}
                           value={readmoreBoxShadow}
@@ -1736,7 +1737,7 @@ class Edit extends Component {
         <div
           className={`qubely-block-${uniqueId}${
             className ? ` ${className}` : ""
-          }`}
+            }`}
         >
           {posts && posts.length ? (
             <Fragment>
@@ -1744,18 +1745,16 @@ class Edit extends Component {
                 className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${
                   layout === 2 || layout === 3 || layout === 4
                     ? "qubely-postgrid-column qubely-postgrid-column-md" +
-                      column.md +
-                      " " +
-                      "qubely-postgrid-column-sm" +
-                      column.sm +
-                      " " +
-                      "qubely-postgrid-column-xs" +
-                      column.xs
+                    column.md +
+                    " " +
+                    "qubely-postgrid-column-sm" +
+                    column.sm +
+                    " " +
+                    "qubely-postgrid-column-xs" +
+                    column.xs
                     : ""
-                }`}
-                onContextMenu={(event) =>
-                  handleContextMenu(event, this.refs.qubelyContextMenu)
-                }
+                  }`}
+                onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
               >
                 {posts.map((post, index) => {
                   if (post) {
@@ -1765,27 +1764,27 @@ class Edit extends Component {
                           layout === 1
                             ? "qubely-post-list-view"
                             : "qubely-post-grid-view"
-                        } qubely-postgrid-style-${style} ${
+                          } qubely-postgrid-style-${style} ${
                           (layout == 5 && index == 0) ||
-                          (layout == 3 && index == 0)
+                            (layout == 3 && index == 0)
                             ? "qubely-post-large-view"
                             : "qubely-post-small-view"
-                        }`}
+                          }`}
                       >
                         <div
                           className={`${
                             layout === 1
                               ? `qubely-post-list-wrapper qubely-post-list-${
-                                  layout != 1 && style === 3
-                                    ? contentPosition
-                                    : girdContentPosition
-                                }`
+                              layout != 1 && style === 3
+                                ? contentPosition
+                                : girdContentPosition
+                              }`
                               : `qubely-post-grid-wrapper qubely-post-grid-${
-                                  layout != 1 && style === 3
-                                    ? contentPosition
-                                    : girdContentPosition
-                                }`
-                          }`}
+                              layout != 1 && style === 3
+                                ? contentPosition
+                                : girdContentPosition
+                              }`
+                            }`}
                         >
                           {post &&
                             showImages &&
@@ -1799,15 +1798,15 @@ class Edit extends Component {
                 })}
               </div>
               <div
-                ref="qubelyContextMenu"
-                className={"qubely-context-menu-wraper"}
+                ref={this.qubelyContextMenu}
+                className={`qubely-context-menu-wraper`}
               >
                 <ContextMenu
                   name={name}
                   clientId={clientId}
                   attributes={attributes}
                   setAttributes={setAttributes}
-                  qubelyContextMenu={this.refs.qubelyContextMenu}
+                  qubelyContextMenu={this.qubelyContextMenu.current}
                 />
               </div>
               {pages > 1 && enablePagination && (
@@ -1828,7 +1827,7 @@ class Edit extends Component {
                         key={index}
                         className={`pages${
                           page === index + 1 ? " current" : ""
-                        }`}
+                          }`}
                         onClick={() => setAttributes({ page: index + 1 })}
                       >
                         {index + 1}
@@ -1846,48 +1845,48 @@ class Edit extends Component {
               )}
             </Fragment>
           ) : (
-            <div className="qubely-postgrid-is-loading">
-              <Spinner />
-            </div>
-          )}
+              <div className="qubely-postgrid-is-loading">
+                <Spinner />
+              </div>
+            )}
         </div>
       </Fragment>
     );
-	}
+  }
 }
 
 export default compose([
-	withSelect((select, props) => {
-		const { getEntityRecords } = select('core');
-		const {
-			attributes: {
-				taxonomy,
-				order,
-				orderBy,
-				categories,
-				tags,
-				page,
-				postsToShow
-			}
-		} = props;
+  withSelect((select, props) => {
+    const { getEntityRecords } = select('core');
+    const {
+      attributes: {
+        taxonomy,
+        order,
+        orderBy,
+        categories,
+        tags,
+        page,
+        postsToShow
+      }
+    } = props;
 
-		let allTaxonomy = qubely_admin.all_taxonomy
+    let allTaxonomy = qubely_admin.all_taxonomy
 
-		let seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags'
-		let activeTaxes = taxonomy === 'categories' ? categories : tags
+    let seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags'
+    let activeTaxes = taxonomy === 'categories' ? categories : tags
 
-		let query = {
-			order: order,
-			orderby: orderBy,
-			page: page,
-			per_page: postsToShow,
-			[seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
-		}
-		return {
-			posts: getEntityRecords('postType', 'post', query),
-			taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
-		};
-	}),
-	withCSSGenerator()
+    let query = {
+      order: order,
+      orderby: orderBy,
+      page: page,
+      per_page: postsToShow,
+      [seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
+    }
+    return {
+      posts: getEntityRecords('postType', 'post', query),
+      taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
+    };
+  }),
+  withCSSGenerator()
 ])(Edit)
 

@@ -2,7 +2,7 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { addQueryArgs } = wp.url;
-const { Component, Fragment } = wp.element;
+const { Component, Fragment, createRef } = wp.element;
 const { dateI18n, __experimentalGetSettings } = wp.date;
 const { InspectorControls, BlockControls } = wp.blockEditor
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl, Placeholder } = wp.components;
@@ -49,6 +49,7 @@ class Edit extends Component {
 			spacer: true,
 			categoriesList: [],
 		};
+		this.qubelyContextMenu = createRef();
 	}
 
 	componentDidMount() {
@@ -898,7 +899,10 @@ class Edit extends Component {
 
 				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
 					{(posts && posts.length) ?
-						<div className={`qubely-block-post-carousel qubely-postcarousel-wrapper`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+						<div
+							className={`qubely-block-post-carousel qubely-postcarousel-wrapper`}
+							onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
+						>
 							<Carousel options={carouselSettings}>
 								{posts && posts.map(post => {
 									return (
@@ -913,13 +917,16 @@ class Edit extends Component {
 									)
 								})}
 							</Carousel>
-							<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+							<div
+								ref={this.qubelyContextMenu}
+								className={`qubely-context-menu-wraper`}
+							>
 								<ContextMenu
 									name={name}
 									clientId={clientId}
 									attributes={attributes}
 									setAttributes={setAttributes}
-									qubelyContextMenu={this.refs.qubelyContextMenu}
+									qubelyContextMenu={this.qubelyContextMenu.current}
 								/>
 							</div>
 						</div>

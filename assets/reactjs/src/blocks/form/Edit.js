@@ -4,7 +4,10 @@ const { compose } = wp.compose
 const { select, dispatch, withSelect, withDispatch } = wp.data
 const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.blockEditor
 const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl, Button } = wp.components
-const { Component, Fragment } = wp.element
+const {
+    Component,
+    Fragment,
+    createRef } = wp.element
 const {
     BoxShadow,
     BorderRadius,
@@ -38,7 +41,7 @@ import icons from '../../helpers/icons';
 class Edit extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             spacer: true,
             selectedItem: -1,
@@ -48,8 +51,9 @@ class Edit extends Component {
             groupField: false,
             test: false,
             saved_globally: false
-        }
+        };
         this._saveGlobally = this._saveGlobally.bind(this);
+        this.qubelyContextMenu = createRef();
     }
 
     componentDidMount() {
@@ -61,30 +65,30 @@ class Edit extends Component {
             setAttributes({ uniqueId: _client });
         }
 
-        if(qubely_admin.qubely_recaptcha_site_key) {
-            setAttributes({reCaptchaSiteKey: qubely_admin.qubely_recaptcha_site_key});
+        if (qubely_admin.qubely_recaptcha_site_key) {
+            setAttributes({ reCaptchaSiteKey: qubely_admin.qubely_recaptcha_site_key });
         }
 
-        if(qubely_admin.qubely_recaptcha_secret_key) {
-            setAttributes({reCaptchaSecretKey: qubely_admin.qubely_recaptcha_secret_key});
+        if (qubely_admin.qubely_recaptcha_secret_key) {
+            setAttributes({ reCaptchaSecretKey: qubely_admin.qubely_recaptcha_secret_key });
         }
 
     }
 
     async _saveGlobally(siteKey, secretKey) {
-        if(!siteKey || !secretKey) return;
+        if (!siteKey || !secretKey) return;
         try {
             await wp.apiFetch({
                 path: 'qubely/v1/add_qubely_options',
                 method: 'POST',
-                data: {key: 'qubely_recaptcha_site_key', value: siteKey}
+                data: { key: 'qubely_recaptcha_site_key', value: siteKey }
             });
             await wp.apiFetch({
                 path: 'qubely/v1/add_qubely_options',
                 method: 'POST',
-                data: {key: 'qubely_recaptcha_secret_key', value: secretKey}
+                data: { key: 'qubely_recaptcha_secret_key', value: secretKey }
             });
-            this.setState({saved_globally: true});
+            this.setState({ saved_globally: true });
         } catch (e) {
             console.log(e);
         }
@@ -525,26 +529,26 @@ class Edit extends Component {
                                                 ((qubely_admin.qubely_recaptcha_site_key && qubely_admin.qubely_recaptcha_site_key) || this.state.saved_globally) ? (
                                                     <div className='api-notice'>{__('reCaptcha keys added successfully')}, <a target='_blank' href={setting_url}>{__('Edit keys here')}</a></div>
                                                 ) : (
-                                                    reCaptchaSiteKey && reCaptchaSecretKey ? (
-                                                        <div className='recaptcha-keys'>
-                                                            <TextControl
-                                                                label={__('Site Key ')}
-                                                                value={reCaptchaSiteKey}
-                                                                onChange={val => setAttributes({ reCaptchaSiteKey: val })}
-                                                                placeholder={__('Enter Google Site Key')}
-                                                            />
-                                                            <TextControl
-                                                                label={__('Secret Key ')}
-                                                                value={reCaptchaSecretKey}
-                                                                onChange={val => setAttributes({ reCaptchaSecretKey: val })}
-                                                                placeholder={__('Enter Google Secret Key')}
-                                                            />
-                                                            <Button isPrimary onClick={() => this._saveGlobally(reCaptchaSiteKey, reCaptchaSecretKey)}>{__('Set globally')}</Button>
-                                                        </div>
-                                                    ) : (
-                                                        <div className='api-notice warning'>{__('reCaptcha requires site key & secret key')}, <a target='_blank' href={setting_url}>{__('Add keys here')}</a></div>
+                                                        reCaptchaSiteKey && reCaptchaSecretKey ? (
+                                                            <div className='recaptcha-keys'>
+                                                                <TextControl
+                                                                    label={__('Site Key ')}
+                                                                    value={reCaptchaSiteKey}
+                                                                    onChange={val => setAttributes({ reCaptchaSiteKey: val })}
+                                                                    placeholder={__('Enter Google Site Key')}
+                                                                />
+                                                                <TextControl
+                                                                    label={__('Secret Key ')}
+                                                                    value={reCaptchaSecretKey}
+                                                                    onChange={val => setAttributes({ reCaptchaSecretKey: val })}
+                                                                    placeholder={__('Enter Google Secret Key')}
+                                                                />
+                                                                <Button isPrimary onClick={() => this._saveGlobally(reCaptchaSiteKey, reCaptchaSecretKey)}>{__('Set globally')}</Button>
+                                                            </div>
+                                                        ) : (
+                                                                <div className='api-notice warning'>{__('reCaptcha requires site key & secret key')}, <a target='_blank' href={setting_url}>{__('Add keys here')}</a></div>
+                                                            )
                                                     )
-                                                )
                                             )
                                         }
 
@@ -606,7 +610,10 @@ class Edit extends Component {
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
                 <div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
-                    <div className={`qubely-block-form qubely-layout-${layout}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+                    <div
+                        className={`qubely-block-form qubely-layout-${layout}`}
+                        onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
+                    >
                         <form className={`qubely-form is-${inputSize}`}>
                             <InnerBlocks
                                 allowedBlocks={['qubely/formfield-row', 'qubely/formfield-column',]}
@@ -657,16 +664,18 @@ class Edit extends Component {
                                 renderContent={() => this.renderFormFieldTypes()}
                             />
                         </div>
-                        <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+                        <div
+                            ref={this.qubelyContextMenu}
+                            className={`qubely-context-menu-wraper`}
+                        >
                             <ContextMenu
                                 name={name}
                                 clientId={clientId}
                                 attributes={attributes}
                                 setAttributes={setAttributes}
-                                qubelyContextMenu={this.refs.qubelyContextMenu}
+                                qubelyContextMenu={this.qubelyContextMenu.current}
                             />
                         </div>
-
                     </div>
 
 
