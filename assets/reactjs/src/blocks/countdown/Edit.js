@@ -92,7 +92,6 @@ class Edit extends Component {
             showStartDate: false,
             showEndDate: false
         };
-        this.qubely_timer = React.createRef();
         this.qubelyContextMenu = createRef();
     }
 
