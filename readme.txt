@@ -1,7 +1,11 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 
 == Changelog ==
+
+= 1.2.2 - 13 August, 2020 =  
+New: Import Sections/Layouts with Global settings 
+Update: All blocks - Context Menu refs
 
 = 1.2.1 - 08 July, 2020
 Update: Post Grid pagination default margin added
