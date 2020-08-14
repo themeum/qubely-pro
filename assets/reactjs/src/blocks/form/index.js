@@ -389,7 +389,7 @@ registerBlockType('qubely/form', {
 
         fieldErrorMessage: { type: 'string', default: 'Please fill the required field.' },
         formSuccessMessage: { type: 'string', default: 'Email successfully sent!' },
-        formErrorMessage: { type: 'string', default: 'Email sent failed, fill required field and try again!' },
+        formErrorMessage: { type: 'string', default: 'Email sending failed. Please fill the required field(s) and try again.' },
         reCaptcha: { type: 'boolean', default: false },
         reCaptchaSiteKey: { type: 'string', default: '' },
         reCaptchaSecretKey: { type: 'string', default: '' },

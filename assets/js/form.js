@@ -170,10 +170,13 @@ jQuery(document).ready(function ($) {
         const $form = $(this);
         $form.addClass('qubely-form-ready');
         $form.find('input.qubely-form-field').on('keydown', (e) => {
-            if (e.which === 13) { e.preventDefault(); return false; };
+            if (e.which === 13) {
+                e.preventDefault();
+                return false;
+            };
         });
         checkFormValidation($form, true); //add validation
-     
+
         // FORM SUBMIT EVENT
         $form.submit((e) => {
             e.preventDefault();
@@ -190,10 +193,15 @@ jQuery(document).ready(function ($) {
                         $form.find(".qubely-form-message").html('<div class="qubely-alert qubely-alert-info">Message sending...</div>');
                     },
                     success: (response) => {
+                        console.log('response : ',response);
                         $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
                         $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
-                        setTimeout(() => $form.find('.qubely-form-message').html(''), 4000);
-                        if (response.data.status == 1) $form.trigger("reset");
+                        setTimeout(() => {
+                            $form.find('.qubely-form-message').html('');
+                        }, 4000);
+                        if (response.data.status == 1) {
+                            $form.trigger("reset");
+                        };
                     },
                     error: (jqxhr, textStatus, error) => {
                         $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
@@ -236,7 +244,7 @@ jQuery(document).ready(function ($) {
                 const $parenField = $field.parents('.qubely-form-field-wrapper')
 
                 if ($parenField.find('.qubely-form-confirmation-email').length > 0) {
-                   
+
                     let confirmationEmailFlag = $parenField.find('.qubely-form-confirmation-email-error').length === 0
 
                     if (validateEmail($field.val())) {
