@@ -128,7 +128,7 @@
             width: 100%;
         }
     }
-    .qubely-pricelist-content {
+    .qubely-pricelist-content:not(.qubely-backend){
         overflow: hidden;
         position: relative;
         &:before {

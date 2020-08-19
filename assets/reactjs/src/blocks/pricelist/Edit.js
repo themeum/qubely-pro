@@ -100,7 +100,7 @@ class Edit extends Component {
                     <Tooltip text={__('Delete this item')}>
                         <span className="qubely-repeatable-action-remove" role="button" onClick={() => this.removePricelistItem(index)}><span class="dashicons dashicons-no-alt" /></span>
                     </Tooltip>
-                    <div className={`qubely-pricelist-content`}>
+                    <div className={`qubely-pricelist-content qubely-backend`}>
                         {(enableMedia == 1) && (mediaType == 'image') &&
                             <div className={`qubely-pricelist-image-container`}>
                                 <div className={`qubely-pricelist-content-image${(image != undefined && image.url != undefined) ? '' : ' qubely-empty-image'}`}>
