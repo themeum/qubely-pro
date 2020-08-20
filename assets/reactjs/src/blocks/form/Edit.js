@@ -280,10 +280,7 @@ class Edit extends Component {
 
     renderSubmitActionSettings() {
         const { afterSubmitAction } = this.props.attributes
-
         switch (afterSubmitAction) {
-            case 'email':
-                return this.renderEmailSettings();
             case 'mailchimp':
                 return this.renderMailchimpSettings();
             case 'aweber':
@@ -292,18 +289,57 @@ class Edit extends Component {
                 return this.renderDripSettings();
             case 'mailerlite':
                 return this.renderMailerliteSettings();
+            default:
+                return this.renderEmailSettings();
         }
-
-        return null;
     }
 
     /**
      * Email Settings
      */
     renderEmailSettings() {
+        const {
+            setAttributes,
+            attributes: {
+                emailReceiver,
+                emailHeaders,
+                emailFrom,
+                emailSubject,
+                emailBody
+            }
+        } = this.props
         return (
-            <PanelBody title={__('Email Settings')} initialOpen={true}>
-                // Settings Here
+            <PanelBody title={__('Email Settings')} initialOpen={false}>
+                <TextControl
+                    label={__('Recipient Email')}
+                    value={emailReceiver}
+                    onChange={val => setAttributes({ emailReceiver: val })}
+                    placeholder={__('Enter Recipient Email')}
+                    help={__('Enter the recipient email address. This field is mandatory. Without a recipient email, form will not work.')}
+                />
+                <TextareaControl
+                    label={__('Email Headers')}
+                    value={emailHeaders}
+                    onChange={val => setAttributes({ emailHeaders: val })}
+                />
+                <TextControl
+                    label={__('From Email')}
+                    value={emailFrom}
+                    onChange={val => setAttributes({ emailFrom: val })}
+                    placeholder={__('Your Name: admin@example.com')}
+                />
+                <TextControl
+                    label={__('Subject')}
+                    value={emailSubject}
+                    onChange={val => setAttributes({ emailSubject: val })}
+                    placeholder={__('Enter Subject')}
+                />
+                <TextareaControl
+                    label={__('Email Body')}
+                    value={emailBody}
+                    onChange={val => setAttributes({ emailBody: val })}
+                    help={__('Set your form email body here. In editor don\'t add any CSS style or others option just add your form field name between double curly braces {{field-name}} as you set in \'Field Name\'.')}
+                />
             </PanelBody>
         );
     }
@@ -574,92 +610,54 @@ class Edit extends Component {
                             </PanelBody>
 
                             <PanelBody title={__('Settings')} initialOpen={false}>
+                                <TextControl
+                                    label={__('Required Field Error Message')}
+                                    value={fieldErrorMessage}
+                                    onChange={val => setAttributes({ fieldErrorMessage: val })}
+                                />
+                                <TextareaControl
+                                    label={__('Form Submit Success Message')}
+                                    value={formSuccessMessage}
+                                    onChange={val => setAttributes({ formSuccessMessage: val })}
+                                    help={__('Set your desired message after successful form submission. Leave blank for default.')}
+                                />
+                                <TextareaControl
+                                    label={__('Form Submit Failed Message')}
+                                    value={formErrorMessage}
+                                    onChange={val => setAttributes({ formErrorMessage: val })}
+                                    help={__('Set your desired message for form submission error. Leave blank for default.')}
+                                />
 
-                                <Tabs>
-                                    <Tab tabTitle={__('Form')}>
-                                        <TextControl
-                                            label={__('Required Field Error Message')}
-                                            value={fieldErrorMessage}
-                                            onChange={val => setAttributes({ fieldErrorMessage: val })}
-                                        />
-                                        <TextareaControl
-                                            label={__('Form Submit Success Message')}
-                                            value={formSuccessMessage}
-                                            onChange={val => setAttributes({ formSuccessMessage: val })}
-                                            help={__('Set your desired message after successful form submission. Leave blank for default.')}
-                                        />
-                                        <TextareaControl
-                                            label={__('Form Submit Failed Message')}
-                                            value={formErrorMessage}
-                                            onChange={val => setAttributes({ formErrorMessage: val })}
-                                            help={__('Set your desired message for form submission error. Leave blank for default.')}
-                                        />
+                                <Toggle label={__('Enable Policy Checkbox')} value={policyCheckbox} onChange={val => setAttributes({ policyCheckbox: val })} />
+                                <Toggle label={__('Enable reCAPTCHA')} value={reCaptcha} onChange={val => setAttributes({ reCaptcha: val })} />
 
-                                        <Toggle label={__('Enable Policy Checkbox')} value={policyCheckbox} onChange={val => setAttributes({ policyCheckbox: val })} />
-                                        <Toggle label={__('Enable reCAPTCHA')} value={reCaptcha} onChange={val => setAttributes({ reCaptcha: val })} />
-
-                                        {
-                                            reCaptcha && (
-                                                ((qubely_admin.qubely_recaptcha_site_key && qubely_admin.qubely_recaptcha_site_key) || this.state.saved_globally) ? (
-                                                    <div className='api-notice'>{__('reCaptcha keys added successfully')}, <a target='_blank' href={setting_url}>{__('Edit keys here')}</a></div>
+                                {
+                                    reCaptcha && (
+                                        ((qubely_admin.qubely_recaptcha_site_key && qubely_admin.qubely_recaptcha_site_key) || this.state.saved_globally) ? (
+                                            <div className='api-notice'>{__('reCaptcha keys added successfully')}, <a target='_blank' href={setting_url}>{__('Edit keys here')}</a></div>
+                                        ) : (
+                                                reCaptchaSiteKey && reCaptchaSecretKey ? (
+                                                    <div className='recaptcha-keys'>
+                                                        <TextControl
+                                                            label={__('Site Key ')}
+                                                            value={reCaptchaSiteKey}
+                                                            onChange={val => setAttributes({ reCaptchaSiteKey: val })}
+                                                            placeholder={__('Enter Google Site Key')}
+                                                        />
+                                                        <TextControl
+                                                            label={__('Secret Key ')}
+                                                            value={reCaptchaSecretKey}
+                                                            onChange={val => setAttributes({ reCaptchaSecretKey: val })}
+                                                            placeholder={__('Enter Google Secret Key')}
+                                                        />
+                                                        <Button isPrimary onClick={() => this._saveGlobally(reCaptchaSiteKey, reCaptchaSecretKey)}>{__('Set globally')}</Button>
+                                                    </div>
                                                 ) : (
-                                                        reCaptchaSiteKey && reCaptchaSecretKey ? (
-                                                            <div className='recaptcha-keys'>
-                                                                <TextControl
-                                                                    label={__('Site Key ')}
-                                                                    value={reCaptchaSiteKey}
-                                                                    onChange={val => setAttributes({ reCaptchaSiteKey: val })}
-                                                                    placeholder={__('Enter Google Site Key')}
-                                                                />
-                                                                <TextControl
-                                                                    label={__('Secret Key ')}
-                                                                    value={reCaptchaSecretKey}
-                                                                    onChange={val => setAttributes({ reCaptchaSecretKey: val })}
-                                                                    placeholder={__('Enter Google Secret Key')}
-                                                                />
-                                                                <Button isPrimary onClick={() => this._saveGlobally(reCaptchaSiteKey, reCaptchaSecretKey)}>{__('Set globally')}</Button>
-                                                            </div>
-                                                        ) : (
-                                                                <div className='api-notice warning'>{__('reCaptcha requires site key & secret key')}, <a target='_blank' href={setting_url}>{__('Add keys here')}</a></div>
-                                                            )
+                                                        <div className='api-notice warning'>{__('reCaptcha requires site key & secret key')}, <a target='_blank' href={setting_url}>{__('Add keys here')}</a></div>
                                                     )
                                             )
-                                        }
-
-                                    </Tab>
-                                    <Tab tabTitle={__('Email')}>
-                                        <TextControl
-                                            label={__('Recipient Email')}
-                                            value={emailReceiver}
-                                            onChange={val => setAttributes({ emailReceiver: val })}
-                                            placeholder={__('Enter Recipient Email')}
-                                            help={__('Enter the recipient email address. This field is mandatory. Without a recipient email, form will not work.')}
-                                        />
-                                        <TextareaControl
-                                            label={__('Email Headers')}
-                                            value={emailHeaders}
-                                            onChange={val => setAttributes({ emailHeaders: val })}
-                                        />
-                                        <TextControl
-                                            label={__('From Email')}
-                                            value={emailFrom}
-                                            onChange={val => setAttributes({ emailFrom: val })}
-                                            placeholder={__('Your Name: admin@example.com')}
-                                        />
-                                        <TextControl
-                                            label={__('Subject')}
-                                            value={emailSubject}
-                                            onChange={val => setAttributes({ emailSubject: val })}
-                                            placeholder={__('Enter Subject')}
-                                        />
-                                        <TextareaControl
-                                            label={__('Email Body')}
-                                            value={emailBody}
-                                            onChange={val => setAttributes({ emailBody: val })}
-                                            help={__('Set your form email body here. In editor don\'t add any CSS style or others option just add your form field name between double curly braces {{field-name}} as you set in \'Field Name\'.')}
-                                        />
-                                    </Tab>
-                                </Tabs>
+                                    )
+                                }
                             </PanelBody>
 
                             <PanelBody title={__('Submit Action')} initialOpen={false}>
