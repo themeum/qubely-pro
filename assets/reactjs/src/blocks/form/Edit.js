@@ -1,9 +1,10 @@
+/* eslint-disable react/react-in-jsx-scope */
 const { __ } = wp.i18n
 const { createBlock } = wp.blocks
 const { compose } = wp.compose
 const { select, dispatch, withSelect, withDispatch } = wp.data
 const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.blockEditor
-const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl, Button } = wp.components
+const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl, Button, SelectControl } = wp.components
 const {
     Component,
     Fragment,
@@ -35,7 +36,7 @@ const {
     InspectorTab
 } = wp.qubelyComponents
 
-import icons from '../../helpers/icons';
+import icons from '../../helpers/icons'
 
 
 class Edit extends Component {
@@ -151,7 +152,7 @@ class Edit extends Component {
         setAttributes({ formItems })
 
         let innerBlocks = [...getBlocks(clientId)]
-        innerBlocks.push(createBlock('qubely/form-row', { uniqueId: '' }, [createBlock(`qubely/form-column`, { uniqueId: 'test2' }, [createBlock(`qubely/formfield-${newFieldType}`, { fieldName: `${newFieldType}-${innerBlocks.length + 1}1` })])]))
+        innerBlocks.push(createBlock('qubely/form-row', { uniqueId: '' }, [createBlock('qubely/form-column', { uniqueId: 'test2' }, [createBlock(`qubely/formfield-${newFieldType}`, { fieldName: `${newFieldType}-${innerBlocks.length + 1}1` })])]))
         replaceInnerBlocks(clientId, innerBlocks, false);
 
     }
@@ -185,7 +186,7 @@ class Edit extends Component {
             <div className="qubely-form-field-types">
                 {
                     !groupField &&
-                    <div className={`qubely-form-field-tabs`}>
+                    <div className={'qubely-form-field-tabs'}>
                         <div
                             onClick={() => { this.setState({ groupField: true }) }}
                             className={`qubely-form-field-tab${groupField ? ' qubely-active' : ''}`}
@@ -204,7 +205,7 @@ class Edit extends Component {
                                             className="qubely-form-column-option"
                                             onClick={() => {
                                                 let tempWidth = `${100 / (index + 2)}`
-                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock(`qubely/form-column`, { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId }))))
+                                                innerBlocks.push(createBlock('qubely/form-row', {}, Array(value).fill(0).map(() => createBlock('qubely/form-column', { width: { sm: tempWidth, md: tempWidth, xs: tempWidth, unit: '%' }, fieldSize: 'custom', parentClientId: clientId }))))
                                                 replaceInnerBlocks(clientId, innerBlocks, false)
                                                 this.setState({ groupField: false })
                                                 hideDropdown && hideDropdown()
@@ -248,14 +249,14 @@ class Edit extends Component {
             [
                 ['qubely/form-row', { parentClientId: clientId },
                     [
-                        [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'medium' },
+                        ['qubely/form-column', { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'First Name', placeHolder: 'First name', width: 'medium', required: true, fieldName: 'text-11' }]
+                                ['qubely/formfield-text', { parentClientId: clientId, type: 'text', label: 'First Name', placeHolder: 'First name', width: 'medium', required: true, fieldName: 'text-11' }]
                             ]
                         ],
-                        [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'medium' },
+                        ['qubely/form-column', { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                [`qubely/formfield-text`, { parentClientId: clientId, type: 'text', label: 'Last Name', placeHolder: 'Last name', width: 'medium', required: true, fieldName: 'text-12' }]
+                                ['qubely/formfield-text', { parentClientId: clientId, type: 'text', label: 'Last Name', placeHolder: 'Last name', width: 'medium', required: true, fieldName: 'text-12' }]
                             ]
                         ],
                     ]
@@ -264,7 +265,7 @@ class Edit extends Component {
                     return (
                         ['qubely/form-row', { parentClientId: clientId },
                             [
-                                [`qubely/form-column`, { parentClientId: clientId, fieldSize: 'large' },
+                                ['qubely/form-column', { parentClientId: clientId, fieldSize: 'large' },
                                     [
                                         [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeHolder, width, required, fieldName: `${type}-${index + 2}1` }]
                                     ]
@@ -275,6 +276,60 @@ class Edit extends Component {
                     )
                 })]
         )
+    }
+
+    renderSubmitActionSettings() {
+        const { afterSubmitAction } = this.props.attributes
+
+        switch (afterSubmitAction) {
+            case 'email':
+                return this.renderEmailSettings();
+            case 'mailchimp':
+                return this.renderMailchimpSettings();
+            case 'aweber':
+                return this.renderAWeberSettings();
+            case 'drip':
+                return this.renderDripSettings();
+            case 'mailerlite':
+                return this.renderMailerliteSettings();
+        }
+
+        return null;
+    }
+
+    /**
+     * Email Settings
+     */
+    renderEmailSettings() {
+        return null;
+    }
+
+    /**
+     * MailChimp
+     */
+    renderMailchimpSettings() {
+        return null;
+    }
+
+    /**
+     * AWeber
+     */
+    renderAWeberSettings() {
+        return null;
+    }
+
+    /**
+     * Drip
+     */
+    renderDripSettings() {
+        return null;
+    }
+
+    /**
+     * Mailerlite
+     */
+    renderMailerliteSettings() {
+        return null;
     }
 
     render() {
@@ -341,6 +396,7 @@ class Edit extends Component {
                 globalCss,
                 animation,
                 interaction,
+                afterSubmitAction
             }
         } = this.props
 
@@ -497,8 +553,6 @@ class Edit extends Component {
                                 <Separator />
                             </PanelBody>
 
-
-
                             <PanelBody title={__('Settings')} initialOpen={false}>
 
                                 <Tabs>
@@ -582,11 +636,30 @@ class Edit extends Component {
                                             label={__('Email Body')}
                                             value={emailBody}
                                             onChange={val => setAttributes({ emailBody: val })}
-                                            help={__("Set your form email body here. In editor don't add any CSS style or others option just add your form field name between double curly braces {{field-name}} as you set in 'Field Name'.")}
+                                            help={__('Set your form email body here. In editor don\'t add any CSS style or others option just add your form field name between double curly braces {{field-name}} as you set in \'Field Name\'.')}
                                         />
                                     </Tab>
                                 </Tabs>
                             </PanelBody>
+
+                            <PanelBody title={__('Submit Action')} initialOpen={false}>
+                                <SelectControl
+                                    label={ __( 'Select an action' ) }
+                                    value={ afterSubmitAction }
+                                    onChange={ afterSubmitAction => setAttributes({afterSubmitAction}) }
+                                    options={ [
+                                        { value: null, label: 'Choose actions', disabled: true },
+                                        { value: 'email', label: 'Email' },
+                                        { value: 'mailchimp', label: 'MailChimp' },
+                                        { value: 'drip', label: 'Drip' },
+                                        { value: 'aweber', label: 'AWeber' },
+                                        { value: 'mailerlite', label: 'Mailer Lite' },
+                                    ] }
+                                />
+                            </PanelBody>
+
+                            {this.renderSubmitActionSettings()}
+
                             {buttonSettings(this.props.attributes, device, (key, value) => setAttributes({ [key]: value }), (key, value) => { this.setState({ [key]: value }) })}
                         </InspectorTab>
 
@@ -621,11 +694,11 @@ class Edit extends Component {
                             />
 
                             {policyCheckbox &&
-                                <div className={`qubely-form-policy-checkbox-wrapper`}>
+                                <div className={'qubely-form-policy-checkbox-wrapper'}>
                                     <input className="qubely-form-policy-checkbox" type="checkbox" name={`qubely-form-policy-${uniqueId}`} id={`qubely-form-policy-checkbox-${uniqueId}`} value="Yes" required />
                                     <RichText
                                         placeholder={__('Add checkbox message')}
-                                        className={`qubely-form-policy-checkbox-message`}
+                                        className={'qubely-form-policy-checkbox-message'}
                                         value={policyCheckboxText}
                                         onChange={value => setAttributes({ policyCheckboxText: value })}
                                     />
@@ -651,13 +724,13 @@ class Edit extends Component {
                         <div className="qubely-form-add-item">
 
                             <Dropdown
-                                className={"qubely-action-add-form-field"}
-                                contentClassName={"qubely-form-field-picker"}
+                                className={'qubely-action-add-form-field'}
+                                contentClassName={'qubely-form-field-picker'}
                                 position="bottom center"
                                 renderToggle={({ isOpen, onToggle }) =>
                                     <div onClick={onToggle} aria-expanded={isOpen} className="qubely-action-add-form-item">
                                         <i className="fas fa-plus-circle" />
-                                        <span onClick={() => this.setState({ hideDropdown: onToggle })}> {__(`Add new item`)}</span>
+                                        <span onClick={() => this.setState({ hideDropdown: onToggle })}> {__('Add new item')}</span>
                                     </div>
 
                                 }
@@ -666,7 +739,7 @@ class Edit extends Component {
                         </div>
                         <div
                             ref={this.qubelyContextMenu}
-                            className={`qubely-context-menu-wraper`}
+                            className={'qubely-context-menu-wraper'}
                         >
                             <ContextMenu
                                 name={name}

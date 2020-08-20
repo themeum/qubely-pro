@@ -1,7 +1,7 @@
 
-import './style.scss'
-import Edit from './Edit'
+import Edit from './Edit';
 import Save from './Save';
+import './style.scss';
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks;
 const { gloalSettings: { globalAttributes }, QubelyButton: { buttonAttributes } } = wp.qubelyComponents
@@ -66,7 +66,7 @@ registerBlockType('qubely/form', {
         enableButtonAlignment: { type: 'boolean', default: true },
         layout: { type: 'string', default: 'classic' },
         useDefaultStyle: { type: 'boolean', default: true },
-        spacer: { type: 'object', default: { spaceTop: { md: '10', unit: "px" }, spaceBottom: { md: '10', unit: "px" } }, style: [{ selector: '{{QUBELY}}' }] },
+        spacer: { type: 'object', default: { spaceTop: { md: '10', unit: 'px' }, spaceBottom: { md: '10', unit: 'px' } }, style: [{ selector: '{{QUBELY}}' }] },
         buttonComponent: { type: 'boolean', default: true },
         enableButton: { type: 'boolean', default: true },
         buttonTag: { type: 'string', default: 'button' },
@@ -159,7 +159,7 @@ registerBlockType('qubely/form', {
 
         inputColor: {
             type: 'string',
-            default: "#495057",
+            default: '#495057',
             style: [
                 {
                     selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio) {color: {{inputColor}};}'
@@ -168,7 +168,7 @@ registerBlockType('qubely/form', {
         },
         inputColorHover: {
             type: 'string',
-            default: "#495057",
+            default: '#495057',
             style: [
                 { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover {color: {{inputColorHover}};}' }
             ]
@@ -176,7 +176,7 @@ registerBlockType('qubely/form', {
 
         inputColorFocus: {
             type: 'string',
-            default: "#495057",
+            default: '#495057',
             style: [
                 {
                     selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {color: {{inputColorFocus}};}'
@@ -186,7 +186,7 @@ registerBlockType('qubely/form', {
 
         placeholderColor: {
             type: 'string',
-            default: "#818181",
+            default: '#818181',
             style: [
                 { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio)::placeholder {color: {{placeholderColor}};}' }
             ]
@@ -194,7 +194,7 @@ registerBlockType('qubely/form', {
 
         placeholderColorHover: {
             type: 'string',
-            default: "",
+            default: '',
             style: [
                 { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):hover::placeholder {color: {{placeholderColorHover}};}' }
             ]
@@ -202,14 +202,14 @@ registerBlockType('qubely/form', {
 
         placeholderColorFocus: {
             type: 'string',
-            default: "",
+            default: '',
             style: [
                 { selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus::placeholder {color: {{placeholderColorFocus}};}' }
             ]
         },
 
         inputBg: {
-            type: 'string', default: "#fff",
+            type: 'string', default: '#fff',
             style: [
                 {
                     condition: [
@@ -220,7 +220,7 @@ registerBlockType('qubely/form', {
             ]
         },
         materialDarkInputBg: {
-            type: 'string', default: "#f5f5f5",
+            type: 'string', default: '#f5f5f5',
             style: [
                 {
                     condition: [
@@ -242,7 +242,7 @@ registerBlockType('qubely/form', {
         },
 
         inputBgFocus: {
-            type: 'string', default: "#fff",
+            type: 'string', default: '#fff',
             style: [
                 {
                     selector: '{{QUBELY}} .qubely-form .qubely-form-field-wrapper .qubely-form-field:not(.qubely-form-checkbox):not(.qubely-form-radio):focus {background-color: {{inputBgFocus}};}'
@@ -401,6 +401,10 @@ registerBlockType('qubely/form', {
         emailSubject: { type: 'string', default: '{{subject}} | {{email}} | {{site-name}}' },
         emailBody: { type: 'string', default: '<p><strong>From:</strong> {{first-name}} {{last-name}}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>' },
         showGlobalSettings: { type: 'boolean', default: true },  // Global Settings
+        afterSubmitAction: {
+            type: 'string',
+            value: 'email'
+        }
     },
     edit: Edit,
     save: Save,
