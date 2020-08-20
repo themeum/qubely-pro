@@ -301,35 +301,55 @@ class Edit extends Component {
      * Email Settings
      */
     renderEmailSettings() {
-        return null;
+        return (
+            <PanelBody title={__('Email Settings')} initialOpen={true}>
+                // Settings Here
+            </PanelBody>
+        );
     }
 
     /**
      * MailChimp
      */
     renderMailchimpSettings() {
-        return null;
+        return (
+            <PanelBody title={__('Mailchimp Settings')} initialOpen={true}>
+                // Settings Here
+            </PanelBody>
+        );
     }
 
     /**
      * AWeber
      */
     renderAWeberSettings() {
-        return null;
+        return (
+            <PanelBody title={__('AWeber Settings')} initialOpen={true}>
+                // Settings Here
+            </PanelBody>
+        );
     }
 
     /**
      * Drip
      */
     renderDripSettings() {
-        return null;
+        return (
+            <PanelBody title={__('Drip Settings')} initialOpen={true}>
+                // Settings Here
+            </PanelBody>
+        );
     }
 
     /**
      * Mailerlite
      */
     renderMailerliteSettings() {
-        return null;
+        return (
+            <PanelBody title={__('Mailerlite Settings')} initialOpen={true}>
+                // Settings Here
+            </PanelBody>
+        );
     }
 
     render() {
