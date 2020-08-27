@@ -404,6 +404,10 @@ registerBlockType('qubely/form', {
         afterSubmitAction: {
             type: 'string',
             value: 'email'
+        },
+        mcKey: {
+            type: 'string',
+            value: ''
         }
     },
     edit: Edit,

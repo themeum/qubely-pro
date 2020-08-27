@@ -74,6 +74,10 @@ class Edit extends Component {
             setAttributes({ reCaptchaSecretKey: qubely_admin.qubely_recaptcha_secret_key });
         }
 
+        if (qubely_admin.mc_key) {
+            setAttributes({ mcKey: qubely_admin.mc_key });
+        }
+
     }
 
     async _saveGlobally(siteKey, secretKey) {
@@ -294,6 +298,22 @@ class Edit extends Component {
         }
     }
 
+    renderSubmitActionNotice() {
+        const { afterSubmitAction, mcKey } = this.props.attributes;
+        const setting_url = qubely_admin.admin_url + 'admin.php?page=qubely-settings';
+
+        const ApiNotice = (props) => {
+            return <div className='api-notice warning'>{props.notice}, <a target='_blank' href={setting_url}>{__('Add key here')}</a></div>
+        }
+
+        switch (afterSubmitAction) {
+            case 'mailchimp':
+                return mcKey ? null : <ApiNotice notice="MailChimp API key not found" />
+            default:
+                break;
+        }
+    }
+
     /**
      * Email Settings
      */
@@ -348,6 +368,16 @@ class Edit extends Component {
      * MailChimp
      */
     renderMailchimpSettings() {
+        const { mcKey } = this.props.attributes;
+        if (!mcKey) return null;
+
+        const server = mcKey.split('-')[1];
+        const url = `https://${server}.api.mailchimp.com/3.0/lists`;
+
+        fetch(url).then(response => {
+            console.log(response);
+        })
+
         return (
             <PanelBody title={__('Mailchimp Settings')} initialOpen={true}>
                 // Settings Here
@@ -674,6 +704,9 @@ class Edit extends Component {
                                         { value: 'mailerlite', label: 'Mailer Lite' },
                                     ] }
                                 />
+
+                                {this.renderSubmitActionNotice()}
+
                             </PanelBody>
 
                             {this.renderSubmitActionSettings()}
