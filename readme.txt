@@ -2,6 +2,9 @@
 Stable tag: 1.2.2
 == Changelog ==
 
+= 1.2.3 -  21 September, 2020 = 
+Update: Disable 'Edit as html' option in parent blocks  
+
 = 1.2.2 -  21 August, 2020 =  
 New: Import Sections/Layouts with Global settings  
 Update: All blocks - Context Menu refs  
