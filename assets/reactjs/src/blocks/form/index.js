@@ -405,7 +405,7 @@ registerBlockType('qubely/form', {
             type: 'string',
             value: 'email'
         },
-        mcKey: {
+        mc_list_id: {
             type: 'string',
             value: ''
         }

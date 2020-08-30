@@ -51,10 +51,52 @@ class Edit extends Component {
             device: 'md',
             groupField: false,
             test: false,
-            saved_globally: false
+            saved_globally: false,
+            mc_lists: []
         };
         this._saveGlobally = this._saveGlobally.bind(this);
         this.qubelyContextMenu = createRef();
+    }
+
+    fetchMCLists() {
+        fetch(qubely_admin.ajax + '?action=qubely_mc_get_lists')
+        .then(response => response.json())
+        .then(response => {
+            console.log(response.data.lists)
+            if (response.data && response.data.lists) {
+                this.setState({
+                    mc_lists: response.data.lists
+                })
+            }
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    }
+
+    submitMailchimp() {
+        fetch(qubely_admin.ajax + '?action=qubely_mc_add_subs', {
+            method: 'POST',
+            body: JSON.stringify({
+                list: this.props.attributes.mc_list_id,
+                fields: {
+                    email_address: 'delwoar@delowar.com',
+                    FNAME: 'first_name'
+                }
+            })
+        })
+    }
+
+    fetchMCFields() {
+        const list = this.props.attributes.mc_list_id
+        fetch(qubely_admin.ajax + `?action=qubely_mc_get_fields&list=${list}`)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+        })
+        .catch(e => {
+            console.log(e)
+        })
     }
 
     componentDidMount() {
@@ -74,9 +116,11 @@ class Edit extends Component {
             setAttributes({ reCaptchaSecretKey: qubely_admin.qubely_recaptcha_secret_key });
         }
 
-        if (qubely_admin.mc_key) {
-            setAttributes({ mcKey: qubely_admin.mc_key });
-        }
+        this.fetchMCLists();
+
+        // @TODO: Only for testing
+        this.submitMailchimp();
+        this.fetchMCFields();
 
     }
 
@@ -368,19 +412,14 @@ class Edit extends Component {
      * MailChimp
      */
     renderMailchimpSettings() {
-        const { mcKey } = this.props.attributes;
-        if (!mcKey) return null;
-
-        const server = mcKey.split('-')[1];
-        const url = `https://${server}.api.mailchimp.com/3.0/lists`;
-
-        fetch(url).then(response => {
-            console.log(response);
-        })
-
         return (
             <PanelBody title={__('Mailchimp Settings')} initialOpen={true}>
-                // Settings Here
+                <SelectControl
+                    label={ __( 'Select a list' ) }
+                    value={ this.props.attributes.mc_list_id }
+                    onChange={ (id) => this.props.setAttributes({mc_list_id: id}) }
+                    options={this.state.mc_lists}
+                />
             </PanelBody>
         );
     }
