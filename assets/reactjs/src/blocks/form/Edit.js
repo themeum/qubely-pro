@@ -52,7 +52,8 @@ class Edit extends Component {
             groupField: false,
             test: false,
             saved_globally: false,
-            mc_lists: []
+            mc_lists: [],
+            mc_fields: []
         };
         this._saveGlobally = this._saveGlobally.bind(this);
         this.qubelyContextMenu = createRef();
@@ -62,11 +63,11 @@ class Edit extends Component {
         fetch(qubely_admin.ajax + '?action=qubely_mc_get_lists')
         .then(response => response.json())
         .then(response => {
-            console.log(response.data.lists)
             if (response.data && response.data.lists) {
                 this.setState({
                     mc_lists: response.data.lists
                 })
+                this.fetchMCFields();
             }
         })
         .catch(e => {
@@ -76,11 +77,10 @@ class Edit extends Component {
 
     submitMailchimp() {
         fetch(qubely_admin.ajax + '?action=qubely_mc_add_subs', {
-            method: 'POST',
             body: JSON.stringify({
                 list: this.props.attributes.mc_list_id,
                 fields: {
-                    email_address: 'delwoar@delowar.com',
+                    email: 'delwoar@delowar.com',
                     FNAME: 'first_name'
                 }
             })
@@ -92,7 +92,11 @@ class Edit extends Component {
         fetch(qubely_admin.ajax + `?action=qubely_mc_get_fields&list=${list}`)
         .then(response => response.json())
         .then(response => {
-            console.log(response);
+            if (response.data && response.data.fields) {
+                this.setState({
+                    mc_fields: response.data.fields
+                })
+            }
         })
         .catch(e => {
             console.log(e)
@@ -120,7 +124,6 @@ class Edit extends Component {
 
         // @TODO: Only for testing
         this.submitMailchimp();
-        this.fetchMCFields();
 
     }
 
@@ -331,20 +334,20 @@ class Edit extends Component {
         switch (afterSubmitAction) {
             case 'mailchimp':
                 return this.renderMailchimpSettings();
-            case 'aweber':
-                return this.renderAWeberSettings();
-            case 'drip':
-                return this.renderDripSettings();
-            case 'mailerlite':
-                return this.renderMailerliteSettings();
+            // case 'aweber':
+            //     return this.renderAWeberSettings();
+            // case 'drip':
+            //     return this.renderDripSettings();
+            // case 'mailerlite':
+            //     return this.renderMailerliteSettings();
             default:
                 return this.renderEmailSettings();
         }
     }
 
     renderSubmitActionNotice() {
-        const { afterSubmitAction, mcKey } = this.props.attributes;
         const setting_url = qubely_admin.admin_url + 'admin.php?page=qubely-settings';
+        const afterSubmitAction = this.props.attributes;
 
         const ApiNotice = (props) => {
             return <div className='api-notice warning'>{props.notice}, <a target='_blank' href={setting_url}>{__('Add key here')}</a></div>
@@ -352,7 +355,7 @@ class Edit extends Component {
 
         switch (afterSubmitAction) {
             case 'mailchimp':
-                return mcKey ? null : <ApiNotice notice="MailChimp API key not found" />
+                return this.state.mc_list_id ? null : <ApiNotice notice="MailChimp API key not found" />
             default:
                 break;
         }
@@ -417,9 +420,35 @@ class Edit extends Component {
                 <SelectControl
                     label={ __( 'Select a list' ) }
                     value={ this.props.attributes.mc_list_id }
-                    onChange={ (id) => this.props.setAttributes({mc_list_id: id}) }
+                    onChange={ (id) => {
+                        this.props.setAttributes({mc_list_id: id});
+                        this.setState({
+                            mc_list_id: id
+                        });
+                        this.fetchMCFields();
+                    } }
                     options={this.state.mc_lists}
                 />
+                <h2>Field Mapping</h2>
+                {
+                    this.state.mc_fields.map((field) => (
+                        <SelectControl
+                            label={ `${field.remote_label} (${field.remote_id}) ${field.remote_required ? '*' : ''}` }
+                            value='val1'
+                            onChange={ () => ({}) }
+                            options={[
+                                {
+                                    label: 'Demo field 1',
+                                    value: 'val1'
+                                },
+                                {
+                                    label: 'Demo field 2',
+                                    value: 'val2'
+                                }
+                            ]}
+                        />
+                    ))
+                }
             </PanelBody>
         );
     }
@@ -435,27 +464,27 @@ class Edit extends Component {
         );
     }
 
-    /**
-     * Drip
-     */
-    renderDripSettings() {
-        return (
-            <PanelBody title={__('Drip Settings')} initialOpen={true}>
-                // Settings Here
-            </PanelBody>
-        );
-    }
+    // /**
+    //  * Drip
+    //  */
+    // renderDripSettings() {
+    //     return (
+    //         <PanelBody title={__('Drip Settings')} initialOpen={true}>
+    //             // Settings Here
+    //         </PanelBody>
+    //     );
+    // }
 
-    /**
-     * Mailerlite
-     */
-    renderMailerliteSettings() {
-        return (
-            <PanelBody title={__('Mailerlite Settings')} initialOpen={true}>
-                // Settings Here
-            </PanelBody>
-        );
-    }
+    // /**
+    //  * Mailerlite
+    //  */
+    // renderMailerliteSettings() {
+    //     return (
+    //         <PanelBody title={__('Mailerlite Settings')} initialOpen={true}>
+    //             // Settings Here
+    //         </PanelBody>
+    //     );
+    // }
 
     render() {
         const {
@@ -738,9 +767,9 @@ class Edit extends Component {
                                         { value: null, label: 'Choose actions', disabled: true },
                                         { value: 'email', label: 'Email' },
                                         { value: 'mailchimp', label: 'MailChimp' },
-                                        { value: 'drip', label: 'Drip' },
-                                        { value: 'aweber', label: 'AWeber' },
-                                        { value: 'mailerlite', label: 'Mailer Lite' },
+                                        // { value: 'drip', label: 'Drip' },
+                                        // { value: 'aweber', label: 'AWeber' },
+                                        // { value: 'mailerlite', label: 'Mailer Lite' },
                                     ] }
                                 />
 
