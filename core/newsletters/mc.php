@@ -49,6 +49,9 @@ class Qubely_Mailchimp {
 		}
 	}
 
+	/**
+	 * Subscribe
+	 */
 	public function add_subscribers() {
 		$data = (array) json_decode(file_get_contents('php://input'));
 		var_dump($data);
@@ -66,6 +69,9 @@ class Qubely_Mailchimp {
 		}
 	}
 
+	/**
+	 * Get Fields
+	 */
 	public function get_fields() {
 		try {
 			if ( empty( $_GET['list'] ) ) {
