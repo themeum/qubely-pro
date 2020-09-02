@@ -60,25 +60,27 @@ class Edit extends Component {
 
     fetchMCLists() {
         fetch(qubely_admin.ajax + '?action=qubely_mc_get_lists')
-        .then(response => response.json())
-        .then(response => {
-            console.log(response.data.lists)
-            if (response.data && response.data.lists) {
-                this.setState({
-                    mc_lists: response.data.lists
-                })
-            }
-        })
-        .catch(e => {
-            console.log(e)
-        })
+            .then(response => {
+                return response.json()
+            })
+            .then(response => {
+                console.log(response.data.lists)
+                if (response.data && response.data.lists) {
+                    this.setState({
+                        mc_lists: response.data.lists
+                    })
+                }
+            })
+            .catch(e => {
+                console.log(e)
+            })
     }
 
     submitMailchimp() {
         fetch(qubely_admin.ajax + '?action=qubely_mc_add_subs', {
             method: 'POST',
             body: JSON.stringify({
-                list: this.props.attributes.mc_list_id,
+                list: this.props.attributes.mcListId,
                 fields: {
                     email_address: 'delwoar@delowar.com',
                     FNAME: 'first_name'
@@ -88,15 +90,17 @@ class Edit extends Component {
     }
 
     fetchMCFields() {
-        const list = this.props.attributes.mc_list_id
+        const list = this.props.attributes.mcListId
         fetch(qubely_admin.ajax + `?action=qubely_mc_get_fields&list=${list}`)
-        .then(response => response.json())
-        .then(response => {
-            console.log(response);
-        })
-        .catch(e => {
-            console.log(e)
-        })
+            .then(response => {
+                return response.json()
+            })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(e => {
+                console.log(e)
+            })
     }
 
     componentDidMount() {
@@ -415,9 +419,9 @@ class Edit extends Component {
         return (
             <PanelBody title={__('Mailchimp Settings')} initialOpen={true}>
                 <SelectControl
-                    label={ __( 'Select a list' ) }
-                    value={ this.props.attributes.mc_list_id }
-                    onChange={ (id) => this.props.setAttributes({mc_list_id: id}) }
+                    label={__('Select a list')}
+                    value={this.props.attributes.mcListId}
+                    onChange={(id) => this.props.setAttributes({ mcListId: id })}
                     options={this.state.mc_lists}
                 />
             </PanelBody>
@@ -430,7 +434,7 @@ class Edit extends Component {
     renderAWeberSettings() {
         return (
             <PanelBody title={__('AWeber Settings')} initialOpen={true}>
-                // Settings Here
+            // Settings Here
             </PanelBody>
         );
     }
@@ -441,7 +445,7 @@ class Edit extends Component {
     renderDripSettings() {
         return (
             <PanelBody title={__('Drip Settings')} initialOpen={true}>
-                // Settings Here
+            // Settings Here
             </PanelBody>
         );
     }
@@ -452,7 +456,7 @@ class Edit extends Component {
     renderMailerliteSettings() {
         return (
             <PanelBody title={__('Mailerlite Settings')} initialOpen={true}>
-                // Settings Here
+            // Settings Here
             </PanelBody>
         );
     }
@@ -731,17 +735,17 @@ class Edit extends Component {
 
                             <PanelBody title={__('Submit Action')} initialOpen={false}>
                                 <SelectControl
-                                    label={ __( 'Select an action' ) }
-                                    value={ afterSubmitAction }
-                                    onChange={ afterSubmitAction => setAttributes({afterSubmitAction}) }
-                                    options={ [
+                                    label={__('Select an action')}
+                                    value={afterSubmitAction}
+                                    onChange={afterSubmitAction => setAttributes({ afterSubmitAction })}
+                                    options={[
                                         { value: null, label: 'Choose actions', disabled: true },
                                         { value: 'email', label: 'Email' },
                                         { value: 'mailchimp', label: 'MailChimp' },
                                         { value: 'drip', label: 'Drip' },
                                         { value: 'aweber', label: 'AWeber' },
                                         { value: 'mailerlite', label: 'Mailer Lite' },
-                                    ] }
+                                    ]}
                                 />
 
                                 {this.renderSubmitActionNotice()}
