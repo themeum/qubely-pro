@@ -49,24 +49,29 @@ class Qubely_Mailchimp {
 		}
 	}
 
+	/**
+	 * Subscribe
+	 */
 	public function add_subscribers() {
-		$data = json_decode(file_get_contents('php://input'));
-		var_dump((array) $data);
-		wp_send_json_success($data);
-
+		$data = (array) json_decode(file_get_contents('php://input'));
+		var_dump($data);
+		exit;
 		try {
 			if ( empty( $_POST['list'] ) ) {
 				wp_send_json_error("List id is required");
 				exit;
 			}
 			$mc = new Qubely_MC_Handler();
-			$data = $mc->add_subscribers($_POST['list']);
+			$data = $mc->add_subscribers($data);
 			wp_send_json_success($data);
 		} catch (Execption $e) {
 			wp_send_json_error($e->get_message());
 		}
 	}
 
+	/**
+	 * Get Fields
+	 */
 	public function get_fields() {
 		try {
 			if ( empty( $_GET['list'] ) ) {

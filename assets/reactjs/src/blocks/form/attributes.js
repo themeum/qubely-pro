@@ -34,7 +34,7 @@ export const attributes = {
     },
     mcListId: {
         type: 'string',
-        default: '221310'
+        default: ''
     },
     afterSubmitAction: {
         type: 'string',

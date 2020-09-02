@@ -88,18 +88,8 @@ class Qubely_MC_Handler {
 		];
   }
 
-  public function add_subscribers() {
-    $data = array(
-      'update_existing' => true,
-      'members' => array(
-        array(
-          'email_address' => $_POST['email'],
-          'status' => 'subscribed',
-          'FNAME' => 'Delowar'
-        )
-      )
-    );
-    $endpoint = '/lists/'. $_POST['list'];
+  public function add_subscribers($data = []) {
+    $endpoint = '/lists/'. $_POST['list'] . '/members';
     return $this->post($endpoint, $data);
   }
 
