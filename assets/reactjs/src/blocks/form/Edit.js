@@ -90,9 +90,18 @@ class Edit extends Component {
         })
     }
 
-    fetchMCFields() {
-        const list = this.props.attributes.mcListId
-        fetch(qubely_admin.ajax + `?action=qubely_mc_get_fields&list=${list}`)
+    fetchMCFields(listId) {
+        const {
+            attributes: {
+                mcListId
+            }
+        } = this.props;
+        let selectedList = mcListId;
+        if (typeof listId !== 'undefined') {
+            selectedList = listId;
+        }
+        console.log('selectedList : ', selectedList);
+        fetch(qubely_admin.ajax + `?action=qubely_mc_get_fields&list=${selectedList}`)
             .then(response => response.json())
             .then(response => {
                 if (response.data && response.data.fields) {
@@ -418,6 +427,17 @@ class Edit extends Component {
      * MailChimp
      */
     renderMailchimpSettings() {
+        const {
+            mc_fields,
+            mc_lists,
+        } = this.state;
+
+        const {
+            attributes: {
+                mcListId,
+            }
+        } = this.props;
+
         return (
             <PanelBody title={__('Mailchimp Settings')} initialOpen={true}>
                 <SelectControl
@@ -428,29 +448,32 @@ class Edit extends Component {
                         this.setState({
                             mcListId: id
                         });
-                        this.fetchMCFields();
+                        this.fetchMCFields(id);
                     }}
-                    options={this.state.mc_lists}
+                    options={mc_lists}
                 />
                 <h2>Field Mapping</h2>
                 {
-                    this.state.mc_fields.map((field) => (
-                        <SelectControl
-                            label={`${field.remote_label} (${field.remote_id}) ${field.remote_required ? '*' : ''}`}
-                            value='val1'
-                            onChange={() => ({})}
-                            options={[
-                                {
-                                    label: 'Demo field 1',
-                                    value: 'val1'
-                                },
-                                {
-                                    label: 'Demo field 2',
-                                    value: 'val2'
-                                }
-                            ]}
-                        />
-                    ))
+                    (mc_fields.length > 0 && mcListId) ?
+                        mc_fields.map((field) => (
+                            <SelectControl
+                                label={`${field.remote_label} (${field.remote_id}) ${field.remote_required ? '*' : ''}`}
+                                value='val1'
+                                onChange={() => ({})}
+                                options={[
+                                    {
+                                        label: 'Demo field 1',
+                                        value: 'val1'
+                                    },
+                                    {
+                                        label: 'Demo field 2',
+                                        value: 'val2'
+                                    }
+                                ]}
+                            />
+                        ))
+                        :
+                        <div className="qubely-mc-fields">{__('Please select a list')}</div>
                 }
             </PanelBody>
         );
@@ -883,7 +906,7 @@ class Edit extends Component {
 export default compose([
     withSelect((select, ownProps) => {
         const { clientId } = ownProps
-        const { getBlock, getBlockRootClientId } = select('core/editor')
+        const { getBlock, getBlockRootClientId } = select('core/block-editor')
         let rootBlockClientId = getBlockRootClientId(clientId)
         rootBlockClientId = getBlockRootClientId(clientId)
         return {
@@ -892,7 +915,7 @@ export default compose([
         }
     }),
     withDispatch((dispatch) => {
-        const { insertBlock, removeBlock, updateBlockAttributes, toggleSelection } = dispatch('core/editor')
+        const { insertBlock, removeBlock, updateBlockAttributes, toggleSelection } = dispatch('core/block-editor')
         return {
             insertBlock,
             removeBlock,

@@ -201,7 +201,7 @@ export default compose([
         };
     }),
     withDispatch((dispatch) => {
-        const { insertBlock, removeBlock, updateBlockAttributes, toggleSelection } = dispatch('core/editor')
+        const { insertBlock, removeBlock, updateBlockAttributes, toggleSelection } = dispatch('core/block-editor')
         return {
             insertBlock,
             removeBlock,
