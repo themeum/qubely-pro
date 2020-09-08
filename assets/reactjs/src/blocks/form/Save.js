@@ -45,7 +45,7 @@ class Save extends Component {
         const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
         const formClassName = classnames(
             'qubely-form',
-            'is-' + inputSize,
+            `is-${inputSize}`,
             { ['mailchimp']: afterSubmitAction === 'mailchimp' }
         );
 

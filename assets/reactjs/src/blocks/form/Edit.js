@@ -496,7 +496,7 @@ class Edit extends Component {
                 mcMappedFields,
             }
         } = this.props;
-        console.log('mcMappedFields :', mcMappedFields);
+
         return (
             <PanelBody title={__('Mailchimp Settings')} initialOpen={true}>
                 <SelectControl
