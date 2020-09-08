@@ -36,6 +36,10 @@ export const attributes = {
         type: 'string',
         default: ''
     },
+    mcMappedFields: {
+        type: 'object',
+        default: {}
+    },
     afterSubmitAction: {
         type: 'string',
         default: 'email'

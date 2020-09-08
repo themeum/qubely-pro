@@ -34,9 +34,9 @@ const {
     },
     InspectorTabs,
     InspectorTab
-} = wp.qubelyComponents
+} = wp.qubelyComponents;
 
-import icons from '../../helpers/icons'
+import icons from '../../helpers/icons';
 
 
 class Edit extends Component {
@@ -53,16 +53,49 @@ class Edit extends Component {
             test: false,
             saved_globally: false,
             mc_lists: [],
-            mc_fields: []
+            mc_fields: [],
         };
         this._saveGlobally = this._saveGlobally.bind(this);
         this.qubelyContextMenu = createRef();
     }
 
+    componentDidMount() {
+        const {
+            setAttributes,
+            clientId,
+            attributes: {
+                uniqueId,
+                afterSubmitAction,
+                reCaptchaSiteKey,
+                reCaptchaSecretKey,
+            }
+        } = this.props;
+        const _client = clientId.substr(0, 6);
+
+        if (!uniqueId) {
+            setAttributes({ uniqueId: _client });
+        } else if (uniqueId && uniqueId != _client) {
+            setAttributes({ uniqueId: _client });
+        }
+
+        if (qubely_admin.qubely_recaptcha_site_key) {
+            setAttributes({ reCaptchaSiteKey: qubely_admin.qubely_recaptcha_site_key });
+        }
+
+        if (qubely_admin.qubely_recaptcha_secret_key) {
+            setAttributes({ reCaptchaSecretKey: qubely_admin.qubely_recaptcha_secret_key });
+        }
+        if (afterSubmitAction === 'mailchimp') {
+            this.fetchMCLists();
+        }
+    }
+
+    /**
+     * Get all mailchimp lists
+     */
     fetchMCLists() {
         fetch(qubely_admin.ajax + '?action=qubely_mc_get_lists')
             .then(response => {
-                console.log('response : ', response);
                 return response.json()
             })
             .then(response => {
@@ -78,18 +111,6 @@ class Edit extends Component {
             })
     }
 
-    submitMailchimp() {
-        fetch(qubely_admin.ajax + '?action=qubely_mc_add_subs', {
-            body: JSON.stringify({
-                list: this.props.attributes.mcListId,
-                fields: {
-                    email: 'delwoar@delowar.com',
-                    FNAME: 'first_name'
-                }
-            })
-        })
-    }
-
     fetchMCFields(listId) {
         const {
             attributes: {
@@ -100,7 +121,7 @@ class Edit extends Component {
         if (typeof listId !== 'undefined') {
             selectedList = listId;
         }
-        console.log('selectedList : ', selectedList);
+
         fetch(qubely_admin.ajax + `?action=qubely_mc_get_fields&list=${selectedList}`)
             .then(response => response.json())
             .then(response => {
@@ -115,28 +136,21 @@ class Edit extends Component {
             })
     }
 
-    componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId, reCaptchaSiteKey, reCaptchaSecretKey } } = this.props
-        const _client = clientId.substr(0, 6)
-        if (!uniqueId) {
-            setAttributes({ uniqueId: _client });
-        } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client });
-        }
-
-        if (qubely_admin.qubely_recaptcha_site_key) {
-            setAttributes({ reCaptchaSiteKey: qubely_admin.qubely_recaptcha_site_key });
-        }
-
-        if (qubely_admin.qubely_recaptcha_secret_key) {
-            setAttributes({ reCaptchaSecretKey: qubely_admin.qubely_recaptcha_secret_key });
-        }
-
-        this.fetchMCLists();
-
-        // @TODO: Only for testing
-        // this.submitMailchimp();
-
+    submitMailchimp() {
+        const {
+            attributes: {
+                mcListId,
+                mcMappedFields
+            }
+        } = this.props;
+        fetch(qubely_admin.ajax + '?action=qubely_mc_add_subs', {
+            body: JSON.stringify({
+                list: mcListId,
+                fields: {
+                    ...mcMappedFields
+                }
+            })
+        })
     }
 
     async _saveGlobally(siteKey, secretKey) {
@@ -160,8 +174,15 @@ class Edit extends Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-        const { block, attributes: { showLabel, labelAlignment } } = this.props
-        const { updateBlock, toggleSelection } = dispatch('core/block-editor')
+        const {
+            block,
+            attributes: {
+                showLabel,
+                labelAlignment,
+                afterSubmitAction
+            }
+        } = this.props;
+        const { updateBlock, toggleSelection } = dispatch('core/block-editor');
 
         let changedAttribute = showLabel !== prevProps.attributes.showLabel ? 'showLabel' : labelAlignment !== prevProps.attributes.labelAlignment ? 'labelAlignment' : false
 
@@ -174,10 +195,12 @@ class Edit extends Component {
                     }
                 })
             })
-            toggleSelection(false)
+            toggleSelection(false);
         }
 
-
+        if (afterSubmitAction === 'mailchimp' && prevProps.attributes.afterSubmitAction !== afterSubmitAction) {
+            this.fetchMCLists();
+        }
     }
 
     setSettings(type, val, index = -1) {
@@ -424,6 +447,40 @@ class Edit extends Component {
     }
 
     /**
+     * 
+     * @return Form builder fields
+     */
+    getFormFields = () => {
+        const {
+            clientId,
+        } = this.props;
+        const formBuilder = wp.data.select('core/block-editor').getBlock(clientId);
+        let fields = [{
+            label: 'Select',
+            value: null
+        }];
+
+        formBuilder.innerBlocks.forEach(block => {
+            const {
+                name,
+                innerBlocks = []
+            } = block;
+            if (innerBlocks.length > 0) {
+                innerBlocks.forEach(column => {
+                    const fieldName = column.innerBlocks[0].attributes.fieldName
+                    fields.push({
+                        label: fieldName.toUpperCase(),
+                        value: fieldName
+                    })
+                })
+            }
+        });
+
+        return fields;
+
+    }
+
+    /**
      * MailChimp
      */
     renderMailchimpSettings() {
@@ -433,11 +490,13 @@ class Edit extends Component {
         } = this.state;
 
         const {
+            setAttributes,
             attributes: {
                 mcListId,
+                mcMappedFields,
             }
         } = this.props;
-
+        console.log('mcMappedFields :', mcMappedFields);
         return (
             <PanelBody title={__('Mailchimp Settings')} initialOpen={true}>
                 <SelectControl
@@ -458,18 +517,16 @@ class Edit extends Component {
                         mc_fields.map((field) => (
                             <SelectControl
                                 label={`${field.remote_label} (${field.remote_id}) ${field.remote_required ? '*' : ''}`}
-                                value='val1'
-                                onChange={() => ({})}
-                                options={[
-                                    {
-                                        label: 'Demo field 1',
-                                        value: 'val1'
-                                    },
-                                    {
-                                        label: 'Demo field 2',
-                                        value: 'val2'
-                                    }
-                                ]}
+                                value={mcMappedFields[field.remote_id]}
+                                onChange={newValue => {
+                                    setAttributes({
+                                        mcMappedFields: {
+                                            ...mcMappedFields,
+                                            [field.remote_id]: newValue
+                                        }
+                                    });
+                                }}
+                                options={this.getFormFields()}
                             />
                         ))
                         :
@@ -583,7 +640,6 @@ class Edit extends Component {
         const { device } = this.state
 
         const setting_url = qubely_admin.admin_url + 'admin.php?page=qubely-settings';
-
         return (
             <Fragment>
                 <InspectorControls key="inspector">

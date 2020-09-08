@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { RichText, InnerBlocks } = wp.blockEditor
@@ -36,15 +37,22 @@ class Save extends Component {
                 buttonIconPosition,
                 buttonTag,
                 animation,
-                interaction }
+                interaction,
+                afterSubmitAction,
+             }
         } = this.props
 
         const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
+        const formClassName = classnames(
+            'qubely-form',
+            'is-' + inputSize,
+            { ['mailchimp']: afterSubmitAction === 'mailchimp' }
+        );
 
         return (
             <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
                 <div className={`qubely-block-form ${interactionClass} qubely-layout-${layout}`}>
-                    <form className={`qubely-form is-${inputSize}`}>
+                    <form className={formClassName}>
 
                         <InnerBlocks.Content />
 
