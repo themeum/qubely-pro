@@ -90,6 +90,37 @@ class Edit extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+
+        const {
+            block,
+            attributes: {
+                showLabel,
+                labelAlignment,
+                afterSubmitAction
+            }
+        } = this.props;
+        const { updateBlock, toggleSelection } = dispatch('core/block-editor');
+
+        let changedAttribute = showLabel !== prevProps.attributes.showLabel ? 'showLabel' : labelAlignment !== prevProps.attributes.labelAlignment ? 'labelAlignment' : false
+
+        if (changedAttribute !== false) {
+            block.innerBlocks.forEach(column => {
+                updateBlock(column.innerBlocks[0].clientId, {
+                    attributes: {
+                        ...column.innerBlocks[0].attributes,
+                        [changedAttribute]: this.props.attributes[changedAttribute]
+                    }
+                })
+            })
+            toggleSelection(false);
+        }
+
+        if (afterSubmitAction === 'mailchimp' && prevProps.attributes.afterSubmitAction !== afterSubmitAction) {
+            this.fetchMCLists();
+        }
+    }
+
     /**
      * Get all mailchimp lists
      */
@@ -172,36 +203,7 @@ class Edit extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState) {
 
-        const {
-            block,
-            attributes: {
-                showLabel,
-                labelAlignment,
-                afterSubmitAction
-            }
-        } = this.props;
-        const { updateBlock, toggleSelection } = dispatch('core/block-editor');
-
-        let changedAttribute = showLabel !== prevProps.attributes.showLabel ? 'showLabel' : labelAlignment !== prevProps.attributes.labelAlignment ? 'labelAlignment' : false
-
-        if (changedAttribute !== false) {
-            block.innerBlocks.forEach(column => {
-                updateBlock(column.innerBlocks[0].clientId, {
-                    attributes: {
-                        ...column.innerBlocks[0].attributes,
-                        [changedAttribute]: this.props.attributes[changedAttribute]
-                    }
-                })
-            })
-            toggleSelection(false);
-        }
-
-        if (afterSubmitAction === 'mailchimp' && prevProps.attributes.afterSubmitAction !== afterSubmitAction) {
-            this.fetchMCLists();
-        }
-    }
 
     setSettings(type, val, index = -1) {
         const selectedItem = (index !== -1) ? index : this.state.selectedItem;
@@ -330,14 +332,21 @@ class Edit extends Component {
     }
 
     renderFormTemplate = () => {
-        const { clientId, attributes: { formItems } } = this.props
+        const {
+            clientId,
+            attributes: {
+                formItems,
+                afterSubmitAction,
+                mcMappedFields,
+            } } = this.props;
+
         return (
             [
                 ['qubely/form-row', { parentClientId: clientId },
                     [
                         ['qubely/form-column', { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                ['qubely/formfield-text', { parentClientId: clientId, type: 'text', label: 'First Name', placeHolder: 'First name', width: 'medium', required: true, fieldName: 'text-11' }]
+                                ['qubely/formfield-text', { parentClientId: clientId, type: 'text', label: 'First Name', placeHolder: 'First name', width: 'medium', required: true, fieldName: 'text-11'}]
                             ]
                         ],
                         ['qubely/form-column', { parentClientId: clientId, fieldSize: 'medium' },
@@ -349,11 +358,11 @@ class Edit extends Component {
                 ],
                 ...formItems.map(({ type, label, options, placeHolder, width, required }, index) => {
                     return (
-                        ['qubely/form-row', { parentClientId: clientId },
+                        ['qubely/form-row', { parentClientId: clientId},
                             [
                                 ['qubely/form-column', { parentClientId: clientId, fieldSize: 'large' },
                                     [
-                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeHolder, width, required, fieldName: `${type}-${index + 2}1` }]
+                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeHolder, width, required, fieldName: `${type}-${index + 2}1`}]
                                     ]
                                 ]
                             ]
@@ -522,7 +531,8 @@ class Edit extends Component {
                                     setAttributes({
                                         mcMappedFields: {
                                             ...mcMappedFields,
-                                            [field.remote_id]: newValue
+                                            [field.remote_id]: newValue,
+                                            [newValue]: field.remote_id,
                                         }
                                     });
                                 }}

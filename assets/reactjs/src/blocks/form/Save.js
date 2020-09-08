@@ -39,7 +39,8 @@ class Save extends Component {
                 animation,
                 interaction,
                 afterSubmitAction,
-             }
+                mcMappedFields,
+            }
         } = this.props
 
         const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
@@ -52,7 +53,10 @@ class Save extends Component {
         return (
             <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
                 <div className={`qubely-block-form ${interactionClass} qubely-layout-${layout}`}>
-                    <form className={formClassName}>
+                    <form
+                        className={formClassName}
+                        {...(afterSubmitAction === 'mailchimp' && { 'data-mailchimp': JSON.stringify(mcMappedFields) })}
+                    >
 
                         <InnerBlocks.Content />
 

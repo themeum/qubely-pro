@@ -182,6 +182,19 @@ jQuery(document).ready(function ($) {
             e.preventDefault();
             let formData = $form.serializeArray();
             const isRequired = checkFormValidation($form); //check validation
+            console.log('form data : ', formData);
+            console.log(' form : ', $form);
+            let isNewsletter = false,
+                isMailchimp = false;
+            if ($form.hasClass("mailchimp")) {
+                isNewsletter = true;
+                isMailchimp = true;
+            }
+            if (isNewsletter && isMailchimp) {
+                console.log($form.data());
+            }
+
+            console.log($form.hasClass("mailchimp"));
             if (!isRequired) {
                 formData.push({ name: 'captcha', value: (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : undefined });
                 jQuery.ajax({
@@ -193,7 +206,7 @@ jQuery(document).ready(function ($) {
                         $form.find(".qubely-form-message").html('<div class="qubely-alert qubely-alert-info">Message sending...</div>');
                     },
                     success: (response) => {
-                        console.log('response : ',response);
+                        console.log('response : ', response);
                         $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
                         $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
                         setTimeout(() => {
