@@ -39,6 +39,7 @@ class Save extends Component {
                 animation,
                 interaction,
                 afterSubmitAction,
+                mcListId,
                 mcMappedFields,
             }
         } = this.props
@@ -55,7 +56,7 @@ class Save extends Component {
                 <div className={`qubely-block-form ${interactionClass} qubely-layout-${layout}`}>
                     <form
                         className={formClassName}
-                        {...(afterSubmitAction === 'mailchimp' && { 'data-mailchimp': JSON.stringify(mcMappedFields) })}
+                        {...(afterSubmitAction === 'mailchimp' && { 'data-mailchimp': JSON.stringify({ mcListId, mcFields: mcMappedFields }) })}
                     >
 
                         <InnerBlocks.Content />

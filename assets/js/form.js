@@ -185,18 +185,20 @@ jQuery(document).ready(function ($) {
             console.log('form data : ', formData);
             let isNewsletter = false,
                 isMailchimp = false,
-                newsletterFields = [],
+                newsletterFields = {},
                 endPoint = qubely_urls.ajax + '?action=qubely_send_form_data';
 
             if ($form.hasClass("mailchimp")) {
                 isNewsletter = true;
                 isMailchimp = true;
             }
-
+            const {
+                mailchimp: {
+                    mcListId,
+                    mcFields
+                }
+            } = $form.data();
             if (isNewsletter && isMailchimp) {
-                const {
-                    mailchimp
-                } = $form.data();
                 endPoint = qubely_urls.ajax + '?action=qubely_mc_add_subs';
 
                 formData.filter(({ name, value }) => name.includes('qubely-form-input'))
@@ -205,10 +207,8 @@ jQuery(document).ready(function ($) {
                         if (name.match(/\[(.*?)\]/)) {
                             key = name.match(/\[(.*?)\]/)[1].replace("*", "");
                         }
-                        if (typeof mailchimp[key] !== 'undefined') {
-                            newsletterFields.push({
-                                [mailchimp[key]]: value,
-                            });
+                        if (typeof mcFields[key] !== 'undefined') {
+                            newsletterFields[[mcFields[key]]] = value
                         }
                     });
             }
@@ -217,30 +217,48 @@ jQuery(document).ready(function ($) {
             console.log('formData :', formData);
             if (!isRequired) {
                 formData.push({ name: 'captcha', value: (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : undefined });
-                jQuery.ajax({
-                    url: endPoint,
-                    type: "POST",
-                    data: isNewsletter ? newsletterFields : formData,
-                    beforeSend: () => {
-                        $form.find('button[type="submit"]').addClass('disable').attr('disabled', true);
-                        $form.find(".qubely-form-message").html('<div class="qubely-alert qubely-alert-info">Message sending...</div>');
-                    },
-                    success: (response) => {
-                        console.log('response : ', response);
-                        $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                        $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
-                        setTimeout(() => {
-                            $form.find('.qubely-form-message').html('');
-                        }, 4000);
-                        if (response.data.status == 1) {
-                            $form.trigger("reset");
-                        };
-                    },
-                    error: (jqxhr, textStatus, error) => {
-                        $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                        $form.find(".qubely-form-message").html(`<div class= "qubely-alert qubely-alert-danger" > ${textStatus} : ${error} - ${jqxhr.responseJSON}</div> `);
-                    }
-                });
+                if (isNewsletter) {
+                    $.ajax({
+                        url: endPoint,
+                        type: 'post',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log('data : ', data);
+                        },
+                        data: JSON.stringify({
+                            list: mcListId,
+                            fields: {
+                                ...newsletterFields
+                            }
+                        })
+                    });
+                } else {
+                    jQuery.ajax({
+                        url: endPoint,
+                        type: "POST",
+                        data: formData,
+                        beforeSend: () => {
+                            $form.find('button[type="submit"]').addClass('disable').attr('disabled', true);
+                            $form.find(".qubely-form-message").html('<div class="qubely-alert qubely-alert-info">Message sending...</div>');
+                        },
+                        success: (response) => {
+                            console.log('response : ', response);
+                            $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
+                            $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
+                            setTimeout(() => {
+                                $form.find('.qubely-form-message').html('');
+                            }, 4000);
+                            if (response.data.status == 1) {
+                                $form.trigger("reset");
+                            };
+                        },
+                        error: (jqxhr, textStatus, error) => {
+                            $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
+                            $form.find(".qubely-form-message").html(`<div class= "qubely-alert qubely-alert-danger" > ${textStatus} : ${error} - ${jqxhr.responseJSON}</div> `);
+                        }
+                    });
+                }
             }
         });
     });
