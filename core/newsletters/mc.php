@@ -62,7 +62,7 @@ class Qubely_Mailchimp {
 				exit;
 			}
 			$mc = new Qubely_MC_Handler();
-			$data = $mc->add_subscribers($data);
+			// $data = $mc->add_subscribers($data);
 			wp_send_json_success($data);
 		} catch (Execption $e) {
 			wp_send_json_error($e->get_message());

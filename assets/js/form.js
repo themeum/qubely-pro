@@ -183,24 +183,44 @@ jQuery(document).ready(function ($) {
             let formData = $form.serializeArray();
             const isRequired = checkFormValidation($form); //check validation
             console.log('form data : ', formData);
-            console.log(' form : ', $form);
             let isNewsletter = false,
-                isMailchimp = false;
+                isMailchimp = false,
+                newsletterFields = [],
+                endPoint = qubely_urls.ajax + '?action=qubely_send_form_data';
+
             if ($form.hasClass("mailchimp")) {
                 isNewsletter = true;
                 isMailchimp = true;
             }
-            if (isNewsletter && isMailchimp) {
-                console.log($form.data());
-            }
 
-            console.log($form.hasClass("mailchimp"));
+            if (isNewsletter && isMailchimp) {
+                const {
+                    mailchimp
+                } = $form.data();
+                endPoint = qubely_urls.ajax + '?action=qubely_mc_add_subs';
+
+                formData.filter(({ name, value }) => name.includes('qubely-form-input'))
+                    .forEach(({ name, value }) => {
+                        let key;
+                        if (name.match(/\[(.*?)\]/)) {
+                            key = name.match(/\[(.*?)\]/)[1].replace("*", "");
+                        }
+                        if (typeof mailchimp[key] !== 'undefined') {
+                            newsletterFields.push({
+                                [mailchimp[key]]: value,
+                            });
+                        }
+                    });
+            }
+            console.log('isNewsletter :', isNewsletter);
+            console.log('newsletterFields :', newsletterFields);
+            console.log('formData :', formData);
             if (!isRequired) {
                 formData.push({ name: 'captcha', value: (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : undefined });
                 jQuery.ajax({
-                    url: qubely_urls.ajax + '?action=qubely_send_form_data',
+                    url: endPoint,
                     type: "POST",
-                    data: formData,
+                    data: isNewsletter ? newsletterFields : formData,
                     beforeSend: () => {
                         $form.find('button[type="submit"]').addClass('disable').attr('disabled', true);
                         $form.find(".qubely-form-message").html('<div class="qubely-alert qubely-alert-info">Message sending...</div>');
