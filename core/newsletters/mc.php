@@ -22,7 +22,7 @@ class Qubely_Mailchimp {
       'fields' => array(
           'mailchimp_api_key' => array(
               'type' => 'text',
-              'label' => __('Default Form Action', 'qubely'),
+              'label' => __('MailChimp API key', 'qubely'),
               'default' => '',
               'desc' => sprintf(__('Enter your MailChimp API Key, %1$s or Generate a new one %2$s', 'qubely'), '<a href="https://mailchimp.com/help/add-a-signup-form-to-your-website/" target="_blank">', '</a>'),
               'placeholder' => '',
@@ -55,12 +55,17 @@ class Qubely_Mailchimp {
 	public function add_subscribers() {
 		$data = (array) json_decode(file_get_contents('php://input'));
 		try {
-			if ( empty( $_POST['list'] ) ) {
+			if ( empty( $data['list'] ) ) {
 				wp_send_json_error("List id is required");
 				exit;
 			}
 			$mc = new Qubely_MC_Handler();
 			$data = $mc->add_subscribers($data);
+			if ($data['status'] = 1) {
+				$data['msg'] = __('Subscribed', 'qubely');
+			} else {
+				$data['msg'] = __('Failed to subscribe', 'qubely');
+			}
 			wp_send_json_success($data);
 		} catch (Execption $e) {
 			wp_send_json_error($e->get_message());

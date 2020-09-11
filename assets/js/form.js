@@ -123,7 +123,7 @@ jQuery(document).ready(function ($) {
         changeTimepickerValue($qubelyTimePickerFormat)
     })
 
-    //hour 
+    //hour
     $('.qubely-hour-button-up').on('click', function (event) {
 
         let $qubelyTimePickerFormat = $(this).parent();
@@ -182,10 +182,12 @@ jQuery(document).ready(function ($) {
             e.preventDefault();
             let formData = $form.serializeArray();
             const isRequired = checkFormValidation($form); //check validation
-            console.log('form data : ', formData);
             let isNewsletter = false,
                 isMailchimp = false,
-                newsletterFields = {},
+                newsletterData = {
+                    email_address: '',
+                    data: {}
+                },
                 endPoint = qubely_urls.ajax + '?action=qubely_send_form_data';
 
             if ($form.hasClass("mailchimp")) {
@@ -198,6 +200,7 @@ jQuery(document).ready(function ($) {
                     mcFields
                 }
             } = $form.data();
+
             if (isNewsletter && isMailchimp) {
                 endPoint = qubely_urls.ajax + '?action=qubely_mc_add_subs';
 
@@ -208,16 +211,50 @@ jQuery(document).ready(function ($) {
                             key = name.match(/\[(.*?)\]/)[1].replace("*", "");
                         }
                         if (typeof mcFields[key] !== 'undefined') {
-                            newsletterFields[[mcFields[key]]] = value
+                            if (mcFields[key] === 'email') {
+                                newsletterData.email_address = value;
+                            } else {
+                                newsletterData.data[[mcFields[key]]] = value;
+                            }
                         }
                     });
             }
-            console.log('isNewsletter :', isNewsletter);
-            console.log('newsletterFields :', newsletterFields);
-            console.log('formData :', formData);
+
+            const beforeSending = (msg) => {
+                $form.find('button[type="submit"]').addClass('disable').attr('disabled', true);
+                $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-info">${msg}</div>`);
+            }
+            const onError = (jqxhr, textStatus, error) => {
+                $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
+                $form.find(".qubely-form-message").html(`<div class= "qubely-alert qubely-alert-danger" > ${textStatus} : ${error} - ${jqxhr.responseJSON}</div> `);
+
+            }
+            const onSuccess = (response) => {
+                $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
+                $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
+                setTimeout(() => {
+                    $form.find('.qubely-form-message').html('');
+                }, 4000);
+                if (response.data.status == 1) {
+                    $form.trigger("reset");
+                };
+            }
+
+
             if (!isRequired) {
                 formData.push({ name: 'captcha', value: (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : undefined });
                 if (isNewsletter) {
+                    var data = JSON.stringify({
+                        list: mcListId,
+                        fields: {
+                            status: 'subscribed', // pending
+                            email_address: newsletterData.email_address,
+                            merge_fields: {
+                                ...newsletterData.data,
+                            }
+                        }
+                    });
+
                     $.ajax({
                         url: endPoint,
                         type: 'post',
@@ -226,37 +263,19 @@ jQuery(document).ready(function ($) {
                         success: function (data) {
                             console.log('data : ', data);
                         },
-                        data: JSON.stringify({
-                            list: mcListId,
-                            fields: {
-                                ...newsletterFields
-                            }
-                        })
+                        data,
+                        beforeSend: () => beforeSending('Subscribing'),
+                        success: (response) => onSuccess(response),
+                        error: (jqxhr, textStatus, error) => onError(jqxhr, textStatus, error),
                     });
                 } else {
                     jQuery.ajax({
                         url: endPoint,
                         type: "POST",
                         data: formData,
-                        beforeSend: () => {
-                            $form.find('button[type="submit"]').addClass('disable').attr('disabled', true);
-                            $form.find(".qubely-form-message").html('<div class="qubely-alert qubely-alert-info">Message sending...</div>');
-                        },
-                        success: (response) => {
-                            console.log('response : ', response);
-                            $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                            $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
-                            setTimeout(() => {
-                                $form.find('.qubely-form-message').html('');
-                            }, 4000);
-                            if (response.data.status == 1) {
-                                $form.trigger("reset");
-                            };
-                        },
-                        error: (jqxhr, textStatus, error) => {
-                            $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                            $form.find(".qubely-form-message").html(`<div class= "qubely-alert qubely-alert-danger" > ${textStatus} : ${error} - ${jqxhr.responseJSON}</div> `);
-                        }
+                        beforeSend: () => beforeSending('Message sending...'),
+                        success: (response) => onSuccess(response),
+                        error: (jqxhr, textStatus, error) => onError(jqxhr, textStatus, error),
                     });
                 }
             }

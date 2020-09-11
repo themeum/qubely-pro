@@ -89,8 +89,8 @@ class Qubely_MC_Handler {
   }
 
   public function add_subscribers($data = []) {
-    $endpoint = '/lists/'. $_POST['list'] . '/members';
-    return $this->post($endpoint, $data);
+		$endpoint = '/lists/'. $data['list'] . '/members';
+    return $this->post($endpoint, $data['fields']);
   }
 
   public function get_fields( $list_id ) {
