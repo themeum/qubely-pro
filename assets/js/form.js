@@ -193,20 +193,16 @@ jQuery(document).ready(function ($) {
                         $form.find(".qubely-form-message").html('<div class="qubely-alert qubely-alert-info">Message sending...</div>');
                     },
                     success: (response) => {
-                        console.log('response : ',response);
                         $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                        $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
-                        setTimeout(() => {
-                            $form.find('.qubely-form-message').html('');
-                        }, 4000);
-                        if (response.data.status == 1) {
+                        setTimeout(() => $form.find('.qubely-form-message').html(''), 4000);
+                        if (response.success === true && response.data.status === 1) {
                             $form.trigger("reset");
-                        };
+                            $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
+                        } else {
+                            $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
+                            $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-danger">${response.data.msg}</div>`);
+                        }
                     },
-                    error: (jqxhr, textStatus, error) => {
-                        $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                        $form.find(".qubely-form-message").html(`<div class= "qubely-alert qubely-alert-danger" > ${textStatus} : ${error} - ${jqxhr.responseJSON}</div> `);
-                    }
                 });
             }
         });

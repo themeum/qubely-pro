@@ -390,7 +390,7 @@ registerBlockType('qubely/form', {
 
         fieldErrorMessage: { type: 'string', default: 'Please fill the required field.' },
         formSuccessMessage: { type: 'string', default: 'Email successfully sent!' },
-        formErrorMessage: { type: 'string', default: 'Email sending failed. Please fill the required field(s) and try again.' },
+        formErrorMessage: { type: 'string', default: 'Email sending failed, something went wrong! Please try again.' },
         reCaptcha: { type: 'boolean', default: false },
         reCaptchaSiteKey: { type: 'string', default: '' },
         reCaptchaSecretKey: { type: 'string', default: '' },
@@ -398,7 +398,7 @@ registerBlockType('qubely/form', {
         policyCheckboxText: { type: 'string', default: 'I agree with the Terms & Conditions and I declare that I have read the information that is required in accordance with the terms' },
         emailReceiver: { type: 'string', default: '' },
         emailHeaders: { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{first-name}} {{last-name}}\nCc: {{email}}\nBcc: admin@yourcompany.com' },
-        emailFrom: { type: 'string', default: 'Your Name: admin@example.com' },
+        emailFrom: { type: 'string', default: `Your Company Name: admin@${qubely_admin.actual_url}` },
         emailSubject: { type: 'string', default: '{{subject}} | {{email}} | {{site-name}}' },
         emailBody: { type: 'string', default: '<p><strong>From:</strong> {{first-name}} {{last-name}}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>' },
         showGlobalSettings: { type: 'boolean', default: true },  // Global Settings
