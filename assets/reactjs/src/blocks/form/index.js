@@ -16,7 +16,6 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 import classnames from 'classnames';
-const { Component, Fragment } = wp.element;
 const { RichText, InnerBlocks } = wp.blockEditor
 const { QubelyButtonSave, HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
 
