@@ -3,7 +3,7 @@ const { createBlock } = wp.blocks
 const { compose } = wp.compose
 const { select, dispatch, withSelect, withDispatch } = wp.data
 const { InspectorControls, BlockControls, InnerBlocks, RichText } = wp.blockEditor
-const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl, Button } = wp.components
+const { Dropdown, PanelBody, TextControl, Toolbar, TextareaControl, Button, Notice } = wp.components
 const {
     Component,
     Fragment,
@@ -572,6 +572,11 @@ class Edit extends Component {
                                             onChange={val => setAttributes({ emailFrom: val })}
                                             placeholder={__('Your Name: admin@example.com')}
                                         />
+                                        <Notice status="warning" isDismissible={false}>
+                                            {__("Please use your site's email, to avoid any error.")}
+                                            <br />
+                                            {__("if your site is example.com, the email should be anything@example.com")}
+                                        </Notice>
                                         <TextControl
                                             label={__('Subject')}
                                             value={emailSubject}

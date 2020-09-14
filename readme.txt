@@ -1,8 +1,9 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 == Changelog ==
 
-= 1.2.3 -  21 September, 2020 = 
+= 1.2.3 -  15 September, 2020 = 
+New: Form Builder block - Mailchimp intregation  
 Update: Disable 'Edit as html' option in parent blocks  
 Fix: Contact Form block - Email sending issue  
 
