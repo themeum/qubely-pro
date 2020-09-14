@@ -127,7 +127,7 @@ registerBlockType('qubely/form', {
 
                                     <input type="hidden" name="field-error-message" value={_encrypt(fieldErrorMessage)} />
                                     <input type="hidden" name="form-success-message" value={_encrypt(formSuccessMessage)} />
-                                    <input type="hidden" name="form-error-message" value={_encrypt('Email sending failed. Please fill the required field(s) and try again.')} />
+                                    <input type="hidden" name="form-error-message" value={_encrypt('Email sent failed, fill required field and try again!')} />
                                     <input type="hidden" name="recaptcha" value={(reCaptcha && reCaptchaSiteKey && reCaptchaSecretKey) ? 'true' : 'false'} />
                                     <input type="hidden" name="recaptcha-site-key" value={reCaptchaSiteKey} />
                                     <input type="hidden" name="recaptcha-secret-key" value={reCaptchaSecretKey} />
