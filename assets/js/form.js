@@ -182,7 +182,8 @@ jQuery(document).ready(function ($) {
             e.preventDefault();
             let formData = $form.serializeArray();
             const isRequired = checkFormValidation($form); //check validation
-            let isNewsletter = false,
+            let mcListId,
+                isNewsletter = false,
                 isMailchimp = false,
                 newsletterData = {
                     email_address: '',
@@ -194,14 +195,14 @@ jQuery(document).ready(function ($) {
                 isNewsletter = true;
                 isMailchimp = true;
             }
-            const {
-                mailchimp: {
-                    mcListId,
-                    mcFields
-                }
-            } = $form.data();
-
             if (isNewsletter && isMailchimp) {
+                const {
+                    mailchimp,
+                    mailchimp: {
+                        mcFields
+                    }
+                } = $form.data();
+                mcListId = mailchimp.mcListId;
                 endPoint = qubely_urls.ajax + '?action=qubely_mc_add_subs';
 
                 formData.filter(({ name, value }) => name.includes('qubely-form-input'))

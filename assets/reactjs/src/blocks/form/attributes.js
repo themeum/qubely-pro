@@ -18,6 +18,14 @@ export const defaultFormItems = [
         hideLabel: false
     },
     {
+        type: 'text',
+        label: 'Subject',
+        name: 'subject',
+        placeHolder: 'Subject',
+        required: false,
+        hideLabel: false
+    },
+    {
         type: 'textarea',
         label: 'Message',
         name: 'message',
@@ -390,9 +398,9 @@ export const attributes = {
     policyCheckbox: { type: 'boolean', default: false },
     policyCheckboxText: { type: 'string', default: 'I agree with the Terms & Conditions and I declare that I have read the information that is required in accordance with the terms' },
     emailReceiver: { type: 'string', default: '' },
-    emailHeaders: { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{first-name}} {{last-name}}\nCc: {{email}}\nBcc: admin@yourcompany.com' },
+    emailHeaders: { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{text-11}} {{text-12}}\nCc: {{email}}\nBcc: admin@yourcompany.com' },
     emailFrom: { type: 'string', default: `Your Company Name: admin@${qubely_admin.actual_url}` },
-    emailSubject: { type: 'string', default: '{{subject}} | {{email}} | {{site-name}}' },
-    emailBody: { type: 'string', default: '<p><strong>From:</strong> {{first-name}} {{last-name}}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>' },
+    emailSubject: { type: 'string', default: '{{text-31}} | {{email-21}} | {{site-name}}' },
+    emailBody: { type: 'string', default: '<p><strong>From:</strong> {{text-11}} {{text-12}}</p><strong>Email:</strong> {{email-21}}</p>\n<p><strong>Subject:</strong> {{text-31}}</p>\n<p><strong>Message:</strong> {{textarea-41}}</p>' },
     showGlobalSettings: { type: 'boolean', default: true },  // Global Settings
 }
