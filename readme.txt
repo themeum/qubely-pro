@@ -2,7 +2,7 @@
 Stable tag: 1.2.3
 == Changelog ==
 
-= 1.2.3 -  15 September, 2020 = 
+= 1.2.3 -  16 September, 2020 = 
 New: Form Builder block - Mailchimp integration  
 Update: Disable 'Edit as html' option in parent blocks  
 Fix: Form Builder Form block - Email sending issue  
