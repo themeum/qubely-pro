@@ -19,7 +19,8 @@ const {
 
 const {
 	Fragment,
-	Component
+	Component,
+	createRef
 } = wp.element;
 
 const {
@@ -75,6 +76,7 @@ class Edit extends Component {
 			initialRender: true,
 			showIconPicker: false,
 		}
+		this.qubelyContextMenu = createRef();
 	}
 
 	componentDidMount() {

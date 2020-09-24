@@ -123,7 +123,7 @@ jQuery(document).ready(function ($) {
         changeTimepickerValue($qubelyTimePickerFormat)
     })
 
-    //hour 
+    //hour
     $('.qubely-hour-button-up').on('click', function (event) {
 
         let $qubelyTimePickerFormat = $(this).parent();
@@ -170,36 +170,117 @@ jQuery(document).ready(function ($) {
         const $form = $(this);
         $form.addClass('qubely-form-ready');
         $form.find('input.qubely-form-field').on('keydown', (e) => {
-            if (e.which === 13) { e.preventDefault(); return false; };
+            if (e.which === 13) {
+                e.preventDefault();
+                return false;
+            };
         });
         checkFormValidation($form, true); //add validation
-     
+
         // FORM SUBMIT EVENT
         $form.submit((e) => {
             e.preventDefault();
             let formData = $form.serializeArray();
             const isRequired = checkFormValidation($form); //check validation
+            let mcListId,
+                isNewsletter = false,
+                isMailchimp = false,
+                newsletterData = {
+                    email_address: '',
+                    data: {}
+                },
+                endPoint = qubely_urls.ajax + '?action=qubely_send_form_data';
+
+            if ($form.hasClass("mailchimp")) {
+                isNewsletter = true;
+                isMailchimp = true;
+            }
+            if (isNewsletter && isMailchimp) {
+                const {
+                    mailchimp,
+                    mailchimp: {
+                        mcFields
+                    }
+                } = $form.data();
+                mcListId = mailchimp.mcListId;
+                endPoint = qubely_urls.ajax + '?action=qubely_mc_add_subs';
+
+                formData.filter(({ name, value }) => name.includes('qubely-form-input'))
+                    .forEach(({ name, value }) => {
+                        let key;
+                        if (name.match(/\[(.*?)\]/)) {
+                            key = name.match(/\[(.*?)\]/)[1].replace("*", "");
+                        }
+                        if (typeof mcFields[key] !== 'undefined') {
+                            if (mcFields[key] === 'email') {
+                                newsletterData.email_address = value;
+                            } else {
+                                newsletterData.data[[mcFields[key]]] = value;
+                            }
+                        }
+                    });
+            }
+
+            const beforeSending = (msg) => {
+                $form.find('button[type="submit"]').addClass('disable').attr('disabled', true);
+                $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-info">${msg}</div>`);
+            }
+            const onError = (jqxhr, textStatus, error) => {
+                $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
+                $form.find(".qubely-form-message").html(`<div class= "qubely-alert qubely-alert-danger" > ${textStatus} : ${error} - ${jqxhr.responseJSON}</div> `);
+
+            }
+            const onSuccess = (response) => {
+                $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
+                setTimeout(() => $form.find('.qubely-form-message').html(''), 4000);
+                if (response.success === true && response.data.status === 1) {
+                    $form.trigger("reset");
+                    $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
+                } else {
+                    $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
+                    $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-danger">${response.data.msg}</div>`);
+                }
+            }
+
+
             if (!isRequired) {
                 formData.push({ name: 'captcha', value: (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : undefined });
-                jQuery.ajax({
-                    url: qubely_urls.ajax + '?action=qubely_send_form_data',
-                    type: "POST",
-                    data: formData,
-                    beforeSend: () => {
-                        $form.find('button[type="submit"]').addClass('disable').attr('disabled', true);
-                        $form.find(".qubely-form-message").html('<div class="qubely-alert qubely-alert-info">Message sending...</div>');
-                    },
-                    success: (response) => {
-                        $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                        $form.find(".qubely-form-message").html(`<div class="qubely-alert qubely-alert-success">${response.data.msg}</div>`);
-                        setTimeout(() => $form.find('.qubely-form-message').html(''), 4000);
-                        if (response.data.status == 1) $form.trigger("reset");
-                    },
-                    error: (jqxhr, textStatus, error) => {
-                        $form.find('button[type="submit"]').removeClass('disable').attr('disabled', false);
-                        $form.find(".qubely-form-message").html(`<div class= "qubely-alert qubely-alert-danger" > ${textStatus} : ${error} - ${jqxhr.responseJSON}</div> `);
-                    }
-                });
+
+                if (isNewsletter) {
+                    var data = JSON.stringify({
+                        list: mcListId,
+                        fields: {
+                            status: 'subscribed', // pending
+                            email_address: newsletterData.email_address,
+                            merge_fields: {
+                                ...newsletterData.data,
+                            }
+                        }
+                    });
+
+                    $.ajax({
+                        url: endPoint,
+                        type: 'post',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log('data : ', data);
+                        },
+                        data,
+                        beforeSend: () => beforeSending('Subscribing'),
+                        success: (response) => onSuccess(response),
+                        error: (jqxhr, textStatus, error) => onError(jqxhr, textStatus, error),
+                    });
+                } else {
+                    jQuery.ajax({
+                        url: endPoint,
+                        type: "POST",
+                        data: formData,
+                        beforeSend: () => beforeSending('Message sending...'),
+                        success: (response) => onSuccess(response),
+                        error: (jqxhr, textStatus, error) => onError(jqxhr, textStatus, error),
+                    });
+                }
             }
         });
     });
@@ -236,7 +317,7 @@ jQuery(document).ready(function ($) {
                 const $parenField = $field.parents('.qubely-form-field-wrapper')
 
                 if ($parenField.find('.qubely-form-confirmation-email').length > 0) {
-                   
+
                     let confirmationEmailFlag = $parenField.find('.qubely-form-confirmation-email-error').length === 0
 
                     if (validateEmail($field.val())) {

@@ -1,8 +1,30 @@
 ===  Qubely Pro ===
+<<<<<<< HEAD
 Stable tag: 1.2.0
 
 == Changelog ==
 
+=======
+Stable tag: 1.2.3
+== Changelog ==
+
+= 1.2.3 -  16 September, 2020 = 
+New: Form Builder block - Mailchimp integration  
+Update: Disable 'Edit as html' option in parent blocks  
+Fix: Form Builder Form block - Email sending issue  
+Fix: Form Builder Form block - Deprecated support 
+
+
+= 1.2.2 -  21 August, 2020 =  
+New: Import Sections/Layouts with Global settings  
+Update: All blocks - Context Menu refs  
+Fix: Price List block - Content uneditable issue   
+
+= 1.2.1 - 08 July, 2020
+Update: Post Grid pagination default margin added
+Fix: Post Grid pagination backend spacing issue
+
+>>>>>>> master
 = 1.2.0 - 21 May, 2020 =
 New: Global Settings  
 New: Qubely Settings page - reCAPTCHA key storage 

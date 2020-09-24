@@ -1,5 +1,5 @@
 const { __ } = wp.i18n
-const { Fragment, Component } = wp.element;
+const { Fragment, Component, createRef } = wp.element;
 const { PanelBody, TextControl, Tooltip, Toolbar } = wp.components
 const { InspectorControls, RichText, MediaUpload, BlockControls } = wp.blockEditor
 import icons from '../../helpers/icons'
@@ -45,6 +45,7 @@ class Edit extends Component {
 			spacer: true,
 			openPanelSetting: ''
 		}
+		this.qubelyContextMenu = createRef();
 	}
 
 	componentDidMount() {
@@ -133,7 +134,6 @@ class Edit extends Component {
 						{enablename &&
 							<div className="qubely-team-author-name" >
 								<RichText
-									key="editable"
 									keepPlaceholderOnFocus
 									placeholder={__('Add Name...')}
 									formattingControls={['bold', 'italic', 'link', 'strikethrough']}
@@ -145,7 +145,6 @@ class Edit extends Component {
 						{enableDesignation &&
 							<div className="qubely-team-author-designation" >
 								<RichText
-									key="editable"
 									placeholder={__('Add designation...')}
 									formattingControls={['bold', 'italic', 'link', 'strikethrough']}
 									keepPlaceholderOnFocus
@@ -832,17 +831,23 @@ class Edit extends Component {
 				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
 
 				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
-					<div className={`qubely-block-team-carousel qubely-layout-style`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+					<div
+						className={`qubely-block-team-carousel qubely-layout-style`}
+						onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
+					>
 						<Carousel options={carouselSettings}>
 							{this.renderTeams()}
 						</Carousel>
-						<div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+						<div
+							ref={this.qubelyContextMenu}
+							className={`qubely-context-menu-wraper`}
+						>
 							<ContextMenu
 								name={name}
 								clientId={clientId}
 								attributes={attributes}
 								setAttributes={setAttributes}
-								qubelyContextMenu={this.refs.qubelyContextMenu}
+								qubelyContextMenu={this.qubelyContextMenu.current}
 							/>
 						</div>
 					</div>

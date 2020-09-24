@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { RichText, InnerBlocks } = wp.blockEditor
@@ -36,19 +37,31 @@ class Save extends Component {
                 buttonIconPosition,
                 buttonTag,
                 animation,
-                interaction }
+                interaction,
+                afterSubmitAction,
+                mcListId,
+                mcMappedFields,
+            }
         } = this.props
 
         const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
+        const formClassName = classnames(
+            'qubely-form',
+            `is-${inputSize}`,
+            { ['mailchimp']: afterSubmitAction === 'mailchimp' }
+        );
 
         return (
             <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
                 <div className={`qubely-block-form ${interactionClass} qubely-layout-${layout}`}>
-                    <form className={`qubely-form is-${inputSize}`}>
+                    <form
+                        className={formClassName}
+                        {...(afterSubmitAction === 'mailchimp' && { 'data-mailchimp': JSON.stringify({ mcListId, mcFields: mcMappedFields }) })}
+                    >
 
                         <InnerBlocks.Content />
 
-                        {reCaptcha && <div className="qubely-form qubely-google-recaptcha" />}
+                        {(reCaptcha && reCaptchaSiteKey && reCaptchaSecretKey) && <div className="qubely-form qubely-google-recaptcha" />}
 
                         {policyCheckbox &&
                             <div className={`qubely-form-policy-checkbox-wrapper`}>
@@ -70,7 +83,7 @@ class Save extends Component {
                             <input type="hidden" name="field-error-message" value={_encrypt(fieldErrorMessage)} />
                             <input type="hidden" name="form-success-message" value={_encrypt(formSuccessMessage)} />
                             <input type="hidden" name="form-error-message" value={_encrypt(formErrorMessage)} />
-                            <input type="hidden" name="recaptcha" value={reCaptcha ? 'true' : 'false'} />
+                            <input type="hidden" name="recaptcha" value={(reCaptcha && reCaptchaSiteKey && reCaptchaSecretKey) ? 'true' : 'false'} />
                             <input type="hidden" name="recaptcha-site-key" value={reCaptchaSiteKey} />
                             <input type="hidden" name="recaptcha-secret-key" value={reCaptchaSecretKey} />
                             <input type="hidden" name="email-receiver" value={_encrypt(emailReceiver)} />

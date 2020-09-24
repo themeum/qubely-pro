@@ -16,12 +16,13 @@ class Init {
 
 		//Loading Autoloader
         spl_autoload_register(array($this, 'loader'));
-        
+
 		//Load Component from Class
 		new \QUBELY_PRO\Assets();
 		new \QUBELY_PRO\Updater();
+		new \QUBELY_PRO\Newsletter();
     }
-    
+
 	/**
 	 * @param $className
 	 *

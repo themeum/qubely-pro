@@ -7,7 +7,8 @@ const { PluginBlockSettingsMenuItem } = wp.editPost
 const { __ } = wp.i18n;
 const {
     Component,
-    Fragment
+    Fragment,
+    createRef
 } = wp.element;
 
 const {
@@ -84,15 +85,14 @@ const DEFAULT_ALIGNMENT_CONTROLS = [
 
 class Edit extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             device: 'md',
             spacer: true,
             showStartDate: false,
             showEndDate: false
-        }
-
-        this.qubely_timer = React.createRef()
+        };
+        this.qubelyContextMenu = createRef();
     }
 
     componentDidMount() {
@@ -703,7 +703,7 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId} ${className ? className : ''}`}>
                     <div
                         className='qubely-block-countdown'
-                        onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}
+                        onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
                         style={{
                             '--label-spacing': labelSpacing + 'px'
                         }}
@@ -736,14 +736,16 @@ class Edit extends Component {
                             }}
                             id={uniqueId}
                         />
-
-                        <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
+                        <div
+                            ref={this.qubelyContextMenu}
+                            className={`qubely-context-menu-wraper`}
+                        >
                             <ContextMenu
                                 name={name}
                                 clientId={clientId}
                                 attributes={attributes}
                                 setAttributes={setAttributes}
-                                qubelyContextMenu={this.refs.qubelyContextMenu}
+                                qubelyContextMenu={this.qubelyContextMenu.current}
                             />
                         </div>
                     </div>
