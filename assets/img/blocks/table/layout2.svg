@@ -1,0 +1,8 @@
+<svg width="117" height="96" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" fill-rule="evenodd">
+    <rect stroke="#D6D9DD" fill="#F2F3F7" x=".5" y=".5" width="116" height="95" rx="4"/>
+    <path stroke="#D6D9DD" fill="#F2F3F7" d="M8.5 19.5h101v56H8.5z"/>
+    <path fill="#D6D9DD" d="M9 20h100v11H9zM9 42h100v11H9zM9 64h100v11H9z"/>
+    <path fill="#F2F3F7" d="M9 31h100v11H9zM9 53h100v11H9z"/>
+  </g>
+</svg>

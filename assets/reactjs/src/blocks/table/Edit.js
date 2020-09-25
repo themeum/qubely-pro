@@ -336,7 +336,7 @@ class Edit extends Component {
 
             const className = classnames(
                 { 'is-qubely-active': isSelectedCell },
-                `has-text-align-${align}`,
+                { [`has-text-align-${align}`]: align },
                 'qubely-block-table_cell-content',
                 'qubely-table-cell-edit'
             );
@@ -954,17 +954,17 @@ class Edit extends Component {
                       options={[
                         {
                           value: 'bordered',
-                          svg: icons.postgrid_1,
+                          svg: icons.table_2,
                           label: __(''),
                         },
                         {
                           value: 'row-stripe',
-                          svg: icons.postgrid_2,
+                          svg: icons.table_2,
                           label: __(''),
                         },
                         {
                           value: 'column-stripe',
-                          svg: icons.postgrid_3,
+                          svg: icons.table_2,
                           label: __(''),
                         },
                       ]}

@@ -7,11 +7,11 @@ import {
 } from './components';
 import classnames from 'classnames';
 const { Component, Fragment } = wp.element;
-const {QubelyButtonSave, HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents;
+const { QubelyButtonSave, HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents;
 const {
     RichText
 } = wp.blockEditor;
-const {__} = wp.i18n;
+const { __ } = wp.i18n;
 class Save extends Component {
 
     /**
@@ -65,8 +65,9 @@ class Save extends Component {
 
 
             const className = classnames(
-                `has-text-align-${align}`,
-                'qubely-block-table_cell-content'
+                { [`has-text-align-${align}`]: align },
+                'qubely-block-table_cell-content',
+                { ['cell-placeholder']: type === 'text' && (!content || typeof content == 'undefined') }
             );
 
             let placeholder = 'cell content';
@@ -76,7 +77,7 @@ class Save extends Component {
                 placeholder = __('Footer label');
             }
 
-            return (
+            return (    
                 <Tag className={className} >
                     {
                         this.renderCellContent({
@@ -116,19 +117,19 @@ class Save extends Component {
         * @returns {*}
         */
     renderCellContent = ({
-         type,
-         content,
-         columnIndex,
-         Tag,
-         scope,
-         placeholder,
-         cellLocation,
-         iconName,
-         ratings,
-         image,
-         ordered,
-         listItems,
-         imageSize
+        type,
+        content,
+        columnIndex,
+        Tag,
+        scope,
+        placeholder,
+        cellLocation,
+        iconName,
+        ratings,
+        image,
+        ordered,
+        listItems,
+        imageSize
     }) => {
         const {
             setAttributes,
@@ -150,6 +151,9 @@ class Save extends Component {
                 imageAlignment
             }
         } = this.props;
+        const classNames = classnames(
+            'cell-text'
+        );
 
         switch (type) {
             case 'button':
@@ -197,8 +201,8 @@ class Save extends Component {
                     <RichText.Content
                         key={columnIndex}
                         scope={Tag === 'th' ? scope : undefined}
-                        value={content}
-                        className="cell-text"
+                        value={content ? content : __('add content')}
+                        className={classNames}
                     />
                 )
         }
@@ -213,16 +217,16 @@ class Save extends Component {
             <figure className={'qubely-table-figure'}>
                 <table style={{ width: '100%' }}>
                     {
-                      this.props.attributes.tableHeader && (
-                        <Section name='head' rows={this.props.attributes.head} />
-                      )
+                        this.props.attributes.tableHeader && (
+                            <Section name='head' rows={this.props.attributes.head} />
+                        )
                     }
                     <Section name='body' rows={this.props.attributes.body} />
-                  {
-                    this.props.attributes.tableFooter && (
-                      <Section name='foot' rows={this.props.attributes.foot} />
-                    )
-                  }
+                    {
+                        this.props.attributes.tableFooter && (
+                            <Section name='foot' rows={this.props.attributes.foot} />
+                        )
+                    }
                 </table>
             </figure>
         );

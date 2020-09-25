@@ -94,6 +94,11 @@ const icons = {
     mediacard_7: <img src={`${img_path}/mediacard/7.svg`} alt={__('Design 7')} />,
 
 
+    //table
+    table_1: <img src={`${img_path}/table/layout1.svg`} alt={__('Layout 1')} />,
+    table_2: <img src={`${img_path}/table/layout2.svg`} alt={__('Layout 2')} />,
+    table_3: <img src={`${img_path}/table/layout3.svg`} alt={__('Layout 3')} />,
+
     pie_fill: <img src={`${img_path}/pieprogress/fill.svg`} alt={__('Fill')} />,
     pie_outline: <img src={`${img_path}/pieprogress/outline.svg`} alt={__('Outline')} />,
     pie_outline_fill: <img src={`${img_path}/pieprogress/outline-fill.svg`} alt={__('Outline Fill')} />,

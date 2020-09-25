@@ -1,0 +1,13 @@
+
+Open SVG
+Paste markup
+Demo
+Contribute
+About
+Powered by the incredible SVGO
+
+
+327 bytes → 184 bytes 56.27%
+<svg width="117" height="96" xmlns="http://www.w3.org/2000/svg">
+  <rect x="18.5" y="381.5" width="116" height="95" rx="4" transform="translate(-18 -381)" fill="#F2F3F7" stroke="#D6D9DD" fill-rule="evenodd"/>
+</svg>

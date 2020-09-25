@@ -59,6 +59,9 @@
         margin: 0;
         padding: 0;
       }
+      &.cell-placeholder{
+        opacity: .62;
+      }
     }
   }
   &.fixed-width {

@@ -1,10 +1,4 @@
 ===  Qubely Pro ===
-<<<<<<< HEAD
-Stable tag: 1.2.0
-
-== Changelog ==
-
-=======
 Stable tag: 1.2.3
 == Changelog ==
 
@@ -24,7 +18,6 @@ Fix: Price List block - Content uneditable issue
 Update: Post Grid pagination default margin added
 Fix: Post Grid pagination backend spacing issue
 
->>>>>>> master
 = 1.2.0 - 21 May, 2020 =
 New: Global Settings  
 New: Qubely Settings page - reCAPTCHA key storage 
