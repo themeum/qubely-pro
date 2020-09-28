@@ -256,7 +256,7 @@ const attributes = {
 
     iconSize: {
         type: 'string',
-        default: '64px',
+        default: '40px',
         style: [
             {
                 condition: [{ key: 'iconSize', relation: '!=', value: 'custom' }],
