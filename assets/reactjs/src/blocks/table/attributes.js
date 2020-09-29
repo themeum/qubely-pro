@@ -93,6 +93,15 @@ const attributes = {
             { selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content {text-align: {{cellAlignment}}; }' }
         ]
     },
+    cellVerticalPosition: {
+        type: 'string',
+        default: 'middle',
+        style: [
+            {
+                selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content {vertical-align: {{cellVerticalPosition}}; }'
+            }
+        ]
+    },
     cellBorder: {
         type: 'object',
         default: {

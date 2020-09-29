@@ -891,6 +891,7 @@ class Edit extends Component {
         cellPadding,
         cellAlignment,
         cellBorder,
+        cellVerticalPosition,
         //icon
         imageAlignment,
         imageSize,
@@ -1073,6 +1074,31 @@ class Edit extends Component {
                     this.setState({ device: value })
                   }
                 />
+                <div className="qubely-field">
+                  <label>{__('Vertical Position')}</label>
+                  <div className="qubely-field-button-list qubely-field-button-list-fluid">
+                    <Tooltip text={__('Top')}>
+                      <button
+                        onClick={() => setAttributes({ cellVerticalPosition: 'top' })}
+                        className={"qubely-button" + (cellVerticalPosition === 'top' ? ' active' : '')}
+                      >{icons.vertical_top}</button>
+                    </Tooltip>
+
+                    <Tooltip text={__('Middle')} >
+                      <button
+                        onClick={() => setAttributes({ cellVerticalPosition: 'middle' })}
+                        className={"qubely-button" + (cellVerticalPosition === 'middle' ? ' active' : '')}
+                      >{icons.vertical_middle}</button>
+                    </Tooltip>
+
+                    <Tooltip text={__('Bottom')} >
+                      <button
+                        onClick={() => setAttributes({ cellVerticalPosition: 'bottom' })}
+                        className={"qubely-button" + (cellVerticalPosition === 'bottom' ? ' active' : '')}
+                      >{icons.vertical_bottom}</button>
+                    </Tooltip>
+                  </div>
+                </div>
                 <Border
                   responsive
                   value={cellBorder}
