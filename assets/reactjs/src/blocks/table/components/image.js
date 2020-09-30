@@ -86,20 +86,20 @@ const Image = (props) => {
         />
     );
     const renderImage = () => {
-        let maxWidth = 100, maxHeight = 100;
-        if (document.getElementsByClassName('is-qubely-active')[0]) {
-            maxWidth = document.getElementsByClassName('is-qubely-active')[0].clientWidth;
-            maxHeight = document.getElementsByClassName('is-qubely-active')[0].clientHeight
-        }
+        // let maxWidth = 100, maxHeight = 100;
+        // if (document.getElementsByClassName('is-qubely-active')[0]) {
+        //     maxWidth = document.getElementsByClassName('is-qubely-active')[0].clientWidth;
+        //     maxHeight = document.getElementsByClassName('is-qubely-active')[0].clientHeight
+        // }
         return (
             <ResizableBox
                 className="table-cell-image-resizer"
                 size={{ width, height }}
                 showHandle={isSelected && isSelectedCell}
                 minWidth={10}
-                maxWidth={maxWidth}
+                // maxWidth={maxWidth}
                 minHeight={10}
-                maxHeight={maxHeight}
+                // maxHeight={maxHeight}
                 lockAspectRatio
                 enable={{
                     top: false,
@@ -126,29 +126,29 @@ const Image = (props) => {
     }
     return (
         <div className={classNames}>
-                {
-                    validImage ?
-                        renderImage()
-                        // <img className="qubely-image" src={image.url} alt={'image-type-cell'} style={{ height: '100px', width: '100px' }} />
-                        :
-                        <MediaPlaceholder
-                            accept="image/*"
-                            multiple={false}
-                            notices={noticeUI}
-                            icon="format-image"
-                            mediaPreview={mediaPreview}
-                            allowedTypes={['image']}
-                            onError={() => onUploadError()}
-                            labels={{
-                                title: __('Image type cell'),
-                                instructions: __('Drag images, upload new ones or select files from your library.'),
-                            }}
-                            onSelect={media => onSelectImage(media)}
-                            onSelectURL={newUrl => onSelectURL(newUrl)}
-                            disableMediaButtons={image.url}
-                            value={{ id: image.id, src: image.src }}
-                        />
-                }
+            {
+                validImage ?
+                    renderImage()
+                    // <img className="qubely-image" src={image.url} alt={'image-type-cell'} style={{ height: '100px', width: '100px' }} />
+                    :
+                    <MediaPlaceholder
+                        accept="image/*"
+                        multiple={false}
+                        notices={noticeUI}
+                        icon="format-image"
+                        mediaPreview={mediaPreview}
+                        allowedTypes={['image']}
+                        onError={() => onUploadError()}
+                        labels={{
+                            title: __('Image type cell'),
+                            instructions: __('Drag images, upload new ones or select files from your library.'),
+                        }}
+                        onSelect={media => onSelectImage(media)}
+                        onSelectURL={newUrl => onSelectURL(newUrl)}
+                        disableMediaButtons={image.url}
+                        value={{ id: image.id, src: image.src }}
+                    />
+            }
         </div>
     );
 }
@@ -179,18 +179,18 @@ const ImageSave = (props) => {
             className="qubely-image"
             src={image.url}
             alt={'image-type-cell'}
-            style={{ height: '100%', width: '100%' }}
+            style={{ height: `${height}px`, width: `${width}px` }}
         />
     );
 
     return (
         <div className={classNames}>
-                {
-                    validImage ?
-                        img
-                        :
-                        <div>add image </div>
-                }
+            {
+                validImage ?
+                    img
+                    :
+                    <div>add image </div>
+            }
         </div>
     );
 }
