@@ -1476,7 +1476,7 @@ class Edit extends Component {
                 controls={[
                   {
                     icon: 'editor-ul',
-                    title: 'Convert to unordered list',
+                    title: __('Convert to unordered list'),
                     onClick: () => {
                       this.setState({ isOrdered: false });
                       this.onChangeCell(activeCellLocation, false, 'ordered');
@@ -1486,17 +1486,17 @@ class Edit extends Component {
                   },
                   ...(!isOrdered && [{
 
-                    icon: 'editor-ol',
-                    title: 'Pick Icon',
+                    icon: 'insert',
+                    title: __('Pick custom icon for this list'),
                     onClick: () => {
                       this.setState({ showIconPicker: true });
                     },
-                    className: `qubely-action-change-listype`,
+                    className: `qubely-action-pick-listcustom-icon`,
                   }])
                   ,
                   {
                     icon: 'editor-ol',
-                    title: 'Convert to ordered list',
+                    title: __('Convert to ordered list'),
                     onClick: () => {
                       this.setState({ isOrdered: true });
                       this.onChangeCell(activeCellLocation, true, 'ordered');
@@ -1513,14 +1513,6 @@ class Edit extends Component {
                     className="qubely-table-icon-picker-popover"
                     onClose={() => this.setState({ showIconPicker: false })}
                   >
-                    {/* <IconList
-                      disableToggle={true}
-                      value={body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex].listIcon}
-                      onChange={newIcon => {
-                        console.log('newIcon : ', newIcon);
-                        this.onChangeCell(activeCellLocation, newIcon, 'listIcon')
-                      }}
-                    /> */}
                     <IconSelector
                       label=""
                       value={body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex].listCustomIcon}
@@ -1606,7 +1598,6 @@ class Edit extends Component {
               {...this.props}
               prevState={this.state}
             />
-
             <Dropdown
               position="bottom right"
               renderToggle={({ isOpen, onToggle }) => (
