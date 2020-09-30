@@ -10,6 +10,7 @@ const List = (props) => {
         listIcon,
         ordered = false,
         values = '<li>item one</li><li>item two</li>',
+        listCustomIcon,
         onChange,
         identifier
     } = props;
@@ -22,10 +23,15 @@ const List = (props) => {
     const tagName = ordered ? 'ol' : 'ul';
     const listClasses = classnames(
         'list-item',
-        { [`custom-style qubely-list-bullet-${listIcon.name}`]: typeof listIcon.name !== 'undefined' },
-        { ['default-style}']: typeof listIcon.name === 'undefined' },
+        {
+            [`custom-style qubely-list-bullet-${listIcon.name}`]: (typeof listIcon.name !== 'undefined' && typeof listCustomIcon === 'undefined')
+        },
+        ...((typeof listCustomIcon !== 'undefined' && typeof listCustomIcon.name !== 'undefined') && [
+            `custom-style qubely-list-bullet-${listCustomIcon.name}`
+        ]),
+        { ['default-style}']: (typeof listIcon.name === 'undefined' && typeof listCustomIcon === 'undefined') },
         { ['qubely-unordered-list']: tagName === 'ul' },
-    )
+    );
     return (
         <div className={wrapperClassName}>
             <RichText
@@ -49,7 +55,7 @@ const ListSave = (props) => {
         listIcon,
         ordered = false,
         values = "<li>item one</li><li>item two</li>",
-        onChange,
+        listCustomIcon,
         identifier
     } = props;
 
@@ -61,10 +67,15 @@ const ListSave = (props) => {
     const tagName = ordered ? 'ol' : 'ul';
     const listClasses = classnames(
         'list-item',
-        { [`custom-style qubely-list-bullet-${listIcon.name}`]: typeof listIcon.name !== 'undefined' },
-        { [`default-style}`]: typeof listIcon.name === 'undefined' },
+        {
+            [`custom-style qubely-list-bullet-${listIcon.name}`]: (typeof listIcon.name !== 'undefined' && typeof listCustomIcon === 'undefined')
+        },
+        ...((typeof listCustomIcon !== 'undefined' && typeof listCustomIcon.name !== 'undefined') && [
+            `custom-style qubely-list-bullet-${listCustomIcon.name}`
+        ]),
+        { ['default-style}']: (typeof listIcon.name === 'undefined' && typeof listCustomIcon === 'undefined') },
         { ['qubely-unordered-list']: tagName === 'ul' },
-    )
+    );
     return (
         <div className={wrapperClassName}>
             <RichText.Content

@@ -21,7 +21,8 @@ const {
   Toolbar,
   DropdownMenu,
   ToolbarGroup,
-  Dropdown
+  Dropdown,
+  Popover,
 } = wp.components;
 
 const {
@@ -47,6 +48,7 @@ const {
   RadioAdvanced,
   withCSSGenerator,
   QubelyButtonEdit,
+  IconList,
   Inline: {
     InlineToolbar
   },
@@ -311,6 +313,7 @@ class Edit extends Component {
         align,
         type,
         listItems,
+        listCustomIcon,
         iconName,
         ratings,
         image,
@@ -363,6 +366,7 @@ class Edit extends Component {
               placeholder,
               cellLocation,
               listItems,
+              listCustomIcon,
               iconName,
               ratings,
               image,
@@ -406,6 +410,7 @@ class Edit extends Component {
     image,
     ordered,
     listItems,
+    listCustomIcon,
     isSelectedCell,
     imageSize
   }) => {
@@ -449,6 +454,7 @@ class Edit extends Component {
             listIcon={listIcon}
             ordered={ordered}
             values={listItems}
+            listCustomIcon={listCustomIcon}
             identifier={`list-${cellLocation.rowIndex}${columnIndex}`}
             onChange={nextValues => this.onChangeCell(cellLocation, nextValues, 'listItems')}
           />
@@ -870,6 +876,7 @@ class Edit extends Component {
     const {
       name,
       clientId,
+      isSelected,
       attributes,
       setAttributes,
       attributes: {
@@ -939,6 +946,7 @@ class Edit extends Component {
       device,
       cellType,
       isOrdered,
+      showIconPicker,
       cellLocation: activeCellLocation,
       showPostTextTypography
     } = this.state;
@@ -951,7 +959,8 @@ class Edit extends Component {
       'qubely-block-table',
       layout,
       { ['fixed-width']: fixedWithCells }
-    )
+    );
+
     return (
       <Fragment>
         <InspectorControls key={'inspector'}>
@@ -1280,59 +1289,60 @@ class Edit extends Component {
                   label="Icon"
                   value={listIcon.name}
                   enableSearch
-                  icons={[
-                    { name: 'check', value: 'fas fa-check' },
-                    { name: 'check-square', value: 'fas fa-check-square' },
-                    {
-                      name: 'check-square-outline',
-                      value: 'far fa-check-square',
-                    },
-                    { name: 'check-double', value: 'fas fa-check-double' },
-                    { name: 'check-circle', value: 'fas fa-check-circle' },
-                    {
-                      name: 'check-circle-outline',
-                      value: 'far fa-check-circle',
-                    },
-                    { name: 'square', value: 'fas fa-square' },
-                    { name: 'square-outline', value: 'far fa-square' },
-                    { name: 'circle', value: 'fas fa-circle' },
-                    { name: 'circle-outline', value: 'far fa-circle' },
-                    { name: 'arrow-right', value: 'fas fa-arrow-right' },
-                    { name: 'arrow-left', value: 'fas fa-arrow-left' },
-                    {
-                      name: 'arrow-circle-right',
-                      value: 'fas fa-arrow-circle-right',
-                    },
-                    {
-                      name: 'arrow-circle-left',
-                      value: 'fas fa-arrow-circle-left',
-                    },
-                    {
-                      name: 'arrow-alt-circle-right',
-                      value: 'far fa-arrow-alt-circle-right',
-                    },
-                    {
-                      name: 'arrow-alt-circle-left',
-                      value: 'far fa-arrow-alt-circle-left',
-                    },
-                    {
-                      name: 'long-arrow-alt-right',
-                      value: 'fas fa-long-arrow-alt-right',
-                    },
-                    {
-                      name: 'long-arrow-alt-left',
-                      value: 'fas fa-long-arrow-alt-left',
-                    },
-                    {
-                      name: 'chevron-right',
-                      value: 'fas fa-chevron-right',
-                    },
-                    { name: 'chevron-left', value: 'fas fa-chevron-left' },
-                    { name: 'angle-right', value: 'fas fa-angle-right' },
-                    { name: 'angle-left', value: 'fas fa-angle-left' },
-                    { name: 'star', value: 'fas fa-star' },
-                    { name: 'star-outline', value: 'far fa-star' },
-                  ]}
+                  icons={
+                    [
+                      { name: 'check', value: 'fas fa-check' },
+                      { name: 'check-square', value: 'fas fa-check-square' },
+                      {
+                        name: 'check-square-outline',
+                        value: 'far fa-check-square',
+                      },
+                      { name: 'check-double', value: 'fas fa-check-double' },
+                      { name: 'check-circle', value: 'fas fa-check-circle' },
+                      {
+                        name: 'check-circle-outline',
+                        value: 'far fa-check-circle',
+                      },
+                      { name: 'square', value: 'fas fa-square' },
+                      { name: 'square-outline', value: 'far fa-square' },
+                      { name: 'circle', value: 'fas fa-circle' },
+                      { name: 'circle-outline', value: 'far fa-circle' },
+                      { name: 'arrow-right', value: 'fas fa-arrow-right' },
+                      { name: 'arrow-left', value: 'fas fa-arrow-left' },
+                      {
+                        name: 'arrow-circle-right',
+                        value: 'fas fa-arrow-circle-right',
+                      },
+                      {
+                        name: 'arrow-circle-left',
+                        value: 'fas fa-arrow-circle-left',
+                      },
+                      {
+                        name: 'arrow-alt-circle-right',
+                        value: 'far fa-arrow-alt-circle-right',
+                      },
+                      {
+                        name: 'arrow-alt-circle-left',
+                        value: 'far fa-arrow-alt-circle-left',
+                      },
+                      {
+                        name: 'long-arrow-alt-right',
+                        value: 'fas fa-long-arrow-alt-right',
+                      },
+                      {
+                        name: 'long-arrow-alt-left',
+                        value: 'fas fa-long-arrow-alt-left',
+                      },
+                      {
+                        name: 'chevron-right',
+                        value: 'fas fa-chevron-right',
+                      },
+                      { name: 'chevron-left', value: 'fas fa-chevron-left' },
+                      { name: 'angle-right', value: 'fas fa-angle-right' },
+                      { name: 'angle-left', value: 'fas fa-angle-left' },
+                      { name: 'star', value: 'fas fa-star' },
+                      { name: 'star-outline', value: 'far fa-star' },
+                    ]}
                   onChange={(val) => setAttributes({ listIcon: val })}
                 />
                 <Range
@@ -1460,30 +1470,121 @@ class Edit extends Component {
 
         <BlockControls>
           {cellType === 'list' && (
-            <Toolbar
-              controls={[
-                {
-                  icon: 'editor-ul',
-                  title: 'Convert to unordered list',
-                  onClick: () => {
-                    this.setState({ isOrdered: false });
-                    this.onChangeCell(activeCellLocation, false, 'ordered');
+            <Fragment>
+
+              <Toolbar
+                controls={[
+                  {
+                    icon: 'editor-ul',
+                    title: 'Convert to unordered list',
+                    onClick: () => {
+                      this.setState({ isOrdered: false });
+                      this.onChangeCell(activeCellLocation, false, 'ordered');
+                    },
+                    className: `qubely-action-change-listype ${!isOrdered ? 'is-active' : ''
+                      }`,
                   },
-                  className: `qubely-action-change-listype ${!isOrdered ? 'is-active' : ''
-                    }`,
-                },
-                {
-                  icon: 'editor-ol',
-                  title: 'Convert to ordered list',
-                  onClick: () => {
-                    this.setState({ isOrdered: true });
-                    this.onChangeCell(activeCellLocation, true, 'ordered');
+                  ...(!isOrdered && [{
+
+                    icon: 'editor-ol',
+                    title: 'Pick Icon',
+                    onClick: () => {
+                      this.setState({ showIconPicker: true });
+                    },
+                    className: `qubely-action-change-listype`,
+                  }])
+                  ,
+                  {
+                    icon: 'editor-ol',
+                    title: 'Convert to ordered list',
+                    onClick: () => {
+                      this.setState({ isOrdered: true });
+                      this.onChangeCell(activeCellLocation, true, 'ordered');
+                    },
+                    className: `qubely-action-change-listype ${isOrdered ? 'is-active' : ''
+                      }`,
                   },
-                  className: `qubely-action-change-listype ${isOrdered ? 'is-active' : ''
-                    }`,
-                },
-              ]}
-            />
+                ]}
+              />
+              {
+                (showIconPicker && isSelected) && (
+                  <Popover
+                    position="bottom center"
+                    className="qubely-table-icon-picker-popover"
+                    onClose={() => this.setState({ showIconPicker: false })}
+                  >
+                    {/* <IconList
+                      disableToggle={true}
+                      value={body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex].listIcon}
+                      onChange={newIcon => {
+                        console.log('newIcon : ', newIcon);
+                        this.onChangeCell(activeCellLocation, newIcon, 'listIcon')
+                      }}
+                    /> */}
+                    <IconSelector
+                      label=""
+                      value={body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex].listCustomIcon}
+                      enableSearch
+                      icons={
+                        [
+                          { name: 'check', value: 'fas fa-check' },
+                          { name: 'check-square', value: 'fas fa-check-square' },
+                          {
+                            name: 'check-square-outline',
+                            value: 'far fa-check-square',
+                          },
+                          { name: 'check-double', value: 'fas fa-check-double' },
+                          { name: 'check-circle', value: 'fas fa-check-circle' },
+                          {
+                            name: 'check-circle-outline',
+                            value: 'far fa-check-circle',
+                          },
+                          { name: 'square', value: 'fas fa-square' },
+                          { name: 'square-outline', value: 'far fa-square' },
+                          { name: 'circle', value: 'fas fa-circle' },
+                          { name: 'circle-outline', value: 'far fa-circle' },
+                          { name: 'arrow-right', value: 'fas fa-arrow-right' },
+                          { name: 'arrow-left', value: 'fas fa-arrow-left' },
+                          {
+                            name: 'arrow-circle-right',
+                            value: 'fas fa-arrow-circle-right',
+                          },
+                          {
+                            name: 'arrow-circle-left',
+                            value: 'fas fa-arrow-circle-left',
+                          },
+                          {
+                            name: 'arrow-alt-circle-right',
+                            value: 'far fa-arrow-alt-circle-right',
+                          },
+                          {
+                            name: 'arrow-alt-circle-left',
+                            value: 'far fa-arrow-alt-circle-left',
+                          },
+                          {
+                            name: 'long-arrow-alt-right',
+                            value: 'fas fa-long-arrow-alt-right',
+                          },
+                          {
+                            name: 'long-arrow-alt-left',
+                            value: 'fas fa-long-arrow-alt-left',
+                          },
+                          {
+                            name: 'chevron-right',
+                            value: 'fas fa-chevron-right',
+                          },
+                          { name: 'chevron-left', value: 'fas fa-chevron-left' },
+                          { name: 'angle-right', value: 'fas fa-angle-right' },
+                          { name: 'angle-left', value: 'fas fa-angle-left' },
+                          { name: 'star', value: 'fas fa-star' },
+                          { name: 'star-outline', value: 'far fa-star' },
+                        ]}
+                      onChange={newIcon => this.onChangeCell(activeCellLocation, newIcon, 'listCustomIcon')}
+                    />
+                  </Popover>
+                )
+              }
+            </Fragment>
           )}
 
           <ToolbarGroup>
@@ -1541,7 +1642,7 @@ class Edit extends Component {
                   />
                 </div>
               )}
-            ></Dropdown>
+            />
           </ToolbarGroup>
         </BlockControls>
 

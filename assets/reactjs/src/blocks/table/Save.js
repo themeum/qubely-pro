@@ -49,6 +49,7 @@ class Save extends Component {
                 align,
                 type,
                 listItems,
+                listCustomIcon,
                 iconName,
                 ratings,
                 image,
@@ -89,6 +90,7 @@ class Save extends Component {
                             placeholder,
                             cellLocation,
                             listItems,
+                            listCustomIcon,
                             iconName,
                             ratings,
                             image,
@@ -129,6 +131,7 @@ class Save extends Component {
         image,
         ordered,
         listItems,
+        listCustomIcon,
         imageSize
     }) => {
         const {
@@ -173,6 +176,7 @@ class Save extends Component {
                         listIcon={listIcon}
                         ordered={ordered}
                         values={listItems}
+                        listCustomIcon={listCustomIcon}
                         identifier={`list-${cellLocation.rowIndex}${columnIndex}`}
                     />
 
