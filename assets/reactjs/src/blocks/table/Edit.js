@@ -10,7 +10,8 @@ import {
 } from './components';
 const {
   Component,
-  Fragment
+  Fragment,
+  createRef
 } = wp.element;
 
 const { __ } = wp.i18n;
@@ -48,6 +49,7 @@ const {
   RadioAdvanced,
   withCSSGenerator,
   QubelyButtonEdit,
+  Typography,
   IconList,
   Inline: {
     InlineToolbar
@@ -76,7 +78,7 @@ class Edit extends Component {
       device: 'md',
       toggle: false,
       spacer: true,
-      cellLocation: {},
+      cellLocation: null,
       default: [],
       selectedCell: null,
       showPostTextTypography: false,
@@ -85,8 +87,11 @@ class Edit extends Component {
         row: -1,
         column: -1
       },
-      showCellTypeChange: false
+      showCellTypeChange: false,
+      currentCellType: '',
     }
+    this.wrapperRef = createRef();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   componentDidMount() {
@@ -96,6 +101,20 @@ class Edit extends Component {
       setAttributes({ uniqueId: _client });
     } else if (uniqueId && uniqueId != _client) {
       setAttributes({ uniqueId: _client });
+    }
+
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  /**
+    * Alert if clicked on outside of element
+    */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+      this.setState({ cellLocation: null })
     }
   }
 
@@ -665,7 +684,7 @@ class Edit extends Component {
 
     return (
       <figure className={'qubely-table-figure'}>
-        <table style={{ width: '100%' }}>
+        <table style={{ width: '100%' }} ref={this.wrapperRef}>
           {
             this.props.attributes.tableHeader && (
               <Section name='head' rows={this.props.attributes.head} />
@@ -899,6 +918,14 @@ class Edit extends Component {
         cellAlignment,
         cellBorder,
         cellVerticalPosition,
+
+        //Header
+        headerBorder,
+        headerTypo,
+        //Footer
+        footerBorder,
+        footerTypo,
+
         //icon
         imageAlignment,
         imageSize,
@@ -948,6 +975,7 @@ class Edit extends Component {
       isOrdered,
       showIconPicker,
       cellLocation: activeCellLocation,
+      currentCellType,
       showPostTextTypography
     } = this.state;
 
@@ -960,6 +988,27 @@ class Edit extends Component {
       layout,
       { ['fixed-width']: fixedWithCells }
     );
+
+    let activeCellType = null, openButtonPanel = false;
+    if (activeCellLocation !== null) {
+      activeCellType = body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex].type;
+      this.setState(prevState => {
+        if (prevState.currentCellType === activeCellType)
+          return null;
+        return ({
+          currentCellType: activeCellType
+        });
+      });
+    } else {
+      this.setState(prevState => {
+        if (prevState.currentCellType !== null) {
+          return ({
+            currentCellType: null
+          });
+        }
+
+      });
+    }
 
     return (
       <Fragment>
@@ -987,16 +1036,6 @@ class Edit extends Component {
                   ]}
                   value={layout}
                   onChange={(val) => setAttributes({ layout: val })}
-                />
-                <Toggle
-                  label={__('Table Header')}
-                  value={tableHeader}
-                  onChange={(tableHeader) => setAttributes({ tableHeader })}
-                />
-                <Toggle
-                  label={__('Table Footer')}
-                  value={tableFooter}
-                  onChange={(tableFooter) => setAttributes({ tableFooter })}
                 />
               </PanelBody>
               <PanelBody title={__('Table Settings')} initialOpen={false}>
@@ -1119,38 +1158,105 @@ class Edit extends Component {
                   }
                 />
               </PanelBody>
-              {buttonSettings(
-                attributes,
-                device,
-                (key, value) => {
-                  setAttributes({ [key]: value });
-                },
-                (key, value) => {
-                  this.setState({ [key]: value });
-                }
-              )}
-              <PanelBody title={__('Image')} initialOpen={false}>
-                <RadioAdvanced
-                  label={__('Size')}
-                  options={[
-                    { label: 'S', value: '20px', title: 'Small' },
-                    { label: 'M', value: '40px', title: 'Medium' },
-                    { label: 'L', value: '60px', title: 'Large' },
-                    {
-                      icon: 'fas fa-cog',
-                      value: 'custom',
-                      title: 'Custom',
-                    },
-                  ]}
-                  value={imageSize}
-                  onChange={(value) =>
-                    setAttributes({
-                      imageSize: value,
-                      recreateStyles: !recreateStyles,
-                    })
-                  }
+              <PanelBody title={__('Header')} initialOpen={false}>
+                <Toggle
+                  label={__('Table Header')}
+                  value={tableHeader}
+                  onChange={(tableHeader) => setAttributes({ tableHeader })}
                 />
-                {/* {imageSize == 'custom' &&
+                {
+                  tableHeader && (
+                    <Typography
+                      label={__('Typography')}
+                      value={headerTypo}
+                      onChange={(value) => setAttributes({ headerTypo: value })}
+                      disableLineHeight
+                      device={device}
+                      onDeviceChange={value => this.setState({ device: value })}
+                    />
+                // {/* <Range
+                //   min={1}
+                //   max={10}
+                //   responsive
+                //   device={device}
+                //   value={headerBorder}
+                //   label={__('Size')}
+                //   unit={['px', 'em', '%']}
+                //   onChange={(value) => setAttributes({ headerBorder: value })}
+                //   onDeviceChange={value => this.setState({ device: value })}
+                // /> */}
+                  )
+                }
+
+              </PanelBody>
+              <PanelBody title={__('Footer')} initialOpen={false}>
+                <Toggle
+                  label={__('Table Footer')}
+                  value={tableFooter}
+                  onChange={(tableFooter) => setAttributes({ tableFooter })}
+                />
+                {
+                  tableFooter && (
+                    <Typography
+                      label={__('Typography')}
+                      value={footerTypo}
+                      onChange={(value) => setAttributes({ footerTypo: value })}
+                      disableLineHeight
+                      device={device}
+                      onDeviceChange={value => this.setState({ device: value })}
+                    />
+                  // {/* <Range
+                  //   min={1}
+                  //   max={10}
+                  //   responsive
+                  //   device={device}
+                  //   value={footerBorder}
+                  //   label={__('Size')}
+                  //   unit={['px', 'em', '%']}
+                  //   onChange={(value) => setAttributes({ footerBorder: value })}
+                  //   onDeviceChange={value => this.setState({ device: value })}
+                  // /> */}
+                  )
+                }
+
+              </PanelBody>
+              {
+                (activeCellLocation === null || currentCellType === 'button') && buttonSettings(
+                  attributes,
+                  device,
+                  (key, value) => {
+                    setAttributes({ [key]: value });
+                  },
+                  (key, value) => {
+                    this.setState({ [key]: value });
+                  },
+                  false,
+                  currentCellType === 'button'
+                )}
+              {
+                (activeCellLocation === null || currentCellType === 'image') &&
+                <PanelBody title={__('Image')} initialOpen={currentCellType === 'image'}>
+                  <RadioAdvanced
+                    label={__('Size')}
+                    options={[
+                      { label: 'S', value: '20px', title: 'Small' },
+                      { label: 'M', value: '40px', title: 'Medium' },
+                      { label: 'L', value: '60px', title: 'Large' },
+                      {
+                        icon: 'fas fa-cog',
+                        value: 'custom',
+                        title: 'Custom',
+                      },
+                    ]}
+                    value={imageSize}
+                    onChange={(value) =>
+                      setAttributes({
+                        imageSize: value,
+                        recreateStyles: !recreateStyles,
+                      })
+                    }
+                  />
+                  {/* {imageSize == 'custom' &&
                                     <Fragment>
                                         <Range
                                             min={10}
@@ -1178,288 +1284,297 @@ class Edit extends Component {
 
                                 } */}
 
-                <Alignment
-                  responsive
-                  disableJustify
-                  value={imageAlignment}
-                  label={__('Alignment')}
-                  alignmentType="content"
-                  device={device}
-                  onChange={(val) => setAttributes({ imageAlignment: val })}
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                />
-                <Padding
-                  min={0}
-                  max={300}
-                  responsive
-                  value={imagePadding}
-                  device={device}
-                  label={__('Padding')}
-                  unit={['px', 'em', '%']}
-                  onChange={(val) => setAttributes({ imagePadding: val })}
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                />
-                <BorderRadius
-                  min={0}
-                  max={100}
-                  label={__('Radius')}
-                  value={imageRadius}
-                  unit={['px', 'em', '%']}
-                  responsive
-                  device={device}
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                  onChange={(value) =>
-                    setAttributes({ imageRadius: value })
-                  }
-                />
-              </PanelBody>
-              <PanelBody title={__('Icon')} initialOpen={false}>
-                <RadioAdvanced
-                  label={__('Size')}
-                  options={[
-                    { label: 'S', value: '20px', title: 'Small' },
-                    { label: 'M', value: '40px', title: 'Medium' },
-                    { label: 'L', value: '60px', title: 'Large' },
-                    {
-                      icon: 'fas fa-cog',
-                      value: 'custom',
-                      title: 'Custom',
-                    },
-                  ]}
-                  value={iconSize}
-                  onChange={(value) =>
-                    setAttributes({
-                      iconSize: value,
-                      recreateStyles: !recreateStyles,
-                    })
-                  }
-                />
-                {iconSize == 'custom' && (
-                  <Range
-                    min={10}
+                  <Alignment
+                    responsive
+                    disableJustify
+                    value={imageAlignment}
+                    label={__('Alignment')}
+                    alignmentType="content"
+                    device={device}
+                    onChange={(val) => setAttributes({ imageAlignment: val })}
+                    onDeviceChange={(value) =>
+                      this.setState({ device: value })
+                    }
+                  />
+                  <Padding
+                    min={0}
+                    max={300}
+                    responsive
+                    value={imagePadding}
+                    device={device}
+                    label={__('Padding')}
+                    unit={['px', 'em', '%']}
+                    onChange={(val) => setAttributes({ imagePadding: val })}
+                    onDeviceChange={(value) =>
+                      this.setState({ device: value })
+                    }
+                  />
+                  <BorderRadius
+                    min={0}
                     max={100}
+                    label={__('Radius')}
+                    value={imageRadius}
+                    unit={['px', 'em', '%']}
                     responsive
                     device={device}
-                    value={iconCustomSize}
+                    onDeviceChange={(value) =>
+                      this.setState({ device: value })
+                    }
+                    onChange={(value) =>
+                      setAttributes({ imageRadius: value })
+                    }
+                  />
+                </PanelBody>
+              }
+              {
+                (activeCellLocation === null || currentCellType === 'icon') &&
+                <PanelBody title={__('Icon')} initialOpen={currentCellType === 'icon'}>
+                  <RadioAdvanced
                     label={__('Size')}
-                    unit={['px', 'em', '%']}
+                    options={[
+                      { label: 'S', value: '20px', title: 'Small' },
+                      { label: 'M', value: '40px', title: 'Medium' },
+                      { label: 'L', value: '60px', title: 'Large' },
+                      {
+                        icon: 'fas fa-cog',
+                        value: 'custom',
+                        title: 'Custom',
+                      },
+                    ]}
+                    value={iconSize}
                     onChange={(value) =>
                       setAttributes({
-                        iconCustomSize: value,
+                        iconSize: value,
                         recreateStyles: !recreateStyles,
                       })
                     }
+                  />
+                  {iconSize == 'custom' && (
+                    <Range
+                      min={10}
+                      max={100}
+                      responsive
+                      device={device}
+                      value={iconCustomSize}
+                      label={__('Size')}
+                      unit={['px', 'em', '%']}
+                      onChange={(value) =>
+                        setAttributes({
+                          iconCustomSize: value,
+                          recreateStyles: !recreateStyles,
+                        })
+                      }
+                      onDeviceChange={(value) =>
+                        this.setState({ device: value })
+                      }
+                    />
+                  )}
+                  <Color
+                    label={__('Color')}
+                    value={iconColor}
+                    onChange={(value) => setAttributes({ iconColor: value })}
+                  />
+                  <Alignment
+                    responsive
+                    disableJustify
+                    value={iconAlignment}
+                    label={__('Alignment')}
+                    alignmentType="content"
+                    device={device}
+                    onChange={(val) => setAttributes({ iconAlignment: val })}
                     onDeviceChange={(value) =>
                       this.setState({ device: value })
                     }
                   />
-                )}
-                <Color
-                  label={__('Color')}
-                  value={iconColor}
-                  onChange={(value) => setAttributes({ iconColor: value })}
-                />
-                <Alignment
-                  responsive
-                  disableJustify
-                  value={iconAlignment}
-                  label={__('Alignment')}
-                  alignmentType="content"
-                  device={device}
-                  onChange={(val) => setAttributes({ iconAlignment: val })}
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                />
-              </PanelBody>
-
-              <PanelBody title={__('List')} initialOpen={false}>
-                <Color
-                  label={__('Color')}
-                  value={listColor}
-                  onChange={(value) => setAttributes({ listColor: value })}
-                />
-                <IconSelector
-                  label="Icon"
-                  value={listIcon.name}
-                  enableSearch
-                  icons={
-                    [
-                      { name: 'check', value: 'fas fa-check' },
-                      { name: 'check-square', value: 'fas fa-check-square' },
-                      {
-                        name: 'check-square-outline',
-                        value: 'far fa-check-square',
-                      },
-                      { name: 'check-double', value: 'fas fa-check-double' },
-                      { name: 'check-circle', value: 'fas fa-check-circle' },
-                      {
-                        name: 'check-circle-outline',
-                        value: 'far fa-check-circle',
-                      },
-                      { name: 'square', value: 'fas fa-square' },
-                      { name: 'square-outline', value: 'far fa-square' },
-                      { name: 'circle', value: 'fas fa-circle' },
-                      { name: 'circle-outline', value: 'far fa-circle' },
-                      { name: 'arrow-right', value: 'fas fa-arrow-right' },
-                      { name: 'arrow-left', value: 'fas fa-arrow-left' },
-                      {
-                        name: 'arrow-circle-right',
-                        value: 'fas fa-arrow-circle-right',
-                      },
-                      {
-                        name: 'arrow-circle-left',
-                        value: 'fas fa-arrow-circle-left',
-                      },
-                      {
-                        name: 'arrow-alt-circle-right',
-                        value: 'far fa-arrow-alt-circle-right',
-                      },
-                      {
-                        name: 'arrow-alt-circle-left',
-                        value: 'far fa-arrow-alt-circle-left',
-                      },
-                      {
-                        name: 'long-arrow-alt-right',
-                        value: 'fas fa-long-arrow-alt-right',
-                      },
-                      {
-                        name: 'long-arrow-alt-left',
-                        value: 'fas fa-long-arrow-alt-left',
-                      },
-                      {
-                        name: 'chevron-right',
-                        value: 'fas fa-chevron-right',
-                      },
-                      { name: 'chevron-left', value: 'fas fa-chevron-left' },
-                      { name: 'angle-right', value: 'fas fa-angle-right' },
-                      { name: 'angle-left', value: 'fas fa-angle-left' },
-                      { name: 'star', value: 'fas fa-star' },
-                      { name: 'star-outline', value: 'far fa-star' },
-                    ]}
-                  onChange={(val) => setAttributes({ listIcon: val })}
-                />
-                <Range
-                  min={0}
-                  max={60}
-                  responsive
-                  device={device}
-                  value={listIconSpacing}
-                  unit={['px', 'em', '%']}
-                  label={__('Icon Spacing')}
-                  onChange={(val) =>
-                    setAttributes({ listIconSpacing: val })
-                  }
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                />
-                <Alignment
-                  responsive
-                  disableJustify
-                  value={listAlignment}
-                  label={__('Alignment')}
-                  alignmentType="content"
-                  device={device}
-                  onChange={(val) => setAttributes({ listAlignment: val })}
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                />
-                <Padding
-                  min={0}
-                  max={300}
-                  responsive
-                  value={listPadding}
-                  device={device}
-                  label={__('Padding')}
-                  unit={['px', 'em', '%']}
-                  onChange={(val) => setAttributes({ listPadding: val })}
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                />
-              </PanelBody>
-              <PanelBody title={__('Ratings')} initialOpen={false}>
-                <RadioAdvanced
-                  label={__('Size')}
-                  options={[
-                    { label: 'S', value: '60%', title: 'Small' },
-                    { label: 'M', value: '90%', title: 'Medium' },
-                    { label: 'L', value: '140%', title: 'Large' },
-                    {
-                      icon: 'fas fa-cog',
-                      value: 'custom',
-                      title: 'Custom',
-                    },
-                  ]}
-                  value={ratingsSize}
-                  onChange={(value) =>
-                    setAttributes({
-                      ratingsSize: value,
-                      recreateStyles: !recreateStyles,
-                    })
-                  }
-                />
-                {ratingsSize == 'custom' && (
+                </PanelBody>
+              }
+              {
+                (activeCellLocation === null || currentCellType === 'list') &&
+                <PanelBody title={__('List')} initialOpen={currentCellType === 'list'}>
+                  <Color
+                    label={__('Color')}
+                    value={listColor}
+                    onChange={(value) => setAttributes({ listColor: value })}
+                  />
+                  <IconSelector
+                    label="Icon"
+                    value={listIcon.name}
+                    enableSearch
+                    icons={
+                      [
+                        { name: 'check', value: 'fas fa-check' },
+                        { name: 'check-square', value: 'fas fa-check-square' },
+                        {
+                          name: 'check-square-outline',
+                          value: 'far fa-check-square',
+                        },
+                        { name: 'check-double', value: 'fas fa-check-double' },
+                        { name: 'check-circle', value: 'fas fa-check-circle' },
+                        {
+                          name: 'check-circle-outline',
+                          value: 'far fa-check-circle',
+                        },
+                        { name: 'square', value: 'fas fa-square' },
+                        { name: 'square-outline', value: 'far fa-square' },
+                        { name: 'circle', value: 'fas fa-circle' },
+                        { name: 'circle-outline', value: 'far fa-circle' },
+                        { name: 'arrow-right', value: 'fas fa-arrow-right' },
+                        { name: 'arrow-left', value: 'fas fa-arrow-left' },
+                        {
+                          name: 'arrow-circle-right',
+                          value: 'fas fa-arrow-circle-right',
+                        },
+                        {
+                          name: 'arrow-circle-left',
+                          value: 'fas fa-arrow-circle-left',
+                        },
+                        {
+                          name: 'arrow-alt-circle-right',
+                          value: 'far fa-arrow-alt-circle-right',
+                        },
+                        {
+                          name: 'arrow-alt-circle-left',
+                          value: 'far fa-arrow-alt-circle-left',
+                        },
+                        {
+                          name: 'long-arrow-alt-right',
+                          value: 'fas fa-long-arrow-alt-right',
+                        },
+                        {
+                          name: 'long-arrow-alt-left',
+                          value: 'fas fa-long-arrow-alt-left',
+                        },
+                        {
+                          name: 'chevron-right',
+                          value: 'fas fa-chevron-right',
+                        },
+                        { name: 'chevron-left', value: 'fas fa-chevron-left' },
+                        { name: 'angle-right', value: 'fas fa-angle-right' },
+                        { name: 'angle-left', value: 'fas fa-angle-left' },
+                        { name: 'star', value: 'fas fa-star' },
+                        { name: 'star-outline', value: 'far fa-star' },
+                      ]}
+                    onChange={(val) => setAttributes({ listIcon: val })}
+                  />
                   <Range
-                    min={10}
-                    max={100}
+                    min={0}
+                    max={60}
                     responsive
                     device={device}
-                    value={ratingsCustomSize}
-                    label={__('Size')}
+                    value={listIconSpacing}
                     unit={['px', 'em', '%']}
-                    onChange={(value) =>
-                      setAttributes({ ratingsCustomSize: value })
+                    label={__('Icon Spacing')}
+                    onChange={(val) =>
+                      setAttributes({ listIconSpacing: val })
                     }
                     onDeviceChange={(value) =>
                       this.setState({ device: value })
                     }
                   />
-                )}
+                  <Alignment
+                    responsive
+                    disableJustify
+                    value={listAlignment}
+                    label={__('Alignment')}
+                    alignmentType="content"
+                    device={device}
+                    onChange={(val) => setAttributes({ listAlignment: val })}
+                    onDeviceChange={(value) =>
+                      this.setState({ device: value })
+                    }
+                  />
+                  <Padding
+                    min={0}
+                    max={300}
+                    responsive
+                    value={listPadding}
+                    device={device}
+                    label={__('Padding')}
+                    unit={['px', 'em', '%']}
+                    onChange={(val) => setAttributes({ listPadding: val })}
+                    onDeviceChange={(value) =>
+                      this.setState({ device: value })
+                    }
+                  />
+                </PanelBody>
+              }
+              {
+                (activeCellLocation === null || currentCellType === 'rating') &&
+                <PanelBody title={__('Ratings')} initialOpen={currentCellType === 'rating'}>
+                  <RadioAdvanced
+                    label={__('Size')}
+                    options={[
+                      { label: 'S', value: '60%', title: 'Small' },
+                      { label: 'M', value: '90%', title: 'Medium' },
+                      { label: 'L', value: '140%', title: 'Large' },
+                      {
+                        icon: 'fas fa-cog',
+                        value: 'custom',
+                        title: 'Custom',
+                      },
+                    ]}
+                    value={ratingsSize}
+                    onChange={(value) =>
+                      setAttributes({
+                        ratingsSize: value,
+                        recreateStyles: !recreateStyles,
+                      })
+                    }
+                  />
+                  {ratingsSize == 'custom' && (
+                    <Range
+                      min={10}
+                      max={100}
+                      responsive
+                      device={device}
+                      value={ratingsCustomSize}
+                      label={__('Size')}
+                      unit={['px', 'em', '%']}
+                      onChange={(value) =>
+                        setAttributes({ ratingsCustomSize: value })
+                      }
+                      onDeviceChange={(value) =>
+                        this.setState({ device: value })
+                      }
+                    />
+                  )}
 
-                <Color
-                  label={__('Color')}
-                  value={ratingsColor}
-                  onChange={(value) =>
-                    setAttributes({ ratingsColor: value })
-                  }
-                />
-                <Alignment
-                  responsive
-                  disableJustify
-                  value={ratingsAlignment}
-                  label={__('Alignment')}
-                  alignmentType="content"
-                  device={device}
-                  onChange={(val) =>
-                    setAttributes({ ratingsAlignment: val })
-                  }
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                />
-                <Padding
-                  min={0}
-                  max={300}
-                  responsive
-                  value={ratingsPadding}
-                  device={device}
-                  label={__('Padding')}
-                  unit={['px', 'em', '%']}
-                  onChange={(val) => setAttributes({ ratingsPadding: val })}
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                />
-              </PanelBody>
+                  <Color
+                    label={__('Color')}
+                    value={ratingsColor}
+                    onChange={(value) =>
+                      setAttributes({ ratingsColor: value })
+                    }
+                  />
+                  <Alignment
+                    responsive
+                    disableJustify
+                    value={ratingsAlignment}
+                    label={__('Alignment')}
+                    alignmentType="content"
+                    device={device}
+                    onChange={(val) =>
+                      setAttributes({ ratingsAlignment: val })
+                    }
+                    onDeviceChange={(value) =>
+                      this.setState({ device: value })
+                    }
+                  />
+                  <Padding
+                    min={0}
+                    max={300}
+                    responsive
+                    value={ratingsPadding}
+                    device={device}
+                    label={__('Padding')}
+                    unit={['px', 'em', '%']}
+                    onChange={(val) => setAttributes({ ratingsPadding: val })}
+                    onDeviceChange={(value) =>
+                      this.setState({ device: value })
+                    }
+                  />
+                </PanelBody>
+              }
             </InspectorTab>
             <InspectorTab key={'advance'}>
               {animationSettings(uniqueId, animation, setAttributes)}

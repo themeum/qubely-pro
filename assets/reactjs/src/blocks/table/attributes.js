@@ -27,9 +27,41 @@ const attributes = {
         type: 'boolean',
         default: false
     },
+    headerBorder: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table thead' }
+        ]
+    },
+    headerTypo: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table thead' }
+        ]
+    },
     tableFooter: {
         type: 'boolean',
         default: false
+    },
+    footerBorder: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table tfoot' }
+        ]
+    },
+    footerTypo: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table tfoot' }
+        ]
     },
     tableMaxWdith: {
         type: 'object',
@@ -206,13 +238,13 @@ const attributes = {
     },
     imageSize: {
         type: 'string',
-        default: '64px',
-        // style: [
-        //     {
-        //         condition: [{ key: 'imageSize', relation: '!=', value: 'custom' }],
-        //         // selector: '{{QUBELY}} .icon-cell.icon-wrapper .icon {font-size:{{imageSize}};}'
-        //     }
-        // ]
+        default: '60px',
+        style: [
+            {
+                condition: [{ key: 'imageSize', relation: '!=', value: 'custom' }],
+                selector: '{{QUBELY}} .icon-cell.icon-wrapper .icon {font-size:{{imageSize}};}'
+            }
+        ]
     },
     imageCustomSize: {
         type: 'object',
