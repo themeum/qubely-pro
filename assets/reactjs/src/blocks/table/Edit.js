@@ -494,6 +494,7 @@ class Edit extends Component {
             device={this.state.device}
             imageAlignment={imageAlignment}
             imageSize={imageSize}
+            imageCommonSize={this.props.attributes.imageSize}
             isSelected={isSelected}
             isSelectedCell={isSelectedCell}
             image={image}
@@ -882,7 +883,7 @@ class Edit extends Component {
       ordered: false,
       image: {},
       imageSize: {
-        width: 50,
+        width: this.props.attributes.imageSize,
         height: 50,
       },
       iconName: undefined,

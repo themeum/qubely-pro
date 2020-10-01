@@ -193,6 +193,7 @@ class Save extends Component {
                         imageAlignment={imageAlignment}
                         imageSize={imageSize}
                         image={image}
+                        imageCommonSize={this.props.attributes.imageSize}
                     />)
             case 'rating':
                 return (

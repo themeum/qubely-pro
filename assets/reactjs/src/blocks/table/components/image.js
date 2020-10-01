@@ -18,6 +18,7 @@ const Image = (props) => {
             width,
             height,
         },
+        imageCommonSize,
         image,
         classes,
         onChange,
@@ -159,6 +160,7 @@ const ImageSave = (props) => {
             width,
             height,
         },
+        imageCommonSize,
         image,
         classes,
     } = props;
