@@ -883,7 +883,7 @@ class Edit extends Component {
       ordered: false,
       image: {},
       imageSize: {
-        width: this.props.attributes.imageSize,
+        width: this.props.a,
         height: 50,
       },
       iconName: undefined,
@@ -1021,7 +1021,7 @@ class Edit extends Component {
                   options={[
                     {
                       value: 'bordered',
-                      svg: icons.table_2,
+                      svg: icons.table_1,
                       label: __(''),
                     },
                     {
@@ -1031,7 +1031,7 @@ class Edit extends Component {
                     },
                     {
                       value: 'column-stripe',
-                      svg: icons.table_2,
+                      svg: icons.table_3,
                       label: __(''),
                     },
                   ]}
@@ -1102,7 +1102,7 @@ class Edit extends Component {
                 />
                 <Padding
                   min={0}
-                  max={300}
+                  max={100}
                   responsive
                   value={cellPadding}
                   device={device}
@@ -1299,7 +1299,7 @@ class Edit extends Component {
                   />
                   <Padding
                     min={0}
-                    max={300}
+                    max={100}
                     responsive
                     value={imagePadding}
                     device={device}
@@ -1486,7 +1486,7 @@ class Edit extends Component {
                   />
                   <Padding
                     min={0}
-                    max={300}
+                    max={100}
                     responsive
                     value={listPadding}
                     device={device}
@@ -1563,7 +1563,7 @@ class Edit extends Component {
                   />
                   <Padding
                     min={0}
-                    max={300}
+                    max={100}
                     responsive
                     value={ratingsPadding}
                     device={device}
@@ -1714,7 +1714,7 @@ class Edit extends Component {
               {...this.props}
               prevState={this.state}
             />
-            <Dropdown
+            {/* <Dropdown
               position="bottom right"
               renderToggle={({ isOpen, onToggle }) => (
                 <Tooltip text={__('Table Generator')}>
@@ -1749,7 +1749,7 @@ class Edit extends Component {
                   />
                 </div>
               )}
-            />
+            /> */}
           </ToolbarGroup>
         </BlockControls>
 
