@@ -89,13 +89,11 @@ const Image = (props) => {
     );
 
     const renderImage = () => {
-        let maxWidth = 100, maxHeight = 100;
+        let maxWidth, maxHeight;
         console.log(document.getElementsByClassName('is-qubely-active'));
         if (document.getElementsByClassName('is-qubely-active')[0]) {
             maxWidth = document.getElementsByClassName('is-qubely-active')[0].clientWidth;
             maxHeight = document.getElementsByClassName('is-qubely-active')[0].clientHeight;
-            console.log('maxWidth : ',maxWidth);
-            console.log('maxHeight : ',maxHeight);
         }
 
         return (
@@ -113,10 +111,9 @@ const Image = (props) => {
                 }
                 showHandle={isSelected && isSelectedCell}
                 minWidth={10}
-                // maxWidth={maxWidth}
+                maxWidth={maxWidth - 20}
                 minHeight={10}
-                // maxHeight={maxHeight}
-                lockAspectRatio
+                // lockAspectRatio
                 enable={{
                     top: false,
                     right: imageAlignment[device] === 'right' ? false : true,
@@ -133,6 +130,7 @@ const Image = (props) => {
                         onResize({
                             width: parseInt(width + delta.width, 10),
                             height: tempHeight,
+                            // height: 'auto',
                         });
                     } else {
                         let tempWidth = parseInt(imageCommonSize.replace('px', ''));
@@ -206,6 +204,7 @@ const ImageSave = (props) => {
     if (typeof width !== 'undefined' && width !== 'null') {
         imageSize = {
             height: `${height}px`,
+            // height: 'auto',
             width: `${width}px`
         };
     }
