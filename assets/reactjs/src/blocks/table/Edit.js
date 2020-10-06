@@ -91,6 +91,7 @@ class Edit extends Component {
       currentCellType: '',
     }
     this.wrapperRef = createRef();
+    this.tableBlockRef = createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
@@ -113,7 +114,7 @@ class Edit extends Component {
     * Alert if clicked on outside of element
     */
   handleClickOutside(event) {
-    if (this.wrapperRef && this.wrapperRef.current && !this.wrapperRef.current.contains(event.target)) {
+    if (this.wrapperRef && this.wrapperRef.current && !this.wrapperRef.current.contains(event.target) && this.tableBlockRef.current.contains(event.target)) {
       this.setState({ cellLocation: null })
     }
   }
@@ -996,16 +997,14 @@ class Edit extends Component {
       { ['fixed-width']: fixedWithCells }
     );
 
-    let activeCellType = null, openButtonPanel = false;
+    let activeCellType = null;
     if (activeCellLocation !== null) {
       activeCellType = body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex].type;
-      this.setState(prevState => {
-        if (prevState.currentCellType === activeCellType)
-          return null;
-        return ({
+      if (currentCellType !== activeCellType) {
+        this.setState({
           currentCellType: activeCellType
         });
-      });
+      }
     } else {
       this.setState(prevState => {
         if (prevState.currentCellType !== null) {
@@ -1013,14 +1012,13 @@ class Edit extends Component {
             currentCellType: null
           });
         }
-
       });
     }
-
+    
     return (
       <Fragment>
         <InspectorControls key={'inspector'}>
-          <InspectorTabs tabs={['style', 'advance']}>
+          <InspectorTabs tabs={['style', 'advance']} >
             <InspectorTab key={'style'}>
               <PanelBody title="" opened={true}>
                 <Styles
@@ -1151,6 +1149,7 @@ class Edit extends Component {
                   }
                 />
               </PanelBody>
+
               <PanelBody title={__('Header')} initialOpen={false}>
                 <Toggle
                   label={__('Table Header')}
@@ -1189,6 +1188,7 @@ class Edit extends Component {
                 }
 
               </PanelBody>
+
               <PanelBody title={__('Footer')} initialOpen={false}>
                 <Toggle
                   label={__('Table Footer')}
@@ -1771,7 +1771,7 @@ class Edit extends Component {
           setAttributes
         )}
 
-        <div className={wrapperClasses}>
+        <div className={wrapperClasses} ref={this.tableBlockRef}>
           <div className={classes}>
             <TableContent />
           </div>

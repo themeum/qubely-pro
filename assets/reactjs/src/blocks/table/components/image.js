@@ -90,7 +90,6 @@ const Image = (props) => {
 
     const renderImage = () => {
         let maxWidth, maxHeight;
-        console.log(document.getElementsByClassName('is-qubely-active'));
         if (document.getElementsByClassName('is-qubely-active')[0]) {
             maxWidth = document.getElementsByClassName('is-qubely-active')[0].clientWidth;
             maxHeight = document.getElementsByClassName('is-qubely-active')[0].clientHeight;
