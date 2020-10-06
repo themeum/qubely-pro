@@ -8,6 +8,8 @@ import {
   List,
   Ratings
 } from './components';
+
+// import BlockControls from './block-controls';
 const {
   Component,
   Fragment,
@@ -924,10 +926,15 @@ class Edit extends Component {
         cellVerticalPosition,
 
         //Header
+        headerTextColor,
+        headerBg,
         headerBorder,
         headerBorderColor,
         headerTypo,
+
         //Footer
+        footerTextColor,
+        footerBg,
         footerBorder,
         footerBorderColor,
         footerTypo,
@@ -1014,7 +1021,7 @@ class Edit extends Component {
         }
       });
     }
-    
+
     return (
       <Fragment>
         <InspectorControls key={'inspector'}>
@@ -1073,9 +1080,6 @@ class Edit extends Component {
                     setAttributes({ collapsableBorder: nextValue })
                   }
                 />
-              </PanelBody>
-
-              <PanelBody title={__('Cell Settings')} initialOpen={false}>
                 <ColorAdvanced
                   label={__('Background')}
                   value={cellBg}
@@ -1090,6 +1094,10 @@ class Edit extends Component {
                     setAttributes({ cellTextColor: value })
                   }
                 />
+              </PanelBody>
+
+              <PanelBody title={__('Cell Settings')} initialOpen={false}>
+
                 <Padding
                   min={0}
                   max={100}
@@ -1150,83 +1158,6 @@ class Edit extends Component {
                 />
               </PanelBody>
 
-              <PanelBody title={__('Header')} initialOpen={false}>
-                <Toggle
-                  label={__('Table Header')}
-                  value={tableHeader}
-                  onChange={(tableHeader) => setAttributes({ tableHeader })}
-                />
-                {
-                  tableHeader && (
-                    <Fragment>
-                      <Range
-                        min={1}
-                        max={10}
-                        responsive
-                        device={device}
-                        value={headerBorder}
-                        label={__('Border')}
-                        unit={['px', 'em', '%']}
-                        onChange={(value) => setAttributes({ headerBorder: value })}
-                        onDeviceChange={value => this.setState({ device: value })}
-                      />
-                      <Color
-                        label={__('Border Color')}
-                        value={headerBorderColor}
-                        onChange={(value) => setAttributes({ headerBorderColor: value })}
-                      />
-                      <Typography
-                        label={__('Typography')}
-                        value={headerTypo}
-                        disableLineHeight
-                        device={device}
-                        onChange={(value) => setAttributes({ headerTypo: value })}
-                        onDeviceChange={value => this.setState({ device: value })}
-                      />
-                    </Fragment>
-                  )
-                }
-
-              </PanelBody>
-
-              <PanelBody title={__('Footer')} initialOpen={false}>
-                <Toggle
-                  label={__('Table Footer')}
-                  value={tableFooter}
-                  onChange={(tableFooter) => setAttributes({ tableFooter })}
-                />
-                {
-                  tableFooter && (
-                    <Fragment>
-                      <Range
-                        min={1}
-                        max={10}
-                        responsive
-                        device={device}
-                        value={footerBorder}
-                        label={__('Border')}
-                        unit={['px', 'em', '%']}
-                        onChange={(value) => setAttributes({ footerBorder: value })}
-                        onDeviceChange={value => this.setState({ device: value })}
-                      />
-                      <Color
-                        label={__('Border Color')}
-                        value={footerBorderColor}
-                        onChange={(value) => setAttributes({ footerBorderColor: value })}
-                      />
-                      <Typography
-                        label={__('Typography')}
-                        value={footerTypo}
-                        onChange={(value) => setAttributes({ footerTypo: value })}
-                        disableLineHeight
-                        device={device}
-                        onDeviceChange={value => this.setState({ device: value })}
-                      />
-                    </Fragment>
-                  )
-                }
-
-              </PanelBody>
               {
                 (activeCellLocation === null || currentCellType === 'button') && buttonSettings(
                   attributes,
@@ -1582,6 +1513,112 @@ class Edit extends Component {
                   />
                 </PanelBody>
               }
+              <PanelBody title={__('Header')} initialOpen={false}>
+                <Toggle
+                  label={__('Table Header')}
+                  value={tableHeader}
+                  onChange={(tableHeader) => setAttributes({ tableHeader })}
+                />
+                {
+                  tableHeader && (
+                    <Fragment>
+                      <ColorAdvanced
+                        label={__('Background')}
+                        value={headerBg}
+                        onChange={(nextValue) =>
+                          setAttributes({ headerBg: nextValue })
+                        }
+                      />
+                      <Color
+                        label={__('Color')}
+                        value={headerTextColor}
+                        onChange={(value) =>
+                          setAttributes({ headerTextColor: value })
+                        }
+                      />
+                      <Range
+                        min={1}
+                        max={10}
+                        responsive
+                        device={device}
+                        value={headerBorder}
+                        label={__('Border')}
+                        unit={['px', 'em', '%']}
+                        onChange={(value) => setAttributes({ headerBorder: value })}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
+                      <Color
+                        label={__('Border Color')}
+                        value={headerBorderColor}
+                        onChange={(value) => setAttributes({ headerBorderColor: value })}
+                      />
+                      <Typography
+                        label={__('Typography')}
+                        value={headerTypo}
+                        disableLineHeight
+                        device={device}
+                        onChange={(value) => setAttributes({ headerTypo: value })}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
+                    </Fragment>
+                  )
+                }
+
+              </PanelBody>
+
+              <PanelBody title={__('Footer')} initialOpen={false}>
+                <Toggle
+                  label={__('Table Footer')}
+                  value={tableFooter}
+                  onChange={(tableFooter) => setAttributes({ tableFooter })}
+                />
+                {
+                  tableFooter && (
+                    <Fragment>
+                      <ColorAdvanced
+                        label={__('Background')}
+                        value={footerBg}
+                        onChange={(nextValue) =>
+                          setAttributes({ footerBg: nextValue })
+                        }
+                      />
+                      <Color
+                        label={__('Color')}
+                        value={footerTextColor}
+                        onChange={(value) =>
+                          setAttributes({ footerTextColor: value })
+                        }
+                      />
+                      <Range
+                        min={1}
+                        max={10}
+                        responsive
+                        device={device}
+                        value={footerBorder}
+                        label={__('Border')}
+                        unit={['px', 'em', '%']}
+                        onChange={(value) => setAttributes({ footerBorder: value })}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
+                      <Color
+                        label={__('Border Color')}
+                        value={footerBorderColor}
+                        onChange={(value) => setAttributes({ footerBorderColor: value })}
+                      />
+                      <Typography
+                        label={__('Typography')}
+                        value={footerTypo}
+                        onChange={(value) => setAttributes({ footerTypo: value })}
+                        disableLineHeight
+                        device={device}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
+                    </Fragment>
+                  )
+                }
+
+              </PanelBody>
+
             </InspectorTab>
             <InspectorTab key={'advance'}>
               {animationSettings(uniqueId, animation, setAttributes)}
@@ -1590,6 +1627,10 @@ class Edit extends Component {
           </InspectorTabs>
         </InspectorControls>
 
+        {/* <BlockControls
+          state={this.state}
+          attributes={this.props.attributes}
+        /> */}
         <BlockControls>
           {cellType === 'list' && (
             <Fragment>

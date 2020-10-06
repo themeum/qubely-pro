@@ -209,7 +209,7 @@ class Save extends Component {
                     <RichText.Content
                         key={columnIndex}
                         scope={Tag === 'th' ? scope : undefined}
-                        value={content ? content : __('add content')}
+                        value={content}
                         className={classNames}
                     />
                 )

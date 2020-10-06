@@ -112,7 +112,7 @@ const Image = (props) => {
                 minWidth={10}
                 maxWidth={maxWidth - 20}
                 minHeight={10}
-                // lockAspectRatio
+                lockAspectRatio
                 enable={{
                     top: false,
                     right: imageAlignment[device] === 'right' ? false : true,

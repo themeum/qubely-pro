@@ -27,6 +27,23 @@ const attributes = {
         type: 'boolean',
         default: false
     },
+    headerBg: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table thead' }
+        ]
+    },
+    headerTextColor: {
+        type: 'string',
+        default: '#000',
+        style: [
+            {
+                selector: '{{QUBELY}} .qubely-block-table thead tr th{color: {{headerTextColor}} !important;}'
+            }
+        ]
+    },
     headerBorder: {
         type: 'object',
         default: {
@@ -37,7 +54,7 @@ const attributes = {
     },
     headerBorderColor: {
         type: 'string',
-        default: '#000',
+        default: '',
         style: [
             {
                 selector: '{{QUBELY}} .qubely-block-table thead {border-bottom-color: {{headerBorderColor}} !important;}'
@@ -56,6 +73,23 @@ const attributes = {
         type: 'boolean',
         default: false
     },
+    footerBg: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table tfoot' }
+        ]
+    },
+    footerTextColor: {
+        type: 'string',
+        default: '#000',
+        style: [
+            {
+                selector: '{{QUBELY}} .qubely-block-table tfoot td{color: {{footerTextColor}} !important;}'
+            }
+        ]
+    },
     footerBorder: {
         type: 'object',
         default: {
@@ -66,7 +100,7 @@ const attributes = {
     },
     footerBorderColor: {
         type: 'string',
-        default: '#000',
+        default: '',
         style: [
             {
                 selector: '{{QUBELY}} .qubely-block-table tfoot {border-top-color: {{footerBorderColor}} !important;}'
