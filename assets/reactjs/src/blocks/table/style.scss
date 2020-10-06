@@ -50,7 +50,7 @@
       border: 1px inset #ddd;
       &.is-qubely-active {
         border: 1px solid #2184f9;
-        background-color: #D2E7FF;
+        background-color: #d2e7ff;
       }
     }
 
@@ -59,8 +59,8 @@
         margin: 0;
         padding: 0;
       }
-      &.cell-placeholder{
-        opacity: .62;
+      &.cell-placeholder {
+        opacity: 0.62;
       }
     }
   }
@@ -76,6 +76,15 @@
   .table-cell-image-resizer,
   .qubely-image {
     display: inline-block;
+  }
+  .components-placeholder.components-placeholder {
+    min-height: 100px;
+    .components-placeholder__fieldset {
+      flex-direction: row;
+      .components-button.is-tertiary {
+        margin-left: 5%;
+      }
+    }
   }
 }
 
@@ -315,11 +324,10 @@
   }
 }
 
-
- .qubely-block-table .qubely-table-cell-edit:last-child .qubely-tc-type-changer-wrap .qubely-tc-type-changer {
-   left: auto;
-   right: 0;
- }
+.qubely-block-table .qubely-table-cell-edit:last-child .qubely-tc-type-changer-wrap .qubely-tc-type-changer {
+  left: auto;
+  right: 0;
+}
 
 .table-ratings {
   cursor: pointer;

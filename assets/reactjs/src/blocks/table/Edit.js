@@ -113,7 +113,7 @@ class Edit extends Component {
     * Alert if clicked on outside of element
     */
   handleClickOutside(event) {
-    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+    if (this.wrapperRef && this.wrapperRef.current && !this.wrapperRef.current.contains(event.target)) {
       this.setState({ cellLocation: null })
     }
   }
@@ -446,6 +446,8 @@ class Edit extends Component {
         buttonIconName,
         buttonIconPosition,
         buttonTag,
+        imageCommonSize,
+        imageCustomSize,
         enableListIcons,
         iconColor,
         iconPosition,
@@ -494,7 +496,8 @@ class Edit extends Component {
             device={this.state.device}
             imageAlignment={imageAlignment}
             imageSize={imageSize}
-            imageCommonSize={this.props.attributes.imageSize}
+            imageCommonSize={imageCommonSize}
+            imageCustomSize={imageCustomSize}
             isSelected={isSelected}
             isSelectedCell={isSelectedCell}
             image={image}
@@ -883,8 +886,8 @@ class Edit extends Component {
       ordered: false,
       image: {},
       imageSize: {
-        width: this.props.a,
-        height: 50,
+        width: undefined,
+        height: undefined,
       },
       iconName: undefined,
       listItems: '<li>one </li><li>two </li>'
@@ -927,9 +930,9 @@ class Edit extends Component {
         footerBorder,
         footerTypo,
 
-        //icon
+        //image
         imageAlignment,
-        imageSize,
+        imageCommonSize,
         imageCustomSize,
         imagePadding,
         imageRadius,
@@ -967,6 +970,8 @@ class Edit extends Component {
       }
     } = this.props;
 
+    console.log('body : ', body);
+    
     const TableContent = this.renderTableContent;
     const Row = this.renderCellGenerator;
 
@@ -1175,17 +1180,17 @@ class Edit extends Component {
                       device={device}
                       onDeviceChange={value => this.setState({ device: value })}
                     />
-                // {/* <Range
-                //   min={1}
-                //   max={10}
-                //   responsive
-                //   device={device}
-                //   value={headerBorder}
-                //   label={__('Size')}
-                //   unit={['px', 'em', '%']}
-                //   onChange={(value) => setAttributes({ headerBorder: value })}
-                //   onDeviceChange={value => this.setState({ device: value })}
-                // /> */}
+                    // {/* <Range
+                    //   min={1}
+                    //   max={10}
+                    //   responsive
+                    //   device={device}
+                    //   value={headerBorder}
+                    //   label={__('Size')}
+                    //   unit={['px', 'em', '%']}
+                    //   onChange={(value) => setAttributes({ headerBorder: value })}
+                    //   onDeviceChange={value => this.setState({ device: value })}
+                    // /> */}
                   )
                 }
 
@@ -1206,17 +1211,17 @@ class Edit extends Component {
                       device={device}
                       onDeviceChange={value => this.setState({ device: value })}
                     />
-                  // {/* <Range
-                  //   min={1}
-                  //   max={10}
-                  //   responsive
-                  //   device={device}
-                  //   value={footerBorder}
-                  //   label={__('Size')}
-                  //   unit={['px', 'em', '%']}
-                  //   onChange={(value) => setAttributes({ footerBorder: value })}
-                  //   onDeviceChange={value => this.setState({ device: value })}
-                  // /> */}
+                    // {/* <Range
+                    //   min={1}
+                    //   max={10}
+                    //   responsive
+                    //   device={device}
+                    //   value={footerBorder}
+                    //   label={__('Size')}
+                    //   unit={['px', 'em', '%']}
+                    //   onChange={(value) => setAttributes({ footerBorder: value })}
+                    //   onDeviceChange={value => this.setState({ device: value })}
+                    // /> */}
                   )
                 }
 
@@ -1249,41 +1254,41 @@ class Edit extends Component {
                         title: 'Custom',
                       },
                     ]}
-                    value={imageSize}
+                    value={imageCommonSize}
                     onChange={(value) =>
                       setAttributes({
-                        imageSize: value,
+                        imageCommonSize: value,
                         recreateStyles: !recreateStyles,
                       })
                     }
                   />
-                  {/* {imageSize == 'custom' &&
-                                    <Fragment>
-                                        <Range
-                                            min={10}
-                                            max={100}
-                                            responsive
-                                            device={device}
-                                            value={imageCustomSize}
-                                            label={__('Size')}
-                                            unit={['px', 'em', '%']}
-                                            onChange={(value) => setAttributes({ imageCustomSize: value, recreateStyles: !recreateStyles })}
-                                            onDeviceChange={value => this.setState({ device: value })}
-                                        />
-                                        <Range
-                                            min={10}
-                                            max={100}
-                                            responsive
-                                            device={device}
-                                            value={imageCustomHeight}
-                                            label={__('Size')}
-                                            unit={['px', 'em', '%']}
-                                            onChange={(value) => setAttributes({ imageCustomHeight: value, recreateStyles: !recreateStyles })}
-                                            onDeviceChange={value => this.setState({ device: value })}
-                                        />
-                                    </Fragment>
+                  {imageCommonSize == 'custom' &&
+                    <Fragment>
+                      <Range
+                        min={10}
+                        max={200}
+                        responsive
+                        device={device}
+                        value={imageCustomSize}
+                        label={__('Size')}
+                        unit={['px', 'em', '%']}
+                        onChange={(value) => setAttributes({ imageCustomSize: value, recreateStyles: !recreateStyles })}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
+                      {/* <Range
+                        min={10}
+                        max={100}
+                        responsive
+                        device={device}
+                        value={imageCustomHeight}
+                        label={__('Size')}
+                        unit={['px', 'em', '%']}
+                        onChange={(value) => setAttributes({ imageCustomHeight: value, recreateStyles: !recreateStyles })}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      /> */}
+                    </Fragment>
 
-                                } */}
+                  }
 
                   <Alignment
                     responsive

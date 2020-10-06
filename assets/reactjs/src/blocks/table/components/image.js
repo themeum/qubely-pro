@@ -18,7 +18,6 @@ const Image = (props) => {
             width,
             height,
         },
-        imageCommonSize,
         image,
         classes,
         onChange,
@@ -28,7 +27,9 @@ const Image = (props) => {
         noticeOperations,
         onResize,
         device,
-        imageAlignment
+        imageAlignment,
+        imageCommonSize,
+        imageCustomSize,
     } = props;
 
     const classNames = classnames(
@@ -141,11 +142,11 @@ const Image = (props) => {
                         allowedTypes={['image']}
                         onError={() => onUploadError()}
                         labels={{
-                            title: __('Image type cell'),
+                            title: __('Image cell'),
                             instructions: __('Drag images, upload new ones or select files from your library.'),
                         }}
                         onSelect={media => onSelectImage(media)}
-                        onSelectURL={newUrl => onSelectURL(newUrl)}
+                        // onSelectURL={newUrl => onSelectURL(newUrl)}
                         disableMediaButtons={image.url}
                         value={{ id: image.id, src: image.src }}
                     />
@@ -161,6 +162,7 @@ const ImageSave = (props) => {
             height,
         },
         imageCommonSize,
+        imageCustomSize,
         image,
         classes,
     } = props;

@@ -78,7 +78,7 @@ class Save extends Component {
                 placeholder = __('Footer label');
             }
 
-            return (    
+            return (
                 <Tag className={className} >
                     {
                         this.renderCellContent({
@@ -151,7 +151,9 @@ class Save extends Component {
                 iconColor,
                 iconPosition,
                 listIcon,
-                imageAlignment
+                imageAlignment,
+                imageCommonSize,
+                imageCustomSize,
             }
         } = this.props;
         const classNames = classnames(
@@ -190,10 +192,11 @@ class Save extends Component {
             case 'image':
                 return (
                     <Image
-                        imageAlignment={imageAlignment}
-                        imageSize={imageSize}
                         image={image}
-                        imageCommonSize={this.props.attributes.imageSize}
+                        imageSize={imageSize}
+                        imageAlignment={imageAlignment}
+                        imageCommonSize={imageCommonSize}
+                        imageCustomSize={imageCustomSize}
                     />)
             case 'rating':
                 return (

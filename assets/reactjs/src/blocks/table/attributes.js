@@ -236,7 +236,7 @@ const attributes = {
             { selector: '{{QUBELY}} .image-cell.image-wrapper {text-align: {{imageAlignment}};}' }
         ]
     },
-    imageSize: {
+    imageCommonSize: {
         type: 'string',
         default: '60px',
         style: [

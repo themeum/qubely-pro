@@ -9,9 +9,9 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType('qubely/table', {
     title: __('Table'),
-    description: __('Organize/focus data with Qubely table blocks.'),
+    description: __('Organize/focus data with Qubely table Builder.'),
     category: 'qubely',
-    icon: <img src={qubely_admin.plugin + 'assets/img/blocks/block-button.svg'} alt={__('Button Block')} />,
+    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-table.svg'} alt={__('Table Builder')} />,
     supports: {
         align: ['center', 'wide', 'full'],
     },
