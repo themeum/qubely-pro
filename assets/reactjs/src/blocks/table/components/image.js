@@ -89,11 +89,15 @@ const Image = (props) => {
     );
 
     const renderImage = () => {
-        // let maxWidth = 100, maxHeight = 100;
-        // if (document.getElementsByClassName('is-qubely-active')[0]) {
-        //     maxWidth = document.getElementsByClassName('is-qubely-active')[0].clientWidth;
-        //     maxHeight = document.getElementsByClassName('is-qubely-active')[0].clientHeight
-        // }
+        let maxWidth = 100, maxHeight = 100;
+        console.log(document.getElementsByClassName('is-qubely-active'));
+        if (document.getElementsByClassName('is-qubely-active')[0]) {
+            maxWidth = document.getElementsByClassName('is-qubely-active')[0].clientWidth;
+            maxHeight = document.getElementsByClassName('is-qubely-active')[0].clientHeight;
+            console.log('maxWidth : ',maxWidth);
+            console.log('maxHeight : ',maxHeight);
+        }
+
         return (
             <ResizableBox
                 className="table-cell-image-resizer"

@@ -913,7 +913,6 @@ class Edit extends Component {
         tableMaxWdith,
         fixedWithCells,
         collapsableBorder,
-        tableRadius,
 
         //cell
         cellBg,
@@ -925,9 +924,11 @@ class Edit extends Component {
 
         //Header
         headerBorder,
+        headerBorderColor,
         headerTypo,
         //Footer
         footerBorder,
+        footerBorderColor,
         footerTypo,
 
         //image
@@ -970,8 +971,8 @@ class Edit extends Component {
       }
     } = this.props;
 
-    console.log('body : ', body);
-    
+    // console.log('body : ', body);
+
     const TableContent = this.renderTableContent;
     const Row = this.renderCellGenerator;
 
@@ -1074,22 +1075,8 @@ class Edit extends Component {
                     setAttributes({ collapsableBorder: nextValue })
                   }
                 />
-                <BorderRadius
-                  min={0}
-                  max={100}
-                  responsive
-                  device={device}
-                  value={tableRadius}
-                  label={__('Radius')}
-                  unit={['px', 'em', '%']}
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                  onChange={(value) =>
-                    setAttributes({ tableRadius: value })
-                  }
-                />
               </PanelBody>
+
               <PanelBody title={__('Cell Settings')} initialOpen={false}>
                 <ColorAdvanced
                   label={__('Background')}
@@ -1172,25 +1159,32 @@ class Edit extends Component {
                 />
                 {
                   tableHeader && (
-                    <Typography
-                      label={__('Typography')}
-                      value={headerTypo}
-                      onChange={(value) => setAttributes({ headerTypo: value })}
-                      disableLineHeight
-                      device={device}
-                      onDeviceChange={value => this.setState({ device: value })}
-                    />
-                    // {/* <Range
-                    //   min={1}
-                    //   max={10}
-                    //   responsive
-                    //   device={device}
-                    //   value={headerBorder}
-                    //   label={__('Size')}
-                    //   unit={['px', 'em', '%']}
-                    //   onChange={(value) => setAttributes({ headerBorder: value })}
-                    //   onDeviceChange={value => this.setState({ device: value })}
-                    // /> */}
+                    <Fragment>
+                      <Range
+                        min={1}
+                        max={10}
+                        responsive
+                        device={device}
+                        value={headerBorder}
+                        label={__('Border')}
+                        unit={['px', 'em', '%']}
+                        onChange={(value) => setAttributes({ headerBorder: value })}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
+                      <Color
+                        label={__('Border Color')}
+                        value={headerBorderColor}
+                        onChange={(value) => setAttributes({ headerBorderColor: value })}
+                      />
+                      <Typography
+                        label={__('Typography')}
+                        value={headerTypo}
+                        disableLineHeight
+                        device={device}
+                        onChange={(value) => setAttributes({ headerTypo: value })}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
+                    </Fragment>
                   )
                 }
 
@@ -1203,25 +1197,32 @@ class Edit extends Component {
                 />
                 {
                   tableFooter && (
-                    <Typography
-                      label={__('Typography')}
-                      value={footerTypo}
-                      onChange={(value) => setAttributes({ footerTypo: value })}
-                      disableLineHeight
-                      device={device}
-                      onDeviceChange={value => this.setState({ device: value })}
-                    />
-                    // {/* <Range
-                    //   min={1}
-                    //   max={10}
-                    //   responsive
-                    //   device={device}
-                    //   value={footerBorder}
-                    //   label={__('Size')}
-                    //   unit={['px', 'em', '%']}
-                    //   onChange={(value) => setAttributes({ footerBorder: value })}
-                    //   onDeviceChange={value => this.setState({ device: value })}
-                    // /> */}
+                    <Fragment>
+                      <Range
+                        min={1}
+                        max={10}
+                        responsive
+                        device={device}
+                        value={footerBorder}
+                        label={__('Border')}
+                        unit={['px', 'em', '%']}
+                        onChange={(value) => setAttributes({ footerBorder: value })}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
+                      <Color
+                        label={__('Border Color')}
+                        value={footerBorderColor}
+                        onChange={(value) => setAttributes({ footerBorderColor: value })}
+                      />
+                      <Typography
+                        label={__('Typography')}
+                        value={footerTypo}
+                        onChange={(value) => setAttributes({ footerTypo: value })}
+                        disableLineHeight
+                        device={device}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
+                    </Fragment>
                   )
                 }
 

@@ -32,7 +32,16 @@ const attributes = {
         default: {
         },
         style: [
-            { selector: '{{QUBELY}} .qubely-block-table thead' }
+            { selector: '{{QUBELY}} .qubely-block-table thead {border-bottom: {{headerBorder}};border-bottom-style: solid;}' }
+        ]
+    },
+    headerBorderColor: {
+        type: 'string',
+        default: '#000',
+        style: [
+            {
+                selector: '{{QUBELY}} .qubely-block-table thead {border-bottom-color: {{headerBorderColor}} !important;}'
+            }
         ]
     },
     headerTypo: {
@@ -52,7 +61,16 @@ const attributes = {
         default: {
         },
         style: [
-            { selector: '{{QUBELY}} .qubely-block-table tfoot' }
+            { selector: '{{QUBELY}} .qubely-block-table tfoot{border-top: {{footerBorder}};border-top-style: solid;}' }
+        ]
+    },
+    footerBorderColor: {
+        type: 'string',
+        default: '#000',
+        style: [
+            {
+                selector: '{{QUBELY}} .qubely-block-table tfoot {border-top-color: {{footerBorderColor}} !important;}'
+            }
         ]
     },
     footerTypo: {
@@ -78,14 +96,6 @@ const attributes = {
     collapsableBorder: {
         type: 'boolean',
         default: true
-    },
-    tableRadius: {
-        type: 'object',
-        default: {
-        },
-        style: [
-            { selector: '{{QUBELY}} .qubely-block-table' }
-        ]
     },
     cellBg: {
         type: 'object',
