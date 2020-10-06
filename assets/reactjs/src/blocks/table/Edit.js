@@ -1245,9 +1245,9 @@ class Edit extends Component {
                   <RadioAdvanced
                     label={__('Size')}
                     options={[
-                      { label: 'S', value: '20px', title: 'Small' },
-                      { label: 'M', value: '40px', title: 'Medium' },
-                      { label: 'L', value: '60px', title: 'Large' },
+                      { label: 'S', value: '60px', title: 'Small' },
+                      { label: 'M', value: '100px', title: 'Medium' },
+                      { label: 'L', value: '150px', title: 'Large' },
                       {
                         icon: 'fas fa-cog',
                         value: 'custom',

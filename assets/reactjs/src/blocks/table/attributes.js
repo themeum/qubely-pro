@@ -238,7 +238,7 @@ const attributes = {
     },
     imageCommonSize: {
         type: 'string',
-        default: '60px',
+        default: '100px',
         style: [
             {
                 condition: [{ key: 'imageSize', relation: '!=', value: 'custom' }],
@@ -249,7 +249,7 @@ const attributes = {
     imageCustomSize: {
         type: 'object',
         default: {
-            md: 64,
+            md: 100,
             unit: 'px'
         },
         // style: [

@@ -87,6 +87,7 @@ const Image = (props) => {
             style={{ height: '100%', width: '100%' }}
         />
     );
+
     const renderImage = () => {
         // let maxWidth = 100, maxHeight = 100;
         // if (document.getElementsByClassName('is-qubely-active')[0]) {
@@ -96,7 +97,16 @@ const Image = (props) => {
         return (
             <ResizableBox
                 className="table-cell-image-resizer"
-                size={{ width, height }}
+                size={
+                    (typeof width !== 'undefined' ?
+                        {
+                            width,
+                            height
+                        } : {
+                            width: parseInt(imageCommonSize.replace('px', '')),
+                            // height: 'auto'
+                        })
+                }
                 showHandle={isSelected && isSelectedCell}
                 minWidth={10}
                 // maxWidth={maxWidth}
@@ -111,15 +121,22 @@ const Image = (props) => {
                 }}
                 // onResizeStart={onResizeStart}
                 onResizeStop={(event, direction, elt, delta) => {
-                    // onResizeStop();
-                    console.log('value : ', {
-                        width: parseInt(width + delta.width, 10),
-                        height: parseInt(height + delta.height, 10),
-                    });
-                    onResize({
-                        width: parseInt(width + delta.width, 10),
-                        height: parseInt(height + delta.height, 10),
-                    });
+
+                    let tempHeight = parseInt(elt.style.height.replace('px', ''));
+                    console.log('tempHeight : ', tempHeight);
+                    console.log('width : ', width);
+                    if (typeof width !== 'undefined' && width !== null) {
+                        onResize({
+                            width: parseInt(width + delta.width, 10),
+                            height: tempHeight,
+                        });
+                    } else {
+                        let tempWidth = parseInt(imageCommonSize.replace('px', ''));
+                        onResize({
+                            width: parseInt(tempWidth + delta.width, 10),
+                            height: 'auto',
+                        });
+                    }
                 }}
             >
                 {img}
@@ -171,19 +188,29 @@ const ImageSave = (props) => {
         'image-cell',
         'image-wrapper',
         classes
-    )
+    );
 
     let validImage = false;
     if (typeof image.url !== 'undefined') {
         validImage = true;
     }
 
+    let imageSize = {
+        width: imageCommonSize,
+        height: 'auto',
+    };
+    if (typeof width !== 'undefined' && width !== 'null') {
+        imageSize = {
+            height: `${height}px`,
+            width: `${width}px`
+        };
+    }
     let img = (
         <img
             className="qubely-image"
             src={image.url}
             alt={'image-type-cell'}
-            style={{ height: `${height}px`, width: `${width}px` }}
+            style={imageSize}
         />
     );
 
