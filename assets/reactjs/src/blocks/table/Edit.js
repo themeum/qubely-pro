@@ -639,6 +639,7 @@ class Edit extends Component {
                 {
                   AVAILABLE_CELL_TYPES.map(({ text, icon, type }) => (
                     <button
+                      className={type === this.state.currentCellType ? 'active' : ''}
                       onClick={() => {
                         this.setState((prevState) => {
                           return { showCellTypeChange: !prevState.showCellTypeChange }
@@ -1462,7 +1463,7 @@ class Edit extends Component {
                   {ratingsSize == 'custom' && (
                     <Range
                       min={10}
-                      max={100}
+                      max={50}
                       responsive
                       device={device}
                       value={ratingsCustomSize}

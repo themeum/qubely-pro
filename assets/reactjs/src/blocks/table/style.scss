@@ -48,7 +48,7 @@
     &.border-collapse-true table {
       border-collapse: collapse;
     }
-    &.border-collapse-false table{
+    &.border-collapse-false table {
       border-collapse: inherit;
     }
   }
@@ -269,7 +269,7 @@
   padding: 0px;
   .qubely-tc-type-changer-wrap {
     position: absolute;
-    top: 20%;
+    top: 10px;
     transform: translateY(-50%);
     right: 5px;
     z-index: 2;
@@ -323,10 +323,18 @@
           font-size: 16px;
           line-height: 48px;
         }
-        &:hover {
+        &.active {
           background: #d2e7ff;
           border-color: #a9d0ff;
           color: #2184f9;
+        }
+        &:hover {
+          border-color: #a9d0ff;
+          -webkit-box-shadow: 0 5px 5px -3px rgba(119, 208, 255,  0.2), 0 8px 10px 1px rgba(119, 208, 255,  0.14),
+          0 3px 14px 2px rgba(119, 208, 255,  0.12);
+          box-shadow: 0 5px 5px -3px rgba(119, 208, 255,  0.2), 0 8px 10px 1px rgba(119, 208, 255,  0.14),
+          0 3px 14px 2px rgba(119, 208, 255,  0.12);
+      
         }
       }
     }
