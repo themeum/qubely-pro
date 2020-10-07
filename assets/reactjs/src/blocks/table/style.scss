@@ -44,6 +44,14 @@
       background: rgba(0, 0, 0, 0.1);
     }
   }
+  .qubely-table-figure {
+    &.border-collapse-true table {
+      border-collapse: collapse;
+    }
+    &.border-collapse-false table{
+      border-collapse: inherit;
+    }
+  }
   table {
     td,
     th {

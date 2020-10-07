@@ -222,7 +222,7 @@ class Save extends Component {
     renderTableContent = () => {
         const Section = this.renderSections;
         return (
-            <figure className={'qubely-table-figure'}>
+            <figure className={`qubely-table-figure border-collapse-${this.props.attributes.collapsableBorder}`}>
                 <table style={{ width: '100%' }}>
                     {
                         this.props.attributes.tableHeader && (

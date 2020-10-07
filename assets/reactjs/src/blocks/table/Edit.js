@@ -690,7 +690,7 @@ class Edit extends Component {
     }
 
     return (
-      <figure className={'qubely-table-figure'}>
+      <figure className={`qubely-table-figure border-collapse-${this.props.attributes.collapsableBorder}`}>
         <table style={{ width: '100%' }} ref={this.wrapperRef}>
           {
             this.props.attributes.tableHeader && (
