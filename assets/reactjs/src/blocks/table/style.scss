@@ -76,6 +76,9 @@
   .table-cell-image-resizer,
   .qubely-image {
     display: inline-block;
+    -webkit-transition: ease-in 300ms;
+    transition: ease-in 300ms;
+    object-fit: cover;
   }
   .components-placeholder.components-placeholder {
     min-height: 100px;
