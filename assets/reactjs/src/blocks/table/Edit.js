@@ -946,6 +946,8 @@ class Edit extends Component {
         outerBoder,
         horizontalBorder,
         verticalBorder,
+        tableBorderRadius,
+        tableBoxShadow,
 
         //cell
         cellBg,
@@ -1051,7 +1053,7 @@ class Edit extends Component {
         }
       });
     }
-
+    // console.log('tableBorderRadius : ', tableBorderRadius);
     return (
       <Fragment>
         <InspectorControls key={'inspector'}>
@@ -1134,14 +1136,26 @@ class Edit extends Component {
                   value={cellBorder}
                   device={device}
                   label={__('Border')}
-                  onChange={(val) => setAttributes({ cellBorder: val })}
                   onDeviceChange={(value) =>
                     this.setState({ device: value })
                   }
+                  disableCustom
+                  onChange={(val) => setAttributes({ cellBorder: val, tableBoxShadow: { ...tableBoxShadow, border: val }, recreateStyles: !recreateStyles, })}
                 />
                 {
                   cellBorder.openBorder === 1 && (
                     <Fragment>
+                      <Range
+                        min={0}
+                        max={200}
+                        responsive
+                        device={device}
+                        value={tableBorderRadius}
+                        label={__('Border Radius')}
+                        unit={['px', 'em', '%']}
+                        onChange={(value) => setAttributes({ tableBorderRadius: value })}
+                        onDeviceChange={value => this.setState({ device: value })}
+                      />
                       <Toggle
                         label={__('Horizontal border')}
                         value={horizontalBorder}
@@ -1163,6 +1177,7 @@ class Edit extends Component {
                           setAttributes({ outerBoder: nextValue })
                         }
                       />
+
                     </Fragment>
                   )
                 }

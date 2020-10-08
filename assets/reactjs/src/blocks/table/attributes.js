@@ -91,6 +91,32 @@ const attributes = {
         type: 'boolean',
         default: false
     },
+    tableBoxShadow: {
+        type: 'object',
+        default: {
+            tableBorder: true,
+            border: {
+                global: {
+                    md: "1",
+                },
+                openBorder: 1,
+                type: "solid",
+                unit: "px",
+                widthType: "global",
+            }
+        },
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table table' }
+        ]
+    },
+    tableBorderRadius: {
+        type: 'object',
+        default: {},
+        style: [
+            { selector: '{{QUBELY}} .qubely-block-table table{border-radius:{{tableBorderRadius}};}' }
+        ]
+    },
+
     footerBg: {
         type: 'object',
         default: {
@@ -210,6 +236,7 @@ const attributes = {
             global: {
                 md: "1",
             },
+            color:'#E5E7EA',
             openBorder: 1,
             type: "solid",
             unit: "px",
