@@ -307,11 +307,15 @@ class Edit extends Component {
    */
   renderSections = ({ name, rows }) => {
     const Tag = `t${name}`;
+    const classNames = classnames(
+      { 'head-row': name === 'head' },
+      { 'foot-row': name === 'foot' },
+    )
     return (
-      <Tag>
+      <Tag >
         {
           rows.map((cells, rowIndex) => (
-            <tr key={rowIndex}>{this.renderData(cells, name, rowIndex)}</tr>
+            <tr key={rowIndex} className={classNames}>{this.renderData(cells, name, rowIndex)}</tr>
           ))
         }
       </Tag>
@@ -685,23 +689,39 @@ class Edit extends Component {
   renderTableContent = () => {
     const Section = this.renderSections;
     const Row = this.renderCellGenerator;
+    const {
+      body,
+      tableHeader,
+      head,
+      tableFooter,
+      foot,
+      cellBorder
+    } = this.props.attributes;
 
-    if (!this.props.attributes.body.length) {
+    if (!body.length) {
       return <Row cell={8} row={8} />
     }
+    const tableClasses = classnames(
+      'qubely-table',
+      { 'no-border': !cellBorder.openBorder }
+    )
 
     return (
-      <figure className={`qubely-table-figure border-collapse-${this.props.attributes.collapsableBorder}`}>
-        <table style={{ width: '100%' }} ref={this.wrapperRef}>
+      <figure className={'qubely-table-figure'}>
+        <table
+          style={{ width: '100%' }}
+          ref={this.wrapperRef}
+          className={tableClasses}
+        >
           {
-            this.props.attributes.tableHeader && (
-              <Section name='head' rows={this.props.attributes.head} />
+            tableHeader && (
+              <Section name='head' rows={head} />
             )
           }
-          <Section name='body' rows={this.props.attributes.body} />
+          <Section name='body' rows={body} />
           {
-            this.props.attributes.tableFooter && (
-              <Section name='foot' rows={this.props.attributes.foot} />
+            tableFooter && (
+              <Section name='foot' rows={foot} />
             )
           }
         </table>
@@ -910,6 +930,7 @@ class Edit extends Component {
         uniqueId,
         className,
         layout,
+        stripeColor,
         recreateStyles,
         tableHeader,
         tableFooter,
@@ -1050,6 +1071,17 @@ class Edit extends Component {
                   value={layout}
                   onChange={(val) => setAttributes({ layout: val })}
                 />
+                {
+                  layout !== 'bordered' && (
+                    <Color
+                      label={__('Stripe Color')}
+                      value={stripeColor}
+                      onChange={(value) =>
+                        setAttributes({ stripeColor: value })
+                      }
+                    />
+                  )
+                }
               </PanelBody>
               <PanelBody title={__('Table Settings')} initialOpen={false}>
                 <Range
@@ -1074,13 +1106,6 @@ class Edit extends Component {
                     setAttributes({ fixedWithCells: newValue })
                   }
                 />
-                <Toggle
-                  label={__('Collapse border')}
-                  value={collapsableBorder}
-                  onChange={(nextValue) =>
-                    setAttributes({ collapsableBorder: nextValue })
-                  }
-                />
                 <ColorAdvanced
                   label={__('Background')}
                   value={cellBg}
@@ -1093,6 +1118,23 @@ class Edit extends Component {
                   value={cellTextColor}
                   onChange={(value) =>
                     setAttributes({ cellTextColor: value })
+                  }
+                />
+                <Toggle
+                  label={__('Collapse border')}
+                  value={collapsableBorder}
+                  onChange={(nextValue) =>
+                    setAttributes({ collapsableBorder: nextValue })
+                  }
+                />
+                <Border
+                  responsive
+                  value={cellBorder}
+                  device={device}
+                  label={__('Border')}
+                  onChange={(val) => setAttributes({ cellBorder: val })}
+                  onDeviceChange={(value) =>
+                    this.setState({ device: value })
                   }
                 />
               </PanelBody>
@@ -1147,16 +1189,6 @@ class Edit extends Component {
                     </Tooltip>
                   </div>
                 </div>
-                <Border
-                  responsive
-                  value={cellBorder}
-                  device={device}
-                  label={__('Border')}
-                  onChange={(val) => setAttributes({ cellBorder: val })}
-                  onDeviceChange={(value) =>
-                    this.setState({ device: value })
-                  }
-                />
               </PanelBody>
 
               {

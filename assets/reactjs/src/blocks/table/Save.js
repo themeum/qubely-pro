@@ -22,11 +22,14 @@ class Save extends Component {
        */
     renderSections = ({ name, rows }) => {
         const Tag = `t${name}`;
+        const classNames = classnames(
+            { 'head-row': name === 'head' }
+        )
         return (
-            <Tag>
+            <Tag >
                 {
                     rows.map((cells, rowIndex) => (
-                        <tr key={rowIndex}>{this.renderData(cells, name, rowIndex)}</tr>
+                        <tr key={rowIndex} className={classNames}>{this.renderData(cells, name, rowIndex)}</tr>
                     ))
                 }
             </Tag>
@@ -220,19 +223,32 @@ class Save extends Component {
  * @returns {*}
  */
     renderTableContent = () => {
+        const {
+            body,
+            tableHeader,
+            head,
+            tableFooter,
+            foot,
+            cellBorder
+        } = this.props.attributes;
+
         const Section = this.renderSections;
+        const tableClasses = classnames(
+            'qubely-table',
+            { 'no-border': !cellBorder.openBorder }
+        )
         return (
-            <figure className={`qubely-table-figure border-collapse-${this.props.attributes.collapsableBorder}`}>
-                <table style={{ width: '100%' }}>
+            <figure className={'qubely-table-figure'}>
+                <table style={{ width: '100%' }} className={tableClasses}>
                     {
-                        this.props.attributes.tableHeader && (
-                            <Section name='head' rows={this.props.attributes.head} />
+                        tableHeader && (
+                            <Section name='head' rows={head} />
                         )
                     }
-                    <Section name='body' rows={this.props.attributes.body} />
+                    <Section name='body' rows={body} />
                     {
-                        this.props.attributes.tableFooter && (
-                            <Section name='foot' rows={this.props.attributes.foot} />
+                        tableFooter && (
+                            <Section name='foot' rows={foot} />
                         )
                     }
                 </table>

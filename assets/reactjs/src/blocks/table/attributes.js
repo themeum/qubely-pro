@@ -27,6 +27,24 @@ const attributes = {
         type: 'boolean',
         default: false
     },
+    stripeColor: {
+        type: 'string',
+        default: '#e8e8e8',
+        style: [
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 'row-stripe' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-table.row-stripe table tr:not(.head-row):nth-child(odd){background: {{stripeColor}};}'
+            },
+            {
+                condition: [
+                    { key: 'layout', relation: '==', value: 'column-stripe' }
+                ],
+                selector: '{{QUBELY}} .qubely-block-table.column-stripe tr td:nth-child(odd){background: {{stripeColor}};}'
+            }
+        ]
+    },
     headerBg: {
         type: 'object',
         default: {
@@ -151,7 +169,7 @@ const attributes = {
     cellPadding: {
         type: 'object',
         default: {
-            custom: { md: "10 0 10 15" },
+            custom: { md: "10 0 10 0" },
             openPadding: 1,
             paddingType: "custom",
             unit: "px",
@@ -181,6 +199,13 @@ const attributes = {
     cellBorder: {
         type: 'object',
         default: {
+            global: {
+                md: "1",
+            },
+            openBorder: 1,
+            type: "solid",
+            unit: "px",
+            widthType: "global",
         },
         style: [
             { selector: '{{QUBELY}} .qubely-block-table .qubely-block-table_cell-content' }
