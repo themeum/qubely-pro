@@ -695,7 +695,10 @@ class Edit extends Component {
       head,
       tableFooter,
       foot,
-      cellBorder
+      cellBorder,
+      outerBoder,
+      verticalBorder,
+      horizontalBorder
     } = this.props.attributes;
 
     if (!body.length) {
@@ -703,8 +706,11 @@ class Edit extends Component {
     }
     const tableClasses = classnames(
       'qubely-table',
-      { 'no-border': !cellBorder.openBorder }
-    )
+      { 'no-border': !cellBorder.openBorder },
+      { 'no-outer-border': !outerBoder },
+      { 'no-vertical-border': !verticalBorder },
+      { 'no-horizontal-border': !horizontalBorder },
+    );
 
     return (
       <figure className={'qubely-table-figure'}>
@@ -937,7 +943,9 @@ class Edit extends Component {
         body,
         tableMaxWdith,
         fixedWithCells,
-        collapsableBorder,
+        outerBoder,
+        horizontalBorder,
+        verticalBorder,
 
         //cell
         cellBg,
@@ -1120,13 +1128,7 @@ class Edit extends Component {
                     setAttributes({ cellTextColor: value })
                   }
                 />
-                <Toggle
-                  label={__('Collapse border')}
-                  value={collapsableBorder}
-                  onChange={(nextValue) =>
-                    setAttributes({ collapsableBorder: nextValue })
-                  }
-                />
+
                 <Border
                   responsive
                   value={cellBorder}
@@ -1137,6 +1139,33 @@ class Edit extends Component {
                     this.setState({ device: value })
                   }
                 />
+                {
+                  cellBorder.openBorder === 1 && (
+                    <Fragment>
+                      <Toggle
+                        label={__('Horizontal border')}
+                        value={horizontalBorder}
+                        onChange={(nextValue) =>
+                          setAttributes({ horizontalBorder: nextValue })
+                        }
+                      />
+                      <Toggle
+                        label={__('Vertical border')}
+                        value={verticalBorder}
+                        onChange={(nextValue) =>
+                          setAttributes({ verticalBorder: nextValue })
+                        }
+                      />
+                      <Toggle
+                        label={__('Outer border')}
+                        value={outerBoder}
+                        onChange={(nextValue) =>
+                          setAttributes({ outerBoder: nextValue })
+                        }
+                      />
+                    </Fragment>
+                  )
+                }
               </PanelBody>
 
               <PanelBody title={__('Cell Settings')} initialOpen={false}>

@@ -56,6 +56,47 @@
           border: none;
         }
       }
+      &.no-outer-border {
+        tr:first-child th {
+          border-top: none;
+        }
+        tr:first-child td {
+          border-top: none;
+        }
+
+        tr:last-child td {
+          border-bottom: none;
+        }
+
+        tr td:first-child {
+          border-left: none;
+        }
+
+        tr td:last-child {
+          border-right: none;
+        }
+        tr th:first-child {
+          border-left: none;
+        }
+
+        tr th:last-child {
+          border-right: none;
+        }
+      }
+      &.no-horizontal-border {
+        td,
+        th {
+          border-top: none !important;
+          border-bottom: none !important;
+        }
+      }
+      &.no-vertical-border {
+        td,
+        th {
+          border-left: none !important;
+          border-right: none !important;
+        }
+      }
     }
   }
   table {

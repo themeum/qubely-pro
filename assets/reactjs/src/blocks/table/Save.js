@@ -229,14 +229,21 @@ class Save extends Component {
             head,
             tableFooter,
             foot,
-            cellBorder
+            cellBorder,
+            outerBoder,
+            verticalBorder,
+            horizontalBorder
         } = this.props.attributes;
 
         const Section = this.renderSections;
         const tableClasses = classnames(
             'qubely-table',
-            { 'no-border': !cellBorder.openBorder }
-        )
+            { 'no-border': !cellBorder.openBorder },
+            { 'no-outer-border': !outerBoder },
+            { 'no-vertical-border': !verticalBorder },
+            { 'no-horizontal-border': !horizontalBorder },
+        );
+
         return (
             <figure className={'qubely-table-figure'}>
                 <table style={{ width: '100%' }} className={tableClasses}>

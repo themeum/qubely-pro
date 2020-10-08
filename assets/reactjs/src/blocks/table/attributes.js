@@ -145,7 +145,15 @@ const attributes = {
         type: 'boolean',
         default: true
     },
-    collapsableBorder: {
+    horizontalBorder: {
+        type: 'boolean',
+        default: true
+    },
+    verticalBorder: {
+        type: 'boolean',
+        default: true
+    },
+    outerBoder: {
         type: 'boolean',
         default: true
     },
