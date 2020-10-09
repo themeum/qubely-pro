@@ -106,14 +106,14 @@ const attributes = {
             }
         },
         style: [
-            { selector: '{{QUBELY}} .qubely-block-table table' }
+            { selector: '{{QUBELY}} .qubely-block-table table:not(.no-outer-border)' }
         ]
     },
     tableBorderRadius: {
         type: 'object',
         default: {},
         style: [
-            { selector: '{{QUBELY}} .qubely-block-table table{border-radius:{{tableBorderRadius}};}' }
+            { selector: '{{QUBELY}} .qubely-block-table table{border-radius:{{tableBorderRadius}}; overflow:hidden}' }
         ]
     },
 
