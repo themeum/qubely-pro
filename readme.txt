@@ -1,9 +1,10 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 == Changelog ==
 
-= 1.2.4 -  15 October, 2020 = 
-Update: Form Builder block - Removed unnecessary space in backend    
+= 1.2.4 -  16 October, 2020 = 
+New: Table Builder block 
+Update: Form Builder block - Removed unnecessary space in backend  
 
 
 = 1.2.3 -  15 September, 2020 = 
