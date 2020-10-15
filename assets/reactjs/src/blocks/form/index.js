@@ -98,10 +98,7 @@ registerBlockType('qubely/form', {
                 return (
                     <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
                         <div className={`qubely-block-form ${interactionClass} qubely-layout-${layout}`}>
-                            <form
-                                className={formClassName}
-                                {...(afterSubmitAction === 'mailchimp' && { 'data-mailchimp': JSON.stringify({ mcListId, mcFields: mcMappedFields }) })}
-                            >
+                            <form className={`qubely-form is-${inputSize}`}>
 
                                 <InnerBlocks.Content />
 
@@ -131,10 +128,10 @@ registerBlockType('qubely/form', {
                                     <input type="hidden" name="recaptcha-site-key" value={reCaptchaSiteKey} />
                                     <input type="hidden" name="recaptcha-secret-key" value={reCaptchaSecretKey} />
                                     <input type="hidden" name="email-receiver" value={_encrypt(emailReceiver)} />
-                                    <input type="hidden" name="email-headers" value={_encrypt(emailHeaders)} />
+                                    <input type="hidden" name="email-headers" value={_encrypt('Reply-To: {{email}}\nReply-name: {{first-name}} {{last-name}}\nCc: {{email}}\nBcc: admin@yourcompany.com')} />
                                     <input type="hidden" name="email-from" value={_encrypt('Your Name: admin@example.com')} />
-                                    <input type="hidden" name="email-subject" value={_encrypt(emailSubject)} />
-                                    <input type="hidden" name="email-body" value={_encrypt(emailBody)} />
+                                    <input type="hidden" name="email-subject" value={_encrypt('{{subject}} | {{email}} | {{site-name}}')} />
+                                    <input type="hidden" name="email-body" value={_encrypt('<p><strong>From:</strong> {{first-name}} {{last-name}}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>')} />
                                 </div>
 
                                 <div className="qubely-form-message"></div>

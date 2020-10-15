@@ -6,7 +6,6 @@ Stable tag: 1.2.4
 New: Table Builder block 
 Update: Form Builder block - Removed unnecessary space in backend  
 
-
 = 1.2.3 -  15 September, 2020 = 
 New: Form Builder block - Mailchimp intregation  
 Update: Disable 'Edit as html' option in parent blocks  
