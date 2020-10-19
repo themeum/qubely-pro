@@ -92,6 +92,7 @@ class Edit extends Component {
       showCellTypeChange: false,
       currentCellType: '',
     }
+    this.qubelyContextMenu = createRef();
     this.wrapperRef = createRef();
     this.tableBlockRef = createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -344,7 +345,9 @@ class Edit extends Component {
         ratings,
         image,
         ordered,
-        imageSize
+        imageSize,
+        buttonType,
+        customAlignment,
       },
       columnIndex
     ) => {
@@ -365,12 +368,12 @@ class Edit extends Component {
 
       const className = classnames(
         { 'is-qubely-active': isSelectedCell },
-        { [`has-text-align-${align}`]: align },
         'qubely-block-table_cell-content',
-        'qubely-table-cell-edit'
+        'qubely-table-cell-edit',
+        { [`align-${customAlignment}`]: customAlignment },
       );
 
-      let placeholder = 'add content';
+      let placeholder = 'Add Content';
       if (name === 'head') {
         placeholder = __('Header label');
       } else if (name === 'foot') {
@@ -398,7 +401,8 @@ class Edit extends Component {
               image,
               ordered,
               isSelectedCell,
-              imageSize
+              imageSize,
+              buttonType
             })
           }
           {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
@@ -438,7 +442,8 @@ class Edit extends Component {
     listItems,
     listCustomIcon,
     isSelectedCell,
-    imageSize
+    imageSize,
+    buttonType
   }) => {
     const {
       setAttributes,
@@ -459,16 +464,21 @@ class Edit extends Component {
         iconColor,
         iconPosition,
         listIcon,
-        imageAlignment
+        imageAlignment,
       }
     } = this.props;
+
+    let buttonLayout = buttonFillType;
+    if (typeof buttonType !== 'undefined') {
+      buttonLayout = buttonType;
+    }
 
     switch (type) {
       case 'button':
         return (
           <QubelyButtonEdit
             enableButton={enableButton}
-            buttonFillType={buttonFillType}
+            buttonFillType={buttonLayout}
             buttonSize={buttonSize}
             buttonText={content}
             buttonIconName={buttonIconName}
@@ -524,6 +534,7 @@ class Edit extends Component {
       default:
         return (
           <RichText
+          keepPlaceholderOnFocus
             key={columnIndex}
             scope={Tag === 'th' ? scope : undefined}
             value={content}
@@ -955,6 +966,7 @@ class Edit extends Component {
         cellPadding,
         cellAlignment,
         cellBorder,
+        cellTypography,
         cellVerticalPosition,
 
         //Header
@@ -970,7 +982,8 @@ class Edit extends Component {
         footerBorder,
         footerBorderColor,
         footerTypo,
-
+        //button
+        buttonFillType,
         //image
         imageAlignment,
         imageCommonSize,
@@ -1037,7 +1050,7 @@ class Edit extends Component {
     );
 
     let activeCellType = null;
-    if (activeCellLocation !== null) {
+    if (activeCellLocation !== null && body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex]) {
       activeCellType = body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex].type;
       if (currentCellType !== activeCellType) {
         this.setState({
@@ -1053,7 +1066,6 @@ class Edit extends Component {
         }
       });
     }
-    // console.log('tableBorderRadius : ', tableBorderRadius);
     return (
       <Fragment>
         <InspectorControls key={'inspector'}>
@@ -1184,7 +1196,13 @@ class Edit extends Component {
               </PanelBody>
 
               <PanelBody title={__('Cell Settings')} initialOpen={false}>
-
+                <Typography
+                  device={device}
+                  value={cellTypography}
+                  label={__('Typography')}
+                  onChange={(value) => setAttributes({ cellTypography: value })}
+                  onDeviceChange={value => this.setState({ device: value })}
+                />
                 <Padding
                   min={0}
                   max={100}
@@ -1818,9 +1836,58 @@ class Edit extends Component {
               }
             </Fragment>
           )}
+          {cellType === 'button' && (
+            <Toolbar
+              controls={[
+                {
+                  icon: <img src={`${window.qubely_admin.plugin + 'assets/img/blocks'}/button/fill_xs.svg`} alt={__('Fill')} />,
+                  title: __('Fill'),
+                  onClick: () => this.onChangeCell(activeCellLocation, 'fill', 'buttonType'),
 
+                  className: `qubely-action-change-listype`,
+                },
+                {
+                  icon: <img src={`${window.qubely_admin.plugin + 'assets/img/blocks'}/button/outline_xs.svg`} alt={__('Fill')} />,
+                  title: __('Outline'),
+                  onClick: () => this.onChangeCell(activeCellLocation, 'outline', 'buttonType')
+                  ,
+                  className: `qubely-action-change-listype`,
+                },
+              ]}
+            />
+          )}
+          {isSelected && (
+            <Toolbar
+              controls={[
+                {
+                  icon: 'editor-alignleft',
+                  title: __('Left'),
+                  onClick: () => this.onChangeCell(activeCellLocation, 'left', 'customAlignment'),
+                  className: `qubely-action-change-listype`,
+                },
+                {
+                  icon: 'editor-aligncenter',
+                  title: __('Center'),
+                  onClick: () => this.onChangeCell(activeCellLocation, 'center', 'customAlignment'),
+                  className: `qubely-action-change-listype`,
+                },
+                {
+                  icon: 'editor-alignright',
+                  title: __('Right'),
+                  onClick: () => this.onChangeCell(activeCellLocation, 'right', 'customAlignment'),
+                  className: `qubely-action-change-listype`,
+                },
+
+              ]}
+            />
+          )}
           <ToolbarGroup>
             <DropdownMenu
+              popoverProps={
+                {
+                  className: "qubely-table-editor"
+                }
+              }
               hasArrowIndicator
               icon={<span className={'fas fa-table'} />}
               label={__('Edit table')}
@@ -1838,42 +1905,6 @@ class Edit extends Component {
               {...this.props}
               prevState={this.state}
             />
-            {/* <Dropdown
-              position="bottom right"
-              renderToggle={({ isOpen, onToggle }) => (
-                <Tooltip text={__('Table Generator')}>
-                  <button
-                    type="button"
-                    className="components-button"
-                    onClick={onToggle}
-                    aria-expanded={isOpen}
-                  >
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path d="M20 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 2v3H5V5h15zm-5 14h-5v-9h5v9zM5 10h3v9H5v-9zm12 9v-9h3v9h-3z"></path>
-                    </svg>
-                    <span className="components-dropdown-menu__indicator"></span>
-                  </button>
-                </Tooltip>
-              )}
-              renderContent={() => (
-                <div className="qubely-toolber-popup">
-                  <Row
-                    cell={6}
-                    row={6}
-                    className={'qubely-tcg-toolbar'}
-                    reGenerate={true}
-                  />
-                </div>
-              )}
-            /> */}
           </ToolbarGroup>
         </BlockControls>
 
@@ -1890,8 +1921,20 @@ class Edit extends Component {
         )}
 
         <div className={wrapperClasses} ref={this.tableBlockRef}>
-          <div className={classes}>
+          <div className={classes} onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}>
             <TableContent />
+            <div
+              ref={this.qubelyContextMenu}
+              className={`qubely-context-menu-wraper`}
+            >
+              <ContextMenu
+                name={name}
+                clientId={clientId}
+                attributes={attributes}
+                setAttributes={setAttributes}
+                qubelyContextMenu={this.qubelyContextMenu.current}
+              />
+            </div>
           </div>
         </div>
       </Fragment>

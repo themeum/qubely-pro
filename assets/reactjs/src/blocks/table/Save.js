@@ -57,7 +57,9 @@ class Save extends Component {
                 ratings,
                 image,
                 ordered,
-                imageSize
+                imageSize,
+                buttonType,
+                customAlignment
             },
             columnIndex
         ) => {
@@ -69,9 +71,9 @@ class Save extends Component {
 
 
             const className = classnames(
-                { [`has-text-align-${align}`]: align },
                 'qubely-block-table_cell-content',
-                { ['cell-placeholder']: type === 'text' && (!content || typeof content == 'undefined') }
+                { ['cell-placeholder']: type === 'text' && (!content || typeof content == 'undefined') },
+                { [`align-${customAlignment}`]: customAlignment },
             );
 
             let placeholder = 'cell content';
@@ -98,7 +100,8 @@ class Save extends Component {
                             ratings,
                             image,
                             ordered,
-                            imageSize
+                            imageSize,
+                            buttonType,
                         })
                     }
                 </Tag>
@@ -135,7 +138,8 @@ class Save extends Component {
         ordered,
         listItems,
         listCustomIcon,
-        imageSize
+        imageSize,
+        buttonType
     }) => {
         const {
             setAttributes,
@@ -162,12 +166,15 @@ class Save extends Component {
         const classNames = classnames(
             'cell-text'
         );
-
+        let buttonLayout = buttonFillType;
+        if (typeof buttonType !== 'undefined') {
+          buttonLayout = buttonType;
+        }
         switch (type) {
             case 'button':
                 return (
                     <QubelyButtonSave
-                        buttonFillType={buttonFillType}
+                        buttonFillType={buttonLayout}
                         buttonSize={buttonSize}
                         buttonText={content}
                         buttonIconName={buttonIconName}

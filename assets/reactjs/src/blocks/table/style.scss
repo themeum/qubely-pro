@@ -117,6 +117,18 @@
       &.cell-placeholder {
         opacity: 0.62;
       }
+      &.align-left{
+        text-align: left;
+      }
+      &.align-center{
+        text-align: center;
+      }
+      &.align-right{
+        text-align: right;
+      }
+      >div{
+        display: inline-block;
+      }
     }
   }
   &.fixed-width {
@@ -439,4 +451,15 @@
     color: #fff;
     background: #555d66;
   }
+}
+
+.components-popover.components-dropdown__content.qubely-table-editor{
+  .components-dropdown-menu__menu{
+    button span{
+      &.fas{
+        margin-right: 7px;
+      }
+    }
+  }
+
 }
