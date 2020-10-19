@@ -178,7 +178,7 @@ class Edit extends Component {
         icon: <span className={'fas fa-table'} />,
         title: __('Merge Next Row'),
         isDisabled: !selectedCell || !body.length || (body.length && body[0].cells.length < 2),
-        onClick: this.onDeleteColumn.bind(this),
+        onClick: this.onMergeRow.bind(this),
       },
     ];
   };
@@ -317,7 +317,21 @@ class Edit extends Component {
     this.resetSelectedCell();
   }
 
+  /**
+   * Handle Merge Row
+   * @returns {Promise<void>}
+   */
+  async onMergeRow() {
+    const { setAttributes } = this.props;
+    const deleted = this.deleteRowForSpan();
+    setAttributes(deleted);
+    this.resetSelectedCell();
+  }
 
+  /**
+   * Add colSpan
+   * @returns updated attributes
+   */
   deleteColumnForSpan = () => {
     const {
       attributes,
@@ -336,13 +350,68 @@ class Edit extends Component {
     } = this.state.selectedCell;
 
     let temp = JSON.parse(JSON.stringify(attributes[sectionName]));
-
-    if (temp[rowIndex].cells[columnIndex].colSpan) {
-      temp[rowIndex].cells[columnIndex].colSpan = parseInt(temp[rowIndex].cells[columnIndex].colSpan) + 1
-    } else {
-      temp[rowIndex].cells[columnIndex].colSpan = 2;
+    let increment = 1;
+    if (typeof temp[rowIndex].cells[columnIndex + 1].colSpan !== 'undefined') {
+      increment = temp[rowIndex].cells[columnIndex + 1].colSpan;
     }
-    temp[rowIndex].cells.splice(columnIndex + 1, 1);
+
+    if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
+      temp[rowIndex].cells[columnIndex].colSpan += increment
+    } else {
+      temp[rowIndex].cells[columnIndex].colSpan = (increment + 1);
+    }
+
+    if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
+      let tempIndex = 1;
+      while (tempIndex <= temp[rowIndex].cells[columnIndex].rowSpan) {
+        temp[rowIndex + (tempIndex - 1)].cells.splice(columnIndex + 1, 1);
+        tempIndex++
+      }
+    } else {
+      temp[rowIndex].cells.splice(columnIndex + 1, 1);
+    }
+    setAttributes({ [sectionName]: temp, });
+  };
+  /**
+   * Add colSpan
+   * @returns updated attributes
+   */
+
+  deleteRowForSpan = () => {
+    const {
+      attributes,
+      setAttributes,
+      attributes: {
+        body,
+        head,
+        foot,
+      },
+    } = this.props;
+
+    const {
+      rowIndex,
+      sectionName,
+      columnIndex,
+    } = this.state.selectedCell;
+
+    let temp = JSON.parse(JSON.stringify(attributes[sectionName]));
+
+    let currentRowSpan = 1;
+    if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
+      currentRowSpan = temp[rowIndex].cells[columnIndex].rowSpan;
+    }
+    let increment = 1;
+    if (typeof temp[rowIndex + 1].cells[columnIndex].rowSpan !== 'undefined') {
+      increment = temp[rowIndex + 1].cells[columnIndex].rowSpan;
+    }
+    currentRowSpan += increment;
+    if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
+      temp[rowIndex].cells[columnIndex].rowSpan += increment
+    } else {
+      temp[rowIndex].cells[columnIndex].rowSpan = (increment + 1);
+    }
+
+    temp[currentRowSpan - 1].cells.splice(columnIndex, 1);
     setAttributes({ [sectionName]: temp, });
   };
 
