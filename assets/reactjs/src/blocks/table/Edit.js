@@ -168,6 +168,18 @@ class Edit extends Component {
         isDisabled: !selectedCell || !body.length || (body.length && body[0].cells.length < 2),
         onClick: this.onDeleteColumn.bind(this),
       },
+      {
+        icon: <span className={'fas fa-table'} />,
+        title: __('Merge Next Column'),
+        isDisabled: !selectedCell || !body.length || (body.length && body[0].cells.length < 2),
+        onClick: this.onMergeColumn.bind(this),
+      },
+      {
+        icon: <span className={'fas fa-table'} />,
+        title: __('Merge Next Row'),
+        isDisabled: !selectedCell || !body.length || (body.length && body[0].cells.length < 2),
+        onClick: this.onDeleteColumn.bind(this),
+      },
     ];
   };
 
@@ -267,6 +279,7 @@ class Edit extends Component {
     this.resetSelectedCell();
   }
 
+
   /**
    * Delete table column by index
    * helper method
@@ -291,6 +304,46 @@ class Edit extends Component {
       return acc;
     }, []);
     return true;
+  };
+
+  /**
+   * Handle Merge column
+   * @returns {Promise<void>}
+   */
+  async onMergeColumn() {
+    const { setAttributes } = this.props;
+    const deleted = this.deleteColumnForSpan();
+    setAttributes(deleted);
+    this.resetSelectedCell();
+  }
+
+
+  deleteColumnForSpan = () => {
+    const {
+      attributes,
+      setAttributes,
+      attributes: {
+        body,
+        head,
+        foot,
+      },
+    } = this.props;
+
+    const {
+      rowIndex,
+      sectionName,
+      columnIndex,
+    } = this.state.selectedCell;
+
+    let temp = JSON.parse(JSON.stringify(attributes[sectionName]));
+
+    if (temp[rowIndex].cells[columnIndex].colSpan) {
+      temp[rowIndex].cells[columnIndex].colSpan = parseInt(temp[rowIndex].cells[columnIndex].colSpan) + 1
+    } else {
+      temp[rowIndex].cells[columnIndex].colSpan = 2;
+    }
+    temp[rowIndex].cells.splice(columnIndex + 1, 1);
+    setAttributes({ [sectionName]: temp, });
   };
 
   /**
@@ -336,6 +389,8 @@ class Edit extends Component {
       {
         content,
         tag: Tag,
+        colSpan,
+        rowSpan,
         scope,
         align,
         type,
@@ -384,6 +439,8 @@ class Edit extends Component {
         <Tag
           className={className}
           onClick={(event) => this.handleOnCellClick(event, cellLocation, Tag)}
+          {...(typeof colSpan !== 'undefined' && { colSpan })}
+          {...(typeof rowSpan !== 'undefined' && { rowSpan })}
         >
           {
             this.renderCellContent({
@@ -534,7 +591,7 @@ class Edit extends Component {
       default:
         return (
           <RichText
-          keepPlaceholderOnFocus
+            keepPlaceholderOnFocus
             key={columnIndex}
             scope={Tag === 'th' ? scope : undefined}
             value={content}
@@ -556,6 +613,7 @@ class Edit extends Component {
    */
   handleOnCellClick = (event, cellLocation, Tag) => {
     if (!location) return;
+
     const { selectedCell, selectedCellType } = this.state;
     if (
       cellLocation && selectedCell &&

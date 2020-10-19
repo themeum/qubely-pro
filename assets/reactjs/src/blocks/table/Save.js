@@ -48,6 +48,8 @@ class Save extends Component {
             {
                 content,
                 tag: Tag,
+                colSpan,
+                rowSpan,
                 scope,
                 align,
                 type,
@@ -84,7 +86,10 @@ class Save extends Component {
             }
 
             return (
-                <Tag className={className} >
+                <Tag className={className}
+                    {...(typeof colSpan !== 'undefined' && { colSpan })}
+                    {...(typeof rowSpan !== 'undefined' && { rowSpan })}
+                >
                     {
                         this.renderCellContent({
                             type,
@@ -168,7 +173,7 @@ class Save extends Component {
         );
         let buttonLayout = buttonFillType;
         if (typeof buttonType !== 'undefined') {
-          buttonLayout = buttonType;
+            buttonLayout = buttonType;
         }
         switch (type) {
             case 'button':
