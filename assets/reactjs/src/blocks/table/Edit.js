@@ -396,22 +396,43 @@ class Edit extends Component {
 
     let temp = JSON.parse(JSON.stringify(attributes[sectionName]));
 
-    let currentRowSpan = 1;
+    // console.log('temp : ', temp);
+    // console.log('rowIndex : ', rowIndex);
+    // console.log('columnIndex : ', columnIndex);
+
+    let currentRowSpan = 1, currentColumnSpan = 1;
+
+    if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
+      currentColumnSpan = temp[rowIndex].cells[columnIndex].colSpan;
+    }
     if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
       currentRowSpan = temp[rowIndex].cells[columnIndex].rowSpan;
     }
     let increment = 1;
-    if (typeof temp[rowIndex + 1].cells[columnIndex].rowSpan !== 'undefined') {
-      increment = temp[rowIndex + 1].cells[columnIndex].rowSpan;
+    // console.log('rowIndex + currentRowSpan  :',rowIndex + currentRowSpan );
+
+    if (typeof temp[rowIndex + currentRowSpan].cells[columnIndex] !== 'undefined' &&
+    typeof temp[rowIndex + currentRowSpan].cells[columnIndex].rowSpan !== 'undefined') {
+      increment = temp[rowIndex + currentRowSpan].cells[columnIndex].rowSpan;
     }
     currentRowSpan += increment;
+
+    // console.log('delete at row  : ', currentRowSpan);
+    // console.log('columnIndex : ', columnIndex);
+    // console.log('delete : ', currentColumnSpan);
+
     if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
-      temp[rowIndex].cells[columnIndex].rowSpan += increment
+      temp[rowIndex].cells[columnIndex].rowSpan += increment;
     } else {
       temp[rowIndex].cells[columnIndex].rowSpan = (increment + 1);
     }
+    let counter = 1;
+    if (counter <= increment) {
+      temp[rowIndex + currentRowSpan + counter - 2].cells.splice(columnIndex, currentColumnSpan);
+      counter++;
+    }
 
-    temp[currentRowSpan - 1].cells.splice(columnIndex, 1);
+
     setAttributes({ [sectionName]: temp, });
   };
 
