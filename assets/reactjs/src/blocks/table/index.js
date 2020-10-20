@@ -8,7 +8,7 @@ const { registerBlockType } = wp.blocks;
 
 
 registerBlockType('qubely/table', {
-    title: __('Table'),
+    title: __('Table Builder'),
     description: __('Organize/focus data with Qubely table Builder.'),
     category: 'qubely',
     icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-table.svg'} alt={__('Table Builder')} />,

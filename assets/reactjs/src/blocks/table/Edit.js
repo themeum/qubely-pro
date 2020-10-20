@@ -1163,20 +1163,20 @@ class Edit extends Component {
   );
   copyAttributes = () => {
     const {
-        attributes,
-        attributes: {
-            qubelyStyleAttributes
-        }
+      attributes,
+      attributes: {
+        qubelyStyleAttributes
+      }
     } = this.props
     const { copyToClipboard } = wp.qubelyComponents.HelperFunction
     let template = {}
     qubelyStyleAttributes.forEach(key => {
-        template[key] = attributes[key]
+      template[key] = attributes[key]
     })
 
     copyToClipboard(JSON.stringify(template))
 
-}
+  }
 
   render() {
 
@@ -1665,7 +1665,7 @@ class Edit extends Component {
                     onChange={(value) => setAttributes({ iconColor: value })}
                   />
                   <Padding
-                    min={1}
+                    min={0}
                     max={50}
                     responsive
                     value={iconPadding}
@@ -2201,25 +2201,13 @@ class Edit extends Component {
                 label={__('Edit table')}
                 controls={this.getTableControls()}
               />
-              <InlineToolbar
-                data={[
-                  {
-                    name: 'InlineSpacer',
-                    key: 'spacer',
-                    responsive: true,
-                    unit: ['px', 'em', '%'],
-                  },
-                ]}
-                {...this.props}
-                prevState={this.state}
-              />
             </ToolbarGroup>
           }
-<PluginBlockSettingsMenuItem
-                        icon={'editor-code'}
-                        label={__('Copy Attributes')}
-                        onClick={() => this.copyAttributes()}
-                    />
+          <PluginBlockSettingsMenuItem
+            icon={'editor-code'}
+            label={__('Copy Attributes')}
+            onClick={() => this.copyAttributes()}
+          />
         </BlockControls>
 
         {globalSettingsPanel(
