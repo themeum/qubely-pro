@@ -179,7 +179,7 @@ class Edit extends Component {
       {
         icon: <span className={'fas fa-table'} />,
         title: __('Merge Next Row'),
-        isDisabled: this.isRowMergeDisabled(),
+        isDisabled: !selectedCell || !body.length || (body.length && body[0].cells.length < 2),
         onClick: this.onMergeRow.bind(this),
       },
     ];
@@ -289,8 +289,8 @@ class Edit extends Component {
   insertColumnAtIndex = (index) => {
     const { setAttributes, attributes: { body, head, foot } } = this.props;
     body.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1)[0]) }));
-    head.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1)[0]) }));
-    foot.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1)[0]) }));
+    head.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1, 'th', 'head')[0]) }));
+    foot.map(column => ({ cells: column.cells.splice(index, 0, this.generateEmptyColumn(1, 'td', 'foot')[0]) }));
     setAttributes({ body, head, foot });
     this.resetSelectedCell();
   };
@@ -376,10 +376,20 @@ class Edit extends Component {
       columnIndex,
     } = this.state.selectedCell;
 
+    let currentRowSpan = 1,
+      currentColumnSpan = 1,
+      nextRowSpan = 1,
+      targetCellColumnSpan = 1;
+
     let temp = JSON.parse(JSON.stringify(attributes[sectionName]));
+
+    if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
+      currentColumnSpan = temp[rowIndex].cells[columnIndex].colSpan;
+    }
+
     let increment = 1;
-    if (typeof temp[rowIndex].cells[columnIndex + 1].colSpan !== 'undefined') {
-      increment = temp[rowIndex].cells[columnIndex + 1].colSpan;
+    if (typeof temp[rowIndex].cells[columnIndex + currentColumnSpan].colSpan !== 'undefined') {
+      increment = temp[rowIndex].cells[columnIndex + currentColumnSpan].colSpan;
     }
 
     if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
@@ -391,11 +401,19 @@ class Edit extends Component {
     if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
       let tempIndex = 1;
       while (tempIndex <= temp[rowIndex].cells[columnIndex].rowSpan) {
-        temp[rowIndex + (tempIndex - 1)].cells.splice(columnIndex + 1, 1);
+        temp[rowIndex + (tempIndex - 1)].cells[columnIndex + currentColumnSpan].replacedFor = 'colSpan';
+        temp[rowIndex + (tempIndex - 1)].cells[columnIndex + currentColumnSpan].replacedby = {
+          rowIndex,
+          columnIndex
+        };
         tempIndex++
       }
     } else {
-      temp[rowIndex].cells.splice(columnIndex + 1, 1);
+      temp[rowIndex].cells[columnIndex + currentColumnSpan].replacedFor = 'colSpan';
+      temp[rowIndex].cells[columnIndex + currentColumnSpan].replacedby = {
+        rowIndex,
+        columnIndex
+      };
     }
     setAttributes({ [sectionName]: temp, });
   };
@@ -423,9 +441,9 @@ class Edit extends Component {
 
     let temp = JSON.parse(JSON.stringify(attributes[sectionName]));
 
-    console.log('temp : ', temp);
-    console.log('selected rowIndex : ', rowIndex);
-    console.log('selected column index : ', columnIndex);
+    // console.log('temp : ', temp);
+    // console.log('selected rowIndex : ', rowIndex);
+    // console.log('selected column index : ', columnIndex);
 
     let currentRowSpan = 1,
       currentColumnSpan = 1,
@@ -436,7 +454,7 @@ class Edit extends Component {
     if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
       currentRowSpan = temp[rowIndex].cells[columnIndex].rowSpan;
     }
-    console.log('check : ', rowIndex + currentRowSpan, 'th rows span');
+    // console.log('check : ', rowIndex + currentRowSpan, 'th rows span');
 
     if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
       currentColumnSpan = temp[rowIndex].cells[columnIndex].colSpan;
@@ -450,26 +468,28 @@ class Edit extends Component {
     if (typeof temp[rowIndex + currentRowSpan].cells[columnIndex] !== 'undefined' &&
       typeof temp[rowIndex + currentRowSpan].cells[columnIndex].rowSpan !== 'undefined') {
       increment = temp[rowIndex + currentRowSpan].cells[columnIndex].rowSpan;
-      nextRowSpan = currentRowSpan + increment;
-    } else {
-      nextRowSpan += 1;
     }
 
-    // console.log('delete at row  : ', currentRowSpan);
-    // console.log('columnIndex : ', columnIndex);
-    // console.log('delete : ', currentColumnSpan);
+    nextRowSpan = currentRowSpan + increment;
+    temp[rowIndex].cells[columnIndex].rowSpan = nextRowSpan;
 
-    if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
-      temp[rowIndex].cells[columnIndex].rowSpan = nextRowSpan;
+    if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
+      let counter = 0;
+      while (counter <= temp[rowIndex].cells[columnIndex].rowSpan) {
+        temp[rowIndex + currentRowSpan].cells[columnIndex + counter].replacedFor = 'rowSpan';
+        temp[rowIndex + currentRowSpan].cells[columnIndex + counter].replacedby = {
+          rowIndex,
+          columnIndex
+        };
+        counter++
+      }
     } else {
-      temp[rowIndex].cells[columnIndex].rowSpan = nextRowSpan;
+      temp[rowIndex + currentRowSpan].cells[columnIndex].replacedFor = 'rowSpan';
+      temp[rowIndex + currentRowSpan].cells[columnIndex].replacedby = {
+        rowIndex,
+        columnIndex
+      };
     }
-    if (currentColumnSpan >= targetCellColumnSpan) {
-      temp[rowIndex + currentRowSpan].cells.splice(columnIndex, currentColumnSpan);
-    } else {
-      console.log('operation not possible');
-    }
-
 
     setAttributes({ [sectionName]: temp, });
   };
@@ -513,7 +533,7 @@ class Edit extends Component {
    */
   renderData = ({ cells }, name, rowIndex) => {
     const { selectedCell } = this.state;
-    return cells.map((
+    return cells.filter(({ replacedFor }) => typeof replacedFor === 'undefined').map((
       {
         content,
         tag: Tag,
@@ -1252,6 +1272,7 @@ class Edit extends Component {
         }
       });
     }
+    // console.log('body : ', body);
     return (
       <Fragment>
         <InspectorControls key={'inspector'}>
