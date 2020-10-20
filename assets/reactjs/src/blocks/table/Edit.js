@@ -179,12 +179,37 @@ class Edit extends Component {
       {
         icon: <span className={'fas fa-table'} />,
         title: __('Merge Next Row'),
-        isDisabled: !selectedCell || !body.length || (body.length && body[0].cells.length < 2),
+        isDisabled: this.isRowMergeDisabled(),
         onClick: this.onMergeRow.bind(this),
       },
     ];
   };
 
+  isRowMergeDisabled() {
+    const {
+      selectedCell: {
+        rowIndex,
+        columnIndex,
+        sectionName,
+      }
+    } = this.state;
+    const {
+      attributes,
+      attributes: {
+        body
+      },
+    } = this.props;
+
+    if (selectedCell === null) {
+      return false;
+    }
+    let isDisabeld = false;
+
+    if (!selectedCell || !body.length || (body.length && body[0].cells.length < 2)) {
+      isDisabeld = true;
+    }
+    return isDisabeld;
+  }
   /**
    * Handle insert row before selected index
    * helper method
@@ -398,40 +423,51 @@ class Edit extends Component {
 
     let temp = JSON.parse(JSON.stringify(attributes[sectionName]));
 
-    // console.log('temp : ', temp);
-    // console.log('rowIndex : ', rowIndex);
-    // console.log('columnIndex : ', columnIndex);
+    console.log('temp : ', temp);
+    console.log('selected rowIndex : ', rowIndex);
+    console.log('selected column index : ', columnIndex);
 
-    let currentRowSpan = 1, currentColumnSpan = 1;
+    let currentRowSpan = 1,
+      currentColumnSpan = 1,
+      nextRowSpan = 1,
+      targetCellColumnSpan = 1;
+
+
+    if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
+      currentRowSpan = temp[rowIndex].cells[columnIndex].rowSpan;
+    }
+    console.log('check : ', rowIndex + currentRowSpan, 'th rows span');
 
     if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
       currentColumnSpan = temp[rowIndex].cells[columnIndex].colSpan;
     }
-    if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
-      currentRowSpan = temp[rowIndex].cells[columnIndex].rowSpan;
+    if (typeof temp[rowIndex + currentRowSpan].cells[columnIndex].colSpan !== 'undefined') {
+      targetCellColumnSpan = temp[rowIndex + currentRowSpan].cells[columnIndex].colSpan;
     }
+
     let increment = 1;
-    // console.log('rowIndex + currentRowSpan  :',rowIndex + currentRowSpan );
 
     if (typeof temp[rowIndex + currentRowSpan].cells[columnIndex] !== 'undefined' &&
       typeof temp[rowIndex + currentRowSpan].cells[columnIndex].rowSpan !== 'undefined') {
       increment = temp[rowIndex + currentRowSpan].cells[columnIndex].rowSpan;
+      nextRowSpan = currentRowSpan + increment;
+    } else {
+      nextRowSpan += 1;
     }
-    currentRowSpan += increment;
 
     // console.log('delete at row  : ', currentRowSpan);
     // console.log('columnIndex : ', columnIndex);
     // console.log('delete : ', currentColumnSpan);
 
     if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
-      temp[rowIndex].cells[columnIndex].rowSpan += increment;
+      temp[rowIndex].cells[columnIndex].rowSpan = nextRowSpan;
     } else {
-      temp[rowIndex].cells[columnIndex].rowSpan = (increment + 1);
+      temp[rowIndex].cells[columnIndex].rowSpan = nextRowSpan;
     }
-    let counter = 1;
-    if (counter <= increment) {
-      temp[rowIndex + currentRowSpan + counter - 2].cells.splice(columnIndex, currentColumnSpan);
-      counter++;
+    if (currentColumnSpan >= targetCellColumnSpan) {
+      temp[rowIndex + currentRowSpan].cells.splice(columnIndex, currentColumnSpan);
+    } else {
+      console.log('operation not possible');
     }
 
 
@@ -2041,31 +2077,35 @@ class Edit extends Component {
               ]}
             />
           )}
-          <ToolbarGroup>
-            <DropdownMenu
-              popoverProps={
-                {
-                  className: "qubely-table-editor"
+          {
+            (isSelected && this.state.selectedCell !== null) &&
+            <ToolbarGroup>
+              <DropdownMenu
+                popoverProps={
+                  {
+                    className: "qubely-table-editor"
+                  }
                 }
-              }
-              hasArrowIndicator
-              icon={<span className={'fas fa-table'} />}
-              label={__('Edit table')}
-              controls={this.getTableControls()}
-            />
-            <InlineToolbar
-              data={[
-                {
-                  name: 'InlineSpacer',
-                  key: 'spacer',
-                  responsive: true,
-                  unit: ['px', 'em', '%'],
-                },
-              ]}
-              {...this.props}
-              prevState={this.state}
-            />
-          </ToolbarGroup>
+                hasArrowIndicator
+                icon={<span className={'fas fa-table'} />}
+                label={__('Edit table')}
+                controls={this.getTableControls()}
+              />
+              <InlineToolbar
+                data={[
+                  {
+                    name: 'InlineSpacer',
+                    key: 'spacer',
+                    responsive: true,
+                    unit: ['px', 'em', '%'],
+                  },
+                ]}
+                {...this.props}
+                prevState={this.state}
+              />
+            </ToolbarGroup>
+          }
+
         </BlockControls>
 
         {globalSettingsPanel(
