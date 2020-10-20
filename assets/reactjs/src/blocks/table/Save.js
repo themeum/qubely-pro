@@ -44,7 +44,7 @@ class Save extends Component {
      * @returns {*}
      */
     renderData = ({ cells }, name, rowIndex) => {
-        return cells.map((
+        return cells.filter(({ replacedFor }) => typeof replacedFor === 'undefined').map((
             {
                 content,
                 tag: Tag,

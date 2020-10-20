@@ -173,9 +173,7 @@ class Edit extends Component {
       {
         icon: <span className={'fas fa-table'} />,
         title: __('Merge Next Column'),
-        isDisabled: !selectedCell ||
-          selectedCell.columnIndex === body[0].cells.length - 1 ||
-          !body.length || (body.length && body[0].cells.length < 2),
+        isDisabled: this.disableColumnMerge(),
         onClick: this.onMergeColumn.bind(this),
       },
       {
@@ -192,7 +190,47 @@ class Edit extends Component {
     ];
   };
 
+  disableColumnMerge() {
+    const { selectedCell,
+      selectedCell: {
+        rowIndex,
+        columnIndex,
+        sectionName,
+      } } = this.state;
+    const {
+      attributes,
+      attributes: {
+        body },
+    } = this.props;
 
+    let disable = false;
+
+    if (!selectedCell ||
+      selectedCell.columnIndex === body[0].cells.length - 1 ||
+      !body.length || (body.length && body[0].cells.length < 2)) {
+      return true;
+    }
+    let colSpan = 1, rowSpan = 1;
+    let activeCell = attributes[sectionName][rowIndex].cells[columnIndex];
+    let nextCell = attributes[sectionName][rowIndex].cells[columnIndex + colSpan];
+
+    if (typeof nextCell === 'undefined') {
+      return true;
+    }
+    if (typeof nextCell.rowSpan === 'undefined') {
+      nextCell.rowSpan = 1;
+    }
+    if (activeCell.colSpan) {
+      colSpan = activeCell.colSpan;
+      rowSpan = activeCell.rowSpan;
+    }
+
+    if (rowSpan < nextCell.rowSpan ||
+      typeof nextCell.replacedby !== 'undefined') {
+      disable = true;
+    }
+    return disable;
+  }
   /**
    * Handle insert row before selected index
    * helper method
