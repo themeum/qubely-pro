@@ -497,7 +497,7 @@ class Edit extends Component {
 
     if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
       let counter = 0;
-      while (counter < temp[rowIndex].cells[columnIndex].rowSpan) {
+      while (counter < temp[rowIndex].cells[columnIndex].colSpan) {
         temp[rowIndex + currentRowSpan].cells[columnIndex + counter].replacedFor = 'rowSpan';
         temp[rowIndex + currentRowSpan].cells[columnIndex + counter].replacedby = {
           rowIndex,
@@ -554,7 +554,7 @@ class Edit extends Component {
    */
   renderData = ({ cells }, name, rowIndex) => {
     const { selectedCell } = this.state;
-    return cells.filter(({ replacedFor }) => typeof replacedFor === 'undefined').map((
+    return cells.map((
       {
         content,
         tag: Tag,
@@ -572,6 +572,7 @@ class Edit extends Component {
         imageSize,
         buttonType,
         customAlignment,
+        replacedFor,
       },
       columnIndex
     ) => {
@@ -594,6 +595,7 @@ class Edit extends Component {
         { 'is-qubely-active': isSelectedCell },
         'qubely-block-table_cell-content',
         'qubely-table-cell-edit',
+        { ['hidden-cell']: typeof replacedFor !== 'undefined' },
         { [`align-${customAlignment}`]: customAlignment },
       );
 

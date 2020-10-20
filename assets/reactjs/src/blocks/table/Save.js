@@ -61,7 +61,8 @@ class Save extends Component {
                 ordered,
                 imageSize,
                 buttonType,
-                customAlignment
+                customAlignment,
+                replacedFor,
             },
             columnIndex
         ) => {
@@ -74,6 +75,7 @@ class Save extends Component {
 
             const className = classnames(
                 'qubely-block-table_cell-content',
+                { ['hidden-cell']: typeof replacedFor !== 'undefined' },
                 { ['cell-placeholder']: type === 'text' && (!content || typeof content == 'undefined') },
                 { [`align-${customAlignment}`]: customAlignment },
             );
