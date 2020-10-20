@@ -173,43 +173,26 @@ class Edit extends Component {
       {
         icon: <span className={'fas fa-table'} />,
         title: __('Merge Next Column'),
-        isDisabled: !selectedCell || !body.length || (body.length && body[0].cells.length < 2),
+        isDisabled: !selectedCell ||
+          selectedCell.columnIndex === body[0].cells.length - 1 ||
+          !body.length || (body.length && body[0].cells.length < 2),
         onClick: this.onMergeColumn.bind(this),
       },
       {
         icon: <span className={'fas fa-table'} />,
         title: __('Merge Next Row'),
-        isDisabled: !selectedCell || !body.length || (body.length && body[0].cells.length < 2),
+        isDisabled: !selectedCell ||
+          selectedCell.rowIndex === body.length - 1 ||
+          selectedCell.sectionName === 'head' ||
+          selectedCell.sectionName === 'foot' ||
+          !body.length ||
+          (body.length && body[0].cells.length < 2),
         onClick: this.onMergeRow.bind(this),
       },
     ];
   };
 
-  isRowMergeDisabled() {
-    const {
-      selectedCell: {
-        rowIndex,
-        columnIndex,
-        sectionName,
-      }
-    } = this.state;
-    const {
-      attributes,
-      attributes: {
-        body
-      },
-    } = this.props;
 
-    if (selectedCell === null) {
-      return false;
-    }
-    let isDisabeld = false;
-
-    if (!selectedCell || !body.length || (body.length && body[0].cells.length < 2)) {
-      isDisabeld = true;
-    }
-    return isDisabeld;
-  }
   /**
    * Handle insert row before selected index
    * helper method
