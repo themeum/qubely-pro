@@ -9,7 +9,7 @@ import {
   Ratings
 } from './components';
 
-// import BlockControls from './block-controls';
+import templates from './templates';
 const {
   Component,
   Fragment,
@@ -71,6 +71,8 @@ const {
     ContextMenu,
     handleContextMenu
   },
+  Templates,
+  InspectorSections,
 } = wp.qubelyComponents;
 
 class Edit extends Component {
@@ -412,7 +414,7 @@ class Edit extends Component {
     // console.log('rowIndex + currentRowSpan  :',rowIndex + currentRowSpan );
 
     if (typeof temp[rowIndex + currentRowSpan].cells[columnIndex] !== 'undefined' &&
-    typeof temp[rowIndex + currentRowSpan].cells[columnIndex].rowSpan !== 'undefined') {
+      typeof temp[rowIndex + currentRowSpan].cells[columnIndex].rowSpan !== 'undefined') {
       increment = temp[rowIndex + currentRowSpan].cells[columnIndex].rowSpan;
     }
     currentRowSpan += increment;
@@ -1217,7 +1219,17 @@ class Edit extends Component {
     return (
       <Fragment>
         <InspectorControls key={'inspector'}>
-          <InspectorTabs tabs={['style', 'advance']} >
+          <InspectorTabs  >
+            <InspectorTab key={"layout"}>
+              <PanelBody title={__('Design Templates')}>
+                <Templates
+                  updateStyle={setAttributes}
+                  attributes={this.props.attributes}
+                  templates={templates}
+                />
+              </PanelBody>
+              <InspectorSections block={'countdown'} />
+            </InspectorTab>
             <InspectorTab key={'style'}>
               <PanelBody title="" opened={true}>
                 <Styles
