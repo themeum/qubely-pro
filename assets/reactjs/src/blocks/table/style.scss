@@ -151,10 +151,8 @@
     min-height: 100px;
     .components-placeholder__fieldset {
       flex-direction: row;
-      .components-button.is-tertiary {
-        margin-left: 5%;
-      }
     }
+    z-index: 1;
   }
 }
 

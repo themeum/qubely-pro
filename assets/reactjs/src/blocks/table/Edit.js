@@ -1512,11 +1512,11 @@ class Edit extends Component {
                       { label: 'S', value: '60px', title: 'Small' },
                       { label: 'M', value: '100px', title: 'Medium' },
                       { label: 'L', value: '150px', title: 'Large' },
-                      {
-                        icon: 'fas fa-cog',
-                        value: 'custom',
-                        title: 'Custom',
-                      },
+                      // {
+                      //   icon: 'fas fa-cog',
+                      //   value: 'custom',
+                      //   title: 'Custom',
+                      // },
                     ]}
                     value={imageCommonSize}
                     onChange={(value) =>
@@ -2071,6 +2071,24 @@ class Edit extends Component {
                   </Popover>
                 )
               }
+            </Fragment>
+          )}
+          {cellType === 'image' && (
+            <Fragment>
+
+              <Toolbar
+                controls={[
+                  {
+                    icon: 'insert',
+                    title: __('Change Image'),
+                    onClick: () => {
+                      this.onChangeCell(activeCellLocation, {}, 'image')
+                    },
+                    className: `qubely-action-pick-listcustom-icon`,
+                  },
+                ]}
+              />
+
             </Fragment>
           )}
           {cellType === 'button' && (

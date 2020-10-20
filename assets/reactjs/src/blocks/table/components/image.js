@@ -2,6 +2,9 @@
 import classnames from 'classnames';
 const { __ } = wp.i18n;
 const {
+    Fragment,
+} = wp.element;
+const {
     ResizableBox
 } = wp.components;
 const {
@@ -140,7 +143,9 @@ const Image = (props) => {
                     }
                 }}
             >
-                {img}
+                <Fragment>
+                    {img}
+                </Fragment>
             </ResizableBox>
         )
     }
@@ -160,8 +165,8 @@ const Image = (props) => {
                         allowedTypes={['image']}
                         onError={() => onUploadError()}
                         labels={{
-                            title: __('Image cell'),
-                            instructions: __('Drag images, upload new ones or select files from your library.'),
+                            title: __('Add Image'),
+                            instructions: __(''),
                         }}
                         onSelect={media => onSelectImage(media)}
                         // onSelectURL={newUrl => onSelectURL(newUrl)}
