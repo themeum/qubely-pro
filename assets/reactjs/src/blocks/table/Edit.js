@@ -10,6 +10,7 @@ import {
 } from './components';
 
 import templates from './templates';
+const { PluginBlockSettingsMenuItem } = wp.editPost;
 const {
   Component,
   Fragment,
@@ -1160,6 +1161,22 @@ class Edit extends Component {
       listItems: '<li>one </li><li>two </li>'
     }))
   );
+  copyAttributes = () => {
+    const {
+        attributes,
+        attributes: {
+            qubelyStyleAttributes
+        }
+    } = this.props
+    const { copyToClipboard } = wp.qubelyComponents.HelperFunction
+    let template = {}
+    qubelyStyleAttributes.forEach(key => {
+        template[key] = attributes[key]
+    })
+
+    copyToClipboard(JSON.stringify(template))
+
+}
 
   render() {
 
@@ -1308,7 +1325,7 @@ class Edit extends Component {
                   templates={templates}
                 />
               </PanelBody>
-              <InspectorSections block={'countdown'} />
+              <InspectorSections block={'table'} />
             </InspectorTab>
             <InspectorTab key={'style'}>
               <PanelBody title="" opened={true}>
@@ -2198,7 +2215,11 @@ class Edit extends Component {
               />
             </ToolbarGroup>
           }
-
+<PluginBlockSettingsMenuItem
+                        icon={'editor-code'}
+                        label={__('Copy Attributes')}
+                        onClick={() => this.copyAttributes()}
+                    />
         </BlockControls>
 
         {globalSettingsPanel(

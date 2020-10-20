@@ -779,5 +779,44 @@ const attributes = {
             { selector: '{{QUBELY}} .list-cell.list-wrapper' }
         ]
     },
+    qubelyStyleAttributes: {
+      type: 'array',
+      default: [
+          'layout',
+          'buttonAlignment',
+          'buttonBgColor',
+          'buttonBgHoverColor',
+          'buttonBorder',
+          'buttonBorderHoverColor',
+          'buttonBorderRadius',
+          'buttonColor',
+          'buttonColor2',
+          'buttonFillType',
+          'buttonIconGap',
+          'buttonPadding',
+          'buttonTypography',
+          'cellAlignment',
+          'cellBg',
+          'cellBorder',
+          'cellPadding',
+          'cellTextColor',
+          'cellTypography',
+          'cellVerticalPosition',
+          'footerBg',
+          'headerBg',
+          'iconAlignment',
+          'iconRadius',
+          'iconPosition',
+          'iconPadding',
+          'stripeColor',
+          'ratingsColor',
+          'listIconSpacing',
+          'imageRadius',
+          'imageAlignment',
+          'iconColor',
+          'iconColor',
+          'iconColor',
+      ]
+  }
 }
 export default attributes;
