@@ -454,7 +454,7 @@ class Edit extends Component {
     if (typeof temp[rowIndex].cells[columnIndex].rowSpan !== 'undefined') {
       currentRowSpan = temp[rowIndex].cells[columnIndex].rowSpan;
     }
-    // console.log('check : ', rowIndex + currentRowSpan, 'th rows span');
+    // console.log('check : ', rowIndex + currentRowSpan, 'th rows at : ',columnIndex,'th column');
 
     if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
       currentColumnSpan = temp[rowIndex].cells[columnIndex].colSpan;
@@ -475,7 +475,7 @@ class Edit extends Component {
 
     if (typeof temp[rowIndex].cells[columnIndex].colSpan !== 'undefined') {
       let counter = 0;
-      while (counter <= temp[rowIndex].cells[columnIndex].rowSpan) {
+      while (counter < temp[rowIndex].cells[columnIndex].rowSpan) {
         temp[rowIndex + currentRowSpan].cells[columnIndex + counter].replacedFor = 'rowSpan';
         temp[rowIndex + currentRowSpan].cells[columnIndex + counter].replacedby = {
           rowIndex,
@@ -490,7 +490,6 @@ class Edit extends Component {
         columnIndex
       };
     }
-
     setAttributes({ [sectionName]: temp, });
   };
 
