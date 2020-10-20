@@ -679,16 +679,38 @@ const attributes = {
             }
         ]
     },
-    iconAlignment: {
+    iconPadding: {
         type: 'object',
         default: {
-            md: 'left'
         },
         style: [
-            { selector: '{{QUBELY}} .icon-cell.icon-wrapper {text-align: {{iconAlignment}};}' }
+            { selector: '{{QUBELY}} .icon-cell.icon-wrapper .icon i' }
         ]
     },
-
+    iconBg: {
+        type: 'object',
+        default: {
+        },
+        style: [
+            { selector: '{{QUBELY}} .icon-cell.icon-wrapper .icon i' }
+        ]
+    },
+    iconRadius: {
+        type: 'String',
+        default: '',
+        style: [
+            { selector: '{{QUBELY}} .icon-cell.icon-wrapper .icon i{border-radius:{{iconRadius}}%};' }
+        ]
+    },
+    iconAlignment: {
+      type: 'object',
+      default: {
+          md: 'left'
+      },
+      style: [
+          { selector: '{{QUBELY}} .icon-cell.icon-wrapper {text-align: {{iconAlignment}};}' }
+      ]
+  },
     iconSize: {
         type: 'string',
         default: '40px',

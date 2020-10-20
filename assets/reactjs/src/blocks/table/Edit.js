@@ -1220,6 +1220,9 @@ class Edit extends Component {
         //icon
         iconColor,
         iconAlignment,
+        iconPadding,
+        iconBg,
+        iconRadius,
         iconSize,
         iconCustomSize,
 
@@ -1644,6 +1647,37 @@ class Edit extends Component {
                     value={iconColor}
                     onChange={(value) => setAttributes({ iconColor: value })}
                   />
+                  <Padding
+                    min={1}
+                    max={50}
+                    responsive
+                    value={iconPadding}
+                    device={device}
+                    label={__('Padding')}
+                    unit={['px', 'em', '%']}
+                    onChange={(val) => setAttributes({ iconPadding: val })}
+                    onDeviceChange={(value) => this.setState({ device: value })}
+                  />
+                  <ColorAdvanced
+                    label={__('Background')}
+                    value={iconBg}
+                    onChange={(nextValue) =>
+                      setAttributes({ iconBg: nextValue })
+                    }
+                  />
+                  {
+                    iconBg.openColor && (
+                      <Range
+                        label={__('Border Radius')}
+                        min={1}
+                        max={100}
+                        step={1}
+                        allowReset
+                        value={iconRadius}
+                        onChange={nextValue => setAttributes({ iconRadius: nextValue })}
+                      />
+                    )
+                  }
                   <Alignment
                     responsive
                     disableJustify
