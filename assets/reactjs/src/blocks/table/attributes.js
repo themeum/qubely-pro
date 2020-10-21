@@ -101,9 +101,9 @@ const buttonAttributes = {
       default: '#000',
       style: [
         {
-          condition: [
-            { key: 'buttonFillType', relation: '==', value: 'fill' },
-          ],
+          // condition: [
+          //   { key: 'buttonFillType', relation: '==', value: 'fill' },
+          // ],
           selector:
             '{{QUBELY}} .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor { color:{{buttonColor}}; }',
         },
@@ -114,11 +114,11 @@ const buttonAttributes = {
       default: 'var(--qubely-color-1)',
       style: [
         {
-          condition: [
-            { key: 'buttonFillType', relation: '!=', value: 'fill' },
-          ],
+          // condition: [
+          //   { key: 'buttonFillType', relation: '!=', value: 'fill' },
+          // ],
           selector:
-            '{{QUBELY}} .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor { color:{{buttonColor2}}; }',
+            '{{QUBELY}} .qubely-block-btn-wrapper.button-type-outline .qubely-block-btn-anchor { color:{{buttonColor2}}; }',
         },
       ],
     },
@@ -127,9 +127,9 @@ const buttonAttributes = {
       default: '#fff',
       style: [
         {
-          condition: [
-            { key: 'buttonFillType', relation: '==', value: 'fill' },
-          ],
+          // condition: [
+          //   { key: 'buttonFillType', relation: '==', value: 'fill' },
+          // ],
           selector:
             '{{QUBELY}} .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor:hover { color:{{buttonHoverColor}}; }',
         },
@@ -140,11 +140,11 @@ const buttonAttributes = {
       default: 'var(--qubely-color-2)',
       style: [
         {
-          condition: [
-            { key: 'buttonFillType', relation: '!=', value: 'fill' },
-          ],
+          // condition: [
+          //   { key: 'buttonFillType', relation: '!=', value: 'fill' },
+          // ],
           selector:
-            '{{QUBELY}} .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor:hover { color:{{buttonHoverColor2}}; }',
+            '{{QUBELY}} .qubely-block-btn-wrapper.button-type-outline .qubely-block-btn-anchor:hover { color:{{buttonHoverColor2}}; }',
         },
       ],
     },
@@ -165,9 +165,9 @@ const buttonAttributes = {
       },
       style: [
         {
-          condition: [
-            { key: 'buttonFillType', relation: '==', value: 'fill' },
-          ],
+          // condition: [
+          //   { key: 'buttonFillType', relation: '==', value: 'fill' },
+          // ],
           selector: '{{QUBELY}} .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor',
         },
       ],
@@ -189,9 +189,9 @@ const buttonAttributes = {
       },
       style: [
         {
-          condition: [
-            { key: 'buttonFillType', relation: '==', value: 'fill' },
-          ],
+          // condition: [
+          //   { key: 'buttonFillType', relation: '==', value: 'fill' },
+          // ],
           selector: '{{QUBELY}} .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor:before',
         },
       ],
@@ -307,7 +307,7 @@ const attributes = {
     },
     tableHeader: {
         type: 'boolean',
-        default: false
+        default: true,
     },
     stripeColor: {
         type: 'string',
@@ -332,7 +332,7 @@ const attributes = {
         default: {
         },
         style: [
-            { selector: '{{QUBELY}} .qubely-block-table thead' }
+            { selector: '{{QUBELY}} .qubely-block-table .qubely-table-figure .qubely-table thead tr.head-row th.qubely-block-table_cell-content' }
         ]
     },
     headerTextColor: {
@@ -366,7 +366,7 @@ const attributes = {
         default: {
         },
         style: [
-            { selector: '{{QUBELY}} .qubely-block-table thead' }
+            { selector: '{{QUBELY}} .qubely-block-table thead .head-row .qubely-block-table_cell-content' }
         ]
     },
     tableFooter: {
@@ -438,7 +438,7 @@ const attributes = {
         default: {
         },
         style: [
-            { selector: '{{QUBELY}} .qubely-block-table tfoot' }
+            { selector: '{{QUBELY}} .qubely-block-table tfoot .foot-row .qubely-block-table_cell-content' }
         ]
     },
     tableMaxWdith: {
@@ -738,7 +738,7 @@ const attributes = {
         default: '#000',
         style: [
             {
-                selector: '{{QUBELY}}  .list-cell.list-wrapper {color: {{listColor}};}'
+                selector: '{{QUBELY}} .qubely-block-table .qubely-table-figure .qubely-table .qubely-block-table_cell-content .list-cell.list-wrapper {color: {{listColor}};}'
             }
         ]
     },
@@ -798,6 +798,7 @@ const attributes = {
           'cellAlignment',
           'cellBg',
           'cellBorder',
+          'tableBorderRadius',
           'cellPadding',
           'cellTextColor',
           'cellTypography',
@@ -816,6 +817,9 @@ const attributes = {
           'iconColor',
           'iconColor',
           'iconColor',
+          'verticalBorder',
+          'horizontalBorder',
+          'outerBoder',
       ]
   }
 }

@@ -37,6 +37,7 @@ const {
 } = wp.blockEditor;
 
 const {
+  Url,
   Styles,
   Color,
   Range,
@@ -573,6 +574,7 @@ class Edit extends Component {
         buttonType,
         customAlignment,
         replacedFor,
+        buttonCustomUrl,
       },
       columnIndex
     ) => {
@@ -630,7 +632,8 @@ class Edit extends Component {
               ordered,
               isSelectedCell,
               imageSize,
-              buttonType
+              buttonType,
+              buttonCustomUrl
             })
           }
           {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
@@ -671,7 +674,8 @@ class Edit extends Component {
     listCustomIcon,
     isSelectedCell,
     imageSize,
-    buttonType
+    buttonType,
+    buttonCustomUrl = ''
   }) => {
     const {
       setAttributes,
@@ -1235,7 +1239,7 @@ class Edit extends Component {
         footerBorderColor,
         footerTypo,
         //button
-        buttonFillType,
+        buttonUrl,
         //image
         imageAlignment,
         imageCommonSize,
@@ -1289,11 +1293,16 @@ class Edit extends Component {
       cellType,
       isOrdered,
       showIconPicker,
+      showButtonUrlPicker,
       cellLocation: activeCellLocation,
       currentCellType,
       showPostTextTypography
     } = this.state;
 
+    let activeCell;
+    if (activeCellLocation) {
+      activeCell = attributes[activeCellLocation.sectionName][activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex];
+    }
     const wrapperClasses = classnames(
       `qubely-block-${uniqueId}`,
       className
@@ -1321,7 +1330,7 @@ class Edit extends Component {
         }
       });
     }
-    // console.log('body : ', body);
+
     return (
       <Fragment>
         <InspectorControls key={'inspector'}>
@@ -1583,18 +1592,6 @@ class Edit extends Component {
 
                   }
 
-                  <Alignment
-                    responsive
-                    disableJustify
-                    value={imageAlignment}
-                    label={__('Alignment')}
-                    alignmentType="content"
-                    device={device}
-                    onChange={(val) => setAttributes({ imageAlignment: val })}
-                    onDeviceChange={(value) =>
-                      this.setState({ device: value })
-                    }
-                  />
                   <Padding
                     min={0}
                     max={100}
@@ -1704,18 +1701,6 @@ class Edit extends Component {
                       />
                     )
                   }
-                  <Alignment
-                    responsive
-                    disableJustify
-                    value={iconAlignment}
-                    label={__('Alignment')}
-                    alignmentType="content"
-                    device={device}
-                    onChange={(val) => setAttributes({ iconAlignment: val })}
-                    onDeviceChange={(value) =>
-                      this.setState({ device: value })
-                    }
-                  />
                 </PanelBody>
               }
               {
@@ -1801,18 +1786,6 @@ class Edit extends Component {
                       this.setState({ device: value })
                     }
                   />
-                  <Alignment
-                    responsive
-                    disableJustify
-                    value={listAlignment}
-                    label={__('Alignment')}
-                    alignmentType="content"
-                    device={device}
-                    onChange={(val) => setAttributes({ listAlignment: val })}
-                    onDeviceChange={(value) =>
-                      this.setState({ device: value })
-                    }
-                  />
                   <Padding
                     min={0}
                     max={100}
@@ -1876,20 +1849,7 @@ class Edit extends Component {
                       setAttributes({ ratingsColor: value })
                     }
                   />
-                  <Alignment
-                    responsive
-                    disableJustify
-                    value={ratingsAlignment}
-                    label={__('Alignment')}
-                    alignmentType="content"
-                    device={device}
-                    onChange={(val) =>
-                      setAttributes({ ratingsAlignment: val })
-                    }
-                    onDeviceChange={(value) =>
-                      this.setState({ device: value })
-                    }
-                  />
+
                   <Padding
                     min={0}
                     max={100}
@@ -2152,24 +2112,51 @@ class Edit extends Component {
             </Fragment>
           )}
           {cellType === 'button' && (
-            <Toolbar
-              controls={[
-                {
-                  icon: <img src={`${window.qubely_admin.plugin + 'assets/img/blocks'}/button/fill_xs.svg`} alt={__('Fill')} />,
-                  title: __('Fill'),
-                  onClick: () => this.onChangeCell(activeCellLocation, 'fill', 'buttonType'),
+            <Fragment>
 
-                  className: `qubely-action-change-listype`,
-                },
-                {
-                  icon: <img src={`${window.qubely_admin.plugin + 'assets/img/blocks'}/button/outline_xs.svg`} alt={__('Fill')} />,
-                  title: __('Outline'),
-                  onClick: () => this.onChangeCell(activeCellLocation, 'outline', 'buttonType')
-                  ,
-                  className: `qubely-action-change-listype`,
-                },
-              ]}
-            />
+              <Toolbar
+                controls={[
+                  {
+                    icon: <img src={`${window.qubely_admin.plugin + 'assets/img/blocks'}/button/fill_xs.svg`} alt={__('Fill')} />,
+                    title: __('Fill'),
+                    onClick: () => this.onChangeCell(activeCellLocation, 'fill', 'buttonType'),
+
+                    className: `qubely-action-change-listype`,
+                  },
+                  {
+                    icon: <img src={`${window.qubely_admin.plugin + 'assets/img/blocks'}/button/outline_xs.svg`} alt={__('Fill')} />,
+                    title: __('Outline'),
+                    onClick: () => this.onChangeCell(activeCellLocation, 'outline', 'buttonType')
+                    ,
+                    className: `qubely-action-change-listype`,
+                  },
+                  {
+                    icon: 'admin-links',
+                    title: __('Outline'),
+                    onClick: () => {
+                      this.setState({ showButtonUrlPicker: true });
+                    },
+                    className: `qubely-action-change-listype`,
+                  },
+                ]}
+              />
+              {
+                (activeCell && showButtonUrlPicker && isSelected) && (
+                  <Popover
+                    position="bottom center"
+                    className="qubely-table-button-url"
+                    onClose={() => this.setState({ showButtonUrlPicker: false })}
+                  >
+                    <Url
+                      label={__('URL')}
+                      disableAdvanced
+                      value={typeof activeCell.buttonCustomUrl === 'undefined' ? buttonUrl : activeCell.buttonCustomUrl}
+                      onChange={(value) => this.onChangeCell(activeCellLocation, value, 'buttonCustomUrl')}
+                    />
+                  </Popover>
+                )
+              }
+            </Fragment>
           )}
           {isSelected && (
             <Toolbar

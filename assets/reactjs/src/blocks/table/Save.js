@@ -63,6 +63,7 @@ class Save extends Component {
                 buttonType,
                 customAlignment,
                 replacedFor,
+                buttonCustomUrl,
             },
             columnIndex
         ) => {
@@ -109,6 +110,7 @@ class Save extends Component {
                             ordered,
                             imageSize,
                             buttonType,
+                            buttonCustomUrl,
                         })
                     }
                 </Tag>
@@ -146,7 +148,8 @@ class Save extends Component {
         listItems,
         listCustomIcon,
         imageSize,
-        buttonType
+        buttonType,
+        buttonCustomUrl
     }) => {
         const {
             setAttributes,
@@ -168,6 +171,7 @@ class Save extends Component {
                 imageAlignment,
                 imageCommonSize,
                 imageCustomSize,
+                buttonUrl,
             }
         } = this.props;
         const classNames = classnames(
@@ -187,6 +191,7 @@ class Save extends Component {
                         buttonIconName={buttonIconName}
                         buttonIconPosition={buttonIconPosition}
                         buttonTag={buttonTag}
+                        buttonUrl={typeof buttonCustomUrl !== 'undefined' ? buttonCustomUrl : buttonUrl}
                     />
                 )
             case 'list':
@@ -225,7 +230,7 @@ class Save extends Component {
                 return (
                     <RichText.Content
                         key={columnIndex}
-                        scope={Tag === 'th' ? scope : undefined}s
+                        scope={Tag === 'th' ? scope : undefined} s
                         value={content}
                         className={classNames}
                     />

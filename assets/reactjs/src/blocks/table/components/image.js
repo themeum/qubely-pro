@@ -82,14 +82,6 @@ const Image = (props) => {
         validImage = true;
     }
 
-    let img = (
-        <img
-            className="qubely-image"
-            src={image.url}
-            alt={'image-type-cell'}
-            style={{ height: '100%', width: '100%' }}
-        />
-    );
 
     const renderImage = () => {
         let maxWidth, maxHeight;
@@ -126,8 +118,8 @@ const Image = (props) => {
                 onResizeStop={(event, direction, elt, delta) => {
 
                     let tempHeight = parseInt(elt.style.height.replace('px', ''));
-                    console.log('tempHeight : ', tempHeight);
-                    console.log('width : ', width);
+                    // console.log('tempHeight : ', tempHeight);
+                    // console.log('width : ', width);
                     if (typeof width !== 'undefined' && width !== null) {
                         onResize({
                             width: parseInt(width + delta.width, 10),
@@ -144,7 +136,15 @@ const Image = (props) => {
                 }}
             >
                 <Fragment>
-                    {img}
+                    <img
+                        className="qubely-image"
+                        src={image.url}
+                        alt={'image-type-cell'}
+                        style={{
+                            height: maxHeight ? '100%' : 'auto',
+                            width: '100%'
+                        }}
+                    />
                 </Fragment>
             </ResizableBox>
         )
