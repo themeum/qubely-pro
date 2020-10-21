@@ -44,7 +44,7 @@ class Save extends Component {
      * @returns {*}
      */
     renderData = ({ cells }, name, rowIndex) => {
-        return cells.filter(({ replacedFor }) => typeof replacedFor === 'undefined').map((
+        return cells.map((
             {
                 content,
                 tag: Tag,
@@ -225,7 +225,7 @@ class Save extends Component {
                 return (
                     <RichText.Content
                         key={columnIndex}
-                        scope={Tag === 'th' ? scope : undefined}
+                        scope={Tag === 'th' ? scope : undefined}s
                         value={content}
                         className={classNames}
                     />

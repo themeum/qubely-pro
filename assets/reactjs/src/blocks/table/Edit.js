@@ -879,23 +879,30 @@ class Edit extends Component {
           </button>
           {
             this.state.showCellTypeChange && this.props.isSelected && (
-              <div className="qubely-tc-type-changer">
-                {
-                  AVAILABLE_CELL_TYPES.map(({ text, icon, type }) => (
-                    <button
-                      className={type === this.state.currentCellType ? 'active' : ''}
-                      onClick={() => {
-                        this.setState((prevState) => {
-                          return { showCellTypeChange: !prevState.showCellTypeChange }
-                        });
-                        this.onChangeCell(location, type, 'type');
-                      }}
-                    >
-                      <i className={icon} /> {text}
-                    </button>
-                  ))
-                }
-              </div>
+              <Popover
+                position="bottom center"
+                className="qubely-table-icon-picker-popover"
+                onClose={() => this.setState({ showIconPicker: false })}
+              >
+                <div className="qubely-tc-type-changer">
+                  {
+                    AVAILABLE_CELL_TYPES.map(({ text, icon, type }) => (
+                      <button
+                        className={type === this.state.currentCellType ? 'active' : ''}
+                        onClick={() => {
+                          this.setState((prevState) => {
+                            return { showCellTypeChange: !prevState.showCellTypeChange }
+                          });
+                          this.onChangeCell(location, type, 'type');
+                        }}
+                      >
+                        <i className={icon} /> {text}
+                      </button>
+                    ))
+                  }
+                </div>
+              </Popover>
+
             )
           }
         </div>
