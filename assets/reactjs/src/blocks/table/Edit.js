@@ -1996,7 +1996,7 @@ class Edit extends Component {
                       this.setState({ isOrdered: false });
                       this.onChangeCell(activeCellLocation, false, 'ordered');
                     },
-                    className: `qubely-action-change-listype ${!isOrdered ? 'is-active' : ''
+                    className: `qubely-action-change-listype ${ !isOrdered ? 'is-active' : ''
                       }`,
                   },
                   ...(!isOrdered && [{
