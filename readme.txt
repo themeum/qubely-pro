@@ -2,7 +2,7 @@
 Stable tag: 1.2.4
 == Changelog ==
 
-= 1.2.4 -  22 October, 2020 = 
+= 1.2.4 -  23 October, 2020 = 
 New: Table Builder block 
 Update: Form Builder block - Removed unnecessary space in backend  
 
