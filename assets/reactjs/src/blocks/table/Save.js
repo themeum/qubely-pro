@@ -185,6 +185,7 @@ class Save extends Component {
             case 'button':
                 return (
                     <QubelyButtonSave
+                        tableBuilder
                         buttonFillType={buttonLayout}
                         buttonSize={buttonSize}
                         buttonText={content}
