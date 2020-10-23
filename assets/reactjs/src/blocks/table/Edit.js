@@ -193,7 +193,8 @@ class Edit extends Component {
   };
 
   disableColumnMerge() {
-    const { selectedCell,
+    const { 
+      selectedCell,
       selectedCell: {
         rowIndex,
         columnIndex,
@@ -213,6 +214,9 @@ class Edit extends Component {
       return true;
     }
     let colSpan = 1, rowSpan = 1;
+    if(typeof attributes[sectionName][rowIndex]==='undefined'){
+      return true;
+    }
     let activeCell = attributes[sectionName][rowIndex].cells[columnIndex];
     let nextCell = attributes[sectionName][rowIndex].cells[columnIndex + colSpan];
 
@@ -1300,7 +1304,7 @@ class Edit extends Component {
     } = this.state;
 
     let activeCell;
-    if (activeCellLocation) {
+    if (activeCellLocation && typeof attributes[activeCellLocation.sectionName][activeCellLocation.rowIndex] !== 'undefined') {
       activeCell = attributes[activeCellLocation.sectionName][activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex];
     }
     const wrapperClasses = classnames(
@@ -1314,7 +1318,9 @@ class Edit extends Component {
     );
 
     let activeCellType = null;
-    if (activeCellLocation !== null && body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex]) {
+    if (activeCellLocation !== null
+      && typeof body[activeCellLocation.rowIndex] !== 'undefined'
+      && body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex]) {
       activeCellType = body[activeCellLocation.rowIndex].cells[activeCellLocation.columnIndex].type;
       if (currentCellType !== activeCellType) {
         this.setState({
@@ -1996,7 +2002,7 @@ class Edit extends Component {
                       this.setState({ isOrdered: false });
                       this.onChangeCell(activeCellLocation, false, 'ordered');
                     },
-                    className: `qubely-action-change-listype ${ !isOrdered ? 'is-active' : ''
+                    className: `qubely-action-change-listype ${!isOrdered ? 'is-active' : ''
                       }`,
                   },
                   ...(!isOrdered && [{
