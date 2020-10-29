@@ -460,7 +460,7 @@ const attributes = {
         style: [
             {
                 condition: [{ key: 'fixedWithCells', relation: '==', value: true }],
-                selector: '{{QUBELY}} .qubely-block-table table th,td{width: {{fixedCellWidth}};}'
+                selector: '{{QUBELY}} .qubely-block-table table th,td{width: {{fixedCellWidth}} !important;}'
             }
         ]
     },
