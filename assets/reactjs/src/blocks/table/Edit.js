@@ -27,6 +27,7 @@ const {
   ToolbarGroup,
   Dropdown,
   Popover,
+  ColorPicker,
 } = wp.components;
 
 const {
@@ -580,6 +581,7 @@ class Edit extends Component {
         replacedFor,
         buttonCustomUrl,
         customTypo,
+        iconCustomColor,
       },
       columnIndex
     ) => {
@@ -619,7 +621,7 @@ class Edit extends Component {
           onClick={(event) => this.handleOnCellClick(event, cellLocation, Tag)}
           {...(typeof colSpan !== 'undefined' && { colSpan })}
           {...(typeof rowSpan !== 'undefined' && { rowSpan })}
-          style={{ ...(typeof customTypo !== 'undefined' && {fontSize:`${customTypo}px`}) }}
+          style={{ ...(typeof customTypo !== 'undefined' && { fontSize: `${customTypo}px` }) }}
         >
           {
             this.renderCellContent({
@@ -639,7 +641,8 @@ class Edit extends Component {
               isSelectedCell,
               imageSize,
               buttonType,
-              buttonCustomUrl
+              buttonCustomUrl,
+              iconCustomColor
             })
           }
           {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
@@ -682,6 +685,7 @@ class Edit extends Component {
     imageSize,
     buttonType,
     buttonCustomUrl = '',
+    iconCustomColor,
   }) => {
     const {
       setAttributes,
@@ -739,6 +743,7 @@ class Edit extends Component {
       case 'icon':
         return (
           <Icon
+            iconCustomColor={iconCustomColor}
             isSelected={isSelected}
             iconName={iconName}
             isSelectedCell={isSelectedCell}
@@ -1301,6 +1306,7 @@ class Edit extends Component {
       showIconPicker,
       showButtonUrlPicker,
       enableCustomTypo,
+      enableCustomColor,
       cellLocation: activeCellLocation,
       currentCellType,
       showPostTextTypography
@@ -2173,7 +2179,7 @@ class Edit extends Component {
                 controls={[
                   {
                     icon: 'admin-links',
-                    title: __('Outline'),
+                    title: __('Typography'),
                     onClick: () => {
                       this.setState({ enableCustomTypo: true });
                     },
@@ -2194,6 +2200,43 @@ class Edit extends Component {
                       value={activeCell.customTypo}
                       label={__('Custom Typography')}
                       onChange={(value) => this.onChangeCell(activeCellLocation, value, 'customTypo')}
+                    />
+                  </Popover>
+                )
+              }
+            </Fragment>
+          )}
+          {cellType === 'icon' && (
+            <Fragment>
+              <Toolbar
+                controls={[
+                  {
+                    icon: 'admin-links',
+                    title: __('Color'),
+                    onClick: () => {
+                      this.setState({ enableCustomColor: true });
+                    },
+                    className: `qubely-action-change-listype`,
+                  },
+                ]}
+              />
+              {
+                (activeCell && enableCustomColor && isSelected) && (
+                  <Popover
+                    position="bottom center"
+                    className="qubely-table-custom-typo"
+                    onClose={() => this.setState({ enableCustomColor: false })}
+                  >
+                    <ColorPicker
+                      disableAlpha
+                      color={typeof activeCell.iconCustomColor === 'undefined' ? iconColor : activeCell.iconCustomColor}
+                      onChangeComplete={(newColor) => {
+                        if (newColor.rgb) {
+                          this.onChangeCell(activeCellLocation, 'rgba(' + newColor.rgb.r + ',' + newColor.rgb.g + ',' + newColor.rgb.b + ',' + newColor.rgb.a + ')', 'iconCustomColor')
+                        } else {
+                          this.onChangeCell(activeCellLocation, newColor.hex, 'iconCustomColor')
+                        }
+                      }}
                     />
                   </Popover>
                 )
