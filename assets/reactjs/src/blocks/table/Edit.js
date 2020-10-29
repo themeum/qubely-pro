@@ -90,6 +90,7 @@ class Edit extends Component {
       selectedCell: null,
       showPostTextTypography: false,
       openPanelSetting: true,
+      buttonStyleType: 'normal',
       currentGeneratorCell: {
         row: -1,
         column: -1
@@ -1225,6 +1226,7 @@ class Edit extends Component {
         body,
         tableMaxWdith,
         fixedWithCells,
+        fixedCellWidth,
         outerBoder,
         horizontalBorder,
         verticalBorder,
@@ -1313,6 +1315,7 @@ class Edit extends Component {
       enableCustomColor,
       cellLocation: activeCellLocation,
       currentCellType,
+      buttonStyleType,
       showPostTextTypography
     } = this.state;
 
@@ -1422,6 +1425,20 @@ class Edit extends Component {
                     setAttributes({ fixedWithCells: newValue })
                   }
                 />
+                {
+                  fixedWithCells &&
+                  <Range
+                    min={50}
+                    max={500}
+                    responsive
+                    device={device}
+                    value={fixedCellWidth}
+                    label={__('Cell Width')}
+                    unit={['px']}
+                    onChange={(value) => setAttributes({ fixedCellWidth: value })}
+                    onDeviceChange={value => this.setState({ device: value })}
+                  />
+                }
                 <ColorAdvanced
                   label={__('Background')}
                   value={cellBg}
@@ -2157,6 +2174,14 @@ class Edit extends Component {
                     },
                     className: `qubely-action-change-listype`,
                   },
+                  // {
+                  //   icon: 'admin-links',
+                  //   title: __('Color'),
+                  //   onClick: () => {
+                  //     this.setState({ enableCustomColor: true });
+                  //   },
+                  //   className: `qubely-action-change-listype`,
+                  // },
                 ]}
               />
               {
@@ -2172,6 +2197,44 @@ class Edit extends Component {
                       value={typeof activeCell.buttonCustomUrl === 'undefined' ? buttonUrl : activeCell.buttonCustomUrl}
                       onChange={(value) => this.onChangeCell(activeCellLocation, value, 'buttonCustomUrl')}
                     />
+                  </Popover>
+                )
+                  (activeCell && enableCustomColor && isSelected) && (
+                  <Popover
+                    position="bottom center"
+                    className="qubely-table-custom-typo"
+                    onClose={() => this.setState({ enableCustomColor: false })}
+                  >
+
+                    <Fragment>
+                      <ButtonGroup
+                        label={__('Color Type')}
+                        options={
+                          [
+                            [__('Normal'), 'normal'],
+                            [__('Hover'), 'hover']
+                          ]
+                        }
+                        value={buttonStyleType}
+                        onChange={value => this.setState({ buttonStyleType: value })}
+                      />
+                      <ColorPicker
+                        disableAlpha
+                        color={buttonStyleType === 'normal' ?
+                          typeof activeCell.buttonCustomColor === 'undefined' ? buttonColor : activeCell.buttonCustomColor :
+                          typeof activeCell.ratingsCustomColor === 'undefined' ? ratingsColor : activeCell.ratingsCustomColor
+                        }
+                        onChangeComplete={(newColor) => {
+                          if (newColor.rgb) {
+                            this.onChangeCell(activeCellLocation, 'rgba(' + newColor.rgb.r + ',' + newColor.rgb.g + ',' + newColor.rgb.b + ',' + newColor.rgb.a + ')', cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
+                          } else {
+                            this.onChangeCell(activeCellLocation, newColor.hex, cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
+                          }
+                        }}
+                      />
+                    </Fragment>
+
+
                   </Popover>
                 )
               }
