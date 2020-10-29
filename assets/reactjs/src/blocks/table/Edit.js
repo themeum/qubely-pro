@@ -582,6 +582,7 @@ class Edit extends Component {
         buttonCustomUrl,
         customTypo,
         iconCustomColor,
+        ratingsCustomColor,
       },
       columnIndex
     ) => {
@@ -642,7 +643,8 @@ class Edit extends Component {
               imageSize,
               buttonType,
               buttonCustomUrl,
-              iconCustomColor
+              iconCustomColor,
+              ratingsCustomColor,
             })
           }
           {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
@@ -686,6 +688,7 @@ class Edit extends Component {
     buttonType,
     buttonCustomUrl = '',
     iconCustomColor,
+    ratingsCustomColor,
   }) => {
     const {
       setAttributes,
@@ -772,6 +775,7 @@ class Edit extends Component {
           <Ratings
             ratings={ratings}
             isSelected={isSelected}
+            ratingsCustomColor={ratingsCustomColor}
             onChange={newRatings => this.onChangeCell(cellLocation, newRatings, 'ratings')}
           />)
       default:
@@ -2206,7 +2210,7 @@ class Edit extends Component {
               }
             </Fragment>
           )}
-          {cellType === 'icon' && (
+          {(cellType === 'icon' || cellType === 'rating') && (
             <Fragment>
               <Toolbar
                 controls={[
@@ -2229,12 +2233,15 @@ class Edit extends Component {
                   >
                     <ColorPicker
                       disableAlpha
-                      color={typeof activeCell.iconCustomColor === 'undefined' ? iconColor : activeCell.iconCustomColor}
+                      color={cellType === 'icon' ?
+                        typeof activeCell.iconCustomColor === 'undefined' ? iconColor : activeCell.iconCustomColor :
+                        typeof activeCell.ratingsCustomColor === 'undefined' ? ratingsColor : activeCell.ratingsCustomColor
+                      }
                       onChangeComplete={(newColor) => {
                         if (newColor.rgb) {
-                          this.onChangeCell(activeCellLocation, 'rgba(' + newColor.rgb.r + ',' + newColor.rgb.g + ',' + newColor.rgb.b + ',' + newColor.rgb.a + ')', 'iconCustomColor')
+                          this.onChangeCell(activeCellLocation, 'rgba(' + newColor.rgb.r + ',' + newColor.rgb.g + ',' + newColor.rgb.b + ',' + newColor.rgb.a + ')', cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
                         } else {
-                          this.onChangeCell(activeCellLocation, newColor.hex, 'iconCustomColor')
+                          this.onChangeCell(activeCellLocation, newColor.hex, cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
                         }
                       }}
                     />

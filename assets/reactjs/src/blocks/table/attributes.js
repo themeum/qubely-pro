@@ -576,7 +576,7 @@ const attributes = {
         default: '#FFB800',
         style: [
             {
-                selector: '{{QUBELY}} .table-ratings:before {color: {{ratingsColor}};} {{QUBELY}} .table-ratings {color: {{ratingsColor}};}'
+                selector: '{{QUBELY}} .table-ratings {color: {{ratingsColor}};}'
             }
         ]
     },

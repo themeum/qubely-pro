@@ -66,6 +66,7 @@ class Save extends Component {
                 buttonCustomUrl,
                 customTypo,
                 iconCustomColor,
+                ratingsCustomColor,
             },
             columnIndex
         ) => {
@@ -115,6 +116,7 @@ class Save extends Component {
                             buttonType,
                             buttonCustomUrl,
                             iconCustomColor,
+                            ratingsCustomColor,
                         })
                     }
                 </Tag>
@@ -155,6 +157,7 @@ class Save extends Component {
         buttonType,
         buttonCustomUrl,
         iconCustomColor,
+        ratingsCustomColor,
     }) => {
         const {
             setAttributes,
@@ -231,7 +234,7 @@ class Save extends Component {
                 return (
                     <Ratings
                         ratings={ratings}
-                        isSelected={isSelected}
+                        ratingsCustomColor={ratingsCustomColor}
                     />)
             default:
                 return (
