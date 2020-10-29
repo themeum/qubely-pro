@@ -1,5 +1,5 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 == Changelog ==
 
 = 1.2.4 -  23 October, 2020 = 

@@ -479,3 +479,11 @@ tfoot .qubely-table-cell-edit .block-editor-rich-text__editable [data-rich-text-
     min-height: 100px;
   }
 }
+
+.qubely-table-custom-typo {
+  .components-popover__content {
+    padding: 20px;
+    width: 300px;
+    border-radius: 5px;
+  }
+}

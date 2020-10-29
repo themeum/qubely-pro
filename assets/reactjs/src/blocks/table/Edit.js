@@ -193,7 +193,7 @@ class Edit extends Component {
   };
 
   disableColumnMerge() {
-    const { 
+    const {
       selectedCell,
       selectedCell: {
         rowIndex,
@@ -214,7 +214,7 @@ class Edit extends Component {
       return true;
     }
     let colSpan = 1, rowSpan = 1;
-    if(typeof attributes[sectionName][rowIndex]==='undefined'){
+    if (typeof attributes[sectionName][rowIndex] === 'undefined') {
       return true;
     }
     let activeCell = attributes[sectionName][rowIndex].cells[columnIndex];
@@ -579,6 +579,7 @@ class Edit extends Component {
         customAlignment,
         replacedFor,
         buttonCustomUrl,
+        customTypo,
       },
       columnIndex
     ) => {
@@ -618,6 +619,7 @@ class Edit extends Component {
           onClick={(event) => this.handleOnCellClick(event, cellLocation, Tag)}
           {...(typeof colSpan !== 'undefined' && { colSpan })}
           {...(typeof rowSpan !== 'undefined' && { rowSpan })}
+          style={{ ...(typeof customTypo !== 'undefined' && {fontSize:`${customTypo}px`}) }}
         >
           {
             this.renderCellContent({
@@ -679,7 +681,7 @@ class Edit extends Component {
     isSelectedCell,
     imageSize,
     buttonType,
-    buttonCustomUrl = ''
+    buttonCustomUrl = '',
   }) => {
     const {
       setAttributes,
@@ -1298,6 +1300,7 @@ class Edit extends Component {
       isOrdered,
       showIconPicker,
       showButtonUrlPicker,
+      enableCustomTypo,
       cellLocation: activeCellLocation,
       currentCellType,
       showPostTextTypography
@@ -2158,6 +2161,39 @@ class Edit extends Component {
                       disableAdvanced
                       value={typeof activeCell.buttonCustomUrl === 'undefined' ? buttonUrl : activeCell.buttonCustomUrl}
                       onChange={(value) => this.onChangeCell(activeCellLocation, value, 'buttonCustomUrl')}
+                    />
+                  </Popover>
+                )
+              }
+            </Fragment>
+          )}
+          {cellType === 'text' && (
+            <Fragment>
+              <Toolbar
+                controls={[
+                  {
+                    icon: 'admin-links',
+                    title: __('Outline'),
+                    onClick: () => {
+                      this.setState({ enableCustomTypo: true });
+                    },
+                    className: `qubely-action-change-listype`,
+                  },
+                ]}
+              />
+              {
+                (activeCell && enableCustomTypo && isSelected) && (
+                  <Popover
+                    position="bottom center"
+                    className="qubely-table-custom-typo"
+                    onClose={() => this.setState({ enableCustomTypo: false })}
+                  >
+                    <Range
+                      min={0}
+                      max={100}
+                      value={activeCell.customTypo}
+                      label={__('Custom Typography')}
+                      onChange={(value) => this.onChangeCell(activeCellLocation, value, 'customTypo')}
                     />
                   </Popover>
                 )

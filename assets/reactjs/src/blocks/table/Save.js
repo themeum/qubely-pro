@@ -64,6 +64,7 @@ class Save extends Component {
                 customAlignment,
                 replacedFor,
                 buttonCustomUrl,
+                customTypo,
             },
             columnIndex
         ) => {
@@ -92,6 +93,7 @@ class Save extends Component {
                 <Tag className={className}
                     {...(typeof colSpan !== 'undefined' && { colSpan })}
                     {...(typeof rowSpan !== 'undefined' && { rowSpan })}
+                    style={{ ...(typeof customTypo !== 'undefined' && {fontSize:`${customTypo}px`}) }}
                 >
                     {
                         this.renderCellContent({
