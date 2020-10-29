@@ -64,6 +64,9 @@ class Save extends Component {
                 customAlignment,
                 replacedFor,
                 buttonCustomUrl,
+                customTypo,
+                iconCustomColor,
+                ratingsCustomColor,
             },
             columnIndex
         ) => {
@@ -92,6 +95,7 @@ class Save extends Component {
                 <Tag className={className}
                     {...(typeof colSpan !== 'undefined' && { colSpan })}
                     {...(typeof rowSpan !== 'undefined' && { rowSpan })}
+                    style={{ ...(typeof customTypo !== 'undefined' && { fontSize: `${customTypo}px` }) }}
                 >
                     {
                         this.renderCellContent({
@@ -111,6 +115,8 @@ class Save extends Component {
                             imageSize,
                             buttonType,
                             buttonCustomUrl,
+                            iconCustomColor,
+                            ratingsCustomColor,
                         })
                     }
                 </Tag>
@@ -149,7 +155,9 @@ class Save extends Component {
         listCustomIcon,
         imageSize,
         buttonType,
-        buttonCustomUrl
+        buttonCustomUrl,
+        iconCustomColor,
+        ratingsCustomColor,
     }) => {
         const {
             setAttributes,
@@ -210,6 +218,7 @@ class Save extends Component {
                 return (
                     <Icon
                         iconName={iconName}
+                        iconCustomColor={iconCustomColor}
                     />
                 )
             case 'image':
@@ -225,7 +234,7 @@ class Save extends Component {
                 return (
                     <Ratings
                         ratings={ratings}
-                        isSelected={isSelected}
+                        ratingsCustomColor={ratingsCustomColor}
                     />)
             default:
                 return (

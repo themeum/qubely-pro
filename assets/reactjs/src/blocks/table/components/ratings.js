@@ -19,7 +19,8 @@ const Ratings = (props) => {
         ratings = 5,
         classes,
         onChange,
-        isSelected
+        isSelected,
+        ratingsCustomColor
     } = props;
 
     const classNames = classnames(
@@ -30,7 +31,10 @@ const Ratings = (props) => {
     return (
         <div className={classNames}>
             <Tooltip text={__('Change ratings')}>
-                <div className="table-ratings" style={{ '--qubely-rating': `${ratings * 20}%` }} onClick={() => toggleRatingsPikcer(!showRatingsPicker)} />
+                <div className="table-ratings"
+                    style={{ '--qubely-rating': `${ratings * 20}%`, ...(typeof ratingsCustomColor !== 'undefined' && { color: ratingsCustomColor }) }}
+                    onClick={() => toggleRatingsPikcer(!showRatingsPicker)}
+                />
             </Tooltip>
             {
                 (isSelected && showRatingsPicker) &&
@@ -56,6 +60,7 @@ const RatingSave = (props) => {
     const {
         ratings = 5,
         classes,
+        ratingsCustomColor,
     } = props;
 
     const classNames = classnames(
@@ -65,7 +70,9 @@ const RatingSave = (props) => {
     )
     return (
         <div className={classNames}>
-            <div className="table-ratings" style={{ '--qubely-rating': `${ratings * 20}%` }} />
+            <div className="table-ratings"
+                style={{ '--qubely-rating': `${ratings * 20}%`, ...(typeof ratingsCustomColor !== 'undefined' && { color: ratingsCustomColor }) }}
+            />
         </div>
     );
 }

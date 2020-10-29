@@ -22,7 +22,8 @@ const Icon = (props) => {
         classes,
         onChange,
         isSelected,
-        isSelectedCell
+        isSelectedCell,
+        iconCustomColor
     } = props;
 
     const classNames = classnames(
@@ -40,7 +41,10 @@ const Icon = (props) => {
                             <i className="qubely-table fas fa-plus" />
                         </span>
                         :
-                        <div className="icon" onClick={() => toggleIconPicker(showIconPicker ? false : true)}>
+                        <div className="icon"
+                            style={{ ...(typeof iconCustomColor !== 'undefined' && { color: iconCustomColor }) }}
+                            onClick={() => toggleIconPicker(showIconPicker ? false : true)}
+                        >
                             <i className={iconName} />
                         </div>
                 }
@@ -65,7 +69,8 @@ const IconSave = (props) => {
 
     const {
         iconName = undefined,
-        classes
+        classes,
+        iconCustomColor,
     } = props;
 
     const classNames = classnames(
@@ -81,7 +86,10 @@ const IconSave = (props) => {
                         <i className="qubely-table fas fa-plus" />
                     </span>
                     :
-                    <div className="icon">
+                    <div
+                        className="icon"
+                        style={{ ...(typeof iconCustomColor !== 'undefined' && { color: iconCustomColor }) }}
+                    >
                         <i className={iconName} />
                     </div>
             }

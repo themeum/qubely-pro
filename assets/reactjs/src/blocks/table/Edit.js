@@ -27,6 +27,7 @@ const {
   ToolbarGroup,
   Dropdown,
   Popover,
+  ColorPicker,
 } = wp.components;
 
 const {
@@ -89,6 +90,7 @@ class Edit extends Component {
       selectedCell: null,
       showPostTextTypography: false,
       openPanelSetting: true,
+      buttonStyleType: 'normal',
       currentGeneratorCell: {
         row: -1,
         column: -1
@@ -193,7 +195,7 @@ class Edit extends Component {
   };
 
   disableColumnMerge() {
-    const { 
+    const {
       selectedCell,
       selectedCell: {
         rowIndex,
@@ -214,7 +216,7 @@ class Edit extends Component {
       return true;
     }
     let colSpan = 1, rowSpan = 1;
-    if(typeof attributes[sectionName][rowIndex]==='undefined'){
+    if (typeof attributes[sectionName][rowIndex] === 'undefined') {
       return true;
     }
     let activeCell = attributes[sectionName][rowIndex].cells[columnIndex];
@@ -579,6 +581,9 @@ class Edit extends Component {
         customAlignment,
         replacedFor,
         buttonCustomUrl,
+        customTypo,
+        iconCustomColor,
+        ratingsCustomColor,
       },
       columnIndex
     ) => {
@@ -618,6 +623,7 @@ class Edit extends Component {
           onClick={(event) => this.handleOnCellClick(event, cellLocation, Tag)}
           {...(typeof colSpan !== 'undefined' && { colSpan })}
           {...(typeof rowSpan !== 'undefined' && { rowSpan })}
+          style={{ ...(typeof customTypo !== 'undefined' && { fontSize: `${customTypo}px` }) }}
         >
           {
             this.renderCellContent({
@@ -637,7 +643,9 @@ class Edit extends Component {
               isSelectedCell,
               imageSize,
               buttonType,
-              buttonCustomUrl
+              buttonCustomUrl,
+              iconCustomColor,
+              ratingsCustomColor,
             })
           }
           {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
@@ -679,7 +687,9 @@ class Edit extends Component {
     isSelectedCell,
     imageSize,
     buttonType,
-    buttonCustomUrl = ''
+    buttonCustomUrl = '',
+    iconCustomColor,
+    ratingsCustomColor,
   }) => {
     const {
       setAttributes,
@@ -737,6 +747,7 @@ class Edit extends Component {
       case 'icon':
         return (
           <Icon
+            iconCustomColor={iconCustomColor}
             isSelected={isSelected}
             iconName={iconName}
             isSelectedCell={isSelectedCell}
@@ -765,6 +776,7 @@ class Edit extends Component {
           <Ratings
             ratings={ratings}
             isSelected={isSelected}
+            ratingsCustomColor={ratingsCustomColor}
             onChange={newRatings => this.onChangeCell(cellLocation, newRatings, 'ratings')}
           />)
       default:
@@ -1214,6 +1226,7 @@ class Edit extends Component {
         body,
         tableMaxWdith,
         fixedWithCells,
+        fixedCellWidth,
         outerBoder,
         horizontalBorder,
         verticalBorder,
@@ -1298,8 +1311,11 @@ class Edit extends Component {
       isOrdered,
       showIconPicker,
       showButtonUrlPicker,
+      enableCustomTypo,
+      enableCustomColor,
       cellLocation: activeCellLocation,
       currentCellType,
+      buttonStyleType,
       showPostTextTypography
     } = this.state;
 
@@ -1409,6 +1425,20 @@ class Edit extends Component {
                     setAttributes({ fixedWithCells: newValue })
                   }
                 />
+                {
+                  fixedWithCells &&
+                  <Range
+                    min={50}
+                    max={500}
+                    responsive
+                    device={device}
+                    value={fixedCellWidth}
+                    label={__('Cell Width')}
+                    unit={['px']}
+                    onChange={(value) => setAttributes({ fixedCellWidth: value })}
+                    onDeviceChange={value => this.setState({ device: value })}
+                  />
+                }
                 <ColorAdvanced
                   label={__('Background')}
                   value={cellBg}
@@ -2144,6 +2174,14 @@ class Edit extends Component {
                     },
                     className: `qubely-action-change-listype`,
                   },
+                  // {
+                  //   icon: 'admin-links',
+                  //   title: __('Color'),
+                  //   onClick: () => {
+                  //     this.setState({ enableCustomColor: true });
+                  //   },
+                  //   className: `qubely-action-change-listype`,
+                  // },
                 ]}
               />
               {
@@ -2158,6 +2196,117 @@ class Edit extends Component {
                       disableAdvanced
                       value={typeof activeCell.buttonCustomUrl === 'undefined' ? buttonUrl : activeCell.buttonCustomUrl}
                       onChange={(value) => this.onChangeCell(activeCellLocation, value, 'buttonCustomUrl')}
+                    />
+                  </Popover>
+                )
+                  (activeCell && enableCustomColor && isSelected) && (
+                  <Popover
+                    position="bottom center"
+                    className="qubely-table-custom-typo"
+                    onClose={() => this.setState({ enableCustomColor: false })}
+                  >
+
+                    <Fragment>
+                      <ButtonGroup
+                        label={__('Color Type')}
+                        options={
+                          [
+                            [__('Normal'), 'normal'],
+                            [__('Hover'), 'hover']
+                          ]
+                        }
+                        value={buttonStyleType}
+                        onChange={value => this.setState({ buttonStyleType: value })}
+                      />
+                      <ColorPicker
+                        disableAlpha
+                        color={buttonStyleType === 'normal' ?
+                          typeof activeCell.buttonCustomColor === 'undefined' ? buttonColor : activeCell.buttonCustomColor :
+                          typeof activeCell.ratingsCustomColor === 'undefined' ? ratingsColor : activeCell.ratingsCustomColor
+                        }
+                        onChangeComplete={(newColor) => {
+                          if (newColor.rgb) {
+                            this.onChangeCell(activeCellLocation, 'rgba(' + newColor.rgb.r + ',' + newColor.rgb.g + ',' + newColor.rgb.b + ',' + newColor.rgb.a + ')', cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
+                          } else {
+                            this.onChangeCell(activeCellLocation, newColor.hex, cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
+                          }
+                        }}
+                      />
+                    </Fragment>
+
+
+                  </Popover>
+                )
+              }
+            </Fragment>
+          )}
+          {cellType === 'text' && (
+            <Fragment>
+              <Toolbar
+                controls={[
+                  {
+                    icon: 'admin-links',
+                    title: __('Typography'),
+                    onClick: () => {
+                      this.setState({ enableCustomTypo: true });
+                    },
+                    className: `qubely-action-change-listype`,
+                  },
+                ]}
+              />
+              {
+                (activeCell && enableCustomTypo && isSelected) && (
+                  <Popover
+                    position="bottom center"
+                    className="qubely-table-custom-typo"
+                    onClose={() => this.setState({ enableCustomTypo: false })}
+                  >
+                    <Range
+                      min={0}
+                      max={100}
+                      value={activeCell.customTypo}
+                      label={__('Custom Typography')}
+                      onChange={(value) => this.onChangeCell(activeCellLocation, value, 'customTypo')}
+                    />
+                  </Popover>
+                )
+              }
+            </Fragment>
+          )}
+          {(cellType === 'icon' || cellType === 'rating') && (
+            <Fragment>
+              <Toolbar
+                controls={[
+                  {
+                    icon: 'admin-links',
+                    title: __('Color'),
+                    onClick: () => {
+                      this.setState({ enableCustomColor: true });
+                    },
+                    className: `qubely-action-change-listype`,
+                  },
+                ]}
+              />
+              {
+                (activeCell && enableCustomColor && isSelected) && (
+                  <Popover
+                    position="bottom center"
+                    className="qubely-table-custom-typo"
+                    onClose={() => this.setState({ enableCustomColor: false })}
+                  >
+                    <ColorPicker
+                      disableAlpha
+                      color={cellType === 'icon' ?
+                        typeof activeCell.iconCustomColor === 'undefined' ? iconColor : activeCell.iconCustomColor :
+                        typeof activeCell.ratingsCustomColor === 'undefined' ? ratingsColor : activeCell.ratingsCustomColor
+                      }
+                      onChangeComplete={(newColor) => {
+                        if (newColor.rgb) {
+                          this.onChangeCell(activeCellLocation, 'rgba(' + newColor.rgb.r + ',' + newColor.rgb.g + ',' + newColor.rgb.b + ',' + newColor.rgb.a + ')', cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
+                        } else {
+                          this.onChangeCell(activeCellLocation, newColor.hex, cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
+                        }
+                      }}
                     />
                   </Popover>
                 )
