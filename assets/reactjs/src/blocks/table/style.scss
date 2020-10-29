@@ -507,16 +507,16 @@ tfoot .qubely-table-cell-edit .block-editor-rich-text__editable [data-rich-text-
 
 		&.fixed-width {
 			table .qubely-block-table_cell-content {
-				width: 130px;
+				width: 100px;
 			}
 		}
 	}
 }
 
 .qubely-table-custom-typo {
-  .components-popover__content {
-    padding: 20px;
-    width: 300px;
-    border-radius: 5px;
-  }
+	.components-popover__content {
+		padding: 20px;
+		width: 300px;
+		border-radius: 5px;
+	}
 }
