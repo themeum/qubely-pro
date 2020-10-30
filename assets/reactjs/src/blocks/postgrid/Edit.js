@@ -45,7 +45,7 @@ const {
 import icons from '../../helpers/icons'
 
 const CATEGORIES_LIST_QUERY = { per_page: -1 };
-
+let postTypes = qubely_admin.post_type;
 class Edit extends Component {
   constructor() {
     super(...arguments);
@@ -140,8 +140,8 @@ class Edit extends Component {
           </div>
         }
         {showTitle && (titlePosition == false) && title}
-        {showExcerpt && ((index == 0) && (layout === 5)) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
-        {showExcerpt && (layout != 5) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.excerpt.rendered, excerptLimit) }} />}
+        {showExcerpt && ((index == 0) && (layout === 5)) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }} />}
+        {showExcerpt && (layout != 5) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }} />}
         {showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
       </div>
     )
@@ -153,13 +153,17 @@ class Edit extends Component {
       clientId,
       attributes,
       posts,
+      categoryList,
       taxonomyList,
       setAttributes,
       attributes: {
         uniqueId,
         className,
+        postType,
         taxonomy,
+        taxonomyType,
         categories,
+        customTaxonomies,
         tags,
         order,
         orderBy,
@@ -296,6 +300,25 @@ class Edit extends Component {
     } = this.state;
 
     let pages = Math.ceil(qubely_pro_admin.publishedPosts / postsToShow);
+    let taxonomyListOptions = [
+      { value: '', label: __('Select Taxonomy') }
+    ];
+
+    let categoryListOptions = [
+      { value: '', label: __('All') }
+    ];
+
+    if ('' !== taxonomyList) {
+      Object.keys(taxonomyList).map((item) => {
+        return taxonomyListOptions.push({ value: taxonomyList[item]['name'], label: taxonomyList[item]['label'] })
+      });
+    }
+
+    if ('' !== categoryList) {
+      Object.keys(categoryList).map((item) => {
+        return categoryListOptions.push({ value: categoryList[item]['value'], label: categoryList[item]['label'] })
+      });
+    }
 
     return (
       <Fragment>
@@ -781,52 +804,80 @@ class Edit extends Component {
               </PanelBody>
 
               <PanelBody title={__("Query")} initialOpen={false}>
-                <ButtonGroup
-                  label={__("Taxonomy")}
-                  options={[
-                    [__("Categories"), "categories"],
-                    [__("Tags"), "tags"],
-                  ]}
-                  value={taxonomy}
-                  onChange={(value) => setAttributes({ taxonomy: value })}
+                <SelectControl
+                  label={__('Post Type')}
+                  options={postTypes}
+                  value={postType}
+                  onChange={value => setAttributes({ postType: value })}
                 />
-                <Dropdown
-                  label={
-                    taxonomy === "categories" ? __("Categories") : __("Tags")
-                  }
-                  enableSearch
-                  defaultOptionsLabel="All"
-                  options={[
-                    { value: "all", label: __("All") },
-                    ...taxonomyList,
-                  ]}
-                  value={
-                    taxonomy
-                      ? taxonomy === "categories"
-                        ? categories
-                        : tags
-                      : []
-                  }
-                  onChange={(value) =>
-                    setAttributes(
-                      taxonomy === "categories"
-                        ? {
-                          categories:
-                            value.length &&
-                              value[value.length - 1].label === "All"
-                              ? []
-                              : value,
-                        }
-                        : {
-                          tags:
-                            value.length &&
-                              value[value.length - 1].label === "All"
-                              ? []
-                              : value,
-                        }
-                    )
-                  }
-                />
+                {taxonomyList && 'post' !== postType &&
+                  <SelectControl
+                    label={__('Taxonomy')}
+                    options={taxonomyListOptions}
+                    value={taxonomyType}
+                    onChange={value => setAttributes({ taxonomyType: value })}
+                  />
+                }
+                {categoryList && 'post' !== postType &&
+                  <Dropdown
+                    label={taxonomyList && taxonomyList[taxonomyType] ? taxonomyList[taxonomyType]['label'] : __('Taxonomy Terms')}
+                    enableSearch
+                    defaultOptionsLabel="All"
+                    options={categoryListOptions}
+                    value={customTaxonomies}
+                    onChange={value => setAttributes({ customTaxonomies: value.length && value[value.length - 1].label === 'All' ? [] : value })}
+                  />
+                }
+                {'post' === postType &&
+                  <Fragment>
+                    <ButtonGroup
+                      label={__("Taxonomy")}
+                      options={[
+                        [__("Categories"), "categories"],
+                        [__("Tags"), "tags"],
+                      ]}
+                      value={taxonomy}
+                      onChange={(value) => setAttributes({ taxonomy: value })}
+                    />
+                    <Dropdown
+                      label={
+                        taxonomy === "categories" ? __("Categories") : __("Tags")
+                      }
+                      enableSearch
+                      defaultOptionsLabel="All"
+                      options={[
+                        { value: "all", label: __("All") },
+                        ...taxonomyList,
+                      ]}
+                      value={
+                        taxonomy
+                          ? taxonomy === "categories"
+                            ? categories
+                            : tags
+                          : []
+                      }
+                      onChange={(value) =>
+                        setAttributes(
+                          taxonomy === "categories"
+                            ? {
+                              categories:
+                                value.length &&
+                                  value[value.length - 1].label === "All"
+                                  ? []
+                                  : value,
+                            }
+                            : {
+                              tags:
+                                value.length &&
+                                  value[value.length - 1].label === "All"
+                                  ? []
+                                  : value,
+                            }
+                        )
+                      }
+                    />
+                  </Fragment>
+                }
                 <Range
                   label={__("Number of Items")}
                   value={postsToShow}
@@ -1735,24 +1786,22 @@ class Edit extends Component {
         )}
 
         <div
-          className={`qubely-block-${uniqueId}${
-            className ? ` ${className}` : ""
+          className={`qubely-block-${uniqueId}${className ? ` ${className}` : ""
             }`}
         >
           {posts && posts.length ? (
             <Fragment>
               <div
-                className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${
-                  layout === 2 || layout === 3 || layout === 4
-                    ? "qubely-postgrid-column qubely-postgrid-column-md" +
-                    column.md +
-                    " " +
-                    "qubely-postgrid-column-sm" +
-                    column.sm +
-                    " " +
-                    "qubely-postgrid-column-xs" +
-                    column.xs
-                    : ""
+                className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${layout === 2 || layout === 3 || layout === 4
+                  ? "qubely-postgrid-column qubely-postgrid-column-md" +
+                  column.md +
+                  " " +
+                  "qubely-postgrid-column-sm" +
+                  column.sm +
+                  " " +
+                  "qubely-postgrid-column-xs" +
+                  column.xs
+                  : ""
                   }`}
                 onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
               >
@@ -1760,30 +1809,25 @@ class Edit extends Component {
                   if (post) {
                     return (
                       <div
-                        className={`qubely-postgrid ${
-                          layout === 1
-                            ? "qubely-post-list-view"
-                            : "qubely-post-grid-view"
-                          } qubely-postgrid-style-${style} ${
-                          (layout == 5 && index == 0) ||
+                        className={`qubely-postgrid ${layout === 1
+                          ? "qubely-post-list-view"
+                          : "qubely-post-grid-view"
+                          } qubely-postgrid-style-${style} ${(layout == 5 && index == 0) ||
                             (layout == 3 && index == 0)
                             ? "qubely-post-large-view"
                             : "qubely-post-small-view"
                           }`}
                       >
                         <div
-                          className={`${
-                            layout === 1
-                              ? `qubely-post-list-wrapper qubely-post-list-${
-                              layout != 1 && style === 3
-                                ? contentPosition
-                                : girdContentPosition
-                              }`
-                              : `qubely-post-grid-wrapper qubely-post-grid-${
-                              layout != 1 && style === 3
-                                ? contentPosition
-                                : girdContentPosition
-                              }`
+                          className={`${layout === 1
+                            ? `qubely-post-list-wrapper qubely-post-list-${layout != 1 && style === 3
+                              ? contentPosition
+                              : girdContentPosition
+                            }`
+                            : `qubely-post-grid-wrapper qubely-post-grid-${layout != 1 && style === 3
+                              ? contentPosition
+                              : girdContentPosition
+                            }`
                             }`}
                         >
                           {post &&
@@ -1825,8 +1869,7 @@ class Edit extends Component {
                     .map((_, index) => (
                       <button
                         key={index}
-                        className={`pages${
-                          page === index + 1 ? " current" : ""
+                        className={`pages${page === index + 1 ? " current" : ""
                           }`}
                         onClick={() => setAttributes({ page: index + 1 })}
                       >
@@ -1861,30 +1904,57 @@ export default compose([
     const {
       attributes: {
         taxonomy,
+        taxonomyType,
         order,
         orderBy,
         categories,
         tags,
         page,
+        postType,
+        customTaxonomies,
         postsToShow
       }
     } = props;
 
-    let allTaxonomy = qubely_admin.all_taxonomy
+    let allTaxonomy = qubely_admin.all_taxonomy;
+    let currentTax = allTaxonomy[postType];
+    let categoryList = [];
+    let rest_base = '';
 
-    let seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags'
-    let activeTaxes = taxonomy === 'categories' ? categories : tags
+    if ('undefined' !== typeof currentTax) {
+      if ('undefined' !== typeof currentTax['taxonomy'][taxonomyType]) {
+        rest_base = (currentTax['taxonomy'][taxonomyType]['rest_base'] == false || currentTax['taxonomy'][taxonomyType]['rest_base'] == null) ? currentTax['taxonomy'][taxonomyType]['name'] : currentTax['taxonomy'][taxonomyType]['rest_base'];
+      }
+
+      if ('' !== taxonomyType) {
+        if ('undefined' !== typeof currentTax['terms'] && 'undefined' !== typeof currentTax['terms'][taxonomyType]) {
+          categoryList = currentTax['terms'][taxonomyType];
+        }
+      }
+    }
+
+    let seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags';
+    let activeTaxes = taxonomy === 'categories' ? categories : tags;
+    let postTaxonomies = allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [];
+    let otherTaxonomies = ('undefined' !== typeof currentTax) ? currentTax['taxonomy'] : [];
 
     let query = {
       order: order,
       orderby: orderBy,
       page: page,
       per_page: postsToShow,
-      [seletedTaxonomy]: activeTaxes.map(({ value, label }) => value),
     }
+
+    if ('post' !== postType) {
+      query[rest_base] = '' !== customTaxonomies ? customTaxonomies.map(({ value, label }) => value) : [];
+    } else {
+      query[seletedTaxonomy] = activeTaxes.map(({ value, label }) => value);
+    }
+
     return {
-      posts: getEntityRecords('postType', 'post', query),
-      taxonomyList: allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [],
+      posts: getEntityRecords('postType', postType, query),
+      categoryList: categoryList,
+      taxonomyList: ('post' === postType) ? postTaxonomies : otherTaxonomies,
     };
   }),
   withCSSGenerator()
