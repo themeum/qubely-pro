@@ -3,6 +3,7 @@ import templates from './templates';
 import icons from '../../helpers/icons';
 
 const { __ } = wp.i18n;
+const { createBlock } = wp.blocks;
 const {
 	Toolbar,
 	Tooltip,
@@ -407,14 +408,27 @@ class Edit extends Component {
 		}
 
 		const addNewTab = () => {
+			const {
+				clientId,
+				block,
+				replaceInnerBlocks,
+			} = this.props;
+
 			this.setState({
 				activeTab: tabs + 1,
-				initialRender: false
+				initialRender: false,
 			})
 			setAttributes({
 				tabs: tabs + 1,
-				tabTitles: newTitles()
-			})
+				tabTitles: newTitles(),
+			});
+			let innerBlocks = JSON.parse(JSON.stringify(block.innerBlocks));
+			innerBlocks.push(createBlock('qubely/verticaltab', {
+				id: innerBlocks.length + 1,
+				customClassName: 'qubely-active',
+			}));
+
+			replaceInnerBlocks(clientId, innerBlocks, false);
 		}
 
 		return (
