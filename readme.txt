@@ -2,6 +2,13 @@
 Stable tag: 1.2.5
 == Changelog ==
 
+= 1.2.5 - 16 November, 2020 = 
+New: Table Builder - Made Responsive/Scrollable  
+New: Table Builder - Custom Typography for cells 
+New: Table Builder - Custom color option for icon color, ratings color  
+New: Post Grid block - Custom Post-type support  
+Fix: Vertical Tab block - Add new tab issue in WordPress new versions  
+
 = 1.2.4 -  23 October, 2020 = 
 New: Table Builder block 
 Update: Form Builder block - Removed unnecessary space in backend  

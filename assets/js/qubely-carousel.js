@@ -957,7 +957,7 @@
 
 })(jQuery, window, document);
 
-jQuery(document).ready(function ($) {
+jQuery(function ($) {
     $.fn.themeum_qubely_carousel = function () {
         let indexOfCounterElement = 0
         if ($('.qubely-carousel.qubely-carousel-wrapper').length > 0) {

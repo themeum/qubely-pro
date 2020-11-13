@@ -73,6 +73,7 @@ function removeJsFiles() {
             './build/qubely-pro/assets/js/form.js',
             './build/qubely-pro/assets/js/qubely-carousel.js',
             './build/qubely-pro/assets/js/installer.js',
+            './build/qubely-pro/assets/js/qubely-countdown.js',
         ],
         { read: false, allowEmpty: true })
         .pipe(clean());

@@ -1,5 +1,5 @@
 
-jQuery(document).ready(function ($) {
+jQuery(function ($) {
 
     $(document).click(function (event) {
         $target = $(event.target)

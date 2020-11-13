@@ -2265,7 +2265,7 @@ class Edit extends Component {
                       min={0}
                       max={100}
                       value={activeCell.customTypo}
-                      label={__('Custom Typography')}
+                      label={__('Custom Font-size')}
                       onChange={(value) => this.onChangeCell(activeCellLocation, value, 'customTypo')}
                     />
                   </Popover>
