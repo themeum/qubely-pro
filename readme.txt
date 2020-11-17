@@ -7,6 +7,7 @@ New: Table Builder - Made Responsive/Scrollable
 New: Table Builder - Custom Typography for cells 
 New: Table Builder - Custom color option for icon, ratings field  
 New: Post Grid block - Custom Post-type support  
+New: Post Carousel block - Custom Post-type support  
 Fix: Vertical Tab block - Add new tab issue in WordPress new versions  
 
 = 1.2.4 -  23 October, 2020 = 
