@@ -32,7 +32,7 @@ registerBlockType('qubely/table', {
             attributes,
             save(props) {
                 return (
-                    <DepricatedSave props={props} />
+                    <DepricatedSave blockProps={props} />
                 )
             }
         }

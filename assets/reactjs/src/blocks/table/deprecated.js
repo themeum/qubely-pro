@@ -181,7 +181,7 @@ class DepricatedSave extends Component {
                 imageCustomSize,
                 buttonUrl,
             }
-        } = this.props;
+        } = this.props.blockProps;
         const classNames = classnames(
             'cell-text'
         );
@@ -262,7 +262,7 @@ class DepricatedSave extends Component {
             outerBoder,
             verticalBorder,
             horizontalBorder
-        } = this.props.attributes;
+        } = this.props.blockProps.attributes;
 
         const Section = this.renderSections;
         const tableClasses = classnames(
@@ -293,7 +293,6 @@ class DepricatedSave extends Component {
     };
 
     render() {
-        console.log('hi from depri');
         const {
             attributes: {
                 layout,
@@ -302,7 +301,7 @@ class DepricatedSave extends Component {
                 interaction,
                 fixedWithCells
             }
-        } = this.props
+        } = this.props.blockProps
         const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
         const TableContent = this.renderTableContent;
         const classes = classnames(
