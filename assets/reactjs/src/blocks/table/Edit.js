@@ -2199,7 +2199,9 @@ class Edit extends Component {
                     />
                   </Popover>
                 )
-                  (activeCell && enableCustomColor && isSelected) && (
+              }
+              {
+                (activeCell && enableCustomColor && isSelected) && (
                   <Popover
                     position="bottom center"
                     className="qubely-table-custom-typo"
@@ -2233,8 +2235,6 @@ class Edit extends Component {
                         }}
                       />
                     </Fragment>
-
-
                   </Popover>
                 )
               }
