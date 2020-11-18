@@ -81,6 +81,34 @@ const IconSave = (props) => {
     return (
         <div className={classNames}>
             {
+                typeof iconName !== 'undefined' &&
+                <div
+                    className="icon"
+                    style={{ ...(typeof iconCustomColor !== 'undefined' && { color: iconCustomColor }) }}
+                >
+                    <i className={iconName} />
+                </div>
+            }
+        </div>
+    );
+}
+
+const IconSaveDeprecated = (props) => {
+
+    const {
+        iconName = undefined,
+        classes,
+        iconCustomColor,
+    } = props;
+
+    const classNames = classnames(
+        'icon-cell',
+        'icon-wrapper',
+        classes
+    )
+    return (
+        <div className={classNames}>
+            {
                 iconName === undefined ?
                     <span className="table-icon-picker" role="button" >
                         <i className="qubely-table fas fa-plus" />
@@ -97,4 +125,4 @@ const IconSave = (props) => {
     );
 }
 
-export { Icon, IconSave };
+export { Icon, IconSave, IconSaveDeprecated };

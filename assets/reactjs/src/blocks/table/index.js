@@ -3,6 +3,7 @@ import './style.scss';
 import Edit from './Edit';
 import Save from './Save';
 import attributes from './attributes';
+import DepricatedSave from './deprecated';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
@@ -26,4 +27,14 @@ registerBlockType('qubely/table', {
     attributes,
     edit: Edit,
     save: Save,
+    deprecated: [
+        {
+            attributes,
+            save(props) {
+                return (
+                    <DepricatedSave props={props} />
+                )
+            }
+        }
+    ]
 });

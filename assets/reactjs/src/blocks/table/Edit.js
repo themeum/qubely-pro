@@ -2245,7 +2245,7 @@ class Edit extends Component {
               <Toolbar
                 controls={[
                   {
-                    icon: 'admin-links',
+                    icon: <img src={`${window.qubely_pro_admin.plugin + 'assets/img/blocks'}/table/text.svg`} alt={__('text')} />,
                     title: __('Typography'),
                     onClick: () => {
                       this.setState({ enableCustomTypo: true });
@@ -2278,7 +2278,7 @@ class Edit extends Component {
               <Toolbar
                 controls={[
                   {
-                    icon: 'admin-links',
+                    icon: <img src={`${window.qubely_pro_admin.plugin + 'assets/img/blocks'}/table/color.svg`} alt={__('color')} />,
                     title: __('Color'),
                     onClick: () => {
                       this.setState({ enableCustomColor: true });
