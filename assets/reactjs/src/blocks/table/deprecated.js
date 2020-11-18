@@ -311,7 +311,7 @@ class DepricatedSave extends Component {
             { ['fixed-width']: fixedWithCells }
         )
         return (
-            <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
+            <div className={`wp-block-qubely-table qubely-block-${uniqueId}`} {...animationAttr(animation)}>
                 <div className={classes} >
                     <TableContent />
                 </div>
