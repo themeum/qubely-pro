@@ -144,6 +144,7 @@
 }
 
 .image-cell.image-wrapper {
+	max-width: 100%;
 	.table-cell-image-resizer,
 	.qubely-image {
 		display: inline-block;
@@ -155,6 +156,8 @@
 		min-height: 100px;
 		.components-placeholder__fieldset {
 			flex-direction: row;
+			align-items: center;
+			justify-content: center;
 		}
 		z-index: 1;
 	}
