@@ -305,6 +305,10 @@ const attributes = {
         type: 'string',
         default: 'bordered'
     },
+    align: {
+        type: 'string',
+        default: 'wide',
+    },
     tableHeader: {
         type: 'boolean',
         default: true,

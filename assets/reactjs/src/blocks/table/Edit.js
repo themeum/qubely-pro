@@ -911,7 +911,7 @@ class Edit extends Component {
                         className={type === this.state.currentCellType ? 'active' : ''}
                         onClick={() => {
                           this.setState((prevState) => {
-                            return { showCellTypeChange: !prevState.showCellTypeChange }
+                            return { showCellTypeChange: !prevState.showCellTypeChange, cellType: type }
                           });
                           this.onChangeCell(location, type, 'type');
                         }}
@@ -2020,7 +2020,7 @@ class Edit extends Component {
           attributes={this.props.attributes}
         /> */}
         <BlockControls>
-          {cellType === 'list' && (
+          {currentCellType === 'list' && (
             <Fragment>
 
               <Toolbar
@@ -2129,7 +2129,7 @@ class Edit extends Component {
               }
             </Fragment>
           )}
-          {cellType === 'image' && (
+          {currentCellType === 'image' && (
             <Fragment>
 
               <Toolbar
@@ -2147,7 +2147,7 @@ class Edit extends Component {
 
             </Fragment>
           )}
-          {cellType === 'button' && (
+          {currentCellType === 'button' && (
             <Fragment>
 
               <Toolbar
@@ -2168,7 +2168,7 @@ class Edit extends Component {
                   },
                   {
                     icon: 'admin-links',
-                    title: __('Outline'),
+                    title: __('Add link'),
                     onClick: () => {
                       this.setState({ showButtonUrlPicker: true });
                     },
@@ -2240,7 +2240,7 @@ class Edit extends Component {
               }
             </Fragment>
           )}
-          {cellType === 'text' && (
+          {currentCellType === 'text' && (
             <Fragment>
               <Toolbar
                 controls={[
@@ -2273,7 +2273,7 @@ class Edit extends Component {
               }
             </Fragment>
           )}
-          {(cellType === 'icon' || cellType === 'rating') && (
+          {(currentCellType === 'icon' || currentCellType === 'rating') && (
             <Fragment>
               <Toolbar
                 controls={[
