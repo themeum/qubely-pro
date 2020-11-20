@@ -2,7 +2,7 @@
 Stable tag: 1.2.5
 == Changelog ==
 
-= 1.2.5 - 19 November, 2020 = 
+= 1.2.5 - 20 November, 2020 = 
 New: Table Builder - Made Responsive/Scrollable 
 New: Table Builder - Custom Typography for cells
 New: Table Builder - Custom colour option for icon , ratings field 
