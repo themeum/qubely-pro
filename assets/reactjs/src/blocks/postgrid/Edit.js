@@ -39,7 +39,8 @@ const {
     handleContextMenu
   },
   InspectorTabs,
-  InspectorTab
+  InspectorTab,
+  Pagination,
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
@@ -301,9 +302,9 @@ class Edit extends Component {
     } = this.state;
 
     let pages = 0;
-		if (numberofPosts && numberofPosts.length) {
-			pages = Math.ceil(numberofPosts.length / postsToShow);
-		}
+    if (numberofPosts && numberofPosts.length) {
+      pages = Math.ceil(numberofPosts.length / postsToShow);
+    }
     let taxonomyListOptions = [
       { value: '', label: __('Select Taxonomy') }
     ];
@@ -886,7 +887,7 @@ class Edit extends Component {
                   label={__("Number of Items")}
                   value={postsToShow}
                   onChange={(value) =>
-                    setAttributes({ postsToShow: parseInt(value) })
+                    setAttributes({ postsToShow: parseInt(value), page: 1 })
                   }
                   min={1}
                   max={50}
@@ -1857,39 +1858,16 @@ class Edit extends Component {
                   qubelyContextMenu={this.qubelyContextMenu.current}
                 />
               </div>
-              {pages > 1 && enablePagination && (
-                <div className="qubely-postgrid-pagination">
-                  {page > 1 && (
-                    <button
-                      className={"qubely-pagination-prev"}
-                      onClick={() => setAttributes({ page: page - 1 })}
-                    >
-                      {" "}
-                      <span className="fas fa-angle-left" /> {__("Prev")}
-                    </button>
-                  )}
-                  {Array(pages)
-                    .fill(0)
-                    .map((_, index) => (
-                      <button
-                        key={index}
-                        className={`pages${page === index + 1 ? " current" : ""
-                          }`}
-                        onClick={() => setAttributes({ page: index + 1 })}
-                      >
-                        {index + 1}
-                      </button>
-                    ))}
-                  {page !== pages && (
-                    <button
-                      className={"qubely-pagination-next"}
-                      onClick={() => setAttributes({ page: page + 1 })}
-                    >
-                      {__("Next")} <span className="fas fa-angle-right" />
-                    </button>
-                  )}
-                </div>
-              )}
+              {
+                enablePagination &&
+                <Pagination
+                  total={pages}
+                  current={page}
+                  prevText="Prev"
+                  nextText="Next"
+                  onClickPage={(page) => setAttributes({ page })}
+                />
+              }
             </Fragment>
           ) : (
               <div className="qubely-postgrid-is-loading">

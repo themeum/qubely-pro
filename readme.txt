@@ -1,16 +1,16 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 == Changelog ==
 
-= 1.2.5 - 20 November, 2020 = 
-New: Table Builder - Made Responsive/Scrollable 
-New: Table Builder - Custom Typography for cells
-New: Table Builder - Custom colour option for icon , ratings field 
-New: Post Grid block - Custom post-type support 
-New: Post Carousel block - Custom Post-type support  
-Fix: Table Builder - Add Custom URL issue for Button type cells   
-Fix: Vertical Tab block - Missing add new block option in new tab for latest WordPress version
+= 1.2.6 -  03 December, 2020 = 
+Fix: Post Grid block - Pagination issue on Backend  
 
+= 1.2.5 -  20 November, 2020 = 
+New: Table Builder - Made Responsive/Scrollable
+New: Table Builder - Custom Typography for cells
+New: Table Builder - Custom color option for icon , ratings field 
+New: Post Grid block - Custom Post-type support 
+Fix: Vertical Tab block - Add new tab issue in WordPress new versions 
 
 = 1.2.4 -  23 October, 2020 = 
 New: Table Builder block 
