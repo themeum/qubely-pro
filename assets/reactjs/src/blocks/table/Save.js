@@ -67,6 +67,10 @@ class Save extends Component {
                 customTypo,
                 iconCustomColor,
                 ratingsCustomColor,
+                buttonTextColor,
+                buttonBgColor,
+                buttonHoverColor,
+                buttonBgHoverColor,
             },
             columnIndex
         ) => {
@@ -101,6 +105,7 @@ class Save extends Component {
                         this.renderCellContent({
                             type,
                             content,
+                            rowIndex,
                             columnIndex,
                             Tag,
                             scope,
@@ -117,6 +122,10 @@ class Save extends Component {
                             buttonCustomUrl,
                             iconCustomColor,
                             ratingsCustomColor,
+                            buttonTextColor,
+                            buttonBgColor,
+                            buttonHoverColor,
+                            buttonBgHoverColor,
                         })
                     }
                 </Tag>
@@ -142,6 +151,7 @@ class Save extends Component {
     renderCellContent = ({
         type,
         content,
+        rowIndex,
         columnIndex,
         Tag,
         scope,
@@ -158,6 +168,10 @@ class Save extends Component {
         buttonCustomUrl,
         iconCustomColor,
         ratingsCustomColor,
+        buttonTextColor,
+        buttonBgColor,
+        buttonHoverColor,
+        buttonBgHoverColor,
     }) => {
         const {
             setAttributes,
@@ -200,6 +214,18 @@ class Save extends Component {
                         buttonIconName={buttonIconName}
                         buttonIconPosition={buttonIconPosition}
                         buttonTag={buttonTag}
+                        inlineStyles={{
+                            'bgselector':`.qubely-block-${uniqueId} tr:nth-child(${rowIndex+1}) td:nth-child(${columnIndex+1}) .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor`,
+                            'selector':`.qubely-block-${uniqueId} tr:nth-child(${rowIndex+1}) td:nth-child(${columnIndex+1}) .qubely-block-btn-wrapper .qubely-block-btn-anchor`,
+                            'regular': {
+                              ...( !!buttonTextColor && { 'color': buttonTextColor }),
+                              ...(!!buttonBgColor && { 'background-color': buttonBgColor })
+                            },
+                            "hover": {
+                              ...(!!buttonHoverColor && { 'color': buttonHoverColor }),
+                              ...(!!buttonBgHoverColor && { 'background-color': buttonBgHoverColor }),
+                            }
+                          }}
                         buttonUrl={typeof buttonCustomUrl !== 'undefined' ? buttonCustomUrl : buttonUrl}
                     />
                 )

@@ -47,6 +47,8 @@ const {
   Alignment,
   IconSelector,
   Border,
+  Tabs,
+  Tab,
   BorderRadius,
   ColorAdvanced,
   InspectorTab,
@@ -584,6 +586,10 @@ class Edit extends Component {
         customTypo,
         iconCustomColor,
         ratingsCustomColor,
+        buttonTextColor,
+        buttonBgColor,
+        buttonHoverColor,
+        buttonBgHoverColor
       },
       columnIndex
     ) => {
@@ -629,6 +635,7 @@ class Edit extends Component {
             this.renderCellContent({
               type,
               content,
+              rowIndex,
               columnIndex,
               Tag,
               scope,
@@ -646,6 +653,10 @@ class Edit extends Component {
               buttonCustomUrl,
               iconCustomColor,
               ratingsCustomColor,
+              buttonTextColor,
+              buttonBgColor,
+              buttonHoverColor,
+              buttonBgHoverColor
             })
           }
           {isSelectedCell && this.renderCellChanger({ location: cellLocation })}
@@ -673,6 +684,7 @@ class Edit extends Component {
   renderCellContent = ({
     type,
     content,
+    rowIndex,
     columnIndex,
     Tag,
     scope,
@@ -690,6 +702,10 @@ class Edit extends Component {
     buttonCustomUrl = '',
     iconCustomColor,
     ratingsCustomColor,
+    buttonTextColor,
+    buttonBgColor,
+    buttonHoverColor,
+    buttonBgHoverColor,
   }) => {
     const {
       setAttributes,
@@ -730,7 +746,20 @@ class Edit extends Component {
             buttonIconName={buttonIconName}
             buttonIconPosition={buttonIconPosition}
             buttonTag={buttonTag}
-            onTextChange={content => this.onChangeCell(cellLocation, content, 'content')} />
+            inlineStyles={{
+              'bgselector':`.qubely-block-${uniqueId} tr:nth-child(${rowIndex+1}) td:nth-child(${columnIndex+1}) .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor`,
+              'selector':`.qubely-block-${uniqueId} tr:nth-child(${rowIndex+1}) td:nth-child(${columnIndex+1}) .qubely-block-btn-wrapper .qubely-block-btn-anchor`,
+              'regular': {
+                ...( !!buttonTextColor && { 'color': buttonTextColor }),
+                ...(!!buttonBgColor && { 'background-color': buttonBgColor })
+              },
+              "hover": {
+                ...(!!buttonHoverColor && { 'color': buttonHoverColor }),
+                ...(!!buttonBgHoverColor && { 'background-color': buttonBgHoverColor }),
+              }
+            }}
+            onTextChange={content => this.onChangeCell(cellLocation, content, 'content')}
+          />
         )
       case 'list':
         return (
@@ -1257,6 +1286,13 @@ class Edit extends Component {
         footerTypo,
         //button
         buttonUrl,
+        buttonFillType,
+        buttonColor,
+        buttonColor2,
+        buttonBgColor,
+        buttonHoverColor,
+        buttonHoverColor2,
+        buttonBgHoverColor,
         //image
         imageAlignment,
         imageCommonSize,
@@ -2200,44 +2236,6 @@ class Edit extends Component {
                   </Popover>
                 )
               }
-              {
-                (activeCell && enableCustomColor && isSelected) && (
-                  <Popover
-                    position="bottom center"
-                    className="qubely-table-custom-typo"
-                    onClose={() => this.setState({ enableCustomColor: false })}
-                  >
-
-                    <Fragment>
-                      <ButtonGroup
-                        label={__('Color Type')}
-                        options={
-                          [
-                            [__('Normal'), 'normal'],
-                            [__('Hover'), 'hover']
-                          ]
-                        }
-                        value={buttonStyleType}
-                        onChange={value => this.setState({ buttonStyleType: value })}
-                      />
-                      <ColorPicker
-                        disableAlpha
-                        color={buttonStyleType === 'normal' ?
-                          typeof activeCell.buttonCustomColor === 'undefined' ? buttonColor : activeCell.buttonCustomColor :
-                          typeof activeCell.ratingsCustomColor === 'undefined' ? ratingsColor : activeCell.ratingsCustomColor
-                        }
-                        onChangeComplete={(newColor) => {
-                          if (newColor.rgb) {
-                            this.onChangeCell(activeCellLocation, 'rgba(' + newColor.rgb.r + ',' + newColor.rgb.g + ',' + newColor.rgb.b + ',' + newColor.rgb.a + ')', cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
-                          } else {
-                            this.onChangeCell(activeCellLocation, newColor.hex, cellType === 'icon' ? 'iconCustomColor' : 'ratingsCustomColor')
-                          }
-                        }}
-                      />
-                    </Fragment>
-                  </Popover>
-                )
-              }
             </Fragment>
           )}
           {currentCellType === 'text' && (
@@ -2308,6 +2306,66 @@ class Edit extends Component {
                         }
                       }}
                     />
+                  </Popover>
+                )
+              }
+            </Fragment>
+          )}
+          {currentCellType === 'button' && (
+            <Fragment>
+              <Toolbar
+                controls={[
+                  {
+                    icon: <img src={`${window.qubely_pro_admin.plugin + 'assets/img/blocks'}/table/color.svg`} alt={__('color')} />,
+                    title: __('Button Colors'),
+                    onClick: () => {
+                      this.setState({ enableCustomColor: true });
+                    },
+                    className: `qubely-action-change-listype`,
+                  },
+                ]}
+              />
+              {
+                (activeCell && enableCustomColor && isSelected) && (
+                  <Popover
+                    position="bottom center"
+                    className="qubely-table-custom-typo"
+                    onClose={() => this.setState({ enableCustomColor: false })}
+                  >
+                    <Tabs>
+                      <Tab tabTitle={__('Normal')}>
+                        <Color
+                          label={__('Text Color')}
+                          value={typeof activeCell.buttonTextColor === 'undefined' ? undefined : activeCell.buttonTextColor}
+                          onChange={(value) => this.onChangeCell(activeCellLocation, value, 'buttonTextColor')}
+                        />
+                        {
+                          ((typeof activeCell.buttonType !== 'undefined' && activeCell.buttonType === 'fill') ||
+                            (typeof activeCell.buttonType === 'undefined' && buttonFillType === 'fill')) &&
+                          <Color
+                            label={__('Background Color')}
+                            value={typeof activeCell.buttonBgColor === 'undefined' ? undefined : activeCell.buttonBgColor}
+                            onChange={(value) => this.onChangeCell(activeCellLocation, value, 'buttonBgColor')}
+                          />
+                        }
+                      </Tab>
+                      <Tab tabTitle={__('Hover')}>
+                        <Color
+                          label={__('Text Color')}
+                          value={typeof activeCell.buttonHoverColor === 'undefined' ? undefined: activeCell.buttonHoverColor}
+                          onChange={(value) => this.onChangeCell(activeCellLocation, value, 'buttonHoverColor')}
+                        />
+                        {
+                          ((typeof activeCell.buttonType !== 'undefined' && activeCell.buttonType === 'fill') ||
+                            (typeof activeCell.buttonType === 'undefined' && buttonFillType === 'fill')) &&
+                          <Color
+                            label={__('Background Color')}
+                            value={typeof activeCell.buttonBgHoverColor === 'undefined' ? undefined : activeCell.buttonBgHoverColor}
+                            onChange={(value) => this.onChangeCell(activeCellLocation, value, 'buttonBgHoverColor')}
+                          />
+                        }
+                      </Tab>
+                    </Tabs>
                   </Popover>
                 )
               }
