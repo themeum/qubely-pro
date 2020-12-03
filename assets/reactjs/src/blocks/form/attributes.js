@@ -399,7 +399,8 @@ export const attributes = {
     policyCheckboxText: { type: 'string', default: 'I agree with the Terms & Conditions and I declare that I have read the information that is required in accordance with the terms' },
     emailReceiver: { type: 'string', default: '' },
     emailHeaders: { type: 'string', default: 'Reply-To: {{email}}\nReply-name: {{text-11}} {{text-12}}\nCc: {{email}}\nBcc: admin@yourcompany.com' },
-    emailFrom: { type: 'string', default: `Your Company Name: admin@${qubely_admin.actual_url}` },
+    // emailFrom: { type: 'string', default: `Your Company Name: admin@${qubely_admin.actual_url}` },
+    emailFrom: { type: 'string', default: `Your Company Name: admin@your_sitename.com` },
     emailSubject: { type: 'string', default: '{{text-31}} | {{email-21}} | {{site-name}}' },
     emailBody: { type: 'string', default: '<p><strong>From:</strong> {{text-11}} {{text-12}}</p><strong>Email:</strong> {{email-21}}</p>\n<p><strong>Subject:</strong> {{text-31}}</p>\n<p><strong>Message:</strong> {{textarea-41}}</p>' },
     showGlobalSettings: { type: 'boolean', default: true },  // Global Settings

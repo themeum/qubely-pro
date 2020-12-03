@@ -2,8 +2,10 @@
 Stable tag: 1.2.6
 == Changelog ==
 
-= 1.2.6 -  03 December, 2020 = 
+= 1.2.6 -  07 December, 2020 = 
 Fix: Post Grid block - Pagination issue on Backend  
+New: Table Builder - Custom color option button type cells 
+Fix: Form Builder block - Deprecated issue for import layout/sections  
 
 = 1.2.5 -  20 November, 2020 = 
 New: Table Builder - Made Responsive/Scrollable
