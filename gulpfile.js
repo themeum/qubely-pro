@@ -39,6 +39,7 @@ function productionMode() {
         .pipe(replace(/qubely\.pro\.dev\.js/g, 'qubely.min.js'))
         .pipe(replace(/form\.js/g, 'form.min.js'))
         .pipe(replace(/qubely-carousel\.js/g, 'qubely-carousel.min.js'))
+        .pipe(replace(/qubely-countdown\.js/g, 'qubely-countdown.min.js'))
         .pipe(dest('./build/qubely-pro/classes/'));
 
     const qubely_pro = src(['./build/qubely-pro/core/Qubely-Pro.php'])
