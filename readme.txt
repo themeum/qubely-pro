@@ -1,6 +1,10 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 == Changelog ==
+
+= 1.2.7 -  24 December, 2020 = 
+Fix: Form Builder block - Form fields issue on backend in WordPress 5.6
+
 
 = 1.2.6 -  08 December, 2020 = 
 New: Post Grid block - Restructured Pagination  in Backend 
