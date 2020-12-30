@@ -4,7 +4,7 @@ const { apiFetch } = wp
 export default function getProducts(queryArgs) {
     return apiFetch({
         path:
-            '/wc/blocks/products?' +
+            '/wc/v3/products?' +
             Object.entries(queryArgs)
                 .map((arg) => arg.join('='))
                 .join('&'),

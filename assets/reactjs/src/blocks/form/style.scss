@@ -5,7 +5,7 @@
     }
     .block-editor-inner-blocks {
       > .block-editor-block-list__layout {
-        > div:last-child {
+        > div.block-list-appender {
           display: none;
         }
         // .editor-block-list__block-edit.block-editor-block-list__block-edit {
@@ -121,7 +121,7 @@
       border: 1px solid #d6d9dd;
       border-radius: 4px;
       padding: 12px 15px;
-      width: 47%;
+      width: 45%;
       display: flex;
       align-items: center;
       margin: 6px;
@@ -479,6 +479,17 @@
   > .editor-block-list__insertion-point {
   display: none;
 }
+.block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-row"] {
+  margin: 0px;
+  .block-editor-block-list__layout .block-editor-block-list__block[data-type="qubely/form-column"] {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    .block-editor-block-list__layout .block-editor-block-list__block{
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
+  }
+}
 
 //others
 .qubely-block-form {
@@ -499,5 +510,17 @@
       margin-left: 3px;
       color: #e80d0d;
     }
+  }
+}
+
+.api-notice {
+  margin: 0 0 15px;
+  background: rgba(0, 255, 55, 0.15);
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  line-height: 1.6;
+  &.warning {
+    background: rgba(229, 195, 52, 0.25);
   }
 }

@@ -1,4 +1,4 @@
-jQuery(document).ready(function($){
+jQuery(function ($) {
     'use strict';
 
     $(document).on('click', '.install-qubely-button', function(e){

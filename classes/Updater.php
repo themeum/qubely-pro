@@ -127,7 +127,7 @@ class Updater {
 			<div class="qubely-license-head__inside-container">
 				<div class="qubely-license-head__logo-container">
 					<a href="https://themeum.com/?utm_source=plugin_license&utm_medium=top_menu_link&utm_campaign=activation_license" target="_blank">
-                        <img class="qubely-license-head__logo" src="https://www.themeum.com/wp-content/themes/themeum/images/themeum.svg" />
+                        <img class="qubely-license-head__logo" src="https://www.themeum.com/wp-content/uploads/logo.svg" />
                     </a>
 				</div>
 

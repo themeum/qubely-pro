@@ -2,7 +2,7 @@
 import Progress from './Progress'
 import icons from '../../helpers/icons';
 import templates from './templates';
-const { Fragment, Component } = wp.element;
+const { Fragment, Component, createRef } = wp.element;
 const { PanelBody, Toolbar, TextControl } = wp.components
 const { InspectorControls, BlockControls, RichText } = wp.blockEditor
 const { PluginBlockSettingsMenuItem } = wp.editPost;
@@ -39,13 +39,14 @@ const {
 class Edit extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             device: 'md',
             selector: true,
             spacer: true,
             openPanelSetting: ''
-        }
+        };
+        this.qubelyContextMenu = createRef();
     }
 
     componentDidMount() {
@@ -66,7 +67,7 @@ class Edit extends Component {
                 qubelyStyleAttributes
             }
         } = this.props
-        const {copyToClipboard} = wp.qubelyComponents.HelperFunction
+        const { copyToClipboard } = wp.qubelyComponents.HelperFunction
         let template = {}
         qubelyStyleAttributes.forEach(key => {
             template[key] = attributes[key]
@@ -129,7 +130,7 @@ class Edit extends Component {
                 globalCss,
                 interaction
             }
-        } = this.props, {device} = this.state, thicknessCalc = {
+        } = this.props, { device } = this.state, thicknessCalc = {
             fill: (size / 2),
             outline: (size * (thickness * .5)) / 100,
             outline_fill: (size * (thickness * .5)) / 100,
@@ -183,9 +184,9 @@ class Edit extends Component {
                                 <RadioAdvanced
                                     label={__('Alignment')}
                                     options={[
-                                        { label: <span style={{padding: '0 5px'}} class='fas fa-align-left' />, value: 'flex-start', title: 'Left' },
-                                        { label: <span style={{padding: '0 5px'}} class='fas fa-align-center' />, value: 'center', title: 'Center' },
-                                        { label: <span style={{padding: '0 5px'}} class='fas fa-align-right' />, value: 'flex-end', title: 'Right' },
+                                        { label: <span style={{ padding: '0 5px' }} class='fas fa-align-left' />, value: 'flex-start', title: 'Left' },
+                                        { label: <span style={{ padding: '0 5px' }} class='fas fa-align-center' />, value: 'center', title: 'Center' },
+                                        { label: <span style={{ padding: '0 5px' }} class='fas fa-align-right' />, value: 'flex-end', title: 'Right' },
                                     ]}
                                     value={alignment}
                                     onChange={(alignment) => setAttributes({ alignment })} />
@@ -217,86 +218,86 @@ class Edit extends Component {
                                 {
                                     layout === 'outline' && <Range label={__('Circle Width')} value={thicknessBg} onChange={(value) => setAttributes({ thicknessBg: value })} min={1} max={100} />
                                 }
-                                <Range label={__('Circle Shrink (%)')} value={circleShrink} onChange={circleShrink => setAttributes({ circleShrink})} min={0} max={100} />
+                                <Range label={__('Circle Shrink (%)')} value={circleShrink} onChange={circleShrink => setAttributes({ circleShrink })} min={0} max={100} />
                                 <Color label={__('Circle Background')} value={background} onChange={background => setAttributes({ background })} />
-                                <BoxShadow label={__('Shadow')} value={circleShadow} onChange={circleShadow => setAttributes({ circleShadow})} />
+                                <BoxShadow label={__('Shadow')} value={circleShadow} onChange={circleShadow => setAttributes({ circleShadow })} />
                             </PanelBody>
                             <PanelBody title={__('Percentage / Icon')} initialOpen={false}>
                                 <Toggle label={__('Enable')} value={enableIcon} onChange={enableIcon => setAttributes({ enableIcon })} />
-                                { enableIcon &&
-                                <Fragment>
-                                    <RadioAdvanced
-                                        label={__('Type')}
-                                        options={[
-                                            { label: '%', value: 'percent', title: 'Percent' },
-                                            { label: 'Icon', value: 'icon', title: 'Icon' },
-                                            { label: 'Image', value: 'image', title: 'Image' },
-                                            { label: 'Text', value: 'text', title: 'Text' }
-                                        ]}
-                                        value={iconStyle}
-                                        onChange={iconStyle => setAttributes({ iconStyle })} />
-                                    {
-                                        iconStyle === 'icon' && (
-                                            <Fragment>
-                                                <IconList
-                                                    value={iconName}
-                                                    onChange={iconName => setAttributes({ iconName })} />
-                                                <Range label={__('Icon Size')} value={iconSize} onChange={iconSize => setAttributes({ iconSize })} min={10} max={200} />
-                                            </Fragment>
-                                        )
-                                    }
-                                    {
-                                        iconStyle === 'image' && (
-
-                                            <Fragment>
-                                                <Media
-                                                    label={__('Image')}
-                                                    multiple={false}
-                                                    type={['image']}
-                                                    panel
-                                                    value={image}
-                                                    onChange={image => setAttributes({ image })} />
-
-                                                <Media
-                                                    panel
-                                                    value={image2x}
-                                                    multiple={false}
-                                                    type={['image']}
-                                                    label={__('Retina Image')}
-                                                    onChange={image2x => setAttributes({ image2x })}
-                                                />
-                                                {image.url &&
+                                {enableIcon &&
+                                    <Fragment>
+                                        <RadioAdvanced
+                                            label={__('Type')}
+                                            options={[
+                                                { label: '%', value: 'percent', title: 'Percent' },
+                                                { label: 'Icon', value: 'icon', title: 'Icon' },
+                                                { label: 'Image', value: 'image', title: 'Image' },
+                                                { label: 'Text', value: 'text', title: 'Text' }
+                                            ]}
+                                            value={iconStyle}
+                                            onChange={iconStyle => setAttributes({ iconStyle })} />
+                                        {
+                                            iconStyle === 'icon' && (
                                                 <Fragment>
-                                                    <TextControl label={__('Alt Text')} value={imageAlt} onChange={imageAlt => setAttributes({ imageAlt })} />
-                                                    <Range label={__('Image Width')} value={imageSize} onChange={imageSize => setAttributes({ imageSize })} min={imageSize.unit !== 'px' ? 0 : 10} max={imageSize.unit === '%' ? 100 : 500} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                                    <IconList
+                                                        value={iconName}
+                                                        onChange={iconName => setAttributes({ iconName })} />
+                                                    <Range label={__('Icon Size')} value={iconSize} onChange={iconSize => setAttributes({ iconSize })} min={10} max={200} />
                                                 </Fragment>
-                                                }
+                                            )
+                                        }
+                                        {
+                                            iconStyle === 'image' && (
 
-                                            </Fragment>
-                                        )
-                                    }
+                                                <Fragment>
+                                                    <Media
+                                                        label={__('Image')}
+                                                        multiple={false}
+                                                        type={['image']}
+                                                        panel
+                                                        value={image}
+                                                        onChange={image => setAttributes({ image })} />
 
-                                    {iconStyle === 'text' && (
-                                        <TextControl
-                                            label="Text"
-                                            value={iconText}
-                                            onChange={ ( iconText ) => setAttributes({iconText}) }
-                                        />
-                                    )}
+                                                    <Media
+                                                        panel
+                                                        value={image2x}
+                                                        multiple={false}
+                                                        type={['image']}
+                                                        label={__('Retina Image')}
+                                                        onChange={image2x => setAttributes({ image2x })}
+                                                    />
+                                                    {image.url &&
+                                                        <Fragment>
+                                                            <TextControl label={__('Alt Text')} value={imageAlt} onChange={imageAlt => setAttributes({ imageAlt })} />
+                                                            <Range label={__('Image Width')} value={imageSize} onChange={imageSize => setAttributes({ imageSize })} min={imageSize.unit !== 'px' ? 0 : 10} max={imageSize.unit === '%' ? 100 : 500} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                                        </Fragment>
+                                                    }
 
-                                    {iconStyle !== 'image' && (
-                                        <Color label={__('Color')} value={iconTextColor} onChange={iconTextColor => setAttributes({ iconTextColor })} />
-                                    )}
-                                    {(iconStyle === 'text' || iconStyle === 'percent') && (
-                                        <Typography value={iconTypography} onChange={iconTypography => setAttributes({ iconTypography })} />
-                                    )}
+                                                </Fragment>
+                                            )
+                                        }
 
-                                </Fragment>
+                                        {iconStyle === 'text' && (
+                                            <TextControl
+                                                label="Text"
+                                                value={iconText}
+                                                onChange={(iconText) => setAttributes({ iconText })}
+                                            />
+                                        )}
+
+                                        {iconStyle !== 'image' && (
+                                            <Color label={__('Color')} value={iconTextColor} onChange={iconTextColor => setAttributes({ iconTextColor })} />
+                                        )}
+                                        {(iconStyle === 'text' || iconStyle === 'percent') && (
+                                            <Typography value={iconTypography} onChange={iconTypography => setAttributes({ iconTypography })} />
+                                        )}
+
+                                    </Fragment>
                                 }
                             </PanelBody>
                             <PanelBody title={__('Heading')} initialOpen={false}>
                                 <Toggle label={__('Enable Heading')} value={enableHeading} onChange={enableHeading => setAttributes({ enableHeading })} />
-                                { enableHeading && (
+                                {enableHeading && (
                                     <Fragment>
                                         <TextControl label={__('Heading text')} value={heading} onChange={heading => setAttributes({ heading })} />
                                         {heading && <Color label={__('Heading Color')} value={headingColor} onChange={headingColor => setAttributes({ headingColor })} />}
@@ -338,15 +339,18 @@ class Edit extends Component {
                         />
                     </Toolbar>
                     <PluginBlockSettingsMenuItem
-                        icon={ 'editor-code' }
-                        label={ __( 'Copy Attributes') }
-                        onClick={ ()=> this.copyAttributes() }
+                        icon={'editor-code'}
+                        label={__('Copy Attributes')}
+                        onClick={() => this.copyAttributes()}
                     />
                 </BlockControls>
 
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
-                <div className={`qubely-block-${uniqueId} qubely-block-pie-progress${className ? ` ${className}` : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+                <div
+                    className={`qubely-block-${uniqueId} qubely-block-pie-progress${className ? ` ${className}` : ''}`}
+                    onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
+                >
                     <div className="qubely-progress-parent">
                         <Progress {...progressAttr} />
                         {(enableIcon || enableHeading) && (
@@ -355,9 +359,9 @@ class Edit extends Component {
                                     <Fragment>
                                         {iconStyle === 'text' && (
                                             <RichText
-                                                value={ iconText }
+                                                value={iconText}
                                                 placeholder={__('Text Here')}
-                                                onChange={ iconText  => setAttributes( { iconText } ) }
+                                                onChange={iconText => setAttributes({ iconText })}
                                             />
                                         )}
 
@@ -381,8 +385,8 @@ class Edit extends Component {
                                                             srcSet={image2x.url !== undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
                                                         />
                                                     ) : (
-                                                        <span className="qubely-pie-placeholder far fa-image" />
-                                                    )
+                                                            <span className="qubely-pie-placeholder far fa-image" />
+                                                        )
                                                 }
                                             </div>
                                         )}
@@ -391,10 +395,10 @@ class Edit extends Component {
 
                                 {(enableHeading && headingPosition === 'inside') && (
                                     <RichText
-                                        value={ heading }
+                                        value={heading}
                                         className="qubely-pie-progress-heading"
                                         placeholder={__('Heading Here')}
-                                        onChange={ heading  => setAttributes( { heading } ) }
+                                        onChange={heading => setAttributes({ heading })}
                                     />
                                 )}
 
@@ -405,19 +409,22 @@ class Edit extends Component {
 
                     {(enableHeading && headingPosition === 'outside') && (
                         <RichText
-                            value={ heading }
+                            value={heading}
                             className="qubely-pie-progress-heading qubely-outside"
                             placeholder={__('Heading Here')}
-                            onChange={ heading  => setAttributes( { heading } ) }
+                            onChange={heading => setAttributes({ heading })}
                         />
                     )}
-                    <div ref="qubelyContextMenu" className="qubely-context-menu-wraper">
+                    <div
+                        ref={this.qubelyContextMenu}
+                        className={`qubely-context-menu-wraper`}
+                    >
                         <ContextMenu
                             name={name}
                             clientId={clientId}
                             attributes={attributes}
                             setAttributes={setAttributes}
-                            qubelyContextMenu={this.refs.qubelyContextMenu}
+                            qubelyContextMenu={this.qubelyContextMenu.current}
                         />
                     </div>
                 </div>
@@ -426,4 +433,4 @@ class Edit extends Component {
     }
 }
 
-export default 	withCSSGenerator() (Edit);
+export default withCSSGenerator()(Edit);

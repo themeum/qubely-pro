@@ -1,7 +1,8 @@
 const { __ } = wp.i18n
 const {
     Fragment,
-    Component
+    Component,
+    createRef
 } = wp.element;
 const {
     PanelBody,
@@ -65,13 +66,14 @@ const videoSources = [
 class Edit extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             device: 'md',
             selector: true,
             spacer: true,
             // qubelyBlocks: []
-        }
+        };
+        this.qubelyContextMenu = createRef();
     }
 
     componentDidMount() {
@@ -728,7 +730,10 @@ class Edit extends Component {
 
                 {globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
                 <div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
-                    <div className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`} onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}>
+                    <div
+                        className={`qubely-block-mediacard qubely-mediacard-layout-${layout} ${(imagePosition != '') ? 'qubely-mediacard-image-position-' + imagePosition : ''} ${(imagePositionHorizontal != '') ? 'qubely-mediacard-image-position-' + imagePositionHorizontal : ''}`}
+                        onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
+                    >
                         <div className={`qubely-block-mediacard-wrapper`}>
                             {((layout === 1) || (layout === 2) || (layout === 4) || (layout === 5)) &&
                                 <div className={`qubely-mediacard-media_wrapper qubely-mediacard-${mediaType}`}>
@@ -795,13 +800,16 @@ class Edit extends Component {
                         </div>
                         {
                             showContextMenu &&
-                            <div ref="qubelyContextMenu" className={`qubely-context-menu-wraper`} >
+                            <div
+                                ref={this.qubelyContextMenu}
+                                className={`qubely-context-menu-wraper`}
+                            >
                                 <ContextMenu
                                     name={name}
                                     clientId={clientId}
                                     attributes={attributes}
                                     setAttributes={setAttributes}
-                                    qubelyContextMenu={this.refs.qubelyContextMenu}
+                                    qubelyContextMenu={this.qubelyContextMenu.current}
                                 />
                             </div>
                         }

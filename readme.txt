@@ -1,12 +1,63 @@
 ===  Qubely Pro ===
-Stable tag: 1.1.6
-
+Stable tag: 1.2.7
 == Changelog ==
 
+= 1.2.7 -  18 December, 2020 = 
+Fix: Form Builder block - Form fields not showing on backend in WordPress 5.6
 
-= 1.1.6 - 24 March, 2020 =
+
+= 1.2.6 -  08 December, 2020 = 
+New: Post Grid block - Restructured Pagination  in Backend 
+New: Table Builder - Custom color option button type cells 
+Fix: Form Builder block - Deprecated issue for imported layout/sections  
+Fix: Countdown block - Script loading issue on frontend    
+
+= 1.2.5 -  20 November, 2020 = 
+New: Table Builder - Made Responsive/Scrollable
+New: Table Builder - Custom Typography for cells
+New: Table Builder - Custom color option for icon , ratings field 
+New: Post Grid block - Custom Post-type support 
+Fix: Vertical Tab block - Add new tab issue in WordPress new versions 
+
+= 1.2.4 -  23 October, 2020 = 
+New: Table Builder block 
+Update: Form Builder block - Removed unnecessary space in backend  
+
+= 1.2.3 -  15 September, 2020 = 
+New: Form Builder block - Mailchimp intregation  
+Update: Disable 'Edit as html' option in parent blocks  
+Fix: Form Builder block - Email sending issue  
+
+= 1.2.2 -  21 August, 2020 =  
+New: Import Sections/Layouts with Global settings  
+Update: All blocks - Context Menu refs  
+Fix: Price List block - Content uneditable issue   
+
+= 1.2.1 - 08 July, 2020
+Update: Post Grid pagination default margin added
+Fix: Post Grid pagination backend spacing issue
+
+= 1.2.0 - 21 May, 2020 =
+New: Global Settings  
+New: Qubely Settings page - reCAPTCHA key storage 
+Fix: Form Builder block - Form Submit issue   
+
+= 1.1.9 - 27 April, 2020 =
+Fix: Testimonial block - ratings backward compatibility issue
+
+= 1.1.8 - 20 April, 2020 = 
+Update: Vertical Tabs inner blocks new structure support
+Fix: Vertical Tabs Block contents is not displaying
+
+= 1.1.7 - 03 April, 2020 =
+New: Post Grid block pagination
+Fix: Panel Sticky tab conflict with WordPress 5.4
+Fix: Post Grid block - Orderby issue with Random, Menu Order
+
+= 1.1.6 - 25 March, 2020 =
 Update: All blocks - Major improvement in Panel UI & UX 
 Fix: Advanced Settings - Hide Tablet/ Hide Mobile issue  
+Fix: Row block - Full width option not working in Twenty Twenty Theme  
 
 = 1.1.5 - 16 March, 2020 =
 New: Support for WordPress 5.4  

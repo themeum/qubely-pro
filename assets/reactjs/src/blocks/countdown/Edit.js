@@ -2,12 +2,13 @@ import icons from '../../helpers/icons';
 import Countdown from './countdown';
 import classnames from 'classnames'
 import templates from './templates'
-const {PluginBlockSettingsMenuItem} = wp.editPost
+const { PluginBlockSettingsMenuItem } = wp.editPost
 
 const { __ } = wp.i18n;
 const {
     Component,
-    Fragment
+    Fragment,
+    createRef
 } = wp.element;
 
 const {
@@ -62,37 +63,36 @@ const {
 const DEFAULT_ALIGNMENT_CONTROLS = [
     {
         icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-left'} />,
-        title: __( 'Justify Left' ),
+        title: __('Justify Left'),
         align: 'flex-start',
     },
     {
         icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-center'} />,
-        title: __( 'Justify center' ),
+        title: __('Justify center'),
         align: 'center',
     },
     {
         icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-right'} />,
-        title: __( 'Justify Right' ),
+        title: __('Justify Right'),
         align: 'flex-end',
     },
     {
         icon: <span className={'qubely-countdown-block-control-icon-style fas fa-align-justify'} />,
-        title: __( 'Space Between' ),
+        title: __('Space Between'),
         align: 'space-between',
     }
 ];
 
 class Edit extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             device: 'md',
             spacer: true,
             showStartDate: false,
             showEndDate: false
-        }
-
-        this.qubely_timer = React.createRef()
+        };
+        this.qubelyContextMenu = createRef();
     }
 
     componentDidMount() {
@@ -134,7 +134,7 @@ class Edit extends Component {
                 qubelyStyleAttributes
             }
         } = this.props
-        const {copyToClipboard} = wp.qubelyComponents.HelperFunction
+        const { copyToClipboard } = wp.qubelyComponents.HelperFunction
         let template = {}
         qubelyStyleAttributes.forEach(key => {
             template[key] = attributes[key]
@@ -252,9 +252,7 @@ class Edit extends Component {
                                     templates={templates}
                                 />
                             </PanelBody>
-                            <PanelBody title={__('Related Sections')}>
-                                <InspectorSections block={'countdown'}/>
-                            </PanelBody>
+                            <InspectorSections block={'countdown'} />
                         </InspectorTab>
                         <InspectorTab key={"style"}>
                             <PanelBody opened={true}>
@@ -391,28 +389,28 @@ class Edit extends Component {
                                             />
                                         </Fragment>
                                     ) : (
-                                        <Fragment>
-                                            <RadioAdvanced
-                                                label={__('Border Style')}
-                                                value={strokeLinecap}
-                                                options={[
-                                                    { value: 'round', label: __('Round') },
-                                                    { value: 'square', label: __('Square') }
-                                                ]}
-                                                onChange={strokeLinecap => setAttributes({ strokeLinecap })}
-                                            />
-                                            <ColorAdvanced
-                                                label={__('Border Fill')}
-                                                value={fill}
-                                                onChange={fill => setAttributes({ fill })}
-                                            />
-                                            <Color
-                                                label={__('Border Empty Fill')}
-                                                value={emptyFill}
-                                                onChange={emptyFill => setAttributes({ emptyFill })}
-                                            />
-                                        </Fragment>
-                                    )
+                                            <Fragment>
+                                                <RadioAdvanced
+                                                    label={__('Border Style')}
+                                                    value={strokeLinecap}
+                                                    options={[
+                                                        { value: 'round', label: __('Round') },
+                                                        { value: 'square', label: __('Square') }
+                                                    ]}
+                                                    onChange={strokeLinecap => setAttributes({ strokeLinecap })}
+                                                />
+                                                <ColorAdvanced
+                                                    label={__('Border Fill')}
+                                                    value={fill}
+                                                    onChange={fill => setAttributes({ fill })}
+                                                />
+                                                <Color
+                                                    label={__('Border Empty Fill')}
+                                                    value={emptyFill}
+                                                    onChange={emptyFill => setAttributes({ emptyFill })}
+                                                />
+                                            </Fragment>
+                                        )
                                 }
 
                                 <Range
@@ -438,12 +436,12 @@ class Edit extends Component {
                                             onDeviceChange={value => this.setState({ device: value })}
                                         />
                                     ) : (
-                                        <Toggle
-                                            label={__('Change Circle Smoothly')}
-                                            value={circleTransition}
-                                            onChange={circleTransition => setAttributes({ circleTransition })}
-                                        />
-                                    )
+                                            <Toggle
+                                                label={__('Change Circle Smoothly')}
+                                                value={circleTransition}
+                                                onChange={circleTransition => setAttributes({ circleTransition })}
+                                            />
+                                        )
                                 }
 
                                 {
@@ -473,7 +471,7 @@ class Edit extends Component {
                                 <Toggle
                                     label={'Enable Label'}
                                     value={enableLabel}
-                                    onChange={(enableLabel) => setAttributes({enableLabel})}
+                                    onChange={(enableLabel) => setAttributes({ enableLabel })}
                                 />
                                 {
                                     enableLabel && (
@@ -691,7 +689,7 @@ class Edit extends Component {
                     <AlignmentToolbar
                         value={justifyAlign}
                         alignmentControls={DEFAULT_ALIGNMENT_CONTROLS}
-                        onChange={(justifyAlign) => setAttributes({justifyAlign})}
+                        onChange={(justifyAlign) => setAttributes({ justifyAlign })}
                     />
                     <PluginBlockSettingsMenuItem
                         icon={'editor-code'}
@@ -705,7 +703,7 @@ class Edit extends Component {
                 <div className={`qubely-block-${uniqueId} ${className ? className : ''}`}>
                     <div
                         className='qubely-block-countdown'
-                        onContextMenu={event => handleContextMenu(event, this.refs.qubelyContextMenu)}
+                        onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
                         style={{
                             '--label-spacing': labelSpacing + 'px'
                         }}
@@ -713,7 +711,7 @@ class Edit extends Component {
                         <Countdown
                             date={date}
                             startDate={startDate}
-                            dayText={dayText  || 'Day'}
+                            dayText={dayText || 'Day'}
                             hourText={hourText || 'Hour'}
                             minuteText={minuteText || 'Minute'}
                             secondText={secondText || 'Second'}
@@ -738,14 +736,16 @@ class Edit extends Component {
                             }}
                             id={uniqueId}
                         />
-
-                        <div ref="qubelyContextMenu" className="qubely-context-menu-wraper" >
+                        <div
+                            ref={this.qubelyContextMenu}
+                            className={`qubely-context-menu-wraper`}
+                        >
                             <ContextMenu
                                 name={name}
                                 clientId={clientId}
                                 attributes={attributes}
                                 setAttributes={setAttributes}
-                                qubelyContextMenu={this.refs.qubelyContextMenu}
+                                qubelyContextMenu={this.qubelyContextMenu.current}
                             />
                         </div>
                     </div>

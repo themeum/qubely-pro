@@ -94,6 +94,11 @@ const icons = {
     mediacard_7: <img src={`${img_path}/mediacard/7.svg`} alt={__('Design 7')} />,
 
 
+    //table
+    table_1: <img src={`${img_path}/table/layout1.svg`} alt={__('Layout 1')} />,
+    table_2: <img src={`${img_path}/table/layout2.svg`} alt={__('Layout 2')} />,
+    table_3: <img src={`${img_path}/table/layout3.svg`} alt={__('Layout 3')} />,
+
     pie_fill: <img src={`${img_path}/pieprogress/fill.svg`} alt={__('Fill')} />,
     pie_outline: <img src={`${img_path}/pieprogress/outline.svg`} alt={__('Outline')} />,
     pie_outline_fill: <img src={`${img_path}/pieprogress/outline-fill.svg`} alt={__('Outline Fill')} />,
@@ -101,6 +106,11 @@ const icons = {
 
     leftArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M5 8.70002L10.6 14.4L12 12.9L7.8 8.70002L12 4.50002L10.6 3.00002L5 8.70002Z" /></svg>,
     rightArrow: <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M13 8.7L7.4 3L6 4.5L10.2 8.7L6 12.9L7.4 14.4L13 8.7Z" /></svg>,
+    // Table Builder
+    vertical_top: <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1)" fill="none"><rect class="qubely-svg-fill" x="4" y="4" width="6" height="12" rx="1" /><path class="qubely-svg-stroke" d="M0 1h14" stroke-width="2" stroke-linecap="square" /></g></svg>,
+    vertical_middle: <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g fill="none"><g transform="translate(1 1)"><rect class="qubely-svg-fill" x="4" width="6" height="14" rx="1" /><path d="M0 7h2" class="qubely-svg-stroke" stroke-width="2" stroke-linecap="square" /></g><path d="M13 8h2" class="qubely-svg-stroke" stroke-width="2" stroke-linecap="square" /></g></svg>,
+    vertical_bottom: <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1)" fill="none"><rect class="qubely-svg-fill" x="4" width="6" height="12" rx="1" /><path d="M0 15h14" class="qubely-svg-stroke" stroke-width="2" stroke-linecap="square" /></g></svg>,
+
 }
 
 
