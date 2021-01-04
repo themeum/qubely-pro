@@ -43,6 +43,10 @@ function register_block_qubely_wooproducts()
                     'type'    => 'string',
                     'default' => null,
                 ),
+                'excerptLimit' => array(
+                    'type' => 'number',
+                    'default' => 10
+                ),
                 'selectedCatagories' => array(
                     'type' => 'array',
                     'default' => [],

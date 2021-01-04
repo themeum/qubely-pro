@@ -52,6 +52,8 @@ const {
         animationSettings,
         interactionSettings
     },
+    InspectorTabs,
+    InspectorTab
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
@@ -75,7 +77,7 @@ export default function Edit(props) {
         setAttributes,
         attributes: {
             uniqueId,
-
+            excerptLimit,
             //query
             orderby,
             productsPerPage,
@@ -219,175 +221,185 @@ export default function Edit(props) {
 
     if (uniqueId) { CssGenerator(attributes, 'wooproducts', uniqueId) }
 
-
+    const truncate = (value) => {
+        if (value && value.split(' ').length > excerptLimit) {
+            return value.split(' ').splice(0, excerptLimit).join(' ');
+        }
+        return value;
+    }
+    console.log('products : ', products);
     return (
         <Fragment>
-
             <InspectorControls>
-                <PanelBody title='' initialOpen={true}>
-                    <Styles
-                        options={[
-                            { value: 1, svg: icons.postgrid_1, label: __('') },
-                            { value: 2, svg: icons.postgrid_2, label: __('') },
-                        ]}
-                        value={layout}
-                        onChange={val => setAttributes({ layout: val })}
-                    />
-                </PanelBody>
+                <InspectorTabs tabs={['style', 'advance']}>
+                    <InspectorTab key={'style'}>
+                        <PanelBody title='' initialOpen={true}>
+                            <Styles
+                                options={[
+                                    { value: 1, svg: icons.postgrid_1, label: __('') },
+                                    { value: 2, svg: icons.postgrid_2, label: __('') },
+                                ]}
+                                value={layout}
+                                onChange={val => setAttributes({ layout: val })}
+                            />
+                        </PanelBody>
+                        <PanelBody title={__('Query')} initialOpen={false} onToggle={() => !categories && getCategoris()}>
+
+                            <SelectControl
+                                label={__("Products Status")}
+                                value={productsStatus}
+                                options={[
+                                    {
+                                        label: __('All'),
+                                        value: 'all',
+                                    },
+                                    {
+                                        label: __('Featured'),
+                                        value: 'featured',
+                                    },
+                                    {
+                                        label: __('On Sale'),
+                                        value: 'on_sale',
+                                    },
+                                ]}
+                                onChange={value => setAttributes({ productsStatus: value })}
+                            />
+
+                            {
+                                totalProducts &&
+                                <RangeControl
+                                    label={__('Number of Products')}
+                                    value={productsPerPage}
+                                    min='1'
+                                    max={totalProducts}
+                                    onChange={val => setAttributes({ productsPerPage: val })} />
+
+                            }
 
 
-                <PanelBody title={__('Query')} initialOpen={false} onToggle={() => !categories && getCategoris()}>
+                            {
+                                categories &&
+                                <Dropdown
+                                    label={__('Products by Categories')}
+                                    enableSearch
+                                    defaultOptionsLabel="All"
+                                    options={[
+                                        ...categories.map(({ name, id }) => {
+                                            return (
+                                                {
+                                                    label: __(name),
+                                                    value: id
+                                                }
+                                            )
+                                        })]}
+                                    value={selectedCatagories}
+                                    onChange={value => setAttributes({ selectedCatagories: value.length && value[value.length - 1].label === 'All' ? [] : value })}
+                                />
+                            }
 
-                    <SelectControl
-                        label={__("Products Status")}
-                        value={productsStatus}
-                        options={[
-                            {
-                                label: __('All'),
-                                value: 'all',
-                            },
-                            {
-                                label: __('Featured'),
-                                value: 'featured',
-                            },
-                            {
-                                label: __('On Sale'),
-                                value: 'on_sale',
-                            },
-                        ]}
-                        onChange={value => setAttributes({ productsStatus: value })}
-                    />
+                            <SelectControl
+                                label={__('Order By')}
+                                value={orderby}
+                                options={[
+                                    {
+                                        label: __('Newness - newest first'),
+                                        value: 'date-desc',
+                                    },
+                                    {
+                                        label: __('Newness - oldest first'),
+                                        value: 'date',
+                                    },
+                                    {
+                                        label: __('Price - low to high'),
+                                        value: 'price',
+                                    },
+                                    {
+                                        label: __('Price - high to low'),
+                                        value: 'price-desc',
+                                    },
+                                    {
+                                        label: __('Rating - highest first'),
+                                        value: 'rating',
+                                    },
+                                    {
+                                        label: __('Sales - most first'),
+                                        value: 'popularity',
+                                    },
+                                    {
+                                        label: __('Menu Order'),
+                                        value: 'menu_order',
+                                    },
+                                    {
+                                        label: __('Title: Alphabetical'),
+                                        value: 'title',
+                                    },
+                                    {
+                                        label: __('Title: Alphabetical reversed'),
+                                        value: 'title-desc',
+                                    },
+                                ]}
+                                onChange={(orderby) => setAttributes({ orderby })}
+                            />
+                        </PanelBody>
 
-                    {
-                        totalProducts &&
-                        <RangeControl
-                            label={__('Number of Products')}
-                            value={productsPerPage}
-                            min='1'
-                            max={totalProducts}
-                            onChange={val => setAttributes({ productsPerPage: val })} />
+                        <PanelBody title={__('Content')} initialOpen={false}>
+                            <Styles
+                                columns={2}
+                                value={style}
+                                options={[
+                                    { value: 1, svg: icons.postgrid_design_1 },
+                                    { value: 2, svg: icons.postgrid_design_4 },
+                                ]}
+                                onChange={value => setAttributes({ style: value })}
+                            />
 
-                    }
-
-
-                    {
-                        categories &&
-                        <Dropdown
-                            label={__('Products by Categories')}
-                            enableSearch
-                            defaultOptionsLabel="All"
-                            options={[
-                                ...categories.map(({ name, id }) => {
-                                    return (
-                                        {
-                                            label: __(name),
-                                            value: id
-                                        }
-                                    )
-                                })]}
-                            value={selectedCatagories}
-                            onChange={value => setAttributes({ selectedCatagories: value.length && value[value.length - 1].label === 'All' ? [] : value })}
-                        />
-                    }
-
-                    <SelectControl
-                        label={__('Order By')}
-                        value={orderby}
-                        options={[
                             {
-                                label: __('Newness - newest first'),
-                                value: 'date-desc',
-                            },
-                            {
-                                label: __('Newness - oldest first'),
-                                value: 'date',
-                            },
-                            {
-                                label: __('Price - low to high'),
-                                value: 'price',
-                            },
-                            {
-                                label: __('Price - high to low'),
-                                value: 'price-desc',
-                            },
-                            {
-                                label: __('Rating - highest first'),
-                                value: 'rating',
-                            },
-                            {
-                                label: __('Sales - most first'),
-                                value: 'popularity',
-                            },
-                            {
-                                label: __('Menu Order'),
-                                value: 'menu_order',
-                            },
-                            {
-                                label: __('Title: Alphabetical'),
-                                value: 'title',
-                            },
-                            {
-                                label: __('Title: Alphabetical reversed'),
-                                value: 'title-desc',
-                            },
-                        ]}
-                        onChange={(orderby) => setAttributes({ orderby })}
-                    />
-                </PanelBody>
-
-                <PanelBody title={__('Content')} initialOpen={false}>
-                    <Styles
-                        columns={2}
-                        value={style}
-                        options={[
-                            { value: 1, svg: icons.postgrid_design_1 },
-                            { value: 2, svg: icons.postgrid_design_4 },
-                        ]}
-                        onChange={value => setAttributes({ style: value })}
-                    />
-
-                    {
-                        layout === 2 &&
-                        <RangeControl
-                            label={__('Columns')}
-                            value={columns}
-                            min='1'
-                            max={10}
-                            onChange={val => setAttributes({ columns: val })} />
-                    }
-
-                </PanelBody>
-                <PanelBody title={__('Button')} initialOpen={false}>
-                    <ColorAdvanced
-                        label={__('Background')}
-                        value={buttonBgColor}
-                        onChange={value => setAttributes({ buttonBgColor: value })}
-                    />
-                    <Border
-                        min={0}
-                        max={10}
-                        responsive
-                        device={device}
-                        label={__('Border')}
-                        value={buttonBorder}
-                        unit={['px', 'em', '%']}
-                        onDeviceChange={value => setDevice(value)}
-                        onChange={val => setAttributes({ buttonBorder: val })}
-                    />
-                    <BorderRadius
-                        min={0}
-                        max={100}
-                        responsive
-                        device={device}
-                        label={__('Corner')}
-                        unit={['px', 'em', '%']}
-                        value={buttonBorderRadius}
-                        onDeviceChange={value => setDevice(value)}
-                        onChange={value => setAttributes({ buttonBorderRadius: value })}
-                    />
-                    {/* <Padding label={__('Padding')} value={padding} onChange={val => setAttributes({ padding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                layout === 2 &&
+                                <RangeControl
+                                    label={__('Columns')}
+                                    value={columns}
+                                    min='1'
+                                    max={10}
+                                    onChange={val => setAttributes({ columns: val })} />
+                            }
+                            <RangeControl label={__('Excerpt Limit')} min={1} max={100} step={1} value={excerptLimit} onChange={val => setAttributes({ excerptLimit: val })} />
+                        </PanelBody>
+                        <PanelBody title={__('Button')} initialOpen={false}>
+                            <ColorAdvanced
+                                label={__('Background')}
+                                value={buttonBgColor}
+                                onChange={value => setAttributes({ buttonBgColor: value })}
+                            />
+                            <Border
+                                min={0}
+                                max={10}
+                                responsive
+                                device={device}
+                                label={__('Border')}
+                                value={buttonBorder}
+                                unit={['px', 'em', '%']}
+                                onDeviceChange={value => setDevice(value)}
+                                onChange={val => setAttributes({ buttonBorder: val })}
+                            />
+                            <BorderRadius
+                                min={0}
+                                max={100}
+                                responsive
+                                device={device}
+                                label={__('Corner')}
+                                unit={['px', 'em', '%']}
+                                value={buttonBorderRadius}
+                                onDeviceChange={value => setDevice(value)}
+                                onChange={value => setAttributes({ buttonBorderRadius: value })}
+                            />
+                            {/* <Padding label={__('Padding')} value={padding} onChange={val => setAttributes({ padding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
                     <BoxShadow label={__('Box-Shadow')} value={boxShadow} onChange={(value) => setAttributes({ boxShadow: value })} /> */}
-                </PanelBody>
+                        </PanelBody>
+
+                    </InspectorTab>
+                    <InspectorTab key={'advance'}>
+                    </InspectorTab>
+                </InspectorTabs>
 
             </InspectorControls>
 
@@ -411,7 +423,8 @@ export default function Edit(props) {
                                         <div
                                             className={`qubely-woo-product-description`}
                                             dangerouslySetInnerHTML={{
-                                                __html: description,
+                                                __html: truncate(description, 20),
+
                                             }}
                                         />
                                         {style === 2 && renderImages(images)}
