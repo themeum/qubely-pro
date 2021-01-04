@@ -237,10 +237,10 @@ function render_block_qubely_wooproducts($att)
             $html .= '<div class="qubely-woo_product">';
             $image = '<div class="qubely-woo_product-image-wrapper"><img class="qubely-woo_product-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/></div>';
             $html .= $image;
-            $html .= '<div class="qubely-woo-product-name">' . get_the_title() . '</div>';
+            $html .= '<div class="qubely-product-name">' . get_the_title() . '</div>';
             $html .= '<div class="qubely-woo-product-regular-price">' .  $product->get_regular_price() . '</div>';
             $html .= '<div class="qubely-woo-product-sale-price">' .  $product->get_sale_price() . '</div>';
-            $html .= '<div class="qubely-woo-product-price">' .  $product->get_price() . '</div>';
+            $html .= '<div class="qubely-product-price">' .  $product->get_price() . '</div>';
             $html .= '</div>';
         }
         $html .= '</div>';

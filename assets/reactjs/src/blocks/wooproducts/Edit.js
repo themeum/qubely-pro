@@ -407,42 +407,46 @@ export default function Edit(props) {
                 <div className={`qubely-woo_products_wrapper${layout === 2 ? ' qubely_woo_products_grid_layout' : ''}${layout === 2 ? ` qubely_${columns}columns` : ''}`}>
                     {
                         loading ?
-                            <div className={`qubely-woo_product_loading`}>
+                            <div className="qubely-woo_product_loading">
                                 <Spinner />
                             </div>
                             :
-                            totalProducts ? products.map(({ name, id, price, description, images }, index) => {
-                                return (
-                                    <div className={`qubely-woo_product`}>
+                            totalProducts ? products.map(({ name, id, price, description, images, on_sale, regular_price, sale_price }) => (
+                                <div className="qubely-woo_product" key={id}>
+                                    {style === 1 && renderImages(images)}
+                                    <div className="qubely-product-name">{name}</div>
+                                    {
+                                        on_sale ?
+                                            <div className="qubely-product-price">
+                                                <div className="ws-regular-price"><s>${regular_price}</s></div>
+                                                <div className="ws-sale-price">${sale_price}</div>
+                                            </div>
+                                            :
+                                            <div className="qubely-product-price">${price}</div>
+                                    }
 
-                                        {style === 1 && renderImages(images)}
+                                    <div
+                                        className="qubely-product-description"
+                                        dangerouslySetInnerHTML={{
+                                            __html: truncate(description, 20),
 
-                                        <div className={`qubely-woo-product-name`}>{name}</div>
-                                        <div className={`qubely-woo-product-id`}>id : {id}</div>
-                                        <div className={`qubely-woo-product-price`}>price {price}</div>
-                                        <div
-                                            className={`qubely-woo-product-description`}
-                                            dangerouslySetInnerHTML={{
-                                                __html: truncate(description, 20),
-
-                                            }}
+                                        }}
+                                    />
+                                    {style === 2 && renderImages(images)}
+                                    <div className="qubely-addtocart-wrapper">
+                                        <RichText
+                                            keepPlaceholderOnFocus
+                                            value={addToCartButtonText}
+                                            placeholder={__('Add Text...')}
+                                            className="qubely_aaddtocart_button"
+                                            onChange={value => setAttributes({ addToCartButtonText: value })}
                                         />
-                                        {style === 2 && renderImages(images)}
-                                        <div className={`qubely-woo-product-add-to-cart`}>
-                                            <RichText
-                                                keepPlaceholderOnFocus
-                                                value={addToCartButtonText}
-                                                placeholder={__('Add Text...')}
-                                                className={'qubely_cart_button'}
-                                                onChange={value => setAttributes({ addToCartButtonText: value })}
-                                            />
-                                        </div>
                                     </div>
+                                </div>
 
-                                )
-                            })
+                            ))
                                 :
-                                <div className={`qubely-woo_product-not-found`}>
+                                <div className="qubely-woo_product-not-found">
                                     {__('No products found')}
                                 </div>
                     }

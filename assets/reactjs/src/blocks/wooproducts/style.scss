@@ -17,13 +17,25 @@
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 16px solid transparent;
+    .qubely-product-price {
+      div {
+        display: inline-block;
+      }
+    }
+    .qubely-addtocart-wrapper {
+      .qubely_aaddtocart_button {
+        cursor: pointer;
+        border: 1px solid gray;
+        border-radius: 5px;
+      }
+    }
   }
   &.qubely_woo_products_grid_layout {
     &.qubely_2columns .qubely-woo_product {
-        -webkit-box-flex: 1;
-        flex: 1 0 50%;
-        max-width: 50%;
-      }
+      -webkit-box-flex: 1;
+      flex: 1 0 50%;
+      max-width: 50%;
+    }
     &.qubely_3columns .qubely-woo_product {
       -webkit-box-flex: 1;
       flex: 1 0 33.33333%;
@@ -34,6 +46,5 @@
       flex: 1 0 25%;
       max-width: 25%;
     }
-  
   }
 }
