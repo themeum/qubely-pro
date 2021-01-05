@@ -14,7 +14,8 @@ const {
     SelectControl,
     IconButton,
     Spinner,
-    RangeControl
+    RangeControl,
+    ColorPicker
 } = wp.components
 
 const {
@@ -94,13 +95,23 @@ function Edit(props) {
             imageSizeCustom,
             imageHeight,
             imageCustomHeight,
+            imageBorderRadius,
 
+            //product card
+            cardPadding,
             //other
             addToCartButtonText,
+            buttonColor,
+            buttonPadding,
             buttonBgColor,
             buttonBorder,
             buttonBorderRadius,
             recreateStyles,
+            blockPadding,
+            bgColor,
+            border,
+            borderRadius,
+            boxShadow,
         }
     } = props
 
@@ -231,18 +242,19 @@ function Edit(props) {
         )
     }
 
-    const truncate = (value) => {
-        if (value && value.split(' ').length > excerptLimit) {
-            return value.split(' ').splice(0, excerptLimit).join(' ');
-        }
-        return value;
-    }
+    // const truncate = (value) => {
+    //     if (value && value.split(' ').length > excerptLimit) {
+    //         return value.split(' ').splice(0, excerptLimit).join(' ');
+    //     }
+    //     return value;
+    // }
     console.log('products : ', products);
-    const wrappeprClasses = classnames('qubely-woo_products_wrapper',
+
+    const wrappeprClasses = classnames('qubely_woo_products_wrapper',
         { ['qubely_list_layout']: layout === 1 },
         { ['qubely_grid_layout']: layout === 2 },
-        { [`qubely_${columns}columns`]: layout === 2 });
-        
+        { [`has_${columns}_columns`]: layout === 2 });
+
     return (
         <Fragment>
             <InspectorControls>
@@ -407,12 +419,107 @@ function Edit(props) {
                                     <Separator />
                                 </Fragment>
                             }
+                            <BorderRadius
+                                min={0}
+                                max={100}
+                                responsive
+                                device={device}
+                                label={__("Corner")}
+                                value={imageBorderRadius}
+                                unit={["px", "em", "%"]}
+                                onChange={(value) => setAttributes({ imageBorderRadius: value })}
+                                onDeviceChange={(value) => this.setState({ device: value })}
+                            />ƒ
+                        </PanelBody>
+
+                        <PanelBody title={__('Product Card')} initialOpen={false}>
+                            <Padding
+                                min={0}
+                                max={300}
+                                responsive
+                                value={cardPadding}
+                                device={device}
+                                label={__('Padding')}
+                                unit={['px', 'em', '%']}
+                                onChange={val => setAttributes({ cardPadding: val })}
+                                onDeviceChange={value => this.setState({ device: value })}
+                            />
+                        </PanelBody>
+                        <PanelBody title={__('Design')} initialOpen={false}>
+
+                            <ColorAdvanced
+                                label={__("Background")}
+                                value={bgColor}
+                                onChange={(value) => setAttributes({ bgColor: value })}
+                            />
+                            <Border
+                                label={__("Border")}
+                                value={border}
+                                onChange={(val) => setAttributes({ border: val })}
+                                min={0}
+                                max={10}
+                                unit={["px", "em", "%"]}
+                                responsive
+                                device={device}
+                                onDeviceChange={(value) =>
+                                    this.setState({ device: value })
+                                }
+                            />
+                            <BorderRadius
+                                min={0}
+                                max={100}
+                                responsive
+                                device={device}
+                                label={__("Corner")}
+                                value={borderRadius}
+                                unit={["px", "em", "%"]}
+                                onChange={(value) =>
+                                    setAttributes({ borderRadius: value })
+                                }
+                                onDeviceChange={(value) =>
+                                    this.setState({ device: value })
+                                }
+                            />
+                            <Padding
+                                min={0}
+                                max={300}
+                                responsive
+                                value={blockPadding}
+                                device={device}
+                                label={__('Padding')}
+                                unit={['px', 'em', '%']}
+                                onChange={val => setAttributes({ blockPadding: val })}
+                                onDeviceChange={value => this.setState({ device: value })}
+                            />
+                            <BoxShadow
+                                label={__("Box-Shadow")}
+                                value={boxShadow}
+                                onChange={(value) => setAttributes({ boxShadow: value })}
+                            />
+
+
                         </PanelBody>
                         <PanelBody title={__('Button')} initialOpen={false}>
+                            <Color
+                                label={__('Text Color')}
+                                value={buttonColor}
+                                onChange={(buttonColor) => setAttributes({ buttonColor })}
+                            />
                             <ColorAdvanced
                                 label={__('Background')}
                                 value={buttonBgColor}
                                 onChange={value => setAttributes({ buttonBgColor: value })}
+                            />
+                            <Padding
+                                min={0}
+                                max={300}
+                                responsive
+                                value={buttonPadding}
+                                device={device}
+                                label={__('Padding')}
+                                unit={['px', 'em', '%']}
+                                onChange={val => setAttributes({ buttonPadding: val })}
+                                onDeviceChange={value => this.setState({ device: value })}
                             />
                             <Border
                                 min={0}
@@ -436,8 +543,7 @@ function Edit(props) {
                                 onDeviceChange={value => setDevice(value)}
                                 onChange={value => setAttributes({ buttonBorderRadius: value })}
                             />
-                            {/* <Padding label={__('Padding')} value={padding} onChange={val => setAttributes({ padding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-                    <BoxShadow label={__('Box-Shadow')} value={boxShadow} onChange={(value) => setAttributes({ boxShadow: value })} /> */}
+
                         </PanelBody>
 
                     </InspectorTab>
@@ -451,43 +557,44 @@ function Edit(props) {
                 <div className={wrappeprClasses}>
                     {
                         loading ?
-                            <div className="qubely-woo_product_loading">
+                            <div className="qubely_woo_product_loading">
                                 <Spinner />
                             </div>
                             :
                             totalProducts ? products.map(({ name, id, permalink, price, description, images, on_sale, regular_price, sale_price }) => (
-                                <div className="qubely-woo_product" key={id}>
-                                    {style === 1 && renderImages(images)}
-                                    <a className="qubely-product-name" href={permalink}>{name}</a>
-                                    {
-                                        on_sale ?
-                                            <div className="qubely-product-price">
-                                                <div className="ws-regular-price"><s>${regular_price}</s></div>
-                                                <div className="ws-sale-price">${sale_price}</div>
-                                            </div>
-                                            :
-                                            <div className="qubely-product-price">${price}</div>
-                                    }
+                                <div className="qubely_woo_product_wrapper" key={id}>
+                                    <div className="qubely_woo_product">
+                                        {style === 1 && renderImages(images)}
+                                        <a className="qubely-product-name" href={permalink}>{name}</a>
+                                        {
+                                            on_sale ?
+                                                <div className="qubely-product-price">
+                                                    <div className="ws-regular-price"><s>${regular_price}</s></div>
+                                                    <div className="ws-sale-price">${sale_price}</div>
+                                                </div>
+                                                :
+                                                <div className="qubely-product-price">${price}</div>
+                                        }
 
-                                    <div
+                                        {/* <div
                                         className="qubely-product-description"
                                         dangerouslySetInnerHTML={{
                                             __html: truncate(description, 20),
 
                                         }}
-                                    />
-                                    {style === 2 && renderImages(images)}
-                                    <div className="qubely-addtocart-wrapper">
-                                        <RichText
-                                            keepPlaceholderOnFocus
-                                            value={addToCartButtonText}
-                                            placeholder={__('Add Text...')}
-                                            className="qubely_aaddtocart_button"
-                                            onChange={value => setAttributes({ addToCartButtonText: value })}
-                                        />
+                                    /> */}
+                                        {style === 2 && renderImages(images)}
+                                        <div className="qubely-addtocart-wrapper">
+                                            <RichText
+                                                keepPlaceholderOnFocus
+                                                value={addToCartButtonText}
+                                                placeholder={__('Add Text...')}
+                                                className="qubely_aaddtocart_button"
+                                                onChange={value => setAttributes({ addToCartButtonText: value })}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-
                             ))
                                 :
                                 <div className="qubely-woo_product-not-found">

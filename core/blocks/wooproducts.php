@@ -101,35 +101,156 @@ function register_block_qubely_wooproducts()
                         'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {height: {{imageCustomHeight}};}'
                     ]]
                 ),
-
+                'imageBorderRadius' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        "global" => (object) ["md" => "5"],
+                        "openBorderRadius" => 1,
+                        "radiusType" => "global",
+                        "unit" => "px",
+                    ],
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder'
+                    ]]
+                ),
                 'addToCartButtonText' => array(
                     'type'    => 'string',
                     'default' => 'Add to cart',
+                ),
+                'buttonPadding' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openPadding' => 1,
+                        'paddingType' => 'custom',
+                        'unit' => 'px',
+                        'custom' => (object) ['md' => '5 10 5 10'],
+                    ],
+                    'style' => [
+                        (object) [
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
+                        ]
+                    ]
+                ),
+                'buttonColor' => array(
+                    'type' => 'string',
+                    'default' => '#000',
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper{color:{{buttonColor}};}'
+                    ]]
                 ),
                 'buttonBgColor' => array(
                     'type' => 'object',
                     'default' => (object) array(),
                     'style' => [(object) [
-                        'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
                     ]]
                 ),
                 'buttonBorder' => array(
                     'type' => 'object',
-                    'default' => (object) array(),
+                    'default' => (object) [
+                        'color' => "#000",
+                        "global" => (object) ["md" => "1"],
+                        "openBorder" => 1,
+                        "type" => "solid",
+                        "unit" => "px",
+                        "widthType" => "global"
+                    ],
                     'style' => [(object) [
-                        'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
                     ]]
                 ),
                 'buttonBorderRadius' => array(
                     'type' => 'object',
-                    'default' => (object) array(),
+                    'default' => (object) [
+                        "global" => (object) ["md" => "5"],
+                        "openBorderRadius" => 1,
+                        "radiusType" => "global",
+                        "unit" => "px",
+                    ],
                     'style' => [(object) [
-                        'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
                     ]]
                 ),
                 'recreateStyles' => array(
                     'type' => 'boolean',
                     'default' => true
+                ),
+                'blockPadding' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openPadding' => 1,
+                        'paddingType' => 'global',
+                        'unit' => 'px',
+                        'global' => (object) ['md' => 10],
+                    ],
+                    'style' => [
+                        (object) [
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                        ]
+                    ]
+                ),
+
+                'cardPadding' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openPadding' => 1,
+                        'paddingType' => 'global',
+                        'unit' => 'px',
+                        'global' => (object) ['md' => 20],
+                    ],
+                    'style' => [
+                        (object) [
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                        ]
+                    ]
+                ),
+                'bgColor' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'type' => 'color',
+                        'openColor' => 1,
+                        'color' => 'var(--qubely-color-1)',
+                        'gradient' => (object)[
+                            'color1' => 'var(--qubely-color-2)',
+                            'color2' => 'var(--qubely-color-1)',
+                            'direction' => 0,
+                            'start' => 0,
+                            'stop' => 100,
+                            'type' => 'linear'
+                        ]
+                    ],
+                    'style' => [
+                        (object) [
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                        ]
+                    ]
+                ),
+                'border' => array(
+                    'type' => 'object',
+                    'default' => (object) array(),
+                    'style' => [
+                        (object) [
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                        ]
+                    ]
+                ),
+                'borderRadius' => array(
+                    'type' => 'object',
+                    'default' => (object) array(),
+                    'style' => [
+                        (object) [
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                        ]
+                    ]
+                ),
+                'boxShadow' => array(
+                    'type' => 'object',
+                    'default' => (object) array(),
+                    'style' => [
+                        (object) [
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                        ]
+                    ]
                 ),
                 'showGlobalSettings' => array(
                     'type' => 'boolean',
@@ -278,7 +399,7 @@ function render_block_qubely_wooproducts($att)
 
     if ($query->have_posts()) {
         $html .= '<div class="qubely-block-' . $uniqueId . '">';
-        $html .= '<div class="qubely-woo_products_wrapper ' . $interaction . ' qubely-layout-' . esc_attr($layout) . '" ' . $animation . '>';
+        $html .= '<div class="qubely_woo_products_wrapper ' . $interaction . ' qubely-layout-' . esc_attr($layout) . '" ' . $animation . '>';
 
         while ($query->have_posts()) {
             $query->the_post();

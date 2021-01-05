@@ -1,31 +1,36 @@
-.qubely-woo_products_wrapper {
+.qubely_woo_products_wrapper {
   &.qubely_list_layout {
     display: flex;
     flex-direction: column;
     align-content: flex-start;
+    .qubely_woo_product_wrapper {
+      .qubely_woo_product {
+        display: inline-block;
+      }
+    }
   }
   &.qubely_grid_layout {
     display: -webkit-box;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    &.qubely_2columns .qubely-woo_product {
+    &.has_2_columns .qubely_woo_product_wrapper {
       -webkit-box-flex: 1;
       flex: 1 0 50%;
       max-width: 50%;
     }
-    &.qubely_3columns .qubely-woo_product {
+    &.has_3_columns .qubely_woo_product_wrapper {
       -webkit-box-flex: 1;
       flex: 1 0 33.33333%;
       max-width: 33.33333%;
     }
-    &.qubely_4columns .qubely-woo_product {
+    &.has_4_columns .qubely_woo_product_wrapper {
       -webkit-box-flex: 1;
       flex: 1 0 25%;
       max-width: 25%;
     }
   }
-  .qubely-woo_product {
+  .qubely_woo_product {
     .qubely-product-price {
       div {
         display: inline-block;
@@ -33,11 +38,10 @@
       }
     }
     .qubely-addtocart-wrapper {
+      display: inline-block;
       text-align: center;
       .qubely_aaddtocart_button {
         cursor: pointer;
-        border: 1px solid gray;
-        border-radius: 5px;
       }
     }
     .qubely-woo_product-image-wrapper {
@@ -58,5 +62,4 @@
       }
     }
   }
-
 }
