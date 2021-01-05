@@ -208,7 +208,7 @@ function register_block_qubely_wooproducts()
                     'type' => 'object',
                     'default' => (object) [
                         'type' => 'color',
-                        'openColor' => 1,
+                        'openColor' => 0,
                         'color' => 'var(--qubely-color-1)',
                         'gradient' => (object)[
                             'color1' => 'var(--qubely-color-2)',
