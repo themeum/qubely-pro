@@ -1,5 +1,6 @@
-const { __ } = wp.i18n
-const { apiFetch } = wp
+import classnames from 'classnames';
+const { __ } = wp.i18n;
+const { apiFetch } = wp;
 const {
     useState,
     useEffect,
@@ -41,12 +42,11 @@ const {
     BoxShadow,
     Alignment,
     Padding,
+    Separator,
     Inline: {
         InlineToolbar
     },
-    CssGenerator: {
-        CssGenerator
-    },
+    withCSSGenerator,
     gloalSettings: {
         globalSettingsPanel,
         animationSettings,
@@ -61,7 +61,7 @@ import getProducts from './getProducts'
 
 
 
-export default function Edit(props) {
+function Edit(props) {
     const [mounting, changeMountFlag] = useState(true)
     const [device, setDevice] = useState('md')
     const [products, setProducts] = useState(null)
@@ -89,11 +89,18 @@ export default function Edit(props) {
             style,
             columns,
 
+            //image
+            imageSize,
+            imageSizeCustom,
+            imageHeight,
+            imageCustomHeight,
+
             //other
             addToCartButtonText,
             buttonBgColor,
             buttonBorder,
             buttonBorderRadius,
+            recreateStyles,
         }
     } = props
 
@@ -209,17 +216,20 @@ export default function Edit(props) {
 
     const renderImages = (images) => {
         return (
-            <span className={`qubely-woo_product-image-wrapper`}>
-                {images.map(({ src, alt }) => {
-                    return (
-                        <img className={`qubely-woo_product-image`} src={src} alt={alt} />
-                    )
-                })}
-            </span>
+            <div className="qubely-woo_product-image-wrapper">
+                {
+                    images.length > 0 ?
+                        images.map(({ src, alt }) => {
+                            return (
+                                <img className="qubely-woo_product-image" src={src} alt={alt} />
+                            )
+                        })
+                        :
+                        <div className="qubely-image-placeholder" />
+                }
+            </div>
         )
     }
-
-    if (uniqueId) { CssGenerator(attributes, 'wooproducts', uniqueId) }
 
     const truncate = (value) => {
         if (value && value.split(' ').length > excerptLimit) {
@@ -228,6 +238,11 @@ export default function Edit(props) {
         return value;
     }
     console.log('products : ', products);
+    const wrappeprClasses = classnames('qubely-woo_products_wrapper',
+        { ['qubely_list_layout']: layout === 1 },
+        { ['qubely_grid_layout']: layout === 2 },
+        { [`qubely_${columns}columns`]: layout === 2 });
+        
     return (
         <Fragment>
             <InspectorControls>
@@ -363,6 +378,35 @@ export default function Edit(props) {
                                     onChange={val => setAttributes({ columns: val })} />
                             }
                             <RangeControl label={__('Excerpt Limit')} min={1} max={100} step={1} value={excerptLimit} onChange={val => setAttributes({ excerptLimit: val })} />
+
+                            <RadioAdvanced label={__('Width')} value={imageSize} onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
+                                options={[
+                                    { label: __('S'), value: '100px', title: __('Small') },
+                                    { label: __('M'), value: '150px', title: __('Medium') },
+                                    { label: __('L'), value: '250px', title: __('Large') },
+                                    { icon: 'fas fa-cog', value: 'custom', title: __('Custom') },
+                                ]}
+                            />
+                            {imageSize == 'custom' &&
+                                <Fragment>
+                                    <Range label={__('Custom Width')} value={imageSizeCustom} onChange={val => setAttributes({ imageSizeCustom: val })} min={10} max={1920} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    <Separator />
+                                </Fragment>
+                            }
+                            <RadioAdvanced label={__('Image Height')} value={imageHeight} onChange={(value) => setAttributes({ imageHeight: value, recreateStyles: !recreateStyles })}
+                                options={[
+                                    { label: __('S'), value: '100px', title: __('Small') },
+                                    { label: __('M'), value: '150px', title: __('Medium') },
+                                    { label: __('L'), value: '250px', title: __('Large') },
+                                    { label: __('Custom'), value: 'custom', title: __('Custom') },
+                                ]}
+                            />
+                            {imageHeight == 'custom' &&
+                                <Fragment>
+                                    <Range label={__('Custom Height')} value={imageCustomHeight} onChange={val => setAttributes({ imageCustomHeight: val })} min={10} max={1920} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    <Separator />
+                                </Fragment>
+                            }
                         </PanelBody>
                         <PanelBody title={__('Button')} initialOpen={false}>
                             <ColorAdvanced
@@ -404,17 +448,17 @@ export default function Edit(props) {
             </InspectorControls>
 
             <div className={`qubely-block-${uniqueId}`}>
-                <div className={`qubely-woo_products_wrapper${layout === 2 ? ' qubely_woo_products_grid_layout' : ''}${layout === 2 ? ` qubely_${columns}columns` : ''}`}>
+                <div className={wrappeprClasses}>
                     {
                         loading ?
                             <div className="qubely-woo_product_loading">
                                 <Spinner />
                             </div>
                             :
-                            totalProducts ? products.map(({ name, id, price, description, images, on_sale, regular_price, sale_price }) => (
+                            totalProducts ? products.map(({ name, id, permalink, price, description, images, on_sale, regular_price, sale_price }) => (
                                 <div className="qubely-woo_product" key={id}>
                                     {style === 1 && renderImages(images)}
-                                    <div className="qubely-product-name">{name}</div>
+                                    <a className="qubely-product-name" href={permalink}>{name}</a>
                                     {
                                         on_sale ?
                                             <div className="qubely-product-price">
@@ -459,3 +503,4 @@ export default function Edit(props) {
 }
 
 
+export default withCSSGenerator()(Edit);

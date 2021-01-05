@@ -54,6 +54,54 @@ function register_block_qubely_wooproducts()
                         'type' => 'object'
                     ],
                 ),
+                'imageSize' => array(
+                    'type' => 'string',
+                    'default' => '250px',
+                    'style' => [(object) [
+                        'condition' => [
+                            (object) ['key' => 'imageSize', 'relation' => '!=', 'value' => 'custom']
+                        ],
+                        'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSize}};}'
+                    ]]
+                ),
+                'imageSizeCustom' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'md' => 300,
+                        'unit' => 'px'
+                    ],
+                    'style' => [(object) [
+                        'condition' => [
+                            (object) ['key' => 'imageSize', 'relation' => '==', 'value' => 'custom']
+                        ],
+                        'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSizeCustom}};}'
+                    ]]
+                ),
+                'imageHeight' => array(
+                    'type' => 'string',
+                    'default' => '250px',
+                    'style' => [(object) [
+                        'condition' => [
+                            (object) ['key' => 'imageHeight', 'relation' => '!=', 'value' => 'custom']
+                        ],
+                        'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {height: {{imageHeight}};}'
+                    ]]
+                ),
+
+                'imageCustomHeight' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'md' => 300,
+                        'unit' => 'px'
+                    ],
+                    'style' => [(object) [
+                        'condition' => [
+                            (object) ['key' => 'imageHeight', 'relation' => '==', 'value' => 'custom']
+                        ],
+                        'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {height: {{imageCustomHeight}};}'
+                    ]]
+                ),
+
                 'addToCartButtonText' => array(
                     'type'    => 'string',
                     'default' => 'Add to cart',
@@ -78,6 +126,10 @@ function register_block_qubely_wooproducts()
                     'style' => [(object) [
                         'selector' => '{{QUBELY}} .qubely-woo_products_wrapper .qubely-woo_product .qubely-woo-product-add-to-cart'
                     ]]
+                ),
+                'recreateStyles' => array(
+                    'type' => 'boolean',
+                    'default' => true
                 ),
                 'showGlobalSettings' => array(
                     'type' => 'boolean',
