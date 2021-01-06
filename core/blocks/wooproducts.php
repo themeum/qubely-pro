@@ -303,8 +303,9 @@ function register_block_qubely_wooproducts()
 function render_block_qubely_wooproducts($att)
 {
 
-    $uniqueId               = isset($att['uniqueId']) ? $att['uniqueId'] : '';
+    $uniqueId               = $att['uniqueId'];
     $layout                 = isset($att['layout']) ? $att['layout'] : 2;
+    $columns                 = isset($att['columns']) ? $att['columns'] : 2;
     $style                  = isset($att['style']) ? $att['style'] : 1;
     $name                  = isset($att['name']) ? $att['name'] : 'product name';
     $productsPerPage        = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
@@ -337,15 +338,18 @@ function render_block_qubely_wooproducts($att)
     );
 
     if (isset($att['orderby'])) {
+
         switch ($orderBy) {
             case 'price':
-                $query_args['orderby'] = 'meta_value_num';
-                $query_args['meta_key'] = '_price';
+                //     $query_args['orderby'] = 'meta_value_num';
+                //     $query_args['meta_key'] = '_price';
+                $query_args['orderby'] = 'price';
                 $query_args['order']   = 'asc';
                 break;
             case 'price_desc':
-                $query_args['orderby'] = 'meta_value_num';
-                $query_args['meta_key'] = '_price';
+                //     $query_args['orderby'] = 'meta_value_num';
+                //     $query_args['meta_key'] = '_price';
+                $query_args['orderby'] = 'price';
                 $query_args['order']   = 'desc';
                 break;
             case 'title':
@@ -364,6 +368,10 @@ function render_block_qubely_wooproducts($att)
                 $query_args['orderby'] = 'date';
                 $query_args['order']   = 'desc';
                 break;
+            case 'menu_order':
+                $query_args['orderby'] = 'menu_order';
+                $query_args['order']   = 'asc';
+                break;
             default:
                 $query_args['orderby'] = $att['orderby'];
         }
@@ -378,9 +386,6 @@ function render_block_qubely_wooproducts($att)
 
     $query = new WP_Query($query_args);
 
-
-
-    $html = '';
     $interaction = '';
     if (isset($att['interaction'])) {
         if (!empty((array) $att['interaction'])) {
@@ -396,10 +401,18 @@ function render_block_qubely_wooproducts($att)
             }
         }
     }
+    $woo_product_markup = '';
 
     if ($query->have_posts()) {
-        $html .= '<div class="qubely-block-' . $uniqueId . '">';
-        $html .= '<div class="qubely_woo_products_wrapper ' . $interaction . ' qubely-layout-' . esc_attr($layout) . '" ' . $animation . '>';
+        $woo_product_markup .= sprintf(
+            '<div class="qubely-block-%1$s">',
+            $uniqueId
+        );
+        $woo_product_markup .= sprintf(
+            '<div class="qubely_woo_products_wrapper %1$s has_%2$s_columns">',
+            $layout == 1 ? 'qubely_list_layout' : 'qubely_grid_layout',
+            $columns
+        );
 
         while ($query->have_posts()) {
             $query->the_post();
@@ -407,18 +420,56 @@ function render_block_qubely_wooproducts($att)
             $product = wc_get_product($post_id);
             $id = get_post_thumbnail_id();
             $src = wp_get_attachment_image_src($id);
-            $html .= '<div class="qubely-woo_product">';
-            $image = '<div class="qubely-woo_product-image-wrapper"><img class="qubely-woo_product-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/></div>';
-            $html .= $image;
-            $html .= '<div class="qubely-product-name">' . get_the_title() . '</div>';
-            $html .= '<div class="qubely-woo-product-regular-price">' .  $product->get_regular_price() . '</div>';
-            $html .= '<div class="qubely-woo-product-sale-price">' .  $product->get_sale_price() . '</div>';
-            $html .= '<div class="qubely-product-price">' .  $product->get_price() . '</div>';
-            $html .= '</div>';
+            $image_id  = $product->get_image_id();
+            $image_url = wp_get_attachment_image_url($image_id, 'full');
+            $woo_product_markup .= '<div class="qubely_woo_product_wrapper"><div class="qubely_woo_product">';
+            if ($image_url) {
+                $woo_product_markup .= sprintf(
+                    '<div class="qubely-woo_product-image-wrapper">
+                         <img class="qubely-woo_product-image" src="%1$s" alt="%2$s" />
+                    </div>',
+                    $image_url,
+                    $product->get_id()
+                );
+            } else {
+                $woo_product_markup .= '<div class="qubely-woo_product-image-wrapper">
+                          <div class="qubely-image-placeholder"></div>
+                    </div>';
+            }
+
+
+            $woo_product_markup .= sprintf(
+                '<a class="qubely-product-name" href={%1$s}>%2$s</a>',
+                $product->get_permalink(),
+                get_the_title()
+            );
+            if ($product->is_on_sale()) {
+                $woo_product_markup .= sprintf(
+                    '<div class="qubely-product-price">
+                         <div class="ws-regular-price">
+                             <s>$%1$s</s>
+                        </div>
+                        <div class="ws-sale-price">$%2$s</div>
+                    </div>',
+                    $product->get_regular_price(),
+                    $product->get_sale_price()
+                );
+            } else {
+                $woo_product_markup .= sprintf(
+                    '<div class="qubely-product-price">$%1$s</div>',
+                    $product->get_price()
+                );
+            }
+            $woo_product_markup .= sprintf(
+                '<div class="qubely-addtocart-wrapper">
+                    <div class="qubely_aaddtocart_button">%1$s</div>
+                </div>',
+                $att['addToCartButtonText']
+            );
+            $woo_product_markup .= '</div></div>';
         }
-        $html .= '</div>';
         wp_reset_postdata();
     }
-    return $html;
+    return $woo_product_markup;
 }
 add_action('init', 'register_block_qubely_wooproducts', 100);
