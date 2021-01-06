@@ -163,6 +163,7 @@ function Edit(props) {
     }
     const setOderingQueryArgs = () => {
         let orderbyArgs = {}
+
         switch (orderby) {
             case 'price':
                 orderbyArgs.orderby = 'price';
@@ -177,7 +178,7 @@ function Edit(props) {
                 orderbyArgs.order = 'asc';
                 break;
             case 'title':
-                orderbyArgs.orderby = 'title';
+                orderbyArgs.orderby = 'title-desc';
                 orderbyArgs.order = 'desc';
                 break;
             case 'date':
@@ -188,6 +189,10 @@ function Edit(props) {
                 orderbyArgs.orderby = 'date';
                 orderbyArgs.order = 'desc';
                 break;
+            case 'menu_order':
+                orderbyArgs.orderby = 'menu_order';
+                orderbyArgs.order = 'asc';
+                break;
             default:
                 orderbyArgs.orderby = orderby;
 
@@ -196,19 +201,17 @@ function Edit(props) {
     }
 
     const loadProducts = () => {
-
         const args = {
             ...setOderingQueryArgs(),
-            category: selectedCatagories.map(({ value }) => value).join(),
             per_page: productsPerPage,
             // page: currentPage,
         };
 
-        if (productsStatus === 'on_sale') {
-            args.on_sale = true
-        } else if (productsStatus === 'featured') {
-            args.featured = true
-        }
+        // if (productsStatus === 'on_sale') {
+        //     args.on_sale = 1;
+        // } else if (productsStatus === 'featured') {
+        //     args.featured = 1;
+        // }
 
         getProducts(args)
             .then((productsData) => {
@@ -272,7 +275,7 @@ function Edit(props) {
                         </PanelBody>
                         <PanelBody title={__('Query')} initialOpen={false} onToggle={() => !categories && getCategoris()}>
 
-                            <SelectControl
+                            {/* <SelectControl
                                 label={__("Products Status")}
                                 value={productsStatus}
                                 options={[
@@ -290,21 +293,22 @@ function Edit(props) {
                                     },
                                 ]}
                                 onChange={value => setAttributes({ productsStatus: value })}
-                            />
+                            /> */}
 
                             {
-                                totalProducts &&
+                                totalProducts !== 0 &&
                                 <RangeControl
                                     label={__('Number of Products')}
                                     value={productsPerPage}
                                     min='1'
                                     max={totalProducts}
-                                    onChange={val => setAttributes({ productsPerPage: val })} />
+                                    onChange={val => setAttributes({ productsPerPage: val })}
+                                />
 
                             }
 
 
-                            {
+                            {/* {
                                 categories &&
                                 <Dropdown
                                     label={__('Products by Categories')}
@@ -322,7 +326,7 @@ function Edit(props) {
                                     value={selectedCatagories}
                                     onChange={value => setAttributes({ selectedCatagories: value.length && value[value.length - 1].label === 'All' ? [] : value })}
                                 />
-                            }
+                            } */}
 
                             <SelectControl
                                 label={__('Order By')}
@@ -342,14 +346,14 @@ function Edit(props) {
                                     },
                                     {
                                         label: __('Price - high to low'),
-                                        value: 'price-desc',
+                                        value: 'price_desc',
                                     },
                                     {
                                         label: __('Rating - highest first'),
                                         value: 'rating',
                                     },
                                     {
-                                        label: __('Sales - most first'),
+                                        label: __('Sales - poplular first'),
                                         value: 'popularity',
                                     },
                                     {
