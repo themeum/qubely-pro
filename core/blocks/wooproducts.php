@@ -29,7 +29,7 @@ function register_block_qubely_wooproducts()
                 ),
                 'productsPerPage' => array(
                     'type' => 'number',
-                    'default' => 4
+                    'default' => 6
                 ),
                 'columns' => array(
                     'type' => 'number',
@@ -37,7 +37,7 @@ function register_block_qubely_wooproducts()
                 ),
                 'orderby' => array(
                     'type'    => 'string',
-                    'default' => 'price',
+                    'default' => 'menu_order',
                 ),
                 'productsStatus' => array(
                     'type'    => 'string',

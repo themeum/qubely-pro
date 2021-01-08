@@ -374,7 +374,7 @@ function Edit(props) {
                         </PanelBody>
 
                         <PanelBody title={__('Content')} initialOpen={false}>
-                            <Styles
+                            {/* <Styles
                                 columns={2}
                                 value={style}
                                 options={[
@@ -382,7 +382,7 @@ function Edit(props) {
                                     { value: 2, svg: icons.postgrid_design_4 },
                                 ]}
                                 onChange={value => setAttributes({ style: value })}
-                            />
+                            /> */}
 
                             {
                                 layout === 2 &&
@@ -393,7 +393,7 @@ function Edit(props) {
                                     max={10}
                                     onChange={val => setAttributes({ columns: val })} />
                             }
-                            <RangeControl label={__('Excerpt Limit')} min={1} max={100} step={1} value={excerptLimit} onChange={val => setAttributes({ excerptLimit: val })} />
+                            {/* <RangeControl label={__('Excerpt Limit')} min={1} max={100} step={1} value={excerptLimit} onChange={val => setAttributes({ excerptLimit: val })} /> */}
 
                             <RadioAdvanced label={__('Width')} value={imageSize} onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
                                 options={[
