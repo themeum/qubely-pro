@@ -593,7 +593,7 @@ function Edit(props) {
                                                 keepPlaceholderOnFocus
                                                 value={addToCartButtonText}
                                                 placeholder={__('Add Text...')}
-                                                className="qubely_aaddtocart_button"
+                                                className="qubely_adtocart_button"
                                                 onChange={value => setAttributes({ addToCartButtonText: value })}
                                             />
                                         </div>

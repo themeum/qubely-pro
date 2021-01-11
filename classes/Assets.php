@@ -32,6 +32,9 @@ class Assets {
                     wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
                     wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
                 }
+                if ( in_array('qubely/wooproducts', $available_blocks)) {
+                    wp_enqueue_script('qubely_woo_script', QUBELY_PRO_DIR_URL . 'assets/js/woocommerce.js', array('jquery'), QUBELY_PRO_VERSION);
+                 }
 
                 if (
                     in_array('qubely/imagecarousel', $available_blocks) ||
@@ -69,6 +72,9 @@ class Assets {
             wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
             wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
         }
+        if (false !== strpos($post, '<!-- wp:' . 'qubely/wooproducts' . ' ')) {
+            wp_enqueue_script('qubely_woo_script', QUBELY_PRO_DIR_URL . 'assets/js/woocommerce.js', array('jquery'), QUBELY_PRO_VERSION);
+        }
         if ((false !== strpos($post, '<!-- wp:' . 'qubely/imagecarousel' . ' ')) || (false !== strpos($post, '<!-- wp:' . 'qubely/postcarousel' . ' ')) || (false !== strpos($post, '<!-- wp:' . 'qubely/teamcarousel' . ' ')) || (false !== strpos($post, '<!-- wp:' . 'qubely/testimonialcarousel' . ' '))) {
             wp_enqueue_script('qubely-carousel', QUBELY_PRO_DIR_URL . 'assets/js/qubely-carousel.js', array('jquery'), QUBELY_PRO_VERSION);
         }
@@ -82,6 +88,7 @@ class Assets {
 		wp_enqueue_style( 'plugin-license-handler', QUBELY_PRO_DIR_URL.'assets/css/license.css');
         wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
         wp_enqueue_script('qubely-form',  QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
+        wp_enqueue_script('qubely-form',  QUBELY_PRO_DIR_URL . 'assets/js/woocommerce.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
         wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
 	}
 

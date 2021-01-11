@@ -38,12 +38,14 @@ function productionMode() {
     const assets = src(['./build/qubely-pro/classes/Assets.php'])
         .pipe(replace(/qubely\.pro\.dev\.js/g, 'qubely.min.js'))
         .pipe(replace(/form\.js/g, 'form.min.js'))
+        .pipe(replace(/woocommerce\.js/g, 'woocommerce.min.js'))
         .pipe(replace(/qubely-carousel\.js/g, 'qubely-carousel.min.js'))
         .pipe(replace(/qubely-countdown\.js/g, 'qubely-countdown.min.js'))
         .pipe(dest('./build/qubely-pro/classes/'));
 
     const qubely_pro = src(['./build/qubely-pro/core/Qubely-Pro.php'])
         .pipe(replace(/form\.js/g, 'form.min.js'))
+        .pipe(replace(/woocommerce\.js/g, 'woocommerce.min.js'))
         .pipe(replace(/qubely-carousel\.js/g, 'qubely-carousel.min.js'))
         .pipe(replace(/qubely-countdown\.js/g, 'qubely-countdown.min.js'))
         .pipe(dest('./build/qubely-pro/core/'));
@@ -78,6 +80,7 @@ function removeJsFiles() {
     return src(
         ['./build/qubely-pro/assets/js/common-script.js',
             './build/qubely-pro/assets/js/form.js',
+            './build/qubely-pro/assets/js/woocommerce.js',
             './build/qubely-pro/assets/js/qubely-carousel.js',
             './build/qubely-pro/assets/js/installer.js',
             './build/qubely-pro/assets/js/qubely-countdown.js',

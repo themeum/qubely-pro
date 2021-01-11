@@ -421,6 +421,7 @@ function render_block_qubely_wooproducts($att)
             $id = get_post_thumbnail_id();
             $src = wp_get_attachment_image_src($id);
             $image_id  = $product->get_image_id();
+            $product_id  = $product->get_id();
             $image_url = wp_get_attachment_image_url($image_id, 'full');
             $woo_product_markup .= '<div class="qubely_woo_product_wrapper"><div class="qubely_woo_product">';
             if ($image_url) {
@@ -429,7 +430,7 @@ function render_block_qubely_wooproducts($att)
                          <img class="qubely-woo_product-image" src="%1$s" alt="%2$s" />
                     </div>',
                     $image_url,
-                    $product->get_id()
+                    $product_id
                 );
             } else {
                 $woo_product_markup .= '<div class="qubely-woo_product-image-wrapper">
@@ -462,8 +463,9 @@ function render_block_qubely_wooproducts($att)
             }
             $woo_product_markup .= sprintf(
                 '<div class="qubely-addtocart-wrapper">
-                    <div class="qubely_aaddtocart_button">%1$s</div>
+                    <div class="qubely_adtocart_button" id="%1$s">%2$s</div>
                 </div>',
+                $product_id,
                 $att['addToCartButtonText']
             );
             $woo_product_markup .= '</div></div>';
