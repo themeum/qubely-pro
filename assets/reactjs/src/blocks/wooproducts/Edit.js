@@ -29,7 +29,7 @@ const {
 const {
     RadioAdvanced,
     ColorAdvanced,
-    Select,
+    ButtonGroup,
     Tabs,
     Tab,
     Range,
@@ -98,7 +98,24 @@ function Edit(props) {
             imageBorderRadius,
 
             //product card
+            contentPosition,
+            girdContentPosition,
             cardPadding,
+            infoPadding,
+            //Typograhy
+            titleTypography,
+            buttonTypography,
+            priceTypo,
+            discountTypo,
+
+            //colors
+            titleColor,
+            discount,
+            titleHoverColor,
+
+            //Spacing
+            titleSpace,
+            priceSpacing,
             //other
             addToCartButtonText,
             buttonColor,
@@ -393,8 +410,27 @@ function Edit(props) {
                                     max={10}
                                     onChange={val => setAttributes({ columns: val })} />
                             }
-                            {/* <RangeControl label={__('Excerpt Limit')} min={1} max={100} step={1} value={excerptLimit} onChange={val => setAttributes({ excerptLimit: val })} /> */}
 
+                        </PanelBody>
+
+                        <PanelBody title={__('Product Card')} initialOpen={false}>
+                            <ButtonGroup
+                                label={__("Content Align")}
+                                options={
+                                    layout === 2 ? [
+                                        [__("Left"), "flex-start"],
+                                        [__("Middle"), "center"],
+                                        [__("Right"), "flex-end"],
+                                    ]
+                                        : [
+                                            [__("Top"), "flex-start"],
+                                            [__("Middle"), "center"],
+                                            [__("Bottom"), "flex-end"],
+                                        ]
+                                }
+                                value={layout === 1 ? contentPosition : girdContentPosition}
+                                onChange={(value) => setAttributes(layout === 1 ? { contentPosition: value } : { girdContentPosition: value })}
+                            />
                             <RadioAdvanced label={__('Width')} value={imageSize} onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
                                 options={[
                                     { label: __('S'), value: '100px', title: __('Small') },
@@ -405,7 +441,7 @@ function Edit(props) {
                             />
                             {imageSize == 'custom' &&
                                 <Fragment>
-                                    <Range label={__('Custom Width')} value={imageSizeCustom} onChange={val => setAttributes({ imageSizeCustom: val })} min={10} max={1920} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    <Range label={__('Custom Width')} value={imageSizeCustom} onChange={val => setAttributes({ imageSizeCustom: val })} min={10} max={1920} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
                                     <Separator />
                                 </Fragment>
                             }
@@ -419,7 +455,7 @@ function Edit(props) {
                             />
                             {imageHeight == 'custom' &&
                                 <Fragment>
-                                    <Range label={__('Custom Height')} value={imageCustomHeight} onChange={val => setAttributes({ imageCustomHeight: val })} min={10} max={1920} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => this.setState({ device: value })} />
+                                    <Range label={__('Custom Height')} value={imageCustomHeight} onChange={val => setAttributes({ imageCustomHeight: val })} min={10} max={1920} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
                                     <Separator />
                                 </Fragment>
                             }
@@ -428,81 +464,108 @@ function Edit(props) {
                                 max={100}
                                 responsive
                                 device={device}
-                                label={__("Corner")}
+                                label={__("Border Radius")}
                                 value={imageBorderRadius}
                                 unit={["px", "em", "%"]}
                                 onChange={(value) => setAttributes({ imageBorderRadius: value })}
-                                onDeviceChange={(value) => this.setState({ device: value })}
-                            />ƒ
-                        </PanelBody>
-
-                        <PanelBody title={__('Product Card')} initialOpen={false}>
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
                             <Padding
                                 min={0}
                                 max={300}
                                 responsive
                                 value={cardPadding}
                                 device={device}
-                                label={__('Padding')}
+                                label={__('Card Padding')}
                                 unit={['px', 'em', '%']}
                                 onChange={val => setAttributes({ cardPadding: val })}
-                                onDeviceChange={value => this.setState({ device: value })}
-                            />
-                        </PanelBody>
-                        <PanelBody title={__('Design')} initialOpen={false}>
-
-                            <ColorAdvanced
-                                label={__("Background")}
-                                value={bgColor}
-                                onChange={(value) => setAttributes({ bgColor: value })}
-                            />
-                            <Border
-                                label={__("Border")}
-                                value={border}
-                                onChange={(val) => setAttributes({ border: val })}
-                                min={0}
-                                max={10}
-                                unit={["px", "em", "%"]}
-                                responsive
-                                device={device}
-                                onDeviceChange={(value) =>
-                                    this.setState({ device: value })
-                                }
-                            />
-                            <BorderRadius
-                                min={0}
-                                max={100}
-                                responsive
-                                device={device}
-                                label={__("Corner")}
-                                value={borderRadius}
-                                unit={["px", "em", "%"]}
-                                onChange={(value) =>
-                                    setAttributes({ borderRadius: value })
-                                }
-                                onDeviceChange={(value) =>
-                                    this.setState({ device: value })
-                                }
+                                onDeviceChange={value => setDevice(value)}
                             />
                             <Padding
                                 min={0}
                                 max={300}
                                 responsive
-                                value={blockPadding}
+                                value={infoPadding}
                                 device={device}
-                                label={__('Padding')}
+                                label={__('Info Padding')}
                                 unit={['px', 'em', '%']}
-                                onChange={val => setAttributes({ blockPadding: val })}
-                                onDeviceChange={value => this.setState({ device: value })}
+                                onChange={val => setAttributes({ infoPadding: val })}
+                                onDeviceChange={value => setDevice(value)}
                             />
-                            <BoxShadow
-                                label={__("Box-Shadow")}
-                                value={boxShadow}
-                                onChange={(value) => setAttributes({ boxShadow: value })}
-                            />
-
-
                         </PanelBody>
+
+                        <PanelBody title={__("Typography")} initialOpen={false}>
+                            <Typography
+                                label={__("Title")}
+                                value={titleTypography}
+                                device={device}
+                                onChange={(value) => setAttributes({ titleTypography: value })}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                            <Separator />
+                            <Typography
+                                label={__("Price")}
+                                value={priceTypo}
+                                device={device}
+                                onChange={(value) => setAttributes({ priceTypo: value })}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                            <Separator />
+                            <Typography
+                                label={__("Discount")}
+                                value={discountTypo}
+                                device={device}
+                                onChange={(value) => setAttributes({ discountTypo: value })}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                            <Separator />
+                            <Typography
+                                label={__("Button")}
+                                value={buttonTypography}
+                                device={device}
+                                onChange={(value) => setAttributes({ buttonTypography: value })}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                            <Separator />
+                        </PanelBody>
+
+                        <PanelBody title={__("Colors")} initialOpen={false}>
+                            <Tabs>
+                                <Tab tabTitle={__('Normal')}>
+                                    <Color label={__('Title')} value={titleColor} onChange={(titleColor) => setAttributes({ titleColor })} />
+                                    <Color label={__('Discount')} value={discount} onChange={(titleColor) => setAttributes({ discount })} />
+                                </Tab>
+                                <Tab tabTitle={__('Hover')}>
+                                    <Color label={__('Title Color')} value={titleHoverColor} onChange={(titleHoverColor) => setAttributes({ titleHoverColor })} />
+                                </Tab>
+                            </Tabs>
+                        </PanelBody>
+
+                        <PanelBody title={__("Spacing")} initialOpen={false}>
+                            <Range
+                                label={__("Title")}
+                                value={titleSpace}
+                                onChange={(value) => setAttributes({ titleSpace: value })}
+                                unit={["px", "em", "%"]}
+                                min={0}
+                                max={100}
+                                responsive
+                                device={device}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                            <Range
+                                label={__("Price")}
+                                value={priceSpacing}
+                                onChange={(value) => setAttributes({ priceSpacing: value })}
+                                unit={["px", "em", "%"]}
+                                min={0}
+                                max={100}
+                                responsive
+                                device={device}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                        </PanelBody>
+
                         <PanelBody title={__('Button')} initialOpen={false}>
                             <Color
                                 label={__('Text Color')}
@@ -523,7 +586,7 @@ function Edit(props) {
                                 label={__('Padding')}
                                 unit={['px', 'em', '%']}
                                 onChange={val => setAttributes({ buttonPadding: val })}
-                                onDeviceChange={value => this.setState({ device: value })}
+                                onDeviceChange={value => setDevice(value)}
                             />
                             <Border
                                 min={0}
@@ -550,6 +613,53 @@ function Edit(props) {
 
                         </PanelBody>
 
+                        <PanelBody title={__('Design')} initialOpen={false}>
+                            <ColorAdvanced
+                                label={__("Background")}
+                                value={bgColor}
+                                onChange={(value) => setAttributes({ bgColor: value })}
+                            />
+                            <Border
+                                label={__("Border")}
+                                value={border}
+                                onChange={(val) => setAttributes({ border: val })}
+                                min={0}
+                                max={10}
+                                unit={["px", "em", "%"]}
+                                responsive
+                                device={device}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                            <BorderRadius
+                                min={0}
+                                max={100}
+                                responsive
+                                device={device}
+                                label={__("Corner")}
+                                value={borderRadius}
+                                unit={["px", "em", "%"]}
+                                onChange={(value) =>
+                                    setAttributes({ borderRadius: value })
+                                }
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                            <Padding
+                                min={0}
+                                max={300}
+                                responsive
+                                value={blockPadding}
+                                device={device}
+                                label={__('Padding')}
+                                unit={['px', 'em', '%']}
+                                onChange={val => setAttributes({ blockPadding: val })}
+                                onDeviceChange={value => setDevice(value)}
+                            />
+                            <BoxShadow
+                                label={__("Box-Shadow")}
+                                value={boxShadow}
+                                onChange={(value) => setAttributes({ boxShadow: value })}
+                            />
+                        </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={'advance'}>
                     </InspectorTab>
@@ -569,33 +679,26 @@ function Edit(props) {
                                 <div className="qubely_woo_product_wrapper" key={id}>
                                     <div className="qubely_woo_product">
                                         {style === 1 && renderImages(images)}
-                                        <a className="qubely-product-name" href={permalink}>{name}</a>
-                                        {
-                                            on_sale ?
-                                                <div className="qubely-product-price">
-                                                    <div className="ws-regular-price"><s>${regular_price}</s></div>
-                                                    <div className="ws-sale-price">${sale_price}</div>
-                                                </div>
-                                                :
-                                                <div className="qubely-product-price">${price}</div>
-                                        }
-
-                                        {/* <div
-                                        className="qubely-product-description"
-                                        dangerouslySetInnerHTML={{
-                                            __html: truncate(description, 20),
-
-                                        }}
-                                    /> */}
-                                        {style === 2 && renderImages(images)}
-                                        <div className="qubely-addtocart-wrapper">
-                                            <RichText
-                                                keepPlaceholderOnFocus
-                                                value={addToCartButtonText}
-                                                placeholder={__('Add Text...')}
-                                                className="qubely_adtocart_button"
-                                                onChange={value => setAttributes({ addToCartButtonText: value })}
-                                            />
+                                        <div className="qubely-product-info">
+                                            <a className="qubely-product-name" href={permalink}>{name}</a>
+                                            {
+                                                on_sale ?
+                                                    <div className="qubely-product-price">
+                                                        <div className="qubely-regular-price"><s>${regular_price}</s></div>
+                                                        <div className="qubely-sale-price">${sale_price}</div>
+                                                    </div>
+                                                    :
+                                                    <div className="qubely-product-price">${price}</div>
+                                            }
+                                            <div className="qubely-addtocart-wrapper">
+                                                <RichText
+                                                    keepPlaceholderOnFocus
+                                                    value={addToCartButtonText}
+                                                    placeholder={__('Add Text...')}
+                                                    className="qubely_adtocart_button"
+                                                    onChange={value => setAttributes({ addToCartButtonText: value })}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

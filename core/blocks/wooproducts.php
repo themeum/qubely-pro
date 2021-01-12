@@ -21,7 +21,7 @@ function register_block_qubely_wooproducts()
                 //layout
                 'layout' => array(
                     'type' => 'number',
-                    'default' => 2
+                    'default' => 1
                 ),
                 'style' => array(
                     'type' => 'number',
@@ -113,6 +113,102 @@ function register_block_qubely_wooproducts()
                         'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder'
                     ]]
                 ),
+
+                //Colos
+                'titleColor' => array(
+                    'type'    => 'string',
+                    'default' => '#0073aa',
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name {color: {{titleColor}};}'
+                    ]]
+                ),
+                'discount' => array(
+                    'type'    => 'string',
+                    'default' => '#546E7A',
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-regular-price s {color: {{discount}};}'
+                    ]]
+                ),
+
+                'titleHoverColor' => array(
+                    'type'    => 'string',
+                    'default' => '#005177',
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name:hover {color: {{titleHoverColor}};}'
+                    ]]
+                ),
+                //spacing
+                'priceSpacing' => array(
+                    'type' => 'object',
+                    'default' => (object) array(
+                        'md' => 10,
+                        'unit' => 'px'
+                    ),
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-price{margin-bottom: {{priceSpacing}};}'
+                    ]]
+                ),
+
+                'titleSpace' => array(
+                    'type' => 'object',
+                    'default' => (object) array(
+                        'md' => 10,
+                        'unit' => 'px'
+                    ),
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name{margin-bottom: {{titleSpace}};}'
+                    ]]
+                ),
+                //Typograpgy
+                'titleTypography' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openTypography' => 1,
+                        'family' => "Roboto",
+                        'type' => "sans-serif",
+                        'size' => (object) ['md' => 22, 'unit' => 'px'],
+                    ],
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name'
+                    ]]
+                ),
+                'priceTypo' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openTypography' => 1,
+                        'family' => "Roboto",
+                        'type' => "sans-serif",
+                        'size' => (object) ['md' => 20, 'unit' => 'px'],
+                    ],
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-regular-price'
+                    ]]
+                ),
+                'discountTypo' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openTypography' => 1,
+                        'family' => "Roboto",
+                        'type' => "sans-serif",
+                        'size' => (object) ['md' => 22, 'unit' => 'px'],
+                    ],
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-sale-price'
+                    ]]
+                ),
+                'buttonTypography' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openTypography' => 1,
+                        'family' => "Roboto",
+                        'type' => "sans-serif",
+                        'size' => (object) ['md' => 20, 'unit' => 'px'],
+                    ],
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-addtocart-wrapper'
+                    ]]
+                ),
+                //Button
                 'addToCartButtonText' => array(
                     'type'    => 'string',
                     'default' => 'Add to cart',
@@ -189,7 +285,27 @@ function register_block_qubely_wooproducts()
                         ]
                     ]
                 ),
-
+                //Product Card
+                'contentPosition' =>  array(
+                    'type' => 'string',
+                    'default' => 'center',
+                    'style' => [(object) [
+                        'condition' => [
+                            (object) ['key' => 'layout', 'relation' => '==', 'value' => 1]
+                        ],
+                        'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {align-items: {{contentPosition}};}'
+                    ]]
+                ),
+                'girdContentPosition' =>  array(
+                    'type' => 'string',
+                    'default' => 'center',
+                    'style' => [(object) [
+                        'condition' => [
+                            (object) ['key' => 'layout', 'relation' => '==', 'value' => 2]
+                        ],
+                        'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {justify-content: {{girdContentPosition}};}'
+                    ]]
+                ),
                 'cardPadding' => array(
                     'type' => 'object',
                     'default' => (object) [
@@ -201,6 +317,21 @@ function register_block_qubely_wooproducts()
                     'style' => [
                         (object) [
                             'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                        ]
+                    ]
+                ),
+                'infoPadding' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openPadding' => 1,
+                        'paddingType' => 'custom',
+                        'unit' => 'px',
+                        'global' => (object) ['md' => 20],
+                        'custom' => (object) ['md' => '0 0 0 20'],
+                    ],
+                    'style' => [
+                        (object) [
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
                         ]
                     ]
                 ),
@@ -439,6 +570,8 @@ function render_block_qubely_wooproducts($att)
             }
 
 
+            $woo_product_markup .= '<div class="qubely-product-info">';
+
             $woo_product_markup .= sprintf(
                 '<a class="qubely-product-name" href={%1$s}>%2$s</a>',
                 $product->get_permalink(),
@@ -447,10 +580,10 @@ function render_block_qubely_wooproducts($att)
             if ($product->is_on_sale()) {
                 $woo_product_markup .= sprintf(
                     '<div class="qubely-product-price">
-                         <div class="ws-regular-price">
+                         <div class="qubely-regular-price">
                              <s>$%1$s</s>
                         </div>
-                        <div class="ws-sale-price">$%2$s</div>
+                        <div class="qubely-sale-price">$%2$s</div>
                     </div>',
                     $product->get_regular_price(),
                     $product->get_sale_price()
@@ -468,7 +601,7 @@ function render_block_qubely_wooproducts($att)
                 $product_id,
                 $att['addToCartButtonText']
             );
-            $woo_product_markup .= '</div></div>';
+            $woo_product_markup .= '</div></div></div>';
         }
         wp_reset_postdata();
     }

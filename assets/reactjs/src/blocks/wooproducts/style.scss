@@ -5,7 +5,13 @@
     align-content: flex-start;
     .qubely_woo_product_wrapper {
       .qubely_woo_product {
-        display: inline-block;
+        display: flex;
+        .qubely-product-info {
+          height: 100%;
+          .qubely-product-name {
+            display: inline-block;
+          }
+        }
       }
     }
   }
@@ -57,8 +63,8 @@
         object-fit: cover;
       }
       .qubely-image-placeholder {
-        min-height: 200px;
-        min-width: 200px;
+        min-height: 100px;
+        min-width: 100px;
       }
     }
   }
