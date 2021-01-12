@@ -117,6 +117,16 @@ function Edit(props) {
             titleSpace,
             priceSpacing,
             //other
+            cardBorderRadius,
+            cardBoxShadow,
+            //stack
+            stackBg,
+            stackWidth,
+            stackSpace,
+            stackBorderRadius,
+            stackPadding,
+            stackBoxShadow,
+            cardSpace,
             addToCartButtonText,
             buttonColor,
             buttonPadding,
@@ -414,6 +424,22 @@ function Edit(props) {
                         </PanelBody>
 
                         <PanelBody title={__('Product Card')} initialOpen={false}>
+                            <Styles
+                                columns={3}
+                                value={style}
+                                onChange={(style) => setAttributes({ style })}
+                                options={[
+                                    { value: 1, svg: icons.postgrid_design_1 },
+                                    {
+                                        value: 2,
+                                        svg: layout === 1 ? icons.postgrid_design_3 : icons.postgrid_design_2,
+                                    },
+                                    {
+                                        value: 3,
+                                        svg: layout === 1 ? icons.postgrid_design_5 : icons.postgrid_design_4,
+                                    }
+                                ]}
+                            />
                             <ButtonGroup
                                 label={__("Content Align")}
                                 options={
@@ -431,7 +457,7 @@ function Edit(props) {
                                 value={layout === 1 ? contentPosition : girdContentPosition}
                                 onChange={(value) => setAttributes(layout === 1 ? { contentPosition: value } : { girdContentPosition: value })}
                             />
-                            <RadioAdvanced label={__('Width')} value={imageSize} onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
+                            <RadioAdvanced label={__('Image Width')} value={imageSize} onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
                                 options={[
                                     { label: __('S'), value: '100px', title: __('Small') },
                                     { label: __('M'), value: '150px', title: __('Medium') },
@@ -464,34 +490,141 @@ function Edit(props) {
                                 max={100}
                                 responsive
                                 device={device}
-                                label={__("Border Radius")}
+                                label={__("Image Radius")}
                                 value={imageBorderRadius}
                                 unit={["px", "em", "%"]}
                                 onChange={(value) => setAttributes({ imageBorderRadius: value })}
                                 onDeviceChange={(value) => setDevice(value)}
                             />
-                            <Padding
-                                min={0}
-                                max={300}
-                                responsive
-                                value={cardPadding}
-                                device={device}
-                                label={__('Card Padding')}
-                                unit={['px', 'em', '%']}
-                                onChange={val => setAttributes({ cardPadding: val })}
-                                onDeviceChange={value => setDevice(value)}
-                            />
-                            <Padding
-                                min={0}
-                                max={300}
-                                responsive
-                                value={infoPadding}
-                                device={device}
-                                label={__('Info Padding')}
-                                unit={['px', 'em', '%']}
-                                onChange={val => setAttributes({ infoPadding: val })}
-                                onDeviceChange={value => setDevice(value)}
-                            />
+
+                            {
+                                style !== 3 &&
+                                <Fragment>
+                                    <Padding
+                                        min={0}
+                                        max={300}
+                                        responsive
+                                        value={cardPadding}
+                                        device={device}
+                                        label={__('Card Padding')}
+                                        unit={['px', 'em', '%']}
+                                        onChange={val => setAttributes({ cardPadding: val })}
+                                        onDeviceChange={value => setDevice(value)}
+                                    />
+                                    <Padding
+                                        min={0}
+                                        max={300}
+                                        responsive
+                                        value={infoPadding}
+                                        device={device}
+                                        label={__('Info Padding')}
+                                        unit={['px', 'em', '%']}
+                                        onChange={val => setAttributes({ infoPadding: val })}
+                                        onDeviceChange={value => setDevice(value)}
+                                    />
+                                </Fragment>
+
+                            }
+                            {
+                                style === 2 &&
+                                <Fragment>
+                                    <Range
+                                        label={__("Card Space")}
+                                        value={cardSpace}
+                                        onChange={(value) => setAttributes({ cardSpace: value })}
+                                        unit={["px", "em", "%"]}
+                                        min={0}
+                                        max={100}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={(value) => setDevice(value)}
+                                    />
+                                    <BorderRadius
+                                        min={0}
+                                        max={100}
+                                        responsive
+                                        device={device}
+                                        label={__("Card Radius")}
+                                        value={cardBorderRadius}
+                                        unit={["px", "em", "%"]}
+                                        onChange={(cardBorderRadius) => setAttributes({ cardBorderRadius })}
+                                        onDeviceChange={(value) => setDevice(value)}
+                                    />
+                                    <BoxShadow
+                                        label={__("Card Box-Shadow")}
+                                        value={cardBoxShadow}
+                                        onChange={(value) => setAttributes({ cardBoxShadow: value })}
+                                    />
+                                </Fragment>
+                            }
+                            {style === 3 &&
+                                <Fragment>
+                                    <ColorAdvanced
+                                        label={__("Stack Background")}
+                                        value={stackBg}
+                                        onChange={(value) => setAttributes({ stackBg: value })}
+                                    />
+                                    {layout === 2 && (
+                                        <Range
+                                            label={__("Stack Size")}
+                                            value={stackWidth}
+                                            onChange={(value) =>
+                                                setAttributes({ stackWidth: value })
+                                            }
+                                            unit={["px", "em", "%"]}
+                                            min={50}
+                                            max={600}
+                                            responsive
+                                            device={device}
+                                            onDeviceChange={value => setDevice(value)}
+                                        />
+                                    )}
+                                    {layout === 1 && (
+                                        <Range
+                                            label={__("Stack Space")}
+                                            value={stackSpace}
+                                            onChange={(value) =>
+                                                setAttributes({ stackSpace: value })
+                                            }
+                                            unit={["px", "em", "%"]}
+                                            min={0}
+                                            max={100}
+                                            responsive
+                                            device={device}
+                                            onDeviceChange={value => setDevice(value)}
+                                        />
+                                    )}
+                                    <BorderRadius
+                                        min={0}
+                                        max={100}
+                                        responsive
+                                        device={device}
+                                        label={__("Stack Corner")}
+                                        value={stackBorderRadius}
+                                        unit={["px", "em", "%"]}
+                                        onChange={(value) =>
+                                            setAttributes({ stackBorderRadius: value })
+                                        }
+                                        onDeviceChange={value => setDevice(value)}
+                                    />
+                                    <Padding
+                                        label={__("Stack Padding")}
+                                        value={stackPadding}
+                                        onChange={(val) => setAttributes({ stackPadding: val })}
+                                        min={0}
+                                        max={60}
+                                        unit={["px", "em", "%"]}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={value => setDevice(value)}
+                                    />
+                                    <BoxShadow
+                                        label={__("Stack Box Shadow")}
+                                        value={stackBoxShadow}
+                                        onChange={(stackBoxShadow) => setAttributes({ stackBoxShadow })}
+                                    />
+                                </Fragment>
+                            }
                         </PanelBody>
 
                         <PanelBody title={__("Typography")} initialOpen={false}>
@@ -678,7 +811,7 @@ function Edit(props) {
                             totalProducts ? products.map(({ name, id, permalink, price, description, images, on_sale, regular_price, sale_price }) => (
                                 <div className="qubely_woo_product_wrapper" key={id}>
                                     <div className="qubely_woo_product">
-                                        {style === 1 && renderImages(images)}
+                                        {renderImages(images)}
                                         <div className="qubely-product-info">
                                             <a className="qubely-product-name" href={permalink}>{name}</a>
                                             {

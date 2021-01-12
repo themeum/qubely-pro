@@ -25,7 +25,13 @@ function register_block_qubely_wooproducts()
                 ),
                 'style' => array(
                     'type' => 'number',
-                    'default' => 1
+                    'default' => 1,
+                    'style' => [(object) [
+                        'condition' => [
+                            (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                        ],
+                        'selector' => '{{QUBELY}} .qubely_woo_product .qubely-product-info {width:100%;z-index: 1;}{{QUBELY}} .qubely-woo_product-image-wrapper + .qubely-product-info {  margin-left: -40px;  }'
+                    ]]
                 ),
                 'productsPerPage' => array(
                     'type' => 'number',
@@ -316,6 +322,57 @@ function register_block_qubely_wooproducts()
                     ],
                     'style' => [
                         (object) [
+                            'condition' => [
+                                (object) ['key' => 'style', 'relation' => '!=', 'value' => 3]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                        ]
+                    ]
+                ),
+                'cardBorderRadius' => array(
+                    'type' => 'object',
+                    'default' => (object) array(
+                        'unit' => 'px',
+                        'openBorderRadius' => true,
+                        'radiusType' => 'global',
+                        'global' => (object) array(
+                            'md' => 10,
+                        ),
+                    ),
+                    'style' => [
+                        (object) [
+                            'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 2]],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                        ]
+                    ]
+                ),
+                'cardSpace' => array(
+                    'type' => 'object',
+                    'default' => (object) array(
+                        'md' => 25,
+                        'unit' => 'px'
+                    ),
+                    'style' => [
+                        (object) [
+                            'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 2]],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper:not(:last-child) {margin-bottom: {{cardSpace}};}'
+                        ]
+                    ]
+                ),
+                'cardBoxShadow' => array(
+                    'type' => 'object',
+                    'default' => (object) array(
+                        'blur' => 8,
+                        'color' => "rgba(0,0,0,0.10)",
+                        'horizontal' => 0,
+                        'inset' => 0,
+                        'openShadow' => true,
+                        'spread' => 0,
+                        'vertical' => 4
+                    ),
+                    'style' => [
+                        (object) [
+                            'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 2]],
                             'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
                         ]
                     ]
@@ -331,8 +388,112 @@ function register_block_qubely_wooproducts()
                     ],
                     'style' => [
                         (object) [
+                            'condition' => [(object) ['key' => 'style', 'relation' => '!=', 'value' => 3]],
                             'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
                         ]
+                    ]
+                ),
+                //scart
+                'stackBg' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openColor' => 1,
+                        'type' => "color",
+                        'color' => "#ffffff",
+                        'gradient' => (object)[]
+                    ],
+                    'style' => [
+                        (object) [
+                            'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 3]],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                        ],
+                    ]
+                ),
+                'stackBorderRadius' => array(
+                    'type' => 'object',
+                    'default' => (object) array(
+                        'unit' => 'px',
+                        'openBorderRadius' => true,
+                        'radiusType' => 'global',
+                        'global' => (object) array(
+                            'md' => 10,
+                        ),
+                    ),
+                    'style' => [
+                        (object) [
+                            'condition' => [
+                                (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                        ]
+                    ]
+                ),
+                'stackWidth' => array(
+                    'type' => 'object',
+                    'default' => (object) array(),
+
+                    'style' => [
+                        (object) [
+                            'condition' => [
+                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
+                                (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info {width: {{stackWidth}};}'
+                        ]
+                    ]
+                ),
+                'stackSpace' => array(
+                    'type' => 'object',
+                    'default' => (object) array(
+                        'md' => 40,
+                        'unit' => 'px'
+                    ),
+                    'style' => [
+                        (object) [
+                            'condition' => [
+                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
+                                (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper:not(:last-child) {margin-bottom: {{stackSpace}};}'
+                        ]
+                    ]
+
+                ),
+                'stackPadding' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openPadding' => 1,
+                        'paddingType' => 'global',
+                        'unit' => 'px',
+                        'global' => (object) ['md' => 20],
+                    ],
+                    'style' => [
+                        (object) [
+                            'condition' => [
+                                (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                        ],
+                    ]
+                ),
+                'stackBoxShadow' => array(
+                    'type' => 'object',
+                    'default' => (object) array(
+                        'blur' => 28,
+                        'color' => "rgba(0,0,0,0.15)",
+                        'horizontal' => 0,
+                        'inset' => 0,
+                        'openShadow' => true,
+                        'spread' => -20,
+                        'vertical' => 34
+                    ),
+                    'style' => [
+                        (object) [
+                            'condition' => [
+                                (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                        ],
                     ]
                 ),
                 'bgColor' => array(
