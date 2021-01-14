@@ -131,8 +131,10 @@ function Edit(props) {
             gridCardSpace,
             addToCartButtonText,
             buttonColor,
+            buttonHoverColor,
             buttonPadding,
             buttonBgColor,
+            buttonHoverBgColor,
             buttonBorder,
             buttonBorderRadius,
             recreateStyles,
@@ -449,9 +451,9 @@ function Edit(props) {
                                 label={__("Content Align")}
                                 options={
                                     layout === 2 ? [
-                                        [__("Left"), "flex-start"],
+                                        [__("Left"), "left"],
                                         [__("Middle"), "center"],
-                                        [__("Right"), "flex-end"],
+                                        [__("Right"), "right"],
                                     ]
                                         : [
                                             [__("Top"), "flex-start"],
@@ -601,15 +603,15 @@ function Edit(props) {
                         <PanelBody title={__('Image Settings')} initialOpen={false}>
                             <RadioAdvanced label={__('Image Width')} value={imageSize} onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
                                 options={[
-                                    { label: __('S'), value: '100px', title: __('Small') },
-                                    { label: __('M'), value: '150px', title: __('Medium') },
-                                    { label: __('L'), value: '250px', title: __('Large') },
+                                    { label: __('S'), value: '150px', title: __('Small') },
+                                    { label: __('M'), value: '250px', title: __('Medium') },
+                                    { label: __('L'), value: '350px', title: __('Large') },
                                     { icon: 'fas fa-cog', value: 'custom', title: __('Custom') },
                                 ]}
                             />
                             {imageSize == 'custom' &&
                                 <Fragment>
-                                    <Range label={__('Custom Width')} value={imageSizeCustom} onChange={val => setAttributes({ imageSizeCustom: val })} min={50} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
+                                    <Range label={__('Custom Width')} value={imageSizeCustom} onChange={val => setAttributes({ imageSizeCustom: val })} min={50} max={600} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
                                     <Separator />
                                 </Fragment>
                             }
@@ -623,7 +625,7 @@ function Edit(props) {
                             />
                             {imageHeight == 'custom' &&
                                 <Fragment>
-                                    <Range label={__('Custom Height')} value={imageCustomHeight} onChange={val => setAttributes({ imageCustomHeight: val })} min={50} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
+                                    <Range label={__('Custom Height')} value={imageCustomHeight} onChange={val => setAttributes({ imageCustomHeight: val })} min={50} max={600} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
                                     <Separator />
                                 </Fragment>
                             }
@@ -712,16 +714,32 @@ function Edit(props) {
                         </PanelBody>
 
                         <PanelBody title={__('Button')} initialOpen={false}>
-                            <Color
-                                label={__('Text Color')}
-                                value={buttonColor}
-                                onChange={(buttonColor) => setAttributes({ buttonColor })}
-                            />
-                            <ColorAdvanced
-                                label={__('Background')}
-                                value={buttonBgColor}
-                                onChange={value => setAttributes({ buttonBgColor: value })}
-                            />
+                            <Tabs>
+                                <Tab tabTitle={__('Normal')}>
+                                    <Color
+                                        label={__('Text Color')}
+                                        value={buttonColor}
+                                        onChange={(buttonColor) => setAttributes({ buttonColor })}
+                                    />
+                                    <ColorAdvanced
+                                        label={__('Background')}
+                                        value={buttonBgColor}
+                                        onChange={value => setAttributes({ buttonBgColor: value })}
+                                    />   </Tab>
+                                <Tab tabTitle={__('Hover')}>
+                                    <Color
+                                        label={__('Text Color')}
+                                        value={buttonHoverColor}
+                                        onChange={(buttonHoverColor) => setAttributes({ buttonHoverColor })}
+                                    />
+                                    <ColorAdvanced
+                                        label={__('Background')}
+                                        value={buttonHoverBgColor}
+                                        onChange={value => setAttributes({ buttonHoverBgColor: value })}
+                                    />
+                                </Tab>
+                            </Tabs>
+
                             <Padding
                                 min={0}
                                 max={300}

@@ -26,12 +26,22 @@ function register_block_qubely_wooproducts()
                 'style' => array(
                     'type' => 'number',
                     'default' => 1,
-                    'style' => [(object) [
-                        'condition' => [
-                            (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                    'style' => [
+                        (object) [
+                            'condition' => [
+                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
+                                (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_product .qubely-product-info {width:100%;z-index: 1;}{{QUBELY}} .qubely-woo_product-image-wrapper + .qubely-product-info {  margin-left: -40px;  }'
                         ],
-                        'selector' => '{{QUBELY}} .qubely_woo_product .qubely-product-info {width:100%;z-index: 1;}{{QUBELY}} .qubely-woo_product-image-wrapper + .qubely-product-info {  margin-left: -40px;  }'
-                    ]]
+                        (object) [
+                            'condition' => [
+                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
+                                (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_product .qubely-product-info {z-index: 1;}{{QUBELY}} .qubely-woo_product-image-wrapper + .qubely-product-info {  margin-top: -40px;  }'
+                        ]
+                    ]
                 ),
                 'productsPerPage' => array(
                     'type' => 'number',
@@ -247,6 +257,20 @@ function register_block_qubely_wooproducts()
                         'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
                     ]]
                 ),
+                'buttonHoverColor' => array(
+                    'type' => 'string',
+                    'default' => '#000',
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper:hover{color:{{buttonHoverColor}};}'
+                    ]]
+                ),
+                'buttonHoverBgColor' => array(
+                    'type' => 'object',
+                    'default' => (object) array(),
+                    'style' => [(object) [
+                        'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper:hover'
+                    ]]
+                ),
                 'buttonBorder' => array(
                     'type' => 'object',
                     'default' => (object) [
@@ -309,7 +333,7 @@ function register_block_qubely_wooproducts()
                         'condition' => [
                             (object) ['key' => 'layout', 'relation' => '==', 'value' => 2]
                         ],
-                        'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {justify-content: {{girdContentPosition}};}'
+                        'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {text-align: {{girdContentPosition}};}'
                     ]]
                 ),
                 'cardPadding' => array(
@@ -740,7 +764,7 @@ function render_block_qubely_wooproducts($att)
             '<div class="qubely-block-%1$s">',
             $uniqueId
         );
-        
+
         $woo_product_markup .= sprintf(
             '<div class="qubely_woo_products_wrapper %1$s md_has_%2$s_columns sm_has_%3$s_columns xs_has_%4$s_columns">',
             $layout == 1 ? 'qubely_list_layout' : 'qubely_grid_layout',
