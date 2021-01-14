@@ -101,6 +101,7 @@ function Edit(props) {
             contentPosition,
             girdContentPosition,
             cardPadding,
+            gridInfoPadding,
             infoPadding,
             //Typograhy
             titleTypography,
@@ -127,6 +128,7 @@ function Edit(props) {
             stackPadding,
             stackBoxShadow,
             cardSpace,
+            gridCardSpace,
             addToCartButtonText,
             buttonColor,
             buttonPadding,
@@ -272,18 +274,16 @@ function Edit(props) {
         )
     }
 
-    // const truncate = (value) => {
-    //     if (value && value.split(' ').length > excerptLimit) {
-    //         return value.split(' ').splice(0, excerptLimit).join(' ');
-    //     }
-    //     return value;
-    // }
     console.log('products : ', products);
+
+
 
     const wrappeprClasses = classnames('qubely_woo_products_wrapper',
         { ['qubely_list_layout']: layout === 1 },
         { ['qubely_grid_layout']: layout === 2 },
-        { [`has_${columns}_columns`]: layout === 2 });
+        { [`md_has_${columns['md']}_columns`]: layout === 2 },
+        { [`sm_has_${columns['sm']}_columns`]: layout === 2 },
+        { [`xs_has_${columns['xs']}_columns`]: layout === 2 });
 
     return (
         <Fragment>
@@ -299,6 +299,32 @@ function Edit(props) {
                                 value={layout}
                                 onChange={val => setAttributes({ layout: val })}
                             />
+                            {
+                                layout === 2 && <Fragment>
+                                    <Range
+                                        min={1}
+                                        step={1}
+                                        max={6}
+                                        responsive
+                                        device={device}
+                                        value={columns}
+                                        label={__("Select Columns")}
+                                        onDeviceChange={value => setDevice(value)}
+                                        onChange={(value) => setAttributes({ columns: value })}
+                                    />
+                                    <Range
+                                        label={__("Card Space")}
+                                        value={gridCardSpace}
+                                        unit={["px", "em", "%"]}
+                                        min={0}
+                                        max={100}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={(value) => setDevice(value)}
+                                        onChange={(value) => setAttributes({ gridCardSpace: value })}
+                                    />
+                                </Fragment>
+                            }
                         </PanelBody>
                         <PanelBody title={__('Query')} initialOpen={false} onToggle={() => !categories && getCategoris()}>
 
@@ -400,28 +426,7 @@ function Edit(props) {
                             />
                         </PanelBody>
 
-                        <PanelBody title={__('Content')} initialOpen={false}>
-                            {/* <Styles
-                                columns={2}
-                                value={style}
-                                options={[
-                                    { value: 1, svg: icons.postgrid_design_1 },
-                                    { value: 2, svg: icons.postgrid_design_4 },
-                                ]}
-                                onChange={value => setAttributes({ style: value })}
-                            /> */}
 
-                            {
-                                layout === 2 &&
-                                <RangeControl
-                                    label={__('Columns')}
-                                    value={columns}
-                                    min='1'
-                                    max={10}
-                                    onChange={val => setAttributes({ columns: val })} />
-                            }
-
-                        </PanelBody>
 
                         <PanelBody title={__('Product Card')} initialOpen={false}>
                             <Styles
@@ -457,48 +462,9 @@ function Edit(props) {
                                 value={layout === 1 ? contentPosition : girdContentPosition}
                                 onChange={(value) => setAttributes(layout === 1 ? { contentPosition: value } : { girdContentPosition: value })}
                             />
-                            <RadioAdvanced label={__('Image Width')} value={imageSize} onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
-                                options={[
-                                    { label: __('S'), value: '100px', title: __('Small') },
-                                    { label: __('M'), value: '150px', title: __('Medium') },
-                                    { label: __('L'), value: '250px', title: __('Large') },
-                                    { icon: 'fas fa-cog', value: 'custom', title: __('Custom') },
-                                ]}
-                            />
-                            {imageSize == 'custom' &&
-                                <Fragment>
-                                    <Range label={__('Custom Width')} value={imageSizeCustom} onChange={val => setAttributes({ imageSizeCustom: val })} min={10} max={1920} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
-                                    <Separator />
-                                </Fragment>
-                            }
-                            <RadioAdvanced label={__('Image Height')} value={imageHeight} onChange={(value) => setAttributes({ imageHeight: value, recreateStyles: !recreateStyles })}
-                                options={[
-                                    { label: __('S'), value: '100px', title: __('Small') },
-                                    { label: __('M'), value: '150px', title: __('Medium') },
-                                    { label: __('L'), value: '250px', title: __('Large') },
-                                    { label: __('Custom'), value: 'custom', title: __('Custom') },
-                                ]}
-                            />
-                            {imageHeight == 'custom' &&
-                                <Fragment>
-                                    <Range label={__('Custom Height')} value={imageCustomHeight} onChange={val => setAttributes({ imageCustomHeight: val })} min={10} max={1920} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
-                                    <Separator />
-                                </Fragment>
-                            }
-                            <BorderRadius
-                                min={0}
-                                max={100}
-                                responsive
-                                device={device}
-                                label={__("Image Radius")}
-                                value={imageBorderRadius}
-                                unit={["px", "em", "%"]}
-                                onChange={(value) => setAttributes({ imageBorderRadius: value })}
-                                onDeviceChange={(value) => setDevice(value)}
-                            />
 
                             {
-                                style !== 3 &&
+                                (layout === 1 && style !== 3) &&
                                 <Fragment>
                                     <Padding
                                         min={0}
@@ -511,19 +477,24 @@ function Edit(props) {
                                         onChange={val => setAttributes({ cardPadding: val })}
                                         onDeviceChange={value => setDevice(value)}
                                     />
+                                </Fragment>
+
+                            }
+                            {
+                                style !== 3 &&
+                                <Fragment>
                                     <Padding
                                         min={0}
                                         max={300}
                                         responsive
-                                        value={infoPadding}
                                         device={device}
                                         label={__('Info Padding')}
                                         unit={['px', 'em', '%']}
-                                        onChange={val => setAttributes({ infoPadding: val })}
+                                        value={layout === 1 ? infoPadding : gridInfoPadding}
+                                        onChange={val => setAttributes(layout === 1 ? { infoPadding: val } : { gridInfoPadding: val })}
                                         onDeviceChange={value => setDevice(value)}
                                     />
                                 </Fragment>
-
                             }
                             {
                                 style === 2 &&
@@ -627,6 +598,47 @@ function Edit(props) {
                             }
                         </PanelBody>
 
+                        <PanelBody title={__('Image Settings')} initialOpen={false}>
+                            <RadioAdvanced label={__('Image Width')} value={imageSize} onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
+                                options={[
+                                    { label: __('S'), value: '100px', title: __('Small') },
+                                    { label: __('M'), value: '150px', title: __('Medium') },
+                                    { label: __('L'), value: '250px', title: __('Large') },
+                                    { icon: 'fas fa-cog', value: 'custom', title: __('Custom') },
+                                ]}
+                            />
+                            {imageSize == 'custom' &&
+                                <Fragment>
+                                    <Range label={__('Custom Width')} value={imageSizeCustom} onChange={val => setAttributes({ imageSizeCustom: val })} min={50} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
+                                    <Separator />
+                                </Fragment>
+                            }
+                            <RadioAdvanced label={__('Image Height')} value={imageHeight} onChange={(value) => setAttributes({ imageHeight: value, recreateStyles: !recreateStyles })}
+                                options={[
+                                    { label: __('S'), value: '100px', title: __('Small') },
+                                    { label: __('M'), value: '150px', title: __('Medium') },
+                                    { label: __('L'), value: '250px', title: __('Large') },
+                                    { label: __('Custom'), value: 'custom', title: __('Custom') },
+                                ]}
+                            />
+                            {imageHeight == 'custom' &&
+                                <Fragment>
+                                    <Range label={__('Custom Height')} value={imageCustomHeight} onChange={val => setAttributes({ imageCustomHeight: val })} min={50} max={500} responsive unit={['px', 'em', '%']} device={device} onDeviceChange={value => setDevice(value)} />
+                                    <Separator />
+                                </Fragment>
+                            }
+                            <BorderRadius
+                                min={0}
+                                max={100}
+                                responsive
+                                device={device}
+                                label={__("Image Radius")}
+                                value={imageBorderRadius}
+                                unit={["px", "em", "%"]}
+                                onChange={(value) => setAttributes({ imageBorderRadius: value })}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                        </PanelBody>
                         <PanelBody title={__("Typography")} initialOpen={false}>
                             <Typography
                                 label={__("Title")}

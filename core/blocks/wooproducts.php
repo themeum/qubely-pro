@@ -38,8 +38,8 @@ function register_block_qubely_wooproducts()
                     'default' => 6
                 ),
                 'columns' => array(
-                    'type' => 'number',
-                    'default' => 3
+                    'type' => 'object',
+                    'default' => array('md' => 2, 'sm' => 2, 'xs' => 1),
                 ),
                 'orderby' => array(
                     'type'    => 'string',
@@ -346,6 +346,21 @@ function register_block_qubely_wooproducts()
                         ]
                     ]
                 ),
+                'gridCardSpace' => array(
+                    'type' => 'object',
+                    'default' => (object) array(
+                        'md' => 25,
+                        'unit' => 'px'
+                    ),
+                    'style' => [
+                        (object) [
+                            'condition' => [
+                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper {grid-gap: {{gridCardSpace}};}'
+                        ]
+                    ]
+                ),
                 'cardSpace' => array(
                     'type' => 'object',
                     'default' => (object) array(
@@ -354,8 +369,11 @@ function register_block_qubely_wooproducts()
                     ),
                     'style' => [
                         (object) [
-                            'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 2]],
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper:not(:last-child) {margin-bottom: {{cardSpace}};}'
+                            'condition' => [
+                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
+                                (object) ['key' => 'style', 'relation' => '==', 'value' => 2]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper {margin-bottom: {{cardSpace}};}'
                         ]
                     ]
                 ),
@@ -388,7 +406,29 @@ function register_block_qubely_wooproducts()
                     ],
                     'style' => [
                         (object) [
-                            'condition' => [(object) ['key' => 'style', 'relation' => '!=', 'value' => 3]],
+                            'condition' => [
+                                (object) ['key' => 'style', 'relation' => '!=', 'value' => 3],
+                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
+                            ],
+                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                        ]
+                    ]
+                ),
+                'gridInfoPadding' => array(
+                    'type' => 'object',
+                    'default' => (object) [
+                        'openPadding' => 1,
+                        'paddingType' => 'custom',
+                        'unit' => 'px',
+                        'global' => (object) ['md' => 20],
+                        'custom' => (object) ['md' => '20 0 0 0'],
+                    ],
+                    'style' => [
+                        (object) [
+                            'condition' => [
+                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
+                                (object) ['key' => 'style', 'relation' => '!=', 'value' => 3]
+                            ],
                             'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
                         ]
                     ]
@@ -597,7 +637,7 @@ function render_block_qubely_wooproducts($att)
 
     $uniqueId               = $att['uniqueId'];
     $layout                 = isset($att['layout']) ? $att['layout'] : 2;
-    $columns                 = isset($att['columns']) ? $att['columns'] : 2;
+    $columns                =  $att['columns'];
     $style                  = isset($att['style']) ? $att['style'] : 1;
     $name                  = isset($att['name']) ? $att['name'] : 'product name';
     $productsPerPage        = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
@@ -700,10 +740,13 @@ function render_block_qubely_wooproducts($att)
             '<div class="qubely-block-%1$s">',
             $uniqueId
         );
+        
         $woo_product_markup .= sprintf(
-            '<div class="qubely_woo_products_wrapper %1$s has_%2$s_columns">',
+            '<div class="qubely_woo_products_wrapper %1$s md_has_%2$s_columns sm_has_%3$s_columns xs_has_%4$s_columns">',
             $layout == 1 ? 'qubely_list_layout' : 'qubely_grid_layout',
-            $columns
+            $columns['md'],
+            $columns['sm'],
+            $columns['xs']
         );
 
         while ($query->have_posts()) {

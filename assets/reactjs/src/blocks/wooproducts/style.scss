@@ -15,27 +15,87 @@
       }
     }
   }
+  // &.qubely_grid_layout {
+  //   display: -webkit-box;
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   list-style: none;
+  //   &.has_2_columns .qubely_woo_product_wrapper {
+  //     -webkit-box-flex: 1;
+  //     flex: 1 0 50%;
+  //     max-width: 50%;
+  //   }
+  //   &.has_3_columns .qubely_woo_product_wrapper {
+  //     -webkit-box-flex: 1;
+  //     flex: 1 0 33.33333%;
+  //     max-width: 33.33333%;
+  //   }
+  //   &.has_4_columns .qubely_woo_product_wrapper {
+  //     -webkit-box-flex: 1;
+  //     flex: 1 0 25%;
+  //     max-width: 25%;
+  //   }
+  // }
+  //column
   &.qubely_grid_layout {
-    display: -webkit-box;
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    &.has_2_columns .qubely_woo_product_wrapper {
-      -webkit-box-flex: 1;
-      flex: 1 0 50%;
-      max-width: 50%;
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+
+    &.xs_has_1_columns {
+      grid-template-columns: 1fr;
     }
-    &.has_3_columns .qubely_woo_product_wrapper {
-      -webkit-box-flex: 1;
-      flex: 1 0 33.33333%;
-      max-width: 33.33333%;
+    &.xs_has_2_columns {
+      grid-template-columns: 1fr 1fr;
     }
-    &.has_4_columns .qubely_woo_product_wrapper {
-      -webkit-box-flex: 1;
-      flex: 1 0 25%;
-      max-width: 25%;
+    &.xs_has_3_columns {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (min-width: 767px) {
+      &.sm_has_1_columns {
+        grid-template-columns: 1fr;
+      }
+      &.sm_has_2_columns {
+        grid-template-columns: 1fr 1fr;
+      }
+      &.sm_has_3_columns {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+    @media (min-width: 992px) {
+      &.md_has_1_columns {
+        grid-template-columns: 1fr;
+      }
+      &.md_has_2_columns {
+        grid-template-columns: 1fr 1fr;
+      }
+      &.md_has_3_columns {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      &.md_has_4_columns {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      &.md_has_5_columns {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      }
+      &.md_has_6_columns {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1299px) {
+      .md_has_4_columns {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .md_has_5_columns {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      }
+      .md_has_6_columns {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
     }
   }
+
   .qubely_woo_product {
     .qubely-product-price {
       div {

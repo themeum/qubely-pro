@@ -1790,10 +1790,7 @@ class Edit extends Component {
           setAttributes
         )}
 
-        <div
-          className={`qubely-block-${uniqueId}${className ? ` ${className}` : ""
-            }`}
-        >
+        <div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ""}`}   >
           {posts && posts.length ? (
             <Fragment>
               <div
