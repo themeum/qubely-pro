@@ -854,9 +854,10 @@ function render_block_qubely_wooproducts($att)
             } else {
                 $woo_product_markup .= sprintf(
                     '<div class="qubely-addtocart-wrapper">
-                        <div class="qubely_adtocart_button" id="%1$s">%2$s in Cart</div>
+                        <div class="qubely_adtocart_button" id="%1$s" data-quantity="%2$s">%3$s in Cart</div>
                     </div>',
                     $product_id,
+                    $in_cart,
                     $in_cart
                 );
             }

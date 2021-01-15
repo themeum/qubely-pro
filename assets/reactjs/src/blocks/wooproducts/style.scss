@@ -118,6 +118,20 @@
       text-align: center;
       .qubely_adtocart_button {
         cursor: pointer;
+        &.loading {
+          opacity: 0.25;
+          transition: 0.35s;
+          &::after {
+            font-family: WooCommerce;
+            content: "\e031";
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            margin-left: 0.5em;
+            display: inline-block;
+            width: auto;
+            height: auto;
+          }
+        }
       }
     }
     .qubely-woo_product-image-wrapper {

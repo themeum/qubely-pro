@@ -12,10 +12,19 @@ jQuery(function ($) {
                 quantity: 1,
             },
             beforeSend: () => {
-                console.log('seindgin');
+                $(this).addClass('loading');
             },
             success: (response) => {
-                console.log(response)
+                console.log(response);
+                let { quantity } = $(this)[0].dataset;
+                
+                if (typeof quantity === 'undefined') {
+                    quantity = 0;
+                }
+                quantity = parseInt(quantity) + 1;
+                $(this).data('quantity', quantity);
+                $(this).removeClass('loading');
+                $(this).html(`${quantity} in Cart`);;
             },
             error: (jqxhr, textStatus, error) => console.log(jqxhr, textStatus, error),
         });
