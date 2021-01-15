@@ -208,8 +208,8 @@ function Edit(props) {
                 orderbyArgs.orderby = 'title';
                 orderbyArgs.order = 'asc';
                 break;
-            case 'title':
-                orderbyArgs.orderby = 'title-desc';
+            case 'title-desc':
+                orderbyArgs.orderby = 'title';
                 orderbyArgs.order = 'desc';
                 break;
             case 'date':

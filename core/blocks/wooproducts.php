@@ -671,6 +671,21 @@ function matched_cart_items($target_id)
     return $count;
 }
 
+
+function pagination_bar2($max_pages, $current_page)
+{
+    if ($max_pages > 1) {
+        $big = 9999999;
+        return paginate_links(array(
+            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format'        => '?paged=%#%',
+            'current' => $current_page,
+            'total' => $max_pages,
+            'prev_text'          => sprintf(__('%1$s Prev', 'qubely-pro'), "<span class='fas fa-angle-left'></span>"),
+            'next_text'          => sprintf(__('Next %1$s', 'qubely-pro'), "<span class='fas fa-angle-right'></span>"),
+        ));
+    }
+}
 /**
  * Render function for Front-end
  */
@@ -687,7 +702,11 @@ function render_block_qubely_wooproducts($att)
     $orderBy                = isset($att['orderby']) ? $att['orderby'] : 'date';
     $selectedCatagories     = isset($att['selectedCatagories']) ? $att['selectedCatagories'] : [];
     $animation              = isset($att['animation']) ? (count((array) $att['animation']) > 0 && $att['animation']['animation']  ? 'data-qubelyanimation="' . htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8') . '"' : '') : '';
+    $productsPerPage         = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
 
+    $page = 1;
+    $products = new WP_Query(array('post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => -1));
+    $pages = array_fill(0, ceil($products->found_posts / $productsPerPage), '1');
 
     $cat_ids = array_column($selectedCatagories, 'value');
     $tax_query = array();
@@ -705,9 +724,10 @@ function render_block_qubely_wooproducts($att)
     $query_args = array(
         'order'          => '',
         'orderby'        => '',
+        'paged'          => $page,
+        'posts_per_page' =>  $productsPerPage,
         'post_type'      => 'product',
         'post_status'    => 'publish',
-        'posts_per_page' =>  $productsPerPage,
         'tax_query'      => $tax_query,
     );
 
@@ -732,7 +752,7 @@ function render_block_qubely_wooproducts($att)
                 break;
             case 'title-desc':
                 $query_args['orderby'] = 'title';
-                $query_args['order']   = 'asc';
+                $query_args['order']   = 'dsc';
                 break;
             case 'date':
                 $query_args['orderby'] = 'date';
@@ -775,6 +795,7 @@ function render_block_qubely_wooproducts($att)
             }
         }
     }
+
 
     $woo_product_markup = '';
 
@@ -866,6 +887,10 @@ function render_block_qubely_wooproducts($att)
         }
         wp_reset_postdata();
     }
+    // $woo_product_markup .= "<div class='qubely-postgrid-pagination'>";
+    // $woo_product_markup .= pagination_bar2($query->max_num_pages, $page);
+    // $woo_product_markup .= "</div>";
+    // $woo_product_markup .= '</div>';
     return $woo_product_markup;
 }
 add_action('init', 'register_block_qubely_wooproducts', 100);
