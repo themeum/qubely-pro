@@ -735,14 +735,15 @@ function render_block_qubely_wooproducts($att)
 
         switch ($orderBy) {
             case 'price':
-                //     $query_args['orderby'] = 'meta_value_num';
-                //     $query_args['meta_key'] = '_price';
+                // $query_args['orderby'] = 'meta_value_num';
+                // $query_args['meta_key'] = '_price';
+                
                 $query_args['orderby'] = 'price';
                 $query_args['order']   = 'asc';
                 break;
             case 'price_desc':
-                //     $query_args['orderby'] = 'meta_value_num';
-                //     $query_args['meta_key'] = '_price';
+                // $query_args['orderby'] = 'meta_value_num';
+                // $query_args['meta_key'] = '_price';
                 $query_args['orderby'] = 'price';
                 $query_args['order']   = 'desc';
                 break;
@@ -757,13 +758,15 @@ function render_block_qubely_wooproducts($att)
             case 'date':
                 $query_args['orderby'] = 'date';
                 $query_args['order']   = 'asc';
+                $query_args['meta_key']   = '';
                 break;
             case 'date-desc':
                 $query_args['orderby'] = 'date';
                 $query_args['order']   = 'desc';
+                $query_args['meta_key']   = '';
                 break;
             case 'menu_order':
-                $query_args['orderby'] = 'menu_order';
+                $query_args['orderby'] = 'title menu_order';
                 $query_args['order']   = 'asc';
                 break;
             default:
@@ -777,7 +780,10 @@ function render_block_qubely_wooproducts($att)
         $query_args['post__in'] = [];
         $query_args['post__in'] += $ids;
     }
-
+	$query_args = array_merge(
+        $query_args,
+        WC()->query->get_catalog_ordering_args( $query_args['orderby'], $query_args['order'] )
+    );
     $query = new WP_Query($query_args);
 
     $interaction = '';
@@ -887,10 +893,6 @@ function render_block_qubely_wooproducts($att)
         }
         wp_reset_postdata();
     }
-    // $woo_product_markup .= "<div class='qubely-postgrid-pagination'>";
-    // $woo_product_markup .= pagination_bar2($query->max_num_pages, $page);
-    // $woo_product_markup .= "</div>";
-    // $woo_product_markup .= '</div>';
     return $woo_product_markup;
 }
 add_action('init', 'register_block_qubely_wooproducts', 100);
