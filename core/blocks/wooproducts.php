@@ -654,8 +654,26 @@ function register_block_qubely_wooproducts()
     );
 }
 
+/**
+ * Get Product quantity in Cart
+ */
+function matched_cart_items($target_id)
+{
+    $count = 0;
+    if (WC()->cart && !WC()->cart->is_empty()) {
+        $items = WC()->cart->get_cart();
+        foreach ($items as $item => $values) {
+            if ($target_id == $values['product_id']) {
+                $count = $values['quantity'];
+            }
+        }
+    }
+    return $count;
+}
 
-
+/**
+ * Render function for Front-end
+ */
 function render_block_qubely_wooproducts($att)
 {
 
@@ -757,6 +775,7 @@ function render_block_qubely_wooproducts($att)
             }
         }
     }
+
     $woo_product_markup = '';
 
     if ($query->have_posts()) {
@@ -782,6 +801,8 @@ function render_block_qubely_wooproducts($att)
             $image_id  = $product->get_image_id();
             $product_id  = $product->get_id();
             $image_url = wp_get_attachment_image_url($image_id, 'full');
+            $in_cart = matched_cart_items($product_id);
+
             $woo_product_markup .= '<div class="qubely_woo_product_wrapper"><div class="qubely_woo_product">';
             if ($image_url) {
                 $woo_product_markup .= sprintf(
@@ -822,13 +843,24 @@ function render_block_qubely_wooproducts($att)
                     $product->get_price()
                 );
             }
-            $woo_product_markup .= sprintf(
-                '<div class="qubely-addtocart-wrapper">
-                    <div class="qubely_adtocart_button" id="%1$s">%2$s</div>
-                </div>',
-                $product_id,
-                $att['addToCartButtonText']
-            );
+            if ($in_cart == 0) {
+                $woo_product_markup .= sprintf(
+                    '<div class="qubely-addtocart-wrapper">
+                        <div class="qubely_adtocart_button" id="%1$s">%2$s</div>
+                    </div>',
+                    $product_id,
+                    $att['addToCartButtonText']
+                );
+            } else {
+                $woo_product_markup .= sprintf(
+                    '<div class="qubely-addtocart-wrapper">
+                        <div class="qubely_adtocart_button" id="%1$s">%2$s in Cart</div>
+                    </div>',
+                    $product_id,
+                    $in_cart
+                );
+            }
+
             $woo_product_markup .= '</div></div></div>';
         }
         wp_reset_postdata();
