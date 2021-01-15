@@ -1,5 +1,7 @@
 import classnames from 'classnames';
 const { __ } = wp.i18n;
+const { withSelect } = wp.data
+const { compose } = wp.compose;
 const { apiFetch } = wp;
 const {
     useState,
@@ -43,6 +45,7 @@ const {
     BoxShadow,
     Alignment,
     Padding,
+    Margin,
     Separator,
     Inline: {
         InlineToolbar
@@ -53,6 +56,7 @@ const {
         animationSettings,
         interactionSettings
     },
+    Pagination,
     InspectorTabs,
     InspectorTab
 } = wp.qubelyComponents
@@ -63,11 +67,11 @@ import getProducts from './getProducts'
 
 
 function Edit(props) {
-    const [mounting, changeMountFlag] = useState(true)
+    const [currentPage, updateCurrentPage] = useState(1);
+    const [mounting, changeMountFlag] = useState(true);
+    const [totalProducts, updateTotalProducts] = useState(0);
     const [device, setDevice] = useState('md')
     const [products, setProducts] = useState(null)
-    const [categories, setCategories] = useState(null)
-    const [totalProducts, setTotalProducts] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
 
@@ -78,7 +82,8 @@ function Edit(props) {
         setAttributes,
         attributes: {
             uniqueId,
-            excerptLimit,
+
+            page,
             //query
             orderby,
             productsPerPage,
@@ -143,18 +148,41 @@ function Edit(props) {
             border,
             borderRadius,
             boxShadow,
+            //pagination
+            enablePagination,
+            paginationType,
+            pageAlignment,
+            paginationTypography,
+            pagesColor,
+            pagesHoverColor,
+            pagesActiveColor,
+            pagesbgColor,
+            pagesbgHoverColor,
+            pagesbgActiveColor,
+            pagesBorder,
+            pagesHoverBorder,
+            pagesActiveBorder,
+            pagesShadow,
+            pagesHoverShadow,
+            pagesActiveShadow,
+            pagesBorderRadius,
+            pagePadding,
+            pageMargin,
         }
     } = props
 
-    const args = {
-        catalog_visibility: 'visible',
-        status: 'publish',
-    };
 
     useEffect(() => {
         const _client = clientId.substr(0, 6)
 
         if (mounting) {
+            getProducts({})
+                .then((productsData) => {
+                    updateTotalProducts(productsData.totalProducts);
+                })
+                .catch(async (e) => {
+                    console.log('no products found');
+                });
             loadProducts()
             changeMountFlag(false)
 
@@ -168,30 +196,12 @@ function Edit(props) {
     })
 
     useEffect(() => {
-        setLoading(true)
-        loadProducts()
-    }, [productsStatus, productsPerPage, orderby, selectedCatagories])
+        setLoading(true);
+        loadProducts();
+    }, [currentPage, productsStatus, orderby])
 
-    const getCategoris = () => {
-        apiFetch({
-            path: '/wc/blocks/products/categories',
-        }).then((response) => {
-            return response.map(({ count, id, name }) => {
-                return (
-                    {
-                        count,
-                        id,
-                        name
-                    }
-                )
-            })
-        }).then((productsData) => {
-            setCategories([{ id: null, name: "All" }, ...productsData])
-        })
-            .catch(async (e) => {
-                console.log('could not retrieve product categories')
-            });
-    }
+
+
     const setOderingQueryArgs = () => {
         let orderbyArgs = {}
 
@@ -235,7 +245,7 @@ function Edit(props) {
         const args = {
             ...setOderingQueryArgs(),
             per_page: productsPerPage,
-            // page: currentPage,
+            page: currentPage,
         };
 
         // if (productsStatus === 'on_sale') {
@@ -249,11 +259,9 @@ function Edit(props) {
                 setLoading(false)
                 setError(null)
                 setProducts(productsData.products)
-                setTotalProducts(productsData.totalProducts)
             })
             .catch(async (e) => {
                 setProducts([])
-                setTotalProducts(0)
                 setLoading(false)
                 setError(null)
             });
@@ -276,9 +284,10 @@ function Edit(props) {
         )
     }
 
-    console.log('products : ', products);
-
-
+    let pages = 0;
+    if (totalProducts && totalProducts !== 0) {
+        pages = Math.ceil(totalProducts / productsPerPage);
+    }
 
     const wrappeprClasses = classnames('qubely_woo_products_wrapper',
         { ['qubely_list_layout']: layout === 1 },
@@ -328,27 +337,8 @@ function Edit(props) {
                                 </Fragment>
                             }
                         </PanelBody>
-                        <PanelBody title={__('Query')} initialOpen={false} onToggle={() => !categories && getCategoris()}>
+                        <PanelBody title={__('Query')} initialOpen={false}>
 
-                            {/* <SelectControl
-                                label={__("Products Status")}
-                                value={productsStatus}
-                                options={[
-                                    {
-                                        label: __('All'),
-                                        value: 'all',
-                                    },
-                                    {
-                                        label: __('Featured'),
-                                        value: 'featured',
-                                    },
-                                    {
-                                        label: __('On Sale'),
-                                        value: 'on_sale',
-                                    },
-                                ]}
-                                onChange={value => setAttributes({ productsStatus: value })}
-                            /> */}
 
                             {
                                 totalProducts !== 0 &&
@@ -361,27 +351,6 @@ function Edit(props) {
                                 />
 
                             }
-
-
-                            {/* {
-                                categories &&
-                                <Dropdown
-                                    label={__('Products by Categories')}
-                                    enableSearch
-                                    defaultOptionsLabel="All"
-                                    options={[
-                                        ...categories.map(({ name, id }) => {
-                                            return (
-                                                {
-                                                    label: __(name),
-                                                    value: id
-                                                }
-                                            )
-                                        })]}
-                                    value={selectedCatagories}
-                                    onChange={value => setAttributes({ selectedCatagories: value.length && value[value.length - 1].label === 'All' ? [] : value })}
-                                />
-                            } */}
 
                             <SelectControl
                                 label={__('Order By')}
@@ -775,7 +744,198 @@ function Edit(props) {
                             />
 
                         </PanelBody>
+                        <PanelBody title={__("Pagination", "qubely")} initialOpen={false}>
+                            <Toggle
+                                label={__("Enable Pagination")}
+                                value={enablePagination}
+                                onChange={(value) =>
+                                    setAttributes({ enablePagination: value })
+                                }
+                            />
 
+                            {enablePagination && (
+                                <Fragment>
+                                    <Alignment
+                                        disableJustify
+                                        value={pageAlignment}
+                                        alignmentType="content"
+                                        label={__("Alignment")}
+                                        onChange={(val) => setAttributes({ pageAlignment: val })}
+                                    />
+                                    <Typography
+                                        device={device}
+                                        label={__("Typography", "qubely")}
+                                        value={paginationTypography}
+                                        onChange={(value) =>
+                                            setAttributes({ paginationTypography: value })
+                                        }
+                                        onDeviceChange={(value) =>
+                                            this.setState({ device: value })
+                                        }
+                                    />
+                                    <Tabs>
+                                        <Tab tabTitle={__("Normal", "qubely")}>
+                                            <Color
+                                                label={__("Text Color", "qubely")}
+                                                value={pagesColor}
+                                                onChange={(value) =>
+                                                    setAttributes({ pagesColor: value })
+                                                }
+                                            />
+                                            <ColorAdvanced
+                                                label={__("Background", "qubely")}
+                                                value={pagesbgColor}
+                                                onChange={(newColor) =>
+                                                    setAttributes({ pagesbgColor: newColor })
+                                                }
+                                            />
+
+                                            <Border
+                                                min={0}
+                                                max={10}
+                                                responsive
+                                                device={device}
+                                                label={__("Border", "qubely")}
+                                                value={pagesBorder}
+                                                unit={["px", "em", "%"]}
+                                                onChange={(val) =>
+                                                    setAttributes({ pagesBorder: val })
+                                                }
+                                                onDeviceChange={(value) =>
+                                                    this.setState({ device: value })
+                                                }
+                                            />
+                                            <BoxShadow
+                                                label={__("Box-Shadow")}
+                                                value={pagesShadow}
+                                                onChange={(value) =>
+                                                    setAttributes({ pagesShadow: value })
+                                                }
+                                            />
+                                        </Tab>
+                                        <Tab tabTitle={__("Active")}>
+                                            <Color
+                                                label={__("Text Color", "qubely")}
+                                                value={pagesActiveColor}
+                                                onChange={(value) =>
+                                                    setAttributes({ pagesActiveColor: value })
+                                                }
+                                            />
+                                            <ColorAdvanced
+                                                label={__("Background", "qubely")}
+                                                value={pagesbgActiveColor}
+                                                onChange={(newColor) =>
+                                                    setAttributes({ pagesbgActiveColor: newColor })
+                                                }
+                                            />
+
+                                            <Border
+                                                min={0}
+                                                max={10}
+                                                responsive
+                                                device={device}
+                                                label={__("Border", "qubely")}
+                                                value={pagesActiveBorder}
+                                                unit={["px", "em", "%"]}
+                                                onChange={(val) =>
+                                                    setAttributes({ pagesActiveBorder: val })
+                                                }
+                                                onDeviceChange={(value) =>
+                                                    this.setState({ device: value })
+                                                }
+                                            />
+                                            <BoxShadow
+                                                label={__("Box-Shadow")}
+                                                value={pagesActiveShadow}
+                                                onChange={(value) =>
+                                                    setAttributes({ pagesActiveShadow: value })
+                                                }
+                                            />
+                                        </Tab>
+                                        <Tab tabTitle={__("Hover")}>
+                                            <Color
+                                                label={__("Text Color", "qubely")}
+                                                value={pagesHoverColor}
+                                                onChange={(value) =>
+                                                    setAttributes({ pagesHoverColor: value })
+                                                }
+                                            />
+                                            <ColorAdvanced
+                                                label={__("Background", "qubely")}
+                                                value={pagesbgHoverColor}
+                                                onChange={(newColor) =>
+                                                    setAttributes({ pagesbgHoverColor: newColor })
+                                                }
+                                            />
+
+                                            <Border
+                                                min={0}
+                                                max={10}
+                                                responsive
+                                                device={device}
+                                                label={__("Border", "qubely")}
+                                                value={pagesHoverBorder}
+                                                unit={["px", "em", "%"]}
+                                                onChange={(val) =>
+                                                    setAttributes({ pagesHoverBorder: val })
+                                                }
+                                                onDeviceChange={(value) =>
+                                                    this.setState({ device: value })
+                                                }
+                                            />
+                                            <BoxShadow
+                                                label={__("Box-Shadow")}
+                                                value={pagesHoverShadow}
+                                                onChange={(value) =>
+                                                    setAttributes({ pagesHoverShadow: value })
+                                                }
+                                            />
+                                        </Tab>
+                                    </Tabs>
+                                    <BorderRadius
+                                        min={0}
+                                        max={100}
+                                        responsive
+                                        device={device}
+                                        label={__("Radius")}
+                                        unit={["px", "em", "%"]}
+                                        value={pagesBorderRadius}
+                                        onDeviceChange={(value) =>
+                                            this.setState({ device: value })
+                                        }
+                                        onChange={(value) =>
+                                            setAttributes({ pagesBorderRadius: value })
+                                        }
+                                    />
+                                    <Padding
+                                        min={0}
+                                        max={300}
+                                        responsive
+                                        device={device}
+                                        value={pagePadding}
+                                        label={__("Padding")}
+                                        unit={["px", "em", "%"]}
+                                        onChange={(val) => setAttributes({ pagePadding: val })}
+                                        onDeviceChange={(value) =>
+                                            this.setState({ device: value })
+                                        }
+                                    />
+                                    <Margin
+                                        max={150}
+                                        min={0}
+                                        responsive
+                                        device={device}
+                                        value={pageMargin}
+                                        label={__("Margin")}
+                                        unit={["px", "em", "%"]}
+                                        onChange={(value) => setAttributes({ pageMargin: value })}
+                                        onDeviceChange={(value) =>
+                                            this.setState({ device: value })
+                                        }
+                                    />
+                                </Fragment>
+                            )}
+                        </PanelBody>
                         <PanelBody title={__('Design')} initialOpen={false}>
                             <ColorAdvanced
                                 label={__("Background")}
@@ -838,7 +998,7 @@ function Edit(props) {
                                 <Spinner />
                             </div>
                             :
-                            totalProducts ? products.map(({ name, id, permalink, price, description, images, on_sale, regular_price, sale_price }) => (
+                            products ? products.map(({ name, id, permalink, price, images, on_sale, regular_price, sale_price }) => (
                                 <div className="qubely_woo_product_wrapper" key={id}>
                                     <div className="qubely_woo_product">
                                         {renderImages(images)}
@@ -872,9 +1032,17 @@ function Edit(props) {
                                 </div>
                     }
                 </div>
+                <Pagination
+                    baseClassName="qubely-woocommerce-pagination"
+                    total={pages}
+                    current={currentPage}
+                    prevText="Prev"
+                    nextText="Next"
+                    onClickPage={(page) => updateCurrentPage(page)}
+                />
             </div>
 
-        </Fragment >
+        </Fragment>
     )
 
 }

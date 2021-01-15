@@ -43,6 +43,10 @@ function register_block_qubely_wooproducts()
                         ]
                     ]
                 ),
+                'page' => array(
+                    'type' => 'number',
+                    'default' => 1,
+                ),
                 'productsPerPage' => array(
                     'type' => 'number',
                     'default' => 6
@@ -577,7 +581,7 @@ function register_block_qubely_wooproducts()
                     ],
                     'style' => [
                         (object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                            'selector' => '{{QUBELY}}'
                         ]
                     ]
                 ),
@@ -586,7 +590,7 @@ function register_block_qubely_wooproducts()
                     'default' => (object) array(),
                     'style' => [
                         (object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                            'selector' => '{{QUBELY}}'
                         ]
                     ]
                 ),
@@ -595,7 +599,7 @@ function register_block_qubely_wooproducts()
                     'default' => (object) array(),
                     'style' => [
                         (object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                            'selector' => '{{QUBELY}}'
                         ]
                     ]
                 ),
@@ -604,7 +608,7 @@ function register_block_qubely_wooproducts()
                     'default' => (object) array(),
                     'style' => [
                         (object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                            'selector' => '{{QUBELY}}'
                         ]
                     ]
                 ),
@@ -627,6 +631,207 @@ function register_block_qubely_wooproducts()
                         'selector' => '{{QUBELY}} {z-index:{{globalZindex}};}'
                     ]]
                 ),
+                //pagination
+                //pagination
+					'enablePagination' => array(
+						'type' => 'boolean',
+						'default' => true
+					),
+//                    'paginationType' => array(
+//						'type' => 'string',
+//						'default' => 'pagition'
+//					),
+					'pageAlignment' => array(
+						'type' => 'string',
+						'default' => 'center',
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination {text-align: {{pageAlignment}};}'
+						]]
+					),
+					'paginationTypography' => array(
+						'type' => 'object',
+						'default' => (object) [],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
+						]]
+					),
+					'pagesColor' => array(
+						'type' => 'string',
+						'default' => 'center',
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *{color: {{pagesColor}};}'
+						]]
+					),
+					'pagesHoverColor' => array(
+						'type' => 'string',
+						'default' => 'center',
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > a:hover, ' .
+                                '{{QUBELY}} .qubely-woocommerce-pagination > button:hover{color: {{pagesHoverColor}};}'
+						]]
+					),
+                    'pagesActiveColor' => array(
+                        'type' => 'string',
+                        'default' => 'center',
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *.current{color: {{pagesActiveColor}};}'
+                        ]]
+                    ),
+
+					'pagesbgColor' => array(
+						'type' => 'object',
+						'default' => (object) [],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
+						]]
+					),
+					'pagesbgHoverColor' => array(
+						'type' => 'object',
+						'default' => (object) [],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination a:hover, ' .
+                                '{{QUBELY}} .qubely-woocommerce-pagination button:hover'
+						]]
+					),
+                    'pagesbgActiveColor' => array(
+                        'type' => 'object',
+                        'default' => (object) [],
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > .current'
+                        ]]
+                    ),
+
+					'pagesBorder' => array(
+						'type' => 'object',
+						'default' => (object) [],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
+						]]
+					),
+					'pagesHoverBorder' => array(
+						'type' => 'object',
+						'default' => (object) [],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > a:hover, ' .
+                                '{{QUBELY}} .qubely-woocommerce-pagination > button:hover'
+						]]
+					),
+                    'pagesActiveBorder' => array(
+                        'type' => 'object',
+                        'default' => (object) [],
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *.current '
+                        ]]
+                    ),
+					'pagesShadow' => array(
+						'type' => 'object',
+						'default' => (object) [],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
+						]]
+					),
+					'pagesHoverShadow' => array(
+						'type' => 'object',
+						'default' => (object) [],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > a:hover, ' .
+                                '{{QUBELY}} .qubely-woocommerce-pagination > button:hover'
+						]]
+					),
+                    'pagesActiveShadow' => array(
+                        'type' => 'object',
+                        'default' => (object) [],
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *.current'
+                        ]]
+                    ),
+					'pagesBorderRadius' => array(
+						'type' => 'object',
+						'default' => (object) [],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
+						]]
+					),
+					'pagePadding' => array(
+						'type' => 'object',
+						'default' => (object) [
+                            'openPadding' => 1,
+						    'paddingType' =>'custom',
+						    'custom' => [
+						        'md' => '0 20 0 20',
+                            ],
+                            'unit' => 'px'
+                        ],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
+						]]
+					),
+					'pageMargin' => array(
+						'type' => 'object',
+                        'default' => (object) [
+                            'openMargin' => 1,
+                            'marginType' =>'custom',
+                            'custom' => [
+                                'md' => '20 7 12 7',
+                            ],
+                            'unit' => 'px'
+                        ],
+						'style' => [(object) [
+							'condition' => [
+								(object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+							],
+							'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
+						]]
+					),
+
                 'hideTablet' => array(
                     'type' => 'boolean',
                     'default' => false,
