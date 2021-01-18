@@ -9,8 +9,6 @@ class POSTGRID
 	function __construct()
 	{
 		add_action('init', [$this, 'register_block_qubely_postgrid_pro'], 100);
-		add_action('wp_ajax_post_grid_loadmore', array($this, 'ajax_loadmore'));
-		add_action('wp_ajax_nopriv_post_grid_loadmore', array($this, 'ajax_loadmore'));
 	}
 
 	/**
@@ -1357,10 +1355,6 @@ class POSTGRID
 			)
 		);
 	}
-
-    public function ajax_loadmore() {
-	    echo "Hello world";
-    }
 
     public function pagination_bar($max_pages, $current_page) {
         if ($max_pages > 1){
