@@ -934,15 +934,20 @@ class WOOPRODUCTS
             );
         }
 
+        if (!empty(get_query_var('page')) || !empty(get_query_var('paged'))) {
+            $this->page = is_front_page() ? get_query_var('page') : get_query_var('paged');
+        }
         $query_args = array(
             'order'          => '',
             'orderby'        => '',
-            'paged'          => $page,
-            'posts_per_page' =>  $productsPerPage,
+            'paged'          => $this->page,
+            'posts_per_page' => esc_attr($productsPerPage),
             'post_type'      => 'product',
             'post_status'    => 'publish',
             'tax_query'      => $tax_query,
+            'max_num_pages'=>count($pages),
         );
+
 
         if (isset($att['orderby'])) {
 
@@ -997,7 +1002,7 @@ class WOOPRODUCTS
             $query_args,
             WC()->query->get_catalog_ordering_args($query_args['orderby'], $query_args['order'])
         );
-        $query = new WP_Query($query_args);
+        $wp_query = new WP_Query($query_args);
 
         $interaction = '';
         if (isset($att['interaction'])) {
@@ -1018,7 +1023,7 @@ class WOOPRODUCTS
 
         $woo_product_markup = '';
 
-        if ($query->have_posts()) {
+        if ($wp_query->have_posts()) {
             $woo_product_markup .= sprintf(
                 '<div class="qubely-block-%1$s">',
                 $uniqueId
@@ -1032,8 +1037,8 @@ class WOOPRODUCTS
                 $columns['xs']
             );
 
-            while ($query->have_posts()) {
-                $query->the_post();
+            while ($wp_query->have_posts()) {
+                $wp_query->the_post();
                 $post_id = get_the_ID();
                 $product = wc_get_product($post_id);
                 $id = get_post_thumbnail_id();
@@ -1104,13 +1109,14 @@ class WOOPRODUCTS
                 $woo_product_markup .= '</div></div></div>';
             }
             wp_reset_postdata();
+            $woo_product_markup .= "</div>";
         }
         if ($enablePagination == true) {
             $woo_product_markup .= "<div class='qubely-woocommerce-pagination'>";
-            $woo_product_markup .= $this->pagination_bar($query->max_num_pages, $this->page);
+            $woo_product_markup .= $this->pagination_bar($wp_query->max_num_pages, $this->page);
             $woo_product_markup .= "</div>";
         }
-        $woo_product_markup .= '</div>';
+
         return $woo_product_markup;
     }
 }
