@@ -52,6 +52,9 @@
         }
       }
     }
+    .qubely-image-placeholder {
+      width: 100%;
+    }
     &.xs_has_1_columns {
       grid-template-columns: 1fr;
     }
@@ -149,7 +152,6 @@
       .qubely-image-placeholder {
         min-height: 100px;
         min-width: 100px;
-        width: 100%;
       }
     }
   }

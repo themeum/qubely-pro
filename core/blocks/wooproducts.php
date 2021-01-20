@@ -85,13 +85,22 @@ class WOOPRODUCTS
                     'imageSize' => array(
                         'type' => 'string',
                         'default' => '350px',
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'imageSize', 'relation' => '!=', 'value' => 'custom']
+                        'style' => [
+                            (object) [
+                                'condition' => [
+                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
+                                    (object) ['key' => 'imageSize', 'relation' => '!=', 'value' => 'custom']
+                                ],
+                                'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSize}};}'
                             ],
-                            // 'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSize}};}'
-                            'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img {width: {{imageSize}};}'
-                        ]]
+                            (object) [
+                                'condition' => [
+                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
+                                    (object) ['key' => 'imageSize', 'relation' => '!=', 'value' => 'custom']
+                                ],
+                                'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img {width: {{imageSize}};}'
+                            ]
+                        ]
                     ),
                     'imageSizeCustom' => array(
                         'type' => 'object',
@@ -99,12 +108,22 @@ class WOOPRODUCTS
                             'md' => 300,
                             'unit' => 'px'
                         ],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'imageSize', 'relation' => '==', 'value' => 'custom']
+                        'style' => [
+                            (object) [
+                                'condition' => [
+                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
+                                    (object) ['key' => 'imageSize', 'relation' => '==', 'value' => 'custom']
+                                ],
+                                'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSizeCustom}};}'
                             ],
-                            'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSizeCustom}};}'
-                        ]]
+                            (object) [
+                                'condition' => [
+                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
+                                    (object) ['key' => 'imageSize', 'relation' => '==', 'value' => 'custom']
+                                ],
+                                'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSizeCustom}};}'
+                            ]
+                        ]
                     ),
                     'imageHeight' => array(
                         'type' => 'string',
@@ -1137,7 +1156,7 @@ class WOOPRODUCTS
                         '<div class="qubely-product-ratings-wrapper">
                     <div class="qubely-product-ratings" style="--qubely-product-rating:%1$s%2$s;"></div>',
                         $rating * 20,
-						'%'
+                        '%'
                     );
                     if ($showRatingsCount) {
                         $woo_product_markup .= sprintf(
