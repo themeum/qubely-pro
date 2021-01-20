@@ -68,7 +68,6 @@ import getProducts from './getProducts'
 
 function Edit(props) {
     const [currentPage, updateCurrentPage] = useState(1);
-    const [mounting, changeMountFlag] = useState(true);
     const [totalProducts, updateTotalProducts] = useState(0);
     const [device, setDevice] = useState('md')
     const [products, setProducts] = useState(null)
@@ -128,6 +127,7 @@ function Edit(props) {
             //stack
             stackBg,
             stackWidth,
+            gridStackWidth,
             stackSpace,
             stackBorderRadius,
             stackPadding,
@@ -148,6 +148,13 @@ function Edit(props) {
             border,
             borderRadius,
             boxShadow,
+            //ratings
+            showRatings,
+            starsSize,
+            ratingsColor,
+            ratingsSpacing,
+            showRatingsCount,
+            ratingsCountSpacing,
             //pagination
             enablePagination,
             paginationType,
@@ -174,31 +181,27 @@ function Edit(props) {
 
     useEffect(() => {
         const _client = clientId.substr(0, 6)
+        getProducts({})
+            .then((productsData) => {
+                updateTotalProducts(productsData.totalProducts);
+            })
+            .catch(async (e) => {
+                console.log('no products found');
+            });
+        loadProducts();
 
-        if (mounting) {
-            getProducts({})
-                .then((productsData) => {
-                    updateTotalProducts(productsData.totalProducts);
-                })
-                .catch(async (e) => {
-                    console.log('no products found');
-                });
-            loadProducts()
-            changeMountFlag(false)
-
-        }
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
             setAttributes({ uniqueId: _client })
         }
 
-    })
+    }, [])
 
     useEffect(() => {
         setLoading(true);
         loadProducts();
-    }, [currentPage, productsStatus, orderby])
+    }, [currentPage, productsStatus, orderby, productsPerPage])
 
 
 
@@ -247,17 +250,11 @@ function Edit(props) {
             per_page: productsPerPage,
             page: currentPage,
         };
-
-        // if (productsStatus === 'on_sale') {
-        //     args.on_sale = 1;
-        // } else if (productsStatus === 'featured') {
-        //     args.featured = 1;
-        // }
-
         getProducts(args)
             .then((productsData) => {
                 setLoading(false)
                 setError(null)
+                console.log(productsData.products);
                 setProducts(productsData.products)
             })
             .catch(async (e) => {
@@ -337,9 +334,7 @@ function Edit(props) {
                                 </Fragment>
                             }
                         </PanelBody>
-                        <PanelBody title={__('Query')} initialOpen={false}>
-
-
+                        <PanelBody title={__('Query')} initialOpen={true}>
                             {
                                 totalProducts !== 0 &&
                                 <RangeControl
@@ -351,7 +346,6 @@ function Edit(props) {
                                 />
 
                             }
-
                             <SelectControl
                                 label={__('Order By')}
                                 value={orderby}
@@ -396,9 +390,6 @@ function Edit(props) {
                                 onChange={(orderby) => setAttributes({ orderby })}
                             />
                         </PanelBody>
-
-
-
                         <PanelBody title={__('Product Card')} initialOpen={false}>
                             <Styles
                                 columns={3}
@@ -506,21 +497,19 @@ function Edit(props) {
                                         value={stackBg}
                                         onChange={(value) => setAttributes({ stackBg: value })}
                                     />
-                                    {layout === 2 && (
-                                        <Range
-                                            label={__("Stack Size")}
-                                            value={stackWidth}
-                                            onChange={(value) =>
-                                                setAttributes({ stackWidth: value })
-                                            }
-                                            unit={["px", "em", "%"]}
-                                            min={50}
-                                            max={600}
-                                            responsive
-                                            device={device}
-                                            onDeviceChange={value => setDevice(value)}
-                                        />
-                                    )}
+                                    {/* {layout === 2 && ( */}
+                                    <Range
+                                        label={__("Stack Size")}
+                                        unit={["px", "em", "%"]}
+                                        min={50}
+                                        max={600}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={value => setDevice(value)}
+                                        value={layout === 1 ? stackWidth : gridStackWidth}
+                                        onChange={(value) => setAttributes(layout === 1 ? { stackWidth: value } : { gridStackWidth: value })}
+                                    />
+                                    {/* )} */}
                                     {layout === 1 && (
                                         <Range
                                             label={__("Stack Space")}
@@ -586,9 +575,9 @@ function Edit(props) {
                             }
                             <RadioAdvanced label={__('Image Height')} value={imageHeight} onChange={(value) => setAttributes({ imageHeight: value, recreateStyles: !recreateStyles })}
                                 options={[
-                                    { label: __('S'), value: '100px', title: __('Small') },
-                                    { label: __('M'), value: '150px', title: __('Medium') },
-                                    { label: __('L'), value: '250px', title: __('Large') },
+                                    { label: __('S'), value: '150px', title: __('Small') },
+                                    { label: __('M'), value: '250px', title: __('Medium') },
+                                    { label: __('L'), value: '350px', title: __('Large') },
                                     { label: __('Custom'), value: 'custom', title: __('Custom') },
                                 ]}
                             />
@@ -609,6 +598,59 @@ function Edit(props) {
                                 onChange={(value) => setAttributes({ imageBorderRadius: value })}
                                 onDeviceChange={(value) => setDevice(value)}
                             />
+                        </PanelBody>
+                        <PanelBody title={__('Ratings')} initialOpen={false}>
+
+                            <Toggle label={__('Show Ratings')} value={showRatings} onChange={val => setAttributes({ showRatings: val })} />
+                            {
+                                showRatings && (
+                                    <Fragment>
+                                        <Color
+                                            label={__('Color')}
+                                            value={ratingsColor}
+                                            onChange={(value) => setAttributes({ ratingsColor: value })} />
+                                        <Range
+                                            label={__('Stars Size')}
+                                            value={starsSize}
+                                            onChange={(value) => setAttributes({ starsSize: value })}
+                                            unit={['px', 'em', '%']}
+                                            min={10}
+                                            max={48}
+                                            responsive
+                                            device={device}
+                                            onDeviceChange={(value) => setDevice(value)}
+                                        />
+                                        <Range
+                                            label={__('Spacing')}
+                                            value={ratingsSpacing}
+                                            onChange={(value) => setAttributes({ ratingsSpacing: value })}
+                                            unit={['px', 'em', '%']}
+                                            min={0}
+                                            max={200}
+                                            responsive
+                                            device={device}
+                                            onDeviceChange={(value) => setDevice(value)}
+                                        />
+                                        <Toggle label={__('Show Ratings Count')} value={showRatingsCount} onChange={val => setAttributes({ showRatingsCount: val })} />
+                                        {
+                                            showRatingsCount && (
+                                                <Range
+                                                    label={__('Count Spacing')}
+                                                    value={ratingsCountSpacing}
+                                                    onChange={(value) => setAttributes({ ratingsCountSpacing: value })}
+                                                    unit={['px', '%']}
+                                                    min={5}
+                                                    max={100}
+                                                    responsive
+                                                    device={device}
+                                                    onDeviceChange={(value) => setDevice(value)}
+                                                />
+                                            )
+                                        }
+
+                                    </Fragment>
+                                )
+                            }
                         </PanelBody>
                         <PanelBody title={__("Typography")} initialOpen={false}>
                             <Typography
@@ -998,11 +1040,18 @@ function Edit(props) {
                                 <Spinner />
                             </div>
                             :
-                            products ? products.map(({ name, id, permalink, price, images, on_sale, regular_price, sale_price }) => (
+                            products ? products.map(({ name, id, permalink, price, images, on_sale, regular_price, sale_price, average_rating, rating_count }) => (
                                 <div className="qubely_woo_product_wrapper" key={id}>
                                     <div className="qubely_woo_product">
                                         {renderImages(images)}
                                         <div className="qubely-product-info">
+                                            {
+                                                showRatings &&
+                                                <div className="qubely-product-ratings-wrapper">
+                                                    <div className="qubely-product-ratings" style={{ '--qubely-product-rating': `${average_rating * 20}%` }} />
+                                                    {(showRatingsCount && rating_count !== 0) && <span className="qubely-ratings-count">{__(`(${rating_count})`)}</span>}
+                                                </div>
+                                            }
                                             <a className="qubely-product-name" href={permalink}>{name}</a>
                                             {
                                                 on_sale ?

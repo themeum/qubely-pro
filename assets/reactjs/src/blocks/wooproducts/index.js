@@ -7,21 +7,20 @@ import './style.scss'
 import Edit from './Edit'
 
 registerBlockType('qubely/wooproducts', {
-    title: __('woo Products'),
+    title: __('Woo Products'),
     category: 'qubely',
     description: __('Showcase woocommerce products'),
-    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-gallery.svg'} alt={__('Gallery')} />,
+    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-gallery.svg'} alt={__('wooproducts')} />,
     keywords: [
         __('woo'),
         __('woocommerce'),
-        __('products')
+        __('All Products')
     ],
     supports: {
         align: ['center', 'wide', 'full'],
     },
     edit: Edit,
-    // save: Save,
-    save: function (props) {
+    save: function () {
         return null;
     }
 });

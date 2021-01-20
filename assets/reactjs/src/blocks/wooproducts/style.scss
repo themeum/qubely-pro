@@ -152,6 +152,69 @@
       }
     }
   }
+  //rating
+  .qubely-product-ratings-wrapper {
+    display: block;
+    .qubely-product-ratings {
+      unicode-bidi: bidi-override;
+      display: inline-block;
+      position: relative;
+      letter-spacing: 5px;
+      --qubely-product-rating: 0%;
+      &:before,
+      &:after {
+        content: "\f005\f005\f005\f005\f005";
+        font-family: "Font Awesome\ 5 Free";
+        font-weight: 400;
+        display: block;
+        white-space: nowrap;
+        z-index: 0;
+      }
+
+      &:before {
+        position: absolute;
+        z-index: 1;
+        left: 0px;
+        overflow: hidden;
+        font-family: "Font Awesome\ 5 Free";
+        font-weight: 900;
+        content: "\f005\f005\f005\f005\f005";
+        width: var(--qubely-product-rating);
+      }
+
+      /**
+     * For Backward Compatibility
+     */
+      &[data-qubelyrating="1"]:before {
+        width: 20%;
+      }
+      &[data-qubelyrating="1.5"]:before {
+        width: 29%;
+      }
+      &[data-qubelyrating="2"]:before {
+        width: 40%;
+      }
+      &[data-qubelyrating="2.5"]:before {
+        width: 49%;
+      }
+      &[data-qubelyrating="3"]:before {
+        width: 60%;
+      }
+      &[data-qubelyrating="3.5"]:before {
+        width: 69%;
+      }
+      &[data-qubelyrating="4"]:before {
+        width: 80%;
+      }
+      &[data-qubelyrating="4.5"]:before {
+        width: 89%;
+      }
+      &[data-qubelyrating="5"]:before {
+        width: 100%;
+      }
+      // end backward compatibility
+    }
+  }
 }
 
 .qubely-woocommerce-pagination {
@@ -160,14 +223,14 @@
   color: #363636;
   a,
   > span,
-  button{
+  button {
     line-height: 48px;
     min-width: 50px;
     text-align: center;
     background: white;
     //margin-left: 4.5px;
     //margin-right: 4.5px;
-    border: 1px solid #BBC0D4;
+    border: 1px solid #bbc0d4;
     border-radius: 6px;
     margin-bottom: 10px;
     //padding-left: 20px;
@@ -175,20 +238,20 @@
     display: inline-block;
     text-decoration: none;
     color: inherit;
-    &:hover{
-      color: #348EF8;
+    &:hover {
+      color: #348ef8;
       cursor: pointer;
     }
     &.current,
-    &.active{
+    &.active {
       color: #fff;
-      background: #348EF8;
-      border-color: #348EF8;
+      background: #348ef8;
+      border-color: #348ef8;
     }
-    &.qubely-pagination-prev span{
+    &.qubely-pagination-prev span {
       margin-right: 4px;
     }
-    &.qubely-pagination-next span{
+    &.qubely-pagination-next span {
       margin-left: 4px;
     }
   }

@@ -15,9 +15,7 @@ jQuery(function ($) {
                 $(this).addClass('loading');
             },
             success: (response) => {
-                console.log(response);
                 let { quantity } = $(this)[0].dataset;
-                
                 if (typeof quantity === 'undefined') {
                     quantity = 0;
                 }

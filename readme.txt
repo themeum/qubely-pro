@@ -1,10 +1,12 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 == Changelog ==
+
+= 1.2.8 - 22 January, 2021 = 
+New: Woo Products block  
 
 = 1.2.7 -  18 December, 2020 = 
 Fix: Form Builder block - Form fields not showing on backend in WordPress 5.6
-
 
 = 1.2.6 -  08 December, 2020 = 
 New: Post Grid block - Restructured Pagination  in Backend 
