@@ -1134,8 +1134,9 @@ class WOOPRODUCTS
                 if ($showRatings) {
                     $woo_product_markup .= sprintf(
                         '<div class="qubely-product-ratings-wrapper">
-                    <div class="qubely-product-ratings" style="--qubely-product-rating:%1$s"></div>',
-                        $rating * 20
+                    <div class="qubely-product-ratings" style="--qubely-product-rating:%1$s%2$s;"></div>',
+                        $rating * 20,
+						'%'
                     );
                     if ($showRatingsCount) {
                         $woo_product_markup .= sprintf(

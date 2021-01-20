@@ -254,7 +254,6 @@ function Edit(props) {
             .then((productsData) => {
                 setLoading(false)
                 setError(null)
-                console.log(productsData.products);
                 setProducts(productsData.products)
             })
             .catch(async (e) => {
