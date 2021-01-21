@@ -1080,14 +1080,17 @@ function Edit(props) {
                                 </div>
                     }
                 </div>
-                <Pagination
-                    baseClassName="qubely-woocommerce-pagination"
-                    total={pages}
-                    current={currentPage}
-                    prevText="Prev"
-                    nextText="Next"
-                    onClickPage={(page) => updateCurrentPage(page)}
-                />
+                {
+                    enablePagination &&
+                    <Pagination
+                        baseClassName="qubely-woocommerce-pagination"
+                        total={pages}
+                        current={currentPage}
+                        prevText="Prev"
+                        nextText="Next"
+                        onClickPage={(page) => updateCurrentPage(page)}
+                    />
+                }
             </div>
 
         </Fragment>
