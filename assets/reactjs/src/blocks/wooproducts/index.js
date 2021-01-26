@@ -9,8 +9,8 @@ import Edit from './Edit'
 registerBlockType('qubely/wooproducts', {
     title: __('Woo Products'),
     category: 'qubely',
-    description: __('Showcase woocommerce products'),
-    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-gallery.svg'} alt={__('wooproducts')} />,
+    description: __('Showcase woocommerce products with Qubely Woo Products'),
+    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block_woo_product.svg'} alt={__('wooproducts')} />,
     keywords: [
         __('woo'),
         __('woocommerce'),
