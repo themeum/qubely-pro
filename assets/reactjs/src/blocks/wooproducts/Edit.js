@@ -690,7 +690,7 @@ function Edit(props) {
                             <Tabs>
                                 <Tab tabTitle={__('Normal')}>
                                     <Color label={__('Title')} value={titleColor} onChange={(titleColor) => setAttributes({ titleColor })} />
-                                    <Color label={__('Discount')} value={discount} onChange={(titleColor) => setAttributes({ discount })} />
+                                    <Color label={__('Discount')} value={discount} onChange={(discount) => setAttributes({ discount })} />
                                 </Tab>
                                 <Tab tabTitle={__('Hover')}>
                                     <Color label={__('Title Color')} value={titleHoverColor} onChange={(titleHoverColor) => setAttributes({ titleHoverColor })} />

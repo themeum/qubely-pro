@@ -1217,7 +1217,7 @@ class WOOPRODUCTS
             $woo_product_markup .= $this->pagination_bar($wp_query->max_num_pages, $this->page);
             $woo_product_markup .= "</div>";
         }
-
+        $woo_product_markup .= "</div>";
         return $woo_product_markup;
     }
 }
