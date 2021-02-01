@@ -46,12 +46,15 @@
     grid-row-gap: 30px;
     .qubely_woo_product_wrapper {
       .qubely_woo_product {
+        display: flex;
+        flex-direction: column;
         .qubely-product-info {
           text-align: initial;
           display: inline-block;
         }
       }
     }
+    .qubely-woo_product-image-wrapper.width-placeholder,
     .qubely-image-placeholder {
       width: 100%;
     }

@@ -264,8 +264,9 @@ function Edit(props) {
     }
 
     const renderImages = (images) => {
+        const className = classnames("qubely-woo_product-image-wrapper", { ['width-placeholder']: images.length === 0 });
         return (
-            <div className="qubely-woo_product-image-wrapper">
+            <div className={className}>
                 {
                     images.length > 0 ?
                         images.map(({ src, alt }) => {
@@ -406,24 +407,27 @@ function Edit(props) {
                                     }
                                 ]}
                             />
-                            <ButtonGroup
-                                label={__("Content Align")}
-                                options={
-                                    layout === 2 ? [
-                                        [__("Left"), "left"],
-                                        [__("Middle"), "center"],
-                                        [__("Right"), "right"],
-                                    ]
-                                        : [
-                                            [__("Top"), "flex-start"],
-                                            [__("Middle"), "center"],
-                                            [__("Bottom"), "flex-end"],
-                                        ]
-                                }
-                                value={layout === 1 ? contentPosition : girdContentPosition}
-                                onChange={(value) => setAttributes(layout === 1 ? { contentPosition: value } : { girdContentPosition: value })}
-                            />
-
+                            {
+                                (layout === 1 || (layout === 2 && style === 3)) && (
+                                    <ButtonGroup
+                                        label={__("Content Align")}
+                                        options={
+                                            layout === 2 ? [
+                                                [__("Left"), "flex-start"],
+                                                [__("Middle"), "center"],
+                                                [__("Right"), "flex-end"],
+                                            ]
+                                                : [
+                                                    [__("Top"), "flex-start"],
+                                                    [__("Middle"), "center"],
+                                                    [__("Bottom"), "flex-end"],
+                                                ]
+                                        }
+                                        value={layout === 1 ? contentPosition : girdContentPosition}
+                                        onChange={(value) => setAttributes(layout === 1 ? { contentPosition: value } : { girdContentPosition: value })}
+                                    />
+                                )
+                            }
                             {
                                 (layout === 1 && style !== 3) &&
                                 <Fragment>

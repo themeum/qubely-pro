@@ -406,12 +406,12 @@ class WOOPRODUCTS
                     ),
                     'girdContentPosition' =>  array(
                         'type' => 'string',
-                        'default' => 'left',
+                        'default' => 'center',
                         'style' => [(object) [
                             'condition' => [
                                 (object) ['key' => 'layout', 'relation' => '==', 'value' => 2]
                             ],
-                            'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {text-align: {{girdContentPosition}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {align-items: {{girdContentPosition}};}'
                         ]]
                     ),
                     'cardPadding' => array(
@@ -1144,7 +1144,7 @@ class WOOPRODUCTS
                         $product_id
                     );
                 } else {
-                    $woo_product_markup .= '<div class="qubely-woo_product-image-wrapper">
+                    $woo_product_markup .= '<div class="qubely-woo_product-image-wrapper width-placeholder">
                           <div class="qubely-image-placeholder"></div>
                     </div>';
                 }
