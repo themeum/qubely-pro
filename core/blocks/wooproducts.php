@@ -409,7 +409,8 @@ class WOOPRODUCTS
                         'default' => 'center',
                         'style' => [(object) [
                             'condition' => [
-                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 2]
+                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
+                                (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
                             ],
                             'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {align-items: {{girdContentPosition}};}'
                         ]]
@@ -652,6 +653,45 @@ class WOOPRODUCTS
                                 ],
                                 'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
                             ],
+                        ]
+                    ),
+                    'productBgColor' => array(
+                        'type' => 'object',
+                        'default' => (object) [
+                            'type' => 'color',
+                            'openColor' => 0,
+                            'color' => 'var(--qubely-color-1)',
+                            'gradient' => (object)[
+                                'color1' => 'var(--qubely-color-2)',
+                                'color2' => 'var(--qubely-color-1)',
+                                'direction' => 0,
+                                'start' => 0,
+                                'stop' => 100,
+                                'type' => 'linear'
+                            ]
+                        ],
+                        'style' => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                            ]
+                        ]
+                    ),
+                    'productBorder' => array(
+                        'type' => 'object',
+                        'default' => (object) array(),
+                        'style' => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                            ]
+                        ]
+                    ),
+                    'productBorderRadius' => array(
+                        'type' => 'object',
+                        'default' => (object) array(),
+                        'style' => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                            ]
                         ]
                     ),
                     'bgColor' => array(
@@ -986,7 +1026,7 @@ class WOOPRODUCTS
     function render_block_qubely_wooproducts($att)
     {
 
-        $uniqueId               = $att['uniqueId'];
+        $uniqueId 		        = isset($att['uniqueId']) ? $att['uniqueId'] : '';
         $layout                 = isset($att['layout']) ? $att['layout'] : 2;
         $columns                =  $att['columns'];
         $showRatings            =  $att['showRatings'];
@@ -1001,11 +1041,11 @@ class WOOPRODUCTS
         $productsPerPage        = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
         $enablePagination       = isset($att['enablePagination']) ? $att['enablePagination'] : true;
 
-        $page = 1;
         $products = new WP_Query(array('post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => -1));
         $pages = array_fill(0, ceil($products->found_posts / $productsPerPage), '1');
 
         $cat_ids = array_column($selectedCatagories, 'value');
+
         $tax_query = array();
         if (!empty($cat_ids)) {
             array_push(
@@ -1018,9 +1058,11 @@ class WOOPRODUCTS
             );
         }
 
+
         if (!empty(get_query_var('page')) || !empty(get_query_var('paged'))) {
             $this->page = is_front_page() ? get_query_var('page') : get_query_var('paged');
         }
+
         $query_args = array(
             'order'          => '',
             'orderby'        => '',
@@ -1031,6 +1073,39 @@ class WOOPRODUCTS
             'tax_query'      => $tax_query,
             'max_num_pages' => count($pages),
         );
+
+
+        switch ($productsStatus) {
+            case 'featured':
+                if (isset($query_args['post__in'])) {
+                    $query_args['post__in'] = array_merge($query_args['post__in'], wc_get_featured_product_ids());
+                } else {
+                    $query_args['post__in'] = wc_get_featured_product_ids();
+                }
+                break;
+
+            case 'on_sale':
+                unset($query_args['meta_key']);
+                $query_args['meta_query'] = array(
+                    'relation' => 'AND',
+                    array(
+                        'key'           => '_sale_price',
+                        'value'         => 0,
+                        'compare'       => '>',
+                        'type'          => 'numeric'
+                    ),
+                    array(
+                        'key'           => '_regular_price',
+                        'value'         => 0,
+                        'compare'       => '>',
+                        'type'          => 'numeric'
+                    )
+                );
+                break;
+
+            default:
+                break;
+        }
 
 
         if (isset($att['orderby'])) {
@@ -1076,16 +1151,12 @@ class WOOPRODUCTS
             }
         }
 
-        if ($productsStatus !== 'all') {
-            $ids = $productsStatus === 'on_sale' ? wc_get_product_ids_on_sale() : wc_get_featured_product_ids();
-            $on_sale_ids = empty($ids) ? array(0) : $ids;
-            $query_args['post__in'] = [];
-            $query_args['post__in'] += $ids;
-        }
+
         $query_args = array_merge(
             $query_args,
             WC()->query->get_catalog_ordering_args($query_args['orderby'], $query_args['order'])
         );
+
         $wp_query = new WP_Query($query_args);
 
         $interaction = '';
@@ -1114,11 +1185,12 @@ class WOOPRODUCTS
             );
 
             $woo_product_markup .= sprintf(
-                '<div class="qubely_woo_products_wrapper %1$s md_has_%2$s_columns sm_has_%3$s_columns xs_has_%4$s_columns">',
+                '<div class="qubely_woo_products_wrapper %1$s md_has_%2$s_columns sm_has_%3$s_columns xs_has_%4$s_columns %5$s">',
                 $layout == 1 ? 'qubely_list_layout' : 'qubely_grid_layout',
                 $columns['md'],
                 $columns['sm'],
-                $columns['xs']
+                $columns['xs'],
+                $interaction 
             );
 
             while ($wp_query->have_posts()) {

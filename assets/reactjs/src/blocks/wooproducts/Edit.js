@@ -64,16 +64,14 @@ const {
 import icons from '../../helpers/icons'
 import getProducts from './getProducts'
 
-
-
 function Edit(props) {
     const [currentPage, updateCurrentPage] = useState(1);
     const [totalProducts, updateTotalProducts] = useState(0);
-    const [device, setDevice] = useState('md')
-    const [products, setProducts] = useState(null)
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)
-
+    const [device, setDevice] = useState('md');
+    const [products, setProducts] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [categories, setCategories] = useState(null);
     const {
         name,
         clientId,
@@ -107,6 +105,9 @@ function Edit(props) {
             cardPadding,
             gridInfoPadding,
             infoPadding,
+            productBorderRadius,
+            productBgColor,
+            productBorder,
             //Typograhy
             titleTypography,
             buttonTypography,
@@ -201,9 +202,20 @@ function Edit(props) {
     useEffect(() => {
         setLoading(true);
         loadProducts();
-    }, [currentPage, productsStatus, orderby, productsPerPage])
+    }, [currentPage, productsStatus, orderby, productsPerPage, selectedCatagories]);
 
-
+    const getCategoris = () => {
+        apiFetch({
+            path: '/wc/v3/products/categories',
+        }).then((response) => {
+            return response.map(({ count, id, name, slug }) => ({ count, id, name, slug, }));
+        }).then((productsData) => {
+            setCategories([{ id: null, name: "All" }, ...productsData])
+        })
+            .catch(async (e) => {
+                console.log('could not retrieve product categories')
+            });
+    }
 
     const setOderingQueryArgs = () => {
         let orderbyArgs = {}
@@ -243,10 +255,18 @@ function Edit(props) {
         }
         return (orderbyArgs)
     }
+    const setCatArgs = () => {
+        let categoryArgs = {};
+        categoryArgs = {
+            taxonomy: selectedCatagories.map(({ value }) => value),
+        }
+        return (categoryArgs);
+    }
 
     const loadProducts = () => {
         const args = {
             ...setOderingQueryArgs(),
+            ...setCatArgs(),
             per_page: productsPerPage,
             page: currentPage,
         };
@@ -334,16 +354,49 @@ function Edit(props) {
                                 </Fragment>
                             }
                         </PanelBody>
-                        <PanelBody title={__('Query')} initialOpen={true}>
+                        <PanelBody title={__('Query')} initialOpen={false} onToggle={() => !categories && getCategoris()}>
+                            <SelectControl
+                                label={__("Products Status")}
+                                value={productsStatus}
+                                options={[
+                                    {
+                                        label: __('All'),
+                                        value: 'all',
+                                    },
+                                    {
+                                        label: __('Featured'),
+                                        value: 'featured',
+                                    },
+                                    {
+                                        label: __('On Sale'),
+                                        value: 'on_sale',
+                                    },
+                                ]}
+                                onChange={value => setAttributes({ productsStatus: value })}
+                            />
                             {
-                                totalProducts !== 0 &&
-                                <RangeControl
-                                    label={__('Number of Products')}
-                                    value={productsPerPage}
-                                    min='1'
-                                    max={totalProducts}
-                                    onChange={val => setAttributes({ productsPerPage: val })}
-                                />
+                                categories ?
+                                    <Dropdown
+                                        label={__('Products by Categories')}
+                                        enableSearch
+                                        defaultOptionsLabel="All"
+                                        options={[
+                                            ...categories.map(({ name, id }) => {
+                                                return (
+                                                    {
+                                                        label: __(name),
+                                                        value: id
+                                                    }
+                                                )
+                                            })]}
+                                        value={selectedCatagories}
+                                        onChange={value => setAttributes({ selectedCatagories: value.length && value[value.length - 1].label === 'All' ? [] : value })}
+                                    />
+                                    :
+                                    <Fragment>
+                                        <div className="qubely-field"> {__('Products by Categories')}</div>
+                                        <Spinner />
+                                    </Fragment>
 
                             }
                             <SelectControl
@@ -389,6 +442,17 @@ function Edit(props) {
                                 ]}
                                 onChange={(orderby) => setAttributes({ orderby })}
                             />
+                            {
+                                totalProducts !== 0 &&
+                                <RangeControl
+                                    label={__('Number of Products')}
+                                    value={productsPerPage}
+                                    min='1'
+                                    max={totalProducts}
+                                    onChange={val => setAttributes({ productsPerPage: val })}
+                                />
+
+                            }
                         </PanelBody>
                         <PanelBody title={__('Product Card')} initialOpen={false}>
                             <Styles
@@ -559,6 +623,35 @@ function Edit(props) {
                                     />
                                 </Fragment>
                             }
+                            <ColorAdvanced
+                                label={__("Product Background")}
+                                value={productBgColor}
+                                onChange={(value) => setAttributes({ productBgColor: value })}
+                            />
+                            <Border
+                                label={__("Product Border")}
+                                value={productBorder}
+                                onChange={(val) => setAttributes({ productBorder: val })}
+                                min={0}
+                                max={10}
+                                unit={["px", "em", "%"]}
+                                responsive
+                                device={device}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                            <BorderRadius
+                                min={0}
+                                max={100}
+                                responsive
+                                device={device}
+                                label={__("Product Corner")}
+                                value={productBorderRadius}
+                                unit={["px", "em", "%"]}
+                                onChange={(value) =>
+                                    setAttributes({ productBorderRadius: value })
+                                }
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
                         </PanelBody>
 
                         <PanelBody title={__('Image Settings')} initialOpen={false}>
