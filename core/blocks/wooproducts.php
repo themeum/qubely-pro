@@ -1084,7 +1084,7 @@ class WOOPRODUCTS
                 }
                 break;
 
-            case 'on_sale':
+            case 'onsale':
                 unset($query_args['meta_key']);
                 $query_args['meta_query'] = array(
                     'relation' => 'AND',

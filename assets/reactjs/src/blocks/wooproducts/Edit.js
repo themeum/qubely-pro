@@ -258,7 +258,7 @@ function Edit(props) {
     const setCatArgs = () => {
         let categoryArgs = {};
         categoryArgs = {
-            taxonomy: selectedCatagories.map(({ value }) => value),
+            category: selectedCatagories.map(({ value }) => value),
         }
         return (categoryArgs);
     }
@@ -267,14 +267,17 @@ function Edit(props) {
         const args = {
             ...setOderingQueryArgs(),
             ...setCatArgs(),
+            ...(productsStatus === 'featured' && { featured: true }),
+            ...(productsStatus === 'onSale' && { on_sale: true }),
             per_page: productsPerPage,
             page: currentPage,
         };
         getProducts(args)
             .then((productsData) => {
-                setLoading(false)
-                setError(null)
-                setProducts(productsData.products)
+                setLoading(false);
+                setError(null);
+                setProducts(productsData.products);
+                updateTotalProducts(productsData.totalProducts);
             })
             .catch(async (e) => {
                 setProducts([])
@@ -369,7 +372,7 @@ function Edit(props) {
                                     },
                                     {
                                         label: __('On Sale'),
-                                        value: 'on_sale',
+                                        value: 'onsale',
                                     },
                                 ]}
                                 onChange={value => setAttributes({ productsStatus: value })}
@@ -1178,7 +1181,7 @@ function Edit(props) {
                     }
                 </div>
                 {
-                    enablePagination &&
+                    (enablePagination && pages>1) &&
                     <Pagination
                         baseClassName="qubely-woocommerce-pagination"
                         total={pages}
