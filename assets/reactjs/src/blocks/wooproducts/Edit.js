@@ -316,18 +316,18 @@ function Edit(props) {
         { [`sm_has_${columns['sm']}_columns`]: layout === 2 },
         { [`xs_has_${columns['xs']}_columns`]: layout === 2 });
 
-    if (!totalProducts) {
-        return (
-            <Fragment>
-                <Placeholder
-                    icon="admin-post"
-                    label={__('Loading woocommerce products')}
-                >
-                    <Spinner />
-                </Placeholder>
-            </Fragment>
-        );
-    }
+    // if (!totalProducts) {
+    //     return (
+    //         <Fragment>
+    //             <Placeholder
+    //                 icon="admin-post"
+    //                 label={__('Loading woocommerce products')}
+    //             >
+    //                 <Spinner />
+    //             </Placeholder>
+    //         </Fragment>
+    //     );
+    // }
     return (
         <Fragment>
             <InspectorControls>
