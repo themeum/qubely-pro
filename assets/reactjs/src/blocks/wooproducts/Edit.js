@@ -17,7 +17,7 @@ const {
     IconButton,
     Spinner,
     RangeControl,
-    ColorPicker
+    Placeholder,
 } = wp.components
 
 const {
@@ -316,6 +316,21 @@ function Edit(props) {
         { [`sm_has_${columns['sm']}_columns`]: layout === 2 },
         { [`xs_has_${columns['xs']}_columns`]: layout === 2 });
 
+        if (!totalProducts) {
+			return (
+				<Fragment>
+					<Placeholder
+						icon="admin-post"
+						label={__('Loading woocommerce products')}
+					>
+						{!Array.isArray(products) ?
+							<Spinner /> :
+							__('No posts found.')
+						}
+					</Placeholder>
+				</Fragment>
+			);
+		}
     return (
         <Fragment>
             <InspectorControls>
