@@ -16,5 +16,6 @@ import './blocks/verticaltabs'              // Vertical Tabs
 import './blocks/verticaltabs/verticaltab'  // Vertical Tab
 import './blocks/mediacard'                 // Instagram Feed
 import './blocks/countdown'                 // Countdown Block
-import './blocks/wooproducts'  // wooproducts
+import './blocks/wooproducts'               // wooproducts
 import './blocks/table'                     // Table Block
+import './blocks/woocarousel'               // woocarousel
