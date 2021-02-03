@@ -426,6 +426,7 @@ class WOOPRODUCTS
                         'style' => [
                             (object) [
                                 'condition' => [
+                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
                                     (object) ['key' => 'style', 'relation' => '!=', 'value' => 3]
                                 ],
                                 'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
