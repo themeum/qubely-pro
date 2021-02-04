@@ -101,8 +101,8 @@ function Edit(props) {
             //product card
             contentPosition,
             girdContentPosition,
-            cardPadding,
             gridInfoPadding,
+            cardPadding,
             infoPadding,
             productBorderRadius,
             productBgColor,
@@ -133,7 +133,6 @@ function Edit(props) {
             stackPadding,
             stackBoxShadow,
             cardSpace,
-            gridCardSpace,
             addToCartButtonText,
             buttonColor,
             buttonHoverColor,
@@ -378,6 +377,24 @@ function Edit(props) {
             <InspectorControls>
                 <InspectorTabs tabs={['style', 'advance']}>
                     <InspectorTab key={'style'}>
+                        <PanelBody title={__('')} opened={true}>
+                            <Styles
+                                columns={3}
+                                value={style}
+                                onChange={(style) => setAttributes({ style })}
+                                options={[
+                                    { value: 1, svg: icons.postgrid_design_1 },
+                                    {
+                                        value: 2,
+                                        svg: icons.postgrid_design_2,
+                                    },
+                                    {
+                                        value: 3,
+                                        svg: icons.postgrid_design_4,
+                                    }
+                                ]}
+                            />
+                        </PanelBody>
                         <PanelBody title={__('Query')} initialOpen={false} onToggle={() => !categories && getCategoris()}>
                             <SelectControl
                                 label={__("Products Status")}
@@ -479,22 +496,6 @@ function Edit(props) {
                             }
                         </PanelBody>
                         <PanelBody title={__('Product Card')} initialOpen={false}>
-                            <Styles
-                                columns={3}
-                                value={style}
-                                onChange={(style) => setAttributes({ style })}
-                                options={[
-                                    { value: 1, svg: icons.postgrid_design_1 },
-                                    {
-                                        value: 2,
-                                        svg: icons.postgrid_design_2,
-                                    },
-                                    {
-                                        value: 3,
-                                        svg: icons.postgrid_design_4,
-                                    }
-                                ]}
-                            />
                             {
                                 style === 3 && (
                                     <ButtonGroup
@@ -519,7 +520,7 @@ function Edit(props) {
                                         max={300}
                                         responsive
                                         device={device}
-                                        label={__('Description Padding')}
+                                        label={__('Info Padding')}
                                         unit={['px', 'em', '%']}
                                         value={gridInfoPadding}
                                         onChange={val => setAttributes({ gridInfoPadding: val })}
@@ -530,16 +531,16 @@ function Edit(props) {
                             {
                                 style === 2 &&
                                 <Fragment>
-                                    <Range
-                                        label={__("Card Space")}
-                                        value={cardSpace}
-                                        onChange={(value) => setAttributes({ cardSpace: value })}
-                                        unit={["px", "em", "%"]}
+                                    <Padding
                                         min={0}
-                                        max={100}
+                                        max={300}
                                         responsive
                                         device={device}
-                                        onDeviceChange={(value) => setDevice(value)}
+                                        label={__('Card Padding')}
+                                        unit={['px', 'em', '%']}
+                                        value={cardPadding}
+                                        onChange={val => setAttributes({ cardPadding: val })}
+                                        onDeviceChange={value => setDevice(value)}
                                     />
                                     <BorderRadius
                                         min={0}
@@ -639,6 +640,170 @@ function Edit(props) {
                                 onDeviceChange={(value) => setDevice(value)}
                             />
                         </PanelBody>
+                        <PanelBody title={__('Carousel Settings')} initialOpen={true}>
+
+                            <Toggle label={__('Show Arrow Navigation')} value={nav} onChange={value => setAttributes({ nav: value })} />
+                            <Toggle label={__('Show Dot Navigation')} value={dots} onChange={value => setAttributes({ dots: value })} />
+
+
+                            <Toggle label={__('Autoplay')} value={autoPlay} onChange={value => setAttributes({ autoPlay: value })} />
+                            {autoPlay &&
+                                <Fragment>
+                                    <Range label={__('Speed (ms)')} value={speed} onChange={value => setAttributes({ speed: parseInt(value) })} min={500} max={5000} />
+                                    <Range label={__('Interval (ms)')} value={interval} onChange={value => setAttributes({ interval: parseInt(value) })} min={500} max={5000} />
+                                </Fragment>
+                            }
+                            <Toggle
+                                label={__('Centered Slides')}
+                                value={isCentered}
+                                onChange={value => setAttributes({ isCentered: value })}
+                            />
+
+                            <Range
+                                label={__('Number of Columns')}
+                                min={1} max={20} responsive device={device}
+                                device={device}
+                                value={postitems}
+                                onChange={value => setAttributes({ postitems: value })}
+                                onDeviceChange={value => setDevice(value)}
+                            />
+
+                            <Range
+                                min={0}
+                                max={100}
+                                label={__('Gutter')}
+                                value={sliderItemMargin}
+                                onChange={value => setAttributes({ sliderItemMargin: parseInt(value) })}
+                            />
+                        </PanelBody>
+
+                        {nav &&
+                            <PanelBody title={__('Arrow Settings')} initialOpen={false}>
+                                <ButtonGroup
+                                    label={__('Navigation Style')}
+                                    options={[[<span className="dashicons dashicons-arrow-right-alt" />, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2" />, 'arrowright2']]}
+                                    value={arrowStyle}
+                                    onChange={value => setAttributes({ arrowStyle: value })}
+                                />
+                                <Range
+                                    label={__('Horizontal Position')}
+                                    value={horizontalPosition}
+                                    onChange={(value) => setAttributes({ horizontalPosition: value })}
+                                    min={-100} max={100}
+                                    responsive unit={['px', 'em', '%']}
+                                    device={device}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                                <Range
+                                    label={__('Vertical Position')}
+                                    value={verticalPosition} onChange={(value) => setAttributes({ verticalPosition: value })}
+                                    min={1} max={100}
+                                    responsive unit={['px', 'em', '%']}
+                                    device={device}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                                <Range
+                                    label={__('Shape Size')}
+                                    value={shapeWidth} onChange={(value) => setAttributes({ shapeWidth: value })}
+                                    min={1} max={100}
+                                    responsive unit={['px', 'em', '%']}
+                                    device={device}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                                <Range
+                                    label={__('Arrow Size')}
+                                    value={navSize} onChange={(value) => setAttributes({ navSize: value })}
+                                    min={0} max={100}
+                                    responsive unit={['px', 'em', '%']}
+                                    device={device}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                                <Tabs>
+                                    <Tab tabTitle={__('Normal')}>
+                                        <Color label={__('Navigation Color')} value={navColor} onChange={(value) => setAttributes({ navColor: value })} />
+                                        <Color label={__('Navigation Shape Color')} value={navShapeColor} onChange={val => setAttributes({ navShapeColor: val })} />
+                                        <Border label={__('Navigation Border')} value={navBorderColor} onChange={val => setAttributes({ navBorderColor: val })} />
+                                        <BorderRadius
+                                            min={0}
+                                            max={100}
+                                            responsive
+                                            device={device}
+                                            label={__('Navigation Corner')}
+                                            value={navigationRadius}
+                                            unit={['px', 'em', '%']}
+                                            onChange={value => setAttributes({ navigationRadius: value })}
+                                            onDeviceChange={value => setDevice(value)}
+                                        />
+                                    </Tab>
+                                    <Tab tabTitle={__('Hover')}>
+                                        <Color label={__('Navigation Color')} value={navHoverColor} onChange={(value) => setAttributes({ navHoverColor: value })} />
+                                        <Color label={__('Shape Color')} value={navShapeHoverColor} onChange={val => setAttributes({ navShapeHoverColor: val })} />
+                                        <Border label={__('Border Color')} value={navBorderHoverColor} onChange={val => setAttributes({ navBorderHoverColor: val })} />
+                                        <BorderRadius
+                                            label={__('Corner Radius')}
+                                            value={navHoverRadius} onChange={(value) => setAttributes({ navHoverRadius: value })}
+                                            min={1} max={100}
+                                            responsive unit={['px', 'em', '%']}
+                                            device={device}
+                                            onDeviceChange={value => setDevice(value)}
+                                        />
+                                    </Tab>
+                                </Tabs>
+
+                            </PanelBody>
+                        }
+                        {dots &&
+                            <PanelBody title={__('Dot Settings')} initialOpen={false}>
+                                <Range
+                                    label={__('Dot Position')}
+                                    value={dotPosition} onChange={(value) => setAttributes({ dotPosition: value })}
+                                    min={-200} max={200}
+                                    responsive unit={['px', 'em', '%']}
+                                    device={device}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                                <Range
+                                    label={__('Dot Width')}
+                                    value={dotwidth} onChange={(value) => setAttributes({ dotwidth: value })}
+                                    min={1} max={100}
+                                    responsive unit={['px', 'em', '%']}
+                                    device={device}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                                <Range
+                                    label={__('Dot Height')}
+                                    value={dotHeight} onChange={(value) => setAttributes({ dotHeight: value })}
+                                    min={1} max={100}
+                                    responsive unit={['px', 'em', '%']}
+                                    device={device}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                                <Range
+                                    label={__('Dot Border Radius')}
+                                    value={dotBorderRadius}
+                                    onChange={(value) => setAttributes({ dotBorderRadius: value })}
+                                    min={1} max={100}
+                                    responsive unit={['px', 'em', '%']}
+                                    device={device}
+                                    onDeviceChange={value => setDevice(value)}
+                                />
+                                <ButtonGroup
+                                    label={__('Dot Alignment')}
+                                    options={[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']]}
+                                    value={dotalignment}
+                                    onChange={value => setAttributes({ dotalignment: value })}
+                                />
+                                <Tabs>
+                                    <Tab tabTitle={__('Normal')}>
+                                        <ColorAdvanced label={__('Dot Color')} value={dotColor} onChange={val => setAttributes({ dotColor: val })} />
+                                    </Tab>
+                                    <Tab tabTitle={__('Active')}>
+                                        <ColorAdvanced label={__('Dot Active Color')} value={dotActiveColor} onChange={val => setAttributes({ dotActiveColor: val })} />
+                                    </Tab>
+                                </Tabs>
+
+                            </PanelBody>
+                        }
 
                         <PanelBody title={__('Image Settings')} initialOpen={false}>
                             <RadioAdvanced label={__('Image Width')} value={imageSize} onChange={(value) => setAttributes({ imageSize: value, recreateStyles: !recreateStyles })}
@@ -868,198 +1033,7 @@ function Edit(props) {
                             />
 
                         </PanelBody>
-                        <PanelBody title={__("Pagination", "qubely")} initialOpen={false}>
-                            <Toggle
-                                label={__("Enable Pagination")}
-                                value={enablePagination}
-                                onChange={(value) =>
-                                    setAttributes({ enablePagination: value })
-                                }
-                            />
 
-                            {enablePagination && (
-                                <Fragment>
-                                    <Alignment
-                                        disableJustify
-                                        value={pageAlignment}
-                                        alignmentType="content"
-                                        label={__("Alignment")}
-                                        onChange={(val) => setAttributes({ pageAlignment: val })}
-                                    />
-                                    <Typography
-                                        device={device}
-                                        label={__("Typography", "qubely")}
-                                        value={paginationTypography}
-                                        onChange={(value) =>
-                                            setAttributes({ paginationTypography: value })
-                                        }
-                                        onDeviceChange={(value) =>
-                                            this.setState({ device: value })
-                                        }
-                                    />
-                                    <Tabs>
-                                        <Tab tabTitle={__("Normal", "qubely")}>
-                                            <Color
-                                                label={__("Text Color", "qubely")}
-                                                value={pagesColor}
-                                                onChange={(value) =>
-                                                    setAttributes({ pagesColor: value })
-                                                }
-                                            />
-                                            <ColorAdvanced
-                                                label={__("Background", "qubely")}
-                                                value={pagesbgColor}
-                                                onChange={(newColor) =>
-                                                    setAttributes({ pagesbgColor: newColor })
-                                                }
-                                            />
-
-                                            <Border
-                                                min={0}
-                                                max={10}
-                                                responsive
-                                                device={device}
-                                                label={__("Border", "qubely")}
-                                                value={pagesBorder}
-                                                unit={["px", "em", "%"]}
-                                                onChange={(val) =>
-                                                    setAttributes({ pagesBorder: val })
-                                                }
-                                                onDeviceChange={(value) =>
-                                                    this.setState({ device: value })
-                                                }
-                                            />
-                                            <BoxShadow
-                                                label={__("Box-Shadow")}
-                                                value={pagesShadow}
-                                                onChange={(value) =>
-                                                    setAttributes({ pagesShadow: value })
-                                                }
-                                            />
-                                        </Tab>
-                                        <Tab tabTitle={__("Active")}>
-                                            <Color
-                                                label={__("Text Color", "qubely")}
-                                                value={pagesActiveColor}
-                                                onChange={(value) =>
-                                                    setAttributes({ pagesActiveColor: value })
-                                                }
-                                            />
-                                            <ColorAdvanced
-                                                label={__("Background", "qubely")}
-                                                value={pagesbgActiveColor}
-                                                onChange={(newColor) =>
-                                                    setAttributes({ pagesbgActiveColor: newColor })
-                                                }
-                                            />
-
-                                            <Border
-                                                min={0}
-                                                max={10}
-                                                responsive
-                                                device={device}
-                                                label={__("Border", "qubely")}
-                                                value={pagesActiveBorder}
-                                                unit={["px", "em", "%"]}
-                                                onChange={(val) =>
-                                                    setAttributes({ pagesActiveBorder: val })
-                                                }
-                                                onDeviceChange={(value) =>
-                                                    this.setState({ device: value })
-                                                }
-                                            />
-                                            <BoxShadow
-                                                label={__("Box-Shadow")}
-                                                value={pagesActiveShadow}
-                                                onChange={(value) =>
-                                                    setAttributes({ pagesActiveShadow: value })
-                                                }
-                                            />
-                                        </Tab>
-                                        <Tab tabTitle={__("Hover")}>
-                                            <Color
-                                                label={__("Text Color", "qubely")}
-                                                value={pagesHoverColor}
-                                                onChange={(value) =>
-                                                    setAttributes({ pagesHoverColor: value })
-                                                }
-                                            />
-                                            <ColorAdvanced
-                                                label={__("Background", "qubely")}
-                                                value={pagesbgHoverColor}
-                                                onChange={(newColor) =>
-                                                    setAttributes({ pagesbgHoverColor: newColor })
-                                                }
-                                            />
-
-                                            <Border
-                                                min={0}
-                                                max={10}
-                                                responsive
-                                                device={device}
-                                                label={__("Border", "qubely")}
-                                                value={pagesHoverBorder}
-                                                unit={["px", "em", "%"]}
-                                                onChange={(val) =>
-                                                    setAttributes({ pagesHoverBorder: val })
-                                                }
-                                                onDeviceChange={(value) =>
-                                                    this.setState({ device: value })
-                                                }
-                                            />
-                                            <BoxShadow
-                                                label={__("Box-Shadow")}
-                                                value={pagesHoverShadow}
-                                                onChange={(value) =>
-                                                    setAttributes({ pagesHoverShadow: value })
-                                                }
-                                            />
-                                        </Tab>
-                                    </Tabs>
-                                    <BorderRadius
-                                        min={0}
-                                        max={100}
-                                        responsive
-                                        device={device}
-                                        label={__("Radius")}
-                                        unit={["px", "em", "%"]}
-                                        value={pagesBorderRadius}
-                                        onDeviceChange={(value) =>
-                                            this.setState({ device: value })
-                                        }
-                                        onChange={(value) =>
-                                            setAttributes({ pagesBorderRadius: value })
-                                        }
-                                    />
-                                    <Padding
-                                        min={0}
-                                        max={300}
-                                        responsive
-                                        device={device}
-                                        value={pagePadding}
-                                        label={__("Padding")}
-                                        unit={["px", "em", "%"]}
-                                        onChange={(val) => setAttributes({ pagePadding: val })}
-                                        onDeviceChange={(value) =>
-                                            this.setState({ device: value })
-                                        }
-                                    />
-                                    <Margin
-                                        max={150}
-                                        min={0}
-                                        responsive
-                                        device={device}
-                                        value={pageMargin}
-                                        label={__("Margin")}
-                                        unit={["px", "em", "%"]}
-                                        onChange={(value) => setAttributes({ pageMargin: value })}
-                                        onDeviceChange={(value) =>
-                                            this.setState({ device: value })
-                                        }
-                                    />
-                                </Fragment>
-                            )}
-                        </PanelBody>
                         <PanelBody title={__('Design')} initialOpen={false}>
                             <ColorAdvanced
                                 label={__("Background")}

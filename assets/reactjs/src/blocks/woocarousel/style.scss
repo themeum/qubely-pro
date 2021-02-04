@@ -9,7 +9,7 @@
       }
     }
   }
-  .qubely-woo_product-image-wrapper.width-placeholder,
+  .qubely-woo_product-image-wrapper,
   .qubely-image-placeholder {
     width: 100%;
   }
@@ -122,6 +122,9 @@
       }
       // end backward compatibility
     }
+  }
+  .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-item {
+    padding: 5px 10px;
   }
 }
 
