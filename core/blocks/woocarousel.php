@@ -1137,7 +1137,7 @@ class WOOCAROUSEL
                     break;
                 case 'title-desc':
                     $query_args['orderby'] = 'title';
-                    $query_args['order']   = 'dsc';
+                    $query_args['order']   = 'desc';
                     break;
                 case 'date':
                     $query_args['orderby'] = 'date';
