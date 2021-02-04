@@ -37,14 +37,6 @@ class WOOCAROUSEL
                         'style' => [
                             (object) [
                                 'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-                                    (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-                                ],
-                                'selector' => '{{QUBELY}} .qubely_woo_product .qubely-product-info {width:100%;z-index: 1;}{{QUBELY}} .qubely-woo_product-image-wrapper + .qubely-product-info {  margin-left: -40px;  }'
-                            ],
-                            (object) [
-                                'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                     (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
                                 ],
                                 'selector' => '{{QUBELY}} .qubely_woo_product .qubely-product-info {z-index: 1;}{{QUBELY}} .qubely-woo_product-image-wrapper + .qubely-product-info {  margin-top: -40px;  }'
@@ -88,14 +80,6 @@ class WOOCAROUSEL
                         'style' => [
                             (object) [
                                 'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-                                    (object) ['key' => 'imageSize', 'relation' => '!=', 'value' => 'custom']
-                                ],
-                                'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSize}};}'
-                            ],
-                            (object) [
-                                'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                     (object) ['key' => 'imageSize', 'relation' => '!=', 'value' => 'custom']
                                 ],
                                 'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img {width: {{imageSize}};}'
@@ -111,14 +95,6 @@ class WOOCAROUSEL
                         'style' => [
                             (object) [
                                 'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-                                    (object) ['key' => 'imageSize', 'relation' => '==', 'value' => 'custom']
-                                ],
-                                'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSizeCustom}};}'
-                            ],
-                            (object) [
-                                'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                     (object) ['key' => 'imageSize', 'relation' => '==', 'value' => 'custom']
                                 ],
                                 'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-woo_product-image img,{{QUBELY}} .qubely-woo_product-image-wrapper .qubely-image-placeholder {width: {{imageSizeCustom}};}'
@@ -394,16 +370,6 @@ class WOOCAROUSEL
                         ]
                     ),
                     //Product Card
-                    'contentPosition' =>  array(
-                        'type' => 'string',
-                        'default' => 'center',
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 1]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {align-items: {{contentPosition}};}'
-                        ]]
-                    ),
                     'girdContentPosition' =>  array(
                         'type' => 'string',
                         'default' => 'center',
@@ -464,22 +430,7 @@ class WOOCAROUSEL
                             ]
                         ]
                     ),
-                    'cardSpace' => array(
-                        'type' => 'object',
-                        'default' => (object) array(
-                            'md' => 25,
-                            'unit' => 'px'
-                        ),
-                        'style' => [
-                            (object) [
-                                'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-                                    (object) ['key' => 'style', 'relation' => '==', 'value' => 2]
-                                ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper {margin-bottom: {{cardSpace}};}'
-                            ]
-                        ]
-                    ),
+
                     'cardBoxShadow' => array(
                         'type' => 'object',
                         'default' => (object) array(
@@ -498,25 +449,7 @@ class WOOCAROUSEL
                             ]
                         ]
                     ),
-                    'infoPadding' => array(
-                        'type' => 'object',
-                        'default' => (object) [
-                            'openPadding' => 1,
-                            'paddingType' => 'custom',
-                            'unit' => 'px',
-                            'global' => (object) ['md' => 20],
-                            'custom' => (object) ['md' => '0 0 0 20'],
-                        ],
-                        'style' => [
-                            (object) [
-                                'condition' => [
-                                    (object) ['key' => 'style', 'relation' => '!=', 'value' => 3],
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-                                ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
-                            ]
-                        ]
-                    ),
+                  
                     'gridInfoPadding' => array(
                         'type' => 'object',
                         'default' => (object) [
@@ -571,20 +504,6 @@ class WOOCAROUSEL
                             ]
                         ]
                     ),
-                    'stackWidth' => array(
-                        'type' => 'object',
-                        'default' => (object) array(),
-
-                        'style' => [
-                            (object) [
-                                'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-                                    (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-                                ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info {width: {{stackWidth}};}'
-                            ]
-                        ]
-                    ),
                     'gridStackWidth' => array(
                         'type' => 'object',
                         'default' => (object) array(
@@ -600,23 +519,6 @@ class WOOCAROUSEL
                                 'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info {width: {{gridStackWidth}};}'
                             ]
                         ]
-                    ),
-                    'stackSpace' => array(
-                        'type' => 'object',
-                        'default' => (object) array(
-                            'md' => 40,
-                            'unit' => 'px'
-                        ),
-                        'style' => [
-                            (object) [
-                                'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 1],
-                                    (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
-                                ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper:not(:last-child) {margin-bottom: {{stackSpace}};}'
-                            ]
-                        ]
-
                     ),
                     'stackPadding' => array(
                         'type' => 'object',
@@ -761,207 +663,312 @@ class WOOCAROUSEL
                             'selector' => '{{QUBELY}} {z-index:{{globalZindex}};}'
                         ]]
                     ),
-                    //pagination
-                    //pagination
-                    'enablePagination' => array(
+                    'sliderItemMargin'     => array(
+                        'type'             => 'number',
+                        'default'         => 10
+                    ),
+
+                    /* -----------------------------
+                    * 	Slider Settings
+                    *------------------------------- */
+                    'nav'             => array(
+                        'type'         => 'boolean',
+                        'default'     => true
+                    ),
+                    'arrowStyle' => array(
+                        'type'         => 'string',
+                        'default'     => 'arrowright2',
+                    ),
+                    'horizontalPosition' => array(
+                        'type'             => 'object',
+                        'default'         => (object) array(
+                            'md'     => '-7',
+                            'unit'     => '%'
+                        ),
+                        'style'     => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control {right: {{horizontalPosition}};} {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control {left: {{horizontalPosition}};}'
+                            ]
+                        ]
+                    ),
+                    'verticalPosition' => array(
+                        'type'             => 'object',
+                        'default'         => (object) array(
+                            'md'     => 50,
+                            'unit'     => '%'
+                        ),
+                        'style'     => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control { top: {{verticalPosition}};}'
+                            ]
+                        ]
+                    ),
+                    # Arrow style.
+                    'navColor'         => array(
+                        'type'        => 'string',
+                        'default'     => '#2184F9',
+                        'style'     => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'nav', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-carousel-nav-control .nav-control span {color: {{navColor}};}'
+                        ]]
+                    ),
+                    'navShapeColor'     => array(
+                        'type'            => 'string',
+                        'default'         => '#ffffff',
+                        'style'         => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'nav', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control {background: {{navShapeColor}};}'
+                        ]]
+                    ),
+                    # Dot style.
+                    'dotPosition' => array(
+                        'type'             => 'object',
+                        'default'         => (object) array(
+                            'md'     => -15,
+                            'unit'     => 'px'
+                        ),
+                        'style'     => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots { bottom: {{dotPosition}};}'
+                            ]
+                        ]
+                    ),
+                    'dotwidth' => array(
+                        'type'         => 'object',
+                        'default'     => (object) array(
+                            'md'     => '40',
+                            'unit'     => 'px'
+                        ),
+                        'style'     => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {width: {{dotwidth}};} {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active {width: {{dotwidth}};}'
+                            ]
+                        ]
+                    ),
+                    'dotHeight'     => array(
+                        'type'         => 'object',
+                        'default'     => (object) array(
+                            'md'     => '4',
+                            'unit'     => 'px'
+                        ),
+                        'style'     => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {height: {{dotHeight}};}'
+                            ]
+                        ]
+                    ),
+                    'dotBorderRadius' => array(
+                        'type'         => 'object',
+                        'default'     => (object) array(
+                            'md'     => '10',
+                            'unit'     => '%'
+                        ),
+                        'style'     => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li {border-radius: {{dotBorderRadius}};}'
+                            ]
+                        ]
+                    ),
+                    # Dot Color style.
+                    'dotColor'         => array(
+                        'type'        => 'string',
+                        'default'     => '#f5f5f5',
+                        'style'     => [(object) [
+                            'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li'
+                        ]]
+                    ),
+                    'dotColor'     => array(
+                        'type'         => 'object',
+                        'default'     => (object) array(
+                            'openColor'     => 1,
+                            'type'             => 'color',
+                            'color'         => '#f5f5f5',
+                            'gradient'        => (object) [
+                                'color1'     => '#16d03e',
+                                'color2'     => '#1f91f3',
+                                'direction' => 45,
+                                'start'     => 0,
+                                'stop'         => 100,
+                                'type'         => 'linear'
+                            ],
+                        ),
+                        'style' => [(object) [
+                            'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li'
+                        ]]
+                    ),
+                    'dotActiveColor'     => array(
+                        'type'         => 'object',
+                        'default'     => (object) array(
+                            'openColor'     => 1,
+                            'type'             => 'color',
+                            'color'         => '#2184f9',
+                            'gradient'        => (object) [
+                                'color1'     => '#16d03e',
+                                'color2'     => '#1f91f3',
+                                'direction' => 45,
+                                'start'     => 0,
+                                'stop'         => 100,
+                                'type'         => 'linear'
+                            ],
+                        ),
+                        'style' => [(object) [
+                            'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul li.active'
+                        ]]
+                    ),
+
+                    'dotalignment'     =>  array(
+                        'type'         => 'string',
+                        'default'     => 'center',
+                        'style' => [(object) [
+                            'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-dots ul {text-align: {{dotalignment}};}'
+                        ]]
+                    ),
+
+                    'textalignment' =>  array(
+                        'type'         => 'string',
+                        'default'     => 'left',
+                        'style' => [(object) [
+                            'selector' => '{{QUBELY}} .qubely-post-grid-wrapper .qubely-post-grid-content {text-align: {{textalignment}};}'
+                        ]]
+                    ),
+                    /*---------------------------------
+                    * 		Post Carousel
+                    -----------------------------------*/
+                    'postitems' => array(
+                        'type'         => 'object',
+                        'default'     => array('md' => 2, 'sm' => 2, 'xs' => 1),
+                    ),
+                    'autoPlay' => array(
                         'type' => 'boolean',
-                        'default' => true
+                        'default' => false
                     ),
-                    //                    'paginationType' => array(
-                    //						'type' => 'string',
-                    //						'default' => 'pagition'
-                    //					),
-                    'pageAlignment' => array(
-                        'type' => 'string',
-                        'default' => 'center',
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination {text-align: {{pageAlignment}};}'
+                    'isCentered' => array(
+                        'type'         => 'boolean',
+                        'default'     => false
+                    ),
+                    'activeFade' => array(
+                        'type'         => 'boolean',
+                        'default'     => false
+                    ),
+                    'interval'         => array(
+                        'type'         => 'number',
+                        'default'     => 3000
+                    ),
+                    'speed'         => array(
+                        'type'         => 'number',
+                        'default'     => 800
+                    ),
+                    'dots'             => array(
+                        'type'         => 'boolean',
+                        'default'     => false
+                    ),
+                    'shapeWidth'     => array(
+                        'type'         => 'object',
+                        'default'     => (object) array(
+                            'md'     => 20, 'unit' => 'px'
+                        ),
+                        'style'     => [(object) [
+                            'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control .fas { width: {{shapeWidth}}; height: {{shapeWidth}}; line-height: {{shapeWidth}}; }'
                         ]]
                     ),
-                    'paginationTypography' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                    'navSize'         => array(
+                        'type'         => 'object',
+                        'default'     => (object) array(
+                            'md'     => 20,
+                            'unit'     => 'px'
+                        ),
+                        'style'     => [
+                            (object) [
+                                'selector' => '{{QUBELY}} .qubely-carousel-nav-control .nav-control .fas { font-size: {{navSize}}; }'
                             ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
-                        ]]
-                    ),
-                    'pagesColor' => array(
-                        'type' => 'string',
-                        'default' => 'center',
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *{color: {{pagesColor}};}'
-                        ]]
-                    ),
-                    'pagesHoverColor' => array(
-                        'type' => 'string',
-                        'default' => 'center',
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > a:hover, ' .
-                                '{{QUBELY}} .qubely-woocommerce-pagination > button:hover{color: {{pagesHoverColor}};}'
-                        ]]
-                    ),
-                    'pagesActiveColor' => array(
-                        'type' => 'string',
-                        'default' => 'center',
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *.current{color: {{pagesActiveColor}};}'
-                        ]]
-                    ),
-
-                    'pagesbgColor' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
-                        ]]
-                    ),
-                    'pagesbgHoverColor' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination a:hover, ' .
-                                '{{QUBELY}} .qubely-woocommerce-pagination button:hover'
-                        ]]
-                    ),
-                    'pagesbgActiveColor' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > .current'
-                        ]]
-                    ),
-
-                    'pagesBorder' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
-                        ]]
-                    ),
-                    'pagesHoverBorder' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > a:hover, ' .
-                                '{{QUBELY}} .qubely-woocommerce-pagination > button:hover'
-                        ]]
-                    ),
-                    'pagesActiveBorder' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *.current '
-                        ]]
-                    ),
-                    'pagesShadow' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
-                        ]]
-                    ),
-                    'pagesHoverShadow' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > a:hover, ' .
-                                '{{QUBELY}} .qubely-woocommerce-pagination > button:hover'
-                        ]]
-                    ),
-                    'pagesActiveShadow' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *.current'
-                        ]]
-                    ),
-                    'pagesBorderRadius' => array(
-                        'type' => 'object',
-                        'default' => (object) [],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
-                        ]]
-                    ),
-                    'pagePadding' => array(
-                        'type' => 'object',
-                        'default' => (object) [
-                            'openPadding' => 1,
-                            'paddingType' => 'custom',
-                            'custom' => [
-                                'md' => '0 20 0 20',
-                            ],
-                            'unit' => 'px'
                         ],
-                        'style' => [(object) [
-                            'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
-                            ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
-                        ]]
                     ),
-                    'pageMargin' => array(
-                        'type' => 'object',
-                        'default' => (object) [
-                            'openMargin' => 1,
-                            'marginType' => 'custom',
-                            'custom' => [
-                                'md' => '20 7 12 7',
-                            ],
-                            'unit' => 'px'
-                        ],
-                        'style' => [(object) [
+                    'navBorderColor' => array(
+                        'type'             => 'object',
+                        'default'         => (object) array(
+                            'unit'         => 'px',
+                            'widthType' => 'global',
+                            'global'     => (object) array(
+                                'md'     => '1',
+                            ),
+                        ),
+                        'style'         => [(object) [
                             'condition' => [
-                                (object) ['key' => 'enablePagination', 'relation' => '==', 'value' => true]
+                                (object) ['key' => 'nav', 'relation' => '==', 'value' => true]
                             ],
-                            'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
+                            'selector'     => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control'
                         ]]
                     ),
 
+                    'navigationRadius' => array(
+                        'type'                 => 'object',
+                        'default'             => (object) array(
+                            'unit'             => 'px',
+                            'openBorderRadius' => true,
+                            'radiusType'     => 'global',
+                            'global'         => (object) array(
+                                'md'             => 10,
+                            ),
+                        ),
+                        'style' => [(object) ['selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control']]
+                    ),
+                    'navHoverColor' => array(
+                        'type'    => 'string',
+                        'default' => '#ffffff',
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'nav', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-carousel-nav-control .nav-control:hover span {color: {{navHoverColor}};}'
+                        ]]
+                    ),
+                    'navShapeHoverColor' => array(
+                        'type'    => 'string',
+                        'default' => '#0b65cb',
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'nav', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover {background: {{navShapeHoverColor}};}'
+                        ]]
+                    ),
+                    'navBorderHoverColor' => array(
+                        'type' => 'object',
+                        'default' => (object) array(
+                            'unit' => 'px',
+                            'widthType' => 'global',
+                            'global' => (object) array(
+                                'md' => '1',
+                            ),
+                        ),
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'nav', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover'
+                        ]]
+                    ),
+                    'navHoverRadius' => array(
+                        'type' => 'object',
+                        'default' => (object) array(
+                            'unit' => '%',
+                            'openBorderRadius' => true,
+                            'radiusType' => 'global',
+                            'global' => (object) array(
+                                'md' => 50,
+                            ),
+                        ),
+                        'style' => [(object) [
+                            'condition' => [
+                                (object) ['key' => 'nav', 'relation' => '==', 'value' => true]
+                            ],
+                            'selector' => '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control:hover'
+                        ]]
+                    ),
                     'hideTablet' => array(
                         'type' => 'boolean',
                         'default' => false,
@@ -1026,7 +1033,7 @@ class WOOCAROUSEL
     function render_block_qubely_wooproducts($att)
     {
 
-        $uniqueId 		        = isset($att['uniqueId']) ? $att['uniqueId'] : '';
+        $uniqueId                 = isset($att['uniqueId']) ? $att['uniqueId'] : '';
         $layout                 = isset($att['layout']) ? $att['layout'] : 2;
         $columns                =  $att['columns'];
         $showRatings            =  $att['showRatings'];
@@ -1175,6 +1182,46 @@ class WOOCAROUSEL
             }
         }
 
+        # Attribute value: Using Json Encode.
+        $autoPlay               = $att['autoPlay'];
+        $postitems              = $att['postitems'];
+        $nav                    = $att['nav'];
+        $dots                    = $att['dots'];
+        $speed                    = $att['speed'];
+        $interval                = $att['interval'];
+        $center                    = $att['isCentered'];
+        $arrowStyle                = $att['arrowStyle'];
+        $verticalPosition        = $att['verticalPosition'];
+        $sliderItemMargin         = $att['sliderItemMargin'];
+
+        # Attribute value.
+        $data_options = (object) array(
+            'autoplay'         => $autoPlay,
+            'items'         => $postitems,
+            'nav'             => $nav,
+            'dots'             => $dots,
+            'margin'         => $sliderItemMargin,
+            'speed'         => $speed,
+            'interval'         => $interval,
+            'center'         => $center,
+            'arrowStyle'     => $arrowStyle,
+            'arrowPosition' => $verticalPosition,
+            'responsive'     => array(
+                [
+                    'viewport'     => 1170,
+                    'items'     => $postitems['md']
+                ],
+                [
+                    'viewport'     => 980,
+                    'items'     => $postitems['sm']
+                ],
+                [
+                    'viewport'     => 580,
+                    'items'     => $postitems['xs']
+                ],
+            )
+        );
+        # End data options.
 
         $woo_product_markup = '';
 
@@ -1185,12 +1232,9 @@ class WOOCAROUSEL
             );
 
             $woo_product_markup .= sprintf(
-                '<div class="qubely_woo_products_wrapper %1$s md_has_%2$s_columns sm_has_%3$s_columns xs_has_%4$s_columns %5$s">',
-                $layout == 1 ? 'qubely_list_layout' : 'qubely_grid_layout',
-                $columns['md'],
-                $columns['sm'],
-                $columns['xs'],
-                $interaction 
+                '<div class="qubely_woo_products_wrapper qubely-carousel qubely-carousel-wrapper %1$s" data-options="%2$s">',
+                $interaction,
+                htmlspecialchars(json_encode($data_options), ENT_QUOTES, 'UTF-8')
             );
 
             while ($wp_query->have_posts()) {
@@ -1206,6 +1250,7 @@ class WOOCAROUSEL
                 $rating = $product->get_average_rating();
                 $count   = $product->get_rating_count();
 
+                $woo_product_markup .= '<div class="qubely-carousel-item">';
                 $woo_product_markup .= '<div class="qubely_woo_product_wrapper"><div class="qubely_woo_product">';
                 if ($image_url) {
                     $woo_product_markup .= sprintf(
@@ -1279,16 +1324,12 @@ class WOOCAROUSEL
                         $in_cart
                     );
                 }
-                $woo_product_markup .= '</div></div></div>';
+                $woo_product_markup .= '</div></div></div></div>';
             }
             wp_reset_postdata();
             $woo_product_markup .= "</div>";
         }
-        if ($enablePagination == true) {
-            $woo_product_markup .= "<div class='qubely-woocommerce-pagination'>";
-            $woo_product_markup .= $this->pagination_bar($wp_query->max_num_pages, $this->page);
-            $woo_product_markup .= "</div>";
-        }
+
         $woo_product_markup .= "</div>";
         return $woo_product_markup;
     }

@@ -23,6 +23,7 @@ class QUBELY_PRO
 		require_once QUBELY_PRO_DIR_PATH . 'core/blocks/postgrid.php';
 		require_once QUBELY_PRO_DIR_PATH . 'core/blocks/postcarousel.php';
 		require_once QUBELY_PRO_DIR_PATH . 'core/blocks/wooproducts.php';
+		require_once QUBELY_PRO_DIR_PATH . 'core/blocks/woocarousel.php';
 	
 		/**
 		 * Add Preview CSS

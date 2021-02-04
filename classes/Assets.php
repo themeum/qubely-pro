@@ -40,6 +40,7 @@ class Assets {
                     in_array('qubely/imagecarousel', $available_blocks) ||
                     in_array('qubely/postcarousel', $available_blocks) ||
                     in_array('qubely/teamcarousel', $available_blocks) ||
+                    in_array('qubely/woocarousel', $available_blocks) ||
                     in_array('qubely/testimonialcarousel', $available_blocks)
                 ) {
                     wp_enqueue_script('qubely-carousel', QUBELY_PRO_DIR_URL . 'assets/js/qubely-carousel.js', array('jquery'), QUBELY_PRO_VERSION);

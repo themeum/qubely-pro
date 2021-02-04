@@ -89,7 +89,6 @@ function Edit(props) {
             selectedCatagories,
 
             //layout attributes
-            layout,
             style,
 
             //image
@@ -303,10 +302,6 @@ function Edit(props) {
             ...setCatArgs(),
             ...(productsStatus === 'featured' && { featured: true }),
             ...(productsStatus === 'onSale' && { on_sale: true }),
-            ...(layout !== 3 && {
-                per_page: productsPerPage,
-                page: currentPage,
-            })
         };
         getProducts(args)
             .then((productsData) => {
@@ -492,51 +487,29 @@ function Edit(props) {
                                     { value: 1, svg: icons.postgrid_design_1 },
                                     {
                                         value: 2,
-                                        svg: layout === 1 ? icons.postgrid_design_3 : icons.postgrid_design_2,
+                                        svg: icons.postgrid_design_2,
                                     },
                                     {
                                         value: 3,
-                                        svg: layout === 1 ? icons.postgrid_design_5 : icons.postgrid_design_4,
+                                        svg: icons.postgrid_design_4,
                                     }
                                 ]}
                             />
                             {
-                                (layout === 1 || (layout === 2 && style === 3)) && (
+                                style === 3 && (
                                     <ButtonGroup
                                         label={__("Content Align")}
                                         options={
-                                            layout === 2 ? [
+                                            [
                                                 [__("Left"), "flex-start"],
                                                 [__("Middle"), "center"],
                                                 [__("Right"), "flex-end"],
                                             ]
-                                                : [
-                                                    [__("Top"), "flex-start"],
-                                                    [__("Middle"), "center"],
-                                                    [__("Bottom"), "flex-end"],
-                                                ]
                                         }
-                                        value={layout === 1 ? contentPosition : girdContentPosition}
-                                        onChange={(value) => setAttributes(layout === 1 ? { contentPosition: value } : { girdContentPosition: value })}
+                                        value={girdContentPosition}
+                                        onChange={(value) => setAttributes({ girdContentPosition: value })}
                                     />
                                 )
-                            }
-                            {
-                                (layout === 1 && style !== 3) &&
-                                <Fragment>
-                                    <Padding
-                                        min={0}
-                                        max={300}
-                                        responsive
-                                        value={cardPadding}
-                                        device={device}
-                                        label={__('Card Padding')}
-                                        unit={['px', 'em', '%']}
-                                        onChange={val => setAttributes({ cardPadding: val })}
-                                        onDeviceChange={value => setDevice(value)}
-                                    />
-                                </Fragment>
-
                             }
                             {
                                 style !== 3 &&
@@ -548,8 +521,8 @@ function Edit(props) {
                                         device={device}
                                         label={__('Description Padding')}
                                         unit={['px', 'em', '%']}
-                                        value={layout === 1 ? infoPadding : gridInfoPadding}
-                                        onChange={val => setAttributes(layout === 1 ? { infoPadding: val } : { gridInfoPadding: val })}
+                                        value={gridInfoPadding}
+                                        onChange={val => setAttributes({ gridInfoPadding: val })}
                                         onDeviceChange={value => setDevice(value)}
                                     />
                                 </Fragment>
@@ -593,7 +566,6 @@ function Edit(props) {
                                         value={stackBg}
                                         onChange={(value) => setAttributes({ stackBg: value })}
                                     />
-                                    {/* {layout === 2 && ( */}
                                     <Range
                                         label={__("Stack Size")}
                                         unit={["px", "em", "%"]}
@@ -602,25 +574,10 @@ function Edit(props) {
                                         responsive
                                         device={device}
                                         onDeviceChange={value => setDevice(value)}
-                                        value={layout === 1 ? stackWidth : gridStackWidth}
-                                        onChange={(value) => setAttributes(layout === 1 ? { stackWidth: value } : { gridStackWidth: value })}
+                                        value={gridStackWidth}
+                                        onChange={(value) => setAttributes({ gridStackWidth: value })}
                                     />
-                                    {/* )} */}
-                                    {layout === 1 && (
-                                        <Range
-                                            label={__("Stack Space")}
-                                            value={stackSpace}
-                                            onChange={(value) =>
-                                                setAttributes({ stackSpace: value })
-                                            }
-                                            unit={["px", "em", "%"]}
-                                            min={0}
-                                            max={100}
-                                            responsive
-                                            device={device}
-                                            onDeviceChange={value => setDevice(value)}
-                                        />
-                                    )}
+
                                     <BorderRadius
                                         min={0}
                                         max={100}
