@@ -47,7 +47,7 @@ class WOOPRODUCTS
                                     (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                     (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
                                 ],
-                                'selector' => '{{QUBELY}} .qubely_woo_product .qubely-product-info {z-index: 1;}{{QUBELY}} .qubely-woo_product-image-wrapper + .qubely-product-info {  margin-top: -40px;  }'
+                                'selector' => '{{QUBELY}} .qubely_woo_product .qubely-product-info {z-index: 1;}'
                             ]
                         ]
                     ),
@@ -572,6 +572,23 @@ class WOOPRODUCTS
                             ]
                         ]
                     ),
+                    'stackPosition' => array(
+                        'type' => 'object',
+                        'default' => (object) [
+                            'md' => 40,
+                            'unit' => 'px' 
+                        ],
+
+                        'style' => [
+                            (object) [
+                                'condition' => [
+                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
+                                    (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
+                                ],
+                                'selector' => '{{QUBELY}} .qubely-woo_product-image-wrapper + .qubely-product-info {margin-top: -{{stackPosition}};}'
+                            ]
+                        ]
+                    ),
                     'stackWidth' => array(
                         'type' => 'object',
                         'default' => (object) array(),
@@ -589,7 +606,7 @@ class WOOPRODUCTS
                     'gridStackWidth' => array(
                         'type' => 'object',
                         'default' => (object) array(
-                            'md' => 80,
+                            'md' => 70,
                             'unit' => '%'
                         ),
                         'style' => [
