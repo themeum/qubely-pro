@@ -1089,7 +1089,7 @@ function Edit(props) {
             </InspectorControls>
 
             <div className={`qubely-block-${uniqueId}`}>
-                <div className="qubely_woo_products_wrapper">
+                <div className="qubely_woo_carousel_wrapper">
                     {
                         loading ?
                             <div className="qubely_woo_product_loading">

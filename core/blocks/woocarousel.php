@@ -150,7 +150,7 @@ class WOOCAROUSEL
                         'type'    => 'string',
                         'default' => '#FFB800',
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper .qubely-product-ratings:before {color: {{ratingsColor}};} {{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper .qubely-product-ratings {color: {{ratingsColor}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper .qubely-product-ratings:before {color: {{ratingsColor}};} {{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper .qubely-product-ratings {color: {{ratingsColor}};}'
                         ]]
                     ),
 
@@ -161,7 +161,7 @@ class WOOCAROUSEL
                             'unit' => 'px'
                         ],
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper .qubely-product-ratings{font-size:{{starsSize}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper .qubely-product-ratings{font-size:{{starsSize}};}'
                         ]]
                     ),
                     'ratingsSpacing' => array(
@@ -171,7 +171,7 @@ class WOOCAROUSEL
                             'unit' => 'px'
                         ],
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper{margin-bottom: {{ratingsSpacing}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper{margin-bottom: {{ratingsSpacing}};}'
                         ]]
                     ),
                     'ratingsCountSpacing' => array(
@@ -181,7 +181,7 @@ class WOOCAROUSEL
                             'unit' => 'px'
                         ],
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper .qubely-ratings-count{margin-left: {{ratingsCountSpacing}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-ratings-wrapper .qubely-ratings-count{margin-left: {{ratingsCountSpacing}};}'
                         ]]
                     ),
                     //Colors
@@ -189,14 +189,14 @@ class WOOCAROUSEL
                         'type'    => 'string',
                         'default' => '#0073aa',
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name {color: {{titleColor}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name {color: {{titleColor}};}'
                         ]]
                     ),
                     'discount' => array(
                         'type'    => 'string',
                         'default' => '#546E7A',
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-regular-price s {color: {{discount}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-regular-price s {color: {{discount}};}'
                         ]]
                     ),
 
@@ -204,7 +204,7 @@ class WOOCAROUSEL
                         'type'    => 'string',
                         'default' => '#005177',
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name:hover {color: {{titleHoverColor}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name:hover {color: {{titleHoverColor}};}'
                         ]]
                     ),
                     //spacing
@@ -215,7 +215,7 @@ class WOOCAROUSEL
                             'unit' => 'px'
                         ),
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-price{margin-bottom: {{priceSpacing}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-price{margin-bottom: {{priceSpacing}};}'
                         ]]
                     ),
 
@@ -226,7 +226,7 @@ class WOOCAROUSEL
                             'unit' => 'px'
                         ),
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name{margin-bottom: {{titleSpace}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name{margin-bottom: {{titleSpace}};}'
                         ]]
                     ),
                     //Typograpgy
@@ -239,7 +239,7 @@ class WOOCAROUSEL
                             'size' => (object) ['md' => 22, 'unit' => 'px'],
                         ],
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-product-name'
                         ]]
                     ),
                     'priceTypo' => array(
@@ -251,7 +251,7 @@ class WOOCAROUSEL
                             'size' => (object) ['md' => 20, 'unit' => 'px'],
                         ],
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-regular-price'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-regular-price'
                         ]]
                     ),
                     'discountTypo' => array(
@@ -263,7 +263,7 @@ class WOOCAROUSEL
                             'size' => (object) ['md' => 22, 'unit' => 'px'],
                         ],
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-sale-price'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-sale-price'
                         ]]
                     ),
                     'buttonTypography' => array(
@@ -275,7 +275,7 @@ class WOOCAROUSEL
                             'size' => (object) ['md' => 20, 'unit' => 'px'],
                         ],
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-product-info .qubely-addtocart-wrapper'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-product-info .qubely-addtocart-wrapper'
                         ]]
                     ),
                     //Button
@@ -293,7 +293,7 @@ class WOOCAROUSEL
                         ],
                         'style' => [
                             (object) [
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
                             ]
                         ]
                     ),
@@ -301,28 +301,28 @@ class WOOCAROUSEL
                         'type' => 'string',
                         'default' => '#000',
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper{color:{{buttonColor}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-addtocart-wrapper{color:{{buttonColor}};}'
                         ]]
                     ),
                     'buttonBgColor' => array(
                         'type' => 'object',
                         'default' => (object) array(),
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
                         ]]
                     ),
                     'buttonHoverColor' => array(
                         'type' => 'string',
                         'default' => '#000',
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper:hover{color:{{buttonHoverColor}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-addtocart-wrapper:hover{color:{{buttonHoverColor}};}'
                         ]]
                     ),
                     'buttonHoverBgColor' => array(
                         'type' => 'object',
                         'default' => (object) array(),
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper:hover'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-addtocart-wrapper:hover'
                         ]]
                     ),
                     'buttonBorder' => array(
@@ -336,7 +336,7 @@ class WOOCAROUSEL
                             "widthType" => "global"
                         ],
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
                         ]]
                     ),
                     'buttonBorderRadius' => array(
@@ -348,7 +348,7 @@ class WOOCAROUSEL
                             "unit" => "px",
                         ],
                         'style' => [(object) [
-                            'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
+                            'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product .qubely-addtocart-wrapper'
                         ]]
                     ),
                     'recreateStyles' => array(
@@ -365,7 +365,7 @@ class WOOCAROUSEL
                         ],
                         'style' => [
                             (object) [
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper'
                             ]
                         ]
                     ),
@@ -394,7 +394,7 @@ class WOOCAROUSEL
                                 'condition' => [
                                     (object) ['key' => 'style', 'relation' => '!=', 'value' => 3]
                                 ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper'
                             ]
                         ]
                     ),
@@ -411,7 +411,7 @@ class WOOCAROUSEL
                         'style' => [
                             (object) [
                                 'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 2]],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper'
                             ]
                         ]
                     ),
@@ -426,7 +426,7 @@ class WOOCAROUSEL
                                 'condition' => [
                                     (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                 ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper {grid-gap: {{gridCardSpace}};}'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper {grid-gap: {{gridCardSpace}};}'
                             ]
                         ]
                     ),
@@ -445,7 +445,7 @@ class WOOCAROUSEL
                         'style' => [
                             (object) [
                                 'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 2]],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper'
                             ]
                         ]
                     ),
@@ -465,7 +465,7 @@ class WOOCAROUSEL
                                     (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                     (object) ['key' => 'style', 'relation' => '!=', 'value' => 3]
                                 ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper .qubely-product-info'
                             ]
                         ]
                     ),
@@ -481,7 +481,7 @@ class WOOCAROUSEL
                         'style' => [
                             (object) [
                                 'condition' => [(object) ['key' => 'style', 'relation' => '==', 'value' => 3]],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper .qubely-product-info'
                             ],
                         ]
                     ),
@@ -500,7 +500,7 @@ class WOOCAROUSEL
                                 'condition' => [
                                     (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
                                 ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper .qubely-product-info'
                             ]
                         ]
                     ),
@@ -516,7 +516,7 @@ class WOOCAROUSEL
                                     (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                     (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
                                 ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info {width: {{gridStackWidth}};}'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper .qubely-product-info {width: {{gridStackWidth}};}'
                             ]
                         ]
                     ),
@@ -533,7 +533,7 @@ class WOOCAROUSEL
                                 'condition' => [
                                     (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
                                 ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper .qubely-product-info'
                             ],
                         ]
                     ),
@@ -553,7 +553,7 @@ class WOOCAROUSEL
                                 'condition' => [
                                     (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
                                 ],
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper .qubely-product-info'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper .qubely-product-info'
                             ],
                         ]
                     ),
@@ -574,7 +574,7 @@ class WOOCAROUSEL
                         ],
                         'style' => [
                             (object) [
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper'
                             ]
                         ]
                     ),
@@ -583,7 +583,7 @@ class WOOCAROUSEL
                         'default' => (object) array(),
                         'style' => [
                             (object) [
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper'
                             ]
                         ]
                     ),
@@ -592,7 +592,7 @@ class WOOCAROUSEL
                         'default' => (object) array(),
                         'style' => [
                             (object) [
-                                'selector' => '{{QUBELY}} .qubely_woo_products_wrapper .qubely_woo_product_wrapper'
+                                'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper'
                             ]
                         ]
                     ),
@@ -1232,7 +1232,7 @@ class WOOCAROUSEL
             );
 
             $woo_product_markup .= sprintf(
-                '<div class="qubely_woo_products_wrapper qubely-carousel qubely-carousel-wrapper %1$s" data-options="%2$s">',
+                '<div class="qubely_woo_carousel_wrapper qubely-carousel qubely-carousel-wrapper %1$s" data-options="%2$s">',
                 $interaction,
                 htmlspecialchars(json_encode($data_options), ENT_QUOTES, 'UTF-8')
             );
