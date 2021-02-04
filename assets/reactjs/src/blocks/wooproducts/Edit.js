@@ -127,6 +127,7 @@ function Edit(props) {
             cardBoxShadow,
             //stack
             stackBg,
+            stackPosition,
             stackWidth,
             gridStackWidth,
             stackSpace,
@@ -579,7 +580,20 @@ function Edit(props) {
                                         value={stackBg}
                                         onChange={(value) => setAttributes({ stackBg: value })}
                                     />
-                                    {/* {layout === 2 && ( */}
+                                    {
+                                        layout === 2 &&
+                                        <Range
+                                            label={__("Stack Position")}
+                                            unit={["px", "em", "%"]}
+                                            min={10}
+                                            max={100}
+                                            responsive
+                                            device={device}
+                                            onDeviceChange={value => setDevice(value)}
+                                            value={stackPosition}
+                                            onChange={(value) => setAttributes({ stackPosition: value })}
+                                        />
+                                    }
                                     <Range
                                         label={__("Stack Size")}
                                         unit={["px", "em", "%"]}
@@ -591,7 +605,6 @@ function Edit(props) {
                                         value={layout === 1 ? stackWidth : gridStackWidth}
                                         onChange={(value) => setAttributes(layout === 1 ? { stackWidth: value } : { gridStackWidth: value })}
                                     />
-                                    {/* )} */}
                                     {layout === 1 && (
                                         <Range
                                             label={__("Stack Space")}
