@@ -10,7 +10,7 @@ registerBlockType('qubely/woocarousel', {
     title: __('Woo Carousel'),
     category: 'qubely',
     description: __('Showcase woocommerce products with Qubely Woo Carousel'),
-    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block_woo_product.svg'} alt={__('wooproducts')} />,
+    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-woo-carousel.svg'} alt={__('wooproducts')} />,
     keywords: [
         __('woo'),
         __('woocommerce'),

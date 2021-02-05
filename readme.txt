@@ -2,8 +2,9 @@
 Stable tag: 1.2.8
 == Changelog ==
 
-= 1.2.8 - 22 January, 2021 = 
+= 1.2.8 - 08 February, 2021 = 
 New: Woo Products block  
+New: Woo Carousel block  
 
 = 1.2.7 -  18 December, 2020 = 
 Fix: Form Builder block - Form fields not showing on backend in WordPress 5.6
