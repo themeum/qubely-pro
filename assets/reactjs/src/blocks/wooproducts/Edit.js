@@ -177,6 +177,9 @@ function Edit(props) {
             pagesBorderRadius,
             pagePadding,
             pageMargin,
+
+            animation,
+            interaction
         }
     } = props
 
@@ -1151,11 +1154,12 @@ function Edit(props) {
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={'advance'}>
+                        {animationSettings(uniqueId, animation, setAttributes)}
+                        {interactionSettings(uniqueId, interaction, setAttributes)}
                     </InspectorTab>
                 </InspectorTabs>
-
             </InspectorControls>
-
+            
             <div className={`qubely-block-${uniqueId}`}>
                 <div className={wrappeprClasses}>
                     {

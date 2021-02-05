@@ -100,7 +100,7 @@ function Edit(props) {
 
             //product card
             contentPosition,
-            girdContentPosition,
+            ContentPosition,
             gridInfoPadding,
             cardPadding,
             infoPadding,
@@ -207,7 +207,6 @@ function Edit(props) {
             sliderItemMargin,
             dotalignment,
             textalignment,
-            animation
         }
     } = props
 
@@ -507,8 +506,8 @@ function Edit(props) {
                                                 [__("Right"), "flex-end"],
                                             ]
                                         }
-                                        value={girdContentPosition}
-                                        onChange={(value) => setAttributes({ girdContentPosition: value })}
+                                        value={ContentPosition}
+                                        onChange={(value) => setAttributes({ ContentPosition: value })}
                                     />
                                 )
                             }
@@ -640,7 +639,7 @@ function Edit(props) {
                                 onDeviceChange={(value) => setDevice(value)}
                             />
                         </PanelBody>
-                        <PanelBody title={__('Carousel Settings')} initialOpen={true}>
+                        <PanelBody title={__('Carousel Settings')} initialOpen={false}>
 
                             <Toggle label={__('Show Arrow Navigation')} value={nav} onChange={value => setAttributes({ nav: value })} />
                             <Toggle label={__('Show Dot Navigation')} value={dots} onChange={value => setAttributes({ dots: value })} />
@@ -653,12 +652,11 @@ function Edit(props) {
                                     <Range label={__('Interval (ms)')} value={interval} onChange={value => setAttributes({ interval: parseInt(value) })} min={500} max={5000} />
                                 </Fragment>
                             }
-                            <Toggle
+                            {/* <Toggle
                                 label={__('Centered Slides')}
                                 value={isCentered}
                                 onChange={value => setAttributes({ isCentered: value })}
-                            />
-
+                            /> */}
                             <Range
                                 label={__('Number of Columns')}
                                 min={1} max={20} responsive device={device}
@@ -1085,7 +1083,6 @@ function Edit(props) {
                     <InspectorTab key={'advance'}>
                     </InspectorTab>
                 </InspectorTabs>
-
             </InspectorControls>
 
             <div className={`qubely-block-${uniqueId}`}>

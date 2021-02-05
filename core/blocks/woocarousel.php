@@ -26,11 +26,6 @@ class WOOCAROUSEL
                     'uniqueId' => array(
                         'type' => 'string',
                     ),
-                    //layout
-                    'layout' => array(
-                        'type' => 'number',
-                        'default' => 1
-                    ),
                     'style' => array(
                         'type' => 'number',
                         'default' => 1,
@@ -50,10 +45,6 @@ class WOOCAROUSEL
                     'productsPerPage' => array(
                         'type' => 'number',
                         'default' => 4
-                    ),
-                    'columns' => array(
-                        'type' => 'object',
-                        'default' => array('md' => 2, 'sm' => 2, 'xs' => 1),
                     ),
                     'orderby' => array(
                         'type'    => 'string',
@@ -76,7 +67,7 @@ class WOOCAROUSEL
                     ),
                     'imageSize' => array(
                         'type' => 'string',
-                        'default' => '350px',
+                        'default' => 'custom',
                         'style' => [
                             (object) [
                                 'condition' => [
@@ -89,8 +80,8 @@ class WOOCAROUSEL
                     'imageSizeCustom' => array(
                         'type' => 'object',
                         'default' => (object) [
-                            'md' => 300,
-                            'unit' => 'px'
+                            'md' => 100,
+                            'unit' => '%'
                         ],
                         'style' => [
                             (object) [
@@ -370,15 +361,14 @@ class WOOCAROUSEL
                         ]
                     ),
                     //Product Card
-                    'girdContentPosition' =>  array(
+                    'ContentPosition' =>  array(
                         'type' => 'string',
                         'default' => 'center',
                         'style' => [(object) [
                             'condition' => [
-                                (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                 (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
                             ],
-                            'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {align-items: {{girdContentPosition}};}'
+                            'selector' => '{{QUBELY}} .qubely_woo_product_wrapper .qubely_woo_product {align-items: {{ContentPosition}};}'
                         ]]
                     ),
                     'cardPadding' => array(
@@ -423,9 +413,6 @@ class WOOCAROUSEL
                         ),
                         'style' => [
                             (object) [
-                                'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
-                                ],
                                 'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper {grid-gap: {{gridCardSpace}};}'
                             ]
                         ]
@@ -449,7 +436,7 @@ class WOOCAROUSEL
                             ]
                         ]
                     ),
-                  
+
                     'gridInfoPadding' => array(
                         'type' => 'object',
                         'default' => (object) [
@@ -462,7 +449,6 @@ class WOOCAROUSEL
                         'style' => [
                             (object) [
                                 'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                     (object) ['key' => 'style', 'relation' => '!=', 'value' => 3]
                                 ],
                                 'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper .qubely-product-info'
@@ -513,7 +499,6 @@ class WOOCAROUSEL
                         'style' => [
                             (object) [
                                 'condition' => [
-                                    (object) ['key' => 'layout', 'relation' => '==', 'value' => 2],
                                     (object) ['key' => 'style', 'relation' => '==', 'value' => 3]
                                 ],
                                 'selector' => '{{QUBELY}} .qubely_woo_carousel_wrapper .qubely_woo_product_wrapper .qubely-product-info {width: {{gridStackWidth}};}'
@@ -1013,20 +998,7 @@ class WOOCAROUSEL
         return $count;
     }
 
-    public function pagination_bar($max_pages, $current_page)
-    {
-        if ($max_pages > 1) {
-            $big = 9999999;
-            return paginate_links(array(
-                'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                'format'        => '?paged=%#%',
-                'current' => $current_page,
-                'total' => $max_pages,
-                'prev_text'          => sprintf(__('%1$s Prev', 'qubely-pro'), "<span class='fas fa-angle-left'></span>"),
-                'next_text'          => sprintf(__('Next %1$s', 'qubely-pro'), "<span class='fas fa-angle-right'></span>"),
-            ));
-        }
-    }
+
     /**
      * Render function for Front-end
      */
@@ -1034,22 +1006,15 @@ class WOOCAROUSEL
     {
 
         $uniqueId                 = isset($att['uniqueId']) ? $att['uniqueId'] : '';
-        $layout                 = isset($att['layout']) ? $att['layout'] : 2;
-        $columns                =  $att['columns'];
         $showRatings            =  $att['showRatings'];
         $showRatingsCount       =  $att['showRatingsCount'];
         $style                  = isset($att['style']) ? $att['style'] : 1;
-        $name                   = isset($att['name']) ? $att['name'] : 'product name';
-        $productsPerPage        = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
         $productsStatus         = isset($att['productsStatus']) ? $att['productsStatus'] : 'all';
         $orderBy                = isset($att['orderby']) ? $att['orderby'] : 'date';
         $selectedCatagories     = isset($att['selectedCatagories']) ? $att['selectedCatagories'] : [];
         $animation              = isset($att['animation']) ? (count((array) $att['animation']) > 0 && $att['animation']['animation']  ? 'data-qubelyanimation="' . htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8') . '"' : '') : '';
-        $productsPerPage        = isset($att['productsPerPage']) ? $att['productsPerPage'] : 3;
-        $enablePagination       = isset($att['enablePagination']) ? $att['enablePagination'] : true;
 
         $products = new WP_Query(array('post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => -1));
-        $pages = array_fill(0, ceil($products->found_posts / $productsPerPage), '1');
 
         $cat_ids = array_column($selectedCatagories, 'value');
 
@@ -1073,12 +1038,9 @@ class WOOCAROUSEL
         $query_args = array(
             'order'          => '',
             'orderby'        => '',
-            'paged'          => $this->page,
-            'posts_per_page' => esc_attr($productsPerPage),
             'post_type'      => 'product',
             'post_status'    => 'publish',
-            'tax_query'      => $tax_query,
-            'max_num_pages' => count($pages),
+            'tax_query'      => $tax_query
         );
 
 
@@ -1231,8 +1193,9 @@ class WOOCAROUSEL
                 $uniqueId
             );
 
+            $woo_product_markup .=  '<div class="qubely_woo_carousel_wrapper">';
             $woo_product_markup .= sprintf(
-                '<div class="qubely_woo_carousel_wrapper qubely-carousel qubely-carousel-wrapper %1$s" data-options="%2$s">',
+                '<div class="qubely-carousel qubely-carousel-wrapper %1$s" data-options="%2$s">',
                 $interaction,
                 htmlspecialchars(json_encode($data_options), ENT_QUOTES, 'UTF-8')
             );
@@ -1327,7 +1290,7 @@ class WOOCAROUSEL
                 $woo_product_markup .= '</div></div></div></div>';
             }
             wp_reset_postdata();
-            $woo_product_markup .= "</div>";
+            $woo_product_markup .= "</div></div>";
         }
 
         $woo_product_markup .= "</div>";

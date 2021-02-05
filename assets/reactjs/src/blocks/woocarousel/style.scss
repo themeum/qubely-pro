@@ -1,5 +1,9 @@
 .qubely_woo_carousel_wrapper {
+  .qubely-carousel-extended-outer-stage .qubely-carousel-item{
+    height: auto;
+  }
   .qubely_woo_product_wrapper {
+    height: 100%;
     .qubely_woo_product {
       display: flex;
       flex-direction: column;
