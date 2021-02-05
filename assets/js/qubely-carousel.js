@@ -323,10 +323,10 @@
         applyBasicStyle: function () {
 
             let totalItems = 0,
-            cssPropety = {},
-            margin = this.options.margin,
-            viewPort = null,
-            centerPadding = this.options.centerPadding;
+                cssPropety = {},
+                margin = this.options.margin,
+                viewPort = null,
+                centerPadding = this.options.centerPadding;
 
             if (typeof this.options.responsive !== 'undefined') {
                 viewPort = this.parseResponsiveViewPort();
@@ -646,6 +646,33 @@
         // Bind events that trigger methods
         bindEvents: function () {
             const qubelyCarousel = this;
+            $(".qubely_woo_carousel_wrapper .qubely_adtocart_button").on('click', function (e) {
+                e.preventDefault();
+                let productId = $(this).attr('id');
+                endPoint = qubely_urls.ajax + '?action=qubely_add_to_cart';
+                jQuery.ajax({
+                    url: endPoint,
+                    type: "POST",
+                    data: {
+                        id: productId,
+                        quantity: 1,
+                    },
+                    beforeSend: () => {
+                        $(this).addClass('loading');
+                    },
+                    success: (response) => {
+                        let { quantity } = $(this)[0].dataset;
+                        if (typeof quantity === 'undefined') {
+                            quantity = 0;
+                        }
+                        quantity = parseInt(quantity) + 1;
+                        $(this).attr('data-quantity', quantity);
+                        $(this).removeClass('loading');
+                        $(this).html(`${quantity} in Cart`);;
+                    },
+                    error: (jqxhr, textStatus, error) => console.log(jqxhr, textStatus, error),
+                });
+            });
 
             if (qubelyCarousel.options.nav) {
                 qubelyCarousel.$nextBtn.on('click' + '.' + qubelyCarousel._name, function (e) {

@@ -482,17 +482,6 @@ function Edit(props) {
                                 ]}
                                 onChange={(orderby) => setAttributes({ orderby })}
                             />
-                            {
-                                totalProducts !== 0 &&
-                                <RangeControl
-                                    label={__('Number of Products')}
-                                    value={productsPerPage}
-                                    min='1'
-                                    max={totalProducts}
-                                    onChange={val => setAttributes({ productsPerPage: val })}
-                                />
-
-                            }
                         </PanelBody>
                         <PanelBody title={__('Product Card')} initialOpen={false}>
                             {

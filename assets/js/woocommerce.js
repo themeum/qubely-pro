@@ -20,7 +20,7 @@ jQuery(function ($) {
                     quantity = 0;
                 }
                 quantity = parseInt(quantity) + 1;
-                $(this).data('quantity', quantity);
+                $(this).attr('data-quantity', quantity);
                 $(this).removeClass('loading');
                 $(this).html(`${quantity} in Cart`);;
             },
