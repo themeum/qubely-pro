@@ -1086,7 +1086,7 @@ function Edit(props) {
                                 <Carousel options={carouselSettings}>
                                     {
                                         products.map(({ name, id, permalink, price, images, on_sale, regular_price, sale_price, average_rating, rating_count }) => (
-                                            <div className="qubely-carousel-item">
+                                            <div className="qubely-carousel-item" key={id}>
                                                 <div className="qubely_woo_product_wrapper" key={id}>
                                                     <div className="qubely_woo_product">
                                                         {renderImages(images)}
