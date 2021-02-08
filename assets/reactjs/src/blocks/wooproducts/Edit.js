@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 const { __ } = wp.i18n;
+const { addQueryArgs } = wp.url
 const { withSelect } = wp.data
 const { compose } = wp.compose;
 const { apiFetch } = wp;
@@ -62,7 +63,7 @@ const {
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
-import getProducts from './getProducts'
+import { getAllProducts, getProducts } from './getProducts';
 
 function Edit(props) {
     const [currentPage, updateCurrentPage] = useState(1);
@@ -185,14 +186,15 @@ function Edit(props) {
 
 
     useEffect(() => {
-        const _client = clientId.substr(0, 6)
-        getProducts({})
+        const _client = clientId.substr(0, 6);
+        getAllProducts({})
             .then((productsData) => {
                 updateTotalProducts(productsData.totalProducts);
             })
             .catch(async (e) => {
                 console.log('no products found');
             });
+
         loadProducts();
 
         if (!uniqueId) {
@@ -206,7 +208,13 @@ function Edit(props) {
     useEffect(() => {
         setLoading(true);
         loadProducts();
-    }, [currentPage, productsStatus, orderby, productsPerPage, selectedCatagories]);
+    }, [currentPage]);
+
+    useEffect(() => {
+        updateCurrentPage(1);
+        setLoading(true);
+        loadProducts();
+    }, [ productsStatus, orderby, productsPerPage, selectedCatagories]);
 
     const getCategoris = () => {
         apiFetch({
@@ -268,20 +276,20 @@ function Edit(props) {
     }
 
     const loadProducts = () => {
-        const args = {
-            ...setOderingQueryArgs(),
-            ...setCatArgs(),
-            ...(productsStatus === 'featured' && { featured: true }),
-            ...(productsStatus === 'onsale' && { on_sale: true }),
-            per_page: productsPerPage,
-            page: currentPage,
-        };
-        getProducts(args)
-            .then((productsData) => {
+        // const args = {
+        //     ...setOderingQueryArgs(),
+        //     ...setCatArgs(),
+        //     ...(productsStatus === 'featured' && { featured: true }),
+        //     ...(productsStatus === 'onsale' && { on_sale: true }),
+        //     per_page: productsPerPage,
+        //     page: currentPage,
+        // };
+        getProducts({ ...props.attributes, page: currentPage })
+            .then((products) => {
                 setLoading(false);
                 setError(null);
-                setProducts(productsData.products);
-                updateTotalProducts(productsData.totalProducts);
+                setProducts(products);
+                updateTotalProducts(products[0].all_products);
             })
             .catch(async (e) => {
                 setProducts([])
@@ -290,17 +298,12 @@ function Edit(props) {
             });
     }
 
-    const renderImages = (images) => {
-        const className = classnames("qubely-woo_product-image-wrapper", { ['width-placeholder']: images.length === 0 });
+    const renderImages = (img_url, img_id) => {
+        const className = classnames("qubely-woo_product-image-wrapper", { ['width-placeholder']: img_url });
         return (
             <div className={className}>
                 {
-                    images.length > 0 ?
-                        images.map(({ src, alt }) => {
-                            return (
-                                <img className="qubely-woo_product-image" src={src} alt={alt} />
-                            )
-                        })
+                    img_url ? <img className="qubely-woo_product-image" src={img_url} alt={img_id} />
                         :
                         <div className="qubely-image-placeholder" />
                 }
@@ -1169,10 +1172,10 @@ function Edit(props) {
                             </div>
                             :
                             products && products.length > 0 ?
-                                products.map(({ name, id, permalink, price, images, on_sale, regular_price, sale_price, average_rating, rating_count }) => (
+                                products.map(({ name, id, permalink, price, img_url, img_id, on_sale, regular_price, sale_price, average_rating, rating_count }) => (
                                     <div className="qubely_woo_product_wrapper" key={id}>
                                         <div className="qubely_woo_product">
-                                            {renderImages(images)}
+                                            {renderImages(img_url, img_id)}
                                             <div className="qubely-product-info">
                                                 {
                                                     showRatings &&

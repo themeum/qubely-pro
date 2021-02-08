@@ -1,7 +1,8 @@
 
-const { apiFetch } = wp
+const { apiFetch } = wp;
+const { addQueryArgs } = wp.url;
 
-export default function getProducts(queryArgs) {
+export function getAllProducts(queryArgs) {
     return apiFetch({
         path:
             '/wc/v3/products?' +
@@ -15,4 +16,12 @@ export default function getProducts(queryArgs) {
             return { products, totalProducts };
         });
     });
+};
+export function getProducts({ productsStatus, orderby, page, productsPerPage, selectedCatagories }) {
+    const query = addQueryArgs('/qubely/v1/get_woo_products', { status: productsStatus, orderby, page, per_page: productsPerPage, catagories: selectedCatagories });
+    return apiFetch({ path: query }).
+        then((products) => {
+            return  products ;
+
+        });
 };
