@@ -976,7 +976,7 @@ class WOOCAROUSEL
                         ]]
                     ),
                 ),
-                'render_callback' => [$this, 'render_block_qubely_wooproducts']
+                'render_callback' => [$this, 'render_block_qubely_woocarousel']
             )
         );
     }
@@ -1002,7 +1002,7 @@ class WOOCAROUSEL
     /**
      * Render function for Front-end
      */
-    function render_block_qubely_wooproducts($att)
+    function render_block_qubely_woocarousel($att)
     {
 
         $uniqueId                 = isset($att['uniqueId']) ? $att['uniqueId'] : '';
@@ -1054,23 +1054,29 @@ class WOOCAROUSEL
                 break;
 
             case 'onsale':
-                unset($query_args['meta_key']);
-                $query_args['meta_query'] = array(
-                    'relation' => 'AND',
-                    array(
-                        'key'           => '_sale_price',
-                        'value'         => 0,
-                        'compare'       => '>',
-                        'type'          => 'numeric'
-                    ),
-                    array(
-                        'key'           => '_regular_price',
-                        'value'         => 0,
-                        'compare'       => '>',
-                        'type'          => 'numeric'
-                    )
-                );
+                if (isset($query_args['post__in'])) {
+                    $query_args['post__in'] = array_merge($query_args['post__in'], wc_get_product_ids_on_sale());
+                } else {
+                    $query_args['post__in'] = wc_get_product_ids_on_sale();
+                }
                 break;
+                // unset($query_args['meta_key']);
+                // $query_args['meta_query'] = array(
+                //     'relation' => 'AND',
+                //     array(
+                //         'key'           => '_sale_price',
+                //         'value'         => 0,
+                //         'compare'       => '>',
+                //         'type'          => 'numeric'
+                //     ),
+                //     array(
+                //         'key'           => '_regular_price',
+                //         'value'         => 0,
+                //         'compare'       => '>',
+                //         'type'          => 'numeric'
+                //     )
+                // );
+                // break;
 
             default:
                 break;
