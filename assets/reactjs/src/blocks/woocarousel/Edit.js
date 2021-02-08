@@ -293,13 +293,12 @@ function Edit(props) {
         }
         return (categoryArgs);
     }
-
     const loadProducts = () => {
         const args = {
             ...setOderingQueryArgs(),
             ...setCatArgs(),
             ...(productsStatus === 'featured' && { featured: true }),
-            ...(productsStatus === 'onSale' && { on_sale: true }),
+            ...(productsStatus === 'onsale' && { on_sale: true }),
         };
         getProducts(args)
             .then((productsData) => {
@@ -648,7 +647,9 @@ function Edit(props) {
                             /> */}
                             <Range
                                 label={__('Number of Columns')}
-                                min={1} max={20} responsive device={device}
+                                min={1}
+                                max={20}
+                                responsive
                                 device={device}
                                 value={postitems}
                                 onChange={value => setAttributes({ postitems: value })}
@@ -1082,7 +1083,7 @@ function Edit(props) {
                                 <Spinner />
                             </div>
                             :
-                            products ?
+                            products && products.length > 1 ?
                                 <Carousel options={carouselSettings}>
                                     {
                                         products.map(({ name, id, permalink, price, images, on_sale, regular_price, sale_price, average_rating, rating_count }) => (
@@ -1125,15 +1126,22 @@ function Edit(props) {
                                     }
                                 </Carousel>
                                 :
-                                <div className="qubely-woo_product-not-found">
-                                    {__('No products found')}
-                                    <Placeholder
-                                        icon="admin-post"
-                                        label={__('No products found')}
-                                    >
-                                        <Spinner />
-                                    </Placeholder>
-                                </div>
+                                products && products.length === 1 ?
+                                    <div className="qubely-woo_product-not-found">
+                                        <Placeholder
+                                            icon="admin-post"
+                                            label={__('Insufficient Products for Carousel')}
+                                       />
+                                    </div>
+                                    :
+                                    <div className="qubely-woo_product-not-found">
+                                        <Placeholder
+                                            icon="admin-post"
+                                            label={__('No products found')}
+                                        >
+                                            <Spinner />
+                                        </Placeholder>
+                                    </div>
                     }
                 </div>
             </div>

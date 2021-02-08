@@ -272,7 +272,7 @@ function Edit(props) {
             ...setOderingQueryArgs(),
             ...setCatArgs(),
             ...(productsStatus === 'featured' && { featured: true }),
-            ...(productsStatus === 'onSale' && { on_sale: true }),
+            ...(productsStatus === 'onsale' && { on_sale: true }),
             per_page: productsPerPage,
             page: currentPage,
         };
@@ -1159,7 +1159,7 @@ function Edit(props) {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            
+
             <div className={`qubely-block-${uniqueId}`}>
                 <div className={wrappeprClasses}>
                     {
@@ -1168,44 +1168,50 @@ function Edit(props) {
                                 <Spinner />
                             </div>
                             :
-                            products ? products.map(({ name, id, permalink, price, images, on_sale, regular_price, sale_price, average_rating, rating_count }) => (
-                                <div className="qubely_woo_product_wrapper" key={id}>
-                                    <div className="qubely_woo_product">
-                                        {renderImages(images)}
-                                        <div className="qubely-product-info">
-                                            {
-                                                showRatings &&
-                                                <div className="qubely-product-ratings-wrapper">
-                                                    <div className="qubely-product-ratings" style={{ '--qubely-product-rating': `${average_rating * 20}%` }} />
-                                                    {(showRatingsCount && rating_count !== 0) && <span className="qubely-ratings-count">{__(`(${rating_count})`)}</span>}
-                                                </div>
-                                            }
-                                            <a className="qubely-product-name" href={permalink}>{name}</a>
-                                            {
-                                                on_sale ?
-                                                    <div className="qubely-product-price">
-                                                        <div className="qubely-regular-price"><s>${regular_price}</s></div>
-                                                        <div className="qubely-sale-price">${sale_price}</div>
+                            products && products.length > 0 ?
+                                products.map(({ name, id, permalink, price, images, on_sale, regular_price, sale_price, average_rating, rating_count }) => (
+                                    <div className="qubely_woo_product_wrapper" key={id}>
+                                        <div className="qubely_woo_product">
+                                            {renderImages(images)}
+                                            <div className="qubely-product-info">
+                                                {
+                                                    showRatings &&
+                                                    <div className="qubely-product-ratings-wrapper">
+                                                        <div className="qubely-product-ratings" style={{ '--qubely-product-rating': `${average_rating * 20}%` }} />
+                                                        {(showRatingsCount && rating_count !== 0) && <span className="qubely-ratings-count">{__(`(${rating_count})`)}</span>}
                                                     </div>
-                                                    :
-                                                    <div className="qubely-product-price">${price}</div>
-                                            }
-                                            <div className="qubely-addtocart-wrapper">
-                                                <RichText
-                                                    keepPlaceholderOnFocus
-                                                    value={addToCartButtonText}
-                                                    placeholder={__('Add Text...')}
-                                                    className="qubely_adtocart_button"
-                                                    onChange={value => setAttributes({ addToCartButtonText: value })}
-                                                />
+                                                }
+                                                <a className="qubely-product-name" href={permalink}>{name}</a>
+                                                {
+                                                    on_sale ?
+                                                        <div className="qubely-product-price">
+                                                            <div className="qubely-regular-price"><s>${regular_price}</s></div>
+                                                            <div className="qubely-sale-price">${sale_price}</div>
+                                                        </div>
+                                                        :
+                                                        <div className="qubely-product-price">${price}</div>
+                                                }
+                                                <div className="qubely-addtocart-wrapper">
+                                                    <RichText
+                                                        keepPlaceholderOnFocus
+                                                        value={addToCartButtonText}
+                                                        placeholder={__('Add Text...')}
+                                                        className="qubely_adtocart_button"
+                                                        onChange={value => setAttributes({ addToCartButtonText: value })}
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))
+                                ))
                                 :
                                 <div className="qubely-woo_product-not-found">
-                                    {__('No products found')}
+                                    <Placeholder
+                                        icon="admin-post"
+                                        label={__('No products found')}
+                                    >
+                                        <Spinner />
+                                    </Placeholder>
                                 </div>
                     }
                 </div>
