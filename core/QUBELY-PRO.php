@@ -168,6 +168,10 @@ class QUBELY_PRO
 					$query_args['orderby'] = 'title menu_order';
 					$query_args['order']   = 'asc';
 					break;
+				case 'rating':
+					$query_args['orderby'] = 'meta_value_num';
+                    $query_args['meta_key'] = '_wc_average_rating';
+						break;
 				default:
 					$query_args['orderby'] = $att['orderby'];
 			}
