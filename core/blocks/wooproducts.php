@@ -1136,16 +1136,15 @@ class WOOPRODUCTS
 
             switch ($orderBy) {
                 case 'price':
-                    $query_args['orderby'] = 'meta_value_num';
-                    $query_args['meta_key'] = '_price';
-
-                    // $query_args['orderby'] = 'price';
+                    // $query_args['orderby'] = 'meta_value_num';
+                    // $query_args['meta_key'] = '_price';
+                    $query_args['orderby'] = 'price';
                     $query_args['order']   = 'asc';
                     break;
                 case 'price_desc':
-                    $query_args['orderby'] = 'meta_value_num';
-                    $query_args['meta_key'] = '_price';
-                    // $query_args['orderby'] = 'price';
+                    // $query_args['orderby'] = 'meta_value_num';
+                    // $query_args['meta_key'] = '_price';
+                    $query_args['orderby'] = 'price';
                     $query_args['order']   = 'desc';
                     break;
                 case 'title':
