@@ -326,7 +326,7 @@ function Edit(props) {
 
     
     const renderImages = (img_url, img_id) => {
-        const className = classnames("qubely-woo_product-image-wrapper", { ['width-placeholder']: img_url });
+        const className = classnames("qubely-woo_product-image-wrapper", { ['width-placeholder']: !img_url });
         return (
             <div className={className}>
                 {
