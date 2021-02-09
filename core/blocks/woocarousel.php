@@ -67,7 +67,7 @@ class WOOCAROUSEL
                     ),
                     'imageSize' => array(
                         'type' => 'string',
-                        'default' => 'custom',
+                        'default' => '350px',
                         'style' => [
                             (object) [
                                 'condition' => [
