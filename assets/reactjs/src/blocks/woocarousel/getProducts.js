@@ -18,10 +18,10 @@ export function getAllProducts(queryArgs) {
     });
 };
 export function getProducts({ productsStatus, orderby, page, productsPerPage, selectedCatagories }) {
-    const query = addQueryArgs('/qubely/v1/get_woo_products', { status: productsStatus, orderby, page, per_page: productsPerPage, catagories: selectedCatagories });
+    const query = addQueryArgs('/qubely/v1/get_woo_products', { status: productsStatus, orderby, page: -1, per_page: -1, catagories: selectedCatagories });
     return apiFetch({ path: query }).
         then((products) => {
-            return  products ;
+            return products;
 
         });
 };

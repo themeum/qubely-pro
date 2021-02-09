@@ -190,9 +190,17 @@ class QUBELY_PRO
 				$temp['id'] =  $post_id;
 				$temp['name'] =  get_the_title();
 				$temp['on_sale'] =  $product->is_on_sale();
-				$temp['product_id']  = $product->get_id();;
-				$temp['regular_price'] =  $product->get_regular_price();
-				$temp['sale_price'] = 	$product->get_sale_price();
+				$temp['product_id']  = $product->get_id();
+
+				if ($product->is_type( 'simple' )) {
+					$temp['regular_price'] =  $product->get_regular_price();
+					$temp['sale_price'] = 	$product->get_sale_price();
+				}
+				elseif($product->is_type('variable')){
+					$temp['sale_price'] =  $product->get_variation_sale_price( 'min', true );
+					$temp['regular_price'] =  $product->get_variation_regular_price( 'max', true );
+				}
+
 				$temp['price'] = 	$product->get_price();
 				$image_id  = $product->get_image_id();
 				$temp['img_id']  = 	$image_id;

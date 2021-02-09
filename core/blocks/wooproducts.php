@@ -1229,6 +1229,13 @@ class WOOPRODUCTS
                 $in_cart = $this->matched_cart_items($product_id);
                 $rating = $product->get_average_rating();
                 $count   = $product->get_rating_count();
+                $regular_price =  $product->get_regular_price();
+                $sale_price = 	$product->get_sale_price();
+               
+                if($product->is_type('variable')){
+					$sale_price =  $product->get_variation_sale_price( 'min', true );
+					$regular_price=  $product->get_variation_regular_price( 'max', true );
+				}
 
                 $woo_product_markup .= '<div class="qubely_woo_product_wrapper"><div class="qubely_woo_product">';
                 if ($image_url) {
@@ -1276,8 +1283,8 @@ class WOOPRODUCTS
                         </div>
                         <div class="qubely-sale-price">$%2$s</div>
                     </div>',
-                        $product->get_regular_price(),
-                        $product->get_sale_price()
+                        $regular_price,
+                        $sale_price
                     );
                 } else {
                     $woo_product_markup .= sprintf(

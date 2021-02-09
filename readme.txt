@@ -2,7 +2,7 @@
 Stable tag: 1.2.8
 == Changelog ==
 
-= 1.2.8 - 08 February, 2021 = 
+= 1.2.8 - 09 February, 2021 = 
 New: Woo Products block  
 New: Woo Carousel block  
 
