@@ -62,7 +62,7 @@ class QUBELY_PRO
 					'methods'             => 'GET',
 					'callback'            => array($this, 'get_woo_products'),
 					'permission_callback' => '__return_true',
-					'args' => array('orderby' => [], 'per_page' => [],  'catagories' => [], 'status' => []),
+					'args' => array('orderby' => [], 'page'=>[], 'per_page' => [],  'catagories' => [], 'status' => []),
 				),
 			)
 		);
@@ -172,9 +172,11 @@ class QUBELY_PRO
 					$query_args['orderby'] = $att['orderby'];
 			}
 		}
-
+		/**
+		 * All products
+		 */
 		$all_products = new WP_Query($query_args);
-		
+
 		$query_args['paged'] = $params['page'];
 		$query = new WP_Query($query_args);
 		$woo_products = [];

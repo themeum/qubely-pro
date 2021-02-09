@@ -1054,29 +1054,23 @@ class WOOCAROUSEL
                 break;
 
             case 'onsale':
-                if (isset($query_args['post__in'])) {
-                    $query_args['post__in'] = array_merge($query_args['post__in'], wc_get_product_ids_on_sale());
-                } else {
-                    $query_args['post__in'] = wc_get_product_ids_on_sale();
-                }
+                unset($query_args['meta_key']);
+                $query_args['meta_query'] = array(
+                    'relation' => 'AND',
+                    array(
+                        'key'           => '_sale_price',
+                        'value'         => 0,
+                        'compare'       => '>',
+                        'type'          => 'numeric'
+                    ),
+                    array(
+                        'key'           => '_regular_price',
+                        'value'         => 0,
+                        'compare'       => '>',
+                        'type'          => 'numeric'
+                    )
+                );
                 break;
-                // unset($query_args['meta_key']);
-                // $query_args['meta_query'] = array(
-                //     'relation' => 'AND',
-                //     array(
-                //         'key'           => '_sale_price',
-                //         'value'         => 0,
-                //         'compare'       => '>',
-                //         'type'          => 'numeric'
-                //     ),
-                //     array(
-                //         'key'           => '_regular_price',
-                //         'value'         => 0,
-                //         'compare'       => '>',
-                //         'type'          => 'numeric'
-                //     )
-                // );
-                // break;
 
             default:
                 break;
@@ -1087,16 +1081,13 @@ class WOOCAROUSEL
 
             switch ($orderBy) {
                 case 'price':
-                    // $query_args['orderby'] = 'meta_value_num';
-                    // $query_args['meta_key'] = '_price';
-
-                    $query_args['orderby'] = 'price';
+                    $query_args['orderby'] = 'meta_value_num';
+                    $query_args['meta_key'] = '_price';
                     $query_args['order']   = 'asc';
                     break;
                 case 'price_desc':
-                    // $query_args['orderby'] = 'meta_value_num';
-                    // $query_args['meta_key'] = '_price';
-                    $query_args['orderby'] = 'price';
+                    $query_args['orderby'] = 'meta_value_num';
+                    $query_args['meta_key'] = '_price';
                     $query_args['order']   = 'desc';
                     break;
                 case 'title':
