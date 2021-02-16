@@ -29,9 +29,9 @@ class Assets {
                 wp_enqueue_style('qubely-pro-style-min', QUBELY_PRO_DIR_URL . 'assets/css/style.min.css', false, QUBELY_PRO_VERSION);
 
                 if (in_array('qubely/form', $available_blocks)) {
-                    wp_enqueue_script('form-script', QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
-                    wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
-                    wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+                    wp_enqueue_script('qubely-jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
+                    wp_register_style('qubely-jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+                    wp_enqueue_script('qubely-form-script', QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'qubely-jquery-ui'), QUBELY_PRO_VERSION);
                 }
                 if ( in_array('qubely/wooproducts', $available_blocks) ) {
                     wp_enqueue_script('qubely_woo_script', QUBELY_PRO_DIR_URL . 'assets/js/woocommerce.js', array('jquery'), QUBELY_PRO_VERSION);
@@ -67,9 +67,9 @@ class Assets {
             }
         }
         if (false !== strpos($post, '<!-- wp:' . 'qubely/form' . ' ')) {
-            wp_enqueue_script('form-script', QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
-            wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
-            wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+            wp_enqueue_script('qubely-jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
+            wp_register_style('qubely-jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+            wp_enqueue_script('qubely-form-script', QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'qubely-jquery-ui'), QUBELY_PRO_VERSION);
         }
         if (false !== strpos($post, '<!-- wp:' . 'qubely/wooproducts' . ' ')||false !== strpos($post, '<!-- wp:' . 'qubely/woocarousel' . ' ')) {
             wp_enqueue_script('qubely_woo_script', QUBELY_PRO_DIR_URL . 'assets/js/woocommerce.js', array('jquery'), QUBELY_PRO_VERSION);
@@ -84,10 +84,10 @@ class Assets {
 
     public function admin_scripts(){
         wp_enqueue_style('plugin-license-handler', QUBELY_PRO_DIR_URL . 'assets/css/license.css');
-        wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
-        wp_enqueue_script('qubely-form',  QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
-        wp_enqueue_script('qubely-woocommerce',  QUBELY_PRO_DIR_URL . 'assets/js/woocommerce.js', array('jquery', 'jquery-ui'), QUBELY_PRO_VERSION);
-        wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+        wp_enqueue_script('qubely-jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
+        wp_enqueue_script('qubely-form-script',  QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'qubely-jquery-ui'), QUBELY_PRO_VERSION);
+        wp_enqueue_script('qubely-woocommerce',  QUBELY_PRO_DIR_URL . 'assets/js/woocommerce.js', array('jquery'), QUBELY_PRO_VERSION);
+        wp_register_style('qubely-jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
     }
 
     public function qubely_editor_assets(){
