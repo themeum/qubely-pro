@@ -2,8 +2,9 @@
 Stable tag: 1.2.8
 == Changelog ==
 
-= 1.2.9 - 18 February, 2021 = 
+= 1.2.9 - 22 February, 2021 = 
 Fix: Form Builder block - missing jQuery UI dependency on preview  
+Fix: Testimonial Carousel block - Nav arrow default positioning for small devices   
  
 
 = 1.2.8 - 09 February, 2021 = 

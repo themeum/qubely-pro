@@ -97,7 +97,7 @@ const attributes = {
     arrowStyle: { type: 'string', default: 'arrowright2' },
     horizontalScroll: {
         type: 'object',
-        default: { md: -70, unit: 'px' },
+        default: { md: -70, xs: -7, unit: 'px' },
         style: [
             { selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.next-control { right: {{horizontalScroll}} } {{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control.prev-control { left: {{horizontalScroll}} }  ' }
         ]
