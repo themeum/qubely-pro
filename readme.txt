@@ -1,5 +1,5 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.8
+Stable tag: 1.2.9
 == Changelog ==
 
 = 1.2.9 - 22 February, 2021 = 
