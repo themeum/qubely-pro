@@ -2,6 +2,9 @@
 Stable tag: 1.2.9
 == Changelog ==
 
+= 1.3.0 - 08 April, 2021 = 
+Fix: Post Carousel block - Wrong post date displaying in Chinese language
+
 = 1.2.9 - 22 February, 2021 = 
 Fix: Form Builder block - missing jQuery UI dependency on preview  
 Fix: Testimonial Carousel block - Nav arrow default positioning for small devices  
