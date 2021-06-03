@@ -1,4 +1,4 @@
-const {CSSProperties} = wp.element
+const { CSSProperties } = wp.element
 
 const defaultProps = {
     isSaveMode: false,
@@ -46,8 +46,9 @@ const defaultProps = {
 
 
 const Progress = (props) => {
-    props = {...defaultProps, ...props}
-    const { emptyFill, fill, uniqueId, corner, layout, circleShadow, progressShadow, isSaveMode} = props
+    console.log('props : ', props);
+    props = { ...defaultProps, ...props }
+    const { emptyFill, fill, uniqueId, corner, layout, circleShadow, progressShadow, isSaveMode } = props
     const size = parseInt(props.size)
     const circleShrink = parseInt(props.circleShrink)
     const thickness = parseInt(props.thickness)
@@ -65,24 +66,24 @@ const Progress = (props) => {
     let circleRadiusBg = (size - thicknessBg) * .5
     let circleRadiusFg = (size - thickness) * .5
 
-    if(thickness > thicknessBg) {
+    if (thickness > thicknessBg) {
         circleRadiusBg -= (thickness - thicknessBg) * .5
     }
 
-    if(thicknessBg > thickness) {
+    if (thicknessBg > thickness) {
         circleRadiusFg -= (thicknessBg - thickness) * .5
     }
 
     const circumference = 2 * Math.PI * circleRadiusFg
     const offset = circumference * percent / 100
-    const radialPercent = (size /2 * thickness / 100) * .5
+    const radialPercent = (size / 2 * thickness / 100) * .5
 
     return (
         <div className="qubely-pie-progress" style={progressStyle} role="progressbar">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox={`${size / 2} ${size / 2} ${size} ${size}`}
-                style={{transform: 'rotate(-90deg)', overflow: 'visible'}}>
+                style={{ transform: 'rotate(-90deg)', overflow: 'visible' }}>
 
                 {/*progress shadow*/}
 
@@ -96,10 +97,10 @@ const Progress = (props) => {
                             <filter id={`progress-shadow-${uniqueId}`} width="500%" height="500%" x="-250%" y="-250%">
                                 <feOffset dx={progressShadow.vertical * -1} dy={progressShadow.horizontal} />
                                 <feGaussianBlur stdDeviation={progressShadow.blur} />
-                                <feComposite operator="out" in="SourceGraphic" result="inverse"/>
-                                <feFlood flood-color={progressShadow.color} flood-opacity="1" result="color"/>
-                                <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
-                                <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+                                <feComposite operator="out" in="SourceGraphic" result="inverse" />
+                                <feFlood flood-color={progressShadow.color} flood-opacity="1" result="color" />
+                                <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+                                <feComposite operator="over" in="shadow" in2="SourceGraphic" />
                             </filter>
                         )
                     )
@@ -118,10 +119,10 @@ const Progress = (props) => {
                             <filter id={`circle-shadow-${uniqueId}`} width="500%" height="500%" x="-250%" y="-250%">
                                 <feOffset dx={circleShadow.vertical * -1} dy={circleShadow.horizontal} />
                                 <feGaussianBlur stdDeviation={circleShadow.blur} />
-                                <feComposite operator="out" in="SourceGraphic" result="inverse"/>
-                                <feFlood flood-color={circleShadow.color} flood-opacity="1" result="color"/>
-                                <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
-                                <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+                                <feComposite operator="out" in="SourceGraphic" result="inverse" />
+                                <feFlood flood-color={circleShadow.color} flood-opacity="1" result="color" />
+                                <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+                                <feComposite operator="over" in="shadow" in2="SourceGraphic" />
                             </filter>
                         )
                     )
@@ -144,7 +145,7 @@ const Progress = (props) => {
 
                 {/* Circle / Background */}
                 <circle
-                    {...(circleShadow.openShadow === true && {filter: `url(#circle-shadow-${uniqueId})`})}
+                    {...(circleShadow.openShadow === true && { filter: `url(#circle-shadow-${uniqueId})` })}
                     cx={size}
                     cy={size}
                     r={circleRadiusBg - circleShrink}
@@ -156,7 +157,7 @@ const Progress = (props) => {
                 {/* Progress / Forground */}
                 <circle
                     className='qubely-pie-circle-fg'
-                    {...(progressShadow.openShadow === true && {filter: `url(#progress-shadow-${uniqueId})`})}
+                    {...(progressShadow.openShadow === true && { filter: `url(#progress-shadow-${uniqueId})` })}
                     cx={size}
                     cy={size}
                     r={circleRadiusFg}
