@@ -44,7 +44,7 @@ class Updater {
 
 			$key  = sanitize_text_field($_POST['wp_qubely_license_key']);
 			$unique_id = $_SERVER['REMOTE_ADDR'];
-            $blog = esc_url( get_option( 'home' ) );
+            $blog = esc_url( get_home_url() );
 
 			$api_call = wp_remote_post( $this->api_end_point.'validator',
 				array(
