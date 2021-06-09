@@ -1431,7 +1431,6 @@ function render_block_qubely_postcarousel_pro($att)
 			$query->the_post();
 			$id = get_post_thumbnail_id();
 			$src = wp_get_attachment_image_src($id, $imgSize);
-			$image = '<img class="qubely-post-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/>';
 			$title = '<h3 class="qubely-postcarousel-title"><a href="' . esc_url(get_the_permalink()) . '">' . get_the_title() . '</a></h3>';
 			$category = '<span class="qubely-postcarousel-category">' . ('post' === $postType ? get_the_category_list(' ') : get_the_term_list(get_the_ID(), $taxonomyType, ' ')) . '</span>';
 			$meta = ($showAuthor == 1) ? '<span><i class="fas fa-user"></i> ' . __('By ', 'qubely') . get_the_author_posts_link() . '</span>' : '';
@@ -1444,7 +1443,9 @@ function render_block_qubely_postcarousel_pro($att)
 				$html .= '<div class="qubely-carousel-item">';
 				$html .= '<div class="qubely-post-grid-view qubely-postgrid-style-' . esc_attr($style) . '">';
 				$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-center">';
-				if (($showImages == 1) && has_post_thumbnail()) {
+				
+				if (($showImages == 1) && has_post_thumbnail() && $src !=false) {
+					$image = '<img class="qubely-post-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/>';
 					if ($showCategory == 'badge' && $style == 4) {
 						$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
 						$html .= $category;
