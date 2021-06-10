@@ -1,9 +1,10 @@
 ===  Qubely Pro ===
-Stable tag: 1.2.9
+Stable tag: 1.3.0
 == Changelog ==
 
-= 1.3.0 - 08 April, 2021 = 
+= 1.3.0 - 10 June, 2021 = 
 Fix: Post Carousel block - Wrong post date displaying in Chinese language
+Fix: Post Carousel block - Post image thumbnil issue in PHP 7.4 
 
 = 1.2.9 - 22 February, 2021 = 
 Fix: Form Builder block - missing jQuery UI dependency on preview  
