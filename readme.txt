@@ -2,6 +2,10 @@
 Stable tag: 1.3.0
 == Changelog ==
 
+= 1.3.1 - next release = 
+Fix: Vertical Tabs block - Inline formatters not working in Tab title, Sub title & label text     
+
+
 = 1.3.0 - 10 June, 2021 = 
 Fix: Post Carousel block - Wrong post date displaying in Chinese language
 Fix: Post Carousel block - Post image thumbnail issue in PHP 7.4 

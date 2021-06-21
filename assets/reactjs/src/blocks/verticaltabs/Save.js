@@ -1,5 +1,5 @@
 const { Component } = wp.element
-const { InnerBlocks } = wp.blockEditor
+const { InnerBlocks, RichText } = wp.blockEditor
 const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
 
 class Save extends Component {
@@ -20,7 +20,7 @@ class Save extends Component {
                                 srcSet={title.image2x !== undefined && title.image2x.url ? title.image.url + ' 1x, ' + title.image2x.url + ' 2x' : ''}
                             />
                         ) : (
-                            <span className="far fa-image"/>
+                            <span className="far fa-image" />
                         )
                     }
                 </div>
@@ -36,24 +36,35 @@ class Save extends Component {
                         <div className={`qubely-vertical-tab-item-content ${navTextAlignment === 'right' ? 'qubely-text-right' : ''}`}>
                             <h5 className='qubely-vertical-tab-title'>
                                 {
-                                    ( navLayout === 1 && iconPosition === 'left') && <Icon />
+                                    (navLayout === 1 && iconPosition === 'left') && <Icon />
                                 }
-                                <div>{title.title}</div>
+
+                                <RichText.Content
+                                    tagName="div"
+                                    value={title.title}
+                                />
                                 {
-                                    ( navLayout === 1 && iconPosition === 'right') &&  <Icon />
+                                    (navLayout === 1 && iconPosition === 'right') && <Icon />
                                 }
                             </h5>
                             {navSubHeading && (
-                                <h6 className="qubely-vertical-tab-nav-sub-heading">
-                                    {title.navSubHeading}
-                                </h6>
+                                <RichText.Content
+                                    tagName="h6"
+                                    className="qubely-vertical-tab-nav-sub-heading"
+                                    value={title.navSubHeading}
+                                />
                             )}
                             {navText && (
-                                <p className="qubely-vertical-tab-nav-text" style={{display: index !== 0 ? 'none': ''}}>{title.navText}</p>
+                                <RichText.Content
+                                    tagName="p"
+                                    className="qubely-vertical-tab-nav-text"
+                                    value={title.navText}
+                                    style={index !== 0 ? { display: 'none' } : {}}
+                                />
                             )}
                         </div>
                         {
-                            (navLayout === 2 && iconPosition === 'right') &&  <Icon />
+                            (navLayout === 2 && iconPosition === 'right') && <Icon />
                         }
                     </div>
                 </div>
@@ -76,7 +87,7 @@ class Save extends Component {
                         {this.renderTabTitles(iterator)}
                     </div>
                     <div className={`qubely-vertical-tab-body`}>
-                        <InnerBlocks.Content/>
+                        <InnerBlocks.Content />
                     </div>
                 </div>
             </div>
