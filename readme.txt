@@ -1,8 +1,8 @@
 ===  Qubely Pro ===
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 == Changelog ==
 
-= 1.3.1 - next release = 
+= 1.3.1 - 22 June, 2021 = 
 Fix: Vertical Tabs block - Inline formatters not working in Tab title, Sub title & label text     
 
 
