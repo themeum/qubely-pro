@@ -2,9 +2,9 @@
 Stable tag: 1.3.1
 == Changelog ==
 
-= 1.3.1 - 22 June, 2021 = 
+= 1.3.1 - 23 June, 2021 = 
 Fix: Vertical Tabs block - Inline formatters not working in Tab title, Sub title & label text     
-
+Fix: Post Grid block - Post image thumbnail issue 
 
 = 1.3.0 - 10 June, 2021 = 
 Fix: Post Carousel block - Wrong post date displaying in Chinese language
