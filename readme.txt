@@ -1,6 +1,9 @@
 ===  Qubely Pro ===
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 == Changelog ==
+
+= 1.3.2 - 16  July, 2021 = 
+Update: Added WordPress 5.8 Compatibility    
 
 = 1.3.1 - 23 June, 2021 = 
 Fix: Vertical Tabs block - Inline formatters not working in Tab title, Sub title & label text     
