@@ -4,6 +4,7 @@
 - Navigate to reactjs folder `cd  assets/reactjs`
 -  `npm install`
 -  `npm start`
+-  `gulp watch` (for CSS hotloading)
 
 ##  To Build
 ### Javascript
