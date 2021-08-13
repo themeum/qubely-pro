@@ -1491,7 +1491,8 @@ function render_block_qubely_postcarousel_pro($att)
 				$html .= '<div class="qubely-carousel-item">';
 				$html .= '<div class="qubely-post-grid-view qubely-postgrid-style-' . esc_attr($style) . '">';
 				$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-' . esc_attr(($style === 3) ? $contentPosition : $girdContentPosition)  . '">';
-				if (($showImages == 1) && has_post_thumbnail()) {
+				if (($showImages == 1) && has_post_thumbnail() && $src != false) {
+					$image = '<img class="qubely-post-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/>';
 					if ($showCategory == 'badge'  && $style == 4) {
 						$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';
 						$html .= $category;
