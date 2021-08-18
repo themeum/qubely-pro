@@ -125,7 +125,7 @@ const attributes = {
         ]
     },
     sizeWidth: {
-        type: 'string',
+        type: 'object',
         default: { md: 20, unit: 'px' },
         style: [
             { selector: '{{QUBELY}} .qubely-carousel.qubely-carousel-wrapper .qubely-carousel-nav-control .nav-control .fas { width: {{sizeWidth}}; height: {{sizeWidth}}; line-height: {{sizeWidth}}; }' }
