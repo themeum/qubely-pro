@@ -868,6 +868,11 @@
                 }
             }
             event.preventDefault()
+            
+            // Resetting isDragging  
+            $(window).on('mouseup', () => {
+                qubelyCarousel.isDragging = false;
+            });
         },
 
         /**
