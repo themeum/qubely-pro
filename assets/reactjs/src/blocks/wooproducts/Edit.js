@@ -792,7 +792,7 @@ function Edit(props) {
                             />
                             <Separator />
                             <Typography
-                                label={__("Price")}
+                                label={__("Price Typography")}
                                 value={priceTypo}
                                 device={device}
                                 onChange={(value) => setAttributes({ priceTypo: value })}
@@ -800,7 +800,7 @@ function Edit(props) {
                             />
                             <Separator />
                             <Typography
-                                label={__("Discount")}
+                                label={__("Discount Typography")}
                                 value={discountTypo}
                                 device={device}
                                 onChange={(value) => setAttributes({ discountTypo: value })}
@@ -1192,7 +1192,7 @@ function Edit(props) {
                                                             <div className="qubely-sale-price">${sale_price}</div>
                                                         </div>
                                                         :
-                                                        <div className="qubely-product-price">${price}</div>
+                                                        <div className="qubely-product-price qubely-regular-price">${price}</div>
                                                 }
                                                 <div className="qubely-addtocart-wrapper">
                                                     <RichText
