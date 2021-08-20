@@ -1262,7 +1262,7 @@ class WOOPRODUCTS
                     );
                     if ($showRatingsCount) {
                         $woo_product_markup .= sprintf(
-                            '<span class="qubely-ratings-count">(%1$s)</span>',
+                            '<span class="qubely-ratings-count">' . _x( '(%1$s)', 'Ratings Count', 'qubely-pro' ) . '</span>',
                             $count
                         );
                     }
@@ -1270,7 +1270,7 @@ class WOOPRODUCTS
                 }
 
                 $woo_product_markup .= sprintf(
-                    '<a class="qubely-product-name" href={%1$s}>%2$s</a>',
+                    '<a class="qubely-product-name" href=%1$s>%2$s</a>',
                     $product->get_permalink(),
                     get_the_title()
                 );
@@ -1278,23 +1278,23 @@ class WOOPRODUCTS
                     $woo_product_markup .= sprintf(
                         '<div class="qubely-product-price">
                          <div class="qubely-regular-price">
-                             <s>$%1$s</s>
+                             <s>' . _x( '$%1$s', 'Product Regular Price', 'qubely-pro' ) . '</s>
                         </div>
-                        <div class="qubely-sale-price">$%2$s</div>
+                        <div class="qubely-sale-price">' . _x( '$%2$s', 'Product Sale Price', 'qubely-pro' ) . '</div>
                     </div>',
                         $regular_price,
                         $sale_price
                     );
                 } else {
                     $woo_product_markup .= sprintf(
-                        '<div class="qubely-product-price">$%1$s</div>',
+                        '<div class="qubely-product-price">' . _x( '$%1$s', 'Product Price', 'qubely-pro' ) . '</div>',
                         $product->get_price()
                     );
                 }
                 if ($in_cart == 0) {
                     $woo_product_markup .= sprintf(
                         '<div class="qubely-addtocart-wrapper">
-                        <div class="qubely_adtocart_button" id="%1$s">%2$s</div>
+                        <div class="qubely_adtocart_button" id="%1$s">' . _x( '%2$s', 'Add to Cart Button Text', 'qubely-pro' ) . '</div>
                     </div>',
                         $product_id,
                         $att['addToCartButtonText']
@@ -1302,7 +1302,7 @@ class WOOPRODUCTS
                 } else {
                     $woo_product_markup .= sprintf(
                         '<div class="qubely-addtocart-wrapper">
-                        <div class="qubely_adtocart_button" id="%1$s" data-quantity="%2$s">%3$s in Cart</div>
+                        <div class="qubely_adtocart_button" id="%1$s" data-quantity="%2$s">%3$s ' . __( 'in Cart', 'qubely-pro' ) . '</div>
                     </div>',
                         $product_id,
                         $in_cart,

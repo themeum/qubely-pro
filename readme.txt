@@ -1,6 +1,13 @@
 ===  Qubely Pro ===
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 == Changelog ==
+
+= 1.3.3 - 23 August, 2021 =
+Fix: Image Carousel with Multiple Image Mousedrag issue
+Fix: WooCommerce Product Block Typography issue
+Fix: WooCommerce Blocks Translation issue
+Fix: Post Carousel Block Image not Showing issue
+Fix: Testimonial Carousel Shape Size and Gutter issue
 
 = 1.3.2 - 16  July, 2021 = 
 Update: Added WordPress 5.8 Compatibility    
