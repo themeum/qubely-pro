@@ -3,7 +3,6 @@ Stable tag: 1.3.3
 == Changelog ==
 
 = 1.3.3 - 23 August, 2021 =
-Fix: Image Carousel with Multiple Image Mousedrag issue
 Fix: WooCommerce Product Block Typography issue
 Fix: WooCommerce Blocks Translation issue
 Fix: Post Carousel Block Image not Showing issue
