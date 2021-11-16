@@ -6,7 +6,7 @@ const { QubelyButtonSave, HelperFunction: { animationAttr, IsInteraction } } = w
 class Save extends Component {
 
     _encrypt(str) {
-        return window.btoa(str);
+        return str;
     }
 
 

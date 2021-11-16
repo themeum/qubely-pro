@@ -448,11 +448,12 @@ class Edit extends Component {
                     value={emailFrom}
                     onChange={val => setAttributes({ emailFrom: val })}
                     placeholder={__('Your Name: admin@example.com')}
+                    disabled={true}
                 />
                   <Notice status="warning" isDismissible={false}>
-                                {__("Please use your site's email, to avoid any error.")}
+                                {__('Please set the "From Name" and "From Email"')}
                                 <br />
-                                {__("if your site is example.com, the email should be anything@example.com")}
+                                {__('from Qubely->Settings->Contact Form Settings')}
                             </Notice>
                 <TextControl
                     label={__('Subject')}

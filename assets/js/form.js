@@ -181,6 +181,7 @@ jQuery(function ($) {
         $form.submit((e) => {
             e.preventDefault();
             let formData = $form.serializeArray();
+            formData.push( { name: 'security', value: qubely_urls.nonce} );
             const isRequired = checkFormValidation($form); //check validation
             let mcListId,
                 isNewsletter = false,
@@ -287,7 +288,7 @@ jQuery(function ($) {
 
     //FORM VALIDATION
     function checkFormValidation($form) {
-        const fieldErrorMessage = atob($form.find('input[name="field-error-message"]').val());
+        const fieldErrorMessage = $form.find('input[name="field-error-message"]').val();
         let onChange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
         let isRequired = false;
         $form.find(' input[type=text],input[type=number], input[type=email], input[type=radio], input[type=checkbox], textarea, select').each(function () {

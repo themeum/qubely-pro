@@ -93,7 +93,7 @@ registerBlockType('qubely/form', {
                     { ['mailchimp']: afterSubmitAction === 'mailchimp' }
                 );
                 const _encrypt = (str) => {
-                    return window.btoa(unescape(encodeURIComponent(str)));
+                    return str;
                 }
                 return (
                     <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>

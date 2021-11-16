@@ -1,6 +1,9 @@
 ===  Qubely Pro ===
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 == Changelog ==
+
+= 1.3.4 =
+Fix: Contact Form Not Sending Issue
 
 = 1.3.3 - 23 August, 2021 =
 Fix: WooCommerce Product Block Typography issue
