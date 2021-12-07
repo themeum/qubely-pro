@@ -18,7 +18,8 @@ const {
     DatePicker,
     TextControl,
     Dropdown,
-    Toolbar
+    Toolbar,
+    DateTimePicker
 } = wp.components
 
 const {
@@ -279,10 +280,10 @@ class Edit extends Component {
                                         )}
                                         renderContent={() => (
                                             <div className='qubely-countdown-control-dropdown' style={{ display: 'flex' }}>
-                                                <DatePicker
-                                                    label={__('Date & Time')}
+                                                <DateTimePicker 
                                                     currentDate={date}
                                                     onChange={newDate => this._setDate('date', newDate)}
+                                                    is12Hour={false}
                                                 />
                                             </div>
                                         )}
@@ -302,10 +303,9 @@ class Edit extends Component {
                                             )}
                                             renderContent={() => (
                                                 <div className='qubely-countdown-control-dropdown'>
-                                                    <DatePicker
-                                                        label={__('Date & Time')}
+                                                    <DateTimePicker
                                                         currentDate={startDate}
-                                                        onChange={startDate => setAttributes({ startDate })}
+                                                        onChange={startDate => setAttributes({startDate})}
                                                     />
                                                 </div>
                                             )}
