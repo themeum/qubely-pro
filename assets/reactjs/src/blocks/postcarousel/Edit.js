@@ -128,7 +128,7 @@ class Edit extends Component {
 				readmoreSize
 			}
 		} = this.props
-		const title = <h3 className="qubely-postcarousel-title"><a>{post.title.rendered}</a></h3>
+		const title = <h3 className="qubely-postcarousel-title"><a dangerouslySetInnerHTML={{ __html: post.title.rendered }}/></h3>
 
 		return (
 			<div className={`qubely-post-grid-content align-${contentPosition}`}>
