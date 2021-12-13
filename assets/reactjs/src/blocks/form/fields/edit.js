@@ -548,7 +548,7 @@ function Edit(props) {
                                     :
                                     type === 'date' ?
                                         <div class="qubely-date-picker-wrapper">
-                                            <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} name={fieldName} readonly />
+                                            <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={ placeHolder ? __(placeHolder) : __('dd-M-yy')} name={fieldName} readonly />
                                         </div>
                                         :
                                         type === 'time' ?

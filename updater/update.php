@@ -1,7 +1,7 @@
 <?php
-    namespace QubelyPRO\ThemeumUpdater;
+    namespace QUBELY_PRO\ThemeumUpdater;
 
-    if ( ! class_exists( 'QubelyPRO\ThemeumUpdater\Update' ) ) {
+    if ( ! class_exists( 'QUBELY_PRO\ThemeumUpdater\Update' ) ) {
 
         class Update {
 

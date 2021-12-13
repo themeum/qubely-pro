@@ -23,7 +23,7 @@ class Init {
 		new \QUBELY_PRO\Newsletter();
 
 		require_once( dirname( __DIR__ ) . '/updater/update.php' );
-		$this->updater = new \QubelyPRO\ThemeumUpdater\Update( 
+		$this->updater = new \QUBELY_PRO\ThemeumUpdater\Update( 
 			array(
 				'product_title'      => 'Qubely Pro',
 				'product_slug'       => 'qubely-pro',

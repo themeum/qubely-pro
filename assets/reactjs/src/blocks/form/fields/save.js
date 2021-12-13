@@ -74,7 +74,7 @@ export default function Save(props) {
         let options = JSON.stringify({ dateFormat: dateFormat })
         return (
             <div className={`qubely-date-picker-wrapper`} data-options={options}>
-                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(dateFormat)} id={uniqueId} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} readonly />
+                <input type="text" className="qubely-form-field qubely-datepicker" autocomplete="off" placeholder={__(placeHolder)} id={uniqueId} name={`qubely-form-input[${fieldName}${(required ? '*' : '')}]`} readonly />
             </div>
         )
     }
