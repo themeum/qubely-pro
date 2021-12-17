@@ -1,6 +1,13 @@
 ===  Qubely Pro ===
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 == Changelog ==
+
+= 1.3.5 =
+Fix: License Page Logo Image Broken issue
+Fix: License Expiration Date wrongly shown
+Fix: Form Builder Block - Date placeholder not working issue
+Fix: Countdown Block - Errors while selecting custom dates
+Fix: Image Carousel Block - Arrow size is not working
 
 = 1.3.4 =
 Fix: Contact Form Not Sending Issue
