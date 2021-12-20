@@ -1,335 +1,335 @@
 .qubely-form-field-wrapper {
-  text-align: left;
-  //   display: flex;
-  //   display: -ms-flexbox;
-  // .qubely-form-label {
-  //   display: flex;
-  //   display: -ms-flexbox;
-  // }
-  .qubely-form-field.qubely-form-dropdown {
-    width: 100%;
-    min-width: 100%;
-  }
-  .qubely-form-field {
-    width: 100%;
-    .qubely-form-date-picker {
-      width: fit-content;
+    text-align: left;
+    //   display: flex;
+    //   display: -ms-flexbox;
+    // .qubely-form-label {
+    //   display: flex;
+    //   display: -ms-flexbox;
+    // }
+    .qubely-form-field.qubely-form-dropdown {
+        width: 100%;
+        min-width: 100%;
+    }
+    .qubely-form-field {
+        width: 100%;
+        .qubely-form-date-picker {
+            width: fit-content;
+        }
+
+        &.qubely-form-checkbox,
+        &.qubely-form-radio {
+            display: flex;
+            flex-wrap: wrap;
+            // margin-left: -10px;
+            // margin-right: -10px;
+            &.qubely-checkbox-auto,
+            &.qubely-radio-auto {
+                .qubely-form-field-checkbox-option,
+                .qubely-form-field-radio-option {
+                    width: auto;
+                    // padding-left: 10px;
+                    // padding-right: 10px;
+                }
+            }
+            &.qubely-checkbox-1-column,
+            &.qubely-radio-1-column {
+                .qubely-form-field-checkbox-option,
+                .qubely-form-field-radio-option {
+                    width: 100%;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+            &.qubely-checkbox-2-column,
+            &.qubely-radio-2-column {
+                .qubely-form-field-checkbox-option,
+                .qubely-form-field-radio-option {
+                    width: 50%;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+            &.qubely-checkbox-3-column,
+            &.qubely-radio-3-column {
+                .qubely-form-field-checkbox-option,
+                .qubely-form-field-radio-option {
+                    width: 33%;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+        }
+
+        .qubely-form-field-radio-option,
+        .qubely-form-field-checkbox-option {
+            display: flex;
+            align-items: center;
+            &:hover {
+                .qubely-action-remove-option {
+                    display: block;
+                }
+            }
+            .qubely-action-remove-option {
+                display: none;
+                font-size: 10px;
+                width: 18px;
+                height: 18px;
+                line-height: 18px;
+                text-align: center;
+                background: rgba(0, 0, 0, 0.8);
+                color: #fff;
+                margin-left: 10px;
+                border-radius: 10px;
+                z-index: 1;
+                cursor: pointer;
+            }
+        }
+
+        .qubely-action-add-option {
+            color: #2184f9;
+            cursor: pointer;
+            .qubely-option-add-icon {
+                margin-right: 5px;
+                -webkit-text-stroke: 2px white;
+            }
+            .qubely-action-add-text {
+                color: #2184f9;
+            }
+        }
     }
 
-    &.qubely-form-checkbox,
-    &.qubely-form-radio {
-      display: flex;
-      flex-wrap: wrap;
-      // margin-left: -10px;
-      // margin-right: -10px;
-      &.qubely-checkbox-auto,
-      &.qubely-radio-auto {
-        .qubely-form-field-checkbox-option,
-        .qubely-form-field-radio-option {
-          width: auto;
-          // padding-left: 10px;
-          // padding-right: 10px;
-        }
-      }
-      &.qubely-checkbox-1-column,
-      &.qubely-radio-1-column {
-        .qubely-form-field-checkbox-option,
-        .qubely-form-field-radio-option {
-          width: 100%;
-          padding-left: 10px;
-          padding-right: 10px;
-        }
-      }
-      &.qubely-checkbox-2-column,
-      &.qubely-radio-2-column {
-        .qubely-form-field-checkbox-option,
-        .qubely-form-field-radio-option {
-          width: 50%;
-          padding-left: 10px;
-          padding-right: 10px;
-        }
-      }
-      &.qubely-checkbox-3-column,
-      &.qubely-radio-3-column {
-        .qubely-form-field-checkbox-option,
-        .qubely-form-field-radio-option {
-          width: 33%;
-          padding-left: 10px;
-          padding-right: 10px;
-        }
-      }
-    }
-
-    .qubely-form-field-radio-option,
-    .qubely-form-field-checkbox-option {
-      display: flex;
-      align-items: center;
-      &:hover {
-        .qubely-action-remove-option {
-          display: block;
-        }
-      }
-      .qubely-action-remove-option {
-        display: none;
-        font-size: 10px;
-        width: 18px;
-        height: 18px;
-        line-height: 18px;
+    .qubely-form-timepicker {
+        opacity: 0;
+        height: auto;
+        min-width: 150px;
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: max-height 0.1s ease-in-out;
+        background: #ffffff;
+        border-radius: 4px;
+        border: none;
+        border-top: transparent;
+        -webkit-box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.1);
         text-align: center;
-        background: rgba(0, 0, 0, 0.8);
-        color: #fff;
-        margin-left: 10px;
-        border-radius: 10px;
-        z-index: 1;
+    }
+    & .qubely-active {
+        opacity: 1;
+        max-height: 150px;
+        padding: 15px;
+        z-index: 100;
+    }
+    .qubely-timePicker-button {
         cursor: pointer;
-      }
+        color: #d7d7d7;
+        line-height: 1;
+        transition: 400ms;
+        &:hover {
+            color: #151515;
+        }
     }
-
-    .qubely-action-add-option {
-      color: #2184f9;
-      cursor: pointer;
-      .qubely-option-add-icon {
-        margin-right: 5px;
-        -webkit-text-stroke: 2px white;
-      }
-      .qubely-action-add-text {
-        color: #2184f9;
-      }
-    }
-  }
-
-  .qubely-form-timepicker {
-    opacity: 0;
-    height: auto;
-    min-width: 150px;
-    max-height: 0;
-    overflow: hidden;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: max-height 0.1s ease-in-out;
-    background: #ffffff;
-    border-radius: 4px;
-    border: none;
-    border-top: transparent;
-    -webkit-box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  & .qubely-active {
-    opacity: 1;
-    max-height: 150px;
-    padding: 15px;
-    z-index: 100;
-  }
-  .qubely-timePicker-button {
-    cursor: pointer;
-    color: #d7d7d7;
-    line-height: 1;
-    transition: 400ms;
-    &:hover {
-      color: #151515;
-    }
-  }
 }
 .wp-block-qubely-formfield-time {
-  .qubely-form-field-wrapper {
-    position: relative;
-    .qubely-form-timepicker.qubely-active {
-      top: 100%;
+    .qubely-form-field-wrapper {
+        position: relative;
+        .qubely-form-timepicker.qubely-active {
+            top: 100%;
+        }
     }
-  }
 }
 
 //form number field
 .qubely-form-field {
-  &.qubely-form-number {
-    height: auto;
-  }
+    &.qubely-form-number {
+        height: auto;
+    }
 }
 
 //select
 .wp-admin .qubely-form-field-wrapper select {
-  height: auto;
-  line-height: inherit;
+    height: auto;
+    line-height: inherit;
 }
 .qubely-form-dropdown {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-position: right 50%;
-  background-repeat: no-repeat;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAMCAYAAABSgIzaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDZFNDEwNjlGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDZFNDEwNkFGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NkU0MTA2N0Y3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NkU0MTA2OEY3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuGsgwQAAAA5SURBVHjaYvz//z8DOYCJgUxAf42MQIzTk0D/M+KzkRGPoQSdykiKJrBGpOhgJFYTWNEIiEeAAAMAzNENEOH+do8AAAAASUVORK5CYII=);
-  text-transform: capitalize;
-  line-height: initial;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-position: right 50%;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAMCAYAAABSgIzaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDZFNDEwNjlGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDZFNDEwNkFGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NkU0MTA2N0Y3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NkU0MTA2OEY3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuGsgwQAAAA5SURBVHjaYvz//z8DOYCJgUxAf42MQIzTk0D/M+KzkRGPoQSdykiKJrBGpOhgJFYTWNEIiEeAAAMAzNENEOH+do8AAAAASUVORK5CYII=);
+    text-transform: capitalize;
+    line-height: initial;
 }
 
 //date
 .ui-datepicker-title {
-  select {
-    border: 1px solid #ced4d9;
-    margin: 0 2px;
-    background: none;
-  }
+    select {
+        border: 1px solid #ced4d9;
+        margin: 0 2px;
+        background: none;
+    }
 }
 .ui-datepicker-calendar tbody td a:hover {
-  background-color: #e3f0ff;
+    background-color: #e3f0ff;
 }
 
 //add item modal css
 .qubely-dropdown-field-option,
 .qubely-dropdown-add-field-option {
-  padding: 10px 0px;
-  display: flex;
-  align-items: center;
-  .qubely-option-move-icon {
-    cursor: pointer;
-    padding: 0px 10px;
-  }
-  > div {
-    width: 80%;
-    .qubely-option {
-      cursor: text;
-      border: 1px solid #d6d6d6;
-      padding: 6px 8px;
-      box-shadow: none;
-    }
-  }
-
-  .qubely-action-add-option {
-    padding: 8px 20px;
+    padding: 10px 0px;
     display: flex;
     align-items: center;
-    background-color: #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+    .qubely-option-move-icon {
+        cursor: pointer;
+        padding: 0px 10px;
+    }
+    > div {
+        width: 80%;
+        .qubely-option {
+            cursor: text;
+            border: 1px solid #d6d6d6;
+            padding: 6px 8px;
+            box-shadow: none;
+        }
+    }
+
+    .qubely-action-add-option {
+        padding: 8px 20px;
+        display: flex;
+        align-items: center;
+        background-color: #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }
 
 .qubely-dropdown-add-field-option {
-  .qubely-option-move-icon > i {
-    font-size: 15px;
-  }
+    .qubely-option-move-icon > i {
+        font-size: 15px;
+    }
 }
 
 .qubely-form-date-picker-format .qubely-field-group-btn {
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 15px;
-  .qubley-group-button {
-    font-size: 11px;
-    padding: 10px 4px;
-  }
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    .qubley-group-button {
+        font-size: 11px;
+        padding: 0 5px;
+    }
 }
 .qubely-form-time-picker-format {
-  .components-button-group {
-    min-width: 50%;
-    margin-bottom: 15px;
-  }
+    .components-button-group {
+        min-width: 50%;
+        margin-bottom: 15px;
+    }
 }
 
 .qubely-form-time-picker-minute-interval {
-  margin-bottom: 15px;
-  .qubely-field-group-btn {
-    flex-direction: column;
-    align-items: flex-start;
-    .qubley-group-button {
-      padding: 5px 10px;
+    margin-bottom: 15px;
+    .qubely-field-group-btn {
+        flex-direction: column;
+        align-items: flex-start;
+        .qubley-group-button {
+            padding: 5px 10px;
+        }
     }
-  }
 }
 
 //jquery ui date-picker
 
 #ui-datepicker-div {
-  display: none;
-  background-color: #fff;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
-  margin-top: 0.25rem;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
+    display: none;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+    margin-top: 0.25rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 .ui-datepicker-calendar thead th {
-  padding: 0.25rem 0;
-  text-align: center;
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: #78909c;
+    padding: 0.25rem 0;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #78909c;
 }
 .ui-datepicker-calendar tbody td {
-  width: 2.5rem;
-  text-align: center;
-  padding: 0;
+    width: 2.5rem;
+    text-align: center;
+    padding: 0;
 }
 .ui-datepicker-calendar tbody td a {
-  display: block;
-  border-radius: 0.25rem;
-  line-height: 2rem;
-  transition: 0.3s all;
-  color: #546e7a;
-  font-size: 0.875rem;
-  text-decoration: none;
+    display: block;
+    border-radius: 0.25rem;
+    line-height: 2rem;
+    transition: 0.3s all;
+    color: #546e7a;
+    font-size: 0.875rem;
+    text-decoration: none;
 }
 .ui-datepicker-calendar tbody td a:hover {
-  background-color: #e0f2f1;
+    background-color: #e0f2f1;
 }
 .ui-datepicker-calendar tbody td a.ui-state-active {
-  background-color: #009688;
-  color: white;
+    background-color: #009688;
+    color: white;
 }
 .ui-datepicker-header a.ui-corner-all {
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  width: 2rem;
-  height: 2rem;
-  margin: 0.5rem;
-  border-radius: 0.25rem;
-  transition: 0.3s all;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+    border-radius: 0.25rem;
+    transition: 0.3s all;
 }
 .ui-datepicker-header a.ui-corner-all:hover {
-  background-color: #eceff1;
+    background-color: #eceff1;
 }
 .ui-datepicker-header a.ui-datepicker-prev {
-  left: 0;
-  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
-  background-repeat: no-repeat;
-  background-size: 0.5rem;
-  background-position: 50%;
-  transform: rotate(180deg);
+    left: 0;
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: 50%;
+    transform: rotate(180deg);
 }
 .ui-datepicker-header a.ui-datepicker-next {
-  right: 0;
-  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
-  background-repeat: no-repeat;
-  background-size: 10px;
-  background-position: 50%;
+    right: 0;
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: 50%;
 }
 .ui-datepicker-header a > span {
-  display: none;
+    display: none;
 }
 .ui-datepicker-title {
-  text-align: center;
-  line-height: 2rem;
-  margin-bottom: 0.25rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding-bottom: 0.25rem;
+    text-align: center;
+    line-height: 2rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding-bottom: 0.25rem;
 }
 .ui-datepicker-week-col {
-  color: #78909c;
-  font-weight: 400;
-  font-size: 0.75rem;
+    color: #78909c;
+    font-weight: 400;
+    font-size: 0.75rem;
 }
 
 .ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all {
-  table td,
-  table th {
-    border: none;
-    word-break: break-all;
-  }
+    table td,
+    table th {
+        border: none;
+        word-break: break-all;
+    }
 }
