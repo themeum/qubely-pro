@@ -87,7 +87,7 @@ class Edit extends Component {
     if (!uniqueId) {
       setAttributes({ uniqueId: _client, });
     } else if (uniqueId && uniqueId != _client) {
-      setAttributes({ uniqueId: _client });
+      //setAttributes({ uniqueId: _client });
     }
   }
 
@@ -127,7 +127,7 @@ class Edit extends Component {
 
   renderCardContent = (post, index) => {
     const { attributes: { layout, readmoreStyle, showCategory, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
-    let title = <h3 className="qubely-postgrid-title"><a dangerouslySetInnerHTML={{ __html: post.title.rendered}}/></h3>
+    let title = <h3 className="qubely-postgrid-title"><a dangerouslySetInnerHTML={{ __html: post.title.rendered }} /></h3>
     return (
       <div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
         {(showCategory === 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
@@ -1314,22 +1314,22 @@ class Edit extends Component {
                             }
                           />
                         ) : (
-                            <Padding
-                              label={__("Advanced")}
-                              value={badgePadding}
-                              onChange={(val) =>
-                                setAttributes({ badgePadding: val })
-                              }
-                              min={0}
-                              max={60}
-                              unit={["px", "em", "%"]}
-                              responsive
-                              device={device}
-                              onDeviceChange={(value) =>
-                                this.setState({ device: value })
-                              }
-                            />
-                          )}
+                          <Padding
+                            label={__("Advanced")}
+                            value={badgePadding}
+                            onChange={(val) =>
+                              setAttributes({ badgePadding: val })
+                            }
+                            min={0}
+                            max={60}
+                            unit={["px", "em", "%"]}
+                            responsive
+                            device={device}
+                            onDeviceChange={(value) =>
+                              this.setState({ device: value })
+                            }
+                          />
+                        )}
                         <Separator />
                       </Fragment>
                     )}
@@ -1867,10 +1867,10 @@ class Edit extends Component {
               }
             </Fragment>
           ) : (
-              <div className="qubely-postgrid-is-loading">
-                <Spinner />
-              </div>
-            )}
+            <div className="qubely-postgrid-is-loading">
+              <Spinner />
+            </div>
+          )}
         </div>
       </Fragment>
     );

@@ -214,19 +214,19 @@ function Edit(props) {
     useEffect(() => {
         const _client = clientId.substr(0, 6)
         getAllProducts({})
-        .then((productsData) => {
-            updateTotalProducts(productsData.totalProducts);
-        })
-        .catch(async (e) => {
-            console.log('no products found');
-        });
+            .then((productsData) => {
+                updateTotalProducts(productsData.totalProducts);
+            })
+            .catch(async (e) => {
+                console.log('no products found');
+            });
 
         loadProducts();
 
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client })
+            //setAttributes({ uniqueId: _client })
         }
 
     }, [])
@@ -241,7 +241,7 @@ function Edit(props) {
         updateCurrentPage(1);
         setLoading(true);
         loadProducts();
-    }, [ productsStatus, orderby, productsPerPage, selectedCatagories]);
+    }, [productsStatus, orderby, productsPerPage, selectedCatagories]);
 
     const getCategoris = () => {
         apiFetch({
@@ -324,7 +324,7 @@ function Edit(props) {
             });
     }
 
-    
+
     const renderImages = (img_url, img_id) => {
         const className = classnames("qubely-woo_product-image-wrapper", { ['width-placeholder']: !img_url });
         return (
@@ -1097,7 +1097,7 @@ function Edit(props) {
                                             <div className="qubely-carousel-item" key={id}>
                                                 <div className="qubely_woo_product_wrapper" key={id}>
                                                     <div className="qubely_woo_product">
-                                                    {renderImages(img_url, img_id)}
+                                                        {renderImages(img_url, img_id)}
                                                         <div className="qubely-product-info">
                                                             {
                                                                 showRatings &&
@@ -1138,7 +1138,7 @@ function Edit(props) {
                                         <Placeholder
                                             icon="admin-post"
                                             label={__('Insufficient Products for Carousel')}
-                                       />
+                                        />
                                     </div>
                                     :
                                     <div className="qubely-woo_product-not-found">

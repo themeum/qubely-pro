@@ -103,7 +103,7 @@ class Edit extends Component {
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client });
+            //setAttributes({ uniqueId: _client });
         }
         if (date === null && startDate === null) {
             const today = new Date();
@@ -280,7 +280,7 @@ class Edit extends Component {
                                         )}
                                         renderContent={() => (
                                             <div className='qubely-countdown-control-dropdown' style={{ display: 'flex' }}>
-                                                <DateTimePicker 
+                                                <DateTimePicker
                                                     currentDate={date}
                                                     onChange={newDate => this._setDate('date', newDate)}
                                                     is12Hour={false}
@@ -305,7 +305,7 @@ class Edit extends Component {
                                                 <div className='qubely-countdown-control-dropdown'>
                                                     <DateTimePicker
                                                         currentDate={startDate}
-                                                        onChange={startDate => setAttributes({startDate})}
+                                                        onChange={startDate => setAttributes({ startDate })}
                                                     />
                                                 </div>
                                             )}
@@ -389,28 +389,28 @@ class Edit extends Component {
                                             />
                                         </Fragment>
                                     ) : (
-                                            <Fragment>
-                                                <RadioAdvanced
-                                                    label={__('Border Style')}
-                                                    value={strokeLinecap}
-                                                    options={[
-                                                        { value: 'round', label: __('Round') },
-                                                        { value: 'square', label: __('Square') }
-                                                    ]}
-                                                    onChange={strokeLinecap => setAttributes({ strokeLinecap })}
-                                                />
-                                                <ColorAdvanced
-                                                    label={__('Border Fill')}
-                                                    value={fill}
-                                                    onChange={fill => setAttributes({ fill })}
-                                                />
-                                                <Color
-                                                    label={__('Border Empty Fill')}
-                                                    value={emptyFill}
-                                                    onChange={emptyFill => setAttributes({ emptyFill })}
-                                                />
-                                            </Fragment>
-                                        )
+                                        <Fragment>
+                                            <RadioAdvanced
+                                                label={__('Border Style')}
+                                                value={strokeLinecap}
+                                                options={[
+                                                    { value: 'round', label: __('Round') },
+                                                    { value: 'square', label: __('Square') }
+                                                ]}
+                                                onChange={strokeLinecap => setAttributes({ strokeLinecap })}
+                                            />
+                                            <ColorAdvanced
+                                                label={__('Border Fill')}
+                                                value={fill}
+                                                onChange={fill => setAttributes({ fill })}
+                                            />
+                                            <Color
+                                                label={__('Border Empty Fill')}
+                                                value={emptyFill}
+                                                onChange={emptyFill => setAttributes({ emptyFill })}
+                                            />
+                                        </Fragment>
+                                    )
                                 }
 
                                 <Range
@@ -436,12 +436,12 @@ class Edit extends Component {
                                             onDeviceChange={value => this.setState({ device: value })}
                                         />
                                     ) : (
-                                            <Toggle
-                                                label={__('Change Circle Smoothly')}
-                                                value={circleTransition}
-                                                onChange={circleTransition => setAttributes({ circleTransition })}
-                                            />
-                                        )
+                                        <Toggle
+                                            label={__('Change Circle Smoothly')}
+                                            value={circleTransition}
+                                            onChange={circleTransition => setAttributes({ circleTransition })}
+                                        />
+                                    )
                                 }
 
                                 {

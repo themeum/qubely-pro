@@ -75,7 +75,7 @@ class Edit extends Component {
 		if (!uniqueId) {
 			setAttributes({ uniqueId: _client });
 		} else if (uniqueId && uniqueId != _client) {
-			setAttributes({ uniqueId: _client });
+			//setAttributes({ uniqueId: _client });
 		}
 
 	}
@@ -85,8 +85,8 @@ class Edit extends Component {
 	truncate(value, limit) {
 		if (value && value.split(' ').length > limit) {
 			return value.split(' ').splice(0, limit).join(' ');
-		  }
-		  return value;
+		}
+		return value;
 	}
 
 	renderFeaturedImage = (post) => {
@@ -128,7 +128,7 @@ class Edit extends Component {
 				readmoreSize
 			}
 		} = this.props
-		const title = <h3 className="qubely-postcarousel-title"><a dangerouslySetInnerHTML={{ __html: post.title.rendered }}/></h3>
+		const title = <h3 className="qubely-postcarousel-title"><a dangerouslySetInnerHTML={{ __html: post.title.rendered }} /></h3>
 
 		return (
 			<div className={`qubely-post-grid-content align-${contentPosition}`}>

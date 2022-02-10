@@ -1,6 +1,13 @@
 ===  Qubely Pro ===
-Stable tag: 1.3.5
+Requires at least: 5.0
+Tested up to: 5.9
+Stable tag: 1.3.6
+
+
 == Changelog ==
+
+= 1.3.6 =
+Fix: Reusable Blocks Rendering Issue
 
 = 1.3.5 =
 Fix: License Page Logo Image Broken issue

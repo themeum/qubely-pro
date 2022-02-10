@@ -112,7 +112,7 @@ class Edit extends Component {
     if (!uniqueId) {
       setAttributes({ uniqueId: _client });
     } else if (uniqueId && uniqueId != _client) {
-      setAttributes({ uniqueId: _client });
+      //setAttributes({ uniqueId: _client });
     }
 
     document.addEventListener('mousedown', this.handleClickOutside);
@@ -747,10 +747,10 @@ class Edit extends Component {
             buttonIconPosition={buttonIconPosition}
             buttonTag={buttonTag}
             inlineStyles={{
-              'bgselector':`.qubely-block-${uniqueId} tr:nth-child(${rowIndex+1}) td:nth-child(${columnIndex+1}) .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor`,
-              'selector':`.qubely-block-${uniqueId} tr:nth-child(${rowIndex+1}) td:nth-child(${columnIndex+1}) .qubely-block-btn-wrapper .qubely-block-btn-anchor`,
+              'bgselector': `.qubely-block-${uniqueId} tr:nth-child(${rowIndex + 1}) td:nth-child(${columnIndex + 1}) .qubely-block-btn-wrapper:not(.button-type-outline) .qubely-block-btn-anchor`,
+              'selector': `.qubely-block-${uniqueId} tr:nth-child(${rowIndex + 1}) td:nth-child(${columnIndex + 1}) .qubely-block-btn-wrapper .qubely-block-btn-anchor`,
               'regular': {
-                ...( !!buttonTextColor && { 'color': buttonTextColor }),
+                ...(!!buttonTextColor && { 'color': buttonTextColor }),
                 ...(!!buttonBgColor && { 'background-color': buttonBgColor })
               },
               "hover": {
@@ -2352,7 +2352,7 @@ class Edit extends Component {
                       <Tab tabTitle={__('Hover')}>
                         <Color
                           label={__('Text Color')}
-                          value={typeof activeCell.buttonHoverColor === 'undefined' ? undefined: activeCell.buttonHoverColor}
+                          value={typeof activeCell.buttonHoverColor === 'undefined' ? undefined : activeCell.buttonHoverColor}
                           onChange={(value) => this.onChangeCell(activeCellLocation, value, 'buttonHoverColor')}
                         />
                         {

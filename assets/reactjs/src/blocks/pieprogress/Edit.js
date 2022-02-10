@@ -55,7 +55,7 @@ class Edit extends Component {
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client });
+            //setAttributes({ uniqueId: _client });
         }
     }
 
@@ -385,8 +385,8 @@ class Edit extends Component {
                                                             srcSet={image2x.url !== undefined ? image.url + ' 1x, ' + image2x.url + ' 2x' : ''}
                                                         />
                                                     ) : (
-                                                            <span className="qubely-pie-placeholder far fa-image" />
-                                                        )
+                                                        <span className="qubely-pie-placeholder far fa-image" />
+                                                    )
                                                 }
                                             </div>
                                         )}

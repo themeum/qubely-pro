@@ -85,7 +85,7 @@ class Edit extends Component {
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client });
+            //setAttributes({ uniqueId: _client });
         }
 
         if (qubely_admin.qubely_recaptcha_site_key) {
@@ -356,7 +356,7 @@ class Edit extends Component {
                     [
                         ['qubely/form-column', { parentClientId: clientId, fieldSize: 'medium' },
                             [
-                                ['qubely/formfield-text', { parentClientId: clientId, type: 'text', label: 'First Name', placeHolder: 'First name', width: 'medium', required: true, fieldName: 'text-11'}]
+                                ['qubely/formfield-text', { parentClientId: clientId, type: 'text', label: 'First Name', placeHolder: 'First name', width: 'medium', required: true, fieldName: 'text-11' }]
                             ]
                         ],
                         ['qubely/form-column', { parentClientId: clientId, fieldSize: 'medium' },
@@ -368,11 +368,11 @@ class Edit extends Component {
                 ],
                 ...formItems.map(({ type, label, options, placeHolder, width, required }, index) => {
                     return (
-                        ['qubely/form-row', { parentClientId: clientId},
+                        ['qubely/form-row', { parentClientId: clientId },
                             [
                                 ['qubely/form-column', { parentClientId: clientId, fieldSize: 'large' },
                                     [
-                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeHolder, width, required, fieldName: `${type}-${index + 2}1`}]
+                                        [`qubely/formfield-${type}`, { parentClientId: clientId, type, label, options, placeHolder, width, required, fieldName: `${type}-${index + 2}1` }]
                                     ]
                                 ]
                             ]
@@ -450,11 +450,11 @@ class Edit extends Component {
                     placeholder={__('Your Name: admin@example.com')}
                     disabled={true}
                 />
-                  <Notice status="warning" isDismissible={false}>
-                                {__('Please set the "From Name" and "From Email"')}
-                                <br />
-                                {__('from Qubely->Settings->Contact Form Settings')}
-                            </Notice>
+                <Notice status="warning" isDismissible={false}>
+                    {__('Please set the "From Name" and "From Email"')}
+                    <br />
+                    {__('from Qubely->Settings->Contact Form Settings')}
+                </Notice>
                 <TextControl
                     label={__('Subject')}
                     value={emailSubject}
@@ -842,26 +842,26 @@ class Edit extends Component {
                                         ((qubely_admin.qubely_recaptcha_site_key && qubely_admin.qubely_recaptcha_site_key) || this.state.saved_globally) ? (
                                             <div className='api-notice'>{__('reCaptcha keys added successfully')}, <a target='_blank' href={setting_url}>{__('Edit keys here')}</a></div>
                                         ) : (
-                                                reCaptchaSiteKey && reCaptchaSecretKey ? (
-                                                    <div className='recaptcha-keys'>
-                                                        <TextControl
-                                                            label={__('Site Key ')}
-                                                            value={reCaptchaSiteKey}
-                                                            onChange={val => setAttributes({ reCaptchaSiteKey: val })}
-                                                            placeholder={__('Enter Google Site Key')}
-                                                        />
-                                                        <TextControl
-                                                            label={__('Secret Key ')}
-                                                            value={reCaptchaSecretKey}
-                                                            onChange={val => setAttributes({ reCaptchaSecretKey: val })}
-                                                            placeholder={__('Enter Google Secret Key')}
-                                                        />
-                                                        <Button isPrimary onClick={() => this._saveGlobally(reCaptchaSiteKey, reCaptchaSecretKey)}>{__('Set globally')}</Button>
-                                                    </div>
-                                                ) : (
-                                                        <div className='api-notice warning'>{__('reCaptcha requires site key & secret key')}, <a target='_blank' href={setting_url}>{__('Add keys here')}</a></div>
-                                                    )
+                                            reCaptchaSiteKey && reCaptchaSecretKey ? (
+                                                <div className='recaptcha-keys'>
+                                                    <TextControl
+                                                        label={__('Site Key ')}
+                                                        value={reCaptchaSiteKey}
+                                                        onChange={val => setAttributes({ reCaptchaSiteKey: val })}
+                                                        placeholder={__('Enter Google Site Key')}
+                                                    />
+                                                    <TextControl
+                                                        label={__('Secret Key ')}
+                                                        value={reCaptchaSecretKey}
+                                                        onChange={val => setAttributes({ reCaptchaSecretKey: val })}
+                                                        placeholder={__('Enter Google Secret Key')}
+                                                    />
+                                                    <Button isPrimary onClick={() => this._saveGlobally(reCaptchaSiteKey, reCaptchaSecretKey)}>{__('Set globally')}</Button>
+                                                </div>
+                                            ) : (
+                                                <div className='api-notice warning'>{__('reCaptcha requires site key & secret key')}, <a target='_blank' href={setting_url}>{__('Add keys here')}</a></div>
                                             )
+                                        )
                                     )
                                 }
                             </PanelBody>

@@ -200,7 +200,7 @@ function Edit(props) {
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client })
+            //setAttributes({ uniqueId: _client })
         }
 
     }, [])
@@ -214,7 +214,7 @@ function Edit(props) {
         updateCurrentPage(1);
         setLoading(true);
         loadProducts();
-    }, [ productsStatus, orderby, productsPerPage, selectedCatagories]);
+    }, [productsStatus, orderby, productsPerPage, selectedCatagories]);
 
     const getCategoris = () => {
         apiFetch({

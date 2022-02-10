@@ -89,7 +89,7 @@ class Edit extends Component {
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client });
+            //setAttributes({ uniqueId: _client });
         }
     }
 
@@ -220,12 +220,12 @@ class Edit extends Component {
                                                             bgType: 'image',
                                                             openBg: 1,
                                                         } : {
-                                                                bgType: 'image',
-                                                                openBg: 1,
-                                                                bgImage: {
-                                                                    url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
-                                                                }
-                                                            },
+                                                            bgType: 'image',
+                                                            openBg: 1,
+                                                            bgImage: {
+                                                                url: 'http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg'
+                                                            }
+                                                        },
                                                     }
                                                 }
                                                 : { layout: newLayout })}

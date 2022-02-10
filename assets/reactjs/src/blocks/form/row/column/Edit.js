@@ -49,7 +49,7 @@ function Edit(props) {
         if (!uniqueId) {
             setAttributes({ uniqueId: _client });
         } else if (uniqueId && uniqueId != _client) {
-            setAttributes({ uniqueId: _client })
+            //setAttributes({ uniqueId: _client })
         }
 
         currentField.css(
