@@ -30,7 +30,7 @@ class Init {
 				'product_basename'   => QUBELY_PRO_BASENAME,
 				'product_type'       => 'plugin',
 				'current_version'    => QUBELY_PRO_VERSION,
-				'menu_title'         => 'License Page',
+				'menu_title'         => 'License',
 				'parent_menu'        => 'qubely-settings',
 				'menu_capability'    => 'manage_options',
 				'license_option_key' => QUBELY_PRO_BASENAME . '_license_info',
