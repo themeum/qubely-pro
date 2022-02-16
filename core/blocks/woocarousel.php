@@ -1004,6 +1004,9 @@ class WOOCAROUSEL
      */
     function render_block_qubely_woocarousel($att)
     {
+        if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+            return;
+        }
 
         $uniqueId                 = isset($att['uniqueId']) ? $att['uniqueId'] : '';
         $showRatings            =  $att['showRatings'];

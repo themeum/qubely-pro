@@ -1044,6 +1044,10 @@ class WOOPRODUCTS
     function render_block_qubely_wooproducts($att)
     {
 
+        if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+            return;
+        }
+
         $uniqueId 		        = isset($att['uniqueId']) ? $att['uniqueId'] : '';
         $layout                 = isset($att['layout']) ? $att['layout'] : 2;
         $columns                =  $att['columns'];
