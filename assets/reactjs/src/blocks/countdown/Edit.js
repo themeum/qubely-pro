@@ -97,14 +97,8 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId, date, startDate } } = this.props;
-        const _client = clientId.substr(0, 6);
+        const { setAttributes, attributes: { date, startDate } } = this.props;
 
-        if (!uniqueId) {
-            setAttributes({ uniqueId: _client });
-        } else if (uniqueId && uniqueId != _client) {
-            //setAttributes({ uniqueId: _client });
-        }
         if (date === null && startDate === null) {
             const today = new Date();
 
@@ -122,9 +116,7 @@ class Edit extends Component {
                 date: defaultDate,
                 startDate: startDate
             });
-
         }
-
     }
 
 

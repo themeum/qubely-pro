@@ -186,7 +186,6 @@ function Edit(props) {
 
 
     useEffect(() => {
-        const _client = clientId.substr(0, 6);
         getAllProducts({})
             .then((productsData) => {
                 updateTotalProducts(productsData.totalProducts);
@@ -196,14 +195,7 @@ function Edit(props) {
             });
 
         loadProducts();
-
-        if (!uniqueId) {
-            setAttributes({ uniqueId: _client });
-        } else if (uniqueId && uniqueId != _client) {
-            //setAttributes({ uniqueId: _client })
-        }
-
-    }, [])
+    }, []);
 
     useEffect(() => {
         setLoading(true);

@@ -30,13 +30,6 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        const { setAttributes, clientId, attributes: { uniqueId } } = this.props;
-        const _client = clientId.substr(0, 6);
-        
-        if (!uniqueId) {
-            setAttributes({ uniqueId: _client });
-        }
-
         this.loadLottieAnimation();
     }
 

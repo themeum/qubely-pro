@@ -87,22 +87,13 @@ function Edit(props) {
     } = props;
 
     useEffect(() => {
-        const _client = clientId.substr(0, 6)
-
-        if (!uniqueId) {
-            setAttributes({ uniqueId: _client });
-        } else if (uniqueId && uniqueId != _client) {
-            //setAttributes({ uniqueId: _client })
-        }
-
         $(`.qubely-block-${uniqueId} .qubely-datepicker`).datepicker({
             duration: "fast",
             changeMonth: true,
             changeYear: true,
             yearRange: `${year - 50}:${year + 10}`,
             dateFormat: dateFormat,
-        })
-
+        });
     })
 
 

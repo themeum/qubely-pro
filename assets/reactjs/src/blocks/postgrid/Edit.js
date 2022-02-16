@@ -59,13 +59,6 @@ class Edit extends Component {
   }
 
   componentDidMount() {
-    const {
-      clientId,
-      setAttributes,
-      attributes: {
-        uniqueId
-      }
-    } = this.props;
     this.isStillMounted = true;
 
     this.fetchRequest = wp.apiFetch({
@@ -83,12 +76,6 @@ class Edit extends Component {
         }
       }
     );
-    const _client = clientId.substr(0, 6);
-    if (!uniqueId) {
-      setAttributes({ uniqueId: _client, });
-    } else if (uniqueId && uniqueId != _client) {
-      //setAttributes({ uniqueId: _client });
-    }
   }
 
   componentWillUnmount() {

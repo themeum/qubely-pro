@@ -45,13 +45,6 @@ function Edit(props) {
     let currentDevice = window.innerWidth <= 1199 ? window.innerWidth <= 991 ? 'xs' : 'sm' : 'md'
 
     useEffect(() => {
-        const _client = clientId.substr(0, 6)
-        if (!uniqueId) {
-            setAttributes({ uniqueId: _client });
-        } else if (uniqueId && uniqueId != _client) {
-            //setAttributes({ uniqueId: _client })
-        }
-
         currentField.css(
             {
                 width: fieldSize === 'small' ? `30%` : fieldSize === 'medium' ? `50%` : fieldSize === 'large' ? `100%` : width[currentDevice] + '%',

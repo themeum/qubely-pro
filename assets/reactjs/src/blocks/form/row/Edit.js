@@ -32,16 +32,6 @@ function Edit(props) {
         }
     } = props
 
-    useEffect(() => {
-        const _client = clientId.substr(0, 6)
-        if (!uniqueId) {
-            setAttributes({ uniqueId: _client });
-        } else if (uniqueId && uniqueId != _client) {
-            //setAttributes({ uniqueId: _client })
-        }
-    })
-
-
     return (
         <Fragment>
             <InspectorControls key="inspector">
