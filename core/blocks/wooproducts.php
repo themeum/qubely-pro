@@ -1174,7 +1174,6 @@ class WOOPRODUCTS
             }
         }
 
-
         $query_args = array_merge(
             $query_args,
             WC()->query->get_catalog_ordering_args($query_args['orderby'], $query_args['order'])
