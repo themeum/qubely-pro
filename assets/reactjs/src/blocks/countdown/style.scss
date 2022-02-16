@@ -1,181 +1,180 @@
 .qubely-countdown {
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 
-    &.qubely-item-separator-colon,
-    &.qubely-item-separator-line {
-        .qubely-countdown-item-outer:not(:last-child)::after {
-            content: ":";
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%) translateX(50%);
-            font-size: 30px;
-        }
-    }
+	&.qubely-item-separator-colon,
+	&.qubely-item-separator-line {
+		.qubely-countdown-item-outer:not(:last-child)::after {
+			content: ":";
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%) translateX(50%);
+			font-size: 30px;
+		}
+	}
 
-    &.qubely-item-separator-line
-        .qubely-countdown-item-outer:not(:last-child)::after {
-        content: "";
-        width: 2px;
-        height: 50%;
-        background: #000000;
-    }
+	&.qubely-item-separator-line .qubely-countdown-item-outer:not(:last-child)::after {
+		content: "";
+		width: 2px;
+		height: 50%;
+		background: #000000;
+	}
 
-    .qubely-countdown-item-outer {
-        position: relative;
-    }
-    .qubely-countdown-item-outer,
-    .qubely-countdown-item {
-        display: inline-flex;
-        align-items: center;
-        flex-direction: column;
-        position: relative;
-        .qubely-countdown-item-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: inline-flex;
-            align-items: center;
-            flex-direction: column;
-        }
-        h5,
-        p {
-            margin: 0;
-            line-height: 1;
-        }
-    }
+	.qubely-countdown-item-outer {
+		position: relative;
+	}
+	.qubely-countdown-item-outer,
+	.qubely-countdown-item {
+		display: inline-flex;
+		align-items: center;
+		flex-direction: column;
+		position: relative;
+		.qubely-countdown-item-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			display: inline-flex;
+			align-items: center;
+			flex-direction: column;
+		}
+		h5,
+		p {
+			margin: 0;
+			line-height: 1;
+		}
+	}
 
-    &.qubely-countdown-label-top {
-        .qubely-countdown-item-outer {
-            flex-direction: column-reverse;
-            .qubely-countdown-item-content,
-            .qubely-countdown-item {
-                flex-direction: column-reverse;
-            }
-            p {
-                margin-bottom: var(--label-spacing);
-            }
-        }
-    }
+	&.qubely-countdown-label-top {
+		.qubely-countdown-item-outer {
+			flex-direction: column-reverse;
+			.qubely-countdown-item-content,
+			.qubely-countdown-item {
+				flex-direction: column-reverse;
+			}
+			p {
+				margin-bottom: var(--label-spacing);
+			}
+		}
+	}
 
-    &.qubely-countdown-label-bottom {
-        .qubely-countdown-item-outer {
-            flex-direction: column;
-            .qubely-countdown-item-content,
-            .qubely-countdown-item {
-                flex-direction: column;
-            }
-            p {
-                margin-top: var(--label-spacing);
-            }
-        }
-    }
+	&.qubely-countdown-label-bottom {
+		.qubely-countdown-item-outer {
+			flex-direction: column;
+			.qubely-countdown-item-content,
+			.qubely-countdown-item {
+				flex-direction: column;
+			}
+			p {
+				margin-top: var(--label-spacing);
+			}
+		}
+	}
 
-    &.qubely-countdown-label-right {
-        .qubely-countdown-item-outer {
-            flex-direction: row;
-            .qubely-countdown-item-content,
-            .qubely-countdown-item {
-                flex-direction: row;
-            }
-            p {
-                margin-left: var(--label-spacing);
-            }
-        }
-    }
+	&.qubely-countdown-label-right {
+		.qubely-countdown-item-outer {
+			flex-direction: row;
+			.qubely-countdown-item-content,
+			.qubely-countdown-item {
+				flex-direction: row;
+			}
+			p {
+				margin-left: var(--label-spacing);
+			}
+		}
+	}
 
-    &.qubely-countdown-label-right {
-        .qubely-countdown-item-outer {
-            flex-direction: row-reverse;
-            .qubely-countdown-item-content,
-            .qubely-countdown-item {
-                flex-direction: row-reverse;
-            }
-            p {
-                margin-right: var(--label-spacing);
-            }
-        }
-    }
+	&.qubely-countdown-label-right {
+		.qubely-countdown-item-outer {
+			flex-direction: row-reverse;
+			.qubely-countdown-item-content,
+			.qubely-countdown-item {
+				flex-direction: row-reverse;
+			}
+			p {
+				margin-right: var(--label-spacing);
+			}
+		}
+	}
 }
 
 .qubely-countdown-label-control-text {
-    display: flex;
-    align-items: center;
-    .qubely-coutdown-label-right {
-        flex-grow: 1;
-    }
-    .qubely-coutdown-label-left {
-        .components-base-control,
-        .components-base-control__field {
-            margin-bottom: 0;
-        }
-    }
+	display: flex;
+	align-items: center;
+	.qubely-coutdown-label-right {
+		flex-grow: 1;
+	}
+	.qubely-coutdown-label-left {
+		.components-base-control,
+		.components-base-control__field {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .qubely-countdown-separator-control {
-    img {
-        max-width: 16px;
-        height: 12px;
-    }
+	img {
+		max-width: 16px;
+		height: 12px;
+	}
 }
 
 .qubely-countdown-control-date-picker {
-    display: flex;
-    .qubely-countdown-control-dropdown-parent {
-        flex-grow: 1;
-        margin-right: 8px;
-        .components-base-control {
-            margin-bottom: 0 !important;
-        }
-    }
-    .components-text-control__input {
-        background: white;
-    }
+	display: flex;
+	.qubely-countdown-control-dropdown-parent {
+		flex-grow: 1;
+		margin-right: 8px;
+		.components-base-control {
+			margin-bottom: 0 !important;
+		}
+	}
+	.components-text-control__input {
+		background: white;
+	}
 }
 
 .qubely-countdown-control-dropdown {
-    .components-datetime__date {
-        margin: 0 !important;
-    }
-    .components-datetime__time {
-        display: none;
-    }
+	.components-datetime__date {
+		margin: 0 !important;
+	}
+	.components-datetime__time {
+		display: none;
+	}
 }
 
 .qubely-countdown-control-time-picker {
-    .components-datetime__time > fieldset:first-child {
-        display: none;
-    }
+	.components-datetime__time > fieldset:first-child {
+		display: none;
+	}
 }
 
 .qubely-countdown-control-dropdown-parent label,
 .qubely-countdown-control-time-picker > label {
-    width: 100%;
-    display: block !important;
-    line-height: 18px;
-    margin-bottom: 10px !important;
+	width: 100%;
+	display: block !important;
+	line-height: 18px;
+	margin-bottom: 10px !important;
 }
 
 .qubely-countdown-control-date-picker {
-    margin-bottom: 12px;
+	margin-bottom: 12px;
 }
 
 .components-popover__content {
-    .qubely-countdown-block-control-icon-style {
-        margin-right: 4px;
-        display: block;
-        height: 24px;
-        line-height: 24px;
-    }
+	.qubely-countdown-block-control-icon-style {
+		margin-right: 4px;
+		display: block;
+		height: 24px;
+		line-height: 24px;
+	}
 }
 
 .qubely-countdown-block-control-icon-style {
-    margin-right: 4px;
-    width: 24px;
+	margin-right: 4px;
+	width: 24px;
 }
 
 .block-editor-block-card .block-editor-block-icon {
-    min-width: 36px;
+	min-width: 36px;
 }

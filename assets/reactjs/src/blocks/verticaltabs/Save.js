@@ -1,97 +1,107 @@
-const { Component } = wp.element
-const { InnerBlocks, RichText } = wp.blockEditor
-const { HelperFunction: { animationAttr, IsInteraction } } = wp.qubelyComponents
+const { Component } = wp.element;
+const { InnerBlocks, RichText } = wp.blockEditor;
+const {
+	HelperFunction: { animationAttr, IsInteraction },
+} = wp.qubelyComponents;
 
 class Save extends Component {
+	renderTabTitles = () => {
+		const { tabTitles, iconPosition, navText, navLayout, navSubHeading, iconType, enableIcon, navTextAlignment } =
+			this.props.attributes;
+		return tabTitles.map((title, index) => {
+			const buttonClass = `qubely-vertical-tab-item-button ${
+				enableIcon ? "qubely-has-icon-" + iconPosition : ""
+			}`;
+			const hasIcon =
+				title.iconName !== 0 && title.iconName !== undefined && title.iconName.toString().trim() !== "";
+			const IconImage = () => {
+				return (
+					<div
+						className={
+							"qubely-icon-image qubely-vertical-tab-icon " +
+							(title.image !== undefined && title.image.url ? "" : "qubely-vertical-placeholder")
+						}
+					>
+						{title.image !== undefined && title.image.url ? (
+							<img
+								className="qubely-vertical-tab-image"
+								src={title.image.url}
+								alt={title.imageAlt && title.imageAlt}
+								srcSet={
+									title.image2x !== undefined && title.image2x.url
+										? title.image.url + " 1x, " + title.image2x.url + " 2x"
+										: ""
+								}
+							/>
+						) : (
+							<span className="far fa-image" />
+						)}
+					</div>
+				);
+			};
+			const IconFont = () => (hasIcon ? <span className={`qubely-vertical-tab-icon ${title.iconName}`} /> : "");
+			const Icon = () => (enableIcon ? iconType === 1 ? <IconFont /> : <IconImage /> : "");
+			return (
+				<div class={`qubely-vertical-tab-item ${index === 0 ? "qubely-vertical-active" : ""}`}>
+					<div className={buttonClass}>
+						{navLayout === 2 && iconPosition === "left" && <Icon />}
+						<div
+							className={`qubely-vertical-tab-item-content ${
+								navTextAlignment === "right" ? "qubely-text-right" : ""
+							}`}
+						>
+							<h5 className="qubely-vertical-tab-title">
+								{navLayout === 1 && iconPosition === "left" && <Icon />}
 
-    renderTabTitles = () => {
-        const { tabTitles, iconPosition, navText, navLayout, navSubHeading, iconType, enableIcon, navTextAlignment } = this.props.attributes
-        return tabTitles.map((title, index) => {
-            const buttonClass = `qubely-vertical-tab-item-button ${enableIcon ? 'qubely-has-icon-' + iconPosition : ''}`
-            const hasIcon = title.iconName !== 0 && title.iconName !== undefined && title.iconName.toString().trim() !== ''
-            const IconImage = () => {
-                return <div className={'qubely-icon-image qubely-vertical-tab-icon ' + ((title.image !== undefined && title.image.url) ? '' : 'qubely-vertical-placeholder')}>
-                    {
-                        title.image !== undefined && title.image.url ? (
-                            <img
-                                className="qubely-vertical-tab-image"
-                                src={title.image.url}
-                                alt={title.imageAlt && title.imageAlt}
-                                srcSet={title.image2x !== undefined && title.image2x.url ? title.image.url + ' 1x, ' + title.image2x.url + ' 2x' : ''}
-                            />
-                        ) : (
-                            <span className="far fa-image" />
-                        )
-                    }
-                </div>
-            }
-            const IconFont = () => hasIcon ? <span className={`qubely-vertical-tab-icon ${title.iconName}`} /> : ''
-            const Icon = () => enableIcon ? (iconType === 1 ? <IconFont /> : <IconImage />) : ''
-            return (
-                <div class={`qubely-vertical-tab-item ${(index === 0) ? 'qubely-vertical-active' : ''}`}>
-                    <div className={buttonClass}>
-                        {
-                            (navLayout === 2 && iconPosition === 'left') && <Icon />
-                        }
-                        <div className={`qubely-vertical-tab-item-content ${navTextAlignment === 'right' ? 'qubely-text-right' : ''}`}>
-                            <h5 className='qubely-vertical-tab-title'>
-                                {
-                                    (navLayout === 1 && iconPosition === 'left') && <Icon />
-                                }
+								<RichText.Content tagName="div" value={title.title} />
+								{navLayout === 1 && iconPosition === "right" && <Icon />}
+							</h5>
+							{navSubHeading && (
+								<RichText.Content
+									tagName="h6"
+									className="qubely-vertical-tab-nav-sub-heading"
+									value={title.navSubHeading}
+								/>
+							)}
+							{navText && (
+								<RichText.Content
+									tagName="p"
+									className="qubely-vertical-tab-nav-text"
+									value={title.navText}
+									style={index !== 0 ? { display: "none" } : {}}
+								/>
+							)}
+						</div>
+						{navLayout === 2 && iconPosition === "right" && <Icon />}
+					</div>
+				</div>
+			);
+		});
+	};
 
-                                <RichText.Content
-                                    tagName="div"
-                                    value={title.title}
-                                />
-                                {
-                                    (navLayout === 1 && iconPosition === 'right') && <Icon />
-                                }
-                            </h5>
-                            {navSubHeading && (
-                                <RichText.Content
-                                    tagName="h6"
-                                    className="qubely-vertical-tab-nav-sub-heading"
-                                    value={title.navSubHeading}
-                                />
-                            )}
-                            {navText && (
-                                <RichText.Content
-                                    tagName="p"
-                                    className="qubely-vertical-tab-nav-text"
-                                    value={title.navText}
-                                    style={index !== 0 ? { display: 'none' } : {}}
-                                />
-                            )}
-                        </div>
-                        {
-                            (navLayout === 2 && iconPosition === 'right') && <Icon />
-                        }
-                    </div>
-                </div>
-            )
-        })
-    }
-
-    render() {
-        const { uniqueId, tabs, tabStyle, navAlignment, animation, interaction, enableArrow } = this.props.attributes
-        const interactionClass = IsInteraction(interaction) ? 'qubley-block-interaction' : '';
-        let iterator = [], index = 0
-        while (index < tabs) {
-            iterator.push(index)
-            index++
-        }
-        return (
-            <div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-                <div className={`qubely-block-vertical-tab ${interactionClass} qubely-vertical-tab-style-${tabStyle} qubely-alignment-${navAlignment} ${enableArrow === true ? 'qubely-block-has-arrow' : ''}`}>
-                    <div className={`qubely-vertical-tab-nav`}>
-                        {this.renderTabTitles(iterator)}
-                    </div>
-                    <div className={`qubely-vertical-tab-body`}>
-                        <InnerBlocks.Content />
-                    </div>
-                </div>
-            </div>
-        )
-    }
+	render() {
+		const { uniqueId, tabs, tabStyle, navAlignment, animation, interaction, enableArrow } = this.props.attributes;
+		const interactionClass = IsInteraction(interaction) ? "qubley-block-interaction" : "";
+		let iterator = [],
+			index = 0;
+		while (index < tabs) {
+			iterator.push(index);
+			index++;
+		}
+		return (
+			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
+				<div
+					className={`qubely-block-vertical-tab ${interactionClass} qubely-vertical-tab-style-${tabStyle} qubely-alignment-${navAlignment} ${
+						enableArrow === true ? "qubely-block-has-arrow" : ""
+					}`}
+				>
+					<div className={`qubely-vertical-tab-nav`}>{this.renderTabTitles(iterator)}</div>
+					<div className={`qubely-vertical-tab-body`}>
+						<InnerBlocks.Content />
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
-export default Save
+export default Save;

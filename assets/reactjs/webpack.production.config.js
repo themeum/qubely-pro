@@ -1,8 +1,7 @@
 'use strict';
 
 var path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const isDevelopment = process.env.NODE_ENV === 'development';
+var webpack = require('webpack');
 
 module.exports = {
     mode: 'production',
@@ -21,43 +20,9 @@ module.exports = {
                 use: { loader: 'babel-loader' }
             },
             {
-                test: /\.module\.s(a|c)ss$/,
-                loader: [
-                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    {
-                    loader: 'css-loader',
-                    options: {
-                        modules: true,
-                        sourceMap: isDevelopment
-                    }
-                    },
-                    {
-                    loader: 'sass-loader',
-                    options: {
-                        sourceMap: isDevelopment
-                    }
-                    }
-                ]
-                },
-                {
-                test: /\.s(a|c)ss$/,
-                exclude: /\.module.(s(a|c)ss)$/,
-                loader: [
-                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    {
-                    loader: 'sass-loader',
-                    options: {
-                        sourceMap: isDevelopment
-                    }
-                    }
-                ]
+                test: /\.scss$/,
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ],
             }
         ]
-    },
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: "../css/style.min.css", // relative to output.path
-        }),
-    ],
+    }
 };

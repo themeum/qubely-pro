@@ -4,7 +4,7 @@ const { withSelect } = wp.data;
 const { addQueryArgs } = wp.url;
 const { Component, Fragment, createRef } = wp.element;
 const { dateI18n, __experimentalGetSettings } = wp.date;
-const { InspectorControls, BlockControls } = wp.blockEditor
+const { InspectorControls, BlockControls } = wp.blockEditor;
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl, Placeholder } = wp.components;
 
 const {
@@ -29,15 +29,12 @@ const {
 	Inline: { InlineToolbar },
 	gloalSettings: { globalSettingsPanel, animationSettings },
 	withCSSGenerator,
-	ContextMenu: {
-		ContextMenu,
-		handleContextMenu
-	},
+	ContextMenu: { ContextMenu, handleContextMenu },
 	InspectorTabs,
-	InspectorTab
-} = wp.qubelyComponents
+	InspectorTab,
+} = wp.qubelyComponents;
 
-import icons from '../../helpers/icons'
+import icons from "../../helpers/icons";
 
 const CATEGORIES_LIST_QUERY = { per_page: -1 };
 let postTypes = qubely_admin.post_type;
@@ -45,7 +42,7 @@ class Edit extends Component {
 	constructor() {
 		super(...arguments);
 		this.state = {
-			device: 'md',
+			device: "md",
 			spacer: true,
 			categoriesList: [],
 		};
@@ -54,53 +51,65 @@ class Edit extends Component {
 
 	componentDidMount() {
 		this.isStillMounted = true;
-		this.fetchRequest = wp.apiFetch({
-			path: addQueryArgs(`/wp/v2/categories`, CATEGORIES_LIST_QUERY),
-		}).then(
-			(categoriesList) => {
+		this.fetchRequest = wp
+			.apiFetch({
+				path: addQueryArgs(`/wp/v2/categories`, CATEGORIES_LIST_QUERY),
+			})
+			.then((categoriesList) => {
 				if (this.isStillMounted) {
 					this.setState({ categoriesList });
 				}
-			}
-		).catch(
-			() => {
+			})
+			.catch(() => {
 				if (this.isStillMounted) {
 					this.setState({ categoriesList: [] });
 				}
-			}
-		);
+			});
 	}
 
 	componentWillUnmount() {
 		this.isStillMounted = false;
 	}
 	truncate(value, limit) {
-		if (value && value.split(' ').length > limit) {
-			return value.split(' ').splice(0, limit).join(' ');
+		if (value && value.split(" ").length > limit) {
+			return value.split(" ").splice(0, limit).join(" ");
 		}
 		return value;
 	}
 
 	renderFeaturedImage = (post) => {
-		const { attributes: { style, imgSize, imageAnimation, showCategory, categoryPosition } } = this.props
+		const {
+			attributes: { style, imgSize, imageAnimation, showCategory, categoryPosition },
+		} = this.props;
 		return (
 			<Fragment>
-				{((showCategory == 'badge') && (style === 4)) &&
+				{showCategory == "badge" && style === 4 && (
 					<div className={`qubely-postgrid-cat-position qubely-postgrid-cat-position-${categoryPosition}`}>
-						<span className="qubely-postcarousel-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+						<span
+							className="qubely-postcarousel-category"
+							dangerouslySetInnerHTML={{ __html: post.qubely_category }}
+						/>
 					</div>
-				}
+				)}
 				<div className={`qubely-post-grid-img qubely-post-img qubely-post-img-${imageAnimation}`}>
-					<img className="qubely-post-image" src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]} />
-					{((showCategory == 'badge') && (style != 4)) &&
-						<div className={`qubely-postcarousel-cat-position qubely-postcarousel-cat-position-${categoryPosition}`}>
-							<span className="qubely-postcarousel-category qubely-backend" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />
+					<img
+						className="qubely-post-image"
+						src={post.qubely_featured_image_url && post.qubely_featured_image_url[imgSize][0]}
+					/>
+					{showCategory == "badge" && style != 4 && (
+						<div
+							className={`qubely-postcarousel-cat-position qubely-postcarousel-cat-position-${categoryPosition}`}
+						>
+							<span
+								className="qubely-postcarousel-category qubely-backend"
+								dangerouslySetInnerHTML={{ __html: post.qubely_category }}
+							/>
 						</div>
-					}
+					)}
 				</div>
 			</Fragment>
-		)
-	}
+		);
+	};
 
 	renderCardContent = (post) => {
 		const {
@@ -117,28 +126,61 @@ class Edit extends Component {
 				excerptLimit,
 				showReadMore,
 				buttonText,
-				readmoreSize
-			}
-		} = this.props
-		const title = <h3 className="qubely-postcarousel-title"><a dangerouslySetInnerHTML={{ __html: post.title.rendered }} /></h3>
+				readmoreSize,
+			},
+		} = this.props;
+		const title = (
+			<h3 className="qubely-postcarousel-title">
+				<a dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+			</h3>
+		);
 
 		return (
 			<div className={`qubely-post-grid-content align-${contentPosition}`}>
-				{(showCategory === 'default') && <span className="qubely-postcarousel-category qubely-backend" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
-				{showTitle && (titlePosition == true) && title}
-				{(showAuthor || showDates || showComment) &&
+				{showCategory === "default" && (
+					<span
+						className="qubely-postcarousel-category qubely-backend"
+						dangerouslySetInnerHTML={{ __html: post.qubely_category }}
+					/>
+				)}
+				{showTitle && titlePosition == true && title}
+				{(showAuthor || showDates || showComment) && (
 					<div className="qubely-postcarousel-meta">
-						{showAuthor && <span><i className="fas fa-user" /> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
-						{showDates && <span><i className="far fa-calendar-alt" /> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
-						{showComment && <span><i className="fas fa-comment" /> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
+						{showAuthor && (
+							<span>
+								<i className="fas fa-user" /> {__("By")} <a>{post.qubely_author.display_name}</a>
+							</span>
+						)}
+						{showDates && (
+							<span>
+								<i className="far fa-calendar-alt" />{" "}
+								{dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}
+							</span>
+						)}
+						{showComment && (
+							<span>
+								<i className="fas fa-comment" /> {post.qubely_comment ? post.qubely_comment : "0"}
+							</span>
+						)}
 					</div>
-				}
-				{showTitle && (titlePosition == false) && title}
-				{showExcerpt && <div className="qubely-postcarousel-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }} />}
-				{showReadMore && <div className="qubely-postcarousel-btn-wrapper"><a className={`qubely-postcarousel-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
+				)}
+				{showTitle && titlePosition == false && title}
+				{showExcerpt && (
+					<div
+						className="qubely-postcarousel-intro"
+						dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }}
+					/>
+				)}
+				{showReadMore && (
+					<div className="qubely-postcarousel-btn-wrapper">
+						<a className={`qubely-postcarousel-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>
+							{buttonText}
+						</a>
+					</div>
+				)}
 			</div>
-		)
-	}
+		);
+	};
 
 	render() {
 		const {
@@ -276,27 +318,29 @@ class Edit extends Component {
 				sliderItemMargin,
 				dotalignment,
 				textalignment,
-				animation
-			}
-		} = this.props
+				animation,
+			},
+		} = this.props;
 		const { device } = this.state;
-		let taxonomyListOptions = [
-			{ value: '', label: __('Select Taxonomy') }
-		];
+		let taxonomyListOptions = [{ value: "", label: __("Select Taxonomy") }];
 
-		let categoryListOptions = [
-			{ value: '', label: __('All') }
-		];
+		let categoryListOptions = [{ value: "", label: __("All") }];
 
-		if ('' !== taxonomyList) {
+		if ("" !== taxonomyList) {
 			Object.keys(taxonomyList).map((item) => {
-				return taxonomyListOptions.push({ value: taxonomyList[item]['name'], label: taxonomyList[item]['label'] })
+				return taxonomyListOptions.push({
+					value: taxonomyList[item]["name"],
+					label: taxonomyList[item]["label"],
+				});
 			});
 		}
 
-		if ('' !== categoryList) {
+		if ("" !== categoryList) {
 			Object.keys(categoryList).map((item) => {
-				return categoryListOptions.push({ value: categoryList[item]['value'], label: categoryList[item]['label'] })
+				return categoryListOptions.push({
+					value: categoryList[item]["value"],
+					label: categoryList[item]["label"],
+				});
 			});
 		}
 
@@ -304,28 +348,23 @@ class Edit extends Component {
 		if (!hasPosts) {
 			return (
 				<Fragment>
-					<Placeholder
-						icon="admin-post"
-						label={__('Post Carousel')}
-					>
-						{!Array.isArray(posts) ?
-							<Spinner /> :
-							__('No posts found.')
-						}
+					<Placeholder icon="admin-post" label={__("Post Carousel")}>
+						{!Array.isArray(posts) ? <Spinner /> : __("No posts found.")}
 					</Placeholder>
 				</Fragment>
 			);
-		} else if (numberofPosts && ((numberofPosts < postitems.md) || (numberofPosts < postitems.sm) || (numberofPosts < postitems.xs))) {
-
+		} else if (
+			numberofPosts &&
+			(numberofPosts < postitems.md || numberofPosts < postitems.sm || numberofPosts < postitems.xs)
+		) {
 			let newPostItems = {
 				...postitems,
-				...numberofPosts < postitems.md && { md: numberofPosts },
-				...numberofPosts < postitems.sm && { sm: numberofPosts },
-				...numberofPosts < postitems.xs && { xs: numberofPosts },
-			}
-			setAttributes({ postitems: newPostItems })
+				...(numberofPosts < postitems.md && { md: numberofPosts }),
+				...(numberofPosts < postitems.sm && { sm: numberofPosts }),
+				...(numberofPosts < postitems.xs && { xs: numberofPosts }),
+			};
+			setAttributes({ postitems: newPostItems });
 		}
-
 
 		const carouselSettings = {
 			nav: nav,
@@ -334,9 +373,9 @@ class Edit extends Component {
 			speed: speed,
 			items: {
 				...postitems,
-				...(numberofPosts && numberofPosts < postitems.md) && { md: numberofPosts },
-				...(numberofPosts && numberofPosts < postitems.sm) && { sm: numberofPosts },
-				...(numberofPosts && numberofPosts < postitems.xs) && { xs: numberofPosts },
+				...(numberofPosts && numberofPosts < postitems.md && { md: numberofPosts }),
+				...(numberofPosts && numberofPosts < postitems.sm && { sm: numberofPosts }),
+				...(numberofPosts && numberofPosts < postitems.xs && { xs: numberofPosts }),
 			},
 			autoplay: autoPlay,
 			interval: interval,
@@ -346,25 +385,25 @@ class Edit extends Component {
 			responsive: [
 				{
 					viewport: 1170,
-					items: (numberofPosts && numberofPosts < postitems.md) ? numberofPosts : postitems.md
+					items: numberofPosts && numberofPosts < postitems.md ? numberofPosts : postitems.md,
 				},
 				{
 					viewport: 980,
-					items: (numberofPosts && numberofPosts < postitems.sm) ? numberofPosts : postitems.sm
+					items: numberofPosts && numberofPosts < postitems.sm ? numberofPosts : postitems.sm,
 				},
 				{
 					viewport: 580,
-					items: (numberofPosts && numberofPosts < postitems.xs) ? numberofPosts : postitems.xs
+					items: numberofPosts && numberofPosts < postitems.xs ? numberofPosts : postitems.xs,
 				},
 			],
-		}
+		};
 
 		return (
 			<Fragment>
 				<InspectorControls key="inspector">
-					<InspectorTabs tabs={['style', 'advance']}>
-						<InspectorTab key={'style'}>
-							<PanelBody title={__('')} opened={true}>
+					<InspectorTabs tabs={["style", "advance"]}>
+						<InspectorTab key={"style"}>
+							<PanelBody title={__("")} opened={true}>
 								<Styles
 									columns={4}
 									value={style}
@@ -374,143 +413,272 @@ class Edit extends Component {
 										{ value: 3, svg: icons.postgrid_design_4 },
 										{ value: 4, svg: icons.postgrid_design_6 },
 									]}
-									onChange={val => setAttributes({ style: val })}
+									onChange={(val) => setAttributes({ style: val })}
 								/>
 							</PanelBody>
 
-							<PanelBody title={__('Post Design')} initialOpen={false}>
-
-								{(style === 3 || style === 4) &&
+							<PanelBody title={__("Post Design")} initialOpen={false}>
+								{(style === 3 || style === 4) && (
 									<ButtonGroup
-										label={__('Content Position')}
+										label={__("Content Position")}
 										options={
-											(style === 3) ?
-												[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']]
-												:
-												[[__('Top'), 'top'], [__('Middle'), 'center'], [__('Bottom'), 'bottom']]
+											style === 3
+												? [
+														[__("Left"), "left"],
+														[__("Middle"), "center"],
+														[__("Right"), "right"],
+												  ]
+												: [
+														[__("Top"), "top"],
+														[__("Middle"), "center"],
+														[__("Bottom"), "bottom"],
+												  ]
 										}
-										value={(style === 3) ? contentPosition : girdContentPosition}
-										onChange={value => setAttributes((style === 3) ? { contentPosition: value } : { girdContentPosition: value })}
+										value={style === 3 ? contentPosition : girdContentPosition}
+										onChange={(value) =>
+											setAttributes(
+												style === 3
+													? { contentPosition: value }
+													: { girdContentPosition: value }
+											)
+										}
 									/>
-								}
-
+								)}
 
 								<Padding
-									label={__('Content Padding')}
+									label={__("Content Padding")}
 									value={contentPadding}
-									onChange={val => setAttributes({ contentPadding: val })}
-									min={0} max={100}
-									unit={['px', 'em', '%']}
-									responsive device={device}
-									onDeviceChange={value => this.setState({ device: value })}
+									onChange={(val) => setAttributes({ contentPadding: val })}
+									min={0}
+									max={100}
+									unit={["px", "em", "%"]}
+									responsive
+									device={device}
+									onDeviceChange={(value) => this.setState({ device: value })}
 								/>
 								<Separator />
 
-								{(style === 1 || style === 3) &&
+								{(style === 1 || style === 3) && (
 									<Fragment>
 										<ColorAdvanced
-											label={__('Background')}
+											label={__("Background")}
 											value={style === 3 ? stackBg : bgColor}
-											onChange={value => setAttributes(style === 3 ? { stackBg: value } : { bgColor: value })} />
+											onChange={(value) =>
+												setAttributes(style === 3 ? { stackBg: value } : { bgColor: value })
+											}
+										/>
 										<Border
 											min={0}
 											max={10}
 											responsive
 											value={border}
 											device={device}
-											label={__('Border')}
-											unit={['px', 'em', '%']}
-											onChange={val => setAttributes({ border: val })}
-											onDeviceChange={value => this.setState({ device: value })}
+											label={__("Border")}
+											unit={["px", "em", "%"]}
+											onChange={(val) => setAttributes({ border: val })}
+											onDeviceChange={(value) => this.setState({ device: value })}
 										/>
 
-										{
-											style === 3 &&
+										{style === 3 && (
 											<BorderRadius
 												min={0}
 												max={100}
 												responsive
 												device={device}
-												label={__('Corner')}
+												label={__("Corner")}
 												value={stackBorderRadius}
-												unit={['px', 'em', '%']}
-												onChange={value => setAttributes({ stackBorderRadius: value })}
-												onDeviceChange={value => this.setState({ stackBorderRadius: value })} />
-										}
+												unit={["px", "em", "%"]}
+												onChange={(value) => setAttributes({ stackBorderRadius: value })}
+												onDeviceChange={(value) => this.setState({ stackBorderRadius: value })}
+											/>
+										)}
 									</Fragment>
-								}
+								)}
 
-								{style === 2 &&
+								{style === 2 && (
 									<Fragment>
-										<ColorAdvanced label={__('Background')} value={cardBackground} onChange={(value) => setAttributes({ cardBackground: value })} />
+										<ColorAdvanced
+											label={__("Background")}
+											value={cardBackground}
+											onChange={(value) => setAttributes({ cardBackground: value })}
+										/>
 
-										<Border label={__('Border')} value={cardBorder} onChange={val => setAttributes({ cardBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+										<Border
+											label={__("Border")}
+											value={cardBorder}
+											onChange={(val) => setAttributes({ cardBorder: val })}
+											min={0}
+											max={10}
+											unit={["px", "em", "%"]}
+											responsive
+											device={device}
+											onDeviceChange={(value) => this.setState({ device: value })}
+										/>
 
-										<BorderRadius min={0} max={100} responsive device={device} label={__('Card Corner')} value={cardBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ cardBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
+										<BorderRadius
+											min={0}
+											max={100}
+											responsive
+											device={device}
+											label={__("Card Corner")}
+											value={cardBorderRadius}
+											unit={["px", "em", "%"]}
+											onChange={(value) => setAttributes({ cardBorderRadius: value })}
+											onDeviceChange={(value) => this.setState({ device: value })}
+										/>
 
 										{/* <Range label={__('Card Space')} value={cardSpace} onChange={value => setAttributes({ cardSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} /> */}
 
-										<Padding label={__('Padding')} value={cardPadding} onChange={val => setAttributes({ cardPadding: val })} min={0} max={100} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-										<BoxShadow label={__('Box-Shadow')} value={cardBoxShadow} onChange={(value) => setAttributes({ cardBoxShadow: value })} />
+										<Padding
+											label={__("Padding")}
+											value={cardPadding}
+											onChange={(val) => setAttributes({ cardPadding: val })}
+											min={0}
+											max={100}
+											unit={["px", "em", "%"]}
+											responsive
+											device={device}
+											onDeviceChange={(value) => this.setState({ device: value })}
+										/>
+										<BoxShadow
+											label={__("Box-Shadow")}
+											value={cardBoxShadow}
+											onChange={(value) => setAttributes({ cardBoxShadow: value })}
+										/>
 									</Fragment>
-								}
+								)}
 
 								{/* Overlay */}
-								{(style === 4) &&
+								{style === 4 && (
 									<Fragment>
-										<Range label={__('Overlay Height')} value={overlayHeight} onChange={value => setAttributes({ overlayHeight: value })} unit={['px', 'em', '%']} min={50} max={700} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-										<BorderRadius min={0} max={100} responsive device={device} label={__('Overlay Corner')} value={overlayBorderRadius} unit={['px', 'em', '%']} onChange={value => setAttributes({ overlayBorderRadius: value })} onDeviceChange={value => this.setState({ device: value })} />
+										<Range
+											label={__("Overlay Height")}
+											value={overlayHeight}
+											onChange={(value) => setAttributes({ overlayHeight: value })}
+											unit={["px", "em", "%"]}
+											min={50}
+											max={700}
+											responsive
+											device={device}
+											onDeviceChange={(value) => this.setState({ device: value })}
+										/>
+										<BorderRadius
+											min={0}
+											max={100}
+											responsive
+											device={device}
+											label={__("Overlay Corner")}
+											value={overlayBorderRadius}
+											unit={["px", "em", "%"]}
+											onChange={(value) => setAttributes({ overlayBorderRadius: value })}
+											onDeviceChange={(value) => this.setState({ device: value })}
+										/>
 										<Tabs>
-											<Tab tabTitle={__('Normal')}>
-												<ColorAdvanced label={__('Overlay')} value={overlayBg} onChange={(value) => setAttributes({ overlayBg: value })} />
+											<Tab tabTitle={__("Normal")}>
+												<ColorAdvanced
+													label={__("Overlay")}
+													value={overlayBg}
+													onChange={(value) => setAttributes({ overlayBg: value })}
+												/>
 											</Tab>
-											<Tab tabTitle={__('Hover')}>
-												<ColorAdvanced label={__('Hover Overlay')} value={overlayHoverBg} onChange={(value) => setAttributes({ overlayHoverBg: value })} />
+											<Tab tabTitle={__("Hover")}>
+												<ColorAdvanced
+													label={__("Hover Overlay")}
+													value={overlayHoverBg}
+													onChange={(value) => setAttributes({ overlayHoverBg: value })}
+												/>
 											</Tab>
 										</Tabs>
-										<Select label={__('Blend Mode')} options={[['normal', __('Normal')], ['multiply', __('Multiply')], ['screen', __('Screen')], ['overlay', __('Overlay')], ['darken', __('Darken')], ['lighten', __('Lighten')], ['color-dodge', __('Color Dodge')], ['saturation', __('Saturation')], ['luminosity', __('Luminosity')], ['color', __('Color')], ['color-burn', __('Color Burn')], ['exclusion', __('Exclusion')], ['hue', __('Hue')]]} value={overlayBlend} onChange={val => setAttributes({ overlayBlend: val })} />
+										<Select
+											label={__("Blend Mode")}
+											options={[
+												["normal", __("Normal")],
+												["multiply", __("Multiply")],
+												["screen", __("Screen")],
+												["overlay", __("Overlay")],
+												["darken", __("Darken")],
+												["lighten", __("Lighten")],
+												["color-dodge", __("Color Dodge")],
+												["saturation", __("Saturation")],
+												["luminosity", __("Luminosity")],
+												["color", __("Color")],
+												["color-burn", __("Color Burn")],
+												["exclusion", __("Exclusion")],
+												["hue", __("Hue")],
+											]}
+											value={overlayBlend}
+											onChange={(val) => setAttributes({ overlayBlend: val })}
+										/>
 									</Fragment>
-								}
+								)}
 
-								{
-									(style !== 4) && (style !== 2) &&
+								{style !== 4 && style !== 2 && (
 									<BoxShadow
-										label={__('Box-Shadow')}
+										label={__("Box-Shadow")}
 										value={style === 3 ? stackBoxShadow : boxShadow}
-										onChange={(value) => setAttributes(style === 3 ? { stackBoxShadow: value } : { boxShadow: value })}
+										onChange={(value) =>
+											setAttributes(
+												style === 3 ? { stackBoxShadow: value } : { boxShadow: value }
+											)
+										}
 									/>
-								}
-
+								)}
 							</PanelBody>
 
-							<PanelBody title={__('Carousel Settings')} initialOpen={true}>
-
-								<Toggle label={__('Show Arrow Navigation')} value={nav} onChange={value => setAttributes({ nav: value })} />
-								<Toggle label={__('Show Dot Navigation')} value={dots} onChange={value => setAttributes({ dots: value })} />
+							<PanelBody title={__("Carousel Settings")} initialOpen={true}>
+								<Toggle
+									label={__("Show Arrow Navigation")}
+									value={nav}
+									onChange={(value) => setAttributes({ nav: value })}
+								/>
+								<Toggle
+									label={__("Show Dot Navigation")}
+									value={dots}
+									onChange={(value) => setAttributes({ dots: value })}
+								/>
 								{/* <Toggle label={__('Draggable')} value={dragable} onChange={value => setAttributes({ dragable: value })} /> */}
 
-								<Toggle label={__('Autoplay')} value={autoPlay} onChange={value => setAttributes({ autoPlay: value })} />
-								{autoPlay &&
-									<Fragment>
-										<Range label={__('Speed (ms)')} value={speed} onChange={value => setAttributes({ speed: parseInt(value) })} min={500} max={5000} />
-										<Range label={__('Interval (ms)')} value={interval} onChange={value => setAttributes({ interval: parseInt(value) })} min={500} max={5000} />
-									</Fragment>
-								}
 								<Toggle
-									label={__('Centered Slides')}
+									label={__("Autoplay")}
+									value={autoPlay}
+									onChange={(value) => setAttributes({ autoPlay: value })}
+								/>
+								{autoPlay && (
+									<Fragment>
+										<Range
+											label={__("Speed (ms)")}
+											value={speed}
+											onChange={(value) => setAttributes({ speed: parseInt(value) })}
+											min={500}
+											max={5000}
+										/>
+										<Range
+											label={__("Interval (ms)")}
+											value={interval}
+											onChange={(value) => setAttributes({ interval: parseInt(value) })}
+											min={500}
+											max={5000}
+										/>
+									</Fragment>
+								)}
+								<Toggle
+									label={__("Centered Slides")}
 									value={isCentered}
-									onChange={value => setAttributes({ isCentered: value })}
+									onChange={(value) => setAttributes({ isCentered: value })}
 								/>
 								{/* {isCentered &&
 							<Toggle label={__('Fade Deactivated Items')} value={activeFade} onChange={value => setAttributes({ activeFade: value })} />
 						} */}
 								<Range
-									label={__('Number of Columns')}
-									min={1} max={20} responsive device={device}
+									label={__("Number of Columns")}
+									min={1}
+									max={20}
+									responsive
+									device={device}
 									device={this.state.device}
 									value={postitems}
-									onChange={value => setAttributes({ postitems: value })}
-									onDeviceChange={value => this.setState({ device: value })}
+									onChange={(value) => setAttributes({ postitems: value })}
+									onDeviceChange={(value) => this.setState({ device: value })}
 								/>
 								{/* <Range
 							label={__('Padding')}
@@ -526,214 +694,337 @@ class Edit extends Component {
 								<Range
 									min={0}
 									max={100}
-									label={__('Gutter')}
+									label={__("Gutter")}
 									value={sliderItemMargin}
-									onChange={value => setAttributes({ sliderItemMargin: parseInt(value) })}
+									onChange={(value) => setAttributes({ sliderItemMargin: parseInt(value) })}
 								/>
 							</PanelBody>
 
-							{nav &&
-								<PanelBody title={__('Arrow Settings')} initialOpen={false}>
+							{nav && (
+								<PanelBody title={__("Arrow Settings")} initialOpen={false}>
 									<ButtonGroup
-										label={__('Navigation Style')}
-										options={[[<span className="dashicons dashicons-arrow-right-alt" />, 'arrowright'], [<span className="dashicons dashicons-arrow-right-alt2" />, 'arrowright2']]}
+										label={__("Navigation Style")}
+										options={[
+											[<span className="dashicons dashicons-arrow-right-alt" />, "arrowright"],
+											[<span className="dashicons dashicons-arrow-right-alt2" />, "arrowright2"],
+										]}
 										value={arrowStyle}
-										onChange={value => setAttributes({ arrowStyle: value })}
+										onChange={(value) => setAttributes({ arrowStyle: value })}
 									/>
 									<Range
-										label={__('Horizontal Position')}
-										value={horizontalPosition} onChange={(value) => setAttributes({ horizontalPosition: value })}
-										min={-100} max={100}
-										responsive unit={['px', 'em', '%']}
+										label={__("Horizontal Position")}
+										value={horizontalPosition}
+										onChange={(value) => setAttributes({ horizontalPosition: value })}
+										min={-100}
+										max={100}
+										responsive
+										unit={["px", "em", "%"]}
 										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
+										onDeviceChange={(value) => this.setState({ device: value })}
 									/>
 									<Range
-										label={__('Vertical Position')}
-										value={verticalPosition} onChange={(value) => setAttributes({ verticalPosition: value })}
-										min={1} max={100}
-										responsive unit={['px', 'em', '%']}
+										label={__("Vertical Position")}
+										value={verticalPosition}
+										onChange={(value) => setAttributes({ verticalPosition: value })}
+										min={1}
+										max={100}
+										responsive
+										unit={["px", "em", "%"]}
 										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
+										onDeviceChange={(value) => this.setState({ device: value })}
 									/>
 									<Range
-										label={__('Shape Size')}
-										value={shapeWidth} onChange={(value) => setAttributes({ shapeWidth: value })}
-										min={1} max={100}
-										responsive unit={['px', 'em', '%']}
+										label={__("Shape Size")}
+										value={shapeWidth}
+										onChange={(value) => setAttributes({ shapeWidth: value })}
+										min={1}
+										max={100}
+										responsive
+										unit={["px", "em", "%"]}
 										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
+										onDeviceChange={(value) => this.setState({ device: value })}
 									/>
 									<Range
-										label={__('Arrow Size')}
-										value={navSize} onChange={(value) => setAttributes({ navSize: value })}
-										min={0} max={100}
-										responsive unit={['px', 'em', '%']}
+										label={__("Arrow Size")}
+										value={navSize}
+										onChange={(value) => setAttributes({ navSize: value })}
+										min={0}
+										max={100}
+										responsive
+										unit={["px", "em", "%"]}
 										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
+										onDeviceChange={(value) => this.setState({ device: value })}
 									/>
 									<Tabs>
-										<Tab tabTitle={__('Normal')}>
-											<Color label={__('Navigation Color')} value={navColor} onChange={(value) => setAttributes({ navColor: value })} />
-											<Color label={__('Navigation Shape Color')} value={navShapeColor} onChange={val => setAttributes({ navShapeColor: val })} />
-											<Border label={__('Navigation Border')} value={navBorderColor} onChange={val => setAttributes({ navBorderColor: val })} />
+										<Tab tabTitle={__("Normal")}>
+											<Color
+												label={__("Navigation Color")}
+												value={navColor}
+												onChange={(value) => setAttributes({ navColor: value })}
+											/>
+											<Color
+												label={__("Navigation Shape Color")}
+												value={navShapeColor}
+												onChange={(val) => setAttributes({ navShapeColor: val })}
+											/>
+											<Border
+												label={__("Navigation Border")}
+												value={navBorderColor}
+												onChange={(val) => setAttributes({ navBorderColor: val })}
+											/>
 											<BorderRadius
 												min={0}
 												max={100}
 												responsive
 												device={device}
-												label={__('Navigation Corner')}
+												label={__("Navigation Corner")}
 												value={navigationRadius}
-												unit={['px', 'em', '%']}
-												onChange={value => setAttributes({ navigationRadius: value })}
-												onDeviceChange={value => this.setState({ device: value })}
+												unit={["px", "em", "%"]}
+												onChange={(value) => setAttributes({ navigationRadius: value })}
+												onDeviceChange={(value) => this.setState({ device: value })}
 											/>
 										</Tab>
-										<Tab tabTitle={__('Hover')}>
-											<Color label={__('Navigation Color')} value={navHoverColor} onChange={(value) => setAttributes({ navHoverColor: value })} />
-											<Color label={__('Shape Color')} value={navShapeHoverColor} onChange={val => setAttributes({ navShapeHoverColor: val })} />
-											<Border label={__('Border Color')} value={navBorderHoverColor} onChange={val => setAttributes({ navBorderHoverColor: val })} />
+										<Tab tabTitle={__("Hover")}>
+											<Color
+												label={__("Navigation Color")}
+												value={navHoverColor}
+												onChange={(value) => setAttributes({ navHoverColor: value })}
+											/>
+											<Color
+												label={__("Shape Color")}
+												value={navShapeHoverColor}
+												onChange={(val) => setAttributes({ navShapeHoverColor: val })}
+											/>
+											<Border
+												label={__("Border Color")}
+												value={navBorderHoverColor}
+												onChange={(val) => setAttributes({ navBorderHoverColor: val })}
+											/>
 											<BorderRadius
-												label={__('Corner Radius')}
-												value={navHoverRadius} onChange={(value) => setAttributes({ navHoverRadius: value })}
-												min={1} max={100}
-												responsive unit={['px', 'em', '%']}
+												label={__("Corner Radius")}
+												value={navHoverRadius}
+												onChange={(value) => setAttributes({ navHoverRadius: value })}
+												min={1}
+												max={100}
+												responsive
+												unit={["px", "em", "%"]}
 												device={device}
-												onDeviceChange={value => this.setState({ device: value })}
+												onDeviceChange={(value) => this.setState({ device: value })}
 											/>
 										</Tab>
 									</Tabs>
-
 								</PanelBody>
-							}
-							{dots &&
-								<PanelBody title={__('Dot Settings')} initialOpen={false}>
+							)}
+							{dots && (
+								<PanelBody title={__("Dot Settings")} initialOpen={false}>
 									<Range
-										label={__('Dot Position')}
-										value={dotPosition} onChange={(value) => setAttributes({ dotPosition: value })}
-										min={-200} max={200}
-										responsive unit={['px', 'em', '%']}
+										label={__("Dot Position")}
+										value={dotPosition}
+										onChange={(value) => setAttributes({ dotPosition: value })}
+										min={-200}
+										max={200}
+										responsive
+										unit={["px", "em", "%"]}
 										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
+										onDeviceChange={(value) => this.setState({ device: value })}
 									/>
 									<Range
-										label={__('Dot Width')}
-										value={dotwidth} onChange={(value) => setAttributes({ dotwidth: value })}
-										min={1} max={100}
-										responsive unit={['px', 'em', '%']}
+										label={__("Dot Width")}
+										value={dotwidth}
+										onChange={(value) => setAttributes({ dotwidth: value })}
+										min={1}
+										max={100}
+										responsive
+										unit={["px", "em", "%"]}
 										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
+										onDeviceChange={(value) => this.setState({ device: value })}
 									/>
 									<Range
-										label={__('Dot Height')}
-										value={dotHeight} onChange={(value) => setAttributes({ dotHeight: value })}
-										min={1} max={100}
-										responsive unit={['px', 'em', '%']}
+										label={__("Dot Height")}
+										value={dotHeight}
+										onChange={(value) => setAttributes({ dotHeight: value })}
+										min={1}
+										max={100}
+										responsive
+										unit={["px", "em", "%"]}
 										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
+										onDeviceChange={(value) => this.setState({ device: value })}
 									/>
 									<Range
-										label={__('Dot Border Radius')}
-										value={dotBorderRadius} onChange={(value) => setAttributes({ dotBorderRadius: value })}
-										min={1} max={100}
-										responsive unit={['px', 'em', '%']}
+										label={__("Dot Border Radius")}
+										value={dotBorderRadius}
+										onChange={(value) => setAttributes({ dotBorderRadius: value })}
+										min={1}
+										max={100}
+										responsive
+										unit={["px", "em", "%"]}
 										device={device}
-										onDeviceChange={value => this.setState({ device: value })}
+										onDeviceChange={(value) => this.setState({ device: value })}
 									/>
 									<ButtonGroup
-										label={__('Dot Alignment')}
-										options={[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']]}
+										label={__("Dot Alignment")}
+										options={[
+											[__("Left"), "left"],
+											[__("Middle"), "center"],
+											[__("Right"), "right"],
+										]}
 										value={dotalignment}
-										onChange={value => setAttributes({ dotalignment: value })}
+										onChange={(value) => setAttributes({ dotalignment: value })}
 									/>
 									<Tabs>
-										<Tab tabTitle={__('Normal')}>
-											<ColorAdvanced label={__('Dot Color')} value={dotColor} onChange={val => setAttributes({ dotColor: val })} />
+										<Tab tabTitle={__("Normal")}>
+											<ColorAdvanced
+												label={__("Dot Color")}
+												value={dotColor}
+												onChange={(val) => setAttributes({ dotColor: val })}
+											/>
 										</Tab>
-										<Tab tabTitle={__('Active')}>
-											<ColorAdvanced label={__('Dot Active Color')} value={dotActiveColor} onChange={val => setAttributes({ dotActiveColor: val })} />
+										<Tab tabTitle={__("Active")}>
+											<ColorAdvanced
+												label={__("Dot Active Color")}
+												value={dotActiveColor}
+												onChange={(val) => setAttributes({ dotActiveColor: val })}
+											/>
 										</Tab>
 									</Tabs>
-
 								</PanelBody>
-							}
+							)}
 
-							<PanelBody title={__('Post Query')} initialOpen={false}>
+							<PanelBody title={__("Post Query")} initialOpen={false}>
 								<SelectControl
-									label={__('Post Type')}
+									label={__("Post Type")}
 									options={postTypes}
 									value={postType}
-									onChange={value => setAttributes({ postType: value })}
+									onChange={(value) => setAttributes({ postType: value })}
 								/>
-								{taxonomyList && 'post' !== postType &&
+								{taxonomyList && "post" !== postType && (
 									<SelectControl
-										label={__('Taxonomy')}
+										label={__("Taxonomy")}
 										options={taxonomyListOptions}
 										value={taxonomyType}
-										onChange={value => setAttributes({ taxonomyType: value })}
+										onChange={(value) => setAttributes({ taxonomyType: value })}
 									/>
-								}
-								{categoryList && 'post' !== postType &&
+								)}
+								{categoryList && "post" !== postType && (
 									<Dropdown
-										label={taxonomyList && taxonomyList[taxonomyType] ? taxonomyList[taxonomyType]['label'] : __('Taxonomy Terms')}
+										label={
+											taxonomyList && taxonomyList[taxonomyType]
+												? taxonomyList[taxonomyType]["label"]
+												: __("Taxonomy Terms")
+										}
 										enableSearch
 										defaultOptionsLabel="All"
 										options={categoryListOptions}
 										value={customTaxonomies}
-										onChange={value => setAttributes({ customTaxonomies: value.length && value[value.length - 1].label === 'All' ? [] : value })}
+										onChange={(value) =>
+											setAttributes({
+												customTaxonomies:
+													value.length && value[value.length - 1].label === "All"
+														? []
+														: value,
+											})
+										}
 									/>
-								}
-								{'post' === postType &&
+								)}
+								{"post" === postType && (
 									<Fragment>
 										<ButtonGroup
-											label={__('Taxonomy')}
-											options={[[__('Categories'), 'categories'], [__('Tags'), 'tags']]}
+											label={__("Taxonomy")}
+											options={[
+												[__("Categories"), "categories"],
+												[__("Tags"), "tags"],
+											]}
 											value={taxonomy}
-											onChange={value => setAttributes({ taxonomy: value })}
+											onChange={(value) => setAttributes({ taxonomy: value })}
 										/>
 										<Dropdown
-											label={taxonomy === 'categories' ? __('Categories') : __('Tags')}
+											label={taxonomy === "categories" ? __("Categories") : __("Tags")}
 											enableSearch
 											defaultOptionsLabel="All"
-											options={[{ value: 'all', label: __('All') }, ...taxonomyList]}
-											value={taxonomy === 'categories' ? categories : tags}
-											onChange={value => setAttributes(taxonomy === 'categories' ? { categories: value.length && value[value.length - 1].label === 'All' ? [] : value } : { tags: value.length && value[value.length - 1].label === 'All' ? [] : value })}
+											options={[{ value: "all", label: __("All") }, ...taxonomyList]}
+											value={taxonomy === "categories" ? categories : tags}
+											onChange={(value) =>
+												setAttributes(
+													taxonomy === "categories"
+														? {
+																categories:
+																	value.length &&
+																	value[value.length - 1].label === "All"
+																		? []
+																		: value,
+														  }
+														: {
+																tags:
+																	value.length &&
+																	value[value.length - 1].label === "All"
+																		? []
+																		: value,
+														  }
+												)
+											}
 										/>
 									</Fragment>
-								}
-								<Range label={__('Number of Items')} value={postsToShow} onChange={value => setAttributes({ postsToShow: parseInt(value) })} min={1} max={15} />
+								)}
+								<Range
+									label={__("Number of Items")}
+									value={postsToShow}
+									onChange={(value) => setAttributes({ postsToShow: parseInt(value) })}
+									min={1}
+									max={15}
+								/>
 
 								<SelectControl
 									label={__("Order By")}
 									value={orderBy}
 									options={[
-										{ label: __('Date'), value: 'date' },
-										{ label: __('Title'), value: 'title' },
-										{ label: __('Random'), value: 'rand' },
-										{ label: __('Menu Order'), value: 'menu_order' },
+										{ label: __("Date"), value: "date" },
+										{ label: __("Title"), value: "title" },
+										{ label: __("Random"), value: "rand" },
+										{ label: __("Menu Order"), value: "menu_order" },
 									]}
-									onChange={value => setAttributes({ orderBy: value })}
+									onChange={(value) => setAttributes({ orderBy: value })}
 								/>
 								<ButtonGroup
-									label={__('Order')}
-									options={[[__('Ascending'), 'asc'], [__('Descending'), 'desc',]]}
+									label={__("Order")}
+									options={[
+										[__("Ascending"), "asc"],
+										[__("Descending"), "desc"],
+									]}
 									value={order}
-									onChange={value => setAttributes({ order: value })}
+									onChange={(value) => setAttributes({ order: value })}
 								/>
 							</PanelBody>
 
-							<PanelBody title={__('Image Settings')} initialOpen={false}>
-								<Toggle label={__('Show Featured Image')} value={showImages} onChange={value => setAttributes({ showImages: value })} />
+							<PanelBody title={__("Image Settings")} initialOpen={false}>
+								<Toggle
+									label={__("Show Featured Image")}
+									value={showImages}
+									onChange={(value) => setAttributes({ showImages: value })}
+								/>
 
-								{
-									style !== 4 &&
+								{style !== 4 && (
 									<Fragment>
-										<Toggle label={__('Fixed Image Height')} value={enableFixedHeight} onChange={value => setAttributes({ enableFixedHeight: value })} />
+										<Toggle
+											label={__("Fixed Image Height")}
+											value={enableFixedHeight}
+											onChange={(value) => setAttributes({ enableFixedHeight: value })}
+										/>
 
-										{enableFixedHeight && <Range label={__('Height')} value={fixedHeight} onChange={value => setAttributes({ fixedHeight: value })} unit={['px', 'em', '%']} min={10} max={600} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
-
+										{enableFixedHeight && (
+											<Range
+												label={__("Height")}
+												value={fixedHeight}
+												onChange={(value) => setAttributes({ fixedHeight: value })}
+												unit={["px", "em", "%"]}
+												min={10}
+												max={600}
+												responsive
+												device={device}
+												onDeviceChange={(value) => this.setState({ device: value })}
+											/>
+										)}
 									</Fragment>
-								}
+								)}
 								<SelectControl
 									label={__("Image Sizes")}
 									value={imgSize}
@@ -741,80 +1032,194 @@ class Edit extends Component {
 									options={qubely_admin.image_sizes}
 								/>
 
-								{style !== 4 &&
+								{style !== 4 && (
 									<BorderRadius
 										min={0}
 										max={100}
 										responsive
 										device={device}
-										label={__('Image Corner')}
+										label={__("Image Corner")}
 										value={imageRadius}
-										unit={['px', 'em', '%']}
-										onChange={value => setAttributes({ imageRadius: value })}
-										onDeviceChange={value => this.setState({ device: value })}
+										unit={["px", "em", "%"]}
+										onChange={(value) => setAttributes({ imageRadius: value })}
+										onDeviceChange={(value) => this.setState({ device: value })}
 									/>
-								}
+								)}
 							</PanelBody>
 
-							<PanelBody title={__('Typography')} initialOpen={false}>
-								<Typography label={__('Title')} value={titleTypography} onChange={value => setAttributes({ titleTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Separator />
-								<Typography label={__('Meta')} value={metaTypography} onChange={value => setAttributes({ metaTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Separator />
-								<Typography label={__('Excerpt')} value={excerptTypography} onChange={value => setAttributes({ excerptTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
-							</PanelBody>
-
-							<PanelBody title='Content Settings' initialOpen={false}>
-								<ButtonGroup
-									label={__('Text Align')}
-									options={[[__('Left'), 'left'], [__('Middle'), 'center'], [__('Right'), 'right']]}
-									value={textalignment}
-									onChange={value => setAttributes({ textalignment: value })}
+							<PanelBody title={__("Typography")} initialOpen={false}>
+								<Typography
+									label={__("Title")}
+									value={titleTypography}
+									onChange={(value) => setAttributes({ titleTypography: value })}
+									device={device}
+									onDeviceChange={(value) => this.setState({ device: value })}
 								/>
-								<Toggle label={__('Show Title')} value={showTitle} onChange={value => setAttributes({ showTitle: value })} />
-								<Toggle label={__('Show Excerpt')} value={showExcerpt} onChange={value => setAttributes({ showExcerpt: value })} />
-								<RangeControl label={__('Excerpt Limit')} min={1} max={100} step={1} value={excerptLimit} onChange={val => setAttributes({ excerptLimit: val })} />
 								<Separator />
-								<Toggle label={__('Title Below Meta')} value={titlePosition} onChange={value => setAttributes({ titlePosition: value })} />
-								<Toggle label={__('Show date')} value={showDates} onChange={value => setAttributes({ showDates: value })} />
-								<Toggle label={__('Show Comment')} value={showComment} onChange={value => setAttributes({ showComment: value })} />
-								<Toggle label={__('Show Author')} value={showAuthor} onChange={value => setAttributes({ showAuthor: value })} />
+								<Typography
+									label={__("Meta")}
+									value={metaTypography}
+									onChange={(value) => setAttributes({ metaTypography: value })}
+									device={device}
+									onDeviceChange={(value) => this.setState({ device: value })}
+								/>
+								<Separator />
+								<Typography
+									label={__("Excerpt")}
+									value={excerptTypography}
+									onChange={(value) => setAttributes({ excerptTypography: value })}
+									device={device}
+									onDeviceChange={(value) => this.setState({ device: value })}
+								/>
 							</PanelBody>
 
-							<PanelBody title={__('Category settings')} initialOpen={false}>
-								<RadioAdvanced
-									label={__('Category')}
+							<PanelBody title="Content Settings" initialOpen={false}>
+								<ButtonGroup
+									label={__("Text Align")}
 									options={[
-										{ icon: 'fas fa-ban', value: 'none', label: __('None'), },
-										{ value: 'default', label: __('Default'), },
-										{ value: 'badge', label: __('Badge'), }
+										[__("Left"), "left"],
+										[__("Middle"), "center"],
+										[__("Right"), "right"],
+									]}
+									value={textalignment}
+									onChange={(value) => setAttributes({ textalignment: value })}
+								/>
+								<Toggle
+									label={__("Show Title")}
+									value={showTitle}
+									onChange={(value) => setAttributes({ showTitle: value })}
+								/>
+								<Toggle
+									label={__("Show Excerpt")}
+									value={showExcerpt}
+									onChange={(value) => setAttributes({ showExcerpt: value })}
+								/>
+								<RangeControl
+									label={__("Excerpt Limit")}
+									min={1}
+									max={100}
+									step={1}
+									value={excerptLimit}
+									onChange={(val) => setAttributes({ excerptLimit: val })}
+								/>
+								<Separator />
+								<Toggle
+									label={__("Title Below Meta")}
+									value={titlePosition}
+									onChange={(value) => setAttributes({ titlePosition: value })}
+								/>
+								<Toggle
+									label={__("Show date")}
+									value={showDates}
+									onChange={(value) => setAttributes({ showDates: value })}
+								/>
+								<Toggle
+									label={__("Show Comment")}
+									value={showComment}
+									onChange={(value) => setAttributes({ showComment: value })}
+								/>
+								<Toggle
+									label={__("Show Author")}
+									value={showAuthor}
+									onChange={(value) => setAttributes({ showAuthor: value })}
+								/>
+							</PanelBody>
+
+							<PanelBody title={__("Category settings")} initialOpen={false}>
+								<RadioAdvanced
+									label={__("Category")}
+									options={[
+										{ icon: "fas fa-ban", value: "none", label: __("None") },
+										{ value: "default", label: __("Default") },
+										{ value: "badge", label: __("Badge") },
 									]}
 									value={showCategory}
-									onChange={val => setAttributes({ showCategory: val })}
+									onChange={(val) => setAttributes({ showCategory: val })}
 								/>
-								{showCategory !== 'none' &&
+								{showCategory !== "none" && (
 									<Fragment>
-										{(showCategory == 'badge') &&
+										{showCategory == "badge" && (
 											<Fragment>
 												<Select
 													label={__("Badge Position")}
-													options={[['leftTop', __('Left Top')], ['rightTop', __('Right Top')], ['leftBottom', __('Left Bottom')], ['rightBottom', __('Right Bottom')]]}
+													options={[
+														["leftTop", __("Left Top")],
+														["rightTop", __("Right Top")],
+														["leftBottom", __("Left Bottom")],
+														["rightBottom", __("Right Bottom")],
+													]}
 													value={categoryPosition}
-													onChange={value => setAttributes({ categoryPosition: value })}
+													onChange={(value) => setAttributes({ categoryPosition: value })}
 												/>
-												<Padding label={__('Advanced')} value={badgePadding} onChange={val => setAttributes({ badgePadding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+												<Padding
+													label={__("Advanced")}
+													value={badgePadding}
+													onChange={(val) => setAttributes({ badgePadding: val })}
+													min={0}
+													max={60}
+													unit={["px", "em", "%"]}
+													responsive
+													device={device}
+													onDeviceChange={(value) => this.setState({ device: value })}
+												/>
 											</Fragment>
-										}
+										)}
 
-										<Typography label={__('Typography')} value={categoryTypography} onChange={value => setAttributes({ categoryTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+										<Typography
+											label={__("Typography")}
+											value={categoryTypography}
+											onChange={(value) => setAttributes({ categoryTypography: value })}
+											device={device}
+											onDeviceChange={(value) => this.setState({ device: value })}
+										/>
 										<Tabs>
-											<Tab tabTitle={__('Normal')}>
-												<Color label={__('Category Color')} value={showCategory == 'badge' ? categoryColor2 : categoryColor} onChange={value => setAttributes(showCategory == 'badge' ? { categoryColor2: value } : { categoryColor: value })} />
-												{showCategory == 'badge' && <Color label={__('Category Background')} value={categoryBackground} onChange={value => setAttributes({ categoryBackground: value })} />}
+											<Tab tabTitle={__("Normal")}>
+												<Color
+													label={__("Category Color")}
+													value={showCategory == "badge" ? categoryColor2 : categoryColor}
+													onChange={(value) =>
+														setAttributes(
+															showCategory == "badge"
+																? { categoryColor2: value }
+																: { categoryColor: value }
+														)
+													}
+												/>
+												{showCategory == "badge" && (
+													<Color
+														label={__("Category Background")}
+														value={categoryBackground}
+														onChange={(value) =>
+															setAttributes({ categoryBackground: value })
+														}
+													/>
+												)}
 											</Tab>
-											<Tab tabTitle={__('Hover')}>
-												<Color label={__('Category Hover Color')} value={showCategory == 'badge' ? categoryHoverColor2 : categoryHoverColor} onChange={value => setAttributes(showCategory == 'badge' ? { categoryHoverColor2: value } : { categoryHoverColor: value })} />
-												{showCategory == 'badge' && <Color label={__('Category Background')} value={categoryHoverBackground} onChange={value => setAttributes({ categoryHoverBackground: value })} />}
+											<Tab tabTitle={__("Hover")}>
+												<Color
+													label={__("Category Hover Color")}
+													value={
+														showCategory == "badge"
+															? categoryHoverColor2
+															: categoryHoverColor
+													}
+													onChange={(value) =>
+														setAttributes(
+															showCategory == "badge"
+																? { categoryHoverColor2: value }
+																: { categoryHoverColor: value }
+														)
+													}
+												/>
+												{showCategory == "badge" && (
+													<Color
+														label={__("Category Background")}
+														value={categoryHoverBackground}
+														onChange={(value) =>
+															setAttributes({ categoryHoverBackground: value })
+														}
+													/>
+												)}
 											</Tab>
 										</Tabs>
 										<BorderRadius
@@ -822,110 +1227,241 @@ class Edit extends Component {
 											max={100}
 											responsive
 											device={device}
-											label={__('Corner')}
+											label={__("Corner")}
 											value={categoryRadius}
-											unit={['px', 'em', '%']}
-											onChange={value => setAttributes({ categoryRadius: value })}
-											onDeviceChange={value => this.setState({ device: value })}
+											unit={["px", "em", "%"]}
+											onChange={(value) => setAttributes({ categoryRadius: value })}
+											onDeviceChange={(value) => this.setState({ device: value })}
 										/>
-										{showCategory == 'badge' && <Padding label={__('Padding')} value={categoryPadding} onChange={val => setAttributes({ categoryPadding: val })} min={0} max={60} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />}
+										{showCategory == "badge" && (
+											<Padding
+												label={__("Padding")}
+												value={categoryPadding}
+												onChange={(val) => setAttributes({ categoryPadding: val })}
+												min={0}
+												max={60}
+												unit={["px", "em", "%"]}
+												responsive
+												device={device}
+												onDeviceChange={(value) => this.setState({ device: value })}
+											/>
+										)}
 									</Fragment>
-								}
+								)}
 							</PanelBody>
 
-							<PanelBody title={__('Read More Link')} initialOpen={false}>
-								<Toggle label={__('Show Read More Link')} value={showReadMore} onChange={value => setAttributes({ showReadMore: value })} />
-								{
-									showReadMore &&
+							<PanelBody title={__("Read More Link")} initialOpen={false}>
+								<Toggle
+									label={__("Show Read More Link")}
+									value={showReadMore}
+									onChange={(value) => setAttributes({ showReadMore: value })}
+								/>
+								{showReadMore && (
 									<Fragment>
 										<Styles
-											options={
-												[
-													{ value: 'fill', svg: icons.btn_fill, label: __('Fill') },
-													{ value: 'outline', svg: icons.btn_outline, label: __('Outline') }
-												]}
+											options={[
+												{ value: "fill", svg: icons.btn_fill, label: __("Fill") },
+												{ value: "outline", svg: icons.btn_outline, label: __("Outline") },
+											]}
 											value={readmoreStyle}
-											onChange={val => setAttributes({ readmoreStyle: val })}
+											onChange={(val) => setAttributes({ readmoreStyle: val })}
 										/>
-										<TextControl label={__('Button Text')} value={buttonText} onChange={val => setAttributes({ buttonText: val })} />
-										<Typography label={__('Typography')} value={readmoreTypography} onChange={value => setAttributes({ readmoreTypography: value })} device={device} onDeviceChange={value => this.setState({ device: value })} />
+										<TextControl
+											label={__("Button Text")}
+											value={buttonText}
+											onChange={(val) => setAttributes({ buttonText: val })}
+										/>
+										<Typography
+											label={__("Typography")}
+											value={readmoreTypography}
+											onChange={(value) => setAttributes({ readmoreTypography: value })}
+											device={device}
+											onDeviceChange={(value) => this.setState({ device: value })}
+										/>
 
-										{
-											readmoreStyle === 'fill' &&
+										{readmoreStyle === "fill" && (
 											<Fragment>
 												<RadioAdvanced
-													label={__('Button Size')}
+													label={__("Button Size")}
 													options={[
-														{ label: 'S', value: 'small', title: 'Small' },
-														{ label: 'M', value: 'medium', title: 'Medium' },
-														{ label: 'L', value: 'large', title: 'Large' },
-														{ icon: 'fas fa-cog', value: 'custom', title: 'Custom' }
+														{ label: "S", value: "small", title: "Small" },
+														{ label: "M", value: "medium", title: "Medium" },
+														{ label: "L", value: "large", title: "Large" },
+														{ icon: "fas fa-cog", value: "custom", title: "Custom" },
 													]}
 													value={readmoreSize}
-													onChange={(value) => setAttributes({ readmoreSize: value })} />
-												{readmoreSize == 'custom' &&
+													onChange={(value) => setAttributes({ readmoreSize: value })}
+												/>
+												{readmoreSize == "custom" && (
 													<Padding
-														label={__('Custom Size')}
+														label={__("Custom Size")}
 														value={readmoreCustomSize}
-														onChange={(value) => setAttributes({ readmoreCustomSize: value })}
-														unit={['px', 'em', '%']}
+														onChange={(value) =>
+															setAttributes({ readmoreCustomSize: value })
+														}
+														unit={["px", "em", "%"]}
 														max={150}
 														min={0}
 														responsive
 														device={device}
-														onDeviceChange={value => this.setState({ device: value })} />
-												}
+														onDeviceChange={(value) => this.setState({ device: value })}
+													/>
+												)}
 
-
-												<Border label={__('Border')} value={readmoreBorder} onChange={val => setAttributes({ readmoreBorder: val })} min={0} max={10} unit={['px', 'em', '%']} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-												{
-													(readmoreBorder.openBorder || readmoreStyle === 'fill') &&
+												<Border
+													label={__("Border")}
+													value={readmoreBorder}
+													onChange={(val) => setAttributes({ readmoreBorder: val })}
+													min={0}
+													max={10}
+													unit={["px", "em", "%"]}
+													responsive
+													device={device}
+													onDeviceChange={(value) => this.setState({ device: value })}
+												/>
+												{(readmoreBorder.openBorder || readmoreStyle === "fill") && (
 													<BorderRadius
 														min={0}
 														max={100}
 														responsive
 														device={device}
-														label={__('Corner')}
+														label={__("Corner")}
 														value={readmoreBorderRadius}
-														unit={['px', 'em', '%']}
-														onChange={value => setAttributes({ readmoreBorderRadius: value })}
-														onDeviceChange={value => this.setState({ device: value })}
+														unit={["px", "em", "%"]}
+														onChange={(value) =>
+															setAttributes({ readmoreBorderRadius: value })
+														}
+														onDeviceChange={(value) => this.setState({ device: value })}
 													/>
-												}
-												<BoxShadow label={__('Box-Shadow')} value={readmoreBoxShadow} onChange={(value) => setAttributes({ readmoreBoxShadow: value })} />
+												)}
+												<BoxShadow
+													label={__("Box-Shadow")}
+													value={readmoreBoxShadow}
+													onChange={(value) => setAttributes({ readmoreBoxShadow: value })}
+												/>
 											</Fragment>
-										}
+										)}
 										<Tabs>
-											<Tab tabTitle={__('Normal')}>
-												<Color label={__('Text Color')} value={readmoreStyle === 'fill' ? readmoreColor : readmoreColor2} onChange={value => setAttributes(readmoreStyle === 'fill' ? { readmoreColor: value } : { readmoreColor2: value })} />
-												{readmoreStyle === 'fill' && <ColorAdvanced label={__('Background')} value={readmoreBg} onChange={(value) => setAttributes({ readmoreBg: value })} />}
+											<Tab tabTitle={__("Normal")}>
+												<Color
+													label={__("Text Color")}
+													value={readmoreStyle === "fill" ? readmoreColor : readmoreColor2}
+													onChange={(value) =>
+														setAttributes(
+															readmoreStyle === "fill"
+																? { readmoreColor: value }
+																: { readmoreColor2: value }
+														)
+													}
+												/>
+												{readmoreStyle === "fill" && (
+													<ColorAdvanced
+														label={__("Background")}
+														value={readmoreBg}
+														onChange={(value) => setAttributes({ readmoreBg: value })}
+													/>
+												)}
 											</Tab>
-											<Tab tabTitle={__('Hover')}>
-												<Color label={__('Text Color')} value={readmoreHoverColor} onChange={value => setAttributes({ readmoreHoverColor: value })} />
-												{readmoreStyle === 'fill' && <ColorAdvanced label={__('Background')} value={readmoreHoverBg} onChange={(value) => setAttributes({ readmoreHoverBg: value })} />}
+											<Tab tabTitle={__("Hover")}>
+												<Color
+													label={__("Text Color")}
+													value={readmoreHoverColor}
+													onChange={(value) => setAttributes({ readmoreHoverColor: value })}
+												/>
+												{readmoreStyle === "fill" && (
+													<ColorAdvanced
+														label={__("Background")}
+														value={readmoreHoverBg}
+														onChange={(value) => setAttributes({ readmoreHoverBg: value })}
+													/>
+												)}
 											</Tab>
 										</Tabs>
 									</Fragment>
-								}
+								)}
 							</PanelBody>
 
-							<PanelBody title={__('Spacing')} initialOpen={false}>
-								{(showCategory == 'default') &&
-									<Range label={__('Category')} value={categorySpace} onChange={value => setAttributes({ categorySpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								}
-								<Range label={__('Title')} value={titleSpace} onChange={value => setAttributes({ titleSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Range label={__('Meta')} value={metaSpace} onChange={value => setAttributes({ metaSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
-								<Range label={__('Excerpt')} value={excerptSpace} onChange={value => setAttributes({ excerptSpace: value })} unit={['px', 'em', '%']} min={0} max={100} responsive device={device} onDeviceChange={value => this.setState({ device: value })} />
+							<PanelBody title={__("Spacing")} initialOpen={false}>
+								{showCategory == "default" && (
+									<Range
+										label={__("Category")}
+										value={categorySpace}
+										onChange={(value) => setAttributes({ categorySpace: value })}
+										unit={["px", "em", "%"]}
+										min={0}
+										max={100}
+										responsive
+										device={device}
+										onDeviceChange={(value) => this.setState({ device: value })}
+									/>
+								)}
+								<Range
+									label={__("Title")}
+									value={titleSpace}
+									onChange={(value) => setAttributes({ titleSpace: value })}
+									unit={["px", "em", "%"]}
+									min={0}
+									max={100}
+									responsive
+									device={device}
+									onDeviceChange={(value) => this.setState({ device: value })}
+								/>
+								<Range
+									label={__("Meta")}
+									value={metaSpace}
+									onChange={(value) => setAttributes({ metaSpace: value })}
+									unit={["px", "em", "%"]}
+									min={0}
+									max={100}
+									responsive
+									device={device}
+									onDeviceChange={(value) => this.setState({ device: value })}
+								/>
+								<Range
+									label={__("Excerpt")}
+									value={excerptSpace}
+									onChange={(value) => setAttributes({ excerptSpace: value })}
+									unit={["px", "em", "%"]}
+									min={0}
+									max={100}
+									responsive
+									device={device}
+									onDeviceChange={(value) => this.setState({ device: value })}
+								/>
 							</PanelBody>
 
-							<PanelBody title={__('Colors')} initialOpen={false}>
-								<Color label={__('Title')} value={style !== 4 ? titleColor : titleOverlayColor} onChange={value => setAttributes(style !== 4 ? { titleColor: value } : { titleOverlayColor: value })} />
-								<Color label={__('Title Hover')} value={titleHoverColor} onChange={value => setAttributes({ titleHoverColor: value })} />
-								<Color label={__('Meta')} value={style !== 4 ? metaColor : metaOverlayColor} onChange={value => setAttributes(style !== 4 ? { metaColor: value } : { metaOverlayColor: value })} />
-								<Color label={__('Excerpt')} value={style !== 4 ? excerptColor : excerptColor2} onChange={value => setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value })} />
+							<PanelBody title={__("Colors")} initialOpen={false}>
+								<Color
+									label={__("Title")}
+									value={style !== 4 ? titleColor : titleOverlayColor}
+									onChange={(value) =>
+										setAttributes(
+											style !== 4 ? { titleColor: value } : { titleOverlayColor: value }
+										)
+									}
+								/>
+								<Color
+									label={__("Title Hover")}
+									value={titleHoverColor}
+									onChange={(value) => setAttributes({ titleHoverColor: value })}
+								/>
+								<Color
+									label={__("Meta")}
+									value={style !== 4 ? metaColor : metaOverlayColor}
+									onChange={(value) =>
+										setAttributes(style !== 4 ? { metaColor: value } : { metaOverlayColor: value })
+									}
+								/>
+								<Color
+									label={__("Excerpt")}
+									value={style !== 4 ? excerptColor : excerptColor2}
+									onChange={(value) =>
+										setAttributes(style !== 4 ? { excerptColor: value } : { excerptColor2: value })
+									}
+								/>
 							</PanelBody>
 						</InspectorTab>
-						<InspectorTab key={'advance'}>
+						<InspectorTab key={"advance"}>
 							{animationSettings(uniqueId, animation, setAttributes)}
 						</InspectorTab>
 					</InspectorTabs>
@@ -934,39 +1470,53 @@ class Edit extends Component {
 				<BlockControls>
 					<Toolbar>
 						<InlineToolbar
-							data={[{ name: 'InlineSpacer', key: 'spacer', responsive: true, unit: ['px', 'em', '%'] }]}
+							data={[{ name: "InlineSpacer", key: "spacer", responsive: true, unit: ["px", "em", "%"] }]}
 							{...this.props}
 							prevState={this.state}
 						/>
 					</Toolbar>
 				</BlockControls>
 
-				{globalSettingsPanel(enablePosition, selectPosition, positionXaxis, positionYaxis, globalZindex, hideTablet, hideMobile, globalCss, setAttributes)}
+				{globalSettingsPanel(
+					enablePosition,
+					selectPosition,
+					positionXaxis,
+					positionYaxis,
+					globalZindex,
+					hideTablet,
+					hideMobile,
+					globalCss,
+					setAttributes
+				)}
 
-				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ''}`}>
-					{(posts && posts.length) ?
+				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ""}`}>
+					{posts && posts.length ? (
 						<div
 							className={`qubely-block-post-carousel qubely-postcarousel-wrapper`}
-							onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
+							onContextMenu={(event) => handleContextMenu(event, this.qubelyContextMenu.current)}
 						>
 							<Carousel options={carouselSettings}>
-								{posts && posts.map(post => {
-									return (
-										<div className={`qubely-carousel-item`}>
-											<div className={`qubely-post-grid-view qubely-postgrid-style-${style}`}>
-												<div className={`qubely-post-grid-wrapper qubely-post-grid-${(style === 3) ? contentPosition : girdContentPosition}`}>
-													{showImages && post.qubely_featured_image_url && this.renderFeaturedImage(post)}
-													{this.renderCardContent(post)}
+								{posts &&
+									posts.map((post) => {
+										return (
+											<div className={`qubely-carousel-item`}>
+												<div className={`qubely-post-grid-view qubely-postgrid-style-${style}`}>
+													<div
+														className={`qubely-post-grid-wrapper qubely-post-grid-${
+															style === 3 ? contentPosition : girdContentPosition
+														}`}
+													>
+														{showImages &&
+															post.qubely_featured_image_url &&
+															this.renderFeaturedImage(post)}
+														{this.renderCardContent(post)}
+													</div>
 												</div>
 											</div>
-										</div>
-									)
-								})}
+										);
+									})}
 							</Carousel>
-							<div
-								ref={this.qubelyContextMenu}
-								className={`qubely-context-menu-wraper`}
-							>
+							<div ref={this.qubelyContextMenu} className={`qubely-context-menu-wraper`}>
 								<ContextMenu
 									name={name}
 									clientId={clientId}
@@ -976,63 +1526,86 @@ class Edit extends Component {
 								/>
 							</div>
 						</div>
-						:
+					) : (
 						<div className="qubely-postcarousel-is-loading">
 							<Spinner />
 						</div>
-					}
+					)}
 				</div>
-			</Fragment >
+			</Fragment>
 		);
 	}
 }
 
 export default compose([
 	withSelect((select, props) => {
-		const { getEntityRecords } = select('core')
-		const { attributes: { taxonomy, taxonomyType, postType, customTaxonomies, order, orderBy, categories, tags, postsToShow } } = props;
+		const { getEntityRecords } = select("core");
+		const {
+			attributes: {
+				taxonomy,
+				taxonomyType,
+				postType,
+				customTaxonomies,
+				order,
+				orderBy,
+				categories,
+				tags,
+				postsToShow,
+			},
+		} = props;
 
 		let allTaxonomy = qubely_admin.all_taxonomy;
 		let currentTax = allTaxonomy[postType];
 		let categoryList = [];
-		let rest_base = '';
+		let rest_base = "";
 
-		if ('undefined' !== typeof currentTax) {
-			if ('undefined' !== typeof currentTax['taxonomy'][taxonomyType]) {
-				rest_base = (currentTax['taxonomy'][taxonomyType]['rest_base'] == false || currentTax['taxonomy'][taxonomyType]['rest_base'] == null) ? currentTax['taxonomy'][taxonomyType]['name'] : currentTax['taxonomy'][taxonomyType]['rest_base'];
+		if ("undefined" !== typeof currentTax) {
+			if ("undefined" !== typeof currentTax["taxonomy"][taxonomyType]) {
+				rest_base =
+					currentTax["taxonomy"][taxonomyType]["rest_base"] == false ||
+					currentTax["taxonomy"][taxonomyType]["rest_base"] == null
+						? currentTax["taxonomy"][taxonomyType]["name"]
+						: currentTax["taxonomy"][taxonomyType]["rest_base"];
 			}
 
-			if ('' !== taxonomyType) {
-				if ('undefined' !== typeof currentTax['terms'] && 'undefined' !== typeof currentTax['terms'][taxonomyType]) {
-					categoryList = currentTax['terms'][taxonomyType];
+			if ("" !== taxonomyType) {
+				if (
+					"undefined" !== typeof currentTax["terms"] &&
+					"undefined" !== typeof currentTax["terms"][taxonomyType]
+				) {
+					categoryList = currentTax["terms"][taxonomyType];
 				}
 			}
 		}
 
-		let seletedTaxonomy = taxonomy === 'categories' ? 'categories' : 'tags';
-		let activeTaxes = taxonomy === 'categories' ? categories : tags;
-		let postTaxonomies = allTaxonomy.post.terms ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] ? allTaxonomy.post.terms[taxonomy === 'categories' ? 'category' : 'post_tag'] : [] : [];
-		let otherTaxonomies = ('undefined' !== typeof currentTax) ? currentTax['taxonomy'] : [];
+		let seletedTaxonomy = taxonomy === "categories" ? "categories" : "tags";
+		let activeTaxes = taxonomy === "categories" ? categories : tags;
+		let postTaxonomies = allTaxonomy.post.terms
+			? allTaxonomy.post.terms[taxonomy === "categories" ? "category" : "post_tag"]
+				? allTaxonomy.post.terms[taxonomy === "categories" ? "category" : "post_tag"]
+				: []
+			: [];
+		let otherTaxonomies = "undefined" !== typeof currentTax ? currentTax["taxonomy"] : [];
 
 		let query = {
 			order: order,
 			orderby: orderBy,
 			per_page: postsToShow,
-		}
+		};
 
-		if ('post' !== postType) {
-			query[rest_base] = '' !== customTaxonomies ? customTaxonomies.map(({ value, label }) => value) : [];
+		if ("post" !== postType) {
+			query[rest_base] = "" !== customTaxonomies ? customTaxonomies.map(({ value, label }) => value) : [];
 		} else {
 			query[seletedTaxonomy] = activeTaxes.map(({ value, label }) => value);
 		}
 
-		const posts = getEntityRecords('postType', postType, query);
+		const posts = getEntityRecords("postType", postType, query);
 		return {
 			posts,
-			...(Array.isArray(posts) && posts.length) && { numberofPosts: posts.length },
+			...(Array.isArray(posts) && posts.length && { numberofPosts: posts.length }),
 			categoryList: categoryList,
-			taxonomyList: ('post' === postType) ? postTaxonomies : otherTaxonomies,
+			taxonomyList: "post" === postType ? postTaxonomies : otherTaxonomies,
 		};
 	}),
-	withCSSGenerator()
-])(Edit)
+	withCSSGenerator(),
+])(Edit);
