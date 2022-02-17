@@ -7,7 +7,9 @@ Stable tag: 1.3.6
 == Changelog ==
 
 = 1.3.6 =
+New: Lottie Block
 Fix: Reusable Blocks Rendering Issue
+Fix: All known issues
 
 = 1.3.5 =
 Fix: License Page Logo Image Broken issue

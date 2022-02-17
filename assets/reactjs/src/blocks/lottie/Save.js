@@ -25,7 +25,7 @@ class Save extends Component {
 		const interactionClass = IsInteraction(interaction) ? "qubley-block-interaction" : "";
 		return (
 			<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-				<div className={`qubely-block-lottie ${interactionClass}`}>
+				<div className={`qubely-block-lottie`}>
 					<lottie-player
 						className="qubely-lottie-player"
 						id={`qubely-lottie-player-${uniqueId}`}

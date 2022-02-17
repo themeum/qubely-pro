@@ -1044,7 +1044,7 @@ class WOOPRODUCTS
     function render_block_qubely_wooproducts($att)
     {
 
-        if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+        if ( ! class_exists( 'WooCommerce' ) ) {
             return;
         }
 

@@ -1004,7 +1004,7 @@ class WOOCAROUSEL
      */
     function render_block_qubely_woocarousel($att)
     {
-        if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+        if ( ! class_exists( 'WooCommerce' ) ) {
             return;
         }
 

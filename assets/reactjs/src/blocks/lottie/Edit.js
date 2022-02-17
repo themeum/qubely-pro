@@ -184,7 +184,7 @@ class Edit extends Component {
 
 						<InspectorTab key={"advance"}>
 							{animationSettings(uniqueId, animation, setAttributes)}
-							{interactionSettings(uniqueId, interaction, setAttributes)}
+							{/* {interactionSettings(uniqueId, interaction, setAttributes)} */}
 						</InspectorTab>
 					</InspectorTabs>
 				</InspectorControls>
