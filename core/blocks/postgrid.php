@@ -86,6 +86,10 @@ class POSTGRID
 					),
 
 					//content
+					'level' => array(
+						'type' => 'number',
+						'default' => 2
+					),
 					'showTitle' => array(
 						'type' => 'boolean',
 						'default' => true
@@ -1374,6 +1378,7 @@ class POSTGRID
 	public function render_block_qubely_postgrid_pro($att, $content)
 	{
 		$layout 		        = isset($att['layout']) ? $att['layout'] : 3;
+		$level 							= isset($att['level']) ? $att['level'] : 3;
 		$uniqueId 		        = isset($att['uniqueId']) ? $att['uniqueId'] : '';
 		$style 		            = isset($att['style']) ? $att['style'] : 3;
 		$column 		        = isset($att['column']) ? $att['column'] : 2;
@@ -1402,11 +1407,12 @@ class POSTGRID
 		$postType               = isset($att['postType']) ? $att['postType'] : 'post';
 		$categories             = $att['categories'];
 		$tags                   = $att['tags'];
-        $enablePagination       = isset($att['enablePagination']) ? $att['enablePagination'] : true;
+		$enablePagination       = isset($att['enablePagination']) ? $att['enablePagination'] : true;
 		$taxonomy               = $att['taxonomy'];
 		$taxonomyType           = isset($att['taxonomyType']) ? $att['taxonomyType'] : 'category';
 		$customTaxonomies       = $att['customTaxonomies'];
 		$animation 		        = isset($att['animation']) ? (count((array) $att['animation']) > 0 && $att['animation']['animation']  ? 'data-qubelyanimation="' . htmlspecialchars(json_encode($att['animation']), ENT_QUOTES, 'UTF-8') . '"' : '') : '';
+		$title_tag            = "h{$level}";
 
 
 		$interaction = '';
@@ -1501,7 +1507,7 @@ class POSTGRID
 				$id = get_post_thumbnail_id();
 				$src = has_post_thumbnail( get_the_ID() ) ? get_the_post_thumbnail_url( get_the_ID(), $imgSize ) : '';
 			   	$image = '<img class="qubely-post-image" src="' . esc_url( $src ) . '" alt="' . get_the_title() . '"/>';
-				$title = '<h3 class="qubely-postgrid-title"><a href="' . esc_url(get_the_permalink()) . '">' . get_the_title() . '</a></h3>';
+				$title = '<'. $title_tag. ' class="qubely-postgrid-title"><a href="' . esc_url(get_the_permalink()) . '">' . get_the_title() . '</a></'. $title_tag. '>';
 				$category = '<span class="qubely-postgrid-category">' . ('post' === $postType ? get_the_category_list(' ') : get_the_term_list(get_the_ID(), $taxonomyType, ' ')) . '</span>';
 				$meta = ($showAuthor == 1) ? '<span><i class="fas fa-user"></i> ' . __('By ', 'qubely') . get_the_author_posts_link() . '</span>' : '';
 				$meta .= ($showDates == 1) ? '<span><i class="far fa-calendar-alt"></i> ' . get_the_date() . '</span>' : '';

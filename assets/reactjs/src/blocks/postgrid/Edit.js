@@ -41,6 +41,7 @@ const {
   InspectorTabs,
   InspectorTab,
   Pagination,
+  Headings
 } = wp.qubelyComponents
 
 import icons from '../../helpers/icons'
@@ -125,9 +126,9 @@ class Edit extends Component {
     )
   }
 
-  renderCardContent = (post, index) => {
+  renderCardContent = (post, index, TitleTag = 'h3') => {
     const { attributes: { layout, readmoreStyle, showCategory, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
-    let title = <h3 className="qubely-postgrid-title"><a>{post.title.rendered}</a></h3>
+    let title = <TitleTag className="qubely-postgrid-title"><a>{post.title.rendered}</a></TitleTag>
     return (
       <div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
         {(showCategory === 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
@@ -159,6 +160,7 @@ class Edit extends Component {
       numberofPosts,
       setAttributes,
       attributes: {
+        level,
         uniqueId,
         className,
         postType,
@@ -300,6 +302,7 @@ class Edit extends Component {
     const {
       device,
     } = this.state;
+    const tag = `h${level}`;
 
     let pages = 0;
     if (numberofPosts && numberofPosts.length) {
@@ -1214,6 +1217,13 @@ class Edit extends Component {
                   value={showTitle}
                   onChange={(value) => setAttributes({ showTitle: value })}
                 />
+                {showTitle &&
+									<Headings
+										selectedLevel={level}
+										onChange={(value) =>
+											setAttributes({ level: value, selector: `h${value}` })
+										}
+								/>}
                 <Toggle
                   label={__("Show Excerpt")}
                   value={showExcerpt}
@@ -1836,7 +1846,7 @@ class Edit extends Component {
                             showImages &&
                             post.qubely_featured_image_url &&
                             this.renderFeaturedImage(post)}
-                          {this.renderCardContent(post, index)}
+                          {this.renderCardContent(post, index, tag)}
                         </div>
                       </div>
                     );
