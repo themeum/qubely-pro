@@ -170,7 +170,7 @@ registerBlockType("qubely/form", {
 										type="hidden"
 										name="email-body"
 										value={_encrypt(
-											"<p><strong>From:</strong> {{first-name}} {{last-name}}</p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>"
+											"<p><strong>From:</strong> {{first-name}} {{last-name}}</p><p><strong>Email:</strong> {{email}}</p>\n<p><strong>Subject:</strong> {{subject}}</p>\n<p><strong>Message:</strong> {{message}}</p>"
 										)}
 									/>
 								</div>

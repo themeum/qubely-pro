@@ -427,7 +427,7 @@ export const attributes = {
 	emailBody: {
 		type: "string",
 		default:
-			"<p><strong>From:</strong> {{text-11}} {{text-12}}</p><strong>Email:</strong> {{email-21}}</p>\n<p><strong>Subject:</strong> {{text-31}}</p>\n<p><strong>Message:</strong> {{textarea-41}}</p>",
+			"<p><strong>From:</strong> {{text-11}} {{text-12}}</p><p><strong>Email:</strong> {{email-21}}</p>\n<p><strong>Subject:</strong> {{text-31}}</p>\n<p><strong>Message:</strong> {{textarea-41}}</p>",
 	},
 	showGlobalSettings: { type: "boolean", default: true }, // Global Settings
 };
