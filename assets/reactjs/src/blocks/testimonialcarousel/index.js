@@ -1,33 +1,31 @@
-
-import './style.scss';
-import Edit from './Edit';
-import Save from './Save';
-import attributes from './attributes';
-import {
-	renderAuthorInfo
-} from './helpers';
+import "./style.scss";
+import Edit from "./Edit";
+import Save from "./Save";
+import attributes from "./attributes";
+import { renderAuthorInfo } from "./helpers";
 
 const { __ } = wp.i18n;
 const { RichText } = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
 const {
-	HelperFunction: {
-		animationAttr
-	}
+	HelperFunction: { animationAttr },
 } = wp.qubelyComponents;
 
-
-registerBlockType('qubely/testimonialcarousel', {
-	title: __('Testimonial Carousel'),
-	description: __('Design and showcase customer reviews, remarks as testimonials with Qubely Testimonial Carousel block'),
-	icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block-testimonial-carousel.svg'} alt={__('Team Block')} />,
-	category: 'qubely',
-	keywords: [
-		__('Testimonial', 'qubely'),
-		__('Carousel', 'qubely')
-	],
+registerBlockType("qubely/testimonialcarousel", {
+	title: __("Testimonial Carousel"),
+	description: __(
+		"Design and showcase customer reviews, remarks as testimonials with Qubely Testimonial Carousel block"
+	),
+	icon: (
+		<img
+			src={qubely_pro_admin.plugin + "assets/img/blocks/block-testimonial-carousel.svg"}
+			alt={__("Team Block")}
+		/>
+	),
+	category: "qubely",
+	keywords: [__("Testimonial", "qubely"), __("Carousel", "qubely")],
 	supports: {
-		align: ['center', 'wide', 'full'],
+		align: ["center", "wide", "full"],
 	},
 	example: {
 		attributes: {},
@@ -56,8 +54,8 @@ registerBlockType('qubely/testimonialcarousel', {
 						dotIndicator,
 						interval,
 						speed,
-						animation
-					}
+						animation,
+					},
 				} = props;
 
 				let options = JSON.stringify({
@@ -77,62 +75,78 @@ registerBlockType('qubely/testimonialcarousel', {
 					responsive: [
 						{
 							viewport: 1170,
-							items: items.md
+							items: items.md,
 						},
 						{
 							viewport: 980,
-							items: items.sm
+							items: items.sm,
 						},
 						{
 							viewport: 580,
-							items: items.xs
-						}
+							items: items.xs,
+						},
 					],
 				});
 
 				const renderTestimonial = () => {
-					const { attributes: { carouselItems, showRatings, layout, quoteIcon } } = props
+					const {
+						attributes: { carouselItems, showRatings, layout, quoteIcon },
+					} = props;
 
-					return (carouselItems.map((item, index) => {
-						const { message, ratings } = item
+					return carouselItems.map((item, index) => {
+						const { message, ratings } = item;
 						return (
 							<div key={index} className={`qubely-carousel-item`}>
 								<div className={`qubely-tesitmonial-item qubely-tesitmonial-item-layout-${layout}`}>
 									{layout == 2 && renderAuthorInfo(item, props.attributes)}
-									{(quoteIcon && layout == 1) &&
+									{quoteIcon && layout == 1 && (
 										<div className="qubely-testimonial-quote">
 											<span className={`qubely-quote-icon ${quoteIcon}`} />
 										</div>
-									}
+									)}
 									<div className={`qubely-testimonial-carousel-content-wrapper`}>
-										{(showRatings && ratings > 0 && layout !== 1) &&
-											<div className="qubely-testimonial-ratings" data-qubelyrating={ratings}></div>
-										}
-										<div className="qubely-testimonial-content"><RichText.Content value={message} /></div>
-										{(showRatings && ratings > 0 && layout == 1) && <div className="qubely-testimonial-ratings" data-qubelyrating={ratings} />}
+										{showRatings && ratings > 0 && layout !== 1 && (
+											<div
+												className="qubely-testimonial-ratings"
+												data-qubelyrating={ratings}
+											></div>
+										)}
+										<div className="qubely-testimonial-content">
+											<RichText.Content value={message} />
+										</div>
+										{showRatings && ratings > 0 && layout == 1 && (
+											<div className="qubely-testimonial-ratings" data-qubelyrating={ratings} />
+										)}
 									</div>
 									{layout !== 2 && renderAuthorInfo(item, props.attributes)}
-									{(quoteIcon && layout == 2) &&
+									{quoteIcon && layout == 2 && (
 										<div className="qubely-testimonial-quote qubely-position-bottom">
 											<span className={`qubely-quote-icon ${quoteIcon}`} />
 										</div>
-									}
+									)}
 								</div>
 							</div>
-						)
-					}))
-				}
+						);
+					});
+				};
 
 				return (
 					<div className={`qubely-block-${uniqueId}`} {...animationAttr(animation)}>
-						<div className={`qubely-block-testimonial-carousel qubely-testimonial-carousel-layout-${layout}`}>
-							<div className={`qubely-carousel qubely-carousel-wrapper${isCentered && activeFade ? ' is-faded' : ''}`} data-options={options} >
+						<div
+							className={`qubely-block-testimonial-carousel qubely-testimonial-carousel-layout-${layout}`}
+						>
+							<div
+								className={`qubely-carousel qubely-carousel-wrapper${
+									isCentered && activeFade ? " is-faded" : ""
+								}`}
+								data-options={options}
+							>
 								{renderTestimonial()}
 							</div>
 						</div>
 					</div>
 				);
-			}
-		}
-	]
+			},
+		},
+	],
 });

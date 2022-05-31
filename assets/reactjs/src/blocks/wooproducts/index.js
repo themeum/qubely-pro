@@ -1,26 +1,24 @@
-const { __ } = wp.i18n
-const { registerBlockType } = wp.blocks
-const { gloalSettings: { globalAttributes } } = wp.qubelyComponents
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
+const {
+	gloalSettings: { globalAttributes },
+} = wp.qubelyComponents;
 
-import './style.scss'
+import "./style.scss";
 
-import Edit from './Edit'
+import Edit from "./Edit";
 
-registerBlockType('qubely/wooproducts', {
-    title: __('Woo Products'),
-    category: 'qubely',
-    description: __('Showcase woocommerce products with Qubely Woo Products'),
-    icon: <img src={qubely_pro_admin.plugin + 'assets/img/blocks/block_woo_product.svg'} alt={__('wooproducts')} />,
-    keywords: [
-        __('woo'),
-        __('woocommerce'),
-        __('All Products')
-    ],
-    supports: {
-        align: ['center', 'wide', 'full'],
-    },
-    edit: Edit,
-    save: function () {
-        return null;
-    }
+registerBlockType("qubely/wooproducts", {
+	title: __("Woo Products"),
+	category: "qubely",
+	description: __("Showcase woocommerce products with Qubely Woo Products"),
+	icon: <img src={qubely_pro_admin.plugin + "assets/img/blocks/block_woo_product.svg"} alt={__("wooproducts")} />,
+	keywords: [__("woo"), __("woocommerce"), __("All Products")],
+	supports: {
+		align: ["center", "wide", "full"],
+	},
+	edit: Edit,
+	save: function () {
+		return null;
+	},
 });

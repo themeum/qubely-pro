@@ -1,15 +1,1 @@
-<svg width="75" height="82" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" fill-rule="evenodd">
-        <path stroke="#D6D9DD" fill="#FFF" d="M-104.5-19.5h279v1965h-279z"/>
-        <g>
-            <rect fill="#FFF" width="75" height="82" rx="3"/>
-            <g transform="translate(12 10)">
-                <rect fill="#D6D9DD" width="52" height="52" rx="26"/>
-                <rect fill="#F2F3F7" width="52" height="52" rx="26"/>
-                <rect fill="#D6D9DD" x="13" y="59" width="27" height="3" rx="1.5"/>
-                <path d="M26 0c14.359 0 26 11.641 26 26S40.359 52 26 52 0 40.359 0 26" stroke="#D6D9DD" stroke-width="3"/>
-                <rect fill="#D6D9DD" x="9" y="24" width="33" height="5" rx="2.5"/>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="75" height="82"><g fill="none" fill-rule="evenodd"><path fill="#FFF" stroke="#D6D9DD" d="M-104.5-19.5h279v1965h-279z"/><rect width="75" height="82" fill="#FFF" rx="3"/><g transform="translate(12 10)"><rect width="52" height="52" fill="#D6D9DD" rx="26"/><rect width="52" height="52" fill="#F2F3F7" rx="26"/><rect width="27" height="3" x="13" y="59" fill="#D6D9DD" rx="1.5"/><path stroke="#D6D9DD" stroke-width="3" d="M26 0c14.359 0 26 11.641 26 26S40.359 52 26 52 0 40.359 0 26"/><rect width="33" height="5" x="9" y="24" fill="#D6D9DD" rx="2.5"/></g></g></svg>

@@ -72,7 +72,6 @@ assets/reactjs/node_modules/
 
 package-lock.json
 .idea/
-.vscode/
 .DS_Store
 assets/reactjs/yarn.lock
 *.zip

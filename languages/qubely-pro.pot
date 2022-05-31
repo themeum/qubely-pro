@@ -146,3 +146,38 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://themeum.com"
 msgstr ""
+
+#: core/blocks/woocarousel.php:1249
+#: core/blocks/wooproducts.php:1265
+msgctxt "Ratings Count"
+msgid "(%1$s)"
+msgstr ""
+
+#: core/blocks/woocarousel.php:1265
+#: core/blocks/wooproducts.php:1281
+msgctxt "Product Regular Price"
+msgid "$%1$s"
+msgstr ""
+
+#: core/blocks/woocarousel.php:1267
+#: core/blocks/wooproducts.php:1283
+msgctxt "Product Sale Price"
+msgid "$%2$s"
+msgstr ""
+
+#: core/blocks/woocarousel.php:1274
+#: core/blocks/wooproducts.php:1290
+msgctxt "Product Price"
+msgid "$%1$s"
+msgstr ""
+
+#: core/blocks/woocarousel.php:1281
+#: core/blocks/wooproducts.php:1297
+msgctxt "Add to Cart Button Text"
+msgid "%2$s"
+msgstr ""
+
+#: core/blocks/woocarousel.php:1289
+#: core/blocks/wooproducts.php:1305
+msgid "in Cart"
+msgstr ""
