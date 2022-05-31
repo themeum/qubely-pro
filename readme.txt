@@ -1,10 +1,17 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
 Tested up to: 5.9
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 
 
 == Changelog ==
+
+= 1.3.7 =
+Update: In Advanced List Block, Ordered List is introduced
+Update: Add Bullet Point feature is introduced in the Table Content
+Update: Table Contents will now support Advanced Text Header
+Fix: Contact Form was not sending Email with proper header information
+Fix: In Post Grid Block, the Title Tag was not being changed
 
 = 1.3.6 =
 New: Lottie Block
