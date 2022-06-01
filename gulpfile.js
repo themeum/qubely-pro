@@ -24,6 +24,7 @@ function makeBuild() {
         '!./assets/js/qubely.pro.dev.js.map',
         '!./assets/js/qubely.pro.dev.js',
         '!./assets/js/jquery.magnific-popup.js',
+        '!./assets/css/style.min.css.map',
         '!./node_modules/**/*.*',
         '!./**/*.zip',
         '!./gulpfile.js',
@@ -31,6 +32,7 @@ function makeBuild() {
         '!./LICENSE.txt',
         '!./package.json',
         '!./package-lock.json',
+        '!./yarn.lock',
     ]).pipe(dest('build/qubely-pro/'));
 }
 
@@ -41,6 +43,7 @@ function productionMode() {
         .pipe(replace(/woocommerce\.js/g, 'woocommerce.min.js'))
         .pipe(replace(/qubely-carousel\.js/g, 'qubely-carousel.min.js'))
         .pipe(replace(/qubely-countdown\.js/g, 'qubely-countdown.min.js'))
+        .pipe(replace(/lottie-block\.js/g, 'lottie-block.min.js'))
         .pipe(dest('./build/qubely-pro/classes/'));
 
     const qubely_pro = src(['./build/qubely-pro/core/Qubely-Pro.php'])
@@ -48,6 +51,7 @@ function productionMode() {
         .pipe(replace(/woocommerce\.js/g, 'woocommerce.min.js'))
         .pipe(replace(/qubely-carousel\.js/g, 'qubely-carousel.min.js'))
         .pipe(replace(/qubely-countdown\.js/g, 'qubely-countdown.min.js'))
+        .pipe(replace(/lottie-block\.js/g, 'lottie-block.min.js'))
         .pipe(dest('./build/qubely-pro/core/'));
 
     const installer = src(['./build/qubely-pro/classes/Installer.php'])
@@ -84,6 +88,7 @@ function removeJsFiles() {
             './build/qubely-pro/assets/js/qubely-carousel.js',
             './build/qubely-pro/assets/js/installer.js',
             './build/qubely-pro/assets/js/qubely-countdown.js',
+            './build/qubely-pro/assets/js/lottie-block.js',
         ],
         { read: false, allowEmpty: true })
         .pipe(clean());

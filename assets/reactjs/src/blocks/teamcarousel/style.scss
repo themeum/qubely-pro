@@ -1,67 +1,66 @@
 .qubely-block-team-carousel {
-    transition: all 400ms;
-    .editor-rich-text {
-        .editor-rich-text__tinymce {
-        line-height: inherit;
-        }
-    }
-    // .qubely-single-img.qubely-backend {
-    //     .qubely-team-avatar {
-    //         display: inline-block;
-    //     }
-    // }
-    .qubely-team-quote {
-        .qubely-quote-icon {
-        line-height: 1;
-        width: auto;
-        height: auto;
-        }
+	transition: all 400ms;
+	.editor-rich-text {
+		.editor-rich-text__tinymce {
+			line-height: inherit;
+		}
+	}
+	// .qubely-single-img.qubely-backend {
+	//     .qubely-team-avatar {
+	//         display: inline-block;
+	//     }
+	// }
+	.qubely-team-quote {
+		.qubely-quote-icon {
+			line-height: 1;
+			width: auto;
+			height: auto;
+		}
 
-        &.qubely-position-bottom {
-        .qubely-quote-icon {
-            transform: scaleY(-1);
-        }
-        }
-    }
-    .qubely-single-img.qubely-backend .qubely-team-avatar{
-        cursor: pointer;
-        text-align: center;
-    }
-    .qubely-team-avatar {
-        &.qubely-image-placeholder i {
-        font-size: 50px;
-        padding: 26px;
-        }
-    }
-    .qubely-image-placeholder {
-        width: 100%;
-        height: 230px;
-        margin-bottom: 0 !important;
-        a {
-            color: #2184F9;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-        }
-    }
+		&.qubely-position-bottom {
+			.qubely-quote-icon {
+				transform: scaleY(-1);
+			}
+		}
+	}
+	.qubely-single-img.qubely-backend .qubely-team-avatar {
+		cursor: pointer;
+		text-align: center;
+	}
+	.qubely-team-avatar {
+		&.qubely-image-placeholder i {
+			font-size: 50px;
+			padding: 26px;
+		}
+	}
+	.qubely-image-placeholder {
+		width: 100%;
+		height: 230px;
+		margin-bottom: 0 !important;
+		a {
+			color: #2184f9;
+			text-align: center;
+			text-decoration: none;
+			font-size: 16px;
+		}
+	}
 
+	.qubely-team-avatar-layout-left,
+	.qubely-team-avatar-layout-right {
+		display: inline-flex;
+		align-items: center;
+		.qubely-team-author-info {
+			text-align: left;
+		}
+	}
 
-    .qubely-team-avatar-layout-left,
-    .qubely-team-avatar-layout-right {
-        display: inline-flex;
-        align-items: center;
-        .qubely-team-author-info {
-        text-align: left;
-        }
-    }
+	.qubely-team-avatar-layout-right {
+		.qubely-team-author-info {
+			text-align: right;
+		}
+	}
 
-    .qubely-team-avatar-layout-right {
-        .qubely-team-author-info {
-            text-align: right;
-        }
-    }
-
-  /*
+	/*
   .qubely-team-ratings {
     unicode-bidi: bidi-override;
     display: inline-block;
@@ -116,13 +115,13 @@
       width: 100%;
     }
   }*/
-  .qubely-team-carousel-arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 15px solid #d6d9dd;
-  }
+	.qubely-team-carousel-arrow-down {
+		width: 0;
+		height: 0;
+		border-left: 15px solid transparent;
+		border-right: 15px solid transparent;
+		border-top: 15px solid #d6d9dd;
+	}
 }
 
 $border_color_1: #f4f4f4 transparent transparent transparent;
@@ -165,7 +164,7 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 }
 .qubely-team-info-layout-1 {
 	.qubely-team-avatar {
-        margin-right: 20px;
+		margin-right: 20px;
 	}
 }
 .qubely-team-info-layout-2 {
@@ -175,13 +174,13 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 }
 
 .qubely-carousel.qubely-carousel-wrapper {
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    position: relative;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	position: relative;
 }
 
 .qubely-carousel.qubely-carousel-wrapper {
@@ -291,7 +290,7 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 			text-align: center;
 			bottom: 49%;
 			background: rgba(255, 255, 255, 0.4);
-			transition: .3s;
+			transition: 0.3s;
 			&:hover {
 				border: 1px solid #1066cc;
 			}
@@ -331,9 +330,9 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 			display: flex;
 			width: 100%;
 			height: 100%;
-            text-align: center;
-            justify-content: center;
-            justify-content: center;
+			text-align: center;
+			justify-content: center;
+			justify-content: center;
 		}
 	}
 }
@@ -459,13 +458,12 @@ $border_color_1: #f4f4f4 transparent transparent transparent;
 	}
 }
 
-
-.qubely-carousel.qubely-carousel-wrapper.is-faded{
-  .qubely-carousel-extended-list .qubely-carousel-extended-outer-stage{
-    .qubely-carousel-item:not(.active){
-      opacity: 0.1;
-    }
-  }
+.qubely-carousel.qubely-carousel-wrapper.is-faded {
+	.qubely-carousel-extended-list .qubely-carousel-extended-outer-stage {
+		.qubely-carousel-item:not(.active) {
+			opacity: 0.1;
+		}
+	}
 }
 $color_1: #fff;
 .qubely-team-1 {
@@ -474,7 +472,7 @@ $color_1: #fff;
 	}
 	.qubely-single-img {
 		img.qubely-team-avatar {
-			transition: .3s;
+			transition: 0.3s;
 		}
 	}
 }
@@ -484,13 +482,13 @@ $color_1: #fff;
 		background: rgba(0, 0, 0, 0.65);
 		position: absolute;
 		line-height: 30px;
-		transition: .3s;
+		transition: 0.3s;
 		height: 100%;
 		width: 100%;
 		opacity: 0;
 		z-index: 1;
-        top: 0;
-        left: 0;
+		top: 0;
+		left: 0;
 		color: $color_1;
 		transform: translate(0%, 0%);
 		width: 100%;
@@ -504,22 +502,22 @@ $color_1: #fff;
 }
 .qubely-team-carousel-item {
 	.qubely-single-img {
-        line-height: 0;
-        .qubely-team-avatar {
-            display: inline-block;
-        }
+		line-height: 0;
+		.qubely-team-avatar {
+			display: inline-block;
+		}
 	}
 	overflow: hidden;
 }
 
 .qubely-team-3 {
-    .qubely-team-author {
+	.qubely-team-author {
 		display: inline-block;
-        width: 100%;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: start;
-        align-items: flex-start;
+		width: 100%;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-align: start;
+		align-items: flex-start;
 	}
 	// .qubely-single-img {
 	// 	width: 50%;
@@ -530,206 +528,206 @@ $color_1: #fff;
 	overflow: hidden;
 }
 .qubely-block-team-carousel {
-    .qubely-image-placeholder {
+	.qubely-image-placeholder {
 		width: 100%;
 		height: 230px;
 		transform: scale(1);
-        transition: .3s;
-        border: 2px dashed #e5e5e5;
-        border-radius: 4px;
-        padding: 20px;
+		transition: 0.3s;
+		border: 2px dashed #e5e5e5;
+		border-radius: 4px;
+		padding: 20px;
 	}
 	.qubely-team-3 {
 		.qubely-image-placeholder {
-            height: 100%;
-            padding: 0;
+			height: 100%;
+			padding: 0;
 		}
 	}
 }
 
 .qubely-backend {
-    .qubely-image-placeholder {
-        z-index: 2;
-        position: relative;
-        padding: 20px;
-    }
+	.qubely-image-placeholder {
+		z-index: 2;
+		position: relative;
+		padding: 20px;
+	}
 }
 .qubely-team-3 {
-    .qubely-backend {
-        .qubely-image-placeholder {
-            padding: 20px;
-        }
-    }
+	.qubely-backend {
+		.qubely-image-placeholder {
+			padding: 20px;
+		}
+	}
 }
 
-    .qubely-team-author-info {
-        display: inline-block;
-    }
-    .qubely-carousel-item {
-        height: fit-content;
-    }
-    .editor-styles-wrapper {
-        .qubely-team-2 {
-            line-height: 0;
-        }
-    }
-    .qubely-single-img {
-        overflow: hidden;
-    }
-    .qubely-team-social-links {
-    font-size: 0;
-    a {
-        display: inline-block;
-        text-decoration: none !important;
-        transition: color 300ms, background-color 300ms;
-    }
+.qubely-team-author-info {
+	display: inline-block;
+}
+.qubely-carousel-item {
+	height: fit-content;
+}
+.editor-styles-wrapper {
+	.qubely-team-2 {
+		line-height: 0;
+	}
+}
+.qubely-single-img {
+	overflow: hidden;
+}
+.qubely-team-social-links {
+	font-size: 0;
+	a {
+		display: inline-block;
+		text-decoration: none !important;
+		transition: color 300ms, background-color 300ms;
+	}
 
-    &.qubely-team-icon-layout-fill {
-        a {
-            padding: 10px;
-            i {
-                width: 1em;
-                height: 1em;
-                display: block;
-                text-align: center;
-            }
-        }
-    }
+	&.qubely-team-icon-layout-fill {
+		a {
+			padding: 10px;
+			i {
+				width: 1em;
+				height: 1em;
+				display: block;
+				text-align: center;
+			}
+		}
+	}
 
-    &.qubely-team-icon-style-default {
-        &.qubely-team-icon-layout-normal {
-            .qubely-team-social-facebook {
-                color: #3b5998;
-                &:hover {
-                    color: #2f477c;
-                }
-            }
-            .qubely-team-social-twitter {
-                color: #1da1f2;
-                &:hover {
-                    color: #1a93df;
-                }
-            }
-            .qubely-team-social-instagram {
-                color: #e1306c;
-                &:hover {
-                    color: #c0275a;
-                }
-            }
-            .qubely-team-social-linkedin {
-                color: #0077b5;
-                &:hover {
-                    color: #005f92;
-                }
-            }
-            .qubely-team-social-youtube {
-                color: #ff0000;
-                &:hover {
-                    color: #e40000;
-                }
-            }
-            .qubely-team-social-github {
-                color: #333;
-                &:hover {
-                    color: rgb(24, 24, 24);
-                }
-            }
-            .qubely-team-social-flickr {
-                color: #ff0084;
-                &:hover {
-                    color: #e60077;
-                }
-            }
-            .qubely-team-social-pinterest {
-                color: #bd081c;
-                &:hover {
-                    color: #9c0718;
-                }
-            }
-            .qubely-team-social-dribbble {
-                color: #ea4c89;
-                &:hover {
-                    color: #d3437a;
-                }
-            }
-            .qubely-team-social-behance {
-                color: #1769ff;
-                &:hover {
-                    color: #135add;
-                }
-            }
-        }
+	&.qubely-team-icon-style-default {
+		&.qubely-team-icon-layout-normal {
+			.qubely-team-social-facebook {
+				color: #3b5998;
+				&:hover {
+					color: #2f477c;
+				}
+			}
+			.qubely-team-social-twitter {
+				color: #1da1f2;
+				&:hover {
+					color: #1a93df;
+				}
+			}
+			.qubely-team-social-instagram {
+				color: #e1306c;
+				&:hover {
+					color: #c0275a;
+				}
+			}
+			.qubely-team-social-linkedin {
+				color: #0077b5;
+				&:hover {
+					color: #005f92;
+				}
+			}
+			.qubely-team-social-youtube {
+				color: #ff0000;
+				&:hover {
+					color: #e40000;
+				}
+			}
+			.qubely-team-social-github {
+				color: #333;
+				&:hover {
+					color: rgb(24, 24, 24);
+				}
+			}
+			.qubely-team-social-flickr {
+				color: #ff0084;
+				&:hover {
+					color: #e60077;
+				}
+			}
+			.qubely-team-social-pinterest {
+				color: #bd081c;
+				&:hover {
+					color: #9c0718;
+				}
+			}
+			.qubely-team-social-dribbble {
+				color: #ea4c89;
+				&:hover {
+					color: #d3437a;
+				}
+			}
+			.qubely-team-social-behance {
+				color: #1769ff;
+				&:hover {
+					color: #135add;
+				}
+			}
+		}
 
-        &.qubely-team-icon-layout-fill {
-            a {
-                color: #fff;
-                &:hover {
-                    color: #fff;
-                }
-            }
-            .qubely-team-social-facebook {
-                background-color: #3b5998;
-                &:hover {
-                    background-color: #2f477c;
-                }
-            }
-            .qubely-team-social-twitter {
-                background-color: #1da1f2;
-                &:hover {
-                    background-color: #1a93df;
-                }
-            }
-            .qubely-team-social-instagram {
-                background-color: #e1306c;
-                &:hover {
-                    background-color: #c0275a;
-                }
-            }
-            .qubely-team-social-linkedin {
-                background-color: #0077b5;
-                &:hover {
-                    background-color: #005f92;
-                }
-            }
-            .qubely-team-social-youtube {
-                background-color: #ff0000;
-                &:hover {
-                    background-color: #e40000;
-                }
-            }
-            .qubely-team-social-github {
-                background-color: #333;
-                &:hover {
-                    background-color: rgb(24, 24, 24);
-                }
-            }
-            .qubely-team-social-flickr {
-                background-color: #ff0084;
-                &:hover {
-                    background-color: #e60077;
-                }
-            }
-            .qubely-team-social-pinterest {
-                background-color: #bd081c;
-                &:hover {
-                    background-color: #9c0718;
-                }
-            }
-            .qubely-team-social-dribbble {
-                background-color: #ea4c89;
-                &:hover {
-                    background-color: #d3437a;
-                }
-            }
-            .qubely-team-social-behance {
-                background-color: #1769ff;
-                &:hover {
-                    background-color: #135add;
-                }
-            }
-        }
-    }
-    }
+		&.qubely-team-icon-layout-fill {
+			a {
+				color: #fff;
+				&:hover {
+					color: #fff;
+				}
+			}
+			.qubely-team-social-facebook {
+				background-color: #3b5998;
+				&:hover {
+					background-color: #2f477c;
+				}
+			}
+			.qubely-team-social-twitter {
+				background-color: #1da1f2;
+				&:hover {
+					background-color: #1a93df;
+				}
+			}
+			.qubely-team-social-instagram {
+				background-color: #e1306c;
+				&:hover {
+					background-color: #c0275a;
+				}
+			}
+			.qubely-team-social-linkedin {
+				background-color: #0077b5;
+				&:hover {
+					background-color: #005f92;
+				}
+			}
+			.qubely-team-social-youtube {
+				background-color: #ff0000;
+				&:hover {
+					background-color: #e40000;
+				}
+			}
+			.qubely-team-social-github {
+				background-color: #333;
+				&:hover {
+					background-color: rgb(24, 24, 24);
+				}
+			}
+			.qubely-team-social-flickr {
+				background-color: #ff0084;
+				&:hover {
+					background-color: #e60077;
+				}
+			}
+			.qubely-team-social-pinterest {
+				background-color: #bd081c;
+				&:hover {
+					background-color: #9c0718;
+				}
+			}
+			.qubely-team-social-dribbble {
+				background-color: #ea4c89;
+				&:hover {
+					background-color: #d3437a;
+				}
+			}
+			.qubely-team-social-behance {
+				background-color: #1769ff;
+				&:hover {
+					background-color: #135add;
+				}
+			}
+		}
+	}
+}
 
 .qubely-team-social-share {
 	.qubely-team-social-links {
@@ -742,8 +740,8 @@ $color_1: #fff;
 .qubely-team-2 {
 	.qubely-team-author-info {
 		.qubely-team-info-layout-2 {
-			transition: .3s;
-			transform: translate(50%,-20%);
+			transition: 0.3s;
+			transform: translate(50%, -20%);
 			position: absolute;
 			width: 100%;
 			left: -50%;
@@ -753,8 +751,8 @@ $color_1: #fff;
 	&:hover {
 		.qubely-team-author-info {
 			.qubely-team-info-layout-2 {
-				-webkit-transform: translate(50%,50%);
-				transform: translate(50%,-50%);
+				-webkit-transform: translate(50%, 50%);
+				transform: translate(50%, -50%);
 				position: absolute;
 				width: 100%;
 				left: -50%;
@@ -771,7 +769,7 @@ $color_1: #fff;
 .qubely-carousel {
 	.qubely-carousel-extended-list {
 		.qubely-carousel-item {
-			transition: .3s;
+			transition: 0.3s;
 		}
 	}
 }
@@ -787,30 +785,30 @@ h2.qubely-heading-selector {
 }
 
 .qubely-team-2 {
-    .qubely-backend {
-        .qubely-team-avatar {
-            min-height: 230px;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            background: #f5f5f5;
-            .qubely-image-placeholder {
-                width: auto;
-                height: auto;
-                z-index: 2;
-                background: none;
-                border: none;
-                a {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 4px;
-                    background: #000;
-                    color: #fff;
-                    svg {
-                        margin-top: 8px;
-                    }
-                }
-            }
-        }
-    }
+	.qubely-backend {
+		.qubely-team-avatar {
+			min-height: 230px;
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			background: #f5f5f5;
+			.qubely-image-placeholder {
+				width: auto;
+				height: auto;
+				z-index: 2;
+				background: none;
+				border: none;
+				a {
+					width: 60px;
+					height: 60px;
+					border-radius: 4px;
+					background: #000;
+					color: #fff;
+					svg {
+						margin-top: 8px;
+					}
+				}
+			}
+		}
+	}
 }

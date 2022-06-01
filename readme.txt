@@ -1,6 +1,38 @@
 ===  Qubely Pro ===
-Stable tag: 1.3.2
+Requires at least: 5.0
+Tested up to: 6.0
+Stable tag: 1.3.7
+
+
 == Changelog ==
+
+= 1.3.7 =
+Update: In Advanced List Block, Ordered List is introduced
+Update: Add Bullet Point feature is introduced in the Table Content
+Update: Table Contents will now support Advanced Text Header
+Fix: Contact Form was not sending Email with proper header information
+Fix: In Post Grid Block, the Title Tag was not being changed
+
+= 1.3.6 =
+New: Lottie Block
+Fix: Reusable Blocks Rendering Issue
+Fix: All known issues
+
+= 1.3.5 =
+Fix: License Page Logo Image Broken issue
+Fix: License Expiration Date wrongly shown
+Fix: Form Builder Block - Date placeholder not working issue
+Fix: Countdown Block - Errors while selecting custom dates
+Fix: Image Carousel Block - Arrow size is not working
+
+= 1.3.4 =
+Fix: Contact Form Not Sending Issue
+
+= 1.3.3 - 23 August, 2021 =
+Fix: WooCommerce Product Block Typography issue
+Fix: WooCommerce Blocks Translation issue
+Fix: Post Carousel Block Image not Showing issue
+Fix: Testimonial Carousel Shape Size and Gutter issue
 
 = 1.3.2 - 16  July, 2021 = 
 Update: Added WordPress 5.8 Compatibility    

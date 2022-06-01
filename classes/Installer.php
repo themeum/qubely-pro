@@ -35,7 +35,7 @@ class Installer {
                 <div class="qubely-install-notice-content">
                     <h2><?php _e('Thanks for using Qubely Pro','qubely-pro'); ?></h2>
                     <p><?php echo sprintf( __( 'You must have <a href="%s" target="_blank">Qubely</a> Free version installed and activated on this website in order to use Qubely Pro.', 'qubely-pro' ), esc_url( 'https://wordpress.org/plugins/qubely/' ) ); ?></p>
-                    <a href="https://www.themeum.com/docs/qubely-introduction/" target="_blank"><?php _e('Learn more about Qubely','qubely-pro'); ?></a>
+                    <a href="https://www.themeum.com/product/qubely/" target="_blank"><?php _e('Learn more about Qubely','qubely-pro'); ?></a>
                 </div>
                 <div class="qubely-install-notice-button">
                     <a  class="button button-primary" href="<?php echo add_query_arg(array('action' => 'activate_qubely_free'), admin_url()); ?>"><?php _e('Activate Qubely','qubely-pro'); ?></a>
@@ -54,7 +54,7 @@ class Installer {
                 <div class="qubely-install-notice-content">
                     <h2><?php _e('Thanks for using Qubely Pro','qubely-pro'); ?></h2>
                     <p><?php echo sprintf( __( 'You must have <a href="%s" target="_blank">Qubely</a> Free version installed and activated on this website in order to use Qubely Pro.', 'qubely-pro' ), esc_url( 'https://wordpress.org/plugins/qubely/' ) ); ?></p>
-                    <a href="https://www.themeum.com/docs/qubely-introduction/" target="_blank"><?php _e('Learn more about Qubely','qubely-pro'); ?></a>
+                    <a href="https://www.themeum.com/product/qubely/" target="_blank"><?php _e('Learn more about Qubely','qubely-pro'); ?></a>
                 </div>
                 <div class="qubely-install-notice-button">
                     <a class="install-qubely-button button button-primary" data-slug="qubely" href="<?php echo add_query_arg(array('action' => 'install_qubely_free'), admin_url()); ?>"><?php _e('Install Qubely','qubely-pro'); ?></a>
