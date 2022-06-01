@@ -126,85 +126,9 @@ class Edit extends Component {
 		);
 	};
 
-	renderCardContent = (post, index) => {
-		const {
-			attributes: {
-				layout,
-				readmoreStyle,
-				showCategory,
-				showTitle,
-				titlePosition,
-				showAuthor,
-				showDates,
-				showComment,
-				showExcerpt,
-				excerptLimit,
-				showReadMore,
-				buttonText,
-				readmoreSize,
-			},
-		} = this.props;
-		let title = (
-			<h3 className="qubely-postgrid-title">
-				<a dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-			</h3>
-		);
-		return (
-			<div className={`${layout === 1 ? "qubely-post-list-content" : "qubely-post-grid-content"}`}>
-				{showCategory === "default" && (
-					<span
-						className="qubely-postgrid-category"
-						dangerouslySetInnerHTML={{ __html: post.qubely_category }}
-					/>
-				)}
-				{showTitle && titlePosition == true && title}
-				{(showAuthor || showDates || showComment) && (
-					<div className="qubely-postgrid-meta">
-						{showAuthor && (
-							<span>
-								<i className="fas fa-user" /> {__("By")} <a>{post.qubely_author.display_name}</a>
-							</span>
-						)}
-						{showDates && (
-							<span>
-								<i className="far fa-calendar-alt" />{" "}
-								{dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}
-							</span>
-						)}
-						{showComment && (
-							<span>
-								<i className="fas fa-comment" /> {post.qubely_comment ? post.qubely_comment : "0"}
-							</span>
-						)}
-					</div>
-				)}
-				{showTitle && titlePosition == false && title}
-				{showExcerpt && index == 0 && layout === 5 && (
-					<div
-						className="qubely-postgrid-intro"
-						dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }}
-					/>
-				)}
-				{showExcerpt && layout != 5 && (
-					<div
-						className="qubely-postgrid-intro"
-						dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }}
-					/>
-				)}
-				{showReadMore && (
-					<div className="qubely-postgrid-btn-wrapper">
-						<a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>
-							{buttonText}
-						</a>
-					</div>
-				)}
-			</div>
-		);
-	};
-
   renderCardContent = (post, index, TitleTag = 'h3') => {
     const { attributes: { layout, readmoreStyle, showCategory, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
-    let title = <TitleTag className="qubely-postgrid-title"><a>{post.title.rendered}</a></TitleTag>
+    let title = <TitleTag className="qubely-postgrid-title"><a dangerouslySetInnerHTML={{ __html: post.title.rendered}} /></TitleTag>
     return (
       <div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
         {(showCategory === 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
