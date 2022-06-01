@@ -8,33 +8,41 @@ const { addQueryArgs } = wp.url;
 const { RangeControl, PanelBody, Toolbar, Spinner, TextControl, SelectControl } = wp.components;
 const { InspectorControls, BlockControls } = wp.blockEditor;
 const {
-	Alignment,
-	Range,
-	ButtonGroup,
-	Toggle,
-	Dropdown,
-	Select,
-	Separator,
-	ColorAdvanced,
-	Typography,
-	Color,
-	Border,
-	BorderRadius,
-	Padding,
-	BoxShadow,
-	Styles,
-	Tabs,
-	Tab,
-	Margin,
-	RadioAdvanced,
-	withCSSGenerator,
-	gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
-	Inline: { InlineToolbar },
-	ContextMenu: { ContextMenu, handleContextMenu },
-	InspectorTabs,
-	InspectorTab,
-	Pagination,
-} = wp.qubelyComponents;
+  Alignment,
+  Range,
+  ButtonGroup,
+  Toggle,
+  Dropdown,
+  Select,
+  Separator,
+  ColorAdvanced,
+  Typography,
+  Color,
+  Border,
+  BorderRadius,
+  Padding,
+  BoxShadow,
+  Styles,
+  Tabs,
+  Tab,
+  Margin,
+  RadioAdvanced,
+  withCSSGenerator,
+  gloalSettings: {
+    globalSettingsPanel,
+    animationSettings,
+    interactionSettings
+  },
+  Inline: { InlineToolbar },
+  ContextMenu: {
+    ContextMenu,
+    handleContextMenu
+  },
+  InspectorTabs,
+  InspectorTab,
+  Pagination,
+  Headings
+} = wp.qubelyComponents
 
 import icons from "../../helpers/icons";
 
@@ -118,84 +126,31 @@ class Edit extends Component {
 		);
 	};
 
-	renderCardContent = (post, index) => {
-		const {
-			attributes: {
-				layout,
-				readmoreStyle,
-				showCategory,
-				showTitle,
-				titlePosition,
-				showAuthor,
-				showDates,
-				showComment,
-				showExcerpt,
-				excerptLimit,
-				showReadMore,
-				buttonText,
-				readmoreSize,
-			},
-		} = this.props;
-		let title = (
-			<h3 className="qubely-postgrid-title">
-				<a dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-			</h3>
-		);
-		return (
-			<div className={`${layout === 1 ? "qubely-post-list-content" : "qubely-post-grid-content"}`}>
-				{showCategory === "default" && (
-					<span
-						className="qubely-postgrid-category"
-						dangerouslySetInnerHTML={{ __html: post.qubely_category }}
-					/>
-				)}
-				{showTitle && titlePosition == true && title}
-				{(showAuthor || showDates || showComment) && (
-					<div className="qubely-postgrid-meta">
-						{showAuthor && (
-							<span>
-								<i className="fas fa-user" /> {__("By")} <a>{post.qubely_author.display_name}</a>
-							</span>
-						)}
-						{showDates && (
-							<span>
-								<i className="far fa-calendar-alt" />{" "}
-								{dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}
-							</span>
-						)}
-						{showComment && (
-							<span>
-								<i className="fas fa-comment" /> {post.qubely_comment ? post.qubely_comment : "0"}
-							</span>
-						)}
-					</div>
-				)}
-				{showTitle && titlePosition == false && title}
-				{showExcerpt && index == 0 && layout === 5 && (
-					<div
-						className="qubely-postgrid-intro"
-						dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }}
-					/>
-				)}
-				{showExcerpt && layout != 5 && (
-					<div
-						className="qubely-postgrid-intro"
-						dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }}
-					/>
-				)}
-				{showReadMore && (
-					<div className="qubely-postgrid-btn-wrapper">
-						<a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>
-							{buttonText}
-						</a>
-					</div>
-				)}
-			</div>
-		);
-	};
+  renderCardContent = (post, index, TitleTag = 'h3') => {
+    const { attributes: { layout, readmoreStyle, showCategory, showTitle, titlePosition, showAuthor, showDates, showComment, showExcerpt, excerptLimit, showReadMore, buttonText, readmoreSize } } = this.props
+    let title = <TitleTag className="qubely-postgrid-title"><a dangerouslySetInnerHTML={{ __html: post.title.rendered}} /></TitleTag>
+    return (
+      <div className={`${layout === 1 ? 'qubely-post-list-content' : 'qubely-post-grid-content'}`}>
+        {(showCategory === 'default') && <span className="qubely-postgrid-category" dangerouslySetInnerHTML={{ __html: post.qubely_category }} />}
+        {showTitle && (titlePosition == true) && title}
+        {
+          (showAuthor || showDates || showComment) &&
+          <div className="qubely-postgrid-meta">
+            {showAuthor && <span><i className="fas fa-user" /> {__('By')} <a >{post.qubely_author.display_name}</a></span>}
+            {showDates && <span><i className="far fa-calendar-alt" /> {dateI18n(__experimentalGetSettings().formats.date, post.date_gmt)}</span>}
+            {showComment && <span><i className="fas fa-comment" /> {(post.qubely_comment ? post.qubely_comment : '0')}</span>}
+          </div>
+        }
+        {showTitle && (titlePosition == false) && title}
+        {showExcerpt && ((index == 0) && (layout === 5)) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }} />}
+        {showExcerpt && (layout != 5) && <div className="qubely-postgrid-intro" dangerouslySetInnerHTML={{ __html: this.truncate(post.qubely_excerpt, excerptLimit) }} />}
+        {showReadMore && <div className="qubely-postgrid-btn-wrapper"><a className={`qubely-postgrid-btn qubely-button-${readmoreStyle} is-${readmoreSize}`}>{buttonText}</a></div>}
+      </div>
+    )
+  }
 
-	render() {
-		const {
+  render() {
+    const {
 			name,
 			clientId,
 			attributes,
@@ -204,7 +159,8 @@ class Edit extends Component {
 			taxonomyList,
 			numberofPosts,
 			setAttributes,
-			attributes: {
+      attributes: {
+        level,
 				uniqueId,
 				className,
 				postType,
@@ -315,6 +271,7 @@ class Edit extends Component {
 				positionYaxis,
 
 				//pagination
+        pages,
 				enablePagination,
 				paginationType,
 				pageAlignment,
@@ -343,15 +300,12 @@ class Edit extends Component {
 			},
 		} = this.props;
 
-		const { device } = this.state;
 
-		let pages = 0;
-		if (numberofPosts && numberofPosts.length) {
-			pages = Math.ceil(numberofPosts.length / postsToShow);
-		}
-		let taxonomyListOptions = [{ value: "", label: __("Select Taxonomy") }];
+		const { device } = this.state;
+    const tag = `h${level}`;
 
 		let categoryListOptions = [{ value: "", label: __("All") }];
+    let taxonomyListOptions = [{ value: "", label: __("Select Taxonomy") }];
 
 		if ("" !== taxonomyList) {
 			Object.keys(taxonomyList).map((item) => {
@@ -1118,47 +1072,54 @@ class Edit extends Component {
 								)}
 							</PanelBody>
 
-							<PanelBody title="Content" initialOpen={false}>
-								<Toggle
-									label={__("Show Title")}
-									value={showTitle}
-									onChange={(value) => setAttributes({ showTitle: value })}
-								/>
-								<Toggle
-									label={__("Show Excerpt")}
-									value={showExcerpt}
-									onChange={(value) => setAttributes({ showExcerpt: value })}
-								/>
-								<RangeControl
-									label={__("Excerpt Limit")}
-									min={1}
-									max={100}
-									step={1}
-									value={excerptLimit}
-									onChange={(val) => setAttributes({ excerptLimit: val })}
-								/>
-								<Separator />
-								<Toggle
-									label={__("Title Below Meta")}
-									value={titlePosition}
-									onChange={(value) => setAttributes({ titlePosition: value })}
-								/>
-								<Toggle
-									label={__("Show date")}
-									value={showDates}
-									onChange={(value) => setAttributes({ showDates: value })}
-								/>
-								<Toggle
-									label={__("Show Comment")}
-									value={showComment}
-									onChange={(value) => setAttributes({ showComment: value })}
-								/>
-								<Toggle
-									label={__("Show Author")}
-									value={showAuthor}
-									onChange={(value) => setAttributes({ showAuthor: value })}
-								/>
-							</PanelBody>
+              <PanelBody title="Content" initialOpen={false}>
+                <Toggle
+                  label={__("Show Title")}
+                  value={showTitle}
+                  onChange={(value) => setAttributes({ showTitle: value })}
+                />
+                {showTitle &&
+									<Headings
+										selectedLevel={level}
+										onChange={(value) =>
+											setAttributes({ level: value, selector: `h${value}` })
+										}
+								/>}
+                <Toggle
+                  label={__("Show Excerpt")}
+                  value={showExcerpt}
+                  onChange={(value) => setAttributes({ showExcerpt: value })}
+                />
+                <RangeControl
+                  label={__("Excerpt Limit")}
+                  min={1}
+                  max={100}
+                  step={1}
+                  value={excerptLimit}
+                  onChange={(val) => setAttributes({ excerptLimit: val })}
+                />
+                <Separator />
+                <Toggle
+                  label={__("Title Below Meta")}
+                  value={titlePosition}
+                  onChange={(value) => setAttributes({ titlePosition: value })}
+                />
+                <Toggle
+                  label={__("Show date")}
+                  value={showDates}
+                  onChange={(value) => setAttributes({ showDates: value })}
+                />
+                <Toggle
+                  label={__("Show Comment")}
+                  value={showComment}
+                  onChange={(value) => setAttributes({ showComment: value })}
+                />
+                <Toggle
+                  label={__("Show Author")}
+                  value={showAuthor}
+                  onChange={(value) => setAttributes({ showAuthor: value })}
+                />
+              </PanelBody>
 
 							<PanelBody title={__("Category")} initialOpen={false}>
 								<RadioAdvanced
@@ -1629,90 +1590,92 @@ class Edit extends Component {
 					setAttributes
 				)}
 
-				<div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ""}`}>
-					{posts && posts.length ? (
-						<Fragment>
-							<div
-								className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${
-									layout === 2 || layout === 3 || layout === 4
-										? "qubely-postgrid-column qubely-postgrid-column-md" +
-										  column.md +
-										  " " +
-										  "qubely-postgrid-column-sm" +
-										  column.sm +
-										  " " +
-										  "qubely-postgrid-column-xs" +
-										  column.xs
-										: ""
-								}`}
-								onContextMenu={(event) => handleContextMenu(event, this.qubelyContextMenu.current)}
-							>
-								{posts.map((post, index) => {
-									if (post) {
-										return (
-											<div
-												className={`qubely-postgrid ${
-													layout === 1 ? "qubely-post-list-view" : "qubely-post-grid-view"
-												} qubely-postgrid-style-${style} ${
-													(layout == 5 && index == 0) || (layout == 3 && index == 0)
-														? "qubely-post-large-view"
-														: "qubely-post-small-view"
-												}`}
-											>
-												<div
-													className={`${
-														layout === 1
-															? `qubely-post-list-wrapper qubely-post-list-${
-																	layout != 1 && style === 3
-																		? contentPosition
-																		: girdContentPosition
-															  }`
-															: `qubely-post-grid-wrapper qubely-post-grid-${
-																	layout != 1 && style === 3
-																		? contentPosition
-																		: girdContentPosition
-															  }`
-													}`}
-												>
-													{post &&
-														showImages &&
-														post.qubely_featured_image_url &&
-														this.renderFeaturedImage(post)}
-													{this.renderCardContent(post, index)}
-												</div>
-											</div>
-										);
-									} else return null;
-								})}
-							</div>
-							<div ref={this.qubelyContextMenu} className={`qubely-context-menu-wraper`}>
-								<ContextMenu
-									name={name}
-									clientId={clientId}
-									attributes={attributes}
-									setAttributes={setAttributes}
-									qubelyContextMenu={this.qubelyContextMenu.current}
-								/>
-							</div>
-							{enablePagination && (
-								<Pagination
-									total={pages}
-									current={page}
-									prevText="Prev"
-									nextText="Next"
-									onClickPage={(page) => setAttributes({ page })}
-								/>
-							)}
-						</Fragment>
-					) : (
-						<div className="qubely-postgrid-is-loading">
-							<Spinner />
-						</div>
-					)}
-				</div>
-			</Fragment>
-		);
-	}
+        <div className={`qubely-block-${uniqueId}${className ? ` ${className}` : ""}`}   >
+          {posts && posts.length ? (
+            <Fragment>
+              <div
+                className={`qubely-postgrid-wrapper qubely-postgrid-layout-${layout} ${layout === 2 || layout === 3 || layout === 4
+                  ? "qubely-postgrid-column qubely-postgrid-column-md" +
+                  column.md +
+                  " " +
+                  "qubely-postgrid-column-sm" +
+                  column.sm +
+                  " " +
+                  "qubely-postgrid-column-xs" +
+                  column.xs
+                  : ""
+                  }`}
+                onContextMenu={event => handleContextMenu(event, this.qubelyContextMenu.current)}
+              >
+                {posts.map((post, index) => {
+                  if (post) {
+                    return (
+                      <div
+                        className={`qubely-postgrid ${layout === 1
+                          ? "qubely-post-list-view"
+                          : "qubely-post-grid-view"
+                          } qubely-postgrid-style-${style} ${(layout == 5 && index == 0) ||
+                            (layout == 3 && index == 0)
+                            ? "qubely-post-large-view"
+                            : "qubely-post-small-view"
+                          }`}
+                        key={index}
+                      >
+                        <div
+                          className={`${layout === 1
+                            ? `qubely-post-list-wrapper qubely-post-list-${layout != 1 && style === 3
+                              ? contentPosition
+                              : girdContentPosition
+                            }`
+                            : `qubely-post-grid-wrapper qubely-post-grid-${layout != 1 && style === 3
+                              ? contentPosition
+                              : girdContentPosition
+                            }`
+                            }`}
+                        >
+                          {post &&
+                            showImages &&
+                            post.qubely_featured_image_url &&
+                            this.renderFeaturedImage(post)}
+                          {this.renderCardContent(post, index, tag)}
+                        </div>
+                      </div>
+                    );
+                  } else return null;
+                })}
+              </div>
+              <div
+                ref={this.qubelyContextMenu}
+                className={`qubely-context-menu-wraper`}
+              >
+                <ContextMenu
+                  name={name}
+                  clientId={clientId}
+                  attributes={attributes}
+                  setAttributes={setAttributes}
+                  qubelyContextMenu={this.qubelyContextMenu.current}
+                />
+              </div>
+              {
+                enablePagination &&
+                <Pagination
+                  total={pages}
+                  current={page}
+                  prevText="Prev"
+                  nextText="Next"
+                  onClickPage={(page) => setAttributes({ page })}
+                />
+              }
+            </Fragment>
+          ) : (
+              <div className="qubely-postgrid-is-loading">
+                <Spinner />
+              </div>
+            )}
+        </div>
+      </Fragment>
+    );
+  }
 }
 
 export default compose([
