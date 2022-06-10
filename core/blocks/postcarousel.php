@@ -491,8 +491,8 @@ function register_block_qubely_postcarousel_pro()
 							'selector' => '{{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper'
 						]
 					]
-                ),
-                'cardBoxShadow' => array(
+				),
+				'cardBoxShadow' => array(
 					'type' => 'object',
 					'default' 		=> (object) array(
 						'blur' 		=> 8,
@@ -508,7 +508,7 @@ function register_block_qubely_postcarousel_pro()
 						'selector' => '{{QUBELY}} .qubely-postgrid-style-2 .qubely-post-grid-wrapper'
 					]]
 				),
-                
+
 				'overlayHeight' => array(
 					'type' => 'object',
 					'default' => (object) array(
@@ -1267,6 +1267,13 @@ function register_block_qubely_postcarousel_pro()
 						'selector' => '{{QUBELY}} {z-index:{{globalZindex}};}'
 					]]
 				),
+				'hideDesktop' => array(
+					'type' => 'boolean',
+					'default' => false,
+					'style' => [(object) [
+						'selector' => '{{QUBELY}}{display:none;}'
+					]]
+				),
 				'hideTablet' => array(
 					'type' => 'boolean',
 					'default' => false,
@@ -1382,16 +1389,16 @@ function render_block_qubely_postcarousel_pro($att)
 
 	$custom_tax_query = array(
 		'taxonomy' => $taxonomyType,
-		'terms'    => array_column( $customTaxonomies, 'value' ),
+		'terms'    => array_column($customTaxonomies, 'value'),
 	);
-	
-	if ( 'post' === $postType ) {
-		if ( is_array( $active_taxonomy_array ) && count( $active_taxonomy_array ) > 0 ) {
-			$args[ $active_taxonomy_name ] = array_column( $active_taxonomy_array, 'value' );
+
+	if ('post' === $postType) {
+		if (is_array($active_taxonomy_array) && count($active_taxonomy_array) > 0) {
+			$args[$active_taxonomy_name] = array_column($active_taxonomy_array, 'value');
 		}
 	} else {
-		if ( is_array( $customTaxonomies ) && count( $customTaxonomies ) > 0 ) {
-			$args['tax_query'] = array( $custom_tax_query );
+		if (is_array($customTaxonomies) && count($customTaxonomies) > 0) {
+			$args['tax_query'] = array($custom_tax_query);
 		}
 	}
 
@@ -1412,12 +1419,12 @@ function render_block_qubely_postcarousel_pro($att)
 	endif;
 
 	$html = '';
-	$class = 'wp-block-qubely-postcarousel qubely-block-'.$uniqueId;
-	if ( isset( $att['align'] ) ) {
+	$class = 'wp-block-qubely-postcarousel qubely-block-' . $uniqueId;
+	if (isset($att['align'])) {
 		$class .= ' align' . $att['align'];
 	}
-	if ( isset( $att['className'] ) ) {
-		$class .=' '. $att['className'];
+	if (isset($att['className'])) {
+		$class .= ' ' . $att['className'];
 	}
 	# The Loop. 
 	if ($query->have_posts()) {
@@ -1443,8 +1450,8 @@ function render_block_qubely_postcarousel_pro($att)
 				$html .= '<div class="qubely-carousel-item">';
 				$html .= '<div class="qubely-post-grid-view qubely-postgrid-style-' . esc_attr($style) . '">';
 				$html .= '<div class="qubely-post-grid-wrapper qubely-post-grid-center">';
-				
-				if (($showImages == 1) && has_post_thumbnail() && $src !=false) {
+
+				if (($showImages == 1) && has_post_thumbnail() && $src != false) {
 					$image = '<img class="qubely-post-image" src="' . esc_url($src[0]) . '" alt="' . get_the_title() . '"/>';
 					if ($showCategory == 'badge' && $style == 4) {
 						$html .= '<div class="qubely-postgrid-cat-position qubely-postgrid-cat-position-' . esc_attr($categoryPosition) . '">';

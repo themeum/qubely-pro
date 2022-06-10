@@ -1241,6 +1241,7 @@ class Edit extends Component {
 				positionXaxis,
 				positionYaxis,
 				globalZindex,
+				hideDesktop,
 				hideTablet,
 				hideMobile,
 				globalCss,
@@ -2354,17 +2355,18 @@ class Edit extends Component {
 					/>
 				</BlockControls>
 
-				{globalSettingsPanel(
+				{globalSettingsPanel({
 					enablePosition,
 					selectPosition,
 					positionXaxis,
 					positionYaxis,
 					globalZindex,
+					hideDesktop,
 					hideTablet,
 					hideMobile,
 					globalCss,
 					setAttributes
-				)}
+				})}
 
 				<div className={wrapperClasses} ref={this.tableBlockRef}>
 					<div
