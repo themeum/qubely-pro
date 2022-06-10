@@ -576,7 +576,7 @@ class WOOPRODUCTS
                         'type' => 'object',
                         'default' => (object) [
                             'md' => 40,
-                            'unit' => 'px' 
+                            'unit' => 'px'
                         ],
 
                         'style' => [
@@ -979,7 +979,13 @@ class WOOPRODUCTS
                             'selector' => '{{QUBELY}} .qubely-woocommerce-pagination > *'
                         ]]
                     ),
-
+                    'hideDesktop' => array(
+                        'type' => 'boolean',
+                        'default' => false,
+                        'style' => [(object) [
+                            'selector' => '{{QUBELY}}{display:none;}'
+                        ]]
+                    ),
                     'hideTablet' => array(
                         'type' => 'boolean',
                         'default' => false,
@@ -1044,11 +1050,11 @@ class WOOPRODUCTS
     function render_block_qubely_wooproducts($att)
     {
 
-        if ( ! class_exists( 'WooCommerce' ) ) {
+        if (!class_exists('WooCommerce')) {
             return;
         }
 
-        $uniqueId 		        = isset($att['uniqueId']) ? $att['uniqueId'] : '';
+        $uniqueId                 = isset($att['uniqueId']) ? $att['uniqueId'] : '';
         $layout                 = isset($att['layout']) ? $att['layout'] : 2;
         $columns                =  $att['columns'];
         $showRatings            =  $att['showRatings'];
@@ -1216,7 +1222,7 @@ class WOOPRODUCTS
                 $columns['md'],
                 $columns['sm'],
                 $columns['xs'],
-                $interaction 
+                $interaction
             );
 
             while ($wp_query->have_posts()) {
@@ -1232,12 +1238,12 @@ class WOOPRODUCTS
                 $rating = $product->get_average_rating();
                 $count   = $product->get_rating_count();
                 $regular_price =  $product->get_regular_price();
-                $sale_price = 	$product->get_sale_price();
-               
-                if($product->is_type('variable')){
-					$sale_price =  $product->get_variation_sale_price( 'min', true );
-					$regular_price=  $product->get_variation_regular_price( 'max', true );
-				}
+                $sale_price =     $product->get_sale_price();
+
+                if ($product->is_type('variable')) {
+                    $sale_price =  $product->get_variation_sale_price('min', true);
+                    $regular_price =  $product->get_variation_regular_price('max', true);
+                }
 
                 $woo_product_markup .= '<div class="qubely_woo_product_wrapper"><div class="qubely_woo_product">';
                 if ($image_url) {
@@ -1265,7 +1271,7 @@ class WOOPRODUCTS
                     );
                     if ($showRatingsCount) {
                         $woo_product_markup .= sprintf(
-                            '<span class="qubely-ratings-count">' . _x( '(%1$s)', 'Ratings Count', 'qubely-pro' ) . '</span>',
+                            '<span class="qubely-ratings-count">' . _x('(%1$s)', 'Ratings Count', 'qubely-pro') . '</span>',
                             $count
                         );
                     }
@@ -1281,23 +1287,23 @@ class WOOPRODUCTS
                     $woo_product_markup .= sprintf(
                         '<div class="qubely-product-price">
                          <div class="qubely-regular-price">
-                             <s>' . _x( '$%1$s', 'Product Regular Price', 'qubely-pro' ) . '</s>
+                             <s>' . _x('$%1$s', 'Product Regular Price', 'qubely-pro') . '</s>
                         </div>
-                        <div class="qubely-sale-price">' . _x( '$%2$s', 'Product Sale Price', 'qubely-pro' ) . '</div>
+                        <div class="qubely-sale-price">' . _x('$%2$s', 'Product Sale Price', 'qubely-pro') . '</div>
                     </div>',
                         $regular_price,
                         $sale_price
                     );
                 } else {
                     $woo_product_markup .= sprintf(
-                        '<div class="qubely-product-price">' . _x( '$%1$s', 'Product Price', 'qubely-pro' ) . '</div>',
+                        '<div class="qubely-product-price">' . _x('$%1$s', 'Product Price', 'qubely-pro') . '</div>',
                         $product->get_price()
                     );
                 }
                 if ($in_cart == 0) {
                     $woo_product_markup .= sprintf(
                         '<div class="qubely-addtocart-wrapper">
-                        <div class="qubely_adtocart_button" id="%1$s">' . _x( '%2$s', 'Add to Cart Button Text', 'qubely-pro' ) . '</div>
+                        <div class="qubely_adtocart_button" id="%1$s">' . _x('%2$s', 'Add to Cart Button Text', 'qubely-pro') . '</div>
                     </div>',
                         $product_id,
                         $att['addToCartButtonText']
@@ -1305,7 +1311,7 @@ class WOOPRODUCTS
                 } else {
                     $woo_product_markup .= sprintf(
                         '<div class="qubely-addtocart-wrapper">
-                        <div class="qubely_adtocart_button" id="%1$s" data-quantity="%2$s">%3$s ' . __( 'in Cart', 'qubely-pro' ) . '</div>
+                        <div class="qubely_adtocart_button" id="%1$s" data-quantity="%2$s">%3$s ' . __('in Cart', 'qubely-pro') . '</div>
                     </div>',
                         $product_id,
                         $in_cart,
