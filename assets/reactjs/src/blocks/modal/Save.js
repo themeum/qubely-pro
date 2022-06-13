@@ -14,6 +14,7 @@ const Save = (props) => {
         modalTitle,
         enableTitle,
         titleLevel,
+        enableCloseButton,
         showModal,
     } = props.attributes;
     const interactionClass = IsInteraction(interaction) ? "qubley-block-interaction" : "";
@@ -35,9 +36,11 @@ const Save = (props) => {
                     </div>
                     <div className={`qubely-modal-popup ${showModal ? 'display-block' : 'display-none'}`}>
                         <div className={`qubely-modal-box`}>
-                            <button className={`qubely-block-modal-close-btn`}>
-                                <i className={`qubely-btn-icon far fa-window-close`} />
-                            </button>
+                            {enableCloseButton && (
+                                <button className={`qubely-block-modal-close-btn`}>
+                                    <i className={`qubely-btn-icon far fa-window-close`} />
+                                </button>
+                            )}
                             <div className={`qubely-block-modal-inner-blocks`}>
                                 {enableTitle == 1 && (
                                     <div className="qubely-block-modal-title-wrapper">

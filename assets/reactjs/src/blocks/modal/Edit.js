@@ -79,6 +79,12 @@ const Edit = (props) => {
             titleTypography,
             titleColor,
             titleSpacing,
+            enableCloseButton,
+            closeButtonColor,
+            closeButtonBgColor,
+            closeButtonSize,
+            closeButtonPadding,
+            closeButtonRadius,
         },
     } = props;
 
@@ -254,6 +260,45 @@ const Edit = (props) => {
                             )}
                         </PanelBody>
 
+                        <PanelBody title={__("Modal Close Button")} initialOpen={false}>
+                            <Toggle
+                                label={__("Enable")}
+                                value={enableCloseButton}
+                                onChange={(val) => setAttributes({ enableCloseButton: val })}
+                            />
+                            <Color
+                                label={__("Color")}
+                                value={closeButtonColor}
+                                onChange={(value) => setAttributes({ closeButtonColor: value })}
+                            />
+                            <Color
+                                label={__("Background Color")}
+                                value={closeButtonBgColor}
+                                onChange={(value) => setAttributes({ closeButtonBgColor: value })}
+                            />
+                            <Range
+                                label={__("Button Size")}
+                                value={closeButtonSize}
+                                onChange={(value) => setAttributes({ closeButtonSize: value })}
+                                min={10}
+                                max={100}
+                            />
+                            <Range
+                                label={__("Button Padding")}
+                                value={closeButtonPadding}
+                                onChange={(value) => setAttributes({ closeButtonPadding: value })}
+                                min={0}
+                                max={100}
+                            />
+                            <Range
+                                label={__("Button Radius")}
+                                value={closeButtonRadius}
+                                onChange={(value) => setAttributes({ closeButtonRadius: value })}
+                                min={0}
+                                max={100}
+                            />
+                        </PanelBody>
+
 
                         
                     </InspectorTab>
@@ -299,7 +344,11 @@ const Edit = (props) => {
                         <div className={`qubely-block-modal-popup`}>
                             <div className={`qubely-block-modal-popup-content`}>Popup Content</div>
                             <div className={`qubely-block-modal-box`}>
-                                <button className={`qubely-block-modal-close-btn`}><i className={`qubely-btn-icon far fa-window-close`} /></button>
+                                {enableCloseButton && (
+                                    <button className={`qubely-block-modal-close-btn`}>
+                                        <i className={`qubely-btn-icon far fa-window-close`} />
+                                    </button>
+                                )}
                                 <div className={`qubely-block-modal-inner-blocks`}>
                                     {enableTitle == 1 && (
                                         <div className={`qubely-block-modal-title-wrapper`}>

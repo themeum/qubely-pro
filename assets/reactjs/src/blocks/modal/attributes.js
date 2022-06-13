@@ -240,6 +240,52 @@ const attributes = {
 		default: { md: 10, unit: "px" },
 		style: [{ selector: "{{QUBELY}} .qubely-block-modal-title-inner {margin-bottom: {{titleSpacing}};}" }],
 	},
+	enableCloseButton: { type: "boolean", default: 1 },
+	closeButtonColor: {
+		type: "string",
+		default: "",
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-close-btn { color:{{closeButtonColor}}; }",
+			},
+		],
+	},
+	closeButtonBgColor: {
+		type: "string",
+		default: "",
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-close-btn { background-color:{{closeButtonBgColor}}; }",
+			},
+		],
+	},
+	closeButtonSize: {
+		type: "number",
+		default: 24,
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-close-btn { font-size:{{closeButtonSize}}px; }",
+			},
+		],
+	},
+	closeButtonPadding: {
+		type: "number",
+		default: 5,
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-close-btn { padding:{{closeButtonPadding}}px; }",
+			},
+		],
+	},
+	closeButtonRadius: {
+		type: "number",
+		default: 0,
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-close-btn { border-radius:{{closeButtonRadius}}px; }",
+			},
+		],
+	},
 };
 
 export default attributes;
