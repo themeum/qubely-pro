@@ -13,10 +13,6 @@ const attributes = {
 		type: "string",
 		default: "See More"
 	},
-	modalTitleText: {
-		type: "string",
-		default: "See More"
-	},
 	zIndex: {
 		type: "string",
 		default: "1",
@@ -199,6 +195,50 @@ const attributes = {
 			{ selector: "{{QUBELY}} .qubely-modal-box" },
 			{ selector: "{{QUBELY}} .qubely-block-modal-box" },
 		],
+	},
+	enableTitle: { type: "boolean", default: 1 },
+	modalTitle: {
+		type: "string",
+		source: "html",
+		selector: ".qubely-block-modal-title",
+		default: "Advanced Text Block",
+	},
+	titleAlignment: {
+		type: "object",
+		default: { md: "left" },
+		style: [{ selector: "{{QUBELY}} .qubely-block-modal-title {text-align: {{titleAlignment}}; }" }],
+	},
+	titleLevel: { type: "number", default: 2 },
+	titleTypography: {
+		type: "object",
+		default: {
+			openTypography: 1,
+			size: {
+				md: 24,
+				unit: "px",
+			},
+		},
+		style: [
+			{
+				selector:
+					"{{QUBELY}} .qubely-block-modal-title-wrapper .qubely-block-modal-title-inner .qubely-block-modal-title",
+			},
+		],
+	},
+	titleColor: {
+		type: "string",
+		default: "",
+		style: [
+			{
+				selector:
+					"{{QUBELY}} .qubely-block-modal-title-wrapper .qubely-block-modal-title-inner .qubely-block-modal-title {color: {{titleColor}};}",
+			},
+		],
+	},
+	titleSpacing: {
+		type: "object",
+		default: { md: 10, unit: "px" },
+		style: [{ selector: "{{QUBELY}} .qubely-block-modal-title-inner {margin-bottom: {{titleSpacing}};}" }],
 	},
 };
 

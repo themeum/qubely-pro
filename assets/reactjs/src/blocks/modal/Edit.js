@@ -21,6 +21,10 @@ const {
     Border,
     BorderRadius,
     BoxShadow,
+    Toggle,
+    Alignment,
+    Headings,
+    Typography,
 	InspectorTab,
 	InspectorTabs,
 	withCSSGenerator,
@@ -68,8 +72,17 @@ const Edit = (props) => {
             boxBorder,
             boxBorderRadius,
             modalBoxShadow,
+            enableTitle,
+            modalTitle,
+            titleAlignment,
+            titleLevel,
+            titleTypography,
+            titleColor,
+            titleSpacing,
         },
     } = props;
+
+    const modalTitleTagName = "h" + titleLevel;
 
     const classNames = classnames({ [`qubely-block-${uniqueId}`]: uniqueId }, className);
 
@@ -189,6 +202,58 @@ const Edit = (props) => {
                             />
                         </PanelBody>
 
+                        <PanelBody title={__("Modal Title Style")} initialOpen={false}>
+                            <Toggle
+                                label={__("Enable")}
+                                value={enableTitle}
+                                onChange={(val) => setAttributes({ enableTitle: val })}
+                            />
+                            {enableTitle == 1 && (
+                                <Fragment>
+                                    <Alignment
+                                        label={__("Alignment")}
+                                        value={titleAlignment}
+                                        onChange={(val) => setAttributes({ titleAlignment: val })}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={(value) => setDevice(value)}
+                                    />
+                                    <Headings
+                                        selectedLevel={titleLevel}
+                                        onChange={(value) => setAttributes({ titleLevel: value })}
+                                    />
+                                    <Typography
+                                        label={__("Typography")}
+                                        value={titleTypography}
+                                        onChange={(value) => setAttributes({ titleTypography: value })}
+                                        device={device}
+                                        onDeviceChange={(value) => setDevice(value)}
+                                    />
+                                    <Color
+                                        label={__("Color")}
+                                        value={titleColor}
+                                        onChange={(value) => setAttributes({ titleColor: value })}
+                                    />
+                                    <Range
+                                        label={
+                                            <span>
+                                                {__("Spacing")}{" "}
+                                                <span className="dashicons dashicons-sort" title="Y Spacing" />
+                                            </span>
+                                        }
+                                        value={titleSpacing}
+                                        onChange={(val) => setAttributes({ titleSpacing: val })}
+                                        min={0}
+                                        max={200}
+                                        unit={["px", "em", "%"]}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={(value) => setDevice(value)}
+                                    />
+                                </Fragment>
+                            )}
+                        </PanelBody>
+
 
                         
                     </InspectorTab>
@@ -236,16 +301,22 @@ const Edit = (props) => {
                             <div className={`qubely-block-modal-box`}>
                                 <button className={`qubely-block-modal-close-btn`}><i className={`qubely-btn-icon far fa-window-close`} /></button>
                                 <div className={`qubely-block-modal-inner-blocks`}>
-                                    <div className={`qubely-block-modal-title`}>
-                                    <RichText
-                                        tagName="div"
-                                        keepPlaceholderOnFocus
-                                        className="qubely-modal-title-text"
-                                        placeholder={__("Add Text...")}
-                                        value={modalTitleText}
-                                        onChange={(value) => setAttributes({ modalTitleText: value })}
-                                    />
-                                    </div>
+                                    {enableTitle == 1 && (
+                                        <div className={`qubely-block-modal-title-wrapper`}>
+                                            <div className="qubely-block-modal-title-inner">
+                                                <RichText
+                                                    key="editable"
+                                                    tagName={modalTitleTagName}
+                                                    className="qubely-block-modal-title"
+                                                    keepPlaceholderOnFocus
+                                                    placeholder={__("Add Text...")}
+                                                    onChange={(value) => setAttributes({ modalTitle: value })}
+                                                    value={modalTitle}
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+
                                     <div className={`qubely-block-modal-content`}>
                                         <InnerBlocks templateLock={false} />
                                     </div>

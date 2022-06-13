@@ -11,11 +11,15 @@ const Save = (props) => {
         animation,
         interaction,
         modalLinkText,
-        modalTitleText,
+        modalTitle,
+        enableTitle,
+        titleLevel,
         showModal,
     } = props.attributes;
     const interactionClass = IsInteraction(interaction) ? "qubley-block-interaction" : "";
     const classNames = classnames({ [`qubely-block-${uniqueId}`]: uniqueId }, customClassName);
+
+    const titleTagName = 'h' + titleLevel;
 
     return (
         <div className={classNames} {...animationAttr(animation)}>
@@ -35,12 +39,17 @@ const Save = (props) => {
                                 <i className={`qubely-btn-icon far fa-window-close`} />
                             </button>
                             <div className={`qubely-block-modal-inner-blocks`}>
-                                <h2 className={`qubely-block-modal-title`}>
-                                    <RichText.Content
-                                        value={modalTitleText}
-                                        className="qubely-modal-title-text"
-                                    />
-                                </h2>
+                                {enableTitle == 1 && (
+                                    <div className="qubely-block-modal-title-wrapper">
+                                        <div className="qubely-block-modal-title-inner">
+                                            <RichText.Content
+                                                tagName={titleTagName}
+                                                className="qubely-block-modal-title"
+                                                value={modalTitle}
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                                 <div className={`qubely-block-modal-content`}>
                                     <InnerBlocks.Content />
                                 </div>
