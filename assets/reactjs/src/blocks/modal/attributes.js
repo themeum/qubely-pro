@@ -18,13 +18,159 @@ const attributes = {
 		default: "1",
 		style: [{ selector: "{{QUBELY}} {z-index:1;}" }],
 	},
-	showModal: {
-		type: "boolean",
-		default: true
+	buttonFillType: { type: "string", default: "fill" },
+	buttonAlignment: {
+		type: "object",
+		default: { md: "center" },
+		style: [{ selector: "{{QUBELY}} .qubely-block-modal-link-wrap {text-align: {{buttonAlignment}};}" }],
 	},
-	// setShowModal: {
-	// 	type: "boject"
-	// },
+	buttonSize: { type: "string", default: "large" },
+	buttonPadding: {
+		type: "object",
+		default: {
+			openPadding: 1,
+			paddingType: "global",
+			global: { md: 18 },
+			unit: "px",
+		},
+		style: [
+			{
+				condition: [{ key: "buttonSize", relation: "==", value: "custom" }],
+				selector: "{{QUBELY}} .qubely-block-modal-link",
+			},
+		],
+	},
+	buttonColor: {
+		type: "string",
+		default: "#fff",
+		style: [
+			{
+				condition: [{ key: "buttonFillType", relation: "==", value: "fill" }],
+				selector: "{{QUBELY}} .qubely-block-modal-link { color:{{buttonColor}}; }",
+			},
+		],
+	},
+	buttonColor2: {
+		type: "string",
+		default: "var(--qubely-color-1)",
+		style: [
+			{
+				condition: [{ key: "buttonFillType", relation: "!=", value: "fill" }],
+				selector: "{{QUBELY}} .qubely-block-modal-link { color:{{buttonColor2}}; }",
+			},
+		],
+	},
+	buttonHoverColor: {
+		type: "string",
+		default: "#fff",
+		style: [
+			{
+				condition: [{ key: "buttonFillType", relation: "==", value: "fill" }],
+				selector: "{{QUBELY}} .qubely-block-modal-link:hover { color:{{buttonHoverColor}}; }",
+			},
+		],
+	},
+	buttonHoverColor2: {
+		type: "string",
+		default: "#fff",
+		style: [
+			{
+				condition: [{ key: "buttonFillType", relation: "!=", value: "fill" }],
+				selector: "{{QUBELY}} .qubely-block-modal-link:hover { color:{{buttonHoverColor2}}; }",
+			},
+		],
+	},
+	buttonBgColor: {
+		type: "object",
+		default: {
+			type: "color",
+			openColor: 1,
+			color: "var(--qubely-color-1)",
+			gradient: {
+				color1: "var(--qubely-color-2)",
+				color2: "var(--qubely-color-1)",
+				direction: 0,
+				start: 0,
+				stop: 100,
+				type: "linear",
+			},
+		},
+		style: [
+			{
+				condition: [{ key: "buttonFillType", relation: "==", value: "fill" }],
+				selector: "{{QUBELY}} .qubely-block-modal-link",
+			},
+		],
+	},
+	buttonBgHoverColor: {
+		type: "object",
+		default: {
+			type: "color",
+			openColor: 1,
+			color: "var(--qubely-color-2)",
+			gradient: {
+				color1: "#16d03e",
+				color2: "#1f91f3",
+				direction: 0,
+				start: 0,
+				stop: 100,
+				type: "linear",
+			},
+		},
+		style: [{ selector: "{{QUBELY}} .qubely-block-modal-link:before" }],
+	},
+	buttonBorder: {
+		type: "object",
+		default: {
+			openBorder: 1,
+			widthType: "global",
+			global: { md: "1" },
+			type: "solid",
+			color: "var(--qubely-color-1)",
+		},
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-link",
+			},
+		],
+	},
+	borderHoverColor: {
+		type: "string",
+		default: "var(--qubely-color-2)",
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-link:hover {border-color: {{borderHoverColor}};}",
+			},
+		],
+	},
+	buttonBorderRadius: {
+		type: "object",
+		default: {
+			openBorderRadius: 1,
+			radiusType: "global",
+			global: { md: 4 },
+			unit: "px",
+		},
+		style: [{ selector: "{{QUBELY}} .qubely-block-modal-link" }],
+	},
+	buttonShadow: {
+		type: "object",
+		default: {},
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-link",
+			},
+		],
+	},
+	buttonHoverShadow: {
+		type: "object",
+		default: {},
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-link:hover",
+			},
+		],
+	},
 	overlayColor: {
 		type: "string",
 		default: "#000",
@@ -77,7 +223,7 @@ const attributes = {
 			},
 			{
 				condition: [{ key: "verticalAlign", relation: "==", value: "Center" }],
-				selector: "{{QUBELY}} .qubely-modal-popup { align-itemst:center; }",
+				selector: "{{QUBELY}} .qubely-modal-popup { align-items:center; }",
 			},
 			{
 				condition: [{ key: "verticalAlign", relation: "==", value: "Top" }],

@@ -25,6 +25,12 @@ const {
     Alignment,
     Headings,
     Typography,
+    Styles,
+    RadioAdvanced,
+    Padding,
+    Tabs,
+    Tab,
+    ColorAdvanced,
 	InspectorTab,
 	InspectorTabs,
 	withCSSGenerator,
@@ -45,8 +51,6 @@ const Edit = (props) => {
         attributes: {
             uniqueId,
             className,
-            buttonSize,
-            typography,
             animation,
             interaction,
             enablePosition,
@@ -60,7 +64,21 @@ const Edit = (props) => {
             hideMobile,
             globalCss,
             modalLinkText,
-            modalTitleText,
+            buttonFillType,
+            buttonAlignment,
+            buttonSize,
+            buttonPadding,
+            buttonColor,
+            buttonColor2,
+            buttonHoverColor,
+            buttonHoverColor2,
+            buttonBgColor,
+            buttonBgHoverColor,
+            buttonBorder,
+            borderHoverColor,
+            buttonBorderRadius,
+            buttonShadow,
+            buttonHoverShadow,
             overlayColor,
             horizonalAlign,
             verticalAlign,
@@ -100,16 +118,134 @@ const Edit = (props) => {
                         <InspectorSections block="modal" />
                     </InspectorTab>
                     <InspectorTab key="style">
+                        <PanelBody title={__("Modal Button Style")} initialOpen={false}>
+                            <Styles
+                                value={buttonFillType}
+                                onChange={(value) => setAttributes({ buttonFillType: value })}
+                                options={[
+                                    { value: "fill", svg: icons.btn_fill, label: __("Fill") },
+                                    {
+                                        value: "outline",
+                                        svg: icons.btn_outline,
+                                        label: __("Outline"),
+                                    },
+                                ]}
+                            />
+                            <Alignment
+                                responsive
+                                disableJustify
+                                device={device}
+                                value={buttonAlignment}
+                                label={__("Alignment")}
+                                alignmentType="content"
+                                onChange={(val) => setAttributes({ buttonAlignment: val })}
+                                onDeviceChange={(value) => setDevice(value)}
+                            />
+                            <RadioAdvanced
+                                label={__("Button Size")}
+                                options={[
+                                    { label: "S", value: "small", title: "Small" },
+                                    { label: "M", value: "medium", title: "Medium" },
+                                    { label: "L", value: "large", title: "Large" },
+                                    { icon: "fas fa-cog", value: "custom", title: "Custom" },
+                                ]}
+                                value={buttonSize}
+                                onChange={(value) => setAttributes({ buttonSize: value })}
+                            />
+                            {buttonSize == "custom" && (
+                                <Padding
+                                    label={__("Padding")}
+                                    value={buttonPadding}
+                                    onChange={(value) => setAttributes({ buttonPadding: value })}
+                                    unit={["px", "em", "%"]}
+                                    max={150}
+                                    min={0}
+                                    responsive
+                                    device={device}
+                                    onDeviceChange={(value) => setDevice(value)}
+                                />
+                            )}
+                            <Tabs>
+                                <Tab tabTitle={__("Normal")}>
+                                    <Color
+                                        label={__("Text Color")}
+                                        value={buttonFillType == "fill" ? buttonColor : buttonColor2}
+                                        onChange={(value) =>
+                                            buttonFillType == "fill"
+                                                ? setAttributes({ buttonColor: value })
+                                                : setAttributes({ buttonColor2: value })
+                                        }
+                                    />
+                                    {buttonFillType == "fill" && (
+                                        <ColorAdvanced
+                                            label={__("Background")}
+                                            value={buttonBgColor}
+                                            onChange={(value) => setAttributes({ buttonBgColor: value })}
+                                        />
+                                    )}
+                                    <Border
+                                        label={__("Border")}
+                                        value={buttonBorder}
+                                        onChange={(val) => setAttributes({ buttonBorder: val })}
+                                        min={0}
+                                        max={10}
+                                        unit={["px", "em", "%"]}
+                                        responsive
+                                        device={device}
+                                        onDeviceChange={(value) => this.setState({ device: value })}
+                                    />
+                                    <BoxShadow
+                                        label={__("Box-Shadow")}
+                                        value={buttonShadow}
+                                        onChange={(value) => setAttributes({ buttonShadow: value })}
+                                    />
+                                </Tab>
+                                <Tab tabTitle={__("Hover")}>
+                                    <Color
+                                        label={__("Text Color")}
+                                        value={buttonFillType == "fill" ? buttonHoverColor : buttonHoverColor2}
+                                        onChange={(value) =>
+                                            buttonFillType == "fill"
+                                                ? setAttributes({ buttonHoverColor: value })
+                                                : setAttributes({ buttonHoverColor2: value })
+                                        }
+                                    />
+                                    <ColorAdvanced
+                                        label={__("Background")}
+                                        value={buttonBgHoverColor}
+                                        onChange={(value) => setAttributes({ buttonBgHoverColor: value })}
+                                    />
+                                    <Color
+                                        label={__("Border Color")}
+                                        value={borderHoverColor}
+                                        onChange={(value) => setAttributes({ borderHoverColor: value })}
+                                    />
+                                    <BoxShadow
+                                        label={__("Box-Shadow")}
+                                        value={buttonHoverShadow}
+                                        onChange={(value) => setAttributes({ buttonHoverShadow: value })}
+                                    />
+                                </Tab>
+                            </Tabs>
+                            <BorderRadius
+                                label={__("Radius")}
+                                value={buttonBorderRadius}
+                                onChange={(value) => setAttributes({ buttonBorderRadius: value })}
+                                min={0}
+                                max={100}
+                                unit={["px", "em", "%"]}
+                                responsive
+                                device={device}
+                                onDeviceChange={(value) => this.setState({ device: value })}
+                            />
+                        </PanelBody>
+
                         <PanelBody title={__("Modal Overlay")} initialOpen={false}>
                             <Color
                                 label={__("Overlay Background Color")}
                                 value={overlayColor}
                                 onChange={(value) => setAttributes({ overlayColor: value })}
                             />
-                        </PanelBody>
-
-                        <PanelBody title={__("Modal Animation")} initialOpen={false}>
-                            Modal Animation
                         </PanelBody>
 
                         <PanelBody title={__("Modal Position")} initialOpen={false}>
@@ -298,9 +434,6 @@ const Edit = (props) => {
                                 max={100}
                             />
                         </PanelBody>
-
-
-                        
                     </InspectorTab>
                     <InspectorTab key="advance">
                         {animationSettings(uniqueId, animation, setAttributes)}
@@ -330,7 +463,7 @@ const Edit = (props) => {
                 >
                     <div className={`qubely-block-modal`}>
                         <div className={`qubely-block-modal-link-wrap`}>
-                            <div className={`qubely-block-modal-link`}>
+                            <div className={`qubely-block-modal-link is-${buttonSize}`}>
                                 <RichText
 									tagName="div"
 									keepPlaceholderOnFocus

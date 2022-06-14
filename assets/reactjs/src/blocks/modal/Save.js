@@ -10,12 +10,12 @@ const Save = (props) => {
         customClassName,
         animation,
         interaction,
+        buttonSize,
         modalLinkText,
         modalTitle,
         enableTitle,
         titleLevel,
         enableCloseButton,
-        showModal,
     } = props.attributes;
     const interactionClass = IsInteraction(interaction) ? "qubley-block-interaction" : "";
     const classNames = classnames({ [`qubely-block-${uniqueId}`]: uniqueId }, customClassName);
@@ -27,14 +27,14 @@ const Save = (props) => {
             <div className={`qubely-block-modal-wrapper ${interactionClass}`}>
                 <div className={`qubely-block-modal`}>
                     <div className={`qubely-block-modal-link-wrap`}>
-                        <button className={`qubely-block-modal-link`}>
+                        <button className={`qubely-block-modal-link is-${buttonSize}`}>
                             <RichText.Content
                                 value={modalLinkText}
                                 className="qubely-modal-link-text"
                             />
                         </button>
                     </div>
-                    <div className={`qubely-modal-popup ${showModal ? 'display-block' : 'display-none'}`}>
+                    <div className={`qubely-modal-popup`}>
                         <div className={`qubely-modal-box`}>
                             {enableCloseButton && (
                                 <button className={`qubely-block-modal-close-btn`}>
