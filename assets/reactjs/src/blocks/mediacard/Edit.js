@@ -893,7 +893,7 @@ class Edit extends Component {
 														  badgePosition
 														: "qubely-mediacard-badge"
 												}`}
-												contentEditable={true}
+												contenteditable="true"
 												suppressContentEditableWarning={true}
 												onBlur={(e) => setAttributes({ badge: e.target.innerText })}
 											>
@@ -912,7 +912,7 @@ class Edit extends Component {
 												  badgePosition
 												: "qubely-mediacard-badge"
 										}`}
-										contentEditable={true}
+										contenteditable="true"
 										suppressContentEditableWarning={true}
 										onBlur={(e) => setAttributes({ badge: e.target.innerText })}
 									>
@@ -928,7 +928,7 @@ class Edit extends Component {
 												  badgePosition
 												: "qubely-mediacard-badge"
 										}`}
-										contentEditable={true}
+										contenteditable="true"
 										suppressContentEditableWarning={true}
 										onBlur={(e) => setAttributes({ badge: e.target.innerText })}
 									>
