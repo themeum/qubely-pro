@@ -72,9 +72,10 @@ class QUBELY_PRO
 	{
 		$params = $request->get_params();
 		$products = new WP_Query(array('post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => -1));
-		$pages = array_fill(0, ceil($products->found_posts / $productsPerPage), '1');
+		$pages = array_fill(0, ceil($products->found_posts / ($productsPerPage || 1)), '1');
+		$categories = $params['catagories'] ? $params['catagories'] : [];
 
-		$cat_ids = array_column($params['catagories'], 'value');
+		$cat_ids = array_column($categories, 'value');
 
 		$tax_query = array();
 		if (!empty($cat_ids)) {
