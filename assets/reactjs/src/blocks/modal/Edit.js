@@ -1,17 +1,8 @@
 import icons from "../../helpers/icons";
 import classnames from "classnames";
 const { __ } = wp.i18n;
-const { Fragment, createRef, useState } = wp.element;
-
-// const { compose } = wp.compose;
-
-// const {
-// withSelect,
-// withDispatch
-// } = wp.data;
-
+const { Fragment, useRef, useState } = wp.element;
 const { PanelBody } = wp.components;
-
 const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
 
 const {
@@ -41,7 +32,7 @@ const {
 
 const Edit = (props) => {
     const [device, setDevice] = useState("md");
-    const qubelyContextMenu = createRef();
+    const qubelyContextMenu = useRef(null);
 
     const {
         name,
