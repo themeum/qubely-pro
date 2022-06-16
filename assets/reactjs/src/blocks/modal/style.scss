@@ -29,6 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: .25s ease-in-out;
 }
 .qubely-block-modal-popup-content {
     position: absolute;
@@ -73,10 +74,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &.display-none {
-        display: none;
-    }
+    transition: 0.5s;
+    transition-delay: 0.25s;
 }
 .qubely-modal-box {
     background-color: #fff;
@@ -85,4 +84,8 @@
     position: relative;
     width: 100%;
     max-width: 600px;
+    animation-timing-function: ease-in-out;
+    animation-duration: 500ms;
+    animation-delay: 0ms;
+    animation-iteration-count: 1;
 }

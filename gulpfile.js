@@ -89,6 +89,7 @@ function removeJsFiles() {
             './build/qubely-pro/assets/js/installer.js',
             './build/qubely-pro/assets/js/qubely-countdown.js',
             './build/qubely-pro/assets/js/lottie-block.js',
+            './build/qubely-pro/assets/js/modal.js',
         ],
         { read: false, allowEmpty: true })
         .pipe(clean());

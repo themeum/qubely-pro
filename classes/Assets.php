@@ -54,6 +54,10 @@ class Assets {
                     wp_enqueue_script('qubely-lottie-interactivity', QUBELY_PRO_DIR_URL . 'assets/js/lottie-interactivity.min.js', array(), QUBELY_PRO_VERSION);
                     wp_enqueue_script('qubely-lottie-block', QUBELY_PRO_DIR_URL . 'assets/js/lottie-block.js', array(), QUBELY_PRO_VERSION);
                 }
+
+                if (has_block('qubely/modal')) {
+                    wp_enqueue_script('qubely-modal-block', QUBELY_PRO_DIR_URL . 'assets/js/modal.js', array(), QUBELY_PRO_VERSION);
+                }
             } else {
                 //$this->frontend_scripts_old_style();
             }

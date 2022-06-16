@@ -1,7 +1,7 @@
 import classnames from "classnames";
 const { RichText, InnerBlocks } = wp.blockEditor;
 const {
-	HelperFunction: { animationAttr, IsInteraction },
+    HelperFunction: { animationAttr, IsInteraction },
 } = wp.qubelyComponents;
 
 const Save = (props) => {
@@ -16,6 +16,8 @@ const Save = (props) => {
         enableTitle,
         titleLevel,
         enableCloseButton,
+        boxOpenAnimation,
+        boxCloseAnimation,
     } = props.attributes;
     const interactionClass = IsInteraction(interaction) ? "qubley-block-interaction" : "";
     const classNames = classnames({ [`qubely-block-${uniqueId}`]: uniqueId }, customClassName);
@@ -35,7 +37,7 @@ const Save = (props) => {
                         </button>
                     </div>
                     <div className={`qubely-modal-popup`}>
-                        <div className={`qubely-modal-box`}>
+                        <div className={`qubely-modal-box`} style={`animation-name: ${boxOpenAnimation}`} closeAnimation={boxCloseAnimation}>
                             {enableCloseButton && (
                                 <button className={`qubely-block-modal-close-btn`}>
                                     <i className={`qubely-btn-icon far fa-window-close`} />

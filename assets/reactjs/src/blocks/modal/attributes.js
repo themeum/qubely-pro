@@ -13,11 +13,6 @@ const attributes = {
 		type: "string",
 		default: "See More"
 	},
-	zIndex: {
-		type: "string",
-		default: "1",
-		style: [{ selector: "{{QUBELY}} {z-index:1;}" }],
-	},
 	buttonFillType: { type: "string", default: "fill" },
 	buttonAlignment: {
 		type: "object",
@@ -72,7 +67,7 @@ const attributes = {
 	},
 	buttonHoverColor2: {
 		type: "string",
-		default: "#fff",
+		default: "var(--qubely-color-2)",
 		style: [
 			{
 				condition: [{ key: "buttonFillType", relation: "!=", value: "fill" }],
@@ -173,7 +168,7 @@ const attributes = {
 	},
 	overlayColor: {
 		type: "string",
-		default: "#000",
+		default: "#0000007d",
 		style: [
 			{
 				selector: "{{QUBELY}} .qubely-block-modal-popup { background-color:{{overlayColor}}; }",
@@ -341,6 +336,14 @@ const attributes = {
 			{ selector: "{{QUBELY}} .qubely-modal-box" },
 			{ selector: "{{QUBELY}} .qubely-block-modal-box" },
 		],
+	},
+	boxOpenAnimation: {
+		type: "string",
+		default: "fadeCenter",
+	},
+	boxCloseAnimation: {
+		type: "string",
+		default: "fadeCenterOut",
 	},
 	enableTitle: { type: "boolean", default: 1 },
 	modalTitle: {

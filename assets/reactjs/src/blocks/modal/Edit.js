@@ -31,12 +31,12 @@ const {
     Tabs,
     Tab,
     ColorAdvanced,
-	InspectorTab,
-	InspectorTabs,
-	withCSSGenerator,
-	InspectorSections,
-	gloalSettings: { animationSettings, interactionSettings, globalSettingsPanel },
-	ContextMenu: { ContextMenu, handleContextMenu },
+    InspectorTab,
+    InspectorTabs,
+    withCSSGenerator,
+    InspectorSections,
+    gloalSettings: { animationSettings, interactionSettings, globalSettingsPanel },
+    ContextMenu: { ContextMenu, handleContextMenu },
 } = wp.qubelyComponents;
 
 const Edit = (props) => {
@@ -58,7 +58,6 @@ const Edit = (props) => {
             positionXaxis,
             positionYaxis,
             globalZindex,
-            zIndex,
             hideDesktop,
             hideTablet,
             hideMobile,
@@ -90,6 +89,8 @@ const Edit = (props) => {
             boxBorder,
             boxBorderRadius,
             modalBoxShadow,
+            boxOpenAnimation,
+            boxCloseAnimation,
             enableTitle,
             modalTitle,
             titleAlignment,
@@ -270,8 +271,8 @@ const Edit = (props) => {
                                 value={modalBoxHeight}
                                 onChange={(value) => setAttributes({ modalBoxHeight: value })}
                             />
-                            
-                            { modalBoxHeight === "Fixed Minimum Height" && (
+
+                            {modalBoxHeight === "Fixed Minimum Height" && (
                                 <Range
                                     label={__("Minimum Height")}
                                     value={modalBoxFixedHeight}
@@ -292,7 +293,7 @@ const Edit = (props) => {
                                 min={5}
                                 max={100}
                             />
-                            
+
                             <Range
                                 label={__("Box Max Width")}
                                 value={modalBoxMaxWidth}
@@ -303,7 +304,7 @@ const Edit = (props) => {
                                 responsive
                                 device={device}
                                 onDeviceChange={(value) => setDevice(value)}
-                                />
+                            />
                         </PanelBody>
 
                         <PanelBody title={__("Modal Box Style")} initialOpen={false}>
@@ -341,6 +342,45 @@ const Edit = (props) => {
                                 label={__("Box-Shadow")}
                                 value={modalBoxShadow}
                                 onChange={(value) => setAttributes({ modalBoxShadow: value })}
+                            />
+                        </PanelBody>
+
+                        <PanelBody title={__("Modal Box Animation")} initialOpen={false}>
+                            <Select
+                                label={__("Open Animation")}
+                                options={[
+                                    ["none", __("No Animation")],
+                                    ["fadeCenter", __("Fade Center")],
+                                    ["fadeUp", __("Fade Up")],
+                                    ["fadeDown", __("Fade Down")],
+                                    ["fadeLeft", __("Fade Left")],
+                                    ["fadeRight", __("Fade Right")],
+                                    ["slideUp", __("Slide Up")],
+                                    ["slideDown", __("Slide Down")],
+                                    ["slideLeft", __("Slide Left")],
+                                    ["slideRight", __("Slide Right")],
+                                    ["zoomCenter", __("Zoom In")],
+                                ]}
+                                value={boxOpenAnimation}
+                                onChange={(val) => setAttributes({ boxOpenAnimation: val })}
+                            />
+                            <Select
+                                label={__("Close Animation")}
+                                options={[
+                                    ["none", __("No Animation")],
+                                    ["fadeCenterOut", __("Fade Center")],
+                                    ["fadeUpOut", __("Fade Up")],
+                                    ["fadeDownOut", __("Fade Down")],
+                                    ["fadeLeftOut", __("Fade Left")],
+                                    ["fadeRightOut", __("Fade Right")],
+                                    ["slideUpOut", __("Slide Up")],
+                                    ["slideDownOut", __("Slide Down")],
+                                    ["slideLeftOut", __("Slide Left")],
+                                    ["slideRightOut", __("Slide Right")],
+                                    ["zoomCenterOut", __("Zoom Out")],
+                                ]}
+                                value={boxCloseAnimation}
+                                onChange={(val) => setAttributes({ boxCloseAnimation: val })}
                             />
                         </PanelBody>
 
@@ -448,7 +488,6 @@ const Edit = (props) => {
                 positionXaxis,
                 positionYaxis,
                 globalZindex,
-                zIndex,
                 hideDesktop,
                 hideTablet,
                 hideMobile,
@@ -465,13 +504,13 @@ const Edit = (props) => {
                         <div className={`qubely-block-modal-link-wrap`}>
                             <div className={`qubely-block-modal-link is-${buttonSize}`}>
                                 <RichText
-									tagName="div"
-									keepPlaceholderOnFocus
-									className="qubely-modal-link-text"
-									placeholder={__("Add Text...")}
-									value={modalLinkText}
-									onChange={(value) => setAttributes({ modalLinkText: value })}
-								/>
+                                    tagName="div"
+                                    keepPlaceholderOnFocus
+                                    className="qubely-modal-link-text"
+                                    placeholder={__("Add Text...")}
+                                    value={modalLinkText}
+                                    onChange={(value) => setAttributes({ modalLinkText: value })}
+                                />
                             </div>
                         </div>
                         <div className={`qubely-block-modal-popup`}>
