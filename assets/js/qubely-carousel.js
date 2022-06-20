@@ -531,7 +531,10 @@
 			let dragEndPointer = this.prevCoordinate.dragPointer === -1 ? 0 : this.prevCoordinate.dragPointer;
 
 			let currentPosition = this._currentPosition;
-			let thePosition = this.delta === 1 ? parseInt(dragEndPointer) : this.itemWidth + parseInt(dragEndPointer);
+			let thePosition = this.itemWidth + parseInt(dragEndPointer);
+			if (isDragEnd && this.delta === 1) {
+				thePosition = parseInt(dragEndPointer);
+			}
 
 			let newPosition = this.delta === 1 ? currentPosition + thePosition : currentPosition - thePosition;
 
@@ -542,8 +545,9 @@
 						"-webkit-transform": `translate3D(-${this._minL - this.itemWidth}px,0px,0px)`,
 					});
 					newPosition = this._minL;
+				} else {
+					newPosition = this._minL - this.itemWidth;
 				}
-				newPosition = this._minL - this.itemWidth;
 			}
 			if (currentPosition < this._minL) {
 				if (!isDragEnd) {
@@ -552,8 +556,9 @@
 						"-webkit-transform": `translate3D(-${this._maxL}px,0px,0px)`,
 					});
 					newPosition = this._maxL - this.itemWidth;
+				} else {
+					newPosition = this._maxL - (this.itemWidth * 2);
 				}
-				newPosition = this._maxL - (this.itemWidth * 2);
 			}
 
 			if (this.isDragging) {
