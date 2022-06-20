@@ -546,7 +546,11 @@
 					});
 					newPosition = this._minL;
 				} else {
-					newPosition = this._minL - this.itemWidth;
+					if (this.options?.center) {
+						newPosition = this._minL
+					} else {
+						newPosition = this._minL - this.itemWidth;
+					}
 				}
 			}
 			if (currentPosition < this._minL) {
