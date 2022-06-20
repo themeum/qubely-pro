@@ -689,7 +689,31 @@
 		/**
 		 * Back to stage if not drag enough to satisfy condition
 		 */
-		backToStage: function () {},
+		backToStage: function () {
+			const differentCoordinate = this.prevCoordinate.diff;
+			let newPosition = this._currentPosition;
+
+			if (newPosition === this._maxL || newPosition === this._minL - this.itemWidth) {
+				if (differentCoordinate > 0) {
+					newPosition = this._minL - this.itemWidth;
+				}
+				if (differentCoordinate < 0) {
+					newPosition = this._maxL;
+				}
+			}
+			
+			if (this._timeoutId1 > 0) {
+				clearTimeout(this._timeoutId1);
+				this._timeoutId1 = 0;
+			}
+
+			this._timeoutId1 = setTimeout(() => {
+				this.$outerStage.css({
+					"-webkit-transition": `all ${this.options.speed}ms linear 0s`,
+					"-webkit-transform": `translate3D(-${newPosition}px,0px,0px)`,
+				});
+			}, 100);
+		},
 		// Bind events that trigger methods
 		bindEvents: function () {
 			const qubelyCarousel = this;
