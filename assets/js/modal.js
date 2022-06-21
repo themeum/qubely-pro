@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", (event) => {
     const modalButtons = document.querySelectorAll(".qubely-block-modal-link");
     const modalCloseButtons = document.querySelectorAll(".qubely-block-modal-close-btn");
+    const modalBoxes = document.querySelectorAll(".qubely-modal-box");
 
     // Handle modal button click event
     modalButtons.forEach((button) => {
@@ -28,7 +29,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     // Handle click outside modal box
     document.addEventListener('click', (event) => {
-        const modalBoxes = document.querySelectorAll(".qubely-modal-box");
         modalBoxes.forEach((modalBox) => {
             if (modalBox.parentElement.style.display === "flex") {
                 const mainWrapper = event.target.closest(".wp-block-qubely-modal");
@@ -47,5 +47,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 }
             }
         });
+    });
+
+    // Handle escape key press
+    document.addEventListener("keydown", (event) => {
+        let keyCode = event.code;
+        if (keyCode === "Escape") {
+            modalBoxes.forEach((modalBox) => {
+                if (modalBox.parentElement.style.display === "flex") {
+                    const closeAnimationName = modalBox.getAttribute("closeAnimation");
+                    const openAnimationName = modalBox.style.animationName;
+                    modalBox.style.animationName = closeAnimationName;
+                    modalBox.closest(".qubely-modal-popup").style.opacity = 0;
+                    setTimeout(() => {
+                        modalBox.closest(".qubely-modal-popup").setAttribute("style", "display:none;");
+                        modalBox.closest(".wp-block-qubely-modal").setAttribute("style", "z-index:0;");
+                        modalBox.setAttribute("style", `animation-name:${openAnimationName};`);
+                    }, 400);
+                }
+            });
+        }
     });
 });

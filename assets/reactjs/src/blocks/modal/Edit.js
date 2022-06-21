@@ -105,10 +105,7 @@ const Edit = (props) => {
     return (
         <Fragment>
             <InspectorControls key="inspector">
-                <InspectorTabs>
-                    <InspectorTab key="layout">
-                        <InspectorSections block="modal" />
-                    </InspectorTab>
+                <InspectorTabs tabs={["style", "advance"]}>
                     <InspectorTab key="style">
                         <PanelBody title={__("Modal Button Style")} initialOpen={false}>
                             <Styles

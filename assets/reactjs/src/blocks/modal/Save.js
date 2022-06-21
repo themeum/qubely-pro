@@ -37,16 +37,22 @@ const Save = (props) => {
                         </button>
                     </div>
                     <div className={`qubely-modal-popup`}>
-                        <div className={`qubely-modal-box`} style={`animation-name: ${boxOpenAnimation}`} closeAnimation={boxCloseAnimation}>
+                        <div
+                            className={`qubely-modal-box`}
+                            role="dialog"
+                            aria-labelledby={`modal-title-${uniqueId}`}
+                            aria-describedby={`modal-description-${uniqueId}`}
+                            style={`animation-name: ${boxOpenAnimation}`} closeAnimation={boxCloseAnimation}
+                        >
                             {enableCloseButton && (
-                                <button className={`qubely-block-modal-close-btn`}>
+                                <button className={`qubely-block-modal-close-btn`} aria-label="close">
                                     <i className={`qubely-btn-icon far fa-window-close`} />
                                 </button>
                             )}
                             <div className={`qubely-block-modal-inner-blocks`}>
                                 {enableTitle == 1 && (
                                     <div className="qubely-block-modal-title-wrapper">
-                                        <div className="qubely-block-modal-title-inner">
+                                        <div className="qubely-block-modal-title-inner" id={`modal-title-${uniqueId}`}>
                                             <RichText.Content
                                                 tagName={titleTagName}
                                                 className="qubely-block-modal-title"
@@ -55,7 +61,7 @@ const Save = (props) => {
                                         </div>
                                     </div>
                                 )}
-                                <div className={`qubely-block-modal-content`}>
+                                <div className={`qubely-block-modal-content`} id={`modal-description-${uniqueId}`}>
                                     <InnerBlocks.Content />
                                 </div>
                             </div>
