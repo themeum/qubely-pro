@@ -1,10 +1,16 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.3.7
+Stable tag: 1.3.8
 
 
 == Changelog ==
+
+= 1.3.8 =
+New: Introduced the "Hide on Desktop" feature for Blocks
+Update: Significant security improvements on authorization and authentication
+Fix: Known functional bug fixes
+Fix: Known design bug fixes
 
 = 1.3.7 =
 Update: In Advanced List Block, Ordered List is introduced
