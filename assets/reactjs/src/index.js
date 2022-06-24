@@ -18,3 +18,4 @@ import "./blocks/countdown"; // Countdown Block
 import "./blocks/wooproducts"; // WooProducts
 import "./blocks/table"; // Table Block
 import "./blocks/woocarousel"; // WooCarousel
+import "./blocks/modal"; // Modal
