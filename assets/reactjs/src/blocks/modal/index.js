@@ -10,11 +10,11 @@ registerBlockType("qubely/modal", {
 	title: __("Modal"),
 	description: __("Create stylish modals with Qubely Modals."),
 	category: "qubely",
-	icon: <img src={qubely_admin.plugin + "assets/img/blocks/block-button.svg"} alt={__("Modal Block")} />,
+	icon: <img src={qubely_pro_admin.plugin + "assets/img/blocks/block-modal.svg"} alt={__("Modal Block")} />,
 	// supports: {
 	// 	align: ["full", "wide", "center"],
 	// },
-	// keywords: [__("link"), __("button")],
+	keywords: [__("modal"), __("popup")],
 	example: {
 		attributes: {},
 	},

@@ -11,7 +11,7 @@ const attributes = {
 	...globalAttributes,
 	modalLinkText: {
 		type: "string",
-		default: "See More"
+		default: "Add Text..."
 	},
 	buttonFillType: { type: "string", default: "fill" },
 	buttonAlignment: {
@@ -350,7 +350,7 @@ const attributes = {
 		type: "string",
 		source: "html",
 		selector: ".qubely-block-modal-title",
-		default: "Advanced Text Block",
+		default: "Add Modal Title...",
 	},
 	titleAlignment: {
 		type: "object",

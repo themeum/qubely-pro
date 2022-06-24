@@ -518,7 +518,7 @@ const Edit = (props) => {
                                                     tagName={modalTitleTagName}
                                                     className="qubely-block-modal-title"
                                                     keepPlaceholderOnFocus
-                                                    placeholder={__("Add Text...")}
+                                                    placeholder={__("Add Modal Title...")}
                                                     onChange={(value) => setAttributes({ modalTitle: value })}
                                                     value={modalTitle}
                                                 />
