@@ -87,7 +87,7 @@ export default function Save(props) {
 	const renderDatePicker = () => {
 		let options = JSON.stringify({ dateFormat: dateFormat });
 		return (
-			<div className={`qubely-date-picker-wrapper`} data-options={options}>
+			<div className={`qubely-date-picker-wrapper`} data-options={encodeURI(options)}>
 				<input
 					type="text"
 					className="qubely-form-field qubely-datepicker"
@@ -115,7 +115,7 @@ export default function Save(props) {
 					name={`qubely-form-input[${fieldName}${required ? "*" : ""}]`}
 					readonly
 				/>
-				<div className={`qubely-form-timepicker`} data-options={options}>
+				<div className={`qubely-form-timepicker`} data-options={encodeURI(options)}>
 					<div className={`qubely-timePicker-hour`}>
 						<div className="qubely-timePicker-button qubely-hour-button-up">
 							<i className="fas fa-angle-up" />

@@ -53,7 +53,11 @@ class Save extends Component {
 							<h5 className="qubely-vertical-tab-title">
 								{navLayout === 1 && iconPosition === "left" && <Icon />}
 
-								<RichText.Content tagName="div" value={title.title} />
+								<RichText.Content
+									tagName="div"
+									value={title.title}
+									className="qubely-vertical-tab-title-text"
+								/>
 								{navLayout === 1 && iconPosition === "right" && <Icon />}
 							</h5>
 							{navSubHeading && (
