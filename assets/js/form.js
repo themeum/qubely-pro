@@ -11,7 +11,7 @@ jQuery(function ($) {
 
 	if ($(".qubely-datepicker").length > 0) {
 		$(".qubely-datepicker").each(function () {
-			let dateFormat = JSON.parse(decodeURI($(this).parent()[0].dataset.options)).dateFormat;
+			let dateFormat = JSON.parse($(this).parent()[0].dataset.options).dateFormat;
 			$(this).datepicker({
 				dateFormat: dateFormat,
 				duration: "fast",
@@ -51,7 +51,7 @@ jQuery(function ($) {
 	function changeTimepickerValue($element) {
 		let $qubelyTimePicker = $element.parents(".qubely-form-timepicker-wrapper").find(".qubely-time-picker");
 		let meridian = JSON.parse(
-			decodeURI($element.parents(".qubely-form-timepicker-wrapper").find(".qubely-form-timepicker")[0].dataset.options)
+			$element.parents(".qubely-form-timepicker-wrapper").find(".qubely-form-timepicker")[0].dataset.options
 		).timeFormatType;
 		let hour = $element
 			.parents(".qubely-form-timepicker-wrapper")
@@ -71,7 +71,7 @@ jQuery(function ($) {
 		let $qubelyTimePickerFormat = $(this).parent();
 		let $qubelyTimePickerWrapper = $qubelyTimePickerFormat.parent();
 
-		const { minuteInterval, timeFormatType } = JSON.parse(decodeURI($qubelyTimePickerWrapper[0].dataset.options));
+		const { minuteInterval, timeFormatType } = JSON.parse($qubelyTimePickerWrapper[0].dataset.options);
 
 		let minute = $qubelyTimePickerFormat.find(".qubely-form-timepicker-minute")[0].innerText;
 		let currentHourFormat =
@@ -102,7 +102,7 @@ jQuery(function ($) {
 		let $qubelyTimePickerFormat = $(this).parent();
 		let $qubelyTimePickerWrapper = $qubelyTimePickerFormat.parent();
 
-		const { minuteInterval, timeFormatType } = JSON.parse(decodeURI($qubelyTimePickerWrapper[0].dataset.options));
+		const { minuteInterval, timeFormatType } = JSON.parse($qubelyTimePickerWrapper[0].dataset.options);
 
 		let minute = $qubelyTimePickerFormat.find(".qubely-form-timepicker-minute")[0].innerText;
 		let currentHourFormat =
@@ -140,7 +140,7 @@ jQuery(function ($) {
 		let $qubelyTimePickerFormat = $(this).parent();
 		let $qubelyTimePickerWrapper = $qubelyTimePickerFormat.parent();
 
-		const { timeFormatType } = JSON.parse(decodeURI($qubelyTimePickerWrapper[0].dataset.options));
+		const { timeFormatType } = JSON.parse($qubelyTimePickerWrapper[0].dataset.options);
 
 		let currentHourFormat =
 			timeFormatType === 12 ? $qubelyTimePickerWrapper.find(".qubely-form-time-format")[0].innerText : null;
@@ -161,7 +161,7 @@ jQuery(function ($) {
 		let $qubelyTimePickerFormat = $(this).parent();
 		let $qubelyTimePickerWrapper = $qubelyTimePickerFormat.parent();
 
-		const { timeFormatType } = JSON.parse(decodeURI($qubelyTimePickerWrapper[0].dataset.options));
+		const { timeFormatType } = JSON.parse($qubelyTimePickerWrapper[0].dataset.options);
 
 		let currentHourFormat =
 			timeFormatType === 12 ? $qubelyTimePickerWrapper.find(".qubely-form-time-format")[0].innerText : null;
