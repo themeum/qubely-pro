@@ -1,10 +1,18 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.3.8
+Stable tag: 1.3.9
 
 
 == Changelog ==
+
+= 1.3.9 =
+New: Popup/Modal Block feature is introduced
+Update: Compatibility with the latest WPML plugin is introduced
+Fix: PHP Notice Message was appearing on some Pages
+Fix: The "Number of Columns" setting was not working in the latest Qubely
+Fix: "Image Carousel" with Multiple images was not working properly
+Fix: Mobile View Styles Break after the latest update to 1.8.0
 
 = 1.3.8 =
 New: Introduced the "Hide on Desktop" feature for Blocks
