@@ -546,7 +546,7 @@
 					});
 					newPosition = this._minL;
 				} else {
-					if (this.options?.center) {
+					if (this.options.center) {
 						newPosition = this._minL
 					} else {
 						newPosition = this._minL - this.itemWidth;
