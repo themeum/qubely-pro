@@ -3,6 +3,10 @@
 		<gutenberg-block type="qubely/verticaltabs" translate="1">
 			<xpath>//div[@class="qubely-vertical-tab-title-text"]</xpath>
 		</gutenberg-block>
+		<gutenberg-block type="qubely/modal" translate="1">
+			<xpath>//div[@class="qubely-block-modal-link-wrap"]//button</xpath>
+      <xpath>//div[@class="qubely-block-modal-title-inner"]//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
+		</gutenberg-block>
   </gutenberg-blocks>
   <custom-fields>
     <custom-field action="copy">_qubely_css</custom-field>
