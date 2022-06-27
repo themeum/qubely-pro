@@ -181,7 +181,7 @@ registerBlockType("qubely/imagecarousel", {
 								className={`qubely-carousel qubely-carousel-wrapper${
 									isCentered && activeFade ? " is-faded" : " "
 								}`}
-								data-options={encodeURI(options)}
+								data-options={options}
 								id="qubelyCarousel1"
 							>
 								{renderImage()}

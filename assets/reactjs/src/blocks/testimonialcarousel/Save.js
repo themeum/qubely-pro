@@ -110,7 +110,7 @@ class Save extends Component {
 						className={`qubely-carousel qubely-carousel-wrapper${
 							isCentered && activeFade ? " is-faded" : ""
 						}`}
-						data-options={encodeURI(options)}
+						data-options={options}
 					>
 						{this.renderTestimonial()}
 					</div>
