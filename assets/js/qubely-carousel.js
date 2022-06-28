@@ -1105,7 +1105,7 @@ jQuery(function ($) {
 					dot_indicator,
 					centerPadding,
 					centerPaddingMode,
-				} = JSON.parse(decodeURI(currentElement.dataset.options));
+				} = JSON.parse(decodeURIComponent(currentElement.dataset.options));
 
 				$(".qubely-carousel.qubely-carousel-wrapper")
 					.eq(indexOfCounterElement)

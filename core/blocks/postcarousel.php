@@ -1432,7 +1432,7 @@ function render_block_qubely_postcarousel_pro($att)
 		$html .= '<div class="qubely-block-post-carousel qubely-postcarousel-wrapper" ' . $animation . '>';
 
 		# Carousel Class.
-		$html .= '<div class="qubely-carousel qubely-carousel-wrapper" data-options="' . htmlspecialchars(json_encode($data_options), ENT_QUOTES, 'UTF-8') . '">';
+		$html .= '<div class="qubely-carousel qubely-carousel-wrapper" data-options="' . htmlspecialchars(urlencode(json_encode($data_options)), ENT_QUOTES, 'UTF-8') . '">';
 
 		while ($query->have_posts()) {
 			$query->the_post();
