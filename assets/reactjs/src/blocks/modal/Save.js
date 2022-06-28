@@ -46,7 +46,7 @@ const Save = (props) => {
                         >
                             {enableCloseButton && (
                                 <button className={`qubely-block-modal-close-btn`} aria-label="close">
-                                    <i className={`qubely-btn-icon far fa-window-close`} />
+                                    <i className={`qubely-btn-icon fas fa-times`} />
                                 </button>
                             )}
                             <div className={`qubely-block-modal-inner-blocks`}>

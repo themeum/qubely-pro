@@ -92,6 +92,8 @@ const Edit = (props) => {
             enableCloseButton,
             closeButtonColor,
             closeButtonBgColor,
+            closeButtonHoverColor,
+            closeButtonBgHoverColor,
             closeButtonSize,
             closeButtonPadding,
             closeButtonRadius,
@@ -430,16 +432,32 @@ const Edit = (props) => {
                                 value={enableCloseButton}
                                 onChange={(val) => setAttributes({ enableCloseButton: val })}
                             />
-                            <Color
-                                label={__("Color")}
-                                value={closeButtonColor}
-                                onChange={(value) => setAttributes({ closeButtonColor: value })}
-                            />
-                            <Color
-                                label={__("Background Color")}
-                                value={closeButtonBgColor}
-                                onChange={(value) => setAttributes({ closeButtonBgColor: value })}
-                            />
+                            <Tabs>
+                                <Tab tabTitle={__("Normal")}>
+                                    <Color
+                                        label={__("Color")}
+                                        value={closeButtonColor}
+                                        onChange={(value) => setAttributes({ closeButtonColor: value })}
+                                    />
+                                    <Color
+                                        label={__("Background Color")}
+                                        value={closeButtonBgColor}
+                                        onChange={(value) => setAttributes({ closeButtonBgColor: value })}
+                                    />
+                                </Tab>
+                                <Tab tabTitle={__("Hover")}>
+                                    <Color
+                                        label={__("Color")}
+                                        value={closeButtonHoverColor}
+                                        onChange={(value) => setAttributes({ closeButtonHoverColor: value })}
+                                    />
+                                    <Color
+                                        label={__("Background Color")}
+                                        value={closeButtonBgHoverColor}
+                                        onChange={(value) => setAttributes({ closeButtonBgHoverColor: value })}
+                                    />
+                                </Tab>
+                            </Tabs>
                             <Range
                                 label={__("Button Size")}
                                 value={closeButtonSize}
@@ -506,7 +524,7 @@ const Edit = (props) => {
                             <div className={`qubely-block-modal-box`}>
                                 {enableCloseButton && (
                                     <button className={`qubely-block-modal-close-btn`}>
-                                        <i className={`qubely-btn-icon far fa-window-close`} />
+                                        <i className={`qubely-btn-icon fas fa-times`} />
                                     </button>
                                 )}
                                 <div className={`qubely-block-modal-inner-blocks`}>

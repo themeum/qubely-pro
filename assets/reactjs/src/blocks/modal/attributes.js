@@ -408,6 +408,24 @@ const attributes = {
 			},
 		],
 	},
+	closeButtonHoverColor: {
+		type: "string",
+		default: "",
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-close-btn:hover { color:{{closeButtonHoverColor}}; }",
+			},
+		],
+	},
+	closeButtonBgHoverColor: {
+		type: "string",
+		default: "",
+		style: [
+			{
+				selector: "{{QUBELY}} .qubely-block-modal-close-btn:hover { background-color:{{closeButtonBgHoverColor}}; }",
+			},
+		],
+	},
 	closeButtonSize: {
 		type: "number",
 		default: 24,
