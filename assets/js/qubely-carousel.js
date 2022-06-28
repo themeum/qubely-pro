@@ -962,7 +962,7 @@
 
 			// Resetting isDragging
 			$(window).on("mouseup", () => {
-				qubelyCarousel.isDragging = false;
+				this.handleDragEnd();
 			});
 		},
 
@@ -974,6 +974,13 @@
 		 * @param {object} event
 		 */
 		onDragEnd: function (event) {
+			this.handleDragEnd();
+		},
+
+		/**
+		 * Handle Drag End 
+		 */
+		handleDragEnd: function () {
 			const qubelyCarousel = this;
 			if (qubelyCarousel.isDragging) {
 				let differentCoordinate = qubelyCarousel.prevCoordinate.diff;
