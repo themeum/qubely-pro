@@ -15,7 +15,7 @@ class Assets {
     public function frontend_scripts() {
         if (get_post_meta(get_the_ID(), '_qubely_css', true) != '') {
             $blocks_meta_data = get_post_meta(get_the_ID(), '__qubely_available_blocks', true);
-            $blocks_meta_data = unserialize($blocks_meta_data);
+            $blocks_meta_data = maybe_unserialize($blocks_meta_data);
 
             wp_register_script('qubely_pro_local_script', '');
             wp_localize_script('qubely_pro_local_script', 'qubely_pro_urls', array(
