@@ -1,10 +1,15 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.3.9
+Stable tag: 1.4.0
 
 
 == Changelog ==
+
+= 1.4.0 =
+Update: PHP version compatibility is improved
+Fix: Counter was not working properly
+FIX: Post Grid pagination was not appearing in the Edit Mode
 
 = 1.3.9 =
 New: Popup/Modal Block feature is introduced
