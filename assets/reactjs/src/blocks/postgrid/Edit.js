@@ -271,7 +271,6 @@ class Edit extends Component {
 				positionYaxis,
 
 				//pagination
-        pages,
 				enablePagination,
 				paginationType,
 				pageAlignment,
@@ -302,10 +301,14 @@ class Edit extends Component {
 
 
 		const { device } = this.state;
-    const tag = `h${level}`;
+		const tag = `h${level}`;
+		let pages = 0;
+		if (numberofPosts && numberofPosts.length) {
+			pages = Math.ceil(numberofPosts.length / postsToShow);
+		}
 
 		let categoryListOptions = [{ value: "", label: __("All") }];
-    let taxonomyListOptions = [{ value: "", label: __("Select Taxonomy") }];
+    	let taxonomyListOptions = [{ value: "", label: __("Select Taxonomy") }];
 
 		if ("" !== taxonomyList) {
 			Object.keys(taxonomyList).map((item) => {

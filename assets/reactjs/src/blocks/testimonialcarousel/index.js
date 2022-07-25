@@ -139,7 +139,7 @@ registerBlockType("qubely/testimonialcarousel", {
 								className={`qubely-carousel qubely-carousel-wrapper${
 									isCentered && activeFade ? " is-faded" : ""
 								}`}
-								data-options={options}
+								data-options={encodeURIComponent(options)}
 							>
 								{renderTestimonial()}
 							</div>

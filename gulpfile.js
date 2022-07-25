@@ -44,6 +44,7 @@ function productionMode() {
         .pipe(replace(/qubely-carousel\.js/g, 'qubely-carousel.min.js'))
         .pipe(replace(/qubely-countdown\.js/g, 'qubely-countdown.min.js'))
         .pipe(replace(/lottie-block\.js/g, 'lottie-block.min.js'))
+        .pipe(replace(/modal\.js/g, 'modal.min.js'))
         .pipe(dest('./build/qubely-pro/classes/'));
 
     const qubely_pro = src(['./build/qubely-pro/core/Qubely-Pro.php'])
@@ -52,6 +53,7 @@ function productionMode() {
         .pipe(replace(/qubely-carousel\.js/g, 'qubely-carousel.min.js'))
         .pipe(replace(/qubely-countdown\.js/g, 'qubely-countdown.min.js'))
         .pipe(replace(/lottie-block\.js/g, 'lottie-block.min.js'))
+        .pipe(replace(/modal\.js/g, 'modal.min.js'))
         .pipe(dest('./build/qubely-pro/core/'));
 
     const installer = src(['./build/qubely-pro/classes/Installer.php'])
@@ -89,6 +91,7 @@ function removeJsFiles() {
             './build/qubely-pro/assets/js/installer.js',
             './build/qubely-pro/assets/js/qubely-countdown.js',
             './build/qubely-pro/assets/js/lottie-block.js',
+            './build/qubely-pro/assets/js/modal.js',
         ],
         { read: false, allowEmpty: true })
         .pipe(clean());

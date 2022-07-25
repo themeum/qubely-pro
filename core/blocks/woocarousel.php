@@ -1206,7 +1206,7 @@ class WOOCAROUSEL
             $woo_product_markup .= sprintf(
                 '<div class="qubely-carousel qubely-carousel-wrapper %1$s" data-options="%2$s">',
                 $interaction,
-                htmlspecialchars(json_encode($data_options), ENT_QUOTES, 'UTF-8')
+                htmlspecialchars(urlencode(json_encode($data_options)), ENT_QUOTES, 'UTF-8')
             );
 
             while ($wp_query->have_posts()) {

@@ -426,10 +426,10 @@
 		 *
 		 * Save the active item to the item object (globally)
 		 */
-		Next: function () {
+		Next: function (isDragEnd) {
 			// this.isAnimating = true
 			if (this.delta === -1) this.delta = 1;
-			this.updateItemStyle();
+			this.updateItemStyle(isDragEnd);
 		},
 
 		/**
@@ -439,10 +439,10 @@
 		 *
 		 * Save the active item to the item object (globally)
 		 */
-		Prev: function () {
+		Prev: function (isDragEnd) {
 			// this.isAnimating = true
 			if (this.delta === 1) this.delta = -1;
-			this.updateItemStyle();
+			this.updateItemStyle(isDragEnd);
 		},
 		/**
 		 * Go exact slider position by index number
@@ -523,7 +523,7 @@
 		 *
 		 * Update the @_currentPosition with new position
 		 */
-		updateItemStyle: function () {
+		updateItemStyle: function (isDragEnd) {
 			if (this._timeoutId1 > 0) {
 				clearTimeout(this._timeoutId1);
 				this._timeoutId1 = 0;
@@ -532,23 +532,37 @@
 
 			let currentPosition = this._currentPosition;
 			let thePosition = this.itemWidth + parseInt(dragEndPointer);
+			if (isDragEnd && this.delta === 1) {
+				thePosition = parseInt(dragEndPointer);
+			}
 
 			let newPosition = this.delta === 1 ? currentPosition + thePosition : currentPosition - thePosition;
 
 			if (newPosition > this._maxL) {
-				this.$outerStage.css({
-					transition: `0s`,
-					"-webkit-transform": `translate3D(-${this._minL - this.itemWidth}px,0px,0px)`,
-				});
-
-				newPosition = this._minL;
+				if (!isDragEnd) {
+					this.$outerStage.css({
+						transition: `0s`,
+						"-webkit-transform": `translate3D(-${this._minL - this.itemWidth}px,0px,0px)`,
+					});
+					newPosition = this._minL;
+				} else {
+					if (this.options.center) {
+						newPosition = this._minL
+					} else {
+						newPosition = this._minL - this.itemWidth;
+					}
+				}
 			}
 			if (currentPosition < this._minL) {
-				this.$outerStage.css({
-					transition: `0s`,
-					"-webkit-transform": `translate3D(-${this._maxL}px,0px,0px)`,
-				});
-				newPosition = this._maxL - this.itemWidth;
+				if (!isDragEnd) {
+					this.$outerStage.css({
+						transition: `0s`,
+						"-webkit-transform": `translate3D(-${this._maxL}px,0px,0px)`,
+					});
+					newPosition = this._maxL - this.itemWidth;
+				} else {
+					newPosition = this._maxL - (this.itemWidth * 2);
+				}
 			}
 
 			if (this.isDragging) {
@@ -621,6 +635,9 @@
 			let currentPosition = this._currentPosition;
 			let newPosition = currentPosition + parseInt(dragPointer);
 			if (newPosition > this._maxL) {
+				if (parseInt(dragPointer) > this.itemWidth) {
+					dragPointer -= this.itemWidth;
+				};
 				newPosition = this._minL - this.itemWidth + parseInt(dragPointer);
 			}
 			if (this._timeoutId2 > 0) {
@@ -645,6 +662,9 @@
 			let currentPosition = this._currentPosition;
 			let newPosition = currentPosition - parseInt(dragPointer);
 			if (newPosition < this._minL - this.itemWidth) {
+				if (newPosition > 0 && parseInt(dragPointer) > this.itemWidth) {
+					dragPointer -= this.itemWidth;
+				};
 				newPosition = this._maxL - parseInt(dragPointer);
 			}
 
@@ -678,7 +698,31 @@
 		/**
 		 * Back to stage if not drag enough to satisfy condition
 		 */
-		backToStage: function () {},
+		backToStage: function () {
+			const differentCoordinate = this.prevCoordinate.diff;
+			let newPosition = this._currentPosition;
+
+			if (newPosition === this._maxL || newPosition === this._minL - this.itemWidth) {
+				if (differentCoordinate > 0) {
+					newPosition = this._minL - this.itemWidth;
+				}
+				if (differentCoordinate < 0) {
+					newPosition = this._maxL;
+				}
+			}
+			
+			if (this._timeoutId1 > 0) {
+				clearTimeout(this._timeoutId1);
+				this._timeoutId1 = 0;
+			}
+
+			this._timeoutId1 = setTimeout(() => {
+				this.$outerStage.css({
+					"-webkit-transition": `all ${this.options.speed}ms linear 0s`,
+					"-webkit-transform": `translate3D(-${newPosition}px,0px,0px)`,
+				});
+			}, 100);
+		},
 		// Bind events that trigger methods
 		bindEvents: function () {
 			const qubelyCarousel = this;
@@ -918,7 +962,7 @@
 
 			// Resetting isDragging
 			$(window).on("mouseup", () => {
-				qubelyCarousel.isDragging = false;
+				this.handleDragEnd();
 			});
 		},
 
@@ -930,15 +974,22 @@
 		 * @param {object} event
 		 */
 		onDragEnd: function (event) {
+			this.handleDragEnd();
+		},
+
+		/**
+		 * Handle Drag End 
+		 */
+		handleDragEnd: function () {
 			const qubelyCarousel = this;
 			if (qubelyCarousel.isDragging) {
 				let differentCoordinate = qubelyCarousel.prevCoordinate.diff;
 				if (Math.abs(differentCoordinate) > 100) {
 					if (differentCoordinate > 0) {
-						qubelyCarousel.Next();
+						qubelyCarousel.Next(true);
 					}
 					if (differentCoordinate < 0) {
-						qubelyCarousel.Prev();
+						qubelyCarousel.Prev(true);
 					}
 				} else {
 					qubelyCarousel.backToStage();
@@ -1054,7 +1105,7 @@ jQuery(function ($) {
 					dot_indicator,
 					centerPadding,
 					centerPaddingMode,
-				} = JSON.parse(currentElement.dataset.options);
+				} = JSON.parse(decodeURIComponent(currentElement.dataset.options));
 
 				$(".qubely-carousel.qubely-carousel-wrapper")
 					.eq(indexOfCounterElement)

@@ -1,0 +1,18 @@
+<wpml-config>
+  <gutenberg-blocks>
+		<gutenberg-block type="qubely/verticaltabs" translate="1">
+			<xpath>//div[@class="qubely-vertical-tab-title-text"]</xpath>
+		</gutenberg-block>
+		<gutenberg-block type="qubely/modal" translate="1">
+			<xpath>//div[@class="qubely-block-modal-link-wrap"]//button</xpath>
+      <xpath>//div[@class="qubely-block-modal-title-inner"]//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
+		</gutenberg-block>
+		<gutenberg-block type="qubely/form" translate="1">
+			<xpath>//div[@class="qubely-block-btn"]//button</xpath>
+		</gutenberg-block>
+  </gutenberg-blocks>
+  <admin-texts>
+    <key name="qubely_pro_version"/>
+    <key name="themeum_update_error_qubely-pro/qubely-pro.php"/>
+  </admin-texts>
+</wpml-config>
