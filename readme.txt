@@ -1,6 +1,6 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
-Tested up to: 6.0
+Tested up to: 6.0.1
 Stable tag: 1.4.0
 
 
