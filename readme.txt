@@ -1,10 +1,13 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
 Tested up to: 6.0.1
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 
 
 == Changelog ==
+
+= 1.4.1 =
+New: Introduced "Deprecation" in case of the "Block Recovery Issue" for Update
 
 = 1.4.0 =
 Update: PHP version compatibility is improved
