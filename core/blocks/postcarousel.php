@@ -1424,7 +1424,7 @@ function render_block_qubely_postcarousel_pro($att)
 		$class .= ' align' . $att['align'];
 	}
 	if (isset($att['className'])) {
-		$class .= ' ' . $att['className'];
+		$class .= ' ' . esc_attr($att['className']);
 	}
 	# The Loop. 
 	if ($query->have_posts()) {

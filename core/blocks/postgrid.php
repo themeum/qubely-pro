@@ -1504,7 +1504,7 @@ class POSTGRID
 			$class .= ' align' . $att['align'];
 		}
 		if (isset($att['className'])) {
-			$class .= ' ' . $att['className'];
+			$class .= ' ' . esc_attr($att['className']);
 		}
 
 		if ($query->have_posts()) {
