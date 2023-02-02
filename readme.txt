@@ -1,10 +1,16 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
 Tested up to: 6.0.1
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 
 
 == Changelog ==
+
+= 1.4.2 =
+New: Added Jetpack Compatibility.
+Fix: All known XSS vulnerabilities fixed.
+Fix: Form builder "RECIPIENT EMAIL" field not working issue fixed.
+Update: All CSS and JS are updated to the latest version.
 
 = 1.4.1 =
 New: Introduced "Deprecation" in case of the "Block Recovery Issue" for Update
