@@ -123,7 +123,6 @@ class Assets {
     }
 
     public function admin_scripts(){
-        wp_enqueue_style('plugin-license-handler', QUBELY_PRO_DIR_URL . 'assets/css/license.css');
         wp_enqueue_script('qubely-jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js', array('jquery'), QUBELY_PRO_VERSION);
         wp_enqueue_script('qubely-form-script',  QUBELY_PRO_DIR_URL . 'assets/js/form.js', array('jquery', 'qubely-jquery-ui'), QUBELY_PRO_VERSION);
         wp_enqueue_script('qubely-woocommerce',  QUBELY_PRO_DIR_URL . 'assets/js/woocommerce.js', array('jquery'), QUBELY_PRO_VERSION);

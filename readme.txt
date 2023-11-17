@@ -1,10 +1,13 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
 Tested up to: 6.1.1
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 
 
 == Changelog ==
+
+= 1.4.3 =
+Update: License removed
 
 = 1.4.2 =
 New: Jetpack compatibility is introduced
