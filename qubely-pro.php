@@ -29,7 +29,7 @@ function qubely_pro_language_load() {
     load_plugin_textdomain('qubely-pro', false, basename(dirname(QUBELY_PRO_FILE)) . '/languages/');
 }
 
-// Include Require File
+// Include Require File.
 require_once QUBELY_PRO_DIR_PATH . 'core/initial-setup.php'; // Initial Setup Data
 
 

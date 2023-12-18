@@ -7,7 +7,7 @@ Stable tag: 1.4.3
 == Changelog ==
 
 = 1.4.3 =
-Update: License removed
+Update: Licensing option removed
 
 = 1.4.2 =
 New: Jetpack compatibility is introduced
