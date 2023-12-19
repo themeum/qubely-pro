@@ -3,7 +3,7 @@
  * Plugin Name:       Qubely Pro
  * Plugin URI:        https://www.themeum.com/product/qubely/
  * Description:       This is the pro version of Qubely free plugin
- * Version:           1.4.2
+ * Version:           1.4.3
  * Author:            Themeum
  * Author URI:        https://themeum.com
  * License:           GPL-2.0+
@@ -15,7 +15,7 @@ defined('ABSPATH') || exit;
 
 // Defined
 define('QUBELY_PRO_FILE', __FILE__);
-define('QUBELY_PRO_VERSION', '1.4.2');
+define('QUBELY_PRO_VERSION', '1.4.3');
 define('QUBELY_PRO_DIR_URL', plugin_dir_url(QUBELY_PRO_FILE));
 
 // Define Physical Path
@@ -29,7 +29,7 @@ function qubely_pro_language_load() {
     load_plugin_textdomain('qubely-pro', false, basename(dirname(QUBELY_PRO_FILE)) . '/languages/');
 }
 
-// Include Require File
+// Include Require File.
 require_once QUBELY_PRO_DIR_PATH . 'core/initial-setup.php'; // Initial Setup Data
 
 
