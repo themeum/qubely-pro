@@ -6,6 +6,8 @@ defined( 'ABSPATH' ) || exit;
 class Init {
 	public $version = QUBELY_PRO_VERSION;
 	public $path;
+	public $url;
+	public $basename;
 
 	function __construct() {
         $this->url = QUBELY_PRO_DIR_URL;
