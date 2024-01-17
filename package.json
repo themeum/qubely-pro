@@ -17,7 +17,9 @@
     "mini-css-extract-plugin": "0.9.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "cd ./assets/reactjs && npm run build && gulp sass",
+    "build": "npm run prebuild && gulp"
   },
   "author": "",
   "license": "ISC",
