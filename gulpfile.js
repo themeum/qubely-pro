@@ -6,13 +6,22 @@ const minifyCSS = require('gulp-csso');
 const minifyJS = require('gulp-minify');
 const merge = require('merge-stream');
 
+let versionNumber = '';
+try {
+    const data = fs.readFileSync('qubely-pro.php', 'utf8');
+    const match = data.match(/Version:\s*([\d.]+)/i);
+    versionNumber = match ? match[1] : '';
+} catch (err) {
+    console.error('Error reading file:', err);
+}
+
 function cleanBuild() {
     return src('./build', { read: false, allowEmpty: true })
         .pipe(clean());
 }
 
 function cleanZip() {
-    return src('./qubely-pro.zip', { read: false, allowEmpty: true })
+    return src(`./*.zip`, { read: false, allowEmpty: true })
         .pipe(clean());
 }
 
@@ -99,7 +108,7 @@ function removeJsFiles() {
 
 function makeZip() {
     return src('./build/**/*.*')
-        .pipe(zip('qubely-pro.zip'))
+        .pipe(zip(`qubely-pro-${versionNumber}.zip`))
         .pipe(dest('./'))
 }
 

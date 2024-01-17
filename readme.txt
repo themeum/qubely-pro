@@ -6,6 +6,9 @@ Stable tag: 1.4.4
 
 == Changelog ==
 
+= 1.4.4 =
+Compatibility: PHP 8.1 & 8.2 Compatibility Added
+
 = 1.4.3 =
 Update: Licensing option removed
 
