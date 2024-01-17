@@ -5,6 +5,7 @@ const clean = require('gulp-clean');
 const minifyCSS = require('gulp-csso');
 const minifyJS = require('gulp-minify');
 const merge = require('merge-stream');
+const fs = require('fs');
 
 let versionNumber = '';
 try {
