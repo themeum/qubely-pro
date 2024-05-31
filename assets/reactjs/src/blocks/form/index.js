@@ -3,8 +3,8 @@
  */
 import Edit from "./Edit";
 import Save from "./Save";
-import "./style.scss";
 import { attributes, defaultFormItems } from "./attributes";
+import "./style.scss";
 
 /**
  * WordPress dependencies
@@ -37,7 +37,7 @@ registerBlockType("qubely/form", {
 			{
 				name: "qubely/image",
 				attributes: {
-					image: { url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/form-builder.png" },
+					image: { url: "" },
 				},
 			},
 		],

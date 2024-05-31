@@ -1,6 +1,6 @@
 import classnames from "classnames";
-import templates from "./templates";
 import icons from "../../helpers/icons";
+import templates from "./templates";
 
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
@@ -402,7 +402,6 @@ class Edit extends Component {
 						<InspectorTab key={"layout"}>
 							<PanelBody title={__("Design Templates")}>
 								<Templates
-									// endPoint={'users'}
 									updateStyle={setAttributes}
 									attributes={this.props.attributes}
 									templates={templates}

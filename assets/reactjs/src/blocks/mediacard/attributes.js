@@ -83,7 +83,7 @@ export const attributes = {
 	image: {
 		type: "object",
 		default: {
-			url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg",
+			url: "",
 		},
 	},
 	image2x: {

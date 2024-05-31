@@ -185,7 +185,7 @@ class Edit extends Component {
 																		bgType: "image",
 																		openBg: 1,
 																		bgImage: {
-																			url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image8.jpg",
+																			url: "#",
 																		},
 																  }),
 														},
