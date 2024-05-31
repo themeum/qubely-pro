@@ -297,7 +297,7 @@ registerBlockType("qubely/form", {
 									<input
 										type="hidden"
 										name="email-from"
-										value={_encrypt("Your Company Name: admin@qubely.io")}
+										value={_encrypt("Your Company Name: admin@domin.com")}
 									/>
 									<input
 										type="hidden"

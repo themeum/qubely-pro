@@ -1,6 +1,6 @@
+import classnames from "classnames";
 import icons from "../../helpers/icons";
 import Countdown from "./countdown";
-import classnames from "classnames";
 import templates from "./templates";
 const { PluginBlockSettingsMenuItem } = wp.editPost;
 
@@ -26,7 +26,6 @@ const {
 	ColorAdvanced,
 	RadioAdvanced,
 	Toggle,
-	InspectorSections,
 	InspectorTabs,
 	InspectorTab,
 	Inline: { InlineToolbar },
@@ -219,7 +218,6 @@ class Edit extends Component {
 									templates={templates}
 								/>
 							</PanelBody>
-							<InspectorSections block={"countdown"} />
 						</InspectorTab>
 						<InspectorTab key={"style"}>
 							<PanelBody opened={true}>

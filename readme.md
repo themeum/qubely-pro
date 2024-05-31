@@ -2,7 +2,7 @@
 
 ##  Development
 - Navigate to reactjs folder `cd  assets/reactjs`
--  `npm install`
+-  `npm install` (node version `14.15.0` required)
 -  `npm start`
 -  `gulp watch` (for CSS hotloading)
 

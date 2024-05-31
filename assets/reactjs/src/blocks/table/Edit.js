@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 
-import icons from "../../helpers/icons";
 import classnames from "classnames";
+import icons from "../../helpers/icons";
 import { Icon, Image, List, Ratings } from "./components";
 
 import templates from "./templates";
@@ -41,7 +41,6 @@ const {
 	gloalSettings: { globalSettingsPanel, animationSettings, interactionSettings },
 	ContextMenu: { ContextMenu, handleContextMenu },
 	Templates,
-	InspectorSections,
 } = wp.qubelyComponents;
 
 class Edit extends Component {
@@ -1314,7 +1313,6 @@ class Edit extends Component {
 									templates={templates}
 								/>
 							</PanelBody>
-							<InspectorSections block={"table"} />
 						</InspectorTab>
 						<InspectorTab key={"style"}>
 							<PanelBody title="" opened={true}>
