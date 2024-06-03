@@ -1,10 +1,25 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
-Tested up to: 6.0.1
-Stable tag: 1.4.0
+Tested up to: 6.4
+Stable tag: 1.4.4
 
 
 == Changelog ==
+
+= 1.4.4 =
+Compatibility: PHP 8.1 & 8.2 Compatibility Added
+
+= 1.4.3 =
+Update: Licensing option removed
+
+= 1.4.2 =
+New: Jetpack compatibility is introduced
+Update: All Stylesheet and Script libraries are updated to the latest version
+Update: More security improvements is introduced
+Fix: Form Builder had an issue with the Recipient Email input field
+
+= 1.4.1 =
+New: Introduced "Deprecation" in case of the "Block Recovery Issue" for Update
 
 = 1.4.0 =
 Update: PHP version compatibility is improved

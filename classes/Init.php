@@ -6,7 +6,8 @@ defined( 'ABSPATH' ) || exit;
 class Init {
 	public $version = QUBELY_PRO_VERSION;
 	public $path;
-	private $updater;
+	public $url;
+	public $basename;
 
 	function __construct() {
         $this->url = QUBELY_PRO_DIR_URL;
@@ -22,22 +23,6 @@ class Init {
 		new \QUBELY_PRO\Assets();
 		new \QUBELY_PRO\Newsletter();
 
-		require_once( dirname( __DIR__ ) . '/updater/update.php' );
-		$this->updater = new \QUBELY_PRO\ThemeumUpdater\Update( 
-			array(
-				'product_title'      => 'Qubely Pro',
-				'product_slug'       => 'qubely-pro',
-				'product_basename'   => QUBELY_PRO_BASENAME,
-				'product_type'       => 'plugin',
-				'current_version'    => QUBELY_PRO_VERSION,
-				'menu_title'         => 'License',
-				'parent_menu'        => 'qubely-settings',
-				'menu_capability'    => 'manage_options',
-				'license_option_key' => QUBELY_PRO_BASENAME . '_license_info',
-				'updater_url'        => QUBELY_PRO_DIR_URL . 'updater/',
-				'header_content'     => QUBELY_PRO_DIR_URL . 'assets/img/logo.svg',
-			)
-		);
     }
 
 	/**
