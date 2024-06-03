@@ -11,6 +11,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       qubely-pro
  * Domain Path:       /languages
+ * Tested up to:       6.5.3
  * GitHub Plugin URI: https://github.com/themeum/qubely-pro/
  * GitHub Branch:     master
  *
