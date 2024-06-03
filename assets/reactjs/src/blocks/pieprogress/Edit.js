@@ -1,5 +1,5 @@
-import Progress from "./Progress";
 import icons from "../../helpers/icons";
+import Progress from "./Progress";
 import templates from "./templates";
 const { Fragment, Component, createRef } = wp.element;
 const { PanelBody, Toolbar, TextControl } = wp.components;
@@ -142,7 +142,6 @@ class Edit extends Component {
 						<InspectorTab key={"layout"}>
 							<PanelBody title={__("Design Templates")}>
 								<Templates
-									// endPoint={'users'}
 									updateStyle={setAttributes}
 									attributes={attributes}
 									templates={templates}

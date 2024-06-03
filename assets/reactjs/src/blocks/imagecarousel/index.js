@@ -1,7 +1,7 @@
-import "./style.scss";
 import Edit from "./Edit";
 import Save from "./Save";
 import attributes from "./attributes";
+import "./style.scss";
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -30,17 +30,17 @@ registerBlockType("qubely/imagecarousel", {
 			carouselItems: [
 				{
 					sliderimage: {
-						url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image1.jpg",
+						url: "",
 					},
 				},
 				{
 					sliderimage: {
-						url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image2.jpg",
+						url: "",
 					},
 				},
 				{
 					sliderimage: {
-						url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image3.jpg",
+						url: "",
 					},
 				},
 			],

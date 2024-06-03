@@ -1,10 +1,13 @@
 ===  Qubely Pro ===
 Requires at least: 5.0
-Tested up to: 6.4
-Stable tag: 1.4.4
+Tested up to: 6.5.3
+Stable tag: 1.4.5
 
 
 == Changelog ==
+
+= 1.4.5 =
+Update: Qubely Pro is now open source for everyone
 
 = 1.4.4 =
 Compatibility: PHP 8.1 & 8.2 Compatibility Added

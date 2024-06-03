@@ -363,19 +363,19 @@ registerBlockType("qubely/gallery", {
 		attributes: {
 			galleryContents: [
 				{
-					image: { url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image1.jpg" },
+					image: { url: "" },
 				},
 				{
-					image: { url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image2.jpg" },
+					image: { url: "" },
 				},
 				{
-					image: { url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image3.jpg" },
+					image: { url: "" },
 				},
 				{
-					image: { url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image4.jpg" },
+					image: { url: "" },
 				},
 				{
-					image: { url: "http://qubely.io/wp-content/uploads/qubely-assets/demo/image5.jpg" },
+					image: { url: "" },
 				},
 			],
 		},

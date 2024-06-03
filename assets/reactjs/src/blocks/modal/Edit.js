@@ -1,5 +1,5 @@
-import icons from "../../helpers/icons";
 import classnames from "classnames";
+import icons from "../../helpers/icons";
 const { __ } = wp.i18n;
 const { Fragment, useRef, useState } = wp.element;
 const { PanelBody } = wp.components;
@@ -25,7 +25,6 @@ const {
     InspectorTab,
     InspectorTabs,
     withCSSGenerator,
-    InspectorSections,
     gloalSettings: { animationSettings, interactionSettings, globalSettingsPanel },
     ContextMenu: { ContextMenu, handleContextMenu },
 } = wp.qubelyComponents;
